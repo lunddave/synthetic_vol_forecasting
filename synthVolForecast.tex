@@ -151,12 +151,13 @@ We will suppose that $\x_{i,t=T^*_i}$ and $\textbf{v}_{i,t=T^*_i}$ are observed 
 
 In light of the foregoing, we can rewrite the GARCH framework we are interested in as such
 
-$$\sigma_{i,t}^{2} = \omega_{i} + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \begin{bmatrix}
+$$\sigma_{i,t}^{2} = \omega_{i} + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \begin{pmatrix}
           \x_{i,t} \\
            \textbf{v}_{i,t}
-           \end{bmatrix}, a_{i,t} = \sigma_{i,t}\epsilon_{i,t}$$
+           \end{pmatrix}, a_{i,t} = \sigma_{i,t}\epsilon_{i,t}$$
 
 % https://latex-tutorial.com/matrices-in-latex/
+% https://www.math-linux.com/latex-26/faq/latex-faq/article/how-to-write-matrices-in-latex-matrix-pmatrix-bmatrix-vmatrix-vmatrix
 
 We are interested in a point forecast for $\sigma^{2}_{1,T^{*}+1}$, the 1-step ahead conditional variance for the time series under study.  The forecast performance is evaluated mean squared-error computed using three families of estimators for the ground truth that we seek.  Let $L_{predictive method, ground truth estimator} $ denote the squared-error loss of a predictive method based on a given ground truth estimator.  For example, the loss function of primary interest in this study is the 1-step-ahead forecast loss
 
@@ -174,7 +175,13 @@ $$ L^{h}_{synthetic prediction GARCH, RV} = \frac{1}{h}\sum_{g=1}^{h}(\hat\sigma
 % https://tex.stackexchange.com/questions/186981/is-there-a-subsubsubsection-command
 \subsubsection{Market-Implied Volatility}
 
+Here we introduce implied volatility, a quantity that is derived using the equilibrium price of call and put options on the underlying financial asset.
+
 \subsubsection{Realized Volatility}
+
+Suppose we examine K trading days, we each trading day is dividing into m intervals of even length.  We estimate the quadratic variation of a log-return series using Realized Volatility, denoted $RV_{K,m}$, by following the notation of  \citet{andersen2008realized} 
+
+$$RV_{K,m} = \frac{1}{K}\sum^{Km}_{v=1}r^{2}(v/m,1/m)$$
 
 \subsubsection{Empirical Volatility}
 
@@ -183,7 +190,18 @@ This is just the unbiased estimator of log-return $\sigma^{2}$ over the precedin
 \subsection{Volatility Profile of a Time Series}
 \label{Volatility Profile of a Time Series}
 
-In this section we make a novel contribution to the synthetic control framework by constructing a profile of a time series volatility.
+In this section we make a novel contribution to the synthetic control framework by constructing a profile of a time series volatility.  Suppose we have D donors and for each of those D donors, q distinct measurements of volatility.  Abusing notation for RV, we have...
+
+\begin{equation*}
+\textbf{V}_{D,n} = 
+\begin{pmatrix}
+RV_{T^{*},1} & RV_{T^{*},2}  & \cdots & RV_{T^{*},D}  \\
+RV_{T^{*}-1,1}  & RV_{T^{*}-1,2}  & \cdots & RV_{T^{*},D}  \\
+\vdots  & \vdots  & \ddots & \vdots  \\
+M_{q,1} & M_{q,2} & \cdots & M_{q,D} 
+\end{pmatrix}
+\end{equation*}
+
 
 \subsection{Aggregation Mechanism}
 \label{Aggregation Mechanism}
@@ -199,22 +217,25 @@ are the same for all time series in the analysis, the differences between them l
 
 Let $I(\cdot)$ be an indicator function, $T_i$ be the time length of the time series $i$ for $i = 1, \ldots, n+1$, and $T_i^*$ be the time point just before the one when the shock is known to occur, with $T_i^* < T_i$.  For $t= 1, \ldots, T_i$ and $i = 1, \ldots, n+1$, the model $\mc{M}_1$ is defined as
 \begin{align}
-\mc{M}_1 \colon \sigma^{2}_{i,t} = \omega_{i} + \omega^{*}_i D_{i,t}  + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \begin{bmatrix}
+\mc{M}_1 \colon \sigma^{2}_{i,t} = \omega_{i} + \omega^{*}_i D_{i,t}  + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \begin{pmatrix}
           \x_{i,t} \\
            \textbf{v}_{i,t}
-           \end{bmatrix}, a_{i,t} = \sigma_{i,t}\epsilon_{i,t} \label{equation1}
+           \end{pmatrix}, a_{i,t} = \sigma_{i,t}\epsilon_{i,t} \label{equation1}
 \end{align}
  where $D_{i,t} = I(t = T_i^* + 1)$ 
 and $\x_{i,t} \in \R^{p}$ , $\textbf{v}_{i,t} \in \R^{l}$ with $p, l \geq 1$.  We assume that the 
-$\mbf{x}_{i,t}$'s are fixed. Let $|x|$ denote the absolute value of $x$ for $x\in \reals$. For $i = 1, \ldots, n+1$ and $t=1, \ldots, T_i$, the random effects structure for $\mc{M}_1$ is:
+$\mbf{x}_{i,t}$'s are fixed.  For $i = 1, \ldots, n+1$ and $t=1, \ldots, T_i$, the random effects structure for $\mc{M}_1$ is:
+
 \begin{align*}
-  \phi_i &\simiid \mc{F}_{\phi} \text{ where } |\mc{F}_{\phi}| < 1, [\phi \text{ needs to be replaced with conditions on } \alpha, \beta \text{which will be simulated fixed parameters}]\\
-   \gamma_i &\simiid \mc{F}_{\gamma} \text{ with }  \; \mrm{E}_{\mc{F}_{\gamma}}(\gamma_i) = \mu_{\gamma}, \mrm{Var}_{\mc{F}_{\gamma}}(\gamma_i)  = \Sigma^2_{\gamma} \\
 \omega^{*}_i &\simiid \mc{F}_{\omega^{*}} \text{ with }  \; \mrm{E}_{\mc{F}_{\omega^{*}}}(\omega^{*}_i) = \mu_{\omega^{*}}, \mrm{Var}_{\mc{F}_{\omega^{*}}}(\omega^{*}_i)  = \sigma^2_{\omega^{*}}  \\
+  (\alpha, \beta)_i &\simiid \mc{F}_{(\alpha, \beta)} \text{ where } \sum^{ \text{max} \{m,s \} }_{j}\alpha_j + \beta_j < 1 \\
+   \gamma_i &\simiid \mc{F}_{\gamma} \text{ with }  \; \mrm{E}_{\mc{F}_{\gamma}}(\gamma_i) = \mu_{\gamma}, \mrm{Var}_{\mc{F}_{\gamma}}(\gamma_i)  = \Sigma^2_{\gamma} \\
+   \mathbf{v}_i &\simiid \mc{F}_{\mathbf{v}} \text{ with }  \; \mrm{E}_{\mc{F}_{\mathbf{v}}}(\mathbf{v}_i) = \mu_{\mathbf{v}}, \mrm{Var}_{\mc{F}_{\mathbf{v}}}(\mathbf{v}_i)  = \Sigma^2_{\mathbf{v}} \\
 \varepsilon_{i,t} & \simiid  \mc{F}_{\varepsilon} \text{ with }  \; \mrm{E}_{\mc{F}_{\varepsilon}}(\varepsilon_{i,t}) = 0, \mrm{Var}_{\mc{F}_{\varepsilon}}(\varepsilon_{i,t})  = 1,  \\
-\omega^{*}_i &\indep  \phi_i \indep \gamma_i \indep \varepsilon_{i,t}.
+\omega^{*}_i &\indep  (\alpha, \beta)_i \indep \gamma_i \indep \varepsilon_{i,t}.
 \end{align*}
-Notice that $\mc{M}_1$ assumes that $\alpha_i$ are iid with $\E{\alpha_i}=\mu_{\alpha}$ 
+
+Notice that $\mc{M}_1$ assumes that $\omega^{*}_i$ are i.i.d. with $\E{\omega^{*}_i}=\mu_{\omega^{*}}$ 
 for $i = 1, \ldots, n+1$. We also consider a model where the shock effects are linear functions of covariates with an additional additive mean-zero error. For $i = 1, \ldots, n+1$, the random effects structure for this model (model $\mc{M}_2$) is:
 \begin{align}
 \mc{M}_2 \colon \begin{array}{l}

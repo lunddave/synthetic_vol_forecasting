@@ -1,0 +1,62 @@
+\begin{thebibliography}{9}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Andersen and Benzoni(2008)]{andersen2008realized}
+Torben~Gustav Andersen and Luca Benzoni.
+\newblock Realized volatility, working paper 2008-14.
+\newblock 2008.
+
+\bibitem[Bollerslev(1986)]{bollerslev1986generalized}
+Tim Bollerslev.
+\newblock Generalized autoregressive conditional heteroskedasticity.
+\newblock \emph{Journal of econometrics}, 31\penalty0 (3):\penalty0 307--327,
+  1986.
+
+\bibitem[Engle(2002)]{engle2002new}
+Robert Engle.
+\newblock New frontiers for arch models.
+\newblock \emph{Journal of Applied Econometrics}, 17\penalty0 (5):\penalty0
+  425--446, 2002.
+
+\bibitem[Engle(1982)]{engle1982autoregressive}
+Robert~F Engle.
+\newblock Autoregressive conditional heteroscedasticity with estimates of the
+  variance of united kingdom inflation.
+\newblock \emph{Econometrica: Journal of the econometric society}, pages
+  987--1007, 1982.
+
+\bibitem[Faraway(2016)]{faraway2016extending}
+Julian~J Faraway.
+\newblock \emph{Extending the linear model with R: generalized linear, mixed
+  effects and nonparametric regression models}.
+\newblock CRC press, 2016.
+
+\bibitem[Hansen et~al.(2012)Hansen, Huang, and Shek]{hansen2012realized}
+Peter~Reinhard Hansen, Zhuo Huang, and Howard~Howan Shek.
+\newblock Realized garch: a joint model for returns and realized measures of
+  volatility.
+\newblock \emph{Journal of Applied Econometrics}, 27\penalty0 (6):\penalty0
+  877--906, 2012.
+
+\bibitem[Lin and Eck(2021)]{lin2021minimizing}
+Jilei Lin and Daniel~J Eck.
+\newblock Minimizing post-shock forecasting error through aggregation of
+  outside information.
+\newblock \emph{International Journal of Forecasting}, 2021.
+
+\bibitem[Quaedvlieg(2021)]{quaedvlieg2021multi}
+Rogier Quaedvlieg.
+\newblock Multi-horizon forecast comparison.
+\newblock \emph{Journal of Business \& Economic Statistics}, 39\penalty0
+  (1):\penalty0 40--53, 2021.
+
+\bibitem[Tsay(2005)]{tsay2005analysis}
+Ruey~S Tsay.
+\newblock \emph{Analysis of financial time series}, volume 543.
+\newblock John wiley \& sons, 2005.
+
+\end{thebibliography}
