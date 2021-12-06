@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex 2021.11.30)  5 DEC 2021 19:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex 2021.11.30)  6 DEC 2021 15:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -723,17 +723,6 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 \Gm@dimlist=\toks45
 )
 
-! LaTeX Error: Command \v already defined.
-               Or name \end... illegal, see p.192 of the manual.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.38 \newcommand{\v}{\textbf{v}}
-                                
-? 
-
 ! LaTeX Error: Command \L already defined.
                Or name \end... illegal, see p.192 of the manual.
 
@@ -741,7 +730,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.43 \newcommand{\L}{\textbf{L}}
+l.42 \newcommand{\L}{\textbf{L}}
                                 
 ? 
 \c@corollary=\count319
@@ -751,7 +740,7 @@ l.43 \newcommand{\L}{\textbf{L}}
 \c@defn=\count323
 \c@prop=\count324
 \c@remark=\count325
-Package hyperref Info: Option `colorlinks' set `true' on input line 93.
+Package hyperref Info: Option `colorlinks' set `true' on input line 92.
 (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2020-01-29 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count326
@@ -760,22 +749,22 @@ File: l3backend-pdftex.def 2020-01-29 L3 backend support: PDF output (pdfTeX)
 (./synthVolForecast.aux)
 \openout1 = `synthVolForecast.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 115.
-LaTeX Font Info:    ... okay on input line 115.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 115.
-LaTeX Font Info:    ... okay on input line 115.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 115.
-LaTeX Font Info:    ... okay on input line 115.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 115.
-LaTeX Font Info:    ... okay on input line 115.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 115.
-LaTeX Font Info:    ... okay on input line 115.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 115.
-LaTeX Font Info:    ... okay on input line 115.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 115.
-LaTeX Font Info:    ... okay on input line 115.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 115.
-LaTeX Font Info:    ... okay on input line 115.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 114.
+LaTeX Font Info:    ... okay on input line 114.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 114.
+LaTeX Font Info:    ... okay on input line 114.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 114.
+LaTeX Font Info:    ... okay on input line 114.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 114.
+LaTeX Font Info:    ... okay on input line 114.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 114.
+LaTeX Font Info:    ... okay on input line 114.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 114.
+LaTeX Font Info:    ... okay on input line 114.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 114.
+LaTeX Font Info:    ... okay on input line 114.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 114.
+LaTeX Font Info:    ... okay on input line 114.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -799,7 +788,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-Package hyperref Info: Link coloring ON on input line 115.
+Package hyperref Info: Link coloring ON on input line 114.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
@@ -812,9 +801,9 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count333
 )
-LaTeX Info: Redefining \ref on input line 115.
-LaTeX Info: Redefining \pageref on input line 115.
-LaTeX Info: Redefining \nameref on input line 115.
+LaTeX Info: Redefining \ref on input line 114.
+LaTeX Info: Redefining \pageref on input line 114.
+LaTeX Info: Redefining \nameref on input line 114.
 
 (./synthVolForecast.out) (./synthVolForecast.out)
 \@outlinefile=\write4
@@ -859,12 +848,12 @@ Package caption Info: End \AtBeginDocument code.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 118
+LaTeX Font Info:    Trying to load font information for U+msa on input line 117
 .
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 118
+LaTeX Font Info:    Trying to load font information for U+msb on input line 117
 .
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -873,15 +862,15 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 1
-39.
+38.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 139.
- [2] [3] [4]
-Overfull \hbox (19.1976pt too wide) in paragraph at lines 304--306
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 138.
+ [2] [3] [4] [5]
+Overfull \hbox (19.1976pt too wide) in paragraph at lines 305--307
 \OT1/cmr/m/n/10.95 where the dis-tri-bu-tions $\OMS/cmsy/m/n/10.95 F[]\OT1/cmr/
 m/n/10.95 ([][])$ and $\OMS/cmsy/m/n/10.95 F[]\OT1/cmr/m/n/10.95 ([][])$ sat-is
 fy $\OMS/cmsy/m/n/10.95 F[]\OT1/cmr/m/n/10.95 ([][]) [] \OMS/cmsy/m/n/10.95 F[]
@@ -889,10 +878,10 @@ fy $\OMS/cmsy/m/n/10.95 F[]\OT1/cmr/m/n/10.95 ([][]) [] \OMS/cmsy/m/n/10.95 F[]
 ) []
  []
 
-[5] [6]
+[6]
 
 Package natbib Warning: Citation `shaman1988bias' on page 7 undefined on input 
-line 347.
+line 348.
 
 [7] [8] [9] [10] [11] [12] [13] [14] [15] [16] [17] (./synthVolForecast.bbl
 [18])
@@ -934,7 +923,7 @@ t/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts
 public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
 /amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
 nts/symbols/msbm10.pfb>
-Output written on synthVolForecast.pdf (19 pages, 336071 bytes).
+Output written on synthVolForecast.pdf (19 pages, 337485 bytes).
 PDF statistics:
  340 PDF objects out of 1000 (max. 8388607)
  292 compressed objects within 3 object streams
