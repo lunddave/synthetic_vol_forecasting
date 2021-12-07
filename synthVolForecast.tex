@@ -137,7 +137,7 @@ The approach herein can be viewed as an attempt to sidestep the functional compl
 
 We follow convention and define the daily log-return as $r_{t} = \text{log}(\frac{X_{t+1}}{X_{t}})$.  The class of ARIMA(p,d,q) models developed in the mid-to-late 20th century provides a framework for postulating and quantifying the autoregressive structure of a $r_{t}$, all within the framework of frequentist statistics and maximum-likelihood estimation of parameters.  These models assume a certain dependence structure between $r_{t}$ and $r_{t-\text{max\{p,q\}}}$, as well as all observations in between, yet their errors -- often called innovations in the financial time series context due to how they represent the impact of new information -- are nevertheless assumed to be i.i.d. with mean zero and constant variance.  The ARCH \citep{engle1982autoregressive} and GARCH \citep{bollerslev1986generalized} models provide elegant alternatives to the constant-variance assumption.  In fact, the GARCH framework in its most basic form disregards $r_{t}$ and instead turns its interest to the series $r_{t}^{2}$ (when properly centered).  
 
-To that end, let $a_{t} = r_{t} - \mu_{t}$, where $\mu_{t}$ is the mean of the log return series $r_{t}$.  Implicitly, we are committing ourselves to a mean-model for $r_{t}$ in which $\mu_{t}$, the expected daily log-return, may vary with time, while $a_{t}$ is simply the noise.  We derive a mean-zero process $(a)_{t\in\mathbb{N}}$ with the property that $\E[a^{2}_{t}] = \mrm{Var}[a_{t}]$.  Under the assumption of time-invariant volatility, the series $a_{t}^{2}$ should exhibit no autocorrelation at any lag $\ell\geq1$.  This assumption motivates tests for so-called ARCH effects, that is, tests for the clustering of volatility.  These tests explore the the alternative hypothesis that $\sigma_{t}^{2}$ is not only a time-varying parameter but furthermore a function of past squared residuals of the mean model.  In particular, the ARCH(m) model is an autoregressive model in which $\sigma_{t}^{2}$ is fitted using a linear combination of the $m$ past values of $a_{t}^{2}$.  The GARCH(m,s) framework take this one step further but modeling $\sigma_{t}^{2}$ as a linear combination of the $m$ past $a_{t}^{2}$ values and well as the $s$ past values of $\sigma_{t}^{2}$.  In functional form,
+To that end, let $a_{t} = r_{t} - \mu_{t}$, where $\mu_{t}$ is the mean of the log return series $r_{t}$.  Implicitly, we are committing ourselves to a mean-model for $r_{t}$ in which $\mu_{t}$, the expected daily log-return, may vary with time, while $a_{t}$ is simply the noise.  As \citet{cont2001empirical} explains, such an assumption is justified by the empirical finding that returns lack significant autocorrelation.  We derive a mean-zero process $(a)_{t\in\mathbb{N}}$ with the property that $\E[a^{2}_{t}] = \mrm{Var}[a_{t}]$.  Under the assumption of time-invariant volatility, the series $a_{t}^{2}$ should exhibit no autocorrelation at any lag $\ell\geq1$.  This assumption motivates tests for so-called ARCH effects, that is, tests for the clustering of volatility.  These tests explore the the alternative hypothesis that $\sigma_{t}^{2}$ is not only a time-varying parameter but furthermore a function of past squared residuals of the mean model.  In particular, the ARCH(m) model is an autoregressive model in which $\sigma_{t}^{2}$ is fitted using a linear combination of the $m$ past values of $a_{t}^{2}$.  The GARCH(m,s) framework take this one step further but modeling $\sigma_{t}^{2}$ as a linear combination of the $m$ past $a_{t}^{2}$ values and well as the $s$ past values of $\sigma_{t}^{2}$.  In functional form,
 
 $$\sigma_{t}^{2} = \omega + \sum^{m}_{k=1}\alpha_{k}a^{2}_{t-k} + \sum_{j=1}^{s}\beta_{j}\sigma_{t-j}^{2}, a_{t} = \sigma_{t}\epsilon_{t}$$
 
@@ -198,9 +198,15 @@ In this section we make a novel contribution to the synthetic control framework 
 \textbf{V}_{D,n} = 
 \begin{pmatrix}
 RV_{T^{*},1} & RV_{T^{*},2}  & \cdots & RV_{T^{*},D}  \\
-RV_{T^{*}-1,1}  & RV_{T^{*}-1,2}  & \cdots & RV_{T^{*},D}  \\
+RV_{T^{*}-1,1}  & RV_{T^{*}-1,2}  & \cdots & RV_{T^{*}-1,D}  \\
 \vdots  & \vdots  & \ddots & \vdots  \\
-M_{q,1} & M_{q,2} & \cdots & M_{q,D} 
+Implied_Volatility_{T^{*},1} & Volatility_{T^{*},2} & \cdots & RV_{T^{*},D}
+Implied_Volatility_{T^{*}-1,1}  & Volatility_{T^{*}-1,2}  & \cdots & RV_{T^{*}-1,D} 
+
+\vdots  & \vdots  & \ddots & \vdots  \\
+Volume_{T^{*},1}  & Volume_{T^{*},2}  & \cdots & Volume_{T^{*},D}
+Volume_{T^{*}-1,1}  & Volume_{T^{*}-1,2}  & \cdots & Volume_{T^{*}-1,D}  \\
+
 \end{pmatrix}
 \end{equation*}
 
