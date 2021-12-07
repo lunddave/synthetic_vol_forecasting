@@ -5,45 +5,45 @@ The style file: plainnat.bst
 Database file #1: synthVolForecast.bib
 Warning--I didn't find a database entry for "shaman1988bias"
 Warning--empty journal in andersen2008realized
-You've used 9 entries,
+You've used 10 entries,
             2773 wiz_defined-function locations,
-            650 strings with 6150 characters,
-and the built_in function-call counts, 3505 in all, are:
-= -- 317
-> -- 132
-< -- 10
-+ -- 48
-- -- 39
-* -- 241
-:= -- 540
-add.period$ -- 27
-call.type$ -- 9
-change.case$ -- 38
-chr.to.int$ -- 9
-cite$ -- 19
-duplicate$ -- 188
-empty$ -- 330
-format.name$ -- 52
-if$ -- 735
+            657 strings with 6294 characters,
+and the built_in function-call counts, 3847 in all, are:
+= -- 347
+> -- 142
+< -- 11
++ -- 52
+- -- 42
+* -- 265
+:= -- 594
+add.period$ -- 30
+call.type$ -- 10
+change.case$ -- 42
+chr.to.int$ -- 10
+cite$ -- 21
+duplicate$ -- 208
+empty$ -- 366
+format.name$ -- 56
+if$ -- 807
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 11
-newline$ -- 53
-num.names$ -- 36
-pop$ -- 85
+missing$ -- 12
+newline$ -- 58
+num.names$ -- 40
+pop$ -- 92
 preamble$ -- 1
-purify$ -- 31
+purify$ -- 34
 quote$ -- 0
-skip$ -- 137
+skip$ -- 150
 stack$ -- 0
-substring$ -- 147
-swap$ -- 18
+substring$ -- 158
+swap$ -- 19
 text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 89
+type$ -- 100
 warning$ -- 1
-while$ -- 38
+while$ -- 42
 width$ -- 0
-write$ -- 120
+write$ -- 133
 (There were 2 warnings)
