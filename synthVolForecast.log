@@ -1,8 +1,8 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex 2021.11.30)  13 DEC 2021 20:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex 2021.11.30)  14 DEC 2021 12:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**synthVolForecast.tex
+**synthVolForecast
 (./synthVolForecast.tex
 LaTeX2e <2020-10-01> patch level 4
 L3 programming layer <2021-01-09> xparse <2020-03-03>
@@ -869,13 +869,9 @@ File: omscmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 138.
- [2] [3] [4]
-
-Package natbib Warning: Citation `abadie2010synthetic' on page 5 undefined on i
-nput line 235.
-
-[5] [6]
-Overfull \hbox (19.1976pt too wide) in paragraph at lines 329--331
+ [2] [3] [4] [5]
+[6]
+Overfull \hbox (19.1976pt too wide) in paragraph at lines 328--330
 \OT1/cmr/m/n/10.95 where the dis-tri-bu-tions $\OMS/cmsy/m/n/10.95 F[]\OT1/cmr/
 m/n/10.95 ([][])$ and $\OMS/cmsy/m/n/10.95 F[]\OT1/cmr/m/n/10.95 ([][])$ sat-is
 fy $\OMS/cmsy/m/n/10.95 F[]\OT1/cmr/m/n/10.95 ([][]) [] \OMS/cmsy/m/n/10.95 F[]
@@ -886,7 +882,7 @@ fy $\OMS/cmsy/m/n/10.95 F[]\OT1/cmr/m/n/10.95 ([][]) [] \OMS/cmsy/m/n/10.95 F[]
 [7]
 
 Package natbib Warning: Citation `shaman1988bias' on page 8 undefined on input 
-line 372.
+line 371.
 
 [8] [9] [10] [11] [12] [13] [14] [15] [16] [17] [18] (./synthVolForecast.bbl
 [19])
@@ -894,20 +890,17 @@ line 372.
 Package natbib Warning: There were undefined citations.
 
 [20] (./synthVolForecast.aux)
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package rerunfilecheck Info: File `synthVolForecast.out' has not changed.
 (rerunfilecheck)             Checksum: DE227342DCABDDD52B5CF31CD1CF3005;764.
  ) 
 Here is how much of TeX's memory you used:
- 20729 strings out of 481176
- 380727 string characters out of 5914225
- 720022 words of memory out of 5000000
- 37191 multiletter control sequences out of 15000+600000
+ 20733 strings out of 481176
+ 380832 string characters out of 5914225
+ 720087 words of memory out of 5000000
+ 37194 multiletter control sequences out of 15000+600000
  421521 words of font info for 91 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
- 87i,18n,89p,1564b,438s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 87i,18n,89p,1560b,436s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/david/.texlive2020/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm0600.600
 pk> </home/david/.texlive2020/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm0800.60
 0pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></
@@ -931,10 +924,10 @@ t/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts
 public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
 /amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
 nts/symbols/msbm10.pfb>
-Output written on synthVolForecast.pdf (20 pages, 348080 bytes).
+Output written on synthVolForecast.pdf (20 pages, 348856 bytes).
 PDF statistics:
- 359 PDF objects out of 1000 (max. 8388607)
- 309 compressed objects within 4 object streams
- 63 named destinations out of 1000 (max. 500000)
+ 362 PDF objects out of 1000 (max. 8388607)
+ 312 compressed objects within 4 object streams
+ 64 named destinations out of 1000 (max. 500000)
  101 words of extra memory for PDF output out of 10000 (max. 10000000)
 
