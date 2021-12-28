@@ -80,12 +80,13 @@ synth_vol_sim <- function(n, p, arch_param, garch_param, model,
     
     #Now create shocks
     if (model == 'M1'){
-                      level_shock_vec[i] <- mu_eps_star + rgnorm(1, mu = 0, alpha = level_GED_alpha, beta = level_GED_beta)
+                      level_shock_vec[i] <- mu_eps_star + # This is the non-stochastic term
+                                            rgnorm(1, mu = 0, alpha = level_GED_alpha, beta = level_GED_beta) # This is the stochastic term
                       } 
-    else {
+    else { #M2  
           level_shock_vec[i] <- mu_eps_star + 
-                          as.matrix(X[[1]][shock_time_vec[1],]) %*% rnorm(p,0,sigma_eps_star) + 
-                          rgnorm(1, mu = 0, alpha = level_GED_alpha, beta = level_GED_beta)
+                                as.matrix(X[[1]][shock_time_vec[1],]) %*% rnorm(p,0,sigma_eps_star) + 
+                                rgnorm(1, mu = 0, alpha = level_GED_alpha, beta = level_GED_beta) #What's the variance of this sum?
           }
     
     #Create GARCH model with one shock
@@ -123,7 +124,7 @@ synth_vol_sim <- function(n, p, arch_param, garch_param, model,
       '-------------------------------------------------------------\n',
       'Shock mean:', round(shock_mean,4), '(equivalent to a', round(100*shock_mean,2), '% daily move).', ' \n',
       'Shock variance:', round(shock_var,4), '\n',
-      'Coefficient of Variation:', round(shock_mean/ sqrt(shock_var),3) , '\n',
+      'Signa to Noise:', abs(round(shock_mean / sqrt(shock_var),3)) , '\n',
       'Shock excess kurtosis', round(shock_kurtosis, 3)
       )
   
@@ -157,7 +158,7 @@ output <- synth_vol_sim(n = 6,
                         length_of_shock = 1,
                         a = 90, 
                         b = 150, 
-                        mu_eps_star = -.055,
+                        mu_eps_star = -.095,
                         sigma_eps_star = .0005,
                         level_GED_alpha = .18, 
                         level_GED_beta = 1.4,
