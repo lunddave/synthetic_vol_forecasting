@@ -4,9 +4,9 @@
 library(quantmod)
 library(garchx)
 library(lmtest)
-library(mlVAR)
 library(extraDistr)
 library(gnorm)
+library(tsDyn)
 
 options(scipen = 6)
 
@@ -31,16 +31,10 @@ synth_vol_sim <- function(n, p, arch_param, garch_param, model,
                           length_of_shock,
                           a, b, 
                           mu_eps_star, sigma_eps_star,
+                          omega_shape, omega_rate,
                           level_GED_alpha,
                           level_GED_beta,
-                          vol_GED_alpha,
-                          vol_GED_beta,
                           ...){
-  # We will first generate the covariates.  These will be correlated GARCH processes, ideally. 
-  # Since multivariate GARCH processes take take technical care to simulate, we first use VAR.
-  
-  # https://stats.stackexchange.com/questions/71540/how-to-simulate-two-correlated-ar1-time-series
-  # https://cran.r-project.org/web/packages/mlVAR/mlVAR.pdf
   
   # Simulate series lengths
   Tee <- rdunif(n+1, a, b)
@@ -48,14 +42,16 @@ synth_vol_sim <- function(n, p, arch_param, garch_param, model,
   # Simulate shock times
   if ( is.null(shock_time_vec) == TRUE)
   {
-    shock_time_vec <- c()
-    for (i in 1:(n+1))
-    {
-      shock_time_vec[i] <- rdunif(1, 20, Tee[i]- 1)
-    }
+        shock_time_vec <- c()
+        for (i in 1:(n+1))
+        {
+          #Note: the T* must be at least 5 data points from end of series
+          #and it must be no earler than 20 points in.
+          shock_time_vec[i] <- rdunif(1, 20, Tee[i]- 5) 
+        }
   }
   
-  ############simulate all n+1 series
+  ############ Simulate all n+1 series   ############ 
   
   #Create null lists for depvar and indepvar output
   Y <- vector(mode = "list", length = n+1)
@@ -65,23 +61,43 @@ synth_vol_sim <- function(n, p, arch_param, garch_param, model,
   
   # For each of n+1 series...
   for (i in 1:(n+1)){
-    #simulate covariates
-    matrix_entries <- runif(p**2, min = -.05, max = .05)
-    simVAR_params <- matrix(matrix_entries, nrow = p, byrow = T)
-    #https://cran.r-project.org/web/packages/mlVAR/mlVAR.pdf
-    VAR_process <- simulateVAR(simVAR_params, means = 0, lags = 1, Nt = Tee[i], residuals = sigma_x)
-    vol_shock_vec[i] <- rgnorm(1, mu = 0, alpha = vol_GED_alpha, beta = vol_GED_beta)**2
+    
+    # Now generate the covariates.  These will be correlated GARCH processes, ideally. 
+    # Since multivariate GARCH processes take take technical care to simulate, we first use VAR.
+    
+    # https://math.stackexchange.com/questions/1529000/how-to-create-a-random-matrix-whose-spectral-radius-1
+  
+    #Random parameters for the VAR
+    param_matrix_entries <- runif(p**2, min = -1/p, max = 1/p)
+    simVAR_params <- matrix(param_matrix_entries, nrow = p, byrow = T)
+    
+    #Epsilon vector for the VAR
+    innovations_matrix_entries <- rnorm(Tee[i] * p, sd = sigma_x)
+    sim_VAR_innovations <- matrix(innovations_matrix_entries, ncol = p, byrow = T)
+    
+    VAR_process <- VAR.sim(B = simVAR_params, 
+                           lag = 1, 
+                           include = "none", 
+                           n = Tee[i],
+                           innov = sim_VAR_innovations)
+    
+    #Create volatility shock w*
+    vol_shock_vec[i] <- rgamma(1, omega_shape, rate = omega_rate)
     shock_indicator <- c(
                           rep(0, shock_time_vec[i]), 
                           vol_shock_vec[i], 
                           rep(0, Tee[i] - shock_time_vec[i] - length_of_shock)
                         )
+    #Now add the design matrix to the list X
     X[[i]] <- cbind(VAR_process, shock_indicator)
     
-    #Now create shocks
+    #Now create level shocks
     if (model == 'M1'){
                       level_shock_vec[i] <- mu_eps_star + # This is the non-stochastic term
-                                            rgnorm(1, mu = 0, alpha = level_GED_alpha, beta = level_GED_beta) # This is the stochastic term
+                                            rgnorm(1, 
+                                           mu = 0, 
+                                           alpha = level_GED_alpha, 
+                                           beta = level_GED_beta) # This is the stochastic term
                       } 
     else { #M2  
           level_shock_vec[i] <- mu_eps_star + 
@@ -95,18 +111,24 @@ synth_vol_sim <- function(n, p, arch_param, garch_param, model,
                          level_shock_vec[i],
                          rnorm(Tee[i] - shock_time_vec[i] - 1, 0, sigma_GARCH_innov))
     
-    Y[[i]] <- garchxSim(Tee[i], arch = arch_param, garch = garch_param, xreg = as.matrix(VAR_process),
+    Y[[i]] <- garchxSim(Tee[i], arch = arch_param, garch = garch_param, 
+                        xreg =  as.matrix(X[[i]]),
                         innovations = GARCH_innov_vec, verbose = TRUE) #First column
   }
   
   ## Compute summary statistics for output
-  shock_mean <- mu_eps_star 
-  shock_var <- ((level_GED_alpha)**2) * gamma(3/level_GED_beta) / (gamma(1/level_GED_beta)) # https://search.r-project.org/CRAN/refmans/gnorm/html/gnorm.html
-  shock_kurtosis <- gamma(5/level_GED_beta)*gamma(1/level_GED_beta)/( (gamma(3/level_GED_beta))**2 ) - 3 #https://en.wikipedia.org/wiki/Generalized_normal_distribution
+  level_shock_mean <- mu_eps_star 
+  level_shock_var <- ((level_GED_alpha)**2) * gamma(3/level_GED_beta) / (gamma(1/level_GED_beta)) # https://search.r-project.org/CRAN/refmans/gnorm/html/gnorm.html
+  level_shock_kurtosis <- gamma(5/level_GED_beta)*gamma(1/level_GED_beta)/( (gamma(3/level_GED_beta))**2 ) - 3 #https://en.wikipedia.org/wiki/Generalized_normal_distribution
+  
+  vol_shock_mean <- omega_shape / omega_rate 
+  vol_shock_var <- omega_shape / (omega_rate**2)
+  vol_shock_kurtosis <- 6 / omega_shape
   
   T_star_sigma <- Y[[1]][,3][shock_time_vec[1],]
   T_star_plus_1_sigma <- Y[[1]][,3][shock_time_vec[1]+1,]
   T_star_plus_2_sigma <- Y[[1]][,3][shock_time_vec[1]+2,]
+  T_star_plus_3_sigma <- Y[[1]][,3][shock_time_vec[1]+3,]
   
   ##Output
   cat('Simulation Summary Data','\n',
@@ -114,32 +136,48 @@ synth_vol_sim <- function(n, p, arch_param, garch_param, model,
       'Donors:', n, '\n',
       'Series lengths:', Tee, '\n',
       'Shock times:', shock_time_vec, '\n',
-      'Level Shock at T*+1:', round(level_shock_vec,3), '\n', 
-      'Volatility Shock at T*+1', round(vol_shock_vec,3), '\n',
-      'Sigma^2 at T*:', round(T_star_sigma,3), '\n', 
-      'Sigma^2 at T*+1:', round(T_star_plus_1_sigma,3), '\n', 
-      'Sigma^2 at T*+2:', round(T_star_plus_2_sigma,3), '\n', 
+      'Level Shock at T*+1:', round(level_shock_vec,2), '\n', 
+      'Volatility Shock at T*+1', round(vol_shock_vec,2), '\n',
       '\n',
-      'Shock Moments', '\n',
+      'Volatility of Time Series under Study', '\n',
       '-------------------------------------------------------------\n',
-      'Shock mean:', round(shock_mean,4), '(equivalent to a', round(100*shock_mean,2), '% daily move).', ' \n',
-      'Shock variance:', round(shock_var,4), '\n',
-      'Signa to Noise:', abs(round(shock_mean / sqrt(shock_var),3)) , '\n',
-      'Shock excess kurtosis', round(shock_kurtosis, 3)
+      'Sigma^2 at T*:', round(T_star_sigma,2), '\n', 
+      'Sigma^2 at T*+1:', round(T_star_plus_1_sigma,2), '\n', 
+      'Sigma^2 at T*+2:', round(T_star_plus_2_sigma,2), '\n', 
+      'Sigma^2 at T*+3:', round(T_star_plus_3_sigma,2), '\n', 
+      '\n',
+      'Level Shock Moments', '\n',
+      '-------------------------------------------------------------\n',
+      'Level Shock mean:', round(level_shock_mean,4), '(equivalent to a', round(100*level_shock_mean,2), '% daily move).', ' \n',
+      'Level Shock variance:', round(level_shock_var,4), '\n',
+      'Level Signal to Noise:', abs(round(level_shock_mean / sqrt(level_shock_var),2)) , '\n',
+      'Level Shock excess kurtosis:', round(level_shock_kurtosis, 2) , '\n',
+      
+      '\n',
+      'Vol Shock Moments', '\n',
+      '-------------------------------------------------------------\n',
+      'Vol Shock mean:', round(vol_shock_mean,2), ' \n',
+      'Vol Shock variance:', round(vol_shock_var,2), '\n',
+
+      'Vol Signal to Noise:', abs(round(vol_shock_mean / sqrt(vol_shock_var),2)) , '\n',
+      'Vol Shock excess kurtosis:', round(vol_shock_kurtosis, 2)
       )
   
   #Plot time series under study and donors
   par(mfrow = c(ceiling(sqrt(n+1)), ceiling(sqrt(n+1))))
   for (i in 1:(n+1))
   {
-    plot.ts(Y[[i]][,1], main = paste('y_', i, sep = ''), ylab = 'Daily Log-Return')
+    
+    plot.ts(Y[[i]][,1], main = paste('y_', i,"\n shock = ", 
+                                    round( level_shock_vec[i],2), sep = ''), ylab = 'Daily Log-Return')
     abline(v = shock_time_vec[i] + 1, col = 'red')
   }
   
   par(mfrow = c(ceiling(sqrt(n+1)), ceiling(sqrt(n+1))))
   for (i in 1:(n+1))
   {
-    plot.ts(Y[[i]][,3], main = paste('Volatility Series of y_', i, sep = ''), ylab = 'Sigma^2')
+    plot.ts(Y[[i]][,3], main = paste('Volatility Series of y_', i, "\n shock = ", 
+                                     round(vol_shock_vec[i],2),sep = ''), ylab = 'Sigma^2')
     abline(v = shock_time_vec[i] + 1, col = 'red')
   }
   
@@ -147,24 +185,30 @@ synth_vol_sim <- function(n, p, arch_param, garch_param, model,
   return(list(X,Y,Tee))
 }
 
-output <- synth_vol_sim(n = 6, 
+output <- synth_vol_sim(n = 5, 
                         p = 3, 
-                        arch_param = .55,
-                        garch_param = c(.19),
+                        arch_param = c(.11),
+                        garch_param = c(.79),
                         model = c('M1','M2')[1],
-                        sigma_GARCH_innov = .006,
-                        sigma_x = .005, 
+                        sigma_GARCH_innov = (.03), # this is the sd that does into rnorm
+                        sigma_x = .02, 
                         shock_time_vec = NULL, 
                         length_of_shock = 1,
                         a = 90, 
                         b = 150, 
-                        mu_eps_star = -.095,
+                        mu_eps_star = -.0825,
                         sigma_eps_star = .0005,
-                        level_GED_alpha = .18, 
-                        level_GED_beta = 1.4,
-                        vol_GED_alpha = .4,
-                        vol_GED_beta = 1.3)
+                        omega_shape = 10.5, 
+                        omega_rate = sqrt(5),
+                        level_GED_alpha = .1 * sqrt( 2), 
+                        level_GED_beta = 2)
 
+output[[2]][[1]]
+
+#Look at covariates of time series of interest
+plot.ts(output[[1]][[1]])
+
+#Look at GARCH process of time series of interest
 plot.ts(output[[2]][[1]])
 
 # Objective2: estimation function that takes (n+1)*(p+1) time series as input and 

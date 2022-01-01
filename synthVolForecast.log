@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex 2021.11.30)  14 DEC 2021 19:32
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex 2021.11.30)  1 JAN 2022 12:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -746,11 +746,7 @@ File: l3backend-pdftex.def 2020-01-29 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count326
 \l__pdf_internal_box=\box71
 )
-(./synthVolForecast.aux
-
-LaTeX Warning: Label `fig' multiply defined.
-
-)
+(./synthVolForecast.aux)
 \openout1 = `synthVolForecast.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 114.
@@ -769,7 +765,8 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 114.
 LaTeX Font Info:    ... okay on input line 114.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 114.
 LaTeX Font Info:    ... okay on input line 114.
- (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+
+(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count327
 \scratchdimen=\dimen287
@@ -882,19 +879,8 @@ File: omscmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 138.
  [2] [3] [4] [5]
-<level_shock.png, id=133, 426.59375pt x 358.84062pt>
-File: level_shock.png Graphic file (type png)
-<use level_shock.png>
-Package pdftex.def Info: level_shock.png  used on input line 265.
-(pdftex.def)             Requested size: 426.5927pt x 358.83974pt.
-<vol_shock.png, id=134, 426.59375pt x 358.84062pt>
-File: vol_shock.png Graphic file (type png)
-<use vol_shock.png>
-Package pdftex.def Info: vol_shock.png  used on input line 271.
-(pdftex.def)             Requested size: 426.5927pt x 358.83974pt.
-
-[6 <./level_shock.png (PNG copy)>] [7 <./vol_shock.png (PNG copy)>]
-Overfull \hbox (19.1976pt too wide) in paragraph at lines 341--343
+[6]
+Overfull \hbox (19.1976pt too wide) in paragraph at lines 333--335
 \OT1/cmr/m/n/10.95 where the dis-tri-bu-tions $\OMS/cmsy/m/n/10.95 F[]\OT1/cmr/
 m/n/10.95 ([][])$ and $\OMS/cmsy/m/n/10.95 F[]\OT1/cmr/m/n/10.95 ([][])$ sat-is
 fy $\OMS/cmsy/m/n/10.95 F[]\OT1/cmr/m/n/10.95 ([][]) [] \OMS/cmsy/m/n/10.95 F[]
@@ -902,28 +888,25 @@ fy $\OMS/cmsy/m/n/10.95 F[]\OT1/cmr/m/n/10.95 ([][]) [] \OMS/cmsy/m/n/10.95 F[]
 ) []
  []
 
-[8] [9]
+[7]
 
-Package natbib Warning: Citation `shaman1988bias' on page 10 undefined on input
- line 384.
+Package natbib Warning: Citation `shaman1988bias' on page 8 undefined on input 
+line 376.
 
-[10] [11] [12] [13] [14] [15] [16] [17] [18] [19] [20] (./synthVolForecast.bbl
-[21])
+[8] [9] [10] [11] [12] [13] [14] [15] [16] [17] [18] (./synthVolForecast.bbl
+[19])
 
 Package natbib Warning: There were undefined citations.
 
-[22] (./synthVolForecast.aux)
-
-LaTeX Warning: There were multiply-defined labels.
-
+[20] (./synthVolForecast.aux)
 Package rerunfilecheck Info: File `synthVolForecast.out' has not changed.
 (rerunfilecheck)             Checksum: DE227342DCABDDD52B5CF31CD1CF3005;764.
  ) 
 Here is how much of TeX's memory you used:
- 20757 strings out of 481176
- 381203 string characters out of 5914225
- 720253 words of memory out of 5000000
- 37211 multiletter control sequences out of 15000+600000
+ 20733 strings out of 481176
+ 380832 string characters out of 5914225
+ 720087 words of memory out of 5000000
+ 37194 multiletter control sequences out of 15000+600000
  421521 words of font info for 91 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
  87i,18n,89p,1572b,436s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -950,10 +933,10 @@ t/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts
 public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
 /amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
 nts/symbols/msbm10.pfb>
-Output written on synthVolForecast.pdf (22 pages, 468958 bytes).
+Output written on synthVolForecast.pdf (20 pages, 349197 bytes).
 PDF statistics:
- 375 PDF objects out of 1000 (max. 8388607)
- 321 compressed objects within 4 object streams
- 68 named destinations out of 1000 (max. 500000)
- 111 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 362 PDF objects out of 1000 (max. 8388607)
+ 312 compressed objects within 4 object streams
+ 64 named destinations out of 1000 (max. 500000)
+ 101 words of extra memory for PDF output out of 10000 (max. 10000000)
 

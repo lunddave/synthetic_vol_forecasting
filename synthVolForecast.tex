@@ -260,27 +260,19 @@ $\mbf{x}_{i,t}$ are fixed.\footnote{Need to determine what difference it makes t
 \omega^{*}_i &\indep  (\alpha, \beta)_i \indep \gamma_i \indep \varepsilon_{i,t}.
 \end{align*}
 
-% https://researchguides.njit.edu/latex/figures#:~:text=Including%20images%20in%20your%20LaTeX,and%20upload%20your%20image%20file.
-\begin{figure}[htbp]
-\centerline{\includegraphics{level_shock.png}}
-\caption{Above we see six simulations of GARCH processes that each manifest both a random shock to their observable level at some random time T*+1 and a random shock to their volatility (a latent quantity) at T*+1.}
-\label{fig}
-\end{figure}
 
-\begin{figure}[htbp]
-\centerline{\includegraphics{vol_shock.png}}
-\caption{Above we see the deterministic quantity $\sigma^{2}$ used to simulate the preceding GARCH processes.}
-\label{fig}
-\end{figure}
 
 Notice that $\mc{M}_1$ assumes that $\omega^{*}_i$ are i.i.d. with $\E[ \omega^{*}_i]=\mu_{\omega^{*}}$ 
 for $i = 1, \ldots, n+1$. We also consider a model where the shock effects are linear functions of covariates with an additional additive mean-zero error. For $i = 1, \ldots, n+1$, the random effects structure for this model (model $\mc{M}_2$) is:
+
+
 \begin{align}
 \mc{M}_2 \colon \begin{array}{l}
-  y_{i,t} =\eta_i +\alpha_i D_{i,t} + \phi_i y_{i, t-1} + \theta_i'\mbf{x}_{i,t} + \varepsilon_{i,t}\\[.2cm]
-  \; \alpha_i = \mu_{\alpha}+\delta_{i}'\mbf{x}_{i, T_i^*+1}+ \t{\varepsilon}_{i},
+   \sigma^{2}_{i,t} = \omega_{i} + \omega^{*}_i D_{i,t}  + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \text{ }, a_{i,t} = \sigma_{i,t}\epsilon_{i,t}\\[.2cm]
+  \; \omega_i^{*} = \mu_{\omega^{*}}+\delta_{i}'\mbf{x}_{i, T_i^*+1}+ \t{\varepsilon}_{i},
 \end{array}\label{model2}
 \end{align}
+
  where the added random effects are
 \begin{align*}
 \t{\varepsilon}_{i} &\simiid  \mc{F}_{\t{\varepsilon}} \text{ with }\mrm{E}_{\mc{F}_{\t{\varepsilon}}}(\t{\varepsilon}_{i})=0, \mrm{Var}_{\mc{F}_{\t{\varepsilon}}}(\t{\varepsilon}_{i})=\sigma^2_{\alpha} \where \sigma_{\alpha}>0\\
