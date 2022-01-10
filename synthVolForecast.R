@@ -34,7 +34,7 @@ synth_vol_sim <- function(n, p, arch_param, garch_param,
                           length_of_shock,
                           a, b, 
                           mu_eps_star, sigma_eps_star,
-                          mu_omega_star, gamma_multiplier,
+                          mu_omega_star, vol_shock_multiplier,
                           omega_shape, omega_rate,
                           level_GED_alpha,
                           level_GED_beta,
@@ -93,6 +93,10 @@ synth_vol_sim <- function(n, p, arch_param, garch_param,
                                            mu = 0, 
                                            alpha = level_GED_alpha, 
                                            beta = level_GED_beta) # This is the stochastic term
+          
+          level_shock_mean <- mu_eps_star             
+          level_shock_var <- ((level_GED_alpha)**2) * gamma(3/level_GED_beta) / (gamma(1/level_GED_beta)) # https://search.r-project.org/CRAN/refmans/gnorm/html/gnorm.html
+                      
                       
                       } 
     else if (level_model == 'M2') { 
@@ -102,14 +106,20 @@ synth_vol_sim <- function(n, p, arch_param, garch_param,
                                        mu = 0, 
                                        alpha = level_GED_alpha, 
                                        beta = level_GED_beta) #What's the variance of this sum?
+          
+          level_shock_mean <- mu_eps_star 
+          level_shock_var <- ((level_GED_alpha)**2) * gamma(3/level_GED_beta) / (gamma(1/level_GED_beta)) + # https://search.r-project.org/CRAN/refmans/gnorm/html/gnorm.html
+            (sigma_x**2) * (sigma_eps_star**2)
     }
-    else {level_shock_vec[i] <- 0}
+    else {level_shock_vec[i] <- 0; level_shock_mean <- 0; level_shock_var <- 0}
     
     #Vol model
     if (vol_model == 'M1'){
       
       #Create volatility shock w*
       vol_shock_vec[i] <- mu_omega_star + rgamma(1, omega_shape, rate = omega_rate)
+      vol_shock_mean <- mu_omega_star + vol_shock_multiplier * omega_shape / omega_rate 
+      vol_shock_var <- (vol_shock_multiplier**2) * omega_shape / (omega_rate**2)
       
       shock_indicator <- c(
         rep(0, shock_time_vec[i]), 
@@ -122,9 +132,13 @@ synth_vol_sim <- function(n, p, arch_param, garch_param,
     } 
     
     else if (vol_model == 'M2') { 
-      level_shock_vec[i] <- mu_omega_star + 
+      vol_shock_vec[i] <- mu_omega_star + 
         as.numeric(as.matrix(VAR_process[shock_time_vec[i],])) %*% rnorm(p,0,sigma_eps_star) + 
         rgamma(1, omega_shape, rate = omega_rate) #What's the variance of this sum?
+      
+      vol_shock_mean <- mu_omega_star + vol_shock_multiplier * omega_shape / omega_rate 
+      vol_shock_var <- (vol_shock_multiplier**2) * omega_shape / (omega_rate**2) +
+        (sigma_x**2) * (sigma_eps_star**2)
       
       shock_indicator <- c(
         rep(0, shock_time_vec[i]), 
@@ -139,6 +153,8 @@ synth_vol_sim <- function(n, p, arch_param, garch_param,
 
       #Create volatility shock w*
       vol_shock_vec[i] <- 0
+      vol_shock_mean <- 0
+      vol_shock_var <- 0
       
       shock_indicator <- c(
         rep(0, shock_time_vec[i]), 
@@ -156,17 +172,12 @@ synth_vol_sim <- function(n, p, arch_param, garch_param,
                          rnorm(Tee[i] - shock_time_vec[i] - 1, 0, sigma_GARCH_innov))
     
     Y[[i]] <- garchxSim(Tee[i], arch = arch_param, garch = garch_param, 
-                        xreg =  as.matrix(cbind(X[[i]][,-p], gamma_multiplier * X[[i]][,p]) ),
+                        xreg =  as.matrix(cbind(X[[i]][,-p], vol_shock_multiplier * X[[i]][,p]) ),
                         innovations = GARCH_innov_vec, verbose = TRUE) #First column
   }
   
   ## Compute summary statistics for output
-  level_shock_mean <- mu_eps_star 
-  level_shock_var <- ((level_GED_alpha)**2) * gamma(3/level_GED_beta) / (gamma(1/level_GED_beta)) # https://search.r-project.org/CRAN/refmans/gnorm/html/gnorm.html
   level_shock_kurtosis <- gamma(5/level_GED_beta)*gamma(1/level_GED_beta)/( (gamma(3/level_GED_beta))**2 ) - 3 #https://en.wikipedia.org/wiki/Generalized_normal_distribution
-  
-  vol_shock_mean <- mu_omega_star + gamma_multiplier * omega_shape / omega_rate 
-  vol_shock_var <- (gamma_multiplier**2) * omega_shape / (omega_rate**2)
   vol_shock_kurtosis <- 6 / omega_shape
   
   T_star_sigma <- Y[[1]][,3][shock_time_vec[1],]
@@ -230,11 +241,11 @@ synth_vol_sim <- function(n, p, arch_param, garch_param,
 
 output <- synth_vol_sim(n = 5, 
                         p = 1, 
-                        arch_param = c(.55),
-                        garch_param = c(.44),
+                        arch_param = c(.2),
+                        garch_param = c(.77),
                         level_model = c('M1','M2','none')[3],
-                        vol_model = c('M1','M2','none')[1],
-                        sigma_GARCH_innov = (.005), # this is the sd that does into rnorm
+                        vol_model = c('M1','M2','none')[2],
+                        sigma_GARCH_innov = (.005), # this is the sd that goes into rnorm
                         sigma_x = .01, 
                         shock_time_vec = NULL, 
                         length_of_shock = 1,
@@ -242,19 +253,20 @@ output <- synth_vol_sim(n = 5,
                         b = 150, 
                         mu_eps_star = -.0725,
                         sigma_eps_star = .0005,
-                        mu_omega_star = .1,
-                        gamma_multiplier = 1,
+                        mu_omega_star = .04,
+                        vol_shock_multiplier = 1,
                         omega_shape = 1, 
                         omega_rate = 15,
                         level_GED_alpha = .05 * sqrt( 2), 
                         level_GED_beta = 1.8)
 
-head(output[[2]][[1]], n = 50)
+head(output[[2]][[1]])
 
 ## Let's hit the time series under study with a GARCH(1,1)
-mod <- garchx(output[[2]][[1]][,1], order = c(1,0), xreg = output[[1]][[1]][,-2])
+mod <- garchx(output[[2]][[1]][,1], order = c(1,1), xreg = output[[1]][[1]][,-2])
 mod
 plot.ts(mod$fitted)
+#lines(output[[2]][[1]][,3] * (output[[2]][[1]][,5]**2), col = 'red')
 plot.ts(mod$residuals)
 
 #Look at covariates of time series of interest

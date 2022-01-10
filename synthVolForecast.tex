@@ -9,15 +9,17 @@
 \usepackage{amssymb}
 \usepackage{natbib}
 \usepackage{url}
+\usepackage[table,xcdraw,usenames]{xcolor}
+%\usepackage[usenames]{color}
 
 \usepackage{graphicx}
 %\usepackage{mathtools}
 \usepackage{enumitem}
 \usepackage{authblk}
 \usepackage{bm}
-\usepackage[usenames]{color}
-\usepackage{hyperref}
 
+
+\usepackage{hyperref}
 \usepackage{caption}
 \usepackage{float}
 \usepackage[caption = false]{subfig}
@@ -121,6 +123,8 @@ We develop a novel procedure for forecasting the volatility of a time series und
 
 
 \section{Introduction}
+
+
 
 The most important stochastic phenomenon of many time series $(P_{t})_{t\in\mathbb{N}}$, especially financial time series, is the volatility of the return series of $(P_{t})_{t\in\mathbb{N}}$.  A financial asset's price series and daily return series may exhibit behavior that makes inconvenient and uninterpretable the traditional methods of time series analysis.  In contrast, the volatility of the return series may be less noisy, less structurally dependent on external factors, and more easily modeled as a weakly stationary process.  Yet even if one could model and forecast price series and return series with high accuracy, that would not necessarily tell us much about the variability of such forecasts nor enlighten us about the evolution of the variability of $(P_{t})_{t\in\mathbb{N}}$ over time. Modern portfolio management and theory requires information about at least the first two moments of a return series, if not higher.  For these reasons and others, volatility modeling has come to dominate financial econometrics over the past four decades.  
 
@@ -237,10 +241,17 @@ In \citet{abadie2010synthetic}, the authors advance previous work in causal infe
 
 \subsection{Model setup}
 \label{modelsetup}
-
 In this section, we will describe the assumed dynamic panel models for which 
 post-shock aggregated estimators are provided. The basic structures of these models 
-are the same for all time series in the analysis, the differences between them lie in the setup of the shock effect distribution.
+are the same for all time series in the analysis, the differences between them lie in the setup of the shock effect distribution.  We first sharply distinguish between a volatility shock induced by a return-series shock at time T*
+
+
+
+
+\subsubsection{Volatility Shock Model}
+
+
+
 
 Let $I(\cdot)$ be an indicator function, $T_i$ be the time length of the time series $i$ for $i = 1, \ldots, n+1$, and $T_i^*$ be the time point just before the one when the shock is known to occur, with $T_i^* < T_i$.  For $t= 1, \ldots, T_i$ and $i = 1, \ldots, n+1$, the model $\mc{M}_1$ is defined as
 \begin{align}
@@ -266,6 +277,8 @@ Notice that $\mc{M}_1$ assumes that $\omega^{*}_i$ are i.i.d. with $\E[ \omega^{
 for $i = 1, \ldots, n+1$. We also consider a model where the shock effects are linear functions of covariates with an additional additive mean-zero error. For $i = 1, \ldots, n+1$, the random effects structure for this model (model $\mc{M}_2$) is:
 
 
+
+
 \begin{align}
 \mc{M}_2 \colon \begin{array}{l}
    \sigma^{2}_{i,t} = \omega_{i} + \omega^{*}_i D_{i,t}  + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \text{ }, a_{i,t} = \sigma_{i,t}\epsilon_{i,t}\\[.2cm]
@@ -286,7 +299,7 @@ for $i = 1, \ldots, n+1$. We also consider a model where the shock effects are l
 \end{align*}
 
 We further define 
-$\tilde{\omega^{*}}_i=\mu_{\omega^{*}}+\delta_i'\mbf{x}_{i, T_i^*+1}$. 
+$\widetilde{\omega^{*}}_i=\mu_{\omega^{*}}+\delta_i'\mbf{x}_{i, T_i^*+1}$. 
 We will investigate the post-shock aggregated estimators in $\mc{M}_2$ 
 in settings where $\delta_i$ is either fixed or random. 
 We let $\mc{M}_{21}$ denote model $\mc{M}_{2}$ with $\delta_i = \delta$ for $i= 1, \ldots, n+1$, 
