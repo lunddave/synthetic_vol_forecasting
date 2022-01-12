@@ -72,6 +72,14 @@ synth_vol_sim <- function(n, p, arch_param, garch_param,
   #Random parameters for the VAR
   param_matrix_entries <- runif(p**2, min = -1/p, max = 1/p)
   simVAR_params <- matrix(param_matrix_entries, nrow = p, byrow = T)
+    #Note: In our meeting on Jan 12, 2022, Dan Eck and I discussed the justification for fixing 
+    #a common Phi matrix for all of the n+1 series.  By fixing a common Phi matrix, 
+    #we're basically saying that that each covariate has the same structure across all donors.
+    #For example, WTI and VIX behave the same way for Lehmann 2008 as they do for
+    #Russia-Saudi-OPEC 2014.  We might want to relax this at some point by partitioning the n
+    #donors into k sets and saying that the n donors are temporally clustered that way,
+    #Doing it this way would imitate the way that Lin and Eck 2021 COP donors fall into
+    #the sets Spring 2008, Fall 2008, Spring 2014.
   
   ############ Simulate all n+1 series   ############ 
   
@@ -282,7 +290,7 @@ synth_vol_sim <- function(n, p, arch_param, garch_param,
 }
 
 output <- synth_vol_sim(n = 8, 
-                        p = 2, 
+                        p = 6, 
                         arch_param = c(.2),
                         garch_param = c(.7),
                         level_model = c('M1','M2','none')[3],
@@ -291,7 +299,7 @@ output <- synth_vol_sim(n = 8,
                         sigma_x = .008, 
                         shock_time_vec = NULL, 
                         level_shock_length = 1,
-                        vol_shock_length = 10,
+                        vol_shock_length = 1,
                         a = 90, 
                         b = 150, 
                         mu_eps_star = -.0825,
