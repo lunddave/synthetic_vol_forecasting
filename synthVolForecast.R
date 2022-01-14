@@ -44,8 +44,8 @@ synth_vol_sim <- function(n,
   # must experience an exogenous shock at exactly one discrete time point
   # in the series.
   # --Input:
-  #   --n (scalar)
-  #   --p (scalar)
+  #   --n - number of donors (scalar)
+  #   --p - number of covariates (scalar)
   #   --arch parameters (vector of length 0 or more)
   #   --garch parameters (vector of length 0 or more)
   #   --level_model - model for level of the shock (string)
