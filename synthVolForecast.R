@@ -9,9 +9,8 @@ library(gnorm)
 library(tsDyn)
 library(Rsolnp)
 
-options(scipen = 6)
 
-
+options(scipen = 7)
 
 synth_vol_sim <- function(n, 
                           p, 
@@ -170,7 +169,7 @@ synth_vol_sim <- function(n,
         rep(0, Tee[i] - shock_time_vec[i] - vol_shock_length))
         
       #Now add the design matrix to the list X
-      X[[i]] <- cbind(VAR_process, shock_indicator)
+      X[[i]] <- VAR_process
       
       #Create GARCH model with shock(s)
       GARCH_innov_vec <- c(
@@ -179,7 +178,7 @@ synth_vol_sim <- function(n,
         rnorm(Tee[i] - shock_time_vec[i] - 1, 0, sigma_GARCH_innov))
     
       Y[[i]] <- garchxSim(Tee[i], arch = arch_param, garch = garch_param, 
-                          xreg =  as.matrix( X[[i]][,(p+1)] ),
+                          xreg =  as.matrix(shock_indicator),
                           innovations = GARCH_innov_vec, verbose = TRUE) 
     } 
     
@@ -197,7 +196,7 @@ synth_vol_sim <- function(n,
         rep(0, Tee[i] - shock_time_vec[i] - vol_shock_length))
       
       #Now add the design matrix to the list X
-      X[[i]] <- cbind(VAR_process, shock_indicator)
+      X[[i]] <- VAR_process
       
       #Create GARCH model with shock(s)
       GARCH_innov_vec <- c(
@@ -205,7 +204,7 @@ synth_vol_sim <- function(n,
         level_shock_vec[i],
         rnorm(Tee[i] - shock_time_vec[i] - 1, 0, sigma_GARCH_innov))
       Y[[i]] <- garchxSim(Tee[i], arch = arch_param, garch = garch_param, 
-                          xreg =  as.matrix( X[[i]][,(p+1)] ),
+                          xreg =  as.matrix(shock_indicator),
                           innovations = GARCH_innov_vec, verbose = TRUE) 
     }
     
@@ -217,7 +216,7 @@ synth_vol_sim <- function(n,
       vol_shock_var <- 0
         
         #Now add the design matrix to the list X
-        X[[i]] <- cbind(VAR_process)
+        X[[i]] <- VAR_process
         
         #Create GARCH model with shock(s)
         GARCH_innov_vec <- rnorm(Tee[i], 0, sigma_GARCH_innov)
@@ -329,7 +328,7 @@ output <- synth_vol_sim(n = 8,
                         p = 6, 
                         arch_param = c(.41),
                         garch_param = c(.39),
-                        level_model = c('M1','M21','M22','none')[1],
+                        level_model = c('M1','M21','M22','none')[3],
                         vol_model = c('M1','M21','M22','none')[3],
                         sigma_GARCH_innov = (.007), # this is the sd that goes into rnorm
                         sigma_x = .008, 
@@ -339,7 +338,7 @@ output <- synth_vol_sim(n = 8,
                         a = 90, 
                         b = 150, 
                         mu_eps_star = -.0625,
-                        M22_mu_eps_star = .3, 
+                        M22_mu_eps_star = .01, 
                         sigma_eps_star = .01,
                         mu_omega_star = .6,
                         M22_mu_omega_star = 4,
@@ -386,22 +385,40 @@ plot.ts(output[[2]][[1]])
 #What is the mean of the squared y for time series of interest?
 mean(output[[2]][[1]][,1]**2)
 
-# Objective2: estimation function that takes (n+1)*(p+1) time series as input and 
-# 1) calculates weight vector w, 
-# 2) calculates fixed effects estimate vector omega*, 
-# 3) calculates the adjusted estimate for the
-# volatility of time series of interest at T*+1 (i.e. the prediction)
-# 4) calculates estimate of volatility on T*+1 for each series 
-# using each of three families, and 
-# 5) calculates the squared-error loss of the prediction
-# Estimation/control options
-# --Allow user to enter series of unequal lengths
-# --Allow user to enter a vector of integers corresponding to the number of days
-# the shock effect lasts for each outcome series
-# --Allow user to pick a uniform model for each series (e.g. GARCH(1,1)) OR a BIC-minimizing
-# model for each series (or mix and match).
-# --Allow user to pick error distribution - see ugarchspec
+synth_vol_fit <- function()
+{
+  ## Doc String
+  
+  # synth_vol_fit: function that takes (n+1)*(p+1) time series AND a vector of 
+  # shock times as input and outputs
+  # 1) calculates a single weight vector w, 
+  # 2) calculates a single fixed effects estimate vector omega*, 
+  # 3) calculates the adjustment estimator vector \hat omega* for time series of interest
+  # 4) calculates the volatility of time series of interest at T*+1,T*+2,...,T*+k (i.e. the prediction)
+  # 5) calculates estimate of volatility on T*+1 for each series using each of three families, and 
+  # 6) calculates the squared-error loss of the prediction
+  
+  # Estimation/control options
+  # --Allow user to enter series of unequal lengths
+  # --Allow user to enter a vector of integers corresponding to the number of days
+  # the shock effect lasts for each outcome series
+  # --Allow user to pick a uniform model for each series (e.g. GARCH(1,1)) OR a BIC-minimizing
+  # model for each series (or mix and match).
+  # --Allow user to pick error distribution - see ugarchspec
+  
+  ##Input
+  # Y, a list of length n+1, with each entry containing a time series
+  # X, a list of length n+1, with each entry containing a dataframe of dimension y_i x p
+  # shock_time_vec, a vector of length n+1 containing shock time of each series
+  # shock_time_length, a vector of length n+1 containing shock time length of each series
+  
+  return(list(w, omega_star_hat, adjusted_sigma2_vec, ground_truth_vol_vec, MSE))
+  
+}
 
+# Ok here is the list of n+1 covariate sets
+X_demo <- output[[1]]
+T_star_demo <- output[[4]]
 
 # this function returns the W^* estimated by synthetic control method (SCM)
 scm <- function(X, Tstar, scale = FALSE) { # https://github.com/DEck13/synthetic_prediction/blob/master/prevalence_testing/numerical_studies/COP.R
@@ -457,14 +474,12 @@ scm <- function(X, Tstar, scale = FALSE) { # https://github.com/DEck13/synthetic
   #I added the return statement because an implicit return is bad coding form
 } #end SCM function
 
+vec <- scm(X_demo, T_star_demo)
 
+vec$pars
 
+plot(vec$pars)
 
-
-synth_vol_fit <- function()
-{
-  
-}
 
 
 
