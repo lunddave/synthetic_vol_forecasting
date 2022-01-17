@@ -21,6 +21,7 @@ synth_vol_sim <- function(n,
                           p, 
                           arch_param, 
                           garch_param, 
+                          backcast_vals,
                           level_model, 
                           vol_model,
                           sigma_GARCH_innov, 
@@ -117,7 +118,7 @@ synth_vol_sim <- function(n,
   level_shock_vec <- c()
   vol_shock_vec <- c()
   T_star_plus_1_return_vec <- c()
-  xreg <- vector(mode = "list", length = n+1)
+  xreg <- c()
   
   # For each of n+1 series...
   for (i in 1:(n+1)){
@@ -183,7 +184,8 @@ synth_vol_sim <- function(n,
     
       Y[[i]] <- garchxSim(Tee[i], arch = arch_param, garch = garch_param, 
                           xreg =  as.matrix(shock_indicator),
-                          innovations = GARCH_innov_vec, verbose = TRUE) 
+                          innovations = GARCH_innov_vec, verbose = TRUE,
+                          backcast.values=backcast_vals) 
     } 
     
     else if (vol_model == 'M22') { 
@@ -235,9 +237,12 @@ synth_vol_sim <- function(n,
     garch_1_1 <- garchx(Y[[i]][1:(shock_time_vec[i]+k),1], order = c(1,1), xreg = indicator_vec[1:(shock_time_vec[i]+k)])
     xreg_est <- round(coeftest(garch_1_1)[ dim(coeftest(garch_1_1))[1], 1],5)
     xreg_p_value <- round(coeftest(garch_1_1)[ dim(coeftest(garch_1_1))[1], dim(coeftest(garch_1_1))[2]],5)
-    xreg[[i]] <- c(xreg_est, xreg_p_value)
+    xreg <- c(xreg, c(xreg_est, xreg_p_value))
       
   } #end loop for n+1 series
+  
+  #Now make xreg into a dataframe
+  xreg <- data.frame(matrix(xreg, nrow = n+1, byrow = TRUE))
   
   ## Compute summary statistics for output
   level_shock_kurtosis <- gamma(5/level_GED_beta)*gamma(1/level_GED_beta)/( (gamma(3/level_GED_beta))**2 ) - 3 #https://en.wikipedia.org/wiki/Generalized_normal_distribution
@@ -299,7 +304,7 @@ synth_vol_sim <- function(n,
                                      round( level_shock_vec[i],2), 
                                      ", vol shock = ", 
                                      round(vol_shock_vec[i],2),
-                                     '\n shock est = ', xreg[[i]][1], ', pval = ',xreg[[i]][2],
+                                     '\n shock est = ', xreg[i,1], ', pval = ',xreg[i,2],
                                      sep = ''), ylab = 'Daily Log-Return')
     abline(v = shock_time_vec[i] + 1, col = 'red')
     abline(h = 0, col = 'green')
@@ -316,13 +321,13 @@ synth_vol_sim <- function(n,
                                      round( level_shock_vec[i],2), 
                                      ", vol shock = ", 
                                      round(vol_shock_vec[i],2),
-                                     '\n shock est = ', xreg[[i]][1], ', pval = ',xreg[[i]][2],
+                                     '\n shock est = ', xreg[i,1], ', pval = ',xreg[i,2],
                                      sep = ''), ylab = 'Sigma^2')
     abline(v = shock_time_vec[i] + 1, col = 'red')
   }
   
   #Items to return in a list
-  return(list(X,Y,Tee,shock_time_vec, xreg))
+  return(list(X, Y, Tee,shock_time_vec, xreg))
 }
 
 # Here is the length of the vol shock we used
@@ -332,6 +337,7 @@ output <- synth_vol_sim(n = 8,
                         p = 6, 
                         arch_param = c(.41),
                         garch_param = c(.39),
+                        backcast_vals = list(z2=.001, sigma2= .0001**2),
                         level_model = c('M1','M21','M22','none')[3],
                         vol_model = c('M1','M21','M22','none')[3],
                         sigma_GARCH_innov = (.007), # this is the sd that goes into rnorm
@@ -349,6 +355,9 @@ output <- synth_vol_sim(n = 8,
                         vol_shock_sd = .1,
                         level_GED_alpha = .05 * sqrt(2), 
                         level_GED_beta = 1.8)
+
+#Let's look at estimates and pvalues
+output[[5]]
 
 #What is the shock time for y_1?
 output[[4]][1]
@@ -376,9 +385,10 @@ plot.ts(yes_indicator$fitted)
 predict(yes_indicator, n.ahead = 1, newxreg = matrix(1), verbose = TRUE)
 
 #let us look at the model prior to the shock
-mod5 <- garchx(output[[2]][[1]][,1][c(1:(shock_time_of_y1-1)),], order = c(1,1))
+mod5 <- garchx(output[[2]][[1]][,1][c(1:(shock_time_of_y1)),], order = c(1,1))
 coeftest(mod5)
 AIC(mod5)
+plot.ts(fitted(mod5))
 
 #Look at covariates of time series of interest
 plot.ts(output[[1]][[1]])
@@ -447,7 +457,6 @@ dbw <- function(X, Tstar, scale = FALSE) { # https://github.com/DEck13/synthetic
   # optimization and return statement
   object_to_return <- solnp(par = rep(1/n, n), fun = weightedX0, eqfun = Wcons, eqB = 0, # will use inequality constraints later
                             LB = rep(0, n), UB = rep(1, n), control = list(trace = 0))
-  plot(object_to_return$pars)
   return(object_to_return$pars)
   
   #I added the return statement because an implicit return is bad coding form
@@ -457,8 +466,8 @@ dbw <- function(X, Tstar, scale = FALSE) { # https://github.com/DEck13/synthetic
 synth_vol_fit <- function(X,
                           Y,
                           T_star,
-                          shock_time_vec,
-                          shock_time_lengths)
+                          shock_est_vec,
+                          shock_lengths)
 {
   ## Doc String
   
@@ -489,8 +498,12 @@ synth_vol_fit <- function(X,
   w <- dbw(X, T_star)
   
   #Second, we calculate omega_star_hat, which is the dot product of w and the estimated shock effects
+  omega_star_hat <- as.numeric(w %*% shock_est_vec[-1])
   
-  #Third,
+  #Third, we get a prediction to T*_+1 
+  garch_1_1 <- garchx(Y[[1]][,3][1:T_star[1],1], order = c(1,1))
+  pred <- predict(garch_1_1, n.ahead = shock_lengths[1])
+  adjusted_pred <- pred + omega_star_hat
   
   #Fourth, we calculate the ground truth of vol in the k-length period of time series of interest
   ground_truth_vol_vec <- 0
@@ -498,17 +511,33 @@ synth_vol_fit <- function(X,
   #Last, we calculate MSE
   MSE <- 0
   
-  return(list(w, omega_star_hat, adjusted_sigma2_vec, ground_truth_vol_vec, MSE))
+  #Plot the donor pool weights
+  par(mfrow=c(1,2))
+  barplot(w, main = 'Donor Pool Weights')
   
+  #Now let's plot the adjustment
+  plot(Y[[1]][,1][T_star[1] + 1,], ylim = c(0, adjusted_pred))
+  plot(Y[[1]][,3][1:(T_star[1] + 1),])
+  points(y = adjusted_pred, x = T_star[1] + 1, col = 'red')
+  
+  plot.ts(fitted(garch_1_1), main = 'compare fitted and ground truth')
+  lines(Y[[1]][,3][1:(T_star[1]),], col = 'red')
+  
+  return(list(w, omega_star_hat, ground_truth_vol_vec, MSE))
 }
 
 # Ok here is the list of n+1 covariate sets
 X_demo <- output[[1]]
+Y_demo <- output[[2]]
 T_star_demo <- output[[4]]
+shock_effect_vec_demo <- output[[5]][,1]
+shock_time_lengths_demo <- c(1,rep(0, length(shock_effect_vec_demo) - 1))
 
-
-
-vec <- dbw(X_demo, T_star_demo)
+synth_vol_fit(X_demo, 
+              Y_demo, 
+              T_star_demo, 
+              shock_effect_vec_demo,
+              shock_time_lengths_demo)
 
 
 
