@@ -20,8 +20,7 @@ options(scipen = 7)
 synth_vol_sim <- function(n, 
                           p, 
                           arch_param, 
-                          garch_param, 
-                          backcast_vals,
+                          garch_param,
                           level_model, 
                           vol_model,
                           sigma_GARCH_innov, 
@@ -110,6 +109,12 @@ synth_vol_sim <- function(n,
     #Doing it this way would imitate the way that Lin and Eck 2021 COP donors fall into
     #the sets Spring 2008, Fall 2008, Spring 2014.
   
+    # An additional note on covariates:
+    #   
+    # Here I am simulating the covariates to be mean = 1 and to have the same innovation variance.
+    # In an application, however, it would be good to follow Lin and Eck (2021) in centering and scaling
+    # the covariates so that no covariate dominates in the process of a getting a convex combination w.
+  
   ############ Simulate all n+1 series   ############ 
   
   #Create null lists for depvar and indepvar output
@@ -184,8 +189,7 @@ synth_vol_sim <- function(n,
     
       Y[[i]] <- garchxSim(Tee[i], arch = arch_param, garch = garch_param, 
                           xreg =  as.matrix(shock_indicator),
-                          innovations = GARCH_innov_vec, verbose = TRUE,
-                          backcast.values=backcast_vals) 
+                          innovations = GARCH_innov_vec, verbose = TRUE) 
     } 
     
     else if (vol_model == 'M22') { 
@@ -337,7 +341,6 @@ output <- synth_vol_sim(n = 8,
                         p = 6, 
                         arch_param = c(.29),
                         garch_param = c(.64),
-                        backcast_vals = list(z2= 100 * .001, sigma2= 100 * .0001**2),
                         level_model = c('M1','M21','M22','none')[4],
                         vol_model = c('M1','M21','M22','none')[3],
                         sigma_GARCH_innov = 100 * (.009), # this is the sd that goes into rnorm
@@ -351,7 +354,7 @@ output <- synth_vol_sim(n = 8,
                         M22_mu_eps_star = 100 * .003, 
                         sigma_eps_star = 100 * .005,
                         mu_omega_star = 100 * .011,
-                        M22_mu_omega_star = 100 * .045,
+                        M22_mu_omega_star = 100 * .085,
                         vol_shock_sd = 100 * .0015,
                         level_GED_alpha = .05 * sqrt(2), 
                         level_GED_beta = 1.8)
