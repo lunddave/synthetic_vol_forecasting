@@ -331,10 +331,7 @@ synth_vol_sim <- function(n,
 }
 
 # Here is the length of the vol shock we will use
-k <- 2
-
-# Here is the variance of the GARCH innovations we will use
-innov_var <- .009
+k <- 20
 
 output <- synth_vol_sim(n = 8, 
                         p = 6, 
@@ -343,14 +340,14 @@ output <- synth_vol_sim(n = 8,
                         backcast_vals = list(z2= 100 * .001, sigma2= 100 * .0001**2),
                         level_model = c('M1','M21','M22','none')[4],
                         vol_model = c('M1','M21','M22','none')[3],
-                        sigma_GARCH_innov = 100 * (innov_var), # this is the sd that goes into rnorm
+                        sigma_GARCH_innov = 100 * (.009), # this is the sd that goes into rnorm
                         sigma_x = 100 * .009, 
                         shock_time_vec = NULL, 
                         level_shock_length = 1,
                         vol_shock_length = k,
                         a = 90, 
                         b = 150, 
-                        mu_eps_star = 100 * -.0425,
+                        mu_eps_star = 100 * -.0925,
                         M22_mu_eps_star = 100 * .005, 
                         sigma_eps_star = 100 * .005,
                         mu_omega_star = 100 * .004,
@@ -527,7 +524,7 @@ synth_vol_fit <- function(X,
   points(y = pred, x = T_star[1] + 1, col = 'green', cex = 2, pch = 15)
   points(y = adjusted_pred, x = T_star[1] + 1, col = 'red', cex = 2, pch = 17)
   
-  plot.ts(fitted(garch_1_1)  /   ( 100 * innov_var )**2 , 
+  plot.ts(fitted(garch_1_1)  /   ( 100 * .009 )**2 , 
           main = 'Pre-shock GARCH-fitted values (black) \nversus Actual (blue)',
           ylab = 'Sigma^2')
   lines(Y[[1]][,3][1:(T_star[1]),], col = 'blue')
