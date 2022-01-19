@@ -238,7 +238,10 @@ synth_vol_sim <- function(n,
     
     #Now we calculate the p-value for the volatility spike of length k
     indicator_vec <- as.matrix(c(rep(0,shock_time_vec[i]), rep(1,k)))
-    garch_1_1 <- garchx(Y[[i]][1:(shock_time_vec[i]+k),1], order = c(1,1), xreg = indicator_vec[1:(shock_time_vec[i]+k)])
+    garch_1_1 <- garchx(Y[[i]][1:(shock_time_vec[i]+k),1], 
+                        order = c(1,1), 
+                        xreg = indicator_vec[1:(shock_time_vec[i]+k)],
+                        control = list(eval.max = 1000, iter.max = 1000, rel.tol = 10^(-12), x.tol = 10^(-12)))
     xreg_est <- round(coeftest(garch_1_1)[ dim(coeftest(garch_1_1))[1], 1],5)
     xreg_p_value <- round(coeftest(garch_1_1)[ dim(coeftest(garch_1_1))[1], dim(coeftest(garch_1_1))[2]],5)
     xreg <- c(xreg, c(xreg_est, xreg_p_value))
@@ -355,7 +358,7 @@ output <- synth_vol_sim(n = 8,
                         sigma_eps_star = 100 * .005,
                         mu_omega_star = 100 * .011,
                         M22_mu_omega_star = 100 * .085,
-                        vol_shock_sd = 100 * .0015,
+                        vol_shock_sd = 100 * .0095,
                         level_GED_alpha = .05 * sqrt(2), 
                         level_GED_beta = 1.8)
 
