@@ -414,7 +414,12 @@ mean(output[[2]][[1]][,1]**2)
 
 #First, an distance-based weighting method function written by Jilei Lin (PhD Student at GWU)
 # this function returns the W^* estimated by synthetic control method (SCM)
-dbw <- function(X, Tstar, scale = FALSE) { # https://github.com/DEck13/synthetic_prediction/blob/master/prevalence_testing/numerical_studies/COP.R
+dbw <- function(X, 
+                Tstar, 
+                scale = FALSE,
+                sum_to_1 = TRUE,
+                nonneg = TRUE,
+                bounded_above = TRUE) { # https://github.com/DEck13/synthetic_prediction/blob/master/prevalence_testing/numerical_studies/COP.R
   # X is a list of covariates for the time series
   # X[[1]] should be the covariate of the time series to predict
   # X[[p]] for p = 2,...,n+1 are covariates for donors
@@ -461,8 +466,41 @@ dbw <- function(X, Tstar, scale = FALSE) { # https://github.com/DEck13/synthetic
   Wcons <- function(W) sum(W) - 1
   
   # optimization and return statement
-  object_to_return <- solnp(par = rep(1/n, n), fun = weightedX0, eqfun = Wcons, eqB = 0, # will use inequality constraints later
-                            LB = rep(0, n), UB = rep(1, n), control = list(trace = 0))
+  
+  # I have added two features
+  # 1) The option to remove the sum-to-1 constraint
+  # 2) The option to remove the nonnegativity constraint.
+  
+  #Thus I need if statements to implement these...
+  if (sum_to_1 == TRUE) 
+  {
+    eq_constraint = function(W) sum(W) - 1 
+    }
+  else{
+    eq_constraint = NULL
+  }
+  
+  if (nonneg == TRUE) 
+  {
+    lower_bound = rep(0, n) 
+  }
+  else{
+    lower_bound = NULL
+  }
+  
+  if (bounded_above == TRUE) 
+  {
+    upper_bound = rep(1, n) 
+  }
+  else{
+    upper_bound = NULL
+  }
+  
+  object_to_return <- solnp(par = rep(1/n, n), 
+                            fun = weightedX0, 
+                            eqfun = eq_constraint, 
+                            eqB = 0, # will use inequality constraints later
+                            LB = lower_bound, UB = upper_bound, control = list(trace = 0))
   return(object_to_return$pars)
   
   #I added the return statement because an implicit return is bad coding form
@@ -501,7 +539,12 @@ synth_vol_fit <- function(X,
   # shock_time_lengths, a vector of length n+1 containing shock time length of each series
   
   #First, we get the vector w
-  w <- dbw(X, T_star)
+  w <- dbw(X, 
+           T_star, 
+           scale = TRUE,
+           sum_to_1 = TRUE,
+           nonneg = TRUE,
+           bounded_above = FALSE)
   
   #Second, we calculate omega_star_hat, which is the dot product of w and the estimated shock effects
   omega_star_hat <- as.numeric(w %*% shock_est_vec[-1])
