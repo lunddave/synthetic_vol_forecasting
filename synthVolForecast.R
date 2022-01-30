@@ -9,6 +9,7 @@ library(gnorm)
 library(tsDyn)
 library(Rsolnp)
 library(RColorBrewer)
+library(DescTools)
 
 options(scipen = 7)
 
@@ -339,10 +340,10 @@ synth_vol_sim <- function(n,
 }
 
 # Here is the length of the vol shock we will use
-k <- 20
+k <- 10
 
-output <- synth_vol_sim(n = 9, 
-                        p = 6, 
+output <- synth_vol_sim(n = 12, 
+                        p = 8, 
                         arch_param = c(.29),
                         garch_param = c(.64),
                         level_model = c('M1','M21','M22','none')[4],
@@ -539,7 +540,7 @@ synth_vol_fit <- function(X,
   # shock_time_vec, a vector of length n+1 containing shock time of each series
   # shock_time_lengths, a vector of length n+1 containing shock time length of each series
   
-  #First, we get the vectors w for all 8 methods
+  #First, we get the vectors w for all 7 sensible methods
   w <- list() #initialize
   matrix_of_specs <- matrix(c(rep(TRUE,4), 
                               rep(FALSE,4), 
@@ -559,10 +560,8 @@ synth_vol_fit <- function(X,
            bounded_above = matrix_of_specs[i,3])
   }
   
+  # Now we place these linear combinations into a matrix
   w_mat <- matrix(unlist(w), nrow = nrow(matrix_of_specs), byrow = TRUE)
-  
-  print(dim(w_mat))
-  print(apply(w_mat,1,sum))
   
   #Second, we calculate omega_star_hat, which is the dot product of w and the estimated shock effects
   omega_star_hat_vec <- as.numeric(w_mat %*% shock_est_vec[-1])
@@ -582,25 +581,36 @@ synth_vol_fit <- function(X,
   ground_truth_T_star_plus_1 <- as.numeric(Y[[1]][,3][(T_star[1] + 1),])
   
   #Last, we calculate MSE for first method
-  MSE_adjusted <- (ground_truth_T_star_plus_1 - adjusted_pred_vec[i])**2
+  MSE_adjusted <- (ground_truth_T_star_plus_1 - adjusted_pred_vec)**2
   MSE_unadjusted <- (ground_truth_T_star_plus_1 - pred)**2
+  alternative_wins <- MSE_adjusted < MSE_unadjusted
+  
+  #We now make a vector with the names of each of the 7 sensible linear combinations
+  linear_comb_names <- c('Convex Hull',
+                        'Drop Bounded Below',
+                        'Affine Hull',
+                        'Drop Sum-to-1',
+                        'Nonneg',
+                        'Bounded Above',
+                        'Conic Hull')
   
   #Plot the donor pool weights
   par(mfrow=c(3,3))
-  for (i in 1:nrow(w_mat)){
+  for (i in 1:nrow(w_mat))
+    {
     barplot(w_mat[i,], 
-            main = paste('Donor Pool Weights: ', matrix_of_specs[i,]), names.arg = 2:(length(T_star)),
+            main = paste('Donor Pool Weights:\n', linear_comb_names[i]), names.arg = 2:(length(T_star)),
             ylim = c(min(w_mat[i,]),max(w_mat[i,])))
-  }
+     }
 
   #Now let's plot the adjustment
   par(mfrow=c(1,2))
   
-  trimmed_prediction_vec_for_plotting <- Winsorize(adjusted_pred_vec, probs = c(0, 0.89))
+  trimmed_prediction_vec_for_plotting <- Winsorize(adjusted_pred_vec, probs = c(0, 0.82))
   
   plot(data_up_through_T_star, 
        main = 'GARCH Prediction versus \nAdjusted Prediction versus Actual',
-       ylab = 'Sigma^2',
+       ylab = expression(sigma^2),
        xlab = "Time",
        xlim = c(0, length(data_up_through_T_star) + 5),
        ylim = c(min(0,adjusted_pred_vec),  max(pred, trimmed_prediction_vec_for_plotting, data_up_through_T_star, Y[[1]][,3][T_star[1]+1],1) ) )
@@ -629,34 +639,26 @@ synth_vol_fit <- function(X,
     }
   
   legend(x = "topleft",  # Coordinates (x also accepts keywords)
-         legend = c('Actual',
-                    'GARCH Prediction',
-                    'Convex Hull',
-                    'Drop Bounded Below',
-                    'Affine Hull',
-                    'Drop Sum-to-1',
-                    'Nonneg',
-                    'Bounded Above',
-                    'Conic Hull'),
-         1:10, # Vector with the name of each group
+         legend = c('Actual','GARCH',linear_comb_names),
+         1:9, # Vector with the name of each group
          colors_for_adjusted_pred,   # Creates boxes in the legend with the specified colors
          title = 'Predictions',      # Legend title,
          cex = .8
   )
   
-  
   plot.ts(fitted(garch_1_1), 
           main = 'Pre-shock GARCH-fitted values (black) \nversus Actual (blue)',
-          ylab = 'Sigma^2')
+          ylab = expression(sigma^2))
   lines(data_up_through_T_star, col = 'blue')
   
-  return(list(w = w, 
-              omega_star_hat_vec = omega_star_hat_vec, 
-              adjusted_pred_vec = adjusted_pred_vec,
-              garch_pred = pred,
-              ground_truth_vol_vec = ground_truth_T_star_plus_1, 
-              MSE_adjusted = MSE_adjusted,
-              MSE_unadjusted = MSE_unadjusted))
+  return(list(w = round(w_mat,3), 
+              omega_star_hat = round(omega_star_hat_vec, 3),
+              adjusted_pred = round(adjusted_pred_vec,3),
+              garch_pred = round(pred,3),
+              ground_truth = round(ground_truth_T_star_plus_1,3), 
+              MSE_adjusted = round(MSE_adjusted,3),
+              MSE_unadjusted = round(MSE_unadjusted,3),
+              alternative_wins = alternative_wins))
 }
 
 # Let's now use the function
