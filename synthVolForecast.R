@@ -344,11 +344,11 @@ k <- 10
 
 output <- synth_vol_sim(n = 12, 
                         p = 8, 
-                        arch_param = c(.29),
-                        garch_param = c(.64),
+                        arch_param = c(.59),
+                        garch_param = c(.24),
                         level_model = c('M1','M21','M22','none')[4],
                         vol_model = c('M1','M21','M22','none')[3],
-                        sigma_GARCH_innov = 100 * (.009), # this is the sd that goes into rnorm
+                        sigma_GARCH_innov = 100 * (.0095), # this is the sd that goes into rnorm
                         sigma_x = 100 * .01, 
                         shock_time_vec = NULL, 
                         level_shock_length = 1,
@@ -590,9 +590,9 @@ synth_vol_fit <- function(X,
                         'Drop Bounded Below',
                         'Affine Hull',
                         'Drop Sum-to-1',
-                        'Nonneg',
+                        'Conic Hull',
                         'Bounded Above',
-                        'Conic Hull')
+                        'Unrestricted')
   
   #Plot the donor pool weights
   par(mfrow=c(3,3))
