@@ -358,9 +358,9 @@ output <- synth_vol_sim(n = 12,
                         mu_eps_star = 100 * -.0925,
                         M22_mu_eps_star = 100 * .003, 
                         sigma_eps_star = 100 * .005,
-                        mu_omega_star = 100 * .024,
-                        M22_mu_omega_star = 100 * .085,
-                        vol_shock_sd = 100 * .0055,
+                        mu_omega_star = 100 * .054,
+                        M22_mu_omega_star = 100 * .065,
+                        vol_shock_sd = 100 * .009,
                         level_GED_alpha = .05 * sqrt(2), 
                         level_GED_beta = 1.8)
 
@@ -546,18 +546,19 @@ synth_vol_fit <- function(X,
                               rep(FALSE,4), 
                               rep(c(TRUE,TRUE,FALSE,FALSE),2), 
                               rep(c(TRUE,FALSE), 4)), 
-                byrow = FALSE, nrow = 8)
+                              byrow = FALSE, nrow = 8)
   
+  #We drop the second row because it's functionally no different from the first
   matrix_of_specs <- matrix_of_specs[-2,]
   
   for (i in 1:nrow(matrix_of_specs))
     {
   w[[i]] <- dbw(X, 
-           T_star, 
-           scale = TRUE,
-           sum_to_1 = matrix_of_specs[i,1],
-           nonneg = matrix_of_specs[i,2],
-           bounded_above = matrix_of_specs[i,3])
+                 T_star, 
+                 scale = TRUE,
+                 sum_to_1 = matrix_of_specs[i,1],
+                 nonneg = matrix_of_specs[i,2],
+                 bounded_above = matrix_of_specs[i,3])
   }
   
   # Now we place these linear combinations into a matrix
@@ -606,18 +607,18 @@ synth_vol_fit <- function(X,
   #Now let's plot the adjustment
   par(mfrow=c(1,2))
   
-  trimmed_prediction_vec_for_plotting <- Winsorize(adjusted_pred_vec, probs = c(0, 0.82))
+  trimmed_prediction_vec_for_plotting <- Winsorize(adjusted_pred_vec, probs = c(0, 0.72))
   
   plot(data_up_through_T_star, 
-       main = 'GARCH Prediction versus \nAdjusted Prediction versus Actual',
+       main = 'GARCH Prediction versus \nAdjusted Predictions versus Actual',
        ylab = expression(sigma^2),
        xlab = "Time",
        xlim = c(0, length(data_up_through_T_star) + 5),
-       ylim = c(min(0,adjusted_pred_vec),  max(pred, trimmed_prediction_vec_for_plotting, data_up_through_T_star, Y[[1]][,3][T_star[1]+1],1) ) )
+       ylim = c(min(0,trimmed_prediction_vec_for_plotting),  max(pred, trimmed_prediction_vec_for_plotting, data_up_through_T_star, Y[[1]][,3][T_star[1]+1],1) ) )
   
   lines(y = c(data_up_through_T_star[T_star[1]],  Y[[1]][,3][T_star[1]+1,1]) , 
         x = c(T_star[1], T_star[1] + 1),  lty=2, lwd=2,
-        ylim = c(min(0,adjusted_pred_vec),  max(pred, trimmed_prediction_vec_for_plotting, data_up_through_T_star, Y[[1]][,3][T_star[1]+1],1) ) )
+        ylim = c(min(0,trimmed_prediction_vec_for_plotting),  max(pred, trimmed_prediction_vec_for_plotting, data_up_through_T_star, Y[[1]][,3][T_star[1]+1],1) ) )
 
   colors_for_adjusted_pred <- c('black',
                                 brewer.pal(length(adjusted_pred_vec) + 1,'Set1'))
@@ -635,21 +636,23 @@ synth_vol_fit <- function(X,
   for (i in 1:(length(adjusted_pred_vec)))
     {
            points(y = adjusted_pred_vec[i], x = (T_star[1] + 1), 
-           col = colors_for_adjusted_pred[i+2], cex = 1.3, pch = 15)
-    }
+           col = colors_for_adjusted_pred[i+2], cex = 1.9, pch = 10)
+  }
+  
+  labels_for_legend <- c('Actual','GARCH',linear_comb_names)
   
   legend(x = "topleft",  # Coordinates (x also accepts keywords)
-         legend = c('Actual','GARCH',linear_comb_names),
-         1:9, # Vector with the name of each group
+         legend = labels_for_legend,
+         1:length(labels_for_legend), # Vector with the name of each group
          colors_for_adjusted_pred,   # Creates boxes in the legend with the specified colors
-         title = 'Predictions',      # Legend title,
-         cex = .8
+         title = 'Prediction Method',      # Legend title,
+         cex = 1.6
   )
   
   plot.ts(fitted(garch_1_1), 
-          main = 'Pre-shock GARCH-fitted values (black) \nversus Actual (blue)',
-          ylab = expression(sigma^2))
-  lines(data_up_through_T_star, col = 'blue')
+          main = 'Pre-shock GARCH fitted values (green) \nversus Actual (black)',
+          ylab = expression(sigma^2), col = 'green')
+  lines(data_up_through_T_star, col = 'black')
   
   return(list(w = round(w_mat,3), 
               omega_star_hat = round(omega_star_hat_vec, 3),
