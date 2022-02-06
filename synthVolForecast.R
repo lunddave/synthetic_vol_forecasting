@@ -22,6 +22,7 @@ options(scipen = 7)
 
 synth_vol_sim <- function(n, 
                           p, 
+                          model = NULL,
                           arch_param, 
                           garch_param,
                           asymmetry_param,
@@ -82,7 +83,6 @@ synth_vol_sim <- function(n,
   #Before we simulate shock time, we make sure each series has enough points 
   #following the shock time
   max_of_shock_lengths <- max(level_shock_length, vol_shock_length)
-  warnings('Each series has shock ', 5)
   
   # Simulate shock times
   if ( is.null(shock_time_vec) == TRUE)
@@ -92,7 +92,7 @@ synth_vol_sim <- function(n,
         {
           #Note: the T* must be at least 'max_of_shock_lengths' after T*
           #Also, shock must come from point 30 onward.
-          shock_time_vec[i] <- rdunif(1, min_shock_time, Tee[i]-max_of_shock_lengths) 
+          shock_time_vec[i] <- rdunif(1, min_shock_time, Tee[i] - max_of_shock_lengths) 
         }
   }
   
@@ -134,7 +134,7 @@ synth_vol_sim <- function(n,
   xreg <- c()
   
   #Create M21 level and M21 vol cross donor random effects vectors
-  M21_vol_cross_donor_random_effect <- rnorm(p, M21_M22_mu_omega_star, M21_M22_shock_sd) 
+  M21_level_cross_donor_random_effect <- rnorm(p, M21_M22_mu_omega_star, M21_M22_shock_sd) 
   M21_vol_cross_donor_random_effect <- rnorm(p, M21_M22_mu_omega_star, M21_M22_shock_sd) 
   
   # For each of n+1 series...
@@ -150,6 +150,23 @@ synth_vol_sim <- function(n,
                            n = Tee[i],
                            innov = sim_VAR_innovations) + 1 #we add this constant to make the
                                                             #covariates positive
+    
+    #If model (m,s,a) is provided, we overide the parameters provided and instead simulate
+    #the parameters.
+    if ( is.null(model) == FALSE){
+      
+      print('Since you have entered a model (m,s,a), we ignore the specified \n
+          parameters and instead generate them randomly for each series.')
+      
+      length_arch_param <- model[1]
+      length_garch_param <- model[2]
+      length_asymmetry_param <- model[3]
+      
+      arch_param <- runif(length_arch_param, 0, 1) / (length_arch_param + length_garch_param + 1)
+      garch_param <- runif(length_garch_param, 0, 1) / (length_arch_param + length_garch_param + 1)
+      asymmetry_param <- runif(length_asymmetry_param, 0, 1) / (length_asymmetry_param + 1)
+    }
+    
     #Level model
     if (level_model == 'M1'){
                       #Level Shock
@@ -293,15 +310,16 @@ synth_vol_sim <- function(n,
     
     T_star_plus_1_return_vec[i] <- Y[[i]][,1][shock_time_vec[i]+1,]
     
+
     #Now we calculate the p-value for the volatility spike of length k
     arch_param_count <- sum(ifelse(arch_param > 0, 1, 0))
     garch_param_count <- sum(ifelse(garch_param > 0, 1, 0))
     asymm_param_count <- sum(ifelse(asymmetry_param > 0, 1, 0))
 
-    indicator_vec <- as.matrix(c(rep(0,shock_time_vec[i]), rep(1,k)))
-    garch_1_1 <- garchx(Y[[i]][1:(shock_time_vec[i]+k),1], 
+    indicator_vec <- as.matrix(c(rep(0,shock_time_vec[i]), rep(1,vol_shock_length[i])))
+    garch_1_1 <- garchx(Y[[i]][1:(shock_time_vec[i]+vol_shock_length[i]),1], 
                         order = c(garch_param_count,arch_param_count,asymm_param_count), 
-                        xreg = indicator_vec[1:(shock_time_vec[i]+k)],
+                        xreg = indicator_vec[1:(shock_time_vec[i]+vol_shock_length[i])],
                         control = list(eval.max = 95000, iter.max = 95000 ),
                         hessian.control = list(maxit = 1000000))
     xreg_est <- round(coeftest(garch_1_1)[ dim(coeftest(garch_1_1))[1], 1],5)
@@ -368,9 +386,9 @@ synth_vol_sim <- function(n,
   {
     
     plot.ts(Y[[i]][,1], ylim = c(min(Y[[i]][,1])*1.2, max(Y[[i]][,1])*1.2), 
-            main = paste('y_', i, ", GARCH(",arch_param,",",garch_param,") length = ",vol_shock_length[i],
+            main = paste('y', i, ", GARCH(",length(arch_param),",",length(garch_param),") length = ",vol_shock_length[i],
                                      "\n level shock = ", 
-                                     round( level_shock_vec[i],2), 
+                                     round(level_shock_vec[i],2), 
                                      ", vol shock = ", 
                                      round(vol_shock_vec[i],2),
                                      '\n shock est = ', round(xreg[i,1],3), ', pval = ',round(xreg[i,2],3),
@@ -384,10 +402,10 @@ synth_vol_sim <- function(n,
   par(mfrow = c(ceiling(sqrt(n+1)), ceiling(sqrt(n+1))))
   for (i in 1:(n+1))
   {
-    plot.ts(Y[[i]][-c(1:20),3], xlim=c(21, Tee[i]), main = paste('Volatility Series of y_', i, 
-                                     ", GARCH(",arch_param,",",garch_param,"), length = ",vol_shock_length[i],
+    plot.ts(Y[[i]][-c(1:20),3], xlim=c(21, Tee[i]), main = paste('Volatility Series y', i, 
+                                     ", GARCH(",length(arch_param),",",length(garch_param),"), length = ",vol_shock_length[i],
                                      "\n level shock = ", 
-                                     round( level_shock_vec[i],2), 
+                                     round(level_shock_vec[i],2), 
                                      ", vol shock = ", 
                                      round(vol_shock_vec[i],2),
                                      '\n shock est = ', round(xreg[i,1],3), ', pval = ',round(xreg[i,2],3),
@@ -397,17 +415,18 @@ synth_vol_sim <- function(n,
   
   #Items to return in a list
   return(list(X, Y, Tee,shock_time_vec, xreg))
-}
+} #end of synth_vol_sim
 
 # Here is the length of the vol shock we will use
 inputted_n <- 8
-inputted_vol_shock_length <- rdunif(inputted_n+1, 3, 7)
+inputted_vol_shock_length <- rdunif(inputted_n+1, 4, 7)
 
 output <- synth_vol_sim(n = inputted_n, 
                         p = 9, 
-                        arch_param = c(.15),
-                        garch_param = c(.24,.2),
-                        asymmetry_param = c(.25, .1),
+                        model = c(1,2,1),
+                        arch_param = c(.1),
+                        garch_param = c(.4),
+                        asymmetry_param = c(.15),
                         
                         level_model = c('M1','M21','M22','none')[4],
                         vol_model = c('M1','M21','M22','none')[3],
@@ -425,11 +444,11 @@ output <- synth_vol_sim(n = inputted_n,
                         M22_mu_eps_star = .3, 
                         sigma_eps_star = .5,
                         
-                        mu_omega_star = .1,
-                        vol_shock_sd = .1,
+                        mu_omega_star = .12,
+                        vol_shock_sd = .03,
                         
-                        M21_M22_mu_omega_star = .05,
-                        M21_M22_shock_sd = .05,
+                        M21_M22_mu_omega_star = .1,
+                        M21_M22_shock_sd = .03,
                         
                         level_GED_alpha = .05 * sqrt(2), 
                         level_GED_beta = 1.8)
@@ -489,9 +508,9 @@ output <- synth_vol_sim(n = inputted_n,
 dbw <- function(X, 
                 Tstar, 
                 scale = FALSE,
-                sum_to_1 = TRUE,
-                nonneg = TRUE,
-                bounded_above = TRUE) { # https://github.com/DEck13/synthetic_prediction/blob/master/prevalence_testing/numerical_studies/COP.R
+                sum_to_1 = 1,
+                bounded_below_by = 0,
+                bounded_above_by = 1) { # https://github.com/DEck13/synthetic_prediction/blob/master/prevalence_testing/numerical_studies/COP.R
   # X is a list of covariates for the time series
   # X[[1]] should be the covariate of the time series to predict
   # X[[p]] for p = 2,...,n+1 are covariates for donors
@@ -503,7 +522,7 @@ dbw <- function(X,
   n <- length(X) - 1
   
   # covariate for time series for prediction
-  X1 <- X[[1]][Tstar[1] + 1, , drop = FALSE] # we get only 1 row
+  X1 <- X[[1]][Tstar[1], , drop = FALSE] # we get only 1 row
   
   # covariates for time series pool
   X0 <- c()
@@ -533,57 +552,46 @@ dbw <- function(X,
     norm <- as.numeric(crossprod(matrix(X1 - XW)))
     return(norm)
   } #end objective function
-  
-  # constraint for W
-  Wcons <- function(W) sum(W) - 1
-  
+
   # optimization and return statement
   
-  # I have added two features
+  # I have added features
   # 1) The option to remove the sum-to-1 constraint
-  # 2) The option to remove the nonnegativity constraint.
+  # 2) The option to change the lower bound to -1 or NA
+  # 3) option to change the upper bound to NA
   
   #Thus I need if statements to implement these...
-  if (sum_to_1 == TRUE) 
-  {
-    eq_constraint = function(W) sum(W) - 1 
-    }
-  else{
-    eq_constraint = NULL
-  }
   
-  if (nonneg == TRUE) 
+  # conditional for sum to 1
+  if (is.na(sum_to_1) == FALSE) {eq_constraint <- function(W) sum(W) - 1 }
+  else{eq_constraint = NULL}
+  
+  # conditional for bounding below
+  if (is.na(bounded_below_by) == FALSE) 
   {
-    lower_bound = rep(0, n) 
+    lower_bound = rep(bounded_below_by, n) 
   }
-  else{
+  else if (is.na(bounded_below_by) == TRUE)  {
     lower_bound = NULL
-  }
+      }
   
-  if (below_neg_1 == TRUE) 
-  {
-    lower_bound = rep(-1, n) 
-  }
-  else{
-    lower_bound = NULL
-  }
-  
-  if (bounded_above == TRUE) 
+#conditional for bounding above
+  if (is.na(bounded_above_by) == FALSE) 
   {
     upper_bound = rep(1, n) 
   }
-  else{
+  else if (is.na(bounded_above_by) == TRUE)  {
     upper_bound = NULL
   }
   
   object_to_return <- solnp(par = rep(1/n, n), 
                             fun = weightedX0, 
                             eqfun = eq_constraint, 
-                            eqB = 0, # will use inequality constraints later
+                            eqB = 0,
                             LB = lower_bound, UB = upper_bound, control = list(trace = 0))
   return(object_to_return$pars)
-  
   #I added the return statement because an implicit return is bad coding form
+  
 } #end dbw function
 #############################################################################
 
@@ -619,24 +627,26 @@ synth_vol_fit <- function(X,
   # shock_time_vec, a vector of length n+1 containing shock time of each series
   # shock_time_lengths, a vector of length n+1 containing shock time length of each series
   
-  #First, we get the vectors w for all 7 sensible methods
+  #First, we get the vectors w for all sensible methods
   w <- list() #initialize
-  matrix_of_specs <- matrix(c(rep(TRUE,4), 
-                              rep(FALSE,4), 
-                              rep(c(TRUE,TRUE,FALSE,FALSE),2), 
-                              rep(c(TRUE,FALSE), 4)), 
-                              byrow = FALSE, nrow = 8)
+  matrix_of_specs <- matrix(c(rep(1,6), 
+                              rep(NA,6), 
+                              
+                              rep(c(0,-1,NA),4), 
+                              
+                              rep(c(1,NA), 6)), 
+                              byrow = FALSE, nrow = 12)
   
-  #We drop the second row because it's functionally no different from the first
-  matrix_of_specs <- matrix_of_specs[-2,]
+  #We drop the ??th row because it's functionally no different from the first OR have lower bound > upper bound
+  matrix_of_specs <- matrix_of_specs[-4,]
   
   for (i in 1:nrow(matrix_of_specs)){
   w[[i]] <- dbw(X, 
                  T_star, 
                  scale = TRUE,
                  sum_to_1 = matrix_of_specs[i,1],
-                 nonneg = matrix_of_specs[i,2],
-                 bounded_above = matrix_of_specs[i,3])
+                 bounded_below_by = matrix_of_specs[i,2],
+                 bounded_above_by = matrix_of_specs[i,3])
   }
 
   # Now we place these linear combinations into a matrix
@@ -677,15 +687,19 @@ synth_vol_fit <- function(X,
 
   #We now make a vector with the names of each of the 7 sensible linear combinations
   linear_comb_names <- c('Convex Hull',
+                         '1 -1 NA',
                         'Drop Bounded Below',
+                        'Unit Ball: Sum-to-1',
                         'Affine Hull',
                         'Drop Sum-to-1',
+                        'Bounded Below by -1',
+                        'Bounded Above  by 1',
                         'Conic Hull',
-                        'Bounded Above',
-                        'Unrestricted')
+                        'Unit Ball',
+                        'Unrestricted') 
 
   #Plot the donor pool weights
-  par(mfrow=c(3,3))
+  par(mfrow=c(ceiling(sqrt(length(linear_comb_names))),ceiling(sqrt(length(linear_comb_names)))))
   for (i in 1:nrow(w_mat))
     {
     barplot(w_mat[i,],
@@ -715,8 +729,8 @@ synth_vol_fit <- function(X,
         ylim = c(0,  max(pred, trimmed_prediction_vec_for_plotting, sigma2_up_through_T_star_plus_k) ) )
 
   # Here is the color scheme we will use
-  colors_for_adjusted_pred <- c('black',
-                                brewer.pal(length(omega_star_hat_vec) + 1,'Set1'))
+  colors_for_adjusted_pred <- c('black', 'red',
+            brewer.pal(length(omega_star_hat_vec),'Set3')) 
 
   # Let's add the ground truth
   points(y = shock_period_only,
@@ -733,12 +747,11 @@ synth_vol_fit <- function(X,
   # Now plot the adjusted predictions
   for (i in 1:(length(omega_star_hat_vec)))
     {
-
            points(y = adjusted_pred_list[[i]], x = (T_star[1]+1):(T_star[1]+shock_lengths[1]),
            col = colors_for_adjusted_pred[i+2], cex = 1.9, pch = 10)
-  }
+     }
 
-  labels_for_legend <- c('Actual','GARCH',linear_comb_names)
+  labels_for_legend <- c('Actual','GARCH (unadjusted)',linear_comb_names)
 
   legend(x = "topleft",  # Coordinates (x also accepts keywords)
          legend = labels_for_legend,

@@ -130,7 +130,7 @@ synth_vol_sim <- function(n,
   xreg <- c()
   
   #Create M21 level and M21 vol cross donor random effects vectors
-  M21_vol_cross_donor_random_effect <- rnorm(p, 0, 1) # tk
+  M21_level_cross_donor_random_effect <- rnorm(p, 0, 1) # tk
   M21_vol_cross_donor_random_effect <- rnorm(p, 0, 1) # tk
   
   # For each of n+1 series...
@@ -676,7 +676,7 @@ synth_vol_fit <- function(X,
                         'Unrestricted')
   
   #Plot the donor pool weights
-  par(mfrow=c(3,3))
+  par(mfrow=c(ceiling(sqrt(length(linear_comb_names))),ceiling(sqrt(length(linear_comb_names)))))
   for (i in 1:nrow(w_mat))
     {
     barplot(w_mat[i,], 
