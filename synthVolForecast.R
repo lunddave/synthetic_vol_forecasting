@@ -423,7 +423,7 @@ inputted_vol_shock_length <- rdunif(inputted_n+1, 4, 7)
 
 output <- synth_vol_sim(n = inputted_n, 
                         p = 9, 
-                        model = c(1,2,1),
+                        model = c(1,1,1),
                         arch_param = c(.1),
                         garch_param = c(.4),
                         asymmetry_param = c(.15),
@@ -433,7 +433,7 @@ output <- synth_vol_sim(n = inputted_n,
                         
                         sigma_GARCH_innov = 1, # this is the sd that goes into rnorm
                         sigma_x = 1, 
-                        min_shock_time = 30,
+                        min_shock_time = 40,
                         shock_time_vec = NULL, 
                         level_shock_length = 1,
                         vol_shock_length = inputted_vol_shock_length,
@@ -444,10 +444,10 @@ output <- synth_vol_sim(n = inputted_n,
                         M22_mu_eps_star = .3, 
                         sigma_eps_star = .5,
                         
-                        mu_omega_star = .12,
+                        mu_omega_star = .18,
                         vol_shock_sd = .03,
                         
-                        M21_M22_mu_omega_star = .1,
+                        M21_M22_mu_omega_star = .6,
                         M21_M22_shock_sd = .03,
                         
                         level_GED_alpha = .05 * sqrt(2), 
