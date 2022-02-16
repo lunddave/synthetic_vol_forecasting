@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex 2021.10.20)  12 JAN 2022 10:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex 2021.11.30)  16 FEB 2022 13:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -891,7 +891,7 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 142.
  [2] [3] [4] [5]
 [6]
-Overfull \hbox (19.1976pt too wide) in paragraph at lines 355--357
+Overfull \hbox (19.1976pt too wide) in paragraph at lines 359--361
 \OT1/cmr/m/n/10.95 where the dis-tri-bu-tions $\OMS/cmsy/m/n/10.95 F[]\OT1/cmr/
 m/n/10.95 ([][])$ and $\OMS/cmsy/m/n/10.95 F[]\OT1/cmr/m/n/10.95 ([][])$ sat-is
 fy $\OMS/cmsy/m/n/10.95 F[]\OT1/cmr/m/n/10.95 ([][]) [] \OMS/cmsy/m/n/10.95 F[]
@@ -902,7 +902,7 @@ fy $\OMS/cmsy/m/n/10.95 F[]\OT1/cmr/m/n/10.95 ([][]) [] \OMS/cmsy/m/n/10.95 F[]
 [7] [8]
 
 Package natbib Warning: Citation `shaman1988bias' on page 9 undefined on input 
-line 398.
+line 402.
 
 [9] [10] [11] [12] [13] [14] [15] [16] [17] [18] [19] (./synthVolForecast.bbl
 [20])
@@ -914,40 +914,40 @@ Package rerunfilecheck Info: File `synthVolForecast.out' has not changed.
 (rerunfilecheck)             Checksum: 379D94FDEB2B01232BCDE4559A9B4EC8;846.
  ) 
 Here is how much of TeX's memory you used:
- 20830 strings out of 479304
- 381819 string characters out of 5869778
- 728087 words of memory out of 5000000
- 37530 multiletter control sequences out of 15000+600000
+ 20830 strings out of 481176
+ 381819 string characters out of 5914225
+ 723334 words of memory out of 5000000
+ 37287 multiletter control sequences out of 15000+600000
  421521 words of font info for 91 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
+ 59 hyphenation exceptions out of 8191
  87i,18n,88p,1576b,436s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmbx6.pfb></usr/share/texlive/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmbxti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi
-8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb
-></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/
-share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/t
-exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-ti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.p
-fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pf
-b></usr/share/texmf/fonts/type1/public/cm-super/sfrm0600.pfb></usr/share/texmf/
-fonts/type1/public/cm-super/sfrm0800.pfb>
-Output written on synthVolForecast.pdf (21 pages, 353823 bytes).
+ </home/david/.texlive2020/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm0600.600
+pk> </home/david/.texlive2020/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm0800.60
+0pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></
+usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx6.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/texlive/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+r12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
+nts/symbols/msbm10.pfb>
+Output written on synthVolForecast.pdf (21 pages, 351185 bytes).
 PDF statistics:
- 369 PDF objects out of 1000 (max. 8388607)
- 318 compressed objects within 4 object streams
+ 370 PDF objects out of 1000 (max. 8388607)
+ 319 compressed objects within 4 object streams
  66 named destinations out of 1000 (max. 500000)
  109 words of extra memory for PDF output out of 10000 (max. 10000000)
 

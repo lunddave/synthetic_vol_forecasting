@@ -145,6 +145,8 @@ To that end, let $a_{t} = r_{t} - \mu_{t}$, where $\mu_{t}$ is the mean of the l
 
 $$\sigma_{t}^{2} = \omega + \sum^{m}_{k=1}\alpha_{k}a^{2}_{t-k} + \sum_{j=1}^{s}\beta_{j}\sigma_{t-j}^{2},\text{ }  a_{t} = \sigma_{t}\epsilon_{t}$$
 
+
+
 Assuming further that $\sigma^{2}_{t}$ depends on a vector of exogenous covariates $\x_{t}$ (GARCH-X), we have
 
 $$\sigma_{t}^{2} = \omega+ \sum^{m}_{k=1}\alpha_{k}a^{2}_{t-k} + \sum_{j=1}^{s}\beta_{j}\sigma_{t-j}^{2} + \gamma^{T}\x_{t}, \text{ } a_{t} = \sigma_{t}\epsilon_{t}$$
@@ -258,7 +260,7 @@ are the same for all time series in the analysis, the differences between them l
 Let $I(\cdot)$ be an indicator function, $T_i$ be the time length of the time series $i$ for $i = 1, \ldots, n+1$, and $T_i^*$ be the time point just before the one when the shock is known to occur, with $T_i^* < T_i$.  For $t= 1, \ldots, T_i$ and $i = 1, \ldots, n+1$, the model $\mc{M}_1$ is defined as
 \begin{align}
 \mc{M}_1 \colon \sigma^{2}_{i,t} = \omega_{i} + \omega^{*}_i D_{i,t}  + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} 
-          \x_{i,t} \text{ }, a_{i,t} = \sigma_{i,t}\epsilon_{i,t} \label{equation1}
+          \x_{i,t}, \text{ } a_{i,t} = \sigma_{i,t}(\epsilon_{i,t} + \epsilon^{*}_{i,t}D_{i,t}) \label{equation1}
 \end{align}
  where $D_{i,t} = I(t = T_i^* + 1)$ 
 and $\x_{i,t} \in \R^{p}$ , with $p \geq 1$.  We assume that the 
@@ -266,6 +268,8 @@ $\mbf{x}_{i,t}$ are fixed.\footnote{Need to determine what difference it makes t
 
 \begin{align*}
 \omega^{*}_i &\simiid \mc{F}_{\omega^{*}} \text{ with }  \; \mrm{E}_{\mc{F}_{\omega^{*}}}(\omega^{*}_i) = \mu_{\omega^{*}}, \mrm{Var}_{\mc{F}_{\omega^{*}}}(\omega^{*}_i)  = \sigma^2_{\omega^{*}}  \\
+\epsilon^{*}_i &\simiid \mc{F}_{\epsilon^{*}} \text{ with }  \; \mrm{E}_{\mc{F}_{\epsilon^{*}}}(\epsilon^{*}_i) = \mu_{\epsilon^{*}}, \mrm{Var}_{\mc{F}_{\epsilon^{*}}}(\epsilon^{*}_i)  = \sigma^2_{\epsilon^{*}}  \\
+& \text{Alternatively, } (\omega^{*}, \epsilon^{*})_{i} \sim \mathcal{N}(\mu_{\omega^{*},\epsilon^{*}}, \Sigma_{\omega^{*},\epsilon^{*}}) \\
   (\alpha, \beta)_i &\simiid \mc{F}_{(\alpha, \beta)} \text{ where } \sum^{ \text{max} \{m,s \} }_{j}\alpha_j + \beta_j < 1 \\
    \gamma_i &\simiid \mc{F}_{\gamma} \text{ with }  \; \mrm{E}_{\mc{F}_{\gamma}}(\gamma_i) = \mu_{\gamma}, \mrm{Var}_{\mc{F}_{\gamma}}(\gamma_i)  = \Sigma^2_{\gamma} \\
    \mathbf{v}_i &\simiid \mc{F}_{\mathbf{v}} \text{ with }  \; \mrm{E}_{\mc{F}_{\mathbf{v}}}(\mathbf{v}_i) = \mu_{\mathbf{v}}, \mrm{Var}_{\mc{F}_{\mathbf{v}}}(\mathbf{v}_i)  = \Sigma^2_{\mathbf{v}} \\
