@@ -261,7 +261,7 @@ Let $I(\cdot)$ be an indicator function, $T_i$ be the time length of the time se
 \begin{align}
 \mc{M}_1 \colon &\sigma^{2}_{i,t} = \omega_{i} + \omega^{*}_i D^{vol}_{i,t}  + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} 
           \x_{i,t}\\
-&a_{i,t} = \sigma_{i,t}(\epsilon_{i,t} + \epsilon^{*}_{i,t}D^{level}_{i,t}) \label{equation1}
+&a_{i,t} = \sigma_{i,t}( \epsilon_{i,t}(1 - D^{level}_{i,t}) + \epsilon^{*}_{i,t}D^{level}_{i,t}) \label{equation1}
 \end{align}
  where $D^{vol}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + l_{i, vol}\})$, $D^{level}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + l_{i, level}\})$ 
 and $\x_{i,t} \in \R^{p}$ , with $p \geq 1$.  We assume that the 
