@@ -287,6 +287,17 @@ $$\sigma^{2 marginal}_{i,T^{*}+r} = \beta^{r-2}\big ( \alpha(\epsilon^{*}_{T^{*}
 
 Hence, the effect decays to 0 at a geometric rate. \\
 
+\begin{proof}
+By the specification (1) above, 
+
+\begin{align}
+&\sigma^{2}_{i, T^{*}+2} = \omega_{i} + \alpha(\epsilon^{*}_{T^{*}+1})^{2} + \beta\sigma^{2}_{i,T^{*}+1} = \omega_{i} + \alpha(\epsilon^{*}_{T^{*}+1})^{2} + \beta(\omega_{i} + \omega_{i}^{*} + \alpha\epsilon_{T^{*}}^{2} +\beta\sigma^{2}_{T^{*}}) \\
+& \sigma^{2}_{i, T^{*}+3} = \omega_{i} + \alpha(\epsilon_{T^{*}+2})^{2} + \beta\sigma^{2}_{i,T^{*}+2} = \omega_{i} + \alpha(\epsilon_{T^{*}+2})^{2} + \beta(\omega_{i} + \alpha(\epsilon^{*}_{T^{*}+1})^{2} +\beta\sigma^{2}_{T^{*}+1})
+\end{align}
+
+From (4), we can see that both the level shock and the volatility shock persist in the volatility equation through only the final term, which has the coefficient $\beta$.  This phenomenon begins at $T^{*}+2$ for the volatility shock $\omega^{*}$, whereas for the level shock $\epsilon^{*}$, it begins one step later. 
+\end{proof}
+
 Notice that $\mc{M}_1$ assumes that $\omega^{*}_i$ are i.i.d. with $\E[ \omega^{*}_i]=\mu_{\omega^{*}}$ 
 for $i = 1, \ldots, n+1$. We also consider a model where the shock effects are linear functions of covariates with an additional additive mean-zero error. For $i = 1, \ldots, n+1$, the random effects structure for this model (model $\mc{M}_2$) is:
 
