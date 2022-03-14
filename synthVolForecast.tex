@@ -143,13 +143,18 @@ We follow convention and define the daily log-return as $r_{t} = \text{log}(\fra
 
 To that end, let $a_{t} = r_{t} - \mu_{t}$, where $\mu_{t}$ is the mean of the log return series $r_{t}$.  Implicitly, we are committing ourselves to a mean-model for $r_{t}$ in which $\mu_{t}$, the expected daily log-return, may vary with time, while $a_{t}$ is simply the noise.  As \citet{cont2001empirical} explains, such an assumption is justified by the empirical finding that returns lack significant autocorrelation.  We derive a mean-zero process $(a_{t})_{t\in\mathbb{N}}$ with the property that $\E[a^{2}_{t}] = \mrm{Var}[a_{t}]$.  Under the assumption of time-invariant volatility, the series $a_{t}^{2}$ should exhibit no autocorrelation at any lag $\ell\geq1$.  This assumption motivates tests for so-called ARCH effects, that is, tests for the clustering of volatility.  These tests explore the the alternative hypothesis that $\sigma_{t}^{2}$ is not only a time-varying parameter but furthermore a function of past squared residuals of the mean model.  In particular, the ARCH(m) model is an autoregressive model in which $\sigma_{t}^{2}$ is fitted using a linear combination of the $m$ past values of $a_{t}^{2}$.  The GARCH(m,s) framework take this one step further but modeling $\sigma_{t}^{2}$ as a linear combination of the $m$ past $a_{t}^{2}$ values and well as the $s$ past values of $\sigma_{t}^{2}$.  In functional form,
 
-$$\sigma_{t}^{2} = \omega + \sum^{m}_{k=1}\alpha_{k}a^{2}_{t-k} + \sum_{j=1}^{s}\beta_{j}\sigma_{t-j}^{2},\text{ }  a_{t} = \sigma_{t}\epsilon_{t}$$
+\begin{align*}
+&\sigma_{t}^{2} = \omega + \sum^{m}_{k=1}\alpha_{k}a^{2}_{t-k} + \sum_{j=1}^{s}\beta_{j}\sigma_{t-j}^{2}\\
+&a_{t} = \sigma_{t}\epsilon_{t}
+\end{align*}
 
 
 
 Assuming further that $\sigma^{2}_{t}$ depends on a vector of exogenous covariates $\x_{t}$ (GARCH-X), we have
 
-$$\sigma_{t}^{2} = \omega+ \sum^{m}_{k=1}\alpha_{k}a^{2}_{t-k} + \sum_{j=1}^{s}\beta_{j}\sigma_{t-j}^{2} + \gamma^{T}\x_{t}, \text{ } a_{t} = \sigma_{t}\epsilon_{t}$$
+\begin{align*}
+&\sigma_{t}^{2} = \omega+ \sum^{m}_{k=1}\alpha_{k}a^{2}_{t-k} + \sum_{j=1}^{s}\beta_{j}\sigma_{t-j}^{2} + \gamma^{T}\x_{t}\\&a_{t} = \sigma_{t}\epsilon_{t}
+\end{align*}
 
 
 We will suppose that a researcher has multivariate time series data $\y_{i,t}$, $t = 1, \ldots,  T_i$ and $i = 1, \ldots, n+1$. We let $\y_{i,t} = (y_{i,t}$, $\x_{i,t}$, $\textbf{v}_{i,t}$) where $y_{i,t}$ is a scalar response,  $\x_{i,t}$ is a vector of covariates that are revealed to the analyst prior to the observation of $y_{1,t}$, and $\textbf{v}_{i,t}$ is a vector of market-implied volatility metrics for the series $i$ that are available prior to the market open at time t.  Suppose that the analyst is interested in forecasting the volatility of $y_{1,t}$, the first time series in the collection.  We require that each time series $\y_{i,t}$ is subject to a shock event follwing $T^*_i \leq T_i + 1$ and before witnessing $T^*_i+1$. To define an interesting setting, we will suppose that $T^*_1 = T_1 + 1$, and $1 < T^*_i < T_i + 1$ for $i \geq 2$. 
@@ -261,7 +266,7 @@ Let $I(\cdot)$ be an indicator function, $T_i$ be the time length of the time se
 \begin{align}
 \mc{M}_1 \colon &\sigma^{2}_{i,t} = \omega_{i} + \omega^{*}_i D^{vol}_{i,t}  + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} 
           \x_{i,t}\\
-&a_{i,t} = \sigma_{i,t}(\epsilon_{i,t} + \epsilon^{*}_{i,t}D^{level}_{i,t}) \label{equation1}
+&a_{i,t} = \sigma_{i,t}(\epsilon_{i,t}(1-D^{level}_{i,t}) + \epsilon^{*}_{i,t}D^{level}_{i,t}) \label{equation1}
 \end{align}
  where $D^{vol}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + l_{i, vol}\})$, $D^{level}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + l_{i, level}\})$ 
 and $\x_{i,t} \in \R^{p}$ , with $p \geq 1$.  We assume that the 
@@ -281,22 +286,39 @@ $\mbf{x}_{i,t}$ are fixed.\footnote{Need to determine what difference it makes t
 \end{align*}
 
 
-Note that under the popular GARCH(1,1), a dual level-volatility shock has an additive marginal effect on the conditional variance $\sigma^{2}_{i,t}$ that should be familiar to students of GARCH models: for $r\geq 2$, 
-
-$$\sigma^{2 marginal}_{i,T^{*}+r} = \beta^{r-2}\big ( \alpha(\epsilon^{*}_{T^{*}+1})^{2} + \beta\omega^{*}_{i}\big )$$
-
-Hence, the effect decays to 0 at a geometric rate. \\
-
-\begin{proof}
-By the specification (1) above, 
+Note that under the popular GARCH(1,1), a dual level-volatility shock has an marginal effect on the conditional variance $\sigma^{2}_{i,t}$ that should be familiar to students of GARCH models.  Assume that both the volatility shock $\omega^{*}$ and the level shock $\epsilon^{*}_{i}$ are of length one only, and for notational simplicity, we drop the $*$ notation from $\epsilon_{i}$.  Then for $r\geq 2$,
 
 \begin{align}
-&\sigma^{2}_{i, T^{*}+2} = \omega_{i} + \alpha(\epsilon^{*}_{T^{*}+1})^{2} + \beta\sigma^{2}_{i,T^{*}+1} = \omega_{i} + \alpha(\epsilon^{*}_{T^{*}+1})^{2} + \beta(\omega_{i} + \omega_{i}^{*} + \alpha\epsilon_{T^{*}}^{2} +\beta\sigma^{2}_{T^{*}}) \\
-& \sigma^{2}_{i, T^{*}+3} = \omega_{i} + \alpha(\epsilon_{T^{*}+2})^{2} + \beta\sigma^{2}_{i,T^{*}+2} = \omega_{i} + \alpha(\epsilon_{T^{*}+2})^{2} + \beta(\omega_{i} + \alpha(\epsilon^{*}_{T^{*}+1})^{2} +\beta\sigma^{2}_{T^{*}+1})
+\sigma^{2}_{i,T^{*}+r+1} & = \omega_{i} + \alpha a_{T^{*}+r}^{2} + \beta\sigma^{2}_{i,T^{*}+r} \\
+& = \omega_{i} + \alpha(\sigma_{i,T^{*}+r}\epsilon_{T^{*}+r})^{2} + \beta\sigma^{2}_{i,T^{*}+r} \\
+& = \omega_{i} + \sigma^{2}_{i,T^{*}+r}(\alpha (\epsilon_{T^{*}+r})^{2} + \beta)\\
+& = \omega_{i} + (\omega_{i} + \alpha\epsilon_{T^{*}+r-1}^{2} +\beta\sigma^{2}_{T^{*}+r-1})(\alpha (\epsilon_{T^{*}+r})^{2} + \beta)
 \end{align}
 
-From (4), we can see that both the level shock and the volatility shock persist in the volatility equation through only the final term, which has the coefficient $\beta$.  This phenomenon begins at $T^{*}+2$ for the volatility shock $\omega^{*}$, whereas for the level shock $\epsilon^{*}$, it begins one step later. 
-\end{proof}
+In (5) and (6), observe that $\omega_{i}^{*}$ and $\epsilon^{*}_{i}$ appear at most once each, through the term $\sigma^{2}_{T^{*}+r}$.  Hence, the total effect decays to 0 at a geometric rate of $\beta$.  We generalize this observation in the following proposition.
+
+\begin{prop}
+Let $a_{t}$ be a mean-zero time series obeying a GARCH(1,1) specification with a volatility shock of length $L_{\text{vol}}$ and level shock of length $L_{\text{level}}$ both commencing at some time $T^{*}+1$.  Then for any $r$ such that $r-1 \geq \text{max}\{L_{\text{vol}},L_{\text{level}}\}$, 
+
+\begin{align*}
+\sigma^{2}_{i,T^{*}+r+1} & = \omega_{i} + \alpha(\sigma_{i,T^{*}+r}\epsilon_{T^{*}+r})^{2} + \beta\sigma^{2}_{i,T^{*}+r} \\
+& = \omega_{i} + \sigma^{2}_{i,T^{*}+r}(\alpha (\epsilon_{T^{*}+r})^{2} + \beta)\\
+& = \omega_{i} + (\omega_{i} + \alpha\epsilon_{T^{*}+r-1}^{2} +\beta\sigma^{2}_{T^{*}+r-1})(\alpha (\epsilon_{T^{*}+r})^{2} + \beta)
+\end{align*}
+\end{prop}
+
+In other words, after both shocks have been exhausted, their influence disappears quickly, and this short-memory effect has implications for the method being developed herein:
+
+\begin{enumerate}
+\item Estimation of effects in donor pool should err on the side of underestimating, not overestimating, the length of the max shock, since overestimation of the shock length brings with it the risk of underestimating $\omega^{*}$.
+\item An operator of the method needs some idea of how long she expects the shock in the time series under study to be.  Such an idea will guide her trust in the choice of k in the k-step ahead forecast she produces.  There are couple of obvious strategies: take all the donors, and over all the donor shock lengths, take the minimium.  Alternatively, one could take the maximum.
+\item There may be different risks associated with over/underestimating level shock and vol shock lengths.
+\end{enumerate}
+
+\begin{proof-of-proposition}
+proof here
+\end{proof-of-proposition}
+
 
 Notice that $\mc{M}_1$ assumes that $\omega^{*}_i$ are i.i.d. with $\E[ \omega^{*}_i]=\mu_{\omega^{*}}$ 
 for $i = 1, \ldots, n+1$. We also consider a model where the shock effects are linear functions of covariates with an additional additive mean-zero error. For $i = 1, \ldots, n+1$, the random effects structure for this model (model $\mc{M}_2$) is:
