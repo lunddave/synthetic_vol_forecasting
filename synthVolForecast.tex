@@ -286,7 +286,7 @@ $\mbf{x}_{i,t}$ are fixed.\footnote{Need to determine what difference it makes t
 \end{align*}
 
 
-Note that under the popular GARCH(1,1), a dual level-volatility shock has an marginal effect on the conditional variance $\sigma^{2}_{i,t}$ that should be familiar to students of GARCH models.  Assume that both the volatility shock $\omega^{*}$ and the level shock $\epsilon^{*}_{i}$ are of length one only, and for notational simplicity, we drop the $*$ notation from $\epsilon_{i}$.  Then for $r\geq 2$,
+Note that under the popular GARCH(1,1), a dual level-volatility shock has an marginal effect on the conditional variance $\sigma^{2}_{i,t}$ that should be familiar to students of GARCH models.  As usual, assume $\alpha+\beta < 1$.  Furthermore, assume that both the volatility shock $\omega^{*}$ and the level shock $\epsilon^{*}_{i}$ are of length one only, and for notational simplicity, we drop the $*$ notation from $\epsilon_{i}$.  Then for $r\geq 2$,
 
 \begin{align}
 \sigma^{2}_{i,T^{*}+r+1} & = \omega_{i} + \alpha a_{T^{*}+r}^{2} + \beta\sigma^{2}_{i,T^{*}+r} \\
@@ -295,7 +295,16 @@ Note that under the popular GARCH(1,1), a dual level-volatility shock has an mar
 & = \omega_{i} + (\omega_{i} + \alpha\epsilon_{T^{*}+r-1}^{2} +\beta\sigma^{2}_{T^{*}+r-1})(\alpha (\epsilon_{T^{*}+r})^{2} + \beta)
 \end{align}
 
-In (5) and (6), observe that $\omega_{i}^{*}$ and $\epsilon^{*}_{i}$ appear at most once each, through the term $\sigma^{2}_{T^{*}+r}$.  Hence, the total effect decays to 0 at a geometric rate of $\beta$.  We generalize this observation in the following proposition.
+In (5) and (6), observe that $\omega_{i}^{*}$ and $\epsilon^{*}_{i}$ each appear at most once, through the term $\sigma^{2}_{T^{*}+r}$.  This might lead one to suspect some sort of geometric decay of the shocks $\omega_{i}^{*}$ and $\epsilon^{*}_{i}$.  Such a suspicion is easier to substantiate by examing the conditional variance, $\mathbb{E}[ \sigma^{2}_{i,T^{*}+r+1} |\mathcal{F}_{T^{*}+r}]$.  Indeed, if we assume unit variance for all $\epsilon_{i,t}$ except, of course, $\epsilon^{*}_{i,t}$, then we have 
+
+\begin{align*}
+\mathbb{E}[ \sigma^{2}_{i,T^{*}+r+1} |\mathcal{F}_{T^{*}+r}] & = \mathbb{E}[\omega_{i} + \alpha a_{T^{*}+r}^{2} + \beta\sigma^{2}_{i,T^{*}+r} |\mathcal{F}_{T^{*}+r}] \\
+& = \mathbb{E}[\omega_{i} + \alpha(\sigma_{i,T^{*}+r}\epsilon_{T^{*}+r})^{2} + \beta\sigma^{2}_{i,T^{*}+r}|\mathcal{F}_{T^{*}+r}] \\
+& = \mathbb{E}[\omega_{i} + \sigma^{2}_{i,T^{*}+r}(\alpha (\epsilon_{T^{*}+r})^{2} + \beta)|\mathcal{F}_{T^{*}+r}] \\
+& = \omega_{i} + \sigma^{2}_{i,T^{*}+r}(\alpha + \beta) \\
+\end{align*}
+
+Thus, in conditional expectation, the shock is on the order of $O((\alpha+\beta)^{r})$.  We generalize this observation in the following proposition.
 
 \begin{prop}
 Let $a_{t}$ be a mean-zero time series obeying a GARCH(1,1) specification with a volatility shock of length $L_{\text{vol}}$ and level shock of length $L_{\text{level}}$ both commencing at some time $T^{*}+1$.  Then for any $r$ such that $r-1 \geq \text{max}\{L_{\text{vol}},L_{\text{level}}\}$, 
