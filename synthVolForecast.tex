@@ -328,8 +328,20 @@ In other words, after both shocks have been exhausted, their influence disappear
 proof here
 \end{proof-of-proposition}
 
+\subsection{Improvements of this current work over its predecessor}
+\begin{enumerate}
+\item $y_{i,t}$ have shocks in both volatility and level.
+\item The shocks can have length greater than 1.
+\item The method under development does not strictly require knowledge of the length of the shocks in the donor pool, but correctly sizing up those shock lengths is helpful to proper estimation of the shocks.  However, an important question remains: even if the donor pool shock lengths are assumed to be known, how do we advise the operator to forecast the time series under study?  For how long is the forecast reliable?  Should we take a convex combination of the donor pool shock lengths?  Or mean? Or minimum of the donor pool shock lengths?
+\item We may want a loss function that is asymmetric, i.e. penalizes upward and downward misses differently.
+\item Lin+Eck 2021 requires exogenous information to arrive strictly between $T^{*}$ and $T^{*}+1$.  However, we may want to relax this requirement so as to permit the exogenous information to be concurrent with the trading session or end of session on $T^{*}+1$.
+\item By offering more linear combination methods for the donor pool shocks (e.g. unit ball, affine hull, convex cone), we give the operator the ability to use donors such that the donor outcome series is negatively correlated with the time series under study.
+\item See Tsay p. 94: if $t$ is the last index that has been observed, then our two-step-ahead forecast is made easier by rewriting the volatility equation as $\sigma^{2}_{i,t+1} = w_{i} + (\alpha_{i} + \beta_{i})\sigma^{2}_{i,t} + \alpha_{1}\sigma^{2}_{i,t}[\epsilon^{2}_{i,t} - 1]= w_{i} + (\alpha_{i} + \beta_{i})\sigma^{2}_{i,t} + \alpha_{1}\sigma^{2}_{i,t}[\epsilon^{2}_{i,t} - 1] $.  Usually, we assume unit variance (though not necessarily a N(0,1)).  However, what is the variance is smaller than 1?  Then in conditional expectation, the term $\alpha_{1}\sigma^{2}_{i,t}[\epsilon^{2}_{i,t} - 1]$ will be negative.  So it seems that for level shock, we want the signal to noise ratio to be large because the mean is high, not because the variance is low.
+\end{enumerate}
+
 \subsection{Hypotheses}
 \begin{enumerate}
+\item The smaller the shock length k, the greater the need for a large shock.  
 \item For the donors with large weights, smaller p-values for the donor shocks will lead to smaller MSE for prediction done using convex hull.
 \item The level shock $\epsilon^{*}$ will require a similar $(\alpha, \beta)$ structure more so than a volatility shock alone
 \item In the case of a pure level shock, if the shock length is just one, a convex combination of the $a^{2}_{T^{*}+1}$ may outperform all other methods.  This would make sense because a GARCH model can be reparamaterized as an ARMA on the sequence $a^{2}_{t}$.
@@ -338,6 +350,7 @@ proof here
 
 \subsection{To do}
 \begin{enumerate}
+\item Consider $\mc{M}_{21}$ and $\mc{M}_{22}$, which have $\omega^{*}_{i} = \mu_{\omega^{*}} + \delta^{T}X_{i, T^{*}}$
 \item Use a more realistic shock distribution, e.g. skewed t or skewed Laplace
 \item Use bivariate distribution for the level and volatility shocks.
 \item Add an intercept to optimization process.
@@ -346,6 +359,7 @@ proof here
 \item Do I need a decaying shock?  For vol, for level?
 \item Do i need shocks in covariates? 
 \item At the money options less biased.
+\item Use $\Delta^{2}$, i.e. second difference (of volume, RV, etc) in order to capture the change in the change
 \end{enumerate}
 
 Notice that $\mc{M}_1$ assumes that $\omega^{*}_i$ are i.i.d. with $\E[ \omega^{*}_i]=\mu_{\omega^{*}}$ 
