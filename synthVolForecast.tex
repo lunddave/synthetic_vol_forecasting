@@ -328,6 +328,25 @@ In other words, after both shocks have been exhausted, their influence disappear
 proof here
 \end{proof-of-proposition}
 
+\subsection{Hypotheses}
+\begin{enumerate}
+\item For the donors with large weights, smaller p-values for the donor shocks will lead to smaller MSE for prediction done using convex hull.
+\item The level shock $\epsilon^{*}$ will require a similar $(\alpha, \beta)$ structure more so than a volatility shock alone
+\item In the case of a pure level shock, if the shock length is just one, a convex combination of the $a^{2}_{T^{*}+1}$ may outperform all other methods.  This would make sense because a GARCH model can be reparamaterized as an ARMA on the sequence $a^{2}_{t}$.
+\item Sensitivity analysis: take only the convex hull approach and look at all $2^{p }- 1$ non-empty subsets of the covariates. For the larger cardinality subsets, do we see big differences in 1) convex combs, 2) predictions?
+\end{enumerate}
+
+\subsection{To do}
+\begin{enumerate}
+\item Use a more realistic shock distribution, e.g. skewed t or skewed Laplace
+\item Use bivariate distribution for the level and volatility shocks.
+\item Add an intercept to optimization process.
+\item Clean up docstring of simulation file.
+\item Clean up output in simulations, in particular signal-to-noise ratio.
+\item Do I need a decaying shock?  For vol, for level?
+\item Do i need shocks in covariates? 
+\item At the money options less biased.
+\end{enumerate}
 
 Notice that $\mc{M}_1$ assumes that $\omega^{*}_i$ are i.i.d. with $\E[ \omega^{*}_i]=\mu_{\omega^{*}}$ 
 for $i = 1, \ldots, n+1$. We also consider a model where the shock effects are linear functions of covariates with an additional additive mean-zero error. For $i = 1, \ldots, n+1$, the random effects structure for this model (model $\mc{M}_2$) is:

@@ -773,10 +773,10 @@ synth_vol_fit <- function(X,
 
   return(list(w = round(w_mat,3),
               omega_star_hat = round(omega_star_hat_vec, 3),
-              adjusted_pred = adjusted_pred_list, #tk
+              adjusted_pred = adjusted_pred_list,
               garch_pred = round(pred,3),
               ground_truth = round(shock_period_only,3),
-              MSE_adjusted = MSE_adjusted, #tk
+              MSE_adjusted = MSE_adjusted, 
               MSE_unadjusted = round(MSE_unadjusted,3),
               alternative_wins = alternative_wins))
 } #end of synth_vol_fit
