@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex 2021.11.30)  18 MAR 2022 17:53
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex 2021.11.30)  18 MAR 2022 18:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -872,40 +872,49 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 
 Package natbib Warning: Citation `dickey1979distribution' on page 1 undefined o
-n input line 131.
+n input line 129.
 
 
 Package natbib Warning: Citation `dickey1981likelihood' on page 1 undefined on 
-input line 131.
+input line 129.
 
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 1
-42.
+40.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 142.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 140.
  [2] [3] [4] [5]
 [6]
-Underfull \hbox (badness 10000) in paragraph at lines 328--330
+Underfull \hbox (badness 10000) in paragraph at lines 326--328
 
  []
 
-[7] [8] (./synthVolForecast.bbl [9])
+[7] [8] [9] (./synthVolForecast.bbl)
 
 Package natbib Warning: There were undefined citations.
 
 [10] (./synthVolForecast.aux)
-Package rerunfilecheck Info: File `synthVolForecast.out' has not changed.
-(rerunfilecheck)             Checksum: 8A599C4132BD676E9277F99E94D911B3;918.
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `synthVolForecast.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `synthVolForecast.out':
+(rerunfilecheck)             Before: 8A599C4132BD676E9277F99E94D911B3;918
+(rerunfilecheck)             After:  1A233B1D0E12E9D79C34DC69AB8B7DBD;1013.
  ) 
 Here is how much of TeX's memory you used:
- 20817 strings out of 481176
- 381623 string characters out of 5914225
+ 20824 strings out of 481176
+ 381679 string characters out of 5914225
  702837 words of memory out of 5000000
  37268 multiletter control sequences out of 15000+600000
  420276 words of font info for 87 fonts, out of 8000000 for 9000
@@ -932,10 +941,10 @@ ist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fon
 ts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/typ
 e1/public/amsfonts/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
 ic/amsfonts/symbols/msbm10.pfb>
-Output written on synthVolForecast.pdf (10 pages, 277957 bytes).
+Output written on synthVolForecast.pdf (10 pages, 280012 bytes).
 PDF statistics:
- 294 PDF objects out of 1000 (max. 8388607)
- 257 compressed objects within 3 object streams
- 74 named destinations out of 1000 (max. 500000)
+ 302 PDF objects out of 1000 (max. 8388607)
+ 265 compressed objects within 3 object streams
+ 81 named destinations out of 1000 (max. 500000)
  117 words of extra memory for PDF output out of 10000 (max. 10000000)
 

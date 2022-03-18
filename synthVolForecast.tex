@@ -124,8 +124,6 @@ We develop a novel procedure for forecasting the volatility of a time series und
 
 \section{Introduction}
 
-
-
 The most important stochastic phenomenon of many time series $(P_{t})_{t\in\mathbb{N}}$, especially financial time series, is the volatility of the return series of $(P_{t})_{t\in\mathbb{N}}$.  A financial asset's price series and daily return series may exhibit behavior that makes inconvenient and uninterpretable the traditional methods of time series analysis.  In contrast, the volatility of the return series may be less noisy, less structurally dependent on external factors, and more easily modeled as a weakly stationary process.  Yet even if one could model and forecast price series and return series with high accuracy, that would not necessarily tell us much about the variability of such forecasts nor enlighten us about the evolution of the variability of $(P_{t})_{t\in\mathbb{N}}$ over time. Modern portfolio management and theory requires information about at least the first two moments of a return series, if not higher.  For these reasons and others, volatility modeling has come to dominate financial econometrics over the past four decades.  
 
 When $(P_{t})_{t\in\mathbb{N}}$ is positive, as one would expect of a price series, the percentage change over any interval of length $k\in\mathbb{N}$ can be approximated by $\text{log}(\frac{P_{t+k}}{P_{t}})$, owing to the fact that for any nonnegative real number y, $\text{log}(y+1)\leq y$.  Equality holds at exactly y = 0, corresponding to the case where $P_{t+k} = P_{t}$.  It is easily verified that the approximation works well when the ratio $\frac{P_{t+k}}{P_{t}} \in (.85,1.15)$, a return absolute value of $15\%$ or less.  The daily log return series $\text{log}(\frac{P_{t+1}}{P_{t}})$, however, not only provides an approximation to the daily return; the logarithm of a price series has the helpful property of being supported on $\mathbb{R}$.  Partly due to that, it earns a pedigree for its role in geometric Brownian motion, the foundation of much of modern financial mathematics, including the Black-Sholes differential equation \citep{tsay2005analysis}.  Additionally, the log transformation is a tried-and-true variance-reduction technique for heteroskedastic data \citep{faraway2016extending} and non-stationary time series.  In many applications, the log-return of a positive time series will allow us to reject the null of a unit-root process using the methods pioneered in \citet{dickey1979distribution} and \citet{dickey1981likelihood}, thus paving the way for the vast family of autoregressive-moving-average models.
@@ -362,6 +360,17 @@ proof here
 \item Use $\Delta^{2}$, i.e. second difference (of volume, RV, etc) in order to capture the change in the change
 \item Use the result (3.14) from Tsay p. 93, especially in the case of the a pure volatility shock, in which case $\omega^{*}_{i}$ shows up in numerator of expectation.
 \item Emphasize that $\epsilon^{*}_{i,t}$ is a nuisance paramter.  However, there is an important feature of the $\epsilon^{*}_{i,t}$ that requires more thought: does the variance need to be small in order for the estimation of $\omega^{*}_i$ to work?
+\end{enumerate}
+
+\subsection{Factors (parameters) to vary in simulations}
+\begin{enumerate}
+\item Size of donor pool, n: n = c(10,20,40,80,160,640)
+\item Size of $(\alpha, \beta)$.
+\item Three kinds of shock pairs: vol only, level only, dual-shock.
+\item $\mc{M}_{1}$ and $\mc{M}_{21}$ and $\mc{M}_{22}$ 
+\item 3 magnitudes of vol shock, 3 magnitudes of level shock
+\item 5-6 signal to noise ratios
+\item Based on everything above, the number of simulations would be sum(c(10,20,40,80,160,640)) * $(\alpha, \beta)$ * 3 * 3 * 6 = 51,300.
 \end{enumerate}
 
 Notice that $\mc{M}_1$ assumes that $\omega^{*}_i$ are i.i.d. with $\E[ \omega^{*}_i]=\mu_{\omega^{*}}$ 
