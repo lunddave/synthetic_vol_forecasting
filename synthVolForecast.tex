@@ -276,10 +276,10 @@ $\mbf{x}_{i,t}$ are fixed.\footnote{Need to determine what difference it makes t
 % & \text{Alternatively, } (\omega^{*}, \epsilon^{*})_{i} \sim \mathcal{N}(\mu_{\omega^{*},\epsilon^{*}}, \Sigma_{\omega^{*},\epsilon^{*}}) \\
 % THESE ARE NOT RANDOM &(\alpha, \beta)_i \simiid \mc{F}_{(\alpha, \beta)} \text{ where } \sum^{ \text{max} \{m,s \} }_{j}\alpha_j + \beta_j < 1 \\
    \gamma_i &\simiid \mc{F}_{\gamma} \text{ with }  \; \mrm{E}_{\mc{F}_{\gamma}}(\gamma_i) = \mu_{\gamma}, \mrm{Var}_{\mc{F}_{\gamma}}(\gamma_i)  = \Sigma^2_{\gamma} \\
-   \mathbf{v}_i &\simiid \mc{F}_{\mathbf{v}} \text{ with }  \; \mrm{E}_{\mc{F}_{\mathbf{v}}}(\mathbf{v}_i) = \mu_{\mathbf{v}}, \mrm{Var}_{\mc{F}_{\mathbf{v}}}(\mathbf{v}_i)  = \Sigma^2_{\mathbf{v}} \\
+% \mathbf{v}_i &\simiid \mc{F}_{\mathbf{v}} \text{ with }  \; \mrm{E}_{\mc{F}_{\mathbf{v}}}(\mathbf{v}_i) = \mu_{\mathbf{v}}, \mrm{Var}_{\mc{F}_{\mathbf{v}}}(\mathbf{v}_i)  = \Sigma^2_{\mathbf{v}} \\
 \varepsilon_{i,t} & \simiid  \mc{F}_{\varepsilon} \text{ with }  \; \mrm{E}_{\mc{F}_{\varepsilon}}(\varepsilon_{i,t}) = 0, \mrm{Var}_{\mc{F}_{\varepsilon}}(\varepsilon_{i,t})  = 1 \\
-l_{i,vol} &\simiid \text{Unif}\{1,2,...,\text{maximum volatility shock length}\}\\
-l_{i, level} &\simiid \text{Unif}\{1,2,...,l_{i,vol}\}\\
+%l_{i,vol} &\simiid \text{Unif}\{1,2,...,\text{maximum volatility shock length}\}\\
+%l_{i, level} &\simiid \text{Unif}\{1,2,...,l_{i,vol}\}\\
 \omega^{*}_i &\indep  (\alpha, \beta)_i \indep \gamma_i \indep \varepsilon_{i,t}.
 \end{align*}
 
@@ -344,33 +344,33 @@ proof here
 \item The level shock $\epsilon^{*}$ will require a similar $(\alpha, \beta)$ structure more so than a volatility shock alone
 \item In the case of a pure level shock, if the shock length is just one, a convex combination of the $a^{2}_{T^{*}+1}$ may outperform all other methods.  This would make sense because a GARCH model can be reparamaterized as an ARMA on the sequence $a^{2}_{t}$.
 \item Sensitivity analysis: take only the convex hull approach and look at all $2^{p }- 1$ non-empty subsets of the covariates. For the larger cardinality subsets, do we see big differences in 1) convex combs, 2) predictions?
+\item The variance of the level shock needs to be small, i.e. the variation of the level shocks across the donors needs to be small, in order for the estimation of $\omega^{*}_i$ to work.
 \end{enumerate}
 
 \subsection{To do}
 \begin{enumerate}
-\item Consider $\mc{M}_{21}$ and $\mc{M}_{22}$, which have $\omega^{*}_{i} = \mu_{\omega^{*}} + \delta^{T}X_{i, T^{*}}$
 \item Use a more realistic shock distribution, e.g. skewed t or skewed Laplace
 \item Use bivariate distribution for the level and volatility shocks.
 \item Add an intercept to optimization process.
-\item Clean up docstring of simulation file.
-\item Clean up output in simulations, in particular signal-to-noise ratio.
+\item Clean up docstring in simulation file as well as signal-to-noise ratio, i.e. output.
 \item Do I need a decaying shock?  For vol, for level?
-\item Do i need shocks in covariates? 
+\item Do I need shocks in covariates? 
 \item At the money options less biased.
 \item Use $\Delta^{2}$, i.e. second difference (of volume, RV, etc) in order to capture the change in the change
 \item Use the result (3.14) from Tsay p. 93, especially in the case of the a pure volatility shock, in which case $\omega^{*}_{i}$ shows up in numerator of expectation.
-\item Emphasize that $\epsilon^{*}_{i,t}$ is a nuisance paramter.  However, there is an important feature of the $\epsilon^{*}_{i,t}$ that requires more thought: does the variance need to be small in order for the estimation of $\omega^{*}_i$ to work?
+\item Emphasize that $\epsilon^{*}_{i,t}$ is a nuisance parameter.  
 \end{enumerate}
 
 \subsection{Factors (parameters) to vary in simulations}
 \begin{enumerate}
-\item Size of donor pool, n: n = c(10,20,40,80,160,640)
-\item Size of $(\alpha, \beta)$.
+\item Size of donor pool, n: n = c(10,30,90)
+\item Size of $(\alpha, \beta)$, perhaps 6 pairs?
 \item Three kinds of shock pairs: vol only, level only, dual-shock.
 \item $\mc{M}_{1}$ and $\mc{M}_{21}$ and $\mc{M}_{22}$ 
 \item 3 magnitudes of vol shock, 3 magnitudes of level shock
 \item 5-6 signal to noise ratios
-\item Based on everything above, the number of simulations would be sum(c(10,20,40,80,160,640)) * $(\alpha, \beta)$ * 3 * 3 * 6 = 51,300.
+\item 2 lengths for level shock, 2 lengths for vol shock
+\item Based on everything above, the number of simulations would be sum(c(10,30,90)) * 6 * 3 * 3 * 9 * 6 = 2.7million .
 \end{enumerate}
 
 Notice that $\mc{M}_1$ assumes that $\omega^{*}_i$ are i.i.d. with $\E[ \omega^{*}_i]=\mu_{\omega^{*}}$ 
@@ -390,12 +390,16 @@ for $i = 1, \ldots, n+1$. We also consider a model where the shock effects are l
 
 \begin{align*}
 \omega^{*}_i &\simiid \mc{F}_{\omega^{*}} \text{ with }  \; \mrm{E}_{\mc{F}_{\omega^{*}}}(\omega^{*}_i) = \mu_{\omega^{*}}, \mrm{Var}_{\mc{F}_{\omega^{*}}}(\omega^{*}_i)  = \sigma^2_{\omega^{*}}  \\
-(\alpha, \beta)_i &\simiid \mc{F}_{(\alpha, \beta)} \text{ where } \sum^{ \text{max} \{m,s \} }_{j}\alpha_j + \beta_j < 1 \\
+\epsilon^{*}_i &\simiid \mc{F}_{\epsilon^{*}} \text{ with }  \; \mrm{E}_{\mc{F}_{\epsilon^{*}}}(\epsilon^{*}_i) = \mu_{\epsilon^{*}}, \mrm{Var}_{\mc{F}_{\epsilon^{*}}}(\epsilon^{*}_i)  = \sigma^2_{\epsilon^{*}}  \\
+% & \text{Alternatively, } (\omega^{*}, \epsilon^{*})_{i} \sim \mathcal{N}(\mu_{\omega^{*},\epsilon^{*}}, \Sigma_{\omega^{*},\epsilon^{*}}) \\
+% THESE ARE NOT RANDOM &(\alpha, \beta)_i \simiid \mc{F}_{(\alpha, \beta)} \text{ where } \sum^{ \text{max} \{m,s \} }_{j}\alpha_j + \beta_j < 1 \\
    \gamma_i &\simiid \mc{F}_{\gamma} \text{ with }  \; \mrm{E}_{\mc{F}_{\gamma}}(\gamma_i) = \mu_{\gamma}, \mrm{Var}_{\mc{F}_{\gamma}}(\gamma_i)  = \Sigma^2_{\gamma} \\
-   \mathbf{v}_i &\simiid \mc{F}_{\mathbf{v}} \text{ with }  \; \mrm{E}_{\mc{F}_{\mathbf{v}}}(\mathbf{v}_i) = \mu_{\mathbf{v}}, \mrm{Var}_{\mc{F}_{\mathbf{v}}}(\mathbf{v}_i)  = \Sigma^2_{\mathbf{v}} \\
-\varepsilon_{i,t} & \simiid  \mc{F}_{\varepsilon} \text{ with }  \; \mrm{E}_{\mc{F}_{\varepsilon}}(\varepsilon_{i,t}) = 0, \mrm{Var}_{\mc{F}_{\varepsilon}}(\varepsilon_{i,t})  = 1 \\
 \delta_i &\simiid \mc{F}_{\delta} \text{ with }  \; \mrm{E}_{\mc{F}_{\delta}(\delta_i)} = \mu_{\delta}, \mrm{Var}_{\mc{F}_{\delta^{*}}}(\delta_i)  = \sigma^{2}_{\delta} \\
-\omega^{*}_i &\indep  (\alpha, \beta)_i \indep \gamma_i \indep \varepsilon_{i,t} \indep \delta_{i}.
+% \mathbf{v}_i &\simiid \mc{F}_{\mathbf{v}} \text{ with }  \; \mrm{E}_{\mc{F}_{\mathbf{v}}}(\mathbf{v}_i) = \mu_{\mathbf{v}}, \mrm{Var}_{\mc{F}_{\mathbf{v}}}(\mathbf{v}_i)  = \Sigma^2_{\mathbf{v}} \\
+\varepsilon_{i,t} & \simiid  \mc{F}_{\varepsilon} \text{ with }  \; \mrm{E}_{\mc{F}_{\varepsilon}}(\varepsilon_{i,t}) = 0, \mrm{Var}_{\mc{F}_{\varepsilon}}(\varepsilon_{i,t})  = 1 \\
+%l_{i,vol} &\simiid \text{Unif}\{1,2,...,\text{maximum volatility shock length}\}\\
+%l_{i, level} &\simiid \text{Unif}\{1,2,...,l_{i,vol}\}\\
+\omega^{*}_i &\indep  (\alpha, \beta)_i \indep \gamma_i \indep \varepsilon_{i,t}.
 \end{align*}
 
 We further define 

@@ -207,7 +207,9 @@ synth_vol_sim <- function(n,
             (sigma_x**2) * (sigma_eps_star**2)
     }
     
-    else {level_shock_vec[i] <- rnorm(1, 0, sigma_GARCH_innov); level_shock_mean <- 0; level_shock_var <- sigma_GARCH_innov**2}
+    else {level_shock_vec[i] <- rnorm(1, 0, sigma_GARCH_innov); 
+                                level_shock_mean <- 0; 
+                                level_shock_var <- sigma_GARCH_innov**2}
     
     #Vol model
     if (vol_model == 'M1'){
@@ -243,8 +245,8 @@ synth_vol_sim <- function(n,
       #What's the variance of this sum?
       
       vol_shock_mean <- mu_omega_star 
-      vol_shock_var <- vol_shock_sd**2 + (sigma_x**2) * (M21_M22_shock_sd**2)
-      
+      vol_shock_var <- vol_shock_sd**2 + p * ( (M21_M22_shock_sd**2) ) #variance of linear combination of 
+                                                                       #random variables, where a_i are fixed
       shock_indicator <- c(
         rep(0, shock_time_vec[i]), 
         rep(vol_shock_vec[i], vol_shock_length[i]), 
@@ -265,12 +267,14 @@ synth_vol_sim <- function(n,
     }
     
     else if (vol_model == 'M22') { 
-      vol_shock_vec[i] <- rnorm(1, mu_omega_star, vol_shock_sd)
-        as.numeric(as.matrix(VAR_process[shock_time_vec[i],])) %*% rnorm(p,M21_M22_mu_omega_star,M21_M22_shock_sd) 
+      delta <- rnorm(p, M21_M22_mu_omega_star, M21_M22_shock_sd) 
+      
+      vol_shock_vec[i] <- rnorm(1, mu_omega_star, vol_shock_sd) + 
+        as.numeric(as.matrix(VAR_process[shock_time_vec[i],])) %*% delta
            #What's the variance of this sum?
       
-      vol_shock_mean <- mu_omega_star 
-      vol_shock_var <- vol_shock_sd**2 + (sigma_x**2) * (M21_M22_shock_sd**2)
+      vol_shock_mean <- mu_omega_star + p * M21_M22_mu_omega_star
+      vol_shock_var <- vol_shock_sd**2 + p * ( (sigma_x**2) * (M21_M22_shock_sd**2) )
       
       shock_indicator <- c(
         rep(0, shock_time_vec[i]), 
@@ -295,8 +299,8 @@ synth_vol_sim <- function(n,
 
       #Create volatility shock w*
       vol_shock_vec[i] <- rnorm(1, 0, sigma_GARCH_innov)
-      vol_shock_mean <- 0
-      vol_shock_var <- 0
+      vol_shock_mean <- NA
+      vol_shock_var <- NA
         
         #Now add the design matrix to the list X
         X[[i]] <- VAR_process
@@ -429,7 +433,7 @@ output <- synth_vol_sim(n = inputted_n,
                         asymmetry_param = c(.15),
                         
                         level_model = c('M1','M21','M22','none')[4],
-                        vol_model = c('M1','M21','M22','none')[3],
+                        vol_model = c('M1','M21','M22','none')[1],
                         
                         sigma_GARCH_innov = 1, # this is the sd that goes into rnorm
                         sigma_x = 1, 
@@ -444,11 +448,11 @@ output <- synth_vol_sim(n = inputted_n,
                         M22_mu_eps_star = .3, 
                         sigma_eps_star = .5,
                         
-                        mu_omega_star = .18,
+                        mu_omega_star = .06,
                         vol_shock_sd = .03,
                         
-                        M21_M22_mu_omega_star = .6,
-                        M21_M22_shock_sd = .03,
+                        M21_M22_mu_omega_star = .02,
+                        M21_M22_shock_sd = .01,
                         
                         level_GED_alpha = .05 * sqrt(2), 
                         level_GED_beta = 1.8)
@@ -590,7 +594,6 @@ dbw <- function(X,
                             eqB = 0,
                             LB = lower_bound, UB = upper_bound, control = list(trace = 0))
   return(object_to_return$pars)
-  #I added the return statement because an implicit return is bad coding form
   
 } #end dbw function
 #############################################################################
