@@ -189,9 +189,9 @@ synth_vol_sim <- function(n,
                alpha = level_GED_alpha, 
                beta = level_GED_beta) #What's the variance of this sum?
       
-      level_shock_mean <- mu_eps_star 
+      level_shock_mean <- mu_eps_star + p * M21_M22_mu_omega_star
       level_shock_var <- ((level_GED_alpha)**2) * gamma(3/level_GED_beta) / (gamma(1/level_GED_beta)) + # https://search.r-project.org/CRAN/refmans/gnorm/html/gnorm.html
-        (sigma_x**2) * (sigma_eps_star**2)
+        p * ((sigma_x**2) * (sigma_eps_star**2))
     }
     
     else if (level_model == 'M22') { 
@@ -218,6 +218,7 @@ synth_vol_sim <- function(n,
       vol_shock_vec[i] <- rnorm(1, mu_omega_star, vol_shock_sd)
       vol_shock_mean <- mu_omega_star 
       vol_shock_var <- vol_shock_sd**2
+      vol_shock_kurtosis <- 0
       
       shock_indicator <- c(
         rep(0, shock_time_vec[i]), 
@@ -247,6 +248,8 @@ synth_vol_sim <- function(n,
       vol_shock_mean <- mu_omega_star 
       vol_shock_var <- vol_shock_sd**2 + p * ( (M21_M22_shock_sd**2) ) #variance of linear combination of 
                                                                        #random variables, where a_i are fixed
+      vol_shock_kurtosis <- 0
+      
       shock_indicator <- c(
         rep(0, shock_time_vec[i]), 
         rep(vol_shock_vec[i], vol_shock_length[i]), 
@@ -301,6 +304,7 @@ synth_vol_sim <- function(n,
       vol_shock_vec[i] <- rnorm(1, 0, sigma_GARCH_innov)
       vol_shock_mean <- NA
       vol_shock_var <- NA
+      vol_shock_kurtosis <- NA
         
         #Now add the design matrix to the list X
         X[[i]] <- VAR_process
@@ -337,7 +341,6 @@ synth_vol_sim <- function(n,
   
   ## Compute summary statistics for output
   level_shock_kurtosis <- gamma(5/level_GED_beta)*gamma(1/level_GED_beta)/( (gamma(3/level_GED_beta))**2 ) - 3 #https://en.wikipedia.org/wiki/Generalized_normal_distribution
-  vol_shock_kurtosis <- -9999
   
   T_star_sigma <- Y[[1]][,3][shock_time_vec[1],]
   T_star_plus_1_sigma <- Y[[1]][,3][shock_time_vec[1]+1,]
@@ -413,8 +416,9 @@ synth_vol_sim <- function(n,
                                      ", vol shock = ", 
                                      round(vol_shock_vec[i],2),
                                      '\n shock est = ', round(xreg[i,1],3), ', pval = ',round(xreg[i,2],3),
-                                     sep = ''), ylab = 'Sigma^2')
+                                     sep = ''), ylab = '')
     abline(v = shock_time_vec[i] + 1, col = 'red')
+    title(ylab = expression(sigma^2), line = 2.05, cex.lab = 1.99)
   }
   
   #Items to return in a list
@@ -432,7 +436,7 @@ output <- synth_vol_sim(n = inputted_n,
                         garch_param = c(.4),
                         asymmetry_param = c(.15),
                         
-                        level_model = c('M1','M21','M22','none')[4],
+                        level_model = c('M1','M21','M22','none')[1],
                         vol_model = c('M1','M21','M22','none')[1],
                         
                         sigma_GARCH_innov = 1, # this is the sd that goes into rnorm
@@ -444,7 +448,7 @@ output <- synth_vol_sim(n = inputted_n,
                         a = 90, 
                         b = 150, 
                         
-                        mu_eps_star = -9.25,
+                        mu_eps_star = -4.25,
                         M22_mu_eps_star = .3, 
                         sigma_eps_star = .5,
                         
