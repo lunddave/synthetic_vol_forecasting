@@ -278,6 +278,7 @@ synth_vol_sim <- function(n,
       
       vol_shock_mean <- mu_omega_star + p * M21_M22_mu_omega_star
       vol_shock_var <- vol_shock_sd**2 + p * ( (sigma_x**2) * (M21_M22_shock_sd**2) )
+      vol_shock_kurtosis <- 0
       
       shock_indicator <- c(
         rep(0, shock_time_vec[i]), 
@@ -428,16 +429,17 @@ synth_vol_sim <- function(n,
 # Here is the length of the vol shock we will use
 inputted_n <- 8
 inputted_vol_shock_length <- rdunif(inputted_n+1, 4, 7)
+inputted_vol_shock_length <- rep(1, inputted_n+1)
 
 output <- synth_vol_sim(n = inputted_n, 
                         p = 9, 
                         model = c(1,1,1),
-                        arch_param = c(.1),
+                        arch_param = c(.4),
                         garch_param = c(.4),
                         asymmetry_param = c(.15),
                         
-                        level_model = c('M1','M21','M22','none')[1],
-                        vol_model = c('M1','M21','M22','none')[1],
+                        level_model = c('M1','M21','M22','none')[4],
+                        vol_model = c('M1','M21','M22','none')[3],
                         
                         sigma_GARCH_innov = 1, # this is the sd that goes into rnorm
                         sigma_x = 1, 

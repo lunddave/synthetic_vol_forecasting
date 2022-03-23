@@ -360,6 +360,8 @@ However, since it is not known a priori for which $t$ the effect $\omega_{i}^{*}
 \item In the case of a pure level shock, if the shock length is just one, a convex combination of the $a^{2}_{T^{*}+1}$ may outperform all other methods.  This would make sense because a GARCH model can be reparamaterized as an ARMA on the sequence $a^{2}_{t}$.
 \item Sensitivity analysis: take only the convex hull approach and look at all $2^{p }- 1$ non-empty subsets of the covariates. For the larger cardinality subsets, do we see big differences in 1) convex combs, 2) predictions?
 \item The variance of the level shock needs to be small, i.e. the variation of the level shocks across the donors needs to be small, in order for the estimation of $\omega^{*}_i$ to work.
+\item A volatility shock longer than 1 trading session should we much less necessary is $\alpha + \beta \approx 1$, i.e. if the process is slowly decaying.
+\item A level shock at $T^{*}+1$ may hinder estimation of $w^{*}$ because its expected moments will be much larger than those of $\epsilon_{i,t}$, i.e. it will be an outlier.
 \end{enumerate}
 
 \subsection{To do}
@@ -384,7 +386,7 @@ However, since it is not known a priori for which $t$ the effect $\omega_{i}^{*}
 \item 3 magnitudes of vol shock, 3 magnitudes of level shock
 \item 5-6 signal to noise ratios
 \item 2 lengths for level shock, 2 lengths for vol shock
-\item # of seeds
+\item number of seeds used in simulations
 \item Based on everything above, the number of simulations would be sum(c(10,30,90)) * 6 * 3 * 3 * 9 * 6 = 2.7million .
 \end{enumerate}
 
