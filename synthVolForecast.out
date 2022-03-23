@@ -8,7 +8,8 @@
 \BOOKMARK [2][-]{subsection.2.3}{Aggregation Mechanism}{section.2}% 8
 \BOOKMARK [2][-]{subsection.2.4}{Model setup}{section.2}% 9
 \BOOKMARK [3][-]{subsubsection.2.4.1}{Volatility Shock Model}{subsection.2.4}% 10
-\BOOKMARK [2][-]{subsection.2.5}{Improvements of this current work over its predecessor}{section.2}% 11
-\BOOKMARK [2][-]{subsection.2.6}{Hypotheses}{section.2}% 12
-\BOOKMARK [2][-]{subsection.2.7}{To do}{section.2}% 13
-\BOOKMARK [2][-]{subsection.2.8}{Factors \(parameters\) to vary in simulations}{section.2}% 14
+\BOOKMARK [2][-]{subsection.2.5}{Why not parameterize the volatility shock as a change in coefficients}{section.2}% 11
+\BOOKMARK [2][-]{subsection.2.6}{Improvements of this current work over its predecessor}{section.2}% 12
+\BOOKMARK [2][-]{subsection.2.7}{Hypotheses}{section.2}% 13
+\BOOKMARK [2][-]{subsection.2.8}{To do}{section.2}% 14
+\BOOKMARK [2][-]{subsection.2.9}{Factors \(parameters\) to vary in simulations}{section.2}% 15
