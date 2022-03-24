@@ -18,13 +18,18 @@ spec <- ugarchspec(mean.model = list(armaOrder = c(0, 0),
                                      include.mean = FALSE), 
                                       variance.model = 
                      list(model = 'realGARCH', garchOrder = c(1, 1)))
-fit <- ugarchfit(spec, out.sample = 25, spyreal[, 1] * 100, 
+# fit <- ugarchfit(spec, out.sample = 25, spyreal[, 1] * 100, 
+#                  solver = 'hybrid', 
+#                  realizedVol = spyreal[,2] * 100)
+
+fit <- ugarchfit(spec, spyreal[, 1] * 100, 
                  solver = 'hybrid', 
                  realizedVol = spyreal[,2] * 100)
 
 spec
 fit
 
+tail(spyreal)
 tail(sigma(fit))
 tail(fitted(fit))
 
@@ -36,6 +41,10 @@ fc1 <- ugarchforecast(fit, data = as.matrix(1),
                      n.roll = 10, 
                      #out.sample = 2
                      )
+
+fc1 <- ugarchforecast(fit, data = as.matrix(1), 
+                      n.ahead = 5
+)
 
 # What is out.sample?
 # Optional. If a specification object is supplied, indicates how many data points 
@@ -51,7 +60,7 @@ fit <- ugarchfit(spec, spyreal[, 1] * 100,
                  solver = 'hybrid', 
                  realizedVol = spyreal[,2] * 100)
 fc2 <- ugarchforecast(fit, data = as.matrix(10,12,13), 
-                      n.ahead = 15)
+                      n.ahead = 5)
 fc2
 fc2@forecast$realizedFor
 plot.ts(fc2@forecast$realizedFor)
