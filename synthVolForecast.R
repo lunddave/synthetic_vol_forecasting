@@ -12,7 +12,6 @@ library(RColorBrewer)
 library(DescTools)
 
 options(scipen = 7)
-#set.seed(2022)
 
 #####################################################################
 
@@ -25,7 +24,7 @@ synth_vol_sim <- function(n,
                           model = NULL,
                           arch_param, 
                           garch_param,
-                          asymmetry_param,
+                          asymmetry_param = c(),
                           level_model, 
                           vol_model,
                           sigma_GARCH_innov, 
@@ -36,13 +35,13 @@ synth_vol_sim <- function(n,
                           vol_shock_length,
                           a, 
                           b, 
-                          mu_eps_star, 
-                          M22_mu_eps_star, 
-                          sigma_eps_star,
-                          mu_omega_star, 
-                          vol_shock_sd,
+                          mu_eps_star,
+                          M21_M22_mu_delta,
+                          M21_M22_level_sd_delta,
+                          mu_omega_star,
                           M21_M22_mu_omega_star,
-                          M21_M22_shock_sd,
+                          vol_shock_sd,
+                          M21_M22_vol_sd_delta,
                           level_GED_alpha,
                           level_GED_beta,
                           ...){
@@ -56,29 +55,55 @@ synth_vol_sim <- function(n,
   # in the series.
   # --Input:
   #   --n - number of donors (scalar)
+  #   --model - model order for a parameters to be simulated (optional).  
+  #     If specified, then arch, garch parameter values overridden.
   #   --p - number of covariates (scalar)
   #   --arch parameters (vector of length 0 or more)
   #   --garch parameters (vector of length 0 or more)
+  #   --asymmetry_param (vector of length 0 or more)
   #   --level_model - model for level of the shock (string)
   #   --vol_model - model for volatility of the shock (string)
   #   --sigma_GARCH_innov (scalar)
   #   --sigma_x - sigma of innovations in covariates (scalar)
+  #   --min_shock_time - the minimum number of points after the min series length 'a' that the shock can occur at
   #   --shock_time_vec - optional input to force shock times (vector of integers)
   #   --level_shock_length (scalar)
   #   --vol_shock_length (scalar)
   #   --a - minumum series length (scalar)
   #   --b - maximum series length (scalar)
-  #   --mu_eps_star - intercept of level shock for M1 model
-  #   --M22_mu_eps_star - intercept of level shock for M22 model
-  #   --sigma_eps_star - variance of level shock for all level shocks
+  
+  #   --mu_eps_star - intercept for each of the level shock models
+  #   --M21_M22_mu_delta - mean of delta for M21, M22 level models
+  #   --M21_M22_level_sd_delta - sd of the vector delta in M21 and M22 level models
+  
   #   --mu_omega_star - intercept of vol shock for M1 model
-  #   --M21_M22_mu_omega_star - intercept of vol shock for M22 model
-  #   --vol_shock_sd - variance of level shock for all vol shocks
+  #   --M21_M22_mu_omega_star - mean of delta for M21, M22 vol models
+  #   --vol_shock_sd - variance of the error in all volatility models
+  #   --M21_M22_vol_sd_delta - sd of the vector delta in M21 and M22 vol models
+  
   #   --level_GED_alpha - alpha parameter for level shock stochastic term
   #   --level_GED_beta - beta parameter for level shock stochastic term
 
   #Simulate series lengths
   Tee <- rdunif(n+1, a, b)
+  
+  # Now we determine how to construct the vol shock lengths
+  # If the user inputted a scalar, we make the vol shock lengths all equal to that scalar
+  # else, we use the two numbers (a,b) to construct a discrete uniform on (a,b)
+  
+  if (length(vol_shock_length) > 1) {
+    vol_shock_length <- rdunif(n+1, vol_shock_length[1], vol_shock_length[2])
+  }
+  else {vol_shock_length <- rep(vol_shock_length, n+1)}
+  
+  # Now we determine how to construct the level shock lengths
+  # If the user inputted a scalar, we make the level shock lengths all equal to that scalar
+  # else, we use the two numbers (a,b) to construct a discrete uniform on (a,b)
+  
+  if (length(level_shock_length) > 1) {
+    vol_shock_length <- rdunif(n+1, level_shock_length[1], level_shock_length[2])
+  }
+  else {level_shock_length <- rep(level_shock_length, n+1)}
   
   #Before we simulate shock time, we make sure each series has enough points 
   #following the shock time
@@ -92,7 +117,7 @@ synth_vol_sim <- function(n,
         {
           #Note: the T* must be at least 'max_of_shock_lengths' after T*
           #Also, shock must come from point 30 onward.
-          shock_time_vec[i] <- rdunif(1, min_shock_time, Tee[i] - max_of_shock_lengths) 
+          shock_time_vec[i] <- rdunif(1, a + min_shock_time, Tee[i] - max_of_shock_lengths) 
         }
   }
   
@@ -134,8 +159,13 @@ synth_vol_sim <- function(n,
   xreg <- c()
   
   #Create M21 level and M21 vol cross donor random effects vectors
-  M21_level_cross_donor_random_effect <- rnorm(p, M21_M22_mu_omega_star, M21_M22_shock_sd) 
-  M21_vol_cross_donor_random_effect <- rnorm(p, M21_M22_mu_omega_star, M21_M22_shock_sd) 
+  M21_level_cross_donor_random_effect <- rnorm(p, M21_M22_mu_delta, M21_M22_level_sd_delta) 
+  M21_vol_cross_donor_random_effect <- rnorm(p, M21_M22_mu_omega_star, M21_M22_vol_sd_delta) 
+  
+  if ( is.null(model) == FALSE)
+    {
+    cat('Since you have entered a model order (m,s,a), we ignore the specified parameters and instead generate parameters randomly for each series.\n')
+  }
   
   # For each of n+1 series...
   for (i in 1:(n+1)){
@@ -155,9 +185,6 @@ synth_vol_sim <- function(n,
     #the parameters.
     if ( is.null(model) == FALSE){
       
-      print('Since you have entered a model (m,s,a), we ignore the specified \n
-          parameters and instead generate them randomly for each series.')
-      
       length_arch_param <- model[1]
       length_garch_param <- model[2]
       length_asymmetry_param <- model[3]
@@ -166,6 +193,9 @@ synth_vol_sim <- function(n,
       garch_param <- runif(length_garch_param, 0, 1) / (length_arch_param + length_garch_param + 1)
       asymmetry_param <- runif(length_asymmetry_param, 0, 1) / (length_asymmetry_param + 1)
     }
+    
+    #Now we save the GARCH order so that we can output it at the function's end
+    garch_order <- c(length(garch_param), length(arch_param), length(asymmetry_param))
     
     #Level model
     if (level_model == 'M1'){
@@ -178,7 +208,6 @@ synth_vol_sim <- function(n,
           
           level_shock_mean <- mu_eps_star             
           level_shock_var <- ((level_GED_alpha)**2) * gamma(3/level_GED_beta) / (gamma(1/level_GED_beta)) # https://search.r-project.org/CRAN/refmans/gnorm/html/gnorm.html
-                      
     } 
     
     else if (level_model == 'M21') { 
@@ -187,24 +216,24 @@ synth_vol_sim <- function(n,
         rgnorm(1, 
                mu = 0, 
                alpha = level_GED_alpha, 
-               beta = level_GED_beta) #What's the variance of this sum?
+               beta = level_GED_beta)
       
-      level_shock_mean <- mu_eps_star + p * M21_M22_mu_omega_star
+      level_shock_mean <- mu_eps_star + p * M21_M22_mu_delta
       level_shock_var <- ((level_GED_alpha)**2) * gamma(3/level_GED_beta) / (gamma(1/level_GED_beta)) + # https://search.r-project.org/CRAN/refmans/gnorm/html/gnorm.html
-        p * ((sigma_x**2) * (sigma_eps_star**2))
+        p * ((sigma_x**2) * (M21_M22_level_sd_delta**2))
     }
     
     else if (level_model == 'M22') { 
           level_shock_vec[i] <- mu_eps_star + 
-                                as.numeric(as.matrix(VAR_process[shock_time_vec[i],])) %*% rnorm(p,M22_mu_eps_star,sigma_eps_star) + 
+                                as.numeric(as.matrix(VAR_process[shock_time_vec[i],])) %*% rnorm(p,M21_M22_mu_delta,sigma_eps_star) + 
                                 rgnorm(1, 
                                        mu = 0, 
                                        alpha = level_GED_alpha, 
                                        beta = level_GED_beta) #What's the variance of this sum?
           
-          level_shock_mean <- mu_eps_star 
+          level_shock_mean <- mu_eps_star + p * M21_M22_mu_delta
           level_shock_var <- ((level_GED_alpha)**2) * gamma(3/level_GED_beta) / (gamma(1/level_GED_beta)) + # https://search.r-project.org/CRAN/refmans/gnorm/html/gnorm.html
-            (sigma_x**2) * (sigma_eps_star**2)
+            p * (sigma_x**2) * (M21_M22_level_sd_delta**2)
     }
     
     else {level_shock_vec[i] <- rnorm(1, 0, sigma_GARCH_innov); 
@@ -228,12 +257,13 @@ synth_vol_sim <- function(n,
       #Now add the design matrix to the list X
       X[[i]] <- VAR_process
       
-      #Create GARCH model with shock(s)
+      #Create innovation vector with shocks that begin at shock_time_vec[i] + 1
       GARCH_innov_vec <- c(
         rnorm(shock_time_vec[i], 0, sigma_GARCH_innov), 
-        level_shock_vec[i],
-        rnorm(Tee[i] - shock_time_vec[i] - 1, 0, sigma_GARCH_innov))
+        rep(level_shock_vec[i], level_shock_length[i]),
+        rnorm(Tee[i] - shock_time_vec[i] - level_shock_length[i], 0, sigma_GARCH_innov))
     
+      #Create the GARCH process using the innovation vector just created
       Y[[i]] <- garchxSim(Tee[i], arch = arch_param, garch = garch_param, 
                           asym = asymmetry_param,
                           xreg =  as.matrix(shock_indicator),
@@ -246,8 +276,7 @@ synth_vol_sim <- function(n,
       #What's the variance of this sum?
       
       vol_shock_mean <- mu_omega_star 
-      vol_shock_var <- vol_shock_sd**2 + p * ( (M21_M22_shock_sd**2) ) #variance of linear combination of 
-                                                                       #random variables, where a_i are fixed
+      vol_shock_var <- vol_shock_sd**2 + p * ( (sigma_x**2) * (M21_M22_vol_sd_delta**2) )                                                             #random variables, where a_i are fixed
       vol_shock_kurtosis <- 0
       
       shock_indicator <- c(
@@ -258,11 +287,13 @@ synth_vol_sim <- function(n,
       #Now add the design matrix to the list X
       X[[i]] <- VAR_process
       
-      #Create GARCH model with shock(s)
+      #Create innovation vector with shocks that begin at shock_time_vec[i] + 1
       GARCH_innov_vec <- c(
         rnorm(shock_time_vec[i], 0, sigma_GARCH_innov), 
-        level_shock_vec[i],
-        rnorm(Tee[i] - shock_time_vec[i] - 1, 0, sigma_GARCH_innov))
+        rep(level_shock_vec[i], level_shock_length[i]),
+        rnorm(Tee[i] - shock_time_vec[i] - level_shock_length[i], 0, sigma_GARCH_innov))
+      
+      #Create the GARCH process using the innovation vector just created
       Y[[i]] <- garchxSim(Tee[i], arch = arch_param, garch = garch_param, 
                           asym = asymmetry_param,
                           xreg =  as.matrix(shock_indicator),
@@ -270,14 +301,13 @@ synth_vol_sim <- function(n,
     }
     
     else if (vol_model == 'M22') { 
-      delta <- rnorm(p, M21_M22_mu_omega_star, M21_M22_shock_sd) 
+      delta <- rnorm(p, M21_M22_mu_omega_star, M21_M22_vol_sd_delta) 
       
       vol_shock_vec[i] <- rnorm(1, mu_omega_star, vol_shock_sd) + 
         as.numeric(as.matrix(VAR_process[shock_time_vec[i],])) %*% delta
-           #What's the variance of this sum?
       
       vol_shock_mean <- mu_omega_star + p * M21_M22_mu_omega_star
-      vol_shock_var <- vol_shock_sd**2 + p * ( (sigma_x**2) * (M21_M22_shock_sd**2) )
+      vol_shock_var <- vol_shock_sd**2 + p * ( (sigma_x**2) * (M21_M22_vol_sd_delta**2) )
       vol_shock_kurtosis <- 0
       
       shock_indicator <- c(
@@ -288,11 +318,13 @@ synth_vol_sim <- function(n,
       #Now add the design matrix to the list X
       X[[i]] <- VAR_process
       
-      #Create GARCH model with shock(s)
+      #Create innovation vector with shocks that begin at shock_time_vec[i] + 1
       GARCH_innov_vec <- c(
         rnorm(shock_time_vec[i], 0, sigma_GARCH_innov), 
-        level_shock_vec[i],
-        rnorm(Tee[i] - shock_time_vec[i] - 1, 0, sigma_GARCH_innov))
+        rep(level_shock_vec[i], level_shock_length[i]),
+        rnorm(Tee[i] - shock_time_vec[i] - level_shock_length[i], 0, sigma_GARCH_innov))
+      
+      #Create the GARCH process using the innovation vector just created
       Y[[i]] <- garchxSim(Tee[i], arch = arch_param, garch = garch_param, 
                           asym = asymmetry_param,
                           xreg =  as.matrix(shock_indicator),
@@ -315,6 +347,7 @@ synth_vol_sim <- function(n,
         Y[[i]] <- garchxSim(Tee[i], arch = arch_param, garch = garch_param, 
                             asym = asymmetry_param,
                             innovations = GARCH_innov_vec, verbose = TRUE) 
+        
     } #end conditionals that create vol shocks
     
     T_star_plus_1_return_vec[i] <- Y[[i]][,1][shock_time_vec[i]+1,]
@@ -378,7 +411,8 @@ synth_vol_sim <- function(n,
       'Vol Shock mean:', round(vol_shock_mean,2), ' \n',
       'Vol Shock variance:', round(vol_shock_var,4), '\n',
       'Vol Signal to Noise:', abs(round(vol_shock_mean / sqrt(vol_shock_var),3)) , '\n',
-      'Vol Shock excess kurtosis:', round(vol_shock_kurtosis, 2)
+      'Vol Shock excess kurtosis:', round(vol_shock_kurtosis, 2),
+      '\n'
       )
   
   #Plot the donors
@@ -423,88 +457,8 @@ synth_vol_sim <- function(n,
   }
   
   #Items to return in a list
-  return(list(X, Y, Tee,shock_time_vec, xreg))
+  return(list(X, Y, Tee, shock_time_vec, xreg, garch_order))
 } #end of synth_vol_sim
-
-# Here is the length of the vol shock we will use
-inputted_n <- 8
-inputted_vol_shock_length <- rdunif(inputted_n+1, 4, 7)
-inputted_vol_shock_length <- rep(1, inputted_n+1)
-
-output <- synth_vol_sim(n = inputted_n, 
-                        p = 9, 
-                        model = c(1,1,1),
-                        arch_param = c(.4),
-                        garch_param = c(.4),
-                        asymmetry_param = c(.15),
-                        
-                        level_model = c('M1','M21','M22','none')[4],
-                        vol_model = c('M1','M21','M22','none')[3],
-                        
-                        sigma_GARCH_innov = 1, # this is the sd that goes into rnorm
-                        sigma_x = 1, 
-                        min_shock_time = 40,
-                        shock_time_vec = NULL, 
-                        level_shock_length = 1,
-                        vol_shock_length = inputted_vol_shock_length,
-                        a = 90, 
-                        b = 150, 
-                        
-                        mu_eps_star = -4.25,
-                        M22_mu_eps_star = .3, 
-                        sigma_eps_star = .5,
-                        
-                        mu_omega_star = .06,
-                        vol_shock_sd = .03,
-                        
-                        M21_M22_mu_omega_star = .02,
-                        M21_M22_shock_sd = .01,
-                        
-                        level_GED_alpha = .05 * sqrt(2), 
-                        level_GED_beta = 1.8)
-
-# #Let's look at estimates and pvalues
-# output[[5]]
-# 
-# #What is the shock time for y_1?
-# output[[4]][1]
-# 
-# shock_time_of_y1 <- output[[4]][1]
-# length_of_y1 <- output[[3]][[1]]
-# 
-# #Let us look at the output for the time series of interest
-# output[[2]][[1]]
-# 
-# #Let us compare the model without the shock indicator and the model with the indicator
-# no_indicator <- garchx(output[[2]][[1]][,1][c(1:(shock_time_of_y1+k)),], order = c(1,1))
-# no_indicator
-# coeftest(no_indicator)
-# AIC(no_indicator)
-# plot.ts(no_indicator$fitted)
-# predict(no_indicator, n.ahead = 1, newxreg = matrix(1))
-# 
-# covariate_mat <- as.matrix(c(rep(0,shock_time_of_y1), rep(1,k), rep(0, length_of_y1 - shock_time_of_y1 - k) ))
-# yes_indicator <- garchx(output[[2]][[1]][,1][c(1:(shock_time_of_y1+k)),], order = c(1,1), xreg = covariate_mat[c(1:(shock_time_of_y1+k)),])
-# yes_indicator
-# coeftest(yes_indicator)
-# AIC(yes_indicator)
-# plot.ts(yes_indicator$fitted)
-# predict(yes_indicator, n.ahead = 1, newxreg = matrix(1), verbose = TRUE)
-# 
-# #let us look at the model prior to the shock
-# mod5 <- garchx(output[[2]][[1]][,1][c(1:(shock_time_of_y1)),], order = c(1,1))
-# coeftest(mod5)
-# AIC(mod5)
-# plot.ts(fitted(mod5))
-# 
-# #Look at covariates of time series of interest
-# plot.ts(output[[1]][[1]])
-# 
-# #Look at GARCH process of time series of interest
-# plot.ts(output[[2]][[1]])
-# 
-# #What is the mean of the squared y for time series of interest?
-# mean(output[[2]][[1]][,1]**2)
 
 
 #####################################################################
@@ -598,7 +552,12 @@ dbw <- function(X,
                             fun = weightedX0, 
                             eqfun = eq_constraint, 
                             eqB = 0,
-                            LB = lower_bound, UB = upper_bound, control = list(trace = 0))
+                            LB = lower_bound, UB = upper_bound, 
+                            control = list(trace = 0
+                                           , 1.0e-8
+                                           , tol = 1e-9
+                                           , outer.iter = 10000
+                                           , inner.iter = 10000))
   return(object_to_return$pars)
   
 } #end dbw function
@@ -608,7 +567,10 @@ synth_vol_fit <- function(X,
                           Y,
                           T_star,
                           shock_est_vec,
-                          shock_lengths)
+                          shock_lengths,
+                          garch_param_fit, 
+                          arch_param_fit, 
+                          asymmetry_param_fit)
 { #begin synth_vol_fit
   
   ## Doc String
@@ -646,7 +608,7 @@ synth_vol_fit <- function(X,
                               rep(c(1,NA), 6)), 
                               byrow = FALSE, nrow = 12)
   
-  #We drop the ??th row because it's functionally no different from the first OR have lower bound > upper bound
+  #We drop the 4th row because it's functionally no different from the first OR have lower bound > upper bound
   matrix_of_specs <- matrix_of_specs[-4,]
   
   for (i in 1:nrow(matrix_of_specs)){
@@ -672,7 +634,7 @@ synth_vol_fit <- function(X,
   shock_period_only <- Y[[1]][,3][(T_star[1] + 1):(T_star[1] + shock_lengths[1]),1]
 
   garch_1_1 <- garchx(y_up_through_T_star,
-                      order = c(1,1,1),
+                      order = c(garch_param_fit, arch_param_fit, asymmetry_param_fit),
                       control = list(eval.max = 1000000, iter.max = 1000000),
                       hessian.control = list(maxit = 1000000) )
 
@@ -685,7 +647,7 @@ synth_vol_fit <- function(X,
     {
     adjusted_pred <- pred + omega_star_hat_vec[i]
     adjusted_pred_list[[i]] <- pmax(adjusted_pred, 0)
-    MSE_adjusted[[i]] <- sum((shock_period_only - adjusted_pred)**2)
+    MSE_adjusted[[i]] <- sum((shock_period_only - adjusted_pred_list[[i]])**2)
     }
 
   #Last, we calculate MSE for unadjusted
@@ -694,7 +656,7 @@ synth_vol_fit <- function(X,
   #Who won?
   alternative_wins <- MSE_adjusted < MSE_unadjusted
 
-  #We now make a vector with the names of each of the 7 sensible linear combinations
+  #We now make a vector with the names of each of the sensible linear combinations
   linear_comb_names <- c('Convex Hull',
                          '1 -1 NA',
                         'Drop Bounded Below',
@@ -702,7 +664,7 @@ synth_vol_fit <- function(X,
                         'Affine Hull',
                         'Drop Sum-to-1',
                         'Bounded Below by -1',
-                        'Bounded Above  by 1',
+                        'Bounded Above by 1',
                         'Conic Hull',
                         'Unit Ball',
                         'Unrestricted') 
@@ -711,10 +673,19 @@ synth_vol_fit <- function(X,
   par(mfrow=c(ceiling(sqrt(length(linear_comb_names))),ceiling(sqrt(length(linear_comb_names)))))
   for (i in 1:nrow(w_mat))
     {
+    minn <- min(w_mat[i,])
+    maxx <- max(w_mat[i,])
+    if (minn == maxx)
+    {
+      minn <- -1 * abs(minn)
+      maxx  <- -1 * abs(max)
+    }
     barplot(w_mat[i,],
             main = paste('Donor Pool Weights:\n',
-                         linear_comb_names[i]), names.arg = 2:(length(T_star)),
-            ylim = c(min(w_mat[i,]),max(w_mat[i,])))
+                         linear_comb_names[i]), 
+                        names.arg = 2:(length(T_star)),
+                        ylim = c(minn, 
+                                 maxx))
      }
 
   #Now let's plot the adjustment
@@ -730,7 +701,7 @@ synth_vol_fit <- function(X,
        xlim = c(0, length(sigma2_up_through_T_star_plus_k) + 5),
        ylim = c(0,  max(pred, trimmed_prediction_vec_for_plotting, sigma2_up_through_T_star_plus_k) ) )
 
-  title(ylab = expression(sigma^2), line = 2.05, cex.lab = 1.99)            # Add y-axis text
+  title(ylab = expression(sigma^2), line = 2.05, cex.lab = 1.99) # Add y-axis text
 
   # We also plot, in a different line style, the post-shock period
   lines(y = c(sigma2_up_through_T_star[T_star[1]],  shock_period_only),
@@ -779,26 +750,36 @@ synth_vol_fit <- function(X,
   lines(sigma2_up_through_T_star, col = 'black')
 
   title(ylab = expression(sigma^2), line = 2.05, cex.lab = 1.99)
+  
+  
+  #Now arrange the output
+  display_df <- data.frame(matrix(ncol = 0, nrow = 11))
 
-  return(list(w = round(w_mat,3),
-              omega_star_hat = round(omega_star_hat_vec, 3),
-              adjusted_pred = adjusted_pred_list,
-              garch_pred = round(pred,3),
-              ground_truth = round(shock_period_only,3),
-              MSE_adjusted = MSE_adjusted, 
-              MSE_unadjusted = round(MSE_unadjusted,3),
-              alternative_wins = alternative_wins))
+  display_df$w_star <- round(unlist(omega_star_hat_vec), 4)
+  display_df$sigma2_hat <- round(unlist(adjusted_pred_list), 4)
+  display_df$MSE_adj <- round(unlist(MSE_adjusted), 4)
+  display_df$alt_wins <- unlist(alternative_wins)
+  
+  #Now add the unadjusted row
+  unadjusted_row <- c('NA', round(pred,4), round(MSE_unadjusted,4), 'NA')
+  display_df <- rbind(display_df, unadjusted_row)
+  
+  row.names(display_df) <- c(linear_comb_names, 'GARCH (unadjusted)')
+  display_df <- display_df[order(display_df$MSE_adj), ]
+  
+  cat('\n Dataframe Comparing the Distance-based-weighting methods \n')
+  cat('--------------------------------------------------------------- \n')
+  display_df
+
+  # print(list(w = round(w_mat,3),
+  #             omega_star_hat = round(omega_star_hat_vec, 3),
+  #             adjusted_pred = adjusted_pred_list,
+  #             garch_pred = round(pred,3),
+  #             ground_truth = round(shock_period_only,3),
+  #             MSE_adjusted = MSE_adjusted, 
+  #             MSE_unadjusted = round(MSE_unadjusted,3),
+  #             alternative_wins = alternative_wins))
+  
 } #end of synth_vol_fit
 
-# Let's now use the function
-X_demo <- output[[1]]
-Y_demo <- output[[2]]
-T_star_demo <- output[[4]]
-shock_effect_vec_demo <- output[[5]][,1]
-
-synth_vol_fit(X_demo, 
-              Y_demo, 
-              T_star_demo, 
-              shock_effect_vec_demo,
-              inputted_vol_shock_length)
 
