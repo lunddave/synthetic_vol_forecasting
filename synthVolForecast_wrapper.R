@@ -14,8 +14,6 @@ library(Rsolnp)
 library(RColorBrewer)
 library(DescTools)
 
-dev.new()
-
 simulate_and_analyze <- function(n = 8, 
                                  p = 9, 
                                  #model = c(1,1,1),
@@ -36,7 +34,7 @@ simulate_and_analyze <- function(n = 8,
                                  vol_shock_length = 1,
                                  
                                  a = 252, 
-                                 b = 4 * 252, 
+                                 b = 5 * 252, 
                                  
                                  mu_eps_star = -4.25,
                                  
@@ -125,7 +123,6 @@ simulate_and_analyze <- function(n = 8,
                           
                           level_GED_alpha = level_GED_alpha, # note: beta = 2, alpha = sqrt(2) is N(0,1)
                           level_GED_beta = level_GED_beta) # note: beta = 2, alpha = sqrt(2) is N(0,1)
-  
   
   # Let's now use the fitting function
   X_demo <- sim_output[[1]]

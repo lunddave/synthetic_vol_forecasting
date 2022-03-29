@@ -112,13 +112,15 @@ synth_vol_sim <- function(n,
   # Simulate shock times
   if ( is.null(shock_time_vec) == TRUE)
   {
-        shock_time_vec <- c()
-        for (i in 1:(n+1))
-        {
-          #Note: the T* must be at least 'max_of_shock_lengths' after T*
-          #Also, shock must come from point 30 onward.
-          shock_time_vec[i] <- rdunif(1, a + min_shock_time, Tee[i] - max_of_shock_lengths) 
+        shock_time_creator <- function(series_length, a, min_shock_time, max_of_shock_lengths){
+          vector_of_shocktimes <- rdunif(1, # the number of r.v. to simulate
+                                         a + min_shock_time, #the lower bound on the discrete unif interval
+                                         series_length - max_of_shock_lengths) #the upper bound on the discrete unif interval
+                                          
+          return(vector_of_shocktimes)
         }
+        
+        shock_time_vec <- mapply(shock_time_creator, Tee, MoreArgs = list(a, min_shock_time, max_of_shock_lengths))
   }
   
   ############ Simulate Structure of Covariates ############
@@ -225,7 +227,7 @@ synth_vol_sim <- function(n,
     
     else if (level_model == 'M22') { 
           level_shock_vec[i] <- mu_eps_star + 
-                                as.numeric(as.matrix(VAR_process[shock_time_vec[i],])) %*% rnorm(p,M21_M22_mu_delta,sigma_eps_star) + 
+                                as.numeric(as.matrix(VAR_process[shock_time_vec[i],])) %*% rnorm(p, M21_M22_mu_delta, M21_M22_level_sd_delta) + 
                                 rgnorm(1, 
                                        mu = 0, 
                                        alpha = level_GED_alpha, 
