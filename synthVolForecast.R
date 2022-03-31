@@ -29,21 +29,23 @@ synth_vol_sim <- function(n,
                           vol_model,
                           sigma_GARCH_innov, 
                           sigma_x, 
-                          min_shock_time,
+                          min_shock_time = 0,
                           shock_time_vec, 
                           level_shock_length,
                           vol_shock_length,
+                          extra_measurement_days = 0,
                           a, 
                           b, 
                           mu_eps_star,
-                          M21_M22_mu_delta,
+                          level_GED_alpha = sqrt(2),
+                          level_GED_beta = 2,
+                          M21_M22_level_mu_delta,
                           M21_M22_level_sd_delta,
                           mu_omega_star,
-                          M21_M22_mu_omega_star,
                           vol_shock_sd,
+                          M21_M22_vol_mu_delta,
                           M21_M22_vol_sd_delta,
-                          level_GED_alpha,
-                          level_GED_beta,
+                          plots = FALSE,
                           ...){
   
   ## Doc String
@@ -73,11 +75,11 @@ synth_vol_sim <- function(n,
   #   --b - maximum series length (scalar)
   
   #   --mu_eps_star - intercept for each of the level shock models
-  #   --M21_M22_mu_delta - mean of delta for M21, M22 level models
+  #   --M21_M22_level_mu_delta - mean of delta for M21, M22 level models
   #   --M21_M22_level_sd_delta - sd of the vector delta in M21 and M22 level models
   
   #   --mu_omega_star - intercept of vol shock for M1 model
-  #   --M21_M22_mu_omega_star - mean of delta for M21, M22 vol models
+  #   --M21_M22_vol_mu_delta - mean of delta for M21, M22 vol models
   #   --vol_shock_sd - variance of the error in all volatility models
   #   --M21_M22_vol_sd_delta - sd of the vector delta in M21 and M22 vol models
   
@@ -107,7 +109,11 @@ synth_vol_sim <- function(n,
   
   #Before we simulate shock time, we make sure each series has enough points 
   #following the shock time
-  max_of_shock_lengths <- max(level_shock_length, vol_shock_length)
+  max_of_shock_lengths <- max(c(vol_shock_length, level_shock_length))
+  
+  #Now we modify the n+1 series lengths so that they can buffering space on the end
+  #ie we want to add a number of points equal to (max_of_shock_lengths + extra_measurement_days) 
+  Tee <- Tee + rep(max_of_shock_lengths, n+1) + rep(extra_measurement_days, n+1) 
   
   # Simulate shock times
   if ( is.null(shock_time_vec) == TRUE)
@@ -115,7 +121,7 @@ synth_vol_sim <- function(n,
         shock_time_creator <- function(series_length, a, min_shock_time, max_of_shock_lengths){
           vector_of_shocktimes <- rdunif(1, # the number of r.v. to simulate
                                          a + min_shock_time, #the lower bound on the discrete unif interval
-                                         series_length - max_of_shock_lengths) #the upper bound on the discrete unif interval
+                                         series_length - max_of_shock_lengths - extra_measurement_days) #the upper bound on the discrete unif interval
                                           
           return(vector_of_shocktimes)
         }
@@ -161,8 +167,8 @@ synth_vol_sim <- function(n,
   xreg <- c()
   
   #Create M21 level and M21 vol cross donor random effects vectors
-  M21_level_cross_donor_random_effect <- rnorm(p, M21_M22_mu_delta, M21_M22_level_sd_delta) 
-  M21_vol_cross_donor_random_effect <- rnorm(p, M21_M22_mu_omega_star, M21_M22_vol_sd_delta) 
+  M21_level_cross_donor_random_effect <- rnorm(p, M21_M22_level_mu_delta, M21_M22_level_sd_delta) 
+  M21_vol_cross_donor_random_effect <- rnorm(p, M21_M22_vol_mu_delta, M21_M22_vol_sd_delta) 
   
   if ( is.null(model) == FALSE)
     {
@@ -181,7 +187,7 @@ synth_vol_sim <- function(n,
                            include = "none", 
                            n = Tee[i],
                            innov = sim_VAR_innovations) + 1 #we add this constant to make the
-                                                            #covariates positive
+                                                            #covariates positive with high probability
     
     #If model (m,s,a) is provided, we overide the parameters provided and instead simulate
     #the parameters.
@@ -197,8 +203,8 @@ synth_vol_sim <- function(n,
     }
     
     #Now we save the GARCH order so that we can output it at the function's end
-    garch_order <- c(length(garch_param), length(arch_param), length(asymmetry_param))
-    
+    garch_param_list <- list(garch_param, arch_param, asymmetry_param)
+
     #Level model
     if (level_model == 'M1'){
                       #Level Shock
@@ -220,20 +226,20 @@ synth_vol_sim <- function(n,
                alpha = level_GED_alpha, 
                beta = level_GED_beta)
       
-      level_shock_mean <- mu_eps_star + p * M21_M22_mu_delta
+      level_shock_mean <- mu_eps_star + p * M21_M22_level_mu_delta
       level_shock_var <- ((level_GED_alpha)**2) * gamma(3/level_GED_beta) / (gamma(1/level_GED_beta)) + # https://search.r-project.org/CRAN/refmans/gnorm/html/gnorm.html
         p * ((sigma_x**2) * (M21_M22_level_sd_delta**2))
     }
     
     else if (level_model == 'M22') { 
           level_shock_vec[i] <- mu_eps_star + 
-                                as.numeric(as.matrix(VAR_process[shock_time_vec[i],])) %*% rnorm(p, M21_M22_mu_delta, M21_M22_level_sd_delta) + 
+                                as.numeric(as.matrix(VAR_process[shock_time_vec[i],])) %*% rnorm(p, M21_M22_level_mu_delta, M21_M22_level_sd_delta) + 
                                 rgnorm(1, 
                                        mu = 0, 
                                        alpha = level_GED_alpha, 
                                        beta = level_GED_beta) #What's the variance of this sum?
           
-          level_shock_mean <- mu_eps_star + p * M21_M22_mu_delta
+          level_shock_mean <- mu_eps_star + p * M21_M22_level_mu_delta
           level_shock_var <- ((level_GED_alpha)**2) * gamma(3/level_GED_beta) / (gamma(1/level_GED_beta)) + # https://search.r-project.org/CRAN/refmans/gnorm/html/gnorm.html
             p * (sigma_x**2) * (M21_M22_level_sd_delta**2)
     }
@@ -303,12 +309,12 @@ synth_vol_sim <- function(n,
     }
     
     else if (vol_model == 'M22') { 
-      delta <- rnorm(p, M21_M22_mu_omega_star, M21_M22_vol_sd_delta) 
+      delta <- rnorm(p, M21_M22_vol_mu_delta, M21_M22_vol_sd_delta) 
       
       vol_shock_vec[i] <- rnorm(1, mu_omega_star, vol_shock_sd) + 
         as.numeric(as.matrix(VAR_process[shock_time_vec[i],])) %*% delta
       
-      vol_shock_mean <- mu_omega_star + p * M21_M22_mu_omega_star
+      vol_shock_mean <- mu_omega_star + p * M21_M22_vol_mu_delta
       vol_shock_var <- vol_shock_sd**2 + p * ( (sigma_x**2) * (M21_M22_vol_sd_delta**2) )
       vol_shock_kurtosis <- 0
       
@@ -360,10 +366,11 @@ synth_vol_sim <- function(n,
     garch_param_count <- sum(ifelse(garch_param > 0, 1, 0))
     asymm_param_count <- sum(ifelse(asymmetry_param > 0, 1, 0))
 
-    indicator_vec <- as.matrix(c(rep(0,shock_time_vec[i]), rep(1,vol_shock_length[i])))
-    garch_1_1 <- garchx(Y[[i]][1:(shock_time_vec[i]+vol_shock_length[i]),1], 
+    indicator_vec <- as.matrix(c(rep(0,shock_time_vec[i]), rep(1,vol_shock_length[i] + extra_measurement_days)))
+    garch_1_1 <- garchx(Y[[i]][1:(shock_time_vec[i] + vol_shock_length[i] + extra_measurement_days),1], 
                         order = c(garch_param_count,arch_param_count,asymm_param_count), 
                         xreg = indicator_vec[1:(shock_time_vec[i]+vol_shock_length[i])],
+                        initial.values = c(.1, garch_param, arch_param, .15),
                         control = list(eval.max = 95000, iter.max = 95000 ),
                         hessian.control = list(maxit = 1000000))
     xreg_est <- round(coeftest(garch_1_1)[ dim(coeftest(garch_1_1))[1], 1],5)
@@ -417,49 +424,59 @@ synth_vol_sim <- function(n,
       '\n'
       )
   
-  #Plot the donors
-  par(mfrow = c(ceiling(sqrt(2*n + 2)), ceiling(sqrt(2*n + 2))))
-  for (i in 1:(n+1))
-  {
-    plot.ts(X[[i]][-c(1:20),], main = paste('Covariates of Donor ', i, sep = ''))
-  }
-  
-  #Plot the time series
-  par(mfrow = c(ceiling(sqrt(n+1)), ceiling(sqrt(n+1))))
-  for (i in 1:(n+1))
-  {
+  if (plots == TRUE)
     
-    plot.ts(Y[[i]][,1], ylim = c(min(Y[[i]][,1])*1.2, max(Y[[i]][,1])*1.2), 
-            main = paste('y', i, ", GARCH(",length(arch_param),",",length(garch_param),") length = ",vol_shock_length[i],
-                                     "\n level shock = ", 
-                                     round(level_shock_vec[i],2), 
-                                     ", vol shock = ", 
-                                     round(vol_shock_vec[i],2),
-                                     '\n shock est = ', round(xreg[i,1],3), ', pval = ',round(xreg[i,2],3),
-                                     sep = ''), ylab = '100 * Daily Log-Return')
-    abline(v = shock_time_vec[i] + 1, col = 'red')
-    abline(h = 0, col = 'green')
-
-  }
-  
-  #Plot the volatility series
-  par(mfrow = c(ceiling(sqrt(n+1)), ceiling(sqrt(n+1))))
-  for (i in 1:(n+1))
   {
-    plot.ts(Y[[i]][-c(1:20),3], xlim=c(21, Tee[i]), main = paste('Volatility Series y', i, 
-                                     ", GARCH(",length(arch_param),",",length(garch_param),"), length = ",vol_shock_length[i],
-                                     "\n level shock = ", 
-                                     round(level_shock_vec[i],2), 
-                                     ", vol shock = ", 
-                                     round(vol_shock_vec[i],2),
-                                     '\n shock est = ', round(xreg[i,1],3), ', pval = ',round(xreg[i,2],3),
-                                     sep = ''), ylab = '')
-    abline(v = shock_time_vec[i] + 1, col = 'red')
-    title(ylab = expression(sigma^2), line = 2.05, cex.lab = 1.99)
-  }
-  
+            #Plot the donors
+            par(mfrow = c(ceiling(sqrt(2*n + 2)), ceiling(sqrt(2*n + 2))))
+            for (i in 1:(n+1))
+            {
+              plot.ts(X[[i]][-c(1:20),], main = paste('Covariates of Donor ', i, sep = ''))
+            }
+            
+            #Plot the time series
+            par(mfrow = c(ceiling(sqrt(n+1)), ceiling(sqrt(n+1))))
+            for (i in 1:(n+1))
+            {
+              
+              plot.ts(Y[[i]][,1], ylim = c(min(Y[[i]][,1])*1.2, max(Y[[i]][,1])*1.2), 
+                      main = paste('y', i, ", GARCH(",length(arch_param),",",length(garch_param),") length = ",vol_shock_length[i],
+                                               "\n level shock = ", 
+                                               round(level_shock_vec[i],2), 
+                                               ", vol shock = ", 
+                                               round(vol_shock_vec[i],2),
+                                               '\n shock est = ', round(xreg[i,1],3), ', pval = ',round(xreg[i,2],3),
+                                               sep = ''), ylab = '100 * Daily Log-Return')
+              abline(v = shock_time_vec[i] + 1, col = 'red')
+              abline(h = 0, col = 'green')
+          
+            }
+            
+            #Plot the volatility series
+            par(mfrow = c(ceiling(sqrt(n+1)), ceiling(sqrt(n+1))))
+            for (i in 1:(n+1))
+            {
+              plot.ts(Y[[i]][-c(1:20),3], xlim=c(21, Tee[i]), main = paste('Volatility Series y', i, 
+                                               ", GARCH(",length(arch_param),",",length(garch_param),"), length = ",vol_shock_length[i],
+                                               "\n level shock = ", 
+                                               round(level_shock_vec[i],2), 
+                                               ", vol shock = ", 
+                                               round(vol_shock_vec[i],2),
+                                               '\n shock est = ', round(xreg[i,1],3), ', pval = ',round(xreg[i,2],3),
+                                               sep = ''), ylab = '')
+              abline(v = shock_time_vec[i] + 1, col = 'red')
+              title(ylab = expression(sigma^2), line = 2.05, cex.lab = 1.99)
+            }
+            
+  } #end plot conditional
+            
   #Items to return in a list
-  return(list(X, Y, Tee, shock_time_vec, xreg, garch_order))
+  return(list(X
+              , Y
+              , Tee
+              , shock_time_vec
+              , xreg
+              , garch_param_list))
 } #end of synth_vol_sim
 
 
@@ -572,7 +589,8 @@ synth_vol_fit <- function(X,
                           shock_lengths,
                           garch_param_fit, 
                           arch_param_fit, 
-                          asymmetry_param_fit)
+                          asymmetry_param_fit,
+                          plots = FALSE)
 { #begin synth_vol_fit
   
   ## Doc String
@@ -670,89 +688,92 @@ synth_vol_fit <- function(X,
                         'Conic Hull',
                         'Unit Ball',
                         'Unrestricted') 
-
-  #Plot the donor pool weights
-  par(mfrow=c(ceiling(sqrt(length(linear_comb_names))),ceiling(sqrt(length(linear_comb_names)))))
-  for (i in 1:nrow(w_mat))
-    {
-    minn <- min(w_mat[i,])
-    maxx <- max(w_mat[i,])
-    if (minn == maxx)
-    {
-      minn <- -1 * abs(minn)
-      maxx  <- -1 * abs(max)
-    }
-    barplot(w_mat[i,],
-            main = paste('Donor Pool Weights:\n',
-                         linear_comb_names[i]), 
-                        names.arg = 2:(length(T_star)),
-                        ylim = c(minn, 
-                                 maxx))
-     }
-
-  #Now let's plot the adjustment
-  par(mfrow=c(1,2))
-
-  trimmed_prediction_vec_for_plotting <- Winsorize(unlist(adjusted_pred_list), probs = c(0, 0.72)) 
-
-  #PLOT ON THE LEFT:
-  plot(sigma2_up_through_T_star_plus_k,
-       main = 'GARCH Prediction versus \nAdjusted Predictions versus Actual',
-       ylab = '',
-       xlab = "Time",
-       xlim = c(0, length(sigma2_up_through_T_star_plus_k) + 5),
-       ylim = c(0,  max(pred, trimmed_prediction_vec_for_plotting, sigma2_up_through_T_star_plus_k) ) )
-
-  title(ylab = expression(sigma^2), line = 2.05, cex.lab = 1.99) # Add y-axis text
-
-  # We also plot, in a different line style, the post-shock period
-  lines(y = c(sigma2_up_through_T_star[T_star[1]],  shock_period_only),
-        x = T_star[1]:(T_star[1]+shock_lengths[1]),  lty=2, lwd=2,
-        ylim = c(0,  max(pred, trimmed_prediction_vec_for_plotting, sigma2_up_through_T_star_plus_k) ) )
-
-  # Here is the color scheme we will use
-  colors_for_adjusted_pred <- c('black', 'red',
-            brewer.pal(length(omega_star_hat_vec),'Set3')) 
-
-  # Let's add the ground truth
-  points(y = shock_period_only,
-         x = (T_star[1]+1):(T_star[1]+shock_lengths[1]),
-         col = colors_for_adjusted_pred[1],
-         cex = 1.3, pch = 16)
-
-  # Let's add the plain old GARCH prediction
-  points(y = pred,
-         x = (T_star[1]+1):(T_star[1]+shock_lengths[1]),
-         col = colors_for_adjusted_pred[2],
-         cex = 1.3, pch = 15)
-
-  # Now plot the adjusted predictions
-  for (i in 1:(length(omega_star_hat_vec)))
-    {
-           points(y = adjusted_pred_list[[i]], x = (T_star[1]+1):(T_star[1]+shock_lengths[1]),
-           col = colors_for_adjusted_pred[i+2], cex = 1.9, pch = 10)
-     }
-
-  labels_for_legend <- c('Actual','GARCH (unadjusted)',linear_comb_names)
-
-  legend(x = "topleft",  # Coordinates (x also accepts keywords)
-         legend = labels_for_legend,
-         1:length(labels_for_legend), # Vector with the name of each group
-         colors_for_adjusted_pred,   # Creates boxes in the legend with the specified colors
-         title = 'Prediction Method',      # Legend title,
-         cex = .9
-  )
-
-  #PLOT ON THE RIGHT
-  plot.ts(fitted(garch_1_1),
-          main = 'Pre-shock GARCH fitted values (green) \nversus Actual (black)',
-          ylab = '', col = 'green',
-          ylim = c(0, max(fitted(garch_1_1), sigma2_up_through_T_star)) ,
-          cex.lab = 3.99)
-  lines(sigma2_up_through_T_star, col = 'black')
-
-  title(ylab = expression(sigma^2), line = 2.05, cex.lab = 1.99)
   
+  labels_for_legend <- c('Actual','GARCH (unadjusted)',linear_comb_names)
+  
+  if (plots == TRUE){
+            
+              #Plot the donor pool weights
+              par(mfrow=c(ceiling(sqrt(length(linear_comb_names))),ceiling(sqrt(length(linear_comb_names)))))
+              for (i in 1:nrow(w_mat))
+                {
+                minn <- min(w_mat[i,])
+                maxx <- max(w_mat[i,])
+                if (minn == maxx)
+                {
+                  minn <- -1 * abs(minn)
+                  maxx  <- -1 * abs(max)
+                }
+                barplot(w_mat[i,],
+                        main = paste('Donor Pool Weights:\n',
+                                     linear_comb_names[i]), 
+                                    names.arg = 2:(length(T_star)),
+                                    ylim = c(minn, 
+                                             maxx))
+                 }
+            
+              #Now let's plot the adjustment
+              par(mfrow=c(1,2))
+            
+              trimmed_prediction_vec_for_plotting <- Winsorize(unlist(adjusted_pred_list), probs = c(0, 0.72)) 
+            
+              #PLOT ON THE LEFT:
+              plot(sigma2_up_through_T_star_plus_k,
+                   main = 'GARCH Prediction versus \nAdjusted Predictions versus Actual',
+                   ylab = '',
+                   xlab = "Time",
+                   xlim = c(0, length(sigma2_up_through_T_star_plus_k) + 5),
+                   ylim = c(0,  max(pred, trimmed_prediction_vec_for_plotting, sigma2_up_through_T_star_plus_k) ) )
+            
+              title(ylab = expression(sigma^2), line = 2.05, cex.lab = 1.99) # Add y-axis text
+            
+              # We also plot, in a different line style, the post-shock period
+              lines(y = c(sigma2_up_through_T_star[T_star[1]],  shock_period_only),
+                    x = T_star[1]:(T_star[1]+shock_lengths[1]),  lty=2, lwd=2,
+                    ylim = c(0,  max(pred, trimmed_prediction_vec_for_plotting, sigma2_up_through_T_star_plus_k) ) )
+            
+              # Here is the color scheme we will use
+              colors_for_adjusted_pred <- c('black', 'red',
+                        brewer.pal(length(omega_star_hat_vec),'Set3')) 
+            
+              # Let's add the ground truth
+              points(y = shock_period_only,
+                     x = (T_star[1]+1):(T_star[1]+shock_lengths[1]),
+                     col = colors_for_adjusted_pred[1],
+                     cex = 1.3, pch = 16)
+            
+              # Let's add the plain old GARCH prediction
+              points(y = pred,
+                     x = (T_star[1]+1):(T_star[1]+shock_lengths[1]),
+                     col = colors_for_adjusted_pred[2],
+                     cex = 1.3, pch = 15)
+            
+              # Now plot the adjusted predictions
+              for (i in 1:(length(omega_star_hat_vec)))
+                {
+                       points(y = adjusted_pred_list[[i]], x = (T_star[1]+1):(T_star[1]+shock_lengths[1]),
+                       col = colors_for_adjusted_pred[i+2], cex = 1.9, pch = 10)
+                 }
+            
+              legend(x = "topleft",  # Coordinates (x also accepts keywords)
+                     legend = labels_for_legend,
+                     1:length(labels_for_legend), # Vector with the name of each group
+                     colors_for_adjusted_pred,   # Creates boxes in the legend with the specified colors
+                     title = 'Prediction Method',      # Legend title,
+                     cex = .9
+              )
+            
+              #PLOT ON THE RIGHT
+              plot.ts(fitted(garch_1_1),
+                      main = 'Pre-shock GARCH fitted values (green) \nversus Actual (black)',
+                      ylab = '', col = 'green',
+                      ylim = c(0, max(fitted(garch_1_1), sigma2_up_through_T_star)) ,
+                      cex.lab = 3.99)
+              lines(sigma2_up_through_T_star, col = 'black')
+            
+              title(ylab = expression(sigma^2), line = 2.05, cex.lab = 1.99)
+              
+  } #end conditional for plots
   
   #Now arrange the output
   display_df <- data.frame(matrix(ncol = 0, nrow = 11))

@@ -17,7 +17,7 @@ library(DescTools)
 simulate_and_analyze <- function(n = 8, 
                                  p = 9, 
                                  #model = c(1,1,1),
-                                 arch_param = c(.3),
+                                 arch_param = c(.4),
                                  garch_param = c(.5),
                                  #asymmetry_param = c(.15),
                                  
@@ -32,22 +32,25 @@ simulate_and_analyze <- function(n = 8,
                                  
                                  level_shock_length = 1,
                                  vol_shock_length = 1,
+                                 extra_measurement_days = 3,
                                  
                                  a = 252, 
                                  b = 5 * 252, 
                                  
                                  mu_eps_star = -4.25,
+                                 level_GED_alpha = sqrt(2), # note: beta = 2, alpha = sqrt(2) is N(0,1)
+                                 level_GED_beta = 2, # note: beta = 2, alpha = sqrt(2) is N(0,1))
                                  
-                                 M21_M22_mu_delta = .8, 
+                                 M21_M22_level_mu_delta = .8, 
                                  M21_M22_level_sd_delta = .5,
                                  
                                  mu_omega_star = .07,
-                                 M21_M22_mu_omega_star = .04,
                                  vol_shock_sd = .02,
-                                 M21_M22_vol_sd_delta = .01, 
                                  
-                                 level_GED_alpha = sqrt(2), # note: beta = 2, alpha = sqrt(2) is N(0,1)
-                                 level_GED_beta = 1.8, # note: beta = 2, alpha = sqrt(2) is N(0,1))
+                                 M21_M22_vol_mu_delta = .3,
+                                 M21_M22_vol_sd_delta = .1, 
+                                 
+                                 plot_sim = TRUE,
                                  
                                  # And now the only input for the fitting function
                                  inputted_vol_shock_length = rep(1, n+1)
@@ -112,24 +115,26 @@ simulate_and_analyze <- function(n = 8,
                           b = b, 
                           
                           mu_eps_star = mu_eps_star,
+                          level_GED_alpha = level_GED_alpha, # note: beta = 2, alpha = sqrt(2) is N(0,1)
+                          level_GED_beta = level_GED_beta, # note: beta = 2, alpha = sqrt(2) is N(0,1)
                           
-                          M21_M22_mu_delta = M21_M22_mu_delta, 
+                          M21_M22_level_mu_delta = M21_M22_level_mu_delta, 
                           M21_M22_level_sd_delta = M21_M22_level_sd_delta,
                           
                           mu_omega_star = mu_omega_star,
-                          M21_M22_mu_omega_star = M21_M22_mu_omega_star,
-                          vol_shock_sd = vol_shock_sd,
+                          vol_shock_sd = vol_shock_sd, 
+                          M21_M22_vol_mu_delta = M21_M22_vol_mu_delta,
                           M21_M22_vol_sd_delta = M21_M22_vol_sd_delta, 
                           
-                          level_GED_alpha = level_GED_alpha, # note: beta = 2, alpha = sqrt(2) is N(0,1)
-                          level_GED_beta = level_GED_beta) # note: beta = 2, alpha = sqrt(2) is N(0,1)
+
+                          plot = plot_sim)
   
   # Let's now use the fitting function
   X_demo <- sim_output[[1]]
   Y_demo <- sim_output[[2]]
   T_star_demo <- sim_output[[4]]
   shock_effect_vec_demo <- sim_output[[5]][,1]
-  garch_order_of_simulation <- sim_output[[6]]
+  garch_order_of_simulation <- sapply(sim_output[[6]], length) 
   
   fitting_output <- synth_vol_fit(X = X_demo,
                                   Y = Y_demo,
@@ -138,7 +143,8 @@ simulate_and_analyze <- function(n = 8,
                                   shock_lengths = inputted_vol_shock_length,
                                   garch_order_of_simulation[1],
                                   garch_order_of_simulation[2],
-                                  garch_order_of_simulation[3])
+                                  garch_order_of_simulation[3] #tk
+                                  )
   return(fitting_output)
 }
 
