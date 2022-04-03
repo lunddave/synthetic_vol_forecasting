@@ -17,8 +17,8 @@ library(DescTools)
 simulate_and_analyze <- function(n = 8, 
                                  p = 9, 
                                  #model = c(1,1,1),
-                                 arch_param = c(.4),
-                                 garch_param = c(.5),
+                                 arch_param = c(.26),
+                                 garch_param = c(.4),
                                  #asymmetry_param = c(.15),
                                  
                                  level_model = c('M1','M21','M22','none')[4],
@@ -31,8 +31,8 @@ simulate_and_analyze <- function(n = 8,
                                  shock_time_vec = NULL, 
                                  
                                  level_shock_length = 1,
-                                 vol_shock_length = 1,
-                                 extra_measurement_days = 3,
+                                 vol_shock_length = 2,
+                                 extra_measurement_days = 4,
                                  
                                  a = 252, 
                                  b = 5 * 252, 
@@ -44,16 +44,16 @@ simulate_and_analyze <- function(n = 8,
                                  M21_M22_level_mu_delta = .8, 
                                  M21_M22_level_sd_delta = .5,
                                  
-                                 mu_omega_star = .07,
-                                 vol_shock_sd = .02,
+                                 mu_omega_star = .04,
+                                 vol_shock_sd = .01,
                                  
-                                 M21_M22_vol_mu_delta = .3,
-                                 M21_M22_vol_sd_delta = .1, 
+                                 M21_M22_vol_mu_delta = .2,
+                                 M21_M22_vol_sd_delta = .02, 
                                  
                                  plot_sim = TRUE,
                                  
                                  # And now the only input for the fitting function
-                                 inputted_vol_shock_length = rep(1, n+1)
+                                 inputted_vol_shock_length = rep(2, n+1) #tk
                                  ) 
 {
   ## Doc String
@@ -143,7 +143,7 @@ simulate_and_analyze <- function(n = 8,
                                   shock_lengths = inputted_vol_shock_length,
                                   garch_order_of_simulation[1],
                                   garch_order_of_simulation[2],
-                                  garch_order_of_simulation[3] #tk
+                                  garch_order_of_simulation[3] 
                                   )
   return(fitting_output)
 }

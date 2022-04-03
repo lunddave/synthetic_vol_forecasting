@@ -9,6 +9,8 @@
 # 5) observe here the nested foreach structure https://www.r-bloggers.com/2013/06/grid-search-for-free-parameters-with-parallel-computing/
 # Discuss this with AM.  There is a decision to be made between a nested for each setup aAND a replication column
 # 6) Principle: number of cores should be equal to the number of threads https://www.blasbenito.com/post/02_parallelizing_loops_with_r/
+# 7) Use chunking in this explanatory page, as well as nested for each discussion
+# https://cran.r-project.org/web/packages/foreach/vignettes/nested.html
 
 # MC
 library("parallel")
@@ -27,8 +29,8 @@ donor_pool_size <- c(10,20)
 p <- c(5,10, 15)
 alpha <- c(0, .15,.65, .75)
 beta <- c(0, .15,.65, .75) 
-vol_model <- seq(1,3,1)
-level_model <- seq(1,4,1)
+vol_model <- c('M1','M21','M22')
+level_model <- c('M1','M21','M22','none')
 vol_shock_length <- c(1,2,3)
 level_shock_length <- c(1,2)
 extra_measurement_days <- c(1,2,3)

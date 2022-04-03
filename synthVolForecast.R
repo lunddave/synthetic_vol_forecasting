@@ -13,6 +13,116 @@ library(DescTools)
 
 options(scipen = 7)
 
+### Auxiliary functions 
+
+## Begin shock_time_creator
+shock_time_creator <- function(series_length, a, min_shock_time, max_of_shock_lengths){
+  vector_of_shocktimes <- rdunif(1, # the number of r.v. to simulate
+                                 a + min_shock_time, #the lower bound on the discrete unif interval
+                                 series_length - max_of_shock_lengths - extra_measurement_days) #the upper bound on the discrete unif interval
+  
+  return(vector_of_shocktimes)
+}
+
+## BEGIN shock_time_creator
+
+#A distance-based weighting method function adapted from code by Jilei Lin (PhD Student at GWU).
+# It returns a vector determined by the user's choice of distance-based-weighting method.
+
+dbw <- function(X, 
+                Tstar, 
+                scale = FALSE,
+                sum_to_1 = 1,
+                bounded_below_by = 0,
+                bounded_above_by = 1) { # https://github.com/DEck13/synthetic_prediction/blob/master/prevalence_testing/numerical_studies/COP.R
+  # X is a list of covariates for the time series
+  # X[[1]] should be the covariate of the time series to predict
+  # X[[p]] for p = 2,...,n+1 are covariates for donors
+  
+  # T^* is a vector of shock-effects time points
+  # shock effect point must be > 2
+  
+  # number of time series for pool
+  n <- length(X) - 1
+  
+  # covariate for time series for prediction
+  X1 <- X[[1]][Tstar[1], , drop = FALSE] # we get only 1 row
+  
+  # covariates for time series pool
+  X0 <- c()
+  for (i in 1:n) {
+    X0[[i]] <- X[[i + 1]][Tstar[i + 1] + 1, , drop = FALSE] #get 1 row from each donor
+  }
+  
+  if (scale == TRUE) { #begin if statement
+    dat <- rbind(X1, do.call('rbind', X0)) # do.call is for cluster computing?
+    dat <- apply(dat, 2, function(x) scale(x, center = TRUE, scale = TRUE))
+    X1 <- dat[1, , drop = FALSE]
+    X0 <- c()
+    for (i in 1:n) {
+      X0[[i]] <- dat[i + 1, , drop = FALSE] #we are repopulating X0[[i]] with scaled+centered data
+    } #end loop
+  } #end if statement
+  
+  # objective function
+  weightedX0 <- function(W) {
+    # W is a vector of weight of the same length of X0
+    n <- length(W)
+    p <- ncol(X1)
+    XW <- matrix(0, nrow = 1, ncol = p)
+    for (i in 1:n) {
+      XW <- XW + W[i] * X0[[i]]
+    } #end of loop
+    norm <- as.numeric(crossprod(matrix(X1 - XW)))
+    return(norm)
+  } #end objective function
+  
+  # optimization and return statement
+  
+  # I have added features
+  # 1) The option to remove the sum-to-1 constraint
+  # 2) The option to change the lower bound to -1 or NA
+  # 3) option to change the upper bound to NA
+  
+  #Thus I need if statements to implement these...
+  
+  # conditional for sum to 1
+  if (is.na(sum_to_1) == FALSE) {eq_constraint <- function(W) sum(W) - 1 }
+  else{eq_constraint = NULL}
+  
+  # conditional for bounding below
+  if (is.na(bounded_below_by) == FALSE) 
+  {
+    lower_bound = rep(bounded_below_by, n) 
+  }
+  else if (is.na(bounded_below_by) == TRUE)  {
+    lower_bound = NULL
+  }
+  
+  #conditional for bounding above
+  if (is.na(bounded_above_by) == FALSE) 
+  {
+    upper_bound = rep(1, n) 
+  }
+  else if (is.na(bounded_above_by) == TRUE)  {
+    upper_bound = NULL
+  }
+  
+  object_to_return <- solnp(par = rep(1/n, n), 
+                            fun = weightedX0, 
+                            eqfun = eq_constraint, 
+                            eqB = 0,
+                            LB = lower_bound, UB = upper_bound, 
+                            control = list(trace = 0
+                                           , 1.0e-8
+                                           , tol = 1e-9
+                                           , outer.iter = 10000
+                                           , inner.iter = 10000))
+  return(object_to_return$pars)
+  
+} #END dbw function
+
+
 #####################################################################
 
 ########### A function that produces exactly one simulation case for synthetic volatility
@@ -118,14 +228,6 @@ synth_vol_sim <- function(n,
   # Simulate shock times
   if ( is.null(shock_time_vec) == TRUE)
   {
-        shock_time_creator <- function(series_length, a, min_shock_time, max_of_shock_lengths){
-          vector_of_shocktimes <- rdunif(1, # the number of r.v. to simulate
-                                         a + min_shock_time, #the lower bound on the discrete unif interval
-                                         series_length - max_of_shock_lengths - extra_measurement_days) #the upper bound on the discrete unif interval
-                                          
-          return(vector_of_shocktimes)
-        }
-        
         shock_time_vec <- mapply(shock_time_creator, Tee, MoreArgs = list(a, min_shock_time, max_of_shock_lengths))
   }
   
@@ -360,7 +462,6 @@ synth_vol_sim <- function(n,
     
     T_star_plus_1_return_vec[i] <- Y[[i]][,1][shock_time_vec[i]+1,]
     
-
     #Now we calculate the p-value for the volatility spike of length k
     arch_param_count <- sum(ifelse(arch_param > 0, 1, 0))
     garch_param_count <- sum(ifelse(garch_param > 0, 1, 0))
@@ -486,100 +587,7 @@ synth_vol_sim <- function(n,
 
 #####################################################################
 
-#First, an distance-based weighting method function written by Jilei Lin (PhD Student at GWU)
-# this function returns the W^* estimated by synthetic control method (SCM)
-dbw <- function(X, 
-                Tstar, 
-                scale = FALSE,
-                sum_to_1 = 1,
-                bounded_below_by = 0,
-                bounded_above_by = 1) { # https://github.com/DEck13/synthetic_prediction/blob/master/prevalence_testing/numerical_studies/COP.R
-  # X is a list of covariates for the time series
-  # X[[1]] should be the covariate of the time series to predict
-  # X[[p]] for p = 2,...,n+1 are covariates for donors
-  
-  # T^* is a vector of shock-effects time points
-  # shock effect point must be > 2
-  
-  # number of time series for pool
-  n <- length(X) - 1
-  
-  # covariate for time series for prediction
-  X1 <- X[[1]][Tstar[1], , drop = FALSE] # we get only 1 row
-  
-  # covariates for time series pool
-  X0 <- c()
-  for (i in 1:n) {
-    X0[[i]] <- X[[i + 1]][Tstar[i + 1] + 1, , drop = FALSE] #get 1 row from each donor
-  }
-  
-  if (scale == TRUE) { #begin if statement
-    dat <- rbind(X1, do.call('rbind', X0)) # do.call is for cluster computing?
-    dat <- apply(dat, 2, function(x) scale(x, center = TRUE, scale = TRUE))
-    X1 <- dat[1, , drop = FALSE]
-    X0 <- c()
-    for (i in 1:n) {
-      X0[[i]] <- dat[i + 1, , drop = FALSE] #we are repopulating X0[[i]] with scaled+centered data
-    } #end loop
-  } #end if statement
-  
-  # objective function
-  weightedX0 <- function(W) {
-    # W is a vector of weight of the same length of X0
-    n <- length(W)
-    p <- ncol(X1)
-    XW <- matrix(0, nrow = 1, ncol = p)
-    for (i in 1:n) {
-      XW <- XW + W[i] * X0[[i]]
-    } #end of loop
-    norm <- as.numeric(crossprod(matrix(X1 - XW)))
-    return(norm)
-  } #end objective function
 
-  # optimization and return statement
-  
-  # I have added features
-  # 1) The option to remove the sum-to-1 constraint
-  # 2) The option to change the lower bound to -1 or NA
-  # 3) option to change the upper bound to NA
-  
-  #Thus I need if statements to implement these...
-  
-  # conditional for sum to 1
-  if (is.na(sum_to_1) == FALSE) {eq_constraint <- function(W) sum(W) - 1 }
-  else{eq_constraint = NULL}
-  
-  # conditional for bounding below
-  if (is.na(bounded_below_by) == FALSE) 
-  {
-    lower_bound = rep(bounded_below_by, n) 
-  }
-  else if (is.na(bounded_below_by) == TRUE)  {
-    lower_bound = NULL
-      }
-  
-#conditional for bounding above
-  if (is.na(bounded_above_by) == FALSE) 
-  {
-    upper_bound = rep(1, n) 
-  }
-  else if (is.na(bounded_above_by) == TRUE)  {
-    upper_bound = NULL
-  }
-  
-  object_to_return <- solnp(par = rep(1/n, n), 
-                            fun = weightedX0, 
-                            eqfun = eq_constraint, 
-                            eqB = 0,
-                            LB = lower_bound, UB = upper_bound, 
-                            control = list(trace = 0
-                                           , 1.0e-8
-                                           , tol = 1e-9
-                                           , outer.iter = 10000
-                                           , inner.iter = 10000))
-  return(object_to_return$pars)
-  
-} #end dbw function
 #############################################################################
 
 synth_vol_fit <- function(X,
@@ -667,14 +675,11 @@ synth_vol_fit <- function(X,
     {
     adjusted_pred <- pred + omega_star_hat_vec[i]
     adjusted_pred_list[[i]] <- pmax(adjusted_pred, 0)
-    MSE_adjusted[[i]] <- sum((shock_period_only - adjusted_pred_list[[i]])**2)
+    MSE_adjusted[[i]] <- sum((shock_period_only - adjusted_pred_list[[i]])**2) #tk use lapply?
     }
 
   #Last, we calculate MSE for unadjusted
   MSE_unadjusted <- sum((shock_period_only - pred)**2)
-
-  #Who won?
-  alternative_wins <- MSE_adjusted < MSE_unadjusted
 
   #We now make a vector with the names of each of the sensible linear combinations
   linear_comb_names <- c('Convex Hull',
@@ -689,7 +694,7 @@ synth_vol_fit <- function(X,
                         'Unit Ball',
                         'Unrestricted') 
   
-  labels_for_legend <- c('Actual','GARCH (unadjusted)',linear_comb_names)
+  labels_for_legend <- c('Actual','GARCH (unadjusted)', linear_comb_names)
   
   if (plots == TRUE){
             
@@ -702,14 +707,13 @@ synth_vol_fit <- function(X,
                 if (minn == maxx)
                 {
                   minn <- -1 * abs(minn)
-                  maxx  <- -1 * abs(max)
+                  maxx  <- 1 * abs(maxx)
                 }
                 barplot(w_mat[i,],
                         main = paste('Donor Pool Weights:\n',
                                      linear_comb_names[i]), 
                                     names.arg = 2:(length(T_star)),
-                                    ylim = c(minn, 
-                                             maxx))
+                                    ylim = c(minn, maxx))
                  }
             
               #Now let's plot the adjustment
@@ -778,18 +782,18 @@ synth_vol_fit <- function(X,
   #Now arrange the output
   display_df <- data.frame(matrix(ncol = 0, nrow = 11))
 
-  display_df$w_star <- round(unlist(omega_star_hat_vec), 4)
-  display_df$sigma2_hat <- round(unlist(adjusted_pred_list), 4)
-  display_df$MSE_adj <- round(unlist(MSE_adjusted), 4)
-  display_df$alt_wins <- unlist(alternative_wins)
+  display_df$w_star_hat <- round(unlist(omega_star_hat_vec), 5)
+  display_df$MSE_adj <- round(unlist(MSE_adjusted), 5)
   
   #Now add the unadjusted row
-  unadjusted_row <- c('NA', round(pred,4), round(MSE_unadjusted,4), 'NA')
+  unadjusted_row <- c(NA, round(pred,5), NA)
   display_df <- rbind(display_df, unadjusted_row)
   
-  row.names(display_df) <- c(linear_comb_names, 'GARCH (unadjusted)')
-  display_df <- display_df[order(display_df$MSE_adj), ]
-  
+  display_df$Method <- c(linear_comb_names, 'GARCH (unadjusted)')
+  display_df$beat_unadjusted <- as.character(display_df$MSE_adj < MSE_unadjusted)
+  display_df <- display_df[order(display_df$MSE_adj, decreasing = FALSE), ]
+  display_df <- display_df[, c(3, 1, 2, 4)]
+
   cat('\n Dataframe Comparing the Distance-based-weighting methods \n')
   cat('--------------------------------------------------------------- \n')
   display_df
