@@ -670,12 +670,14 @@ synth_vol_fit <- function(X,
 
   adjusted_pred_list <- list() # the ith entry will be using the ith linear combination
   MSE_adjusted <- list()
+  APE_adjusted <- list()
 
   for (i in 1:length(omega_star_hat_vec))
     {
     adjusted_pred <- pred + omega_star_hat_vec[i]
     adjusted_pred_list[[i]] <- pmax(adjusted_pred, 0)
     MSE_adjusted[[i]] <- sum((shock_period_only - adjusted_pred_list[[i]])**2) #tk use lapply?
+    APE_adjusted[[i]] <- sum(abs(shock_period_only - adjusted_pred_list[[i]]) / shock_period_only)
     }
 
   #Last, we calculate MSE for unadjusted
@@ -784,15 +786,16 @@ synth_vol_fit <- function(X,
 
   display_df$w_star_hat <- round(unlist(omega_star_hat_vec), 5)
   display_df$MSE_adj <- round(unlist(MSE_adjusted), 5)
+  display_df$APE_adj <- round(unlist(APE_adjusted), 5) #tk
   
   #Now add the unadjusted row
-  unadjusted_row <- c(NA, round(pred,5), NA)
+  unadjusted_row <- c(NA, round(pred,5), NA, NA)
   display_df <- rbind(display_df, unadjusted_row)
   
   display_df$Method <- c(linear_comb_names, 'GARCH (unadjusted)')
   display_df$beat_unadjusted <- as.character(display_df$MSE_adj < MSE_unadjusted)
-  display_df <- display_df[order(display_df$MSE_adj, decreasing = FALSE), ]
-  display_df <- display_df[, c(3, 1, 2, 4)]
+  display_df <- display_df[order(display_df$APE_adj, decreasing = FALSE), ]
+  display_df <- display_df[, c(3, 1, 2, 4, 5)]
 
   cat('\n Dataframe Comparing the Distance-based-weighting methods \n')
   cat('--------------------------------------------------------------- \n')

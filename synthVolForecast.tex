@@ -253,12 +253,7 @@ post-shock aggregated estimators are provided. The basic structures of these mod
 are the same for all time series in the analysis, the differences between them lie in the setup of the shock effect distribution.  We first sharply distinguish between a volatility shock induced by a return-series shock at time T*
 
 
-
-
 \subsubsection{Volatility Shock Model}
-
-
-
 
 Let $I(\cdot)$ be an indicator function, $T_i$ be the time length of the time series $i$ for $i = 1, \ldots, n+1$, and $T_i^*$ be the time point just before the one when the shock is known to occur, with $T_i^* < T_i$.  For $t= 1, \ldots, T_i$ and $i = 1, \ldots, n+1$, the model $\mc{M}_1$ is defined as
 \begin{align}
@@ -363,6 +358,7 @@ However, since it is not known a priori for which $t$ the effect $\omega_{i}^{*}
 \item A volatility shock longer than 1 trading session should we much less necessary is $\alpha + \beta \approx 1$, i.e. if the process is slowly decaying.
 \item A level shock at $T^{*}+1$ may hinder estimation of $w^{*}$ because its expected moments will be much larger than those of $\epsilon_{i,t}$, i.e. it will be an outlier.
 \item For the prediction step, why not just take a convex combination of the $\hat\sigma^{2}_{i}$ in the donor pool?  Reply is (a) that would require something like homogeneity in the paramaters $(\alpha, \beta)$ between the donors and the time series under study, and (b) because we have assumed knowledge of an outsize shock, we want to somehow use that information to $\textit{intervene in, or make a correct to}$ the GARCH model, not just use a GARCH model.
+\item For $\mc{M}_21$ especially, the shock estimator given by the orthogonal projection of the estimated shocks into the 1-dimensional subspace spanned by $X_{T^{*}+1}$ may be best.
 \end{enumerate}
 
 \subsection{To do}
@@ -377,6 +373,7 @@ However, since it is not known a priori for which $t$ the effect $\omega_{i}^{*}
 \item Use $\Delta^{2}$, i.e. second difference (of volume, RV, etc) in order to capture the change in the change
 \item Emphasize that $\epsilon^{*}_{i,t}$ is a nuisance parameter and the length of the volatility shock and the length of the level shock are also volatility parameters.
 \item What metrics will be used to compare forecasts?  In simulations, we may need some way to compare forecasts of series that are not on the same scale, i.e. because some series have larger shocks.  Or it could be enough to use rankings, e.g. for each simulation, just rank all K methods.  In real-world applications, if the number of applications in small, ranking may not be too informative, and we may need to find a metric suitable for volatility forecast comparison.  
+\item Use mean absolute percentage error to judge methods.  absolute percentage error allows comparisons between volatility series on different scale.
 \end{enumerate}
 
 \subsection{Factors (parameters) to vary in simulations}
