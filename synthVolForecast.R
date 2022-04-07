@@ -16,7 +16,7 @@ options(scipen = 7)
 ### Auxiliary functions 
 
 ## Begin shock_time_creator
-shock_time_creator <- function(series_length, a, min_shock_time, max_of_shock_lengths){
+shock_time_creator <- function(series_length, a, min_shock_time, max_of_shock_lengths, extra_measurement_days){
   vector_of_shocktimes <- rdunif(1, # the number of r.v. to simulate
                                  a + min_shock_time, #the lower bound on the discrete unif interval
                                  series_length - max_of_shock_lengths - extra_measurement_days) #the upper bound on the discrete unif interval
@@ -228,7 +228,7 @@ synth_vol_sim <- function(n,
   # Simulate shock times
   if ( is.null(shock_time_vec) == TRUE)
   {
-        shock_time_vec <- mapply(shock_time_creator, Tee, MoreArgs = list(a, min_shock_time, max_of_shock_lengths))
+        shock_time_vec <- mapply(shock_time_creator, Tee, MoreArgs = list(a, min_shock_time, max_of_shock_lengths, extra_measurement_days))
   }
   
   ############ Simulate Structure of Covariates ############
@@ -680,8 +680,9 @@ synth_vol_fit <- function(X,
     APE_adjusted[[i]] <- sum(abs(shock_period_only - adjusted_pred_list[[i]]) / shock_period_only)
     }
 
-  #Last, we calculate MSE for unadjusted
+  #Last, we calculate MSE for unadjusted and APE_adjusted
   MSE_unadjusted <- sum((shock_period_only - pred)**2)
+  APE_unadjusted <- sum(abs(shock_period_only - pred)/shock_period_only)
 
   #We now make a vector with the names of each of the sensible linear combinations
   linear_comb_names <- c('Convex Hull',
@@ -789,7 +790,7 @@ synth_vol_fit <- function(X,
   display_df$APE_adj <- round(unlist(APE_adjusted), 5) #tk
   
   #Now add the unadjusted row
-  unadjusted_row <- c(NA, round(pred,5), NA, NA)
+  unadjusted_row <- c(NA, round(pred,5), NA, APE_unadjusted)
   display_df <- rbind(display_df, unadjusted_row)
   
   display_df$Method <- c(linear_comb_names, 'GARCH (unadjusted)')

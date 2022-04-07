@@ -50,7 +50,7 @@ simulate_and_analyze <- function(n = 8,
                                  M21_M22_vol_mu_delta = .2,
                                  M21_M22_vol_sd_delta = .02, 
                                  
-                                 plot_sim = TRUE,
+                                 plot_sim = FALSE,
                                  
                                  # And now the only input for the fitting function
                                  inputted_vol_shock_length = rep(2, n+1) #tk
@@ -125,7 +125,6 @@ simulate_and_analyze <- function(n = 8,
                           vol_shock_sd = vol_shock_sd, 
                           M21_M22_vol_mu_delta = M21_M22_vol_mu_delta,
                           M21_M22_vol_sd_delta = M21_M22_vol_sd_delta, 
-                          
 
                           plot = plot_sim)
   
