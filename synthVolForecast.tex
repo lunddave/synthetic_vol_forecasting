@@ -397,6 +397,18 @@ However, since it is not known a priori for which $t$ the effect $\omega_{i}^{*}
 
 \end{enumerate}
 
+\subsection{Procedure for building a donor pool}
+\begin{enumerate}
+\item Determine time series of under study (TSUS).
+\item Nominate set of donors D for the TSUS, $|D| = n$.
+\item Let $C_{i}$ denote the set of covariates for the shock distribution of the $ith$ time series, $1 \leq i \leq n + 1$.  
+\item Define $C = \cap^{n+1}_{i=1}C_{i}$, i.e. the intersection of the covariate sets.
+\item Let $X_{i}$ denote the vector of length $C_{i}$ containing the entries of the covariate of the shock distribution of the $ith$ time series, and let $X_{i}^{C}$ denote the subvector of length $|C|$ with the covariates common to all $n+1$ series.
+\item For each $i\geq 2$, compute $\widehat{corr}(X_{1}^{C}, X_{i}^{C})$.
+\item Cull the donor set D down to only the donors that satisfy $|\widehat{corr}(X_{1}^{C}, X_{i}^{C})|\geq \xi$, for some suitably chosen $\xi \in (0,1)$
+
+\end{enumerate}
+
 
 
 
