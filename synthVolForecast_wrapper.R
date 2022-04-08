@@ -47,13 +47,15 @@ simulate_and_analyze <- function(n = 8,
                                  mu_omega_star = .04,
                                  vol_shock_sd = .01,
                                  
-                                 M21_M22_vol_mu_delta = .2,
+                                 M21_M22_vol_mu_delta = .4,
                                  M21_M22_vol_sd_delta = .02, 
                                  
-                                 plot_sim = FALSE,
+                                 plot_sim = TRUE,
+                                 
+                                 plot_fit = TRUE,
                                  
                                  # And now the only input for the fitting function
-                                 inputted_vol_shock_length = rep(2, n+1) #tk
+                                 inputted_vol_shock_length = rep(1, n+1) #tk
                                  ) 
 {
   ## Doc String
@@ -142,7 +144,8 @@ simulate_and_analyze <- function(n = 8,
                                   shock_lengths = inputted_vol_shock_length,
                                   garch_order_of_simulation[1],
                                   garch_order_of_simulation[2],
-                                  garch_order_of_simulation[3] 
+                                  garch_order_of_simulation[3],
+                                  plots = plot_fit
                                   )
   return(fitting_output)
 }

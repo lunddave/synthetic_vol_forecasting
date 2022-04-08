@@ -672,23 +672,23 @@ synth_vol_fit <- function(X,
   MSE_adjusted <- list()
   APE_adjusted <- list()
 
-  for (i in 1:length(omega_star_hat_vec))
+  for (i in 1:length(omega_star_hat_vec)) #tk use lapply?
     {
     adjusted_pred <- pred + omega_star_hat_vec[i]
     adjusted_pred_list[[i]] <- pmax(adjusted_pred, 0)
-    MSE_adjusted[[i]] <- sum((shock_period_only - adjusted_pred_list[[i]])**2) #tk use lapply?
-    APE_adjusted[[i]] <- sum(abs(shock_period_only - adjusted_pred_list[[i]]) / shock_period_only)
+    MSE_adjusted[[i]] <- mean((shock_period_only - adjusted_pred_list[[i]])**2) 
+    APE_adjusted[[i]] <- mean(abs(shock_period_only - adjusted_pred_list[[i]]) / shock_period_only)
     }
 
-  #Last, we calculate MSE for unadjusted and APE_adjusted
-  MSE_unadjusted <- sum((shock_period_only - pred)**2)
-  APE_unadjusted <- sum(abs(shock_period_only - pred)/shock_period_only)
+  #Last, we calculate unadjusted MSE and APE
+  MSE_unadjusted <- mean((shock_period_only - pred)**2)
+  MAPE_unadjusted <- mean(abs(shock_period_only - pred)/shock_period_only)
 
   #We now make a vector with the names of each of the sensible linear combinations
   linear_comb_names <- c('Convex Hull',
                          '1 -1 NA',
                         'Drop Bounded Below',
-                        'Unit Ball: Sum-to-1 (L1 Norm Vec)',
+                        'Unit Ball: Sum-to-1',
                         'Affine Hull',
                         'Drop Sum-to-1',
                         'Bounded Below by -1',
@@ -787,16 +787,16 @@ synth_vol_fit <- function(X,
 
   display_df$w_star_hat <- round(unlist(omega_star_hat_vec), 5)
   display_df$MSE_adj <- round(unlist(MSE_adjusted), 5)
-  display_df$APE_adj <- round(unlist(APE_adjusted), 5) #tk
+  display_df$MAPE_adj <- round(unlist(APE_adjusted), 5) #tk
   
   #Now add the unadjusted row
-  unadjusted_row <- c(NA, round(pred,5), NA, APE_unadjusted)
+  unadjusted_row <- c(round(pred,5), MSE_unadjusted, MAPE_unadjusted, NA)
   display_df <- rbind(display_df, unadjusted_row)
   
   display_df$Method <- c(linear_comb_names, 'GARCH (unadjusted)')
   display_df$beat_unadjusted <- as.character(display_df$MSE_adj < MSE_unadjusted)
-  display_df <- display_df[order(display_df$APE_adj, decreasing = FALSE), ]
-  display_df <- display_df[, c(3, 1, 2, 4, 5)]
+  display_df <- display_df[order(display_df$MSE_adj, decreasing = FALSE), ]
+  display_df <- display_df[, c(4, 1, 2, 3, 5)]
 
   cat('\n Dataframe Comparing the Distance-based-weighting methods \n')
   cat('--------------------------------------------------------------- \n')

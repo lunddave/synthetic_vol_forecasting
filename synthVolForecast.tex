@@ -374,6 +374,7 @@ However, since it is not known a priori for which $t$ the effect $\omega_{i}^{*}
 \item Emphasize that $\epsilon^{*}_{i,t}$ is a nuisance parameter and the length of the volatility shock and the length of the level shock are also volatility parameters.
 \item What metrics will be used to compare forecasts?  In simulations, we may need some way to compare forecasts of series that are not on the same scale, i.e. because some series have larger shocks.  Or it could be enough to use rankings, e.g. for each simulation, just rank all K methods.  In real-world applications, if the number of applications in small, ranking may not be too informative, and we may need to find a metric suitable for volatility forecast comparison.  
 \item Use mean absolute percentage error to judge methods.  absolute percentage error allows comparisons between volatility series on different scale.
+\item Use GoogleTrends data (on $\Delta$GoogleTrends) in volatility profile
 \end{enumerate}
 
 \subsection{Factors (parameters) to vary in simulations}
@@ -402,7 +403,7 @@ However, since it is not known a priori for which $t$ the effect $\omega_{i}^{*}
 \item Determine time series of under study (TSUS).
 \item Nominate set of donors D for the TSUS, $|D| = n$.
 \item Let $C_{i}$ denote the set of covariates for the shock distribution of the $ith$ time series, $1 \leq i \leq n + 1$.  
-\item Define $C = \cap^{n+1}_{i=1}C_{i}$, i.e. the intersection of the covariate sets.
+\item Define $C = \cap^{n+1}_{i=1}C_{i}$, i.e. the intersection of the covariate sets. (Dan asks: could we also take the union and then just impute structural zeroes?)
 \item Let $X_{i}$ denote the vector of length $C_{i}$ containing the entries of the covariate of the shock distribution of the $ith$ time series, and let $X_{i}^{C}$ denote the subvector of length $|C|$ with the covariates common to all $n+1$ series.
 \item For each $i\geq 2$, compute $\widehat{corr}(X_{1}^{C}, X_{i}^{C})$.
 \item Cull the donor set D down to only the donors that satisfy $|\widehat{corr}(X_{1}^{C}, X_{i}^{C})|\geq \xi$, for some suitably chosen $\xi \in (0,1)$
