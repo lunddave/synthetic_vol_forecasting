@@ -16,7 +16,12 @@ options(scipen = 7)
 ### Auxiliary functions 
 
 ## Begin shock_time_creator
-shock_time_creator <- function(series_length, a, min_shock_time, max_of_shock_lengths, extra_measurement_days){
+shock_time_creator <- function(series_length
+                               , a
+                               , min_shock_time
+                               , max_of_shock_lengths
+                               , extra_measurement_days){
+  
   vector_of_shocktimes <- rdunif(1, # the number of r.v. to simulate
                                  a + min_shock_time, #the lower bound on the discrete unif interval
                                  series_length - max_of_shock_lengths - extra_measurement_days) #the upper bound on the discrete unif interval
@@ -223,12 +228,16 @@ synth_vol_sim <- function(n,
   
   #Now we modify the n+1 series lengths so that they can buffering space on the end
   #ie we want to add a number of points equal to (max_of_shock_lengths + extra_measurement_days) 
-  Tee <- Tee + rep(max_of_shock_lengths, n+1) + rep(extra_measurement_days, n+1) 
+  Tee <- Tee + rep(max_of_shock_lengths, n+1) + rep(extra_measurement_days, n+1)
   
   # Simulate shock times
   if ( is.null(shock_time_vec) == TRUE)
   {
-        shock_time_vec <- mapply(shock_time_creator, Tee, MoreArgs = list(a, min_shock_time, max_of_shock_lengths, extra_measurement_days))
+        shock_time_vec <- mapply(shock_time_creator, Tee, 
+                                 MoreArgs = list(a
+                                                 , min_shock_time
+                                                 , max_of_shock_lengths
+                                                 , extra_measurement_days))
   }
   
   ############ Simulate Structure of Covariates ############
@@ -650,6 +659,10 @@ synth_vol_fit <- function(X,
 
   # Now we place these linear combinations into a matrix
   w_mat <- matrix(unlist(w), nrow = nrow(matrix_of_specs), byrow = TRUE)
+  
+  # Add a linear combination that is just 1/n times that 1 vector
+  linear_comb_for_arithmetic_mean <- rep(1/ncol(w_mat), ncol(w_mat))
+  w_mat <- rbind(w_mat, linear_comb_for_arithmetic_mean)
 
   #Second, we calculate omega_star_hat, which is the dot product of w and the estimated shock effects
   omega_star_hat_vec <- as.numeric(w_mat %*% shock_est_vec[-1])
@@ -695,7 +708,8 @@ synth_vol_fit <- function(X,
                         'Bounded Above by 1',
                         'Conic Hull',
                         'Unit Ball',
-                        'Unrestricted') 
+                        'Unrestricted',
+                        'Arithmetic Mean') 
   
   labels_for_legend <- c('Actual','GARCH (unadjusted)', linear_comb_names)
   
@@ -783,15 +797,16 @@ synth_vol_fit <- function(X,
   } #end conditional for plots
   
   #Now arrange the output
-  display_df <- data.frame(matrix(ncol = 0, nrow = 11))
+  display_df <- data.frame(matrix(ncol = 0, nrow = length(omega_star_hat_vec)))
 
-  display_df$w_star_hat <- round(unlist(omega_star_hat_vec), 5)
-  display_df$MSE_adj <- round(unlist(MSE_adjusted), 5)
-  display_df$MAPE_adj <- round(unlist(APE_adjusted), 5) #tk
+  display_df$w_star_hat <- unlist(omega_star_hat_vec)
+  display_df$MSE_adj <- unlist(MSE_adjusted)
+  display_df$MAPE_adj <- unlist(APE_adjusted)
   
   #Now add the unadjusted row
-  unadjusted_row <- c(round(pred,5), MSE_unadjusted, MAPE_unadjusted, NA)
+  unadjusted_row <- c(NA, MSE_unadjusted, MAPE_unadjusted, NA)
   display_df <- rbind(display_df, unadjusted_row)
+  display_df <- round(display_df, 3)
   
   display_df$Method <- c(linear_comb_names, 'GARCH (unadjusted)')
   display_df$beat_unadjusted <- as.character(display_df$MSE_adj < MSE_unadjusted)

@@ -32,19 +32,19 @@ simulate_and_analyze <- function(n = 8,
                                  
                                  level_shock_length = 1,
                                  vol_shock_length = 2,
-                                 extra_measurement_days = 4,
+                                 extra_measurement_days = 2,
                                  
-                                 a = 252, 
-                                 b = 5 * 252, 
+                                 a = 2*252, 
+                                 b = 5*252, 
                                  
                                  mu_eps_star = -4.25,
                                  level_GED_alpha = sqrt(2), # note: beta = 2, alpha = sqrt(2) is N(0,1)
                                  level_GED_beta = 2, # note: beta = 2, alpha = sqrt(2) is N(0,1))
                                  
-                                 M21_M22_level_mu_delta = .8, 
-                                 M21_M22_level_sd_delta = .5,
+                                 M21_M22_level_mu_delta = .2, 
+                                 M21_M22_level_sd_delta = .1,
                                  
-                                 mu_omega_star = .04,
+                                 mu_omega_star = .05,
                                  vol_shock_sd = .01,
                                  
                                  M21_M22_vol_mu_delta = .4,
@@ -55,7 +55,7 @@ simulate_and_analyze <- function(n = 8,
                                  plot_fit = TRUE,
                                  
                                  # And now the only input for the fitting function
-                                 inputted_vol_shock_length = rep(1, n+1) #tk
+                                 inputted_vol_shock_length = rep(2, n+1)
                                  ) 
 {
   ## Doc String
