@@ -684,134 +684,137 @@ synth_vol_fit <- function(X,
   adjusted_pred_list <- list() # the ith entry will be using the ith linear combination
   MSE_adjusted <- list()
   APE_adjusted <- list()
+  QL_adjusted <- list()
 
   for (i in 1:length(omega_star_hat_vec)) #tk use lapply?
-    {
+  {
     adjusted_pred <- pred + omega_star_hat_vec[i]
     adjusted_pred_list[[i]] <- pmax(adjusted_pred, 0)
     MSE_adjusted[[i]] <- mean((shock_period_only - adjusted_pred_list[[i]])**2) 
     APE_adjusted[[i]] <- mean(abs(shock_period_only - adjusted_pred_list[[i]]) / shock_period_only)
-    }
-
+    QL_adjusted[[i]] <- mean( shock_period_only / adjusted_pred_list[[i]] - log(shock_period_only/adjusted_pred_list[[i]]) - 1)
+    
+    #print(mean( shock_period_only / adjusted_pred_list[[i]] - log(shock_period_only/adjusted_pred_list[[i]]) - 1))
+    #QL_adjusted[[i]] <- rep(0, length(omega_star_hat_vec)) #tk
+  }
+  
   #Last, we calculate unadjusted MSE and APE
-  MSE_unadjusted <- mean((shock_period_only - pred)**2)
-  MAPE_unadjusted <- mean(abs(shock_period_only - pred)/shock_period_only)
-
+  MSE_unadjusted <- round(mean((shock_period_only - pred)**2), 5)
+  MAPE_unadjusted <-  round(mean(abs(shock_period_only - pred)/shock_period_only), 5)
+  QL_unadjusted <-  round(mean( shock_period_only / pred - log(shock_period_only/pred ) - 1), 5)
+  
   #We now make a vector with the names of each of the sensible linear combinations
   linear_comb_names <- c('Convex Hull',
                          '1 -1 NA',
-                        'Drop Bounded Below',
-                        'Unit Ball: Sum-to-1',
-                        'Affine Hull',
-                        'Drop Sum-to-1',
-                        'Bounded Below by -1',
-                        'Bounded Above by 1',
-                        'Conic Hull',
-                        'Unit Ball',
-                        'Unrestricted',
-                        'Arithmetic Mean') 
+                         'Drop Bounded Below',
+                         'Unit Ball: Sum-to-1',
+                         'Affine Hull',
+                         'Drop Sum-to-1',
+                         'Bounded Below by -1',
+                         'Bounded Above by 1',
+                         'Conic Hull',
+                         'Unit Ball',
+                         'Unrestricted',
+                         'Arithmetic Mean') 
   
   labels_for_legend <- c('Actual','GARCH (unadjusted)', linear_comb_names)
   
   if (plots == TRUE){
-            
-              #Plot the donor pool weights
-              par(mfrow=c(ceiling(sqrt(length(linear_comb_names))),ceiling(sqrt(length(linear_comb_names)))))
-              for (i in 1:nrow(w_mat))
-                {
-                minn <- min(w_mat[i,])
-                maxx <- max(w_mat[i,])
-                if (minn == maxx)
-                {
-                  minn <- -1 * abs(minn)
-                  maxx  <- 1 * abs(maxx)
-                }
-                barplot(w_mat[i,],
-                        main = paste('Donor Pool Weights:\n',
-                                     linear_comb_names[i]), 
-                                    names.arg = 2:(length(T_star)),
-                                    ylim = c(minn, maxx))
-                 }
-            
-              #Now let's plot the adjustment
-              par(mfrow=c(1,2))
-            
-              trimmed_prediction_vec_for_plotting <- Winsorize(unlist(adjusted_pred_list), probs = c(0, 0.72)) 
-            
-              #PLOT ON THE LEFT:
-              plot(sigma2_up_through_T_star_plus_k,
-                   main = 'GARCH Prediction versus \nAdjusted Predictions versus Actual',
-                   ylab = '',
-                   xlab = "Time",
-                   xlim = c(0, length(sigma2_up_through_T_star_plus_k) + 5),
-                   ylim = c(0,  max(pred, trimmed_prediction_vec_for_plotting, sigma2_up_through_T_star_plus_k) ) )
-            
-              title(ylab = expression(sigma^2), line = 2.05, cex.lab = 1.99) # Add y-axis text
-            
-              # We also plot, in a different line style, the post-shock period
-              lines(y = c(sigma2_up_through_T_star[T_star[1]],  shock_period_only),
-                    x = T_star[1]:(T_star[1]+shock_lengths[1]),  lty=2, lwd=2,
-                    ylim = c(0,  max(pred, trimmed_prediction_vec_for_plotting, sigma2_up_through_T_star_plus_k) ) )
-            
-              # Here is the color scheme we will use
-              colors_for_adjusted_pred <- c('black', 'red',
-                        brewer.pal(length(omega_star_hat_vec),'Set3')) 
-            
-              # Let's add the ground truth
-              points(y = shock_period_only,
-                     x = (T_star[1]+1):(T_star[1]+shock_lengths[1]),
-                     col = colors_for_adjusted_pred[1],
-                     cex = 1.3, pch = 16)
-            
-              # Let's add the plain old GARCH prediction
-              points(y = pred,
-                     x = (T_star[1]+1):(T_star[1]+shock_lengths[1]),
-                     col = colors_for_adjusted_pred[2],
-                     cex = 1.3, pch = 15)
-            
-              # Now plot the adjusted predictions
-              for (i in 1:(length(omega_star_hat_vec)))
-                {
-                       points(y = adjusted_pred_list[[i]], x = (T_star[1]+1):(T_star[1]+shock_lengths[1]),
-                       col = colors_for_adjusted_pred[i+2], cex = 1.9, pch = 10)
-                 }
-            
-              legend(x = "topleft",  # Coordinates (x also accepts keywords)
-                     legend = labels_for_legend,
-                     1:length(labels_for_legend), # Vector with the name of each group
-                     colors_for_adjusted_pred,   # Creates boxes in the legend with the specified colors
-                     title = 'Prediction Method',      # Legend title,
-                     cex = .9
-              )
-            
-              #PLOT ON THE RIGHT
-              plot.ts(fitted(garch_1_1),
-                      main = 'Pre-shock GARCH fitted values (green) \nversus Actual (black)',
-                      ylab = '', col = 'green',
-                      ylim = c(0, max(fitted(garch_1_1), sigma2_up_through_T_star)) ,
-                      cex.lab = 3.99)
-              lines(sigma2_up_through_T_star, col = 'black')
-            
-              title(ylab = expression(sigma^2), line = 2.05, cex.lab = 1.99)
-              
+    
+    #Plot the donor pool weights
+    par(mfrow=c(ceiling(sqrt(length(linear_comb_names))),ceiling(sqrt(length(linear_comb_names)))))
+    for (i in 1:nrow(w_mat))
+    {
+      minn <- min(w_mat[i,])
+      maxx <- max(w_mat[i,])
+      if (minn == maxx)
+      {
+        minn <- -1 * abs(minn)
+        maxx  <- 1 * abs(maxx)
+      }
+      barplot(w_mat[i,],
+              main = paste('Donor Pool Weights:\n',
+                           linear_comb_names[i]), 
+              names.arg = 2:(length(T_star)),
+              ylim = c(minn, maxx))
+    }
+    
+    #Now let's plot the adjustment
+    par(mfrow=c(1,2))
+    
+    trimmed_prediction_vec_for_plotting <- Winsorize(unlist(adjusted_pred_list), probs = c(0, 0.72)) 
+    
+    #PLOT ON THE LEFT:
+    plot(sigma2_up_through_T_star_plus_k,
+         main = 'GARCH Prediction versus \nAdjusted Predictions versus Actual',
+         ylab = '',
+         xlab = "Time",
+         xlim = c(0, length(sigma2_up_through_T_star_plus_k) + 5),
+         ylim = c(0,  max(pred, trimmed_prediction_vec_for_plotting, sigma2_up_through_T_star_plus_k) ) )
+    
+    title(ylab = expression(sigma^2), line = 2.05, cex.lab = 1.99) # Add y-axis text
+    
+    # We also plot, in a different line style, the post-shock period
+    lines(y = c(sigma2_up_through_T_star[T_star[1]],  shock_period_only),
+          x = T_star[1]:(T_star[1]+shock_lengths[1]),  lty=2, lwd=2,
+          ylim = c(0,  max(pred, trimmed_prediction_vec_for_plotting, sigma2_up_through_T_star_plus_k) ) )
+    
+    # Here is the color scheme we will use
+    colors_for_adjusted_pred <- c('black', 'red',
+                                  brewer.pal(length(omega_star_hat_vec),'Set3')) 
+    
+    # Let's add the ground truth
+    points(y = shock_period_only,
+           x = (T_star[1]+1):(T_star[1]+shock_lengths[1]),
+           col = colors_for_adjusted_pred[1],
+           cex = 1.3, pch = 16)
+    
+    # Let's add the plain old GARCH prediction
+    points(y = pred,
+           x = (T_star[1]+1):(T_star[1]+shock_lengths[1]),
+           col = colors_for_adjusted_pred[2],
+           cex = 1.3, pch = 15)
+    
+    # Now plot the adjusted predictions
+    for (i in 1:(length(omega_star_hat_vec)))
+    {
+      points(y = adjusted_pred_list[[i]], x = (T_star[1]+1):(T_star[1]+shock_lengths[1]),
+             col = colors_for_adjusted_pred[i+2], cex = 1.9, pch = 10)
+    }
+    
+    legend(x = "topleft",  # Coordinates (x also accepts keywords)
+           legend = labels_for_legend,
+           1:length(labels_for_legend), # Vector with the name of each group
+           colors_for_adjusted_pred,   # Creates boxes in the legend with the specified colors
+           title = 'Prediction Method',      # Legend title,
+           cex = .9
+    )
+    
+    #PLOT ON THE RIGHT
+    plot.ts(fitted(garch_1_1),
+            main = 'Pre-shock GARCH fitted values (green) \nversus Actual (black)',
+            ylab = '', col = 'green',
+            ylim = c(0, max(fitted(garch_1_1), sigma2_up_through_T_star)) ,
+            cex.lab = 3.99)
+    lines(sigma2_up_through_T_star, col = 'black')
+    
+    title(ylab = expression(sigma^2), line = 2.05, cex.lab = 1.99)
+    
   } #end conditional for plots
   
   #Now arrange the output
-  display_df <- data.frame(matrix(ncol = 0, nrow = length(omega_star_hat_vec)))
-
-  display_df$w_star_hat <- unlist(omega_star_hat_vec)
-  display_df$MSE_adj <- unlist(MSE_adjusted)
-  display_df$MAPE_adj <- unlist(APE_adjusted)
+  display_df <- data.frame(linear_comb_names)
+  display_df$w_star_hat <- round(unlist(omega_star_hat_vec), 5)
+  display_df$MSE_adj <- round(unlist(MSE_adjusted), 5)
+  display_df$MAPE_adj <- round(unlist(APE_adjusted), 5) 
+  display_df$QL_adj <- round(unlist(QL_adjusted), 5)
   
   #Now add the unadjusted row
-  unadjusted_row <- c(NA, MSE_unadjusted, MAPE_unadjusted, NA)
+  unadjusted_row <- c('GARCH (unadjusted)', NA, MSE_unadjusted, MAPE_unadjusted, QL_unadjusted)
   display_df <- rbind(display_df, unadjusted_row)
-  display_df <- round(display_df, 3)
   
-  display_df$Method <- c(linear_comb_names, 'GARCH (unadjusted)')
   display_df$beat_unadjusted <- as.character(display_df$MSE_adj < MSE_unadjusted)
-  display_df <- display_df[order(display_df$MSE_adj, decreasing = FALSE), ]
-  display_df <- display_df[, c(4, 1, 2, 3, 5)]
+  display_df <- display_df[order(display_df$QL_adj, na.last = TRUE, decreasing = FALSE), ]
 
   cat('\n Dataframe Comparing the Distance-based-weighting methods \n')
   cat('--------------------------------------------------------------- \n')

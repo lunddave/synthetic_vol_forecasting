@@ -18,7 +18,7 @@ simulate_and_analyze <- function(n = 8,
                                  p = 9, 
                                  #model = c(1,1,1),
                                  arch_param = c(.26),
-                                 garch_param = c(.4),
+                                 garch_param = c(.6),
                                  #asymmetry_param = c(.15),
                                  
                                  level_model = c('M1','M21','M22','none')[4],
@@ -32,10 +32,10 @@ simulate_and_analyze <- function(n = 8,
                                  
                                  level_shock_length = 1,
                                  vol_shock_length = 2,
-                                 extra_measurement_days = 2,
+                                 extra_measurement_days = 1,
                                  
-                                 a = 2*252, 
-                                 b = 5*252, 
+                                 a = 3*252, 
+                                 b = 10*252, 
                                  
                                  mu_eps_star = -4.25,
                                  level_GED_alpha = sqrt(2), # note: beta = 2, alpha = sqrt(2) is N(0,1)
@@ -44,11 +44,11 @@ simulate_and_analyze <- function(n = 8,
                                  M21_M22_level_mu_delta = .2, 
                                  M21_M22_level_sd_delta = .1,
                                  
-                                 mu_omega_star = .05,
-                                 vol_shock_sd = .01,
+                                 mu_omega_star = .005,
+                                 vol_shock_sd = .005,
                                  
-                                 M21_M22_vol_mu_delta = .4,
-                                 M21_M22_vol_sd_delta = .02, 
+                                 M21_M22_vol_mu_delta = .02,
+                                 M21_M22_vol_sd_delta = .01, 
                                  
                                  plot_sim = TRUE,
                                  
