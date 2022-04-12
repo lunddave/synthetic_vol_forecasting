@@ -14,7 +14,7 @@ library(Rsolnp)
 library(RColorBrewer)
 library(DescTools)
 
-simulate_and_analyze <- function(n = 8, 
+simulate_and_analyze <- function(n = 19, 
                                  p = 9, 
                                  #model = c(1,1,1),
                                  arch_param = c(.26),
@@ -22,7 +22,7 @@ simulate_and_analyze <- function(n = 8,
                                  #asymmetry_param = c(.15),
                                  
                                  level_model = c('M1','M21','M22','none')[4],
-                                 vol_model = c('M1','M21','M22','none')[3],
+                                 vol_model = c('M1','M21','M22','none')[2],
                                  
                                  sigma_GARCH_innov = 1, # the sd that goes into rnorm
                                  sigma_x = 1, # the sd that goes into the covariates
@@ -31,8 +31,8 @@ simulate_and_analyze <- function(n = 8,
                                  shock_time_vec = NULL, 
                                  
                                  level_shock_length = 1,
-                                 vol_shock_length = 2,
-                                 extra_measurement_days = 1,
+                                 vol_shock_length = 4,
+                                 extra_measurement_days = 2,
                                  
                                  a = 3*252, 
                                  b = 10*252, 
@@ -47,7 +47,7 @@ simulate_and_analyze <- function(n = 8,
                                  mu_omega_star = .005,
                                  vol_shock_sd = .005,
                                  
-                                 M21_M22_vol_mu_delta = .02,
+                                 M21_M22_vol_mu_delta = .04,
                                  M21_M22_vol_sd_delta = .01, 
                                  
                                  plot_sim = TRUE,
@@ -55,7 +55,7 @@ simulate_and_analyze <- function(n = 8,
                                  plot_fit = TRUE,
                                  
                                  # And now the only input for the fitting function
-                                 inputted_vol_shock_length = rep(2, n+1)
+                                 inputted_vol_shock_length = rep(4, n+1)
                                  ) 
 {
   ## Doc String
