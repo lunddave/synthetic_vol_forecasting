@@ -39,7 +39,8 @@ dbw <- function(X,
                 scale = FALSE,
                 sum_to_1 = 1,
                 bounded_below_by = 0,
-                bounded_above_by = 1) { # https://github.com/DEck13/synthetic_prediction/blob/master/prevalence_testing/numerical_studies/COP.R
+                bounded_above_by = 1,
+                normchoice = c('l1', 'l2')[2]) { # https://github.com/DEck13/synthetic_prediction/blob/master/prevalence_testing/numerical_studies/COP.R
   # X is a list of covariates for the time series
   # X[[1]] should be the covariate of the time series to predict
   # X[[p]] for p = 2,...,n+1 are covariates for donors
@@ -78,7 +79,14 @@ dbw <- function(X,
     for (i in 1:n) {
       XW <- XW + W[i] * X0[[i]]
     } #end of loop
-    norm <- as.numeric(crossprod(matrix(X1 - XW)))
+    
+    if (normchoice == 'l1') {
+      norm <- as.numeric(norm(matrix(X1 - XW), type = "1")) 
+    }
+    else {
+      norm <- as.numeric(crossprod(matrix(X1 - XW)))
+    }
+    
     return(norm)
   } #end objective function
   
@@ -607,6 +615,7 @@ synth_vol_fit <- function(X,
                           garch_param_fit, 
                           arch_param_fit, 
                           asymmetry_param_fit,
+                          normchoice = c('l1','l2')[2],
                           plots = FALSE)
 { #begin synth_vol_fit
   
@@ -654,7 +663,8 @@ synth_vol_fit <- function(X,
                  scale = TRUE,
                  sum_to_1 = matrix_of_specs[i,1],
                  bounded_below_by = matrix_of_specs[i,2],
-                 bounded_above_by = matrix_of_specs[i,3])
+                 bounded_above_by = matrix_of_specs[i,3],
+                 normchoice = normchoice)
   }
 
   # Now we place these linear combinations into a matrix

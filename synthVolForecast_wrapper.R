@@ -54,8 +54,9 @@ simulate_and_analyze <- function(n = 19,
                                  
                                  plot_fit = TRUE,
                                  
-                                 # And now the only input for the fitting function
-                                 inputted_vol_shock_length = rep(4, n+1)
+                                 # And now the only inputs for the fitting function
+                                 inputted_vol_shock_length = rep(4, n+1),
+                                 normchoice = 'l1'
                                  ) 
 {
   ## Doc String
@@ -145,6 +146,7 @@ simulate_and_analyze <- function(n = 19,
                                   garch_order_of_simulation[1],
                                   garch_order_of_simulation[2],
                                   garch_order_of_simulation[3],
+                                  normchoice = normchoice,
                                   plots = plot_fit
                                   )
   return(fitting_output)
