@@ -357,8 +357,10 @@ However, since it is not known a priori for which $t$ the effect $\omega_{i}^{*}
 \item The variance of the level shock needs to be small, i.e. the variation of the level shocks across the donors needs to be small, in order for the estimation of $\omega^{*}_i$ to work.
 \item A volatility shock longer than 1 trading session should we much less necessary is $\alpha + \beta \approx 1$, i.e. if the process is slowly decaying.
 \item A level shock at $T^{*}+1$ may hinder estimation of $w^{*}$ because its expected moments will be much larger than those of $\epsilon_{i,t}$, i.e. it will be an outlier.
-\item For the prediction step, why not just take a convex combination of the $\hat\sigma^{2}_{i}$ in the donor pool?  Reply is (a) that would require something like homogeneity in the paramaters $(\alpha, \beta)$ between the donors and the time series under study, and (b) because we have assumed knowledge of an outsize shock, we want to somehow use that information to $\textit{intervene in, or make a correct to}$ the GARCH model, not just use a GARCH model.
+\item For the prediction step, why not just take a convex combination of the $\hat\sigma^{2}_{i}$ in the donor pool?  Reply is (a) that would require something like homogeneity in the paramaters $(\alpha, \beta)$ between the donors and the time series under study, and (b) because we have assumed knowledge of an outsize shock, we want to somehow use that information to $\textit{intervene in, or make a correction to}$ the GARCH model, not just use a GARCH model.
 \item For $\mc{M}_21$ especially, the shock estimator given by the orthogonal projection of the estimated shocks into the 1-dimensional subspace spanned by $X_{T^{*}+1}$ may be best.
+\item  if donors are indep, a non sparse linear combination could have lowest risk
+\item if donors are highly correlated, the s-sparse eg convex hull implies s choose 2 covariances
 \end{enumerate}
 
 \subsection{To do}
@@ -390,17 +392,12 @@ However, since it is not known a priori for which $t$ the effect $\omega_{i}^{*}
 \item https://cran.r-project.org/web/packages/MultiHorizonSPA/MultiHorizonSPA.pdf
 \end{enumerate}
 
-\subsection{Factors (parameters) to vary in simulations}
+\subsection{Simulation output}
 \begin{enumerate}
-\item Size of donor pool, n: n = c(10,30,90)
-\item Size of $(\alpha, \beta)$, perhaps 6 pairs?
-\item Three kinds of shock pairs: vol only, level only, dual-shock.
-\item $\mc{M}_{1}$ and $\mc{M}_{21}$ and $\mc{M}_{22}$ 
-\item 3 magnitudes of vol shock, 3 magnitudes of level shock
-\item 5-6 signal to noise ratios
-\item 2 lengths for level shock, 2 lengths for vol shock
-\item number of seeds used in simulations
-\item Based on everything above, the number of simulations would be sum(c(10,30,90)) * 6 * 3 * 3 * 9 * 6 = 2.7million .
+\item Each varying parameter inputted to the simulations
+\item Each parameter generated randomly the simulations
+\item Each pair of linear combination AND loss function (12 * 3 = 36).  I'll end up needing approximately that many ANOVAs.
+
 \end{enumerate}
 
 \subsection{Simulation notes}

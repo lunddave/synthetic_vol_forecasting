@@ -35,6 +35,7 @@ vol_shock_length <- c(1,2,3)
 level_shock_length <- c(1,2)
 extra_measurement_days <- c(1,2,3)
 replication_number <- seq(1, nsim, 1)
+optimization_norm <- c('l1','l2')
 mu_eps_star <- c(-6, -10)
 level_GED_alpha <- c(sqrt(2), sqrt(5)) # note: beta = 2, alpha = sqrt(2) is N(0,1
 level_GED_beta <- c(.7, 2) # note: beta = 2, alpha = sqrt(2) is N(0,1))
@@ -55,6 +56,7 @@ list_of_vars <- list(donor_pool_size
                     , level_shock_length
                     , extra_measurement_days
                     , replication_number
+                    , optimization_norm
                     , mu_eps_star
                     , level_GED_alpha
                     , level_GED_beta

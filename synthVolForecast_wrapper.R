@@ -14,12 +14,12 @@ library(Rsolnp)
 library(RColorBrewer)
 library(DescTools)
 
-simulate_and_analyze <- function(n = 19, 
+simulate_and_analyze <- function(n = 12, 
                                  p = 9, 
-                                 #model = c(1,1,1),
+                                 # model = c(1,2,1),
                                  arch_param = c(.26),
-                                 garch_param = c(.6),
-                                 #asymmetry_param = c(.15),
+                                 garch_param = c(.4),
+                                 asymmetry_param = c(),
                                  
                                  level_model = c('M1','M21','M22','none')[4],
                                  vol_model = c('M1','M21','M22','none')[2],
@@ -27,36 +27,36 @@ simulate_and_analyze <- function(n = 19,
                                  sigma_GARCH_innov = 1, # the sd that goes into rnorm
                                  sigma_x = 1, # the sd that goes into the covariates
                                  
-                                 min_shock_time = 5,
+                                 min_shock_time = 0,
                                  shock_time_vec = NULL, 
                                  
                                  level_shock_length = 1,
-                                 vol_shock_length = 4,
+                                 vol_shock_length = 2,
                                  extra_measurement_days = 2,
                                  
                                  a = 3*252, 
                                  b = 10*252, 
                                  
                                  mu_eps_star = -4.25,
-                                 level_GED_alpha = sqrt(2), # note: beta = 2, alpha = sqrt(2) is N(0,1)
-                                 level_GED_beta = 2, # note: beta = 2, alpha = sqrt(2) is N(0,1))
+                                 mu_eps_star_GED_alpha = sqrt(2), # note: beta = 2, alpha = sqrt(2) is N(0,1)
+                                 mu_eps_star_GED_beta = 2, # note: beta = 2, alpha = sqrt(2) is N(0,1))
                                  
-                                 M21_M22_level_mu_delta = .2, 
-                                 M21_M22_level_sd_delta = .1,
+                                 M21_M22_level_mu_delta = .3, 
+                                 M21_M22_level_sd_delta = .05,
                                  
                                  mu_omega_star = .005,
-                                 vol_shock_sd = .005,
+                                 vol_shock_sd = .0001,
                                  
-                                 M21_M22_vol_mu_delta = .04,
-                                 M21_M22_vol_sd_delta = .01, 
+                                 M21_M22_vol_mu_delta = .05,
+                                 M21_M22_vol_sd_delta = .002, 
                                  
-                                 plot_sim = TRUE,
+                                 plot_sim = FALSE,
                                  
-                                 plot_fit = TRUE,
+                                 plot_fit = FALSE,
                                  
                                  # And now the only inputs for the fitting function
-                                 inputted_vol_shock_length = rep(4, n+1),
-                                 normchoice = 'l1'
+                                 evaluated_vol_shock_length = rep(2, n+1),
+                                 normchoice = 'l2'
                                  ) 
 {
   ## Doc String
@@ -93,10 +93,10 @@ simulate_and_analyze <- function(n = 19,
   #   --vol_shock_sd - variance of the error in all volatility models
   #   --M21_M22_vol_sd_delta - sd of the vector delta in M21 and M22 vol models
   
-  #   --level_GED_alpha - alpha parameter for level shock stochastic term
-  #   --level_GED_beta - beta parameter for level shock stochastic term
+  #   --mu_eps_star_GED_alpha - alpha parameter for level shock stochastic term
+  #   --mu_eps_star_GED_beta - beta parameter for level shock stochastic term
   
-  #   --inputted_vol_shock_length - vector of length n+1 referring to the shocks lengths to be used in the estimation process
+  #   --evaluated_vol_shock_length - vector of length n+1 referring to the shocks lengths to be used in the estimation process
   
   sim_output <- synth_vol_sim(n = n, 
                           p = p, 
@@ -118,8 +118,8 @@ simulate_and_analyze <- function(n = 19,
                           b = b, 
                           
                           mu_eps_star = mu_eps_star,
-                          level_GED_alpha = level_GED_alpha, # note: beta = 2, alpha = sqrt(2) is N(0,1)
-                          level_GED_beta = level_GED_beta, # note: beta = 2, alpha = sqrt(2) is N(0,1)
+                          mu_eps_star_GED_alpha = mu_eps_star_GED_alpha, # note: beta = 2, alpha = sqrt(2) is N(0,1)
+                          mu_eps_star_GED_beta = mu_eps_star_GED_beta, # note: beta = 2, alpha = sqrt(2) is N(0,1)
                           
                           M21_M22_level_mu_delta = M21_M22_level_mu_delta, 
                           M21_M22_level_sd_delta = M21_M22_level_sd_delta,
@@ -142,14 +142,83 @@ simulate_and_analyze <- function(n = 19,
                                   Y = Y_demo,
                                   T_star = T_star_demo,
                                   shock_est_vec = shock_effect_vec_demo,
-                                  shock_lengths = inputted_vol_shock_length,
+                                  shock_lengths = evaluated_vol_shock_length,
                                   garch_order_of_simulation[1],
                                   garch_order_of_simulation[2],
                                   garch_order_of_simulation[3],
                                   normchoice = normchoice,
                                   plots = plot_fit
                                   )
-  return(fitting_output)
+  
+  # Here we collect all the items we want to output
+  parameters_to_output <- as.data.frame(matrix(
+                                        c(n
+                                        , p
+                                        , arch_param
+                                        , garch_param
+                                        , level_model
+                                        , vol_model
+                                        , sigma_GARCH_innov
+                                        , sigma_x
+                                        , min_shock_time
+                                        , shock_time_vec
+                                        , level_shock_length
+                                        , vol_shock_length
+                                        , evaluated_vol_shock_length
+                                        , extra_measurement_days
+                                        , a
+                                        , b
+                                        , mu_eps_star
+                                        , mu_eps_star_GED_alpha
+                                        , mu_eps_star_GED_beta
+                                        , M21_M22_level_mu_delta
+                                        , M21_M22_level_sd_delta
+                                        , mu_omega_star
+                                        , vol_shock_sd
+                                        , M21_M22_vol_mu_delta
+                                        , M21_M22_vol_sd_delta
+                                        , normchoice
+                                        )
+                                        , nrow = 1))
+  
+  names(parameters_to_output) <- c('n'
+                                   , 'p'
+                                   , 'arch_param'
+                                   , 'garch_param'
+                                   , 'level_model'
+                                   , 'vol_model'
+                                   , 'sigma_GARCH_innov'
+                                   , 'sigma_x'
+                                   , 'min_shock_time'
+                                   , 'shock_time_vec'
+                                   , 'level_shock_length'
+                                   , 'vol_shock_length'
+                                   , 'evaluated_vol_shock_length'
+                                   , 'extra_measurement_days'
+                                   , 'a'
+                                   , 'b'
+                                   , 'mu_eps_star'
+                                   , 'mu_eps_star_GED_alpha'
+                                   , 'mu_eps_star_GED_beta'
+                                   , 'M21_M22_level_mu_delta'
+                                   , 'M21_M22_level_sd_delta'
+                                   , 'mu_omega_star'
+                                   , 'vol_shock_sd'
+                                   , 'M21_M22_vol_mu_delta'
+                                   , 'M21_M22_vol_sd_delta'
+                                   , 'normchoice'
+                                    )                       
+  
+  fitting_output_subset <- as.data.frame(t(unlist(fitting_output[,-c(1,6)])))
+  
+  all_output_combined <- cbind(parameters_to_output, fitting_output_subset)
+  
+  return(all_output_combined)
 }
 
-simulate_and_analyze()
+k <- simulate_and_analyze()
+
+k
+View(k)
+
+
