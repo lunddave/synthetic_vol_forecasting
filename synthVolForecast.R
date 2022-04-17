@@ -11,6 +11,7 @@ library(Rsolnp)
 library(RColorBrewer)
 library(DescTools)
 library(forecast)
+library(LaplacesDemon)
 
 options(scipen = 7)
 
@@ -146,6 +147,7 @@ dbw <- function(X,
 synth_vol_sim <- function(n, 
                           p, 
                           model = NULL,
+                          dirichlet_intensity = .75,
                           arch_param, 
                           garch_param,
                           asymmetry_param = c(),
@@ -315,9 +317,12 @@ synth_vol_sim <- function(n,
       length_asymmetry_param <- model[3]
       parameter_sum <- length_arch_param + length_garch_param + length_asymmetry_param
       
-      arch_param <- runif(length_arch_param, 0, 1) / parameter_sum
-      garch_param <- runif(length_garch_param, 0, 1) / parameter_sum
-      asymmetry_param <- runif(length_asymmetry_param, 0, 1) / parameter_sum
+      dirichlet_vec <- rdirichlet(1, rep(1, parameter_sum))
+      scaled_dirichlet_vec <- dirichlet_vec / dirichlet_intensity
+      
+      arch_param <- scaled_dirichlet_vec[1:length_arch_param]
+      garch_param <- scaled_dirichlet_vec[(garch_param + 1):(garch_param + length_garch_param)]
+      asymmetry_param <- scaled_dirichlet_vec[(garch_param + length_garch_param + 1):parameter_sum]
     }
     
     #Now we save the GARCH order so that we can output it at the function's end

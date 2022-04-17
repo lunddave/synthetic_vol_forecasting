@@ -18,7 +18,7 @@ library(DescTools)
 
 simulate_and_analyze <- function(n = 12, 
                                  p = 9, 
-                                 # model = c(1,2,1),
+                                 model = NULL,
                                  arch_param = c(.26),
                                  garch_param = c(.4),
                                  asymmetry_param = c(),
