@@ -359,13 +359,15 @@ However, since it is not known a priori for which $t$ the effect $\omega_{i}^{*}
 \item A level shock at $T^{*}+1$ may hinder estimation of $w^{*}$ because its expected moments will be much larger than those of $\epsilon_{i,t}$, i.e. it will be an outlier.
 \item For the prediction step, why not just take a convex combination of the $\hat\sigma^{2}_{i}$ in the donor pool?  Reply is (a) that would require something like homogeneity in the paramaters $(\alpha, \beta)$ between the donors and the time series under study, and (b) because we have assumed knowledge of an outsize shock, we want to somehow use that information to $\textit{intervene in, or make a correction to}$ the GARCH model, not just use a GARCH model.
 \item For $\mc{M}_21$ especially, the shock estimator given by the orthogonal projection of the estimated shocks into the 1-dimensional subspace spanned by $X_{T^{*}+1}$ may be best.
-\item  if donors are indep, a non sparse linear combination could have lowest risk
-\item if donors are highly correlated, the s-sparse eg convex hull implies s choose 2 covariances
+\item  If donors are independent, a non-sparse linear combination could have lowest risk.
+\item If donors are highly correlated, the s-sparse linear combination eg convex hull implies $s \choose 2$ covariances.
 \end{enumerate}
 
 \subsection{To do}
 \begin{enumerate}
-\item Use a more realistic shock distribution, e.g. skewed t or skewed Laplace
+\item Use a more realistic shock distribution, e.g. skewed t or skewed Laplace, HOWEVER \citep{brownlees2011practical} find "no evidence
+that the Student t likelihood improves forecasting ability despite its potentially more realistic
+description of return tails"
 \item Use bivariate distribution for the level and volatility shocks.
 \item Add an intercept to optimization process.
 \item Clean up docstring in simulation file as well as signal-to-noise ratio, i.e. output.
@@ -390,15 +392,10 @@ However, since it is not known a priori for which $t$ the effect $\omega_{i}^{*}
 \item 2 * sum(mat[upper.tri(mat)]) + sum(diag(mat))
 \item Canonical correlation analysis
 \item https://cran.r-project.org/web/packages/MultiHorizonSPA/MultiHorizonSPA.pdf
+\item Recall that my omega hats are correlated
+\item Develop some theory beyond confidence intervals for adjusted predictions.  Under independence (pairwise independence between donors and also between time series under study) the variance is just the sum of the variances.
 \end{enumerate}
 
-\subsection{Simulation output}
-\begin{enumerate}
-\item Each varying parameter inputted to the simulations
-\item Each parameter generated randomly the simulations
-\item Each pair of linear combination AND loss function (12 * 3 = 36).  I'll end up needing approximately that many ANOVAs.
-
-\end{enumerate}
 
 \subsection{Simulation notes}
 \begin{enumerate}

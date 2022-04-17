@@ -2,7 +2,9 @@
 # Wrapper for Simulations for Synthetic Prediction GARCH
 
 #We will need the two functions here.
-source('Desktop/synthetic_vol_forecasting/synthVolForecast.R')
+source('Desktop/synthetic_vol_forecasting/synthVolForecast.R',
+       echo = FALSE,
+       verbose = FALSE)
 
 library(quantmod)
 library(garchx)
@@ -161,10 +163,10 @@ simulate_and_analyze <- function(n = 12,
                                         , sigma_GARCH_innov
                                         , sigma_x
                                         , min_shock_time
-                                        , shock_time_vec
+                                        #, shock_time_vec
                                         , level_shock_length
                                         , vol_shock_length
-                                        , evaluated_vol_shock_length
+                                        #, evaluated_vol_shock_length
                                         , extra_measurement_days
                                         , a
                                         , b
@@ -182,43 +184,39 @@ simulate_and_analyze <- function(n = 12,
                                         , nrow = 1))
   
   names(parameters_to_output) <- c('n'
-                                   , 'p'
-                                   , 'arch_param'
-                                   , 'garch_param'
-                                   , 'level_model'
-                                   , 'vol_model'
-                                   , 'sigma_GARCH_innov'
-                                   , 'sigma_x'
-                                   , 'min_shock_time'
-                                   , 'shock_time_vec'
-                                   , 'level_shock_length'
-                                   , 'vol_shock_length'
-                                   , 'evaluated_vol_shock_length'
-                                   , 'extra_measurement_days'
-                                   , 'a'
-                                   , 'b'
-                                   , 'mu_eps_star'
-                                   , 'mu_eps_star_GED_alpha'
-                                   , 'mu_eps_star_GED_beta'
-                                   , 'M21_M22_level_mu_delta'
-                                   , 'M21_M22_level_sd_delta'
-                                   , 'mu_omega_star'
-                                   , 'vol_shock_sd'
-                                   , 'M21_M22_vol_mu_delta'
-                                   , 'M21_M22_vol_sd_delta'
-                                   , 'normchoice'
-                                    )                       
+                                 , 'p'
+                                 , 'arch_param'
+                                 , 'garch_param'
+                                 , 'level_model'
+                                 , 'vol_model'
+                                 , 'sigma_GARCH_innov'
+                                 , 'sigma_x'
+                                 , 'min_shock_time'
+                                 #, 'shock_time_vec'
+                                 , 'level_shock_length'
+                                 , 'vol_shock_length'
+                                 #, 'evaluated_vol_shock_length'
+                                 , 'extra_measurement_days'
+                                 , 'a'
+                                 , 'b'
+                                 , 'mu_eps_star'
+                                 , 'mu_eps_star_GED_alpha'
+                                 , 'mu_eps_star_GED_beta'
+                                 , 'M21_M22_level_mu_delta'
+                                 , 'M21_M22_level_sd_delta'
+                                 , 'mu_omega_star'
+                                 , 'vol_shock_sd'
+                                 , 'M21_M22_vol_mu_delta'
+                                 , 'M21_M22_vol_sd_delta'
+                                 , 'normchoice'
+                                  )                       
   
   fitting_output_subset <- as.data.frame(t(unlist(fitting_output[,-c(1,6)])))
   
+  #Now we combine the output
   all_output_combined <- cbind(parameters_to_output, fitting_output_subset)
   
   return(all_output_combined)
 }
-
-k <- simulate_and_analyze()
-
-k
-View(k)
 
 
