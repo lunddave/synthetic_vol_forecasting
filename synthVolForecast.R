@@ -41,7 +41,10 @@ dbw <- function(X,
                 sum_to_1 = 1,
                 bounded_below_by = 0,
                 bounded_above_by = 1,
-                normchoice = c('l1', 'l2')[2]) { # https://github.com/DEck13/synthetic_prediction/blob/master/prevalence_testing/numerical_studies/COP.R
+                normchoice = c('l1', 'l2')[2],
+                penalty_normchoice = c('l1', 'l2')[1],
+                penalty_lambda = 0
+                ) { # https://github.com/DEck13/synthetic_prediction/blob/master/prevalence_testing/numerical_studies/COP.R
   # X is a list of covariates for the time series
   # X[[1]] should be the covariate of the time series to predict
   # X[[p]] for p = 2,...,n+1 are covariates for donors
@@ -87,6 +90,15 @@ dbw <- function(X,
     else {
       norm <- as.numeric(crossprod(matrix(X1 - XW)))
     }
+    
+    #now add penalty
+    if (penalty_normchoice == 'l1' & penalty_lambda > 0) {
+      norm <- norm + penalty_lambda * norm(as.matrix(W), type = "1")
+    }
+    else if (penalty_normchoice == 'l2' & penalty_lambda > 0) {
+      norm <- norm + penalty_lambda * as.numeric(crossprod(matrix(W)))
+    }
+    else {norm <- norm}
     
     return(norm)
   } #end objective function
@@ -478,14 +490,19 @@ synth_vol_sim <- function(n,
     arch_param_count <- sum(ifelse(arch_param > 0, 1, 0))
     garch_param_count <- sum(ifelse(garch_param > 0, 1, 0))
     asymm_param_count <- sum(ifelse(asymmetry_param > 0, 1, 0))
+    
+    if (length(asymmetry_param) == 0)
+      {
+      asymmetry_param <- 0
+    }
 
     #Now we calculate the p-value for the volatility spike of length k
     indicator_vec <- as.matrix(c(rep(0,shock_time_vec[i]), rep(1, vol_shock_length[i] + extra_measurement_days)))
     garch_1_1 <- garchx(Y[[i]][1:(shock_time_vec[i] + vol_shock_length[i] + extra_measurement_days),1], 
-                        order = c(garch_param_count,arch_param_count,asymm_param_count), 
-                        xreg = indicator_vec[1:(shock_time_vec[i]+vol_shock_length[i])],
-                        initial.values = c(.1, garch_param, arch_param, 0),
-                        control = list(eval.max = 95000, iter.max = 95000 ),
+                        order = c(garch_param_count, arch_param_count, asymm_param_count), 
+                        xreg = indicator_vec,
+                        initial.values = c(.1, garch_param, arch_param, asymmetry_param), #tk
+                        control = list(eval.max = 950000, iter.max = 950000),
                         hessian.control = list(maxit = 1000000))
     xreg_est <- round(coeftest(garch_1_1)[ dim(coeftest(garch_1_1))[1], 1],5)
     xreg_p_value <- round(coeftest(garch_1_1)[ dim(coeftest(garch_1_1))[1], dim(coeftest(garch_1_1))[2]],5)
@@ -614,6 +631,8 @@ synth_vol_fit <- function(X,
                           arch_param_fit, 
                           asymmetry_param_fit,
                           normchoice = c('l1','l2')[2],
+                          penalty_normchoice = c('l1','l2')[1],
+                          penalty_lambda = 0,
                           plots = FALSE)
 { #begin synth_vol_fit
   
@@ -662,7 +681,9 @@ synth_vol_fit <- function(X,
                  sum_to_1 = matrix_of_specs[i,1],
                  bounded_below_by = matrix_of_specs[i,2],
                  bounded_above_by = matrix_of_specs[i,3],
-                 normchoice = normchoice)
+                 normchoice = normchoice,
+                 penalty_normchoice = penalty_normchoice,
+                 penalty_lambda = penalty_lambda)
   }
 
   # Now we place these linear combinations into a matrix
@@ -698,8 +719,8 @@ synth_vol_fit <- function(X,
 
   garch_1_1 <- garchx(y_up_through_T_star,
                       order = c(garch_param_fit, arch_param_fit, asymmetry_param_fit),
-                      control = list(eval.max = 1000000, iter.max = 1000000),
-                      hessian.control = list(maxit = 1000000) )
+                      control = list(eval.max = 10000000, iter.max = 10000000),
+                      hessian.control = list(maxit = 10000000) )
 
   pred <- as.numeric(predict(garch_1_1, n.ahead = shock_lengths[1]))
 
@@ -790,8 +811,8 @@ synth_vol_fit <- function(X,
           ylim = c(0,  max(pred, trimmed_prediction_vec_for_plotting, sigma2_up_through_T_star_plus_k) ) )
     
     # Here is the color scheme we will use
-    colors_for_adjusted_pred <- c('black', 'red',
-                                  brewer.pal(length(omega_star_hat_vec),'Set3')) 
+    colors_for_adjusted_pred <- c('black', 'red', "green",
+                                  brewer.pal(length(linear_comb_names) - 1 ,'Set3')) 
     
     # Let's add the ground truth
     points(y = sigma2_shock_period_only,

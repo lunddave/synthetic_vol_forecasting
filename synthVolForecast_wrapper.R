@@ -2,25 +2,16 @@
 # Wrapper for Simulations for Synthetic Prediction GARCH
 
 #We will need the two functions here.
-source('Desktop/synthetic_vol_forecasting/synthVolForecast.R',
+source('~/Desktop/synthetic_vol_forecasting/synthVolForecast.R',
        echo = FALSE,
        verbose = FALSE)
 
-library(quantmod)
-library(garchx)
-library(lmtest)
-library(extraDistr)
-library(gnorm)
-library(tsDyn)
-library(Rsolnp)
-library(RColorBrewer)
-library(DescTools)
 
-simulate_and_analyze <- function(n = 12, 
-                                 p = 9, 
+simulate_and_analyze <- function(n = 8, 
+                                 p = 4, 
                                  model = NULL,
-                                 arch_param = c(.26),
-                                 garch_param = c(.4),
+                                 arch_param = c(.2),
+                                 garch_param = c(.33),
                                  asymmetry_param = c(),
                                  
                                  level_model = c('M1','M21','M22','none')[4],
@@ -46,10 +37,10 @@ simulate_and_analyze <- function(n = 12,
                                  M21_M22_level_mu_delta = .3, 
                                  M21_M22_level_sd_delta = .05,
                                  
-                                 mu_omega_star = .005,
+                                 mu_omega_star = .015,
                                  vol_shock_sd = .0001,
                                  
-                                 M21_M22_vol_mu_delta = .05,
+                                 M21_M22_vol_mu_delta = .10,
                                  M21_M22_vol_sd_delta = .002, 
                                  
                                  plot_sim = FALSE,
@@ -58,8 +49,10 @@ simulate_and_analyze <- function(n = 12,
                                  
                                  # And now the only inputs for the fitting function
                                  evaluated_vol_shock_length = rep(2, n+1),
-                                 normchoice = 'l2'
-                                 ) 
+                                 normchoice = 'l2',
+                                 penalty_normchoice = c('l1','l2')[1],
+                                 penalty_lambda = 0
+) 
 {
   ## Doc String
   
@@ -101,37 +94,37 @@ simulate_and_analyze <- function(n = 12,
   #   --evaluated_vol_shock_length - vector of length n+1 referring to the shocks lengths to be used in the estimation process
   
   sim_output <- synth_vol_sim(n = n, 
-                          p = p, 
-                          #model = c(1,1,1),
-                          arch_param = arch_param,
-                          garch_param = garch_param,
-                          #asymmetry_param = c(.15),
-                          
-                          level_model = level_model,
-                          vol_model = vol_model,
-                          
-                          sigma_GARCH_innov = sigma_GARCH_innov, # the sd that goes into rnorm
-                          sigma_x = sigma_x, # the sd that goes into the covariates
-                          min_shock_time = min_shock_time,
-                          shock_time_vec = shock_time_vec, 
-                          level_shock_length = level_shock_length,
-                          vol_shock_length = vol_shock_length,
-                          a = a, 
-                          b = b, 
-                          
-                          mu_eps_star = mu_eps_star,
-                          mu_eps_star_GED_alpha = mu_eps_star_GED_alpha, # note: beta = 2, alpha = sqrt(2) is N(0,1)
-                          mu_eps_star_GED_beta = mu_eps_star_GED_beta, # note: beta = 2, alpha = sqrt(2) is N(0,1)
-                          
-                          M21_M22_level_mu_delta = M21_M22_level_mu_delta, 
-                          M21_M22_level_sd_delta = M21_M22_level_sd_delta,
-                          
-                          mu_omega_star = mu_omega_star,
-                          vol_shock_sd = vol_shock_sd, 
-                          M21_M22_vol_mu_delta = M21_M22_vol_mu_delta,
-                          M21_M22_vol_sd_delta = M21_M22_vol_sd_delta, 
-
-                          plot = plot_sim)
+                              p = p, 
+                              #model = c(1,1,1),
+                              arch_param = arch_param,
+                              garch_param = garch_param,
+                              #asymmetry_param = c(.15),
+                              
+                              level_model = level_model,
+                              vol_model = vol_model,
+                              
+                              sigma_GARCH_innov = sigma_GARCH_innov, # the sd that goes into rnorm
+                              sigma_x = sigma_x, # the sd that goes into the covariates
+                              min_shock_time = min_shock_time,
+                              shock_time_vec = shock_time_vec, 
+                              level_shock_length = level_shock_length,
+                              vol_shock_length = vol_shock_length,
+                              a = a, 
+                              b = b, 
+                              
+                              mu_eps_star = mu_eps_star,
+                              mu_eps_star_GED_alpha = mu_eps_star_GED_alpha, # note: beta = 2, alpha = sqrt(2) is N(0,1)
+                              mu_eps_star_GED_beta = mu_eps_star_GED_beta, # note: beta = 2, alpha = sqrt(2) is N(0,1)
+                              
+                              M21_M22_level_mu_delta = M21_M22_level_mu_delta, 
+                              M21_M22_level_sd_delta = M21_M22_level_sd_delta,
+                              
+                              mu_omega_star = mu_omega_star,
+                              vol_shock_sd = vol_shock_sd, 
+                              M21_M22_vol_mu_delta = M21_M22_vol_mu_delta,
+                              M21_M22_vol_sd_delta = M21_M22_vol_sd_delta, 
+                              
+                              plot = plot_sim)
   
   # Let's now use the fitting function
   X_demo <- sim_output[[1]]
@@ -149,67 +142,73 @@ simulate_and_analyze <- function(n = 12,
                                   garch_order_of_simulation[2],
                                   garch_order_of_simulation[3],
                                   normchoice = normchoice,
+                                  penalty_normchoice = penalty_normchoice,
+                                  penalty_lambda = penalty_lambda,
                                   plots = plot_fit
-                                  )
+  )
   
   # Here we collect all the items we want to output
   parameters_to_output <- as.data.frame(matrix(
-                                        c(n
-                                        , p
-                                        , arch_param
-                                        , garch_param
-                                        , level_model
-                                        , vol_model
-                                        , sigma_GARCH_innov
-                                        , sigma_x
-                                        , min_shock_time
-                                        #, shock_time_vec
-                                        , level_shock_length
-                                        , vol_shock_length
-                                        #, evaluated_vol_shock_length
-                                        , extra_measurement_days
-                                        , a
-                                        , b
-                                        , mu_eps_star
-                                        , mu_eps_star_GED_alpha
-                                        , mu_eps_star_GED_beta
-                                        , M21_M22_level_mu_delta
-                                        , M21_M22_level_sd_delta
-                                        , mu_omega_star
-                                        , vol_shock_sd
-                                        , M21_M22_vol_mu_delta
-                                        , M21_M22_vol_sd_delta
-                                        , normchoice
-                                        )
-                                        , nrow = 1))
+    c(n
+      , p
+      , arch_param
+      , garch_param
+      , level_model
+      , vol_model
+      , sigma_GARCH_innov
+      , sigma_x
+      , min_shock_time
+      #, shock_time_vec
+      , level_shock_length
+      , vol_shock_length
+      #, evaluated_vol_shock_length
+      , extra_measurement_days
+      , a
+      , b
+      , mu_eps_star
+      , mu_eps_star_GED_alpha
+      , mu_eps_star_GED_beta
+      , M21_M22_level_mu_delta
+      , M21_M22_level_sd_delta
+      , mu_omega_star
+      , vol_shock_sd
+      , M21_M22_vol_mu_delta
+      , M21_M22_vol_sd_delta
+      , normchoice
+      , penalty_normchoice
+      , penalty_lambda
+    )
+    , nrow = 1))
   
   names(parameters_to_output) <- c('n'
-                                 , 'p'
-                                 , 'arch_param'
-                                 , 'garch_param'
-                                 , 'level_model'
-                                 , 'vol_model'
-                                 , 'sigma_GARCH_innov'
-                                 , 'sigma_x'
-                                 , 'min_shock_time'
-                                 #, 'shock_time_vec'
-                                 , 'level_shock_length'
-                                 , 'vol_shock_length'
-                                 #, 'evaluated_vol_shock_length'
-                                 , 'extra_measurement_days'
-                                 , 'a'
-                                 , 'b'
-                                 , 'mu_eps_star'
-                                 , 'mu_eps_star_GED_alpha'
-                                 , 'mu_eps_star_GED_beta'
-                                 , 'M21_M22_level_mu_delta'
-                                 , 'M21_M22_level_sd_delta'
-                                 , 'mu_omega_star'
-                                 , 'vol_shock_sd'
-                                 , 'M21_M22_vol_mu_delta'
-                                 , 'M21_M22_vol_sd_delta'
-                                 , 'normchoice'
-                                  )                       
+                                   , 'p'
+                                   , 'arch_param'
+                                   , 'garch_param'
+                                   , 'level_model'
+                                   , 'vol_model'
+                                   , 'sigma_GARCH_innov'
+                                   , 'sigma_x'
+                                   , 'min_shock_time'
+                                   #, 'shock_time_vec'
+                                   , 'level_shock_length'
+                                   , 'vol_shock_length'
+                                   #, 'evaluated_vol_shock_length'
+                                   , 'extra_measurement_days'
+                                   , 'a'
+                                   , 'b'
+                                   , 'mu_eps_star'
+                                   , 'mu_eps_star_GED_alpha'
+                                   , 'mu_eps_star_GED_beta'
+                                   , 'M21_M22_level_mu_delta'
+                                   , 'M21_M22_level_sd_delta'
+                                   , 'mu_omega_star'
+                                   , 'vol_shock_sd'
+                                   , 'M21_M22_vol_mu_delta'
+                                   , 'M21_M22_vol_sd_delta'
+                                   , 'normchoice'
+                                   , 'penalty_normchoice'
+                                   , 'penalty_lambda'
+  )                       
   
   fitting_output_subset <- as.data.frame(t(unlist(fitting_output[,-c(1,6)])))
   
@@ -219,4 +218,7 @@ simulate_and_analyze <- function(n = 12,
   return(all_output_combined)
 }
 
-
+temp <- simulate_and_analyze(normchoice = 'l2'
+                           , penalty_normchoice = 'l1'
+                           , penalty_lambda = .2
+                           , plot_fit = TRUE)

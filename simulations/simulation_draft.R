@@ -6,7 +6,7 @@
 # 2) benchmarking the runtime https://www.alexejgossmann.com/benchmarking_r/
 # 3) this has a grid: https://www.blasbenito.com/post/02_parallelizing_loops_with_r/
 # 4 observe here the nested foreach structure https://www.r-bloggers.com/2013/06/grid-search-for-free-parameters-with-parallel-computing/
-# Discuss this with AM.  There is a decision to be made between a nested for each setup aAND a replication column
+# Discuss this with AM.  There is a decision to be made between a nested for each setup AND a replication column
 # 6 Use chunking in this explanatory page, as well as nested for each discussion
 # https://cran.r-project.org/web/packages/foreach/vignettes/nested.html
 
@@ -32,10 +32,10 @@ RNGkind("L'Ecuyer-CMRG")
 nsim <- 1
 
 ############ We build our parameter grid ############ 
-donor_pool_size <- c(3)
+donor_pool_size <- c(7)
 p <- c(5)
-alpha <- c(0, .15,.65, .75)[-3]
-beta <- c(0, .15,.65, .75) [-3]
+alpha <- c(.22)
+beta <- c(.33)
 vol_model <- c('M1','M21','M22')[2]
 level_model <- c('M1','M21','M22','none')[4]
 vol_shock_length <- c(1,2,3)
@@ -104,7 +104,6 @@ gridd_subset <- gridd[gridd$alpha + gridd$beta < 1,]
 # Get rid of models where level shock is long than vol shock
 gridd_subset <- gridd_subset[gridd_subset$level_shock_length <= gridd_subset$vol_shock_length,]
 
-
 # # Now we get rid of unnecessary rows owing to M2vol and M2level
 # keep_condition_1 <- (gridd_subset$vol_model == 'M1') & 
 #   (gridd_subset$M21_M22_level_mu_delta == min(gridd_subset$M21_M22_level_mu_delta)) & 
@@ -121,7 +120,7 @@ gridd_subset <- gridd_subset[gridd_subset$level_shock_length <= gridd_subset$vol
 # gridd_subset <- gridd_subset[keep_condition_1 & keep_condition_2,]
 
 nrow(gridd_subset) 
-head(gridd_subset, n = 3)
+head(gridd_subset, n = 1)
 
 sim_params <- gridd_subset
 
@@ -133,22 +132,56 @@ sim_params <- gridd_subset
 # simulation time
 system.time(
   
-  output_n_sim_5 <- foreach(
-                            n = sim_params$donor_pool_size,
-                            p = sim_params$p,
-                            alpha = sim_params$alpha,
-                            beta = sim_params$beta,
-                            vol_model = sim_params$vol_model,
+  output_n_sim_1 <- foreach(
+                            n = sim_params$donor_pool_size, 
+                            p = sim_params$p, 
+                            #model = c(1,1,1),
+                            arch_param = sim_params$alpha,
+                            garch_param = sim_params$beta,
+                            #asymmetry_param = c(.15),
+                            
                             level_model = sim_params$level_model,
-                            vol_shock_length = sim_params$vol_shock_length,
-                            level_shock_length = sim_params$level_model,
-                            .combine = 'rbind'
+                            vol_model = sim_params$vol_model,
+                            
+                            level_shock_length = sim_params$vol_shock_length,
+                            vol_shock_length = sim_params$level_shock_length,
+                            
+                            mu_omega_star = sim_params$mu_omega_star,
+                            vol_shock_sd = sim_params$vol_shock_sd, 
+                            M21_M22_vol_mu_delta = sim_params$M21_M22_vol_mu_delta,
+                            M21_M22_vol_sd_delta = sim_params$M21_M22_vol_sd_delta,
+                            
+                            #Now we choose how we want foreach to combine the output of each sim
+                            .combine = 'rbind',
+                            .errorhandling = "remove" #pass is another option
   ) %dopar% {
     
-            to_return <- simulate_and_analyze()
-              
-              #returning prediction error as percentage
-              return(to_return)
+            to_return <- simulate_and_analyze(
+
+                                              n = n,
+                                              p = p,
+                                              #model = c(1,1,1),
+                                              arch_param = arch_param,
+                                              garch_param = garch_param,
+                                              #asymmetry_param = c(.15),
+
+                                              level_model = level_model,
+                                              vol_model = vol_model,
+
+                                              level_shock_length = level_shock_length,
+                                              vol_shock_length = vol_shock_length,
+
+                                              M21_M22_level_mu_delta = M21_M22_level_mu_delta,
+                                              M21_M22_level_sd_delta = M21_M22_level_sd_delta,
+
+                                              mu_omega_star = mu_omega_star,
+                                              vol_shock_sd = vol_shock_sd,
+                                              M21_M22_vol_mu_delta = M21_M22_vol_mu_delta,
+                                              M21_M22_vol_sd_delta = M21_M22_vol_sd_delta
+
+                                              )
+            
+            return(to_return)
     
               }
 ) #end system.time
@@ -156,6 +189,8 @@ system.time(
 ########################### End parallel architecture ###############################
 
 # Save output
-save(output_n_sim_5, file = "output_synth_vol_nsim_5.RData")
+save(output_n_sim_1, file = "/home/david/Desktop/synthetic_vol_forecasting/simulation_results/output_n_sim_1")
 
 stopImplicitCluster()
+
+View(output_n_sim_1)
