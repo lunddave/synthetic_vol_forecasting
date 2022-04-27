@@ -1,5 +1,4 @@
 
-
 ########### Items to investigate ########
 # 1) using foreach just once to smash through grid+nsim 
 # https://cran.r-project.org/web/packages/foreach/vignettes/foreach.html
@@ -29,7 +28,7 @@ registerDoParallel(cores = detectCores() - 3)
 set.seed(13) #tk do we want to vary this?
 RNGkind("L'Ecuyer-CMRG")
 
-nsim <- 1
+nsim <- 8
 
 ############ We build our parameter grid ############ 
 donor_pool_size <- c(7)
@@ -48,10 +47,10 @@ optimization_norm <- c('l1','l2')[2]
 #level_GED_beta <- c(.7, 2) # note: beta = 2, alpha = sqrt(2) is N(0,1))
 #M21_M22_level_mu_delta <- c(.6, .9)
 #M21_M22_level_sd_delta <- c(.4, .6)
-mu_omega_star <- c(.5, 1.5, 3)[-1]
-vol_shock_sd <- c(.2, .4, .6)[-1]
-M21_M22_vol_mu_delta <- c(.3, .6, .9)[-1]
-M21_M22_vol_sd_delta <- c(.2, .4, .6)[-1]
+mu_omega_star <- c(.05, .15, .33)[-1]
+vol_shock_sd <- c(.01, .02, .05)[-1]
+M21_M22_vol_mu_delta <- c(.03, .06, .09)[-1]
+M21_M22_vol_sd_delta <- c(.02, .04, .06)[-1]
 
 list_of_vars <- list(donor_pool_size
                     , p
@@ -62,7 +61,6 @@ list_of_vars <- list(donor_pool_size
                     , vol_shock_length
                     , level_shock_length
                     , extra_measurement_days
-                    , replication_number
                     #, optimization_norm
                     #, mu_eps_star
                     #, level_GED_alpha
@@ -83,7 +81,6 @@ names(list_of_vars) <- list('donor_pool_size'
                            , 'vol_shock_length'
                            , 'level_shock_length'
                            , 'extra_measurement_days'
-                           , 'replication_number'
                            #, optimization_norm
                            #, 'mu_eps_star'
                            #, 'level_GED_alpha'
@@ -130,60 +127,59 @@ sim_params <- gridd_subset
 ########################### Begin parallel architecture ###############################
 
 # simulation time
-system.time(
+system.time( 
   
-  output_n_sim_1 <- foreach(
-                            n = sim_params$donor_pool_size, 
-                            p = sim_params$p, 
-                            #model = c(1,1,1),
-                            arch_param = sim_params$alpha,
-                            garch_param = sim_params$beta,
-                            #asymmetry_param = c(.15),
+              output_n_sim_1 <- foreach(
+                                        n = sim_params$donor_pool_size, 
+                                        p = sim_params$p, 
+                                        #model = c(1,1,1),
+                                        arch_param = sim_params$alpha,
+                                        garch_param = sim_params$beta,
+                                        #asymmetry_param = c(.15),
+                                        
+                                        level_model = sim_params$level_model,
+                                        vol_model = sim_params$vol_model,
+                                        
+                                        level_shock_length = sim_params$vol_shock_length,
+                                        vol_shock_length = sim_params$level_shock_length,
+                                        
+                                        mu_omega_star = sim_params$mu_omega_star,
+                                        vol_shock_sd = sim_params$vol_shock_sd, 
+                                        M21_M22_vol_mu_delta = sim_params$M21_M22_vol_mu_delta,
+                                        M21_M22_vol_sd_delta = sim_params$M21_M22_vol_sd_delta,
+                                        
+                                        #Now we choose how we want foreach to combine the output of each sim
+                                        .combine = 'rbind',
+                                        .errorhandling = "remove" #pass is another option
                             
-                            level_model = sim_params$level_model,
-                            vol_model = sim_params$vol_model,
-                            
-                            level_shock_length = sim_params$vol_shock_length,
-                            vol_shock_length = sim_params$level_shock_length,
-                            
-                            mu_omega_star = sim_params$mu_omega_star,
-                            vol_shock_sd = sim_params$vol_shock_sd, 
-                            M21_M22_vol_mu_delta = sim_params$M21_M22_vol_mu_delta,
-                            M21_M22_vol_sd_delta = sim_params$M21_M22_vol_sd_delta,
-                            
-                            #Now we choose how we want foreach to combine the output of each sim
-                            .combine = 'rbind',
-                            .errorhandling = "remove" #pass is another option
-  ) %dopar% {
-    
-            to_return <- simulate_and_analyze(
-
-                                              n = n,
-                                              p = p,
-                                              #model = c(1,1,1),
-                                              arch_param = arch_param,
-                                              garch_param = garch_param,
-                                              #asymmetry_param = c(.15),
-
-                                              level_model = level_model,
-                                              vol_model = vol_model,
-
-                                              level_shock_length = level_shock_length,
-                                              vol_shock_length = vol_shock_length,
-
-                                              M21_M22_level_mu_delta = M21_M22_level_mu_delta,
-                                              M21_M22_level_sd_delta = M21_M22_level_sd_delta,
-
-                                              mu_omega_star = mu_omega_star,
-                                              vol_shock_sd = vol_shock_sd,
-                                              M21_M22_vol_mu_delta = M21_M22_vol_mu_delta,
-                                              M21_M22_vol_sd_delta = M21_M22_vol_sd_delta
-
-                                              )
+                            ) %dopar% {
             
-            return(to_return)
+                            foreach(1:nsim, .combine='rbind') %do% { #begin inner loop 
     
-              }
+                            to_return <- simulate_and_analyze(n = n,
+                                                              p = p,
+                                                              #model = c(1,1,1),
+                                                              arch_param = arch_param,
+                                                              garch_param = garch_param,
+                                                              #asymmetry_param = c(.15),
+                
+                                                              level_model = level_model,
+                                                              vol_model = vol_model,
+                
+                                                              level_shock_length = level_shock_length,
+                                                              vol_shock_length = vol_shock_length,
+
+                                                              mu_omega_star = mu_omega_star,
+                                                              vol_shock_sd = vol_shock_sd,
+                                                              M21_M22_vol_mu_delta = M21_M22_vol_mu_delta,
+                                                              M21_M22_vol_sd_delta = M21_M22_vol_sd_delta
+                                                              )
+            
+                              return(to_return)
+            
+                                                              } # end inner loop
+            
+              } # end outer loop
 ) #end system.time
 
 ########################### End parallel architecture ###############################

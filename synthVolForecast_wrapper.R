@@ -6,7 +6,6 @@ source('~/Desktop/synthetic_vol_forecasting/synthVolForecast.R',
        echo = FALSE,
        verbose = FALSE)
 
-
 simulate_and_analyze <- function(n = 8, 
                                  p = 4, 
                                  model = NULL,
@@ -24,7 +23,7 @@ simulate_and_analyze <- function(n = 8,
                                  shock_time_vec = NULL, 
                                  
                                  level_shock_length = 1,
-                                 vol_shock_length = 2,
+                                 vol_shock_length = 3,
                                  extra_measurement_days = 2,
                                  
                                  a = 3*252, 
@@ -211,14 +210,14 @@ simulate_and_analyze <- function(n = 8,
   )                       
   
   fitting_output_subset <- as.data.frame(t(unlist(fitting_output[,-c(1,6)])))
-  
+
   #Now we combine the output
   all_output_combined <- cbind(parameters_to_output, fitting_output_subset)
-  
-  return(all_output_combined)
+
+  return(all_output_combined) 
 }
 
 temp <- simulate_and_analyze(normchoice = 'l2'
                            , penalty_normchoice = 'l1'
-                           , penalty_lambda = .2
-                           , plot_fit = TRUE)
+                           , penalty_lambda = 0
+                           , plot_fit = FALSE)

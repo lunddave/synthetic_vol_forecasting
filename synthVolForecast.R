@@ -507,8 +507,6 @@ synth_vol_sim <- function(n,
     xreg_est <- round(coeftest(garch_1_1)[ dim(coeftest(garch_1_1))[1], 1],5)
     xreg_p_value <- round(coeftest(garch_1_1)[ dim(coeftest(garch_1_1))[1], dim(coeftest(garch_1_1))[2]],5)
     xreg <- c(xreg, c(xreg_est, xreg_p_value))
-    
-    #print(coeftest(garch_1_1)) #tk
       
   } #end loop for n+1 series
   
@@ -872,15 +870,6 @@ synth_vol_fit <- function(X,
   print(ORDERED_display_df)
 
   return(as.vector(display_df))
-  
-  # print(list(w = round(w_mat,3),
-  #             omega_star_hat = round(omega_star_hat_vec, 3),
-  #             adjusted_pred = adjusted_pred_list,
-  #             garch_pred = round(pred,3),
-  #             ground_truth = round(sigma2_shock_period_only,3),
-  #             MSE_adjusted = MSE_adjusted, 
-  #             MSE_unadjusted = round(MSE_unadjusted,3),
-  #             alternative_wins = alternative_wins))
   
 } #end of synth_vol_fit
 
