@@ -140,8 +140,8 @@ system.time(
                                         level_model = sim_params$level_model,
                                         vol_model = sim_params$vol_model,
                                         
-                                        level_shock_length = sim_params$vol_shock_length,
-                                        vol_shock_length = sim_params$level_shock_length,
+                                        level_shock_length = sim_params$level_shock_length,
+                                        vol_shock_length = sim_params$vol_shock_length ,
                                         
                                         mu_omega_star = sim_params$mu_omega_star,
                                         vol_shock_sd = sim_params$vol_shock_sd, 

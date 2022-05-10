@@ -2,6 +2,7 @@
 
 # https://stackoverflow.com/questions/52124359/anova-on-r-with-different-dependent-variables
 
+load("/home/david/Desktop/synthetic_vol_forecasting/simulation_results/output_n_sim_1.Rdata")
 
 unique_count_df <- apply(output_n_sim_1, 2, function(x) length(unique(x)))
 
@@ -25,5 +26,16 @@ summary(res)
 res <- aov( as.matrix(outcomes) ~.^2 , data = X_df )
 summary(res)
 
+#Kruskal Wallis test
+#kruskal.test( as.matrix(outcomes[,1]) ~. , data = X_df ) 
+#https://stackoverflow.com/questions/35091164/r-kruskal-wallis-with-multiple-factors
+
 #Just look at means
-apply(outcomes, 2, mean, na.rm=TRUE)
+applied <- apply(outcomes, 2, mean, na.rm=TRUE)
+df_applied <- as.data.frame(applied, ncol = 1)
+df_applied
+
+# Look at shapiro wilkes
+ws <- apply(outcomes, 2, shapiro.test)
+ws
+
