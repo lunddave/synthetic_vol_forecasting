@@ -28,7 +28,7 @@ registerDoParallel(cores = detectCores() - 3)
 set.seed(13) #tk do we want to vary this?
 RNGkind("L'Ecuyer-CMRG")
 
-nsim <- 8
+nsim <- 50
 
 ############ We build our parameter grid ############ 
 donor_pool_size <- c(7)

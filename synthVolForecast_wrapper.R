@@ -6,14 +6,14 @@ source('~/Desktop/synthetic_vol_forecasting/synthVolForecast.R',
        echo = FALSE,
        verbose = FALSE)
 
-simulate_and_analyze <- function(n = 8, 
-                                 p = 4, 
+simulate_and_analyze <- function(n = 9, 
+                                 p = 3, 
                                  model = NULL,
                                  arch_param = c(.2),
                                  garch_param = c(.33),
                                  asymmetry_param = c(),
                                  
-                                 level_model = c('M1','M21','M22','none')[4],
+                                 level_model = c('M1','M21','M22','none')[2],
                                  vol_model = c('M1','M21','M22','none')[2],
                                  
                                  sigma_GARCH_innov = 1, # the sd that goes into rnorm
@@ -48,7 +48,7 @@ simulate_and_analyze <- function(n = 8,
                                  
                                  # And now the only inputs for the fitting function
                                  evaluated_vol_shock_length = rep(2, n+1),
-                                 normchoice = 'l2',
+                                 normchoice = 'l1',
                                  penalty_normchoice = c('l1','l2')[1],
                                  penalty_lambda = 0
 ) 
@@ -217,7 +217,12 @@ simulate_and_analyze <- function(n = 8,
   return(all_output_combined) 
 }
 
-temp <- simulate_and_analyze(normchoice = 'l2'
-                           , penalty_normchoice = 'l1'
+# png("out.png")
+
+simulate_and_analyze(normchoice = 'l1'
+                           , penalty_normchoice = 'l2'
                            , penalty_lambda = 0
-                           , plot_fit = FALSE)
+                           , plot_sim = FALSE
+                           , plot_fit = TRUE)
+
+# dev.off()
