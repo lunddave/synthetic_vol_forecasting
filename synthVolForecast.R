@@ -859,10 +859,10 @@ synth_vol_fit <- function(X,
   display_df$QL_adj <- round(unlist(QL_adjusted), 5)
   
   #Now add the unadjusted row
-  unadjusted_row <- c('GARCH (unadjusted)', NA, MSE_unadjusted, MAPE_unadjusted, QL_unadjusted)
+  unadjusted_row <- c('GARCH (unadjusted)', 0, MSE_unadjusted, MAPE_unadjusted, QL_unadjusted) 
   display_df <- rbind(display_df, unadjusted_row)
   
-  display_df$beat_unadjusted <- as.character(display_df$QL_adj < QL_unadjusted)
+  display_df$beat_unadjusted <- as.integer(display_df$QL_adj < QL_unadjusted)
   ORDERED_display_df <- display_df[order(display_df$QL_adj, na.last = TRUE, decreasing = FALSE), ]
 
   cat('\n Dataframe Comparing the Distance-based-weighting methods \n')

@@ -168,15 +168,30 @@ $$\sigma_{i,t}^{2} = \omega_{i} + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + 
 % https://latex-tutorial.com/matrices-in-latex/
 % https://www.math-linux.com/latex-26/faq/latex-faq/article/how-to-write-matrices-in-latex-matrix-pmatrix-bmatrix-vmatrix-vmatrix
 
-We are interested in a point forecast for $\sigma^{2}_{1,T^{*}+1}$, the 1-step ahead conditional variance for the time series under study.  The forecast performance is evaluated mean squared-error computed using three families of estimators for the ground truth that we seek.  Let $L_{predictive method, ground truth estimator} $ denote the squared-error loss of a predictive method based on a given ground truth estimator.  For example, the loss function of primary interest in this study is the 1-step-ahead forecast loss
+We are interested in a point forecast for $\sigma^{2}_{1,T^{*}+1}$, the 1-step ahead conditional variance for the time series under study.  The forecast performance is using three distinct loss functions, each computed using three families of estimators for the ground truth that we seek.  Let $L^{h}$ with the subscript (method, ground truth) denote the loss function L and a prediction method - ground truth estimator pair.  For example, a loss function of interest in this study is the 1-step-ahead MSE
 
-$$ L^{1}_{synthetic prediction GARCH, RV} = (\hat\sigma^{2}_{synthetic prediction GARCH} - \hat\sigma^{2}_{RV})^{2}$$
+$$ MSE^{1}_{synth pred, RV} = (\hat\sigma^{2}_{synth pred} - \hat\sigma^{2}_{RV})^{2}$$
 
-In full generality, for an h-step-ahead volatility forecast, the loss function is 
+In more generality, for an h-step-ahead volatility forecast, the loss function is 
 
-$$ L^{h}_{predictive method, ground truth estimator} = \frac{1}{h}\sum_{g=1}^{h}(\hat\sigma^{2}_{g, predictive method} - \hat\sigma^{2}_{g, ground truth estimator})^{2}$$
+$$ MSE^{h}_{method, ground truth} = \frac{1}{h}\sum_{g=1}^{h}(\hat\sigma^{2}_{g, method} - \hat\sigma^{2}_{g, ground truth})^{2}$$
 
+Also of interest in mean absolute-percentage-error for an h-step-ahead forecast, defined as
 
+\[ 
+\text{MAPE}^{h}_{method, ground truth} = \frac{1}{h}\sum_{g=1}^{h}\frac{|\hat\sigma^{2}_{g, method} - \hat\sigma^{2}_{g, ground truth}|}{\hat\sigma^{2}_{g, ground truth}}
+\]
+
+Finally, we introduce the QL (quasi-likelihood) Loss \citep{brownlees2011practical}:
+
+\[ 
+\text{QL}^{h}_{method, ground truth} = \frac{1}{h}\sum_{g=1}^{h} \frac{ \hat\sigma^{2}_{g, method} }{\hat\sigma^{2}_{g, ground truth}} - \log{\frac{ \hat\sigma^{2}_{g, method} }{\hat\sigma^{2}_{g, ground truth}}} -1
+\]
+
+What distinguishes QL Loss is that it is multiplicative rather than additive.  This serves as a basis for some of its virtues.  As \citet{brownlees2011practical} explains, "[a]mid volatility turmoil, large MSE
+losses will be a consequence of high volatility without necessarily corresponding to
+deterioration of forecasting ability. The QL avoids this ambiguity, making it easier to
+compare losses across volatility regimes."
 
 \subsection{Ground Truth Estimators}
 \label{Ground Truth Estimators}
@@ -194,7 +209,7 @@ Find citation that Black-Scholes implied volatility is especially biased in time
 
 \subsubsection{Realized Volatility}
 
-Suppose we examine K units of of time, where each unit is divided into m intervals of length 1/m.  We follow the notation of  \citet{andersen2008realized}. Let $p_{t} = \text{log}(P_{t})$, and let $r(t, 1/m) = p_{t} - p_{t-1/m}$.  We estimate the variance of a log-return series using Realized Volatility, denoted $RV_{K,m}$, using
+Suppose we examine K units of of time, where each unit is divided into m intervals of length 1/m.  We follow the notation of  \citet{andersen2009realized}. Let $p_{t} = \text{log}(P_{t})$, and let $r(t, 1/m) = p_{t} - p_{t-1/m}$.  We estimate the variance of a log-return series using Realized Volatility, denoted $RV_{K,m}$, using
 
 $$RV_{K,m} = \frac{1}{K}\sum^{Km}_{v=1}r^{2}(v/m,1/m)$$
 
@@ -417,6 +432,10 @@ description of return tails"
 \item Cull the donor set D down to only the donors that satisfy $|\widehat{corr}(X_{1}^{C}, X_{i}^{C})|\geq \xi$, for some suitably chosen $\xi \in (0,1)$
 
 \end{enumerate}
+
+
+
+
 
 
 

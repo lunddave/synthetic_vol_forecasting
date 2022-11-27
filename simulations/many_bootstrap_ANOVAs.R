@@ -2,7 +2,9 @@
 
 # https://stackoverflow.com/questions/52124359/anova-on-r-with-different-dependent-variables
 
-load("/home/david/Desktop/synthetic_vol_forecasting/simulation_results/simcount_50.Rdata")
+options(scipen = 9)
+
+load("/home/david/Desktop/synthetic_vol_forecasting/simulation_results/simcount_52022-11-21 15:10:27.Rdata")
 
 library(lmboot)
 
@@ -16,22 +18,37 @@ unique_count_df <- apply(output_n_sim_1, 2, function(x) length(unique(x)))
 columns_we_want <- names(unique_count_df)[unique_count_df != 1]
 reduced_df <- output_n_sim_1[names(output_n_sim_1) %in% columns_we_want]
 
-# Make the dataframe numeric
-reduced_df <- as.data.frame(lapply(reduced_df, as.numeric))
+# Make boolean column intger
+reduced_df$beat_unadjusted <- as.integer(as.factor(reduced_df$beat_unadjusted))
 
+reduced_df <- reduced_df[,-c(2)]
+
+#Make vol model into factor
+reduced_df$vol_model <- as.factor(reduced_df$vol_model)
+
+# Make the dataframe numeric
+reduced_df[,-c(1)] <- as.data.frame(lapply(reduced_df[,-c(1)], as.numeric))
+
+# Make the dataframe numeric
+reduced_df$linear_comb_names <- as.factor(reduced_df$linear_comb_names)
+
+# Take only rows with complete data (ie non NA)
 reduced_df <- reduced_df[complete.cases(reduced_df),]
 
 # We want only columns with result information in them; i.e. no columns with parameters
-outcomes <- reduced_df[,c(6:ncol(reduced_df))]
+outcomes <- reduced_df[,c(2:5)]
 outcomes <- as.data.frame(lapply(outcomes, as.numeric))
 dim(outcomes)
 
-X_df <- reduced_df[,c(1:5)] 
+X_df <- reduced_df[,c(1,6:ncol(reduced_df))] 
 dim(X_df)
+
+X_df[,duplicated(cor(X_df))]
+
 
 # https://cran.r-project.org/web/packages/lmboot/lmboot.pdf
 
-myANOVA2 <- ANOVA.boot(outcomes[,54] ~.^3 , data=X_df, B = 10000)
+myANOVA2 <- ANOVA.boot(outcomes$QL_adj ~. , data=X_df, B = 1000)
 names(myANOVA2)
 myANOVA2$terms
 myANOVA2$`p-values` #bootstrap p-values for 2-way interactions model
@@ -40,7 +57,7 @@ ANOVA_df <- matrix(c(myANOVA2$terms[-1], as.numeric(myANOVA2$`p-values`) ), ncol
 ANOVA_df <- ANOVA_df[order(ANOVA_df[,2], decreasing = FALSE),]
 ANOVA_df
 
-res <- aov(outcomes[,1] ~. , data = X_df )
+res <- aov(outcomes$beat_unadjusted ~. , data = X_df )
 summary(res)
 
 par(mfrow=c(2,2))

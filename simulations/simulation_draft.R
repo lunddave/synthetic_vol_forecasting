@@ -28,29 +28,30 @@ registerDoParallel(cores = detectCores() - 3)
 set.seed(13) #tk do we want to vary this?
 RNGkind("L'Ecuyer-CMRG")
 
-nsim <- 50
+nsim <- 1
 
 ############ We build our parameter grid ############ 
-donor_pool_size <- c(7)
-p <- c(5)
-alpha <- c(.22)
-beta <- c(.33)
-vol_model <- c('M1','M21','M22')[2]
+donor_pool_size <- c(3,6)
+p <- c(3,6)
+alpha <- c(.2,.4)
+beta <- c(.2, .4)
+vol_model <- c('M1','M21','M22')
 level_model <- c('M1','M21','M22','none')[4]
 vol_shock_length <- c(1,2,3)
 level_shock_length <- c(1,2)[-1]
 extra_measurement_days <- c(1,2)
 replication_number <- seq(1, nsim, 1)
-optimization_norm <- c('l1','l2')[2]
+optimization_norm <- c('l1','l2')
 #mu_eps_star <- c(-6, -10)
 #level_GED_alpha <- c(sqrt(2), sqrt(5)) # note: beta = 2, alpha = sqrt(2) is N(0,1
 #level_GED_beta <- c(.7, 2) # note: beta = 2, alpha = sqrt(2) is N(0,1))
 #M21_M22_level_mu_delta <- c(.6, .9)
 #M21_M22_level_sd_delta <- c(.4, .6)
-mu_omega_star <- c(.05, .15, .33)[-1]
-vol_shock_sd <- c(.01, .02, .05)[-1]
-M21_M22_vol_mu_delta <- c(.03, .06, .09)[-1]
-M21_M22_vol_sd_delta <- c(.02, .04, .06)[-1]
+mu_omega_star <- c(.05, .15, .33)
+vol_shock_sd <- c(.01, .02, .05)
+M21_M22_vol_mu_delta <- c( .06, .09)
+M21_M22_vol_sd_delta <- c( .04, .06)
+
 
 list_of_vars <- list(donor_pool_size
                     , p
@@ -59,9 +60,9 @@ list_of_vars <- list(donor_pool_size
                     , vol_model
                     , level_model
                     , vol_shock_length
-                    , level_shock_length
+                    #, level_shock_length
                     , extra_measurement_days
-                    #, optimization_norm
+                    , optimization_norm
                     #, mu_eps_star
                     #, level_GED_alpha
                     #, level_GED_beta
@@ -79,9 +80,9 @@ names(list_of_vars) <- list('donor_pool_size'
                            , 'vol_model'
                            , 'level_model'
                            , 'vol_shock_length'
-                           , 'level_shock_length'
+                           #, 'level_shock_length'
                            , 'extra_measurement_days'
-                           #, optimization_norm
+                           , 'optimization_norm'
                            #, 'mu_eps_star'
                            #, 'level_GED_alpha'
                            #, 'level_GED_beta'
@@ -99,7 +100,7 @@ gridd <- expand.grid(list_of_vars)
 gridd_subset <- gridd[gridd$alpha + gridd$beta < 1,]
 
 # Get rid of models where level shock is long than vol shock
-gridd_subset <- gridd_subset[gridd_subset$level_shock_length <= gridd_subset$vol_shock_length,]
+#gridd_subset <- gridd_subset[gridd_subset$level_shock_length <= gridd_subset$vol_shock_length,]
 
 # # Now we get rid of unnecessary rows owing to M2vol and M2level
 # keep_condition_1 <- (gridd_subset$vol_model == 'M1') & 
@@ -186,6 +187,9 @@ system.time(
 
 # Save output
 save(output_n_sim_1, file = "/home/david/Desktop/synthetic_vol_forecasting/simulation_results/output_n_sim_1")
+
+save(output_n_sim_1, file = paste("simulation_results/simcount_",nsim,"_savetime_",Sys.time(),sep="") )
+
 
 stopImplicitCluster()
 

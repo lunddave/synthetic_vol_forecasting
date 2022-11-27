@@ -2,7 +2,7 @@
 
 # https://stackoverflow.com/questions/52124359/anova-on-r-with-different-dependent-variables
 
-load("/home/david/Desktop/synthetic_vol_forecasting/simulation_results/output_n_sim_1.Rdata")
+load("/home/david/Desktop/synthetic_vol_forecasting/simulation_results/simcount_50.Rdata")
 
 #We inspect the data
 View(output_n_sim_1)
@@ -25,7 +25,7 @@ dim(outcomes)
 X_df <- reduced_df[,c(1:5)] 
 dim(X_df)
 
-res <- aov(outcomes[,1] ~. , data = X_df )
+res <- aov(outcomes[,52] ~. , data = X_df )
 summary(res)
 
 par(mfrow=c(2,2))

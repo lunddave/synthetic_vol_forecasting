@@ -209,10 +209,22 @@ simulate_and_analyze <- function(n = 9,
                                    , 'penalty_lambda'
   )                       
   
-  fitting_output_subset <- as.data.frame(t(unlist(fitting_output[,-c(1,6)])))
-
+  # Two ways of doing this: 
+  #   
+  #   1) we can output a row for each geometric constraint (e.g. convex hull, affine hull, etc)
+  #   2) for a given parameter combination, we can put all the geometric constrains into its own columns_we_want
+  # 
+  # We'll go with second option
+  
+  fitting_output_subset <- as.data.frame(matrix(t(unlist(fitting_output)), nrow = length(fitting_output$linear_comb_names)))
+  names(fitting_output_subset) <- names(fitting_output)
+  
+  parameter_combination_df <- matrix( rep(parameters_to_output, 
+                                          length(fitting_output$linear_comb_names)), 
+                                      nrow = length(fitting_output$linear_comb_names) )
+  
   #Now we combine the output
-  all_output_combined <- cbind(parameters_to_output, fitting_output_subset)
+  all_output_combined <- cbind(fitting_output_subset, parameters_to_output)
 
   return(all_output_combined) 
 }
