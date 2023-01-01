@@ -6,7 +6,7 @@ source('~/Desktop/synthetic_vol_forecasting/synthVolForecast.R',
        echo = FALSE,
        verbose = FALSE)
 
-simulate_and_analyze <- function(n = 9, 
+simulate_and_analyze <- function(n = 6, 
                                  p = 3, 
                                  model = NULL,
                                  arch_param = c(.2),
@@ -48,7 +48,7 @@ simulate_and_analyze <- function(n = 9,
                                  
                                  # And now the only inputs for the fitting function
                                  evaluated_vol_shock_length = rep(2, n+1),
-                                 normchoice = 'l1',
+                                 normchoice = 'l2',
                                  penalty_normchoice = c('l1','l2')[1],
                                  penalty_lambda = 0
 ) 
@@ -214,27 +214,38 @@ simulate_and_analyze <- function(n = 9,
   #   1) we can output a row for each geometric constraint (e.g. convex hull, affine hull, etc)
   #   2) for a given parameter combination, we can put all the geometric constrains into its own columns_we_want
   # 
+  
+  
   # We'll go with second option
   
-  fitting_output_subset <- as.data.frame(matrix(t(unlist(fitting_output)), nrow = length(fitting_output$linear_comb_names)))
-  names(fitting_output_subset) <- names(fitting_output)
+  ### SECOND OPTION BEGIN
+  # fitting_output_subset <- as.data.frame(matrix(t(unlist(fitting_output)),
+  #                                               nrow = length(fitting_output$linear_comb_names)))
+  # names(fitting_output_subset) <- names(fitting_output)
+  # parameter_combination_df <- matrix( rep(parameters_to_output,
+  #                                         length(fitting_output$linear_comb_names)),
+  #                                     nrow = length(fitting_output$linear_comb_names) )
+  # 
+  # #Now we combine the output
+  # all_output_combined <- cbind(fitting_output_subset, parameters_to_output)
+  ### SECOND OPTION END
   
-  parameter_combination_df <- matrix( rep(parameters_to_output, 
-                                          length(fitting_output$linear_comb_names)), 
-                                      nrow = length(fitting_output$linear_comb_names) )
+  fitting_output_subset <- as.data.frame(t(unlist(fitting_output)))[,-c(1:14)]
   
-  #Now we combine the output
-  all_output_combined <- cbind(fitting_output_subset, parameters_to_output)
+  final_output <- cbind(parameters_to_output, fitting_output_subset)
 
-  return(all_output_combined) 
+  return(final_output)
 }
 
 # png("out.png")
 
-simulate_and_analyze(normchoice = 'l1'
-                           , penalty_normchoice = 'l2'
-                           , penalty_lambda = 0
-                           , plot_sim = FALSE
-                           , plot_fit = TRUE)
+# simulate_and_analyze(normchoice = 'l2'
+#                            , penalty_normchoice = 'l2'
+#                            , penalty_lambda = 0
+#                            , plot_sim = FALSE
+#                            , plot_fit = TRUE)
+# 
+
+#temp <- simulate_and_analyze()
 
 # dev.off()

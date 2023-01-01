@@ -31,27 +31,26 @@ RNGkind("L'Ecuyer-CMRG")
 nsim <- 1
 
 ############ We build our parameter grid ############ 
-donor_pool_size <- c(3,6)
-p <- c(3,6)
-alpha <- c(.2,.4)
-beta <- c(.2, .4)
+donor_pool_size <- c(2)
+p <- c(4)
+alpha <- c(.2,.4, .6)
+beta <- c(.2, .4, .6)
 vol_model <- c('M1','M21','M22')
-level_model <- c('M1','M21','M22','none')[4]
-vol_shock_length <- c(1,2,3)
-level_shock_length <- c(1,2)[-1]
+level_model <- c('M1','M21','M22','none')
+vol_shock_length <- c(1,2)
+level_shock_length <- c(0,1)
 extra_measurement_days <- c(1,2)
 replication_number <- seq(1, nsim, 1)
-optimization_norm <- c('l1','l2')
-#mu_eps_star <- c(-6, -10)
-#level_GED_alpha <- c(sqrt(2), sqrt(5)) # note: beta = 2, alpha = sqrt(2) is N(0,1
+optimization_norm <- c('l1','l2')[2]
+mu_eps_star <- c(0, -6, -10)
+#level_GED_alpha <- c(sqrt(2), sqrt(5)) # note: beta = 2, alpha = sqrt(2) is N(0,1)
 #level_GED_beta <- c(.7, 2) # note: beta = 2, alpha = sqrt(2) is N(0,1))
-#M21_M22_level_mu_delta <- c(.6, .9)
-#M21_M22_level_sd_delta <- c(.4, .6)
-mu_omega_star <- c(.05, .15, .33)
-vol_shock_sd <- c(.01, .02, .05)
-M21_M22_vol_mu_delta <- c( .06, .09)
-M21_M22_vol_sd_delta <- c( .04, .06)
-
+M21_M22_level_mu_delta <- c(0, .6, .9)
+M21_M22_level_sd_delta <- c(0, .4, .6)
+mu_omega_star <- c(.05, .1)
+vol_shock_sd <- c( .03, .05)
+M21_M22_vol_mu_delta <- c(0, .03, .06)
+M21_M22_vol_sd_delta <- c(0, .03, .06)
 
 list_of_vars <- list(donor_pool_size
                     , p
@@ -60,18 +59,19 @@ list_of_vars <- list(donor_pool_size
                     , vol_model
                     , level_model
                     , vol_shock_length
-                    #, level_shock_length
+                    , level_shock_length
                     , extra_measurement_days
-                    , optimization_norm
-                    #, mu_eps_star
-                    #, level_GED_alpha
-                    #, level_GED_beta
-                    #, M21_M22_level_mu_delta
-                    #, M21_M22_level_sd_delta
+                    # , optimization_norm
+                    , mu_eps_star
+                    # #, level_GED_alpha
+                    # #, level_GED_beta
+                    , M21_M22_level_mu_delta
+                    , M21_M22_level_sd_delta
                     , mu_omega_star
                     , vol_shock_sd
                     , M21_M22_vol_mu_delta
-                    , M21_M22_vol_sd_delta)
+                    , M21_M22_vol_sd_delta
+                    )
 
 names(list_of_vars) <- list('donor_pool_size'
                            , 'p'
@@ -80,45 +80,85 @@ names(list_of_vars) <- list('donor_pool_size'
                            , 'vol_model'
                            , 'level_model'
                            , 'vol_shock_length'
-                           #, 'level_shock_length'
+                           , 'level_shock_length'
                            , 'extra_measurement_days'
-                           , 'optimization_norm'
-                           #, 'mu_eps_star'
-                           #, 'level_GED_alpha'
-                           #, 'level_GED_beta'
-                           #, 'M21_M22_level_mu_delta'
-                           #, 'M21_M22_level_sd_delta'
+                           # , 'optimization_norm'
+                           , 'mu_eps_star'
+                           # #, 'level_GED_alpha'
+                           # #, 'level_GED_beta'
+                           , 'M21_M22_level_mu_delta'
+                           , 'M21_M22_level_sd_delta'
                            , 'mu_omega_star'
                            , 'vol_shock_sd'
                            , 'M21_M22_vol_mu_delta'
-                           , 'M21_M22_vol_sd_delta')
+                           , 'M21_M22_vol_sd_delta'
+                           )
 
 # Because of the many many combinations, we have to subset even at the time of creation
 gridd <- expand.grid(list_of_vars)
+
+## Now we cull the expansion by removing combinations that do not make sense
+## or will lead to failures.
 
 # Now we get rid of arrangements where alpha + beta >= 1
 gridd_subset <- gridd[gridd$alpha + gridd$beta < 1,]
 
 # Get rid of models where level shock is long than vol shock
-#gridd_subset <- gridd_subset[gridd_subset$level_shock_length <= gridd_subset$vol_shock_length,]
+gridd_subset <- gridd_subset[gridd_subset$level_shock_length <= gridd_subset$vol_shock_length,]
 
-# # Now we get rid of unnecessary rows owing to M2vol and M2level
-# keep_condition_1 <- (gridd_subset$vol_model == 'M1') & 
-#   (gridd_subset$M21_M22_level_mu_delta == min(gridd_subset$M21_M22_level_mu_delta)) & 
-#   (gridd_subset$M21_M22_level_sd_delta == min(gridd_subset$M21_M22_level_sd_delta)) & 
-#   (gridd_subset$M21_M22_vol_mu_delta == min(gridd_subset$M21_M22_vol_mu_delta)) & 
-#   (gridd_subset$M21_M22_vol_sd_delta == min(gridd_subset$M21_M22_vol_sd_delta))
+# Get rid of M1 level models where
+
+# level_shock_length
+# , 'M21_M22_level_mu_delta'
+# , 'M21_M22_level_sd_delta'
+
+# is not zero:
+
+gridd_subset <- gridd_subset[ (gridd_subset$level_model == 'M1' &
+                              gridd_subset$level_shock_length != 0 &
+                              gridd_subset$mu_eps_star != 0 &
+                              M21_M22_level_mu_delta == 0 &
+                              M21_M22_level_sd_delta == 0) |  
+                                
+                              (gridd_subset$level_model %in% c('M21','M22') &
+                              gridd_subset$level_shock_length != 0 &
+                              M21_M22_level_mu_delta != 0 &
+                              M21_M22_level_sd_delta != 0) |
+                                
+                              (gridd_subset$level_model == 'none' &
+                              gridd_subset$level_shock_length == 0 &
+                                M21_M22_level_mu_delta == 0 &
+                                M21_M22_level_sd_delta == 0),]
+
+# Get rid of M1 vol models where
+
+# , 'M21_M22_vol_mu_delta'
+# , 'M21_M22_vol_sd_delta'
+
+# is not zero:
+
+gridd_subset <- gridd_subset[ (gridd_subset$vol_model == 'M1' &
+                                 M21_M22_vol_mu_delta == 0 &
+                                 M21_M22_vol_sd_delta == 0) |  
+                                
+                                (gridd_subset$vol_model != 'M1' & 
+                                   M21_M22_vol_mu_delta != 0 &
+                                   M21_M22_vol_sd_delta != 0)
+                              ,]
+
+## tk TO DO
+
+# a) fix the 1-14 names for geometric sets
+# b) fix parameter combinations that don't make sense
+# c) look into why some combinations often lead to GARCH estimation failure
+# d) 
 # 
-# keep_condition_2 <- (gridd_subset$level_model == 'M1') & 
-#   (gridd_subset$M21_M22_level_mu_delta == min(gridd_subset$M21_M22_level_mu_delta)) & 
-#   (gridd_subset$M21_M22_level_sd_delta == min(gridd_subset$M21_M22_level_sd_delta)) & 
-#   (gridd_subset$M21_M22_vol_mu_delta == min(gridd_subset$M21_M22_vol_mu_delta)) & 
-#   (gridd_subset$M21_M22_vol_sd_delta == min(gridd_subset$M21_M22_vol_sd_delta))
-# 
-# gridd_subset <- gridd_subset[keep_condition_1 & keep_condition_2,]
+
+
+# Take stock of what we have
 
 nrow(gridd_subset) 
-head(gridd_subset, n = 1)
+head(gridd_subset, n = 3)
 
 sim_params <- gridd_subset
 
@@ -130,52 +170,59 @@ sim_params <- gridd_subset
 # simulation time
 system.time( 
   
-              output_n_sim_1 <- foreach(
-                                        n = sim_params$donor_pool_size, 
-                                        p = sim_params$p, 
-                                        #model = c(1,1,1),
-                                        arch_param = sim_params$alpha,
-                                        garch_param = sim_params$beta,
-                                        #asymmetry_param = c(.15),
-                                        
-                                        level_model = sim_params$level_model,
-                                        vol_model = sim_params$vol_model,
-                                        
-                                        level_shock_length = sim_params$level_shock_length,
-                                        vol_shock_length = sim_params$vol_shock_length ,
-                                        
-                                        mu_omega_star = sim_params$mu_omega_star,
-                                        vol_shock_sd = sim_params$vol_shock_sd, 
-                                        M21_M22_vol_mu_delta = sim_params$M21_M22_vol_mu_delta,
-                                        M21_M22_vol_sd_delta = sim_params$M21_M22_vol_sd_delta,
+              output <- foreach(
+                                        n = sim_params$donor_pool_size
+                                        , p = sim_params$p
+                                        #,model = c(1,1,1),
+                                        ,arch_param = sim_params$alpha
+                                        ,garch_param = sim_params$beta
+                                        #,asymmetry_param = c(.15)
+
+                                        # ,level_model = sim_params$level_model
+                                        # ,vol_model = sim_params$vol_model
+                                        # 
+                                        # ,level_shock_length = sim_params$level_shock_length
+                                        # ,vol_shock_length = sim_params$vol_shock_length
+                                        # 
+                                        # ,mu_omega_star = sim_params$mu_omega_star
+                                        # ,vol_shock_sd = sim_params$vol_shock_sd
+                                        # ,M21_M22_vol_mu_delta = sim_params$M21_M22_vol_mu_delta
+                                        # ,M21_M22_vol_sd_delta = sim_params$M21_M22_vol_sd_delta
                                         
                                         #Now we choose how we want foreach to combine the output of each sim
-                                        .combine = 'rbind',
-                                        .errorhandling = "remove" #pass is another option
+                                        ,.combine = 'rbind'
+                                        ,.errorhandling = "remove" #pass is another option
                             
                             ) %dopar% {
             
-                            foreach(1:nsim, .combine='rbind') %do% { #begin inner loop 
+                            foreach(1:nsim
+                                    ,
+                                    #Now we choose how we want foreach to combine the output of each sim
+                                    .combine = 'rbind'
+                                    ,
+                                    .errorhandling = "remove" #pass is another option
+                                    ) %do% { #begin inner loop 
     
-                            to_return <- simulate_and_analyze(n = n,
-                                                              p = p,
-                                                              #model = c(1,1,1),
-                                                              arch_param = arch_param,
-                                                              garch_param = garch_param,
+                            to_return <- simulate_and_analyze(n = n
+                                                              ,p = p
+                                                              #,model = c(1,1,1)
+                                                              ,arch_param = arch_param
+                                                              ,garch_param = garch_param
+                                                              
                                                               #asymmetry_param = c(.15),
-                
-                                                              level_model = level_model,
-                                                              vol_model = vol_model,
-                
-                                                              level_shock_length = level_shock_length,
-                                                              vol_shock_length = vol_shock_length,
 
-                                                              mu_omega_star = mu_omega_star,
-                                                              vol_shock_sd = vol_shock_sd,
-                                                              M21_M22_vol_mu_delta = M21_M22_vol_mu_delta,
-                                                              M21_M22_vol_sd_delta = M21_M22_vol_sd_delta
+                                                              ,level_model = level_model
+                                                              ,vol_model = vol_model
+
+                                                              # ,level_shock_length = level_shock_length
+                                                              # ,vol_shock_length = vol_shock_length
+                                                              # 
+                                                              # ,mu_omega_star = mu_omega_star
+                                                              # ,vol_shock_sd = vol_shock_sd
+                                                              # ,M21_M22_vol_mu_delta = M21_M22_vol_mu_delta
+                                                              # ,M21_M22_vol_sd_delta = M21_M22_vol_sd_delta
                                                               )
-            
+
                               return(to_return)
             
                                                               } # end inner loop
@@ -186,11 +233,13 @@ system.time(
 ########################### End parallel architecture ###############################
 
 # Save output
-save(output_n_sim_1, file = "/home/david/Desktop/synthetic_vol_forecasting/simulation_results/output_n_sim_1")
-
-save(output_n_sim_1, file = paste("simulation_results/simcount_",nsim,"_savetime_",Sys.time(),sep="") )
-
+save(output, file = paste("/home/david/Desktop/synthetic_vol_forecasting/simulation_results/simcount_",
+                                  nsim,
+                                  "_savetime_",
+                                  format(Sys.time(), "%a %b %d %X %Y"),".Rdata",sep="") )
 
 stopImplicitCluster()
 
-View(output_n_sim_1)
+# View(output)
+
+#load('simcount_1_savetime_Mon Dec 26 04:47:25 PM 2022.Rdata')

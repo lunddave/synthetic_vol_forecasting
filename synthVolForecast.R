@@ -501,6 +501,7 @@ synth_vol_sim <- function(n,
     garch_1_1 <- garchx(Y[[i]][1:(shock_time_vec[i] + vol_shock_length[i] + extra_measurement_days),1], 
                         order = c(garch_param_count, arch_param_count, asymm_param_count), 
                         xreg = indicator_vec,
+                        solve.tol = .0000000001,
                         initial.values = c(.1, garch_param, arch_param, asymmetry_param), #tk
                         control = list(eval.max = 950000, iter.max = 950000),
                         hessian.control = list(maxit = 1000000))
@@ -717,6 +718,7 @@ synth_vol_fit <- function(X,
 
   garch_1_1 <- garchx(y_up_through_T_star,
                       order = c(garch_param_fit, arch_param_fit, asymmetry_param_fit),
+                      solve.tol = .0000000001,
                       control = list(eval.max = 10000000, iter.max = 10000000),
                       hessian.control = list(maxit = 10000000) )
 
@@ -862,12 +864,12 @@ synth_vol_fit <- function(X,
   unadjusted_row <- c('GARCH (unadjusted)', 0, MSE_unadjusted, MAPE_unadjusted, QL_unadjusted) 
   display_df <- rbind(display_df, unadjusted_row)
   
-  display_df$beat_unadjusted <- as.integer(display_df$QL_adj < QL_unadjusted)
-  ORDERED_display_df <- display_df[order(display_df$QL_adj, na.last = TRUE, decreasing = FALSE), ]
+  # display_df$beat_unadjusted <- as.integer(display_df$QL_adj < QL_unadjusted)
+  # ORDERED_display_df <- display_df[order(display_df$QL_adj, na.last = TRUE, decreasing = FALSE), ]
 
   cat('\n Dataframe Comparing the Distance-based-weighting methods \n')
   cat('--------------------------------------------------------------- \n')
-  print(ORDERED_display_df)
+  print(display_df)
 
   return(as.vector(display_df))
   
