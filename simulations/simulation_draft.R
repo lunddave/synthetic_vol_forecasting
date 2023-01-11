@@ -17,6 +17,7 @@
 #   https://cran.r-project.org/web/packages/foreach/vignettes/nested.html
 
 # MC
+library("dplyr")
 library("parallel")
 library("doParallel")
 library("foreach")
@@ -117,18 +118,18 @@ gridd_subset <- gridd_subset[gridd_subset$level_shock_length <= gridd_subset$vol
 gridd_subset <- gridd_subset[ (gridd_subset$level_model == 'M1' &
                               gridd_subset$level_shock_length != 0 &
                               gridd_subset$mu_eps_star != 0 &
-                              M21_M22_level_mu_delta == 0 &
-                              M21_M22_level_sd_delta == 0) |  
+                                gridd_subset$M21_M22_level_mu_delta == 0 &
+                                gridd_subset$M21_M22_level_sd_delta == 0) |  
                                 
                               (gridd_subset$level_model %in% c('M21','M22') &
                               gridd_subset$level_shock_length != 0 &
-                              M21_M22_level_mu_delta != 0 &
-                              M21_M22_level_sd_delta != 0) |
+                                gridd_subset$M21_M22_level_mu_delta != 0 &
+                                gridd_subset$M21_M22_level_sd_delta != 0) |
                                 
                               (gridd_subset$level_model == 'none' &
                               gridd_subset$level_shock_length == 0 &
-                                M21_M22_level_mu_delta == 0 &
-                                M21_M22_level_sd_delta == 0),]
+                                gridd_subset$M21_M22_level_mu_delta == 0 &
+                                gridd_subset$M21_M22_level_sd_delta == 0),]
 
 # Get rid of M1 vol models where
 
@@ -138,13 +139,15 @@ gridd_subset <- gridd_subset[ (gridd_subset$level_model == 'M1' &
 # is not zero:
 
 gridd_subset <- gridd_subset[ (gridd_subset$vol_model == 'M1' &
-                                 M21_M22_vol_mu_delta == 0 &
-                                 M21_M22_vol_sd_delta == 0) |  
+                                 gridd_subset$M21_M22_vol_mu_delta == 0 &
+                                 gridd_subset$M21_M22_vol_sd_delta == 0) |  
                                 
                                 (gridd_subset$vol_model != 'M1' & 
-                                   M21_M22_vol_mu_delta != 0 &
-                                   M21_M22_vol_sd_delta != 0)
+                                   gridd_subset$M21_M22_vol_mu_delta != 0 &
+                                   gridd_subset$M21_M22_vol_sd_delta != 0)
                               ,]
+
+
 
 ## tk TO DO
 
@@ -161,6 +164,15 @@ nrow(gridd_subset)
 head(gridd_subset, n = 3)
 
 sim_params <- gridd_subset
+
+
+# This last bit of code will help us see how the parameter combos vary
+length_unique <- function(x) { return(length(unique(x)))}
+
+sim_params_check <- sim_params %>% group_by(vol_model) %>% 
+  summarise(across(everything(), length_unique),
+            .groups = 'drop')  %>%
+  as.data.frame()
 
 ############ end of parameter grid construction ############ 
 

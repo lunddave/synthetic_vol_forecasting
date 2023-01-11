@@ -4,7 +4,7 @@
 
 options(digits = 3)
 
-load("/home/david/Desktop/synthetic_vol_forecasting/simulation_results/simulation_results/simcount_1_savetime_Wed Dec 28 01:00:21 2022.Rdata")
+load("/home/david/Desktop/synthetic_vol_forecasting/simulation_results/simcount_20_savetime_Sat Dec 31 20:02:35 2022.Rdata")
 
 library(lmboot)
 

@@ -2,17 +2,19 @@
 
 # https://stackoverflow.com/questions/52124359/anova-on-r-with-different-dependent-variables
 
-load("/home/david/Desktop/synthetic_vol_forecasting/simulation_results/simcount_50.Rdata")
+load("/home/david/Desktop/synthetic_vol_forecasting/simulation_results/simcount_20_savetime_Sat Dec 31 20:02:35 2022.Rdata")
+
+dim(output)
 
 #We inspect the data
-View(output_n_sim_1)
+View(output)
 
 # We look for the columns that have no variation, i.e. those with only 1 value.  
-unique_count_df <- apply(output_n_sim_1, 2, function(x) length(unique(x)))
+unique_count_df <- apply(output, 2, function(x) length(unique(x)))
 
 # We drop these columns.
 columns_we_want <- names(unique_count_df)[unique_count_df != 1]
-reduced_df <- output_n_sim_1[names(output_n_sim_1) %in% columns_we_want]
+reduced_df <- output[names(output) %in% columns_we_want]
 
 # Make the dataframe numeric
 reduced_df <- as.data.frame(lapply(reduced_df, as.numeric))
