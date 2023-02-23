@@ -1,0 +1,282 @@
+\documentclass[11pt]{article}
+
+% use packages
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amscd}
+\usepackage{amssymb}
+\usepackage{natbib}
+\usepackage{url}
+\usepackage[table,xcdraw,usenames]{xcolor}
+%\usepackage[usenames]{color}
+
+\usepackage{graphicx}
+%\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage{authblk}
+\usepackage{bm}
+
+
+\usepackage{hyperref}
+\usepackage{caption}
+\usepackage{float}
+\usepackage[caption = false]{subfig}
+\usepackage{tikz}
+\usepackage{multirow}
+\usepackage[linesnumbered, ruled,vlined]{algorithm2e}
+\usepackage{pdflscape}
+
+% margin setup
+\usepackage{geometry}
+\geometry{margin=0.8in}
+
+
+% function definition
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\w}{\textbf{w}}
+\newcommand{\x}{\textbf{x}}
+\newcommand{\dbf}{\textbf{d}}
+\newcommand{\y}{\textbf{y}}
+\newcommand{\X}{\textbf{X}}
+\newcommand{\Y}{\textbf{Y}}
+\newcommand{\L}{\textbf{L}}
+\newcommand{\Hist}{\mathcal{H}}
+\newcommand{\Prob}{\mathbb{P}}
+\def\mbf#1{\mathbf{#1}} % bold but not italic
+\def\ind#1{\mathrm{1}(#1)} % indicator function
+\newcommand{\simiid}{\stackrel{iid}{\sim}} %[] IID 
+\def\where{\text{ where }} % where
+\newcommand{\indep}{\perp \!\!\! \perp } % independent symbols
+\def\cov#1#2{\mathrm{Cov}(#1, #2)} % covariance 
+\def\mrm#1{\mathrm{#1}} % remove math
+\newcommand{\reals}{\mathbb{R}} % Real number symbol
+\def\t#1{\tilde{#1}} % tilde
+\def\normal#1#2{\mathcal{N}(#1,#2)} % normal
+\def\mbi#1{\boldsymbol{#1}} % Bold and italic (math bold italic)
+\def\v#1{\mbi{#1}} % Vector notation
+\def\mc#1{\mathcal{#1}} % mathical
+\DeclareMathOperator*{\argmax}{arg\,max} % arg max
+\DeclareMathOperator*{\argmin}{arg\,min} % arg min
+\def\E{\mathbb{E}} % Expectation symbol
+\def\mc#1{\mathcal{#1}}
+\def\var#1{\mathrm{Var}(#1)} % Variance symbol
+\def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;} % checkmark
+\newcommand\red[1]{{\color{red}#1}}
+\def\bs#1{\boldsymbol{#1}}
+\def\P{\mathbb{P}}
+\def\var{\mathbf{Var}}
+\def\naturals{\mathbb{N}}
+\def\cp{\overset{p}{\to}}
+\def\clt{\overset{\mathcal{L}^2}{\to}}
+
+\setcounter{tocdepth}{4}
+\setcounter{secnumdepth}{4}
+
+\newtheorem{corollary}{Corollary}
+\newcommand{\ceil}[1]{\lceil #1 \rceil}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert} % A norm with 1 argument
+\DeclareMathOperator{\Var}{Var} % Variance symbol
+
+\newtheorem{cor}{Corollary}
+\newtheorem{lem}{Lemma}
+\newtheorem{thm}{Theorem}
+\newtheorem{defn}{Definition}
+\newtheorem{prop}{Proposition}
+\theoremstyle{definition}
+\newtheorem{remark}{Remark}
+\hypersetup{
+  linkcolor  = blue,
+  citecolor  = blue,
+  urlcolor   = blue,
+  colorlinks = true,
+} % color setup
+
+% proof to proposition 
+\newenvironment{proof-of-proposition}[1][{}]{\noindent{\bf
+    Proof of Proposition {#1}}
+  \hspace*{.5em}}{\qed\bigskip\\}
+% general proof of corollary
+  \newenvironment{proof-of-corollary}[1][{}]{\noindent{\bf
+    Proof of Corollary {#1}}
+  \hspace*{.5em}}{\qed\bigskip\\}
+% general proof of lemma
+  \newenvironment{proof-of-lemma}[1][{}]{\noindent{\bf
+    Proof of Lemma {#1}}
+  \hspace*{.5em}}{\qed\bigskip\\}
+
+\allowdisplaybreaks
+
+\title{Post-shock Volatility Forecasting Using Aggregated Shock Information Notes}
+\author{David Lundquist\thanks{davidl11@ilinois.edu} }
+\affil{Department of Statistics, University of Illinois at Urbana-Champaign}
+\date{December 3rd, 2021}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+We develop a novel procedure for forecasting the volatility of a time series under study immediately following an exogenous shock event.  Adapting the synthetic prediction framework of \citet{lin2021minimizing}, we exploit series that have experienced similar shock events.  We extract volatility signals from these series in order to aggregate properly their shock-induced excess volatilities.  The volatility spikes are modeled as random effects and estimated as fixed effects.  The aggregation of these estimates is in service of adjusting the 1-step-ahead GARCH forecast of the time series under study by an additive term.  The adjusted and unadjusted forecasts are evaluated using three families of benchmarks: the unobservable but easily estimated realized volatility (RV) of the time series under study, implied volatility, and the empirical volatility over horizons of varying length.  We also compare the performance of the adjusted forecast to the performance of the Realized GARCH forecast, which is known to react faster to rapidly changing volatility than the standard GARCH model by permitting the inclusion of metrics like implied volatility.   Finally, we combine Realized GARCH modeling with the synthetic prediction framework, using Realized GARCH in both the estimation of random effects as well as the forecast for the time series under study.  Real world illustrations are provided, as are simulation results suggesting the conditions under which our approach's hyperparameters can be tuned for best performance.
+\end{abstract}
+
+
+\section{Introduction}
+
+To be renamed
+
+
+\section{Main Notes}
+
+\label{section2}
+
+\subsection{Hypotheses}
+\begin{enumerate}
+\item The smaller the shock length k, the greater the need for a large shock.  
+\item For the donors with large weights, smaller p-values for the donor shocks will lead to smaller MSE for prediction done using convex hull.
+\item The level shock $\epsilon^{*}$ will require a similar $(\alpha, \beta)$ structure more so than a volatility shock alone.  Henceforth, let's refer to this as "homogeneity in the autoregressive structure" across donors.  The hypothesis in mind here is that homogeneity matters far more for the level shock.
+\item In the case of a pure level shock, if the shock length is just one, a convex combination of the $a^{2}_{T^{*}+1}$ may outperform all other methods.  This would make sense because a GARCH model can be reparamaterized as an ARMA on the sequence $a^{2}_{t}$.
+\item Sensitivity analysis: take only the convex hull approach and look at all $2^{p }- 1$ non-empty subsets of the covariates. For the larger cardinality subsets, do we see big differences in 1) convex combs, 2) predictions?
+\item The variance of the level shock needs to be small, i.e. the variation of the level shocks across the donors needs to be small, in order for the estimation of $\omega^{*}_i$ to work.
+\item A volatility shock longer than 1 trading session should we much less necessary is $\alpha + \beta \approx 1$, i.e. if the process is slowly decaying.
+\item A level shock at $T^{*}+1$ may hinder estimation of $w^{*}$ because its expected moments will be much larger than those of $\epsilon_{i,t}$, i.e. it will be an outlier.
+\item For the prediction step, why not just take a convex combination of the $\hat\sigma^{2}_{i}$ in the donor pool?  Reply is (a) that would require something like homogeneity in the paramaters $(\alpha, \beta)$ between the donors and the time series under study, and (b) because we have assumed knowledge of an outsize shock, we want to somehow use that information to $\textit{intervene in, or make a correction to}$ the GARCH model, not just use a GARCH model.
+\item For $\mc{M}_21$ especially, the shock estimator given by the orthogonal projection of the estimated shocks into the 1-dimensional subspace spanned by $X_{T^{*}+1}$ may be best.
+\item  If donors are independent, a non-sparse linear combination could have lowest risk.
+\item If donors are highly correlated, the s-sparse linear combination eg convex hull implies $s \choose 2$ covariances.
+\item For the convex linear combination method to outperform competitors consistently in the context of the $mc{M}_{21}$ and $mc{M}_{22}$ models, it may be necessary for the variance of $\delta$ to be high compared to the variance of $\epsilon$, or alternatively, the ratio of the two signal to noise ratios might need to be high.  The idea there is that the convex linear combination method performs best when the bulk of the noise is coming from $\delta.$
+\end{enumerate}
+
+\subsection{To do}
+
+\begin{enumerate}
+\item Use a more realistic shock distribution, e.g. skewed t or skewed Laplace, HOWEVER \citep{brownlees2011practical} find "no evidence
+that the Student t likelihood improves forecasting ability despite its potentially more realistic
+description of return tails"
+\item Use bivariate distribution for the level and volatility shocks.
+\item Add an intercept to optimization process.
+\item Clean up docstring in simulation file as well as signal-to-noise ratio, i.e. output.
+\item Do I need a decaying shock?  For vol, for level?
+\item Do I need shocks in covariates? 
+\item At the money options less biased.
+\item Use $\Delta^{2}$, i.e. second difference (of volume, RV, etc) in order to capture the change in the change
+\item Emphasize that $\epsilon^{*}_{i,t}$ is a nuisance parameter and the length of the volatility shock and the length of the level shock are also volatility parameters.
+\item What metrics will be used to compare forecasts?  In simulations, we may need some way to compare forecasts of series that are not on the same scale, i.e. because some series have larger shocks.  Or it could be enough to use rankings, e.g. for each simulation, just rank all K methods.  In real-world applications, if the number of applications in small, ranking may not be too informative, and we may need to find a metric suitable for volatility forecast comparison.  
+\item Use mean absolute percentage error to judge methods.  absolute percentage error allows comparisons between volatility series on different scale.
+\item Use GoogleTrends data (on $\Delta$GoogleTrends) in volatility profile
+\item Look at LOOCV in Lin Eck 2021
+\item Read Abadie 2010 again and look at proof of unbiasedness
+\item Incorporate lessons and (a) forecasting loss functions and (b) rolling forecasts from https://arxiv.org/abs/2203.10716
+\item Read rubin on matching
+\item Fix variance given that the var has correlated entries
+\item Diebold Mariano
+\item Dan: extended abstract ?
+\item I need to use the matrix V in Abadie. it's an unused hyperparameter
+\item LOOCV - find in L+E 2021
+\item Must use Mahalanobis distance because of covariance
+\item 2 * sum(mat[upper.tri(mat)]) + sum(diag(mat))
+\item Canonical correlation analysis
+\item https://cran.r-project.org/web/packages/MultiHorizonSPA/MultiHorizonSPA.pdf
+\item Recall that my omega hats are correlated
+\item Develop some theory beyond confidence intervals for adjusted predictions.  Under independence (pairwise independence between donors and also between time series under study) the variance is just the sum of the variances.
+\end{enumerate}
+
+
+\subsection{Simulation notes}
+\begin{enumerate}
+\item Since GARCH parameters many trading periods to stabilize \citep{andersen2009handbook} p.172, we simulate series with a minimum of 252 trading days (one year) and a maximum of 3*252 trading days
+\item We can just use squared return $a_{i,T^{*}+1}^{2}$ of the series under study as a ground truth estimator, since it is unbiased and over many examples, it should reveal the ordinal comparison between forecasting methods \citep{andersen2009handbook} p.181
+\item For each pair of variables that I vary in the simulations, construct an MSE heat map like the one found here https://www.r-bloggers.com/2013/06/grid-search-for-free-parameters-with-parallel-computing/
+
+\end{enumerate}
+
+\subsection{Procedure for building a donor pool}
+\begin{enumerate}
+\item Determine time series of under study (TSUS).
+\item Nominate set of donors D for the TSUS, $|D| = n$.
+\item Let $C_{i}$ denote the set of covariates for the shock distribution of the $ith$ time series, $1 \leq i \leq n + 1$.  
+\item Define $C = \cap^{n+1}_{i=1}C_{i}$, i.e. the intersection of the covariate sets. (Dan asks: could we also take the union and then just impute structural zeroes?)
+\item Let $X_{i}$ denote the vector of length $C_{i}$ containing the entries of the covariate of the shock distribution of the $ith$ time series, and let $X_{i}^{C}$ denote the subvector of length $|C|$ with the covariates common to all $n+1$ series.
+\item For each $i\geq 2$, compute $\widehat{corr}(X_{1}^{C}, X_{i}^{C})$.
+\item Cull the donor set D down to only the donors that satisfy $|\widehat{corr}(X_{1}^{C}, X_{i}^{C})|\geq \xi$, for some suitably chosen $\xi \in (0,1)$
+
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+Notice that $\mc{M}_1$ assumes that $\omega^{*}_i$ are i.i.d. with $\E[ \omega^{*}_i]=\mu_{\omega^{*}}$ 
+for $i = 1, \ldots, n+1$. We also consider a model where the shock effects are linear functions of covariates with an additional additive mean-zero error. For $i = 1, \ldots, n+1$, the random effects structure for this model (model $\mc{M}_2$) is:
+
+
+
+
+\begin{align}
+\mc{M}_2 \colon \begin{array}{l}
+   \sigma^{2}_{i,t} = \omega_{i} + \omega^{*}_i D_{i,t}  + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \text{ }, a_{i,t} = \sigma_{i,t}\epsilon_{i,t}\\[.2cm]
+  \; \omega_i^{*} = \mu_{\omega^{*}}+\delta_{i}'\mbf{x}_{i, T_i^*+1}+ \t{\varepsilon}_{i},
+\end{array}\label{model2}
+\end{align}
+
+ where the added random effects are
+
+\begin{align*}
+\omega^{*}_i &\simiid \mc{F}_{\omega^{*}} \text{ with }  \; \mrm{E}_{\mc{F}_{\omega^{*}}}(\omega^{*}_i) = \mu_{\omega^{*}}, \mrm{Var}_{\mc{F}_{\omega^{*}}}(\omega^{*}_i)  = \sigma^2_{\omega^{*}}  \\
+\epsilon^{*}_i &\simiid \mc{F}_{\epsilon^{*}} \text{ with }  \; \mrm{E}_{\mc{F}_{\epsilon^{*}}}(\epsilon^{*}_i) = \mu_{\epsilon^{*}}, \mrm{Var}_{\mc{F}_{\epsilon^{*}}}(\epsilon^{*}_i)  = \sigma^2_{\epsilon^{*}}  \\
+% & \text{Alternatively, } (\omega^{*}, \epsilon^{*})_{i} \sim \mathcal{N}(\mu_{\omega^{*},\epsilon^{*}}, \Sigma_{\omega^{*},\epsilon^{*}}) \\
+% THESE ARE NOT RANDOM &(\alpha, \beta)_i \simiid \mc{F}_{(\alpha, \beta)} \text{ where } \sum^{ \text{max} \{m,s \} }_{j}\alpha_j + \beta_j < 1 \\
+   \gamma_i &\simiid \mc{F}_{\gamma} \text{ with }  \; \mrm{E}_{\mc{F}_{\gamma}}(\gamma_i) = \mu_{\gamma}, \mrm{Var}_{\mc{F}_{\gamma}}(\gamma_i)  = \Sigma^2_{\gamma} \\
+\delta_i &\simiid \mc{F}_{\delta} \text{ with }  \; \mrm{E}_{\mc{F}_{\delta}(\delta_i)} = \mu_{\delta}, \mrm{Var}_{\mc{F}_{\delta^{*}}}(\delta_i)  = \sigma^{2}_{\delta} \\
+% \mathbf{v}_i &\simiid \mc{F}_{\mathbf{v}} \text{ with }  \; \mrm{E}_{\mc{F}_{\mathbf{v}}}(\mathbf{v}_i) = \mu_{\mathbf{v}}, \mrm{Var}_{\mc{F}_{\mathbf{v}}}(\mathbf{v}_i)  = \Sigma^2_{\mathbf{v}} \\
+\varepsilon_{i,t} & \simiid  \mc{F}_{\varepsilon} \text{ with }  \; \mrm{E}_{\mc{F}_{\varepsilon}}(\varepsilon_{i,t}) = 0, \mrm{Var}_{\mc{F}_{\varepsilon}}(\varepsilon_{i,t})  = 1 \\
+%l_{i,vol} &\simiid \text{Unif}\{1,2,...,\text{maximum volatility shock length}\}\\
+%l_{i, level} &\simiid \text{Unif}\{1,2,...,l_{i,vol}\}\\
+\omega^{*}_i &\indep  (\alpha, \beta)_i \indep \gamma_i \indep \varepsilon_{i,t}.
+\end{align*}
+
+We further define 
+$\widetilde{\omega^{*}}_i=\mu_{\omega^{*}}+\delta_i'\mbf{x}_{i, T_i^*+1}$. 
+We will investigate the post-shock aggregated estimators in $\mc{M}_2$ 
+in settings where $\delta_i$ is either fixed or random. 
+We let $\mc{M}_{21}$ denote model $\mc{M}_{2}$ with $\delta_i = \delta$ for $i= 1, \ldots, n+1$, 
+where $\delta$ is a  fixed unknown parameter.
+We let $\mc{M}_{22}$ denote model $\mc{M}_{2}$ with the following random effects 
+structure for $\delta_i$:
+\begin{align*}
+\delta_i\simiid  \mc{F}_{\delta} \text{ with }\mrm{E}_{\mc{F}_{\delta}}(\delta_i)=\mu_{\delta}, \mrm{Var}_{\mc{F}_{\delta}}(\delta_i)=\Sigma_\delta 
+   \quad \text{ with } \quad  \delta_i  \indep \t{\varepsilon}_{i}.
+\end{align*}
+We further define the parameter sets
+\begin{align}
+  \begin{array}{lll}
+     \Theta &= &\{(\eta_i, \phi_i, \theta_i, \alpha_i, \mbf{x}_{i,t}, y_{i,t-1}, \delta_i)\colon t= 1, \ldots, T_i, i = 2, \ldots, n +1\},\\
+    \Theta_1 &= &\{(\eta_i, \phi_i, \theta_i, \alpha_i, \mbf{x}_{i,t}, y_{i,t-1}, \delta_i)\colon t= 1, \ldots, T_i, i = 1\},\label{parameter}
+  \end{array}
+\end{align}
+where $\Theta$ and $\Theta_1$ can adapt to $\mc{M}_1$ by dropping $\delta_i$. We assume this for notational simplicity.
+
+
+
+
+
+
+
+
+
+
+
+
+\bibliographystyle{plainnat}
+\bibliography{synthVolForecast}
+%\bibliography{../synthetic-prediction-notes}
+
+  
+\end{document}
+
+
