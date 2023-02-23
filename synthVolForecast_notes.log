@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2022.4.28)  23 FEB 2023 14:52
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2022.4.28)  23 FEB 2023 14:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -768,7 +768,7 @@ File: l3backend-pdftex.def 2022-01-12 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count335
 \l__pdf_internal_box=\box76
 )
-No file synthVolForecast_notes.aux.
+(./synthVolForecast_notes.aux)
 \openout1 = `synthVolForecast_notes.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 116.
@@ -789,6 +789,7 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 116.
 LaTeX Font Info:    ... okay on input line 116.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 116.
 LaTeX Font Info:    ... okay on input line 116.
+
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count336
@@ -827,6 +828,8 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 116.
 LaTeX Info: Redefining \pageref on input line 116.
 LaTeX Info: Redefining \nameref on input line 116.
+
+(./synthVolForecast_notes.out) (./synthVolForecast_notes.out)
 \@outlinefile=\write4
 \openout4 = `synthVolForecast_notes.out'.
 
@@ -916,23 +919,15 @@ No file synthVolForecast_notes.bbl.
 Package natbib Warning: There were undefined citations.
 
 [4] (./synthVolForecast_notes.aux)
+Package rerunfilecheck Info: File `synthVolForecast_notes.out' has not changed.
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-
-Package rerunfilecheck Warning: File `synthVolForecast_notes.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `synthVolForecast_notes.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  5B7CC8AFEDCC599C24FB737E8E956511;778.
+(rerunfilecheck)             Checksum: 5B7CC8AFEDCC599C24FB737E8E956511;778.
  ) 
 Here is how much of TeX's memory you used:
- 24205 strings out of 478287
- 444275 string characters out of 5849289
- 732795 words of memory out of 5000000
- 41919 multiletter control sequences out of 15000+600000
+ 24218 strings out of 478287
+ 444525 string characters out of 5849289
+ 733214 words of memory out of 5000000
+ 41926 multiletter control sequences out of 15000+600000
  486105 words of font info for 88 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,16n,80p,1590b,458s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -953,10 +948,10 @@ dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fo
 nts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/ty
 pe1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf/fonts/type1/public/cm-
 super/sfrm0600.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0800.pfb>
-Output written on synthVolForecast_notes.pdf (4 pages, 203291 bytes).
+Output written on synthVolForecast_notes.pdf (4 pages, 203540 bytes).
 PDF statistics:
- 191 PDF objects out of 1000 (max. 8388607)
- 147 compressed objects within 2 object streams
+ 210 PDF objects out of 1000 (max. 8388607)
+ 166 compressed objects within 2 object streams
  63 named destinations out of 1000 (max. 500000)
- 13 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 61 words of extra memory for PDF output out of 10000 (max. 10000000)
 

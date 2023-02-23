@@ -27,6 +27,8 @@
 \usepackage{multirow}
 \usepackage[linesnumbered, ruled,vlined]{algorithm2e}
 \usepackage{pdflscape}
+\usepackage{etoolbox}
+\AtBeginEnvironment{align}{\setcounter{equation}{0}} % https://tex.stackexchange.com/questions/349247/how-do-i-reset-the-counter-in-align
 
 % margin setup
 \usepackage{geometry}
@@ -318,11 +320,11 @@ Thus, in conditional expectation, the shock is $\mathcal{O}((\alpha+\beta)^{r})$
 \begin{prop}
 Let $a_{t}$ be a mean-zero time series obeying a GARCH(1,1) specification with a volatility shock of length $L_{\text{vol}}$ and level shock of length $L_{\text{level}}$ both commencing at some time $T^{*}+1$.  Then for any $r$ such that $r-1 \geq \text{max}\{L_{\text{vol}},L_{\text{level}}\}$, 
 
-\begin{align*}
-\sigma^{2}_{i,T^{*}+r+1} & = \omega_{i} + \alpha a_{T^{*}+r}^{2} + \beta\sigma^{2}_{i,T^{*}+r} \\
+\begin{align}
+\sigma^{2}_{i,T^{*}+r+1} & = \omega_{i} + \alpha a_{i,T^{*}+r}^{2} + \beta\sigma^{2}_{i,T^{*}+r} \\
 & = \omega_{i} + \alpha(\sigma_{i,T^{*}+r}\epsilon_{T^{*}+r})^{2} + \beta\sigma^{2}_{i,T^{*}+r} \\
 & = \omega_{i} + \sigma^{2}_{i,T^{*}+r}(\alpha (\epsilon_{T^{*}+r})^{2} + \beta)\\
-\end{align*}
+\end{align}
 \end{prop}
 
 In other words, once two time points removed from the longest shock length, the volatility shock and level shock can be subsumed into one.  However, prior to being two time points removed, there is no such guarantee.  Moreover, after both shocks have been exhausted, their influence disappears quickly.  This short-memory effect has implications for the method being developed herein:
@@ -334,7 +336,7 @@ In other words, once two time points removed from the longest shock length, the 
 \end{enumerate}
 
 \begin{proof-of-proposition}
-proof here
+The volatility equation of a GARCH(1,1) dictates that for any $r$, the one-step-ahead volatility is given by $\sigma^{2}_{i,T^{*}+r+1} = \omega_{i} + \alpha a_{i,T^{*}+r}^{2} + \beta\sigma^{2}_{i,T^{*}+r}$.  By the mean-zero assumption of the mean-model of the GARCH(1,1), we have $a_{i,t} = \sigma^{2}_{i,t}\epsilon_{i,t}$.  By substitution, we arrive at equation (2) above.  Finally, by rearranging terms, we arrive at equation 4.
 \end{proof-of-proposition}
 
 In many settings, it is reasonable to model a volatility shock as occuring without a rupture in the mean-zero, i.i.d. sequence $\epsilon_{i,t}$.  In cases like this, outsize movement in the observable random variable $a_{i,t}$ is due solely to the shock $\omega_{i}^{*}$.  Using the ARMA representation of a GARCH(m,s) model, we can see clearly how the random effect $\omega_{i}^{*}$ increases the expectation of the nonnegative random variable $a_{i,t}^{2}$.  The unconditional mean of an ARMA model tells that the random effects simply contribute to the intercept term:
@@ -362,76 +364,7 @@ However, since it is not known a priori for which $t$ the effect $\omega_{i}^{*}
 \item See Tsay p. 94: if $t$ is the last index that has been observed, then our two-step-ahead forecast is made easier by rewriting the volatility equation as $\sigma^{2}_{i,t+1} = w_{i} + (\alpha_{i} + \beta_{i})\sigma^{2}_{i,t} + \alpha_{1}\sigma^{2}_{i,t}[\epsilon^{2}_{i,t} - 1]= w_{i} + (\alpha_{i} + \beta_{i})\sigma^{2}_{i,t} + \alpha_{1}\sigma^{2}_{i,t}[\epsilon^{2}_{i,t} - 1] $.  Usually, we assume unit variance (though not necessarily a N(0,1)).  However, what is the variance is smaller than 1?  Then in conditional expectation, the term $\alpha_{1}\sigma^{2}_{i,t}[\epsilon^{2}_{i,t} - 1]$ will be negative.  So it seems that for level shock, we want the signal to noise ratio to be large because the mean is high, not because the variance is low.
 \end{enumerate}
 
-\subsection{Hypotheses}
-\begin{enumerate}
-\item The smaller the shock length k, the greater the need for a large shock.  
-\item For the donors with large weights, smaller p-values for the donor shocks will lead to smaller MSE for prediction done using convex hull.
-\item The level shock $\epsilon^{*}$ will require a similar $(\alpha, \beta)$ structure more so than a volatility shock alone.  Henceforth, let's refer to this as "homogeneity in the autoregressive structure" across donors.  The hypothesis in mind here is that homogeneity matters far more for the level shock.
-\item In the case of a pure level shock, if the shock length is just one, a convex combination of the $a^{2}_{T^{*}+1}$ may outperform all other methods.  This would make sense because a GARCH model can be reparamaterized as an ARMA on the sequence $a^{2}_{t}$.
-\item Sensitivity analysis: take only the convex hull approach and look at all $2^{p }- 1$ non-empty subsets of the covariates. For the larger cardinality subsets, do we see big differences in 1) convex combs, 2) predictions?
-\item The variance of the level shock needs to be small, i.e. the variation of the level shocks across the donors needs to be small, in order for the estimation of $\omega^{*}_i$ to work.
-\item A volatility shock longer than 1 trading session should we much less necessary is $\alpha + \beta \approx 1$, i.e. if the process is slowly decaying.
-\item A level shock at $T^{*}+1$ may hinder estimation of $w^{*}$ because its expected moments will be much larger than those of $\epsilon_{i,t}$, i.e. it will be an outlier.
-\item For the prediction step, why not just take a convex combination of the $\hat\sigma^{2}_{i}$ in the donor pool?  Reply is (a) that would require something like homogeneity in the paramaters $(\alpha, \beta)$ between the donors and the time series under study, and (b) because we have assumed knowledge of an outsize shock, we want to somehow use that information to $\textit{intervene in, or make a correction to}$ the GARCH model, not just use a GARCH model.
-\item For $\mc{M}_21$ especially, the shock estimator given by the orthogonal projection of the estimated shocks into the 1-dimensional subspace spanned by $X_{T^{*}+1}$ may be best.
-\item  If donors are independent, a non-sparse linear combination could have lowest risk.
-\item If donors are highly correlated, the s-sparse linear combination eg convex hull implies $s \choose 2$ covariances.
-\item For the convex linear combination method to outperform competitors consistently in the context of the $mc{M}_{21}$ and $mc{M}_{22}$ models, it may be necessary for the variance of $\delta$ to be high compared to the variance of $\epsilon$, or alternatively, the ratio of the two signal to noise ratios might need to be high.  The idea there is that the convex linear combination method performs best when the bulk of the noise is coming from $\delta.$
-\end{enumerate}
 
-\subsection{To do}
-\begin{enumerate}
-\item Use a more realistic shock distribution, e.g. skewed t or skewed Laplace, HOWEVER \citep{brownlees2011practical} find "no evidence
-that the Student t likelihood improves forecasting ability despite its potentially more realistic
-description of return tails"
-\item Use bivariate distribution for the level and volatility shocks.
-\item Add an intercept to optimization process.
-\item Clean up docstring in simulation file as well as signal-to-noise ratio, i.e. output.
-\item Do I need a decaying shock?  For vol, for level?
-\item Do I need shocks in covariates? 
-\item At the money options less biased.
-\item Use $\Delta^{2}$, i.e. second difference (of volume, RV, etc) in order to capture the change in the change
-\item Emphasize that $\epsilon^{*}_{i,t}$ is a nuisance parameter and the length of the volatility shock and the length of the level shock are also volatility parameters.
-\item What metrics will be used to compare forecasts?  In simulations, we may need some way to compare forecasts of series that are not on the same scale, i.e. because some series have larger shocks.  Or it could be enough to use rankings, e.g. for each simulation, just rank all K methods.  In real-world applications, if the number of applications in small, ranking may not be too informative, and we may need to find a metric suitable for volatility forecast comparison.  
-\item Use mean absolute percentage error to judge methods.  absolute percentage error allows comparisons between volatility series on different scale.
-\item Use GoogleTrends data (on $\Delta$GoogleTrends) in volatility profile
-\item Look at LOOCV in Lin Eck 2021
-\item Read Abadie 2010 again and look at proof of unbiasedness
-\item Incorporate lessons and (a) forecasting loss functions and (b) rolling forecasts from https://arxiv.org/abs/2203.10716
-\item Read rubin on matching
-\item Fix variance given that the var has correlated entries
-\item Diebold Mariano
-\item Dan: extended abstract ?
-\item I need to use the matrix V in Abadie. it's an unused hyperparameter
-\item LOOCV - find in L+E 2021
-\item Must use Mahalanobis distance because of covariance
-\item 2 * sum(mat[upper.tri(mat)]) + sum(diag(mat))
-\item Canonical correlation analysis
-\item https://cran.r-project.org/web/packages/MultiHorizonSPA/MultiHorizonSPA.pdf
-\item Recall that my omega hats are correlated
-\item Develop some theory beyond confidence intervals for adjusted predictions.  Under independence (pairwise independence between donors and also between time series under study) the variance is just the sum of the variances.
-\end{enumerate}
-
-
-\subsection{Simulation notes}
-\begin{enumerate}
-\item Since GARCH parameters many trading periods to stabilize \citep{andersen2009handbook} p.172, we simulate series with a minimum of 252 trading days (one year) and a maximum of 3*252 trading days
-\item We can just use squared return $a_{i,T^{*}+1}^{2}$ of the series under study as a ground truth estimator, since it is unbiased and over many examples, it should reveal the ordinal comparison between forecasting methods \citep{andersen2009handbook} p.181
-\item For each pair of variables that I vary in the simulations, construct an MSE heat map like the one found here https://www.r-bloggers.com/2013/06/grid-search-for-free-parameters-with-parallel-computing/
-
-\end{enumerate}
-
-\subsection{Procedure for building a donor pool}
-\begin{enumerate}
-\item Determine time series of under study (TSUS).
-\item Nominate set of donors D for the TSUS, $|D| = n$.
-\item Let $C_{i}$ denote the set of covariates for the shock distribution of the $ith$ time series, $1 \leq i \leq n + 1$.  
-\item Define $C = \cap^{n+1}_{i=1}C_{i}$, i.e. the intersection of the covariate sets. (Dan asks: could we also take the union and then just impute structural zeroes?)
-\item Let $X_{i}$ denote the vector of length $C_{i}$ containing the entries of the covariate of the shock distribution of the $ith$ time series, and let $X_{i}^{C}$ denote the subvector of length $|C|$ with the covariates common to all $n+1$ series.
-\item For each $i\geq 2$, compute $\widehat{corr}(X_{1}^{C}, X_{i}^{C})$.
-\item Cull the donor set D down to only the donors that satisfy $|\widehat{corr}(X_{1}^{C}, X_{i}^{C})|\geq \xi$, for some suitably chosen $\xi \in (0,1)$
-
-\end{enumerate}
 
 
 
