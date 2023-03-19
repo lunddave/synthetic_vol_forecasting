@@ -43,7 +43,7 @@
 \newcommand{\y}{\textbf{y}}
 \newcommand{\X}{\textbf{X}}
 \newcommand{\Y}{\textbf{Y}}
-\newcommand{\L}{\textbf{L}}
+%\newcommand{\L}{\textbf{L}}
 \newcommand{\Hist}{\mathcal{H}}
 \newcommand{\Prob}{\mathbb{P}}
 \def\mbf#1{\mathbf{#1}} % bold but not italic
@@ -291,7 +291,7 @@ $\mbf{x}_{i,t}$ are fixed.\footnote{Need to determine what difference it makes t
 \varepsilon_{i,t} & \simiid  \mc{F}_{\varepsilon} \text{ with }  \; \mrm{E}_{\mc{F}_{\varepsilon}}(\varepsilon_{i,t}) = 0, \mrm{Var}_{\mc{F}_{\varepsilon}}(\varepsilon_{i,t})  = 1 \\
 %l_{i,vol} &\simiid \text{Unif}\{1,2,...,\text{maximum volatility shock length}\}\\
 %l_{i, level} &\simiid \text{Unif}\{1,2,...,l_{i,vol}\}\\
-\omega^{*}_i &\indep  (\alpha, \beta)_i \indep \gamma_i \indep \varepsilon_{i,t}.
+\omega^{*}_{i} &\indep  \epsilon^{*}_i \indep \gamma_i \indep \varepsilon_{i,t}.
 \end{align*}
 
 \textbf{WHAT FOLLOWS IS (a) defense of the modeling choices, (b) remarks on the models' implications and subtleties}\\
@@ -306,7 +306,7 @@ Note that under the popular GARCH(1,1), a dual level-volatility shock has an mar
 & = \omega_{i} + \sigma^{2}_{i,T^{*}+r}(\alpha_{i} (\epsilon_{T^{*}+r})^{2} + \beta_{i})
 \end{align}
 
-In (5), observe that $\omega_{i}^{*}$ and $\epsilon^{*}_{i,t}$ each appear at most once, through the term $\sigma^{2}_{T^{*}+r}$.  This might lead one to suspect  geometric decay of the shocks $\omega_{i}^{*}$ and $\epsilon^{*}_{i}$.  Such a suspicion is easier to substantiate by examing the conditional expectation of the variance, $\mathbb{E}[ \sigma^{2}_{i,T^{*}+r+1} |\mathcal{F}_{T^{*}+r}]$, which also happens to be the principal forecasting tool for a GARCH model.  Indeed, if we assume unit variance for all $\epsilon_{i,t}$ except, of course, $\epsilon^{*}_{i,t}$, then we have 
+In (5), observe that $\omega_{i}^{*}$ and $\epsilon^{*}_{i,t}$ each appear at most once, through the term $\sigma^{2}_{T^{*}+r}$.  This might lead one to suspect  geometric decay of the shocks $\omega_{i}^{*}$ and $\epsilon^{*}_{i}$.  Such a suspicion is easier to substantiate by examining the conditional expectation of the variance, $\mathbb{E}[ \sigma^{2}_{i,T^{*}+r+1} |\mathcal{F}_{T^{*}+r}]$, which also happens to be the principal forecasting tool for a GARCH model.  Indeed, if we assume unit variance for all $\epsilon_{i,t}$ except, of course, $\epsilon^{*}_{i,t}$, then we have 
 
 \begin{align*}
 \mathbb{E}[ \sigma^{2}_{i,T^{*}+r+1} |\mathcal{F}_{T^{*}+r}] & = \mathbb{E}[\omega_{i} + \alpha a_{T^{*}+r}^{2} + \beta\sigma^{2}_{i,T^{*}+r} |\mathcal{F}_{T^{*}+r}] \\
@@ -318,16 +318,36 @@ In (5), observe that $\omega_{i}^{*}$ and $\epsilon^{*}_{i,t}$ each appear at mo
 Thus, in conditional expectation, the shock is $\mathcal{O}((\alpha+\beta)^{r})$.  We generalize this observation in the following proposition.
 
 \begin{prop}
-Let $a_{t}$ be a mean-zero time series obeying a GARCH(1,1) specification with a volatility shock of length $L_{\text{vol}}$ and level shock of length $L_{\text{level}}$ both commencing at some time $T^{*}+1$.  Then for any $r$ such that $r-1 \geq \text{max}\{L_{\text{vol}},L_{\text{level}}\}$, 
+Let $a_{t}$ be a mean-zero time series obeying a GARCH(1,1) specification prior to the arrival of a volatility shock of length $L_{\text{vol}} \geq 1$ and level shock of length $L_{\text{level}}\geq 1$ at some time $T^{*}+1$.  Then for any $r$ such that $r-1 \geq \text{max}\{L_{\text{vol}},L_{\text{level}}\}$, 
 
 \begin{align}
-\sigma^{2}_{i,T^{*}+r+1} & = \omega_{i} + \alpha a_{i,T^{*}+r}^{2} + \beta\sigma^{2}_{i,T^{*}+r} \\
-& = \omega_{i} + \alpha(\sigma_{i,T^{*}+r}\epsilon_{T^{*}+r})^{2} + \beta\sigma^{2}_{i,T^{*}+r} \\
-& = \omega_{i} + \sigma^{2}_{i,T^{*}+r}(\alpha (\epsilon_{T^{*}+r})^{2} + \beta)\\
+\mathbb{E}[ \sigma^{2}_{i,T^{*}+r+1} |\mathcal{F}_{T^{*}+r}] & = \omega_{i} + \sigma^{2}_{i,T^{*}+r}(\alpha + \beta) \\
 \end{align}
 \end{prop}
 
-In other words, once two time points removed from the longest shock length, the volatility shock and level shock can be subsumed into one.  However, prior to being two time points removed, there is no such guarantee.  Moreover, after both shocks have been exhausted, their influence disappears quickly.  This short-memory effect has implications for the method being developed herein:
+\begin{proof-of-proposition}
+We claim
+
+\begin{align}
+\mathbb{E}[ \sigma^{2}_{i,T^{*}+r+1} |\mathcal{F}_{T^{*}+r}] & = \mathbb{E}[\omega_{i} + \alpha a_{T^{*}+r}^{2} + \beta\sigma^{2}_{i,T^{*}+r} |\mathcal{F}_{T^{*}+r}] \\
+& = \omega_{i} + \mathbb{E}[\alpha(\sigma_{i,T^{*}+r}\epsilon_{T^{*}+r})^{2} |\mathcal{F}_{T^{*}+r}] + \beta\sigma^{2}_{i,T^{*}+r} \\
+& = \omega_{i} + \alpha\sigma_{i,T^{*}+r}^{2} + \beta\sigma^{2}_{i,T^{*}+r} \\
+& = \omega_{i} + \sigma^{2}_{i,T^{*}+r}(\alpha + \beta) \\
+\end{align}
+
+The volatility equation of a GARCH(1,1) dictates that for any $r$, the one-step-ahead volatility is given by $\sigma^{2}_{i,T^{*}+r+1} = \omega_{i} + \alpha a_{i,T^{*}+r}^{2} + \beta\sigma^{2}_{i,T^{*}+r}$.  By the mean-model assumption of a GARCH(1,1), we have $a_{i,t} = \sigma_{i,t}\epsilon_{i,t}$.  By substitution, we arrive at equation (2) above.  Finally, by rearranging terms, we arrive at equation (3).
+\end{proof-of-proposition}
+
+
+In other words, once two time points removed from the longest shock length, the volatility shock and level shock can be subsumed into one.  However, prior to being two time points removed, there is no such guarantee.  For example, one can take $r = 1$ to see that 
+
+\begin{align}
+\sigma^{2}_{i,T^{*}+2}  & = \omega_{i} + \alpha a_{i,T^{*}+1}^{2} + \beta\sigma^{2}_{i,T^{*}+1} \\
+& = \omega_{i} + \alpha(\sigma_{i,T^{*}+1}\epsilon^{*}_{T^{*}+1})^{2} + \beta\sigma^{2}_{i,T^{*}+1} \\
+& = \omega_{i} + \sigma^{2}_{i,T^{*}+r}(\alpha (\epsilon_{T^{*}+r})^{2} + \beta)
+\end{align}
+
+Moreover, after both shocks have been exhausted, their influence disappears quickly.  This short-memory effect has implications for the method being developed herein:
 
 \begin{enumerate}
 \item Estimation of effects in donor pool should err on the side of underestimating, not overestimating, the length of the max shock, since overestimation of the shock length brings with it the risk of underestimating $\omega^{*}$.
@@ -335,9 +355,7 @@ In other words, once two time points removed from the longest shock length, the 
 \item There may be different risks associated with over/underestimating level shock and vol shock lengths.
 \end{enumerate}
 
-\begin{proof-of-proposition}
-The volatility equation of a GARCH(1,1) dictates that for any $r$, the one-step-ahead volatility is given by $\sigma^{2}_{i,T^{*}+r+1} = \omega_{i} + \alpha a_{i,T^{*}+r}^{2} + \beta\sigma^{2}_{i,T^{*}+r}$.  By the mean-zero assumption of the mean-model of the GARCH(1,1), we have $a_{i,t} = \sigma_{i,t}\epsilon_{i,t}$.  By substitution, we arrive at equation (2) above.  Finally, by rearranging terms, we arrive at equation 4.
-\end{proof-of-proposition}
+
 
 In many settings, it is reasonable to model a volatility shock as occuring without a rupture in the mean-zero, i.i.d. sequence $\epsilon_{i,t}$.  In cases like this, outsize movement in the observable random variable $a_{i,t}$ is due solely to the shock $\omega_{i}^{*}$.  Using the ARMA representation of a GARCH(m,s) model, we can see clearly how the random effect $\omega_{i}^{*}$ increases the expectation of the nonnegative random variable $a_{i,t}^{2}$.  The unconditional mean of an ARMA model tells that the random effects simply contribute to the intercept term:
 
@@ -365,57 +383,34 @@ However, since it is not known a priori for which $t$ the effect $\omega_{i}^{*}
 \end{enumerate}
 
 
-
-
-
-
-
-
-
-
-
 Notice that $\mc{M}_1$ assumes that $\omega^{*}_i$ are i.i.d. with $\E[ \omega^{*}_i]=\mu_{\omega^{*}}$ 
 for $i = 1, \ldots, n+1$. We also consider a model where the shock effects are linear functions of covariates with an additional additive mean-zero error. For $i = 1, \ldots, n+1$, the random effects structure for this model (model $\mc{M}_2$) is:
 
-
-
-
 \begin{align}
 \mc{M}_2 \colon \begin{array}{l}
-   \sigma^{2}_{i,t} = \omega_{i} + \omega^{*}_i D_{i,t}  + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \text{ }, a_{i,t} = \sigma_{i,t}\epsilon_{i,t}\\[.2cm]
-  \; \omega_i^{*} = \mu_{\omega^{*}}+\delta_{i}'\mbf{x}_{i, T_i^*+1}+ \t{\varepsilon}_{i},
+   \sigma^{2}_{i,t} = \omega_{i} + \omega^{*}_i D_{i,t}  + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \text{ }\\[.2cm]
+   a_{i,t} = \sigma_{i,t}(\epsilon_{i,t}(1-D^{level}_{i,t}) + \epsilon^{*}_{i,t}D^{level}_{i,t}) \\
+   \omega_i^{*} = \mu_{\omega^{*}}+\delta_{i}'\mbf{x}_{i, T_i^*+1}+ \t{\varepsilon}_{i},
 \end{array}\label{model2}
 \end{align}
 
- where the added random/fixed effects are
+ where the added random effects are
 
 \begin{align*}
-\omega^{*}_i &\simiid \mc{F}_{\omega^{*}} \text{ with }  \; \mrm{E}_{\mc{F}_{\omega^{*}}}(\omega^{*}_i) = \mu_{\omega^{*}}, \mrm{Var}_{\mc{F}_{\omega^{*}}}(\omega^{*}_i)  = \sigma^2_{\omega^{*}}  \\
+\omega^{*}_i &\simiid \mc{F}_{\omega^{*}} \text{ with }  \; \mrm{E}_{\mc{F}_{\omega^{*}}}(\omega^{*}) = \mu_{\omega^{*}}, \mrm{Var}_{\mc{F}_{\omega^{*}_i}}(\omega^{*}_i)  = \sigma^2_{\omega^{*}}  \\
 \epsilon^{*}_i &\simiid \mc{F}_{\epsilon^{*}} \text{ with }  \; \mrm{E}_{\mc{F}_{\epsilon^{*}}}(\epsilon^{*}_i) = \mu_{\epsilon^{*}}, \mrm{Var}_{\mc{F}_{\epsilon^{*}}}(\epsilon^{*}_i)  = \sigma^2_{\epsilon^{*}}  \\
 % & \text{Alternatively, } (\omega^{*}, \epsilon^{*})_{i} \sim \mathcal{N}(\mu_{\omega^{*},\epsilon^{*}}, \Sigma_{\omega^{*},\epsilon^{*}}) \\
 % THESE ARE NOT RANDOM &(\alpha, \beta)_i \simiid \mc{F}_{(\alpha, \beta)} \text{ where } \sum^{ \text{max} \{m,s \} }_{j}\alpha_j + \beta_j < 1 \\
    \gamma_i &\simiid \mc{F}_{\gamma} \text{ with }  \; \mrm{E}_{\mc{F}_{\gamma}}(\gamma_i) = \mu_{\gamma}, \mrm{Var}_{\mc{F}_{\gamma}}(\gamma_i)  = \Sigma^2_{\gamma} \\
-\delta_i &\simiid \mc{F}_{\delta} \text{ with }  \; \mrm{E}_{\mc{F}_{\delta}(\delta_i)} = \mu_{\delta}, \mrm{Var}_{\mc{F}_{\delta^{*}}}(\delta_i)  = \sigma^{2}_{\delta} \\
+\delta &\simiid \mc{F}_{\delta} \text{ with }  \; \mrm{E}_{\mc{F}_{\delta}(\delta)} = \mu_{\delta}, \mrm{Var}_{\mc{F}_{\delta}}(\delta_i)  = \sigma^{2}_{\delta} \\
 % \mathbf{v}_i &\simiid \mc{F}_{\mathbf{v}} \text{ with }  \; \mrm{E}_{\mc{F}_{\mathbf{v}}}(\mathbf{v}_i) = \mu_{\mathbf{v}}, \mrm{Var}_{\mc{F}_{\mathbf{v}}}(\mathbf{v}_i)  = \Sigma^2_{\mathbf{v}} \\
 \varepsilon_{i,t} & \simiid  \mc{F}_{\varepsilon} \text{ with }  \; \mrm{E}_{\mc{F}_{\varepsilon}}(\varepsilon_{i,t}) = 0, \mrm{Var}_{\mc{F}_{\varepsilon}}(\varepsilon_{i,t})  = 1 \\
-\t\varepsilon_{i} & \simiid  \mc{F}_{\t\varepsilon} \text{ with }  \; \mrm{E}_{\mc{F}_{\t\varepsilon}}(\t\varepsilon_{i}) = 0, \mrm{Var}_{\mc{F}_{\varepsilon}}(\varepsilon_{i,t})  = 1 \\
+\t\varepsilon_{i} & \simiid  \mc{F}_{\t\varepsilon} \text{ with }  \; \mrm{E}_{\mc{F}_{\t\varepsilon}}(\t\varepsilon_{i}) = 0, \mrm{Var}_{\mc{F}_{\varepsilon}}(\varepsilon_{i})  = \sigma^2_{\varepsilon} \\
 %l_{i,vol} &\simiid \text{Unif}\{1,2,...,\text{maximum volatility shock length}\}\\
 %l_{i, level} &\simiid \text{Unif}\{1,2,...,l_{i,vol}\}\\
-\omega^{*}_i &\indep  (\alpha, \beta)_i \indep \gamma_i \indep \varepsilon_{i,t}.
+\omega^{*}_i &\indep  \epsilon^{*}_i \indep \gamma_i \indep \delta \indep \varepsilon_{i,t} \indep \t\varepsilon_{i}.
 \end{align*}
 
-We further define 
-$\widetilde{\omega^{*}}_i=\mu_{\omega^{*}}+\delta_i'\mbf{x}_{i, T_i^*+1}$. 
-We will investigate the post-shock aggregated estimators in $\mc{M}_2$ 
-in settings where $\delta_i$ is either fixed or random. 
-We let $\mc{M}_{21}$ denote model $\mc{M}_{2}$ with $\delta_i = \delta$ for $i= 1, \ldots, n+1$, 
-where $\delta$ is a  fixed unknown parameter.
-We let $\mc{M}_{22}$ denote model $\mc{M}_{2}$ with the following random effects 
-structure for $\delta_i$:
-\begin{align*}
-\delta_i\simiid  \mc{F}_{\delta} \text{ with }\mrm{E}_{\mc{F}_{\delta}}(\delta_i)=\mu_{\delta}, \mrm{Var}_{\mc{F}_{\delta}}(\delta_i)=\Sigma_\delta 
-   \quad \text{ with } \quad  \delta_i  \indep \t{\varepsilon}_{i}.
-\end{align*}
 We further define the parameter sets
 \begin{align}
   \begin{array}{lll}
@@ -425,16 +420,27 @@ We further define the parameter sets
 \end{align}
 where $\Theta$ and $\Theta_1$ can adapt to $\mc{M}_1$ by dropping $\delta_i$. We assume this for notational simplicity.
 
+\subsection{Forecasting}
+
+Here we make reference to Tsay p. 133 and explain, very similarly to Tsay, that the prediction function for a GARCH(m,s) is very similar to an ARMA prediction function.  Modeled after section 2.2 here https://arxiv.org/pdf/2008.11756.pdf
+
+$\mathbb{E}[ \sigma^{2}_{i,T^{*}+r+1} |\mathcal{F}_{T^{*}+r}]$
+
 \section{Simulation Setup and Results}
 
+Having introduced the model parameters above, we introduce estimation techniques that can be varied
 
+\begin{enumerate}
+  \item Additional measurement periods
+  \item Optimization norm 
+\end{enumerate}
 
+We also introduce simulation parameters that can be varied but are not random effects
 
-
-
-
-
-
+\begin{enumerate}
+  \item Length of the volatility shock
+  \item Length of the level shock
+\end{enumerate}
 
 \bibliographystyle{plainnat}
 \bibliography{synthVolForecast}
