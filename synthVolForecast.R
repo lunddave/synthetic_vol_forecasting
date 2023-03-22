@@ -12,6 +12,7 @@ library(RColorBrewer)
 library(DescTools)
 library(forecast)
 library(LaplacesDemon)
+library(mvtnorm)
 
 options(scipen = 7)
 
@@ -172,6 +173,7 @@ synth_vol_sim <- function(n,
                           level_model, 
                           vol_model,
                           sigma_GARCH_innov, 
+                          mu_x,
                           sigma_x, 
                           min_shock_time = 0,
                           shock_time_vec, 
@@ -303,8 +305,8 @@ synth_vol_sim <- function(n,
   xreg <- c()
   
   #Create covariate MVN mean and sigma parameters
-  vector_M21_M22_vol_mu_delta <- rep(1, p)
-  matrix_M21_M22_vol_sd_delta <- matrix(diag(1,p), ncol=p)
+  vector_M21_M22_vol_mu_delta <- rep(mu_x, p)
+  matrix_M21_M22_vol_sd_delta <- matrix(diag(sigma_x**2,p), ncol=p)
   
   #Create M21 level and M21 vol cross donor random effects vectors
   M21_level_cross_donor_random_effect <- rnorm(p, M21_M22_level_mu_delta, M21_M22_level_sd_delta) 
@@ -380,7 +382,9 @@ synth_vol_sim <- function(n,
       
       level_shock_mean <- mu_eps_star + p * M21_M22_level_mu_delta
       level_shock_var <- ((mu_eps_star_GED_alpha)**2) * gamma(3/mu_eps_star_GED_beta) / (gamma(1/mu_eps_star_GED_beta)) + # https://search.r-project.org/CRAN/refmans/gnorm/html/gnorm.html
-        p * ((sigma_x**2) * (M21_M22_level_sd_delta**2))
+                                                   p * ( (sigma_x**2) * (M21_M22_level_sd_delta**2) +
+                                                   sigma_x**2 * M21_M22_level_mu_delta**2   + 
+                                                   M21_M22_level_sd_delta**2 * mu_x**2 )   
     }
     
     else if (level_model == 'M22') { 
@@ -393,7 +397,9 @@ synth_vol_sim <- function(n,
           
           level_shock_mean <- mu_eps_star + p * M21_M22_level_mu_delta
           level_shock_var <- ((mu_eps_star_GED_alpha)**2) * gamma(3/mu_eps_star_GED_beta) / (gamma(1/mu_eps_star_GED_beta)) + # https://search.r-project.org/CRAN/refmans/gnorm/html/gnorm.html
-            p * (sigma_x**2) * (M21_M22_level_sd_delta**2)
+                                                  p * ( (sigma_x**2) * (M21_M22_level_sd_delta**2) +
+                                                          sigma_x**2 * M21_M22_level_mu_delta**2   + 
+                                                          M21_M22_level_sd_delta**2 * mu_x**2 )  
     }
     
     else {level_shock_vec[i] <- rnorm(1, 0, sigma_GARCH_innov); 
@@ -433,7 +439,9 @@ synth_vol_sim <- function(n,
       #What's the variance of this sum?
       
       vol_shock_mean <- mu_omega_star 
-      vol_shock_var <- vol_shock_sd**2 + p * ( (sigma_x**2) * (M21_M22_vol_sd_delta**2) )                                                             #random variables, where a_i are fixed
+      vol_shock_var <- vol_shock_sd**2 + p * ( (sigma_x**2) * (M21_M22_vol_sd_delta**2) +
+                                                 sigma_x**2 * M21_M22_vol_mu_delta**2   + 
+                                                 M21_M22_vol_sd_delta**2 * mu_x**2 )                                                            
       vol_shock_kurtosis <- 0
       
       shock_indicator <- c(
@@ -460,7 +468,9 @@ synth_vol_sim <- function(n,
       vol_shock_vec[i] <- rnorm(1, mu_omega_star, vol_shock_sd) + as.numeric(X[[i]][shock_time_vec[i],]) %*% delta
       
       vol_shock_mean <- mu_omega_star + p * M21_M22_vol_mu_delta
-      vol_shock_var <- vol_shock_sd**2 + p * ( (sigma_x**2) * (M21_M22_vol_sd_delta**2) )
+      vol_shock_var <- vol_shock_sd**2 +  p * ( (sigma_x**2) * (M21_M22_vol_sd_delta**2) +
+                                              sigma_x**2 * M21_M22_vol_mu_delta**2   + 
+                                              M21_M22_level_sd_delta**2 * mu_x**2 )  
       vol_shock_kurtosis <- 0
       
       shock_indicator <- c(
@@ -791,9 +801,9 @@ synth_vol_fit <- function(X,
   }
   
   #Last, we calculate unadjusted MSE and APE
-  MSE_unadjusted <- round(mean((sigma2_shock_period_only - pred)**2), 5)
-  MAPE_unadjusted <-  round(mean(abs(sigma2_shock_period_only - pred)/sigma2_shock_period_only), 5)
-  QL_unadjusted <-  round(mean( sigma2_shock_period_only / pred - log(sigma2_shock_period_only/pred ) - 1), 5)
+  MSE_unadjusted <- round(mean((sigma2_shock_period_only - pred)**2), 6)
+  MAPE_unadjusted <-  round(mean(abs(sigma2_shock_period_only - pred)/sigma2_shock_period_only), 6)
+  QL_unadjusted <-  round(mean( sigma2_shock_period_only / pred - log(sigma2_shock_period_only/pred ) - 1), 6)
   
   #We now make a vector with the names of each of the sensible linear combinations
   linear_comb_names <- c('Convex Hull',

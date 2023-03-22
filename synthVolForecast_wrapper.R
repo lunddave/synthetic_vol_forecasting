@@ -9,15 +9,16 @@ source('~/Desktop/synthetic_vol_forecasting/synthVolForecast.R',
 simulate_and_analyze <- function(n = 6, 
                                  p = 3, 
                                  model = NULL,
-                                 arch_param = c(.2),
-                                 garch_param = c(.2),
+                                 arch_param = c(.4),
+                                 garch_param = c(.55),
                                  asymmetry_param = c(),
                                  
-                                 level_model = c('M1','M21','M22','none')[2],
-                                 vol_model = c('M1','M21','M22','none')[4],
+                                 level_model = c('M1','M21','M22','none')[4],
+                                 vol_model = c('M1','M21','M22','none')[2],
                                  
                                  sigma_GARCH_innov = 1, # the sd that goes into rnorm
-                                 sigma_x = 1, # the sd that goes into the covariates
+                                 mu_x = 1,
+                                 sigma_x = .1, # the sd that goes into the covariates
                                  
                                  min_shock_time = 0,
                                  shock_time_vec = NULL, 
@@ -103,6 +104,7 @@ simulate_and_analyze <- function(n = 6,
                               vol_model = vol_model,
                               
                               sigma_GARCH_innov = sigma_GARCH_innov, # the sd that goes into rnorm
+                              mu_x = mu_x,
                               sigma_x = sigma_x, # the sd that goes into the covariates
                               min_shock_time = min_shock_time,
                               shock_time_vec = shock_time_vec, 
@@ -155,6 +157,7 @@ simulate_and_analyze <- function(n = 6,
       , level_model
       , vol_model
       , sigma_GARCH_innov
+      , mu_x
       , sigma_x
       , min_shock_time
       #, shock_time_vec
@@ -186,6 +189,7 @@ simulate_and_analyze <- function(n = 6,
                                    , 'level_model'
                                    , 'vol_model'
                                    , 'sigma_GARCH_innov'
+                                   , 'mu_x'
                                    , 'sigma_x'
                                    , 'min_shock_time'
                                    #, 'shock_time_vec'
