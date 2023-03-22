@@ -41,7 +41,7 @@ dbw <- function(X,
                 sum_to_1 = 1,
                 bounded_below_by = 0,
                 bounded_above_by = 1,
-                normchoice = c('l1', 'l2')[2],
+                normchoice = c('l1', 'l2')[1],
                 penalty_normchoice = c('l1', 'l2')[1],
                 penalty_lambda = 0
                 ) { # https://github.com/DEck13/synthetic_prediction/blob/master/prevalence_testing/numerical_studies/COP.R
@@ -55,24 +55,24 @@ dbw <- function(X,
   # number of time series for pool
   n <- length(X) - 1
   
-  # covariate for time series for prediction
+  # COVARIATE FOR TIME SERIES UNDER STUDY AT TSTAR
   X1 <- X[[1]][Tstar[1], , drop = FALSE] # we get only 1 row
   
-  # covariates for time series pool
+  # LOOP for grab TSTAR covariate vector for each donor
   X0 <- c()
   for (i in 1:n) {
     X0[[i]] <- X[[i + 1]][Tstar[i + 1], , drop = FALSE] #get 1 row from each donor
   }
   
-  if (scale == TRUE) { #begin if statement
-    dat <- rbind(X1, do.call('rbind', X0)) # do.call is for cluster computing?
-    dat <- apply(dat, 2, function(x) scale(x, center = TRUE, scale = TRUE))
-    X1 <- dat[1, , drop = FALSE]
-    X0 <- c()
-    for (i in 1:n) {
-      X0[[i]] <- dat[i + 1, , drop = FALSE] #we are repopulating X0[[i]] with scaled+centered data
-    } #end loop
-  } #end if statement
+        if (scale == TRUE) { #begin if statement
+          dat <- rbind(X1, do.call('rbind', X0)) # do.call is for cluster computing?
+          dat <- apply(dat, 2, function(x) scale(x, center = TRUE, scale = TRUE))
+          X1 <- dat[1, , drop = FALSE]
+          X0 <- c()
+          for (i in 1:n) {
+            X0[[i]] <- dat[i + 1, , drop = FALSE] #we are repopulating X0[[i]] with scaled+centered data
+          } #end loop
+        } #end if statement 
   
   # objective function
   weightedX0 <- function(W) {
@@ -149,6 +149,12 @@ dbw <- function(X,
   
 } #END dbw function
 
+#BEGIN SHIFTER
+shifter <- function(x, n = 1) {
+  # if (n == 0) x else c(tail(x, -n), head(x, n))
+  if (n == 0) x else c(tail(x, n), head(x, -n))
+}
+#END SHIFTER
 
 #####################################################################
 
@@ -241,7 +247,7 @@ synth_vol_sim <- function(n,
   # else, we use the two numbers (a,b) to construct a discrete uniform on (a,b)
   
   if (length(level_shock_length) > 1) {
-            vol_shock_length <- rdunif(n+1, level_shock_length[1], level_shock_length[2])
+            level_shock_length <- rdunif(n+1, level_shock_length[1], level_shock_length[2])
           }
           else {level_shock_length <- rep(level_shock_length, n+1)}
   
@@ -269,17 +275,19 @@ synth_vol_sim <- function(n,
   
   # https://math.stackexchange.com/questions/1529000/how-to-create-a-random-matrix-whose-spectral-radius-1
   
-  #Random parameters for the VAR
-  param_matrix_entries <- runif(p**2, min = -1/p, max = 1/p)
-  simVAR_params <- matrix(param_matrix_entries, nrow = p, byrow = T)
-    #Note: In our meeting on Jan 12, 2022, Dan Eck and I discussed the justification for fixing 
-    #a common Phi matrix for all of the n+1 series.  By fixing a common Phi matrix, 
-    #we're basically saying that that each covariate has the same structure across all donors.
-    #For example, WTI and VIX behave the same way for Lehmann 2008 as they do for
-    #Russia-Saudi-OPEC 2014.  We might want to relax this at some point by partitioning the n
-    #donors into k sets and saying that the n donors are temporally clustered that way,
-    #Doing it this way would imitate the way that Lin and Eck 2021 COP donors fall into
-    #the sets Spring 2008, Fall 2008, Spring 2014.
+  # #Random parameters for the VAR
+  # param_matrix_entries <- runif(p**2, min = -1/p, max = 1/p)
+  # simVAR_params <- matrix(param_matrix_entries, nrow = p, byrow = T)
+  #   #Note: In our meeting on Jan 12, 2022, Dan Eck and I discussed the justification for fixing 
+  #   #a common Phi matrix for all of the n+1 series.  By fixing a common Phi matrix, 
+  #   #we're basically saying that that each covariate has the same structure across all donors.
+  #   #For example, WTI and VIX behave the same way for Lehmann 2008 as they do for
+  #   #Russia-Saudi-OPEC 2014.  We might want to relax this at some point by partitioning the n
+  #   #donors into k sets and saying that the n donors are temporally clustered that way,
+  #   #Doing it this way would imitate the way that Lin and Eck 2021 COP donors fall into
+  #   #the sets Spring 2008, Fall 2008, Spring 2014.
+  
+  #   #As of March 22nd, 2023, a VAR(p) for the covariates has been deprecated.  Using MVN now.
 
   
   ############ Simulate all n+1 series   ############ 
@@ -294,6 +302,10 @@ synth_vol_sim <- function(n,
   # This vector will be used to store xreg estimates and pvalues
   xreg <- c()
   
+  #Create covariate MVN mean and sigma parameters
+  vector_M21_M22_vol_mu_delta <- rep(1, p)
+  matrix_M21_M22_vol_sd_delta <- matrix(diag(1,p), ncol=p)
+  
   #Create M21 level and M21 vol cross donor random effects vectors
   M21_level_cross_donor_random_effect <- rnorm(p, M21_M22_level_mu_delta, M21_M22_level_sd_delta) 
   M21_vol_cross_donor_random_effect <- rnorm(p, M21_M22_vol_mu_delta, M21_M22_vol_sd_delta) 
@@ -306,19 +318,27 @@ synth_vol_sim <- function(n,
   # For each of n+1 series...
   for (i in 1:(n+1)){
     
-    #Epsilon vector for the VAR
-    innovations_matrix_entries <- rnorm( (shock_time_vec[i]) * p, sd = sigma_x)
-    sim_VAR_innovations <- matrix(innovations_matrix_entries, ncol = p, byrow = T)
+    # #Epsilon vector for the VAR
+    # innovations_matrix_entries <- rnorm( (shock_time_vec[i]) * p, sd = sigma_x)
+    # sim_VAR_innovations <- matrix(innovations_matrix_entries, ncol = p, byrow = T)
+    # 
+    # #Note: we need only covariate information up through (shock_time_vec[i] ), since
+    # #(a) we assume the covariate to be a lag1 r.v. and (b) we model the shock as a function of
+    # #what occurred at (shock_time_vec[i])
+    # 
+    # VAR_process <- VAR.sim(B = simVAR_params, 
+    #                        lag = 1, 
+    #                        include = "none", 
+    #                        n = shock_time_vec[i], # we do not need more data points than this
+    #                        innov = sim_VAR_innovations) + 1
     
-    #Note: we need only covariate information up through (shock_time_vec[i] ), since
-    #(a) we assume the covariate to be a lag1 r.v. and (b) we model the shock as a function of
-    #what occurred at (shock_time_vec[i])
+    #   #As of March 22nd, 2023, a VAR(p) for the covariates has been deprecated.  Using MVN now.
     
-    VAR_process <- VAR.sim(B = simVAR_params, 
-                           lag = 1, 
-                           include = "none", 
-                           n = shock_time_vec[i], # we do not need more data points than this
-                           innov = sim_VAR_innovations)
+    #Now add the design matrix (covariates) to the list X
+    covariates <- matrix(NA, nrow = shock_time_vec[i], ncol = p)
+    covariate_vec <- rmvnorm(n=1, mean=vector_M21_M22_vol_mu_delta, sigma=matrix_M21_M22_vol_sd_delta)
+    covariates[shock_time_vec[i], ] <- covariate_vec
+    X[[i]] <- covariates
     
     #If model (m,s,a) is provided, we overide the parameters provided and instead simulate
     #the parameters.
@@ -336,9 +356,6 @@ synth_vol_sim <- function(n,
       garch_param <- scaled_dirichlet_vec[(garch_param + 1):(garch_param + length_garch_param)]
       asymmetry_param <- scaled_dirichlet_vec[(garch_param + length_garch_param + 1):parameter_sum]
     }
-    
-    #Now we save the GARCH order so that we can output it at the function's end
-    garch_param_list <- list(garch_param, arch_param, asymmetry_param)
 
     #Level model
     if (level_model == 'M1'){
@@ -355,7 +372,7 @@ synth_vol_sim <- function(n,
     
     else if (level_model == 'M21') { 
       level_shock_vec[i] <- mu_eps_star + 
-        as.numeric(as.matrix(VAR_process[shock_time_vec[i],])) %*% M21_level_cross_donor_random_effect + 
+        as.numeric(X[[i]][shock_time_vec[i],]) %*% M21_level_cross_donor_random_effect + 
         rgnorm(1, 
                mu = 0, 
                alpha = mu_eps_star_GED_alpha, 
@@ -368,7 +385,7 @@ synth_vol_sim <- function(n,
     
     else if (level_model == 'M22') { 
           level_shock_vec[i] <- mu_eps_star + 
-                                as.numeric(as.matrix(VAR_process[shock_time_vec[i],])) %*% rnorm(p, M21_M22_level_mu_delta, M21_M22_level_sd_delta) + 
+                                as.numeric(X[[i]][shock_time_vec[i],]) %*% rnorm(p, M21_M22_level_mu_delta, M21_M22_level_sd_delta) + 
                                 rgnorm(1, 
                                        mu = 0, 
                                        alpha = mu_eps_star_GED_alpha, 
@@ -412,7 +429,7 @@ synth_vol_sim <- function(n,
     
     else if (vol_model == 'M21') { 
       vol_shock_vec[i] <- rnorm(1, mu_omega_star, vol_shock_sd) +
-      as.numeric(as.matrix(VAR_process[shock_time_vec[i],])) %*% M21_vol_cross_donor_random_effect
+        as.numeric(X[[i]][shock_time_vec[i],]) %*% M21_vol_cross_donor_random_effect
       #What's the variance of this sum?
       
       vol_shock_mean <- mu_omega_star 
@@ -440,8 +457,7 @@ synth_vol_sim <- function(n,
     else if (vol_model == 'M22') { 
       delta <- rnorm(p, M21_M22_vol_mu_delta, M21_M22_vol_sd_delta) 
       
-      vol_shock_vec[i] <- rnorm(1, mu_omega_star, vol_shock_sd) + 
-        as.numeric(as.matrix(VAR_process[shock_time_vec[i],])) %*% delta
+      vol_shock_vec[i] <- rnorm(1, mu_omega_star, vol_shock_sd) + as.numeric(X[[i]][shock_time_vec[i],]) %*% delta
       
       vol_shock_mean <- mu_omega_star + p * M21_M22_vol_mu_delta
       vol_shock_var <- vol_shock_sd**2 + p * ( (sigma_x**2) * (M21_M22_vol_sd_delta**2) )
@@ -481,12 +497,10 @@ synth_vol_sim <- function(n,
         
     } #end conditionals that create vol shocks
     
-    #Now add the design matrix to the list X
-    X[[i]] <- VAR_process
-    
+    # Add returns at T*+1
     T_star_plus_1_return_vec[i] <- Y[[i]][,1][shock_time_vec[i]+1,]
     
-    #Get paramter counts
+    #Get parameter counts
     arch_param_count <- sum(ifelse(arch_param > 0, 1, 0))
     garch_param_count <- sum(ifelse(garch_param > 0, 1, 0))
     asymm_param_count <- sum(ifelse(asymmetry_param > 0, 1, 0))
@@ -501,10 +515,10 @@ synth_vol_sim <- function(n,
     garch_1_1 <- garchx(Y[[i]][1:(shock_time_vec[i] + vol_shock_length[i] + extra_measurement_days),1], 
                         order = c(garch_param_count, arch_param_count, asymm_param_count), 
                         xreg = indicator_vec,
-                        solve.tol = .0000000001,
-                        initial.values = c(.1, garch_param, arch_param, asymmetry_param), #tk
-                        control = list(eval.max = 950000, iter.max = 950000),
-                        hessian.control = list(maxit = 1000000))
+                        solve.tol = .000000000001,
+                        initial.values = c(.5, garch_param, arch_param, asymmetry_param), #tk
+                        control = list(eval.max = 95000000, iter.max = 95000000),
+                        hessian.control = list(maxit = 100000000))
     xreg_est <- round(coeftest(garch_1_1)[ dim(coeftest(garch_1_1))[1], 1],5)
     xreg_p_value <- round(coeftest(garch_1_1)[ dim(coeftest(garch_1_1))[1], dim(coeftest(garch_1_1))[2]],5)
     xreg <- c(xreg, c(xreg_est, xreg_p_value))
@@ -521,6 +535,9 @@ synth_vol_sim <- function(n,
   T_star_plus_1_sigma <- Y[[1]][,3][shock_time_vec[1]+1,]
   T_star_plus_2_sigma <- Y[[1]][,3][shock_time_vec[1]+2,]
   T_star_plus_3_sigma <- Y[[1]][,3][shock_time_vec[1]+3,]
+  
+  vol_sig_noise_ratio <- vol_shock_mean / sqrt(vol_shock_var)
+  level_sig_noise_ratio <- level_shock_mean / sqrt(level_shock_var)
   
   ##Output
   cat('Simulation Summary Data','\n',
@@ -563,7 +580,7 @@ synth_vol_sim <- function(n,
             par(mfrow = c(floor(sqrt(2*n + 2)), ceiling(sqrt(2*n + 2))))
             for (i in 1:(n+1))
             {
-              plot.ts(X[[i]][-c(1:20),], main = paste('Covariates of Donor ', i, sep = ''))
+              plot(X[[i]], main = paste('Covariates of Donor ', i, sep = ''))
             }
             
             #Plot the time series
@@ -601,6 +618,13 @@ synth_vol_sim <- function(n,
             }
             
   } #end plot conditional
+  
+  #Now we save some simulation details
+  param_list <- list(garch_param
+                     , arch_param
+                     , asymmetry_param
+                     , vol_sig_noise_ratio
+                     , level_sig_noise_ratio)
             
   #Items to return in a list
   return(list(X
@@ -608,9 +632,8 @@ synth_vol_sim <- function(n,
               , Tee
               , shock_time_vec
               , xreg
-              , garch_param_list))
+              , param_list))
 } #end of synth_vol_sim
-
 
 #####################################################################
 
@@ -632,6 +655,7 @@ synth_vol_fit <- function(X,
                           normchoice = c('l1','l2')[2],
                           penalty_normchoice = c('l1','l2')[1],
                           penalty_lambda = 0,
+                          permutation_shift = 0,
                           plots = FALSE)
 { #begin synth_vol_fit
   
@@ -660,7 +684,25 @@ synth_vol_fit <- function(X,
   # shock_time_vec, a vector of length n+1 containing shock time of each series
   # shock_time_lengths, a vector of length n+1 containing shock time length of each series
   
-  #First, we get the vectors w for all sensible methods
+  ##BEFORE anything else, we shift the indices (if necessary)
+  #What objects do we want to shift?
+  
+  #shifter(obj_to_shift, how many shifts)
+  # X,
+  # Y,
+  # T_star,
+  # shock_est_vec,
+  # shock_lengths,
+  
+  permuted_indices <- shifter(1:length(X), permutation_shift)
+  
+  X <- shifter(X, permutation_shift)
+  Y <- shifter(Y, permutation_shift)
+  T_star <- T_star[permuted_indices]
+  shock_est_vec <- shock_est_vec[permuted_indices]
+  shock_lengths <- shock_lengths[permuted_indices]
+
+  #NEXT, we get the vectors w for all sensible methods
   w <- list() #initialize
   matrix_of_specs <- matrix(c(rep(1,6), 
                               rep(NA,6), 
@@ -694,16 +736,16 @@ synth_vol_fit <- function(X,
   
   # Now get a linear combination that is the beta_hat we get from
   # regressing the estimation shocks against the X matrix
-  T_star_cov_df <- data.frame()
   # covariates for time series pool
   T_star_cov_df <- list()
-  for (i in 1: (length(shock_est_vec) - 1)) {
-    T_star_cov_df[[i]] <- X[[i + 1]][T_star[i + 1] , , drop = FALSE] #get 1 row from each donor
+  for (i in 2: (length(shock_est_vec) )) 
+    {
+    T_star_cov_df[[i]] <- X[[i]][T_star[i],]
   }
   
   T_star_cov_df <- matrix( unlist(T_star_cov_df), ncol = length(shock_est_vec) - 1, byrow = FALSE) 
   linmod <- lm(shock_est_vec[-1] ~ ., data = as.data.frame(t(T_star_cov_df)))
-  linear_reg_pred <- as.numeric( predict(linmod, newdata = as.data.frame( X[[ 1]][T_star[1], , drop = FALSE]  )))
+  linear_reg_pred <- as.numeric(predict(linmod, newdata = as.data.frame( X[[ 1]][T_star[1], , drop = FALSE]  )))
   
   #Second, we calculate omega_star_hat, which is the dot product of w and the estimated shock effects
   omega_star_hat_vec <- as.numeric(w_mat %*% shock_est_vec[-1])
@@ -718,9 +760,9 @@ synth_vol_fit <- function(X,
 
   garch_1_1 <- garchx(y_up_through_T_star,
                       order = c(garch_param_fit, arch_param_fit, asymmetry_param_fit),
-                      solve.tol = .0000000001,
-                      control = list(eval.max = 10000000, iter.max = 10000000),
-                      hessian.control = list(maxit = 10000000) )
+                      solve.tol = .000000000001,
+                      control = list(eval.max = 1000000000, iter.max = 1000000000),
+                      hessian.control = list(maxit = 1000000000) )
 
   pred <- as.numeric(predict(garch_1_1, n.ahead = shock_lengths[1]))
 

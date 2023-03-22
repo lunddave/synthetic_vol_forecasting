@@ -6,7 +6,7 @@ library(dplyr)
 
 options(digits = 6)
 
-load("/home/david/Desktop/synthetic_vol_forecasting/simulation_results/simcount_2_savetime_TueMar1420:54:122023_runtime_0.389301863577631_grid_size2592_recovery_0.667631172839506_permute_0.Rdata")
+load("/home/david/Desktop/synthetic_vol_forecasting/simulation_results/simcount_10_savetime_TueMar2112:46:282023_runtime_1.05672910266452_grid_size1152_recovery_0.956857638888889_permute_0.Rdata")
 
 library(lmboot)
 
@@ -48,25 +48,37 @@ df_only_one_outcome <- cbind(vol_model_chosen[,c(1:11)], as.integer(vol_model_ch
 
 non_NA <- df_only_one_outcome[complete.cases(df_only_one_outcome),]
 
-model <- glm(non_NA[,12] ~. , family=binomial(link='logit'),data=non_NA[,c(1:5,10)])
+model <- glm(non_NA[,12] ~. , family=binomial(link='logit'),data=non_NA[,c(1:4,9)])
 summary(model)
 
-model <- glm(non_NA[,12] ~.^2 , family=binomial(link='logit'),data=non_NA[,c(1:5,10)])
+model <- glm(non_NA[,12] ~.^2 , family=binomial(link='logit'),data=non_NA[,c(1:4,9)])
 summary(model)
 
 #Let's do an analysis by volatility model
 library(dplyr)
 
 ## Hyperplanes
-c1 <- non_NA$n > 5
-c2 <- non_NA$p > 5
-c3 <- non_NA$arch_param < .3
-c4 <- non_NA$garch_param < .3
+c1 <- non_NA$n > 4
+#c1 <- TRUE
+c2 <- non_NA$p > 3
+c2 <- TRUE
+c3 <- non_NA$arch_param > 0
+c3 <- TRUE
+c4 <- non_NA$garch_param > 0
+c4 <- TRUE
 c5 <- non_NA$vol_shock_length > 1
-c6 <- non_NA$vol_sig_noise_ratio > 4.9
-dom_subset <- non_NA[c1 & c2 & c3 & c4 & c5 & c6,]
+#c5 <- TRUE
+c6 <- non_NA$vol_sig_noise_ratio > 5
+c7 <- non_NA$extra_measurement_days > 1
+#c7 <- TRUE
+dom_subset <- non_NA[c1 & c2 & c3 & c4 & c5 & c6 & c7,]
 nrow(dom_subset)
-mean(dom_subset$`as.integer(vol_model_chosen$QL_adj1 <= vol_model_chosen$QL_adj14)`)
+p <- mean(dom_subset$`as.integer(vol_model_chosen$QL_adj1 <= vol_model_chosen$QL_adj14)`)
+p
+
+prop.test(x=sum(dom_subset$`as.integer(vol_model_chosen$QL_adj1 <= vol_model_chosen$QL_adj14)`), 
+          n=nrow(dom_subset), conf.level=.95, correct=FALSE)
+
 
 means <- non_NA %>% group_by(vol_model) %>% summarise(across(everything(), list(means)))
 means <- as.data.frame(means)

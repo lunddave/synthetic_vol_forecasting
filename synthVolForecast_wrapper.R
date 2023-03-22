@@ -10,11 +10,11 @@ simulate_and_analyze <- function(n = 6,
                                  p = 3, 
                                  model = NULL,
                                  arch_param = c(.2),
-                                 garch_param = c(.33),
+                                 garch_param = c(.2),
                                  asymmetry_param = c(),
                                  
                                  level_model = c('M1','M21','M22','none')[2],
-                                 vol_model = c('M1','M21','M22','none')[2],
+                                 vol_model = c('M1','M21','M22','none')[4],
                                  
                                  sigma_GARCH_innov = 1, # the sd that goes into rnorm
                                  sigma_x = 1, # the sd that goes into the covariates
@@ -23,7 +23,7 @@ simulate_and_analyze <- function(n = 6,
                                  shock_time_vec = NULL, 
                                  
                                  level_shock_length = 1,
-                                 vol_shock_length = 3,
+                                 vol_shock_length = 2,
                                  extra_measurement_days = 2,
                                  
                                  a = 3*252, 
@@ -246,6 +246,6 @@ simulate_and_analyze <- function(n = 6,
 #                            , plot_fit = TRUE)
 # 
 
-#temp <- simulate_and_analyze()
+temp <- simulate_and_analyze()
 
 # dev.off()
