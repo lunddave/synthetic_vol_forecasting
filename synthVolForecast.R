@@ -25,10 +25,10 @@ shock_time_creator <- function(series_length
                                , max_of_shock_lengths
                                , extra_measurement_days){
   
-            shocktime <- rdunif(1, # the number of r.v. to simulate
-                                           a + min_shock_time, #the lower bound on the discrete unif interval
-                                           series_length - max_of_shock_lengths - extra_measurement_days) #the upper bound on the discrete unif interval
-            
+  shocktime <- rdunif(1, # the number of r.v. to simulate
+                     a + min_shock_time, #the lower bound on the discrete unif interval
+                     series_length - max_of_shock_lengths - extra_measurement_days) #the upper bound on the discrete unif interval
+
   return(shocktime)
 }
 ## END shock_time_creator
@@ -361,12 +361,12 @@ synth_vol_sim <- function(n,
 
     #Level model
     if (level_model == 'M1'){
-                      #Level Shock
-                      level_shock_vec[i] <- mu_eps_star + # This is the non-stochastic term
-                                            rgnorm(1, 
-                                            mu = 0, 
-                                            alpha = mu_eps_star_GED_alpha, 
-                                            beta = mu_eps_star_GED_beta) # This is the stochastic term
+          #Level Shock
+          level_shock_vec[i] <- mu_eps_star + # This is the non-stochastic term
+                                rgnorm(1, 
+                                mu = 0, 
+                                alpha = mu_eps_star_GED_alpha, 
+                                beta = mu_eps_star_GED_beta) # This is the stochastic term
           
           level_shock_mean <- mu_eps_star             
           level_shock_var <- ((mu_eps_star_GED_alpha)**2) * gamma(3/mu_eps_star_GED_beta) / (gamma(1/mu_eps_star_GED_beta)) # https://search.r-project.org/CRAN/refmans/gnorm/html/gnorm.html
@@ -442,7 +442,7 @@ synth_vol_sim <- function(n,
       vol_shock_var <- vol_shock_sd**2 + p * ( (sigma_x**2) * (M21_M22_vol_sd_delta**2) +
                                                  sigma_x**2 * M21_M22_vol_mu_delta**2   + 
                                                  M21_M22_vol_sd_delta**2 * mu_x**2 )                                                            
-      vol_shock_kurtosis <- 0
+      vol_shock_kurtosis <- 0 #tk
       
       shock_indicator <- c(
         rep(0, shock_time_vec[i]), 
@@ -521,18 +521,39 @@ synth_vol_sim <- function(n,
     }
 
     #Now we calculate the p-value for the volatility spike of length k
-    indicator_vec <- as.matrix(c(rep(0,shock_time_vec[i]), rep(1, vol_shock_length[i] + extra_measurement_days)))
-    garch_1_1 <- garchx(Y[[i]][1:(shock_time_vec[i] + vol_shock_length[i] + extra_measurement_days),1], 
-                        order = c(garch_param_count, arch_param_count, asymm_param_count), 
-                        xreg = indicator_vec,
-                        solve.tol = .000000000001,
-                        initial.values = c(.5, garch_param, arch_param, asymmetry_param), #tk
-                        control = list(eval.max = 95000000, iter.max = 95000000),
-                        hessian.control = list(maxit = 100000000))
-    xreg_est <- round(coeftest(garch_1_1)[ dim(coeftest(garch_1_1))[1], 1],5)
-    xreg_p_value <- round(coeftest(garch_1_1)[ dim(coeftest(garch_1_1))[1], dim(coeftest(garch_1_1))[2]],5)
-    xreg <- c(xreg, c(xreg_est, xreg_p_value))
+    #We do this by taking the estimate that corresponds to the lowest pvalue,
+    #where the pvalues differ because we are calculating the fixed effect
+    #over all possible measurement days.
+    
+    #If the pvalue is NA for one of the estimates, we then just take max of estimates.
+    
+    xreg_p_value <- 1 #initialize
+    xreg_est <- -Inf
+    
+    for (r in 1:extra_measurement_days)
+    {
+      indicator_vec <- as.matrix(c(rep(0,shock_time_vec[i]), rep(1, vol_shock_length[i] + r)))
+      garch_1_1 <- garchx(Y[[i]][1:(shock_time_vec[i] + vol_shock_length[i] + r),1], 
+                          order = c(garch_param_count, arch_param_count, asymm_param_count), 
+                          xreg = indicator_vec,
+                          solve.tol = .000000000001,
+                          initial.values = c(.5, garch_param, arch_param, asymmetry_param), #tk
+                          control = list(eval.max = 95000000, iter.max = 95000000),
+                          hessian.control = list(maxit = 100000000))
+      xreg_est_update <- round(coeftest(garch_1_1)[dim(coeftest(garch_1_1))[1], 1],5)
+      xreg_p_value_update <- round(coeftest(garch_1_1)[dim(coeftest(garch_1_1))[1], dim(coeftest(garch_1_1))[2]],5)
       
+          if (xreg_p_value_update < xreg_p_value & !is.na(xreg_p_value_update < xreg_p_value) ){
+            xreg_est <- xreg_est_update
+            xreg_p_value <- xreg_p_value_update
+          }
+          else if (xreg_est_update > xreg_est) {
+            xreg_est <- xreg_est_update
+          }
+      
+      xreg <- c(xreg, c(xreg_est, xreg_p_value)) 
+    }
+    
   } #end loop for n+1 series
   
   #Now make xreg into a dataframe
@@ -907,10 +928,10 @@ synth_vol_fit <- function(X,
   
   #Now arrange the output
   display_df <- data.frame(linear_comb_names)
-  display_df$w_star_hat <- round(unlist(omega_star_hat_vec), 5)
-  display_df$MSE_adj <- round(unlist(MSE_adjusted), 5)
-  display_df$MAPE_adj <- round(unlist(APE_adjusted), 5) 
-  display_df$QL_adj <- round(unlist(QL_adjusted), 5)
+  display_df$w_star_hat <- round(unlist(omega_star_hat_vec), 6)
+  display_df$MSE_adj <- round(unlist(MSE_adjusted), 6)
+  display_df$MAPE_adj <- round(unlist(APE_adjusted), 6) 
+  display_df$QL_adj <- round(unlist(QL_adjusted), 6)
   
   #Now add the unadjusted row
   unadjusted_row <- c('GARCH (unadjusted)', 0, MSE_unadjusted, MAPE_unadjusted, QL_unadjusted) 

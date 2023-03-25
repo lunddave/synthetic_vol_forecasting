@@ -9,8 +9,8 @@ source('~/Desktop/synthetic_vol_forecasting/synthVolForecast.R',
 simulate_and_analyze <- function(n = 6, 
                                  p = 3, 
                                  model = NULL,
-                                 arch_param = c(.4),
-                                 garch_param = c(.55),
+                                 arch_param = c(.2),
+                                 garch_param = c(.2),
                                  asymmetry_param = c(),
                                  
                                  level_model = c('M1','M21','M22','none')[4],
@@ -37,11 +37,13 @@ simulate_and_analyze <- function(n = 6,
                                  M21_M22_level_mu_delta = .3, 
                                  M21_M22_level_sd_delta = .05,
                                  
-                                 mu_omega_star = .015,
+                                 mu_omega_star = .12,
                                  vol_shock_sd = .0001,
                                  
-                                 M21_M22_vol_mu_delta = .10,
+                                 M21_M22_vol_mu_delta = .35,
                                  M21_M22_vol_sd_delta = .002, 
+                                 
+                                 permutation_shift = 0, 
                                  
                                  plot_sim = FALSE,
                                  
@@ -133,6 +135,8 @@ simulate_and_analyze <- function(n = 6,
   T_star_demo <- sim_output[[4]]
   shock_effect_vec_demo <- sim_output[[5]][,1]
   garch_order_of_simulation <- sapply(sim_output[[6]], length) 
+  vol_sig_noise_ratio <- sim_output[[6]][4]
+  level_sig_noise_ratio <- sim_output[[6]][5]
   
   fitting_output <- synth_vol_fit(X = X_demo,
                                   Y = Y_demo,
@@ -145,6 +149,7 @@ simulate_and_analyze <- function(n = 6,
                                   normchoice = normchoice,
                                   penalty_normchoice = penalty_normchoice,
                                   penalty_lambda = penalty_lambda,
+                                  permutation_shift = permutation_shift,
                                   plots = plot_fit
   )
   
@@ -165,6 +170,8 @@ simulate_and_analyze <- function(n = 6,
       , vol_shock_length
       #, evaluated_vol_shock_length
       , extra_measurement_days
+      , vol_sig_noise_ratio
+      , level_sig_noise_ratio
       , a
       , b
       , mu_eps_star
@@ -197,6 +204,8 @@ simulate_and_analyze <- function(n = 6,
                                    , 'vol_shock_length'
                                    #, 'evaluated_vol_shock_length'
                                    , 'extra_measurement_days'
+                                   , 'vol_sig_noise_ratio'
+                                   , 'level_sig_noise_ratio'
                                    , 'a'
                                    , 'b'
                                    , 'mu_eps_star'
@@ -244,7 +253,7 @@ simulate_and_analyze <- function(n = 6,
 # png("out.png")
 
 # simulate_and_analyze(normchoice = 'l2'
-#                            , penalty_normchoice = 'l2'
+#                            , penalty_norm/home/davidl11/synthetic_vol_forecasting/choice = 'l2'
 #                            , penalty_lambda = 0
 #                            , plot_sim = FALSE
 #                            , plot_fit = TRUE)

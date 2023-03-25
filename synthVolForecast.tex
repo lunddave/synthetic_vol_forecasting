@@ -402,7 +402,7 @@ for $i = 1, \ldots, n+1$. We also consider a model where the shock effects are l
 % & \text{Alternatively, } (\omega^{*}, \epsilon^{*})_{i} \sim \mathcal{N}(\mu_{\omega^{*},\epsilon^{*}}, \Sigma_{\omega^{*},\epsilon^{*}}) \\
 % THESE ARE NOT RANDOM &(\alpha, \beta)_i \simiid \mc{F}_{(\alpha, \beta)} \text{ where } \sum^{ \text{max} \{m,s \} }_{j}\alpha_j + \beta_j < 1 \\
    \gamma_i &\simiid \mc{F}_{\gamma} \text{ with }  \; \mrm{E}_{\mc{F}_{\gamma}}(\gamma_i) = \mu_{\gamma}, \mrm{Var}_{\mc{F}_{\gamma}}(\gamma_i)  = \Sigma^2_{\gamma} \\
-\delta &\simiid \mc{F}_{\delta} \text{ with }  \; \mrm{E}_{\mc{F}_{\delta}(\delta)} = \mu_{\delta}, \mrm{Var}_{\mc{F}_{\delta}}(\delta_i)  = \sigma^{2}_{\delta} \\
+\delta &\simiid \mc{F}_{\delta} \text{ with }  \; \mrm{E}_{\mc{F}_{\delta}(\delta)} = \mu_{\delta}, \mrm{Var}_{\mc{F}_{\delta}}(\delta_i)  = \Sigma^{2}_{\delta} \\
 % \mathbf{v}_i &\simiid \mc{F}_{\mathbf{v}} \text{ with }  \; \mrm{E}_{\mc{F}_{\mathbf{v}}}(\mathbf{v}_i) = \mu_{\mathbf{v}}, \mrm{Var}_{\mc{F}_{\mathbf{v}}}(\mathbf{v}_i)  = \Sigma^2_{\mathbf{v}} \\
 \varepsilon_{i,t} & \simiid  \mc{F}_{\varepsilon} \text{ with }  \; \mrm{E}_{\mc{F}_{\varepsilon}}(\varepsilon_{i,t}) = 0, \mrm{Var}_{\mc{F}_{\varepsilon}}(\varepsilon_{i,t})  = 1 \\
 \t\varepsilon_{i} & \simiid  \mc{F}_{\t\varepsilon} \text{ with }  \; \mrm{E}_{\mc{F}_{\t\varepsilon}}(\t\varepsilon_{i}) = 0, \mrm{Var}_{\mc{F}_{\varepsilon}}(\varepsilon_{i})  = \sigma^2_{\varepsilon} \\
@@ -410,6 +410,17 @@ for $i = 1, \ldots, n+1$. We also consider a model where the shock effects are l
 %l_{i, level} &\simiid \text{Unif}\{1,2,...,l_{i,vol}\}\\
 \omega^{*}_i &\indep  \epsilon^{*}_i \indep \gamma_i \indep \delta \indep \varepsilon_{i,t} \indep \t\varepsilon_{i}.
 \end{align*}
+
+\begin{table}[]
+\begin{tabular}{|p{1.2in}|p{1.9in}|p{1.9in}|}
+\hline
+  & $\Sigma^{2}_{\delta} = I_{p}$ & $\Sigma^{2}_{\delta} \neq I_{p}$  \\ \hline
+ $\Sigma^{2}_{x_{i,T^{*}}} = I_{p}$ & Easiest to model & Captures reasonable possibility of correlations in random effects \\ \hline
+ $\Sigma^{2}_{x_{i,T^{*}}} = I_{p}$ & Captures empirically-verified phenomenon of correlations in covariates & Implausibly complicated to model  \\ \hline
+\end{tabular}
+\end{table}
+
+
 
 We further define the parameter sets
 \begin{align}
