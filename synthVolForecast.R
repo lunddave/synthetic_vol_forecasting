@@ -438,10 +438,10 @@ synth_vol_sim <- function(n,
         as.numeric(X[[i]][shock_time_vec[i],]) %*% M21_vol_cross_donor_random_effect
       #What's the variance of this sum?
       
-      vol_shock_mean <- mu_omega_star 
-      vol_shock_var <- vol_shock_sd**2 + p * ( (sigma_x**2) * (M21_M22_vol_sd_delta**2) +
-                                                 sigma_x**2 * M21_M22_vol_mu_delta**2   + 
-                                                 M21_M22_vol_sd_delta**2 * mu_x**2 )                                                            
+      vol_shock_mean <- mu_omega_star + p * mu_x * M21_M22_vol_mu_delta
+      vol_shock_var <- vol_shock_sd**2 + p * ((sigma_x**2) * (M21_M22_vol_sd_delta**2) +
+                                                 sigma_x**2 * M21_M22_vol_mu_delta**2  + 
+                                                 M21_M22_vol_sd_delta**2 * mu_x**2)                                                            
       vol_shock_kurtosis <- 0 #tk
       
       shock_indicator <- c(
@@ -467,7 +467,7 @@ synth_vol_sim <- function(n,
       
       vol_shock_vec[i] <- rnorm(1, mu_omega_star, vol_shock_sd) + as.numeric(X[[i]][shock_time_vec[i],]) %*% delta
       
-      vol_shock_mean <- mu_omega_star + p * M21_M22_vol_mu_delta
+      vol_shock_mean <- mu_omega_star + p * mu_x * M21_M22_level_mu_delta
       vol_shock_var <- vol_shock_sd**2 +  p * ( (sigma_x**2) * (M21_M22_vol_sd_delta**2) +
                                               sigma_x**2 * M21_M22_vol_mu_delta**2   + 
                                               M21_M22_level_sd_delta**2 * mu_x**2 )  
@@ -824,7 +824,7 @@ synth_vol_fit <- function(X,
   #Last, we calculate unadjusted MSE and APE
   MSE_unadjusted <- round(mean((sigma2_shock_period_only - pred)**2), 6)
   MAPE_unadjusted <-  round(mean(abs(sigma2_shock_period_only - pred)/sigma2_shock_period_only), 6)
-  QL_unadjusted <-  round(mean( sigma2_shock_period_only / pred - log(sigma2_shock_period_only/pred ) - 1), 6)
+  QL_unadjusted <-  round(mean( sigma2_shock_period_only / pred - log(sigma2_shock_period_only/pred) - 1), 6)
   
   #We now make a vector with the names of each of the sensible linear combinations
   linear_comb_names <- c('Convex Hull',

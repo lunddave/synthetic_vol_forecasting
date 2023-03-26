@@ -120,7 +120,7 @@
 \maketitle
 
 \begin{abstract}
-We develop a novel procedure for forecasting the volatility of a time series under study immediately following an exogenous shock event.  Adapting the synthetic prediction framework of \citet{lin2021minimizing}, we exploit series that have experienced similar shock events.  We extract volatility signals from these series in order to aggregate properly their shock-induced excess volatilities.  The volatility spikes are modeled as random effects and estimated as fixed effects.  The aggregation of these estimates is in service of adjusting the 1-step-ahead GARCH forecast of the time series under study by an additive term.  The adjusted and unadjusted forecasts are evaluated using three families of benchmarks: the unobservable but easily estimated realized volatility (RV) of the time series under study, implied volatility, and the empirical volatility over horizons of varying length.  We also compare the performance of the adjusted forecast to the performance of the Realized GARCH forecast, which is known to react faster to rapidly changing volatility than the standard GARCH model by permitting the inclusion of metrics like implied volatility.   Finally, we combine Realized GARCH modeling with the synthetic prediction framework, using Realized GARCH in both the estimation of random effects as well as the forecast for the time series under study.  Real world illustrations are provided, as are simulation results suggesting the conditions under which our approach's hyperparameters can be tuned for best performance.
+We develop a novel procedure for forecasting the volatility of a time series under study immediately following an exogenous news shock.  Adapting the synthetic prediction framework of \citet{lin2021minimizing}, we exploit series that have experienced similar shocks.  We extract volatility signals from these series in order to aggregate properly their shock-induced excess volatilities.  The volatility spikes are modeled as random effects and estimated as fixed effects.  The aggregation of these estimates is in service of adjusting the h-step-ahead GARCH forecast of the time series under study by an additive term.  The adjusted and unadjusted forecasts are evaluated using three families of benchmarks: the unobservable but easily estimated realized volatility (RV) of the time series under study, implied volatility, and the empirical volatility over horizons of varying length.  We also compare the performance of the adjusted forecast to the performance of the Realized GARCH forecast, which is known to react faster to rapidly changing volatility than the standard GARCH model by permitting the inclusion of metrics like implied volatility.   Finally, we combine Realized GARCH modeling with the synthetic prediction framework, using Realized GARCH in both the estimation of random effects as well as the forecast for the time series under study.  Real world illustrations are provided, as are simulation results suggesting the conditions under which our approach's hyperparameters can be tuned for best performance.
 \end{abstract}
 
 
@@ -139,7 +139,7 @@ The approach herein can be viewed as an attempt to sidestep the functional compl
 
 \label{section2}
 
-We follow convention and define the daily log-return as $r_{t} = \text{log}(\frac{P_{t+1}}{P_{t}})$.  The class of ARIMA(p,d,q) models developed in the mid-to-late 20th century provides a framework for postulating and quantifying the autoregressive structure of a $r_{t}$, all within the framework of frequentist statistics and maximum-likelihood estimation of parameters.  These models assume a certain dependence structure between $r_{t}$ and $r_{t-\text{max\{p,q\}}}$, as well as all observations in between, yet their errors -- often called innovations in the financial time series context due to how they represent the impact of new information -- are nevertheless assumed to be i.i.d. with mean zero and constant variance.  The ARCH \citep{engle1982autoregressive} and GARCH \citep{bollerslev1986generalized} models provide elegant alternatives to the constant-variance assumption.  In fact, the GARCH framework in its most basic form disregards $r_{t}$ and instead turns its interest to the series $r_{t}^{2}$ (when properly centered, i.e. after assuming a mean-model for returns).  
+We follow convention and define the daily log-return as $r_{t} = \text{log}(\frac{P_{t+1}}{P_{t}})$.  The class of ARIMA(p,d,q) models developed in the mid-to-late 20th century provides a framework for postulating and quantifying the autoregressive structure of $r_{t}$, all within the framework of frequentist statistics and maximum-likelihood estimation of parameters.  These models assume a certain dependence structure between $r_{t}$ and $r_{t-\text{max\{p,q\}}}$, as well as all observations in between, yet their errors -- often called innovations in the financial time series context due to how they represent the impact of new information -- are nevertheless assumed to be i.i.d. with mean zero and constant variance.  The ARCH \citep{engle1982autoregressive} and GARCH \citep{bollerslev1986generalized} models provide elegant alternatives to the constant-variance assumption.  In fact, the GARCH framework in its most basic form disregards $r_{t}$ and instead turns its interest to the series $r_{t}^{2}$ (when properly centered, i.e. after assuming a mean-model for returns).  
 
 To that end, let $a_{t} = r_{t} - \mu_{t}$, where $\mu_{t}$ is the mean of the log return series $r_{t}$.  Implicitly, we are committing ourselves to a mean-model for $r_{t}$ in which $\mu_{t}$, the expected daily log-return, may vary with time, while $a_{t}$ is simply the noise.  As \citet{cont2001empirical} explains, such an assumption is justified by the empirical finding that returns lack significant autocorrelation.  We derive a mean-zero process $(a_{t})_{t\in\mathbb{N}}$ with the property that $\E[a^{2}_{t}] = \mrm{Var}[a_{t}]$.  Under the assumption of time-invariant volatility, the series $a_{t}^{2}$ should exhibit no autocorrelation at any lag $\ell\geq1$.  This assumption motivates tests for so-called ARCH effects, that is, tests for the clustering of volatility.  These tests explore the the alternative hypothesis that $\sigma_{t}^{2}$ is not only a time-varying parameter but furthermore a function of past squared residuals of the mean model.  In particular, the ARCH(m) model is an autoregressive model in which $\sigma_{t}^{2}$ is fitted using a linear combination of the $m$ past values of $a_{t}^{2}$.  The GARCH(m,s) framework take this one step further but modeling $\sigma_{t}^{2}$ as a linear combination of the $m$ past $a_{t}^{2}$ values and well as the $s$ past values of $\sigma_{t}^{2}$.  In functional form,
 
@@ -157,7 +157,7 @@ Assuming further that $\sigma^{2}_{t}$ depends on a vector of exogenous covariat
 \end{align*}
 
 
-We will suppose that a researcher has multivariate time series data $\y_{i,t}$, $t = 1, \ldots,  T_i$ and $i = 1, \ldots, n+1$. We let $\y_{i,t} = (y_{i,t}$, $\x_{i,t}$, $\textbf{v}_{i,t}$) where $y_{i,t}$ is a scalar response,  $\x_{i,t}$ is a vector of covariates that are revealed to the analyst prior to the observation of $y_{1,t}$, and $\textbf{v}_{i,t}$ is a vector of market-implied volatility metrics for the series $i$ that are available prior to the market open at time t.  Suppose that the analyst is interested in forecasting the volatility of $y_{1,t}$, the first time series in the collection.  We require that each time series $\y_{i,t}$ is subject to a shock event follwing $T^*_i \leq T_i + 1$ and before witnessing $T^*_i+1$. To define an interesting setting, we will suppose that $T^*_1 = T_1 + 1$, and $1 < T^*_i < T_i + 1$ for $i \geq 2$. 
+We will suppose that a researcher has multivariate time series data $\y_{i,t}$, $t = 1, \ldots,  T_i$ and $i = 1, \ldots, n+1$. We let $\y_{i,t} = (y_{i,t}$, $\x_{i,t}$, $\textbf{v}_{i,t}$) where $y_{i,t}$ is a scalar response,  $\x_{i,t}$ is a vector of covariates that are revealed to the analyst prior to the observation of $y_{1,t}$, and $\textbf{v}_{i,t}$ is a vector of market-implied volatility metrics for the series $i$ that are available prior to the market open at time t.  Suppose that the analyst is interested in forecasting the volatility of $y_{1,t}$, the first time series in the collection.  We require that each time series $\y_{i,t}$ is subject to a news event immediately following $T^*_i \leq T_i + 1$ and before witnessing $T^*_i+1$. To define an interesting setting, we will suppose that $T^*_1 = T_1 + 1$, and $1 < T^*_i < T_i + 1$ for $i \geq 2$. 
 We will suppose that $\x_{i,t=T^*_i}$ and $\textbf{v}_{i,t=T^*_i}$ are observed before the shock is manifested on $y_{i,t=T^*_i+1}$.
 
 In light of the foregoing, we can rewrite the GARCH framework we are interested in as such
@@ -170,24 +170,24 @@ $$\sigma_{i,t}^{2} = \omega_{i} + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + 
 % https://latex-tutorial.com/matrices-in-latex/
 % https://www.math-linux.com/latex-26/faq/latex-faq/article/how-to-write-matrices-in-latex-matrix-pmatrix-bmatrix-vmatrix-vmatrix
 
-We are interested in a point forecast for $\sigma^{2}_{1,T^{*}+1}$, the 1-step ahead conditional variance for the time series under study.  The forecast performance is using three distinct loss functions, each computed using three families of estimators for the ground truth that we seek.  Let $L^{h}$ with the subscript (method, ground truth) denote the loss function L and a prediction method - ground truth estimator pair.  For example, a loss function of interest in this study is the 1-step-ahead MSE
+We are interested in a point forecast for $\sigma^{2}_{1,T^{*}+h}$, $h=1,2,...,H$, the h-step ahead conditional variance for the time series under study, up to a maximum forecast horizon of H.  The forecast performance evaluation uses three distinct loss functions, each computed using three families of estimators for the ground truth that we seek.  Let $L^{h}$ with the subscript "method, ground truth denote the loss function L and a pair, (prediction method, ground truth estimator), for an h-step-ahead forecast.  For example, a loss function of interest in this study is the 1-step-ahead MSE
 
 $$ MSE^{1}_{synth pred, RV} = (\hat\sigma^{2}_{synth pred} - \hat\sigma^{2}_{RV})^{2}$$
 
-In more generality, for an h-step-ahead volatility forecast, the loss function is 
+In more generality, for an multihorizon volatility forecast with maximum forecast length H, the loss function is 
 
-$$ MSE^{h}_{method, ground truth} = \frac{1}{h}\sum_{g=1}^{h}(\hat\sigma^{2}_{g, method} - \hat\sigma^{2}_{g, ground truth})^{2}$$
+$$ MSE^{H}_{method, ground truth} = \frac{1}{H}\sum_{h=1}^{H}(\hat\sigma^{2}_{h, method} - \hat\sigma^{2}_{h, ground truth})^{2}$$
 
 Also of interest in mean absolute-percentage-error for an h-step-ahead forecast, defined as
 
 \[ 
-\text{MAPE}^{h}_{method, ground truth} = \frac{1}{h}\sum_{g=1}^{h}\frac{|\hat\sigma^{2}_{g, method} - \hat\sigma^{2}_{g, ground truth}|}{\hat\sigma^{2}_{g, ground truth}}
+\text{MAPE}^{H}_{method, ground truth} = \frac{1}{H}\sum_{h=1}^{H}\frac{|\hat\sigma^{2}_{h, method} - \hat\sigma^{2}_{h, ground truth}|}{\hat\sigma^{2}_{h, ground truth}}
 \]
 
 Finally, we introduce the QL (quasi-likelihood) Loss \citep{brownlees2011practical}:
 
 \[ 
-\text{QL}^{h}_{method, ground truth} = \frac{1}{h}\sum_{g=1}^{h} \frac{ \hat\sigma^{2}_{g, method} }{\hat\sigma^{2}_{g, ground truth}} - \log{\frac{ \hat\sigma^{2}_{g, method} }{\hat\sigma^{2}_{g, ground truth}}} -1
+\text{QL}^{H}_{method, ground truth} = \frac{1}{h}\sum_{h=1}^{H} (\frac{ \hat\sigma^{2}_{h, method} }{\hat\sigma^{2}_{h, ground truth}} - \log{\frac{ \hat\sigma^{2}_{h, method} }{\hat\sigma^{2}_{h, ground truth}}} -1)
 \]
 
 What distinguishes QL Loss is that it is multiplicative rather than additive.  This serves as a basis for some of its virtues.  As \citet{brownlees2011practical} explains, "[a]mid volatility turmoil, large MSE
@@ -198,7 +198,7 @@ compare losses across volatility regimes."
 \subsection{Ground Truth Estimators}
 \label{Ground Truth Estimators}
 
-The price series of a financial asset is a sequence of observable random variables; in particular, for any $t$, $P_{t}$ is realized at $t$ and henceforth no longer random, under the assumption that $(P_{t})_{t\in\mathbb{N}}$ is adapted to $\mc{F}_{t}$.  Much of financial econometrics is devoted to decomposing $P_{t}$ into random and non-random parts as well as understanding the covariance structure of $P_{t}$, difficult though that may be in some circumstances.  In contrast, the time-varying parameter $\sigma^{2}_{t}$ is a quantity for which even identifying an observable effect in the real world is far more challenging.  Approaches come in two basic forms: model-independent and model-dependent.  The naive approach of constructing a rolling unbiased estimator of the variance of a price series is analogous to using a rolling average to estimate the mean of a price series.  Implicitly, these approaches assume a simple, if unrealistic, covariance structure.  Additionally, they offer very little in the way of forward guidance (predictiveness) regarding the series at hand.  For that reason, in this section, we propose three families of estimators of the ground truth that we aim to forecast.
+The price series of a financial asset is a sequence of observable random variables; in particular, for any $t$, $P_{t}$ is realized at $t$ and henceforth no longer random, under the assumption that $(P_{t})_{t\in\mathbb{N}}$ is adapted to $\mc{F}_{t}$.  Much of financial econometrics is devoted to decomposing $P_{t}$ into random and non-random components as well as understanding the covariance structure of $P_{t}$, difficult though that may be in some circumstances.  In contrast, the time-varying parameter $\sigma^{2}_{t}$ is a quantity for which even identifying an observable effect in the real world is far more challenging.  Approaches come in two basic forms: model-independent and model-dependent.  The naive approach of constructing a rolling unbiased estimator of the variance of a price series is analogous to using a rolling average to estimate the mean of a price series.  Implicitly, these approaches assume a simple, if unrealistic, covariance structure.  Additionally, they offer very little in the way of forward guidance (predictiveness) regarding the series at hand.  For that reason, in this section, we propose three families of estimators of the ground truth that we aim to forecast.
 
 % https://tex.stackexchange.com/questions/186981/is-there-a-subsubsubsection-command
 \subsubsection{Market-Implied Volatility}
@@ -272,12 +272,12 @@ are the same for all time series in the analysis, the differences between them l
 
 \subsubsection{Volatility Shock Model}
 
-Let $I(\cdot)$ be an indicator function, $T_i$ be the time length of the time series $i$ for $i = 1, \ldots, n+1$, and $T_i^*$ be the time point just before the one when the shock is known to occur, with $T_i^* < T_i$.  For $t= 1, \ldots, T_i$ and $i = 1, \ldots, n+1$, the model $\mc{M}_1$ is defined as
+Let $I(\cdot)$ be an indicator function, $T_i$ be the time length of the time series $i$ for $i = 1, \ldots, n+1$, and $T_i^*$ denote the largest time index prior to the arrival of the news shock , with $T_i^* < T_i$.  For $t= 1, \ldots, T_i$ and $i = 1, \ldots, n+1$, the model $\mc{M}_1$ is defined as
 \begin{align}
 \mc{M}_1 \colon &\sigma^{2}_{i,t} = \omega_{i} + \omega^{*}_i D^{vol}_{i,t}  + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t}\\
 &a_{i,t} = \sigma_{i,t}(\epsilon_{i,t}(1-D^{level}_{i,t}) + \epsilon^{*}_{i,t}D^{level}_{i,t}) \label{equation1}
 \end{align}
- where $D^{vol}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + l_{i, vol}\})$, $D^{level}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + l_{i, level}\})$ 
+ where $D^{vol}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + L_{i, vol}\})$, $D^{level}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + L_{i, level}\})$ 
 and $\x_{i,t} \in \R^{p}$ , with $p \geq 1$.  We assume that the 
 $\mbf{x}_{i,t}$ are fixed.\footnote{Need to determine what difference it makes to a GARCH-X model, if any, for the covariates to be random.}\footnote{As for implied volatility as a covariate, the argument for regarding it as a non-random quantity is that we are not primarily concerned with what IV is trying to estimate.  We're concerned with IV itself as a primitive quantity that affects volitility through market sentiment. 'It is what it is.'}  For $i = 1, \ldots, n+1$ and $t=1, \ldots, T_i$, the random effects structure for $\mc{M}_1$ is:
 
@@ -286,7 +286,7 @@ $\mbf{x}_{i,t}$ are fixed.\footnote{Need to determine what difference it makes t
 \epsilon^{*}_i &\simiid \mc{F}_{\epsilon^{*}} \text{ with }  \; \mrm{E}_{\mc{F}_{\epsilon^{*}}}(\epsilon^{*}_i) = \mu_{\epsilon^{*}}, \mrm{Var}_{\mc{F}_{\epsilon^{*}}}(\epsilon^{*}_i)  = \sigma^2_{\epsilon^{*}}  \\
 % & \text{Alternatively, } (\omega^{*}, \epsilon^{*})_{i} \sim \mathcal{N}(\mu_{\omega^{*},\epsilon^{*}}, \Sigma_{\omega^{*},\epsilon^{*}}) \\
 % THESE ARE NOT RANDOM &(\alpha, \beta)_i \simiid \mc{F}_{(\alpha, \beta)} \text{ where } \sum^{ \text{max} \{m,s \} }_{j}\alpha_j + \beta_j < 1 \\
-   \gamma_i &\simiid \mc{F}_{\gamma} \text{ with }  \; \mrm{E}_{\mc{F}_{\gamma}}(\gamma_i) = \mu_{\gamma}, \mrm{Var}_{\mc{F}_{\gamma}}(\gamma_i)  = \Sigma^2_{\gamma} \\
+   \gamma_i &\simiid \mc{F}_{\gamma} \text{ with }  \; \mrm{E}_{\mc{F}_{\gamma}}(\gamma_i) = \mu_{\gamma}, \mrm{Var}_{\mc{F}_{\gamma}}(\gamma_i)  = \Sigma_{\gamma} \\
 % \mathbf{v}_i &\simiid \mc{F}_{\mathbf{v}} \text{ with }  \; \mrm{E}_{\mc{F}_{\mathbf{v}}}(\mathbf{v}_i) = \mu_{\mathbf{v}}, \mrm{Var}_{\mc{F}_{\mathbf{v}}}(\mathbf{v}_i)  = \Sigma^2_{\mathbf{v}} \\
 \varepsilon_{i,t} & \simiid  \mc{F}_{\varepsilon} \text{ with }  \; \mrm{E}_{\mc{F}_{\varepsilon}}(\varepsilon_{i,t}) = 0, \mrm{Var}_{\mc{F}_{\varepsilon}}(\varepsilon_{i,t})  = 1 \\
 %l_{i,vol} &\simiid \text{Unif}\{1,2,...,\text{maximum volatility shock length}\}\\
@@ -296,7 +296,7 @@ $\mbf{x}_{i,t}$ are fixed.\footnote{Need to determine what difference it makes t
 
 \textbf{WHAT FOLLOWS IS (a) defense of the modeling choices, (b) remarks on the models' implications and subtleties}\\
 
-The model $\mc{M}_1$ is defined by a volatility equation and mean equation, as is any GARCH model.  The choice to model the volatility shock $\omega^{*}_{i}$ as an additive random effect is straightforward.  However, the choice to model the level effect $\epsilon^{*}_{i,t}$ as a temporary rupture in the otherwise i.i.d. sequence of innovations $\epsilon_{i,t}$ stands in need of deeper justification.  One way of arguing for this choice is that, in a discrete time series model, when assume the arrival of exogenous shock information in the time between $T^{*}$ and $T^{*}+1$, we do not have an easy way to express a conditional distribution of the innovation $\epsilon_{T^{*}+1}$ given the overnight arrival of information.  Using $\epsilon^{*}_{i,t}$ thus breaks this impasse.  This defense also explains why we do not parameterize the level shock at $T^{*}+1$ as a sum of two shocks, $\epsilon_{i,T^{*}+1}$ and $\epsilon^{*}_{i,T^{*}+1}$, which would represent the level shock as generated by two independent sources of stochasticity.  This would be inelegant and would also lack motivation as a practical level.  While we want to model the shock at $T^{*}+1$ as large in absolute value, we want to retain the property of a unitary source of noise.
+The model $\mc{M}_1$ is defined by a volatility equation and mean equation, as is any GARCH model.  The choice to model the volatility shock $\omega^{*}_{i}$ as an additive random effect is straightforward.  However, the choice to model the level effect $\epsilon^{*}_{i,t}$ as a temporary rupture in the otherwise i.i.d. sequence of innovations $\epsilon_{i,t}$ stands in need of deeper justification.  One way of arguing for this choice is that, in a discrete time series model, if we assume the arrival of exogenous shock information in the time between $T^{*}$ and $T^{*}+1$, we do not have an easy way to express a conditional distribution of the innovation $\epsilon_{T^{*}+1}$ given the overnight arrival of information.  Using $\epsilon^{*}_{i,t}$ thus breaks this impasse.  This defense also explains why we do not parameterize the level shock at $T^{*}+1$ as a sum of two shocks, $\epsilon_{i,T^{*}+1}$ and $\epsilon^{*}_{i,T^{*}+1}$, which would represent the level shock as generated by two independent sources of stochasticity.  This would be inelegant and would also lack motivation as a practical level.  While we want to model the shock at $T^{*}+1$ as large in absolute value, we want to retain the property of a unitary source of noise.
 
 Note that under the popular GARCH(1,1), a dual level-volatility shock has an marginal effect on the conditional variance $\sigma^{2}_{i,t}$ that should be familiar to students of GARCH models.  As usual, assume $\alpha+\beta < 1$.  Furthermore, assume that both the volatility shock $\omega^{*}_{i}$ and the level shock $\epsilon^{*}_{i,t}$ are of length one only, and consider a circumstance with no exogenous regressor $\x_{i,t}$. Then for $r\geq 2$,
 
@@ -401,8 +401,8 @@ for $i = 1, \ldots, n+1$. We also consider a model where the shock effects are l
 \epsilon^{*}_i &\simiid \mc{F}_{\epsilon^{*}} \text{ with }  \; \mrm{E}_{\mc{F}_{\epsilon^{*}}}(\epsilon^{*}_i) = \mu_{\epsilon^{*}}, \mrm{Var}_{\mc{F}_{\epsilon^{*}}}(\epsilon^{*}_i)  = \sigma^2_{\epsilon^{*}}  \\
 % & \text{Alternatively, } (\omega^{*}, \epsilon^{*})_{i} \sim \mathcal{N}(\mu_{\omega^{*},\epsilon^{*}}, \Sigma_{\omega^{*},\epsilon^{*}}) \\
 % THESE ARE NOT RANDOM &(\alpha, \beta)_i \simiid \mc{F}_{(\alpha, \beta)} \text{ where } \sum^{ \text{max} \{m,s \} }_{j}\alpha_j + \beta_j < 1 \\
-   \gamma_i &\simiid \mc{F}_{\gamma} \text{ with }  \; \mrm{E}_{\mc{F}_{\gamma}}(\gamma_i) = \mu_{\gamma}, \mrm{Var}_{\mc{F}_{\gamma}}(\gamma_i)  = \Sigma^2_{\gamma} \\
-\delta &\simiid \mc{F}_{\delta} \text{ with }  \; \mrm{E}_{\mc{F}_{\delta}(\delta)} = \mu_{\delta}, \mrm{Var}_{\mc{F}_{\delta}}(\delta_i)  = \Sigma^{2}_{\delta} \\
+   \gamma_i &\simiid \mc{F}_{\gamma} \text{ with }  \; \mrm{E}_{\mc{F}_{\gamma}}(\gamma_i) = \mu_{\gamma}, \mrm{Var}_{\mc{F}_{\gamma}}(\gamma_i)  = \Sigma_{\gamma} \\
+\delta &\simiid \mc{F}_{\delta} \text{ with }  \; \mrm{E}_{\mc{F}_{\delta}(\delta)} = \mu_{\delta}, \mrm{Var}_{\mc{F}_{\delta}}(\delta_i)  = \Sigma_{\delta} \\
 % \mathbf{v}_i &\simiid \mc{F}_{\mathbf{v}} \text{ with }  \; \mrm{E}_{\mc{F}_{\mathbf{v}}}(\mathbf{v}_i) = \mu_{\mathbf{v}}, \mrm{Var}_{\mc{F}_{\mathbf{v}}}(\mathbf{v}_i)  = \Sigma^2_{\mathbf{v}} \\
 \varepsilon_{i,t} & \simiid  \mc{F}_{\varepsilon} \text{ with }  \; \mrm{E}_{\mc{F}_{\varepsilon}}(\varepsilon_{i,t}) = 0, \mrm{Var}_{\mc{F}_{\varepsilon}}(\varepsilon_{i,t})  = 1 \\
 \t\varepsilon_{i} & \simiid  \mc{F}_{\t\varepsilon} \text{ with }  \; \mrm{E}_{\mc{F}_{\t\varepsilon}}(\t\varepsilon_{i}) = 0, \mrm{Var}_{\mc{F}_{\varepsilon}}(\varepsilon_{i})  = \sigma^2_{\varepsilon} \\
@@ -420,16 +420,14 @@ for $i = 1, \ldots, n+1$. We also consider a model where the shock effects are l
 \end{tabular}
 \end{table}
 
-
-
 We further define the parameter sets
 \begin{align}
   \begin{array}{lll}
-     \Theta &= &\{(\eta_i, \phi_i, \theta_i, \alpha_i, \mbf{x}_{i,t}, y_{i,t-1}, \delta_i)\colon t= 1, \ldots, T_i, i = 2, \ldots, n +1\},\\
-    \Theta_1 &= &\{(\eta_i, \phi_i, \theta_i, \alpha_i, \mbf{x}_{i,t}, y_{i,t-1}, \delta_i)\colon t= 1, \ldots, T_i, i = 1\},\label{parameter}
+     \Theta &= &\{(\omega^{*}_i, \epsilon^{*}_i,\gamma_i, \delta,\varepsilon_{i,t},\t\varepsilon_{i})\colon t= 1, \ldots, T_i, i = 2, \ldots, n +1\},\\
+    \Theta_1 &= &\{(\omega^{*}_i, \epsilon^{*}_i,\gamma_i, \delta,\varepsilon_{i,t},\t\varepsilon_{i})\colon t= 1, \ldots, T_i, i = 1\},\label{parameter}
   \end{array}
 \end{align}
-where $\Theta$ and $\Theta_1$ can adapt to $\mc{M}_1$ by dropping $\delta_i$. We assume this for notational simplicity.
+where $\Theta$ and $\Theta_1$ can be adapted to $\mc{M}_1$ by dropping $\delta$. We assume this for notational simplicity.
 
 \subsection{Forecasting}
 
@@ -452,6 +450,9 @@ We also introduce simulation parameters that can be varied but are not random ef
   \item Length of the volatility shock
   \item Length of the level shock
 \end{enumerate}
+
+\section{Connection to Signal Recovery}
+
 
 \bibliographystyle{plainnat}
 \bibliography{synthVolForecast}

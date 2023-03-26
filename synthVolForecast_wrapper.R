@@ -10,7 +10,7 @@ simulate_and_analyze <- function(n = 6,
                                  p = 3, 
                                  model = NULL,
                                  arch_param = c(.2),
-                                 garch_param = c(.2),
+                                 garch_param = c(.7),
                                  asymmetry_param = c(),
                                  
                                  level_model = c('M1','M21','M22','none')[4],
@@ -37,11 +37,11 @@ simulate_and_analyze <- function(n = 6,
                                  M21_M22_level_mu_delta = .3, 
                                  M21_M22_level_sd_delta = .05,
                                  
-                                 mu_omega_star = .12,
-                                 vol_shock_sd = .0001,
+                                 mu_omega_star = .01,
+                                 vol_shock_sd = .1,
                                  
-                                 M21_M22_vol_mu_delta = .35,
-                                 M21_M22_vol_sd_delta = .002, 
+                                 M21_M22_vol_mu_delta = .01,
+                                 M21_M22_vol_sd_delta = .1, 
                                  
                                  permutation_shift = 0, 
                                  
@@ -252,12 +252,12 @@ simulate_and_analyze <- function(n = 6,
 
 # png("out.png")
 
-# simulate_and_analyze(normchoice = 'l2'
-#                            , penalty_norm/home/davidl11/synthetic_vol_forecasting/choice = 'l2'
-#                            , penalty_lambda = 0
-#                            , plot_sim = FALSE
-#                            , plot_fit = TRUE)
-# 
+simulate_and_analyze(normchoice = 'l1'
+                           , penalty_norm = 'l2'
+                           , penalty_lambda = 0
+                           , plot_sim = FALSE
+                           , plot_fit = TRUE)
+
 
 temp <- simulate_and_analyze()
 
