@@ -24,8 +24,8 @@ simulate_and_analyze <- function(n = 6,
                                  shock_time_vec = NULL, 
                                  
                                  level_shock_length = 1,
-                                 vol_shock_length = 2,
-                                 extra_measurement_days = 2,
+                                 vol_shock_length = 1,
+                                 extra_measurement_days = 0,
                                  
                                  a = 3*252, 
                                  b = 10*252, 

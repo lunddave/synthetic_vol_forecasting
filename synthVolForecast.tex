@@ -318,7 +318,7 @@ In (5), observe that $\omega_{i}^{*}$ and $\epsilon^{*}_{i,t}$ each appear at mo
 Thus, in conditional expectation, the shock is $\mathcal{O}((\alpha+\beta)^{r})$.  We generalize this observation in the following proposition.
 
 \begin{prop}
-Let $a_{t}$ be a mean-zero time series obeying a GARCH(1,1) specification prior to the arrival of a volatility shock of length $L_{\text{vol}} \geq 1$ and level shock of length $L_{\text{level}}\geq 1$ at some time $T^{*}+1$.  Then for any $r$ such that $r-1 \geq \text{max}\{L_{\text{vol}},L_{\text{level}}\}$, 
+Let $a_{t}$ be a mean-zero time series obeying a GARCH(1,1) specification prior to the arrival of a volatility shock of length $L_{\text{vol}} \geq 1$ and level shock of length $L_{\text{level}}\geq 1$ at some time $T^{*}+1$.  Then for any $r$ such that $r-1 \geq \text{max}\{L_{i, vol}\},L_{i, level}\}$, 
 
 \begin{align}
 \mathbb{E}[ \sigma^{2}_{i,T^{*}+r+1} |\mathcal{F}_{T^{*}+r}] & = \omega_{i} + \sigma^{2}_{i,T^{*}+r}(\alpha + \beta) \\
@@ -405,7 +405,7 @@ for $i = 1, \ldots, n+1$. We also consider a model where the shock effects are l
 \delta &\simiid \mc{F}_{\delta} \text{ with }  \; \mrm{E}_{\mc{F}_{\delta}(\delta)} = \mu_{\delta}, \mrm{Var}_{\mc{F}_{\delta}}(\delta_i)  = \Sigma_{\delta} \\
 % \mathbf{v}_i &\simiid \mc{F}_{\mathbf{v}} \text{ with }  \; \mrm{E}_{\mc{F}_{\mathbf{v}}}(\mathbf{v}_i) = \mu_{\mathbf{v}}, \mrm{Var}_{\mc{F}_{\mathbf{v}}}(\mathbf{v}_i)  = \Sigma^2_{\mathbf{v}} \\
 \varepsilon_{i,t} & \simiid  \mc{F}_{\varepsilon} \text{ with }  \; \mrm{E}_{\mc{F}_{\varepsilon}}(\varepsilon_{i,t}) = 0, \mrm{Var}_{\mc{F}_{\varepsilon}}(\varepsilon_{i,t})  = 1 \\
-\t\varepsilon_{i} & \simiid  \mc{F}_{\t\varepsilon} \text{ with }  \; \mrm{E}_{\mc{F}_{\t\varepsilon}}(\t\varepsilon_{i}) = 0, \mrm{Var}_{\mc{F}_{\varepsilon}}(\varepsilon_{i})  = \sigma^2_{\varepsilon} \\
+\t\varepsilon_{i} & \simiid  \mc{F}_{\t\varepsilon} \text{ with }  \; \mrm{E}_{\mc{F}_{\t\varepsilon}}(\t\varepsilon_{i}) = 0, \mrm{Var}_{\mc{F}_{\varepsilon}}(\varepsilon_{i})  = \sigma^2_{\t\varepsilon} \\
 %l_{i,vol} &\simiid \text{Unif}\{1,2,...,\text{maximum volatility shock length}\}\\
 %l_{i, level} &\simiid \text{Unif}\{1,2,...,l_{i,vol}\}\\
 \omega^{*}_i &\indep  \epsilon^{*}_i \indep \gamma_i \indep \delta \indep \varepsilon_{i,t} \indep \t\varepsilon_{i}.
@@ -414,9 +414,9 @@ for $i = 1, \ldots, n+1$. We also consider a model where the shock effects are l
 \begin{table}[]
 \begin{tabular}{|p{1.2in}|p{1.9in}|p{1.9in}|}
 \hline
-  & $\Sigma^{2}_{\delta} = I_{p}$ & $\Sigma^{2}_{\delta} \neq I_{p}$  \\ \hline
- $\Sigma^{2}_{x_{i,T^{*}}} = I_{p}$ & Easiest to model & Captures reasonable possibility of correlations in random effects \\ \hline
- $\Sigma^{2}_{x_{i,T^{*}}} = I_{p}$ & Captures empirically-verified phenomenon of correlations in covariates & Implausibly complicated to model  \\ \hline
+  & $\Sigma_{\delta} = I_{p}$ & $\Sigma_{\delta} \neq I_{p}$  \\ \hline
+ $\Sigma_{x_{i,T^{*}}} = I_{p}$ & Easiest to model & Captures reasonable possibility of non-zero correlation in random effects \\ \hline
+ $\Sigma_{x_{i,T^{*}}} = I_{p}$ & Captures empirically-verified phenomenon of non-zero correlation in covariates & Implausibly complicated to model  \\ \hline
 \end{tabular}
 \end{table}
 
