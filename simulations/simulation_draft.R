@@ -148,8 +148,7 @@ gridd_subset <- gridd_subset[ (gridd_subset$vol_model == 'M1' &
                                  gridd_subset$M21_M22_vol_sd_delta == 0) |
                                 
                                 (gridd_subset$vol_model != 'M1' &
-                                   gridd_subset$M21_M22_vol_mu_delta != 0 &
-                                   gridd_subset$M21_M22_vol_sd_delta != 0)
+                                   gridd_subset$M21_M22_vol_mu_delta != 0)
                               ,]
 
 ## tk TO DO

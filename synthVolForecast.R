@@ -768,15 +768,15 @@ synth_vol_fit <- function(X,
   # Now get a linear combination that is the beta_hat we get from
   # regressing the estimation shocks against the X matrix
   # covariates for time series pool
-  T_star_cov_df <- list()
+  T_star_covariate_df <- list()
   for (i in 2: (length(shock_est_vec) )) 
     {
-    T_star_cov_df[[i]] <- X[[i]][T_star[i],]
+    T_star_covariate_df[[i]] <- X[[i]][T_star[i],]
   }
   
-  T_star_cov_df <- matrix( unlist(T_star_cov_df), ncol = length(shock_est_vec) - 1, byrow = FALSE) 
-  linmod <- lm(shock_est_vec[-1] ~ ., data = as.data.frame(t(T_star_cov_df)))
-  linear_reg_pred <- as.numeric(predict(linmod, newdata = as.data.frame( X[[ 1]][T_star[1], , drop = FALSE]  )))
+  T_star_covariate_df <- matrix(unlist(T_star_covariate_df), ncol = length(shock_est_vec) - 1, byrow = FALSE) 
+  linmod <- lm(shock_est_vec[-1] ~ ., data = as.data.frame(t(T_star_covariate_df)))
+  linear_reg_pred <- as.numeric(predict(linmod, newdata = as.data.frame( X[[1]][T_star[1], , drop = FALSE])))
   
   #Second, we calculate omega_star_hat, which is the dot product of w and the estimated shock effects
   omega_star_hat_vec <- as.numeric(w_mat %*% shock_est_vec[-1])
