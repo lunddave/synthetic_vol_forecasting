@@ -87,7 +87,7 @@ for (val in sig_noise_ratio){
   Synth_Vol_Dominating_Proportion <- c(Synth_Vol_Dominating_Proportion, p)
 }
 plot(x = sig_noise_ratio, y = Synth_Vol_Dominating_Proportion, col = 'red', 
-     main = 'Dominating Subset', , ylim = c(0,1))
+     main = 'Dominating Subset', ylim = c(0,1))
 
 ## COIN-FLIP SUBSET
 c1 <- non_NA$n < 20

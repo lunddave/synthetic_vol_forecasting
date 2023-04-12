@@ -13,6 +13,7 @@ library(DescTools)
 library(forecast)
 library(LaplacesDemon)
 library(mvtnorm)
+library(latex2exp)
 
 options(scipen = 7)
 
@@ -242,7 +243,7 @@ synth_vol_sim <- function(n,
   if (length(vol_shock_length) > 1) {
           vol_shock_length <- rdunif(n+1, vol_shock_length[1], vol_shock_length[2])
         }
-        else {vol_shock_length <- rep(vol_shock_length, n+1)}
+  else {vol_shock_length <- rep(vol_shock_length, n+1)}
   
   # Now we determine how to construct the level shock lengths
   # If the user inputted a scalar, we make the level shock lengths all equal to that scalar
@@ -655,7 +656,8 @@ synth_vol_sim <- function(n,
                      , arch_param
                      , asymmetry_param
                      , vol_sig_noise_ratio
-                     , level_sig_noise_ratio)
+                     , level_sig_noise_ratio
+                     , vol_shock_length)
             
   #Items to return in a list
   return(list(X
@@ -683,7 +685,7 @@ synth_vol_fit <- function(X,
                           garch_param_fit, 
                           arch_param_fit, 
                           asymmetry_param_fit,
-                          normchoice = c('l1','l2')[2],
+                          normchoice = c('l1','l2')[1],
                           penalty_normchoice = c('l1','l2')[1],
                           penalty_lambda = 0,
                           permutation_shift = 0,
@@ -872,7 +874,7 @@ synth_vol_fit <- function(X,
     plot(sigma2_up_through_T_star_plus_k,
          main = 'GARCH Prediction versus \nAdjusted Predictions versus Actual',
          ylab = '',
-         xlab = "Time",
+         xlab = "Trading Days",
          xlim = c(0, length(sigma2_up_through_T_star_plus_k) + 5),
          ylim = c(0,  max(pred, trimmed_prediction_vec_for_plotting, sigma2_up_through_T_star_plus_k) ) )
     
@@ -918,13 +920,90 @@ synth_vol_fit <- function(X,
     plot.ts(fitted(garch_1_1),
             main = 'Pre-shock GARCH fitted values (green) \nversus Actual (black)',
             ylab = '', col = 'green',
+            xlab = "Trading Days",
             ylim = c(0, max(fitted(garch_1_1), sigma2_up_through_T_star)) ,
             cex.lab = 3.99)
     lines(sigma2_up_through_T_star, col = 'black')
     
     title(ylab = expression(sigma^2), line = 2.05, cex.lab = 1.99)
     
-  } #end conditional for plots
+    #FINAL PLOT: Plot the volatility of the target series along with
+    #(1) for each donor, the prediction adjusted by omega_i_hat 
+    #(2) the predicted point given by the simple average of omega_i_hat
+    
+    par(mfrow=c(1,1))
+
+    plot(sigma2_up_through_T_star_plus_k,
+         main = 'Aggregating Predictions Reduces Risk',
+         ylab = '',
+         xlab = "Trading Days",
+         xlim = c(0, length(sigma2_up_through_T_star_plus_k) + 5),
+         ylim = c(0,  max(pred, pred + max(shock_est_vec), sigma2_up_through_T_star_plus_k)))
+    
+    title(ylab = expression(sigma^2), line = 2.05, cex.lab = 1.99) # Add y-axis text
+    
+    # We also plot, in a different line style, the post-shock period
+    lines(y = c(sigma2_up_through_T_star[T_star[1]],  sigma2_shock_period_only),
+          x = T_star[1]:(T_star[1]+shock_lengths[1]),  lty=2, lwd=2,
+          ylim = c(0,  max(pred, trimmed_prediction_vec_for_plotting, sigma2_up_through_T_star_plus_k)))
+
+    # Here is the color scheme we will use
+    colors_for_adjusted_pred <- c('black', 'red', "green",
+                                  brewer.pal(length(linear_comb_names) - 1 ,'Set3'))
+
+    # Let's add the ground truth
+    points(y = sigma2_shock_period_only,
+           x = (T_star[1]+1):(T_star[1]+shock_lengths[1]),
+           col = colors_for_adjusted_pred[1],
+           cex = 1.3, pch = 16)
+
+    # Let's add the plain old GARCH prediction
+    points(y = pred,
+           x = (T_star[1]+1):(T_star[1]+shock_lengths[1]),
+           col = colors_for_adjusted_pred[2],
+           cex = 1.3, pch = 15)
+
+    # Now plot the predictions given to use by each donor
+    for (i in 2:length(shock_est_vec))
+    {
+      adjusted_pred_based_on_omega_i_hat <- pred + rep(shock_est_vec[i],shock_lengths[1])
+
+      print(paste('The ',i,'th donor give us prediction of ', sep = ''))
+      print(adjusted_pred_based_on_omega_i_hat)
+
+      points(y = adjusted_pred_based_on_omega_i_hat,
+             x = (T_star[1]+1):(T_star[1]+shock_lengths[1]),
+             col = 'blue', cex = 1.9, pch = 10)
+    }
+
+    #Now plot the average of those adjustments
+    points(y = adjusted_pred_list[[12]],
+           x = (T_star[1]+1):(T_star[1]+shock_lengths[1]),
+           col = 'green', cex = 3.9, pch = 10)
+
+    labels_for_legend <- c('Actual','GARCH (unadjusted)',
+                           TeX(r'(GARCH prediction adjusted by $\hat{\omega}^{*}_{i}$)'),
+                           'Aggregated Prediction')
+
+    # Here is the color scheme we will use
+    colors_for_adjusted_pred <- c('black', 'red',  'blue', "green",
+                                  brewer.pal(length(labels_for_legend) ,'Set3'))
+
+    legend(x = "topleft",  # Coordinates (x also accepts keywords)
+           legend = labels_for_legend,
+           1:length(labels_for_legend), # Vector with the name of each group
+           colors_for_adjusted_pred,   # Creates boxes in the legend with the specified colors
+           title = 'Prediction Method',      # Legend title,
+           cex = .9
+    )
+
+    #Now we label
+
+    text(700, max(sigma2_up_through_T_star_plus_k) - 1,
+         TeX(r'($\hat{\omega}^{*}_{avg} = \frac{1}{n}\Sigma^{n+1}_{i=2}\hat{\omega}^{*}_{i}$)'),
+         col = 'green')
+    
+  } #end the conditional for plots
   
   #Now arrange the output
   display_df <- data.frame(linear_comb_names)

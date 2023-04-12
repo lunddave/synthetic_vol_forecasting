@@ -4,15 +4,31 @@
 
 options(digits = 6)
 
-load("/home/david/Desktop/synthetic_vol_forecasting/simulation_results/simcount_5_savetime_WedApr0500:01:062023_runtime_9.597_hr__grid_size420_recovery_0.999_permute_0.Rdata")
+library(dplyr)
+
+# https://stackoverflow.com/questions/69054275/loading-multiple-rdata-and-binding-into-a-single-data-frame
+
+#https://gist.github.com/bannister/8002800
+path <- '/home/david/Desktop/synthetic_vol_forecasting/simulation_results'
+files <- list.files(path=path, pattern = ".*simcount_25.*Rdata$")
+setwd(path)
+results <- sapply(files, function(x) mget(load(x)), simplify = TRUE) 
+output <- do.call(rbind, results)
+rownames(output) <- NULL
+data.frame(sapply(output,class))
 
 length_unique <- function(x) {return(length(unique(x)))}
+data.frame(sapply(output,length_unique))
+
+output <- as.data.frame(sapply(output, as.numeric)) #<- sapply is here
+data.frame(sapply(output,class))
+
+  
 
 #Check that things vary correctly cross vol models
 check <- output %>% group_by(vol_model) %>% 
   summarise(across(everything(), length_unique),
-            .groups = 'drop')  %>%
-  as.data.frame()
+            .groups = 'drop')  %>% as.data.frame()
 
 check
 
@@ -46,22 +62,28 @@ non_NA <- df_only_one_outcome[complete.cases(df_only_one_outcome),]
 # https://statisticsglobe.com/heatmap-in-r
 
 library("reshape")   
-
 library(dplyr)
-means <- non_NA %>% group_by(garch_param, M21_M22_vol_mu_delta) %>% 
-  summarise(prop=mean(success))
+library(ggplot2)
+
+means <- non_NA %>% group_by(vol_shock_sd, M21_M22_vol_mu_delta) %>% summarise(prop=mean(success)) 
 means <- as.data.frame(sapply(means, as.numeric))
 means$prop <- round(means$prop, 2)
 
-means
+count <- non_NA %>% group_by(vol_shock_sd, M21_M22_vol_mu_delta) %>% count()
+count
+
+means$n <- count$n
 
 ggp <- ggplot(means, 
-       aes(x = factor(garch_param), y = factor(M21_M22_vol_mu_delta), fill = prop)) +
+       aes(x = factor(vol_shock_sd), y = factor(M21_M22_vol_mu_delta), fill = prop)) +
       scale_fill_gradient(low="white",  high="red") +
       geom_tile() + 
-  geom_text(aes(label = prop)) +
-  guides(fill = guide_colourbar(title = "Success Rate")) +
-  ggtitle("SynthVol Performance")
+  geom_text(aes(label = paste(prop, '\n(',n,')', sep =''))) +
+  guides(fill = guide_colourbar(title = "Success Proportion")) +
+  ggtitle("Synthetic Volatility Forecast Outperformance of Unadjusted Forecast 
+          \n Each Square: Outperformance Proportion and (Simulation Count)") +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  labs(x = "Volatility Shock Standard Deviation", y = "Volatility Shock Mean")
 ggp
 
 # Now we write a function
@@ -80,3 +102,4 @@ heatmap_maker <- function(df, var1, var2){
 }
 
 heatmap_maker(non_NA, garch_param, vol_shock_sd)
+

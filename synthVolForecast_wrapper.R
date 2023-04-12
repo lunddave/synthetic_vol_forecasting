@@ -6,11 +6,11 @@ source('~/Desktop/synthetic_vol_forecasting/synthVolForecast.R',
        echo = FALSE,
        verbose = FALSE)
 
-simulate_and_analyze <- function(n = 6, 
+simulate_and_analyze <- function(n = 5, 
                                  p = 3, 
                                  model = NULL,
-                                 arch_param = c(.2),
-                                 garch_param = c(.7),
+                                 arch_param = c(.1),
+                                 garch_param = c(.82),
                                  asymmetry_param = c(),
                                  
                                  level_model = c('M1','M21','M22','none')[4],
@@ -34,14 +34,14 @@ simulate_and_analyze <- function(n = 6,
                                  mu_eps_star_GED_alpha = sqrt(2), # note: beta = 2, alpha = sqrt(2) is N(0,1)
                                  mu_eps_star_GED_beta = 2, # note: beta = 2, alpha = sqrt(2) is N(0,1))
                                  
-                                 M21_M22_level_mu_delta = .3, 
-                                 M21_M22_level_sd_delta = .05,
+                                 M21_M22_level_mu_delta = .05, 
+                                 M21_M22_level_sd_delta = .1,
                                  
-                                 mu_omega_star = .01,
-                                 vol_shock_sd = .1,
+                                 mu_omega_star = .08,
+                                 vol_shock_sd = .01,
                                  
-                                 M21_M22_vol_mu_delta = .01,
-                                 M21_M22_vol_sd_delta = .1, 
+                                 M21_M22_vol_mu_delta = .15,
+                                 M21_M22_vol_sd_delta = 0, 
                                  
                                  permutation_shift = 0, 
                                  
@@ -50,8 +50,7 @@ simulate_and_analyze <- function(n = 6,
                                  plot_fit = FALSE,
                                  
                                  # And now the only inputs for the fitting function
-                                 evaluated_vol_shock_length = rep(2, n+1),
-                                 normchoice = 'l2',
+                                 normchoice = 'l1',
                                  penalty_normchoice = c('l1','l2')[1],
                                  penalty_lambda = 0
 ) 
@@ -137,12 +136,13 @@ simulate_and_analyze <- function(n = 6,
   garch_order_of_simulation <- sapply(sim_output[[6]], length) 
   vol_sig_noise_ratio <- sim_output[[6]][4]
   level_sig_noise_ratio <- sim_output[[6]][5]
+  vol_shock_lengths <- unlist(sim_output[[6]][6])
   
   fitting_output <- synth_vol_fit(X = X_demo,
                                   Y = Y_demo,
                                   T_star = T_star_demo,
                                   shock_est_vec = shock_effect_vec_demo,
-                                  shock_lengths = evaluated_vol_shock_length,
+                                  shock_lengths = vol_shock_lengths + extra_measurement_days,
                                   garch_order_of_simulation[1],
                                   garch_order_of_simulation[2],
                                   garch_order_of_simulation[3],
@@ -168,7 +168,6 @@ simulate_and_analyze <- function(n = 6,
       #, shock_time_vec
       , level_shock_length
       , vol_shock_length
-      #, evaluated_vol_shock_length
       , extra_measurement_days
       , vol_sig_noise_ratio
       , level_sig_noise_ratio
@@ -202,7 +201,6 @@ simulate_and_analyze <- function(n = 6,
                                    #, 'shock_time_vec'
                                    , 'level_shock_length'
                                    , 'vol_shock_length'
-                                   #, 'evaluated_vol_shock_length'
                                    , 'extra_measurement_days'
                                    , 'vol_sig_noise_ratio'
                                    , 'level_sig_noise_ratio'
