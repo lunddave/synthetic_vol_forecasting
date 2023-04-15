@@ -50,7 +50,7 @@ simulate_and_analyze <- function(n = 5,
                                  plot_fit = FALSE,
                                  
                                  # And now the only inputs for the fitting function
-                                 normchoice = 'l1',
+                                 normchoice = 'l2',
                                  penalty_normchoice = c('l1','l2')[1],
                                  penalty_lambda = 0
 ) 
@@ -250,7 +250,7 @@ simulate_and_analyze <- function(n = 5,
 
 # png("out.png")
 
-simulate_and_analyze(normchoice = 'l1'
+simulate_and_analyze(normchoice = 'l2'
                            , penalty_norm = 'l2'
                            , penalty_lambda = 0
                            , plot_sim = FALSE

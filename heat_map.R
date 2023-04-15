@@ -10,7 +10,7 @@ library(dplyr)
 
 #https://gist.github.com/bannister/8002800
 path <- '/home/david/Desktop/synthetic_vol_forecasting/simulation_results'
-files <- list.files(path=path, pattern = ".*simcount_25.*Rdata$")
+files <- list.files(path=path, pattern = ".*Fri.*Rdata$")
 setwd(path)
 results <- sapply(files, function(x) mget(load(x)), simplify = TRUE) 
 output <- do.call(rbind, results)
@@ -85,6 +85,7 @@ ggp <- ggplot(means,
   theme(plot.title = element_text(hjust = 0.5)) +
   labs(x = "Volatility Shock Standard Deviation", y = "Volatility Shock Mean")
 ggp
+
 
 # Now we write a function
 heatmap_maker <- function(df, var1, var2){
