@@ -47,9 +47,23 @@ SynthVolForecast(x)
 ##--	or do  help(data=index)  for the standard data sets.
 
 ## The function is currently defined as
-function (x)
-{
-  }
+SynthVolForecast(series_matrix
+                ,covariates_series_list
+                ,shock_time_vec
+                ,shock_length_vec
+                ,geometric_sets
+                ,p_dbw
+                ,covariate_vector_list
+                ,days_before_shocktime_vec
+                ,garch_order
+                plots = TRUE
+                ){
+
+                ## Check that inputs are all comformable/acceptable
+
+                ##
+
+
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory (show via RShowDoc("KEYWORDS")):
