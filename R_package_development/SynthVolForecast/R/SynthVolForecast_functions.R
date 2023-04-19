@@ -1,6 +1,7 @@
 ## Required packages
 library(Rsolnp)
 library(garchx)
+library(lmtest)
 
 ### START dbw
 dbw <- function(X
@@ -25,7 +26,7 @@ dbw <- function(X
   n <- length(X) - 1
 
   # COVARIATE FOR TIME SERIES UNDER STUDY AT shock_time_vec
-  X1 <- X[[1]][shock_time_vec[1], (1:number_covariates_to_use)
+  X1 <- X[[1]][shock_time_vec[1], (1:number_covariates_to_use) #mk
                , drop = FALSE] # we get only 1 row
 
   # LOOP for grab shock_time_vec covariate vector for each donor
@@ -126,7 +127,7 @@ dbw <- function(X
 
 ### START plot_maker
 plot_maker <- function(fitted_vol
-                      ,shock_time_vec
+                      ,shock_time_vec #mk
                       ,shock_length_vec
                       ,unadjusted_pred
                       ,w_hat
@@ -143,7 +144,7 @@ plot_maker <- function(fitted_vol
   #Plot target series and prediction
 
   #PLOT ON THE LEFT:
-  plot(fitted_vol[1:shock_time_vec[1]],
+  plot(fitted_vol[1:shock_time_vec[1]], #mk
        main = 'Predicted Volatility',
        ylab = '',
        xlab = "Trading Days",
@@ -216,12 +217,25 @@ SynthVolForecast <- function(series_matrix
   n <- ncol(series_matrix) - 1 #tk
   ## END Check that inputs are all comformable/acceptable
 
+  integer_shock_time_vec <- c() #mk
+
+  ## BEGIN Check whether shock_time_vec is int/date
+  for (i in 1:(n+1)){
+    if (is.character(shock_time_vec[i]) == TRUE){
+      integer_shock_time_vec[i] <- which(index(COP) == "2020-03-06") #mk
+    }
+    else{
+
+    }
+  }
+  ## END Check whether shock_time_vec is int/date
+
   ## BEGIN estimate fixed effects in donors
   omega_star_hat_vec <- c()
 
   for (i in 2:(n+1)){
 
-    # Build an indicator variable with a 1 at only T*+1 and other shock points
+    # Make indicator variable w/ a 1 at only T*+1, T*+2,...,T*+shock_length_vec[i]
     vec_of_zeros <- rep(0, shock_time_vec[i])
     vec_of_ones <- rep(1, shock_length_vec[i])
     post_shock_indicator <- c(vec_of_zeros, vec_of_ones)
@@ -284,12 +298,12 @@ SynthVolForecast <- function(series_matrix
                           ,'forecast')
 
   ## tk OUTPUT
-  cat('Simulation Summary Data','\n',
+  cat('SynthVolForecast Details','\n',
       '-------------------------------------------------------------\n',
       'Donors:', n, '\n',
       'Series lengths:', 1, '\n',
       'Shock times:', shock_time_vec, '\n',
-      'Length of shock times', shock_length_vec, '\n',
+      'Lengths of shock times', shock_length_vec, '\n',
       '\n'
   )
 

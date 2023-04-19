@@ -1,15 +1,17 @@
 options(digits = 7)
 
-Tee <- 96
-n <- 6
-shock_time_vec <- rep(Tee/2, n)
-Y <- matrix(rep(rnorm(Tee), n), ncol = n)
+### BEGIN EXAMPLE WITH SIMULATED DATA
+
+Tee <- 96 #Specify length of time series
+n <- 6 #Specify number of donors
+shock_time_vec <- rep(Tee/2, n+1)
+Y <- matrix(rep(rnorm(Tee), n+1), ncol = n+1)
 
 
 X <- list()
 
 #we make X into a list
-for (i in 1:n){
+for (i in 1:(n+1)){
   X[[i]] <- cbind(rnorm(Tee)
              ,rnorm(Tee)
              ,rnorm(Tee))
@@ -18,13 +20,15 @@ for (i in 1:n){
 temp <- SynthVolForecast(Y
                          ,X
                          ,shock_time_vec
-                         ,rep(1, n)
+                         ,rep(1, n+1)
                          ,garch_order = c(1,1)
                          ,plots = TRUE)
 temp$convex_combination
 temp$forecast
 
-## Example
+### END EXAMPLE WITH SIMULATED DATA
+
+### BEGIN EXAMPLE WITH ConocoPhillips DATA
 
 library(quantmod)
 library(garchx)
@@ -101,3 +105,5 @@ temp <- SynthVolForecast <- function(series_matrix
 )
 
   temp$forecast
+
+
