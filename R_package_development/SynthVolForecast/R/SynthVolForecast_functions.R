@@ -1,16 +1,22 @@
-dbw <- function(X,
-                Tstar,
-                scale = FALSE,
-                sum_to_1 = 1,
-                bounded_below_by = 0,
-                bounded_above_by = 1,
-                normchoice = c('l1', 'l2')[2],
-                penalty_normchoice = c('l1', 'l2')[1],
-                penalty_lambda = 0
+## Required packages
+library(Rsolnp)
+library(garchx)
+
+### START dbw
+dbw <- function(X
+                ,number_covariates_to_use
+                ,shock_time_vec
+                ,scale = FALSE
+                ,sum_to_1 = 1
+                ,bounded_below_by = 0
+                ,bounded_above_by = 1
+                ,normchoice = c('l1', 'l2')[2]
+                ,penalty_normchoice = c('l1', 'l2')[1]
+                ,penalty_lambda = 0
 ) { # https://github.com/DEck13/synthetic_prediction/blob/master/prevalence_testing/numerical_studies/COP.R
   # X is a list of covariates for the time series
   # X[[1]] should be the covariate of the time series to predict
-  # X[[p]] for p = 2,...,n+1 are covariates for donors
+  # X[[k]] for k = 2,...,n+1 are covariates for donors
 
   # T^* is a vector of shock-effects time points
   # shock effect point must be > 2
@@ -18,22 +24,26 @@ dbw <- function(X,
   # number of time series for pool
   n <- length(X) - 1
 
-  # COVARIATE FOR TIME SERIES UNDER STUDY AT TSTAR
-  X1 <- X[[1]][Tstar[1], , drop = FALSE] # we get only 1 row
+  # COVARIATE FOR TIME SERIES UNDER STUDY AT shock_time_vec
+  X1 <- X[[1]][shock_time_vec[1], (1:number_covariates_to_use)
+               , drop = FALSE] # we get only 1 row
 
-  # LOOP for grab TSTAR covariate vector for each donor
+  # LOOP for grab shock_time_vec covariate vector for each donor
   X0 <- c()
   for (i in 1:n) {
-    X0[[i]] <- X[[i + 1]][Tstar[i + 1], , drop = FALSE] #get 1 row from each donor
+    X0[[i]] <- X[[i + 1]][shock_time_vec[i + 1], (1:number_covariates_to_use)
+                          , drop = FALSE] #get 1 row from each donor
   }
 
   if (scale == TRUE) { #begin if statement
     dat <- rbind(X1, do.call('rbind', X0)) # do.call is for cluster computing?
     dat <- apply(dat, 2, function(x) scale(x, center = TRUE, scale = TRUE))
-    X1 <- dat[1, , drop = FALSE]
+    X1 <- dat[1, (1:number_covariates_to_use)
+              , drop = FALSE]
     X0 <- c()
     for (i in 1:n) {
-      X0[[i]] <- dat[i + 1, , drop = FALSE] #we are repopulating X0[[i]] with scaled+centered data
+      X0[[i]] <- dat[i + 1, (1:number_covariates_to_use)
+                     , drop = FALSE] #we are repopulating X0[[i]] with scaled+centered data
     } #end loop
   } #end if statement
 
@@ -47,6 +57,7 @@ dbw <- function(X,
       XW <- XW + W[i] * X0[[i]]
     } #end of loop
 
+    #normchoice
     if (normchoice == 'l1') {
       norm <- as.numeric(norm(matrix(X1 - XW), type = "1"))
     }
@@ -111,22 +122,192 @@ dbw <- function(X,
   return(object_to_return$pars)
 
 } #END dbw function
+### END dbw
 
+### START plot_maker
+plot_maker <- function(fitted_vol
+                      ,shock_time_vec
+                      ,shock_length_vec
+                      ,unadjusted_pred
+                      ,w_hat
+                      ,omega_star_hat
+                      ,adjusted_pred){
+
+  par(mfrow = c(1,2))
+
+  #Plot donor weights
+  barplot(w_hat
+          ,  main = 'Donor Pool Weights'
+          , names.arg = 2:(length(shock_length_vec)))
+
+  #Plot target series and prediction
+
+  #PLOT ON THE LEFT:
+  plot(fitted_vol[1:shock_time_vec[1]],
+       main = 'Predicted Volatility',
+       ylab = '',
+       xlab = "Trading Days",
+       xlim = c(0, shock_time_vec[1] + 5),
+       ylim = c(0,  max(fitted_vol, unadjusted_pred, adjusted_pred) ) )
+
+  title(ylab = expression(sigma^2), line = 2.05, cex.lab = 1.99) # Add y-axis text
+
+  # Here is the color scheme we will use
+  colors_for_adjusted_pred <- c('red', "green")
+
+  # Let's add the plain old GARCH prediction
+  points(y = unadjusted_pred
+         ,x = (shock_time_vec[1]+1):(shock_time_vec[1]+shock_length_vec[1])
+         ,col = colors_for_adjusted_pred[1]
+         ,cex = .9
+         ,pch = 15)
+
+  # Now plot the adjusted predictions
+  points(y = adjusted_pred
+         ,x = (shock_time_vec[1]+1):(shock_time_vec[1]+shock_length_vec[1])
+         ,col = colors_for_adjusted_pred[2]
+         ,cex = .9
+         ,pch = 23)
+
+  labels_for_legend <- c('GARCH (unadjusted)', 'Adjusted Prediction')
+
+  legend(x = "bottomleft",  # Coordinates (x also accepts keywords)
+         legend = labels_for_legend,
+         1:length(labels_for_legend), # Vector with the name of each group
+         colors_for_adjusted_pred,   # Creates boxes in the legend with the specified colors
+         title = 'Prediction Method',      # Legend title,
+         cex = .9)
+
+}
+### END plot_maker
+
+
+### START SynthVolForecast
 SynthVolForecast <- function(series_matrix
                              ,covariates_series_list
                              ,shock_time_vec
                              ,shock_length_vec
-                             ,geometric_sets
-                             ,p_dbw
-                             ,covariate_vector_list
-                             ,days_before_shocktime_vec
-                             ,garch_order
+                             ,geometric_sets = NULL
+                             ,p_dbw = NULL
+                             ,covariate_vector_list = NULL #tk
+                             ,days_before_shocktime_vec = NULL #tk I may want to remove this
+                             ,garch_order = NULL
                              ,plots = TRUE
 ){
+  ### BEGIN Doc string
+  #tk
+  ### END Doc string
 
-  ## Check that inputs are all comformable/acceptable
+  ### BEGIN Populate defaults
+  n <- ncol(series_matrix) - 1
 
-  ##
+  if (is.null(garch_order) == TRUE) {
+    garch_order <- c(1,1,1)
+  }
+
+  if (is.null(p_dbw) == TRUE) {
+    p_dbw <- ncol(covariates_series_list[[1]]) #tk
+  }
+
+  ### END Populate defaults
 
 
-}
+  ## BEGIN Check that inputs are all comformable/acceptable
+  n <- ncol(series_matrix) - 1 #tk
+  ## END Check that inputs are all comformable/acceptable
+
+  ## BEGIN estimate fixed effects in donors
+  omega_star_hat_vec <- c()
+
+  for (i in 2:(n+1)){
+
+    # Build an indicator variable with a 1 at only T*+1 and other shock points
+    vec_of_zeros <- rep(0, shock_time_vec[i])
+    vec_of_ones <- rep(1, shock_length_vec[i])
+    post_shock_indicator <- c(vec_of_zeros, vec_of_ones)
+    last_shock_point <- shock_time_vec[i] + shock_length_vec[i]
+
+    X_i_with_indicator <- cbind(X[[i]], post_shock_indicator)
+
+    fitted_garch <- garchx(series_matrix[1:last_shock_point,i]
+                   , order = garch_order
+                   , xreg = X_i_with_indicator
+                   , control = list(eval.max = 10000
+                   , iter.max = 15000
+                   , rel.tol = 1e-6))
+
+    coef_test <- coeftest(fitted_garch)
+    extracted_fixed_effect <- coef_test[dim(coeftest(fitted_garch))[1], 1]
+    omega_star_hat_vec <- c(omega_star_hat_vec, extracted_fixed_effect)
+
+  } ## END loop for computing fixed effects
+
+  ## END estimate fixed effects in donors
+
+  ## BEGIN compute linear combination of fixed effects
+  w_hat <- dbw(X,
+               p_dbw,
+               shock_time_vec,
+               scale = TRUE,
+               sum_to_1 = TRUE, #tk
+               bounded_below_by = 0, #tk
+               bounded_above_by = 1, #tk
+               # normchoice = normchoice, #tk
+               # penalty_normchoice = penalty_normchoice,
+               # penalty_lambda = penalty_lambda
+               )
+
+  omega_star_hat <- w_hat %*% omega_star_hat_vec
+  ## END compute linear combination of fixed effects
+
+  ## BEGIN fit GARCH to target series
+  fitted_garch <- garchx(series_matrix[,1]
+                         , order = garch_order
+                         , xreg = X[[1]]
+                         , control = list(eval.max = 10000
+                                          , iter.max = 15000
+                                          , rel.tol = 1e-6))
+
+  forecast_period <- (shock_time_vec[1] + 1):(shock_time_vec[1] + shock_length_vec[1])
+  X_to_use_in_forecast <- X[[1]][forecast_period,1]
+  unadjusted_pred <- predict(fitted_garch
+                             , n.ahead = shock_length_vec[i]
+                             , newxreg = X_to_use_in_forecast)
+  adjusted_pred <- unadjusted_pred + omega_star_hat
+
+
+  list_of_linear_combinations <- list(w_hat)
+  list_of_forcasts <- list(adjusted_pred)
+  output_list <- list(list_of_linear_combinations
+                      , list_of_forcasts)
+  names(output_list) <- c('convex_combination'
+                          ,'forecast')
+
+  ## tk OUTPUT
+  cat('Simulation Summary Data','\n',
+      '-------------------------------------------------------------\n',
+      'Donors:', n, '\n',
+      'Series lengths:', 1, '\n',
+      'Shock times:', shock_time_vec, '\n',
+      'Length of shock times', shock_length_vec, '\n',
+      '\n'
+  )
+
+  ## PLOTS
+
+  if (plots == TRUE){
+    cat('User has opted to produce plots.','\n')
+    plot_maker(fitted(fitted_garch)
+               ,shock_time_vec
+               ,shock_length_vec
+               ,unadjusted_pred
+               ,w_hat
+               ,omega_star_hat
+               ,adjusted_pred)
+
+  }
+
+  return(output_list)
+
+} ### END SynthVolForecast
+

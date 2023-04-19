@@ -10,9 +10,9 @@ library(dplyr)
 
 #https://gist.github.com/bannister/8002800
 path <- '/home/david/Desktop/synthetic_vol_forecasting/simulation_results'
-files <- list.files(path=path, pattern = ".*Fri.*Rdata$")
+files <- list.files(path=path, pattern = ".*Apr16.*Rdata$")
 setwd(path)
-results <- sapply(files, function(x) mget(load(x)), simplify = TRUE) 
+results <- sapply(files, function(x) mget(load(x)), simplify = TRUE)
 output <- do.call(rbind, results)
 rownames(output) <- NULL
 data.frame(sapply(output,class))
@@ -23,16 +23,16 @@ data.frame(sapply(output,length_unique))
 output <- as.data.frame(sapply(output, as.numeric)) #<- sapply is here
 data.frame(sapply(output,class))
 
-  
+
 
 #Check that things vary correctly cross vol models
-check <- output %>% group_by(vol_model) %>% 
+check <- output %>% group_by(vol_model) %>%
   summarise(across(everything(), length_unique),
             .groups = 'drop')  %>% as.data.frame()
 
 check
 
-# We look for the columns that have no variation, i.e. those with only 1 value.  
+# We look for the columns that have no variation, i.e. those with only 1 value.
 unique_count_df <- apply(output, 2, function(x) length(unique(x)))
 
 # We drop these columns.
@@ -61,11 +61,11 @@ non_NA <- df_only_one_outcome[complete.cases(df_only_one_outcome),]
 
 # https://statisticsglobe.com/heatmap-in-r
 
-library("reshape")   
+library("reshape")
 library(dplyr)
 library(ggplot2)
 
-means <- non_NA %>% group_by(vol_shock_sd, M21_M22_vol_mu_delta) %>% summarise(prop=mean(success)) 
+means <- non_NA %>% group_by(vol_shock_sd, M21_M22_vol_mu_delta) %>% summarise(prop=mean(success))
 means <- as.data.frame(sapply(means, as.numeric))
 means$prop <- round(means$prop, 2)
 
@@ -74,13 +74,13 @@ count
 
 means$n <- count$n
 
-ggp <- ggplot(means, 
+ggp <- ggplot(means,
        aes(x = factor(vol_shock_sd), y = factor(M21_M22_vol_mu_delta), fill = prop)) +
       scale_fill_gradient(low="white",  high="red") +
-      geom_tile() + 
+      geom_tile() +
   geom_text(aes(label = paste(prop, '\n(',n,')', sep =''))) +
   guides(fill = guide_colourbar(title = "Success Proportion")) +
-  ggtitle("Synthetic Volatility Forecast Outperformance of Unadjusted Forecast 
+  ggtitle("Synthetic Volatility Forecast Outperformance of Unadjusted Forecast
           \n Each Square: Outperformance Proportion and (Simulation Count)") +
   theme(plot.title = element_text(hjust = 0.5)) +
   labs(x = "Volatility Shock Standard Deviation", y = "Volatility Shock Mean")
@@ -89,16 +89,16 @@ ggp
 
 # Now we write a function
 heatmap_maker <- function(df, var1, var2){
-  
-  means <- df %>% group_by(var1, var2) %>% 
+
+  means <- df %>% group_by(var1, var2) %>%
     summarise(prop=mean(success))
   means <- as.data.frame(sapply(means, as.numeric))
-  
-  ggp <- ggplot(means, 
+
+  ggp <- ggplot(means,
                 aes(x = factor(var1), y = factor(var2), fill = prop)) +
     scale_fill_gradient(low="white",  high="red") +
     geom_tile()
-  
+
   ggp
 }
 

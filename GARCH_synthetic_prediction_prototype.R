@@ -21,17 +21,18 @@ stock_list <- c("CL", "SPY", 'DX-Y.NYB', '^VIX', '^IRX')
 start_date <- '2020-01-07'
 end_date <- '2020-03-09'
 master_df <- NULL
+
 for (idx in seq(length(stock_list))){
   stock_index = stock_list[idx]
-  getSymbols(stock_index, verbose = TRUE, src = "yahoo", 
+  getSymbols(stock_index, verbose = TRUE, src = "yahoo",
              from=start_date,to=end_date)
   temp_df = as.data.frame(get(stock_index))
   temp_df$Date = row.names(temp_df)
   temp_df$Index = stock_index
   row.names(temp_df) = NULL
-  colnames(temp_df) = c("Open", "High", "Low", "Close", 
+  colnames(temp_df) = c("Open", "High", "Low", "Close",
                         "Volume", "Adjusted", "Date", "Index")
-  temp_df = temp_df[c("Date", "Index", "Open", "High", 
+  temp_df = temp_df[c("Date", "Index", "Open", "High",
                       "Low", "Close", "Volume", "Adjusted")]
   master_df = rbind(master_df, temp_df)
 }
@@ -39,6 +40,7 @@ for (idx in seq(length(stock_list))){
 
 # Build an indicator variable with a 1 at only T*+1
 post_shock_indicator <- c(rep(0, nrow( na.omit(diff(log(CL$CL.Adjusted)))) - 1), 1)
+
 # Throw the external regressors into a matrix
 X <- as.matrix(
   cbind(
@@ -51,14 +53,14 @@ X <- as.matrix(
   )
   )
 
-mymod <- garchx( as.numeric(na.omit(diff(log(COP$COP.Adjusted)))) , order = c(2,1),
+mymod <- garchx( as.numeric(na.omit(diff(log(COP$COP.Adjusted)))) , order = c(1,1),
                   xreg = X, control = list(eval.max = 10000, iter.max = 15000, rel.tol = 1e-6))
 mymod
 coeftest(mymod)
 BIC(mymod)
 predict(mymod, n.ahead = 1, newxreg = matrix(c(-.01,0), nrow = 1))
 
-mymod_differenced <- garchx(  as.numeric(diff(diff(log(COP$COP.Adjusted)))), order = c(0,1), 
+mymod_differenced <- garchx(  as.numeric(diff(diff(log(COP$COP.Adjusted)))), order = c(0,1),
                   xreg = X, control = list(eval.max = 10000, iter.max = 6250, rel.tol = 1e-6))
 mymod_differenced
 coeftest(mymod_differenced)
@@ -66,7 +68,7 @@ AIC(mymod_differenced)
 
 
 # Let's look at other two shock dates
-# 
+#
 # 2008-09-08
 # 2014-11-27
 
@@ -86,7 +88,7 @@ coeftest(mymod)
 AIC(mymod)
 predict(mymod, n.ahead = 1, newxreg = matrix(c(-.01,0), nrow = 1))
 
-mymod_differenced <- garchx(  as.numeric(diff(diff(log(COP$COP.Adjusted)))), order = c(1,1), 
+mymod_differenced <- garchx(  as.numeric(diff(diff(log(COP$COP.Adjusted)))), order = c(1,1),
                               xreg = X, control = list(eval.max = 10000, iter.max = 6250, rel.tol = 1e-6))
 mymod_differenced
 coeftest(mymod_differenced)
