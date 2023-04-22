@@ -2,27 +2,40 @@ options(digits = 7)
 
 ### BEGIN EXAMPLE WITH SIMULATED DATA
 
-Tee <- 96 #Specify length of time series
-n <- 6 #Specify number of donors
+Tee <- 192 #Specify length of time series
+n <- 4 #Specify number of donors
 shock_time_vec <- rep(Tee/2, n+1)
-Y <- matrix(rep(rnorm(Tee), n+1), ncol = n+1)
 
+Y <- list()
+
+#we populate the covariate list
+for (i in 1:(n+1)){
+  Y[[i]] <- rnorm(Tee)
+}
 
 X <- list()
 
-#we make X into a list
+#we populate the covariate list
 for (i in 1:(n+1)){
   X[[i]] <- cbind(rnorm(Tee)
              ,rnorm(Tee)
              ,rnorm(Tee))
 }
 
-temp <- SynthVolForecast(Y
-                         ,X
-                         ,shock_time_vec
-                         ,rep(1, n+1)
-                         ,garch_order = c(1,1)
-                         ,plots = TRUE)
+system.time(
+
+  {
+
+    temp <- SynthVolForecast(Y
+                             ,X
+                             ,shock_time_vec
+                             ,rep(1, n+1)
+                             ,garch_order = c(1,1)
+                             ,plots = TRUE)
+  }
+
+  )
+
 temp$convex_combination
 temp$forecast
 
@@ -33,77 +46,99 @@ temp$forecast
 library(quantmod)
 library(garchx)
 library(lmtest)
+library(bizdays)
+library(lubridate)
 
-# time series of interest
-getSymbols('COP',src='yahoo',from = '2020-01-08' , to = '2020-03-10')
+## BEGIN USER DATA INPUTS##
+log_ret_covariates <- c("COP"
+                        ,"CL=F"
+                        ,'^VIX'
+                        ,'^IRX'
+                        ,'SPY'
+                        ,'XOM'
+                        ,'CVX'
+                        ,'SHEL'
+                        ,'TTE'
+                        ,'BP') #first should be TSUS
+level_covariates <- c('^VIX')
 
-# covariates
-getSymbols('CL',src='yahoo',from = '2020-01-07' , to = '2020-03-09')
-getSymbols('SPY',src='yahoo',from = '2020-01-07' , to = '2020-03-09')
-getSymbols('DX-Y.NYB',src='yahoo',from = '2020-01-07' , to = '2020-03-09')
-getSymbols('^VIX',src='yahoo',from = '2020-01-07' , to = '2020-03-09')
-getSymbols('^IRX',src='yahoo',from = '2020-01-07' , to = '2020-03-09')
+shock_dates <- c("2020-03-06"
+                 ,"2014-11-26"
+                 , "2008-09-25"
+                 , "2008-09-12"
+                 , "2008-09-05"
+                 , "2008-03-14")
 
-Y <- cbind(COP$COP.Close
-           ,VIX$VIX.Close)
+k <- 1
+## END USER DATA INPUTS##
 
-stock_list <- c("CL", "SPY", 'DX-Y.NYB', '^VIX', '^IRX')
-start_date <- '2020-01-07'
-end_date <- '2020-03-09'
-master_df <- NULL
+nyse <- timeDate::holidayNYSE(2000:year(Sys.Date()) +1)
+create.calendar(name='NYSE', holidays=nyse, weekdays=c('saturday', 'sunday'))
+shock_dates_as_dates <- as.Date(shock_dates)
+start_dates <- offset(shock_dates_as_dates, -1*252, "NYSE")
+k_periods_after_shock <- offset(shock_dates_as_dates, k, "NYSE")
 
-for (idx in seq(length(stock_list))){
-  stock_index = stock_list[idx]
-  getSymbols(stock_index, verbose = TRUE, src = "yahoo",
-             from=start_date,to=end_date)
-  temp_df = as.data.frame(get(stock_index))
-  temp_df$Date = row.names(temp_df)
-  temp_df$Index = stock_index
-  row.names(temp_df) = NULL
-  colnames(temp_df) = c("Open", "High", "Low", "Close",
-                        "Volume", "Adjusted", "Date", "Index")
-  temp_df = temp_df[c("Date", "Index", "Open", "High",
-                      "Low", "Close", "Volume", "Adjusted")]
-  master_df = rbind(master_df, temp_df)
+shock_dates
+shock_dates_as_dates
+start_dates
+k_periods_after_shock
+
+market_data_list <- vector("list", length(shock_dates))
+names(market_data_list) <- shock_dates
+
+for (i in 1:length(shock_dates)){
+
+  to_add <- lapply(log_ret_covariates, function(sym) {
+    dailyReturn(na.omit(getSymbols(sym
+                                   ,from=start_dates[i]
+                                   ,to=k_periods_after_shock[i]+10 #tk +10
+                                   ,auto.assign=FALSE))
+                                   ,type='log')})
+
+  to_add_2 <- lapply(level_covariates, function(sym) {
+    na.omit(getSymbols(sym
+                                   ,from=start_dates[i]
+                                   ,to=k_periods_after_shock[i]+10 #tk +10
+                                   ,auto.assign=FALSE))[,4]})
+
+  to_add <- c(to_add, to_add_2)
+
+  market_data_list[[i]] <- do.call(merge, to_add)
+
 }
 
-# Build an indicator variable with a 1 at only T*+1
-post_shock_indicator <- c(rep(0, nrow( na.omit(diff(log(CL$CL.Adjusted)))) - 1), 1)
+##################################
 
-# Throw the external regressors into a matrix
-X <- as.matrix(
-  cbind(
-    na.omit(diff(log(CL$CL.Adjusted))),
-    na.omit(diff(log(SPY$SPY.Adjusted))),
-    diff(   log(   na.omit( as.data.frame(get('DX-Y.NYB'))$"DX-Y.NYB.Adjusted")  )),
-    diff(log(   na.omit( as.data.frame(get('VIX'))$"VIX.Adjusted")  )),
-    diff(log(   na.omit(  as.data.frame(get('IRX'))$"IRX.Adjusted")  )),
-    post_shock_indicator
-  )
-)
+#now build Y
+Y <- list()
+for (i in 1:length(start_dates)){
+  Y[[i]] <- market_data_list[[i]][,1]
+}
 
-mymod <- garchx( as.numeric(na.omit(diff(log(COP$COP.Adjusted)))) , order = c(1,1),
-                 xreg = X, control = list(eval.max = 10000, iter.max = 15000, rel.tol = 1e-6))
-mymod
-coeftest(mymod)
-BIC(mymod)
-predict(mymod, n.ahead = 1, newxreg = matrix(c(-.01,0), nrow = 1))
+#Now build X
+X <- list()
+for (i in 1:length(start_dates)){
+  X[[i]] <- market_data_list[[i]][,-1]
+}
 
+n <- length(Y) - 1
 
-
-
-temp <- SynthVolForecast <- function(series_matrix
-                                     ,covariates_series_list
-                                     ,shock_time_vec
-                                     ,shock_length_vec
-                                     ,geometric_sets
-                                     ,p_dbw
-                                     ,covariate_vector_list #tk
-                                     ,days_before_shocktime_vec #tk I may want to remove this
-                                     ,garch_order
-                                     ,plots = TRUE
-)
-
-  temp$forecast
+#Now run the algorithm
+temp <- SynthVolForecast(Y
+                         ,X
+                         ,shock_time_vec = shock_dates
+                         ,rep(k, n+1)
+                         ,1:length(X)
+                         ,covariate_indices = c(length(X))
+                         ,garch_order = c(1,1,1)
+                         ,plots = TRUE)
 
 
+
+temp$convex_combination
+temp$forecast
+
+## GARCH on
+mod <- garchx(Y[[1]][1:253])
+fitted(mod)
+plot.ts(fitted(mod))

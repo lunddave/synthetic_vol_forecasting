@@ -17,7 +17,7 @@ getSymbols('^VIX',src='yahoo',from = '2020-01-07' , to = '2020-03-09')
 getSymbols('^IRX',src='yahoo',from = '2020-01-07' , to = '2020-03-09')
 
 
-stock_list <- c("CL", "SPY", 'DX-Y.NYB', '^VIX', '^IRX')
+stock_list <- c("CL=F", "SPY", 'DX-Y.NYB', '^VIX', '^IRX')
 start_date <- '2020-01-07'
 end_date <- '2020-03-09'
 master_df <- NULL
