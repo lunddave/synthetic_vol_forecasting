@@ -198,7 +198,7 @@ SynthVolForecast <- function(Y_series_list
                              ,shock_length_vec
                              ,dwb_indices = NULL
                              ,covariate_indices = NULL
-                             ,geometric_sets = NULL
+                             ,geometric_sets = NULL #tk
                              ,days_before_shocktime_vec = NULL #tk I may want to remove this
                              ,garch_order = NULL
                              ,plots = TRUE
@@ -216,10 +216,6 @@ SynthVolForecast <- function(Y_series_list
 
   if (is.null(dwb_indices) == TRUE) {
     dwb_indices <- 1:ncol(X[[1]])
-  }
-
-  if (is.null(covariate_indices) == TRUE) {
-    covariate_indices <- 1:ncol(X[[1]])
   }
 
   ### END Populate defaults
@@ -256,16 +252,20 @@ SynthVolForecast <- function(Y_series_list
     last_shock_point <- integer_shock_time_vec[i] + shock_length_vec[i]
 
     #subset X_i
-    X_i_subset <- X[[i]][,covariate_indices]
+    if (is.null(covariate_indices) == TRUE) {
+      X_i_penultimate <- cbind(Y_series_list[[i]][1:last_shock_point]
+                               , post_shock_indicator)
+      X_i_final <- X_i_penultimate[,2]
+    }
+    else {
+      X_i_subset <- X[[i]][1:last_shock_point,covariate_indices]
+      X_i_with_indicator <- cbind(X_i_subset, post_shock_indicator)
+      X_i_final <- X_i_with_indicator
+    }
 
-    #lag X_i
-    lagged_X_i <- lag.xts(X_i_subset)
-
-    X_i_with_indicator <- cbind(lagged_X_i[1:last_shock_point,], post_shock_indicator)
-
-    fitted_garch <- garchx(Y_series_list[[i]][2:last_shock_point] #tk
+    fitted_garch <- garchx(Y_series_list[[i]][1:last_shock_point] #tk
                    , order = garch_order
-                   , xreg = X_i_with_indicator[2:last_shock_point] #k
+                   , xreg = X_i_final
                    , control = list(eval.max = 10000
                    , iter.max = 15000
                    , rel.tol = 1e-6))
@@ -297,18 +297,21 @@ SynthVolForecast <- function(Y_series_list
   ## BEGIN fit GARCH to target series
   fitted_garch <- garchx(Y_series_list[[1]][1:integer_shock_time_vec[1]]
                          , order = garch_order
-                         , xreg = X[[1]][1:integer_shock_time_vec[1]] #tk these need to be lagged?
+                         , xreg = X[[1]][1:integer_shock_time_vec[1],]
                          , control = list(eval.max = 10000
                                           , iter.max = 15000
                                           , rel.tol = 1e-6))
 
-  forecast_period <- (integer_shock_time_vec[1] + 1):(integer_shock_time_vec[1] + shock_length_vec[1]) #tk
+  forecast_period <- (integer_shock_time_vec[1] + 1):(integer_shock_time_vec[1] +
+                                                        shock_length_vec[1]) #tk
+
+  #Note: for forecasting, we use last-observed X value
   X_to_use_in_forecast <- rep(X[[1]][integer_shock_time_vec[1],1], shock_length_vec[1]) #tk
+
   unadjusted_pred <- predict(fitted_garch
-                             , n.ahead = shock_length_vec[i]
+                             , n.ahead = shock_length_vec[1]
                              , newxreg = X_to_use_in_forecast)
   adjusted_pred <- unadjusted_pred + omega_star_hat
-
 
   list_of_linear_combinations <- list(w_hat)
   list_of_forcasts <- list(unadjusted_pred, adjusted_pred)
@@ -318,9 +321,6 @@ SynthVolForecast <- function(Y_series_list
                       , list_of_forcasts)
 
   names(output_list) <- c('linear_combinations', 'predictions')
-
-  names(output_list) <- c('convex_combination'
-                          ,'forecast')
 
   ## tk OUTPUT
   cat('SynthVolForecast Details','\n',
