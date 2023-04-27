@@ -27,27 +27,28 @@ dbw <- function(X
   n <- length(X) - 1
 
   # COVARIATE FOR TIME SERIES UNDER STUDY AT shock_time_vec
-  X1 <- X[[1]][shock_time_vec[1], dbw_indices #mk
-               , drop = FALSE] # we get only 1 row
+  X1 <- X[[1]][shock_time_vec[1], dbw_indices, drop = FALSE] # we get only 1 row
 
   # LOOP for grab shock_time_vec covariate vector for each donor
   X0 <- c()
   for (i in 1:n) {
-    X0[[i]] <- X[[i + 1]][shock_time_vec[i + 1], dbw_indices
+    X0[[i]] <- X[[i+1]][shock_time_vec[i+1], dbw_indices
                           , drop = FALSE] #get 1 row from each donor
   }
 
-  if (scale == TRUE) { #begin if statement
+  #################################
+  #begin if statement
+  if (scale == TRUE) {
     dat <- rbind(X1, do.call('rbind', X0)) # do.call is for cluster computing?
     dat <- apply(dat, 2, function(x) scale(x, center = TRUE, scale = TRUE))
     X1 <- dat[1, dbw_indices
               , drop = FALSE]
     X0 <- c()
     for (i in 1:n) {
-      X0[[i]] <- dat[i + 1, dbw_indices
-                     , drop = FALSE] #we are repopulating X0[[i]] with scaled+centered data
+      X0[[i]] <- dat[i+1, dbw_indices, drop = FALSE] #we are repopulating X0[[i]] with scaled+centered data
     } #end loop
   } #end if statement
+  #################################
 
   # objective function
   weightedX0 <- function(W) {
@@ -294,23 +295,52 @@ SynthVolForecast <- function(Y_series_list
   omega_star_hat <- w_hat %*% omega_star_hat_vec
   ## END compute linear combination of fixed effects
 
+
   ## BEGIN fit GARCH to target series
-  fitted_garch <- garchx(Y_series_list[[1]][1:integer_shock_time_vec[1]]
-                         , order = garch_order
-                         , xreg = X[[1]][1:integer_shock_time_vec[1],]
-                         , control = list(eval.max = 10000
-                                          , iter.max = 15000
-                                          , rel.tol = 1e-6))
 
-  forecast_period <- (integer_shock_time_vec[1] + 1):(integer_shock_time_vec[1] +
-                                                        shock_length_vec[1]) #tk
+  if (is.null(covariate_indices) == TRUE){
 
-  #Note: for forecasting, we use last-observed X value
-  X_to_use_in_forecast <- rep(X[[1]][integer_shock_time_vec[1],1], shock_length_vec[1]) #tk
+    fitted_garch <- garchx(Y_series_list[[1]][1:integer_shock_time_vec[1]]
+                           , order = garch_order
+                           , xreg = NULL # xreg = X[[1]][1:integer_shock_time_vec[1],]
+                           , control = list(eval.max = 10000
+                                            , iter.max = 15000
+                                            , rel.tol = 1e-6))
 
-  unadjusted_pred <- predict(fitted_garch
-                             , n.ahead = shock_length_vec[1]
-                             , newxreg = X_to_use_in_forecast)
+    unadjusted_pred <- predict(fitted_garch, n.ahead = shock_length_vec[1])
+  }
+  else{
+    ## BEGIN fit GARCH to target series
+    fitted_garch <- garchx(Y_series_list[[1]][1:integer_shock_time_vec[1]]
+                           , order = garch_order
+                           , xreg = X[[1]][1:integer_shock_time_vec[1],covariate_indices]
+                           , control = list(eval.max = 10000
+                                            , iter.max = 15000
+                                            , rel.tol = 1e-6))
+
+    #Note: for forecasting, we use last-observed X value
+    X_to_use_in_forecast <- X[[1]][integer_shock_time_vec[1],covariate_indices]
+
+    X_replicated_for_forecast_length <- matrix(rep(X_to_use_in_forecast, k)
+                                               , nrow = shock_length_vec[1]
+                                               , byrow = TRUE)
+
+    X_replicated_for_forecast_length <- as.xts(X_replicated_for_forecast_length)
+
+    print(nrow(X_replicated_for_forecast_length))
+
+    print(shock_length_vec[1])
+
+    print(X_replicated_for_forecast_length)
+
+    print('Problem happens just below here')
+
+    unadjusted_pred <- predict(fitted_garch
+                               , n.ahead = shock_length_vec[1]
+                               , newxreg = X_to_use_in_forecast)
+  }
+
+
   adjusted_pred <- unadjusted_pred + omega_star_hat
 
   list_of_linear_combinations <- list(w_hat)

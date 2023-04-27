@@ -52,24 +52,25 @@ log_ret_covariates <- c("COP" #first should be time series under study
                         ,"CL=F"
                         ,'^VIX'
                         ,'^IRX'
-                        #,'SPY'
-                        # ,'XOM'
-                        # ,'CVX'
-                        # ,'SHEL'
-                        # ,'TTE'
-                        #,'BP'
+                        ,'SPY'
+                        ,'XOM'
+                        ,'CVX'
+                        ,'SHEL'
+                        ,'TTE'
+                        ,'BP'
                         )
 
-level_covariates <- c('^VIX')
+level_covariates <- c('^VIX','^IRX')
 
 shock_dates <- c("2020-03-06"
                  ,"2014-11-26"
                  , "2008-09-25"
                  , "2008-09-12"
                  , "2008-09-05"
-                 , "2008-03-14")
+                 , "2008-03-14"
+                 )
 
-k <- 1
+k <- 2
 ## END USER DATA INPUTS##
 
 nyse <- timeDate::holidayNYSE(2000:year(Sys.Date())+1)
@@ -123,12 +124,13 @@ temp <- SynthVolForecast(Y
                          ,shock_time_vec = shock_dates
                          ,rep(k, n+1)
                          ,dwb_indices = NULL
-                         #,covariate_indices = 1:2 #1:length(X)
+                         ,covariate_indices = 1:2 #1:length(X)
                          ,garch_order = c(1,1,1)
                          ,plots = TRUE)
 
-temp$convex_combination
-temp$forecast
+temp$linear_combinations
+temp$predictions
+
 
 ## GARCH on
 mod <- garchx(Y[[1]][1:253])
