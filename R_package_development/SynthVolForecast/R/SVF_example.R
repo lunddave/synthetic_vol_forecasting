@@ -27,23 +27,21 @@ system.time(
     temp <- SynthVolForecast(Y
                              ,X
                              ,shock_time_vec
-                             ,rep(1, n+1)
+                             ,rep(2, n+1)
                              ,garch_order = c(1,1)
                              ,plots = TRUE)
   }
 
   )
 
-temp$convex_combination
-temp$forecast
+temp$linear_combinations
+temp$predictions
 
 ### END EXAMPLE WITH SIMULATED DATA
 
 ### BEGIN EXAMPLE WITH ConocoPhillips DATA
 
 library(quantmod)
-library(garchx)
-library(lmtest)
 library(bizdays)
 library(lubridate)
 
@@ -76,7 +74,7 @@ k <- 2
 nyse <- timeDate::holidayNYSE(2000:year(Sys.Date())+1)
 create.calendar(name='NYSE', holidays=nyse, weekdays=c('saturday', 'sunday'))
 shock_dates_as_dates <- as.Date(shock_dates)
-start_dates <- offset(shock_dates_as_dates, -1*252, "NYSE")
+start_dates <- offset(shock_dates_as_dates, round(-1.2*252), "NYSE")
 k_periods_after_shock <- offset(shock_dates_as_dates, k, "NYSE")
 
 market_data_list <- vector("list", length(shock_dates))
@@ -124,7 +122,7 @@ temp <- SynthVolForecast(Y
                          ,shock_time_vec = shock_dates
                          ,rep(k, n+1)
                          ,dwb_indices = NULL
-                         ,covariate_indices = 1:2 #1:length(X)
+                         #,covariate_indices = c((length(X)-1):length(X))
                          ,garch_order = c(1,1,1)
                          ,plots = TRUE)
 
@@ -134,6 +132,7 @@ temp$predictions
 
 ## GARCH on
 mod <- garchx(Y[[1]][1:253])
+plot.ts(Y[[1]][1:253])
 fitted(mod)
 plot.ts(fitted(mod))
 

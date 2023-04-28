@@ -264,9 +264,11 @@ SynthVolForecast <- function(Y_series_list
       X_i_final <- X_i_with_indicator
     }
 
+    print('Now fitting the donor GARCH models')
     fitted_garch <- garchx(Y_series_list[[i]][1:last_shock_point] #tk
                    , order = garch_order
                    , xreg = X_i_final
+                   , backcast.values = NULL
                    , control = list(eval.max = 10000
                    , iter.max = 15000
                    , rel.tol = 1e-6))
@@ -303,6 +305,7 @@ SynthVolForecast <- function(Y_series_list
     fitted_garch <- garchx(Y_series_list[[1]][1:integer_shock_time_vec[1]]
                            , order = garch_order
                            , xreg = NULL # xreg = X[[1]][1:integer_shock_time_vec[1],]
+                           , backcast.values = NULL
                            , control = list(eval.max = 10000
                                             , iter.max = 15000
                                             , rel.tol = 1e-6))
@@ -311,6 +314,9 @@ SynthVolForecast <- function(Y_series_list
   }
   else{
     ## BEGIN fit GARCH to target series
+
+    print('now we fit the garchx on TSUS')
+
     fitted_garch <- garchx(Y_series_list[[1]][1:integer_shock_time_vec[1]]
                            , order = garch_order
                            , xreg = X[[1]][1:integer_shock_time_vec[1],covariate_indices]
@@ -325,23 +331,21 @@ SynthVolForecast <- function(Y_series_list
                                                , nrow = shock_length_vec[1]
                                                , byrow = TRUE)
 
-    X_replicated_for_forecast_length <- as.xts(X_replicated_for_forecast_length)
-
-    print(nrow(X_replicated_for_forecast_length))
-
-    print(shock_length_vec[1])
-
     print(X_replicated_for_forecast_length)
 
-    print('Problem happens just below here')
+    print('Now we cbind the TSUS and covariates')
+    forecast_period <- (integer_shock_time_vec[1]+1):(integer_shock_time_vec[1]+shock_length_vec[1])
+    mat_X_for_forecast <- cbind(Y_series_list[[1]][forecast_period]
+                           , X_replicated_for_forecast_length)
+
+    print(mat_X_for_forecast)
 
     unadjusted_pred <- predict(fitted_garch
                                , n.ahead = shock_length_vec[1]
-                               , newxreg = X_to_use_in_forecast)
+                               , newxreg = mat_X_for_forecast[,-1])
   }
 
-
-  adjusted_pred <- unadjusted_pred + omega_star_hat
+  adjusted_pred <- as.vector(unadjusted_pred) + omega_star_hat
 
   list_of_linear_combinations <- list(w_hat)
   list_of_forcasts <- list(unadjusted_pred, adjusted_pred)
@@ -382,3 +386,237 @@ SynthVolForecast <- function(Y_series_list
 
 } ### END SynthVolForecast
 
+### START SynthPrediction
+SynthPrediction <- function(Y_series_list
+                             ,covariates_series_list
+                             ,shock_time_vec
+                             ,shock_length_vec
+                             ,dwb_indices = NULL
+                             ,covariate_indices = NULL
+                             ,geometric_sets = NULL #tk
+                             ,days_before_shocktime_vec = NULL #tk I may want to remove this
+                             ,garch_order = NULL
+                             ,plots = TRUE
+){
+  ### BEGIN Doc string
+  #tk
+  ### END Doc string
+
+  ### BEGIN Populate defaults
+  n <- length(Y_series_list) - 1
+
+  if (is.null(garch_order) == TRUE) {
+    garch_order <- c(1,1,1)
+  }
+
+  if (is.null(dwb_indices) == TRUE) {
+    dwb_indices <- 1:ncol(X[[1]])
+  }
+
+  ### END Populate defaults
+
+
+  ## BEGIN Check that inputs are all comformable/acceptable
+  n <- length(Y_series_list) - 1 #tk
+  ## END Check that inputs are all comformable/acceptable
+
+  integer_shock_time_vec <- c() #mk
+
+  ## BEGIN Check whether shock_time_vec is int/date
+
+  for (i in 1:(n+1)){
+
+    if (is.character(shock_time_vec[i]) == TRUE){
+      integer_shock_time_vec[i] <- which(index(Y[[i]]) == shock_time_vec[i]) #mk
+    }
+    else{ integer_shock_time_vec <- shock_time_vec}
+
+  }
+
+  ## END Check whether shock_time_vec is int/date
+
+  ## BEGIN estimate fixed effects in donors
+  omega_star_hat_vec <- c()
+
+  for (i in 2:(n+1)){
+
+    # Make indicator variable w/ a 1 at only T*+1, T*+2,...,T*+shock_length_vec[i]
+    vec_of_zeros <- rep(0, integer_shock_time_vec[i])
+    vec_of_ones <- rep(1, shock_length_vec[i])
+    post_shock_indicator <- c(vec_of_zeros, vec_of_ones)
+    last_shock_point <- integer_shock_time_vec[i] + shock_length_vec[i]
+
+    #subset X_i
+    if (is.null(covariate_indices) == TRUE) {
+      X_i_penultimate <- cbind(Y_series_list[[i]][1:last_shock_point]
+                               , post_shock_indicator)
+      X_i_final <- X_i_penultimate[,2]
+    }
+    else {
+      X_i_subset <- X[[i]][1:last_shock_point,covariate_indices]
+      X_i_with_indicator <- cbind(X_i_subset, post_shock_indicator)
+      X_i_final <- X_i_with_indicator
+    }
+
+    print('Now fitting the donor GARCH models')
+    fitted_garch <- garchx(Y_series_list[[i]][1:last_shock_point] #tk
+                           , order = garch_order
+                           , xreg = X_i_final
+                           , backcast.values = NULL
+                           , control = list(eval.max = 10000
+                                            , iter.max = 15000
+                                            , rel.tol = 1e-6))
+
+    coef_test <- coeftest(fitted_garch)
+    extracted_fixed_effect <- coef_test[dim(coeftest(fitted_garch))[1], 1]
+    omega_star_hat_vec <- c(omega_star_hat_vec, extracted_fixed_effect)
+
+  } ## END loop for computing fixed effects
+
+  ## END estimate fixed effects in donors
+
+  ## BEGIN compute linear combination of fixed effects
+  w_hat <- dbw(X, #tk
+               dwb_indices,
+               integer_shock_time_vec,
+               scale = TRUE,
+               sum_to_1 = TRUE, #tk
+               bounded_below_by = 0, #tk
+               bounded_above_by = 1, #tk
+               # normchoice = normchoice, #tk
+               # penalty_normchoice = penalty_normchoice,
+               # penalty_lambda = penalty_lambda
+  )
+
+  omega_star_hat <- w_hat %*% omega_star_hat_vec
+  ## END compute linear combination of fixed effects
+
+
+  ## BEGIN fit GARCH to target series
+
+  if (is.null(covariate_indices) == TRUE){
+
+    fitted_garch <- garchx(Y_series_list[[1]][1:integer_shock_time_vec[1]]
+                           , order = garch_order
+                           , xreg = NULL # xreg = X[[1]][1:integer_shock_time_vec[1],]
+                           , backcast.values = NULL
+                           , control = list(eval.max = 10000
+                                            , iter.max = 15000
+                                            , rel.tol = 1e-6))
+
+    unadjusted_pred <- predict(fitted_garch, n.ahead = shock_length_vec[1])
+  }
+  else{
+    ## BEGIN fit GARCH to target series
+
+    print('now we fit the garchx on TSUS')
+
+    fitted_garch <- garchx(Y_series_list[[1]][1:integer_shock_time_vec[1]]
+                           , order = garch_order
+                           , xreg = X[[1]][1:integer_shock_time_vec[1],covariate_indices]
+                           , control = list(eval.max = 10000
+                                            , iter.max = 15000
+                                            , rel.tol = 1e-6))
+
+    #Note: for forecasting, we use last-observed X value
+    X_to_use_in_forecast <- X[[1]][integer_shock_time_vec[1],covariate_indices]
+
+    X_replicated_for_forecast_length <- matrix(rep(X_to_use_in_forecast, k)
+                                               , nrow = shock_length_vec[1]
+                                               , byrow = TRUE)
+
+    print(X_replicated_for_forecast_length)
+
+    print('Now we cbind the TSUS and covariates')
+    forecast_period <- (integer_shock_time_vec[1]+1):(integer_shock_time_vec[1]+shock_length_vec[1])
+    mat_X_for_forecast <- cbind(Y_series_list[[1]][forecast_period]
+                                , X_replicated_for_forecast_length)
+
+    print(mat_X_for_forecast)
+
+    unadjusted_pred <- predict(fitted_garch
+                               , n.ahead = shock_length_vec[1]
+                               , newxreg = mat_X_for_forecast[,-1])
+  }
+
+  adjusted_pred <- as.vector(unadjusted_pred) + omega_star_hat
+
+  list_of_linear_combinations <- list(w_hat)
+  list_of_forcasts <- list(unadjusted_pred, adjusted_pred)
+  names(list_of_forcasts) <- c('unadjusted_pred', 'adjusted_pred')
+
+  output_list <- list(list_of_linear_combinations
+                      , list_of_forcasts)
+
+  names(output_list) <- c('linear_combinations', 'predictions')
+
+  ## tk OUTPUT
+  cat('SynthVolForecast Details','\n',
+      '-------------------------------------------------------------\n',
+      'Donors:', n, '\n',
+      'Shock times:', shock_time_vec, '\n',
+      'Lengths of shock times:', shock_length_vec, '\n',
+      'Shock estimates provided by donors:', omega_star_hat_vec, '\n',
+      'Aggregate estimated shock effect:', omega_star_hat, '\n',
+      '\n'
+  )
+
+  ## PLOTS
+
+  if (plots == TRUE){
+    cat('User has opted to produce plots.','\n')
+    plot_maker(fitted(fitted_garch)
+               ,shock_time_vec
+               ,integer_shock_time_vec
+               ,shock_length_vec
+               ,unadjusted_pred
+               ,w_hat
+               ,omega_star_hat
+               ,adjusted_pred)
+
+  }
+
+  return(output_list)
+
+} ### END SynthPrediction
+
+
+
+auto.arima(
+  y,
+  d = NA,
+  D = NA,
+  max.p = 5,
+  max.q = 5,
+  max.P = 2,
+  max.Q = 2,
+  max.order = 5,
+  max.d = 2,
+  max.D = 1,
+  start.p = 2,
+  start.q = 2,
+  start.P = 1,
+  start.Q = 1,
+  stationary = FALSE,
+  seasonal = TRUE,
+  ic = c("aicc", "aic", "bic"),
+  stepwise = TRUE,
+  nmodels = 94,
+  trace = FALSE,
+  approximation = (length(x) > 150 | frequency(x) > 12),
+  method = NULL,
+  truncate = NULL,
+  xreg = NULL,
+  test = c("kpss", "adf", "pp"),
+  test.args = list(),
+  seasonal.test = c("seas", "ocsb", "hegy", "ch"),
+  seasonal.test.args = list(),
+  allowdrift = TRUE,
+  allowmean = TRUE,
+  lambda = NULL,
+  biasadj = FALSE,
+  parallel = FALSE,
+  num.cores = 2,
+  x = y,
+  ...
+)
