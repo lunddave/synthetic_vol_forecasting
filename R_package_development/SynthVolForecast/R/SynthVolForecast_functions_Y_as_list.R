@@ -2,6 +2,7 @@
 library(Rsolnp)
 library(garchx)
 library(lmtest)
+library(forecast)
 
 
 ### START dbw
@@ -396,6 +397,7 @@ SynthPrediction <- function(Y_series_list
                              ,geometric_sets = NULL #tk
                              ,days_before_shocktime_vec = NULL #tk I may want to remove this
                              ,arima_order = NULL
+                             ,user_ic_choice
                              ,plots = TRUE
 ){
   ### BEGIN Doc string
@@ -437,6 +439,8 @@ SynthPrediction <- function(Y_series_list
 
   ## BEGIN estimate fixed effects in donors
   omega_star_hat_vec <- c()
+  
+  order_of_arima <- list()
 
   for (i in 2:(n+1)){
 
@@ -458,17 +462,16 @@ SynthPrediction <- function(Y_series_list
       X_i_final <- X_i_with_indicator
     }
 
-    print('Now fitting the donor GARCH models')
-    fitted_garch <- garchx(Y_series_list[[i]][1:last_shock_point] #tk
-                           , order = arima_order
-                           , xreg = X_i_final
-                           , backcast.values = NULL
-                           , control = list(eval.max = 10000
-                                            , iter.max = 15000
-                                            , rel.tol = 1e-6))
+    print('Now fitting the donor ARIMA models')  
+    
+    arima <- auto.arima(Y_series_list[[i]][1:last_shock_point]
+                        ,xreg=
+                        ,ic = user_ic_choice)
+    
+    order_of_arima[[i]] <- arima$arma #tk
 
-    coef_test <- coeftest(fitted_garch)
-    extracted_fixed_effect <- coef_test[dim(coeftest(fitted_garch))[1], 1]
+    coef_test <- coeftest(arima)
+    extracted_fixed_effect <- coef[nrow(coef_test),1]
     omega_star_hat_vec <- c(omega_star_hat_vec, extracted_fixed_effect)
 
   } ## END loop for computing fixed effects
@@ -496,15 +499,11 @@ SynthPrediction <- function(Y_series_list
 
   if (is.null(covariate_indices) == TRUE){
 
-    fitted_garch <- garchx(Y_series_list[[1]][1:integer_shock_time_vec[1]]
-                           , order = arima_order
-                           , xreg = NULL # xreg = X[[1]][1:integer_shock_time_vec[1],]
-                           , backcast.values = NULL
-                           , control = list(eval.max = 10000
-                                            , iter.max = 15000
-                                            , rel.tol = 1e-6))
-
-    unadjusted_pred <- predict(fitted_garch, n.ahead = shock_length_vec[1])
+    arima <- auto.arima(Y_series_list[[1]][1:integer_shock_time_vec[1]]
+                        ,xreg =
+                        ,ic = user_ic_choice)
+    
+    unadjusted_pred <- predict(arima, n.ahead = shock_length_vec[1])
   }
   else{
     ## BEGIN fit GARCH to target series
@@ -581,6 +580,25 @@ SynthPrediction <- function(Y_series_list
 } ### END SynthPrediction
 
 
+
+y <- rnorm(100)
+ell <- 2
+y <- y**2 + ell
+
+library(lmtest)
+arima <- auto.arima(y)
+coef <- coeftest(mod)
+coef[nrow(coef),1]
+
+arima$var.coef
+
+arima$coef
+
+
+
+arima$model
+
+arima$
 
 auto.arima(
   y,
