@@ -395,7 +395,7 @@ SynthPrediction <- function(Y_series_list
                              ,covariate_indices = NULL
                              ,geometric_sets = NULL #tk
                              ,days_before_shocktime_vec = NULL #tk I may want to remove this
-                             ,garch_order = NULL
+                             ,arima_order = NULL
                              ,plots = TRUE
 ){
   ### BEGIN Doc string
@@ -406,7 +406,7 @@ SynthPrediction <- function(Y_series_list
   n <- length(Y_series_list) - 1
 
   if (is.null(garch_order) == TRUE) {
-    garch_order <- c(1,1,1)
+    arima_order <- c(1,1,1)
   }
 
   if (is.null(dwb_indices) == TRUE) {
@@ -460,7 +460,7 @@ SynthPrediction <- function(Y_series_list
 
     print('Now fitting the donor GARCH models')
     fitted_garch <- garchx(Y_series_list[[i]][1:last_shock_point] #tk
-                           , order = garch_order
+                           , order = arima_order
                            , xreg = X_i_final
                            , backcast.values = NULL
                            , control = list(eval.max = 10000
@@ -497,7 +497,7 @@ SynthPrediction <- function(Y_series_list
   if (is.null(covariate_indices) == TRUE){
 
     fitted_garch <- garchx(Y_series_list[[1]][1:integer_shock_time_vec[1]]
-                           , order = garch_order
+                           , order = arima_order
                            , xreg = NULL # xreg = X[[1]][1:integer_shock_time_vec[1],]
                            , backcast.values = NULL
                            , control = list(eval.max = 10000
@@ -512,7 +512,7 @@ SynthPrediction <- function(Y_series_list
     print('now we fit the garchx on TSUS')
 
     fitted_garch <- garchx(Y_series_list[[1]][1:integer_shock_time_vec[1]]
-                           , order = garch_order
+                           , order = arima_order
                            , xreg = X[[1]][1:integer_shock_time_vec[1],covariate_indices]
                            , control = list(eval.max = 10000
                                             , iter.max = 15000

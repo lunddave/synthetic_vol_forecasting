@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2022.4.28)  9 APR 2023 18:13
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2022.4.28)  29 APR 2023 19:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -762,7 +762,11 @@ File: l3backend-pdftex.def 2022-01-12 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count336
 \l__pdf_internal_box=\box76
 )
-(./synthVolForecast.aux)
+(./synthVolForecast.aux
+
+LaTeX Warning: Label `fig:arith_mean' multiply defined.
+
+)
 \openout1 = `synthVolForecast.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 118.
@@ -783,8 +787,7 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 118.
 LaTeX Font Info:    ... okay on input line 118.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 118.
 LaTeX Font Info:    ... okay on input line 118.
-
-(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+ (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count337
 \scratchdimen=\dimen289
@@ -878,48 +881,50 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 121
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] [4] [5]
-Underfull \hbox (badness 10000) in paragraph at lines 299--300
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+<simulation_plots/plot_for_early_paper.png, id=105, 450.9347pt x 436.63126pt>
+File: simulation_plots/plot_for_early_paper.png Graphic file (type png)
+<use simulation_plots/plot_for_early_paper.png>
+Package pdftex.def Info: simulation_plots/plot_for_early_paper.png  used on inp
+ut line 143.
+(pdftex.def)             Requested size: 225.4668pt x 218.3151pt.
+ [2 <./simulation_plots/plot_for_early_paper.png (PNG copy)>] [3] [4] [5]
+Underfull \hbox (badness 10000) in paragraph at lines 307--308
 
  []
 
-[6pdfTeX warning (ext4): destination with the same identifier (name{equation.2.
-1}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.312 
-      pdfTeX warning (ext4): destination with the same identifier (name{equatio
-n.2.2}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.312 
-      ]pdfTeX warning (ext4): destination with the same identifier (name{equati
-on.2.1}) has been already used, duplicate ignored
+[6]pdfTeX warning (ext4): destination with the same identifier (name{equation.2
+.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.327 \end{align}
+l.317 \end{align}
                  pdfTeX warning (ext4): destination with the same identifier (n
 ame{equation.2.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.327 \end{align}
+l.317 \end{align}
                  pdfTeX warning (ext4): destination with the same identifier (n
 ame{equation.2.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.338 \end{align}
+l.335 \end{align}
                  pdfTeX warning (ext4): destination with the same identifier (n
 ame{equation.2.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.338 \end{align}
+l.335 \end{align}
                  pdfTeX warning (ext4): destination with the same identifier (n
-ame{equation.2.3}) has been already used, duplicate ignored
+ame{equation.2.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.338 \end{align}
-                 
-Underfull \hbox (badness 10000) in paragraph at lines 340--342
+l.346 \end{align}
+                 pdfTeX warning (ext4): destination with the same identifier (n
+ame{equation.2.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.346 \end{align}
+                  [7]
+Underfull \hbox (badness 10000) in paragraph at lines 348--350
 
  []
 
@@ -927,60 +932,66 @@ pdfTeX warning (ext4): destination with the same identifier (name{equation.2.1}
 ) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.351 \end{align}
+l.359 \end{align}
                  pdfTeX warning (ext4): destination with the same identifier (n
 ame{equation.2.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.351 \end{align}
+l.359 \end{align}
                  pdfTeX warning (ext4): destination with the same identifier (n
 ame{equation.2.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.351 \end{align}
-                  [7] [8pdfTeX warning (ext4): destination with the same identi
-fier (name{equation.2.4}) has been already used, duplicate ignored
+l.359 \end{align}
+                  [8pdfTeX warning (ext4): destination with the same identifier
+ (name{equation.2.3}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.389 \item L
-             in+Eck 2021 requires exogenous information to arrive strictly b...
+l.388 \item P
+             ractically infeasible: If we did that, we would need quite a fe...
+pdfTeX warning (ext4): destination with the same identifier (name{equation.2.4}
+) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.388 \item P
+             ractically infeasible: If we did that, we would need quite a fe...
 ]pdfTeX warning (ext4): destination with the same identifier (name{equation.2.1
 }) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.404 \end{align}
-                 
+l.412 \end{align}
+                  [9]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 422.
+               Default added (so using `tbp') on input line 430.
 
 
-Underfull \hbox (badness 1796) in paragraph at lines 426--426
+Underfull \hbox (badness 1796) in paragraph at lines 434--434
 []|\OT1/cmr/m/n/10.95 Captures rea-son-able pos-si-
  []
 
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 431.
+               Default added (so using `tbp') on input line 439.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 439--439
+Underfull \hbox (badness 10000) in paragraph at lines 447--447
 []|$\OML/cmm/m/it/10.95 A[]$ \OT1/cmr/m/n/10.95 in-de-pen-dent $\OMS/cmsy/m/n/1
 0.95 8\OML/cmm/m/it/10.95 i$\OT1/cmr/m/n/10.95 ,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 439--439
+Underfull \hbox (badness 10000) in paragraph at lines 447--447
 []|$\OML/cmm/m/it/10.95 x[]$ \OT1/cmr/m/n/10.95 in-de-pen-dent across
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 439--439
+Underfull \hbox (badness 10000) in paragraph at lines 447--447
 []|$\OML/cmm/m/it/10.95 x[]$ \OT1/cmr/m/n/10.95 in-de-pen-dent across
  []
 
 
-Overfull \hbox (35.54613pt too wide) in paragraph at lines 432--443
+Overfull \hbox (35.54613pt too wide) in paragraph at lines 440--451
 [][] 
  []
 
@@ -988,43 +999,56 @@ pdfTeX warning (ext4): destination with the same identifier (name{equation.2.1}
 ) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.451 \end{align}
-                  [9] (./synthVolForecast.bbl [10]) [11]
-(./synthVolForecast.aux)
+l.459 \end{align}
+                 
+<simulation_plots/outperformance_grid.png, id=202, 580.22485pt x 571.27715pt>
+File: simulation_plots/outperformance_grid.png Graphic file (type png)
+<use simulation_plots/outperformance_grid.png>
+Package pdftex.def Info: simulation_plots/outperformance_grid.png  used on inpu
+t line 473.
+(pdftex.def)             Requested size: 290.11171pt x 285.63788pt.
+ [10] (./synthVolForecast.bbl [11 <./simulation_plots/outperformance_grid.png (
+PNG copy)>]) [12] (./synthVolForecast.aux)
+
+LaTeX Warning: There were multiply-defined labels.
+
 Package rerunfilecheck Info: File `synthVolForecast.out' has not changed.
 (rerunfilecheck)             Checksum: 18BEF04AB25EDEED05BFF8A69A14B211;2896.
  ) 
 Here is how much of TeX's memory you used:
- 24618 strings out of 478287
- 450634 string characters out of 5849289
- 747937 words of memory out of 5000000
- 42313 multiletter control sequences out of 15000+600000
+ 24643 strings out of 478287
+ 451395 string characters out of 5849289
+ 745055 words of memory out of 5000000
+ 42330 multiletter control sequences out of 15000+600000
  486105 words of font info for 88 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,17n,80p,1565b,458s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.p
-fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/t
-exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
-onts/symbols/msbm10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0600.
-pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0800.pfb>
-Output written on synthVolForecast.pdf (11 pages, 292384 bytes).
+ 84i,17n,80p,1565b,460s stack positions out of 5000i,500n,10000p,200000b,80000s
+pdfTeX warning (dest): name{figure.caption.2} has been referenced but does no
+t exist, replaced by a fixed one
+
+{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texlive
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+r12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
+ts/symbols/msbm10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0600.pf
+b></usr/share/texmf/fonts/type1/public/cm-super/sfrm0800.pfb>
+Output written on synthVolForecast.pdf (12 pages, 505630 bytes).
 PDF statistics:
- 316 PDF objects out of 1000 (max. 8388607)
- 260 compressed objects within 3 object streams
- 70 named destinations out of 1000 (max. 500000)
- 133 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 329 PDF objects out of 1000 (max. 8388607)
+ 270 compressed objects within 3 object streams
+ 74 named destinations out of 1000 (max. 500000)
+ 143 words of extra memory for PDF output out of 10000 (max. 10000000)
 
