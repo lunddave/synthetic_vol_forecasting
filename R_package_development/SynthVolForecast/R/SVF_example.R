@@ -68,13 +68,13 @@ shock_dates <- c("2020-03-06"
                  , "2008-03-14"
                  )
 
-k <- 2
+k <- 1
 ## END USER DATA INPUTS##
 
 nyse <- timeDate::holidayNYSE(2000:year(Sys.Date())+1)
 create.calendar(name='NYSE', holidays=nyse, weekdays=c('saturday', 'sunday'))
 shock_dates_as_dates <- as.Date(shock_dates)
-start_dates <- offset(shock_dates_as_dates, round(-1.2*252), "NYSE")
+start_dates <- offset(shock_dates_as_dates, round(-.6*252), "NYSE")
 k_periods_after_shock <- offset(shock_dates_as_dates, k, "NYSE")
 
 market_data_list <- vector("list", length(shock_dates))
@@ -128,6 +128,15 @@ temp <- SynthVolForecast(Y
 
 temp$linear_combinations
 temp$predictions
+
+#Now run the algorithm
+temp <- SynthPrediction(Y
+                         ,X
+                         ,shock_time_vec = shock_dates
+                         ,rep(k, n+1)
+                         ,dwb_indices = NULL
+                         ,covariate_indices = c((length(X)-1):length(X))
+                         ,plots = TRUE)
 
 
 ## GARCH on

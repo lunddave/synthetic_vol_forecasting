@@ -153,13 +153,17 @@ plot_maker <- function(fitted_vol
 
   #Plot target series and prediction
 
+  thing_to_get_max_of <- c(unlist(fitted_vol), unadjusted_pred, adjusted_pred)
+
+  max_for_y_lim <- max(thing_to_get_max_of)
+
   #PLOT ON THE RIGHT:
   plot.ts(fitted_vol[1:shock_time_vec[1]], #mk
        main = 'Two Forecasts Following T*', #mk can improve this title
        ylab = '',
        xlab = "Trading Days",
        xlim = c(0, shock_time_vec[1] + 5), #mk
-       ylim = c(0,  max(fitted_vol, unadjusted_pred, adjusted_pred) ) )
+       ylim = c(min(0, fitted_vol),  max_for_y_lim))
 
   title(ylab = expression(sigma^2), line = 2.05, cex.lab = 1.99) # Add y-axis text
 
@@ -315,9 +319,6 @@ SynthVolForecast <- function(Y_series_list
   }
   else{
     ## BEGIN fit GARCH to target series
-
-    print('now we fit the garchx on TSUS')
-
     fitted_garch <- garchx(Y_series_list[[1]][1:integer_shock_time_vec[1]]
                            , order = garch_order
                            , xreg = X[[1]][1:integer_shock_time_vec[1],covariate_indices]
@@ -332,14 +333,10 @@ SynthVolForecast <- function(Y_series_list
                                                , nrow = shock_length_vec[1]
                                                , byrow = TRUE)
 
-    print(X_replicated_for_forecast_length)
 
-    print('Now we cbind the TSUS and covariates')
     forecast_period <- (integer_shock_time_vec[1]+1):(integer_shock_time_vec[1]+shock_length_vec[1])
     mat_X_for_forecast <- cbind(Y_series_list[[1]][forecast_period]
                            , X_replicated_for_forecast_length)
-
-    print(mat_X_for_forecast)
 
     unadjusted_pred <- predict(fitted_garch
                                , n.ahead = shock_length_vec[1]
@@ -397,7 +394,7 @@ SynthPrediction <- function(Y_series_list
                              ,geometric_sets = NULL #tk
                              ,days_before_shocktime_vec = NULL #tk I may want to remove this
                              ,arima_order = NULL
-                             ,user_ic_choice
+                             ,user_ic_choice = c('aicc','aic','bic')[1]
                              ,plots = TRUE
 ){
   ### BEGIN Doc string
@@ -407,7 +404,7 @@ SynthPrediction <- function(Y_series_list
   ### BEGIN Populate defaults
   n <- length(Y_series_list) - 1
 
-  if (is.null(garch_order) == TRUE) {
+  if (is.null(arima_order) == TRUE) {
     arima_order <- c(1,1,1)
   }
 
@@ -439,7 +436,7 @@ SynthPrediction <- function(Y_series_list
 
   ## BEGIN estimate fixed effects in donors
   omega_star_hat_vec <- c()
-  
+
   order_of_arima <- list()
 
   for (i in 2:(n+1)){
@@ -462,19 +459,26 @@ SynthPrediction <- function(Y_series_list
       X_i_final <- X_i_with_indicator
     }
 
-    print('Now fitting the donor ARIMA models')  
-    
+    print('Now fitting the donor ARIMA models')
+
     arima <- auto.arima(Y_series_list[[i]][1:last_shock_point]
-                        ,xreg=
+                        ,xreg=X_i_final
                         ,ic = user_ic_choice)
-    
+
     order_of_arima[[i]] <- arima$arma #tk
 
+    print('print order of arima')
+    print(arima$arma)
+
     coef_test <- coeftest(arima)
-    extracted_fixed_effect <- coef[nrow(coef_test),1]
+    extracted_fixed_effect <- coef_test[nrow(coef_test),1]
     omega_star_hat_vec <- c(omega_star_hat_vec, extracted_fixed_effect)
 
   } ## END loop for computing fixed effects
+
+  print('now we print dataframe with orders...')
+  df <- matrix(unlist(order_of_arima), byrow = TRUE, nrow = length(order_of_arima))
+  print(df)
 
   ## END estimate fixed effects in donors
 
@@ -491,31 +495,28 @@ SynthPrediction <- function(Y_series_list
                # penalty_lambda = penalty_lambda
   )
 
-  omega_star_hat <- w_hat %*% omega_star_hat_vec
+  omega_star_hat <- as.numeric(w_hat %*% omega_star_hat_vec)
   ## END compute linear combination of fixed effects
-
 
   ## BEGIN fit GARCH to target series
 
   if (is.null(covariate_indices) == TRUE){
 
     arima <- auto.arima(Y_series_list[[1]][1:integer_shock_time_vec[1]]
-                        ,xreg =
+                        ,xreg = NULL
                         ,ic = user_ic_choice)
-    
+
     unadjusted_pred <- predict(arima, n.ahead = shock_length_vec[1])
+
   }
   else{
     ## BEGIN fit GARCH to target series
 
-    print('now we fit the garchx on TSUS')
+    print('now we fit the arima on TSUS')
 
-    fitted_garch <- garchx(Y_series_list[[1]][1:integer_shock_time_vec[1]]
-                           , order = arima_order
-                           , xreg = X[[1]][1:integer_shock_time_vec[1],covariate_indices]
-                           , control = list(eval.max = 10000
-                                            , iter.max = 15000
-                                            , rel.tol = 1e-6))
+    arima <- auto.arima(Y_series_list[[1]][1:integer_shock_time_vec[1]]
+                        ,xreg = X[[1]][1:integer_shock_time_vec[1],covariate_indices]
+                        ,ic = user_ic_choice)
 
     #Note: for forecasting, we use last-observed X value
     X_to_use_in_forecast <- X[[1]][integer_shock_time_vec[1],covariate_indices]
@@ -533,12 +534,15 @@ SynthPrediction <- function(Y_series_list
 
     print(mat_X_for_forecast)
 
-    unadjusted_pred <- predict(fitted_garch
+    unadjusted_pred <- predict(arima
                                , n.ahead = shock_length_vec[1]
                                , newxreg = mat_X_for_forecast[,-1])
   }
 
-  adjusted_pred <- as.vector(unadjusted_pred) + omega_star_hat
+  print('now we print omega star hat')
+  print(omega_star_hat)
+
+  adjusted_pred <- as.vector(unadjusted_pred$pred) + omega_star_hat
 
   list_of_linear_combinations <- list(w_hat)
   list_of_forcasts <- list(unadjusted_pred, adjusted_pred)
@@ -557,18 +561,22 @@ SynthPrediction <- function(Y_series_list
       'Lengths of shock times:', shock_length_vec, '\n',
       'Shock estimates provided by donors:', omega_star_hat_vec, '\n',
       'Aggregate estimated shock effect:', omega_star_hat, '\n',
-      '\n'
+      'Actual change in stock price at T* + 1:', Y_series_list[[1]][integer_shock_time_vec[1]+1],'\n',
+      'Adjusted forecasted change in stock price at T* + 1:', unadjusted_pred$pred,'\n',
+      'MSE unadjusted:', (Y_series_list[[1]][integer_shock_time_vec[1]+1]-unadjusted_pred$pred)**2,'\n',
+      'Adjusted forecasted change in stock price at T* + 1:', adjusted_pred,'\n',
+      'MSE adjusted:', (Y_series_list[[1]][integer_shock_time_vec[1]+1]-adjusted_pred)**2,'\n'
   )
 
   ## PLOTS
 
   if (plots == TRUE){
     cat('User has opted to produce plots.','\n')
-    plot_maker(fitted(fitted_garch)
+    plot_maker(as.numeric(Y_series_list[[1]])
                ,shock_time_vec
                ,integer_shock_time_vec
                ,shock_length_vec
-               ,unadjusted_pred
+               ,unadjusted_pred$pred
                ,w_hat
                ,omega_star_hat
                ,adjusted_pred)
@@ -583,7 +591,7 @@ SynthPrediction <- function(Y_series_list
 
 y <- rnorm(100)
 ell <- 2
-y <- y**2 + ell
+y <- y**2 + ell - y**1.2 - .2*y**3 + cos(y)
 
 library(lmtest)
 arima <- auto.arima(y)
@@ -598,7 +606,7 @@ arima$coef
 
 arima$model
 
-arima$
+arima$arma
 
 auto.arima(
   y,

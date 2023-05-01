@@ -10,7 +10,7 @@ library(dplyr)
 
 #https://gist.github.com/bannister/8002800
 path <- '/home/david/Desktop/synthetic_vol_forecasting/simulation_results'
-files <- list.files(path=path, pattern = ".*Apr29.*Rdata$")
+files <- list.files(path=path, pattern = ".*Apr16.*Rdata$")
 setwd(path)
 results <- sapply(files, function(x) mget(load(x)), simplify = TRUE)
 output <- do.call(rbind, results)
@@ -65,17 +65,17 @@ library("reshape")
 library(dplyr)
 library(ggplot2)
 
-means <- non_NA %>% group_by(vol_shock_length, M21_M22_vol_mu_delta) %>% summarise(prop=mean(success))
+means <- non_NA %>% group_by(vol_shock_sd, M21_M22_vol_mu_delta) %>% summarise(prop=mean(success))
 means <- as.data.frame(sapply(means, as.numeric))
 means$prop <- round(means$prop, 2)
 
-count <- non_NA %>% group_by(vol_shock_length, M21_M22_vol_mu_delta) %>% count()
+count <- non_NA %>% group_by(vol_shock_sd, M21_M22_vol_mu_delta) %>% count()
 count
 
 means$n <- count$n
 
 ggp <- ggplot(means,
-              aes(x = factor(vol_shock_length), y = factor(M21_M22_vol_mu_delta), fill = prop)) +
+              aes(x = factor(vol_shock_sd), y = factor(M21_M22_vol_mu_delta), fill = prop)) +
   scale_fill_gradient(low="white",  high="red") +
   geom_tile() +
   geom_text(aes(label = paste(prop, '\n(',n,')', sep =''))) +
@@ -86,21 +86,23 @@ ggp <- ggplot(means,
   labs(x = "Volatility Shock Standard Deviation", y = "Volatility Shock Mean")
 ggp
 
+#
+# # Now we write a function
+# heatmap_maker <- function(df, var1, var2){
+#
+#   means <- df %>% group_by(var1, var2) %>%
+#     summarise(prop=mean(success))
+#   means <- as.data.frame(sapply(means, as.numeric))
+#
+#   ggp <- ggplot(means,
+#                 aes(x = factor(var1), y = factor(var2), fill = prop)) +
+#     scale_fill_gradient(low="white",  high="red") +
+#     geom_tile()
+#
+#   ggp
+# }
+#
+# heatmap_maker(non_NA, garch_param, vol_shock_sd)
 
-# Now we write a function
-heatmap_maker <- function(df, var1, var2){
 
-  means <- df %>% group_by(var1, var2) %>%
-    summarise(prop=mean(success))
-  means <- as.data.frame(sapply(means, as.numeric))
-
-  ggp <- ggplot(means,
-                aes(x = factor(var1), y = factor(var2), fill = prop)) +
-    scale_fill_gradient(low="white",  high="red") +
-    geom_tile()
-
-  ggp
-}
-
-heatmap_maker(non_NA, garch_param, vol_shock_sd)
-
+means$prop <- means$prop - shortest_series$prop
