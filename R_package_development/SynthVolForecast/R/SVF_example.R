@@ -136,7 +136,8 @@ temp <- SynthPrediction(Y
                          ,rep(k, n+1)
                          ,dwb_indices = NULL
                          ,covariate_indices = c((length(X)-1):length(X))
-                         ,plots = TRUE)
+                         ,plots = TRUE
+                         ,display_ground_truth_choice = TRUE)
 
 
 ## GARCH on

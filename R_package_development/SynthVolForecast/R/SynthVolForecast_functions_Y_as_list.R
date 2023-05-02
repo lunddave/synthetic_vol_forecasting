@@ -128,8 +128,8 @@ dbw <- function(X
 } #END dbw function
 ### END dbw
 
-### START plot_maker
-plot_maker <- function(fitted_vol
+### START GARCH plot_maker_garch
+plot_maker_garch <- function(fitted_vol
                       ,shock_times_for_barplot
                       ,shock_time_vec #mk
                       ,shock_length_vec
@@ -194,7 +194,85 @@ plot_maker <- function(fitted_vol
          cex = .9)
 
 }
-### END plot_maker
+### END plot_maker_garch
+
+
+### START GARCH plot_maker_synthprediction
+plot_maker_synthprediction <- function(fitted_vol
+                       ,shock_times_for_barplot
+                       ,shock_time_vec #mk
+                       ,shock_length_vec
+                       ,unadjusted_pred
+                       ,w_hat
+                       ,omega_star_hat
+                       ,adjusted_pred
+                       ,display_ground_truth = FALSE){
+
+  if (is.character(shock_times_for_barplot) == FALSE){
+    shock_times_for_barplot <- 1:length(shock_times_for_barplot)
+  }
+
+  par(mfrow = c(1,2))
+
+  #PLOT ON THE LEFT:
+  #Plot donor weights
+  barplot(w_hat
+          ,  main = 'Donor Pool Weights'
+          , names.arg = shock_times_for_barplot[-1]
+          , cex.names=.6)
+
+  #Plot target series and prediction
+
+  thing_to_get_max_of <- c(unlist(fitted_vol), unadjusted_pred, adjusted_pred)
+
+  max_for_y_lim <- max(thing_to_get_max_of)
+
+  #PLOT ON THE RIGHT:
+  plot.ts(fitted_vol[1:shock_time_vec[1]], #mk
+          main = 'Two Forecasts Following T*', #mk can improve this title
+          ylab = '',
+          xlab = "Trading Days",
+          xlim = c(0, shock_time_vec[1] + 5), #mk
+          ylim = c(min(0, fitted_vol),  max_for_y_lim))
+
+  title(ylab = 'Differenced Logarithm', line = 2.05, cex.lab = 1.99) # Add y-axis text
+
+  # Here is the color scheme we will use
+  colors_for_adjusted_pred <- c('red', "green",'purple')
+
+  # Let's add the plain old GARCH prediction
+  points(y = unadjusted_pred
+         ,x = (shock_time_vec[1]+1):(shock_time_vec[1]+shock_length_vec[1])
+         ,col = colors_for_adjusted_pred[1]
+         ,cex = .9
+         ,pch = 15)
+
+  # Now plot the adjusted predictions
+  points(y = adjusted_pred
+         ,x = (shock_time_vec[1]+1):(shock_time_vec[1]+shock_length_vec[1])
+         ,col = colors_for_adjusted_pred[2]
+         ,cex = .9
+         ,pch = 23)
+
+  if (display_ground_truth == TRUE){
+    lines(y = fitted_vol[shock_time_vec[1]:(shock_time_vec[1] + shock_length_vec[1])]
+          ,x = shock_time_vec[1]:(shock_time_vec[1] + shock_length_vec[1])
+          ,col = colors_for_adjusted_pred[3]
+          ,cex = .9
+          ,lty = 3)
+  }
+
+  labels_for_legend <- c('ARIMA (unadjusted)', 'Adjusted Prediction', 'Actual')
+
+  legend(x = "topleft",  # Coordinates (x also accepts keywords) #mk
+         legend = labels_for_legend,
+         1:length(labels_for_legend), # Vector with the name of each group
+         colors_for_adjusted_pred,   # Creates boxes in the legend with the specified colors
+         title = 'Prediction Method',      # Legend title,
+         cex = .9)
+
+}
+### END plot_maker_synthprediction
 
 
 ### START SynthVolForecast
@@ -369,7 +447,7 @@ SynthVolForecast <- function(Y_series_list
 
   if (plots == TRUE){
     cat('User has opted to produce plots.','\n')
-    plot_maker(fitted(fitted_garch)
+    plot_maker_garch(fitted(fitted_garch)
                ,shock_time_vec
                ,integer_shock_time_vec
                ,shock_length_vec
@@ -396,6 +474,7 @@ SynthPrediction <- function(Y_series_list
                              ,arima_order = NULL
                              ,user_ic_choice = c('aicc','aic','bic')[1]
                              ,plots = TRUE
+                             ,display_ground_truth_choice = FALSE
 ){
   ### BEGIN Doc string
   #tk
@@ -476,9 +555,10 @@ SynthPrediction <- function(Y_series_list
 
   } ## END loop for computing fixed effects
 
-  print('now we print dataframe with orders...')
-  df <- matrix(unlist(order_of_arima), byrow = TRUE, nrow = length(order_of_arima))
-  print(df)
+  #tk
+  # print('now we print dataframe with orders...')
+  # df <- matrix(unlist(order_of_arima), byrow = TRUE, nrow = length(order_of_arima))
+  # print(df)
 
   ## END estimate fixed effects in donors
 
@@ -572,14 +652,15 @@ SynthPrediction <- function(Y_series_list
 
   if (plots == TRUE){
     cat('User has opted to produce plots.','\n')
-    plot_maker(as.numeric(Y_series_list[[1]])
+    plot_maker_synthprediction(as.numeric(Y_series_list[[1]])
                ,shock_time_vec
                ,integer_shock_time_vec
                ,shock_length_vec
                ,unadjusted_pred$pred
                ,w_hat
                ,omega_star_hat
-               ,adjusted_pred)
+               ,adjusted_pred
+               ,display_ground_truth = display_ground_truth_choice)
 
   }
 
