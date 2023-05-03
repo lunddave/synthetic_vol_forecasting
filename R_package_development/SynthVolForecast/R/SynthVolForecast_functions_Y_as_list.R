@@ -197,8 +197,8 @@ plot_maker_garch <- function(fitted_vol
 ### END plot_maker_garch
 
 
-### START GARCH plot_maker_synthprediction
-plot_maker_synthprediction <- function(fitted_vol
+### START plot_maker_synthprediction
+plot_maker_synthprediction <- function(Y
                        ,shock_times_for_barplot
                        ,shock_time_vec #mk
                        ,shock_length_vec
@@ -212,6 +212,37 @@ plot_maker_synthprediction <- function(fitted_vol
     shock_times_for_barplot <- 1:length(shock_times_for_barplot)
   }
 
+  #First print donor series
+  par(mfrow = c(round(sqrt(n)),ceiling(sqrt(n))) )
+
+  for (i in 2:(n+1)){
+    print('Now we are printing the ith series')
+    plot.ts(Y[[i]][1:shock_time_vec[i]]
+            ,xlab = 'Trading Days'
+            ,ylab = 'Differenced Logarithm'
+            ,main = paste('Donor ', i,': ', shock_times_for_barplot[i], sep = '')
+            ,xlim = c(0, shock_time_vec[i] + 5)
+            ,ylim = c(min(Y[[i]]),  max(Y[[i]]))
+            )
+
+    if (display_ground_truth == TRUE){
+
+      lines(y = Y[[i]][shock_time_vec[i]:(shock_time_vec[i] + shock_length_vec[i])]
+            ,x = shock_time_vec[i]:(shock_time_vec[i] + shock_length_vec[i])
+            ,col = 'purple'
+            ,cex = 1.1
+            ,lty = 3)
+
+      points(y = Y[[i]][(shock_time_vec[i]+1):(shock_time_vec[i] + shock_length_vec[i])]
+             ,x = (shock_time_vec[i]+1):(shock_time_vec[i] + shock_length_vec[i])
+             ,col = 'red'
+             ,cex = 1.1
+             ,pch = 24)
+
+    }
+  }
+
+  #Now print time series under study
   par(mfrow = c(1,2))
 
   #PLOT ON THE LEFT:
@@ -223,17 +254,17 @@ plot_maker_synthprediction <- function(fitted_vol
 
   #Plot target series and prediction
 
-  thing_to_get_max_of <- c(unlist(fitted_vol), unadjusted_pred, adjusted_pred)
+  thing_to_get_max_of <- c(as.numeric(Y[[1]]), unadjusted_pred, adjusted_pred)
 
   max_for_y_lim <- max(thing_to_get_max_of)
 
   #PLOT ON THE RIGHT:
-  plot.ts(fitted_vol[1:shock_time_vec[1]], #mk
+  plot.ts(Y[[1]][1:shock_time_vec[1]], #mk
           main = 'Two Forecasts Following T*', #mk can improve this title
           ylab = '',
           xlab = "Trading Days",
           xlim = c(0, shock_time_vec[1] + 5), #mk
-          ylim = c(min(0, fitted_vol),  max_for_y_lim))
+          ylim = c(min(0, Y[[1]]),  max_for_y_lim))
 
   title(ylab = 'Differenced Logarithm', line = 2.05, cex.lab = 1.99) # Add y-axis text
 
@@ -251,15 +282,23 @@ plot_maker_synthprediction <- function(fitted_vol
   points(y = adjusted_pred
          ,x = (shock_time_vec[1]+1):(shock_time_vec[1]+shock_length_vec[1])
          ,col = colors_for_adjusted_pred[2]
-         ,cex = .9
+         ,cex = 1.1
          ,pch = 23)
 
   if (display_ground_truth == TRUE){
-    lines(y = fitted_vol[shock_time_vec[1]:(shock_time_vec[1] + shock_length_vec[1])]
+
+    lines(y = Y[[1]][shock_time_vec[1]:(shock_time_vec[1] + shock_length_vec[1])]
           ,x = shock_time_vec[1]:(shock_time_vec[1] + shock_length_vec[1])
           ,col = colors_for_adjusted_pred[3]
-          ,cex = .9
+          ,cex = 1.1
           ,lty = 3)
+
+    points(y = Y[[1]][(shock_time_vec[1]+1):(shock_time_vec[1] + shock_length_vec[1])]
+          ,x = (shock_time_vec[1]+1):(shock_time_vec[1] + shock_length_vec[1])
+          ,col = colors_for_adjusted_pred[3]
+          ,cex = 1.1
+          ,pch = 24)
+
   }
 
   labels_for_legend <- c('ARIMA (unadjusted)', 'Adjusted Prediction', 'Actual')
@@ -435,18 +474,17 @@ SynthVolForecast <- function(Y_series_list
   ## tk OUTPUT
   cat('SynthVolForecast Details','\n',
       '-------------------------------------------------------------\n',
-      'Donors:', n, '\n',
-      'Shock times:', shock_time_vec, '\n',
-      'Lengths of shock times:', shock_length_vec, '\n',
-      'Shock estimates provided by donors:', omega_star_hat_vec, '\n',
-      'Aggregate estimated shock effect:', omega_star_hat, '\n',
-      '\n'
+      'Donors:', n, '\n',  '\n',
+      'Shock times:', shock_time_vec, '\n', '\n',
+      'Lengths of shock times:', shock_length_vec, '\n', '\n',
+      'Shock estimates provided by donors:', omega_star_hat_vec, '\n', '\n',
+      'Aggregate estimated shock effect:', omega_star_hat, '\n', '\n'
   )
 
   ## PLOTS
 
   if (plots == TRUE){
-    cat('User has opted to produce plots.','\n')
+    cat('\n User has opted to produce plots.','\n')
     plot_maker_garch(fitted(fitted_garch)
                ,shock_time_vec
                ,integer_shock_time_vec
@@ -544,6 +582,8 @@ SynthPrediction <- function(Y_series_list
                         ,xreg=X_i_final
                         ,ic = user_ic_choice)
 
+    print(arima)
+
     order_of_arima[[i]] <- arima$arma #tk
 
     print('print order of arima')
@@ -598,6 +638,8 @@ SynthPrediction <- function(Y_series_list
                         ,xreg = X[[1]][1:integer_shock_time_vec[1],covariate_indices]
                         ,ic = user_ic_choice)
 
+    print(arima)
+
     #Note: for forecasting, we use last-observed X value
     X_to_use_in_forecast <- X[[1]][integer_shock_time_vec[1],covariate_indices]
 
@@ -618,9 +660,6 @@ SynthPrediction <- function(Y_series_list
                                , n.ahead = shock_length_vec[1]
                                , newxreg = mat_X_for_forecast[,-1])
   }
-
-  print('now we print omega star hat')
-  print(omega_star_hat)
 
   adjusted_pred <- as.vector(unadjusted_pred$pred) + omega_star_hat
 
@@ -652,7 +691,7 @@ SynthPrediction <- function(Y_series_list
 
   if (plots == TRUE){
     cat('User has opted to produce plots.','\n')
-    plot_maker_synthprediction(as.numeric(Y_series_list[[1]])
+    plot_maker_synthprediction(Y_series_list
                ,shock_time_vec
                ,integer_shock_time_vec
                ,shock_length_vec
@@ -668,62 +707,3 @@ SynthPrediction <- function(Y_series_list
 
 } ### END SynthPrediction
 
-
-
-y <- rnorm(100)
-ell <- 2
-y <- y**2 + ell - y**1.2 - .2*y**3 + cos(y)
-
-library(lmtest)
-arima <- auto.arima(y)
-coef <- coeftest(mod)
-coef[nrow(coef),1]
-
-arima$var.coef
-
-arima$coef
-
-
-
-arima$model
-
-arima$arma
-
-auto.arima(
-  y,
-  d = NA,
-  D = NA,
-  max.p = 5,
-  max.q = 5,
-  max.P = 2,
-  max.Q = 2,
-  max.order = 5,
-  max.d = 2,
-  max.D = 1,
-  start.p = 2,
-  start.q = 2,
-  start.P = 1,
-  start.Q = 1,
-  stationary = FALSE,
-  seasonal = TRUE,
-  ic = c("aicc", "aic", "bic"),
-  stepwise = TRUE,
-  nmodels = 94,
-  trace = FALSE,
-  approximation = (length(x) > 150 | frequency(x) > 12),
-  method = NULL,
-  truncate = NULL,
-  xreg = NULL,
-  test = c("kpss", "adf", "pp"),
-  test.args = list(),
-  seasonal.test = c("seas", "ocsb", "hegy", "ch"),
-  seasonal.test.args = list(),
-  allowdrift = TRUE,
-  allowmean = TRUE,
-  lambda = NULL,
-  biasadj = FALSE,
-  parallel = FALSE,
-  num.cores = 2,
-  x = y,
-  ...
-)
