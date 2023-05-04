@@ -60,6 +60,15 @@ log_ret_covariates <- c("COP" #first should be time series under study
 
 level_covariates <- c('^VIX','^IRX')
 
+volume_covariates <- c("COP" #first should be time series under study
+                        ,'SPY'
+                        ,'XOM'
+                        ,'CVX'
+                        ,'SHEL'
+                        ,'TTE'
+                        ,'BP'
+)
+
 shock_dates <- c("2020-03-06"
                  ,"2014-11-26"
                  , "2008-09-25"
@@ -74,7 +83,7 @@ k <- 1
 nyse <- timeDate::holidayNYSE(2000:year(Sys.Date())+1)
 create.calendar(name='NYSE', holidays=nyse, weekdays=c('saturday', 'sunday'))
 shock_dates_as_dates <- as.Date(shock_dates)
-start_dates <- offset(shock_dates_as_dates, round(-.6*252), "NYSE")
+start_dates <- offset(shock_dates_as_dates, round(-.2*252), "NYSE")
 k_periods_after_shock <- offset(shock_dates_as_dates, k, "NYSE")
 
 market_data_list <- vector("list", length(shock_dates))
@@ -93,9 +102,15 @@ for (i in 1:length(shock_dates)){
     na.omit(getSymbols(sym
                        ,from=start_dates[i]
                        ,to=k_periods_after_shock[i]+10 #tk +10
-                       ,auto.assign=FALSE))[,4]})
+                       ,auto.assign=FALSE))[,6]})
 
-  to_add <- c(to_add, to_add_2)
+  to_add_3 <- lapply(volume_covariates, function(sym) {
+    na.omit(getSymbols(sym
+                       ,from=start_dates[i]
+                       ,to=k_periods_after_shock[i]+10 #tk +10
+                       ,auto.assign=FALSE))[,6]})
+
+  to_add <- c(to_add, to_add_2, to_add_3)
   market_data_list[[i]] <- do.call(merge, to_add)
 
 }
@@ -135,7 +150,7 @@ temp <- SynthPrediction(Y
                          ,shock_time_vec = shock_dates
                          ,rep(k, n+1)
                          ,dwb_indices = NULL
-                         ,covariate_indices = c((length(X)-1):length(X))
+                         ,covariate_indices = (length(X)-1):length(X)
                          ,plots = TRUE
                          ,display_ground_truth_choice = TRUE)
 

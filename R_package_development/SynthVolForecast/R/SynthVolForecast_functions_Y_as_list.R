@@ -531,7 +531,6 @@ SynthPrediction <- function(Y_series_list
 
   ### END Populate defaults
 
-
   ## BEGIN Check that inputs are all comformable/acceptable
   n <- length(Y_series_list) - 1 #tk
   ## END Check that inputs are all comformable/acceptable
@@ -586,19 +585,11 @@ SynthPrediction <- function(Y_series_list
 
     order_of_arima[[i]] <- arima$arma #tk
 
-    print('print order of arima')
-    print(arima$arma)
-
     coef_test <- coeftest(arima)
     extracted_fixed_effect <- coef_test[nrow(coef_test),1]
     omega_star_hat_vec <- c(omega_star_hat_vec, extracted_fixed_effect)
 
   } ## END loop for computing fixed effects
-
-  #tk
-  # print('now we print dataframe with orders...')
-  # df <- matrix(unlist(order_of_arima), byrow = TRUE, nrow = length(order_of_arima))
-  # print(df)
 
   ## END estimate fixed effects in donors
 
@@ -632,10 +623,10 @@ SynthPrediction <- function(Y_series_list
   else{
     ## BEGIN fit GARCH to target series
 
-    print('now we fit the arima on TSUS')
+    X_lagged <- lag.xts(X[[1]][1:integer_shock_time_vec[1],covariate_indices])
 
     arima <- auto.arima(Y_series_list[[1]][1:integer_shock_time_vec[1]]
-                        ,xreg = X[[1]][1:integer_shock_time_vec[1],covariate_indices]
+                        ,xreg = X_lagged
                         ,ic = user_ic_choice)
 
     print(arima)
@@ -647,19 +638,31 @@ SynthPrediction <- function(Y_series_list
                                                , nrow = shock_length_vec[1]
                                                , byrow = TRUE)
 
-    print(X_replicated_for_forecast_length)
-
-    print('Now we cbind the TSUS and covariates')
     forecast_period <- (integer_shock_time_vec[1]+1):(integer_shock_time_vec[1]+shock_length_vec[1])
     mat_X_for_forecast <- cbind(Y_series_list[[1]][forecast_period]
                                 , X_replicated_for_forecast_length)
-
-    print(mat_X_for_forecast)
 
     unadjusted_pred <- predict(arima
                                , n.ahead = shock_length_vec[1]
                                , newxreg = mat_X_for_forecast[,-1])
   }
+
+
+  ##We take care of housekeeping
+  #tk
+  order_of_arima[[1]] <- arima$arma
+
+  print('now we print dataframe with orders...')
+  order_matrix <- matrix(unlist(order_of_arima), byrow = TRUE, nrow = length(order_of_arima))
+
+  print(order_matrix)
+
+  if( unique(order_matrix[,2]) > 1 ) {
+    message <- paste('NOT all series are I(', order_matrix[,2], ')')
+    warning(message)
+  }
+
+  ##
 
   adjusted_pred <- as.vector(unadjusted_pred$pred) + omega_star_hat
 
