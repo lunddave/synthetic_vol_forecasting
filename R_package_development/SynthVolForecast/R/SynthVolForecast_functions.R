@@ -2,10 +2,12 @@
 library(Rsolnp)
 library(garchx)
 library(lmtest)
+library(forecast)
+
 
 ### START dbw
 dbw <- function(X
-                ,number_covariates_to_use
+                ,dbw_indices
                 ,shock_time_vec
                 ,scale = FALSE
                 ,sum_to_1 = 1
@@ -26,27 +28,28 @@ dbw <- function(X
   n <- length(X) - 1
 
   # COVARIATE FOR TIME SERIES UNDER STUDY AT shock_time_vec
-  X1 <- X[[1]][shock_time_vec[1], (1:number_covariates_to_use) #mk
-               , drop = FALSE] # we get only 1 row
+  X1 <- X[[1]][shock_time_vec[1], dbw_indices, drop = FALSE] # we get only 1 row
 
   # LOOP for grab shock_time_vec covariate vector for each donor
   X0 <- c()
   for (i in 1:n) {
-    X0[[i]] <- X[[i + 1]][shock_time_vec[i + 1], (1:number_covariates_to_use)
+    X0[[i]] <- X[[i+1]][shock_time_vec[i+1], dbw_indices
                           , drop = FALSE] #get 1 row from each donor
   }
 
-  if (scale == TRUE) { #begin if statement
+  #################################
+  #begin if statement
+  if (scale == TRUE) {
     dat <- rbind(X1, do.call('rbind', X0)) # do.call is for cluster computing?
     dat <- apply(dat, 2, function(x) scale(x, center = TRUE, scale = TRUE))
-    X1 <- dat[1, (1:number_covariates_to_use)
+    X1 <- dat[1, dbw_indices
               , drop = FALSE]
     X0 <- c()
     for (i in 1:n) {
-      X0[[i]] <- dat[i + 1, (1:number_covariates_to_use)
-                     , drop = FALSE] #we are repopulating X0[[i]] with scaled+centered data
+      X0[[i]] <- dat[i+1, dbw_indices, drop = FALSE] #we are repopulating X0[[i]] with scaled+centered data
     } #end loop
   } #end if statement
+  #################################
 
   # objective function
   weightedX0 <- function(W) {
@@ -125,8 +128,9 @@ dbw <- function(X
 } #END dbw function
 ### END dbw
 
-### START plot_maker
-plot_maker <- function(fitted_vol
+### START GARCH plot_maker_garch
+plot_maker_garch <- function(fitted_vol
+                      ,shock_times_for_barplot
                       ,shock_time_vec #mk
                       ,shock_length_vec
                       ,unadjusted_pred
@@ -134,22 +138,35 @@ plot_maker <- function(fitted_vol
                       ,omega_star_hat
                       ,adjusted_pred){
 
+  if (is.character(shock_times_for_barplot) == FALSE){
+    shock_times_for_barplot <- 1:length(shock_times_for_barplot)
+  }
+
   par(mfrow = c(1,2))
 
+  #PLOT ON THE LEFT:
   #Plot donor weights
   barplot(w_hat
           ,  main = 'Donor Pool Weights'
-          , names.arg = 2:(length(shock_length_vec)))
+          , names.arg = shock_times_for_barplot[-1]
+          , cex.names=.6)
 
   #Plot target series and prediction
 
-  #PLOT ON THE LEFT:
-  plot(fitted_vol[1:shock_time_vec[1]], #mk
-       main = 'Predicted Volatility',
+  print('Getting the max of quantities so we can plot.') #tk
+  thing_to_get_max_of <- c(as.numeric(fitted_vol), unadjusted_pred, adjusted_pred)
+
+  max_for_y_lim <- max(thing_to_get_max_of)
+
+  print('Now we produce plots for syntheticGARCH')
+
+  #PLOT ON THE RIGHT:
+  plot.ts(fitted_vol[1:shock_time_vec[1]], #mk
+       main = 'Two Forecasts Following T*', #mk can improve this title
        ylab = '',
        xlab = "Trading Days",
-       xlim = c(0, shock_time_vec[1] + 5),
-       ylim = c(0,  max(fitted_vol, unadjusted_pred, adjusted_pred) ) )
+       xlim = c(0, shock_time_vec[1] + 5), #mk
+       ylim = c(min(0, fitted_vol),  max_for_y_lim))
 
   title(ylab = expression(sigma^2), line = 2.05, cex.lab = 1.99) # Add y-axis text
 
@@ -172,7 +189,7 @@ plot_maker <- function(fitted_vol
 
   labels_for_legend <- c('GARCH (unadjusted)', 'Adjusted Prediction')
 
-  legend(x = "bottomleft",  # Coordinates (x also accepts keywords)
+  legend(x = "topleft",  # Coordinates (x also accepts keywords) #mk
          legend = labels_for_legend,
          1:length(labels_for_legend), # Vector with the name of each group
          colors_for_adjusted_pred,   # Creates boxes in the legend with the specified colors
@@ -180,17 +197,134 @@ plot_maker <- function(fitted_vol
          cex = .9)
 
 }
-### END plot_maker
+### END plot_maker_garch
+
+
+### START plot_maker_synthprediction
+plot_maker_synthprediction <- function(Y
+                       ,shock_times_for_barplot
+                       ,shock_time_vec #mk
+                       ,shock_length_vec
+                       ,unadjusted_pred
+                       ,w_hat
+                       ,omega_star_hat
+                       ,adjusted_pred
+                       ,display_ground_truth = FALSE){
+
+  if (is.character(shock_times_for_barplot) == FALSE){
+    shock_times_for_barplot <- 1:length(shock_times_for_barplot)
+  }
+
+  #First print donor series
+  par(mfrow = c(round(sqrt(n)),ceiling(sqrt(n))))
+
+  for (i in 2:(n+1)){
+    print('Now we are printing the ith series')
+    plot.ts(Y[[i]][1:shock_time_vec[i]]
+            ,xlab = 'Trading Days'
+            ,ylab = 'Differenced Logarithm'
+            ,main = paste('Donor ', i,': ', shock_times_for_barplot[i], sep = '')
+            ,xlim = c(0, shock_time_vec[i] + 5)
+            ,ylim = c(min(Y[[i]]),  max(Y[[i]]))
+            )
+
+    if (display_ground_truth == TRUE){
+
+      lines(y = Y[[i]][shock_time_vec[i]:(shock_time_vec[i] + shock_length_vec[i])]
+            ,x = shock_time_vec[i]:(shock_time_vec[i] + shock_length_vec[i])
+            ,col = 'purple'
+            ,cex = 1.1
+            ,lty = 3)
+
+      points(y = Y[[i]][(shock_time_vec[i]+1):(shock_time_vec[i] + shock_length_vec[i])]
+             ,x = (shock_time_vec[i]+1):(shock_time_vec[i] + shock_length_vec[i])
+             ,col = 'red'
+             ,cex = 1.1
+             ,pch = 24)
+
+    }
+  }
+
+  #Now print time series under study
+  par(mfrow = c(1,2))
+
+  #PLOT ON THE LEFT:
+  #Plot donor weights
+  barplot(w_hat
+          ,  main = 'Donor Pool Weights'
+          , names.arg = shock_times_for_barplot[-1]
+          , cex.names=.6)
+
+  #Plot target series and prediction
+
+  thing_to_get_max_of <- c(as.numeric(Y[[1]]), unadjusted_pred, adjusted_pred)
+
+  max_for_y_lim <- max(thing_to_get_max_of)
+
+  #PLOT ON THE RIGHT:
+  plot.ts(Y[[1]][1:shock_time_vec[1]], #mk
+          main = 'Two Forecasts Following T*', #mk can improve this title
+          ylab = '',
+          xlab = "Trading Days",
+          xlim = c(0, shock_time_vec[1] + 5), #mk
+          ylim = c(min(0, Y[[1]]),  max_for_y_lim))
+
+  title(ylab = 'Differenced Logarithm', line = 2.05, cex.lab = 1.99) # Add y-axis text
+
+  # Here is the color scheme we will use
+  colors_for_adjusted_pred <- c('red', "green",'purple')
+
+  # Let's add the plain old GARCH prediction
+  points(y = unadjusted_pred
+         ,x = (shock_time_vec[1]+1):(shock_time_vec[1]+shock_length_vec[1])
+         ,col = colors_for_adjusted_pred[1]
+         ,cex = .9
+         ,pch = 15)
+
+  # Now plot the adjusted predictions
+  points(y = adjusted_pred
+         ,x = (shock_time_vec[1]+1):(shock_time_vec[1]+shock_length_vec[1])
+         ,col = colors_for_adjusted_pred[2]
+         ,cex = 1.1
+         ,pch = 23)
+
+  if (display_ground_truth == TRUE){
+
+    lines(y = Y[[1]][shock_time_vec[1]:(shock_time_vec[1] + shock_length_vec[1])]
+          ,x = shock_time_vec[1]:(shock_time_vec[1] + shock_length_vec[1])
+          ,col = colors_for_adjusted_pred[3]
+          ,cex = 1.1
+          ,lty = 3)
+
+    points(y = Y[[1]][(shock_time_vec[1]+1):(shock_time_vec[1] + shock_length_vec[1])]
+          ,x = (shock_time_vec[1]+1):(shock_time_vec[1] + shock_length_vec[1])
+          ,col = colors_for_adjusted_pred[3]
+          ,cex = 1.1
+          ,pch = 24)
+
+  }
+
+  labels_for_legend <- c('ARIMA (unadjusted)', 'Adjusted Prediction', 'Actual')
+
+  legend(x = "topleft",  # Coordinates (x also accepts keywords) #mk
+         legend = labels_for_legend,
+         1:length(labels_for_legend), # Vector with the name of each group
+         colors_for_adjusted_pred,   # Creates boxes in the legend with the specified colors
+         title = 'Prediction Method',      # Legend title,
+         cex = .9)
+
+}
+### END plot_maker_synthprediction
 
 
 ### START SynthVolForecast
-SynthVolForecast <- function(series_matrix
+SynthVolForecast <- function(Y_series_list
                              ,covariates_series_list
                              ,shock_time_vec
                              ,shock_length_vec
-                             ,geometric_sets = NULL
-                             ,p_dbw = NULL
-                             ,covariate_vector_list = NULL #tk
+                             ,dwb_indices = NULL
+                             ,covariate_indices = NULL
+                             ,geometric_sets = NULL #tk
                              ,days_before_shocktime_vec = NULL #tk I may want to remove this
                              ,garch_order = NULL
                              ,plots = TRUE
@@ -200,34 +334,36 @@ SynthVolForecast <- function(series_matrix
   ### END Doc string
 
   ### BEGIN Populate defaults
-  n <- ncol(series_matrix) - 1
+  n <- length(Y_series_list) - 1
 
   if (is.null(garch_order) == TRUE) {
     garch_order <- c(1,1,1)
   }
 
-  if (is.null(p_dbw) == TRUE) {
-    p_dbw <- ncol(covariates_series_list[[1]]) #tk
+  if (is.null(dwb_indices) == TRUE) {
+    dwb_indices <- 1:ncol(X[[1]])
   }
 
   ### END Populate defaults
 
 
   ## BEGIN Check that inputs are all comformable/acceptable
-  n <- ncol(series_matrix) - 1 #tk
+  n <- length(Y_series_list) - 1 #tk
   ## END Check that inputs are all comformable/acceptable
 
   integer_shock_time_vec <- c() #mk
 
   ## BEGIN Check whether shock_time_vec is int/date
-  for (i in 1:(n+1)){
-    if (is.character(shock_time_vec[i]) == TRUE){
-      integer_shock_time_vec[i] <- which(index(COP) == "2020-03-06") #mk
-    }
-    else{
 
+  for (i in 1:(n+1)){
+
+    if (is.character(shock_time_vec[i]) == TRUE){
+      integer_shock_time_vec[i] <- which(index(Y[[i]]) == shock_time_vec[i]) #mk
     }
+    else{ integer_shock_time_vec <- shock_time_vec}
+
   }
+
   ## END Check whether shock_time_vec is int/date
 
   ## BEGIN estimate fixed effects in donors
@@ -236,16 +372,28 @@ SynthVolForecast <- function(series_matrix
   for (i in 2:(n+1)){
 
     # Make indicator variable w/ a 1 at only T*+1, T*+2,...,T*+shock_length_vec[i]
-    vec_of_zeros <- rep(0, shock_time_vec[i])
+    vec_of_zeros <- rep(0, integer_shock_time_vec[i])
     vec_of_ones <- rep(1, shock_length_vec[i])
     post_shock_indicator <- c(vec_of_zeros, vec_of_ones)
-    last_shock_point <- shock_time_vec[i] + shock_length_vec[i]
+    last_shock_point <- integer_shock_time_vec[i] + shock_length_vec[i]
 
-    X_i_with_indicator <- cbind(X[[i]], post_shock_indicator)
+    #subset X_i
+    if (is.null(covariate_indices) == TRUE) {
+      X_i_penultimate <- cbind(Y_series_list[[i]][1:last_shock_point]
+                               , post_shock_indicator)
+      X_i_final <- X_i_penultimate[,2]
+    }
+    else {
+      X_i_subset <- X[[i]][1:last_shock_point,covariate_indices]
+      X_i_with_indicator <- cbind(X_i_subset, post_shock_indicator)
+      X_i_final <- X_i_with_indicator
+    }
 
-    fitted_garch <- garchx(series_matrix[1:last_shock_point,i]
+    print('Now fitting the donor GARCH models')
+    fitted_garch <- garchx(Y_series_list[[i]][1:last_shock_point] #tk
                    , order = garch_order
-                   , xreg = X_i_with_indicator
+                   , xreg = X_i_final
+                   , backcast.values = NULL
                    , control = list(eval.max = 10000
                    , iter.max = 15000
                    , rel.tol = 1e-6))
@@ -259,9 +407,9 @@ SynthVolForecast <- function(series_matrix
   ## END estimate fixed effects in donors
 
   ## BEGIN compute linear combination of fixed effects
-  w_hat <- dbw(X,
-               p_dbw,
-               shock_time_vec,
+  w_hat <- dbw(X, #tk
+               dwb_indices,
+               integer_shock_time_vec,
                scale = TRUE,
                sum_to_1 = TRUE, #tk
                bounded_below_by = 0, #tk
@@ -274,45 +422,81 @@ SynthVolForecast <- function(series_matrix
   omega_star_hat <- w_hat %*% omega_star_hat_vec
   ## END compute linear combination of fixed effects
 
-  ## BEGIN fit GARCH to target series
-  fitted_garch <- garchx(series_matrix[,1]
-                         , order = garch_order
-                         , xreg = X[[1]]
-                         , control = list(eval.max = 10000
-                                          , iter.max = 15000
-                                          , rel.tol = 1e-6))
 
-  forecast_period <- (shock_time_vec[1] + 1):(shock_time_vec[1] + shock_length_vec[1])
-  X_to_use_in_forecast <- X[[1]][forecast_period,1]
-  unadjusted_pred <- predict(fitted_garch
-                             , n.ahead = shock_length_vec[i]
-                             , newxreg = X_to_use_in_forecast)
+  ## BEGIN fit GARCH to target series
+
+  if (is.null(covariate_indices) == TRUE){
+
+    fitted_garch <- garchx(Y_series_list[[1]][1:integer_shock_time_vec[1]]
+                           , order = garch_order
+                           , xreg = NULL # xreg = X[[1]][1:integer_shock_time_vec[1],]
+                           , backcast.values = NULL
+                           , control = list(eval.max = 10000
+                                            , iter.max = 15000
+                                            , rel.tol = 1e-6))
+
+    print('Outputting the fitted GARCH for TSUS.')
+    print(fitted_garch)
+
+    unadjusted_pred <- predict(fitted_garch, n.ahead = shock_length_vec[1])
+  }
+  else{
+    ## BEGIN fit GARCH to target series
+    fitted_garch <- garchx(Y_series_list[[1]][1:integer_shock_time_vec[1]]
+                           , order = garch_order
+                           , xreg = X[[1]][1:integer_shock_time_vec[1],covariate_indices]
+                           , control = list(eval.max = 10000
+                                            , iter.max = 15000
+                                            , rel.tol = 1e-6))
+
+    print('Outputting the fitted GARCH for TSUS.')
+    print(fitted_garch)
+
+    #Note: for forecasting, we use last-observed X value
+    X_to_use_in_forecast <- X[[1]][integer_shock_time_vec[1],covariate_indices]
+
+    X_replicated_for_forecast_length <- matrix(rep(X_to_use_in_forecast, k)
+                                               , nrow = shock_length_vec[1]
+                                               , byrow = TRUE)
+
+
+    forecast_period <- (integer_shock_time_vec[1]+1):(integer_shock_time_vec[1]+shock_length_vec[1])
+    mat_X_for_forecast <- cbind(Y_series_list[[1]][forecast_period]
+                           , X_replicated_for_forecast_length)
+
+    unadjusted_pred <- predict(fitted_garch
+                               , n.ahead = shock_length_vec[1]
+                               , newxreg = mat_X_for_forecast[,-1])
+  }
+
   adjusted_pred <- unadjusted_pred + omega_star_hat
 
-
   list_of_linear_combinations <- list(w_hat)
-  list_of_forcasts <- list(adjusted_pred)
+  list_of_forcasts <- list(unadjusted_pred, adjusted_pred)
+  names(list_of_forcasts) <- c('unadjusted_pred', 'adjusted_pred')
+
   output_list <- list(list_of_linear_combinations
                       , list_of_forcasts)
-  names(output_list) <- c('convex_combination'
-                          ,'forecast')
+
+  names(output_list) <- c('linear_combinations', 'predictions')
 
   ## tk OUTPUT
   cat('SynthVolForecast Details','\n',
       '-------------------------------------------------------------\n',
-      'Donors:', n, '\n',
-      'Series lengths:', 1, '\n',
-      'Shock times:', shock_time_vec, '\n',
-      'Lengths of shock times', shock_length_vec, '\n',
-      '\n'
+      'Donors:', n, '\n',  '\n',
+      'Shock times:', shock_time_vec, '\n', '\n',
+      'Lengths of shock times:', shock_length_vec, '\n', '\n',
+      'Shock estimates provided by donors:', omega_star_hat_vec, '\n', '\n',
+      'Aggregate estimated shock effect:', omega_star_hat, '\n', '\n'
   )
 
   ## PLOTS
 
   if (plots == TRUE){
-    cat('User has opted to produce plots.','\n')
-    plot_maker(fitted(fitted_garch)
+    cat('\n User has opted to produce plots.','\n')
+    plot_maker_garch(fitted(fitted_garch)
                ,shock_time_vec
+               ,integer_shock_time_vec
                ,shock_length_vec
                ,unadjusted_pred
                ,w_hat
@@ -324,4 +508,214 @@ SynthVolForecast <- function(series_matrix
   return(output_list)
 
 } ### END SynthVolForecast
+
+### START SynthPrediction
+SynthPrediction <- function(Y_series_list
+                             ,covariates_series_list
+                             ,shock_time_vec
+                             ,shock_length_vec
+                             ,dwb_indices = NULL
+                             ,covariate_indices = NULL
+                             ,geometric_sets = NULL #tk
+                             ,days_before_shocktime_vec = NULL #tk I may want to remove this
+                             ,arima_order = NULL
+                             ,user_ic_choice = c('aicc','aic','bic')[1]
+                             ,plots = TRUE
+                             ,display_ground_truth_choice = FALSE
+){
+  ### BEGIN Doc string
+  #tk
+  ### END Doc string
+
+  ### BEGIN Populate defaults
+  n <- length(Y_series_list) - 1
+
+  if (is.null(arima_order) == TRUE) {
+    arima_order <- c(1,1,1)
+  }
+
+  if (is.null(dwb_indices) == TRUE) {
+    dwb_indices <- 1:ncol(X[[1]])
+  }
+
+  ### END Populate defaults
+
+  ## BEGIN Check that inputs are all comformable/acceptable
+  n <- length(Y_series_list) - 1 #tk
+  ## END Check that inputs are all comformable/acceptable
+
+  integer_shock_time_vec <- c() #mk
+
+  ## BEGIN Check whether shock_time_vec is int/date
+
+  for (i in 1:(n+1)){
+
+    if (is.character(shock_time_vec[i]) == TRUE){
+      integer_shock_time_vec[i] <- which(index(Y[[i]]) == shock_time_vec[i]) #mk
+    }
+    else{ integer_shock_time_vec <- shock_time_vec}
+
+  }
+
+  ## END Check whether shock_time_vec is int/date
+
+  ## BEGIN estimate fixed effects in donors
+  omega_star_hat_vec <- c()
+
+  order_of_arima <- list()
+
+  for (i in 2:(n+1)){
+
+    # Make indicator variable w/ a 1 at only T*+1, T*+2,...,T*+shock_length_vec[i]
+    vec_of_zeros <- rep(0, integer_shock_time_vec[i])
+    vec_of_ones <- rep(1, shock_length_vec[i])
+    post_shock_indicator <- c(vec_of_zeros, vec_of_ones)
+    last_shock_point <- integer_shock_time_vec[i] + shock_length_vec[i]
+
+    #subset X_i
+    if (is.null(covariate_indices) == TRUE) {
+      X_i_penultimate <- cbind(Y_series_list[[i]][1:last_shock_point]
+                               , post_shock_indicator)
+      X_i_final <- X_i_penultimate[,2]
+    }
+    else {
+      X_i_subset <- X[[i]][1:last_shock_point,covariate_indices]
+      X_i_with_indicator <- cbind(X_i_subset, post_shock_indicator)
+      X_i_final <- X_i_with_indicator
+    }
+
+    print('Now fitting the donor ARIMA models')
+
+    arima <- auto.arima(Y_series_list[[i]][1:last_shock_point]
+                        ,xreg=X_i_final
+                        ,ic = user_ic_choice)
+
+    print(arima)
+
+    order_of_arima[[i]] <- arima$arma #tk
+
+    coef_test <- coeftest(arima)
+    extracted_fixed_effect <- coef_test[nrow(coef_test),1]
+    omega_star_hat_vec <- c(omega_star_hat_vec, extracted_fixed_effect)
+
+  } ## END loop for computing fixed effects
+
+  ## END estimate fixed effects in donors
+
+  ## BEGIN compute linear combination of fixed effects
+  w_hat <- dbw(X, #tk
+               dwb_indices,
+               integer_shock_time_vec,
+               scale = TRUE,
+               sum_to_1 = TRUE, #tk
+               bounded_below_by = 0, #tk
+               bounded_above_by = 1, #tk
+               # normchoice = normchoice, #tk
+               # penalty_normchoice = penalty_normchoice,
+               # penalty_lambda = penalty_lambda
+  )
+
+  omega_star_hat <- as.numeric(w_hat %*% omega_star_hat_vec)
+  ## END compute linear combination of fixed effects
+
+  ## BEGIN fit GARCH to target series
+
+  if (is.null(covariate_indices) == TRUE){
+
+    arima <- auto.arima(Y_series_list[[1]][1:integer_shock_time_vec[1]]
+                        ,xreg = NULL
+                        ,ic = user_ic_choice)
+
+    unadjusted_pred <- predict(arima, n.ahead = shock_length_vec[1])
+
+  }
+  else{
+    ## BEGIN fit GARCH to target series
+
+    X_lagged <- lag.xts(X[[1]][1:integer_shock_time_vec[1],covariate_indices])
+
+    arima <- auto.arima(Y_series_list[[1]][1:integer_shock_time_vec[1]]
+                        ,xreg = X_lagged
+                        ,ic = user_ic_choice)
+
+    print(arima)
+
+    #Note: for forecasting, we use last-observed X value
+    X_to_use_in_forecast <- X[[1]][integer_shock_time_vec[1],covariate_indices]
+
+    X_replicated_for_forecast_length <- matrix(rep(X_to_use_in_forecast, k)
+                                               , nrow = shock_length_vec[1]
+                                               , byrow = TRUE)
+
+    forecast_period <- (integer_shock_time_vec[1]+1):(integer_shock_time_vec[1]+shock_length_vec[1])
+    mat_X_for_forecast <- cbind(Y_series_list[[1]][forecast_period]
+                                , X_replicated_for_forecast_length)
+
+    unadjusted_pred <- predict(arima
+                               , n.ahead = shock_length_vec[1]
+                               , newxreg = mat_X_for_forecast[,-1])
+  }
+
+
+  ##We take care of housekeeping
+  #tk
+  order_of_arima[[1]] <- arima$arma
+
+  print('now we print dataframe with orders...')
+  order_matrix <- matrix(unlist(order_of_arima), byrow = TRUE, nrow = length(order_of_arima))
+
+  print(order_matrix)
+
+  if( length(unique(order_matrix[,2])) > 1 ) {
+    message <- paste('NOT all series are I(', order_matrix[,2], ')')
+    warning(message)
+  }
+
+  ##
+
+  adjusted_pred <- unadjusted_pred$pred + omega_star_hat
+
+  list_of_linear_combinations <- list(w_hat)
+  list_of_forcasts <- list(unadjusted_pred, adjusted_pred)
+  names(list_of_forcasts) <- c('unadjusted_pred', 'adjusted_pred')
+
+  output_list <- list(list_of_linear_combinations
+                      , list_of_forcasts)
+
+  names(output_list) <- c('linear_combinations', 'predictions')
+
+  ## tk OUTPUT
+  cat('SynthVolForecast Details','\n',
+      '-------------------------------------------------------------\n',
+      'Donors:', n, '\n',
+      'Shock times:', shock_time_vec, '\n',
+      'Lengths of shock times:', shock_length_vec, '\n',
+      'Shock estimates provided by donors:', omega_star_hat_vec, '\n',
+      'Aggregate estimated shock effect:', omega_star_hat, '\n',
+      'Actual change in stock price at T* + 1:', Y_series_list[[1]][integer_shock_time_vec[1]+1],'\n',
+      'Adjusted forecasted change in stock price at T* + 1:', unadjusted_pred$pred,'\n',
+      'MSE unadjusted:', (Y_series_list[[1]][integer_shock_time_vec[1]+1]-unadjusted_pred$pred)**2,'\n',
+      'Adjusted forecasted change in stock price at T* + 1:', adjusted_pred,'\n',
+      'MSE adjusted:', (Y_series_list[[1]][integer_shock_time_vec[1]+1]-adjusted_pred)**2,'\n'
+  )
+
+  ## PLOTS
+
+  if (plots == TRUE){
+    cat('User has opted to produce plots.','\n')
+    plot_maker_synthprediction(Y_series_list
+               ,shock_time_vec
+               ,integer_shock_time_vec
+               ,shock_length_vec
+               ,unadjusted_pred$pred
+               ,w_hat
+               ,omega_star_hat
+               ,adjusted_pred
+               ,display_ground_truth = display_ground_truth_choice)
+
+  }
+
+  return(output_list)
+
+} ### END SynthPrediction
 

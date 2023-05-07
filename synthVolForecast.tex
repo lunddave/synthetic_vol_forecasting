@@ -139,7 +139,7 @@ The approach herein can be viewed as an attempt to sidestep the functional compl
 
 \label{section2}
 
-\begin{figure}
+\begin{figure}[htbp]
   \includegraphics[scale=.5]{simulation_plots/plot_for_early_paper.png}
   \caption{An example of aggregating estimates using the arithmetic mean}
   \label{fig:arith_mean}
@@ -328,7 +328,7 @@ In (3), observe that $\omega_{i}^{*}$ and $\epsilon^{*}_{i,t}$ each appear at mo
 By repeated substitution, in conditional expectation, the shock is $\mathcal{O}((\alpha+\beta)^{r})$.  We generalize this observation in the following proposition.
 
 \begin{prop}
-Let $a_{t}$ be a mean-zero time series obeying a GARCH(1,1) specification prior to the arrival of a volatility shock of length $L_{\text{vol}} \geq 1$ and level shock of length $L_{\text{level}}\geq 1$ at some time $T^{*}+1$.  Then for any $r$ such that $r-1 \geq \text{max}\{L_{i, vol}\},L_{i, level}\}$, 
+Let $a_{t}$ be a mean-zero time series obeying a GARCH(1,1) specification prior to the arrival of a volatility shock of length $L_{\text{vol}} \geq 1$ and level shock of length $L_{\text{level}}\geq 1$ at some time $T^{*}+1$.  Then for any $r$ such that $r-1 \geq \text{max}\{L_{i, vol},L_{i, level}\}$, 
 
 \begin{align}
 \mathbb{E}[ \sigma^{2}_{i,T^{*}+r+1} |\mathcal{F}_{T^{*}+r}] & = \omega_{i} + \sigma^{2}_{i,T^{*}+r}(\alpha + \beta) \\

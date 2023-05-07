@@ -4,32 +4,38 @@ options(digits = 7)
 
 Tee <- 192 #Specify length of time series
 n <- 4 #Specify number of donors
+sd_specified <- .1
 shock_time_vec <- rep(Tee/2, n+1)
+k <- 1
 
 Y <- list()
 
 #we populate the covariate list
 for (i in 1:(n+1)){
-  Y[[i]] <- rnorm(Tee)
+  Y[[i]] <- rnorm(Tee, sd = sd_specified)
 }
 
 X <- list()
 
 #we populate the covariate list
 for (i in 1:(n+1)){
-  X[[i]] <- cbind(rnorm(Tee)
-             ,rnorm(Tee)
-             ,rnorm(Tee))
+  X[[i]] <- cbind(rnorm(Tee, sd = sd_specified)
+             ,rnorm(Tee, sd = sd_specified)
+             ,rnorm(Tee, sd = sd_specified))
 }
 
 system.time(
   {
-    temp <- SynthVolForecast(Y
-                             ,X
-                             ,shock_time_vec
-                             ,rep(2, n+1)
-                             ,garch_order = c(1,1)
-                             ,plots = TRUE)
+    #Now run the algorithm
+    temp <- SynthPrediction(Y
+                            ,X
+                            ,shock_time_vec = shock_time_vec
+                            ,rep(k, n+1)
+                            ,dwb_indices = NULL
+                            ,covariate_indices = NULL
+                            ,plots = TRUE
+                            ,display_ground_truth_choice = TRUE
+                          )
   }
 
   )
@@ -132,19 +138,6 @@ for (i in 1:length(start_dates)){
 n <- length(start_dates) - 1
 
 #Now run the algorithm
-temp <- SynthVolForecast(Y
-                         ,X
-                         ,shock_time_vec = shock_dates
-                         ,rep(k, n+1)
-                         ,dwb_indices = NULL
-                         ,covariate_indices = length(X)
-                         ,garch_order = c(1,0,1)
-                         ,plots = TRUE)
-
-temp$linear_combinations
-temp$predictions
-
-#Now run the algorithm
 temp <- SynthPrediction(Y
                          ,X
                          ,shock_time_vec = shock_dates
@@ -155,10 +148,3 @@ temp <- SynthPrediction(Y
                          ,display_ground_truth_choice = TRUE)
 
 
-## GARCH on
-mod <- garchx(Y[[1]][1:253])
-plot.ts(Y[[1]][1:253])
-fitted(mod)
-plot.ts(fitted(mod))
-
-COP
