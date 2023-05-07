@@ -10,7 +10,7 @@ library(dplyr)
 
 #https://gist.github.com/bannister/8002800
 path <- '/home/david/Desktop/synthetic_vol_forecasting/simulation_results'
-files <- list.files(path=path, pattern = ".*Apr16.*Rdata$")
+files <- list.files(path=path, pattern = ".*_120.*Rdata$")
 setwd(path)
 results <- sapply(files, function(x) mget(load(x)), simplify = TRUE)
 output <- do.call(rbind, results)

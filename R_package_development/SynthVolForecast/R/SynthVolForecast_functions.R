@@ -153,12 +153,9 @@ plot_maker_garch <- function(fitted_vol
 
   #Plot target series and prediction
 
-  print('Getting the max of quantities so we can plot.') #tk
   thing_to_get_max_of <- c(as.numeric(fitted_vol), unadjusted_pred, adjusted_pred)
 
   max_for_y_lim <- max(thing_to_get_max_of)
-
-  print('Now we produce plots for syntheticGARCH')
 
   #PLOT ON THE RIGHT:
   plot.ts(fitted_vol[1:shock_time_vec[1]], #mk
@@ -219,7 +216,6 @@ plot_maker_synthprediction <- function(Y
   par(mfrow = c(round(sqrt(n)),ceiling(sqrt(n))))
 
   for (i in 2:(n+1)){
-    print('Now we are printing the ith series')
     plot.ts(Y[[i]][1:shock_time_vec[i]]
             ,xlab = 'Trading Days'
             ,ylab = 'Differenced Logarithm'

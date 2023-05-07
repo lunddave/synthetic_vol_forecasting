@@ -101,7 +101,7 @@ for (i in 1:length(shock_dates)){
     dailyReturn(na.omit(getSymbols(sym
                                    ,from=start_dates[i]
                                    ,to=k_periods_after_shock[i]+10 #tk +10
-                                   ,auto.assign=FALSE))
+                                   ,auto.assign=FALSE)[,6])
                                    ,type='log')})
 
   to_add_2 <- lapply(level_covariates, function(sym) {
@@ -114,7 +114,7 @@ for (i in 1:length(shock_dates)){
     na.omit(getSymbols(sym
                        ,from=start_dates[i]
                        ,to=k_periods_after_shock[i]+10 #tk +10
-                       ,auto.assign=FALSE))[,6]})
+                       ,auto.assign=FALSE))[,5]})
 
   to_add <- c(to_add, to_add_2, to_add_3)
   market_data_list[[i]] <- do.call(merge, to_add)
@@ -143,7 +143,7 @@ temp <- SynthPrediction(Y
                          ,shock_time_vec = shock_dates
                          ,rep(k, n+1)
                          ,dwb_indices = NULL
-                         ,covariate_indices = length(X)
+                         #,covariate_indices = length(X)
                          ,plots = TRUE
                          ,display_ground_truth_choice = TRUE)
 
