@@ -143,7 +143,7 @@ temp <- SynthPrediction(Y
                          ,shock_time_vec = shock_dates
                          ,rep(k, n+1)
                          ,dwb_indices = NULL
-                         #,covariate_indices = length(X)
+                         ,covariate_indices = 1:length(market_data_list)
                          ,plots = TRUE
                          ,display_ground_truth_choice = TRUE)
 

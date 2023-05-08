@@ -113,7 +113,7 @@
 \title{Post-shock Volatility Forecasting Using Aggregated Shock Information}
 \author{David Lundquist\thanks{davidl11@ilinois.edu} }
 \affil{Department of Statistics, University of Illinois at Urbana-Champaign}
-\date{December 3rd, 2021}
+\date{May 8th, 2023}
 
 \begin{document}
 
@@ -137,16 +137,7 @@ The approach herein can be viewed as an attempt to sidestep the functional compl
 
 \section{Setting}
 
-\label{section2}
 
-\begin{figure}[htbp]
-\begin{center}
-  \includegraphics[scale=.5]{simulation_plots/plot_for_early_paper.png}
-  \caption{An example of aggregating estimates using the arithmetic mean}
-  \label{fig:arith_mean}
-  \end{center}
-\end{figure}
-Figure \ref{fig:arith_mean} shows a simple example.
 
 
 We follow convention and define the daily log-return as $r_{t} = \text{log}(\frac{P_{t+1}}{P_{t}})$.  The class of ARIMA(p,d,q) models developed in the mid-to-late 20th century provides a framework for postulating and quantifying the autoregressive structure of $r_{t}$, all within the framework of frequentist statistics and maximum-likelihood estimation of parameters.  These models assume a certain dependence structure between $r_{t}$ and $(r_{k})_{k\leq t}$, as well as all observations in between, yet their errors -- often called innovations in the financial time series context due to how they represent the impact of new information -- are nevertheless assumed to be i.i.d. with mean zero and constant variance.  The ARCH \citep{engle1982autoregressive} and GARCH \citep{bollerslev1986generalized} models provide elegant alternatives to the constant-variance assumption.  In fact, the GARCH framework in its most basic form disregards $r_{t}$ and instead turns its interest to the series $r_{t}^{2}$ (when properly centered, i.e. after assuming a mean-model for returns).  
@@ -205,6 +196,17 @@ What distinguishes QL Loss is that it is multiplicative rather than additive.  T
 losses will be a consequence of high volatility without necessarily corresponding to
 deterioration of forecasting ability. The QL avoids this ambiguity, making it easier to
 compare losses across volatility regimes."
+
+\label{section2}
+
+\begin{figure}[htbp]
+\begin{center}
+  \includegraphics[scale=.5]{simulation_plots/plot_for_early_paper.png}
+  \caption{An example of aggregating estimates using the arithmetic mean}
+  \label{fig:arith_mean}
+  \end{center}
+\end{figure}
+Figure \ref{fig:arith_mean} shows a simple example.
 
 \subsection{Ground Truth Estimators}
 \label{Ground Truth Estimators}
@@ -482,15 +484,21 @@ Having introduced the model parameters above, we introduce estimation techniques
 \end{figure}
 Figure \ref{fig:arith_mean} shows a simple example.
 
-\subsection{Shorter Series}
+\subsection{Dual shock: both a level and volatility shock at T*+1}
+\textit{Hypothesis:} Method should do less well under level shock.
 
+
+\subsection{Shorter Series}
 
 \subsection{Fat tails in innovations}
 
-\begin{enumerate}
-  \item Additional measurement periods
-  \item Optimization norm 
-\end{enumerate}
+\subsection{Lengthening the measurement period}
+
+\subsection{Changing the optimization norm for distance-based weighting}
+
+\subsection{Asymmetric GARCH}
+
+
 
 We also introduce simulation parameters that can be varied but are not random effects
 
