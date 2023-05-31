@@ -46,7 +46,7 @@ k <- 2
 nyse <- timeDate::holidayNYSE(2000:year(Sys.Date())+1)
 create.calendar(name='NYSE', holidays=nyse, weekdays=c('saturday', 'sunday'))
 shock_dates_as_dates <- as.Date(shock_dates)
-start_dates <- offset(shock_dates_as_dates, round(-3.8*252), "NYSE")
+start_dates <- offset(shock_dates_as_dates, round(-3.5*252), "NYSE")
 k_periods_after_shock <- offset(shock_dates_as_dates, k, "NYSE")
 
 market_data_list <- vector("list", length(shock_dates))
@@ -94,6 +94,8 @@ for (i in 1:length(start_dates)){
 
 n <- length(start_dates) - 1
 
+png('SVF_2016.png')
+
 #Now run the algorithm
 temp <- SynthVolForecast(Y
                          ,X
@@ -104,8 +106,6 @@ temp <- SynthVolForecast(Y
                          ,garch_order = c(1,0,1)
                          ,plots = TRUE
                          ,ground_truth_vec = ground_truth)
-
-png('SVF_2016.png')
 
 dev.off()
 
