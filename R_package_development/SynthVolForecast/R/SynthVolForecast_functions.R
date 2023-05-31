@@ -4,6 +4,10 @@ library(garchx)
 library(lmtest)
 library(forecast)
 
+### START QL_loss_function
+QL_loss_function <- function(pred, gt){pred/gt - log(pred/gt) - 1}
+### END QL_loss_function
+
 
 ### START dbw
 dbw <- function(X
@@ -136,7 +140,8 @@ plot_maker_garch <- function(fitted_vol
                       ,unadjusted_pred
                       ,w_hat
                       ,omega_star_hat
-                      ,adjusted_pred){
+                      ,adjusted_pred
+                      ,ground_truth_vec){
 
   if (is.character(shock_times_for_barplot) == FALSE){
     shock_times_for_barplot <- 1:length(shock_times_for_barplot)
@@ -149,7 +154,7 @@ plot_maker_garch <- function(fitted_vol
   barplot(w_hat
           ,  main = 'Donor Pool Weights'
           , names.arg = shock_times_for_barplot[-1]
-          , cex.names=.6)
+          , cex.names=.52)
 
   #Plot target series and prediction
 
@@ -168,7 +173,7 @@ plot_maker_garch <- function(fitted_vol
   title(ylab = expression(sigma^2), line = 2.05, cex.lab = 1.99) # Add y-axis text
 
   # Here is the color scheme we will use
-  colors_for_adjusted_pred <- c('red', "green")
+  colors_for_adjusted_pred <- c('red', "green", "purple")
 
   # Let's add the plain old GARCH prediction
   points(y = unadjusted_pred
@@ -184,7 +189,14 @@ plot_maker_garch <- function(fitted_vol
          ,cex = .9
          ,pch = 23)
 
-  labels_for_legend <- c('GARCH (unadjusted)', 'Adjusted Prediction')
+  # Now plot the ground truth predictions
+  points(y = ground_truth_vec
+         ,x = (shock_time_vec[1]+1):(shock_time_vec[1]+shock_length_vec[1])
+         ,col = colors_for_adjusted_pred[3]
+         ,cex = .9
+         ,pch = 23)
+
+  labels_for_legend <- c('GARCH (unadjusted)', 'Adjusted Prediction', 'Ground Truth')
 
   legend(x = "topleft",  # Coordinates (x also accepts keywords) #mk
          legend = labels_for_legend,
@@ -324,6 +336,7 @@ SynthVolForecast <- function(Y_series_list
                              ,days_before_shocktime_vec = NULL #tk I may want to remove this
                              ,garch_order = NULL
                              ,plots = TRUE
+                             ,ground_truth_vec
 ){
   ### BEGIN Doc string
   #tk
@@ -431,7 +444,7 @@ SynthVolForecast <- function(Y_series_list
                                             , iter.max = 15000
                                             , rel.tol = 1e-6))
 
-    print('Outputting the fitted GARCH for TSUS.')
+    print('Outputting the fitted GARCH for time series under study.')
     print(fitted_garch)
 
     unadjusted_pred <- predict(fitted_garch, n.ahead = shock_length_vec[1])
@@ -445,7 +458,7 @@ SynthVolForecast <- function(Y_series_list
                                             , iter.max = 15000
                                             , rel.tol = 1e-6))
 
-    print('Outputting the fitted GARCH for TSUS.')
+    print('Outputting the fitted GARCH for the time series under study.')
     print(fitted_garch)
 
     #Note: for forecasting, we use last-observed X value
@@ -465,25 +478,38 @@ SynthVolForecast <- function(Y_series_list
                                , newxreg = mat_X_for_forecast[,-1])
   }
 
-  adjusted_pred <- unadjusted_pred + omega_star_hat
+  adjusted_pred <- unadjusted_pred + rep(omega_star_hat, k)
+
+
+
+  QL_loss_unadjusted_pred <- sum(QL_loss_function(unadjusted_pred, ground_truth))
+
+  QL_loss_adjusted_pred <- sum(QL_loss_function(adjusted_pred, ground_truth))
 
   list_of_linear_combinations <- list(w_hat)
-  list_of_forcasts <- list(unadjusted_pred, adjusted_pred)
-  names(list_of_forcasts) <- c('unadjusted_pred', 'adjusted_pred')
+  list_of_forecasts <- list(unadjusted_pred, adjusted_pred)
+  names(list_of_forecasts) <- c('unadjusted_pred', 'adjusted_pred')
 
   output_list <- list(list_of_linear_combinations
-                      , list_of_forcasts)
+                      , list_of_forecasts)
 
   names(output_list) <- c('linear_combinations', 'predictions')
 
   ## tk OUTPUT
-  cat('SynthVolForecast Details','\n',
-      '-------------------------------------------------------------\n',
+  cat('--------------------------------------------------------------\n',
+      '-------------------SynthVolForecast Results-------------------','\n',
+      '--------------------------------------------------------------\n',
       'Donors:', n, '\n',  '\n',
       'Shock times:', shock_time_vec, '\n', '\n',
       'Lengths of shock times:', shock_length_vec, '\n', '\n',
-      'Shock estimates provided by donors:', omega_star_hat_vec, '\n', '\n',
-      'Aggregate estimated shock effect:', omega_star_hat, '\n', '\n'
+      'Convex combination:',w_hat,'\n', '\n',
+      'Shock estimates:', omega_star_hat_vec, '\n', '\n',
+      'Aggregate estimated shock effect:', omega_star_hat, '\n', '\n',
+      'Unadjusted Forecast:', unadjusted_pred,'\n', '\n',
+      'Adjusted Forecast:', adjusted_pred,'\n', '\n',
+      'Ground Truth (estimated by realized volality):', ground_truth_vec,'\n', '\n',
+      'QL Loss of unadjusted:', QL_loss_unadjusted_pred,'\n', '\n',
+      'QL Loss of adjusted:', QL_loss_adjusted_pred,'\n', '\n'
   )
 
   ## PLOTS
@@ -497,7 +523,8 @@ SynthVolForecast <- function(Y_series_list
                ,unadjusted_pred
                ,w_hat
                ,omega_star_hat
-               ,adjusted_pred)
+               ,adjusted_pred
+               ,ground_truth_vec)
 
   }
 
@@ -673,10 +700,10 @@ SynthPrediction <- function(Y_series_list
 
   list_of_linear_combinations <- list(w_hat)
   list_of_forcasts <- list(unadjusted_pred, adjusted_pred)
-  names(list_of_forcasts) <- c('unadjusted_pred', 'adjusted_pred')
+  names(list_of_forecasts) <- c('unadjusted_pred', 'adjusted_pred')
 
   output_list <- list(list_of_linear_combinations
-                      , list_of_forcasts)
+                      , list_of_forecasts)
 
   names(output_list) <- c('linear_combinations', 'predictions')
 
@@ -686,6 +713,7 @@ SynthPrediction <- function(Y_series_list
       'Donors:', n, '\n',
       'Shock times:', shock_time_vec, '\n',
       'Lengths of shock times:', shock_length_vec, '\n',
+      'Convex combination',w_hat,'\n',
       'Shock estimates provided by donors:', omega_star_hat_vec, '\n',
       'Aggregate estimated shock effect:', omega_star_hat, '\n',
       'Actual change in stock price at T* + 1:', Y_series_list[[1]][integer_shock_time_vec[1]+1],'\n',

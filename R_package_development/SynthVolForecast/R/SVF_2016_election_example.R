@@ -4,11 +4,6 @@ source('SynthVolForecast_functions.R',
 
 options(digits = 7, scipen = 7)
 
-ground_truth <- c(0.000712, 0.000976)
-#ground_truth <- (0.000712)
-
-
-
 ### BEGIN 2016 election example
 
 library(quantmod)
@@ -16,6 +11,8 @@ library(bizdays)
 library(lubridate)
 
 ## BEGIN USER DATA INPUTS##
+ground_truth <- c(0.000712, 0.000976)
+
 log_ret_covariates <- c("IYG" #first should be time series under study
                         #,"GBP=X"
                         ,"CL=F"
@@ -49,7 +46,7 @@ k <- 2
 nyse <- timeDate::holidayNYSE(2000:year(Sys.Date())+1)
 create.calendar(name='NYSE', holidays=nyse, weekdays=c('saturday', 'sunday'))
 shock_dates_as_dates <- as.Date(shock_dates)
-start_dates <- offset(shock_dates_as_dates, round(-3.5*252), "NYSE")
+start_dates <- offset(shock_dates_as_dates, round(-3.8*252), "NYSE")
 k_periods_after_shock <- offset(shock_dates_as_dates, k, "NYSE")
 
 market_data_list <- vector("list", length(shock_dates))
@@ -107,33 +104,6 @@ temp <- SynthVolForecast(Y
                          ,garch_order = c(1,0,1)
                          ,plots = TRUE
                          ,ground_truth_vec = ground_truth)
-
-print('The point on the simplex:')
-temp$linear_combinations
-
-print('Unadjusted Prediction')
-temp$predictions$unadjusted_pred
-
-print('Adjusted Prediction')
-temp$predictions$adjusted_pred
-
-QL_loss_function <- function(pred, gt){pred/gt - log(pred/gt) - 1}
-
-QL_loss_unadjusted_pred <- mean(QL_loss_function(temp$predictions$unadjusted_pred, ground_truth))
-
-QL_loss_adjusted_pred <- mean(QL_loss_function(temp$predictions$adjusted_pred, ground_truth))
-
-dat <- c('Unadj'
-        ,'Adj'
-        ,QL_loss_unadjusted_pred
-        ,QL_loss_adjusted_pred)
-
-results_df <- as.data.frame(matrix(dat, byrow = FALSE, nrow = 2))
-colnames(results_df) <- c('Method'
-                          , 'QL_Loss')
-
-print(results_df)
-
 
 png('SVF_2016.png')
 
