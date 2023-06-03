@@ -154,11 +154,11 @@ plot_maker_garch <- function(fitted_vol
   barplot(w_hat
           ,  main = 'Donor Pool Weights'
           , names.arg = shock_times_for_barplot[-1]
-          , cex.names=.52)
+          , cex.names=.44)
 
   #Plot target series and prediction
 
-  thing_to_get_max_of <- c(as.numeric(fitted_vol), unadjusted_pred, adjusted_pred)
+  thing_to_get_max_of <- c(as.numeric(fitted_vol), unadjusted_pred, adjusted_pred, ground_truth_vec)
 
   max_for_y_lim <- max(thing_to_get_max_of)
 
@@ -438,7 +438,7 @@ SynthVolForecast <- function(Y_series_list
 
     fitted_garch <- garchx(Y_series_list[[1]][1:integer_shock_time_vec[1]]
                            , order = garch_order
-                           , xreg = NULL # xreg = X[[1]][1:integer_shock_time_vec[1],]
+                           , xreg = NULL 
                            , backcast.values = NULL
                            , control = list(eval.max = 10000
                                             , iter.max = 15000
@@ -480,7 +480,7 @@ SynthVolForecast <- function(Y_series_list
 
   adjusted_pred <- unadjusted_pred + rep(omega_star_hat, k)
 
-
+  arithmetic_mean_based_pred <- rep(mean(omega_star_hat), k) + unadjusted_pred
 
   QL_loss_unadjusted_pred <- sum(QL_loss_function(unadjusted_pred, ground_truth))
 
@@ -507,6 +507,7 @@ SynthVolForecast <- function(Y_series_list
       'Aggregate estimated shock effect:', omega_star_hat, '\n', '\n',
       'Unadjusted Forecast:', unadjusted_pred,'\n', '\n',
       'Adjusted Forecast:', adjusted_pred,'\n', '\n',
+      'Arithmetic-Mean-Based Forecast:',arithmetic_mean_based_pred,'\n','\n',
       'Ground Truth (estimated by realized volality):', ground_truth_vec,'\n', '\n',
       'QL Loss of unadjusted:', QL_loss_unadjusted_pred,'\n', '\n',
       'QL Loss of adjusted:', QL_loss_adjusted_pred,'\n', '\n'

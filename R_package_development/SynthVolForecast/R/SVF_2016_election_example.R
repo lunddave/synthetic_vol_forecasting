@@ -12,9 +12,11 @@ library(lubridate)
 
 ## BEGIN USER DATA INPUTS##
 ground_truth <- c(0.000712, 0.000976)
+ground_truth <- c(0.000712)
 
 log_ret_covariates <- c("IYG" #first should be time series under study
-                        #,"GBP=X"
+                        ,"GBP=X"
+                        ,"6B=F"
                         ,"CL=F"
                         ,"^VIX"
                         ,"^IRX"
@@ -35,18 +37,23 @@ shock_dates <- c("2016-11-08",
                  , "2014-11-04"
                  , "2012-11-06"
                  , "2010-11-02"
-                 #, "2008-11-04"
-                 #, "2006-11-07"
+                 , "2008-11-04"
+                 , "2006-11-07"
                  #, "2004-11-02"
+                 #, "2002-11-05"
+                 #, "2000-11-07"
                  )
 
-k <- 2
+k <- 1
 ## END USER DATA INPUTS##
 
 nyse <- timeDate::holidayNYSE(2000:year(Sys.Date())+1)
 create.calendar(name='NYSE', holidays=nyse, weekdays=c('saturday', 'sunday'))
+
 shock_dates_as_dates <- as.Date(shock_dates)
-start_dates <- offset(shock_dates_as_dates, round(-3.5*252), "NYSE")
+
+start_dates <- offset(shock_dates_as_dates, round(-5*252), "NYSE")
+
 k_periods_after_shock <- offset(shock_dates_as_dates, k, "NYSE")
 
 market_data_list <- vector("list", length(shock_dates))
@@ -74,7 +81,10 @@ for (i in 1:length(shock_dates)){
                        ,auto.assign=FALSE))[,6]})
 
   to_add <- c(to_add, to_add_2, to_add_3)
-  market_data_list[[i]] <- do.call(merge, to_add)
+
+  merged_data <- do.call(merge, to_add)
+  complete_cases_merged_data <- merged_data[complete.cases(merged_data),]
+  market_data_list[[i]] <- complete_cases_merged_data
 
 }
 
@@ -85,6 +95,7 @@ Y <- list()
 for (i in 1:length(start_dates)){
   Y[[i]] <- market_data_list[[i]][,1]
 }
+
 
 #Now build X
 X <- list()
