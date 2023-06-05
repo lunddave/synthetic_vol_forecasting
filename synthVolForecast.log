@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.5.30)  30 MAY 2023 20:37
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.5.30)  4 JUN 2023 19:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -766,9 +766,6 @@ File: l3backend-pdftex.def 2022-01-12 L3 backend support: PDF output (pdfTeX)
 
 LaTeX Warning: Label `fig:arith_mean' multiply defined.
 
-
-LaTeX Warning: Label `fig:arith_mean' multiply defined.
-
 )
 \openout1 = `synthVolForecast.aux'.
 
@@ -891,23 +888,23 @@ File: simulation_plots/plot_for_early_paper.png Graphic file (type png)
 Package pdftex.def Info: simulation_plots/plot_for_early_paper.png  used on inp
 ut line 204.
 (pdftex.def)             Requested size: 225.4668pt x 218.3151pt.
- [4 <./simulation_plots/plot_for_early_paper.png (PNG copy)>] [5]
+ [4 <./simulation_plots/plot_for_early_paper.png (PNG copy)>] [5] [6]
 Underfull \hbox (badness 10000) in paragraph at lines 311--312
 
  []
 
-[6]pdfTeX warning (ext4): destination with the same identifier (name{equation.2
-.1}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.321 \end{align}
-                 pdfTeX warning (ext4): destination with the same identifier (n
-ame{equation.2.2}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.321 \end{align}
-                 pdfTeX warning (ext4): destination with the same identifier (n
-ame{equation.2.1}) has been already used, duplicate ignored
+[7pdfTeX warning (ext4): destination with the same identifier (name{equation.2.
+1}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.330 \end{align*}
+                  pdfTeX warning (ext4): destination with the same identifier (
+name{equation.2.2}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.330 \end{align*}
+                  ]pdfTeX warning (ext4): destination with the same identifier 
+(name{equation.2.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.339 \end{align}
@@ -926,7 +923,12 @@ ame{equation.2.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.350 \end{align}
-                  [7]
+                 pdfTeX warning (ext4): destination with the same identifier (n
+ame{equation.2.3}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.350 \end{align}
+                 
 Underfull \hbox (badness 10000) in paragraph at lines 352--354
 
  []
@@ -947,23 +949,17 @@ ame{equation.2.3}) has been already used, duplicate ignored
                    \relax 
 l.363 \end{align}
                   [8pdfTeX warning (ext4): destination with the same identifier
- (name{equation.2.3}) has been already used, duplicate ignored
+ (name{equation.2.4}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.392 \item P
-             ractically infeasible: If we did that, we would need quite a fe...
-pdfTeX warning (ext4): destination with the same identifier (name{equation.2.4}
-) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.392 \item P
-             ractically infeasible: If we did that, we would need quite a fe...
-]pdfTeX warning (ext4): destination with the same identifier (name{equation.2.1
-}) has been already used, duplicate ignored
+l.374 \item E
+             stimation of effects in donor pool should err on the side of un...
+] [9]pdfTeX warning (ext4): destination with the same identifier (name{equation
+.2.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.416 \end{align}
-                  [9]
+                 
 
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 434.
@@ -1003,15 +999,14 @@ pdfTeX warning (ext4): destination with the same identifier (name{equation.2.1}
 <to be read again> 
                    \relax 
 l.463 \end{align}
-                 
-<simulation_plots/outperformance_grid.png, id=234, 691.83469pt x 554.82281pt>
+                  [10]
+<simulation_plots/outperformance_grid.png, id=239, 691.83469pt x 554.82281pt>
 File: simulation_plots/outperformance_grid.png Graphic file (type png)
 <use simulation_plots/outperformance_grid.png>
 Package pdftex.def Info: simulation_plots/outperformance_grid.png  used on inpu
 t line 480.
 (pdftex.def)             Requested size: 345.91649pt x 277.41072pt.
- [10]
-<R_package_development/SynthVolForecast/R/SVF_2016.png, id=242, 481.8pt x 481.8
+<R_package_development/SynthVolForecast/R/SVF_2016.png, id=241, 481.8pt x 481.8
 pt>
 File: R_package_development/SynthVolForecast/R/SVF_2016.png Graphic file (type 
 png)
@@ -1019,8 +1014,8 @@ png)
 Package pdftex.def Info: R_package_development/SynthVolForecast/R/SVF_2016.png 
  used on input line 505.
 (pdftex.def)             Requested size: 240.8994pt x 240.8994pt.
- (./synthVolForecast.bbl [11 <./simulation_plots/outperformance_grid.png (PNG c
-opy)>] [12 <./R_package_development/SynthVolForecast/R/SVF_2016.png (PNG copy)>
+ (./synthVolForecast.bbl [11] [12 <./simulation_plots/outperformance_grid.png (
+PNG copy)> <./R_package_development/SynthVolForecast/R/SVF_2016.png (PNG copy)>
 ]) [13] (./synthVolForecast.aux)
 
 LaTeX Warning: There were multiply-defined labels.
@@ -1029,13 +1024,13 @@ Package rerunfilecheck Info: File `synthVolForecast.out' has not changed.
 (rerunfilecheck)             Checksum: B0DE61890036290F8841535942472E67;4675.
  ) 
 Here is how much of TeX's memory you used:
- 24666 strings out of 478287
- 452020 string characters out of 5849289
- 745063 words of memory out of 5000000
- 42344 multiletter control sequences out of 15000+600000
+ 24667 strings out of 478287
+ 452034 string characters out of 5849289
+ 749145 words of memory out of 5000000
+ 42345 multiletter control sequences out of 15000+600000
  486105 words of font info for 88 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,17n,80p,1565b,461s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 84i,17n,80p,1567b,458s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texli
 ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dis
@@ -1055,7 +1050,7 @@ ts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type
 ic/amsfonts/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
 onts/symbols/msbm10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0600.
 pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0800.pfb>
-Output written on synthVolForecast.pdf (13 pages, 531939 bytes).
+Output written on synthVolForecast.pdf (13 pages, 532122 bytes).
 PDF statistics:
  368 PDF objects out of 1000 (max. 8388607)
  306 compressed objects within 4 object streams

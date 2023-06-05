@@ -5,14 +5,20 @@ source('SynthVolForecast_functions.R',
 options(digits = 7, scipen = 7)
 
 ### BEGIN 2016 election example
+packs <- c('quantmod'
+          , 'bizdays'
+          , 'lubridate'
+          )
 
-library(quantmod)
-library(bizdays)
-library(lubridate)
+suppressPackageStartupMessages(lapply(packs, require, character.only = TRUE))
+
+
 
 ## BEGIN USER DATA INPUTS##
 ground_truth <- c(0.000712, 0.000976)
 ground_truth <- c(0.000712)
+
+k <- 1
 
 log_ret_covariates <- c("IYG" #first should be time series under study
                         ,"GBP=X"
@@ -30,7 +36,7 @@ level_covariates <- c(#'^VIX'
                       #,'^IRX'
                       )
 
-volume_covariates <- c()
+volume_covariates <- c('IYG')
 
 shock_dates <- c("2016-11-08",
                    "2016-06-23"
@@ -44,7 +50,6 @@ shock_dates <- c("2016-11-08",
                  #, "2000-11-07"
                  )
 
-k <- 1
 ## END USER DATA INPUTS##
 
 nyse <- timeDate::holidayNYSE(2000:year(Sys.Date())+1)
@@ -61,30 +66,46 @@ names(market_data_list) <- shock_dates
 
 for (i in 1:length(shock_dates)){
 
-  to_add <- lapply(log_ret_covariates, function(sym) {
+  data_log_ret_covariates <- lapply(log_ret_covariates, function(sym) {
     dailyReturn(na.omit(getSymbols(sym
                                    ,from=start_dates[i]
                                    ,to=k_periods_after_shock[i]+10 #tk +10
                                    ,auto.assign=FALSE))
                                    ,type='log')})
 
-  to_add_2 <- lapply(level_covariates, function(sym) {
+  data_log_level_covariates <- lapply(level_covariates, function(sym) {
     na.omit(getSymbols(sym
                        ,from=start_dates[i]
                        ,to=k_periods_after_shock[i]+10 #tk +10
                        ,auto.assign=FALSE))[,6]})
 
-  to_add_3 <- lapply(volume_covariates, function(sym) {
-    na.omit(getSymbols(sym
+  data_volume_covariates <- lapply(volume_covariates, function(sym) {
+    dailyReturn(na.omit(getSymbols(sym
                        ,from=start_dates[i]
                        ,to=k_periods_after_shock[i]+10 #tk +10
-                       ,auto.assign=FALSE))[,6]})
+                       ,auto.assign=FALSE))[,6])})
 
-  to_add <- c(to_add, to_add_2, to_add_3)
+  data_absolute_return_covariates <- lapply(log_ret_covariates, function(sym) {
+    abs(dailyReturn(na.omit(getSymbols(sym
+                                   ,from=start_dates[i]
+                                   ,to=k_periods_after_shock[i]+10 #tk +10
+                                   ,auto.assign=FALSE))
+                                   ,type='log'))})
+
+  to_add <- c(data_log_ret_covariates
+            , data_log_level_covariates
+            , data_volume_covariates
+            , data_absolute_return_covariates
+            )
 
   merged_data <- do.call(merge, to_add)
   complete_cases_merged_data <- merged_data[complete.cases(merged_data),]
   market_data_list[[i]] <- complete_cases_merged_data
+
+  #We print incomplete cases
+
+  #print(incomplete_cases_merged_data) #tk
+  #incomplete_cases_merged_data <- merged_data[~complete.cases(merged_data),]
 
 }
 

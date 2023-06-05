@@ -1,8 +1,11 @@
 ## Required packages
-library(Rsolnp)
-library(garchx)
-library(lmtest)
-library(forecast)
+packs <- c('Rsolnp'
+          , 'garchx'
+          , 'lmtest'
+          , 'forecast'
+          )
+suppressPackageStartupMessages(lapply(packs, require, character.only = TRUE))
+
 
 ### START QL_loss_function
 QL_loss_function <- function(pred, gt){pred/gt - log(pred/gt) - 1}
@@ -33,6 +36,11 @@ dbw <- function(X
 
   # COVARIATE FOR TIME SERIES UNDER STUDY AT shock_time_vec
   X1 <- X[[1]][shock_time_vec[1], dbw_indices, drop = FALSE] # we get only 1 row
+
+  #We notify user if p > n, i.e. if linear system is overdetermined
+  p <- length(dbw_indices)
+
+  if (p > n){message('p > n, implying a unique weight vector w.')}
 
   # LOOP for grab shock_time_vec covariate vector for each donor
   X0 <- c()
@@ -141,6 +149,7 @@ plot_maker_garch <- function(fitted_vol
                       ,w_hat
                       ,omega_star_hat
                       ,adjusted_pred
+                      ,arithmetic_mean_based_pred
                       ,ground_truth_vec){
 
   if (is.character(shock_times_for_barplot) == FALSE){
@@ -154,11 +163,17 @@ plot_maker_garch <- function(fitted_vol
   barplot(w_hat
           ,  main = 'Donor Pool Weights'
           , names.arg = shock_times_for_barplot[-1]
-          , cex.names=.44)
+          , cex.names=.8
+          , las=2)
 
   #Plot target series and prediction
 
-  thing_to_get_max_of <- c(as.numeric(fitted_vol), unadjusted_pred, adjusted_pred, ground_truth_vec)
+  thing_to_get_max_of <- c(as.numeric(fitted_vol)
+                        , unadjusted_pred
+                        , adjusted_pred
+                        , ground_truth_vec
+                        , arithmetic_mean_based_pred
+                        )
 
   max_for_y_lim <- max(thing_to_get_max_of)
 
@@ -173,7 +188,11 @@ plot_maker_garch <- function(fitted_vol
   title(ylab = expression(sigma^2), line = 2.05, cex.lab = 1.99) # Add y-axis text
 
   # Here is the color scheme we will use
-  colors_for_adjusted_pred <- c('red', "green", "purple")
+  colors_for_adjusted_pred <- c('red'
+                              , "green"
+                              , "purple"
+                              , 'blue'
+                              )
 
   # Let's add the plain old GARCH prediction
   points(y = unadjusted_pred
@@ -189,14 +208,25 @@ plot_maker_garch <- function(fitted_vol
          ,cex = .9
          ,pch = 23)
 
-  # Now plot the ground truth predictions
-  points(y = ground_truth_vec
+  # Now plot the arithmetic mean-based predictions
+  points(y = adjusted_pred
+         ,x = (shock_time_vec[1]+1):(shock_time_vec[1]+shock_length_vec[1])
+         ,col = colors_for_adjusted_pred[2]
+         ,cex = .9
+         ,pch = 23)
+
+  # Now plot arithmetic_mean_based_pred predictions
+  points(y = arithmetic_mean_based_pred
          ,x = (shock_time_vec[1]+1):(shock_time_vec[1]+shock_length_vec[1])
          ,col = colors_for_adjusted_pred[3]
          ,cex = .9
          ,pch = 23)
 
-  labels_for_legend <- c('GARCH (unadjusted)', 'Adjusted Prediction', 'Ground Truth')
+  labels_for_legend <- c('GARCH (unadjusted)'
+                        , 'Adjusted Prediction'
+                        , 'Mean-based Prediction'
+                        ,'Ground Truth'
+                        )
 
   legend(x = "topleft",  # Coordinates (x also accepts keywords) #mk
          legend = labels_for_legend,
@@ -261,7 +291,7 @@ plot_maker_synthprediction <- function(Y
   barplot(w_hat
           ,  main = 'Donor Pool Weights'
           , names.arg = shock_times_for_barplot[-1]
-          , cex.names=.6)
+          , cex.names=.8)
 
   #Plot target series and prediction
 
@@ -398,7 +428,7 @@ SynthVolForecast <- function(Y_series_list
       X_i_final <- X_i_with_indicator
     }
 
-    print('Now fitting the donor GARCH models')
+    print(paste('Now fitting a GARCH model to the ', i, 'th', ' donor.', sep = ' '))
     fitted_garch <- garchx(Y_series_list[[i]][1:last_shock_point] #tk
                    , order = garch_order
                    , xreg = X_i_final
@@ -480,7 +510,7 @@ SynthVolForecast <- function(Y_series_list
 
   adjusted_pred <- unadjusted_pred + rep(omega_star_hat, k)
 
-  arithmetic_mean_based_pred <- rep(mean(omega_star_hat), k) + unadjusted_pred
+  arithmetic_mean_based_pred <- rep(mean(omega_star_hat_vec), k) + unadjusted_pred
 
   QL_loss_unadjusted_pred <- sum(QL_loss_function(unadjusted_pred, ground_truth))
 
@@ -525,6 +555,7 @@ SynthVolForecast <- function(Y_series_list
                ,w_hat
                ,omega_star_hat
                ,adjusted_pred
+               ,arithmetic_mean_based_pred
                ,ground_truth_vec)
 
   }

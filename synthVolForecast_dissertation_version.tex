@@ -113,14 +113,14 @@
 \title{Post-shock Volatility Forecasting Using Aggregated Shock Information}
 \author{David Lundquist\thanks{davidl11@ilinois.edu} }
 \affil{Department of Statistics, University of Illinois at Urbana-Champaign}
-\date{June 5th, 2023}
+\date{May 8th, 2023}
 
 \begin{document}
 
 \maketitle
 
 \begin{abstract}
-We develop a novel procedure for forecasting the volatility of a time series under study immediately following an unscheduled news shock.  Adapting the synthetic prediction framework of \citet{lin2021minimizing}, we exploit series that have experienced similar shocks.  We extract volatility signals from these series in order to aggregate properly their shock-induced excess volatilities.  The volatility spikes are modeled as random effects and estimated as fixed effects.  The aggregation of these estimates is in service of adjusting the h-step-ahead GARCH forecast of the time series under study by an additive term.  The adjusted and unadjusted forecasts are evaluated using three families of benchmarks: the unobservable but easily estimated realized volatility (RV) of the time series under study, implied volatility, and the empirical volatility over horizons of varying length.  We also compare the performance of the adjusted forecast to the performance of the Realized GARCH forecast, which is known to react faster to rapidly changing volatility than the standard GARCH model by permitting the inclusion of metrics like implied volatility.   Finally, we combine Realized GARCH modeling with the synthetic prediction framework, using Realized GARCH in both the estimation of random effects as well as the forecast for the time series under study.  Real-world illustrations are provided, as are simulation results suggesting the conditions under which our approach's hyperparameters can be tuned for best performance.
+We develop a novel procedure for forecasting the volatility of a time series under study immediately following an unscheduled news shock.  Adapting the synthetic prediction framework of \citet{lin2021minimizing}, we exploit series that have experienced similar shocks.  We extract volatility signals from these series in order to aggregate properly their shock-induced excess volatilities.  The volatility spikes are modeled as random effects and estimated as fixed effects.  The aggregation of these estimates is in service of adjusting the h-step-ahead GARCH forecast of the time series under study by an additive term.  The adjusted and unadjusted forecasts are evaluated using three families of benchmarks: the unobservable but easily estimated realized volatility (RV) of the time series under study, implied volatility, and the empirical volatility over horizons of varying length.  We also compare the performance of the adjusted forecast to the performance of the Realized GARCH forecast, which is known to react faster to rapidly changing volatility than the standard GARCH model by permitting the inclusion of metrics like implied volatility.   Finally, we combine Realized GARCH modeling with the synthetic prediction framework, using Realized GARCH in both the estimation of random effects as well as the forecast for the time series under study.  Real world illustrations are provided, as are simulation results suggesting the conditions under which our approach's hyperparameters can be tuned for best performance.
 \end{abstract}
 
 
@@ -478,7 +478,7 @@ Having introduced the model parameters above, we introduce estimation techniques
 \begin{figure}
 \begin{center}
   \includegraphics[scale=.5]{simulation_plots/outperformance_grid.png}
-  \caption{A grid of simulation results}
+  \caption{An example of aggreation using arithmetic mean}
   \label{fig:arith_mean}
 \end{center}
 \end{figure}
@@ -504,10 +504,10 @@ Figure \ref{fig:arith_mean} shows a simple example.
 \begin{center}
   \includegraphics[scale=.5]{R_package_development/SynthVolForecast/R/SVF_2016.png}
   \caption{The volatility induced by the 2016 US election results is predicted by the method}
-  \label{fig:SVF_2016}
+  \label{fig:arith_mean}
   \end{center}
 \end{figure}
-Figure \ref{fig:SVF_2016} shows a simple example.
+Figure \ref{fig:arith_mean} shows a simple example.
 
 
 
