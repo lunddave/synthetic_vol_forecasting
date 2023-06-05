@@ -132,10 +132,21 @@ When $(P_{t})_{t\in\mathbb{N}}$ is positive, as one would expect of a price seri
 
 However, no matter how a time series or its transformations is modeled, forecasting in the prescence of exogenous shock events requires a methodological framework that sensibly incorporates relevant information that has yet to manifest itself in market price or derivative quantities like volatility.  In this setting, regime-change models are of little use because under the assumption of a known exogenous shock, there is no need to estimate a regime-change time, nor is there data following the exogenous shock event to fit a model.  Asymmetric GARCH models were an early attempt to account for fact that negative returns typically beget larger volatility than positive returns \citep{hansen2012realized}.  As a separate problem, GARCH models have been shown slow to adapt to spikes in volatility (find first authors to point this out).  \citet{engle2002new} explored the use of implied volatility as an external regressor in a GARCH model, that is, using so-called GARCH-X models. \citet{hansen2012realized} propose Realized Garch, which aims to solve both the asymmetry problem as well as the slow-reaction problem by introducing a "measurement equation" as a tool for modeling the contribution to the conditional variance made by the market-implied volatility measure.  The key insight is that that the market-implied volatility measure is not independent of the conditional variance posited by the GARCH model.  Therefore, including the external measure must be done in a way that accounts for this dependence.
 
-The approach herein can be viewed as an attempt to sidestep the functional complexity posited by Realized GARCH by substituting modeling assumptions.  Synthetic volatility forecasting proceeds under the assumption that similar exogenous shock events occasion volatility shocks arising from a common shock distribution.
+The approach herein can be viewed as an attempt to sidestep the functional complexity posited by Realized GARCH by substituting modeling assumptions.  Synthetic Volatility Forecasting proceeds under the assumption that similar unscheduled shock events occasion volatility shocks arising from a common shock distribution.
+
+\begin{figure}[h]
+\begin{center}
+  \includegraphics[scale=.5]{simulation_plots/plot_for_early_paper.png}
+  \caption{An example of aggregating shock estimates using the arithmetic mean}
+  \label{fig:arith_mean}
+  \end{center}
+\end{figure}
+
+As we see in \ref{fig:arith_mean}, the arithmetic mean of estimated shock effects provides perhaps the most straightforward and intuitive way of aggregating information from similar events.
 
 
 \section{Setting}
+\label{section2}
 
 
 
@@ -192,21 +203,11 @@ Finally, we introduce the QL (quasi-likelihood) Loss \citep{brownlees2011practic
 \text{QL}^{H}_{method, ground truth} = \frac{1}{h}\sum_{h=1}^{H} (\frac{ \hat\sigma^{2}_{h, method} }{\hat\sigma^{2}_{h, ground truth}} - \log{\frac{ \hat\sigma^{2}_{h, method} }{\hat\sigma^{2}_{h, ground truth}}} -1)
 \]
 
-What distinguishes QL Loss is that it is multiplicative rather than additive.  This serves as a basis for some of its virtues.  As \citet{brownlees2011practical} explains, "[a]mid volatility turmoil, large MSE
+What distinguishes QL Loss is that it is multiplicative rather than additive.  This serves as a basis for some of its virtues.  As \citet{brownlees2011practical} explains, ''[a]mid volatility turmoil, large MSE
 losses will be a consequence of high volatility without necessarily corresponding to
 deterioration of forecasting ability. The QL avoids this ambiguity, making it easier to
 compare losses across volatility regimes."
 
-\label{section2}
-
-\begin{figure}[htbp]
-\begin{center}
-  \includegraphics[scale=.5]{simulation_plots/plot_for_early_paper.png}
-  \caption{An example of aggregating estimates using the arithmetic mean}
-  \label{fig:arith_mean}
-  \end{center}
-\end{figure}
-Figure \ref{fig:arith_mean} shows a simple example.
 
 \subsection{Ground Truth Estimators}
 \label{Ground Truth Estimators}
@@ -440,19 +441,6 @@ for $i = 1, \ldots, n+1$. We also consider a model where the shock effects are l
 \end{tabular}
 \end{table}
 
-\begin{table}[]
-\begin{tabular}{|p{1.3in}|p{1.6in}|p{1.9in}|p{1.9in}|}
-\hline
- & Vershynin (2018) & Lin and Eck (2021) & SynthVolForecasting \\ \hline
-observed quantity& $y_{i}$  & NA & NA \\ \hline
-estimated quantity&  NA& $\alpha_{i}$ &  $\omega^{*}_{i}$\\ \hline
-signal & $A_{i}x$ & $\mu + \delta'x_{i,T^{*}}$ & $\mu + \delta'x_{i,T^{*}}$  \\ \hline
-prior information & $x\in T$, $T$ a convex & across donors, linear shock function equal in distribution  &  across donors, linear shock function equal in distribution \\ \hline
-key assumption(s) & $A_{i}$ independent $\forall i$, isotropic too? & $x_{i,T^{*}}$ independent across donors; independent entries of $x_{i,T^{*}}$ & $x_{i,T^{*}}$ independent across donors; independent entries of $x_{i,T^{*}}$ \\ \hline
-noise& w & $\t\varepsilon$  & $\t\varepsilon$   \\ \hline
-strategy& Observe $y_{i}$; then estimate $x$ with small expected L2 loss & Estimate $\alpha_{i}$ for $i = 2,...,n+1$; then take convex combination to predict $\alpha_{1}$  & Estimate $\omega^{*}_{i}$ for $i = 2,...,n+1$; then take convex combination to predict $\omega^{*}_{1}$ \\ \hline
-\end{tabular}
-\end{table}
 
 We further define the parameter sets
 \begin{align}
@@ -475,14 +463,24 @@ Having introduced the model parameters above, we introduce estimation techniques
 
 \subsection{Most elementary simulation setup}
 
-\begin{figure}
+In order to investigate the Synthetic Volatility Forecasting method
+
+\begin{figure}[h!]
 \begin{center}
-  \includegraphics[scale=.5]{simulation_plots/outperformance_grid.png}
-  \caption{A grid of simulation results}
-  \label{fig:arith_mean}
+  \includegraphics[scale=.45]{simulation_plots/outperformance_grid.png}
+  \caption{Fixed parameter values: $\alpha = .1, \beta = .82, \mu_{x} = 1, \sigma_{x} = .1$ (verify)}
+  \label{fig:outperformance}
 \end{center}
 \end{figure}
-Figure \ref{fig:arith_mean} shows a simple example.
+
+As we see in \ref{fig:outperformance}, when only two parameters are varied, the shock signal and the shock noise, we observe several encouraging phenomena:
+\begin{itemize}
+\item For nearly any row selected in the grid, a pronounced downward trend in the outperformance rate of the SVF exists.
+\item For any column selected, an increasing trend exists as the shock signal increases.
+\item For almost all small values of the shock signal, the outperformance rate hovers around .5, supporting the hypothesis that in the absence of a signal, any level of noise renders the method anemic.
+\end{itemize}
+
+
 
 \subsection{Dual shock: both a level and volatility shock at T*+1}
 \textit{Hypothesis:} Method should do less well under level shock.
@@ -500,14 +498,14 @@ Figure \ref{fig:arith_mean} shows a simple example.
 
 \section{Real Data Example}
 
-\begin{figure}[htbp]
+\begin{figure}[h!]
 \begin{center}
-  \includegraphics[scale=.5]{R_package_development/SynthVolForecast/R/SVF_2016.png}
-  \caption{The volatility induced by the 2016 US election results is predicted by the method}
+  \includegraphics[scale=.38]{R_package_development/SynthVolForecast/R/SVF_2016.png}
+  \caption{The volatility induced by the 2016 US election results is well-predicted by a convex combination of previous shocks.}
   \label{fig:SVF_2016}
   \end{center}
 \end{figure}
-Figure \ref{fig:SVF_2016} shows a simple example.
+We shall discuss \ref{fig:SVF_2016} soon.
 
 
 
@@ -520,6 +518,22 @@ We also introduce simulation parameters that can be varied but are not random ef
 
 \section{Connection to Signal Recovery}
 
+
+\begin{table}[]
+\begin{tabular}{|p{1.3in}|p{1.6in}|p{1.9in}|p{1.9in}|}
+\hline
+ & Vershynin (2018) & Lin and Eck (2021) & SynthVolForecasting \\ \hline
+observed quantity& $y_{i}$  & NA & NA \\ \hline
+estimated quantity&  NA& $\alpha_{i}$ &  $\omega^{*}_{i}$\\ \hline
+signal & $A_{i}x$ & $\mu + \delta'x_{i,T^{*}}$ & $\mu + \delta'x_{i,T^{*}}$  \\ \hline
+prior information & $x\in T$, $T$ a convex & across donors, linear shock function equal in distribution  &  across donors, linear shock function equal in distribution \\ \hline
+key assumption(s) & $A_{i}$ independent $\forall i$, isotropic too? & $x_{i,T^{*}}$ independent across donors; independent entries of $x_{i,T^{*}}$ & $x_{i,T^{*}}$ independent across donors; independent entries of $x_{i,T^{*}}$ \\ \hline
+noise& w & $\t\varepsilon$  & $\t\varepsilon$   \\ \hline
+strategy& Observe $y_{i}$; then estimate $x$ with small expected L2 loss & Estimate $\alpha_{i}$ for $i = 2,...,n+1$; then take convex combination to predict $\alpha_{1}$  & Estimate $\omega^{*}_{i}$ for $i = 2,...,n+1$; then take convex combination to predict $\omega^{*}_{1}$ \\ \hline
+\end{tabular}
+\end{table}
+
+\clearpage
 
 \bibliographystyle{plainnat}
 \bibliography{synthVolForecast}

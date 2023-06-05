@@ -198,34 +198,34 @@ plot_maker_garch <- function(fitted_vol
   points(y = unadjusted_pred
          ,x = (shock_time_vec[1]+1):(shock_time_vec[1]+shock_length_vec[1])
          ,col = colors_for_adjusted_pred[1]
-         ,cex = .9
+         ,cex = 1.1
          ,pch = 15)
 
   # Now plot the adjusted predictions
   points(y = adjusted_pred
          ,x = (shock_time_vec[1]+1):(shock_time_vec[1]+shock_length_vec[1])
          ,col = colors_for_adjusted_pred[2]
-         ,cex = .9
+         ,cex = 1.1
          ,pch = 23)
 
   # Now plot the arithmetic mean-based predictions
-  points(y = adjusted_pred
-         ,x = (shock_time_vec[1]+1):(shock_time_vec[1]+shock_length_vec[1])
-         ,col = colors_for_adjusted_pred[2]
-         ,cex = .9
-         ,pch = 23)
-
-  # Now plot arithmetic_mean_based_pred predictions
   points(y = arithmetic_mean_based_pred
          ,x = (shock_time_vec[1]+1):(shock_time_vec[1]+shock_length_vec[1])
          ,col = colors_for_adjusted_pred[3]
-         ,cex = .9
+         ,cex = 1.1
+         ,pch = 23)
+
+  # Now plot Ground Truth
+  points(y = ground_truth_vec
+         ,x = (shock_time_vec[1]+1):(shock_time_vec[1]+shock_length_vec[1])
+         ,col = colors_for_adjusted_pred[4]
+         ,cex = 1.1
          ,pch = 23)
 
   labels_for_legend <- c('GARCH (unadjusted)'
-                        , 'Adjusted Prediction'
-                        , 'Mean-based Prediction'
-                        ,'Ground Truth'
+                        , 'Adjusted'
+                        , 'Arithmetic Mean'
+                        , 'Ground Truth'
                         )
 
   legend(x = "topleft",  # Coordinates (x also accepts keywords) #mk
@@ -428,7 +428,7 @@ SynthVolForecast <- function(Y_series_list
       X_i_final <- X_i_with_indicator
     }
 
-    print(paste('Now fitting a GARCH model to the ', i, 'th', ' donor.', sep = ' '))
+    print(paste('Now fitting a GARCH model to the ', i, 'th', ' donor.', sep = ''))
     fitted_garch <- garchx(Y_series_list[[i]][1:last_shock_point] #tk
                    , order = garch_order
                    , xreg = X_i_final
