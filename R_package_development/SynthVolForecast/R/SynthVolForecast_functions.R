@@ -40,8 +40,6 @@ dbw <- function(X
   #We notify user if p > n, i.e. if linear system is overdetermined
   p <- length(dbw_indices)
 
-  if (p > n){message('p > n, implying a unique weight vector w.')}
-
   # LOOP for grab shock_time_vec covariate vector for each donor
   X0 <- c()
   for (i in 1:n) {
@@ -132,9 +130,9 @@ dbw <- function(X
                             LB = lower_bound, UB = upper_bound,
                             control = list(trace = 0
                                            , 1.0e-8
-                                           , tol = 1e-9
-                                           , outer.iter = 10000
-                                           , inner.iter = 10000))
+                                           , tol = 1e-19
+                                           , outer.iter = 100000
+                                           , inner.iter = 100000))
   return(object_to_return$pars)
 
 } #END dbw function
@@ -386,6 +384,8 @@ SynthVolForecast <- function(Y_series_list
   ### END Populate defaults
 
 
+
+
   ## BEGIN Check that inputs are all comformable/acceptable
   n <- length(Y_series_list) - 1 #tk
   ## END Check that inputs are all comformable/acceptable
@@ -404,6 +404,20 @@ SynthVolForecast <- function(Y_series_list
   }
 
   ## END Check whether shock_time_vec is int/date
+
+  ## BEGIN calculate weight vector
+  w_hat <- dbw(X, #tk
+               dwb_indices,
+               integer_shock_time_vec,
+               scale = TRUE,
+               sum_to_1 = TRUE, #tk
+               bounded_below_by = 0, #tk
+               bounded_above_by = 1, #tk
+               # normchoice = normchoice, #tk
+               # penalty_normchoice = penalty_normchoice,
+               # penalty_lambda = penalty_lambda
+               )
+  ## END calculate weight vector
 
   ## BEGIN estimate fixed effects in donors
   omega_star_hat_vec <- c()
@@ -428,7 +442,7 @@ SynthVolForecast <- function(Y_series_list
       X_i_final <- X_i_with_indicator
     }
 
-    print(paste('Now fitting a GARCH model to the ', i, 'th', ' donor.', sep = ''))
+    print(paste('Now fitting a GARCH model to donor series number ', i,'.', sep = ''))
     fitted_garch <- garchx(Y_series_list[[i]][1:last_shock_point] #tk
                    , order = garch_order
                    , xreg = X_i_final
@@ -446,18 +460,6 @@ SynthVolForecast <- function(Y_series_list
   ## END estimate fixed effects in donors
 
   ## BEGIN compute linear combination of fixed effects
-  w_hat <- dbw(X, #tk
-               dwb_indices,
-               integer_shock_time_vec,
-               scale = TRUE,
-               sum_to_1 = TRUE, #tk
-               bounded_below_by = 0, #tk
-               bounded_above_by = 1, #tk
-               # normchoice = normchoice, #tk
-               # penalty_normchoice = penalty_normchoice,
-               # penalty_lambda = penalty_lambda
-               )
-
   omega_star_hat <- w_hat %*% omega_star_hat_vec
   ## END compute linear combination of fixed effects
 
@@ -538,7 +540,7 @@ SynthVolForecast <- function(Y_series_list
       'Unadjusted Forecast:', unadjusted_pred,'\n', '\n',
       'Adjusted Forecast:', adjusted_pred,'\n', '\n',
       'Arithmetic-Mean-Based Forecast:',arithmetic_mean_based_pred,'\n','\n',
-      'Ground Truth (estimated by realized volality):', ground_truth_vec,'\n', '\n',
+      'Ground Truth (estimated by realized volatility):', ground_truth_vec,'\n', '\n',
       'QL Loss of unadjusted:', QL_loss_unadjusted_pred,'\n', '\n',
       'QL Loss of adjusted:', QL_loss_adjusted_pred,'\n', '\n'
   )

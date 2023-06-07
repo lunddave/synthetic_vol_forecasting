@@ -16,19 +16,21 @@ suppressPackageStartupMessages(lapply(packs, require, character.only = TRUE))
 
 ## BEGIN USER DATA INPUTS##
 ground_truth <- c(0.000712, 0.000976)
-ground_truth <- c(0.000712)
+#ground_truth <- c(0.000712)
+#ground_truth <- c(0.000712, 0.000976, .0006)
 
-k <- 1
+
+k <- 2
 
 log_ret_covariates <- c("IYG" #first should be time series under study
-                        ,"GBP=X"
-                        ,"6B=F"
+                        #,"GBP=X"
+                        #,"6B=F"
                         ,"CL=F"
                         ,"^VIX"
                         ,"^IRX"
                         ,"^FVX"
                         ,"^TNX"
-                       # ,"^TYX"
+                        ,"^TYX"
                         )
 
 level_covariates <- c(#'^VIX'
@@ -39,16 +41,16 @@ level_covariates <- c(#'^VIX'
 volume_covariates <- c('IYG')
 
 shock_dates <- c("2016-11-08",
-                   "2016-06-23"
-                 , "2014-11-04"
-                 , "2012-11-06"
-                 , "2010-11-02"
-                 , "2008-11-04"
-                 , "2006-11-07"
-                 #, "2004-11-02"
-                 #, "2002-11-05"
-                 #, "2000-11-07"
-                 )
+                 "2016-06-23"
+               , "2014-11-04"
+               , "2012-11-06"
+               , "2010-11-02"
+               , "2008-11-04"
+               , "2006-11-07"
+               #, "2004-11-02"
+               #, "2002-11-05"
+               #, "2000-11-07"
+               )
 
 ## END USER DATA INPUTS##
 
@@ -70,7 +72,7 @@ for (i in 1:length(shock_dates)){
     dailyReturn(na.omit(getSymbols(sym
                                    ,from=start_dates[i]
                                    ,to=k_periods_after_shock[i]+10 #tk +10
-                                   ,auto.assign=FALSE))
+                                   ,auto.assign=FALSE))[,6]
                                    ,type='log')})
 
   data_log_level_covariates <- lapply(level_covariates, function(sym) {
@@ -85,27 +87,16 @@ for (i in 1:length(shock_dates)){
                        ,to=k_periods_after_shock[i]+10 #tk +10
                        ,auto.assign=FALSE))[,6])})
 
-  data_absolute_return_covariates <- lapply(log_ret_covariates, function(sym) {
-    abs(dailyReturn(na.omit(getSymbols(sym
-                                   ,from=start_dates[i]
-                                   ,to=k_periods_after_shock[i]+10 #tk +10
-                                   ,auto.assign=FALSE))
-                                   ,type='log'))})
+  data_absolute_return_covariates <- lapply(data_log_ret_covariates, abs)
 
   to_add <- c(data_log_ret_covariates
             , data_log_level_covariates
             , data_volume_covariates
-            , data_absolute_return_covariates
+            #, data_absolute_return_covariates
             )
 
   merged_data <- do.call(merge, to_add)
-  complete_cases_merged_data <- merged_data[complete.cases(merged_data),]
-  market_data_list[[i]] <- complete_cases_merged_data
-
-  #We print incomplete cases
-
-  #print(incomplete_cases_merged_data) #tk
-  #incomplete_cases_merged_data <- merged_data[~complete.cases(merged_data),]
+  market_data_list[[i]] <- merged_data
 
 }
 
@@ -114,7 +105,17 @@ for (i in 1:length(shock_dates)){
 #now build Y
 Y <- list()
 for (i in 1:length(start_dates)){
-  Y[[i]] <- market_data_list[[i]][,1]
+  Y_i <- market_data_list[[i]][,1]
+  Y_i_drop_NA <- Y_i[complete.cases(Y_i)]
+  #print('Here is the type of object we are working with:')
+  #print(class(Y_i_drop_NA))
+  #print('Here are the rownames')
+  #print(index(Y_i_drop_NA))
+  if (shock_dates[i] %in% index(Y_i_drop_NA)){
+    print('The shock date is in the series.')
+  }
+  else{print('Shock date NOT in series.')}
+  Y[[i]] <- Y_i_drop_NA
 }
 
 
@@ -126,7 +127,7 @@ for (i in 1:length(start_dates)){
 
 n <- length(start_dates) - 1
 
-png('SVF_2016.png')
+png('SVF_2016_without_pound.png')
 
 #Now run the algorithm
 temp <- SynthVolForecast(Y
