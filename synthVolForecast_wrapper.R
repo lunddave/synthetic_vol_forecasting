@@ -248,7 +248,8 @@ simulate_and_analyze <- function(n = 3,
   return(final_output)
 }
 
-# png("out.png")
+png('simulation_plot_arithmetic_mean.png')
+
 
 simulate_and_analyze(normchoice = 'l2'
                            , penalty_norm = 'l2'
@@ -256,7 +257,4 @@ simulate_and_analyze(normchoice = 'l2'
                            , plot_sim = TRUE
                            , plot_fit = TRUE)
 
-
-# temp <- simulate_and_analyze()
-
-# dev.off()
+dev.off()

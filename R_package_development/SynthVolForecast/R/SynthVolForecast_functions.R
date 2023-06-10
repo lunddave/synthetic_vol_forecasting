@@ -3,6 +3,7 @@ packs <- c('Rsolnp'
           , 'garchx'
           , 'lmtest'
           , 'forecast'
+          , 'RColorBrewer'
           )
 suppressPackageStartupMessages(lapply(packs, require, character.only = TRUE))
 
@@ -146,6 +147,7 @@ plot_maker_garch <- function(fitted_vol
                       ,unadjusted_pred
                       ,w_hat
                       ,omega_star_hat
+                      ,omega_star_hat_vec
                       ,adjusted_pred
                       ,arithmetic_mean_based_pred
                       ,ground_truth_vec){
@@ -154,15 +156,29 @@ plot_maker_garch <- function(fitted_vol
     shock_times_for_barplot <- 1:length(shock_times_for_barplot)
   }
 
-  par(mfrow = c(1,2))
+  par(mfrow = c(1,3))
+
+  barplot_colors <- brewer.pal(length(w_hat) - 1 ,'Set3')
 
   #PLOT ON THE LEFT:
+
   #Plot donor weights
   barplot(w_hat
-          ,  main = 'Donor Pool Weights'
+          , main = 'Donor Pool Weights'
           , names.arg = shock_times_for_barplot[-1]
-          , cex.names=.8
-          , las=2)
+          , cex.names=.95
+          , las=2
+          , col = barplot_colors)
+
+  #PLOT IN THE MIDDLE
+
+  #Plot FE estimates
+    barplot(omega_star_hat_vec
+          , main = 'Donor-Pool-Supplied FE Estimates'
+          , names.arg = shock_times_for_barplot[-1]
+          , cex.names=.95
+          , las=2
+          , col = barplot_colors)
 
   #Plot target series and prediction
 
@@ -556,6 +572,7 @@ SynthVolForecast <- function(Y_series_list
                ,unadjusted_pred
                ,w_hat
                ,omega_star_hat
+               ,omega_star_hat_vec
                ,adjusted_pred
                ,arithmetic_mean_based_pred
                ,ground_truth_vec)

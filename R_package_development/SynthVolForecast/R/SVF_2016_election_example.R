@@ -33,7 +33,7 @@ log_ret_covariates <- c("IYG" #first should be time series under study
                         ,"^TYX"
                         )
 
-level_covariates <- c(#'^VIX'
+level_covariates <- c('^VIX'
                       #,"GBP=X"
                       #,'^IRX'
                       )
@@ -47,7 +47,7 @@ shock_dates <- c("2016-11-08",
                , "2010-11-02"
                , "2008-11-04"
                , "2006-11-07"
-               #, "2004-11-02"
+               , "2004-11-02"
                #, "2002-11-05"
                #, "2000-11-07"
                )
@@ -59,7 +59,7 @@ create.calendar(name='NYSE', holidays=nyse, weekdays=c('saturday', 'sunday'))
 
 shock_dates_as_dates <- as.Date(shock_dates)
 
-start_dates <- offset(shock_dates_as_dates, round(-5*252), "NYSE")
+start_dates <- offset(shock_dates_as_dates, round(-3*252), "NYSE")
 
 k_periods_after_shock <- offset(shock_dates_as_dates, k, "NYSE")
 

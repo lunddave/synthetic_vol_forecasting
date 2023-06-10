@@ -17,6 +17,7 @@
 \usepackage{enumitem}
 \usepackage{authblk}
 \usepackage{bm}
+\usepackage{comment}
 
 
 \usepackage{hyperref}
@@ -120,7 +121,7 @@
 \maketitle
 
 \begin{abstract}
-We develop a novel procedure for forecasting the volatility of a time series under study immediately following an unscheduled news shock.  Adapting the synthetic prediction framework of \citet{lin2021minimizing}, we exploit series that have experienced similar shocks.  We extract volatility signals from these series in order to aggregate properly their shock-induced excess volatilities.  The volatility spikes are modeled as random effects and estimated as fixed effects.  The aggregation of these estimates is in service of adjusting the h-step-ahead GARCH forecast of the time series under study by an additive term.  The adjusted and unadjusted forecasts are evaluated using three families of benchmarks: the unobservable but easily estimated realized volatility (RV) of the time series under study, implied volatility, and the empirical volatility over horizons of varying length.  We also compare the performance of the adjusted forecast to the performance of the Realized GARCH forecast, which is known to react faster to rapidly changing volatility than the standard GARCH model by permitting the inclusion of metrics like implied volatility.   Finally, we combine Realized GARCH modeling with the synthetic prediction framework, using Realized GARCH in both the estimation of random effects as well as the forecast for the time series under study.  Real-world illustrations are provided, as are simulation results suggesting the conditions under which our approach's hyperparameters can be tuned for best performance.
+We develop a novel procedure for forecasting the volatility of a time series under study immediately following an exogenous, unscheduled news shock.  Adapting the synthetic prediction framework of \citet{lin2021minimizing}, we exploit series that have experienced similar shocks.  We extract volatility signals from these series in order to aggregate properly their shock-induced excess volatilities.  The volatility spikes are modeled as random effects and estimated as fixed effects.  The aggregation of these estimates is in service of adjusting the h-step-ahead GARCH forecast of the time series under study by an additive term.  The adjusted and unadjusted forecasts are evaluated using three families of benchmarks: the unobservable but easily-estimated realized volatility (RV) of the time series under study, implied volatility, and the empirical volatility over horizons of varying length.  We also compare the performance of the adjusted forecast to the performance of the Realized GARCH forecast, which is known to react faster to rapidly-changing volatility than GARCH incorporating implied volatility.   Finally, we combine Realized GARCH modeling with the synthetic prediction framework, using Realized GARCH in both the estimation of random effects as well as the forecast for the time series under study.  Real-world illustrations are provided, as are simulation results suggesting the conditions under which our approach's hyperparameters can be tuned for best performance.
 \end{abstract}
 
 
@@ -139,7 +140,7 @@ The approach herein can be viewed as an attempt to sidestep the functional compl
 
 \begin{figure}[h]
 \begin{center}
-  \includegraphics[scale=.5]{simulation_plots/plot_for_early_paper.png}
+  \includegraphics[scale=.5]{simulation_plots/USE_in_paper_simulation_plot_arithmetic_mean.png}
   \caption{An example of aggregating shock estimates using the arithmetic mean}
   \label{fig:arith_mean}
   \end{center}
@@ -156,7 +157,7 @@ As we see in \ref{fig:arith_mean}, the arithmetic mean of estimated shock effect
 
 We follow convention and define the daily log-return as $r_{t} = \text{log}(\frac{P_{t+1}}{P_{t}})$.  The class of ARIMA(p,d,q) models developed in the mid-to-late 20th century provides a framework for postulating and quantifying the autoregressive structure of $r_{t}$, all within the framework of frequentist statistics and maximum-likelihood estimation of parameters.  These models assume a certain dependence structure between $r_{t}$ and $(r_{k})_{k\leq t}$, as well as all observations in between, yet their errors -- often called innovations in the financial time series context due to how they represent the impact of new information -- are nevertheless assumed to be i.i.d. with mean zero and constant variance.  The ARCH \citep{engle1982autoregressive} and GARCH \citep{bollerslev1986generalized} models provide elegant alternatives to the constant-variance assumption.  In fact, the GARCH framework in its most basic form disregards $r_{t}$ and instead turns its interest to the series $r_{t}^{2}$ (when properly centered, i.e. after assuming a mean-model for returns).  
 
-To that end, let $a_{t} = r_{t} - \mu_{t}$, where $\mu_{t}$ is the mean of the log return series $r_{t}$.  Implicitly, we are committing ourselves to a mean-model for $r_{t}$ in which $\mu_{t}$, the expected daily log-return, may vary with time, while $a_{t}$ is simply the noise.  As \citet{cont2001empirical} explains, such an assumption is justified by the empirical finding that returns lack significant autocorrelation.  We derive a mean-zero process $(a_{t})_{t\in\mathbb{N}}$ with the property that $\E[a^{2}_{t}] = \mrm{Var}[a_{t}]$.  Under the assumption of time-invariant volatility, the series $a_{t}^{2}$ should exhibit no autocorrelation at any lag $\ell\geq1$.  This assumption motivates tests for so-called ARCH effects, that is, tests for the clustering of volatility.  These tests explore the the alternative hypothesis that $\sigma_{t}^{2}$ is not only a time-varying parameter but furthermore a function of past squared residuals of the mean model.  In particular, the ARCH(m) model is an autoregressive model in which $\sigma_{t}^{2}$ is fitted using a linear combination of the $m$ past values of $a_{t}^{2}$.  The GARCH(m,s) framework take this one step further but modeling $\sigma_{t}^{2}$ as a linear combination of the $m$ past $a_{t}^{2}$ values and well as the $s$ past values of $\sigma_{t}^{2}$.  In functional form,
+To that end, let $a_{t} = r_{t} - \mu_{t}$, where $\mu_{t}$ is the mean of the log return series $r_{t}$.  Implicitly, we are committing ourselves to a mean-model for $r_{t}$ in which $\mu_{t}$, the expected daily log-return, may vary with time, while $a_{t}$ is simply the noise.  As \citet{cont2001empirical} explains, such an assumption is justified by the empirical finding that returns lack significant autocorrelation.  We derive a mean-zero process $(a_{t})_{t\in\mathbb{N}}$ with the property that $\E[a^{2}_{t}] = \mrm{Var}[a_{t}]$.  Under the assumption of time-invariant volatility, the series $a_{t}^{2}$ should exhibit no autocorrelation at any lag $\ell\geq1$.  This assumption motivates tests for so-called ARCH effects, that is, tests for the clustering of volatility.  These tests explore the alternative hypothesis that $\sigma_{t}^{2}$ is not only a time-varying parameter but furthermore a function of past squared residuals of the mean model.  In particular, the ARCH(m) model is an autoregressive model in which $\sigma_{t}^{2}$ is fitted using a linear combination of the $m$ past values of $a_{t}^{2}$.  The GARCH(m,s) framework take this one step further but modeling $\sigma_{t}^{2}$ as a linear combination of the $m$ past $a_{t}^{2}$ values and well as the $s$ past values of $\sigma_{t}^{2}$.  In functional form,
 
 \begin{align*}
 &\sigma_{t}^{2} = \omega + \sum^{m}_{k=1}\alpha_{k}a^{2}_{t-k} + \sum_{j=1}^{s}\beta_{j}\sigma_{t-j}^{2}\\
@@ -165,7 +166,7 @@ To that end, let $a_{t} = r_{t} - \mu_{t}$, where $\mu_{t}$ is the mean of the l
 
 
 
-Assuming further that $\sigma^{2}_{t}$ depends on a vector of exogenous covariates $\x_{t}$ (a so-called "GARCH-X"), we have
+Assuming further that $\sigma^{2}_{t}$ depends on a vector of exogenous covariates $\x_{t}$ (a so-called ``GARCH-X"), we have
 
 \begin{align*}
 &\sigma_{t}^{2} = \omega+ \sum^{m}_{k=1}\alpha_{k}a^{2}_{t-k} + \sum_{j=1}^{s}\beta_{j}\sigma_{t-j}^{2} + \gamma^{T}\x_{t}\\
@@ -186,11 +187,11 @@ In light of the foregoing, we can rewrite the GARCH framework we are interested 
 % https://latex-tutorial.com/matrices-in-latex/
 % https://www.math-linux.com/latex-26/faq/latex-faq/article/how-to-write-matrices-in-latex-matrix-pmatrix-bmatrix-vmatrix-vmatrix
 
-We are interested in a multihorizon point forecast for $\sigma^{2}_{1,T^{*}+h}$, $h=1,2,...,H$, the h-step ahead conditional variance for the time series under study, up to a maximum forecast horizon of H.  The forecast performance evaluation uses three distinct loss functions, each computed using three families of estimators for the ground truth that we seek.  Let $L^{h}$ with the subscripted pair (prediction method, ground truth estimator), denote the loss function for an h-step-ahead forecast using a given prediction function and ground truth estimator.  For example, one loss function of interest in this study is the 1-step-ahead MSE using Synthetic Volatility Forecasting and Realized Volatility:
+We are interested in a multihorizon point forecast for $\sigma^{2}_{1,T^{*}+h}$, $h=1,2,...,H$, the h-step ahead conditional variance for the time series under study, up to a maximum forecast horizon of H.  The forecast performance evaluation uses three distinct loss functions, each computed using three families of estimators for the ground truth that we seek.  Let $L^{h}$ with the subscripted pair $\{$prediction method, ground truth estimator$\}$, denote the loss function for an h-step-ahead forecast using a given prediction function and ground truth estimator.  For example, one loss function of interest in this study is the 1-step-ahead MSE using Synthetic Volatility Forecasting and Realized Volatility:
 
 $$ MSE^{1}_{SVF, RV} = (\hat\sigma^{2}_{SVF} - \hat\sigma^{2}_{RV})^{2}$$
 
-In more generality, for an multihorizon volatility forecast with maximum forecast length H, the loss function is 
+In more generality, for an multihorizon volatility forecast with maximum forecast length $H$, the loss function is 
 
 $$ MSE^{H}_{method, ground truth} = \frac{1}{H}\sum_{h=1}^{H}(\hat\sigma^{2}_{h, method} - \hat\sigma^{2}_{h, ground truth})^{2}$$
 
@@ -503,7 +504,7 @@ As we see in \ref{fig:outperformance}, when only two parameters are varied, the 
 
 \begin{figure}[h!]
 \begin{center}
-  \includegraphics[scale=.38]{R_package_development/SynthVolForecast/R/SVF_2016.png}
+  \includegraphics[scale=.38]{R_package_development/SynthVolForecast/R/SVF_2016_without_pound.png}
   \caption{The volatility induced by the 2016 US election results is well-predicted by a convex combination of previous shocks.}
   \label{fig:SVF_2016}
   \end{center}
