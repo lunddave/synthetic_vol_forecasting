@@ -193,7 +193,7 @@ plot_maker_garch <- function(fitted_vol
 
   #PLOT ON THE RIGHT:
   plot.ts(fitted_vol[1:shock_time_vec[1]], #mk
-       main = 'Two Forecasts Following T*', #mk can improve this title
+       main = 'Forecasts Following T*', #mk can improve this title
        ylab = '',
        xlab = "Trading Days",
        xlim = c(0, shock_time_vec[1] + 5), #mk
@@ -379,6 +379,7 @@ SynthVolForecast <- function(Y_series_list
                              ,geometric_sets = NULL #tk
                              ,days_before_shocktime_vec = NULL #tk I may want to remove this
                              ,garch_order = NULL
+                             ,common_series_assumption = FALSE
                              ,plots = TRUE
                              ,ground_truth_vec
 ){
@@ -438,40 +439,60 @@ SynthVolForecast <- function(Y_series_list
   ## BEGIN estimate fixed effects in donors
   omega_star_hat_vec <- c()
 
-  for (i in 2:(n+1)){
+  if (common_series_assumption == TRUE){
+    print('tk TODO')
 
-    # Make indicator variable w/ a 1 at only T*+1, T*+2,...,T*+shock_length_vec[i]
-    vec_of_zeros <- rep(0, integer_shock_time_vec[i])
-    vec_of_ones <- rep(1, shock_length_vec[i])
-    post_shock_indicator <- c(vec_of_zeros, vec_of_ones)
-    last_shock_point <- integer_shock_time_vec[i] + shock_length_vec[i]
+    #step 1: create dummy vector with n+1 shocks
+    #NOTA BENE: n different fixed effects, or
+    # 1 fixed effect estimated at n shocks?
+      vec_of_zeros <- rep(0, integer_shock_time_vec[i])
+      vec_of_ones <- rep(1, shock_length_vec[i])
+      post_shock_indicator <- c(vec_of_zeros, vec_of_ones)
+      last_shock_point <- integer_shock_time_vec[i] + shock_length_vec[i]
 
-    #subset X_i
-    if (is.null(covariate_indices) == TRUE) {
-      X_i_penultimate <- cbind(Y_series_list[[i]][1:last_shock_point]
-                               , post_shock_indicator)
-      X_i_final <- X_i_penultimate[,2]
-    }
-    else {
-      X_i_subset <- X[[i]][1:last_shock_point,covariate_indices]
-      X_i_with_indicator <- cbind(X_i_subset, post_shock_indicator)
-      X_i_final <- X_i_with_indicator
-    }
+    #step 2: fit model
 
-    print(paste('Now fitting a GARCH model to donor series number ', i,'.', sep = ''))
-    fitted_garch <- garchx(Y_series_list[[i]][1:last_shock_point] #tk
-                   , order = garch_order
-                   , xreg = X_i_final
-                   , backcast.values = NULL
-                   , control = list(eval.max = 10000
-                   , iter.max = 15000
-                   , rel.tol = 1e-6))
 
-    coef_test <- coeftest(fitted_garch)
-    extracted_fixed_effect <- coef_test[dim(coeftest(fitted_garch))[1], 1]
-    omega_star_hat_vec <- c(omega_star_hat_vec, extracted_fixed_effect)
+  }
 
-  } ## END loop for computing fixed effects
+  else{
+
+    for (i in 2:(n+1)){
+
+      # Make indicator variable w/ a 1 at only T*+1, T*+2,...,T*+shock_length_vec[i]
+      vec_of_zeros <- rep(0, integer_shock_time_vec[i])
+      vec_of_ones <- rep(1, shock_length_vec[i])
+      post_shock_indicator <- c(vec_of_zeros, vec_of_ones)
+      last_shock_point <- integer_shock_time_vec[i] + shock_length_vec[i]
+
+      #subset X_i
+      if (is.null(covariate_indices) == TRUE) {
+        X_i_penultimate <- cbind(Y_series_list[[i]][1:last_shock_point]
+                                 , post_shock_indicator)
+        X_i_final <- X_i_penultimate[,2]
+      }
+      else {
+        X_i_subset <- X[[i]][1:last_shock_point,covariate_indices]
+        X_i_with_indicator <- cbind(X_i_subset, post_shock_indicator)
+        X_i_final <- X_i_with_indicator
+      }
+
+      print(paste('Now fitting a GARCH model to donor series number ', i,'.', sep = ''))
+      fitted_garch <- garchx(Y_series_list[[i]][1:last_shock_point] #tk
+                     , order = garch_order
+                     , xreg = X_i_final
+                     , backcast.values = NULL
+                     , control = list(eval.max = 10000
+                     , iter.max = 15000
+                     , rel.tol = 1e-6))
+
+      coef_test <- coeftest(fitted_garch)
+      extracted_fixed_effect <- coef_test[dim(coeftest(fitted_garch))[1], 1]
+      omega_star_hat_vec <- c(omega_star_hat_vec, extracted_fixed_effect)
+
+    } ## END loop for computing fixed effects
+
+  }
 
   ## END estimate fixed effects in donors
 
