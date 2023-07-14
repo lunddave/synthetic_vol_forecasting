@@ -1,4 +1,4 @@
-source('SynthVolForecast_functions.R',
+source('/home/david/Desktop/synthetic_vol_forecasting/R_package_development/SynthVolForecast/R/SynthVolForecast_functions.R',
        echo = FALSE,
        verbose = FALSE)
 
@@ -8,6 +8,7 @@ options(digits = 7, scipen = 7)
 packs <- c('quantmod'
           , 'bizdays'
           , 'lubridate'
+          , 'fredr'
           )
 
 suppressPackageStartupMessages(lapply(packs, require, character.only = TRUE))
@@ -23,8 +24,8 @@ k <- 1
 TSUS <- 'IYG'
 
 log_ret_covariates <- c(#"GBP=X",
-                        "6B=F"
-                        ,"CL=F"
+                        #"6B=F"
+                        "CL=F"
                         ,"^VIX"
                         ,"^IRX"
                         ,"^FVX"
@@ -38,6 +39,9 @@ level_covariates <- c('^VIX'
                       )
 
 volume_covariates <- c('IYG')
+
+FRED_covariates <- c('AAA', 'BAA')
+# FRED_covariates <- c()
 
 shock_dates <- c("2016-11-08",
                  "2016-06-23"
@@ -67,6 +71,8 @@ names(market_data_list) <- shock_dates
 
 for (i in 1:length(shock_dates)){
 
+  print(shock_dates_as_dates[i])
+
   data_TSUS <- lapply(TSUS, function(sym) {
     dailyReturn(na.omit(getSymbols(sym
                                    ,from=start_dates[i]
@@ -95,6 +101,47 @@ for (i in 1:length(shock_dates)){
 
   data_absolute_return_covariates <- lapply(data_log_ret_covariates, abs)
 
+  if (length(FRED_covariates) > 0){
+
+  #Get FRED data (requires subtracting one series from another)
+  data_FRED_covariates <- lapply(FRED_covariates, function(sym) {
+                na.omit(getSymbols(sym
+                                   ,src = 'FRED'
+                                   ,from=start_dates[i]
+                                   ,to=k_periods_after_shock[i]+20 #tk +10
+                                   ,auto.assign=FALSE))[,1]})
+
+  # Now we are going manually and carefully add the spread between BAA and AAA credit
+
+  diff_log_FRED_spread <- diff(log(data_FRED_covariates[[2]] - data_FRED_covariates[[1]]))
+
+  month_before_shock <- month(shock_dates_as_dates[i]) - 1
+  year_of_shock <- year(shock_dates_as_dates[i]) #This is not necessarily robust to a shock in January
+
+  first_of_month_before_shock <- paste(year_of_shock
+                                       ,'-'
+                                       ,month_before_shock
+                                       ,'-'
+                                       ,'01'
+                                       ,sep = '')
+
+  first_of_month_before_shock <- as.Date(first_of_month_before_shock)
+
+  diff_log_FRED_spread_latest_before_shock <- diff_log_FRED_spread[first_of_month_before_shock]
+
+  # date <- shock_dates_as_dates[i]
+  # data <- as.numeric(diff_log_FRED_spread_latest_before_shock)
+  # row_to_add <- xts(data, order.by = date)
+
+  # print(row_to_add)
+
+  #Drop NA
+  diff_log_FRED_spread_latest_before_shock <- na.omit(diff_log_FRED_spread_latest_before_shock)
+
+  # print(diff_log_FRED_spread_latest_before_shock)
+
+  }
+
   to_add <- c(data_TSUS
             , data_log_ret_covariates
             , data_level_covariates
@@ -103,11 +150,29 @@ for (i in 1:length(shock_dates)){
             )
 
   merged_data <- do.call(merge, to_add)
-  market_data_list[[i]] <- merged_data
+
+  if (length(FRED_covariates) > 0){
+
+  dates <- index(merged_data)
+  times <- length(dates)
+  data <- rep(as.numeric(diff_log_FRED_spread_latest_before_shock), times)
+  col_to_add <- xts(data, order.by = dates)
+
+  print(col_to_add) #TODO how can we add a column with same value in each entry?
+
+  #Merge FRED data
+  merged_data <- merge(merged_data, col_to_add)
+
+  }
+
+  print(tail(merged_data, n = 30))
+
+  print('But we do not make it this far')
 
 }
 
 ##################################
+
 
 #now build Y
 Y <- list()
@@ -118,10 +183,12 @@ for (i in 1:length(start_dates)){
   #print(class(Y_i_drop_NA))
   #print('Here are the rownames')
   #print(index(Y_i_drop_NA))
+
   if (shock_dates[i] %in% index(Y_i_drop_NA)){
     print('The shock date is in the series.')
   }
-  else{print('Shock date NOT in series.')}
+  else{print(paste('Shock date ', i, ' NOT in series ',i,".", sep = ''))}
+
   Y[[i]] <- Y_i_drop_NA
 }
 
@@ -144,10 +211,10 @@ png_save_name <- paste("/home/david/Desktop/synthetic_vol_forecasting/R_package_
                        ,'_'
                        ,paste(level_covariates,collapse='-')
                        ,'_'
-                       ,paste(volume_covariates,collapse='-')
-                       ,'_'
-                       ,paste(data_absolute_return_covariates,collapse='-')
-                       ,'_'
+                       # ,paste(volume_covariates,collapse='-')
+                       # ,'_'
+                       # ,paste(data_absolute_return_covariates,collapse='-')
+                       # ,'_'
                        ,paste(shock_dates,collapse='-')
                        ,".png"
                        ,sep="")
@@ -176,3 +243,5 @@ dev.off()
 #                         ,covariate_indices = length(X)
 #                         ,plots = TRUE
 #                        ,display_ground_truth_choice = TRUE)
+
+

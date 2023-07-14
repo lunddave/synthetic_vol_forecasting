@@ -35,6 +35,13 @@ dbw <- function(X
   # number of time series for pool
   n <- length(X) - 1
 
+  print('We are inside the dbw function.')
+  print('Here is the TSUS shock time')
+  print(shock_time_vec[1])
+
+  print('These are the indices we are using in the weighing:')
+  print(dbw_indices)
+
   # COVARIATE FOR TIME SERIES UNDER STUDY AT shock_time_vec
   X1 <- X[[1]][shock_time_vec[1], dbw_indices, drop = FALSE] # we get only 1 row
 
@@ -507,7 +514,7 @@ SynthVolForecast <- function(Y_series_list
 
     fitted_garch <- garchx(Y_series_list[[1]][1:integer_shock_time_vec[1]]
                            , order = garch_order
-                           , xreg = NULL 
+                           , xreg = NULL
                            , backcast.values = NULL
                            , control = list(eval.max = 10000
                                             , iter.max = 15000

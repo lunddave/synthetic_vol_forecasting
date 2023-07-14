@@ -391,6 +391,11 @@ In many settings, it is reasonable to model a volatility shock as occuring witho
 
 However, since it is not known a priori for which $t$ the effect $\omega_{i}^{*}$ will be nonzero, this fact is of little practical guidance.
 
+\subsection{Unbiasedness of the Synthetic Volatility Predictor}
+
+
+\citet{abadie2010synthetic} discusses the unbiasedness of the SCM estimator in the context of an autoregressive model.  It is well known that a GARCH(m,s) model has an ARMA representation.  This suggests that, at the very least, the Synthetic Volatility method, when applied to an ARCH(p), is an unbiased predictor.
+
 \subsection{Why not parameterize the volatility shock as a change in coefficients?}
 \begin{enumerate}
 \item Swamped by shock: If the goal is near-term forecasting, then we don't really care how those coefficients may be changing.  The assumption is that if any changes occur, their influence cannot account for the large shock. Given that the GARCH parameters for a stationary GARCH process must sum to less than 1, there is an upper bound to the forecastable change.
