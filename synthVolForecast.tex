@@ -422,8 +422,8 @@ First, for a fixed i and fixed t, define $\eta_{i,t} \coloneqq a^{2}_{i,t} - \si
 
 \begin{align*}
 a^{2}_{i,t} = a^{2}_{i,t} - \sigma^{2}_{i,t} + \sigma^{2}_{i,t} = \eta_{i,t} + \sigma^{2}_{i,t} &= \eta_{i,t} + \omega_{i} + \omega^{*}_i D_{i,t}  + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \\
-    &= \eta_{i,t} + \omega_{i} + \omega^{*}_i D_{i,t}  + \sum^{m_{i}}_{k=1}\alpha_{i,k}(\eta_{i,t-k} + \sigma^{2}_{i,t-k}) + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \\
-    &= \eta_{i,t} + \omega_{i} + \omega^{*}_i D_{i,t}  + \sum^{m_{i}}_{k=1}\alpha_{i,k}\eta_{i,t-k} + \sum_{j=1}^{s_{i}}(\alpha_{i,j} + \beta_{i,j})\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \\
+    &= \eta_{i,t} + \omega_{i} + \omega^{*}_i D_{i,t}  + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k}  + \sum_{j=1}^{s_{i}}\beta_{i,j}(a^{2}_{i,t-k} - \eta_{i,t-k}) + \gamma_{i}^{T} \x_{i,t} \\
+    &= \eta_{i,t} + \omega_{i} + \omega^{*}_i D_{i,t}  + \sum^{m_{i}}_{k=1}(\alpha_{i,j} + \beta_{i,j})a^{2}_{i,k} - \sum_{j=1}^{s_{i}}\beta_{i,j}\eta_{i,t-j} + \gamma_{i}^{T} \x_{i,t} \\
 \end{align*}
 \end{proof-of-proposition}
 
