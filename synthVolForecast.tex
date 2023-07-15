@@ -13,7 +13,7 @@
 %\usepackage[usenames]{color}
 
 \usepackage{graphicx}
-%\usepackage{mathtools}
+\usepackage{mathtools}
 \usepackage{enumitem}
 \usepackage{authblk}
 \usepackage{bm}
@@ -391,10 +391,60 @@ In many settings, it is reasonable to model a volatility shock as occuring witho
 
 However, since it is not known a priori for which $t$ the effect $\omega_{i}^{*}$ will be nonzero, this fact is of little practical guidance.
 
-\subsection{Unbiasedness of the Synthetic Volatility Predictor}
+\subsection{Unbiasedness of the Synthetic Volatility fixed-effect estimators and Synethetic Volatility prediction functions}
+
+Recall models $\mc{M}_1$ and $\mc{M}_2$:
+
+\begin{align}
+\mc{M}_1 \colon &\sigma^{2}_{i,t} = \omega_{i} + \omega^{*}_i D^{vol}_{i,t} + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t}\\
+&a_{i,t} = \sigma_{i,t}(\epsilon_{i,t}(1-D^{level}_{i,t}) + \epsilon^{*}_{i}D^{level}_{i,t}) \label{equation1}
+\end{align}
 
 
-\citet{abadie2010synthetic} discusses the unbiasedness of the SCM estimator in the context of an autoregressive model.  It is well known that a GARCH(m,s) model has an ARMA representation.  This suggests that, at the very least, the Synthetic Volatility method, when applied to an ARCH(p), is an unbiased predictor.
+\begin{align}
+\mc{M}_2 \colon \begin{array}{l}
+   \sigma^{2}_{i,t} = \omega_{i} + \omega^{*}_i D_{i,t}  + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \text{ }\\[.2cm]
+   a_{i,t} = \sigma_{i,t}(\epsilon_{i,t}(1-D^{level}_{i,t}) + \epsilon^{*}_{i}D^{level}_{i,t})\\[.2cm]
+   \omega_i^{*} = \mu_{\omega^{*}}+\delta'\mbf{x}_{i, T_i^*+1}+ \t{\varepsilon}_{i},
+\end{array}\label{model2}
+\end{align}
+
+We will discuss these two models in the context of a shock in only the volatility, i.e. with $D^{level}_{i,t} \equiv 0$.\\
+
+\citet{abadie2010synthetic} discuss the unbiasedness of SCM estimators in the context of an autoregressive model.  It is well known that a GARCH(m,s) model has an ARMA representation.  This suggests that, at the very least, the Synthetic Volatility method, when applied to an autoregressive process such an an ARCH model, is an unbiased predictor.  We therefore set out to show three results of increasing difficulty and complexity.
+
+\begin{prop}
+Under $\mc{M}_1$ and $\mc{M}_2$, if the volatility series follows an ARCH(1) model, then under the assumptions in \citet{abadie2010synthetic}, $\hat\omega^{*}$ is an unbiased estimator of $\omega^{*}$.
+\end{prop}
+
+\begin{proof-of-proposition}
+First, for a fixed i and fixed t, define $\eta_{i,t} \coloneqq a^{2}_{i,t} - \sigma^{2}_{i,t}$, and by adding that to both sides of the conditional variance specification of $\mc{M}_1$ and $\mc{M}_2$, we can attain the standard ARMA representation of a GARCH(m,s):
+
+\begin{align*}
+a^{2}_{i,t} = a^{2}_{i,t} - \sigma^{2}_{i,t} + \sigma^{2}_{i,t} = \eta_{i,t} + \sigma^{2}_{i,t} &= \eta_{i,t} + \omega_{i} + \omega^{*}_i D_{i,t}  + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \\
+    &= \eta_{i,t} + \omega_{i} + \omega^{*}_i D_{i,t}  + \sum^{m_{i}}_{k=1}\alpha_{i,k}(\eta_{i,t-k} + \sigma^{2}_{i,t-k}) + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \\
+    &= \eta_{i,t} + \omega_{i} + \omega^{*}_i D_{i,t}  + \sum^{m_{i}}_{k=1}\alpha_{i,k}\eta_{i,t-k} + \sum_{j=1}^{s_{i}}(\alpha_{i,j} + \beta_{i,j})\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \\
+\end{align*}
+\end{proof-of-proposition}
+
+\begin{prop}
+Under $\mc{M}_1$ and $\mc{M}_2$,  if the volatility series follows an ARCH(p) model, then under the assumptions in \citet{abadie2010synthetic}, $\hat\omega^{*}$ is an unbiased estimator of $\omega^{*}$.
+\end{prop}
+
+\begin{proof-of-proposition}
+Place here
+\end{proof-of-proposition}
+
+\begin{prop}
+Under $\mc{M}_1$ and $\mc{M}_2$,  if the volatility series follows an GARCH(m,s) model, then under the assumptions in \citet{abadie2010synthetic}, $\hat\omega^{*}$ is an unbiased estimator of $\omega^{*}$.
+\end{prop}
+
+\begin{proof-of-proposition}
+Place here
+\end{proof-of-proposition}
+
+
+
 
 \subsection{Why not parameterize the volatility shock as a change in coefficients?}
 \begin{enumerate}
