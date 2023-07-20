@@ -411,20 +411,33 @@ Recall models $\mc{M}_1$ and $\mc{M}_2$:
 
 We will discuss these two models in the context of a shock in only the volatility, i.e. with $D^{level}_{i,t} \equiv 0$.\\
 
-\citet{abadie2010synthetic} discuss the unbiasedness of SCM estimators in the context of an autoregressive model.  It is well known that a GARCH(m,s) model has an ARMA representation.  This suggests that, at the very least, the Synthetic Volatility method, when applied to an autoregressive process such an an ARCH model, is an unbiased predictor.  We therefore set out to show three results of increasing difficulty and complexity.
+\citet{abadie2010synthetic} discuss the unbiasedness of SCM estimators in the context of an autoregressive model.  It is well known that a GARCH(m,s) model has an ARMA representation.  This suggests that, at the very least, the Synthetic Volatility method, when applied to an autoregressive process such an an ARCH model, provides an unbiased prediction.  We therefore set out to show three results of increasing difficulty and complexity.
 
 \begin{prop}
 Under $\mc{M}_1$ and $\mc{M}_2$, if the volatility series follows an ARCH(1) model, then under the assumptions in \citet{abadie2010synthetic}, $\hat\omega^{*}$ is an unbiased estimator of $\omega^{*}$.
 \end{prop}
 
 \begin{proof-of-proposition}
-First, for a fixed i and fixed t, define $\eta_{i,t} \coloneqq a^{2}_{i,t} - \sigma^{2}_{i,t}$, and by adding that to both sides of the conditional variance specification of $\mc{M}_1$ and $\mc{M}_2$, we can attain the standard ARMA representation of a GARCH(m,s):
+First, for each i,t, define $\eta_{i,t} \coloneqq a^{2}_{i,t} - \sigma^{2}_{i,t}$, and by adding that to both sides of the conditional variance specification of $\mc{M}_1$ and $\mc{M}_2$, we can obtain the standard ARMA representation of a GARCH(m,s):
 
 \begin{align*}
 a^{2}_{i,t} = a^{2}_{i,t} - \sigma^{2}_{i,t} + \sigma^{2}_{i,t} = \eta_{i,t} + \sigma^{2}_{i,t} &= \eta_{i,t} + \omega_{i} + \omega^{*}_i D_{i,t}  + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \\
     &= \eta_{i,t} + \omega_{i} + \omega^{*}_i D_{i,t}  + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k}  + \sum_{j=1}^{s_{i}}\beta_{i,j}(a^{2}_{i,t-k} - \eta_{i,t-k}) + \gamma_{i}^{T} \x_{i,t} \\
     &= \eta_{i,t} + \omega_{i} + \omega^{*}_i D_{i,t}  + \sum^{m_{i}}_{k=1}(\alpha_{i,j} + \beta_{i,j})a^{2}_{i,k} - \sum_{j=1}^{s_{i}}\beta_{i,j}\eta_{i,t-j} + \gamma_{i}^{T} \x_{i,t} \\
 \end{align*}
+
+Next, as shown in \citet{abadie2010synthetic}, under the autoregressive model
+
+\begin{align}
+\mc{M}_2 \colon \begin{array}{l}
+   \sigma^{2}_{i,t} = \omega_{i} + \omega^{*}_i D_{i,t}  + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \text{ }\\[.2cm]
+   a_{i,t} = \sigma_{i,t}(\epsilon_{i,t}(1-D^{level}_{i,t}) + \epsilon^{*}_{i}D^{level}_{i,t})\\[.2cm]
+   \omega_i^{*} = \mu_{\omega^{*}}+\delta'\mbf{x}_{i, T_i^*+1}+ \t{\varepsilon}_{i},
+\end{array}\label{model2}
+\end{align}
+
+
+
 \end{proof-of-proposition}
 
 \begin{prop}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.5.30)  15 JUL 2023 17:29
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.5.30)  19 JUL 2023 20:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -804,6 +804,9 @@ LaTeX Warning: Label `equation1' multiply defined.
 
 LaTeX Warning: Label `model2' multiply defined.
 
+
+LaTeX Warning: Label `model2' multiply defined.
+
 )
 \openout1 = `synthVolForecast.aux'.
 
@@ -1010,18 +1013,23 @@ Underfull \hbox (badness 10000) in paragraph at lines 412--413
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 427--429
+pdfTeX warning (ext4): destination with the same identifier (name{equation.2.1}
+) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.437 \end{align}
+                 
+Underfull \hbox (badness 10000) in paragraph at lines 441--442
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 435--437
+Underfull \hbox (badness 10000) in paragraph at lines 448--450
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 443--445
+Underfull \hbox (badness 10000) in paragraph at lines 456--458
 
  []
 
@@ -1029,14 +1037,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 443--445
 .1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.476 \end{align}
+l.489 \end{align}
                   [10]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 494.
+               Default added (so using `tbp') on input line 507.
 
 
-Underfull \hbox (badness 1796) in paragraph at lines 498--498
+Underfull \hbox (badness 1796) in paragraph at lines 511--511
 []|\OT1/cmr/m/n/10.95 Captures rea-son-able pos-si-
  []
 
@@ -1044,13 +1052,13 @@ pdfTeX warning (ext4): destination with the same identifier (name{equation.2.1}
 ) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.510 \end{align}
+l.523 \end{align}
                  
-<simulation_plots/outperformance_grid.png, id=241, 691.83469pt x 554.82281pt>
+<simulation_plots/outperformance_grid.png, id=243, 691.83469pt x 554.82281pt>
 File: simulation_plots/outperformance_grid.png Graphic file (type png)
 <use simulation_plots/outperformance_grid.png>
 Package pdftex.def Info: simulation_plots/outperformance_grid.png  used on inpu
-t line 529.
+t line 542.
 (pdftex.def)             Requested size: 311.32272pt x 249.66795pt.
 
 
@@ -1058,7 +1066,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 LaTeX Warning: File `R_package_development/SynthVolForecast/R/SVF_2016_without_
-pound.png' not found on input line 562.
+pound.png' not found on input line 575.
 
 
 ! Package pdftex.def Error: File `R_package_development/SynthVolForecast/R/SVF_
@@ -1068,32 +1076,32 @@ See the pdftex.def package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.562 ...VolForecast/R/SVF_2016_without_pound.png}
+l.575 ...VolForecast/R/SVF_2016_without_pound.png}
                                                   
 ? 
 [11]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 581.
+               Default added (so using `tbp') on input line 594.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 589--589
+Underfull \hbox (badness 10000) in paragraph at lines 602--602
 []|$\OML/cmm/m/it/10.95 A[]$ \OT1/cmr/m/n/10.95 in-de-pen-dent $\OMS/cmsy/m/n/1
 0.95 8\OML/cmm/m/it/10.95 i$\OT1/cmr/m/n/10.95 ,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 589--589
+Underfull \hbox (badness 10000) in paragraph at lines 602--602
 []|$\OML/cmm/m/it/10.95 x[]$ \OT1/cmr/m/n/10.95 in-de-pen-dent across
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 589--589
+Underfull \hbox (badness 10000) in paragraph at lines 602--602
 []|$\OML/cmm/m/it/10.95 x[]$ \OT1/cmr/m/n/10.95 in-de-pen-dent across
  []
 
 
-Overfull \hbox (35.54613pt too wide) in paragraph at lines 582--593
+Overfull \hbox (35.54613pt too wide) in paragraph at lines 595--606
 [][] 
  []
 
@@ -1114,7 +1122,7 @@ Here is how much of TeX's memory you used:
  43015 multiletter control sequences out of 15000+600000
  486614 words of font info for 90 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,17n,80p,1557b,465s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 84i,17n,80p,1557b,467s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texli
 ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dis
@@ -1136,10 +1144,10 @@ onts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/s
 ymbols/msbm10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0600.pfb></
 usr/share/texmf/fonts/type1/public/cm-super/sfrm0800.pfb></usr/share/texmf/font
 s/type1/public/cm-super/sfrm1095.pfb>
-Output written on synthVolForecast.pdf (14 pages, 520473 bytes).
+Output written on synthVolForecast.pdf (14 pages, 520707 bytes).
 PDF statistics:
- 390 PDF objects out of 1000 (max. 8388607)
- 324 compressed objects within 4 object streams
+ 392 PDF objects out of 1000 (max. 8388607)
+ 326 compressed objects within 4 object streams
  86 named destinations out of 1000 (max. 500000)
  215 words of extra memory for PDF output out of 10000 (max. 10000000)
 
