@@ -1,4 +1,4 @@
-\begin{thebibliography}{15}
+\begin{thebibliography}{10}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -18,13 +18,6 @@ Torben~G Andersen and Timo Ter{\"a}svirta.
 \newblock Realized volatility.
 \newblock In \emph{Handbook of financial time series}, pages 555--575.
   Springer, 2009.
-
-\bibitem[Andersen et~al.(2009)Andersen, Davis, Krei{\ss}, and
-  Mikosch]{andersen2009handbook}
-Torben~Gustav Andersen, Richard~A Davis, Jens-Peter Krei{\ss}, and Thomas~V
-  Mikosch.
-\newblock \emph{Handbook of financial time series}.
-\newblock Springer Science \& Business Media, 2009.
 
 \bibitem[Bollerslev(1986)]{bollerslev1986generalized}
 Tim Bollerslev.
@@ -50,20 +43,6 @@ Rama Cont.
   issues.
 \newblock \emph{Quantitative finance}, 1\penalty0 (2):\penalty0 223, 2001.
 
-\bibitem[Dickey and Fuller(1979)]{dickey1979distribution}
-David~A Dickey and Wayne~A Fuller.
-\newblock Distribution of the estimators for autoregressive time series with a
-  unit root.
-\newblock \emph{Journal of the American statistical association}, 74\penalty0
-  (366a):\penalty0 427--431, 1979.
-
-\bibitem[Dickey and Fuller(1981)]{dickey1981likelihood}
-David~A Dickey and Wayne~A Fuller.
-\newblock Likelihood ratio statistics for autoregressive time series with a
-  unit root.
-\newblock \emph{Econometrica: journal of the Econometric Society}, pages
-  1057--1072, 1981.
-
 \bibitem[Engle(2002)]{engle2002new}
 Robert Engle.
 \newblock New frontiers for arch models.
@@ -77,12 +56,6 @@ Robert~F Engle.
 \newblock \emph{Econometrica: Journal of the econometric society}, pages
   987--1007, 1982.
 
-\bibitem[Faraway(2016)]{faraway2016extending}
-Julian~J Faraway.
-\newblock \emph{Extending the linear model with R: generalized linear, mixed
-  effects and nonparametric regression models}.
-\newblock CRC press, 2016.
-
 \bibitem[Hansen et~al.(2012)Hansen, Huang, and Shek]{hansen2012realized}
 Peter~Reinhard Hansen, Zhuo Huang, and Howard~Howan Shek.
 \newblock Realized garch: a joint model for returns and realized measures of
@@ -95,10 +68,5 @@ Jilei Lin and Daniel~J Eck.
 \newblock Minimizing post-shock forecasting error through aggregation of
   outside information.
 \newblock \emph{International Journal of Forecasting}, 2021.
-
-\bibitem[Tsay(2005)]{tsay2005analysis}
-Ruey~S Tsay.
-\newblock \emph{Analysis of financial time series}, volume 543.
-\newblock John wiley \& sons, 2005.
 
 \end{thebibliography}
