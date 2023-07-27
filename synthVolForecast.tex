@@ -421,15 +421,15 @@ First, for each $i,t$, define $\eta_{i,t} \coloneqq a^{2}_{i,t} - \sigma^{2}_{i,
 
 \begin{align*}
 a^{2}_{i,t} = a^{2}_{i,t} - \sigma^{2}_{i,t} + \sigma^{2}_{i,t} = \eta_{i,t} + \sigma^{2}_{i,t} &= \eta_{i,t} + \omega_{i} + \omega^{*}_i D_{i,t}  + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \\
-    &= \eta_{i,t} + \omega_{i} + \omega^{*}_i D_{i,t}  + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k}  + \sum_{j=1}^{s_{i}}\beta_{i,j}(a^{2}_{i,t-k} - \eta_{i,t-k}) + \gamma_{i}^{T} \x_{i,t} \\
-    &= \eta_{i,t} + \omega_{i} + \omega^{*}_i D_{i,t}  + \sum^{m_{i}}_{k=1}(\alpha_{i,j} + \beta_{i,j})a^{2}_{i,k} - \sum_{j=1}^{s_{i}}\beta_{i,j}\eta_{i,t-j} + \gamma_{i}^{T} \x_{i,t} \\
+    &= \eta_{i,t} + \omega_{i} + \omega^{*}_i D_{i,t}  + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k}  + \sum_{j=1}^{s_{i}}\beta_{i,j}(a^{2}_{i,t-j} - \eta_{i,t-j}) + \gamma_{i}^{T} \x_{i,t} \\
+    &= \eta_{i,t} + \omega_{i} + \omega^{*}_i D_{i,t}  + \sum^{\text{max}\{m_{i},s_{i}\}}_{k=1}(\alpha_{i,k} + \beta_{i,k})a^{2}_{i,k} - \sum_{j=1}^{s_{i}}\beta_{i,j}\eta_{i,t-j} + \gamma_{i}^{T} \x_{i,t} \\
 \end{align*}
 
-Next, as shown in \citet{abadie2010synthetic}, under the autoregressive model 
+where the $a^{2}_{i,t}$ (the autoregressive terms) are observable and the $\eta_{i,t}$ (the moving average terms) are not.  Next, as shown in \citet{abadie2010synthetic}, under the autoregressive model 
 
 \begin{align*}
   y_{i,t} &= \alpha_{i,t-1}y_{i,t-1} + \beta_{t} \bm{X}_{i,t}  + u_{i,t} \\
- \textbf{X}_{i,t} &= \gamma_{t-1}y_{i,t-1} + \bm{\Pi}_{t-1}\bm{X}_{i,t-1} + v_{i,t} 
+ \textbf{X}_{i,t} &= \gamma_{t-1}y_{i,t-1} + \bm{\Pi}_{t-1}\bm{X}_{i,t-1} + \bm{v}_{i,t} 
 \end{align*}
 
 and the assumption that we, the practitioner, choose $\{w_{i}^{*}\}_{2\leq i \leq n + 1}$ such that
@@ -440,16 +440,33 @@ and the assumption that we, the practitioner, choose $\{w_{i}^{*}\}_{2\leq i \le
 \end{array}\label{Abadie assumptions}
 \end{align*}
 
-then with even just one pre-treatment period, the synthetic control estimator is unbiased.  Applying this result to Synthetic Volatility Forecasting, assume we choose
+and $u_{i,t}, \bm{v}_{i,t}$ are mean-zero conditional of $\mathcal{F}_{t} = \{Y_{i,t}, \bm{X}_{i,t}\}_{need subscript here}$.
 
-choose $\{w_{i}^{*}\}_{2\leq i \leq n + 1}$ such that
+then with even just one pre-treatment period, the synthetic control estimator is unbiased.  Applying this result to Synthetic Volatility Forecasting, assume we choose $\{w_{i}^{*}\}_{2\leq i \leq n + 1}$ such that
 
 \begin{align*}
 \begin{array}{lll}
-\sum^{n+1}_{i=2}a^{2}_{i,T^{*}} = a^{2}_{1,T^{*}} & \text{and} & \sum^{n+1}_{i=2}w_{i}^{*}\bm{X}_{i,T^{*}} = X_{1,T^{*}}^{*} \\
+\sum^{n+1}_{i=2}w_{i}^{*}a^{2}_{i,T^{*}} = a^{2}_{1,T^{*}} & \text{and} & \sum^{n+1}_{i=2}w_{i}^{*}\bm{X}_{i,T^{*}} = X_{1,T^{*}}^{*} \\
 \end{array}\label{adapted Abadie assumptions}
 \end{align*}
 
+Assume further that $\omega_{i} \equiv 0$ in $\mc{M}_1$ and $\mc{M}_2$. Then it follows immediately that under the ARCH(1) model with time-varying parameters
+
+\begin{align*}
+  a^{2}_{i,t} &= \alpha_{i,t-1}a^{2}_{i,t-1} + \beta_{t} \bm{X}_{i,t}  + u_{i,t} \\
+ \textbf{X}_{i,t} &= \gamma_{t-1}a^{2}_{i,t-1} + \bm{\Pi}_{t-1}\bm{X}_{i,t-1} + \bm{v}_{i,t}
+\end{align*}
+
+$ \sum^{n+1}_{i=2}w_{i}^{*}a^{2}_{i,T^{*}+1} - a^{2}_{1,T^{*}+1}$ is an unbiased estimator of the news shock.  By inverting the ARMA representation of GARCH(m,s) above, we could recover an unbiased estimator of the news shock $\sum^{n+1}_{i=2}w_{i}^{*}\sigma^{2}_{i,T^{*}+1} - \sigma^{2}_{1,T^{*}+1}$ if we could observe the terms $\sigma^{2}_{i,t}$ or estimate them without bias.  In practice, we do neither.  In particular, we do not observe $a^{2}_{1,T^{*}+1}$ until it is too late, and hence Sythethic Volatility Forecasting approaches the problem from the opposite direction: estimating $\omega^{*}_{1} = \sum^{n+1}_{i=2}w_{i}^{*}\sigma^{2}_{i,T^{*}+1} - \sigma^{2}_{1,T^{*}+1}$ in order to estimate $\sigma^{2}_{1,T^{*}+1}$.  To this end, consider
+
+\begin{align*}
+  a^{2}_{i,t} &= \alpha_{i,t-1}a^{2}_{i,t-1} + \beta_{t} \bm{X}_{i,t}  + u_{i,t} \\
+ \textbf{X}_{i,t} &= \bm{v}_{i,t} \\
+ \beta_{t} & \equiv 0, \forall t \neq T^{*}\\
+ \beta_{t} &= \delta, t = T^{*}
+\end{align*}
+
+Observe then that $\omega^{*}_{i}$, as defined in $\mc{M}_1$ and $\mc{M}_2$, is subsumed within the model above, where the $\mu_{\omega^{*}}$ term in $\mu_{\omega^{*}}+\delta'\mbf{x}_{i, T_i^*+1}+ \t{\varepsilon}_{i}$ can be accounted for in the first entry of $\bm{X}_{i,T^{*}+1}$ and $\delta$ without loss of generality.  Since each $\omega_{i}^{*}$ is a function of $\bm{X}_{i,T^{*}}$ and a mean-zero noise term, 
 
 \end{proof-of-proposition}
 
