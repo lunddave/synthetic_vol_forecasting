@@ -141,23 +141,33 @@ dbw <- function(X
                                            , tol = 1e-19
                                            , outer.iter = 100000
                                            , inner.iter = 100000))
-  return(object_to_return$pars)
+
+  if (object_to_return$convergence == 0){
+    convergence <- 'convergence'
+  }
+  else {convergence <- 'failed_convergence'}
+
+  triple_to_return <- list(object_to_return$pars, convergence)
+
+  names(triple_to_return) <- c('opt_params', 'convergence')
+
+  return(triple_to_return)
 
 } #END dbw function
 ### END dbw
 
 ### START GARCH plot_maker_garch
 plot_maker_garch <- function(fitted_vol
-                      ,shock_times_for_barplot
-                      ,shock_time_vec #mk
-                      ,shock_length_vec
-                      ,unadjusted_pred
-                      ,w_hat
-                      ,omega_star_hat
-                      ,omega_star_hat_vec
-                      ,adjusted_pred
-                      ,arithmetic_mean_based_pred
-                      ,ground_truth_vec){
+                            ,shock_times_for_barplot
+                            ,shock_time_vec #mk
+                            ,shock_length_vec
+                            ,unadjusted_pred
+                            ,w_hat
+                            ,omega_star_hat
+                            ,omega_star_hat_vec
+                            ,adjusted_pred
+                            ,arithmetic_mean_based_pred
+                            ,ground_truth_vec){
 
   if (is.character(shock_times_for_barplot) == FALSE){
     shock_times_for_barplot <- 1:length(shock_times_for_barplot)
@@ -430,7 +440,7 @@ SynthVolForecast <- function(Y_series_list
   ## END Check whether shock_time_vec is int/date
 
   ## BEGIN calculate weight vector
-  w_hat <- dbw(X, #tk
+  dbw_output <- dbw(X, #tk
                dwb_indices,
                integer_shock_time_vec,
                scale = TRUE,
@@ -441,6 +451,9 @@ SynthVolForecast <- function(Y_series_list
                # penalty_normchoice = penalty_normchoice,
                # penalty_lambda = penalty_lambda
                )
+
+  w_hat <- dbw_output[[1]]
+
   ## END calculate weight vector
 
   ## BEGIN estimate fixed effects in donors
@@ -578,6 +591,7 @@ SynthVolForecast <- function(Y_series_list
       'Donors:', n, '\n',  '\n',
       'Shock times:', shock_time_vec, '\n', '\n',
       'Lengths of shock times:', shock_length_vec, '\n', '\n',
+      'Optimization Success:', dbw_output[[2]], '\n', '\n',
       'Convex combination:',w_hat,'\n', '\n',
       'Shock estimates:', omega_star_hat_vec, '\n', '\n',
       'Aggregate estimated shock effect:', omega_star_hat, '\n', '\n',
@@ -705,17 +719,19 @@ SynthPrediction <- function(Y_series_list
   ## END estimate fixed effects in donors
 
   ## BEGIN compute linear combination of fixed effects
-  w_hat <- dbw(X, #tk
-               dwb_indices,
-               integer_shock_time_vec,
-               scale = TRUE,
-               sum_to_1 = TRUE, #tk
-               bounded_below_by = 0, #tk
-               bounded_above_by = 1, #tk
-               # normchoice = normchoice, #tk
-               # penalty_normchoice = penalty_normchoice,
-               # penalty_lambda = penalty_lambda
+  dbw_output <- dbw(X, #tk
+                   dwb_indices,
+                   integer_shock_time_vec,
+                   scale = TRUE,
+                   sum_to_1 = TRUE, #tk
+                   bounded_below_by = 0, #tk
+                   bounded_above_by = 1, #tk
+                   # normchoice = normchoice, #tk
+                   # penalty_normchoice = penalty_normchoice,
+                   # penalty_lambda = penalty_lambda
   )
+
+  w_hat <- dbw_output[[1]]
 
   omega_star_hat <- as.numeric(w_hat %*% omega_star_hat_vec)
   ## END compute linear combination of fixed effects
@@ -792,6 +808,7 @@ SynthPrediction <- function(Y_series_list
       'Donors:', n, '\n',
       'Shock times:', shock_time_vec, '\n',
       'Lengths of shock times:', shock_length_vec, '\n',
+      'Optimization Success:', dbw_output[[2]], '\n', '\n',
       'Convex combination',w_hat,'\n',
       'Shock estimates provided by donors:', omega_star_hat_vec, '\n',
       'Aggregate estimated shock effect:', omega_star_hat, '\n',

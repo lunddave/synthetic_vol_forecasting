@@ -22,13 +22,13 @@ source('/home/david/Desktop/synthetic_vol_forecasting/R_package_development/Synt
   TSUS <- 'IYG'
 
   log_ret_covariates <- c(#"GBP=X",
-    #"6B=F"
-    "CL=F"
+    "6B=F"
+    ,"CL=F"
     ,"^VIX"
-    ,"^IRX"
-    ,"^FVX"
-    ,"^TNX"
-    ,"^TYX"
+    # ,"^IRX"
+    # ,"^FVX"
+    # ,"^TNX"
+    # ,"^TYX"
   )
 
   level_covariates <- c('^VIX'
@@ -41,15 +41,15 @@ source('/home/david/Desktop/synthetic_vol_forecasting/R_package_development/Synt
   FRED_covariates <- c('AAA', 'BAA')
   # FRED_covariates <- c()
 
-  shock_dates <- c("2016-11-08",
-                   "2016-06-23"
+  shock_dates <- c("2016-11-08"
+                   #,"2016-06-23"
                    , "2014-11-04"
                    , "2012-11-06"
                    , "2010-11-02"
                    , "2008-11-04"
                    , "2006-11-07"
                    , "2004-11-02"
-                   #, "2002-11-05"
+                   , "2002-11-05"
                    #, "2000-11-07"
   )
 

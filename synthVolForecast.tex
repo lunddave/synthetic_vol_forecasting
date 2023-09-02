@@ -602,12 +602,21 @@ As we see in \ref{fig:outperformance}, when only two parameters are varied, the 
 
 \begin{figure}[h!]
 \begin{center}
-  \includegraphics[scale=.38]{R_package_development/SynthVolForecast/R/SVF_2016_without_pound.png}
-  \caption{The volatility induced by the 2016 US election results is well-predicted by a convex combination of previous shocks.}
+  \includegraphics[scale=.38]{R_package_development/SynthVolForecast/R/real_data_output_plots/savetime_TueAug2909:44:23PM2023_IYG_6B=F-CL=F-^VIX_^VIX_2016-11-08-2016-06-23-2014-11-04-2012-11-06-2010-11-02-2008-11-04-2006-11-07-2004-11-02-2002-11-05.png}
+  \caption{The volatility induced by the 2016 US election results using Brexit as a donor.}
   \label{fig:SVF_2016}
   \end{center}
 \end{figure}
 We shall discuss \ref{fig:SVF_2016} soon.
+
+\begin{figure}[h!]
+\begin{center}
+  \includegraphics[scale=.38]{R_package_development/SynthVolForecast/R/real_data_output_plots/savetime_SatSep0210:45:17AM2023_IYG_6B=F-CL=F-^VIX_^VIX_2016-11-08-2014-11-04-2012-11-06-2010-11-02-2008-11-04-2006-11-07-2004-11-02-2002-11-05.png}
+  \caption{The volatility induced by the 2016 US election results without using Brexit as a donor.}
+  \label{fig:SVF_2016}
+  \end{center}
+\end{figure}
+
 
 
 
@@ -621,7 +630,7 @@ We also introduce simulation parameters that can be varied but are not random ef
 \section{Connection to Signal Recovery}
 
 
-\begin{table}[]
+\begin{table}[h!]
 \begin{tabular}{|p{1.3in}|p{1.6in}|p{1.9in}|p{1.9in}|}
 \hline
  & Vershynin (2018) & Lin and Eck (2021) & SynthVolForecasting \\ \hline
