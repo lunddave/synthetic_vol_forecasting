@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.5.30)  2 SEP 2023 11:23
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.5.30)  4 SEP 2023 20:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -790,7 +790,7 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 \c@defn=\count337
 \c@prop=\count338
 \c@remark=\count339
-Package hyperref Info: Option `colorlinks' set `true' on input line 97.
+Package hyperref Info: Option `colorlinks' set `true' on input line 98.
 
 (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2022-01-12 L3 backend support: PDF output (pdfTeX)
@@ -804,24 +804,24 @@ LaTeX Warning: Label `fig:SVF_2016' multiply defined.
 )
 \openout1 = `synthVolForecast.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 119.
-LaTeX Font Info:    ... okay on input line 119.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 119.
-LaTeX Font Info:    ... okay on input line 119.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 119.
-LaTeX Font Info:    ... okay on input line 119.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 119.
-LaTeX Font Info:    ... okay on input line 119.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 119.
-LaTeX Font Info:    ... okay on input line 119.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 119.
-LaTeX Font Info:    ... okay on input line 119.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 119.
-LaTeX Font Info:    ... okay on input line 119.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 119.
-LaTeX Font Info:    ... okay on input line 119.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 119.
-LaTeX Font Info:    ... okay on input line 119.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 120.
+LaTeX Font Info:    ... okay on input line 120.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 120.
+LaTeX Font Info:    ... okay on input line 120.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 120.
+LaTeX Font Info:    ... okay on input line 120.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 120.
+LaTeX Font Info:    ... okay on input line 120.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 120.
+LaTeX Font Info:    ... okay on input line 120.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 120.
+LaTeX Font Info:    ... okay on input line 120.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 120.
+LaTeX Font Info:    ... okay on input line 120.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 120.
+LaTeX Font Info:    ... okay on input line 120.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 120.
+LaTeX Font Info:    ... okay on input line 120.
  (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count341
@@ -844,7 +844,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-Package hyperref Info: Link coloring ON on input line 119.
+Package hyperref Info: Link coloring ON on input line 120.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
@@ -857,9 +857,9 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count347
 )
-LaTeX Info: Redefining \ref on input line 119.
-LaTeX Info: Redefining \pageref on input line 119.
-LaTeX Info: Redefining \nameref on input line 119.
+LaTeX Info: Redefining \ref on input line 120.
+LaTeX Info: Redefining \pageref on input line 120.
+LaTeX Info: Redefining \nameref on input line 120.
 
 (./synthVolForecast.out) (./synthVolForecast.out)
 \@outlinefile=\write5
@@ -904,18 +904,23 @@ Package caption Info: End \AtBeginDocument code.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 122
+LaTeX Font Info:    Trying to load font information for U+msa on input line 123
 .
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 122
+LaTeX Font Info:    Trying to load font information for U+msb on input line 123
 .
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Excluding 'comment' comment. [1
+Excluding 'comment' comment.
+
+Package natbib Warning: Citation `sucarrat2020garchx' on page 1 undefined on in
+put line 138.
+
+[1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 <simulation_plots/USE_in_paper_simulation_plot_arithmetic_mean.png, id=130, 481
@@ -924,71 +929,17 @@ File: simulation_plots/USE_in_paper_simulation_plot_arithmetic_mean.png Graphic
  file (type png)
 <use simulation_plots/USE_in_paper_simulation_plot_arithmetic_mean.png>
 Package pdftex.def Info: simulation_plots/USE_in_paper_simulation_plot_arithmet
-ic_mean.png  used on input line 143.
+ic_mean.png  used on input line 144.
 (pdftex.def)             Requested size: 240.8994pt x 240.8994pt.
  [2 <./simulation_plots/USE_in_paper_simulation_plot_arithmetic_mean.png (PNG c
-opy)>] [3] [4] [5] [6]pdfTeX warning (ext4): destination with the same identifi
-er (name{equation.2.1}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.325 \end{align}
-                 pdfTeX warning (ext4): destination with the same identifier (n
-ame{equation.2.2}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.325 \end{align}
-                 pdfTeX warning (ext4): destination with the same identifier (n
-ame{equation.2.1}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.343 \end{align}
-                 pdfTeX warning (ext4): destination with the same identifier (n
-ame{equation.2.2}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.343 \end{align}
-                 pdfTeX warning (ext4): destination with the same identifier (n
-ame{equation.2.1}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.354 \end{align}
-                 pdfTeX warning (ext4): destination with the same identifier (n
-ame{equation.2.2}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.354 \end{align}
-                 
-Underfull \hbox (badness 10000) in paragraph at lines 356--358
+opy)>] [3] [4] [5]
+[6]
+Underfull \hbox (badness 10000) in paragraph at lines 355--357
 
  []
 
-[7pdfTeX warning (ext4): destination with the same identifier (name{equation.2.
-3}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.358 
-      ]pdfTeX warning (ext4): destination with the same identifier (name{equati
-on.2.1}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.367 \end{align}
-                 pdfTeX warning (ext4): destination with the same identifier (n
-ame{equation.2.2}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.367 \end{align}
-                 pdfTeX warning (ext4): destination with the same identifier (n
-ame{equation.2.3}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.367 \end{align}
-                 pdfTeX warning (ext4): destination with the same identifier (n
-ame{equation.2.4}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.367 \end{align}
-                  [8]
-Underfull \hbox (badness 10000) in paragraph at lines 411--412
+[7] [8]
+Underfull \hbox (badness 10000) in paragraph at lines 410--411
 
  []
 
@@ -1000,28 +951,28 @@ See the amsmath package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.451 \end{align*}
+l.450 \end{align*}
                   
 ? 
 [9]
-Overfull \hbox (12.73756pt too wide) in paragraph at lines 460--461
+Overfull \hbox (12.73756pt too wide) in paragraph at lines 459--460
 \OT1/cmr/m/n/10.95 sen-ta-tion of GARCH(m,s) above, we could re-cover an un-bi-
 ased es-ti-ma-tor of the news shock $[][] \OML/cmm/m/it/10.95 w[]^^[[] \OMS/cms
 y/m/n/10.95 ^^@
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 471--472
+Underfull \hbox (badness 10000) in paragraph at lines 470--471
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 478--480
+Underfull \hbox (badness 10000) in paragraph at lines 477--479
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 486--488
+Underfull \hbox (badness 10000) in paragraph at lines 485--487
 
  []
 
@@ -1034,35 +985,24 @@ See the amsmath package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.519 \end{align}
+l.518 \end{align}
                  
 ? 
-pdfTeX warning (ext4): destination with the same identifier (name{equation.2.1}
-) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.519 \end{align}
-                 
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 537.
+               Default added (so using `tbp') on input line 536.
 
 
-Underfull \hbox (badness 1796) in paragraph at lines 541--541
+Underfull \hbox (badness 1796) in paragraph at lines 540--540
 []|\OT1/cmr/m/n/10.95 Captures rea-son-able pos-si-
  []
 
-pdfTeX warning (ext4): destination with the same identifier (name{equation.2.1}
-) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.553 \end{align}
-                  [11]
-<simulation_plots/outperformance_grid.png, id=248, 691.83469pt x 554.82281pt>
+[11]
+<simulation_plots/outperformance_grid.png, id=263, 691.83469pt x 554.82281pt>
 File: simulation_plots/outperformance_grid.png Graphic file (type png)
 <use simulation_plots/outperformance_grid.png>
 Package pdftex.def Info: simulation_plots/outperformance_grid.png  used on inpu
-t line 572.
+t line 571.
 (pdftex.def)             Requested size: 311.32272pt x 249.66795pt.
 
 
@@ -1070,7 +1010,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 <R_package_development/SynthVolForecast/R/real_data_output_plots/savetime_TueAu
 g2909:44:23PM2023_IYG_6B=F-CL=F-^VIX_^VIX_2016-11-08-2016-06-23-2014-11-04-2012
--11-06-2010-11-02-2008-11-04-2006-11-07-2004-11-02-2002-11-05.png, id=250, 481.
+-11-06-2010-11-02-2008-11-04-2006-11-07-2004-11-02-2002-11-05.png, id=265, 481.
 8pt x 481.8pt>
 File: R_package_development/SynthVolForecast/R/real_data_output_plots/savetime_
 TueAug2909:44:23PM2023_IYG_6B=F-CL=F-^VIX_^VIX_2016-11-08-2016-06-23-2014-11-04
@@ -1082,12 +1022,12 @@ ueAug2909:44:23PM2023_IYG_6B=F-CL=F-^VIX_^VIX_2016-11-08-2016-06-23-2014-11-04-
 Package pdftex.def Info: R_package_development/SynthVolForecast/R/real_data_out
 put_plots/savetime_TueAug2909:44:23PM2023_IYG_6B=F-CL=F-^VIX_^VIX_2016-11-08-20
 16-06-23-2014-11-04-2012-11-06-2010-11-02-2008-11-04-2006-11-07-2004-11-02-2002
--11-05.png  used on input line 605.
+-11-05.png  used on input line 604.
 (pdftex.def)             Requested size: 183.08589pt x 183.08589pt.
 [12]
 <R_package_development/SynthVolForecast/R/real_data_output_plots/savetime_SatSe
 p0210:45:17AM2023_IYG_6B=F-CL=F-^VIX_^VIX_2016-11-08-2014-11-04-2012-11-06-2010
--11-02-2008-11-04-2006-11-07-2004-11-02-2002-11-05.png, id=259, 481.8pt x 481.8
+-11-02-2008-11-04-2006-11-07-2004-11-02-2002-11-05.png, id=275, 481.8pt x 481.8
 pt>
 File: R_package_development/SynthVolForecast/R/real_data_output_plots/savetime_
 SatSep0210:45:17AM2023_IYG_6B=F-CL=F-^VIX_^VIX_2016-11-08-2014-11-04-2012-11-06
@@ -1099,36 +1039,40 @@ atSep0210:45:17AM2023_IYG_6B=F-CL=F-^VIX_^VIX_2016-11-08-2014-11-04-2012-11-06-
 Package pdftex.def Info: R_package_development/SynthVolForecast/R/real_data_out
 put_plots/savetime_SatSep0210:45:17AM2023_IYG_6B=F-CL=F-^VIX_^VIX_2016-11-08-20
 14-11-04-2012-11-06-2010-11-02-2008-11-04-2006-11-07-2004-11-02-2002-11-05.png 
- used on input line 614.
+ used on input line 613.
 (pdftex.def)             Requested size: 183.08589pt x 183.08589pt.
  [13 <./simulation_plots/outperformance_grid.png (PNG copy)> <./R_package_devel
 opment/SynthVolForecast/R/real_data_output_plots/savetime_TueAug2909:44:23PM202
 3_IYG_6B=F-CL=F-^VIX_^VIX_2016-11-08-2016-06-23-2014-11-04-2012-11-06-2010-11-0
 2-2008-11-04-2006-11-07-2004-11-02-2002-11-05.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 641--641
+Underfull \hbox (badness 10000) in paragraph at lines 640--640
 []|$\OML/cmm/m/it/10.95 A[]$ \OT1/cmr/m/n/10.95 in-de-pen-dent $\OMS/cmsy/m/n/1
 0.95 8\OML/cmm/m/it/10.95 i$\OT1/cmr/m/n/10.95 ,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 641--641
+Underfull \hbox (badness 10000) in paragraph at lines 640--640
 []|$\OML/cmm/m/it/10.95 x[]$ \OT1/cmr/m/n/10.95 in-de-pen-dent across
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 641--641
+Underfull \hbox (badness 10000) in paragraph at lines 640--640
 []|$\OML/cmm/m/it/10.95 x[]$ \OT1/cmr/m/n/10.95 in-de-pen-dent across
  []
 
 
-Overfull \hbox (35.54613pt too wide) in paragraph at lines 634--645
+Overfull \hbox (35.54613pt too wide) in paragraph at lines 633--644
 [][] 
  []
 
 [14 <./R_package_development/SynthVolForecast/R/real_data_output_plots/savetime
 _SatSep0210:45:17AM2023_IYG_6B=F-CL=F-^VIX_^VIX_2016-11-08-2014-11-04-2012-11-0
 6-2010-11-02-2008-11-04-2006-11-07-2004-11-02-2002-11-05.png (PNG copy)>]
-(./synthVolForecast.bbl) [15
+(./synthVolForecast.bbl)
+
+Package natbib Warning: There were undefined citations.
+
+[15
 
 ] (./synthVolForecast.aux)
 
@@ -1138,13 +1082,13 @@ Package rerunfilecheck Info: File `synthVolForecast.out' has not changed.
 (rerunfilecheck)             Checksum: 87586BED8EBE9025ED3F7BC524388FD1;5321.
  ) 
 Here is how much of TeX's memory you used:
- 25321 strings out of 478287
- 466868 string characters out of 5849289
- 758858 words of memory out of 5000000
- 42981 multiletter control sequences out of 15000+600000
+ 25332 strings out of 478287
+ 466918 string characters out of 5849289
+ 758847 words of memory out of 5000000
+ 42978 multiletter control sequences out of 15000+600000
  486446 words of font info for 89 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,17n,80p,1557b,465s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 84i,17n,80p,1591b,465s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texli
 ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dis
@@ -1166,10 +1110,10 @@ sfonts/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
 symbols/msbm10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0600.pfb><
 /usr/share/texmf/fonts/type1/public/cm-super/sfrm0800.pfb></usr/share/texmf/fon
 ts/type1/public/cm-super/sfrm1095.pfb>
-Output written on synthVolForecast.pdf (15 pages, 574132 bytes).
+Output written on synthVolForecast.pdf (15 pages, 575933 bytes).
 PDF statistics:
- 393 PDF objects out of 1000 (max. 8388607)
- 324 compressed objects within 4 object streams
- 83 named destinations out of 1000 (max. 500000)
+ 412 PDF objects out of 1000 (max. 8388607)
+ 343 compressed objects within 4 object streams
+ 97 named destinations out of 1000 (max. 500000)
  225 words of extra memory for PDF output out of 10000 (max. 10000000)
 
