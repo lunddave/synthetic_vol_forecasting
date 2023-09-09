@@ -1,4 +1,4 @@
-\begin{thebibliography}{11}
+\begin{thebibliography}{13}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -70,10 +70,21 @@ Peter~Reinhard Hansen, Zhuo Huang, and Howard~Howan Shek.
 \newblock \emph{Journal of Applied Econometrics}, 27\penalty0 (6):\penalty0
   877--906, 2012.
 
+\bibitem[Kilian and L{\"u}tkepohl(2017)]{kilian2017structural}
+Lutz Kilian and Helmut L{\"u}tkepohl.
+\newblock \emph{Structural vector autoregressive analysis}.
+\newblock Cambridge University Press, 2017.
+
 \bibitem[Lin and Eck(2021)]{lin2021minimizing}
 Jilei Lin and Daniel~J Eck.
 \newblock Minimizing post-shock forecasting error through aggregation of
   outside information.
 \newblock \emph{International Journal of Forecasting}, 2021.
+
+\bibitem[Sucarrat(2020)]{RePEc:pra:mprapa:100301}
+Genaro Sucarrat.
+\newblock {garchx: Flexible and Robust GARCH-X Modelling}.
+\newblock MPRA Paper 100301, University Library of Munich, Germany, May 2020.
+\newblock URL \url{https://ideas.repec.org/p/pra/mprapa/100301.html}.
 
 \end{thebibliography}

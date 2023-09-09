@@ -39,7 +39,7 @@ dbw <- function(X
   print('Here is the TSUS shock time')
   print(shock_time_vec[1])
 
-  print('These are the indices we are using in the weighing:')
+  print('These are the indices we are using in the weighting:')
   print(dbw_indices)
 
   # COVARIATE FOR TIME SERIES UNDER STUDY AT shock_time_vec
@@ -138,9 +138,9 @@ dbw <- function(X
                             LB = lower_bound, UB = upper_bound,
                             control = list(trace = 0
                                            , 1.0e-8
-                                           , tol = 1e-19
-                                           , outer.iter = 100000
-                                           , inner.iter = 100000))
+                                           , tol = 1e-27
+                                           , outer.iter = 10000000
+                                           , inner.iter = 10000000))
 
   if (object_to_return$convergence == 0){
     convergence <- 'convergence'
