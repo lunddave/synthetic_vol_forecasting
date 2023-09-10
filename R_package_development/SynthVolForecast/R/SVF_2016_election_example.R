@@ -21,15 +21,15 @@ source('/home/david/Desktop/synthetic_vol_forecasting/R_package_development/Synt
 
   TSUS <- 'IYG'
 
-  log_ret_covariates <- c(#"GBP=X",
-    "6B=F"
-    ,"CL=F"
-    ,"^VIX"
-    # ,"^IRX"
-    # ,"^FVX"
-    # ,"^TNX"
-    # ,"^TYX"
-  )
+  log_ret_covariates <- c(#"GBP=X"
+                           # "6B=F",
+                          "CL=F"
+                          ,"^VIX"
+                          ,"^IRX"
+                          ,"^FVX"
+                          ,"^TNX"
+                          ,"^TYX"
+                        )
 
   level_covariates <- c('^VIX'
                         #,"GBP=X"
@@ -43,13 +43,13 @@ source('/home/david/Desktop/synthetic_vol_forecasting/R_package_development/Synt
 
   shock_dates <- c("2016-11-08"
                    ,"2016-06-23"
-                   , "2014-11-04"
+                   # , "2014-11-04"
                    , "2012-11-06"
-                   , "2010-11-02"
+                   # , "2010-11-02"
                    , "2008-11-04"
-                   , "2006-11-07"
+                   # , "2006-11-07"
                    , "2004-11-02"
-                   , "2002-11-05"
+                   # , "2002-11-05"
                    # , "2000-11-07"
   )
 
@@ -78,14 +78,14 @@ source('/home/david/Desktop/synthetic_vol_forecasting/R_package_development/Synt
                                        ,from=start_dates[i]
                                        ,to=k_periods_after_shock[i]+20 #tk +10
                                        ,auto.assign=FALSE))[,6]
-                    ,type='log')})
+                                      ,type='log')})
 
       data_log_ret_covariates <- lapply(log_ret_covariates, function(sym) {
         dailyReturn(na.omit(getSymbols(sym
                                        ,from=start_dates[i]
                                        ,to=k_periods_after_shock[i]+20 #tk +10
                                        ,auto.assign=FALSE))[,6]
-                    ,type='log')})
+                                      ,type='log')})
 
       data_level_covariates <- lapply(level_covariates, function(sym) {
         na.omit(getSymbols(sym
@@ -101,6 +101,8 @@ source('/home/david/Desktop/synthetic_vol_forecasting/R_package_development/Synt
 
       data_absolute_return_covariates <- lapply(data_log_ret_covariates, abs)
 
+      data_absolute_return_covariates <- c()
+
       if (length(FRED_covariates) > 0){
 
         #Get FRED data (requires subtracting one series from another)
@@ -113,7 +115,7 @@ source('/home/david/Desktop/synthetic_vol_forecasting/R_package_development/Synt
 
         # Now we are going manually and carefully add the spread between BAA and AAA credit
 
-        diff_log_FRED_spread <- diff(log(data_FRED_covariates[[2]] - data_FRED_covariates[[1]]))
+        diff_log_FRED_spread <- data_FRED_covariates[[2]] - data_FRED_covariates[[1]]
 
         month_before_shock <- month(shock_dates_as_dates[i]) - 1
         year_of_shock <- year(shock_dates_as_dates[i]) #This is not necessarily robust to a shock in January
@@ -133,48 +135,66 @@ source('/home/david/Desktop/synthetic_vol_forecasting/R_package_development/Synt
         # data <- as.numeric(diff_log_FRED_spread_latest_before_shock)
         # row_to_add <- xts(data, order.by = date)
 
-        # print(row_to_add)
-
         #Drop NA
         diff_log_FRED_spread_latest_before_shock <- na.omit(diff_log_FRED_spread_latest_before_shock)
-
-        # print(diff_log_FRED_spread_latest_before_shock)
 
       # } #end lapply for FRED covariates
 
       to_add <- c(data_TSUS
-                  , data_log_ret_covariates
-                  , data_level_covariates
-                  , data_volume_covariates
-                  , data_absolute_return_covariates
-      )
+                , data_log_ret_covariates
+                , data_level_covariates
+                , data_volume_covariates
+                , data_absolute_return_covariates
+                )
 
       merged_data <- do.call(merge, to_add)
+
+      #We add column names to the data so we can analyze it more easily when we print it
+
+      if (length(log_ret_covariates) > 0)
+        {log_ret_covariates_colname <- paste(log_ret_covariates, "_log_ret", sep="")}
+      else
+        {log_ret_covariates_colname <- c()}
+
+      if (length(level_covariates) > 0)
+        {level_covariates_colname <- paste(level_covariates, "_raw", sep="")}
+      else
+        {level_covariates_colname <- c()}
+
+      if (length(volume_covariates) > 0)
+        {volume_covariates_colname <- paste(volume_covariates, "_volume", sep="")}
+      else
+        {volume_covariates_colname <- c()}
+
+      if (length(data_absolute_return_covariates) > 0)
+        {abs_log_ret_covariates_colname <- paste(log_ret_covariates, "_abs_log_ret", sep="")}
+      else
+        {abs_log_ret_covariates_colname <- c()}
+
+      colnames(merged_data) <- c(TSUS
+                               , log_ret_covariates_colname
+                               , level_covariates_colname
+                               , volume_covariates_colname
+                               , abs_log_ret_covariates_colname
+                               )
 
       if (length(FRED_covariates) > 0){
 
         dates <- index(merged_data)
         times <- length(dates)
         data <- rep(as.numeric(diff_log_FRED_spread_latest_before_shock), times)
-        col_to_add <- xts(data, order.by = dates)
-
-        print(col_to_add) #TODO how can we add a column with same value in each entry?
+        Debt_Risk_Spread <- xts(data, order.by = dates)
 
         #Merge FRED data
-        merged_data <- merge(merged_data, col_to_add)
+        merged_data <- merge(merged_data, Debt_Risk_Spread)
 
       } #end conditional for FRED_covariates
-
-      print(tail(merged_data, n = 30))
-
-      print('But we do not make it this far')
 
       market_data_list[[i]] <- merged_data
   }
 
   }
   ##################################
-
 
   #now build Y
   Y <- list()
@@ -195,7 +215,6 @@ source('/home/david/Desktop/synthetic_vol_forecasting/R_package_development/Synt
 
     Y[[i]] <- Y_i_drop_NA
                                   } #end for loop for building Y
-
 
   #Now build X
   X <- list()
@@ -232,7 +251,7 @@ source('/home/david/Desktop/synthetic_vol_forecasting/R_package_development/Synt
                            ,rep(k, n+1)
                            ,dwb_indices = NULL
                            #,covariate_indices = length(X)
-                           ,garch_order = c(1,0,1)
+                           ,garch_order = c(1,1,0)
                            ,plots = TRUE
                            ,ground_truth_vec = ground_truth)
 
@@ -247,6 +266,3 @@ source('/home/david/Desktop/synthetic_vol_forecasting/R_package_development/Synt
   #                         ,covariate_indices = length(X)
   #                         ,plots = TRUE
   #                        ,display_ground_truth_choice = TRUE)
-
-
-

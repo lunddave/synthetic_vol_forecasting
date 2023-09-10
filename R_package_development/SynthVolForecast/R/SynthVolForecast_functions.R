@@ -12,7 +12,6 @@ suppressPackageStartupMessages(lapply(packs, require, character.only = TRUE))
 QL_loss_function <- function(pred, gt){pred/gt - log(pred/gt) - 1}
 ### END QL_loss_function
 
-
 ### START dbw
 dbw <- function(X
                 ,dbw_indices
@@ -35,18 +34,13 @@ dbw <- function(X
   # number of time series for pool
   n <- length(X) - 1
 
-  print('We are inside the dbw function.')
-  print('Here is the TSUS shock time')
-  print(shock_time_vec[1])
-
-  print('These are the indices we are using in the weighting:')
-  print(dbw_indices)
-
   # COVARIATE FOR TIME SERIES UNDER STUDY AT shock_time_vec
   X1 <- X[[1]][shock_time_vec[1], dbw_indices, drop = FALSE] # we get only 1 row
 
   #We notify user if p > n, i.e. if linear system is overdetermined
   p <- length(dbw_indices)
+
+  if (p > n){print('p > n, i.e. system is overdetermined from an unconstrained point-of-view.')}
 
   # LOOP for grab shock_time_vec covariate vector for each donor
   X0 <- c()
@@ -58,8 +52,16 @@ dbw <- function(X
   #################################
   #begin if statement
   if (scale == TRUE) {
+    print('User has chosen to scale covariates.')
+
     dat <- rbind(X1, do.call('rbind', X0)) # do.call is for cluster computing?
+    print('Pre-scaling')
+    print(dat)
+
     dat <- apply(dat, 2, function(x) scale(x, center = TRUE, scale = TRUE))
+    print('Post-scaling')
+    print(dat)
+
     X1 <- dat[1, dbw_indices
               , drop = FALSE]
     X0 <- c()
@@ -142,16 +144,14 @@ dbw <- function(X
                                            , outer.iter = 10000000
                                            , inner.iter = 10000000))
 
-  if (object_to_return$convergence == 0){
-    convergence <- 'convergence'
-  }
+  if (object_to_return$convergence == 0){convergence <- 'convergence'}
   else {convergence <- 'failed_convergence'}
 
-  triple_to_return <- list(object_to_return$pars, convergence)
+  pair_to_return <- list(object_to_return$pars, convergence)
 
-  names(triple_to_return) <- c('opt_params', 'convergence')
+  names(pair_to_return) <- c('opt_params', 'convergence')
 
-  return(triple_to_return)
+  return(pair_to_return)
 
 } #END dbw function
 ### END dbw
@@ -269,17 +269,16 @@ plot_maker_garch <- function(fitted_vol
 }
 ### END plot_maker_garch
 
-
 ### START plot_maker_synthprediction
 plot_maker_synthprediction <- function(Y
-                       ,shock_times_for_barplot
-                       ,shock_time_vec #mk
-                       ,shock_length_vec
-                       ,unadjusted_pred
-                       ,w_hat
-                       ,omega_star_hat
-                       ,adjusted_pred
-                       ,display_ground_truth = FALSE){
+                                     ,shock_times_for_barplot
+                                     ,shock_time_vec #mk
+                                     ,shock_length_vec
+                                     ,unadjusted_pred
+                                     ,w_hat
+                                     ,omega_star_hat
+                                     ,adjusted_pred
+                                     ,display_ground_truth = FALSE){
 
   if (is.character(shock_times_for_barplot) == FALSE){
     shock_times_for_barplot <- 1:length(shock_times_for_barplot)
@@ -417,9 +416,6 @@ SynthVolForecast <- function(Y_series_list
 
   ### END Populate defaults
 
-
-
-
   ## BEGIN Check that inputs are all comformable/acceptable
   n <- length(Y_series_list) - 1 #tk
   ## END Check that inputs are all comformable/acceptable
@@ -497,14 +493,20 @@ SynthVolForecast <- function(Y_series_list
         X_i_final <- X_i_with_indicator
       }
 
-      print(paste('Now fitting a GARCH model to donor series number ', i,'.', sep = ''))
       fitted_garch <- garchx(Y_series_list[[i]][1:last_shock_point] #tk
                      , order = garch_order
                      , xreg = X_i_final
                      , backcast.values = NULL
-                     , control = list(eval.max = 10000
-                     , iter.max = 15000
-                     , rel.tol = 1e-6))
+                     , control = list(eval.max = 100000
+                     , iter.max = 1500000
+                     , rel.tol = 1e-8))
+
+      cat('\n===============================================================\n')
+      print(paste('Outputting GARCH estimates for donor series number ', i,'.', sep = ''))
+      print(fitted_garch)
+      print(paste('Outputting AIC for donor series number ', i,'.', sep = ''))
+      print(AIC(fitted_garch))
+      cat('\n===============================================================\n')
 
       coef_test <- coeftest(fitted_garch)
       extracted_fixed_effect <- coef_test[dim(coeftest(fitted_garch))[1], 1]
@@ -520,7 +522,6 @@ SynthVolForecast <- function(Y_series_list
   omega_star_hat <- w_hat %*% omega_star_hat_vec
   ## END compute linear combination of fixed effects
 
-
   ## BEGIN fit GARCH to target series
 
   if (is.null(covariate_indices) == TRUE){
@@ -529,12 +530,16 @@ SynthVolForecast <- function(Y_series_list
                            , order = garch_order
                            , xreg = NULL
                            , backcast.values = NULL
-                           , control = list(eval.max = 10000
-                                            , iter.max = 15000
-                                            , rel.tol = 1e-6))
+                           , control = list(eval.max = 100000
+                                            , iter.max = 1500000
+                                            , rel.tol = 1e-8))
 
+    cat('\n===============================================================\n')
     print('Outputting the fitted GARCH for time series under study.')
     print(fitted_garch)
+    print('Outputting AIC for time series under study.')
+    print(AIC(fitted_garch))
+    cat('\n===============================================================\n')
 
     unadjusted_pred <- predict(fitted_garch, n.ahead = shock_length_vec[1])
   }
@@ -543,12 +548,15 @@ SynthVolForecast <- function(Y_series_list
     fitted_garch <- garchx(Y_series_list[[1]][1:integer_shock_time_vec[1]]
                            , order = garch_order
                            , xreg = X[[1]][1:integer_shock_time_vec[1],covariate_indices]
-                           , control = list(eval.max = 10000
-                                            , iter.max = 15000
-                                            , rel.tol = 1e-6))
+                           , backcast.values = NULL
+                           , control = list(eval.max = 100000
+                                            , iter.max = 1500000
+                                            , rel.tol = 1e-8))
 
+    cat('\n===============================================================\n')
     print('Outputting the fitted GARCH for the time series under study.')
     print(fitted_garch)
+    cat('\n===============================================================\n')
 
     #Note: for forecasting, we use last-observed X value
     X_to_use_in_forecast <- X[[1]][integer_shock_time_vec[1],covariate_indices]
@@ -556,7 +564,6 @@ SynthVolForecast <- function(Y_series_list
     X_replicated_for_forecast_length <- matrix(rep(X_to_use_in_forecast, k)
                                                , nrow = shock_length_vec[1]
                                                , byrow = TRUE)
-
 
     forecast_period <- (integer_shock_time_vec[1]+1):(integer_shock_time_vec[1]+shock_length_vec[1])
     mat_X_for_forecast <- cbind(Y_series_list[[1]][forecast_period]
