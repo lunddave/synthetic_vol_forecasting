@@ -17,7 +17,7 @@ library(latex2exp)
 
 options(scipen = 7)
 
-### Auxiliary functions
+####################### BEGIN Auxiliary functions ####################### 
 
 ## BEGIN shock_time_creator
 shock_time_creator <- function(series_length
@@ -157,6 +157,8 @@ shifter <- function(x, n = 1) {
   if (n == 0) x else c(tail(x, n), head(x, -n))
 }
 #END SHIFTER
+
+####################### END Auxiliary functions ####################### 
 
 #####################################################################
 

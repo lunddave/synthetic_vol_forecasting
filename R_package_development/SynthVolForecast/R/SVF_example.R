@@ -69,6 +69,8 @@ volume_covariates <- c("COP" #first should be time series under study
                         ,'BP'
 )
 
+abs_log_ret_covariates <- c()
+
 shock_dates <- c("2020-03-06"
                  ,"2014-11-26"
                  , "2008-09-25"
@@ -91,27 +93,60 @@ names(market_data_list) <- shock_dates
 
 for (i in 1:length(shock_dates)){
 
-  to_add <- lapply(log_ret_covariates, function(sym) {
+  data_log_ret_covariates <- lapply(log_ret_covariates, function(sym) {
     dailyReturn(na.omit(getSymbols(sym
                                    ,from=start_dates[i]
                                    ,to=k_periods_after_shock[i]+10 #tk +10
                                    ,auto.assign=FALSE))
                                    ,type='log')})
 
-  to_add_2 <- lapply(level_covariates, function(sym) {
+  data_level_covariates <- lapply(level_covariates, function(sym) {
     na.omit(getSymbols(sym
                        ,from=start_dates[i]
                        ,to=k_periods_after_shock[i]+10 #tk +10
                        ,auto.assign=FALSE))[,6]})
 
-  to_add_3 <- lapply(volume_covariates, function(sym) {
+  data_volume_covariates <- lapply(volume_covariates, function(sym) {
     na.omit(getSymbols(sym
                        ,from=start_dates[i]
                        ,to=k_periods_after_shock[i]+10 #tk +10
                        ,auto.assign=FALSE))[,6]})
 
-  to_add <- c(to_add, to_add_2, to_add_3)
-  market_data_list[[i]] <- do.call(merge, to_add)
+  to_add <- c(data_log_ret_covariates
+              , data_level_covariates
+              , data_volume_covariates)
+
+  merged_data <- do.call(merge, to_add)
+
+  #We add column names to the data so we can analyze it more easily when we print it
+
+  if (length(log_ret_covariates) > 0)
+  {log_ret_covariates_colname <- paste(log_ret_covariates, "_log_ret", sep="")}
+  else
+  {log_ret_covariates_colname <- c()}
+
+  if (length(level_covariates) > 0)
+  {level_covariates_colname <- paste(level_covariates, "_raw", sep="")}
+  else
+  {level_covariates_colname <- c()}
+
+  if (length(volume_covariates) > 0)
+  {volume_covariates_colname <- paste(volume_covariates, "_volume", sep="")}
+  else
+  {volume_covariates_colname <- c()}
+
+  if (length(data_absolute_return_covariates) > 0)
+  {abs_log_ret_covariates_colname <- paste(log_ret_covariates, "_abs_log_ret", sep="")}
+  else
+  {abs_log_ret_covariates_colname <- c()}
+
+  colnames(merged_data) <- c(log_ret_covariates_colname
+                             , level_covariates_colname
+                             , volume_covariates_colname
+                             , abs_log_ret_covariates_colname
+  )
+
+  market_data_list[[i]] <- merged_data
 
 }
 

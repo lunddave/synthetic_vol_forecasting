@@ -7,6 +7,7 @@ packs <- c('Rsolnp'
           )
 suppressPackageStartupMessages(lapply(packs, require, character.only = TRUE))
 
+####################### BEGIN Auxiliary functions #######################
 
 ### START QL_loss_function
 QL_loss_function <- function(pred, gt){pred/gt - log(pred/gt) - 1}
@@ -45,8 +46,9 @@ dbw <- function(X
   # LOOP for grab shock_time_vec covariate vector for each donor
   X0 <- c()
   for (i in 1:n) {
-    X0[[i]] <- X[[i+1]][shock_time_vec[i+1], dbw_indices
-                          , drop = FALSE] #get 1 row from each donor
+    X0[[i]] <- X[[i+1]][shock_time_vec[i+1]
+                        , dbw_indices
+                        , drop = FALSE] #get 1 row from each donor
   }
 
   #################################
@@ -112,7 +114,7 @@ dbw <- function(X
   #Thus I need if statements to implement these...
 
   # conditional for sum to 1
-  if (is.na(sum_to_1) == FALSE) {eq_constraint <- function(W) sum(W) - 1 }
+  if (is.na(sum_to_1) == FALSE) {eq_constraint <- function(W) sum(W) - 1}
   else{eq_constraint = NULL}
 
   # conditional for bounding below
@@ -138,7 +140,7 @@ dbw <- function(X
                             eqfun = eq_constraint,
                             eqB = 0,
                             LB = lower_bound, UB = upper_bound,
-                            control = list(trace = 0
+                            control = list(trace = 1
                                            , 1.0e-8
                                            , tol = 1e-27
                                            , outer.iter = 10000000
@@ -169,6 +171,8 @@ plot_maker_garch <- function(fitted_vol
                             ,arithmetic_mean_based_pred
                             ,ground_truth_vec){
 
+  print('Just began plot_maker_garch.')
+
   if (is.character(shock_times_for_barplot) == FALSE){
     shock_times_for_barplot <- 1:length(shock_times_for_barplot)
   }
@@ -176,6 +180,8 @@ plot_maker_garch <- function(fitted_vol
   par(mfrow = c(1,3))
 
   barplot_colors <- brewer.pal(length(w_hat) - 1 ,'Set3')
+
+  print('Barplot colors no problem.')
 
   #PLOT ON THE LEFT:
 
@@ -187,6 +193,8 @@ plot_maker_garch <- function(fitted_vol
           , las=2
           , col = barplot_colors)
 
+  print('Barplot no problem.')
+
   #PLOT IN THE MIDDLE
 
   #Plot FE estimates
@@ -196,6 +204,9 @@ plot_maker_garch <- function(fitted_vol
           , cex.names=.95
           , las=2
           , col = barplot_colors)
+
+    print('Omega Hat no problem.')
+
 
   #Plot target series and prediction
 
@@ -218,6 +229,8 @@ plot_maker_garch <- function(fitted_vol
 
   title(ylab = expression(sigma^2), line = 2.05, cex.lab = 1.99) # Add y-axis text
 
+  print('Vol TS no problem.')
+
   # Here is the color scheme we will use
   colors_for_adjusted_pred <- c('red'
                               , "green"
@@ -229,29 +242,42 @@ plot_maker_garch <- function(fitted_vol
   points(y = unadjusted_pred
          ,x = (shock_time_vec[1]+1):(shock_time_vec[1]+shock_length_vec[1])
          ,col = colors_for_adjusted_pred[1]
-         ,cex = 1.1
+         ,cex = 1.5
          ,pch = 15)
+
+  print('Unadjusted prediction no problem.')
 
   # Now plot the adjusted predictions
   points(y = adjusted_pred
          ,x = (shock_time_vec[1]+1):(shock_time_vec[1]+shock_length_vec[1])
          ,col = colors_for_adjusted_pred[2]
-         ,cex = 1.1
+         ,cex = 1.5
          ,pch = 23)
+
+  print('Adjusted prediction no problem.')
 
   # Now plot the arithmetic mean-based predictions
   points(y = arithmetic_mean_based_pred
          ,x = (shock_time_vec[1]+1):(shock_time_vec[1]+shock_length_vec[1])
          ,col = colors_for_adjusted_pred[3]
-         ,cex = 1.1
+         ,cex = 1.5
          ,pch = 23)
 
-  # Now plot Ground Truth
-  points(y = ground_truth_vec
-         ,x = (shock_time_vec[1]+1):(shock_time_vec[1]+shock_length_vec[1])
-         ,col = colors_for_adjusted_pred[4]
-         ,cex = 1.1
-         ,pch = 23)
+  print('Arithmetic mean no problem.')
+
+  print('Here is the ground truth vec:')
+  print(ground_truth_vec)
+
+  # Now plot Ground Truth tk
+  if (is.null(ground_truth_vec) == FALSE)
+    {
+    print('We are plotting the ground truth.')
+    points(y = ground_truth_vec
+           ,x = (shock_time_vec[1]+1):(shock_time_vec[1]+shock_length_vec[1])
+           ,col = colors_for_adjusted_pred[4]
+           ,cex = 1.5
+           ,pch = 22)
+  }
 
   labels_for_legend <- c('GARCH (unadjusted)'
                         , 'Adjusted'
@@ -384,6 +410,7 @@ plot_maker_synthprediction <- function(Y
 }
 ### END plot_maker_synthprediction
 
+####################### END Auxiliary functions #######################
 
 ### START SynthVolForecast
 SynthVolForecast <- function(Y_series_list
@@ -406,13 +433,9 @@ SynthVolForecast <- function(Y_series_list
   ### BEGIN Populate defaults
   n <- length(Y_series_list) - 1
 
-  if (is.null(garch_order) == TRUE) {
-    garch_order <- c(1,1,1)
-  }
+  if (is.null(garch_order) == TRUE) {garch_order <- c(1,1,1)}
 
-  if (is.null(dwb_indices) == TRUE) {
-    dwb_indices <- 1:ncol(X[[1]])
-  }
+  if (is.null(dwb_indices) == TRUE) {dwb_indices <- 1:ncol(covariates_series_list[[1]])}
 
   ### END Populate defaults
 
@@ -421,6 +444,7 @@ SynthVolForecast <- function(Y_series_list
   ## END Check that inputs are all comformable/acceptable
 
   integer_shock_time_vec <- c() #mk
+  integer_shock_time_vec_for_convex_hull_based_optimization <- c() #mk
 
   ## BEGIN Check whether shock_time_vec is int/date
 
@@ -428,17 +452,21 @@ SynthVolForecast <- function(Y_series_list
 
     if (is.character(shock_time_vec[i]) == TRUE){
       integer_shock_time_vec[i] <- which(index(Y[[i]]) == shock_time_vec[i]) #mk
+      integer_shock_time_vec_for_convex_hull_based_optimization[i] <- which(index(X[[i]]) == shock_time_vec[i]) #mk
     }
-    else{ integer_shock_time_vec <- shock_time_vec}
+    else{
+      integer_shock_time_vec[i] <- shock_time_vec[i]
+      integer_shock_time_vec_for_convex_hull_based_optimization <- shock_time_vec[i]
+    }
 
   }
 
   ## END Check whether shock_time_vec is int/date
 
   ## BEGIN calculate weight vector
-  dbw_output <- dbw(X, #tk
+  dbw_output <- dbw(covariates_series_list, #tk
                dwb_indices,
-               integer_shock_time_vec,
+               integer_shock_time_vec_for_convex_hull_based_optimization,
                scale = TRUE,
                sum_to_1 = TRUE, #tk
                bounded_below_by = 0, #tk
@@ -483,7 +511,7 @@ SynthVolForecast <- function(Y_series_list
 
       #subset X_i
       if (is.null(covariate_indices) == TRUE) {
-        X_i_penultimate <- cbind(Y_series_list[[i]][1:last_shock_point]
+        X_i_penultimate <- cbind(Y_series_list[[i]][1:last_shock_point] #tk
                                  , post_shock_indicator)
         X_i_final <- X_i_penultimate[,2]
       }
@@ -578,9 +606,15 @@ SynthVolForecast <- function(Y_series_list
 
   arithmetic_mean_based_pred <- rep(mean(omega_star_hat_vec), k) + unadjusted_pred
 
-  QL_loss_unadjusted_pred <- sum(QL_loss_function(unadjusted_pred, ground_truth))
+  if (is.null(ground_truth_vec) == TRUE){
+    QL_loss_unadjusted_pred <- NA
+    QL_loss_adjusted_pred <- NA
+  }
+  else {
+    QL_loss_unadjusted_pred <- sum(QL_loss_function(unadjusted_pred, ground_truth_vec))
+    QL_loss_adjusted_pred <- sum(QL_loss_function(adjusted_pred, ground_truth_vec))
+  }
 
-  QL_loss_adjusted_pred <- sum(QL_loss_function(adjusted_pred, ground_truth))
 
   list_of_linear_combinations <- list(w_hat)
   list_of_forecasts <- list(unadjusted_pred, adjusted_pred)
@@ -625,8 +659,7 @@ SynthVolForecast <- function(Y_series_list
                ,adjusted_pred
                ,arithmetic_mean_based_pred
                ,ground_truth_vec)
-
-  }
+                  }
 
   return(output_list)
 
@@ -658,7 +691,7 @@ SynthPrediction <- function(Y_series_list
   }
 
   if (is.null(dwb_indices) == TRUE) {
-    dwb_indices <- 1:ncol(X[[1]])
+    dwb_indices <- 1:ncol(covariates_series_list[[1]]) #tk
   }
 
   ### END Populate defaults
@@ -676,7 +709,7 @@ SynthPrediction <- function(Y_series_list
     if (is.character(shock_time_vec[i]) == TRUE){
       integer_shock_time_vec[i] <- which(index(Y[[i]]) == shock_time_vec[i]) #mk
     }
-    else{ integer_shock_time_vec <- shock_time_vec}
+    else{integer_shock_time_vec[i] <- shock_time_vec[i]}
 
   }
 
@@ -839,7 +872,6 @@ SynthPrediction <- function(Y_series_list
                ,omega_star_hat
                ,adjusted_pred
                ,display_ground_truth = display_ground_truth_choice)
-
   }
 
   return(output_list)

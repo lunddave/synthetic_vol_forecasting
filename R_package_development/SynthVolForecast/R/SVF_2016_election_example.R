@@ -6,29 +6,30 @@ source('/home/david/Desktop/synthetic_vol_forecasting/R_package_development/Synt
 
   ### BEGIN 2016 election example
   packs <- c('quantmod'
-             , 'bizdays'
-             , 'lubridate'
+           , 'bizdays'
+           , 'lubridate'
   )
 
   suppressPackageStartupMessages(lapply(packs, require, character.only = TRUE))
 
   ## BEGIN USER DATA INPUTS##
   ground_truth <- c(0.000712, 0.000976)
-  ground_truth <- c(0.000712)
+  #ground_truth <- c(0.000712)
   #ground_truth <- c(0.000712, 0.000976, .0006)
 
-  k <- 1
+  k <- 2
 
   TSUS <- 'IYG'
 
-  log_ret_covariates <- c(#"GBP=X"
-                           # "6B=F",
+  log_ret_covariates <- c(#"GBP=X",
+                           #"6B=F",
                           "CL=F"
                           ,"^VIX"
                           ,"^IRX"
                           ,"^FVX"
                           ,"^TNX"
                           ,"^TYX"
+                          #,"DX-Y.NYB"
                         )
 
   level_covariates <- c('^VIX'
@@ -42,15 +43,15 @@ source('/home/david/Desktop/synthetic_vol_forecasting/R_package_development/Synt
   # FRED_covariates <- c()
 
   shock_dates <- c("2016-11-08"
-                   ,"2016-06-23"
-                   # , "2014-11-04"
+                    ,"2016-06-23"
+                    #, "2014-11-04"
                    , "2012-11-06"
-                   # , "2010-11-02"
+                   #, "2010-11-02"
                    , "2008-11-04"
-                   # , "2006-11-07"
+                   #, "2006-11-07"
                    , "2004-11-02"
-                   # , "2002-11-05"
-                   # , "2000-11-07"
+                   #, "2002-11-05"
+                   #, "2000-11-07"
   )
 
   ## END USER DATA INPUTS##
@@ -201,10 +202,12 @@ source('/home/david/Desktop/synthetic_vol_forecasting/R_package_development/Synt
   for (i in 1:length(start_dates)){
     Y_i <- market_data_list[[i]][,1]
     Y_i_drop_NA <- Y_i[complete.cases(Y_i)]
-    #print('Here is the type of object we are working with:')
-    #print(class(Y_i_drop_NA))
-    #print('Here are the rownames')
-    #print(index(Y_i_drop_NA))
+    print('Here is the type of object we are working with:')
+    print(class(Y_i_drop_NA))
+    # print('Here are the rownames')
+    # print(index(Y_i_drop_NA))
+    print('Here is the shock date')
+    print(shock_dates_as_dates[i])
 
     if (shock_dates[i] %in% index(Y_i_drop_NA)){
       print('The shock date is in the series.')

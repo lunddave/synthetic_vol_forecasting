@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.5.30)  10 SEP 2023 16:12
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.5.30)  11 SEP 2023 01:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1029,9 +1029,17 @@ put_plots/savetime_TueAug2909:44:23PM2023_IYG_6B=F-CL=F-^VIX_^VIX_2016-11-08-20
 -11-05.png  used on input line 607.
 (pdftex.def)             Requested size: 183.08589pt x 183.08589pt.
 [12]
+Underfull \hbox (badness 10000) in paragraph at lines 612--613
+
+ []
+
+[13 <./simulation_plots/outperformance_grid.png (PNG copy)> <./R_package_develo
+pment/SynthVolForecast/R/real_data_output_plots/savetime_TueAug2909:44:23PM2023
+_IYG_6B=F-CL=F-^VIX_^VIX_2016-11-08-2016-06-23-2014-11-04-2012-11-06-2010-11-02
+-2008-11-04-2006-11-07-2004-11-02-2002-11-05.png (PNG copy)>]
 <R_package_development/SynthVolForecast/R/real_data_output_plots/savetime_SatSe
 p0210:45:17AM2023_IYG_6B=F-CL=F-^VIX_^VIX_2016-11-08-2014-11-04-2012-11-06-2010
--11-02-2008-11-04-2006-11-07-2004-11-02-2002-11-05.png, id=285, 481.8pt x 481.8
+-11-02-2008-11-04-2006-11-07-2004-11-02-2002-11-05.png, id=294, 481.8pt x 481.8
 pt>
 File: R_package_development/SynthVolForecast/R/real_data_output_plots/savetime_
 SatSep0210:45:17AM2023_IYG_6B=F-CL=F-^VIX_^VIX_2016-11-08-2014-11-04-2012-11-06
@@ -1043,29 +1051,26 @@ atSep0210:45:17AM2023_IYG_6B=F-CL=F-^VIX_^VIX_2016-11-08-2014-11-04-2012-11-06-
 Package pdftex.def Info: R_package_development/SynthVolForecast/R/real_data_out
 put_plots/savetime_SatSep0210:45:17AM2023_IYG_6B=F-CL=F-^VIX_^VIX_2016-11-08-20
 14-11-04-2012-11-06-2010-11-02-2008-11-04-2006-11-07-2004-11-02-2002-11-05.png 
- used on input line 616.
+ used on input line 618.
 (pdftex.def)             Requested size: 183.08589pt x 183.08589pt.
- [13 <./simulation_plots/outperformance_grid.png (PNG copy)> <./R_package_devel
-opment/SynthVolForecast/R/real_data_output_plots/savetime_TueAug2909:44:23PM202
-3_IYG_6B=F-CL=F-^VIX_^VIX_2016-11-08-2016-06-23-2014-11-04-2012-11-06-2010-11-0
-2-2008-11-04-2006-11-07-2004-11-02-2002-11-05.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 643--643
+
+Underfull \hbox (badness 10000) in paragraph at lines 645--645
 []|$\OML/cmm/m/it/10.95 A[]$ \OT1/cmr/m/n/10.95 in-de-pen-dent $\OMS/cmsy/m/n/1
 0.95 8\OML/cmm/m/it/10.95 i$\OT1/cmr/m/n/10.95 ,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 643--643
+Underfull \hbox (badness 10000) in paragraph at lines 645--645
 []|$\OML/cmm/m/it/10.95 x[]$ \OT1/cmr/m/n/10.95 in-de-pen-dent across
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 643--643
+Underfull \hbox (badness 10000) in paragraph at lines 645--645
 []|$\OML/cmm/m/it/10.95 x[]$ \OT1/cmr/m/n/10.95 in-de-pen-dent across
  []
 
 
-Overfull \hbox (35.54613pt too wide) in paragraph at lines 636--647
+Overfull \hbox (35.54613pt too wide) in paragraph at lines 638--649
 [][] 
  []
 
@@ -1082,10 +1087,10 @@ Package rerunfilecheck Info: File `synthVolForecast.out' has not changed.
 (rerunfilecheck)             Checksum: 4C2EFC6A56A33DE0F6DC1A8D38137B64;5410.
  ) 
 Here is how much of TeX's memory you used:
- 25346 strings out of 478287
- 467209 string characters out of 5849289
- 757918 words of memory out of 5000000
- 42988 multiletter control sequences out of 15000+600000
+ 25350 strings out of 478287
+ 467310 string characters out of 5849289
+ 757942 words of memory out of 5000000
+ 42991 multiletter control sequences out of 15000+600000
  486614 words of font info for 90 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,17n,80p,1595b,465s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1111,10 +1116,10 @@ cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbol
 s/msbm10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0600.pfb></usr/s
 hare/texmf/fonts/type1/public/cm-super/sfrm0800.pfb></usr/share/texmf/fonts/typ
 e1/public/cm-super/sfrm1095.pfb>
-Output written on synthVolForecast.pdf (15 pages, 591366 bytes).
+Output written on synthVolForecast.pdf (15 pages, 592159 bytes).
 PDF statistics:
- 429 PDF objects out of 1000 (max. 8388607)
- 358 compressed objects within 4 object streams
- 100 named destinations out of 1000 (max. 500000)
+ 432 PDF objects out of 1000 (max. 8388607)
+ 361 compressed objects within 4 object streams
+ 101 named destinations out of 1000 (max. 500000)
  233 words of extra memory for PDF output out of 10000 (max. 10000000)
 

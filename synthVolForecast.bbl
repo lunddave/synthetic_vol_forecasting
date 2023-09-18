@@ -1,4 +1,4 @@
-\begin{thebibliography}{13}
+\begin{thebibliography}{14}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -86,5 +86,11 @@ Genaro Sucarrat.
 \newblock {garchx: Flexible and Robust GARCH-X Modelling}.
 \newblock MPRA Paper 100301, University Library of Munich, Germany, May 2020.
 \newblock URL \url{https://ideas.repec.org/p/pra/mprapa/100301.html}.
+
+\bibitem[Zivot(2009)]{zivot2009practical}
+Eric Zivot.
+\newblock Practical issues in the analysis of univariate garch models.
+\newblock In \emph{Handbook of financial time series}, pages 113--155.
+  Springer, 2009.
 
 \end{thebibliography}
