@@ -18,6 +18,7 @@ dbw <- function(X
                 ,dbw_indices
                 ,shock_time_vec
                 ,scale = FALSE
+                ,center = FALSE
                 ,sum_to_1 = 1
                 ,bounded_below_by = 0
                 ,bounded_above_by = 1
@@ -417,7 +418,9 @@ SynthVolForecast <- function(Y_series_list
                              ,covariates_series_list
                              ,shock_time_vec
                              ,shock_length_vec
-                             ,dwb_indices = NULL
+                             ,dbw_scale = TRUE
+                             ,dbw_center = TRUE
+                             ,dbw_indices = NULL
                              ,covariate_indices = NULL
                              ,geometric_sets = NULL #tk
                              ,days_before_shocktime_vec = NULL #tk I may want to remove this
@@ -435,7 +438,7 @@ SynthVolForecast <- function(Y_series_list
 
   if (is.null(garch_order) == TRUE) {garch_order <- c(1,1,1)}
 
-  if (is.null(dwb_indices) == TRUE) {dwb_indices <- 1:ncol(covariates_series_list[[1]])}
+  if (is.null(dbw_indices) == TRUE) {dbw_indices <- 1:ncol(covariates_series_list[[1]])}
 
   ### END Populate defaults
 
@@ -465,9 +468,10 @@ SynthVolForecast <- function(Y_series_list
 
   ## BEGIN calculate weight vector
   dbw_output <- dbw(covariates_series_list, #tk
-               dwb_indices,
+               dbw_indices,
                integer_shock_time_vec_for_convex_hull_based_optimization,
-               scale = TRUE,
+               scale = dbw_scale,
+               center = dbw_center,
                sum_to_1 = TRUE, #tk
                bounded_below_by = 0, #tk
                bounded_above_by = 1, #tk
@@ -670,7 +674,9 @@ SynthPrediction <- function(Y_series_list
                              ,covariates_series_list
                              ,shock_time_vec
                              ,shock_length_vec
-                             ,dwb_indices = NULL
+                             ,dbw_scale = TRUE
+                             ,dbw_center = TRUE
+                             ,dbw_indices = NULL
                              ,covariate_indices = NULL
                              ,geometric_sets = NULL #tk
                              ,days_before_shocktime_vec = NULL #tk I may want to remove this
@@ -690,8 +696,8 @@ SynthPrediction <- function(Y_series_list
     arima_order <- c(1,1,1)
   }
 
-  if (is.null(dwb_indices) == TRUE) {
-    dwb_indices <- 1:ncol(covariates_series_list[[1]]) #tk
+  if (is.null(dbw_indices) == TRUE) {
+    dbw_indices <- 1:ncol(covariates_series_list[[1]]) #tk
   }
 
   ### END Populate defaults
@@ -760,9 +766,10 @@ SynthPrediction <- function(Y_series_list
 
   ## BEGIN compute linear combination of fixed effects
   dbw_output <- dbw(X, #tk
-                   dwb_indices,
+                   dbw_indices,
                    integer_shock_time_vec,
                    scale = TRUE,
+                   center = TRUE,
                    sum_to_1 = TRUE, #tk
                    bounded_below_by = 0, #tk
                    bounded_above_by = 1, #tk

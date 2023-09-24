@@ -14,15 +14,15 @@ source('/home/david/Desktop/synthetic_vol_forecasting/R_package_development/Synt
 
   ## BEGIN USER DATA INPUTS##
   ground_truth <- c(0.000712, 0.000976)
-  #ground_truth <- c(0.000712)
+  ground_truth <- c(0.000712)
   #ground_truth <- c(0.000712, 0.000976, .0006)
 
-  k <- 2
+  k <- 1
 
   TSUS <- 'IYG'
 
   log_ret_covariates <- c(#"GBP=X",
-                           #"6B=F",
+                           "6B=F",
                           "CL=F"
                           ,"^VIX"
                           ,"^IRX"
@@ -252,7 +252,8 @@ source('/home/david/Desktop/synthetic_vol_forecasting/R_package_development/Synt
                            ,X
                            ,shock_time_vec = shock_dates
                            ,rep(k, n+1)
-                           ,dwb_indices = NULL
+                           ,dbw_center = FALSE
+                           ,dbw_indices = NULL
                            #,covariate_indices = length(X)
                            ,garch_order = c(1,1,0)
                            ,plots = TRUE
@@ -265,7 +266,7 @@ source('/home/david/Desktop/synthetic_vol_forecasting/R_package_development/Synt
   #                         ,X
   #                         ,shock_time_vec = shock_dates
   #                         ,rep(k, n+1)
-  #                         ,dwb_indices = NULL
+  #                         ,dbw_indices = NULL
   #                         ,covariate_indices = length(X)
   #                         ,plots = TRUE
   #                        ,display_ground_truth_choice = TRUE)
