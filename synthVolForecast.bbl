@@ -1,4 +1,4 @@
-\begin{thebibliography}{14}
+\begin{thebibliography}{15}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -86,6 +86,11 @@ Genaro Sucarrat.
 \newblock {garchx: Flexible and Robust GARCH-X Modelling}.
 \newblock MPRA Paper 100301, University Library of Munich, Germany, May 2020.
 \newblock URL \url{https://ideas.repec.org/p/pra/mprapa/100301.html}.
+
+\bibitem[Timmermann(2006)]{timmermann2006forecast}
+Allan Timmermann.
+\newblock Forecast combinations.
+\newblock \emph{Handbook of economic forecasting}, 1:\penalty0 135--196, 2006.
 
 \bibitem[Zivot(2009)]{zivot2009practical}
 Eric Zivot.
