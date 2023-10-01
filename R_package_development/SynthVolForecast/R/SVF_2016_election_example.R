@@ -22,7 +22,7 @@ source('/home/david/Desktop/synthetic_vol_forecasting/R_package_development/Synt
   TSUS <- 'IYG'
 
   log_ret_covariates <- c(#"GBP=X",
-                           "6B=F",
+                          # "6B=F",
                           "CL=F"
                           ,"^VIX"
                           ,"^IRX"
@@ -43,7 +43,7 @@ source('/home/david/Desktop/synthetic_vol_forecasting/R_package_development/Synt
   # FRED_covariates <- c()
 
   shock_dates <- c("2016-11-08"
-                    ,"2016-06-23"
+                   #,"2016-06-23"
                     #, "2014-11-04"
                    , "2012-11-06"
                    #, "2010-11-02"
@@ -61,7 +61,7 @@ source('/home/david/Desktop/synthetic_vol_forecasting/R_package_development/Synt
 
   shock_dates_as_dates <- as.Date(shock_dates)
 
-  start_dates <- offset(shock_dates_as_dates, round(-1.8*252), "NYSE")
+  start_dates <- offset(shock_dates_as_dates, round(-3.8*252), "NYSE")
 
   k_periods_after_shock <- offset(shock_dates_as_dates, k, "NYSE")
 
@@ -252,7 +252,8 @@ source('/home/david/Desktop/synthetic_vol_forecasting/R_package_development/Synt
                            ,X
                            ,shock_time_vec = shock_dates
                            ,rep(k, n+1)
-                           ,dbw_center = FALSE
+                           ,dbw_scale = TRUE
+                           ,dbw_center = TRUE
                            ,dbw_indices = NULL
                            #,covariate_indices = length(X)
                            ,garch_order = c(1,1,0)
