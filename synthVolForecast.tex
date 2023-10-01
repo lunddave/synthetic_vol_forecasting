@@ -599,13 +599,13 @@ As we see in \ref{fig:outperformance}, when only two parameters are varied, the 
 
 \section{Real Data Example}
 
-My show the applicability of Synthetic Volatility Forecasting using an real data example that sits at the crossroads of market trading and electoral politics.  In the spring of 2016 in the USA, the Republican Party's primary election process narrowed down candidates until Donald J. Trump cleared the threshold of votes to win the nomination formally at the party's convention that summer.  He would go on to face the Democratic Party's nominee, Hillary Rodham Clinton.  As is well-known, the Electoral College has the capability of making presidential races more competitive than a raw vote total might, generating a corresponding increase in uncertainty about the country's leadership.  From ex-ante perspective, several key qualities of this particular US election cycle as well as the candidates themselves might also be considered volatility-inducing.  The election featured no incumbent, which foreclosed any incumbent-advantage.  The Republican Party candidate took up unorthodox positions on matters such as healthcare and trade policy, positions that could be considered rare in either of the major two parties.  Additionally, Donald J. Trump, lacking any record in government service -- either electoral or appointed service -- gave his opponent no voting record to attack and more broadly, presented both the electorate and political prognosticators with a complete novelty.  For these reasons, the result and aftermath of the 2016 presidential election meets the standard of an interesting and notable event for which a quantitative researcher might on-demand predictions.  On a more technical level, the result of the election arrived in the evening of election day, following the closing of financial markets at 4pm Eastern Time.  This meets the standard of a shock that has not yet been digested by liquid markets.  We therefore proceed to make the following technical specifications in order to predict the volatility of financial services ETF IYG (an ETF composed of American financial majors JPMorgan, Bank of American, etcetera) on Wednesday November 9th, 2016.
+We show the applicability of Synthetic Volatility Forecasting using an real data example that sits at the crossroads of market trading and electoral politics.  In the spring of 2016 in the USA, the Republican Party's primary election process narrowed down candidates until Donald J. Trump cleared the threshold of votes to win the nomination formally at the party's convention that summer.  He would go on to face the Democratic Party's nominee, Hillary Rodham Clinton.  As is well-known, the Electoral College has the capability of making presidential races more competitive than a raw vote total might, generating a corresponding increase in uncertainty about the country's leadership.  From ex-ante perspective, several key qualities of this particular US election cycle as well as the candidates themselves might also be considered volatility-inducing.  The election featured no incumbent, which foreclosed any incumbent-advantage.  The Republican Party candidate took up unorthodox positions on matters such as healthcare and trade policy, positions that could be considered rare in either of the major two parties.  Additionally, Donald J. Trump, lacking any record in government service -- either electoral or appointed service -- gave his opponent no voting record to attack and more broadly, presented both the electorate and political prognosticators with a complete novelty.  For these reasons, aftermath of the 2016 presidential election meets the standard of an interesting and notable event for which a quantitative researcher might seek on-demand predictions.  On a more technical level, the result of the election arrived in the evening of election day, following the closing of financial markets at 4pm Eastern Time.  This meets the standard of a shock that has not yet been digested by liquid markets.  We therefore proceed to make the following technical specifications in order to predict the volatility of financial services ETF IYG\footnote{It has been noted that GARCH effects are more attenuated in aggregated returns \citep{zivot2009practical}, which suggests against using the S\&P 500 or similar indices as an example.} (an ETF composed of American financial majors JPMorgan, Bank of American, etcetera) on Wednesday November 9th, 2016.
 
 \begin{enumerate}
     \item \textbf{Model choice} We assume a GARCH(1,1) for the daily log-return series of IYG in each donor.  As argued in \citet{hansen2005forecast}, a GARCH(1,1) is rarely dominated by more heavily-parameterized GARCH specifications.  It thus provides a defensible choice when motivation or time for choosing another model is lacking.
-    \item \textbf{Covariate Choice}
-    \item \textbf{Donor pool construction}
-    \item \textbf{Choice of estimator for volatility}
+    \item \textbf{Covariate Choice} We choose covariates that could plausibly satisfy the model assumptions spelled out earlier, that is, risk-related and macroeconomic covariates that could plausibly be weighted and summed in a shock distribution.  We choose the log-return Crude Oil (CL.F), the VIX (VIX) and the log-return of the VIX, the log-returns of the 3-month, 5-year, 10-year, and 30-year US Treasuries, as well as the spread between AAA and BAA corporate debt, widely considered a proxy for lending risk, and finally, the log-return in the trading volume of the ETF IYG itself.
+    \item \textbf{Donor pool construction}Synthetic Control, an a tool of causal inference, often goes about weighting control units by identifying a natural set of donors such as the untreated units within a set of subnational units like US states \citep{abadie2010synthetic} or Spanish provinces \citep{abadie2003economic}.  While such an endeavor is not necessarily preclude considered judgments (should Canadian provinces be used as donors for a treated US state?), as a tool of small-n prediction, distanced-based weighting faces a decidedly more difficult task in constructing a donor pool.  For our purposes, we choose the three US presidential elections prior to the 2016 election as well as the Brexit vote held in the UK in May 2016.  Note that the constituent companies in the IYG, all of which had operations in London, were greatly exposed to the UK's decision to remain or exit the EU.  We exclude the midterm races in the US, which generate far lower voter turnout and feature no national race.  
+    \item \textbf{Choice of estimator for volatility}We 
 \end{enumerate}
 
 \begin{figure}[h!]
@@ -616,26 +616,6 @@ My show the applicability of Synthetic Volatility Forecasting using an real data
   \end{center}
 \end{figure}
 We shall discuss \ref{fig:SVF_2016} soon. \\
-
-It has been noted that GARCH effects are more attenuated in aggregated returns \citep{zivot2009practical}, which suggests against using the S\&P 500 or similar indices as an example.
-
-\begin{figure}[h!]
-\begin{center}
-  \includegraphics[scale=.38]{R_package_development/SynthVolForecast/R/real_data_output_plots/savetime_SatSep3004:51:14PM2023_IYG_6B=F-CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2016-06-23-2012-11-06-2008-11-04-2004-11-02.png}
-  \caption{The volatility induced by the 2016 US election results without using Brexit as a donor.}
-  \label{fig:SVF_2016}
-  \end{center}
-\end{figure}
-
-\begin{figure}[h!]
-\begin{center}
-  \includegraphics[scale=.38]{R_package_development/SynthVolForecast/R/real_data_output_plots/savetime_SatSep3004:49:28PM2023_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2012-11-06-2008-11-04-2004-11-02.png}
-  \caption{The volatility induced by the 2016 US election results without using Brexit as a donor.}
-  \label{fig:SVF_2016}
-  \end{center}
-\end{figure}
-
-
 
 We also introduce simulation parameters that can be varied but are not random effects
 
