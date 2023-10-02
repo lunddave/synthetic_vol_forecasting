@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.5.30)  1 OCT 2023 16:52
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.5.30)  1 OCT 2023 17:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1032,11 +1032,6 @@ e 621.
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 627--628
-
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 641--641
 []|$\OML/cmm/m/it/10.95 A[]$ \OT1/cmr/m/n/10.95 in-de-pen-dent $\OMS/cmsy/m/n/1
 0.95 8\OML/cmm/m/it/10.95 i$\OT1/cmr/m/n/10.95 ,
@@ -1057,9 +1052,6 @@ Overfull \hbox (35.54613pt too wide) in paragraph at lines 634--645
 [][] 
  []
 
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
 [14] [15 <./R_package_development/SynthVolForecast/R/real_data_output_plots/sav
 etime_SunOct0103:29:11PM2023_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-
 2016-06-23-2012-11-06-2008-11-04-2004-11-02.png (PNG copy)>]
@@ -1069,18 +1061,23 @@ Package natbib Warning: There were undefined citations.
 
 [16
 
-] (./synthVolForecast.aux)
+] (./synthVolForecast.aux
+
+Package natbib Warning: Citation(s) may have changed.
+(natbib)                Rerun to get citations correct.
+
+)
 Package rerunfilecheck Info: File `synthVolForecast.out' has not changed.
 (rerunfilecheck)             Checksum: 4C2EFC6A56A33DE0F6DC1A8D38137B64;5410.
  ) 
 Here is how much of TeX's memory you used:
- 25356 strings out of 478287
- 465911 string characters out of 5849289
+ 25360 strings out of 478287
+ 466012 string characters out of 5849289
  757929 words of memory out of 5000000
- 42991 multiletter control sequences out of 15000+600000
+ 42994 multiletter control sequences out of 15000+600000
  486614 words of font info for 90 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,17n,80p,2303b,465s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 84i,17n,80p,2312b,465s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texli
 ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dis
@@ -1103,10 +1100,10 @@ cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbol
 s/msbm10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0600.pfb></usr/s
 hare/texmf/fonts/type1/public/cm-super/sfrm0800.pfb></usr/share/texmf/fonts/typ
 e1/public/cm-super/sfrm1095.pfb>
-Output written on synthVolForecast.pdf (16 pages, 585988 bytes).
+Output written on synthVolForecast.pdf (16 pages, 586492 bytes).
 PDF statistics:
- 448 PDF objects out of 1000 (max. 8388607)
- 377 compressed objects within 4 object streams
- 108 named destinations out of 1000 (max. 500000)
+ 451 PDF objects out of 1000 (max. 8388607)
+ 380 compressed objects within 4 object streams
+ 109 named destinations out of 1000 (max. 500000)
  228 words of extra memory for PDF output out of 10000 (max. 10000000)
 
