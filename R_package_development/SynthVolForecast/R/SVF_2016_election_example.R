@@ -41,7 +41,6 @@ source('/home/david/Desktop/synthetic_vol_forecasting/R_package_development/Synt
 
   volume_covariates <- c()
 
-
   FRED_covariates <- c('AAA', 'BAA')
   # FRED_covariates <- c()
 

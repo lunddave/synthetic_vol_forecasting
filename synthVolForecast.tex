@@ -403,7 +403,7 @@ Recall models $\mc{M}_1$ and $\mc{M}_2$:
 \mc{M}_2 \colon \begin{array}{l}
    \sigma^{2}_{i,t} = \omega_{i} + \omega^{*}_i D^{vol}_{i,t} + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \text{ }\\[.2cm]
    a_{i,t} = \sigma_{i,t}(\epsilon_{i,t}(1-D^{level}_{i,t}) + \epsilon^{*}_{i}D^{level}_{i,t})\\[.2cm]
-   \omega_i^{*} = \mu_{\omega^{*}}+\delta'\mbf{x}_{i, T_i^*+1}+ \t{\varepsilon}_{i},
+   \omega_i^{*} = \mu_{\omega^{*}}+\delta'\mbf{x}_{i, T_i^*}+ \t{\varepsilon}_{i},
 \end{array}
 \end{align*}
 
@@ -513,7 +513,7 @@ for $i = 1, \ldots, n+1$. We also consider a model where the shock effects are l
 \mc{M}_2 \colon \begin{array}{l}
    \sigma^{2}_{i,t} = \omega_{i} + \omega^{*}_i D_{i,t}  + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \text{ }\\[.2cm]
    a_{i,t} = \sigma_{i,t}(\epsilon_{i,t}(1-D^{level}_{i,t}) + \epsilon^{*}_{i}D^{level}_{i,t})\\[.2cm]
-   \omega_i^{*} = \mu_{\omega^{*}}+\delta'\mbf{x}_{i, T_i^*+1}+ \t{\varepsilon}_{i},
+   \omega_i^{*} = \mu_{\omega^{*}}+\delta'\mbf{x}_{i, T_i^*}+ \t{\varepsilon}_{i},
 \end{array}\label{model2}
 \end{align}
 
@@ -612,8 +612,8 @@ We show the applicability of Synthetic Volatility Forecasting using an real data
 \begin{enumerate}
     \item \textbf{Model choice} We assume a GARCH(1,1) for the daily log-return series of IYG in each donor.  As argued in \citet{hansen2005forecast}, a GARCH(1,1) is rarely dominated by more heavily-parameterized GARCH specifications.  It thus provides a defensible choice when motivation or time for choosing another model is lacking.  For the time series under study and the donor series alike, we fit a GARCH(1,1) on almost four years of market data prior to the shock.
     \item \textbf{Covariate Choice} We choose covariates that could plausibly satisfy the model assumptions spelled out earlier, that is, risk-related and macroeconomic covariates that could plausibly be weighted and summed in a shock distribution.  We choose the log-return Crude Oil (CL.F), the VIX (VIX) and the log-return of the VIX, the log-returns of the 3-month, 5-year, 10-year, and 30-year US Treasuries, as well as the spread between AAA and BAA corporate debt, widely considered a proxy for lending risk, and finally, the log-return in the trading volume of the ETF IYG itself.
-    \item \textbf{Donor pool construction}Synthetic Control, an a tool of causal inference, often goes about weighting control units by identifying a natural set of donors such as the untreated units within a set of subnational units like US states \citep{abadie2010synthetic} or Spanish provinces \citep{abadie2003economic}.  While such an endeavor is not necessarily preclude considered judgments (should Canadian provinces be used as donors for a treated US state?), as a tool of small-n prediction, distanced-based weighting faces a decidedly more difficult task in constructing a donor pool.  For our purposes, we choose the three US presidential elections prior to the 2016 election as well as the Brexit vote held in the UK in May 2016.  Note that the constituent companies in the IYG, all of which had operations in London, were greatly exposed to the UK's decision to remain or exit the EU.  We exclude the midterm races in the US, which generate far lower voter turnout and feature no national race.  
-    \item \textbf{Choice of estimator for volatility}We use the sum of squared 5-minute log-returns of IYG on November 9th, 2016, otherwise known as the Realized Volatility estimator of volatility, as our proxy.  We exclude the first five minutes of the trading day, resulting in 79 sums generated between 9:35am and 4pm.
+    \item \textbf{Donor pool construction} Synthetic Control, an a tool of causal inference, often goes about weighting control units by identifying a natural set of donors such as the untreated units within a set of subnational units like US states \citep{abadie2010synthetic} or Spanish provinces \citep{abadie2003economic}.  While such an endeavor is not necessarily preclude considered judgments (should Canadian provinces be used as donors for a treated US state?), as a tool of small-n prediction, distanced-based weighting faces a decidedly more difficult task in constructing a donor pool.  For our purposes, we choose the three US presidential elections prior to the 2016 election as well as the Brexit vote held in the UK in May 2016.  Note that the constituent companies in the IYG, all of which had operations in London, were greatly exposed to the UK's decision to remain or exit the EU.  We exclude the midterm races in the US, which generate far lower voter turnout and feature no national race.  
+    \item \textbf{Choice of estimator for volatility} We use the sum of squared 5-minute log-returns of IYG on November 9th, 2016, otherwise known as the Realized Volatility estimator of volatility, as our proxy.  We exclude the first five minutes of the trading day, resulting in 79 sums generated between 9:35am and 4pm.
 \end{enumerate} 
 
 \begin{figure}[h!]
