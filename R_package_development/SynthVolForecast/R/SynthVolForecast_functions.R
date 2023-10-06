@@ -200,7 +200,7 @@ plot_maker_garch <- function(fitted_vol
 
   #Plot FE estimates
     barplot(omega_star_hat_vec
-          , main = 'Donor-Pool-Supplied FE Estimates'
+          , main = 'Donor-Pool-Supplied \n FE Estimates'
           , names.arg = shock_times_for_barplot[-1]
           , cex.names=.95
           , las=2
@@ -343,12 +343,16 @@ plot_maker_synthprediction <- function(Y
   #Now print time series under study
   par(mfrow = c(1,2))
 
+  barplot_colors <- brewer.pal(length(w_hat) - 1 ,'Set3')
+
   #PLOT ON THE LEFT:
   #Plot donor weights
   barplot(w_hat
-          ,  main = 'Donor Pool Weights'
+          , main = 'Donor Pool Weights'
           , names.arg = shock_times_for_barplot[-1]
-          , cex.names=.8)
+          , cex.names=.95
+          , las=2
+          , col = barplot_colors)
 
   #Plot target series and prediction
 
@@ -707,6 +711,7 @@ SynthPrediction <- function(Y_series_list
   ## END Check that inputs are all comformable/acceptable
 
   integer_shock_time_vec <- c() #mk
+  integer_shock_time_vec_for_convex_hull_based_optimization <- c() #mk
 
   ## BEGIN Check whether shock_time_vec is int/date
 
@@ -714,8 +719,12 @@ SynthPrediction <- function(Y_series_list
 
     if (is.character(shock_time_vec[i]) == TRUE){
       integer_shock_time_vec[i] <- which(index(Y[[i]]) == shock_time_vec[i]) #mk
+      integer_shock_time_vec_for_convex_hull_based_optimization[i] <- which(index(X[[i]]) == shock_time_vec[i]) #mk
     }
-    else{integer_shock_time_vec[i] <- shock_time_vec[i]}
+    else{
+      integer_shock_time_vec[i] <- shock_time_vec[i]
+      integer_shock_time_vec_for_convex_hull_based_optimization <- shock_time_vec[i]
+    }
 
   }
 
@@ -841,7 +850,7 @@ SynthPrediction <- function(Y_series_list
   adjusted_pred <- unadjusted_pred$pred + omega_star_hat
 
   list_of_linear_combinations <- list(w_hat)
-  list_of_forcasts <- list(unadjusted_pred, adjusted_pred)
+  list_of_forecasts <- list(unadjusted_pred, adjusted_pred)
   names(list_of_forecasts) <- c('unadjusted_pred', 'adjusted_pred')
 
   output_list <- list(list_of_linear_combinations
@@ -857,19 +866,21 @@ SynthPrediction <- function(Y_series_list
       'Lengths of shock times:', shock_length_vec, '\n',
       'Optimization Success:', dbw_output[[2]], '\n', '\n',
       'Convex combination',w_hat,'\n',
-      'Shock estimates provided by donors:', omega_star_hat_vec, '\n',
-      'Aggregate estimated shock effect:', omega_star_hat, '\n',
-      'Actual change in stock price at T* + 1:', Y_series_list[[1]][integer_shock_time_vec[1]+1],'\n',
-      'Adjusted forecasted change in stock price at T* + 1:', unadjusted_pred$pred,'\n',
-      'MSE unadjusted:', (Y_series_list[[1]][integer_shock_time_vec[1]+1]-unadjusted_pred$pred)**2,'\n',
-      'Adjusted forecasted change in stock price at T* + 1:', adjusted_pred,'\n',
-      'MSE adjusted:', (Y_series_list[[1]][integer_shock_time_vec[1]+1]-adjusted_pred)**2,'\n'
+      'Shock estimates provided by donors:', omega_star_hat_vec, '\n'
+      # 'Aggregate estimated shock effect:', omega_star_hat, '\n',
+      # 'Actual change in stock price at T* + 1:', Y_series_list[[1]][integer_shock_time_vec[1]+1],'\n',
+      # 'Adjusted forecasted change in stock price at T* + 1:', unadjusted_pred$pred,'\n',
+      # 'MSE unadjusted:', (Y_series_list[[1]][integer_shock_time_vec[1]+1]-unadjusted_pred$pred)**2,'\n',
+      # 'Adjusted forecasted change in stock price at T* + 1:', adjusted_pred,'\n',
+      # 'MSE adjusted:', (Y_series_list[[1]][integer_shock_time_vec[1]+1]-adjusted_pred)**2,'\n'
   )
 
   ## PLOTS
 
   if (plots == TRUE){
+
     cat('User has opted to produce plots.','\n')
+
     plot_maker_synthprediction(Y_series_list
                ,shock_time_vec
                ,integer_shock_time_vec
@@ -878,7 +889,9 @@ SynthPrediction <- function(Y_series_list
                ,w_hat
                ,omega_star_hat
                ,adjusted_pred
-               ,display_ground_truth = display_ground_truth_choice)
+               ,display_ground_truth = display_ground_truth_choice
+
+               )
   }
 
   return(output_list)

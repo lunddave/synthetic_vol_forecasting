@@ -31,7 +31,7 @@ system.time(
                             ,X
                             ,shock_time_vec = shock_time_vec
                             ,rep(k, n+1)
-                            ,dwb_indices = NULL
+                            ,dbw_indices = NULL
                             ,covariate_indices = NULL
                             ,plots = TRUE
                             ,display_ground_truth_choice = TRUE
@@ -142,9 +142,7 @@ temp <- SynthPrediction(Y
                          ,X
                          ,shock_time_vec = shock_dates
                          ,rep(k, n+1)
-                         ,dwb_indices = NULL
+                         ,dbw_indices = NULL
                          ,covariate_indices = 1:length(market_data_list)
                          ,plots = TRUE
                          ,display_ground_truth_choice = TRUE)
-
-
