@@ -180,7 +180,7 @@ plot_maker_garch <- function(fitted_vol
 
   par(mfrow = c(1,3))
 
-  barplot_colors <- brewer.pal(length(w_hat) - 1 ,'Set3')
+  barplot_colors <- brewer.pal(length(w_hat),'Set3')
 
   print('Barplot colors no problem.')
 
@@ -340,7 +340,7 @@ plot_maker_synthprediction <- function(Y
   #Now print time series under study
   par(mfrow = c(1,3))
 
-  barplot_colors <- brewer.pal(length(w_hat) - 1 ,'Set3')
+  barplot_colors <- brewer.pal(length(w_hat),'Set3')
 
   #PLOT ON THE LEFT:
   #Plot donor weights
@@ -865,7 +865,7 @@ SynthPrediction <- function(Y_series_list
   names(output_list) <- c('linear_combinations', 'predictions')
 
   ## tk OUTPUT
-  cat('SynthVolForecast Details','\n',
+  cat('SynthPrediction Details','\n',
       '-------------------------------------------------------------\n',
       'Donors:', n, '\n',
       'Shock times:', shock_time_vec, '\n',
@@ -875,10 +875,11 @@ SynthPrediction <- function(Y_series_list
       'Shock estimates provided by donors:', omega_star_hat_vec, '\n',
       'Aggregate estimated shock effect:', omega_star_hat, '\n',
       'Actual change in stock price at T* + 1:', Y_series_list[[1]][integer_shock_time_vec[1]+1],'\n',
-      'Adjusted forecasted change in stock price at T* + 1:', unadjusted_pred$pred,'\n',
-      'MSE unadjusted:', (Y_series_list[[1]][integer_shock_time_vec[1]+1]-unadjusted_pred$pred)**2,'\n',
-      'Adjusted forecasted change in stock price at T* + 1:', adjusted_pred,'\n',
-      'MSE adjusted:', (Y_series_list[[1]][integer_shock_time_vec[1]+1]-adjusted_pred)**2,'\n'
+      'Unadjusted forecasted change in stock price at T*+1:', unadjusted_pred$pred,'\n',
+      'MSE unadjusted:', (as.numeric(Y_series_list[[1]][integer_shock_time_vec[1]+1])-unadjusted_pred$pred)**2,'\n',
+      'Adjusted forecasted change in stock price at T*+1:', adjusted_pred,'\n',
+      'MSE adjusted:', (as.numeric(Y_series_list[[1]][integer_shock_time_vec[1]+1])-adjusted_pred)**2,'\n'
+
   )
 
   ## PLOTS
@@ -894,6 +895,7 @@ SynthPrediction <- function(Y_series_list
                ,unadjusted_pred$pred
                ,w_hat
                ,omega_star_hat
+               ,omega_star_hat_vec
                ,adjusted_pred
                ,display_ground_truth = display_ground_truth_choice
 

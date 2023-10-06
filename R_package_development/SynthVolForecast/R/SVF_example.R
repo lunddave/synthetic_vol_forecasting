@@ -171,7 +171,7 @@ temp <- SynthVolForecast(Y
                          ,X
                          ,shock_time_vec = shock_dates
                          ,rep(k, n+1)
-                         ,dwb_indices = NULL
+                         ,dbw_indices = NULL
                          ,covariate_indices = length(X)
                          ,garch_order = c(1,0,1)
                          ,plots = TRUE)
