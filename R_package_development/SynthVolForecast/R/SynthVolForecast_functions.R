@@ -204,6 +204,8 @@ plot_maker_garch <- function(fitted_vol
           , las=2
           , col = barplot_colors)
 
+  title(ylab = expression(sigma^2), line = 2.05, cex.lab = 1.99) # Add y-axis text
+
   #Plot target series and prediction
 
   thing_to_get_max_of <- c(as.numeric(fitted_vol)
