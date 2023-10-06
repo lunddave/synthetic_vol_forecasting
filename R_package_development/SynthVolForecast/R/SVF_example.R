@@ -184,7 +184,7 @@ temp <- SynthPrediction(Y
                          ,X
                          ,shock_time_vec = shock_dates
                          ,rep(k, n+1)
-                         ,dwb_indices = NULL
+                         ,dbw_indices = NULL
                          ,covariate_indices = length(X)
                          ,plots = TRUE
                          ,display_ground_truth_choice = TRUE)

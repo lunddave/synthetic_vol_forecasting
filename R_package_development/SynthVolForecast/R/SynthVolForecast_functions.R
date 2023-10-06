@@ -194,8 +194,6 @@ plot_maker_garch <- function(fitted_vol
           , las=2
           , col = barplot_colors)
 
-  print('Barplot no problem.')
-
   #PLOT IN THE MIDDLE
 
   #Plot FE estimates
@@ -205,9 +203,6 @@ plot_maker_garch <- function(fitted_vol
           , cex.names=.95
           , las=2
           , col = barplot_colors)
-
-    print('Omega Hat no problem.')
-
 
   #Plot target series and prediction
 
@@ -304,8 +299,10 @@ plot_maker_synthprediction <- function(Y
                                      ,unadjusted_pred
                                      ,w_hat
                                      ,omega_star_hat
+                                     ,omega_star_hat_vec
                                      ,adjusted_pred
                                      ,display_ground_truth = FALSE){
+
 
   if (is.character(shock_times_for_barplot) == FALSE){
     shock_times_for_barplot <- 1:length(shock_times_for_barplot)
@@ -341,7 +338,7 @@ plot_maker_synthprediction <- function(Y
   }
 
   #Now print time series under study
-  par(mfrow = c(1,2))
+  par(mfrow = c(1,3))
 
   barplot_colors <- brewer.pal(length(w_hat) - 1 ,'Set3')
 
@@ -349,6 +346,16 @@ plot_maker_synthprediction <- function(Y
   #Plot donor weights
   barplot(w_hat
           , main = 'Donor Pool Weights'
+          , names.arg = shock_times_for_barplot[-1]
+          , cex.names=.95
+          , las=2
+          , col = barplot_colors)
+
+  #PLOT IN THE MIDDLE
+
+  #Plot FE estimates
+  barplot(omega_star_hat_vec
+          , main = 'Donor-Pool-Supplied \n FE Estimates'
           , names.arg = shock_times_for_barplot[-1]
           , cex.names=.95
           , las=2
@@ -830,7 +837,6 @@ SynthPrediction <- function(Y_series_list
                                , newxreg = mat_X_for_forecast[,-1])
   }
 
-
   ##We take care of housekeeping
   #tk
   order_of_arima[[1]] <- arima$arma
@@ -866,13 +872,13 @@ SynthPrediction <- function(Y_series_list
       'Lengths of shock times:', shock_length_vec, '\n',
       'Optimization Success:', dbw_output[[2]], '\n', '\n',
       'Convex combination',w_hat,'\n',
-      'Shock estimates provided by donors:', omega_star_hat_vec, '\n'
-      # 'Aggregate estimated shock effect:', omega_star_hat, '\n',
-      # 'Actual change in stock price at T* + 1:', Y_series_list[[1]][integer_shock_time_vec[1]+1],'\n',
-      # 'Adjusted forecasted change in stock price at T* + 1:', unadjusted_pred$pred,'\n',
-      # 'MSE unadjusted:', (Y_series_list[[1]][integer_shock_time_vec[1]+1]-unadjusted_pred$pred)**2,'\n',
-      # 'Adjusted forecasted change in stock price at T* + 1:', adjusted_pred,'\n',
-      # 'MSE adjusted:', (Y_series_list[[1]][integer_shock_time_vec[1]+1]-adjusted_pred)**2,'\n'
+      'Shock estimates provided by donors:', omega_star_hat_vec, '\n',
+      'Aggregate estimated shock effect:', omega_star_hat, '\n',
+      'Actual change in stock price at T* + 1:', Y_series_list[[1]][integer_shock_time_vec[1]+1],'\n',
+      'Adjusted forecasted change in stock price at T* + 1:', unadjusted_pred$pred,'\n',
+      'MSE unadjusted:', (Y_series_list[[1]][integer_shock_time_vec[1]+1]-unadjusted_pred$pred)**2,'\n',
+      'Adjusted forecasted change in stock price at T* + 1:', adjusted_pred,'\n',
+      'MSE adjusted:', (Y_series_list[[1]][integer_shock_time_vec[1]+1]-adjusted_pred)**2,'\n'
   )
 
   ## PLOTS
