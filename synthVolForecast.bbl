@@ -1,4 +1,4 @@
-\begin{thebibliography}{17}
+\begin{thebibliography}{19}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -69,6 +69,13 @@ Robert~F Engle.
 \newblock \emph{Econometrica: Journal of the econometric society}, pages
   987--1007, 1982.
 
+\bibitem[Goodell and V{\"a}h{\"a}maa(2013)]{goodell2013us}
+John~W Goodell and Sami V{\"a}h{\"a}maa.
+\newblock Us presidential elections and implied volatility: The role of
+  political uncertainty.
+\newblock \emph{Journal of Banking \& Finance}, 37\penalty0 (3):\penalty0
+  1108--1117, 2013.
+
 \bibitem[Hansen and Lunde(2005)]{hansen2005forecast}
 Peter~R Hansen and Asger Lunde.
 \newblock A forecast comparison of volatility models: does anything beat a
@@ -82,6 +89,12 @@ Peter~Reinhard Hansen, Zhuo Huang, and Howard~Howan Shek.
   volatility.
 \newblock \emph{Journal of Applied Econometrics}, 27\penalty0 (6):\penalty0
   877--906, 2012.
+
+\bibitem[Kane et~al.(1996)Kane, Marcus, and Noh]{kane1996p}
+Alex Kane, Alan~J Marcus, and Jaesun Noh.
+\newblock The p/e multiple and market volatility.
+\newblock \emph{Financial Analysts Journal}, 52\penalty0 (4):\penalty0 16--24,
+  1996.
 
 \bibitem[Kilian and L{\"u}tkepohl(2017)]{kilian2017structural}
 Lutz Kilian and Helmut L{\"u}tkepohl.
