@@ -1,4 +1,4 @@
-\begin{thebibliography}{19}
+\begin{thebibliography}{20}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -106,6 +106,12 @@ Jilei Lin and Daniel~J Eck.
 \newblock Minimizing post-shock forecasting error through aggregation of
   outside information.
 \newblock \emph{International Journal of Forecasting}, 2021.
+
+\bibitem[Silver(2016)]{Silver_2016}
+Nate Silver.
+\newblock 2016 election forecast, Nov 2016.
+\newblock URL
+  \url{https://projects.fivethirtyeight.com/2016-election-forecast/}.
 
 \bibitem[Sucarrat(2020)]{RePEc:pra:mprapa:100301}
 Genaro Sucarrat.

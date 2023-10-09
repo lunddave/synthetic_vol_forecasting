@@ -3,44 +3,44 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: synthVolForecast.aux
 The style file: plainnat.bst
 Database file #1: synthVolForecast.bib
-You've used 19 entries,
+You've used 20 entries,
             2773 wiz_defined-function locations,
-            720 strings with 7936 characters,
-and the built_in function-call counts, 8438 in all, are:
-= -- 804
-> -- 347
-< -- 20
-+ -- 121
-- -- 102
-* -- 621
-:= -- 1261
-add.period$ -- 61
-call.type$ -- 19
-change.case$ -- 90
-chr.to.int$ -- 19
-cite$ -- 38
-duplicate$ -- 426
-empty$ -- 760
-format.name$ -- 135
-if$ -- 1807
+            728 strings with 8074 characters,
+and the built_in function-call counts, 8737 in all, are:
+= -- 830
+> -- 357
+< -- 21
++ -- 125
+- -- 105
+* -- 638
+:= -- 1306
+add.period$ -- 64
+call.type$ -- 20
+change.case$ -- 94
+chr.to.int$ -- 20
+cite$ -- 40
+duplicate$ -- 441
+empty$ -- 792
+format.name$ -- 139
+if$ -- 1871
 int.to.chr$ -- 1
 int.to.str$ -- 1
 missing$ -- 19
-newline$ -- 104
-num.names$ -- 76
-pop$ -- 176
+newline$ -- 109
+num.names$ -- 80
+pop$ -- 188
 preamble$ -- 1
-purify$ -- 72
+purify$ -- 75
 quote$ -- 0
-skip$ -- 318
+skip$ -- 331
 stack$ -- 0
-substring$ -- 428
-swap$ -- 56
+substring$ -- 430
+swap$ -- 58
 text.length$ -- 5
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 204
+type$ -- 215
 warning$ -- 0
-while$ -- 90
+while$ -- 93
 width$ -- 0
-write$ -- 256
+write$ -- 268
