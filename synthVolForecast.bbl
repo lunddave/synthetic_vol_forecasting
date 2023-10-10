@@ -1,4 +1,4 @@
-\begin{thebibliography}{20}
+\begin{thebibliography}{21}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -112,6 +112,13 @@ Nate Silver.
 \newblock 2016 election forecast, Nov 2016.
 \newblock URL
   \url{https://projects.fivethirtyeight.com/2016-election-forecast/}.
+
+\bibitem[Steegen et~al.(2016)Steegen, Tuerlinckx, Gelman, and
+  Vanpaemel]{steegen2016increasing}
+Sara Steegen, Francis Tuerlinckx, Andrew Gelman, and Wolf Vanpaemel.
+\newblock Increasing transparency through a multiverse analysis.
+\newblock \emph{Perspectives on Psychological Science}, 11\penalty0
+  (5):\penalty0 702--712, 2016.
 
 \bibitem[Sucarrat(2020)]{RePEc:pra:mprapa:100301}
 Genaro Sucarrat.
