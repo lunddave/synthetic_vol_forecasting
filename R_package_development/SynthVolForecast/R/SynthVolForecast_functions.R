@@ -65,6 +65,12 @@ dbw <- function(X
     print('Post-scaling')
     print(dat)
 
+    ### We output details of SVD of matrix X1
+    dat.svd <- svd(dat)
+    sing_vals <- dat.svd$d / sum(dat.svd$d)
+    print('These are the singular value percentages for the donor pool X data:')
+    print(paste(100 * sing_vals, "%", sep = ""))
+
     X1 <- dat[1, dbw_indices
               , drop = FALSE]
     X0 <- c()
@@ -73,6 +79,7 @@ dbw <- function(X
     } #end loop
   } #end if statement
   #################################
+
 
   # objective function
   weightedX0 <- function(W) {

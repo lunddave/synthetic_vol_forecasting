@@ -40,7 +40,6 @@ level_covariates <- c('^VIX'
 volume_covariates <- c('IYG')
 
 FRED_covariates <- c('AAA', 'BAA')
-FRED_covariates <- c()
 
 shock_dates <- c("2016-11-08"
                  ,"2016-06-23"
@@ -61,7 +60,7 @@ create.calendar(name='NYSE', holidays=nyse, weekdays=c('saturday', 'sunday'))
 
 shock_dates_as_dates <- as.Date(shock_dates)
 
-start_dates <- offset(shock_dates_as_dates, round(-3.8*252), "NYSE")
+start_dates <- offset(shock_dates_as_dates, round(-3.5*252), "NYSE")
 
 k_periods_after_shock <- offset(shock_dates_as_dates, k, "NYSE")
 
