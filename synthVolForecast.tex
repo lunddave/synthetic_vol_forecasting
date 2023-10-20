@@ -115,7 +115,7 @@
 \title{Post-shock Volatility Forecasting Using Aggregated Shock Information}
 \author{David Lundquist\thanks{davidl11@ilinois.edu}, Daniel Eck\thanks{dje13@illinois.edu} }
 \affil{Department of Statistics, University of Illinois at Urbana-Champaign}
-\date{June 5th, 2023}
+\date{October 20th, 2023}
 
 \begin{document}
 
@@ -149,13 +149,33 @@ The approach herein can be viewed as an attempt to sidestep the functional compl
 
 As we see in \ref{fig:arith_mean}, the arithmetic mean of estimated shock effects provides perhaps the most straightforward and intuitive way of aggregating information from similar events. Aggregating forecasts using the arithmetic mean is more than merely intuitive; it possesses an empirical pedigree and is known to be optimal under rather restrictive conditions \citep{timmermann2006forecast}.  Synthetic volatility forecasting lacks these restrictions and instead assumes a credible, parsimonious parameterization in which the shock is an affine transformation of several key covariates. \\
 
-\textbf{(1) Connection of all of this to forecast combination: what we're combining, if anything, is subcomponents of forecasts, not forecasts themselves.  However, from a broader perspective, forecast combination is an inapt term for what is being proposed here.  First, the donors are not forecasts. (2) Why is the proposal here unlike KNN regression?  In KNN regression, the hyperparameter K must be learned.  In Synthetic Volatility Forecasting, the number of donors is not learned.  A donor pool is curated, and then careful rules of thumb can be applied to determine whether a given donor should be included or excluded. (3) Additionally, it would be counter to the method proposed herein to assemble a vast number of donors, lacking careful scrutiny of the qualitative fit, and let the optimization simply pick the donors, via weighting.  What makes a donor good is not merely it's quantitative fit but it's qualitative fit as well.}
+\subsection{Connection to forecast combination methods}
+What we're combining, if anything, is subcomponents of forecasts, not forecasts themselves.  However, from a broader perspective, forecast combination is an inapt term for what is being proposed here.  First, the donors are not forecasts. 
+
+\subsection{Why is the proposal here unlike KNN regression?}
+In KNN regression, the hyperparameter K must be learned.  In Synthetic Volatility Forecasting, the number of donors is not learned.  A donor pool is curated, and then careful rules of thumb can be applied to determine whether a given donor should be included or excluded. 
+
+\subsection{Should we gather as many donors as possible and pick them quantitatively?}
+It would be counter to the method proposed herein to assemble a vast number of donors, lacking careful scrutiny of the qualitative fit, and let the optimization simply pick the donors, via weighting.  What makes a donor good is not merely it's quantitative fit but it's qualitative fit as well.
+
+\subsection{News shock literature review}
 
 We adapt the news shock framework of \citet{kilian2017structural}: \\
 
 $z_{T^{*}+1}^{\text{irregular news shock}} \coloneqq z_{T^{*}+1}^{\text{irregular news}} - \E_{T^{*}}[z_{T^{*}+1}^{\text{irregular news}}]$ \\
 
 In our adapted schema, irregular news shocks are $\mathcal{F}_{T^{*}}$-zero-expectation events governed by a GARCH-X process.  As such, $z_{T^{*}+1}^{\text{irregular news shock}}$ admits of the decomposition $z_{T^{*}+1} = \sigma_{T^{*}+1}\epsilon_{T^{*}+1}$
+
+\subsection{Improvements of this current work over its predecessor}
+\begin{enumerate}
+\item $y_{i,t}$ have shocks in both volatility and level.
+\item The shocks can have length greater than 1.
+\item The method under development does not strictly require knowledge of the length of the shocks in the donor pool, but correctly sizing up those shock lengths is helpful to proper estimation of the shocks.  However, an important question remains: even if the donor pool shock lengths are assumed to be known, how do we advise the operator to forecast the time series under study?  For how long is the forecast reliable?  Should we take a convex combination of the donor pool shock lengths?  Or mean? Or minimum of the donor pool shock lengths?
+\item Lin+Eck 2021 requires exogenous information to arrive strictly between $T^{*}$ and $T^{*}+1$.  However, we may want to relax this requirement so as to permit the exogenous information to be concurrent with the trading session or end of session on $T^{*}+1$.
+\item By offering more linear combination methods for the donor pool shocks (e.g. unit ball, affine hull, convex cone), we give the operator the ability to use donors such that the donor outcome series is negatively correlated with the time series under study.
+\item See Tsay p. 133: if $t$ is the last index that has been observed, then our two-step-ahead forecast is made easier by rewriting the volatility equation as $\sigma^{2}_{i,t+1} = w_{i} + (\alpha_{i} + \beta_{i})\sigma^{2}_{i,t} + \alpha_{1}\sigma^{2}_{i,t}[\epsilon^{2}_{i,t} - 1]= w_{i} + (\alpha_{i} + \beta_{i})\sigma^{2}_{i,t} + \alpha_{1}\sigma^{2}_{i,t}[\epsilon^{2}_{i,t} - 1] $.  Usually, we assume unit variance (though not necessarily a N(0,1)).  However, what is the variance is smaller than 1?  Then in conditional expectation, the term $\alpha_{1}\sigma^{2}_{i,t}[\epsilon^{2}_{i,t} - 1]$ will be negative.  So it seems that for level shock, we want the signal to noise ratio to be large because the mean is high, not because the variance is low.
+\end{enumerate}
+
 
 \section{Setting}
 \label{section2}
@@ -317,6 +337,8 @@ $\mbf{x}_{i,t}$ are fixed.\footnote{Need to determine what difference it makes t
 
 % \textbf{WHAT FOLLOWS IS (a) defense of the modeling choices, (b) remarks on the models' implications and subtleties}\\
 
+\subsection{Properties of Volatility Shock and Shock Estimators}
+
 The model $\mc{M}_1$ is defined by a volatility equation and mean equation, as is any GARCH model.  The choice to model the volatility shock $\omega^{*}_{i}$ as an additive random effect is straightforward.  However, the choice to model the level effect $\epsilon^{*}_{i,t}$ as a temporary rupture in the otherwise i.i.d. sequence of innovations $\epsilon_{i,t}$ stands in need of deeper justification.  One way of arguing for this choice is that, in a discrete time series model, if we assume the arrival of news in the time between $T^{*}$ and $T^{*}+1$, we do not have an easy way to express a conditional distribution of the innovation $\epsilon_{T^{*}+1}$ given the overnight arrival of information.  Using $\epsilon^{*}_{i,t}$ thus breaks this impasse.  This defense also explains why we do not parameterize the level shock at $T^{*}+1$ as a sum of two shocks, $\epsilon_{i,T^{*}+1}$ and $\epsilon^{*}_{i,T^{*}+1}$, which would represent the level shock as generated by two independent sources of stochasticity.  To do so would inelegant and would also lack motivation as a practical level.  While we want to model the shock at $T^{*}+1$ as large in absolute value, we also want to retain the property of a unitary source of noise.
 
 Note that under the popular GARCH(1,1), a dual level-volatility shock has an marginal effect on the conditional variance $\sigma^{2}_{i,t}$ that should be familiar to scholars of GARCH models.  As usual, assume $\alpha+\beta < 1$.  Furthermore, assume that both the volatility shock $\omega^{*}_{i}$ and the level shock $\epsilon^{*}_{i,t}$ are of length one only, and consider a circumstance with no exogenous regressor $\x_{i,t}$. Consider also the case where $r\geq 2$, which is necessary in order to isolate the effects of the level shock $\epsilon^{*}_{i,t}$.  Then
@@ -384,7 +406,7 @@ Moreover, after both shocks have been exhausted, their influence disappears quic
 
 
 
-In many settings, it is reasonable to model a volatility shock as occuring without a rupture in the mean-zero, i.i.d. sequence $\epsilon_{i,t}$.  In cases like this, outsize movement in the observable random variable $a_{i,t}$ is due solely to the shock $\omega_{i}^{*}$.  Using the ARMA representation of a GARCH(m,s) model, we can see clearly how the random effect $\omega_{i}^{*}$ increases the expectation of the nonnegative random variable $a_{i,t}^{2}$.  The unconditional mean of an ARMA model tells that the random effects simply contribute to the intercept term:
+In many settings, it is reasonable to model a volatility shock as occuring without a rupture in the mean-zero, i.i.d. sequence $\epsilon_{i,t}$.  In cases like this, outsize movement in the observable random variable $a_{i,t}$ is due solely to the shock $\omega_{i}^{*}$.  Using the ARMA representation of a GARCH(m,s) model, we can see clearly how the random effect $\omega_{i}^{*}$ increases the expectation of the nonnegative random variable $a_{i,t}^{2}$.  The unconditional mean of an ARMA model tells that the random effects simply contribute to the intercept term (see Tsay p. 132):
 
 \begin{align*} 
 \mathbb{E}[a^{2}_{i,t}] = \frac{\omega_{i} + \mathbb{E}[\omega_{i}^{*}] }{1 - \sum^{\text{max(m,s)}}_{k=1}(\alpha_{i,k}+\beta_{i,k})}
@@ -401,7 +423,6 @@ Recall models $\mc{M}_1$ and $\mc{M}_2$:
 &a_{i,t} = \sigma_{i,t}(\epsilon_{i,t}(1-D^{level}_{i,t}) + \epsilon^{*}_{i}D^{level}_{i,t}) 
 \end{align*}
 
-
 \begin{align*}
 \mc{M}_2 \colon \begin{array}{l}
    \sigma^{2}_{i,t} = \omega_{i} + \omega^{*}_i D^{vol}_{i,t} + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \text{ }\\[.2cm]
@@ -415,7 +436,7 @@ We will discuss these two models in the context of a shock in only the volatilit
 \citet{abadie2010synthetic} discuss the unbiasedness of SCM estimators in the context of an autoregressive model.  It is well-known that a GARCH(m,s) model has an ARMA representation.  This suggests that, at the very least, when applied to an autoregressive process such an an ARCH model, Synthetic Volatility Forecasting provides an unbiased prediction.  We therefore set out to show three results of increasing difficulty and complexity.
 
 \begin{prop}
-Under $\mc{M}_1$ and $\mc{M}_2$, if the volatility series follows an ARCH(1) model, then under the assumptions in \citet{abadie2010synthetic}, $\hat\omega^{*}$ is an unbiased estimator of $\omega^{*}$.
+Under $\mc{M}_1$ and $\mc{M}_2$, if the volatility series follows an ARCH(1) model, then under the assumptions in \citet{abadie2010synthetic}, $\hat\omega^{*}$ is an unbiased estimator of $\omega_{1}^{*}$.
 \end{prop}
 
 \begin{proof-of-proposition}
@@ -452,7 +473,7 @@ then with even just one pre-treatment period, the synthetic control estimator is
 \end{array}\label{adapted Abadie assumptions}
 \end{align*}
 
-Assume further that $\omega_{i} \equiv 0$ in $\mc{M}_1$ and $\mc{M}_2$. Then it follows immediately that under the ARCH(1) model with time-varying parameters
+Assume further that $\omega_{i} \equiv 0$ in $\mc{M}_1$ and $\mc{M}_2$. Then it follows immediately that under the ARCH(1) model with time-varying parameters, i.e. under the model
 
 \begin{align*}
   a^{2}_{i,t} &= \alpha_{i,t-1}a^{2}_{i,t-1} + \beta_{t} \bm{X}_{i,t}  + u_{i,t} \\
@@ -473,7 +494,7 @@ Observe then that $\omega^{*}_{i}$, as defined in $\mc{M}_1$ and $\mc{M}_2$, is 
 \end{proof-of-proposition}
 
 \begin{prop}
-Under $\mc{M}_1$ and $\mc{M}_2$,  if the volatility series follows an ARCH(p) model, then under the assumptions in \citet{abadie2010synthetic}, $\hat\omega^{*}$ is an unbiased estimator of $\omega^{*}$.
+Under $\mc{M}_1$ and $\mc{M}_2$,  if the volatility series follows an ARCH(p) model, then under the assumptions in \citet{abadie2010synthetic}, $\hat\omega^{*}$ is an unbiased estimator of $\omega_{1}^{*}$.
 \end{prop}
 
 \begin{proof-of-proposition}
@@ -481,33 +502,18 @@ Place here
 \end{proof-of-proposition}
 
 \begin{prop}
-Under $\mc{M}_1$ and $\mc{M}_2$,  if the volatility series follows an GARCH(m,s) model, then under the assumptions in \citet{abadie2010synthetic}, $\hat\omega^{*}$ is an unbiased estimator of $\omega^{*}$.
+Under $\mc{M}_1$ and $\mc{M}_2$,  if the volatility series follows an GARCH(m,s) model, then under the assumptions in \citet{abadie2010synthetic}, $\hat\omega^{*}$ is an unbiased estimator of $\omega_{1}^{*}$.
 \end{prop}
 
 \begin{proof-of-proposition}
 Place here
 \end{proof-of-proposition}
 
-
-
-
 \subsection{Why not parameterize the volatility shock as a change in coefficients?}
 \begin{enumerate}
 \item Swamped by shock: If the goal is near-term forecasting, then we don't really care how those coefficients may be changing.  The assumption is that if any changes occur, their influence cannot account for the large shock. Given that the GARCH parameters for a stationary GARCH process must sum to less than 1, there is an upper bound to the forecastable change.
 \item Practically infeasible: If we did that, we would need quite a few time points to reliably estimate the change in the GARCH parameters.  We don't have that.
 \end{enumerate}
-
-\subsection{Improvements of this current work over its predecessor}
-\begin{enumerate}
-\item $y_{i,t}$ have shocks in both volatility and level.
-\item The shocks can have length greater than 1.
-\item The method under development does not strictly require knowledge of the length of the shocks in the donor pool, but correctly sizing up those shock lengths is helpful to proper estimation of the shocks.  However, an important question remains: even if the donor pool shock lengths are assumed to be known, how do we advise the operator to forecast the time series under study?  For how long is the forecast reliable?  Should we take a convex combination of the donor pool shock lengths?  Or mean? Or minimum of the donor pool shock lengths?
-\item We may want a loss function that is asymmetric, i.e. penalizes upward and downward misses differently.
-\item Lin+Eck 2021 requires exogenous information to arrive strictly between $T^{*}$ and $T^{*}+1$.  However, we may want to relax this requirement so as to permit the exogenous information to be concurrent with the trading session or end of session on $T^{*}+1$.
-\item By offering more linear combination methods for the donor pool shocks (e.g. unit ball, affine hull, convex cone), we give the operator the ability to use donors such that the donor outcome series is negatively correlated with the time series under study.
-\item See Tsay p. 94: if $t$ is the last index that has been observed, then our two-step-ahead forecast is made easier by rewriting the volatility equation as $\sigma^{2}_{i,t+1} = w_{i} + (\alpha_{i} + \beta_{i})\sigma^{2}_{i,t} + \alpha_{1}\sigma^{2}_{i,t}[\epsilon^{2}_{i,t} - 1]= w_{i} + (\alpha_{i} + \beta_{i})\sigma^{2}_{i,t} + \alpha_{1}\sigma^{2}_{i,t}[\epsilon^{2}_{i,t} - 1] $.  Usually, we assume unit variance (though not necessarily a N(0,1)).  However, what is the variance is smaller than 1?  Then in conditional expectation, the term $\alpha_{1}\sigma^{2}_{i,t}[\epsilon^{2}_{i,t} - 1]$ will be negative.  So it seems that for level shock, we want the signal to noise ratio to be large because the mean is high, not because the variance is low.
-\end{enumerate}
-
 
 Notice that $\mc{M}_1$ assumes that $\omega^{*}_i$ are i.i.d. with $\E[ \omega^{*}_i]=\mu_{\omega^{*}}$ 
 for $i = 1, \ldots, n+1$. We also consider a model where the shock effects are linear functions of covariates with an additional additive mean-zero error. For $i = 1, \ldots, n+1$, the random effects structure for this model (model $\mc{M}_2$) is:
@@ -612,8 +618,6 @@ We also introduce simulation parameters that can be varied but are not random ef
 \end{enumerate}
 
 
-
-
 \subsubsection{Dual shock: both a level and volatility shock at T*+1}
 \textit{Hypothesis:} Method should do less well under level shock.
 
@@ -630,7 +634,11 @@ We also introduce simulation parameters that can be varied but are not random ef
 
 \section{Real Data Example}
 
-We show the applicability of Synthetic Volatility Forecasting using an real data example that sits at the crossroads of financial trading and electoral politics.  In the spring of 2016 in the United States, the Republican Party's primary election process narrowed down candidates until Donald J. Trump cleared the threshold of votes to win the nomination formally at the party's convention that summer.  He would go on to face the Democratic Party's nominee, Hillary Rodham Clinton.  The Electoral College permits victory without a majority or even plurality of the popular vote, which can render presidential races more competitive than a raw vote total would, elevating the uncertainty surrounding the country's future leadership.  From an ex-ante perspective, several qualities of the 2016 US election cycle as well as the candidates themselves made the election difficult to prognosticate.  The election featured no incumbent, ruling out any incumbent-advantage.  The Republican Party candidate espoused unorthodox, populist positions on matters such as healthcare, trade, and foreign policy, some of which could be considered rare in either of the major two parties.  Indeed, \citet{goodell2013us} found support for the theory that the probability of election outcomes encodes information about future macroeconomic conditions, which is itself reflected in market volatility.  Additionally, Donald J. Trump, lacking any record in government service -- either electoral or appointed service -- possessed no voting record for voters to judge or his opponents to attack.  Acclaimed forecasting outlet 538, headed by economist Nate Silver, predicted a Clinton victory with a probability of .714, more than 2-to-1 odds \citep{Silver_2016}, suggesting that Trump's victory was at least somewhat surprising.  For these reasons, the aftermath of the 2016 presidential election meets the standard of an interesting and notable event for which a quantitative researcher might seek a point prediction.  On a more technical level, the result of the election arrived in the evening of election day, following the closing of financial markets at 4pm Eastern Time.  This meets the standard of a shock that has not yet been digested by liquid markets.  We therefore proceed to make the following technical specifications in order to predict the volatility of financial services ETF IYG\footnote{It has been noted that GARCH effects are more attenuated in aggregated returns \citep{zivot2009practical}, which suggests against using the S\&P 500 or similar indices as an example.} (an ETF composed of American financial majors JPMorgan, Bank of American, etcetera) on Wednesday November 9th, 2016.
+We show the applicability of Synthetic Volatility Forecasting using an real data example that sits at the crossroads of financial trading and electoral politics.  In the spring of 2016 in the United States, the Republican Party's primary election process narrowed down candidates until Donald J. Trump cleared the threshold of votes to win the nomination formally at the party's convention that summer.  He would go on to face the Democratic Party's nominee, Hillary Rodham Clinton.   
+
+From an ex-ante perspective, several qualities of the 2016 US election cycle as well as the candidates themselves made the election difficult to prognosticate.  The Electoral College permits victory without a majority or even plurality of the popular vote, which can render presidential races more competitive than a raw vote total would, elevating the uncertainty surrounding the country's future leadership.  The election featured no incumbent, ruling out any incumbent-advantage.  The Republican Party candidate espoused unorthodox, populist positions on matters such as healthcare, trade, and foreign policy, some of which could be considered rare in either of the major two parties.  Indeed, \citet{goodell2013us} found support for the theory that the implied probabilities of election outcomes encodes information about future macroeconomic conditions, which is itself reflected in market volatility.  Additionally, Donald J. Trump, lacking any record in government service -- either electoral or appointed service -- possessed no voting record for voters to judge or his opponents to attack.  
+
+In its final post before the election result, acclaimed forecasting outlet 538, headed by economist Nate Silver, predicted a Clinton victory with a probability of .714, more than 2-to-1 odds \citep{Silver_2016}, suggesting that Trump's victory was at least somewhat surprising.  For these reasons, the aftermath of the 2016 presidential election meets the standard of an interesting and notable event for which a quantitative researcher might seek a volatility point prediction.  On a more technical level, the result of the election arrived in the evening of election day, following the closing of financial markets at 4pm Eastern Time.  This meets the standard of a shock that has not yet been digested by liquid markets.  We therefore proceed to make the following technical specifications in order to predict the volatility of financial services ETF IYG\footnote{It has been noted that GARCH effects are more attenuated in aggregated returns \citep{zivot2009practical}, which suggests against using the S\&P 500 or similar indices as an example.} (an ETF composed of American financial majors JPMorgan, Bank of American, etcetera) on Wednesday November 9th, 2016.
 
 \begin{enumerate}
     \item \textbf{Model choice} We assume a GARCH(1,1) for the daily log-return series of IYG in each donor.  As argued in \citet{hansen2005forecast}, a GARCH(1,1) is rarely dominated by more heavily-parameterized GARCH specifications.  It thus provides a defensible choice when motivation or time for choosing another model is lacking.  For the time series under study and the donor series alike, we fit a GARCH(1,1) on almost four years of market data prior to the shock.
@@ -660,6 +668,9 @@ Naturally, one would ask how sensitive this prediction is to at least two kinds 
   \label{fig:SVF_2016_without_Brexit}
   \end{center}
 \end{figure}
+
+\section{Discussion}
+
 
 \section{Connection to Signal Recovery}
 
