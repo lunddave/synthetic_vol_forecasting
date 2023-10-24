@@ -1,46 +1,46 @@
-This is BibTeX, Version 0.99d (TeX Live 2022/dev/Debian)
+This is BibTeX, Version 0.99d (TeX Live 2022/Debian)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: synthVolForecast.aux
 The style file: plainnat.bst
 Database file #1: synthVolForecast.bib
-You've used 22 entries,
+You've used 23 entries,
             2773 wiz_defined-function locations,
-            741 strings with 8476 characters,
-and the built_in function-call counts, 9849 in all, are:
-= -- 928
-> -- 435
-< -- 21
-+ -- 151
-- -- 129
-* -- 746
-:= -- 1478
-add.period$ -- 70
-call.type$ -- 22
-change.case$ -- 108
-chr.to.int$ -- 22
-cite$ -- 44
-duplicate$ -- 483
-empty$ -- 874
-format.name$ -- 165
-if$ -- 2097
+            748 strings with 8625 characters,
+and the built_in function-call counts, 10240 in all, are:
+= -- 966
+> -- 445
+< -- 22
++ -- 155
+- -- 132
+* -- 775
+:= -- 1537
+add.period$ -- 73
+call.type$ -- 23
+change.case$ -- 112
+chr.to.int$ -- 23
+cite$ -- 46
+duplicate$ -- 503
+empty$ -- 914
+format.name$ -- 169
+if$ -- 2179
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 21
-newline$ -- 119
-num.names$ -- 88
-pop$ -- 212
+missing$ -- 22
+newline$ -- 124
+num.names$ -- 92
+pop$ -- 219
 preamble$ -- 1
-purify$ -- 87
+purify$ -- 90
 quote$ -- 0
-skip$ -- 363
+skip$ -- 376
 stack$ -- 0
-substring$ -- 484
-swap$ -- 60
+substring$ -- 511
+swap$ -- 61
 text.length$ -- 5
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 237
+type$ -- 248
 warning$ -- 0
-while$ -- 103
+while$ -- 108
 width$ -- 0
-write$ -- 294
+write$ -- 307

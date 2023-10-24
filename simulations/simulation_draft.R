@@ -17,10 +17,10 @@
 #   https://cran.r-project.org/web/packages/foreach/vignettes/nested.html
 
 # MC
-library("dplyr")
-library("parallel")
-library("doParallel")
-library("foreach")
+library(dplyr)
+library(parallel)
+library(doParallel)
+library(foreach)
 source("/home/david/Desktop/synthetic_vol_forecasting/synthVolForecast_wrapper.R",
        echo = FALSE,
        verbose = FALSE)
