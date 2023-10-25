@@ -19,7 +19,8 @@ dev.new(width=2, height=2)
 
 #https://gist.github.com/bannister/8002800
 path <- '/home/david/Desktop/synthetic_vol_forecasting/simulation_results'
-files <- list.files(path=path, pattern = ".*Apr16.*Rdata$")
+#files <- list.files(path=path, pattern = ".*Apr16.*Rdata$")
+files <- list.files(path=path, pattern = ".*Oct24.*Rdata$")
 
 setwd(path)
 results <- sapply(files, function(x) mget(load(x)), simplify = TRUE)
@@ -69,8 +70,6 @@ names(df_only_one_outcome) <- c(names(df_only_one_outcome)[1:11], 'success')
 non_NA <- df_only_one_outcome[complete.cases(df_only_one_outcome),]
 
 # https://statisticsglobe.com/heatmap-in-r
-
-
 
 means <- non_NA %>% group_by(vol_shock_sd, M21_M22_vol_mu_delta) %>% summarise(prop=mean(success))
 means <- as.data.frame(sapply(means, as.numeric))
