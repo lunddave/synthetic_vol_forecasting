@@ -14,13 +14,13 @@ library(gridExtra)
 
 # https://stackoverflow.com/questions/69054275/loading-multiple-rdata-and-binding-into-a-single-data-frame
 
-par(mfrow = c(1,3))
-dev.new(width=2, height=2)
+# par(mfrow = c(1,3))
+# dev.new(width=2, height=2)
 
 #https://gist.github.com/bannister/8002800
 path <- '/home/david/Desktop/synthetic_vol_forecasting/simulation_results'
 #files <- list.files(path=path, pattern = ".*Apr16.*Rdata$")
-files <- list.files(path=path, pattern = ".*Oct24.*Rdata$")
+files <- list.files(path=path, pattern = ".*Oct25.*Rdata$")
 
 setwd(path)
 results <- sapply(files, function(x) mget(load(x)), simplify = TRUE)
@@ -71,11 +71,14 @@ non_NA <- df_only_one_outcome[complete.cases(df_only_one_outcome),]
 
 # https://statisticsglobe.com/heatmap-in-r
 
-means <- non_NA %>% group_by(vol_shock_sd, M21_M22_vol_mu_delta) %>% summarise(prop=mean(success))
+means <- non_NA %>% 
+  group_by(M21_M22_level_sd_delta, M21_M22_level_mu_delta) %>% summarise(prop=mean(success),.groups = 'drop')
 means <- as.data.frame(sapply(means, as.numeric))
 means$prop <- round(means$prop, 2)
 
-count <- non_NA %>% group_by(vol_shock_sd, M21_M22_vol_mu_delta) %>% count()
+means
+
+count <- non_NA %>% group_by(M21_M22_level_sd_delta, M21_M22_level_mu_delta) %>% count()
 count
 
 means$n <- count$n

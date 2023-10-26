@@ -1,4 +1,4 @@
-\begin{thebibliography}{23}
+\begin{thebibliography}{24}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -119,6 +119,12 @@ David~R Mayhew.
   record.
 \newblock \emph{Political Science Quarterly}, 123\penalty0 (2):\penalty0
   201--228, 2008.
+
+\bibitem[Mayhew(1995)]{mayhew1995implied}
+Stewart Mayhew.
+\newblock Implied volatility.
+\newblock \emph{Financial Analysts Journal}, 51\penalty0 (4):\penalty0 8--20,
+  1995.
 
 \bibitem[Silver(2016)]{Silver_2016}
 Nate Silver.
