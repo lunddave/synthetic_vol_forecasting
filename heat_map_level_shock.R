@@ -84,7 +84,7 @@ count
 means$n <- count$n
 
 ggp1 <- ggplot(means,
-              aes(x = factor(vol_shock_sd), y = factor(M21_M22_vol_mu_delta), fill = prop)) +
+              aes(x = factor(M21_M22_level_sd_delta), y = factor(M21_M22_level_mu_delta), fill = prop)) +
   scale_fill_gradient(low="white",  high="red") +
   geom_tile() +
   geom_text(aes(label = paste(prop, '\n(',n,')', sep =''))) +
@@ -94,8 +94,9 @@ ggp1 <- ggplot(means,
   theme(plot.title = element_text(hjust = 0.5)) +
   labs(x = "Volatility Shock Standard Deviation", y = "Volatility Shock Mean")
 
+ggp1
 
-#
+#http://127.0.0.1:20841/graphics/ed675dcc-4353-4d42-bb93-c844f62500cf.png
 # # Now we write a function
 # heatmap_maker <- function(df, var1, var2){
 #

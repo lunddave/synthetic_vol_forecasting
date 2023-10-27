@@ -57,7 +57,7 @@ dbw <- function(X
   if (scale == TRUE) {
     print('User has chosen to scale covariates.')
 
-    dat <- rbind(X1, do.call('rbind', X0)) # do.call is for cluster computing?
+    dat <- rbind(as.data.frame(X1), as.data.frame(do.call('rbind', X0))) # do.call is for cluster computing?
     print('Pre-scaling')
     print(dat)
 
@@ -73,7 +73,9 @@ dbw <- function(X
 
     X1 <- dat[1, dbw_indices
               , drop = FALSE]
+
     X0 <- c()
+
     for (i in 1:n) {
       X0[[i]] <- dat[i+1, dbw_indices, drop = FALSE] #we are repopulating X0[[i]] with scaled+centered data
     } #end loop
@@ -168,7 +170,7 @@ dbw <- function(X
 
 ### START GARCH plot_maker_garch
 plot_maker_garch <- function(fitted_vol
-                            ,shock_times_for_barplot
+                            ,shock_time_labels
                             ,shock_time_vec #mk
                             ,shock_length_vec
                             ,unadjusted_pred
@@ -181,8 +183,8 @@ plot_maker_garch <- function(fitted_vol
 
   print('Just began plot_maker_garch.')
 
-  if (is.character(shock_times_for_barplot) == FALSE){
-    shock_times_for_barplot <- 1:length(shock_times_for_barplot)
+  if (is.character(shock_time_labels) == FALSE){
+    shock_time_labels <- 1:length(shock_time_labels)
   }
 
   par(mfrow = c(1,3))
@@ -196,7 +198,7 @@ plot_maker_garch <- function(fitted_vol
   #Plot donor weights
   barplot(w_hat
           , main = 'Donor Pool Weights'
-          , names.arg = shock_times_for_barplot[-1]
+          , names.arg = shock_time_labels[-1]
           , cex.names=.95
           , las=2
           , col = barplot_colors)
@@ -206,7 +208,7 @@ plot_maker_garch <- function(fitted_vol
   #Plot FE estimates
     barplot(omega_star_hat_vec
           , main = 'Donor-Pool-Supplied \n FE Estimates'
-          , names.arg = shock_times_for_barplot[-1]
+          , names.arg = shock_time_labels[-1]
           , cex.names=.95
           , las=2
           , col = barplot_colors)
@@ -302,7 +304,7 @@ plot_maker_garch <- function(fitted_vol
 
 ### START plot_maker_synthprediction
 plot_maker_synthprediction <- function(Y
-                                     ,shock_times_for_barplot
+                                     ,shock_time_labels
                                      ,shock_time_vec #mk
                                      ,shock_length_vec
                                      ,unadjusted_pred
@@ -313,8 +315,8 @@ plot_maker_synthprediction <- function(Y
                                      ,display_ground_truth = FALSE){
 
 
-  if (is.character(shock_times_for_barplot) == FALSE){
-    shock_times_for_barplot <- 1:length(shock_times_for_barplot)
+  if (is.character(shock_time_labels) == FALSE){
+    shock_time_labels <- 1:length(shock_time_labels)
   }
 
   #First print donor series
@@ -324,7 +326,7 @@ plot_maker_synthprediction <- function(Y
     plot.ts(Y[[i]][1:shock_time_vec[i]]
             ,xlab = 'Trading Days'
             ,ylab = 'Differenced Logarithm'
-            ,main = paste('Donor ', i,': ', shock_times_for_barplot[i], sep = '')
+            ,main = paste('Donor ', i,': ', shock_time_labels[i], sep = '')
             ,xlim = c(0, shock_time_vec[i] + 5)
             ,ylim = c(min(Y[[i]]),  max(Y[[i]]))
             )
@@ -355,7 +357,7 @@ plot_maker_synthprediction <- function(Y
   #Plot donor weights
   barplot(w_hat
           , main = 'Donor Pool Weights'
-          , names.arg = shock_times_for_barplot[-1]
+          , names.arg = shock_time_labels[-1]
           , cex.names=.95
           , las=2
           , col = barplot_colors)
@@ -365,7 +367,7 @@ plot_maker_synthprediction <- function(Y
   #Plot FE estimates
   barplot(omega_star_hat_vec
           , main = 'Donor-Pool-Supplied \n FE Estimates'
-          , names.arg = shock_times_for_barplot[-1]
+          , names.arg = shock_time_labels[-1]
           , cex.names=.95
           , las=2
           , col = barplot_colors)
@@ -447,6 +449,7 @@ SynthVolForecast <- function(Y_series_list
                              ,garch_order = NULL
                              ,common_series_assumption = FALSE
                              ,plots = TRUE
+                             ,shock_time_labels
                              ,ground_truth_vec
 ){
   ### BEGIN Doc string
@@ -673,7 +676,7 @@ SynthVolForecast <- function(Y_series_list
   if (plots == TRUE){
     cat('\n User has opted to produce plots.','\n')
     plot_maker_garch(fitted(fitted_garch)
-               ,shock_time_vec
+               ,shock_time_labels
                ,integer_shock_time_vec
                ,shock_length_vec
                ,unadjusted_pred

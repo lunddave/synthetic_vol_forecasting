@@ -643,7 +643,7 @@ In its final post before the election result, acclaimed forecasting outlet 538, 
 \begin{enumerate}
     \item \textbf{Model choice} We assume a GARCH(1,1) for the daily log-return series of IYG in each donor.  As argued in \citet{hansen2005forecast}, a GARCH(1,1) is rarely dominated by more heavily-parameterized GARCH specifications.  It thus provides a defensible choice when motivation or time for choosing another model is lacking.  For the time series under study and the donor series alike, we fit a GARCH(1,1) on almost four years of market data prior to the shock.
 
-    \item \textbf{Covariate Choice} We choose covariates that could plausibly satisfy the model assumptions spelled out earlier, that is, risk-related and macroeconomic covariates that could plausibly be weighted and summed in a shock distribution.  We choose the log-return Crude Oil (CL.F), the VIX (VIX) and the log-return of the VIX, the log-returns of the 3-month, 5-year, 10-year, and 30-year US Treasuries, as well as the log-return of the spread between AAA and BAA corporate debt, widely considered a proxy for lending risk \citep{goodell2013us, kane1996p}, and finally, the log-return in the trading volume of the ETF IYG itself.
+    \item \textbf{Covariate Choice} We choose covariates that could plausibly satisfy the model assumptions spelled out earlier, that is, risk-related and macroeconomic covariates that could plausibly be weighted and summed in a shock distribution.  We thus choose the log-return Crude Oil (CL.F), the VIX (VIX) and the log-return of the VIX, the log-returns of the 3-month, 5-year, 10-year, and 30-year US Treasuries, as well as the log-return of the spread between AAA and BAA corporate debt, widely considered a proxy for lending risk \citep{goodell2013us, kane1996p}.  We also include the log-return in the trading volume of the ETF IYG itself, which serves as a proxy for panic.  Finally, we include the log-return in British Pound futures (6B=F), partly because we are using Brexit as a donor and partly as a proxy for US dollar strength and investor sentiment.
 
     \item \textbf{Donor pool construction} Synthetic Control, an a tool of causal inference, often goes about weighting control units by first identifying a natural or set of donors or standard donors such as the untreated units within a set of subnational units like US states or Spanish provinces \citep{abadie2003economic, abadie2010synthetic}.  While such a procedure does not necessarily preclude considered judgments (should Canadian provinces be used as donors for a treated US state?), as a tool of small-n prediction, distanced-based weighting faces a decidedly more difficult task in constructing a donor pool.  
     
@@ -654,7 +654,7 @@ In its final post before the election result, acclaimed forecasting outlet 538, 
 
 \begin{figure}[h!]
 \begin{center}
-  \includegraphics[scale=.6]{R_package_development/SynthVolForecast/R/real_data_output_plots/savetime_MonOct0911:29:27PM2023_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2016-06-23-2012-11-06-2008-11-04-2004-11-02.png}
+  \includegraphics[scale=.6]{R_package_development/SynthVolForecast/R/real_data_output_plots/savetime_FriOct2712:12:47AM2023_IYG_6B=F-CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-23.png}
   \caption{The volatility induced by the 2016 US election}
   \label{fig:SVF_2016}
   \end{center}
@@ -665,7 +665,7 @@ Naturally, one would ask how sensitive this prediction is to at least two kinds 
 
 \begin{figure}[h!]
 \begin{center}
-  \includegraphics[scale=.6]{R_package_development/SynthVolForecast/R/real_data_output_plots/savetime_MonOct0911:25:34PM2023_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2012-11-06-2008-11-04-2004-11-02.png}
+  \includegraphics[scale=.6]{R_package_development/SynthVolForecast/R/real_data_output_plots/savetime_FriOct2712:15:05AM2023_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png}
   \caption{The volatility induced by the 2016 US election, Brexit excluded}
   \label{fig:SVF_2016_without_Brexit}
   \end{center}

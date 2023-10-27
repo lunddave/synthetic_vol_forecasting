@@ -8,6 +8,7 @@ options(digits = 7, scipen = 7)
 packs <- c('quantmod'
            , 'bizdays'
            , 'lubridate'
+           ,'rlist'
 )
 
 suppressPackageStartupMessages(lapply(packs, require, character.only = TRUE))
@@ -22,7 +23,7 @@ k <- 1
 TSUS <- 'IYG'
 
 log_ret_covariates <- c(#"GBP=X",
-  # "6B=F",
+   "6B=F",
   "CL=F"
   ,"^VIX"
   ,"^IRX"
@@ -41,31 +42,33 @@ volume_covariates <- c('IYG')
 
 FRED_covariates <- c('AAA', 'BAA')
 
-shock_dates <- c("2016-11-08"
-                 ,"2016-06-23"
-                 #, "2014-11-04"
-                 , "2012-11-06"
-                 #, "2010-11-02"
-                 , "2008-11-04"
-                 #, "2006-11-07"
-                 , "2004-11-02"
-                 #, "2002-11-05"
-                 #, "2000-11-07"
+shock_dates <- list('2016 Election' = "2016-11-08"
+                 ,'Brexit' = "2016-06-23"
+                 #,'2014 Midterm' = "2014-11-04"
+                 ,'2012 Election' = "2012-11-06"
+                 #, '2010 Midterm' ="2010-11-02"
+                 ,'2008 Election' = "2008-11-04"
+                 #, '2006 Midterm' ="2006-11-07"
+                 ,'2004 Election' = "2004-11-02"
+                 #,'2002 Midterm' =  "2002-11-05"
+                 #,'2000 Election' = "2000-11-07"
 )
+
+shock_dates <- c(shock_dates[1], list.reverse(shock_dates[2:length(shock_dates)]))
 
 ## END USER DATA INPUTS##
 
 nyse <- timeDate::holidayNYSE(2000:year(Sys.Date())+1)
 create.calendar(name='NYSE', holidays=nyse, weekdays=c('saturday', 'sunday'))
 
-shock_dates_as_dates <- as.Date(shock_dates)
+shock_dates_as_dates <- as.Date(as.Date(unlist(shock_dates)))
 
-start_dates <- offset(shock_dates_as_dates, round(-3.5*252), "NYSE")
+start_dates <- offset(shock_dates_as_dates, round(-1.8*252), "NYSE")
 
 k_periods_after_shock <- offset(shock_dates_as_dates, k, "NYSE")
 
 market_data_list <- vector("list", length(shock_dates))
-names(market_data_list) <- shock_dates
+names(market_data_list) <- names(shock_dates)
 
 # Now we loop through shock dates
 
@@ -244,12 +247,12 @@ png_save_name <- paste("/home/david/Desktop/synthetic_vol_forecasting/R_package_
                        ,".png"
                        ,sep="")
 
-png(png_save_name)
+png(png_save_name,width = 800, height = 600)
 
 #Now run the algorithm
 temp <- SynthVolForecast(Y
                          ,X
-                         ,shock_time_vec = shock_dates
+                         ,shock_time_vec = unlist(shock_dates)
                          ,rep(k, n+1)
                          ,dbw_scale = TRUE
                          ,dbw_center = TRUE
@@ -257,6 +260,7 @@ temp <- SynthVolForecast(Y
                          #,covariate_indices = length(X)
                          ,garch_order = c(1,1,0)
                          ,plots = TRUE
+                         ,shock_time_labels = names(shock_dates)
                          ,ground_truth_vec = ground_truth)
 
 dev.off()
