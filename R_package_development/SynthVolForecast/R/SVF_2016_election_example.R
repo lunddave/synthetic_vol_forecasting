@@ -230,7 +230,7 @@ for (i in 1:length(start_dates)){
 n <- length(start_dates) - 1
 
 time_date <- gsub(" ", "", format(Sys.time(), "%a%b%d%X%Y"), fixed = TRUE)
-png_save_name <- paste("/home/david/Desktop/synthetic_vol_forecasting/R_package_development/SynthVolForecast/R/real_data_output_plots/savetime_"
+png_save_name <- paste("/home/david/Desktop/synthetic_vol_forecasting/real_data_output_plots/savetime_"
                        ,time_date
                        ,'_'
                        ,TSUS

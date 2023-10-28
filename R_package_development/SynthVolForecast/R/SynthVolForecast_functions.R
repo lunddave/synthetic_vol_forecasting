@@ -187,7 +187,7 @@ plot_maker_garch <- function(fitted_vol
     shock_time_labels <- 1:length(shock_time_labels)
   }
 
-  par(mfrow = c(1,3))
+  par(mfrow = c(1,3), mar=c(15,4,4,2))
 
   barplot_colors <- brewer.pal(length(w_hat),'Set3')
 
@@ -195,11 +195,12 @@ plot_maker_garch <- function(fitted_vol
 
   #PLOT ON THE LEFT:
 
-  #Plot donor weights
+  # Plot donor weights
   barplot(w_hat
           , main = 'Donor Pool Weights'
           , names.arg = shock_time_labels[-1]
-          , cex.names=.95
+          , cex.names=1.3
+          , cex.main=1.5
           , las=2
           , col = barplot_colors)
 
@@ -209,7 +210,8 @@ plot_maker_garch <- function(fitted_vol
     barplot(omega_star_hat_vec
           , main = 'Donor-Pool-Supplied \n FE Estimates'
           , names.arg = shock_time_labels[-1]
-          , cex.names=.95
+          , cex.names=1.3
+          , cex.main=1.5
           , las=2
           , col = barplot_colors)
 
@@ -228,7 +230,8 @@ plot_maker_garch <- function(fitted_vol
 
   #PLOT ON THE RIGHT:
   plot.ts(fitted_vol[1:shock_time_vec[1]], #mk
-       main = 'Forecasts Following T*', #mk can improve this title
+       main = 'Post-Shock Volatility Forecast', #mk can improve this title
+       cex.main=1.5,
        ylab = '',
        xlab = "Trading Days",
        xlim = c(0, shock_time_vec[1] + 5), #mk
