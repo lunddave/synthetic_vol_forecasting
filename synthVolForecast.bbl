@@ -1,4 +1,4 @@
-\begin{thebibliography}{24}
+\begin{thebibliography}{25}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -125,6 +125,12 @@ Stewart Mayhew.
 \newblock Implied volatility.
 \newblock \emph{Financial Analysts Journal}, 51\penalty0 (4):\penalty0 8--20,
   1995.
+
+\bibitem[Romer and Romer(1989)]{romer1989does}
+Christina~D Romer and David~H Romer.
+\newblock Does monetary policy matter? a new test in the spirit of friedman and
+  schwartz.
+\newblock \emph{NBER macroeconomics annual}, 4:\penalty0 121--170, 1989.
 
 \bibitem[Silver(2016)]{Silver_2016}
 Nate Silver.

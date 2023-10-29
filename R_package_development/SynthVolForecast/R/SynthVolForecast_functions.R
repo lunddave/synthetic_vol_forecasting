@@ -352,7 +352,7 @@ plot_maker_synthprediction <- function(Y
   }
 
   #Now print time series under study
-  par(mfrow = c(1,3))
+  par(mfrow = c(1,3), mar=c(15,4,4,2))
 
   barplot_colors <- brewer.pal(length(w_hat),'Set3')
 
