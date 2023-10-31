@@ -383,13 +383,13 @@ plot_maker_synthprediction <- function(Y
 
   #PLOT ON THE RIGHT:
   plot.ts(Y[[1]][1:shock_time_vec[1]], #mk
-          main = 'Two Forecasts Following T*', #mk can improve this title
+          main = 'Post-shock Forecasts',
           ylab = '',
           xlab = "Trading Days",
           xlim = c(0, shock_time_vec[1] + 5), #mk
           ylim = c(min(0, Y[[1]]),  max_for_y_lim))
 
-  title(ylab = 'Differenced Logarithm', line = 2.05, cex.lab = 1.99) # Add y-axis text
+  title(ylab = 'Log-return', line = 2.05, cex.lab = 1.99) # Add y-axis text
 
   # Here is the color scheme we will use
   colors_for_adjusted_pred <- c('red', "green",'purple')
