@@ -20,7 +20,7 @@ library(gridExtra)
 #https://gist.github.com/bannister/8002800
 path <- '/home/david/Desktop/synthetic_vol_forecasting/simulation_results'
 #files <- list.files(path=path, pattern = ".*Apr16.*Rdata$")
-files <- list.files(path=path, pattern = ".*Oct28.*Rdata$")
+files <- list.files(path=path, pattern = ".*Oct26.*Rdata$")
 
 setwd(path)
 results <- sapply(files, function(x) mget(load(x)), simplify = TRUE)
@@ -92,7 +92,7 @@ ggp1 <- ggplot(means,
   ggtitle("Synthetic Volatility Forecast Outperformance of Unadjusted Forecast
           \n Each Square: Outperformance Proportion and (Simulation Count)") +
   theme(plot.title = element_text(hjust = 0.5)) +
-  labs(x = "Volatility Shock Standard Deviation", y = "Volatility Shock Mean")
+  labs(x = "Level Shock Standard Deviation", y = "Level Shock Mean")
 
 ggp1
 
