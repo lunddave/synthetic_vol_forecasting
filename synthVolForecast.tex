@@ -142,7 +142,7 @@ The approach herein can be viewed as an attempt to sidestep the functional compl
 \begin{figure}[h]
 \begin{center}
   \includegraphics[scale=.5]{simulation_plots/USE_in_paper_simulation_plot_arithmetic_mean.png}
-  \caption{An example of aggregating shock estimates using the arithmetic mean}
+  \caption{An example of aggregating shock estimates using the arithmetic mean of donor fixed effects}
   \label{fig:arith_mean}
   \end{center}
 \end{figure}
@@ -167,10 +167,12 @@ $z_{T^{*}+1}^{\text{irregular news shock}} \coloneqq z_{T^{*}+1}^{\text{irregula
 In our adapted schema, irregular news shocks are $\mathcal{F}_{T^{*}}$-zero-expectation events governed by a GARCH-X process.  As such, $z_{T^{*}+1}^{\text{irregular news shock}}$ admits of the decomposition $z_{T^{*}+1} = \sigma_{T^{*}+1}\epsilon_{T^{*}+1}$
 
 \subsection{Improvements of this current work over its predecessor}
+This present work extends \citet{lin2021minimizing} principally by substituting the "workhorse" GARCH model and for modeling both the mean and volatility of a univariate time series.  We permit both shocks in the mean model and volatility model of GARCH.  As ancillary improvements, the current work permits the shock periods to be of any length, formally $L_{\text{vol}}, L_{\text{level}} \in \mathbb{Z}^{+}$, and the weights applied to the donor pool can come from more exotic sets in $\mathbb{R}^{n}$.  At a technical level, the most substantial insight related to \citet{lin2021minimizing} is that the GARCH model provides elegant forecast function for squared observations of the time series under study. 
+
 \begin{enumerate}
 \item $y_{i,t}$ have shocks in both volatility and level.
 \item The shocks can have length greater than 1.
-\item The method under development does not strictly require knowledge of the length of the shocks in the donor pool, but correctly sizing up those shock lengths is helpful to proper estimation of the shocks.  However, an important question remains: even if the donor pool shock lengths are assumed to be known, how do we advise the operator to forecast the time series under study?  For how long is the forecast reliable?  Should we take a convex combination of the donor pool shock lengths?  Or mean? Or minimum of the donor pool shock lengths?
+\item The method under development does not strictly require knowledge of the length of the shocks in the donor pool, but correctly sizing up those shock lengths is helpful to proper estimation of the shocks in the donor pool.  An important question remains: even if the donor pool shock lengths are assumed to be known, how do we advise the operator to forecast the time series under study?  For how long is the forecast reliable?  Should we take a convex combination of the donor pool shock lengths?  Or mean? Or minimum of the donor pool shock lengths?
 \item Lin+Eck 2021 requires exogenous information to arrive strictly between $T^{*}$ and $T^{*}+1$.  However, we may want to relax this requirement so as to permit the exogenous information to be concurrent with the trading session or end of session on $T^{*}+1$.
 \item By offering more linear combination methods for the donor pool shocks (e.g. unit ball, affine hull, convex cone), we give the operator the ability to use donors such that the donor outcome series is negatively correlated with the time series under study.
 \item See Tsay p. 133: if $t$ is the last index that has been observed, then our two-step-ahead forecast is made easier by rewriting the volatility equation as $\sigma^{2}_{i,t+1} = w_{i} + (\alpha_{i} + \beta_{i})\sigma^{2}_{i,t} + \alpha_{1}\sigma^{2}_{i,t}[\epsilon^{2}_{i,t} - 1]= w_{i} + (\alpha_{i} + \beta_{i})\sigma^{2}_{i,t} + \alpha_{1}\sigma^{2}_{i,t}[\epsilon^{2}_{i,t} - 1] $.  Usually, we assume unit variance (though not necessarily a N(0,1)).  However, what is the variance is smaller than 1?  Then in conditional expectation, the term $\alpha_{1}\sigma^{2}_{i,t}[\epsilon^{2}_{i,t} - 1]$ will be negative.  So it seems that for level shock, we want the signal to noise ratio to be large because the mean is high, not because the variance is low.
@@ -307,9 +309,9 @@ In \citet{abadie2010synthetic}, the authors advance previous work in causal infe
 \label{modelsetup}
 In this section, we will describe the assumed dynamic panel models for which 
 post-shock aggregated estimators are provided. The basic structures of these models 
-are the same for all time series in the analysis, the differences between them lie in the setup of the shock effect distribution.  We first sharply distinguish between a volatility shock induced by a return-series shock at time T*
+are the same for all time series in the analysis, the differences between them lie in the setup of the shock effect distribution.  We first sharply distinguish between a volatility shock induced by a return series shock and a volatility shock directly affecting the volatility equation of a GARCH model, without mediation of the return series.
 
-\subsubsection{Volatility Shock Model}
+\subsubsection{Mean Model and Volatility Model}
 
 Let $I(\cdot)$ be an indicator function, $T_i$ be the time length of the time series $i$ for $i = 1, \ldots, n+1$, and $T_i^*$ denote the largest time index prior to the arrival of the news shock , with $T_i^* < T_i$.  For $t= 1, \ldots, T_i$ and $i = 1, \ldots, n+1$, the model $\mc{M}_1$ is defined as
 
@@ -320,20 +322,45 @@ Let $I(\cdot)$ be an indicator function, $T_i$ be the time length of the time se
 \end{align}
 
  where $D^{vol}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + L_{i, vol}\})$, $D^{level}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + L_{i, level}\})$ 
-and $\x_{i,t} \in \R^{p}$ , with $p \geq 1$.  We assume that the 
-$\mbf{x}_{i,t}$ are fixed.\footnote{Need to determine what difference it makes to a GARCH-X model, if any, for the covariates to be random.}\footnote{As for implied volatility as a covariate, the argument for regarding it as a non-random quantity is that we are not primarily concerned with what IV is trying to estimate.  We're concerned with IV itself as a primitive quantity that affects volitility through market sentiment. 'It is what it is.'}  For $i = 1, \ldots, n+1$ and $t=1, \ldots, T_i$, the random effects structure for $\mc{M}_1$ is:
+and $\x_{i,t} \in \R^{p}$, with $p \geq 1$.  We assume that the 
+$\mbf{x}_{i,t}$ are fixed.\footnote{Need to determine what difference it makes to a GARCH-X model, if any, for the covariates to be random.}\footnote{As for implied volatility as a covariate, the argument for regarding it as a non-random quantity is that we are not primarily concerned with what IV is trying to estimate.  We're concerned with IV itself at a primitive quantity that affects volitility through market sentiment. 'It is what it is.'}  For $i = 1, \ldots, n+1$ and $t=1, \ldots, T_i$, the random effects structure for $\mc{M}_1$ is:
 
 \begin{align*}
-\omega^{*}_i &\simiid \mc{F}_{\omega^{*}} \text{ with }  \; \mrm{E}_{\mc{F}_{\omega^{*}}}(\omega^{*}_i) = \mu_{\omega^{*}}, \mrm{Var}_{\mc{F}_{\omega^{*}}}(\omega^{*}_i)  = \sigma^2_{\omega^{*}}  \\
-\epsilon^{*}_i &\simiid \mc{F}_{\epsilon^{*}} \text{ with }  \; \mrm{E}_{\mc{F}_{\epsilon^{*}}}(\epsilon^{*}_i) = \mu_{\epsilon^{*}}, \mrm{Var}_{\mc{F}_{\epsilon^{*}}}(\epsilon^{*}_i)  = \sigma^2_{\epsilon^{*}}  \\
-% & \text{Alternatively, } (\omega^{*}, \epsilon^{*})_{i} \sim \mathcal{N}(\mu_{\omega^{*},\epsilon^{*}}, \Sigma_{\omega^{*},\epsilon^{*}}) \\
-% THESE ARE NOT RANDOM &(\alpha, \beta)_i \simiid \mc{F}_{(\alpha, \beta)} \text{ where } \sum^{ \text{max} \{m,s \} }_{j}\alpha_j + \beta_j < 1 \\
-% \mathbf{v}_i &\simiid \mc{F}_{\mathbf{v}} \text{ with }  \; \mrm{E}_{\mc{F}_{\mathbf{v}}}(\mathbf{v}_i) = \mu_{\mathbf{v}}, \mrm{Var}_{\mc{F}_{\mathbf{v}}}(\mathbf{v}_i)  = \Sigma^2_{\mathbf{v}} \\
-\varepsilon_{i,t} & \simiid  \mc{F}_{\varepsilon} \text{ with }  \; \mrm{E}_{\mc{F}_{\varepsilon}}(\varepsilon_{i,t}) = 0, \mrm{Var}_{\mc{F}_{\varepsilon}}(\varepsilon_{i,t})  = 1 \\
-%l_{i,vol} &\simiid \text{Unif}\{1,2,...,\text{maximum volatility shock length}\}\\
-%l_{i, level} &\simiid \text{Unif}\{1,2,...,l_{i,vol}\}\\
-\omega^{*}_{i} &\indep  \epsilon^{*}_i \indep \gamma_i \indep \varepsilon_{i,t}.
-\end{align*}
+  \omega^{*}_i &\simiid \mc{F}_{\omega^{*}} \text{ with }  \; \mrm{E}_{\mc{F}_{\omega^{*}}}(\omega^{*}_i) = \mu_{\omega^{*}}, \mrm{Var}_{\mc{F}_{\omega^{*}}}(\omega^{*}_i)  = \sigma^2_{\omega^{*}}  \\
+  \epsilon^{*}_i &\simiid \mc{F}_{\epsilon^{*}} \text{ with }  \; \mrm{E}_{\mc{F}_{\epsilon^{*}}}(\epsilon^{*}_i) = \mu_{\epsilon^{*}}, \mrm{Var}_{\mc{F}_{\epsilon^{*}}}(\epsilon^{*}_i)  = \sigma^2_{\epsilon^{*}}  \\
+  % & \text{Alternatively, } (\omega^{*}, \epsilon^{*})_{i} \sim \mathcal{N}(\mu_{\omega^{*},\epsilon^{*}}, \Sigma_{\omega^{*},\epsilon^{*}}) \\
+  % THESE ARE NOT RANDOM &(\alpha, \beta)_i \simiid \mc{F}_{(\alpha, \beta)} \text{ where } \sum^{ \text{max} \{m,s \} }_{j}\alpha_j + \beta_j < 1 \\
+  % \mathbf{v}_i &\simiid \mc{F}_{\mathbf{v}} \text{ with }  \; \mrm{E}_{\mc{F}_{\mathbf{v}}}(\mathbf{v}_i) = \mu_{\mathbf{v}}, \mrm{Var}_{\mc{F}_{\mathbf{v}}}(\mathbf{v}_i)  = \Sigma^2_{\mathbf{v}} \\
+  \varepsilon_{i,t} & \simiid  \mc{F}_{\varepsilon} \text{ with }  \; \mrm{E}_{\mc{F}_{\varepsilon}}(\varepsilon_{i,t}) = 0, \mrm{Var}_{\mc{F}_{\varepsilon}}(\varepsilon_{i,t})  = 1 \\
+  %l_{i,vol} &\simiid \text{Unif}\{1,2,...,\text{maximum volatility shock length}\}\\
+  %l_{i, level} &\simiid \text{Unif}\{1,2,...,l_{i,vol}\}\\
+  \omega^{*}_{i} &\indep  \epsilon^{*}_i \indep \gamma_i \indep \varepsilon_{i,t}.
+  \end{align*}
+
+Notice that $\mc{M}_1$ assumes that $\omega^{*}_i$ are i.i.d. with $\E[ \omega^{*}_i]=\mu_{\omega^{*}}$ for $i = 1, \ldots, n+1$. We also consider a model where the shock effects are linear functions of covariates with an additional additive mean-zero error. For $i = 1, \ldots, n+1$, the random effects structure for this model (model $\mc{M}_2$) is:
+
+\begin{align*}
+  \mc{M}_2 \colon \begin{array}{l}
+     \sigma^{2}_{i,t} = \omega_{i} + \omega^{*}_i D^{vol}_{i,t} + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \text{ }\\[.2cm]
+     a_{i,t} = \sigma_{i,t}(\epsilon_{i,t}(1-D^{level}_{i,t}) + \epsilon^{*}_{i}D^{level}_{i,t})\\[.2cm]
+     \omega_i^{*} = \mu_{\omega^{*}}+\delta'\mbf{x}_{i, T_i^*}+ \varepsilon_{i},
+  \end{array}
+  \end{align*}
+
+  with random effects structure
+
+  \begin{align*}
+    \omega^{*}_i &\simiid \mc{F}_{\omega^{*}} \text{ with }  \; \mrm{E}_{\mc{F}_{\omega^{*}}}(\omega^{*}) = \mu_{\omega^{*}}, \mrm{Var}_{\mc{F}_{\omega^{*}_i}}(\omega^{*}_i)  = \sigma^2_{\omega^{*}}  \\
+    \epsilon^{*}_i &\simiid \mc{F}_{\epsilon^{*}} \text{ with }  \; \mrm{E}_{\mc{F}_{\epsilon^{*}}}(\epsilon^{*}_i) = \mu_{\epsilon^{*}}, \mrm{Var}_{\mc{F}_{\epsilon^{*}}}(\epsilon^{*}_i)  = \sigma^2_{\epsilon^{*}}  \\
+    % & \text{Alternatively, } (\omega^{*}, \epsilon^{*})_{i} \sim \mathcal{N}(\mu_{\omega^{*},\epsilon^{*}}, \Sigma_{\omega^{*},\epsilon^{*}}) \\
+    % THESE ARE NOT RANDOM &(\alpha, \beta)_i \simiid \mc{F}_{(\alpha, \beta)} \text{ where } \sum^{ \text{max} \{m,s \} }_{j}\alpha_j + \beta_j < 1 \\
+    \delta &\simiid \mc{F}_{\delta} \text{ with }  \; \mrm{E}_{\mc{F}_{\delta}}(\delta) = \mu_{\delta}, \mrm{Var}_{\mc{F}_{\delta}}(\delta_i)  = \Sigma_{\delta} \\
+    % \mathbf{v}_i &\simiid \mc{F}_{\mathbf{v}} \text{ with }  \; \mrm{E}_{\mc{F}_{\mathbf{v}}}(\mathbf{v}_i) = \mu_{\mathbf{v}}, \mrm{Var}_{\mc{F}_{\mathbf{v}}}(\mathbf{v}_i)  = \Sigma^2_{\mathbf{v}} \\
+    \varepsilon_{i,t} & \simiid  \mc{F}_{\varepsilon} \text{ with }  \; \mrm{E}_{\mc{F}_{\varepsilon}}(\varepsilon_{i,t}) = 0, \mrm{Var}_{\mc{F}_{\varepsilon}}(\varepsilon_{i,t})  = 1 \\
+    %l_{i,vol} &\simiid \text{Unif}\{1,2,...,\text{maximum volatility shock length}\}\\
+    %l_{i, level} &\simiid \text{Unif}\{1,2,...,l_{i,vol}\}\\
+    \omega^{*}_i &\indep  \epsilon^{*}_i \indep \gamma_i \indep \delta \indep \varepsilon_{i,t}
+    \end{align*}
 
 % \textbf{WHAT FOLLOWS IS (a) defense of the modeling choices, (b) remarks on the models' implications and subtleties}\\
 
@@ -425,12 +452,12 @@ Recall models $\mc{M}_1$ and $\mc{M}_2$:
 \end{align*}
 
 \begin{align*}
-\mc{M}_2 \colon \begin{array}{l}
-   \sigma^{2}_{i,t} = \omega_{i} + \omega^{*}_i D^{vol}_{i,t} + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \text{ }\\[.2cm]
-   a_{i,t} = \sigma_{i,t}(\epsilon_{i,t}(1-D^{level}_{i,t}) + \epsilon^{*}_{i}D^{level}_{i,t})\\[.2cm]
-   \omega_i^{*} = \mu_{\omega^{*}}+\delta'\mbf{x}_{i, T_i^*}+ \t{\varepsilon}_{i},
-\end{array}
-\end{align*}
+  \mc{M}_2 \colon \begin{array}{l}
+     \sigma^{2}_{i,t} = \omega_{i} + \omega^{*}_i D^{vol}_{i,t} + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \text{ }\\[.2cm]
+     a_{i,t} = \sigma_{i,t}(\epsilon_{i,t}(1-D^{level}_{i,t}) + \epsilon^{*}_{i}D^{level}_{i,t})\\[.2cm]
+     \omega_i^{*} = \mu_{\omega^{*}}+\delta'\mbf{x}_{i, T_i^*}+ \varepsilon_{i},
+  \end{array}
+  \end{align*}
 
 We will discuss these two models in the context of a shock in only the volatility, i.e. with $D^{level}_{i,t} \equiv 0$.\\
 
@@ -515,34 +542,6 @@ Place here
 \item Swamped by shock: If the goal is near-term forecasting, then we don't really care how those coefficients may be changing.  The assumption is that if any changes occur, their influence cannot account for the large shock. Given that the GARCH parameters for a stationary GARCH process must sum to less than 1, there is an upper bound to the forecastable change.
 \item Practically infeasible: If we did that, we would need quite a few time points to reliably estimate the change in the GARCH parameters.  We don't have that.
 \end{enumerate}
-
-Notice that $\mc{M}_1$ assumes that $\omega^{*}_i$ are i.i.d. with $\E[ \omega^{*}_i]=\mu_{\omega^{*}}$ 
-for $i = 1, \ldots, n+1$. We also consider a model where the shock effects are linear functions of covariates with an additional additive mean-zero error. For $i = 1, \ldots, n+1$, the random effects structure for this model (model $\mc{M}_2$) is:
-
-\begin{align}
-\mc{M}_2 \colon \begin{array}{l}
-   \sigma^{2}_{i,t} = \omega_{i} + \omega^{*}_i D_{i,t}  + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \text{ }\\[.2cm]
-   a_{i,t} = \sigma_{i,t}(\epsilon_{i,t}(1-D^{level}_{i,t}) + \epsilon^{*}_{i}D^{level}_{i,t})\\[.2cm]
-   \omega_i^{*} = \mu_{\omega^{*}}+\delta'\mbf{x}_{i, T_i^*}+ \t{\varepsilon}_{i},
-\end{array}
-\end{align}\label{model2}
-
- where the added random effects are
-
-\begin{align*}
-\omega^{*}_i &\simiid \mc{F}_{\omega^{*}} \text{ with }  \; \mrm{E}_{\mc{F}_{\omega^{*}}}(\omega^{*}) = \mu_{\omega^{*}}, \mrm{Var}_{\mc{F}_{\omega^{*}_i}}(\omega^{*}_i)  = \sigma^2_{\omega^{*}}  \\
-\epsilon^{*}_i &\simiid \mc{F}_{\epsilon^{*}} \text{ with }  \; \mrm{E}_{\mc{F}_{\epsilon^{*}}}(\epsilon^{*}_i) = \mu_{\epsilon^{*}}, \mrm{Var}_{\mc{F}_{\epsilon^{*}}}(\epsilon^{*}_i)  = \sigma^2_{\epsilon^{*}}  \\
-% & \text{Alternatively, } (\omega^{*}, \epsilon^{*})_{i} \sim \mathcal{N}(\mu_{\omega^{*},\epsilon^{*}}, \Sigma_{\omega^{*},\epsilon^{*}}) \\
-% THESE ARE NOT RANDOM &(\alpha, \beta)_i \simiid \mc{F}_{(\alpha, \beta)} \text{ where } \sum^{ \text{max} \{m,s \} }_{j}\alpha_j + \beta_j < 1 \\
-\delta &\simiid \mc{F}_{\delta} \text{ with }  \; \mrm{E}_{\mc{F}_{\delta}}(\delta) = \mu_{\delta}, \mrm{Var}_{\mc{F}_{\delta}}(\delta_i)  = \Sigma_{\delta} \\
-% \mathbf{v}_i &\simiid \mc{F}_{\mathbf{v}} \text{ with }  \; \mrm{E}_{\mc{F}_{\mathbf{v}}}(\mathbf{v}_i) = \mu_{\mathbf{v}}, \mrm{Var}_{\mc{F}_{\mathbf{v}}}(\mathbf{v}_i)  = \Sigma^2_{\mathbf{v}} \\
-\varepsilon_{i,t} & \simiid  \mc{F}_{\varepsilon} \text{ with }  \; \mrm{E}_{\mc{F}_{\varepsilon}}(\varepsilon_{i,t}) = 0, \mrm{Var}_{\mc{F}_{\varepsilon}}(\varepsilon_{i,t})  = 1 \\
-\t\varepsilon_{i} & \simiid  \mc{F}_{\t\varepsilon} \text{ with }  \; \mrm{E}_{\mc{F}_{\t\varepsilon}}(\t\varepsilon_{i}) = 0, \mrm{Var}_{\mc{F}_{\varepsilon}}(\varepsilon_{i})  = \sigma^2_{\t\varepsilon} \\
-%l_{i,vol} &\simiid \text{Unif}\{1,2,...,\text{maximum volatility shock length}\}\\
-%l_{i, level} &\simiid \text{Unif}\{1,2,...,l_{i,vol}\}\\
-\omega^{*}_i &\indep  \epsilon^{*}_i \indep \gamma_i \indep \delta \indep \varepsilon_{i,t} \indep \t\varepsilon_{i}.
-\end{align*}
-
 
 \begin{table}[]
 \begin{tabular}{|p{1.2in}|p{1.9in}|p{1.9in}|}
