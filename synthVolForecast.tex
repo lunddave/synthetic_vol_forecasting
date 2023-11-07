@@ -167,7 +167,17 @@ $z_{T^{*}+1}^{\text{irregular news shock}} \coloneqq z_{T^{*}+1}^{\text{irregula
 In our adapted schema, irregular news shocks are $\mathcal{F}_{T^{*}}$-zero-expectation events governed by a GARCH-X process.  As such, $z_{T^{*}+1}^{\text{irregular news shock}}$ admits of the decomposition $z_{T^{*}+1} = \sigma_{T^{*}+1}\epsilon_{T^{*}+1}$
 
 \subsection{Improvements of this current work over its predecessor}
-This present work extends \citet{lin2021minimizing} principally by substituting the "workhorse" GARCH model and for modeling both the mean and volatility of a univariate time series.  We permit both shocks in the mean model and volatility model of GARCH.  As ancillary improvements, the current work permits the shock periods to be of any length, formally $L_{\text{vol}}, L_{\text{level}} \in \mathbb{Z}^{+}$, and the weights applied to the donor pool can come from more exotic sets in $\mathbb{R}^{n}$.  At a technical level, the most substantial insight related to \citet{lin2021minimizing} is that the GARCH model provides elegant forecast function for squared observations of the time series under study. 
+This present work extends \citet{lin2021minimizing} principally by substituting the GARCH model and for modeling both the mean and volatility of a univariate time series.  We permit both shocks in the mean model and volatility model of GARCH.  As ancillary improvements, the current work permits the shock periods to be of any length, formally $L_{\text{vol}}, L_{\text{level}} \in \mathbb{Z}^{+}$, and the weights applied to the donor pool can come from more exotic subsets of $\mathbb{R}^{n}$.  
+
+At a technical level, the most substantial insight related to \citet{lin2021minimizing} is that the GARCH model provides elegant forecast function for squared observations of the time series under study. To see this, for each $i,t$, define $\eta_{i,t} \coloneqq a^{2}_{i,t} - \sigma^{2}_{i,t}$, and by adding $\eta_{i,t}$ to both sides of the conditional variance specification of $\mc{M}_1$ and $\mc{M}_2$, we obtain the standard ARMA representation of a GARCH(m,s):
+
+\begin{align}
+a^{2}_{i,t} = a^{2}_{i,t} - \sigma^{2}_{i,t} + \sigma^{2}_{i,t} = \eta_{i,t} + \sigma^{2}_{i,t} &= \eta_{i,t} + \omega_{i} + \omega^{*}_i D_{i,t}  + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \\
+    &= \eta_{i,t} + \omega_{i} + \omega^{*}_i D_{i,t}  + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k}  + \sum_{j=1}^{s_{i}}\beta_{i,j}(a^{2}_{i,t-j} - \eta_{i,t-j}) + \gamma_{i}^{T} \x_{i,t} \\
+    &= \eta_{i,t} + \omega_{i} + \omega^{*}_i D_{i,t}  + \sum^{\text{max}\{m_{i},s_{i}\}}_{k=1}(\alpha_{i,k} + \beta_{i,k})a^{2}_{i,t-k} - \sum_{j=1}^{s_{i}}\beta_{i,j}\eta_{i,t-j} + \gamma_{i}^{T} \x_{i,t}\label{armarep}
+\end{align}
+
+Then for any $t$ and $i$, $\E[a^{2}_{i,t}]$ is nothing more than the expectation of the right-hand side of $\ref{armarep}$, where $\E[\eta_{i,t}] = 0$
 
 \begin{enumerate}
 \item $y_{i,t}$ have shocks in both volatility and level.
@@ -177,7 +187,6 @@ This present work extends \citet{lin2021minimizing} principally by substituting 
 \item By offering more linear combination methods for the donor pool shocks (e.g. unit ball, affine hull, convex cone), we give the operator the ability to use donors such that the donor outcome series is negatively correlated with the time series under study.
 \item See Tsay p. 133: if $t$ is the last index that has been observed, then our two-step-ahead forecast is made easier by rewriting the volatility equation as $\sigma^{2}_{i,t+1} = w_{i} + (\alpha_{i} + \beta_{i})\sigma^{2}_{i,t} + \alpha_{1}\sigma^{2}_{i,t}[\epsilon^{2}_{i,t} - 1]= w_{i} + (\alpha_{i} + \beta_{i})\sigma^{2}_{i,t} + \alpha_{1}\sigma^{2}_{i,t}[\epsilon^{2}_{i,t} - 1] $.  Usually, we assume unit variance (though not necessarily a N(0,1)).  However, what is the variance is smaller than 1?  Then in conditional expectation, the term $\alpha_{1}\sigma^{2}_{i,t}[\epsilon^{2}_{i,t} - 1]$ will be negative.  So it seems that for level shock, we want the signal to noise ratio to be large because the mean is high, not because the variance is low.
 \end{enumerate}
-
 
 \section{Setting}
 \label{section2}
@@ -327,11 +336,12 @@ $\mbf{x}_{i,t}$ are fixed.\footnote{Need to determine what difference it makes t
 
 \begin{align*}
   \omega^{*}_i &\simiid \mc{F}_{\omega^{*}} \text{ with }  \; \mrm{E}_{\mc{F}_{\omega^{*}}}(\omega^{*}_i) = \mu_{\omega^{*}}, \mrm{Var}_{\mc{F}_{\omega^{*}}}(\omega^{*}_i)  = \sigma^2_{\omega^{*}}  \\
+  \epsilon_i &\simiid \mc{F}_{\epsilon} \text{ with }  \; \mrm{E}_{\mc{F}_{\epsilon}}(\epsilon) = 0, \mrm{Var}_{\mc{F}_{\epsilon}}(\epsilon)  = \sigma^2_{\epsilon}  \\
   \epsilon^{*}_i &\simiid \mc{F}_{\epsilon^{*}} \text{ with }  \; \mrm{E}_{\mc{F}_{\epsilon^{*}}}(\epsilon^{*}_i) = \mu_{\epsilon^{*}}, \mrm{Var}_{\mc{F}_{\epsilon^{*}}}(\epsilon^{*}_i)  = \sigma^2_{\epsilon^{*}}  \\
   % & \text{Alternatively, } (\omega^{*}, \epsilon^{*})_{i} \sim \mathcal{N}(\mu_{\omega^{*},\epsilon^{*}}, \Sigma_{\omega^{*},\epsilon^{*}}) \\
   % THESE ARE NOT RANDOM &(\alpha, \beta)_i \simiid \mc{F}_{(\alpha, \beta)} \text{ where } \sum^{ \text{max} \{m,s \} }_{j}\alpha_j + \beta_j < 1 \\
   % \mathbf{v}_i &\simiid \mc{F}_{\mathbf{v}} \text{ with }  \; \mrm{E}_{\mc{F}_{\mathbf{v}}}(\mathbf{v}_i) = \mu_{\mathbf{v}}, \mrm{Var}_{\mc{F}_{\mathbf{v}}}(\mathbf{v}_i)  = \Sigma^2_{\mathbf{v}} \\
-  \varepsilon_{i,t} & \simiid  \mc{F}_{\varepsilon} \text{ with }  \; \mrm{E}_{\mc{F}_{\varepsilon}}(\varepsilon_{i,t}) = 0, \mrm{Var}_{\mc{F}_{\varepsilon}}(\varepsilon_{i,t})  = 1 \\
+  \varepsilon_{i,t} & \simiid  \mc{F}_{\varepsilon} \text{ with }  \; \mrm{E}_{\mc{F}_{\varepsilon}}(\varepsilon_{i,t}) = 0, \mrm{Var}_{\mc{F}_{\varepsilon}}(\varepsilon_{i,t}) = \sigma^2_{\varepsilon} \\
   %l_{i,vol} &\simiid \text{Unif}\{1,2,...,\text{maximum volatility shock length}\}\\
   %l_{i, level} &\simiid \text{Unif}\{1,2,...,l_{i,vol}\}\\
   \omega^{*}_{i} &\indep  \epsilon^{*}_i \indep \gamma_i \indep \varepsilon_{i,t}.
@@ -351,12 +361,13 @@ Notice that $\mc{M}_1$ assumes that $\omega^{*}_i$ are i.i.d. with $\E[ \omega^{
 
   \begin{align*}
     \omega^{*}_i &\simiid \mc{F}_{\omega^{*}} \text{ with }  \; \mrm{E}_{\mc{F}_{\omega^{*}}}(\omega^{*}) = \mu_{\omega^{*}}, \mrm{Var}_{\mc{F}_{\omega^{*}_i}}(\omega^{*}_i)  = \sigma^2_{\omega^{*}}  \\
+    \epsilon_i &\simiid \mc{F}_{\epsilon} \text{ with }  \; \mrm{E}_{\mc{F}_{\epsilon}}(\epsilon) = 0, \mrm{Var}_{\mc{F}_{\epsilon}}(\epsilon)  = \sigma^2_{\epsilon}  \\
     \epsilon^{*}_i &\simiid \mc{F}_{\epsilon^{*}} \text{ with }  \; \mrm{E}_{\mc{F}_{\epsilon^{*}}}(\epsilon^{*}_i) = \mu_{\epsilon^{*}}, \mrm{Var}_{\mc{F}_{\epsilon^{*}}}(\epsilon^{*}_i)  = \sigma^2_{\epsilon^{*}}  \\
     % & \text{Alternatively, } (\omega^{*}, \epsilon^{*})_{i} \sim \mathcal{N}(\mu_{\omega^{*},\epsilon^{*}}, \Sigma_{\omega^{*},\epsilon^{*}}) \\
     % THESE ARE NOT RANDOM &(\alpha, \beta)_i \simiid \mc{F}_{(\alpha, \beta)} \text{ where } \sum^{ \text{max} \{m,s \} }_{j}\alpha_j + \beta_j < 1 \\
     \delta &\simiid \mc{F}_{\delta} \text{ with }  \; \mrm{E}_{\mc{F}_{\delta}}(\delta) = \mu_{\delta}, \mrm{Var}_{\mc{F}_{\delta}}(\delta_i)  = \Sigma_{\delta} \\
     % \mathbf{v}_i &\simiid \mc{F}_{\mathbf{v}} \text{ with }  \; \mrm{E}_{\mc{F}_{\mathbf{v}}}(\mathbf{v}_i) = \mu_{\mathbf{v}}, \mrm{Var}_{\mc{F}_{\mathbf{v}}}(\mathbf{v}_i)  = \Sigma^2_{\mathbf{v}} \\
-    \varepsilon_{i,t} & \simiid  \mc{F}_{\varepsilon} \text{ with }  \; \mrm{E}_{\mc{F}_{\varepsilon}}(\varepsilon_{i,t}) = 0, \mrm{Var}_{\mc{F}_{\varepsilon}}(\varepsilon_{i,t})  = 1 \\
+    \varepsilon_{i,t} & \simiid  \mc{F}_{\varepsilon} \text{ with }  \; \mrm{E}_{\mc{F}_{\varepsilon}}(\varepsilon_{i,t}) = 0, \mrm{Var}_{\mc{F}_{\varepsilon}}(\varepsilon_{i,t}) = \sigma^2_{\varepsilon}\\
     %l_{i,vol} &\simiid \text{Unif}\{1,2,...,\text{maximum volatility shock length}\}\\
     %l_{i, level} &\simiid \text{Unif}\{1,2,...,l_{i,vol}\}\\
     \omega^{*}_i &\indep  \epsilon^{*}_i \indep \gamma_i \indep \delta \indep \varepsilon_{i,t}
@@ -473,7 +484,7 @@ First, for each $i,t$, define $\eta_{i,t} \coloneqq a^{2}_{i,t} - \sigma^{2}_{i,
 \begin{align*}
 a^{2}_{i,t} = a^{2}_{i,t} - \sigma^{2}_{i,t} + \sigma^{2}_{i,t} = \eta_{i,t} + \sigma^{2}_{i,t} &= \eta_{i,t} + \omega_{i} + \omega^{*}_i D_{i,t}  + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \\
     &= \eta_{i,t} + \omega_{i} + \omega^{*}_i D_{i,t}  + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k}  + \sum_{j=1}^{s_{i}}\beta_{i,j}(a^{2}_{i,t-j} - \eta_{i,t-j}) + \gamma_{i}^{T} \x_{i,t} \\
-    &= \eta_{i,t} + \omega_{i} + \omega^{*}_i D_{i,t}  + \sum^{\text{max}\{m_{i},s_{i}\}}_{k=1}(\alpha_{i,k} + \beta_{i,k})a^{2}_{i,k} - \sum_{j=1}^{s_{i}}\beta_{i,j}\eta_{i,t-j} + \gamma_{i}^{T} \x_{i,t} \\
+    &= \eta_{i,t} + \omega_{i} + \omega^{*}_i D_{i,t}  + \sum^{\text{max}\{m_{i},s_{i}\}}_{k=1}(\alpha_{i,k} + \beta_{i,k})a^{2}_{i,t-k} - \sum_{j=1}^{s_{i}}\beta_{i,j}\eta_{i,t-j} + \gamma_{i}^{T} \x_{i,t} \\
 \end{align*}
 
 where the $a^{2}_{i,t}$ (the autoregressive terms) are observable and the $\eta_{i,t}$ (the moving average terms) are not.  Next, as shown in \citet{abadie2010synthetic}, under the autoregressive model 
@@ -488,8 +499,8 @@ and the assumptions that we, the practitioner, choose $\{w_{i}^{*}\}_{2\leq i \l
 \begin{align*}
 \begin{array}{lll}
 \sum^{n+1}_{i=2}w_{i}^{*}Y_{i,T^{*}} = Y_{1}^{*} & \text{and} & \sum^{n+1}_{i=2}w_{i}^{*}\bm{X}_{i,T^{*}} = X_{1,T^{*}}^{*} \\
-\end{array}\label{Abadie assumptions}
-\end{align*}
+\end{array}
+\end{align*}\label{Abadie assumptions}
 
 and $u_{i,t}, \bm{v}_{i,t}$ are mean-zero conditional of $\mathcal{F}_{t} = \{Y_{i,t}, \bm{X}_{i,t}\}_{need subscript here}$.
 
@@ -557,9 +568,9 @@ We further define the parameter sets
 \begin{align}
   \begin{array}{lll}
      \Theta &= &\{(\omega^{*}_i, \epsilon^{*}_i,\gamma_i, \delta,\varepsilon_{i,t},\t\varepsilon_{i})\colon t= 1, \ldots, T_i, i = 2, \ldots, n +1\},\\
-    \Theta_1 &= &\{(\omega^{*}_i, \epsilon^{*}_i,\gamma_i, \delta,\varepsilon_{i,t},\t\varepsilon_{i})\colon t= 1, \ldots, T_i, i = 1\},\label{parameter}
+    \Theta_1 &= &\{(\omega^{*}_i, \epsilon^{*}_i,\gamma_i, \delta,\varepsilon_{i,t},\t\varepsilon_{i})\colon t= 1, \ldots, T_i, i = 1\}
   \end{array}
-\end{align}
+\end{align}\label{parameter}
 where $\Theta$ and $\Theta_1$ can be adapted to $\mc{M}_1$ by dropping $\delta$. We assume this for notational simplicity.
 
 \subsection{Forecasting}
