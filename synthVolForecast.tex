@@ -126,6 +126,7 @@ We develop a novel procedure for forecasting the volatility of a time series und
 \end{abstract}
 
 
+
 \section{Introduction}
 
 The most important stochastic phenomenon of many time series $(P_{t})_{t\in\mathbb{N}}$, especially financial time series, is the volatility of the return series $(r_{t})_{t\in\mathbb{N}}$.  A financial asset's price series and daily return series may exhibit behavior that makes inconvenient and uninterpretable the traditional methods of time series analysis.  In contrast, the volatility of the return series may be less noisy, less structurally dependent on external factors, and more easily modeled as a weakly stationary process.  Yet even if one could model and forecast price series and return series with high accuracy, that would not necessarily tell us much about the variability of such forecasts nor enlighten us about the evolution of the variability of $(P_{t})_{t\in\mathbb{N}}$ over time. Modern portfolio management and theory requires information about at least the first two moments of a return series, if not higher.  For these reasons and others, volatility modeling has come to dominate financial econometrics over the past four decades.  
@@ -148,6 +149,8 @@ The approach herein can be viewed as an attempt to sidestep the functional compl
 \end{figure}
 
 As we see in \ref{fig:arith_mean}, the arithmetic mean of estimated shock effects provides perhaps the most straightforward and intuitive way of aggregating information from similar events. Aggregating forecasts using the arithmetic mean is more than merely intuitive; it possesses an empirical pedigree and is known to be optimal under rather restrictive conditions \citep{timmermann2006forecast}.  Synthetic volatility forecasting lacks these restrictions and instead assumes a credible, parsimonious parameterization in which the shock is an affine transformation of several key covariates. \\
+
+\section{Literature Review}
 
 \subsection{Connection to forecast combination methods}
 What we're combining, if anything, is subcomponents of forecasts, not forecasts themselves.  However, from a broader perspective, forecast combination is an inapt term for what is being proposed here.  First, the donors are not forecasts. 
@@ -177,11 +180,9 @@ a^{2}_{i,t} = a^{2}_{i,t} - \sigma^{2}_{i,t} + \sigma^{2}_{i,t} = \eta_{i,t} + \
     &= \eta_{i,t} + \omega_{i} + \omega^{*}_i D_{i,t}  + \sum^{\text{max}\{m_{i},s_{i}\}}_{k=1}(\alpha_{i,k} + \beta_{i,k})a^{2}_{i,t-k} - \sum_{j=1}^{s_{i}}\beta_{i,j}\eta_{i,t-j} + \gamma_{i}^{T} \x_{i,t}\label{armarep}
 \end{align}
 
-Then for any $t$ and $i$, $\E[a^{2}_{i,t}]$ is nothing more than the expectation of the right-hand side of $\ref{armarep}$, where $\E[\eta_{i,t}] = 0$
+Then for any $i,t$, $\E[a^{2}_{i,t}]$ is nothing more than the expectation of the right-hand side of $(\ref{armarep})$, where $\E[\eta_{i,t}] = 0$ for any $i,t$.  Hence $\E[a^{2}_{i,t}] =  \omega_{i} + \omega^{*}_i D_{i,t}  + \sum^{\text{max}\{m_{i},s_{i}\}}_{k=1}(\alpha_{i,k} + \beta_{i,k})a^{2}_{i,t-k} + \gamma_{i}^{T} \x_{i,t}$
 
 \begin{enumerate}
-\item $y_{i,t}$ have shocks in both volatility and level.
-\item The shocks can have length greater than 1.
 \item The method under development does not strictly require knowledge of the length of the shocks in the donor pool, but correctly sizing up those shock lengths is helpful to proper estimation of the shocks in the donor pool.  An important question remains: even if the donor pool shock lengths are assumed to be known, how do we advise the operator to forecast the time series under study?  For how long is the forecast reliable?  Should we take a convex combination of the donor pool shock lengths?  Or mean? Or minimum of the donor pool shock lengths?
 \item Lin+Eck 2021 requires exogenous information to arrive strictly between $T^{*}$ and $T^{*}+1$.  However, we may want to relax this requirement so as to permit the exogenous information to be concurrent with the trading session or end of session on $T^{*}+1$.
 \item By offering more linear combination methods for the donor pool shocks (e.g. unit ball, affine hull, convex cone), we give the operator the ability to use donors such that the donor outcome series is negatively correlated with the time series under study.
@@ -432,7 +433,7 @@ In other words, once two time points removed from the longest shock length, the 
  
  $\mathbb{E}[ x_{i,t,k} * \delta_{k} ] > 0$
  
- In principle, you could have an M21 shock with a covariate that, in expectation, has a negative marginal contribution to the cumulative shock
+ In principle, you could have an $\mc{M}_{21}$ shock with a covariate that, in expectation, has a negative marginal contribution to the cumulative shock
 
 Moreover, after both shocks have been exhausted, their influence disappears quickly.  This short-memory effect has implications for the method being developed herein:
 
@@ -599,7 +600,7 @@ Recall $\mc{M}_2$:
 \mc{M}_2 \colon \begin{array}{l}
    \sigma^{2}_{i,t} = \omega_{i} + \omega^{*}_i D^{vol}_{i,t} + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \text{ }\\[.2cm]
    a_{i,t} = \sigma_{i,t}(\epsilon_{i,t}(1-D^{level}_{i,t}) + \epsilon^{*}_{i}D^{level}_{i,t})\\[.2cm]
-   \omega_i^{*} = \mu_{\omega^{*}}+\delta'\mbf{x}_{i, T_i^*}+ \t{\varepsilon}_{i},
+   \omega_i^{*} = \mu_{\omega^{*}}+\delta'\mbf{x}_{i, T_i^*}+ \varepsilon_{i},
 \end{array}
 \end{align*}
 
