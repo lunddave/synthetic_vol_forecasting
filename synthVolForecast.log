@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2023.11.6)  8 NOV 2023 17:19
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2023.11.6)  9 NOV 2023 11:42
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -770,97 +770,97 @@ Overfull \hbox (8.11958pt too wide) detected at line 181
  []
 
 [3] [4] [5] [6] [7] [8] [9]
-Underfull \hbox (badness 10000) in paragraph at lines 420--422
+Underfull \hbox (badness 10000) in paragraph at lines 419--421
 
  []
 
 [10]
-Underfull \hbox (badness 10000) in paragraph at lines 474--475
+Underfull \hbox (badness 10000) in paragraph at lines 473--474
 
  []
 
 
-Overfull \hbox (8.11958pt too wide) detected at line 489
+Overfull \hbox (8.11958pt too wide) detected at line 488
 []
  []
 
 [11]
-Overfull \hbox (12.73756pt too wide) in paragraph at lines 523--524
+Overfull \hbox (12.73756pt too wide) in paragraph at lines 522--523
 \OT1/cmr/m/n/10.95 sen-ta-tion of GARCH(m,s) above, we could re-cover an un-bi-ased es-ti-ma-tor of the news shock $[][] \OML/cmm/m/it/10.95 w[]^^[[] \OMS/cmsy/m/n/10.95 ^^@
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 534--535
+Underfull \hbox (badness 10000) in paragraph at lines 533--534
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 541--543
+Underfull \hbox (badness 10000) in paragraph at lines 540--542
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 549--551
+Underfull \hbox (badness 10000) in paragraph at lines 548--550
 
  []
 
 [12]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 558.
+               Default added (so using `tbp') on input line 557.
 
 
-Underfull \hbox (badness 1796) in paragraph at lines 562--562
+Underfull \hbox (badness 1796) in paragraph at lines 561--561
 []|\OT1/cmr/m/n/10.95 Captures rea-son-able pos-si-
  []
 
-<simulation_plots/outperformance_grid.png, id=346, 691.83469pt x 554.82281pt>
+<simulation_plots/outperformance_grid.png, id=345, 691.83469pt x 554.82281pt>
 File: simulation_plots/outperformance_grid.png Graphic file (type png)
 <use simulation_plots/outperformance_grid.png>
-Package pdftex.def Info: simulation_plots/outperformance_grid.png  used on input line 613.
+Package pdftex.def Info: simulation_plots/outperformance_grid.png  used on input line 612.
 (pdftex.def)             Requested size: 311.32272pt x 249.66795pt.
 [13] [14 <./simulation_plots/outperformance_grid.png (PNG copy)>] [15]
-<real_data_output_plots/savetime_FriOct2707:05:03PM2023_IYG_6B=F-CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-23.png, id=397, 803.0pt x 602.25pt>
+<real_data_output_plots/savetime_FriOct2707:05:03PM2023_IYG_6B=F-CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-23.png, id=396, 803.0pt x 602.25pt>
 File: real_data_output_plots/savetime_FriOct2707:05:03PM2023_IYG_6B=F-CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-23.png Graphic file (type png)
 <use real_data_output_plots/savetime_FriOct2707:05:03PM2023_IYG_6B=F-CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-23.png>
-Package pdftex.def Info: real_data_output_plots/savetime_FriOct2707:05:03PM2023_IYG_6B=F-CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-23.png  used on input line 670.
+Package pdftex.def Info: real_data_output_plots/savetime_FriOct2707:05:03PM2023_IYG_6B=F-CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-23.png  used on input line 669.
 (pdftex.def)             Requested size: 481.80373pt x 361.35278pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 676--677
+Underfull \hbox (badness 10000) in paragraph at lines 675--676
 
  []
 
 [16]
-<real_data_output_plots/savetime_FriOct2707:14:00PM2023_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png, id=413, 803.0pt x 602.25pt>
+<real_data_output_plots/savetime_FriOct2707:14:00PM2023_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png, id=412, 803.0pt x 602.25pt>
 File: real_data_output_plots/savetime_FriOct2707:14:00PM2023_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png Graphic file (type png)
 <use real_data_output_plots/savetime_FriOct2707:14:00PM2023_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png>
-Package pdftex.def Info: real_data_output_plots/savetime_FriOct2707:14:00PM2023_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png  used on input line 682.
+Package pdftex.def Info: real_data_output_plots/savetime_FriOct2707:14:00PM2023_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png  used on input line 681.
 (pdftex.def)             Requested size: 481.80373pt x 361.35278pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 702--702
+Underfull \hbox (badness 10000) in paragraph at lines 701--701
 []|$\OML/cmm/m/it/10.95 A[]$ \OT1/cmr/m/n/10.95 in-de-pen-dent $\OMS/cmsy/m/n/10.95 8\OML/cmm/m/it/10.95 i$\OT1/cmr/m/n/10.95 ,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 702--702
+Underfull \hbox (badness 10000) in paragraph at lines 701--701
 []|$\OML/cmm/m/it/10.95 x[]$ \OT1/cmr/m/n/10.95 in-de-pen-dent across
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 702--702
+Underfull \hbox (badness 10000) in paragraph at lines 701--701
 []|$\OML/cmm/m/it/10.95 x[]$ \OT1/cmr/m/n/10.95 in-de-pen-dent across
  []
 
 
-Overfull \hbox (35.54613pt too wide) in paragraph at lines 695--706
+Overfull \hbox (35.54613pt too wide) in paragraph at lines 694--705
 [][] 
  []
 
@@ -879,18 +879,18 @@ Package rerunfilecheck Info: File `synthVolForecast.out' has not changed.
 (rerunfilecheck)             Checksum: 5B6CE75E9A679D9CCBD8E4810BBB5A1A;7957.
  ) 
 Here is how much of TeX's memory you used:
- 25408 strings out of 475735
- 463228 string characters out of 5784786
- 1879759 words of memory out of 5000000
- 45576 multiletter control sequences out of 15000+600000
- 530742 words of font info for 96 fonts, out of 8000000 for 9000
+ 25420 strings out of 475735
+ 463370 string characters out of 5784786
+ 1878759 words of memory out of 5000000
+ 45586 multiletter control sequences out of 15000+600000
+ 533329 words of font info for 106 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,17n,87p,1978b,594s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0600.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0800.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on synthVolForecast.pdf (21 pages, 648422 bytes).
+Output written on synthVolForecast.pdf (21 pages, 648229 bytes).
 PDF statistics:
- 572 PDF objects out of 1000 (max. 8388607)
- 494 compressed objects within 5 object streams
- 133 named destinations out of 1000 (max. 500000)
+ 570 PDF objects out of 1000 (max. 8388607)
+ 492 compressed objects within 5 object streams
+ 132 named destinations out of 1000 (max. 500000)
  321 words of extra memory for PDF output out of 10000 (max. 10000000)
 

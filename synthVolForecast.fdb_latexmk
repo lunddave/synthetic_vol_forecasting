@@ -1,21 +1,22 @@
 # Fdb version 4
-["bibtex synthVolForecast"] 1699492405 "synthVolForecast.aux" "synthVolForecast.bbl" "synthVolForecast" 1699492747 0
+["bibtex synthVolForecast"] 1699492405 "synthVolForecast.aux" "synthVolForecast.bbl" "synthVolForecast" 1699558946 0
   "./synthVolForecast.bib" 1698998359 41205 0547e3c09ff78efe0c53f528c9dba661 ""
   "/usr/share/texlive/texmf-dist/bibtex/bst/natbib/plainnat.bst" 1233624470 26816 ffe5423d2019860bad9f54bc402fac15 ""
-  "synthVolForecast.aux" 1699492746 11601 dc41cf2c9be53e56c5d3e1209e0f7cbb "pdflatex"
+  "synthVolForecast.aux" 1699558946 11601 dc41cf2c9be53e56c5d3e1209e0f7cbb "pdflatex"
   (generated)
   "synthVolForecast.bbl"
   "synthVolForecast.blg"
   (rewritten before read)
-["pdflatex"] 1699492745 "/home/david/Desktop/synthetic_vol_forecasting/synthVolForecast.tex" "synthVolForecast.pdf" "synthVolForecast" 1699492747 0
+["pdflatex"] 1699558945 "/home/david/Desktop/synthetic_vol_forecasting/synthVolForecast.tex" "synthVolForecast.pdf" "synthVolForecast" 1699558946 0
   "/etc/texmf/web2c/texmf.cnf" 1697949250 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/david/Desktop/synthetic_vol_forecasting/synthVolForecast.tex" 1699492744 65642 d433a94eca52f064cae044a62a28657c ""
+  "/home/david/Desktop/synthetic_vol_forecasting/synthVolForecast.tex" 1699558945 65391 88bcacb250c4c0d4b79f4828763b98b0 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcrm0600.tfm" 1136768653 1536 12e8c510d3e158fdd0e9a42e75118bd9 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcrm0800.tfm" 1136768653 1536 05df9db6aeccc4eea94fec15c9024f79 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcrm1095.tfm" 1136768653 1536 02c06700a42be0f5a28664c7273f82e7 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy5.tfm" 1246382020 1120 1e8878807317373affa7f7bba4cf2f6a ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy6.tfm" 1246382020 1124 14ccf5552bc7f77ca02a8a402bea8bfb ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy7.tfm" 1246382020 1120 7f9f170e8aa57527ad6c49feafd45d54 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy8.tfm" 1246382020 1120 200be8b775682cdf80acad4be5ef57e4 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy9.tfm" 1246382020 1112 cbc11b646ccc26599775160605aaee3a ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
@@ -23,6 +24,7 @@
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex9.tfm" 1246382020 996 a18840b13b499c08ac2de96a99eda4bc ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmmib5.tfm" 1246382020 1496 c79f6914c6d39ffb3759967363d1be79 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmmib6.tfm" 1246382020 1516 a3bf6a5e7ec4401b1f52092dfaaed242 ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmmib7.tfm" 1246382020 1508 6e807ff901c35a5f1fde0ca275533df8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmmib8.tfm" 1246382020 1528 dab402b9d3774ca98baa037071cee7ae ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmmib9.tfm" 1246382020 1528 159d57adcba064aab4277245c826577d ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1246382020 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -36,6 +38,7 @@
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm" 1136768653 1324 c910af8c371558dc20f2d7822f66fe64 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx5.tfm" 1136768653 1332 f817c21a1ba54560425663374f1b651a ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx6.tfm" 1136768653 1344 8a0be4fe4d376203000810ad4dc81558 ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx7.tfm" 1136768653 1336 3125ccb448c1a09074e3aa4a9832f130 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx8.tfm" 1136768653 1332 1fde11373e221473104d6cc5993f046e ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx9.tfm" 1136768653 1328 5442e22a7072966dbaf88ca900acf3f0 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmex10.tfm" 1136768653 992 662f679a0b3d2d53c1b94050fdaa3f50 ""
@@ -235,10 +238,10 @@
   "real_data_output_plots/savetime_FriOct2707:14:00PM2023_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png" 1698459240 33041 8fc5e64635625e98da52ca017d5b9881 ""
   "simulation_plots/USE_in_paper_simulation_plot_arithmetic_mean.png" 1686433176 39607 d52a936f53d431eb8546c15fd4c2aff4 ""
   "simulation_plots/outperformance_grid.png" 1682873628 158396 b1ec0e2d286761ba3967c2dcd5714607 ""
-  "synthVolForecast.aux" 1699492746 11601 dc41cf2c9be53e56c5d3e1209e0f7cbb "pdflatex"
+  "synthVolForecast.aux" 1699558946 11601 dc41cf2c9be53e56c5d3e1209e0f7cbb "pdflatex"
   "synthVolForecast.bbl" 1699492405 6523 1b3cfdcb865d42e7f7383ceb4cb444d7 "bibtex synthVolForecast"
-  "synthVolForecast.out" 1699492746 7957 5b6ce75e9a679d9ccbd8e4810bbb5a1a "pdflatex"
-  "synthVolForecast.tex" 1699492744 65642 d433a94eca52f064cae044a62a28657c ""
+  "synthVolForecast.out" 1699558946 7957 5b6ce75e9a679d9ccbd8e4810bbb5a1a "pdflatex"
+  "synthVolForecast.tex" 1699558945 65391 88bcacb250c4c0d4b79f4828763b98b0 ""
   (generated)
   "synthVolForecast.aux"
   "synthVolForecast.log"

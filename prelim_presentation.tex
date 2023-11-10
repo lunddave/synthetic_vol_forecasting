@@ -1,0 +1,412 @@
+
+\documentclass[pdf]{beamer}
+\mode<presentation>{}
+
+% Theme choice:
+\usetheme{CambridgeUS}
+
+%Packages
+\usepackage{bibentry}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage[export]{adjustbox}
+\usepackage{amssymb}
+\usepackage[useregional]{datetime2}
+\usepackage{verbatim}
+\usepackage{mathtools}% http://ctan.org/pkg/mathtools
+\usepackage{mathrsfs}
+
+
+\makeatletter
+\setbeamertemplate{footline}
+{
+    \leavevmode%
+    \hbox{%
+        \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+            \usebeamerfont{author in head/foot}\insertshortauthor
+        \end{beamercolorbox}%
+        \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+            \usebeamerfont{title in head/foot}\insertshorttitle
+        \end{beamercolorbox}%
+        \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+            \usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}
+            \insertframenumber{} / \inserttotalframenumber\hspace*{2ex} 
+        \end{beamercolorbox}}%
+        \vskip0pt%
+    }
+    \makeatother
+
+\title{Benign Overfitting in Linear Regression}
+\subtitle{STAT-576}
+\author{David Lundquist}
+
+\begin{document}
+
+%% title frame
+\begin{frame}
+\titlepage
+\end{frame}
+
+\section{Introduction}
+
+% Frame to get intuitions flowing
+\begin{frame}
+A supposedly impossible trinity in supervised learning theory:\\
+
+\begin{enumerate}
+    \item Interpolate the training data (i.e. fit with zero loss)
+    \item Minimize the complexity of the fitted model.  For example
+        \begin{itemize}
+        \item $\|\hat\beta\|$ in linear models
+        \item The bandwidth parameter $h$ in kernel regression
+        \item $K$ in KNN regression
+        \end{itemize}
+    \item Achieve nearly zero loss out-of-sample 
+
+\end{enumerate}
+
+\end{frame}
+
+
+%Let's throw some images at them
+\begin{frame}
+
+\begin{figure}[h!]
+  \includegraphics[width=0.5\textwidth]{ima.jpeg}
+  \caption{Classification in $\mathbb{R}^{2}$}
+
+\end{figure}
+
+\uncover<2-2>{Interpolation is a bit harder to visualize for linear regression...}\\
+
+
+\end{frame}
+
+%Another image
+\begin{frame}
+
+\begin{figure}[h!]
+  \includegraphics[width=0.5\textwidth]{imc.png}
+  \caption{Linear regression; Data not interpolated}
+
+\end{figure}
+
+Yet we know the data can be interpolated by taking $p \geq n$ linearly independent covariates.
+
+\end{frame}
+
+\begin{frame}
+
+\frametitle{Punchline of the paper}
+
+In linear regression, under assumptions that will follow, near-perfect prediction is possible if \textbf{``the number of directions in $\theta$ that are unimportant for prediction significantly exceeds the sample size''}.\\~\\
+
+Thus, there are only two quantitites that matter here: $\Sigma$ and $n$.  Most of our attention will be on $\Sigma$.
+\end{frame}
+
+% Outline frame
+\begin{frame}{Outline}
+    \tableofcontents
+\end{frame}
+
+% Presentation structure
+
+\section{The Problem}
+
+% Setting for the problem
+\begin{frame}
+\frametitle{Setting for the problem}
+
+\begin{itemize}
+\item $y\in \mathbb{R}^{n}$, a mean-zero, real-valued response to be predicted 
+\item Mean-zero covariate vectors $x \in \mathbb{H}$, a Hilbert space, where $\mathbb{H}$ can be taken to be $\mathbb{R}^{p}$ for the sake of illustration
+\item We predict $y$ using a linear function of the covariates $X$, but this is $\textit{not}$ an assumption about the data generating process.  We do not assume  $y = f(X) + \epsilon$, but $y$ may contain exogenous noise (called ``label noise'' by the authors.)
+\end{itemize}
+\end{frame}
+
+% Technical Specifications
+\begin{frame}
+\fontsize{9pt}{8pt}
+\frametitle{Technical Specifications (many, but familiar)}
+
+\begin{itemize}
+\item We define $\Sigma \coloneqq \mathbb{E}[xx^{T}]$
+\item We define $\theta^{*} \in \mathbb{H}$ to be s.t. $\mathbb{E}[(y - x^{T}\theta^{*})^{2}] = \min_{\theta}\mathbb{E}[(y - x^{T}\theta)^{2}]$
+\begin{itemize}
+    \fontsize{9pt}{8pt}
+    \item \textcolor{red}{As defined here, not necessarily unique, which matters for this paper.}
+\end{itemize}
+\item $x = V\Lambda^{1/2}z$, where $\Sigma = V\Lambda V^{T}$ is the spectral decomposition of $\Sigma$ and $z$ is a vector of independent components, each subgaussian($\sigma_{x}$), where $\sigma_{x} > 0.$
+\item The conditional noise variance $\mathbb{E}[(y - x^{T}\theta^{*})^{2}|x]$ is bounded below by $\sigma^{2} > 0.$
+\item $(y - x^{T}\theta^{*})|x$ is subgaussian($\sigma_{y}$)
+\item Almost surely, for any eigenvector $v$ of $\Sigma$, $Proj_{v^{T}}(X)$ spans a space of dimension n.
+    \begin{itemize}
+    \fontsize{9pt}{8pt}
+    \item Guaranteed when, for example, there exist $p$ linearly independent covariates and $p > n.$ 
+    \end{itemize}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{What's the goal here?}
+In this particular setting, excess risk of an estimator $\theta$ has the form \\~\\
+
+\begin{align*}
+ R(\theta) & = \mathbb{E}_{x,y}[ (y-x^{T}\theta)^{2} -  (y-x^{T}\theta^{*})^{2}] \\
+& = (\theta - \theta^{*})^{T}\Sigma(\theta - \theta^{*})
+\end{align*}
+
+\uncover<1-1>{which we want to minimize, of course.}\\
+
+\end{frame}
+
+\begin{frame}
+\frametitle{What's the method here?}
+    \begin{alignat*}{12}
+    & \text{min}_{\theta \in \mathbb{H}}\|\theta\| \\
+     s.t. & \frac{1}{n}\|X^{T}\theta - y\|^{2}_{2} \leq D
+    \end{alignat*}
+
+\uncover<2-4>{Remarks}\\
+\begin{enumerate}
+\item<3-4> Heuristically speaking, overfitting means $D << \text{min}_{\theta}\mathbb{E}(x^{T}\theta - y)^{2} $, where $x, y$ are out of sample
+\item<4-4> Of course, we're concerned with interpolation, i.e. $D=0$.
+\end{enumerate}
+
+\end{frame}
+
+% Minimum Norm Estimator
+\begin{frame}
+\frametitle{Minimum Norm Estimator}
+
+Why did we just assume something very technical about $Proj_{v^{T}}(X)$?  This condition implies multiple solutions to the equation $y = X\theta$.
+\\~\\
+
+
+``Almost surely, for any eigenvector $v$ of $\Sigma$, $Proj_{v^{T}}(X)$ spans a space of dimension n.`` \\~\\
+
+Since we have more than one choice of $\theta$, we choose the unique $\hat\theta$ with minimum norm:
+
+\[ \hat\theta \coloneqq (X^{T}X)^{\dagger}X^{T}y \]
+
+  We don't have to do this, but the results that follow correspond to the minimum-norm solution.  It's most interesting. \\~\\
+
+
+\end{frame}
+
+\section{Key Conceptual Innovation: Effective Rank}
+
+% Rank of Matrix
+\begin{frame}
+\frametitle{Rank of Matrix}
+
+We know the rank of a matrix $A\in M_{n\times p}(\mathbb{C})$ is 
+
+\begin{itemize}
+    \item The column rank of A (number of linearly independent columns)
+    \item The row rank of A (number of linearly independent rows)
+    \item The dimension of $im(A)$
+\end{itemize}
+
+However, this notion of rank is too rigid.  It's integer-valued, and it tells us very little about the distribution of the eigenvalues.
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Key Conceptual Innovation: Effective Rank}
+    \begin{definition}
+    For a covariance operator $\Sigma$ with the decreasing sequence of eigenvalues $\lambda_{1},\lambda_{2},...$, if $\sum_{i=1}^{\infty}\lambda_{i} < \infty$ and $\lambda_{k+1} > 0$, then for $k\geq 0$, define \\
+
+    \begin{alignat*}{12}
+    & r_{k} = \frac{ \sum_{i > k}\lambda_{i} }{ \lambda_{k+1} } \quad && R_{k} = \frac{ (\sum_{i > k}\lambda_{i})^{2} }{ \sum_{i>k}\lambda_{i}^{2} } 
+    \end{alignat*}
+    \end{definition} 
+
+
+\uncover<2-7>{Key Properties}\\
+\begin{enumerate}
+\item<3-7> $r_{k} \in [1, p - k]$, assuming $p < \infty$
+\item<4-7> $R_{k} \in [1, \infty)$
+\item<5-7> They can be understood in terms of $\ell_{1}$ and $\ell_{2}$ norms.
+\item<6-7> $r_{k}(\Sigma^{2}) \leq r_{k}(\Sigma) \leq R_{k}(\Sigma) \leq r^{2}_{k}(\Sigma) $
+\item<7-7> For the result we now show, $\textit{bigger}$ values of $r_{k}$ and $R_{k}$ are better.
+\end{enumerate}
+
+\end{frame}
+
+\section{Main Result}
+
+\begin{frame}
+\fontsize{8pt}{9pt}
+\frametitle{Main Result: Existence Proof, Dichotomy, and Bounds}
+
+\begin{theorem}
+Define $k^{*}= \text{min}\{ k\geq 0 : r_{k}(\Sigma) \geq bn \} $.  For any $\sigma_{x}$, $\exists b, c, c_{1} > 1$ s.t. $\forall\delta  \in (0,1)$ s.t. $\log({1/\delta}) < n/c$, \textcolor{red}{if} $k^{*} \geq n / c_{1}$, then $\mathbb{E}[R(\hat\theta)] \geq \sigma^{2}/c$.  \textcolor{red}{Otherwise},
+        \begin{enumerate}[A]
+        \item $R(\hat\theta) \leq \underbrace{c\big( \| \theta^{*} \|^{2}\| \Sigma \| \text{max}\{ \sqrt{\frac{r_{0}(\Sigma)}{n}}, \frac{r_{0}(\Sigma)}{n}, \sqrt{\frac{\log(1/\delta)}{n}} \}\big) }_\text{related to the bias}  + \underbrace{ c\log{ (1/\delta) }\sigma^{2}_{y}(  \textcolor{green}{\frac{k^{*}}{n} + \frac{n}{R_{k^{*}}(\Sigma)} } ) }_\text{related to the noise}$ with probability at least $1 - \delta$.
+        \item $\mathbb{E}[R(\hat\theta)] \geq \frac{\sigma^{2}}{c}(  \frac{k^{*}}{n} + \frac{n}{R_{k^{*}}(\Sigma)} )$
+        \end{enumerate}
+\end{theorem}
+
+\uncover<2-7>{Remarks}\\
+\begin{enumerate}
+\item<3-7> A gives us a (high probability) upper bound on the excess risk.
+\item<4-7> B gives us a lower bound on its expectation.
+\item<5-7> The constants $b, c, c_{1}$ depend on $\sigma_{x}$, the subgaussian parameter corresponding to the covariates $X$.
+\item<6-7> Think of $k^{*}$ as the number of dimensions we ignore when hiding the noise.  We want $k^{*}$ to be small compared to $n$, yet no smaller than it need be, obviously.
+\item<7-7> Effective rank encodes how far the vectors $x$ are from isotropy.  Isotropy implies maximum effective rank, whereas small values of effective rank suggests (just like ordinary matrix rank) that many of the vectors generating $\Sigma$ are irrelevant to the variation $\Sigma$  houses.
+
+\end{enumerate}
+\end{frame}
+
+\section{Interpretation and Implications}
+
+% So what do we want our eigenvalues to look like?
+\begin{frame}
+\fontsize{8pt}{9pt}
+\frametitle{So what do we want our eigenvalues to look like?}
+
+$\Sigma = V \Lambda V^{T} =$
+
+\[
+    V \left(
+    \begin{array}{ccccc}
+    \lambda_{1}                                    \\
+      & \lambda_{2}   &   & \text{\huge0}\\
+      &               & \lambda_{3}                 \\
+      & \text{\huge0} &   & \ddots             \\
+      &               &   &   & \lambda_{p} 
+    \end{array}
+    \right) V^{T}
+\]  
+
+
+\uncover<2-6>{Necessary Properties For Near-Perfect Accuracy}\\
+\begin{enumerate}
+\item<3-6> $r_{0}(\Sigma)$ should be small compared to n.
+\item<4-6> $r_{k^{*}}$ and $R_{k^{*}}$ should be large compared to n.
+\item<5-6> The sum of the $\lambda_{i}$ should be small compared to n (to make $k^{*}$ smaller).
+\item<6-6> The number of non-zero eigenvalues should be large compared to n.
+\end{enumerate}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Two Very Simple Examples}
+\fontsize{7pt}{7pt}
+Consider $\Sigma = I_{p}$ (which is induced by isotropy):
+
+\[ r_{0}(\Sigma) = \frac{\sum^{p}_{i=1}\lambda_{i}}{\lambda_{1}} = \frac{p}{1} = p = \frac{p^{2}}{p} = R_{0}(\Sigma) \] 
+
+Next consider infinite-dimensional $\Sigma$ with spectral decomposition
+
+\[
+    V \left(
+    \begin{array}{ccccc}
+    \lambda_{1}                                    \\
+      & \frac{1}{2}   &   & \text{\huge0} \\
+      &               & \frac{1}{4}                   \\
+      &\text{\huge0} &   & \frac{1}{8}           \\
+      &               &   &   & \ddots
+    \end{array}
+    \right) V^{T}
+\] 
+
+    \begin{alignat*}{12}
+    & r_{0}(\Sigma) = \frac{\sum^{p}_{i=1}2^{-i}}{\lambda_{1}} = \frac{\lambda_{1}+1}{\lambda_{1}} \quad && R_{0}(\Sigma) = \frac{(\lambda_{1}+1)^{2}}{\lambda_{1}^{2} - 1 + \sum_{i=1}4^{-i}} = \frac{(\lambda_{1}+1)^{2}}{\lambda_{1}^{2} + 1/3} 
+    \end{alignat*}
+
+\uncover<2-3>{Which of these two cases will be good for benign overfitting?}\\
+\uncover<3-3>{Neither!}\\
+
+\end{frame}
+
+\begin{frame}
+\frametitle{A more benign example}
+\fontsize{17pt}{17pt}
+
+\begin{example}[Coverging at the slowest rate possible]
+Fix $\alpha = 1, \beta > 1$.  Let $\lambda_{i} = \frac{1}{i \log^{\beta}(i+1)}$.
+
+\end{example}
+
+\end{frame}
+
+\begin{frame}
+
+\frametitle{What's the point of all this?}
+
+\begin{itemize}
+    \item In training, we observe both $X$ and $y$, but not the noise.  We then derive $\hat\theta$, a $\textit{noisy, imperfect}$ guess at $\theta^{*}$.
+    \item In prediction, we do not observe $y$ or the noise; we're given $x$; we're hostage to the random object $\hat\theta$ we've just fit.
+\end{itemize}
+
+
+\uncover<2-8>{The Magic}
+\begin{itemize}
+    \item<3-8> Not all of the coordinates (directions) in $\hat\theta$ matter for prediction.  
+    \item<4-8> In fact, some are nearly irrelevant for prediction.  
+    \item <5-8> Key insight: if there are enough of these unimportant directions, they can store the 'badness' of $\hat\theta$ that has been induced by the label noise.
+    \begin{itemize}
+        \item<6-8> $\hat\theta$ can be bad by being biased
+        \item<7-8> $\hat\theta$, as a random object, can be bad by being a noisy stand-in for $\theta^{*}$
+    \end{itemize}
+\end{itemize}
+
+
+\uncover<8-8>{So let's examine the punchline: how exactly can noise by hidden in unimportant directions?}
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{How noise is hidden just right}
+
+Recall
+
+\[ \hat\theta \coloneqq (X^{T}X)^{\dagger}X^{T}y =  (X^{T}X)^{\dagger}X^{T}(\epsilon + f(X)) = (X^{T}X)^{\dagger}X^{T}(noise + signal)\]
+
+Zero-in on the left action of the operator $X^{T}$.  In any direction $i, 1\leq i \leq p$, it scales the noise from $\epsilon$ by $n\lambda_{i}$.\\~\\
+
+Ultimately, for any direction $i, 1\leq i \leq p$, we can bound the prediction error in direction $i$ by $\frac{n\lambda_{i}^{2}}{(\sum_{i > k}\lambda_{i})^{2}}$.  If we sum these terms, what do we get?
+
+\end{frame}
+
+\begin{frame}
+After all of this waiting, we formalize the notion under discussion.
+
+\begin{definition}[Asymptotically Benign]
+We say that $\Sigma_{n}$ is asymptotically benign iff \\~\\
+
+$\displaystyle \lim_{n\to\infty} \big ( bias(\theta^{*}, \Sigma_{n}, n)  + \frac{k^{*}_{n}}{n} +  \frac{n}{R_{k^{*}_{n}}(\Sigma_{n})} \big ) = 0$
+
+\end{definition}
+\end{frame}
+
+
+\section{Discussion and Commentary}
+
+\begin{frame}
+\frametitle{Some things to think about with papers like this}
+\begin{itemize}
+\item Has little practical value, at present.  It's a conceptual piece.
+\item The interpretations that the authors give the phenomenon are a little fuzzy.  There's a gap between what the math says and what the authors say it does.
+\item Theorems change between the Arxiv paper, PNAS paper, early presentations, and later presentations!
+\end{itemize}
+\end{frame}
+
+
+\section*{References}
+
+\begin{frame}[t, allowframebreaks]
+\frametitle{References}
+Tsigler, Alexander, and Peter L. Bartlett. ``Benign overfitting in ridge regression." arXiv preprint arXiv:2009.14286 (2020).
+\end{frame}
+
+
+\end{document}
