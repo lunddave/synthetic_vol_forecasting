@@ -115,7 +115,7 @@
 \title{Post-shock Volatility Forecasting Using Aggregated Shock Information}
 \author{David Lundquist\thanks{davidl11@ilinois.edu}, Daniel Eck\thanks{dje13@illinois.edu} }
 \affil{Department of Statistics, University of Illinois at Urbana-Champaign}
-\date{October 20th, 2023}
+\date{November 16th, 2023}
 
 \begin{document}
 
@@ -344,7 +344,7 @@ $\mbf{x}_{i,t}$ are fixed.\footnote{Need to determine what difference it makes t
   \varepsilon_{i,t} & \simiid  \mc{F}_{\varepsilon} \text{ with }  \; \mrm{E}_{\mc{F}_{\varepsilon}}(\varepsilon_{i,t}) = 0, \mrm{Var}_{\mc{F}_{\varepsilon}}(\varepsilon_{i,t}) = \sigma^2_{\varepsilon} \\
   %l_{i,vol} &\simiid \text{Unif}\{1,2,...,\text{maximum volatility shock length}\}\\
   %l_{i, level} &\simiid \text{Unif}\{1,2,...,l_{i,vol}\}\\
-  \omega^{*}_{i} &\indep  \epsilon^{*}_i \indep \gamma_i \indep \varepsilon_{i,t}.
+  \omega^{*}_{i} &\indep \epsilon_i \indep \epsilon^{*}_i  \indep \varepsilon_{i,t}.
   \end{align*}
 
 Notice that $\mc{M}_1$ assumes that $\omega^{*}_i$ are i.i.d. with $\E[ \omega^{*}_i]=\mu_{\omega^{*}}$ for $i = 1, \ldots, n+1$. We also consider a model where the shock effects are linear functions of covariates with an additional additive mean-zero error. For $i = 1, \ldots, n+1$, the random effects structure for this model (model $\mc{M}_2$) is:
@@ -370,10 +370,17 @@ Notice that $\mc{M}_1$ assumes that $\omega^{*}_i$ are i.i.d. with $\E[ \omega^{
     \varepsilon_{i,t} & \simiid  \mc{F}_{\varepsilon} \text{ with }  \; \mrm{E}_{\mc{F}_{\varepsilon}}(\varepsilon_{i,t}) = 0, \mrm{Var}_{\mc{F}_{\varepsilon}}(\varepsilon_{i,t}) = \sigma^2_{\varepsilon}\\
     %l_{i,vol} &\simiid \text{Unif}\{1,2,...,\text{maximum volatility shock length}\}\\
     %l_{i, level} &\simiid \text{Unif}\{1,2,...,l_{i,vol}\}\\
-    \omega^{*}_i &\indep  \epsilon^{*}_i \indep \gamma_i \indep \delta \indep \varepsilon_{i,t}
+    \omega^{*}_i & \indep  \epsilon_i \indep  \epsilon^{*}_i \indep \delta \indep \varepsilon_{i,t}
     \end{align*}
 
-% \textbf{WHAT FOLLOWS IS (a) defense of the modeling choices, (b) remarks on the models' implications and subtleties}\\
+    We further define the parameter sets
+    \begin{align}
+      \begin{array}{lll}
+         \Theta &= &\{(\omega^{*}_i, \epsilon_{i,t}, \epsilon^{*}_{i,t}, \delta,\varepsilon_{i,t})\colon t= 1, \ldots, T_i, i = 2, \ldots, n +1\},\\
+         \Theta_{1} &= &\{(\omega^{*}_i, \epsilon_{i,t}, \epsilon^{*}_{i,t}, \varepsilon_{i,t})\colon t= 1, \ldots, T_i, i = 2, \ldots, n +1\},\\
+      \end{array}
+    \end{align}\label{parameter}
+    where $\Theta$ and $\Theta_1$ can be adapted to $\mc{M}_1$ by dropping $\delta$. We assume this for notational simplicity.
 
 \subsection{Properties of Volatility Shock and Shock Estimators}
 
@@ -581,20 +588,9 @@ Then $\hat\omega^{*} \xrightarrow{p} \omega$
 \end{tabular}
 \end{table}
 
-
-We further define the parameter sets
-\begin{align}
-  \begin{array}{lll}
-     \Theta &= &\{(\omega^{*}_i, \epsilon^{*}_i,\gamma_i, \delta,\varepsilon_{i,t},\t\varepsilon_{i})\colon t= 1, \ldots, T_i, i = 2, \ldots, n +1\},\\
-    \Theta_1 &= &\{(\omega^{*}_i, \epsilon^{*}_i,\gamma_i, \delta,\varepsilon_{i,t},\t\varepsilon_{i})\colon t= 1, \ldots, T_i, i = 1\}
-  \end{array}
-\end{align}\label{parameter}
-where $\Theta$ and $\Theta_1$ can be adapted to $\mc{M}_1$ by dropping $\delta$. We assume this for notational simplicity.
-
 \subsection{Forecasting}
 
 Here we make reference to Tsay p. 133 and explain, very similarly to Tsay, that the prediction function for a GARCH(m,s) is very similar to an ARMA prediction function.  Modeled after section 2.2 here https://arxiv.org/pdf/2008.11756.pdf
-
 
 OR we could cite \citet{zivot2009practical}
 

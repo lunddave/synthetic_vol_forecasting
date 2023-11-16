@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2023.11.6)  13 NOV 2023 00:58
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2023.11.6)  15 NOV 2023 17:36
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -849,240 +849,241 @@ Package natbib Warning: Citation `kilian2017structural' on page 7 undefined on i
 
 [7] [8]
 
-LaTeX Warning: Reference `eq0' on page 9 undefined on input line 390.
+LaTeX Warning: Reference `eq0' on page 9 undefined on input line 397.
 
 
-Package natbib Warning: Citation `zivot2009practical' on page 9 undefined on input line 390.
+Package natbib Warning: Citation `zivot2009practical' on page 9 undefined on input line 397.
 
 [9]
 
-LaTeX Warning: Reference `eq1' on page 10 undefined on input line 419.
+LaTeX Warning: Reference `eq1' on page 10 undefined on input line 426.
 
 
-LaTeX Warning: Reference `eq2' on page 10 undefined on input line 419.
+LaTeX Warning: Reference `eq2' on page 10 undefined on input line 426.
 
 
-LaTeX Warning: Reference `eq3' on page 10 undefined on input line 419.
+LaTeX Warning: Reference `eq3' on page 10 undefined on input line 426.
 
 
-LaTeX Warning: Reference `eq4' on page 10 undefined on input line 419.
+LaTeX Warning: Reference `eq4' on page 10 undefined on input line 426.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 419--421
+Underfull \hbox (badness 10000) in paragraph at lines 426--428
 
  []
 
 [10]
-Underfull \hbox (badness 10000) in paragraph at lines 473--474
+Underfull \hbox (badness 10000) in paragraph at lines 480--481
 
  []
 
 
-Package natbib Warning: Citation `abadie2010synthetic' on page 11 undefined on input line 475.
+Package natbib Warning: Citation `abadie2010synthetic' on page 11 undefined on input line 482.
 
 
-Package natbib Warning: Citation `abadie2010synthetic' on page 11 undefined on input line 478.
+Package natbib Warning: Citation `abadie2010synthetic' on page 11 undefined on input line 485.
 
 
-Overfull \hbox (8.11958pt too wide) detected at line 488
+Overfull \hbox (8.11958pt too wide) detected at line 495
 []
  []
 
 
-Package natbib Warning: Citation `abadie2010synthetic' on page 11 undefined on input line 490.
+Package natbib Warning: Citation `abadie2010synthetic' on page 11 undefined on input line 497.
 
 [11]
-Overfull \hbox (12.73756pt too wide) in paragraph at lines 522--523
+Overfull \hbox (12.73756pt too wide) in paragraph at lines 529--530
 \OT1/cmr/m/n/10.95 sen-ta-tion of GARCH(m,s) above, we could re-cover an un-bi-ased es-ti-ma-tor of the news shock $[][] \OML/cmm/m/it/10.95 w[]^^[[] \OMS/cmsy/m/n/10.95 ^^@
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 533--534
+Underfull \hbox (badness 10000) in paragraph at lines 540--541
 
  []
 
 
-Package natbib Warning: Citation `abadie2010synthetic' on page 12 undefined on input line 536.
+Package natbib Warning: Citation `abadie2010synthetic' on page 12 undefined on input line 543.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 540--542
-
- []
-
-
-Package natbib Warning: Citation `abadie2010synthetic' on page 12 undefined on input line 544.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 548--550
+Underfull \hbox (badness 10000) in paragraph at lines 547--549
 
  []
 
-/home/david/Desktop/synthetic_vol_forecasting/synthVolForecast.tex:556: Missing \endcsname inserted.
+[12]
+
+Package natbib Warning: Citation `abadie2010synthetic' on page 13 undefined on input line 551.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 555--557
+
+ []
+
+/home/david/Desktop/synthetic_vol_forecasting/synthVolForecast.tex:563: Missing \endcsname inserted.
 <to be read again> 
                    \relax 
-l.556 \begin{enumerate}[\itshape(a)]
+l.563 \begin{enumerate}[\itshape(a)]
                                     
 The control sequence marked <to be read again> should
 not appear between \csname and \endcsname.
 
-/home/david/Desktop/synthetic_vol_forecasting/synthVolForecast.tex:556: Extra \endcsname.
+/home/david/Desktop/synthetic_vol_forecasting/synthVolForecast.tex:563: Extra \endcsname.
 \enitkv@split ...enitkv@prefix \@tempa \endcsname 
                                                   \ifx \@tempc \relax \enitk...
-l.556 \begin{enumerate}[\itshape(a)]
+l.563 \begin{enumerate}[\itshape(a)]
                                     
 I'm ignoring this, since I wasn't doing a \csname.
 
-/home/david/Desktop/synthetic_vol_forecasting/synthVolForecast.tex:556: Missing \endcsname inserted.
+/home/david/Desktop/synthetic_vol_forecasting/synthVolForecast.tex:563: Missing \endcsname inserted.
 <to be read again> 
                    \relax 
-l.556 \begin{enumerate}[\itshape(a)]
+l.563 \begin{enumerate}[\itshape(a)]
                                     
 The control sequence marked <to be read again> should
 not appear between \csname and \endcsname.
 
-/home/david/Desktop/synthetic_vol_forecasting/synthVolForecast.tex:556: Missing \endcsname inserted.
+/home/david/Desktop/synthetic_vol_forecasting/synthVolForecast.tex:563: Missing \endcsname inserted.
 <to be read again> 
                    \relax 
-l.556 \begin{enumerate}[\itshape(a)]
+l.563 \begin{enumerate}[\itshape(a)]
                                     
 The control sequence marked <to be read again> should
 not appear between \csname and \endcsname.
 
-/home/david/Desktop/synthetic_vol_forecasting/synthVolForecast.tex:556: Extra \endcsname.
+/home/david/Desktop/synthetic_vol_forecasting/synthVolForecast.tex:563: Extra \endcsname.
 \enitkv@split ...enitkv@prefix \@tempa \endcsname 
                                                   \ifx \@tempc \relax \enitk...
-l.556 \begin{enumerate}[\itshape(a)]
+l.563 \begin{enumerate}[\itshape(a)]
                                     
 I'm ignoring this, since I wasn't doing a \csname.
 
-/home/david/Desktop/synthetic_vol_forecasting/synthVolForecast.tex:556: Missing \endcsname inserted.
+/home/david/Desktop/synthetic_vol_forecasting/synthVolForecast.tex:563: Missing \endcsname inserted.
 <to be read again> 
                    \relax 
-l.556 \begin{enumerate}[\itshape(a)]
+l.563 \begin{enumerate}[\itshape(a)]
                                     
 The control sequence marked <to be read again> should
 not appear between \csname and \endcsname.
 
 
-/home/david/Desktop/synthetic_vol_forecasting/synthVolForecast.tex:556: Package enumitem Error: \itshape (a) undefined.
+/home/david/Desktop/synthetic_vol_forecasting/synthVolForecast.tex:563: Package enumitem Error: \itshape (a) undefined.
 
 See the enumitem package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.556 \begin{enumerate}[\itshape(a)]
+l.563 \begin{enumerate}[\itshape(a)]
                                     
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-[12]
 
-Package natbib Warning: Citation `han2014asymptotic' on page 13 undefined on input line 559.
+Package natbib Warning: Citation `han2014asymptotic' on page 13 undefined on input line 566.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 566--568
+Underfull \hbox (badness 10000) in paragraph at lines 573--575
 
  []
 
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 575.
+               Default added (so using `tbp') on input line 582.
 
 
-Underfull \hbox (badness 1796) in paragraph at lines 579--579
+Underfull \hbox (badness 1796) in paragraph at lines 586--586
 []|\OT1/cmr/m/n/10.95 Captures rea-son-able pos-si-
  []
 
 
-Package natbib Warning: Citation `zivot2009practical' on page 13 undefined on input line 599.
+Package natbib Warning: Citation `zivot2009practical' on page 13 undefined on input line 595.
 
 [13]
-<simulation_plots/outperformance_grid.png, id=149, 691.83469pt x 554.82281pt>
+<simulation_plots/outperformance_grid.png, id=148, 691.83469pt x 554.82281pt>
 File: simulation_plots/outperformance_grid.png Graphic file (type png)
 <use simulation_plots/outperformance_grid.png>
-Package pdftex.def Info: simulation_plots/outperformance_grid.png  used on input line 630.
+Package pdftex.def Info: simulation_plots/outperformance_grid.png  used on input line 626.
 (pdftex.def)             Requested size: 311.32272pt x 249.66795pt.
 
 
-LaTeX Warning: Reference `fig:outperformance' on page 14 undefined on input line 636.
+LaTeX Warning: Reference `fig:outperformance' on page 14 undefined on input line 632.
 
 [14 <./simulation_plots/outperformance_grid.png (PNG copy)>]
 
-Package natbib Warning: Citation `mayhew2008incumbency' on page 15 undefined on input line 669.
+Package natbib Warning: Citation `mayhew2008incumbency' on page 15 undefined on input line 665.
 
 
-Package natbib Warning: Citation `goodell2013us' on page 15 undefined on input line 669.
+Package natbib Warning: Citation `goodell2013us' on page 15 undefined on input line 665.
 
 
-Package natbib Warning: Citation `Silver_2016' on page 15 undefined on input line 671.
+Package natbib Warning: Citation `Silver_2016' on page 15 undefined on input line 667.
 
 
-Package natbib Warning: Citation `zivot2009practical' on page 15 undefined on input line 671.
+Package natbib Warning: Citation `zivot2009practical' on page 15 undefined on input line 667.
 
 
-Package natbib Warning: Citation `hansen2005forecast' on page 15 undefined on input line 674.
+Package natbib Warning: Citation `hansen2005forecast' on page 15 undefined on input line 670.
 
 [15]
 
-Package natbib Warning: Citation `goodell2013us' on page 16 undefined on input line 676.
+Package natbib Warning: Citation `goodell2013us' on page 16 undefined on input line 672.
 
 
-Package natbib Warning: Citation `kane1996p' on page 16 undefined on input line 676.
+Package natbib Warning: Citation `kane1996p' on page 16 undefined on input line 672.
 
 
-Package natbib Warning: Citation `abadie2003economic' on page 16 undefined on input line 678.
+Package natbib Warning: Citation `abadie2003economic' on page 16 undefined on input line 674.
 
 
-Package natbib Warning: Citation `abadie2010synthetic' on page 16 undefined on input line 678.
+Package natbib Warning: Citation `abadie2010synthetic' on page 16 undefined on input line 674.
 
 
-Package natbib Warning: Citation `andersen2009realized' on page 16 undefined on input line 682.
+Package natbib Warning: Citation `andersen2009realized' on page 16 undefined on input line 678.
 
-<real_data_output_plots/savetime_FriOct2707:05:03PM2023_IYG_6B=F-CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-23.png, id=178, 803.0pt x 602.25pt>
+<real_data_output_plots/savetime_FriOct2707:05:03PM2023_IYG_6B=F-CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-23.png, id=177, 803.0pt x 602.25pt>
 File: real_data_output_plots/savetime_FriOct2707:05:03PM2023_IYG_6B=F-CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-23.png Graphic file (type png)
 <use real_data_output_plots/savetime_FriOct2707:05:03PM2023_IYG_6B=F-CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-23.png>
-Package pdftex.def Info: real_data_output_plots/savetime_FriOct2707:05:03PM2023_IYG_6B=F-CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-23.png  used on input line 687.
+Package pdftex.def Info: real_data_output_plots/savetime_FriOct2707:05:03PM2023_IYG_6B=F-CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-23.png  used on input line 683.
 (pdftex.def)             Requested size: 481.80373pt x 361.35278pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-LaTeX Warning: Reference `fig:SVF_2016' on page 16 undefined on input line 693.
+LaTeX Warning: Reference `fig:SVF_2016' on page 16 undefined on input line 689.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 693--694
+Underfull \hbox (badness 10000) in paragraph at lines 689--690
 
  []
 
 [16]
 
-Package natbib Warning: Citation `steegen2016increasing' on page 17 undefined on input line 695.
+Package natbib Warning: Citation `steegen2016increasing' on page 17 undefined on input line 691.
 
 
-LaTeX Warning: Reference `fig:SVF_2016_without_Brexit' on page 17 undefined on input line 695.
+LaTeX Warning: Reference `fig:SVF_2016_without_Brexit' on page 17 undefined on input line 691.
 
-<real_data_output_plots/savetime_FriOct2707:14:00PM2023_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png, id=186, 803.0pt x 602.25pt>
+[17 <./real_data_output_plots/savetime_FriOct2707:05:03PM2023_IYG_6B=F-CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-23.png (PNG copy)>]
+<real_data_output_plots/savetime_FriOct2707:14:00PM2023_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png, id=191, 803.0pt x 602.25pt>
 File: real_data_output_plots/savetime_FriOct2707:14:00PM2023_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png Graphic file (type png)
 <use real_data_output_plots/savetime_FriOct2707:14:00PM2023_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png>
-Package pdftex.def Info: real_data_output_plots/savetime_FriOct2707:14:00PM2023_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png  used on input line 699.
+Package pdftex.def Info: real_data_output_plots/savetime_FriOct2707:14:00PM2023_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png  used on input line 695.
 (pdftex.def)             Requested size: 481.80373pt x 361.35278pt.
-[17 <./real_data_output_plots/savetime_FriOct2707:05:03PM2023_IYG_6B=F-CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-23.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 719--719
+
+Underfull \hbox (badness 10000) in paragraph at lines 715--715
 []|$\OML/cmm/m/it/10.95 A[]$ \OT1/cmr/m/n/10.95 in-de-pen-dent $\OMS/cmsy/m/n/10.95 8\OML/cmm/m/it/10.95 i$\OT1/cmr/m/n/10.95 ,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 719--719
+Underfull \hbox (badness 10000) in paragraph at lines 715--715
 []|$\OML/cmm/m/it/10.95 x[]$ \OT1/cmr/m/n/10.95 in-de-pen-dent across
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 719--719
+Underfull \hbox (badness 10000) in paragraph at lines 715--715
 []|$\OML/cmm/m/it/10.95 x[]$ \OT1/cmr/m/n/10.95 in-de-pen-dent across
  []
 
 
-Overfull \hbox (35.54613pt too wide) in paragraph at lines 712--723
+Overfull \hbox (35.54613pt too wide) in paragraph at lines 708--719
 [][] 
  []
 
@@ -1124,13 +1125,13 @@ Package rerunfilecheck Info: Checksums for `synthVolForecast.out':
 Here is how much of TeX's memory you used:
  25389 strings out of 475735
  462842 string characters out of 5784786
- 1879759 words of memory out of 5000000
+ 1878759 words of memory out of 5000000
  45554 multiletter control sequences out of 15000+600000
  533329 words of font info for 106 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,17n,87p,1987b,594s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0600.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0800.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on synthVolForecast.pdf (21 pages, 650520 bytes).
+Output written on synthVolForecast.pdf (21 pages, 651068 bytes).
 PDF statistics:
  376 PDF objects out of 1000 (max. 8388607)
  298 compressed objects within 3 object streams
