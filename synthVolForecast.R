@@ -781,9 +781,12 @@ synth_vol_fit <- function(X,
     T_star_covariate_df[[i]] <- X[[i]][T_star[i],]
   }
 
+  # We now use OLS (when p > n, the MP inverse) to get predictions
+  library(MASS)
   T_star_covariate_df <- matrix(unlist(T_star_covariate_df), ncol = length(shock_est_vec) - 1, byrow = FALSE)
-  linmod <- lm(shock_est_vec[-1] ~ ., data = as.data.frame(t(T_star_covariate_df)))
-  linear_reg_pred <- as.numeric(predict(linmod, newdata = as.data.frame( X[[1]][T_star[1], , drop = FALSE])))
+  augmented_X <- cbind(rep(1,nrow(t(T_star_covariate_df))) , t(T_star_covariate_df))
+  beta <- ginv(t(augmented_X)%*%augmented_X)%*%t(augmented_X)%*%shock_est_vec[-1] 
+  linear_reg_pred <- as.numeric(c(1,X[[1]][T_star[1], , drop = FALSE]) %*% beta)
 
   #Second, we calculate omega_star_hat, which is the dot product of w and the estimated shock effects
   omega_star_hat_vec <- as.numeric(w_mat %*% shock_est_vec[-1])

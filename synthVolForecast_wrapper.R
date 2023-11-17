@@ -6,8 +6,8 @@ source('~/Desktop/synthetic_vol_forecasting/synthVolForecast.R',
        echo = FALSE,
        verbose = FALSE)
 
-simulate_and_analyze <- function(n = 3,
-                                 p = 3,
+simulate_and_analyze <- function(n = 5,
+                                 p = 14,
                                  model = NULL,
                                  arch_param = c(.1),
                                  garch_param = c(.82),
