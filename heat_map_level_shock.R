@@ -116,7 +116,7 @@ ggp1
 
 
 #https://gist.github.com/bannister/8002800
-path <- '/home/david/Desktop/synthetic_vol_forecasting/simulation_results'
+path <- '/home/david/Desktop/simulation_results'
 files <- list.files(path=path, pattern = ".*_120.*Rdata$")
 setwd(path)
 results <- sapply(files, function(x) mget(load(x)), simplify = TRUE)

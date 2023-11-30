@@ -533,7 +533,7 @@ synth_vol_sim <- function(n,
     xreg_p_value <- 1 #initialize
     xreg_est <- -Inf
 
-    for (r in 0:extra_measurement_days)
+    for (r in extra_measurement_days:extra_measurement_days)
     {
       indicator_vec <- as.matrix(c(rep(0,shock_time_vec[i]), rep(1, vol_shock_length[i] + r)))
       garch_1_1 <- garchx(Y[[i]][1:(shock_time_vec[i] + vol_shock_length[i] + r),1],

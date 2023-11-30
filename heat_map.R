@@ -18,7 +18,7 @@ par(mfrow = c(1,3))
 dev.new(width=2, height=2)
 
 #https://gist.github.com/bannister/8002800
-path <- '/home/david/Desktop/synthetic_vol_forecasting/simulation_results'
+path <- '/home/david/Desktop/simulation_results'
 files <- list.files(path=path, pattern = ".*Apr16.*Rdata$")
 
 setwd(path)
