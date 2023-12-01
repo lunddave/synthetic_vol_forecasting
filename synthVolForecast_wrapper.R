@@ -7,13 +7,13 @@ source('~/Desktop/synthetic_vol_forecasting/synthVolForecast.R',
        verbose = FALSE)
 
 simulate_and_analyze <- function(n = 5,
-                                 p = 14,
+                                 p = 10,
                                  model = NULL,
                                  arch_param = c(.1),
                                  garch_param = c(.82),
                                  asymmetry_param = c(),
 
-                                 level_model = c('M1','M21','M22','none')[4],
+                                 level_model = c('M1','M21','M22','none')[1],
                                  vol_model = c('M1','M21','M22','none')[2],
 
                                  sigma_GARCH_innov = 1, # the sd that goes into rnorm
@@ -30,17 +30,17 @@ simulate_and_analyze <- function(n = 5,
                                  a = 3*252,
                                  b = 10*252,
 
-                                 mu_eps_star = -4.25,
+                                 mu_eps_star = -2.1,
                                  mu_eps_star_GED_alpha = sqrt(2), # note: beta = 2, alpha = sqrt(2) is N(0,1)
                                  mu_eps_star_GED_beta = 2, # note: beta = 2, alpha = sqrt(2) is N(0,1))
 
                                  M21_M22_level_mu_delta = .05,
                                  M21_M22_level_sd_delta = .1,
 
-                                 mu_omega_star = .08,
+                                 mu_omega_star = .02,
                                  vol_shock_sd = .01,
 
-                                 M21_M22_vol_mu_delta = .15,
+                                 M21_M22_vol_mu_delta = .05,
                                  M21_M22_vol_sd_delta = 0,
 
                                  permutation_shift = 0,
@@ -248,7 +248,7 @@ simulate_and_analyze <- function(n = 5,
   return(final_output)
 }
 
-png('simulation_plot_arithmetic_mean.png')
+# png('simulation_plot_arithmetic_mean.png')
 
 
 simulate_and_analyze(normchoice = 'l2'
@@ -257,4 +257,4 @@ simulate_and_analyze(normchoice = 'l2'
                            , plot_sim = TRUE
                            , plot_fit = TRUE)
 
-dev.off()
+# dev.off()
