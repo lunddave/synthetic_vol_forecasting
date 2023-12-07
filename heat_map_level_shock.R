@@ -110,9 +110,9 @@ for (extra_day in unique(vol_model_chosen$extra_measurement_days)){
 }
 
 #http://www.sthda.com/english/articles/24-ggpubr-publication-ready-plots/81-ggplot2-easy-way-to-mix-multiple-graphs-on-the-same-page/
-ggarrange(ggp_list[[1]], ggp_list[[2]], ggp_list[[3]], ggp_list[[4]], 
-          labels = c("A", "B", "C", "D"),
-          ncol = 2, nrow = 2)
+# ggarrange(ggp_list[[1]], ggp_list[[2]], ggp_list[[3]], ggp_list[[4]], 
+#           labels = c("A", "B", "C", "D"),
+#           ncol = 2, nrow = 2)
 
 #https://stackoverflow.com/questions/26034177/save-multiple-ggplots-using-a-for-loop
 # Another option: create pdf where each page is a separate plot.
