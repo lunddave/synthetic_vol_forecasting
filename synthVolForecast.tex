@@ -18,6 +18,7 @@
 \usepackage{authblk}
 \usepackage{bm}
 \usepackage{comment}
+\usepackage{pdfpages}
 
 
 \usepackage{hyperref}
@@ -115,7 +116,7 @@
 \title{Post-shock Volatility Forecasting Using Aggregated Shock Information}
 \author{David Lundquist\thanks{davidl11@ilinois.edu}, Daniel Eck\thanks{dje13@illinois.edu} }
 \affil{Department of Statistics, University of Illinois at Urbana-Champaign}
-\date{November 16th, 2023}
+\date{Dec 6th, 2023}
 
 \begin{document}
 
@@ -208,8 +209,7 @@ Assuming further that $\sigma^{2}_{t}$ depends on a vector of exogenous covariat
 \end{align*}
 
 
-We will suppose that a researcher has multivariate time series data $\y_{i,t}$, $t = 1, \ldots,  T_i$ and $i = 1, \ldots, n+1$. We let $\y_{i,t} = (y_{i,t}$, $\x_{i,t}$, $\textbf{v}_{i,t}$) where $y_{i,t}$ is a scalar response,  $\x_{i,t}$ is a vector of covariates that are revealed to the analyst prior to the observation of $y_{1,t}$, and $\textbf{v}_{i,t}$ is a vector of market-implied volatility metrics for the series $i$ that are available prior to the market open at time t.  Suppose that the analyst is interested in forecasting the volatility of $y_{1,t}$, the first time series in the collection.  We require that each time series $\y_{i,t}$ is subject to a news event immediately following $T^*_i \leq T_i + 1$ and before witnessing $T^*_i+1$. To define an interesting setting, we will suppose that $T^*_1 = T_1 + 1$, and $1 < T^*_i < T_i + 1$ for $i \geq 2$. 
-We will suppose that $\x_{i,t=T^*_i}$ and $\textbf{v}_{i,t=T^*_i}$ are observed before the shock is manifested on $y_{i,t=T^*_i+1}$.
+We will suppose that a researcher has multivariate time series data $\y_{i,t}$, $t = 1, \ldots,  T_i$ and $i = 1, \ldots, n+1$. We let $\y_{i,t} = (y_{i,t}$, $\x_{i,t}$, $\textbf{v}_{i,t}$) where $y_{i,t}$ is a scalar response,  $\x_{i,t}$ is a vector of covariates that are revealed to the analyst prior to the observation of $y_{1,t}$, and $\textbf{v}_{i,t}$ is a vector of market-implied volatility metrics for the series $i$ that are available prior to the market open at time t.  Suppose that the analyst is interested in forecasting the volatility of $y_{1,t}$, the first time series in the collection.  We require that each time series $\y_{i,t}$ is subject to a news event immediately following $T^*_i \leq T_i + 1$ and before witnessing $T^*_i+1$. 
 
 In light of the foregoing, we can rewrite the GARCH framework we are interested in as such
 
@@ -332,7 +332,7 @@ Let $I(\cdot)$ be an indicator function, $T_i$ be the time length of the time se
 
  where $D^{vol}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + L_{i, vol}\})$, $D^{level}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + L_{i, level}\})$ 
 and $\x_{i,t} \in \R^{p}$, with $p \geq 1$.  We assume that the 
-$\mbf{x}_{i,t}$ are fixed.\footnote{Need to determine what difference it makes to a GARCH-X model, if any, for the covariates to be random.}\footnote{As for implied volatility as a covariate, the argument for regarding it as a non-random quantity is that we are not primarily concerned with what IV is trying to estimate.  We're concerned with IV itself at a primitive quantity that affects volitility through market sentiment. 'It is what it is.'}  For $i = 1, \ldots, n+1$ and $t=1, \ldots, T_i$, the random effects structure for $\mc{M}_1$ is:
+$\mbf{x}_{i,t}$ are fixed \footnote{Is this necessary?  Does it serve a purpose}.\footnote{Need to determine what difference it makes to a GARCH-X model, if any, for the covariates to be random.}\footnote{As for implied volatility as a covariate, the argument for regarding it as a non-random quantity is that we are not primarily concerned with what IV is trying to estimate.  We're concerned with IV itself at a primitive quantity that affects volitility through market sentiment. 'It is what it is.'}  For $i = 1, \ldots, n+1$ and $t=1, \ldots, T_i$, the random effects structure for $\mc{M}_1$ is:
 
 \begin{align*}
   \omega^{*}_i &\simiid \mc{F}_{\omega^{*}} \text{ with }  \; \mrm{E}_{\mc{F}_{\omega^{*}}}(\omega^{*}_i) = \mu_{\omega^{*}}, \mrm{Var}_{\mc{F}_{\omega^{*}}}(\omega^{*}_i)  = \sigma^2_{\omega^{*}}  \\
@@ -426,7 +426,7 @@ We claim
 The volatility equation of a GARCH(1,1) dictates that for any $r$, the one-step-ahead volatility is given by the expression inside the expectation in (\ref{eq1}).  By the mean-model assumption of a GARCH(1,1), we have $a_{i,t} = \sigma_{i,t}\epsilon_{i,t}$ and hence by substituting $\sigma_{i,t}\epsilon_{i,t}$ for $a_{i,t}$, we arrive at equation (\ref{eq2}) above.  Using the unit-variance assumption regarding $\epsilon_{T^{*}+r})$, we can compute explicitly the expectation in (\ref{eq3}).  Finally, by rearranging terms, we arrive at equation (\ref{eq4}).
 \end{proof-of-proposition}
 
-In other words, once two time points removed from the longest shock length, the volatility shock and level shock can be subsumed into one.  However, prior to being two time points removed, there is no such guarantee.  For example, one can take $r = 1$ and level shock of length at least one to see that 
+In other words, for a GARCH(1,1), once two time points removed from the longest shock length, the volatility shock and level shock can be subsumed into one.  However, prior to being two time points removed, there is no such guarantee.  For example, one can take $r = 1$ and level shock of length at least one to see that 
 
 \begin{align}
 \mathbb{E}[ \sigma^{2}_{i,T^{*}+r+1} |\mathcal{F}_{T^{*}+r}] & = \mathbb{E}[\omega_{i} + \alpha a_{T^{*}+1}^{2} + \beta\sigma^{2}_{i,T^{*}+1} |\mathcal{F}_{T^{*}+1}] \\
@@ -642,9 +642,16 @@ We also introduce simulation parameters that can be varied but are not random ef
 \end{enumerate}
 
 
-\subsubsection{Dual shock: both a level and volatility shock at T*+1}
+\subsubsection{Dual shock: both a level and volatility shock at $T^{*}+1$}
 \textit{Hypothesis:} Method should do less well under level shock.
 
+\begin{figure}[h]
+  \begin{center}
+    \includegraphics[scale=.5]{simulation_plots/USE_in_paper_simulation_plot_arithmetic_mean.png}
+    \caption{Dual shock: both a level and volatility shock at $T^{*}+1$}
+    \label{fig:arith_mean}
+    \end{center}
+  \end{figure}
 
 \subsubsection{Shorter Series}
 
@@ -698,9 +705,8 @@ Naturally, one would ask how sensitive this prediction is to at least two kinds 
 
 \section{Discussion}
 
-
+\begin{comment}
 \section{Connection to Signal Recovery}
-
 
 \begin{table}[h!]
 \begin{tabular}{|p{1.3in}|p{1.6in}|p{1.9in}|p{1.9in}|}
@@ -715,6 +721,9 @@ noise& w & $\t\varepsilon$  & $\t\varepsilon$   \\ \hline
 strategy& Observe $y_{i}$; then estimate $x$ with small expected L2 loss & Estimate $\alpha_{i}$ for $i = 2,...,n+1$; then take convex combination to predict $\alpha_{1}$  & Estimate $\omega^{*}_{i}$ for $i = 2,...,n+1$; then take convex combination to predict $\omega^{*}_{1}$ \\ \hline
 \end{tabular}
 \end{table}
+
+\end{comment}
+
 
 \section{Supplement}
 

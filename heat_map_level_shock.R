@@ -10,6 +10,7 @@ library(dplyr)
 library(ggplot2)
 library(Amelia)
 library(gridExtra)
+library(ggpubr)
 
 
 # https://stackoverflow.com/questions/69054275/loading-multiple-rdata-and-binding-into-a-single-data-frame
@@ -20,7 +21,7 @@ library(gridExtra)
 #https://gist.github.com/bannister/8002800
 path <- '/home/david/Desktop/simulation_results'
 #files <- list.files(path=path, pattern = ".*Apr16.*Rdata$")
-files <- list.files(path=path, pattern = ".*Nov*.*Rdata$")
+files <- list.files(path=path, pattern = ".*Dec*.*Rdata$")
 
 setwd(path)
 results <- sapply(files, function(x) mget(load(x)), simplify = TRUE)
@@ -70,7 +71,7 @@ for (extra_day in unique(vol_model_chosen$extra_measurement_days)){
   extra_day_set_chosen <- vol_model_chosen[vol_model_chosen$extra_measurement_days == extra_day,]
   
   extra_day_set_chosen$success <- as.integer(extra_day_set_chosen$QL_adj1 <= extra_day_set_chosen$QL_adj14)
-  df_only_one_outcome <- cbind(vol_model_chosen[,1:11], vol_model_chosen$success)
+  df_only_one_outcome <- cbind(extra_day_set_chosen[,1:11], extra_day_set_chosen$success)
   names(df_only_one_outcome) <- c(names(df_only_one_outcome)[1:11], 'success')
   
   non_NA <- df_only_one_outcome[complete.cases(df_only_one_outcome),]
@@ -78,45 +79,58 @@ for (extra_day in unique(vol_model_chosen$extra_measurement_days)){
   # https://statisticsglobe.com/heatmap-in-r
   
   means <- non_NA %>% 
-    group_by(M21_M22_level_sd_delta, M21_M22_level_mu_delta) %>% summarise(prop=mean(success),.groups = 'drop')
+    group_by(mu_eps_star, M21_M22_vol_mu_delta) %>% summarise(prop=mean(success),.groups = 'drop')
   means <- as.data.frame(sapply(means, as.numeric))
   means$prop <- round(means$prop, 2)
   
   means
   
-  count <- non_NA %>% group_by(M21_M22_level_sd_delta, M21_M22_level_mu_delta) %>% count()
+  count <- non_NA %>% group_by(mu_eps_star, M21_M22_vol_mu_delta) %>% count()
   count
   
   means$n <- count$n
   
+  title <- paste("Synthetic Volatility Forecast Outperformance of Unadjusted Forecast
+          \n Each Square: Outperformance Proportion and (Simulation Count)
+          \n Number of Extra Measurement Days = ",
+                 extra_day, sep = '')
+  
   ggp1 <- ggplot(means,
-                 aes(x = factor(M21_M22_level_sd_delta), y = factor(M21_M22_level_mu_delta), fill = prop)) +
+                 aes(x = factor(mu_eps_star), y = factor(M21_M22_vol_mu_delta), fill = prop)) +
     scale_fill_gradient(low="white",  high="red") +
     geom_tile() +
     geom_text(aes(label = paste(prop, '\n(',n,')', sep =''))) +
     guides(fill = guide_colourbar(title = "Success Proportion")) +
-    ggtitle("Synthetic Volatility Forecast Outperformance of Unadjusted Forecast
-          \n Each Square: Outperformance Proportion and (Simulation Count)") +
+    ggtitle(title) +
     theme(plot.title = element_text(hjust = 0.5)) +
-    labs(x = "Level Shock Standard Deviation", y = "Level Shock Mean")
+    labs(x = "M1 Level Shock Mean", y = "M21 Volatility Shock Mean")
   
-  ggp_list[[extra_day]] <- ggp1
+  ggp_list[[extra_day+1]] <- ggp1
   
 }
 
-# Save plots to tiff. Makes a separate file for each plot.
-for (i in 1:3) {
-  file_name = paste("iris_plot_", i, ".tiff", sep="")
-  tiff(file_name)
-  print(plot_list[[i]])
-  dev.off()
-}
+#http://www.sthda.com/english/articles/24-ggpubr-publication-ready-plots/81-ggplot2-easy-way-to-mix-multiple-graphs-on-the-same-page/
+ggarrange(ggp_list[[1]], ggp_list[[2]], ggp_list[[3]], ggp_list[[4]], 
+          labels = c("A", "B", "C", "D"),
+          ncol = 2, nrow = 2)
 
 #https://stackoverflow.com/questions/26034177/save-multiple-ggplots-using-a-for-loop
 # Another option: create pdf where each page is a separate plot.
-pdf("plots.pdf")
-for (i in 1:3) {
-  print(plot_list[[i]])
+
+time_date <- gsub(" ", "", format(Sys.time(), "%a%b%d%X%Y"), fixed = TRUE)
+pdf_file_name <- paste(
+                       "/home/david/Desktop/synthetic_vol_forecasting/simulation_plots/"
+                       ,'dual_level_vol_shock_'
+                       ,time_date
+                       ,""
+                       ,".pdf"
+                       ,sep="")
+
+
+
+pdf(pdf_file_name)
+for (i in 1:length(ggp_list)) {
+  print(ggp_list[[i]])
 }
 dev.off()
 
