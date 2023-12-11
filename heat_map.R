@@ -19,7 +19,7 @@ dev.new(width=2, height=2)
 
 #https://gist.github.com/bannister/8002800
 path <- '/home/david/Desktop/simulation_results'
-files <- list.files(path=path, pattern = ".*Apr16.*Rdata$")
+files <- list.files(path=path, pattern = ".*SunDec1013:13:432023*.*Rdata$") #Apr16
 
 setwd(path)
 results <- sapply(files, function(x) mget(load(x)), simplify = TRUE)
@@ -32,8 +32,6 @@ data.frame(sapply(output,length_unique))
 
 output <- as.data.frame(sapply(output, as.numeric)) #<- sapply is here
 data.frame(sapply(output,class))
-
-
 
 #Check that things vary correctly cross vol models
 check <- output %>% group_by(vol_model) %>%
@@ -87,10 +85,12 @@ ggp1 <- ggplot(means,
   geom_tile() +
   geom_text(aes(label = paste(prop, '\n(',n,')', sep =''))) +
   guides(fill = guide_colourbar(title = "Success Proportion")) +
-  ggtitle("Synthetic Volatility Forecast Outperformance of Unadjusted Forecast
+  ggtitle("Synthetic Volatility Forecast Outperformance of Unadjusted GARCH Forecast
           \n Each Square: Outperformance Proportion and (Simulation Count)") +
   theme(plot.title = element_text(hjust = 0.5)) +
-  labs(x = "Volatility Shock Standard Deviation", y = "Volatility Shock Mean")
+  labs(x = "Volatility Shock Noise Standard Deviation", y = "M21 Volatility Shock Mean")
+
+ggp1
 
 
 #

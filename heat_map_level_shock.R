@@ -21,7 +21,7 @@ library(ggpubr)
 #https://gist.github.com/bannister/8002800
 path <- '/home/david/Desktop/simulation_results'
 #files <- list.files(path=path, pattern = ".*Apr16.*Rdata$")
-files <- list.files(path=path, pattern = ".*Dec*.*Rdata$")
+files <- list.files(path=path, pattern = ".*SunDec1017:47:062023*.*Rdata$")
 
 setwd(path)
 results <- sapply(files, function(x) mget(load(x)), simplify = TRUE)
@@ -90,7 +90,7 @@ for (extra_day in unique(vol_model_chosen$extra_measurement_days)){
   
   means$n <- count$n
   
-  title <- paste("Synthetic Volatility Forecast Outperformance of Unadjusted Forecast
+  title <- paste("Synthetic Volatility Forecast Outperformance of Unadjusted GARCH Forecast
           \n Each Square: Outperformance Proportion and (Simulation Count)
           \n Number of Extra Measurement Days = ",
                  extra_day, sep = '')
