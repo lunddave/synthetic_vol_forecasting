@@ -1,4 +1,4 @@
-\begin{thebibliography}{26}
+\begin{thebibliography}{27}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -130,6 +130,11 @@ Genaro Sucarrat.
 Allan Timmermann.
 \newblock Forecast combinations.
 \newblock \emph{Handbook of economic forecasting}, 1:\penalty0 135--196, 2006.
+
+\bibitem[Tsay(2005)]{tsay2005analysis}
+Ruey~S Tsay.
+\newblock \emph{Analysis of financial time series}, volume 543.
+\newblock John wiley \& sons, 2005.
 
 \bibitem[Zivot(2009)]{zivot2009practical}
 Eric Zivot.

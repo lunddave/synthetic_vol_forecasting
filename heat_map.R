@@ -19,7 +19,7 @@ dev.new(width=2, height=2)
 
 #https://gist.github.com/bannister/8002800
 path <- '/home/david/Desktop/simulation_results'
-files <- list.files(path=path, pattern = ".*SunDec1013:13:432023*.*Rdata$") #Apr16
+files <- list.files(path=path, pattern = ".*SunDec1014:39:042023*.*Rdata$") #Apr16
 
 setwd(path)
 results <- sapply(files, function(x) mget(load(x)), simplify = TRUE)
