@@ -19,7 +19,7 @@ dev.new(width=2, height=2)
 
 #https://gist.github.com/bannister/8002800
 path <- '/home/david/Desktop/simulation_results'
-files <- list.files(path=path, pattern = ".*SunDec1014:39:042023*.*Rdata$") #Apr16
+files <- list.files(path=path, pattern = ".*MonDec1103:33:132023*.*Rdata$") #Apr16
 
 setwd(path)
 results <- sapply(files, function(x) mget(load(x)), simplify = TRUE)
@@ -85,6 +85,7 @@ ggp1 <- ggplot(means,
   geom_tile() +
   geom_text(aes(label = paste(prop, '\n(',n,')', sep =''))) +
   guides(fill = guide_colourbar(title = "Success Proportion")) +
+  theme_minimal() +
   ggtitle("Synthetic Volatility Forecast Outperformance of Unadjusted GARCH Forecast
           \n Each Square: Outperformance Proportion and (Simulation Count)") +
   theme(plot.title = element_text(hjust = 0.5)) +

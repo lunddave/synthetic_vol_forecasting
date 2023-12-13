@@ -315,6 +315,7 @@ ggp3 <- ggplot(means,
   geom_tile() +
   geom_text(aes(label = paste(prop, '\n(',n,')', sep =''))) +
   guides(fill = guide_colourbar(title = "Success Proportion")) +
+  theme_minimal() +
   ggtitle("Synthetic Volatility Forecast Outperformance of Unadjusted Forecast
           \n Each Square: Outperformance Proportion and (Simulation Count)") +
   theme(plot.title = element_text(hjust = 0.5)) +
