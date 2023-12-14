@@ -187,7 +187,7 @@ plot_maker_garch <- function(fitted_vol
     shock_time_labels <- 1:length(shock_time_labels)
   }
 
-  par(mfrow = c(1,3), mar=c(15,4,4,2))
+  par(mfrow = c(1,3), mar=c(15,6,4,2))
 
   barplot_colors <- brewer.pal(length(w_hat),'Set3')
 
@@ -215,7 +215,7 @@ plot_maker_garch <- function(fitted_vol
           , las=2
           , col = barplot_colors)
 
-  title(ylab = expression(sigma^2), line = 2.05, cex.lab = 1.99) # Add y-axis text
+  title(ylab = expression(sigma^2), line = 3.05, cex.lab = 1.99) # Add y-axis text
 
   #Plot target series and prediction
 
@@ -352,7 +352,7 @@ plot_maker_synthprediction <- function(Y
   }
 
   #Now print time series under study
-  par(mfrow = c(1,3), mar=c(15,4,4,2))
+  par(mfrow = c(1,3), mar=c(15,6,4,2))
 
   barplot_colors <- brewer.pal(length(w_hat),'Set3')
 

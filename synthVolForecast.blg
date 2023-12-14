@@ -1,0 +1,46 @@
+This is BibTeX, Version 0.99d (TeX Live 2023/Debian)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: synthVolForecast.aux
+The style file: plainnat.bst
+Database file #1: synthVolForecast.bib
+You've used 27 entries,
+            2773 wiz_defined-function locations,
+            773 strings with 9144 characters,
+and the built_in function-call counts, 11814 in all, are:
+= -- 1112
+> -- 507
+< -- 27
++ -- 177
+- -- 150
+* -- 890
+:= -- 1778
+add.period$ -- 85
+call.type$ -- 27
+change.case$ -- 129
+chr.to.int$ -- 27
+cite$ -- 54
+duplicate$ -- 583
+empty$ -- 1062
+format.name$ -- 195
+if$ -- 2509
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 27
+newline$ -- 144
+num.names$ -- 108
+pop$ -- 253
+preamble$ -- 1
+purify$ -- 104
+quote$ -- 0
+skip$ -- 434
+stack$ -- 0
+substring$ -- 585
+swap$ -- 66
+text.length$ -- 6
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 287
+warning$ -- 0
+while$ -- 126
+width$ -- 0
+write$ -- 359
