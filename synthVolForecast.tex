@@ -556,7 +556,7 @@ Place here
 
 \subsection{Consistency of the Synthetic Volatility fixed-effect estimators}
 
-\begin{prop} Assume
+\begin{prop}\label{consistency} Assume
 \begin{enumerate}
   \item $\forall i$, $\{a_{i,t}\}_{t=0,...,T_i}$ obeys a GARCH-X($m,s$) process with volatility shocks found in either $\mc{M}_1$ or $\mc{M}_2$, where $T_i$ is the length of the $i$th series.
   \item $\forall i, \{\omega_{i,t}^{*}\}_{t=0,...,T_i}$ is potentially non-zero at $\{T^{*}_{i}+1,... ,T^{*}_{i}+k\}$, $\omega_{i,T^{*}+1}^{*}\equiv...\equiv\omega_{i,T^{*}+k}^{*}$, and zero otherwise, where the arrival of $T_{i}^{*}$ is governed by a time-invariant distribution on $\{a_{i,t}\}_{t=0,...,T_i}$. \label{stationarity_of_omega_i_t}
@@ -566,7 +566,7 @@ Then $\forall i, \hat\omega_{i,t}^{*} \xrightarrow{p} \E[\omega_{i}^{*}].$
 \end{prop}
 
 \begin{lem}
-  Under assumption \ref{stationarity_of_omega_i_t} above, $\forall i, \{\omega_{i,t}^{*}\}_{t=0,...,T_i}$ is a strictly stationary series.
+  Under assumption \ref{stationarity_of_omega_i_t}, $\forall i, \{\omega_{i,t}^{*}\}_{t=0,...,T_i}$ is a strictly stationary series.
 \end{lem}
 
 \begin{proof-of-proposition}
@@ -575,8 +575,16 @@ The result follows from the consistency proof of the QMLE in GARCH-X models, as 
 
   \subsection{Consistency of the Synthetic Volatility prediction function}
 \begin{prop}
-  Here we use the result above to show that $\hat\sigma^{2}_{1,T^{*}+r}\xrightarrow{p}\sigma^{2}_{1,T^{*}+r}, r = 1,...,k$.
+  Under the conditions in Proposition \ref{consistency}, $\hat\sigma^{2}_{1,T^{*}+r}\xrightarrow{p}\sigma^{2}_{1,T^{*}+r}, r = 1, k =$ max$\{m,s\}$.
 \end{prop}
+
+\begin{proof-of-proposition}
+Recall the prediction function for the GARCH-X model:
+
+$\E_{T^{*}}[\hat\sigma^{2}_{1,T^{*}+r}|\mathcal{F}_{T^{*}}] = \E[\hat\omega_{i} + \hat\omega^{*}_i D^{vol}_{i,t} + \sum^{m_{i}}_{k=1}\hat\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\hat\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t}]$
+
+\end{proof-of-proposition}
+
 \subsection{Why not parameterize the volatility shock as a change in coefficients?}
 \begin{enumerate}
 \item Swamped by shock: If the goal is near-term forecasting, then we don't really care how those coefficients may be changing.  The assumption is that if any changes occur, their influence cannot account for the large shock. Given that the GARCH parameters for a stationary GARCH process must sum to less than 1, there is an upper bound to the forecastable change.
