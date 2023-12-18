@@ -116,7 +116,7 @@
 \title{Post-shock Volatility Forecasting Using Aggregated Shock Information}
 \author{David Lundquist\thanks{davidl11@ilinois.edu}, Daniel Eck\thanks{dje13@illinois.edu} }
 \affil{Department of Statistics, University of Illinois at Urbana-Champaign}
-\date{Dec 6th, 2023}
+\date{Dec 17th, 2023}
 
 \begin{document}
 
@@ -556,21 +556,27 @@ Place here
 
 \subsection{Consistency of the Synthetic Volatility fixed-effect estimators}
 
-Assume
-\begin{enumerate}[\itshape]
-  \item $\forall i$, $\{a_{i,t}\}_{t=1,...,T_i}$ obeys a GARCH($m,s$) process, where $T_i$ is the length of the $i$th series.
-  \item $\forall i, \{D^{vol}_{i,t}\}_{t=1,...,T_i}$, supported on $\{0,1\}^{T_i}$ is exactly 1 at the shock times $\{T^{*}_{i}+1,...,T^{*}_{i}+k\}$ and exactly zero otherwise.
-  \item Let conditions Assumption 1 of \citet{han2014asymptotic} prevail.
+\begin{prop} Assume
+\begin{enumerate}
+  \item $\forall i$, $\{a_{i,t}\}_{t=0,...,T_i}$ obeys a GARCH-X($m,s$) process with volatility shocks found in either $\mc{M}_1$ or $\mc{M}_2$, where $T_i$ is the length of the $i$th series.
+  \item $\forall i, \{\omega_{i,t}^{*}\}_{t=0,...,T_i}$ is potentially non-zero at $\{T^{*}_{i}+1,... ,T^{*}_{i}+k\}$, $\omega_{i,T^{*}+1}^{*}\equiv...\equiv\omega_{i,T^{*}+k}^{*}$, and zero otherwise, where the arrival of $T_{i}^{*}$ is governed by a time-invariant distribution on $\{a_{i,t}\}_{t=0,...,T_i}$. \label{stationarity_of_omega_i_t}
+  \item Let conditions Assumption 0 of \citet{han2014asymptotic} prevail.
 \end{enumerate}
+Then $\forall i, \hat\omega_{i,t}^{*} \xrightarrow{p} \E[\omega_{i}^{*}].$
+\end{prop}
 
-Then $\hat\omega_{i}^{*} \xrightarrow{p} \E[\omega_{i}^{*}]$
+\begin{lem}
+  Under assumption \ref{stationarity_of_omega_i_t} above, $\forall i, \{\omega_{i,t}^{*}\}_{t=0,...,T_i}$ is a strictly stationary series.
+\end{lem}
 
 \begin{proof-of-proposition}
-  Place here
-  \end{proof-of-proposition}
+The result follows from the consistency proof of the QMLE in GARCH-X models, as established by \citet{han2014asymptotic}.
+\end{proof-of-proposition}
 
   \subsection{Consistency of the Synthetic Volatility prediction function}
-Here we use the result above to show that $\hat\sigma^{2}_{1,T^{*}+1}\xrightarrow{p}\sigma^{2}_{1,T^{*}+1}$.
+\begin{prop}
+  Here we use the result above to show that $\hat\sigma^{2}_{1,T^{*}+r}\xrightarrow{p}\sigma^{2}_{1,T^{*}+r}, r = 1,...,k$.
+\end{prop}
 \subsection{Why not parameterize the volatility shock as a change in coefficients?}
 \begin{enumerate}
 \item Swamped by shock: If the goal is near-term forecasting, then we don't really care how those coefficients may be changing.  The assumption is that if any changes occur, their influence cannot account for the large shock. Given that the GARCH parameters for a stationary GARCH process must sum to less than 1, there is an upper bound to the forecastable change.

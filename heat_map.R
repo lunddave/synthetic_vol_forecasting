@@ -5,7 +5,7 @@
 options(digits = 6)
 
 library(dplyr)
-library("reshape")
+library(reshape)
 library(dplyr)
 library(ggplot2)
 library(Amelia)
@@ -14,12 +14,9 @@ library(gridExtra)
 
 # https://stackoverflow.com/questions/69054275/loading-multiple-rdata-and-binding-into-a-single-data-frame
 
-par(mfrow = c(1,3))
-dev.new(width=2, height=2)
-
 #https://gist.github.com/bannister/8002800
 path <- '/home/david/Desktop/simulation_results'
-files <- list.files(path=path, pattern = ".*SatDec1602:04:452023*.*Rdata$") #Apr16
+files <- list.files(path=path, pattern = ".*SunDec1705:08:112023*.*Rdata$") #Apr16
 
 setwd(path)
 results <- sapply(files, function(x) mget(load(x)), simplify = TRUE)

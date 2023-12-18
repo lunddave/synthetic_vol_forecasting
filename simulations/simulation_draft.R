@@ -66,8 +66,8 @@ list_of_vars <- list(donor_pool_size
                     , vol_shock_length
                     , level_shock_length
                     , extra_measurement_days
-		    , a
- 	            , b
+		                , a
+ 	                  , b
                     , optimization_norm
                     , mu_eps_star
                     # #, level_GED_alpha
