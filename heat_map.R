@@ -16,7 +16,7 @@ library(gridExtra)
 
 #https://gist.github.com/bannister/8002800
 path <- '/home/david/Desktop/simulation_results'
-files <- list.files(path=path, pattern = ".*SunDec1705:08:112023*.*Rdata$") #Apr16
+files <- list.files(path=path, pattern = ".*Dec1815:40:472023*.*Rdata$") #Apr16
 
 setwd(path)
 results <- sapply(files, function(x) mget(load(x)), simplify = TRUE)

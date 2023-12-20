@@ -458,6 +458,8 @@ In many settings, it is reasonable to model a volatility shock as occuring witho
 
 However, since it is not known a priori for which $t$ the effect $\omega_{i}^{*}$ will be nonzero, this fact is of little practical guidance.
 
+\begin{comment}
+
 \subsection{Unbiasedness of the Synthetic Volatility fixed-effect estimators and Synthetic Volatility prediction functions}
 
 Recall models $\mc{M}_1$ and $\mc{M}_2$:
@@ -554,6 +556,8 @@ Under $\mc{M}_1$ and $\mc{M}_2$,  if the volatility series follows an GARCH(m,s)
 Place here
 \end{proof-of-proposition}
 
+\end{comment}
+
 \subsection{Consistency of the Synthetic Volatility fixed-effect estimators}
 
 \begin{prop}\label{consistency} Assume
@@ -579,9 +583,25 @@ The result follows from the consistency proof of the QMLE in GARCH-X models, as 
 \end{prop}
 
 \begin{proof-of-proposition}
-Recall the prediction function for the GARCH-X model:
+Recall the conditional expectation of the variance for the GARCH-X model:
 
-$\E_{T^{*}}[\hat\sigma^{2}_{1,T^{*}+r}|\mathcal{F}_{T^{*}}] = \E[\hat\omega_{i} + \hat\omega^{*}_i D^{vol}_{i,t} + \sum^{m_{i}}_{k=1}\hat\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\hat\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t}]$
+\begin{align}
+\E_{T^{*}}[\sigma^{2}_{i,t+1}|\mathcal{F}_{T^{*}}] = \omega_{i} + \omega^{*}_i D^{vol}_{i,t} + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t}
+\end{align}
+
+By replacing parameters with their estimates, we arrive at the prediction 
+
+\begin{align}
+\hat\sigma^{2}_{i,t+1}|\mathcal{F}_{T^{*}} = \hat\omega_{i} + \hat\omega^{*}_i D^{vol}_{i,t} + \sum^{m_{i}}_{k=1}\hat\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\hat\beta_{i,j}\hat\sigma_{i,t-j}^{2} + \hat\gamma_{i}^{T} \x_{i,t}
+\end{align}
+
+which converges in probability to 
+
+\begin{align}
+  \hat\sigma^{2}_{i,t+1}|\mathcal{F}_{T^{*}} = \omega_{i} + \omega^{*}_i D^{vol}_{i,t} + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t}
+  \end{align}
+
+as $t\rightarrow\infty$ by a simple application of Slutsky's Theorem.
 
 \end{proof-of-proposition}
 

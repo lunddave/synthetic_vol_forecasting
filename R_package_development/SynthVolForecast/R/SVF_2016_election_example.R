@@ -23,7 +23,7 @@ k <- 1
 TSUS <- 'IYG'
 
 log_ret_covariates <- c(#"GBP=X",
-   "6B=F",
+   #"6B=F",
   "CL=F"
   ,"^VIX"
   ,"^IRX"
