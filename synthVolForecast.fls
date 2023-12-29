@@ -376,12 +376,12 @@ INPUT ./simulation_plots/standard_simulation_alpha_.1_beta_.82.png
 INPUT ./simulation_plots/standard_simulation_alpha_.1_beta_.82.png
 INPUT ./simulation_plots/standard_simulation_alpha_.1_beta_.82.png
 INPUT ./simulation_plots/standard_simulation_alpha_.1_beta_.82.png
-INPUT ./simulation_plots/standard_simulation_alpha_.82_beta_.1.png
-INPUT ./simulation_plots/standard_simulation_alpha_.82_beta_.1.png
-INPUT ./simulation_plots/standard_simulation_alpha_.82_beta_.1.png
-INPUT ./simulation_plots/standard_simulation_alpha_.82_beta_.1.png
-INPUT ./simulation_plots/standard_simulation_alpha_.82_beta_.1.png
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcrm1095.tfm
+INPUT ./simulation_plots/standard_simulation_alpha_.82_beta_.1.png
+INPUT ./simulation_plots/standard_simulation_alpha_.82_beta_.1.png
+INPUT ./simulation_plots/standard_simulation_alpha_.82_beta_.1.png
+INPUT ./simulation_plots/standard_simulation_alpha_.82_beta_.1.png
+INPUT ./simulation_plots/standard_simulation_alpha_.82_beta_.1.png
 INPUT ./simulation_plots/USE_in_paper_simulation_plot_arithmetic_mean.png
 INPUT ./simulation_plots/USE_in_paper_simulation_plot_arithmetic_mean.png
 INPUT ./simulation_plots/USE_in_paper_simulation_plot_arithmetic_mean.png

@@ -21,16 +21,18 @@ library(parallel)
 library(doParallel)
 library(foreach)
 library(doRNG)
-source("/home/david/Desktop/synthetic_vol_forecasting/synthVolForecast_wrapper.R",
+source("/home/davidl11/synthetic_vol_forecasting/synthVolForecast_wrapper.R",
        echo = FALSE,
        verbose = FALSE)
+
+command_args <- commandArgs(trailingOnly = TRUE)
 
 registerDoParallel(25)
 #set.seed(13) #tk do we want to vary this?
 #RNGkind("L'Ecuyer-CMRG")
 
 start_time <- Sys.time()
-nsim <- 2000
+nsim <- as.numeric(command_args[1])
 permutation_shift <- 0
 
 ############ We build our parameter grid ############ 
@@ -47,15 +49,15 @@ a <- 3*252
 b <- 10*252
 replication_number <- seq(1, nsim, 1)
 optimization_norm <- c('l1','l2')[2]
-mu_eps_star <- seq(-.2,-1,-.2)
+mu_eps_star <- seq(0,-1,-.1)
 #level_GED_alpha <- c(sqrt(2), sqrt(5)) # note: beta = 2, alpha = sqrt(2) is N(0,1)
 #level_GED_beta <- c(.7, 2) # note: beta = 2, alpha = sqrt(2) is N(0,1))
-M21_M22_level_mu_delta <- 0 # seq(0,.25,.025)
+M21_M22_level_mu_delta <- 0 # seq(0,-1,.-1)
 M21_M22_level_sd_delta <- 0 # seq(0,.25,.025)
 mu_omega_star <- c(.05)
 vol_shock_sd <- 1
-M21_M22_vol_mu_delta <- seq(.1, .5, .1)
-M21_M22_vol_sd_delta <- c(.05)
+M21_M22_vol_mu_delta <- seq(0, .5, .05)
+M21_M22_vol_sd_delta <- 0
 
 list_of_vars <- list(donor_pool_size
                     , p
@@ -66,8 +68,8 @@ list_of_vars <- list(donor_pool_size
                     , vol_shock_length
                     , level_shock_length
                     , extra_measurement_days
-		                , a
- 	                  , b
+		    , a
+ 	            , b
                     , optimization_norm
                     , mu_eps_star
                     # #, level_GED_alpha
@@ -154,10 +156,10 @@ dim(gridd_subset)
 
 gridd_subset <- gridd_subset[ (gridd_subset$vol_model == 'M1' &
                                  gridd_subset$M21_M22_vol_mu_delta == 0 &
-                                 gridd_subset$M21_M22_vol_sd_delta == 0) |
+                                 gridd_subset$M21_M22_vol_sd_delta == 0) | 
                                 
-                                (gridd_subset$vol_model != 'M1' &
-                                   gridd_subset$M21_M22_vol_mu_delta != 0)
+                                (gridd_subset$vol_model != 'M1')
+                              #     gridd_subset$M21_M22_vol_mu_delta != 0)
                               ,]
 
 print('Grid has been created.  We print its dimensions:')

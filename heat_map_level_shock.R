@@ -21,7 +21,7 @@ library(ggpubr)
 #https://gist.github.com/bannister/8002800
 path <- '/home/david/Desktop/simulation_results'
 #files <- list.files(path=path, pattern = ".*Apr16.*Rdata$")
-files <- list.files(path=path, pattern = ".*FriDec2900:13:322023*.*Rdata$")
+files <- list.files(path=path, pattern = ".*FriDec2900:35:072023*.*Rdata$")
 
 setwd(path)
 results <- sapply(files, function(x) mget(load(x)), simplify = TRUE)
