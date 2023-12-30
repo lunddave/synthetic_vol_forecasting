@@ -6,6 +6,6 @@ Author: David Lundquist
 Maintainer: David Lundquist <davidpatricklundquist@gmail.com>
 Description: Provides functions for forecasting using synthetic methods,
     both for the observable time series and the unobservable time-varying volatility.
-License: What license is it under?
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
