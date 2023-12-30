@@ -18,8 +18,8 @@ X <- list()
 #we populate the covariate list
 for (i in 1:(n+1)){
   X[[i]] <- cbind(rnorm(Tee)
-             ,rnorm(Tee)
-             ,rnorm(Tee))
+                  ,rnorm(Tee)
+                  ,rnorm(Tee))
 }
 
 system.time(
@@ -32,7 +32,7 @@ system.time(
                              ,plots = TRUE)
   }
 
-  )
+)
 
 temp$linear_combinations
 temp$predictions
@@ -56,17 +56,17 @@ log_ret_covariates <- c("COP" #first should be time series under study
                         ,'SHEL'
                         ,'TTE'
                         ,'BP'
-                        )
+)
 
 level_covariates <- c('^VIX','^IRX')
 
 volume_covariates <- c("COP" #first should be time series under study
-                        ,'SPY'
-                        ,'XOM'
-                        ,'CVX'
-                        ,'SHEL'
-                        ,'TTE'
-                        ,'BP'
+                       ,'SPY'
+                       ,'XOM'
+                       ,'CVX'
+                       ,'SHEL'
+                       ,'TTE'
+                       ,'BP'
 )
 
 abs_log_ret_covariates <- c()
@@ -77,7 +77,7 @@ shock_dates <- c("2020-03-06"
                  , "2008-09-12"
                  , "2008-09-05"
                  , "2008-03-14"
-                 )
+)
 
 k <- 1
 ## END USER DATA INPUTS##
@@ -98,7 +98,7 @@ for (i in 1:length(shock_dates)){
                                    ,from=start_dates[i]
                                    ,to=k_periods_after_shock[i]+10 #tk +10
                                    ,auto.assign=FALSE))
-                                   ,type='log')})
+                ,type='log')})
 
   data_level_covariates <- lapply(level_covariates, function(sym) {
     na.omit(getSymbols(sym
@@ -181,13 +181,13 @@ temp$predictions
 
 #Now run the algorithm
 temp <- SynthPrediction(Y
-                         ,X
-                         ,shock_time_vec = shock_dates
-                         ,rep(k, n+1)
-                         ,dbw_indices = NULL
-                         ,covariate_indices = length(X)
-                         ,plots = TRUE
-                         ,display_ground_truth_choice = TRUE)
+                        ,X
+                        ,shock_time_vec = shock_dates
+                        ,rep(k, n+1)
+                        ,dbw_indices = NULL
+                        ,covariate_indices = length(X)
+                        ,plots = TRUE
+                        ,display_ground_truth_choice = TRUE)
 
 
 ## GARCH on

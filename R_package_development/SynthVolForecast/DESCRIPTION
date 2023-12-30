@@ -9,3 +9,8 @@ Description: Provides functions for forecasting using synthetic methods,
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+Imports: 
+    forecast
