@@ -1,11 +1,11 @@
 Package: SynthVolForecast
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Apply Synthetic Methods to Forecast Volatility in Time Series
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Author: David Lundquist
+Maintainer: David Lundquist <davidpatricklundquist@gmail.com>
+Description: Provides functions for forecasting using synthetic methods,
+    both for the observable time series and the unobservable time-varying volatility.
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
