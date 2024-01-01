@@ -1,49 +1,48 @@
-\name{dbw}
-\alias{dbw}
+\name{plot_maker_garch}
+\alias{plot_maker_garch}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-A function that carries out distance-based weighting.
-}
+A function that makes plots for SynthVolForecast}
 \description{
-A function that carries out distance-based weighting.}
-
+%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+}
 \usage{
-dbw(X, dbw_indices, shock_time_vec, scale = FALSE, center = FALSE, sum_to_1 = 1, bounded_below_by = 0, bounded_above_by = 1, normchoice = c("l1", "l2")[2], penalty_normchoice = c("l1", "l2")[1], penalty_lambda = 0)
+plot_maker_garch(fitted_vol, shock_time_labels, shock_time_vec, shock_length_vec, unadjusted_pred, w_hat, omega_star_hat, omega_star_hat_vec, adjusted_pred, arithmetic_mean_based_pred, ground_truth_vec)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{X}{
-%%     ~~Describe \code{X} here~~
+  \item{fitted_vol}{
+%%     ~~Describe \code{fitted_vol} here~~
 }
-  \item{dbw_indices}{
-%%     ~~Describe \code{dbw_indices} here~~
+  \item{shock_time_labels}{
+%%     ~~Describe \code{shock_time_labels} here~~
 }
   \item{shock_time_vec}{
 %%     ~~Describe \code{shock_time_vec} here~~
 }
-  \item{scale}{
-%%     ~~Describe \code{scale} here~~
+  \item{shock_length_vec}{
+%%     ~~Describe \code{shock_length_vec} here~~
 }
-  \item{center}{
-%%     ~~Describe \code{center} here~~
+  \item{unadjusted_pred}{
+%%     ~~Describe \code{unadjusted_pred} here~~
 }
-  \item{sum_to_1}{
-%%     ~~Describe \code{sum_to_1} here~~
+  \item{w_hat}{
+%%     ~~Describe \code{w_hat} here~~
 }
-  \item{bounded_below_by}{
-%%     ~~Describe \code{bounded_below_by} here~~
+  \item{omega_star_hat}{
+%%     ~~Describe \code{omega_star_hat} here~~
 }
-  \item{bounded_above_by}{
-%%     ~~Describe \code{bounded_above_by} here~~
+  \item{omega_star_hat_vec}{
+%%     ~~Describe \code{omega_star_hat_vec} here~~
 }
-  \item{normchoice}{
-%%     ~~Describe \code{normchoice} here~~
+  \item{adjusted_pred}{
+%%     ~~Describe \code{adjusted_pred} here~~
 }
-  \item{penalty_normchoice}{
-%%     ~~Describe \code{penalty_normchoice} here~~
+  \item{arithmetic_mean_based_pred}{
+%%     ~~Describe \code{arithmetic_mean_based_pred} here~~
 }
-  \item{penalty_lambda}{
-%%     ~~Describe \code{penalty_lambda} here~~
+  \item{ground_truth_vec}{
+%%     ~~Describe \code{ground_truth_vec} here~~
 }
 }
 \details{
@@ -60,7 +59,7 @@ dbw(X, dbw_indices, shock_time_vec, scale = FALSE, center = FALSE, sum_to_1 = 1,
 %% ~put references to the literature/web site here ~
 }
 \author{
-%%  ~~who you are~~
+David Lundquist
 }
 \note{
 %%  ~~further notes~~
@@ -71,7 +70,6 @@ dbw(X, dbw_indices, shock_time_vec, scale = FALSE, center = FALSE, sum_to_1 = 1,
 \seealso{
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
-
 \examples{
 ##---- Should be DIRECTLY executable !! ----
 ##-- ==>  Define data, use random,

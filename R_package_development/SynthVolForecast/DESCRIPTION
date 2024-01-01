@@ -13,4 +13,9 @@ Suggests:
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 Imports: 
-    forecast
+    forecast,
+    garchx,
+    lmtest,
+    RColorBrewer,
+    Rsolnp
+RoxygenNote: 7.2.3

@@ -6,9 +6,14 @@ options(digits = 7, scipen = 7)
 
 ### BEGIN 2016 election example
 packs <- c('quantmod'
-           , 'bizdays'
-           , 'lubridate'
+           ,'bizdays'
+           ,'lubridate'
            ,'rlist'
+           ,'Rsolnp'
+           ,'garchx'
+           ,'lmtest'
+           ,'RColorBrewer'
+           ,'forecast'
 )
 
 suppressPackageStartupMessages(lapply(packs, require, character.only = TRUE))

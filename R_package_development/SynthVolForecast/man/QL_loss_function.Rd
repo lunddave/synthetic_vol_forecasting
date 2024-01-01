@@ -1,49 +1,19 @@
-\name{dbw}
-\alias{dbw}
+\name{QL_loss_function}
+\alias{QL_loss_function}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-A function that carries out distance-based weighting.
+Quasi-likelihood Loss
 }
 \description{
-A function that carries out distance-based weighting.}
-
+%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+}
 \usage{
-dbw(X, dbw_indices, shock_time_vec, scale = FALSE, center = FALSE, sum_to_1 = 1, bounded_below_by = 0, bounded_above_by = 1, normchoice = c("l1", "l2")[2], penalty_normchoice = c("l1", "l2")[1], penalty_lambda = 0)
+QL_loss_function(x)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{X}{
-%%     ~~Describe \code{X} here~~
-}
-  \item{dbw_indices}{
-%%     ~~Describe \code{dbw_indices} here~~
-}
-  \item{shock_time_vec}{
-%%     ~~Describe \code{shock_time_vec} here~~
-}
-  \item{scale}{
-%%     ~~Describe \code{scale} here~~
-}
-  \item{center}{
-%%     ~~Describe \code{center} here~~
-}
-  \item{sum_to_1}{
-%%     ~~Describe \code{sum_to_1} here~~
-}
-  \item{bounded_below_by}{
-%%     ~~Describe \code{bounded_below_by} here~~
-}
-  \item{bounded_above_by}{
-%%     ~~Describe \code{bounded_above_by} here~~
-}
-  \item{normchoice}{
-%%     ~~Describe \code{normchoice} here~~
-}
-  \item{penalty_normchoice}{
-%%     ~~Describe \code{penalty_normchoice} here~~
-}
-  \item{penalty_lambda}{
-%%     ~~Describe \code{penalty_lambda} here~~
+  \item{x}{
+%%     ~~Describe \code{x} here~~
 }
 }
 \details{
@@ -60,7 +30,7 @@ dbw(X, dbw_indices, shock_time_vec, scale = FALSE, center = FALSE, sum_to_1 = 1,
 %% ~put references to the literature/web site here ~
 }
 \author{
-%%  ~~who you are~~
+David Lundquist
 }
 \note{
 %%  ~~further notes~~
@@ -71,7 +41,6 @@ dbw(X, dbw_indices, shock_time_vec, scale = FALSE, center = FALSE, sum_to_1 = 1,
 \seealso{
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
-
 \examples{
 ##---- Should be DIRECTLY executable !! ----
 ##-- ==>  Define data, use random,

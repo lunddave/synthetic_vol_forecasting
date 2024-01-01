@@ -5,7 +5,7 @@
 options(digits = 6)
 
 library(dplyr)
-library(reshape)
+library("reshape")
 library(dplyr)
 library(ggplot2)
 library(Amelia)
@@ -14,10 +14,11 @@ library(gridExtra)
 
 # https://stackoverflow.com/questions/69054275/loading-multiple-rdata-and-binding-into-a-single-data-frame
 
-#https://gist.github.com/bannister/8002800
-path <- '/home/david/Desktop/simulation_results'
-files <- list.files(path=path, pattern = ".*WedDec2721:57:492023*.*Rdata$") #Apr16
+dev.new(width=2, height=2)
 
+#https://gist.github.com/bannister/8002800
+path <- '/home/david/Desktop/synthetic_vol_forecasting/simulation_results'
+files <- list.files(path=path, pattern = ".*Apr16.*Rdata$")
 setwd(path)
 results <- sapply(files, function(x) mget(load(x)), simplify = TRUE)
 output <- do.call(rbind, results)
@@ -29,6 +30,8 @@ data.frame(sapply(output,length_unique))
 
 output <- as.data.frame(sapply(output, as.numeric)) #<- sapply is here
 data.frame(sapply(output,class))
+
+
 
 #Check that things vary correctly cross vol models
 check <- output %>% group_by(vol_model) %>%
@@ -82,13 +85,10 @@ ggp1 <- ggplot(means,
   geom_tile() +
   geom_text(aes(label = paste(prop, '\n(',n,')', sep =''))) +
   guides(fill = guide_colourbar(title = "Success Proportion")) +
-  theme_minimal() +
-  ggtitle("Synthetic Volatility Forecast Outperformance of Unadjusted GARCH Forecast
+  ggtitle("Synthetic Volatility Forecast Outperformance of Unadjusted Forecast
           \n Each Square: Outperformance Proportion and (Simulation Count)") +
   theme(plot.title = element_text(hjust = 0.5)) +
-  labs(x = "Volatility Shock Noise Standard Deviation", y = "M21 Volatility Shock Mean")
-
-ggp1
+  labs(x = "Volatility Shock Standard Deviation", y = "Volatility Shock Mean")
 
 
 #

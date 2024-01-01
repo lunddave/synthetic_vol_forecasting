@@ -3,7 +3,7 @@ options(digits = 7)
 ### BEGIN EXAMPLE WITH SIMULATED DATA
 
 Tee <- 192 #Specify length of time series
-n <- 4 #Specify number of donors
+n <- 7 #Specify number of donors
 shock_time_vec <- rep(Tee/2, n+1)
 
 Y <- list()
@@ -27,7 +27,7 @@ system.time(
     temp <- SynthVolForecast(Y
                              ,X
                              ,shock_time_vec
-                             ,rep(2, n+1)
+                             ,rep(1, n+1)
                              ,garch_order = c(1,1)
                              ,plots = TRUE)
   }

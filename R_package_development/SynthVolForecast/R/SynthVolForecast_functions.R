@@ -1,12 +1,3 @@
-## Required packages
-packs <- c('Rsolnp'
-          , 'garchx'
-          , 'lmtest'
-          , 'forecast'
-          , 'RColorBrewer'
-          )
-suppressPackageStartupMessages(lapply(packs, require, character.only = TRUE))
-
 ####################### BEGIN Auxiliary functions #######################
 
 ### START QL_loss_function
@@ -32,6 +23,9 @@ dbw <- function(X
 
   # T^* is a vector of shock-effects time points
   # shock effect point must be > 2
+
+  print('Now we print the length of the list X')
+  print(X)
 
   # number of time series for pool
   n <- length(X) - 1
@@ -65,7 +59,7 @@ dbw <- function(X
     print('Post-scaling')
     print(dat)
 
-    ### We output details of SVD of matrix X1
+    ## We output details of SVD of matrix X1
     dat.svd <- svd(dat)
     sing_vals <- dat.svd$d / sum(dat.svd$d)
     print('These are the singular value percentages for the donor pool X data:')
@@ -145,15 +139,15 @@ dbw <- function(X
     upper_bound = NULL
   }
 
-  object_to_return <- solnp(par = rep(1/n, n),
+  object_to_return <- Rsolnp::solnp(par = rep(1/n, n),
                             fun = weightedX0,
                             eqfun = eq_constraint,
                             eqB = 0,
                             LB = lower_bound, UB = upper_bound,
                             control = list(trace = 1
-                                           , 1.0e-8
+                                           , 1.0e-12
                                            , tol = 1e-27
-                                           , outer.iter = 10000000
+                                           , outer.iter = 1000000000
                                            , inner.iter = 10000000))
 
   if (object_to_return$convergence == 0){convergence <- 'convergence'}
@@ -170,7 +164,7 @@ dbw <- function(X
 
 ### START GARCH plot_maker_garch
 plot_maker_garch <- function(fitted_vol
-                            ,shock_time_labels
+                            ,shock_time_labels = NULL
                             ,shock_time_vec #mk
                             ,shock_length_vec
                             ,unadjusted_pred
@@ -181,15 +175,13 @@ plot_maker_garch <- function(fitted_vol
                             ,arithmetic_mean_based_pred
                             ,ground_truth_vec){
 
-  print('Just began plot_maker_garch.')
-
-  if (is.character(shock_time_labels) == FALSE){
-    shock_time_labels <- 1:length(shock_time_labels)
+  if (is.character(shock_time_labels) == FALSE | is.null(shock_time_labels) == TRUE){
+    shock_time_labels <- 1:length(shock_time_vec)
   }
 
   par(mfrow = c(1,3), mar=c(15,6,4,2))
 
-  barplot_colors <- brewer.pal(length(w_hat),'Set3')
+  barplot_colors <- RColorBrewer::brewer.pal(length(w_hat),'Set3')
 
   print('Barplot colors no problem.')
 
@@ -202,7 +194,8 @@ plot_maker_garch <- function(fitted_vol
           , cex.names=1.3
           , cex.main=1.5
           , las=2
-          , col = barplot_colors)
+          , col = barplot_colors
+          )
 
   #PLOT IN THE MIDDLE
 
@@ -273,15 +266,10 @@ plot_maker_garch <- function(fitted_vol
          ,cex = 1.5
          ,pch = 23)
 
-  print('Arithmetic mean no problem.')
-
-  print('Here is the ground truth vec:')
-  print(ground_truth_vec)
 
   # Now plot Ground Truth tk
   if (is.null(ground_truth_vec) == FALSE)
     {
-    print('We are plotting the ground truth.')
     points(y = ground_truth_vec
            ,x = (shock_time_vec[1]+1):(shock_time_vec[1]+shock_length_vec[1])
            ,col = colors_for_adjusted_pred[4]
@@ -307,7 +295,7 @@ plot_maker_garch <- function(fitted_vol
 
 ### START plot_maker_synthprediction
 plot_maker_synthprediction <- function(Y
-                                     ,shock_time_labels
+                                     ,shock_time_labels = NULL
                                      ,shock_time_vec #mk
                                      ,shock_length_vec
                                      ,unadjusted_pred
@@ -318,9 +306,11 @@ plot_maker_synthprediction <- function(Y
                                      ,display_ground_truth = FALSE){
 
 
-  if (is.character(shock_time_labels) == FALSE){
-    shock_time_labels <- 1:length(shock_time_labels)
+  if (is.character(shock_time_labels) == FALSE | is.null(shock_time_labels) == TRUE){
+    shock_time_labels <- 1:length(shock_time_vec)
   }
+
+  n <- length(Y) - 1
 
   #First print donor series
   par(mfrow = c(round(sqrt(n)),ceiling(sqrt(n))))
@@ -354,7 +344,7 @@ plot_maker_synthprediction <- function(Y
   #Now print time series under study
   par(mfrow = c(1,3), mar=c(15,6,4,2))
 
-  barplot_colors <- brewer.pal(length(w_hat),'Set3')
+  barplot_colors <- RColorBrewer::brewer.pal(length(w_hat),'Set3')
 
   #PLOT ON THE LEFT:
   #Plot donor weights
@@ -443,6 +433,7 @@ SynthVolForecast <- function(Y_series_list
                              ,covariates_series_list
                              ,shock_time_vec
                              ,shock_length_vec
+                             ,k=1
                              ,dbw_scale = TRUE
                              ,dbw_center = TRUE
                              ,dbw_indices = NULL
@@ -452,8 +443,8 @@ SynthVolForecast <- function(Y_series_list
                              ,garch_order = NULL
                              ,common_series_assumption = FALSE
                              ,plots = TRUE
-                             ,shock_time_labels
-                             ,ground_truth_vec
+                             ,shock_time_labels = NULL
+                             ,ground_truth_vec = NULL
 ){
   ### BEGIN Doc string
   #tk
@@ -480,12 +471,14 @@ SynthVolForecast <- function(Y_series_list
   for (i in 1:(n+1)){
 
     if (is.character(shock_time_vec[i]) == TRUE){
+      print('The shock time vector entry is a character.')
       integer_shock_time_vec[i] <- which(index(Y[[i]]) == shock_time_vec[i]) #mk
-      integer_shock_time_vec_for_convex_hull_based_optimization[i] <- which(index(X[[i]]) == shock_time_vec[i]) #mk
+      integer_shock_time_vec_for_convex_hull_based_optimization[i] <- which(index(covariates_series_list[[i]]) == shock_time_vec[i]) #mk
     }
     else{
+      print('The shock time vector entry is NOT a character.')
       integer_shock_time_vec[i] <- shock_time_vec[i]
-      integer_shock_time_vec_for_convex_hull_based_optimization <- shock_time_vec[i]
+      integer_shock_time_vec_for_convex_hull_based_optimization[i] <- shock_time_vec[i]
     }
 
   }
@@ -546,12 +539,12 @@ SynthVolForecast <- function(Y_series_list
         X_i_final <- X_i_penultimate[,2]
       }
       else {
-        X_i_subset <- X[[i]][1:last_shock_point,covariate_indices]
+        X_i_subset <- covariates_series_list[[i]][1:last_shock_point,covariate_indices]
         X_i_with_indicator <- cbind(X_i_subset, post_shock_indicator)
         X_i_final <- X_i_with_indicator
       }
 
-      fitted_garch <- garchx(Y_series_list[[i]][1:last_shock_point] #tk
+      fitted_garch <- garchx::garchx(Y_series_list[[i]][1:last_shock_point] #tk
                      , order = garch_order
                      , xreg = X_i_final
                      , backcast.values = NULL
@@ -566,8 +559,8 @@ SynthVolForecast <- function(Y_series_list
       print(AIC(fitted_garch))
       cat('\n===============================================================\n')
 
-      coef_test <- coeftest(fitted_garch)
-      extracted_fixed_effect <- coef_test[dim(coeftest(fitted_garch))[1], 1]
+      coef_test <- lmtest::coeftest(fitted_garch)
+      extracted_fixed_effect <- coef_test[dim(lmtest::coeftest(fitted_garch))[1], 1]
       omega_star_hat_vec <- c(omega_star_hat_vec, extracted_fixed_effect)
 
     } ## END loop for computing fixed effects
@@ -584,7 +577,7 @@ SynthVolForecast <- function(Y_series_list
 
   if (is.null(covariate_indices) == TRUE){
 
-    fitted_garch <- garchx(Y_series_list[[1]][1:integer_shock_time_vec[1]]
+    fitted_garch <- garchx::garchx(Y_series_list[[1]][1:integer_shock_time_vec[1]]
                            , order = garch_order
                            , xreg = NULL
                            , backcast.values = NULL
@@ -603,9 +596,9 @@ SynthVolForecast <- function(Y_series_list
   }
   else{
     ## BEGIN fit GARCH to target series
-    fitted_garch <- garchx(Y_series_list[[1]][1:integer_shock_time_vec[1]]
+    fitted_garch <- garchx::garchx(Y_series_list[[1]][1:integer_shock_time_vec[1]]
                            , order = garch_order
-                           , xreg = X[[1]][1:integer_shock_time_vec[1],covariate_indices]
+                           , xreg = covariates_series_list[[1]][1:integer_shock_time_vec[1],covariate_indices]
                            , backcast.values = NULL
                            , control = list(eval.max = 100000
                                             , iter.max = 1500000
@@ -617,7 +610,7 @@ SynthVolForecast <- function(Y_series_list
     cat('\n===============================================================\n')
 
     #Note: for forecasting, we use last-observed X value
-    X_to_use_in_forecast <- X[[1]][integer_shock_time_vec[1],covariate_indices]
+    X_to_use_in_forecast <- covariates_series_list[[1]][integer_shock_time_vec[1],covariate_indices]
 
     X_replicated_for_forecast_length <- matrix(rep(X_to_use_in_forecast, k)
                                                , nrow = shock_length_vec[1]
@@ -632,6 +625,7 @@ SynthVolForecast <- function(Y_series_list
                                , newxreg = mat_X_for_forecast[,-1])
   }
 
+  print('Now we get the adjusted predictions.')
   adjusted_pred <- unadjusted_pred + rep(omega_star_hat, k)
 
   arithmetic_mean_based_pred <- rep(mean(omega_star_hat_vec), k) + unadjusted_pred
@@ -688,7 +682,7 @@ SynthVolForecast <- function(Y_series_list
                ,omega_star_hat_vec
                ,adjusted_pred
                ,arithmetic_mean_based_pred
-               ,ground_truth_vec)
+               ,ground_truth_vec = NULL)
                   }
 
   return(output_list)
@@ -700,6 +694,7 @@ SynthPrediction <- function(Y_series_list
                              ,covariates_series_list
                              ,shock_time_vec
                              ,shock_length_vec
+                             ,k = 1
                              ,dbw_scale = TRUE
                              ,dbw_center = TRUE
                              ,dbw_indices = NULL
@@ -740,12 +735,14 @@ SynthPrediction <- function(Y_series_list
   for (i in 1:(n+1)){
 
     if (is.character(shock_time_vec[i]) == TRUE){
+      print('The shock time vector entry is a character.')
       integer_shock_time_vec[i] <- which(index(Y[[i]]) == shock_time_vec[i]) #mk
-      integer_shock_time_vec_for_convex_hull_based_optimization[i] <- which(index(X[[i]]) == shock_time_vec[i]) #mk
+      integer_shock_time_vec_for_convex_hull_based_optimization[i] <- which(index(covariates_series_list[[i]]) == shock_time_vec[i]) #mk
     }
     else{
+      print('The shock time vector entry is NOT a character.')
       integer_shock_time_vec[i] <- shock_time_vec[i]
-      integer_shock_time_vec_for_convex_hull_based_optimization <- shock_time_vec[i]
+      integer_shock_time_vec_for_convex_hull_based_optimization[i] <- shock_time_vec[i]
     }
 
   }
@@ -772,14 +769,14 @@ SynthPrediction <- function(Y_series_list
       X_i_final <- X_i_penultimate[,2]
     }
     else {
-      X_i_subset <- X[[i]][1:last_shock_point,covariate_indices]
+      X_i_subset <- covariates_series_list[[i]][1:last_shock_point,covariate_indices]
       X_i_with_indicator <- cbind(X_i_subset, post_shock_indicator)
       X_i_final <- X_i_with_indicator
     }
 
     print('Now fitting the donor ARIMA models')
 
-    arima <- auto.arima(Y_series_list[[i]][1:last_shock_point]
+    arima <- forecast::auto.arima(Y_series_list[[i]][1:last_shock_point]
                         ,xreg=X_i_final
                         ,ic = user_ic_choice)
 
@@ -787,7 +784,7 @@ SynthPrediction <- function(Y_series_list
 
     order_of_arima[[i]] <- arima$arma #tk
 
-    coef_test <- coeftest(arima)
+    coef_test <- lmtest::coeftest(arima)
     extracted_fixed_effect <- coef_test[nrow(coef_test),1]
     omega_star_hat_vec <- c(omega_star_hat_vec, extracted_fixed_effect)
 
@@ -796,7 +793,7 @@ SynthPrediction <- function(Y_series_list
   ## END estimate fixed effects in donors
 
   ## BEGIN compute linear combination of fixed effects
-  dbw_output <- dbw(X, #tk
+  dbw_output <- dbw(covariates_series_list, #tk
                    dbw_indices,
                    integer_shock_time_vec,
                    scale = TRUE,
@@ -818,7 +815,7 @@ SynthPrediction <- function(Y_series_list
 
   if (is.null(covariate_indices) == TRUE){
 
-    arima <- auto.arima(Y_series_list[[1]][1:integer_shock_time_vec[1]]
+    arima <- forecast::auto.arima(Y_series_list[[1]][1:integer_shock_time_vec[1]]
                         ,xreg = NULL
                         ,ic = user_ic_choice)
 
@@ -828,16 +825,16 @@ SynthPrediction <- function(Y_series_list
   else{
     ## BEGIN fit GARCH to target series
 
-    X_lagged <- lag.xts(X[[1]][1:integer_shock_time_vec[1],covariate_indices])
+    X_lagged <- lag.xts(covariates_series_list[[1]][1:integer_shock_time_vec[1],covariate_indices])
 
-    arima <- auto.arima(Y_series_list[[1]][1:integer_shock_time_vec[1]]
+    arima <- forecast::auto.arima(Y_series_list[[1]][1:integer_shock_time_vec[1]]
                         ,xreg = X_lagged
                         ,ic = user_ic_choice)
 
     print(arima)
 
     #Note: for forecasting, we use last-observed X value
-    X_to_use_in_forecast <- X[[1]][integer_shock_time_vec[1],covariate_indices]
+    X_to_use_in_forecast <- covariates_series_list[[1]][integer_shock_time_vec[1],covariate_indices]
 
     X_replicated_for_forecast_length <- matrix(rep(X_to_use_in_forecast, k)
                                                , nrow = shock_length_vec[1]
@@ -920,4 +917,3 @@ SynthPrediction <- function(Y_series_list
   return(output_list)
 
 } ### END SynthPrediction
-
