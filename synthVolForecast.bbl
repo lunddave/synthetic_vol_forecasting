@@ -1,4 +1,4 @@
-\begin{thebibliography}{28}
+\begin{thebibliography}{29}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -30,6 +30,12 @@ Torben~G Andersen and Timo Ter{\"a}svirta.
 Torben~G Andersen, Tim Bollerslev, Francis~X Diebold, and Paul Labys.
 \newblock Modeling and forecasting realized volatility.
 \newblock \emph{Econometrica}, 71\penalty0 (2):\penalty0 579--625, 2003.
+
+\bibitem[Bauwens et~al.(2006)Bauwens, Preminger, and
+  Rombouts]{bauwens2006regime}
+Luc Bauwens, Arie Preminger, and Jeroen~VK Rombouts.
+\newblock Regime switching garch models.
+\newblock 2006.
 
 \bibitem[Bollerslev(1986)]{bollerslev1986generalized}
 Tim Bollerslev.
