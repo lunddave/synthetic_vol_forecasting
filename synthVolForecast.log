@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2023.11.6)  1 JAN 2024 13:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2023.11.6)  2 JAN 2024 11:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -971,45 +971,44 @@ Overfull \hbox (8.11958pt too wide) detected at line 182
 []
  []
 
-[3] [4] [5] [6]
-Underfull \hbox (badness 10000) in paragraph at lines 318--319
-
- []
-
-[7] [8] [9]
-Underfull \hbox (badness 10000) in paragraph at lines 433--435
+[3] Excluding 'comment' comment. [4] [5] [6] [7] [8] [9]
+Underfull \hbox (badness 10000) in paragraph at lines 436--438
 
  []
 
 [10] Excluding 'comment' comment.
-Underfull \hbox (badness 10000) in paragraph at lines 585--587
+Underfull \hbox (badness 10000) in paragraph at lines 586--588
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 615--616
 
  []
 
 [11]
-Underfull \hbox (badness 10000) in paragraph at lines 614--615
-
- []
-
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 616.
+               Default added (so using `tbp') on input line 617.
 
 
-Underfull \hbox (badness 1796) in paragraph at lines 620--620
+Underfull \hbox (badness 1796) in paragraph at lines 621--621
 []|\OT1/cmr/m/n/10.95 Captures rea-son-able pos-si-
  []
 
-<simulation_plots/standard_simulation_alpha_.1_beta_.82.png, id=362, 650.43pt x
+<simulation_plots/standard_simulation_alpha_.1_beta_.82.png, id=360, 650.43pt x
  499.11469pt>
 File: simulation_plots/standard_simulation_alpha_.1_beta_.82.png Graphic file (
 type png)
 <use simulation_plots/standard_simulation_alpha_.1_beta_.82.png>
 Package pdftex.def Info: simulation_plots/standard_simulation_alpha_.1_beta_.82
-.png  used on input line 660.
+.png  used on input line 661.
 (pdftex.def)             Requested size: 292.6908pt x 224.59952pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
 [12]
-<simulation_plots/standard_simulation_alpha_.82_beta_.1.png, id=371, 650.43pt x
+<simulation_plots/standard_simulation_alpha_.82_beta_.1.png, id=369, 650.43pt x
  499.11469pt>
 File: simulation_plots/standard_simulation_alpha_.82_beta_.1.png Graphic file (
 type png)
@@ -1017,9 +1016,6 @@ type png)
 Package pdftex.def Info: simulation_plots/standard_simulation_alpha_.82_beta_.1
 .png  used on input line 675.
 (pdftex.def)             Requested size: 292.6908pt x 224.59952pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
@@ -1042,9 +1038,9 @@ ic_mean.png  used on input line 688.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[13 <./simulation_plots/standard_simulation_alpha_.1_beta_.82.png (PNG copy)>]
-[14 <./simulation_plots/standard_simulation_alpha_.82_beta_.1.png (PNG copy)>]
-[15]
+[13 <./simulation_plots/standard_simulation_alpha_.1_beta_.82.png (PNG copy)> <
+./simulation_plots/standard_simulation_alpha_.82_beta_.1.png (PNG copy)>]
+[14] [15]
 <real_data_output_plots/savetime_FriOct2707:05:03PM2023_IYG_6B=F-CL=F-^VIX-^IRX
 -^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-23.png
 , id=418, 803.0pt x 602.25pt>
@@ -1059,17 +1055,15 @@ _IYG_6B=F-CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2
 012-11-06-2016-06-23.png  used on input line 730.
 (pdftex.def)             Requested size: 481.80373pt x 361.35278pt.
 
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 736--737
 
  []
 
-[16]
+[16 <./real_data_output_plots/savetime_FriOct2707:05:03PM2023_IYG_6B=F-CL=F-^VI
+X-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-
+23.png (PNG copy)>]
 <real_data_output_plots/savetime_FriOct2707:14:00PM2023_IYG_CL=F-^VIX-^IRX-^FVX
--^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png, id=434, 803.0p
+-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png, id=431, 803.0p
 t x 602.25pt>
 File: real_data_output_plots/savetime_FriOct2707:14:00PM2023_IYG_CL=F-^VIX-^IRX
 -^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png Graphic fi
@@ -1084,14 +1078,12 @@ _IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-1
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-Excluding 'comment' comment. [17 <./real_data_output_plots/savetime_FriOct2707:
-05:03PM2023_IYG_6B=F-CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2
-008-11-04-2012-11-06-2016-06-23.png (PNG copy)>] [18 <./real_data_output_plots/
-savetime_FriOct2707:14:00PM2023_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-
-08-2004-11-02-2008-11-04-2012-11-06.png (PNG copy)>] (./synthVolForecast.bbl
-[19
+Excluding 'comment' comment. [17] [18 <./real_data_output_plots/savetime_FriOct
+2707:14:00PM2023_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2
+008-11-04-2012-11-06.png (PNG copy)>] (./synthVolForecast.bbl [19
 
-]) [20] (./synthVolForecast.aux)
+]) [20]
+(./synthVolForecast.aux)
  ***********
 LaTeX2e <2023-06-01>
 L3 programming layer <2023-06-05>
@@ -1104,9 +1096,9 @@ Package rerunfilecheck Info: File `synthVolForecast.out' has not changed.
 (rerunfilecheck)             Checksum: A2153E7329EF86F3D8E1B9BB28D98631;8315.
  ) 
 Here is how much of TeX's memory you used:
- 26096 strings out of 475735
- 475073 string characters out of 5784786
- 1876759 words of memory out of 5000000
+ 26095 strings out of 475735
+ 475066 string characters out of 5784786
+ 1877759 words of memory out of 5000000
  46242 multiletter control sequences out of 15000+600000
  533329 words of font info for 106 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1131,10 +1123,10 @@ s/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type
 1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf/fonts/type1/public/cm-su
 per/sfrm0600.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0800.pfb></u
 sr/share/texmf/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on synthVolForecast.pdf (20 pages, 819478 bytes).
+Output written on synthVolForecast.pdf (20 pages, 818721 bytes).
 PDF statistics:
- 587 PDF objects out of 1000 (max. 8388607)
- 510 compressed objects within 6 object streams
- 142 named destinations out of 1000 (max. 500000)
+ 584 PDF objects out of 1000 (max. 8388607)
+ 507 compressed objects within 6 object streams
+ 141 named destinations out of 1000 (max. 500000)
  342 words of extra memory for PDF output out of 10000 (max. 10000000)
 
