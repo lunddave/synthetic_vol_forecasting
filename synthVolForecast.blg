@@ -5,45 +5,45 @@ The style file: plainnat.bst
 Database file #1: synthVolForecast.bib
 Warning--empty journal in bauwens2006regime
 Warning--empty year in Kenton
-You've used 29 entries,
+You've used 30 entries,
             2773 wiz_defined-function locations,
-            783 strings with 9401 characters,
-and the built_in function-call counts, 12522 in all, are:
-= -- 1170
-> -- 547
-< -- 28
-+ -- 191
-- -- 162
-* -- 939
-:= -- 1888
-add.period$ -- 91
-call.type$ -- 29
-change.case$ -- 139
-chr.to.int$ -- 29
-cite$ -- 60
-duplicate$ -- 618
-empty$ -- 1125
-format.name$ -- 209
-if$ -- 2655
+            787 strings with 9485 characters,
+and the built_in function-call counts, 12929 in all, are:
+= -- 1206
+> -- 568
+< -- 29
++ -- 198
+- -- 168
+* -- 971
+:= -- 1951
+add.period$ -- 94
+call.type$ -- 30
+change.case$ -- 144
+chr.to.int$ -- 30
+cite$ -- 62
+duplicate$ -- 638
+empty$ -- 1161
+format.name$ -- 218
+if$ -- 2741
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 28
-newline$ -- 154
-num.names$ -- 116
-pop$ -- 280
+missing$ -- 29
+newline$ -- 159
+num.names$ -- 120
+pop$ -- 288
 preamble$ -- 1
-purify$ -- 112
+purify$ -- 116
 quote$ -- 0
-skip$ -- 463
+skip$ -- 479
 stack$ -- 0
-substring$ -- 589
-swap$ -- 67
+substring$ -- 600
+swap$ -- 68
 text.length$ -- 6
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 309
+type$ -- 320
 warning$ -- 2
-while$ -- 132
+while$ -- 136
 width$ -- 0
-write$ -- 381
+write$ -- 394
 (There were 2 warnings)
