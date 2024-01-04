@@ -1,6 +1,4 @@
-source('/home/david/Desktop/synthetic_vol_forecasting/R_package_development/SynthVolForecast/R/SynthVolForecast_functions.R',
-       echo = FALSE,
-       verbose = FALSE)
+library(SynthVolForecast)
 
 options(digits = 7, scipen = 7)
 
@@ -201,7 +199,6 @@ for (i in 1:length(shock_dates)){
     market_data_list[[i]] <- merged_data
   }
 
-
 ##################################
 
 #now build Y
@@ -266,16 +263,7 @@ temp <- SynthVolForecast(Y
                          ,garch_order = c(1,1,0)
                          ,plots = TRUE
                          ,shock_time_labels = names(shock_dates)
-                         ,ground_truth_vec = ground_truth)
+                         ,ground_truth_vec = ground_truth
+                         )
 
 dev.off()
-
-#Now run the algorithm
-#temp <- SynthPrediction(Y
-#                         ,X
-#                         ,shock_time_vec = shock_dates
-#                         ,rep(k, n+1)
-#                         ,dbw_indices = NULL
-#                         ,covariate_indices = length(X)
-#                         ,plots = TRUE
-#                        ,display_ground_truth_choice = TRUE)

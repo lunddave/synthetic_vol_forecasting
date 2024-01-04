@@ -24,9 +24,6 @@ dbw <- function(X
   # T^* is a vector of shock-effects time points
   # shock effect point must be > 2
 
-  print('Now we print the length of the list X')
-  print(X)
-
   # number of time series for pool
   n <- length(X) - 1
 
@@ -62,7 +59,7 @@ dbw <- function(X
     ## We output details of SVD of matrix X1
     dat.svd <- svd(dat)
     sing_vals <- dat.svd$d / sum(dat.svd$d)
-    print('These are the singular value percentages for the donor pool X data:')
+    print('Singular value percentages for the donor pool X data:')
     print(paste(100 * sing_vals, "%", sep = ""))
 
     X1 <- dat[1, dbw_indices
@@ -183,8 +180,6 @@ plot_maker_garch <- function(fitted_vol
 
   barplot_colors <- RColorBrewer::brewer.pal(length(w_hat),'Set3')
 
-  print('Barplot colors no problem.')
-
   #PLOT ON THE LEFT:
 
   # Plot donor weights
@@ -201,7 +196,7 @@ plot_maker_garch <- function(fitted_vol
 
   #Plot FE estimates
     barplot(omega_star_hat_vec
-          , main = 'Donor-Pool-Supplied \n FE Estimates'
+          , main = 'Donor-Pool-Supplied\n FE Estimates'
           , names.arg = shock_time_labels[-1]
           , cex.names=1.3
           , cex.main=1.5
@@ -232,8 +227,6 @@ plot_maker_garch <- function(fitted_vol
 
   title(ylab = expression(sigma^2), line = 2.05, cex.lab = 1.99) # Add y-axis text
 
-  print('Vol TS no problem.')
-
   # Here is the color scheme we will use
   colors_for_adjusted_pred <- c('red'
                               , "green"
@@ -248,8 +241,6 @@ plot_maker_garch <- function(fitted_vol
          ,cex = 1.5
          ,pch = 15)
 
-  print('Unadjusted prediction no problem.')
-
   # Now plot the adjusted predictions
   points(y = adjusted_pred
          ,x = (shock_time_vec[1]+1):(shock_time_vec[1]+shock_length_vec[1])
@@ -257,15 +248,12 @@ plot_maker_garch <- function(fitted_vol
          ,cex = 1.5
          ,pch = 23)
 
-  print('Adjusted prediction no problem.')
-
   # Now plot the arithmetic mean-based predictions
   points(y = arithmetic_mean_based_pred
          ,x = (shock_time_vec[1]+1):(shock_time_vec[1]+shock_length_vec[1])
          ,col = colors_for_adjusted_pred[3]
          ,cex = 1.5
          ,pch = 23)
-
 
   # Now plot Ground Truth tk
   if (is.null(ground_truth_vec) == FALSE)
@@ -334,7 +322,7 @@ plot_maker_synthprediction <- function(Y
 
       points(y = Y[[i]][(shock_time_vec[i]+1):(shock_time_vec[i] + shock_length_vec[i])]
              ,x = (shock_time_vec[i]+1):(shock_time_vec[i] + shock_length_vec[i])
-             ,col = 'red'
+             # ,col = 'red'
              ,cex = 1.1
              ,pch = 24)
 
@@ -471,12 +459,10 @@ SynthVolForecast <- function(Y_series_list
   for (i in 1:(n+1)){
 
     if (is.character(shock_time_vec[i]) == TRUE){
-      print('The shock time vector entry is a character.')
       integer_shock_time_vec[i] <- which(index(Y[[i]]) == shock_time_vec[i]) #mk
       integer_shock_time_vec_for_convex_hull_based_optimization[i] <- which(index(covariates_series_list[[i]]) == shock_time_vec[i]) #mk
     }
     else{
-      print('The shock time vector entry is NOT a character.')
       integer_shock_time_vec[i] <- shock_time_vec[i]
       integer_shock_time_vec_for_convex_hull_based_optimization[i] <- shock_time_vec[i]
     }
@@ -682,7 +668,7 @@ SynthVolForecast <- function(Y_series_list
                ,omega_star_hat_vec
                ,adjusted_pred
                ,arithmetic_mean_based_pred
-               ,ground_truth_vec = NULL)
+               ,ground_truth_vec)
                   }
 
   return(output_list)
@@ -735,12 +721,10 @@ SynthPrediction <- function(Y_series_list
   for (i in 1:(n+1)){
 
     if (is.character(shock_time_vec[i]) == TRUE){
-      print('The shock time vector entry is a character.')
       integer_shock_time_vec[i] <- which(index(Y[[i]]) == shock_time_vec[i]) #mk
       integer_shock_time_vec_for_convex_hull_based_optimization[i] <- which(index(covariates_series_list[[i]]) == shock_time_vec[i]) #mk
     }
     else{
-      print('The shock time vector entry is NOT a character.')
       integer_shock_time_vec[i] <- shock_time_vec[i]
       integer_shock_time_vec_for_convex_hull_based_optimization[i] <- shock_time_vec[i]
     }
@@ -910,7 +894,6 @@ SynthPrediction <- function(Y_series_list
                ,omega_star_hat_vec
                ,adjusted_pred
                ,display_ground_truth = display_ground_truth_choice
-
                )
   }
 

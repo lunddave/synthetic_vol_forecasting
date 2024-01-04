@@ -1,3 +1,5 @@
+library(SynthVolForecast)
+
 options(digits = 7)
 
 ### BEGIN EXAMPLE WITH SIMULATED DATA
