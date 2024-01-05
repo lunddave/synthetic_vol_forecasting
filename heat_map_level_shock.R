@@ -21,7 +21,7 @@ library(ggpubr)
 #https://gist.github.com/bannister/8002800
 path <- '/home/david/Desktop/simulation_results'
 #files <- list.files(path=path, pattern = ".*Apr16.*Rdata$")
-files <- list.files(path=path, pattern = ".*FriDec2900:35:072023*.*Rdata$")
+files <- list.files(path=path, pattern = ".*ThuJan0421:45:032024*.*Rdata$")
 
 setwd(path)
 results <- sapply(files, function(x) mget(load(x)), simplify = TRUE)
@@ -67,34 +67,34 @@ vol_model_chosen <- as.data.frame(lapply(vol_model_chosen, as.numeric))
 ggp_list = list()
 
 for (extra_day in unique(vol_model_chosen$extra_measurement_days)){
-  
+
   extra_day_set_chosen <- vol_model_chosen[vol_model_chosen$extra_measurement_days == extra_day,]
-  
+
   extra_day_set_chosen$success <- as.integer(extra_day_set_chosen$QL_adj1 <= extra_day_set_chosen$QL_adj14)
   df_only_one_outcome <- cbind(extra_day_set_chosen[,1:11], extra_day_set_chosen$success)
   names(df_only_one_outcome) <- c(names(df_only_one_outcome)[1:11], 'success')
-  
+
   non_NA <- df_only_one_outcome[complete.cases(df_only_one_outcome),]
-  
+
   # https://statisticsglobe.com/heatmap-in-r
-  
-  means <- non_NA %>% 
+
+  means <- non_NA %>%
     group_by(mu_eps_star, M21_M22_vol_mu_delta) %>% summarise(prop=mean(success),.groups = 'drop')
   means <- as.data.frame(sapply(means, as.numeric))
   means$prop <- round(means$prop, 2)
-  
+
   means
-  
+
   count <- non_NA %>% group_by(mu_eps_star, M21_M22_vol_mu_delta) %>% count()
   count
-  
+
   means$n <- count$n
-  
+
   title <- paste("Synthetic Volatility Forecast Outperformance of Unadjusted GARCH Forecast
           \n Each Square: Outperformance Proportion and (Simulation Count)
           \n Number of Extra Measurement Days = ",
                  extra_day, sep = '')
-  
+
   ggp1 <- ggplot(means,
                  aes(x = factor(mu_eps_star), y = factor(M21_M22_vol_mu_delta), fill = prop)) +
     scale_fill_gradient(low="white",  high="red") +
@@ -104,13 +104,13 @@ for (extra_day in unique(vol_model_chosen$extra_measurement_days)){
     ggtitle(title) +
     theme(plot.title = element_text(hjust = 0.5)) +
     labs(x = "M1 Level Shock Mean", y = "M21 Volatility Shock Mean")
-  
+
   ggp_list[[extra_day+1]] <- ggp1
-  
+
 }
 
 #http://www.sthda.com/english/articles/24-ggpubr-publication-ready-plots/81-ggplot2-easy-way-to-mix-multiple-graphs-on-the-same-page/
-# ggarrange(ggp_list[[1]], ggp_list[[2]], ggp_list[[3]], ggp_list[[4]], 
+# ggarrange(ggp_list[[1]], ggp_list[[2]], ggp_list[[3]], ggp_list[[4]],
 #           labels = c("A", "B", "C", "D"),
 #           ncol = 2, nrow = 2)
 
