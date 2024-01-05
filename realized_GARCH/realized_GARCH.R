@@ -95,7 +95,9 @@ spec <- ugarchspec(mean.model = list(armaOrder = c(0, 0),
                                      include.mean = FALSE),
                    variance.model = list(model = 'realGARCH'
                                          ,garchOrder = c(1, 1)
-                                         ,external.regressors = subset_xts$exog_var))
+                                         ,external.regressors = subset_xts$exog_var
+
+                                         ))
 
 fit <- ugarchfit(spec
                  ,subset_xts$log_ret
@@ -107,10 +109,16 @@ fit <- ugarchfit(spec
 fit
 
 tail(sigma(fit))
-tail(fitted(fit))
 
 ni = newsimpact(fit, z = seq(-2, 2, length.out = 100))
 plot(ni$zx, (ni$zy), ylab = ni$yexpr, xlab = ni$xexpr, type = 'l', main = 'News Impact realGARCH')
 abline(v = 0)
 abline(h = 0)
 grid()
+
+forc1 <- ugarchforecast(fit
+                        , n.ahead = 5
+                        , n.roll = 0
+                        , externalforecasts = list(vregfor = (5)))
+#https://stats.stackexchange.com/questions/566840/how-do-i-forecast-with-external-regressors-in-the-rugarch-package-in-r-the-regr
+forc1
