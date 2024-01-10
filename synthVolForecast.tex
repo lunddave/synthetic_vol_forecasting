@@ -613,14 +613,7 @@ as $t\rightarrow\infty$ by a simple application of Slutsky's Theorem.
 
 \end{proof-of-proposition}
 
-\begin{table}[]
-\begin{tabular}{|p{1.2in}|p{1.9in}|p{1.9in}|}
-\hline
-  & $\Sigma_{\delta} = I_{p}$ & $\Sigma_{\delta} \neq I_{p}$  \\ \hline
- $\Sigma_{x_{i,T^{*}}} = I_{p}$ & Easiest to model & Captures reasonable possibility of non-zero correlation in random effects \\ \hline
- $\Sigma_{x_{i,T^{*}}} \neq I_{p}$ & Captures empirically-verified phenomenon of non-zero correlation in covariates & Implausibly complicated to model  \\ \hline
-\end{tabular}
-\end{table}
+
 
 \subsection{Forecasting}
 
@@ -719,7 +712,7 @@ In its final post before the election result, acclaimed forecasting outfit 538, 
 
     \item \textbf{Donor pool construction} Synthetic Control, an a tool of causal inference, often goes about weighting control units by first identifying a natural or set of donors or standard donors such as the untreated units within a set of subnational units like US states or Spanish provinces \citep{abadie2003economic, abadie2010synthetic}.  While such a procedure does not necessarily preclude considered judgments (should Canadian provinces be used as donors for a treated US state?), as a tool of small-n prediction, distanced-based weighting faces a decidedly more difficult task in constructing a donor pool.  
     
-    For our purposes, we choose the three most recent US presidential elections prior to the 2016 election as well as the Brexit referendum held in the United Kingdom in May 2016.  The three US presidential elections are the only presidential elections since the advent of the ETF IYG.  We exclude the midterm congressional elections in the US (i.e. those held in even years not divisible by four), which generate far lower voter turnout and feature no national races.   The inclusion of Brexit stands in need of deeper justification because it is non-standard, in the terminology introduced above. Brexit shares with the 2016 presidential race the elements of novel, unorthodox, populist, quasi-isolationist movements in an Anglophone country with a well-developed financial services sector and increasing social division: urban versus rural, colleged-education versus not, cosmopolitan versus versus localist.  Although Euroskepticism and questions of the UK's relationship with continental Europe have a long history in the UK, referenda are not common in British political decision-making, generating uncertainty about the ultimate outcome and its full consequences.  Note that the constituent companies of the IYG, all of which had operations in London, were greatly exposed to the UK's decision to remain or exit the EU.  This explains how an event outside the US financial system can nevertheless be leveraged to study and predict outcomes inside the US.
+    For our purposes, we choose the three most recent US presidential elections prior to the 2016 election as well as the Brexit referendum held in the United Kingdom in May 2016.  The three US presidential elections are the only presidential elections since the advent of the ETF IYG.  We exclude the midterm congressional elections in the US (i.e. those held in even years not divisible by four), which generate far lower voter turnout and feature no national races.
 
     \item \textbf{Choice of estimator for volatility} We use the sum of squared 5-minute log-returns of IYG on November 9th, 2016, otherwise known as the Realized Volatility estimator of volatility \citep{andersen2009realized}, as our proxy.  We exclude the first five minutes of the trading day, resulting in 77 sums generated between 9:35am and 4pm.
 \end{enumerate} 
@@ -732,9 +725,9 @@ In its final post before the election result, acclaimed forecasting outfit 538, 
   \end{center}
 \end{figure}
 
-We now discuss the three subplots in Figure \ref{fig:SVF_2016} in order from left to right.  On the left, we see that the distanced-based weighting places nearly equal weight on the 2004 and 2012 elections, with only neglible weight on the 2008 election and Brexit.  Assuming an approximately correct specification of the covariates, this is interpreted to mean that even of the 2016 US election had a general climate of risk and tension less extreme than 2008 and Brexit and more similar to the 2004 and 2012 elections.  In the middle plot, we notice that the fixed effect estimates for 2008, 2012, and Brexit are large, with only 2004 registering a near-zero fixed-effect estimate.  The fixed-effect estimates quantify the amount of surprise the US election results delivered (strictly speaking, not only the presidential race but all November elections in the US with the ability to influence financial markets) under the assumption of a GARCH(1,1).  As estimates gleaned from one data point, they are relatively high in variance.  On the right, we observe in black the fitted values of $\sigma^{2}$ given the GARCH(1,1) for the time series under study.  We also observe four points, all indicated by the legend: three predictions and the ground truth.  We include the prediction derived by adjusting the GARCH(1,1) prediction by the arithmetic mean of the fixed-effect estimates.  As is evident, the Synthetic Volatility Forecasting method comes reasonably close the ground truth.  The prediction is not only directionally correct; it far outperforms the unadjusted prediction.  Remarkably, the arithmetic-mean based prediction here demonstrates the inherent risk in failing to weight each donor appropriately.  The 2008 election and Brexit receive far more weight than is called for because simple averaging ignores the radically different conditons on the even of those two events. \\
+We now discuss the three subplots in Figure \ref{fig:SVF_2016} in order from left to right.  On the left, we see that the distanced-based weighting places nearly equal weight on the 2004 and 2012 elections, with only neglible weight on the 2008 election.  Assuming an approximately correct specification of the covariates, this is interpreted to mean that even of the 2016 US election had a general climate of risk and tension less extreme than 2008 and more similar to the 2004 and 2012 elections.  In the middle plot, we notice that the fixed effect estimates for 2008 and 2012, with only 2004 registering a near-zero fixed-effect estimate.  The fixed-effect estimates quantify the amount of surprise the US election results delivered (strictly speaking, not only the presidential race but all November elections in the US with the ability to influence financial markets) under the assumption of a GARCH(1,1).  As estimates gleaned from one data point, they are relatively high in variance.  On the right, we observe in black the fitted values of $\sigma^{2}$ given the GARCH(1,1) for the time series under study.  We also observe four points, all indicated by the legend: three predictions and the ground truth.  We include the prediction derived by adjusting the GARCH(1,1) prediction by the arithmetic mean of the fixed-effect estimates.  As is evident, the Synthetic Volatility Forecasting method comes reasonably close the ground truth.  The prediction is not only directionally correct; it far outperforms the unadjusted prediction.  Remarkably, the arithmetic-mean based prediction here demonstrates the inherent risk in failing to weight each donor appropriately.  The 2008 election and Brexit receive far more weight than is called for because simple averaging ignores the radically different conditons on the even of those two events. \\
 
-Naturally, one would ask how sensitive this prediction is to at least two kinds of model specification: donor pool specification and covariate specification.  There are two responses to these concerns.  First, although the practitioner lacks a priori knowledge of the adequacy of the donors with respect to the time series under study, it is possible to gauge the diversity of the donor information by examining the singular values of the volatility profile.  In the prediction presented here, the no singular value represents more than 50$\%$ of the sum of singular values.  Indeed, the first four singular values descend from 50$\%$ to 25$\%$ to 21$\%$ to 5$\%$ of the the cumulative variation, indicating a low concentration or redundancy of information.  Second, we follow \citet{steegen2016increasing} in a executing a multiverse analysis.  In particular, in the supplement, we carry out leave-one-out analyses on both the donor set and the covariate set.  We here call out that with Brexit removed, the method places nearly all weight on the 2004 election, which has a fixed-effect estimate of almost zero.  Hence, the prediction in \ref{fig:SVF_2016_without_Brexit} outperforms that unadjusted forecast but markedly undershoots the ground truth.
+Naturally, one would ask how sensitive this prediction is to at least two kinds of model specification: donor pool specification and covariate specification.  There are two responses to these concerns.  First, although the practitioner lacks a priori knowledge of the adequacy of the donors with respect to the time series under study, it is possible to gauge the diversity of the donor information by examining the singular values of the volatility profile.  In the prediction presented here, the no singular value represents more than 50$\%$ of the sum of singular values.  Indeed, the first four singular values descend from 50$\%$ to 25$\%$ to 21$\%$ to 5$\%$ of the the cumulative variation, indicating a low concentration or redundancy of information.  Second, we follow \citet{steegen2016increasing} in a executing a multiverse analysis.  In particular, in the supplement, we carry out leave-one-out analyses on both the donor set and the covariate set.  We here call out that with Brexit added, ...
 
 \begin{figure}[h!]
 \begin{center}
@@ -748,6 +741,15 @@ Naturally, one would ask how sensitive this prediction is to at least two kinds 
 
 \begin{comment}
 \section{Connection to Signal Recovery}
+
+\begin{table}[]
+\begin{tabular}{|p{1.2in}|p{1.9in}|p{1.9in}|}
+\hline
+  & $\Sigma_{\delta} = I_{p}$ & $\Sigma_{\delta} \neq I_{p}$  \\ \hline
+ $\Sigma_{x_{i,T^{*}}} = I_{p}$ & Easiest to model & Captures reasonable possibility of non-zero correlation in random effects \\ \hline
+ $\Sigma_{x_{i,T^{*}}} \neq I_{p}$ & Captures empirically-verified phenomenon of non-zero correlation in covariates & Implausibly complicated to model  \\ \hline
+\end{tabular}
+\end{table}
 
 \begin{table}[h!]
 \begin{tabular}{|p{1.3in}|p{1.6in}|p{1.9in}|p{1.9in}|}
