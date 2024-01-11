@@ -176,7 +176,7 @@ plot_maker_garch <- function(fitted_vol
     shock_time_labels <- 1:length(shock_time_vec)
   }
 
-  par(mfrow = c(1,3), mar=c(15,6,4,2))
+  par(mfrow = c(1,3), mar=c(15,9,4,2))
 
   barplot_colors <- RColorBrewer::brewer.pal(length(w_hat),'Set3')
 
@@ -277,6 +277,9 @@ plot_maker_garch <- function(fitted_vol
          colors_for_adjusted_pred,   # Creates boxes in the legend with the specified colors
          title = 'Prediction Method',      # Legend title,
          cex = .9)
+
+  #par(mfrow = c(1,1), mar=c(15,6,4,2))
+
 
 }
 ### END plot_maker_garch

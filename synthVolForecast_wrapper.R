@@ -13,7 +13,7 @@ simulate_and_analyze <- function(n = 5,
                                  garch_param = c(.82),
                                  asymmetry_param = c(),
 
-                                 level_model = c('M1','M21','M22','none')[1],
+                                 level_model = c('M1','M21','M22','none')[4],
                                  vol_model = c('M1','M21','M22','none')[2],
 
                                  sigma_GARCH_innov = 1, # the sd that goes into rnorm
@@ -37,10 +37,10 @@ simulate_and_analyze <- function(n = 5,
                                  M21_M22_level_mu_delta = .05,
                                  M21_M22_level_sd_delta = .1,
 
-                                 mu_omega_star = .02,
+                                 mu_omega_star = .05,
                                  vol_shock_sd = .01,
 
-                                 M21_M22_vol_mu_delta = .05,
+                                 M21_M22_vol_mu_delta = .15,
                                  M21_M22_vol_sd_delta = 0,
 
                                  permutation_shift = 0,

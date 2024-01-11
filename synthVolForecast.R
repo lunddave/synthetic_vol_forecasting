@@ -15,7 +15,7 @@ library(latex2exp)
 
 options(scipen = 7)
 
-####################### BEGIN Auxiliary functions ####################### 
+####################### BEGIN Auxiliary functions #######################
 
 ## BEGIN shock_time_creator
 shock_time_creator <- function(series_length
@@ -156,7 +156,7 @@ shifter <- function(x, n = 1) {
 }
 #END SHIFTER
 
-####################### END Auxiliary functions ####################### 
+####################### END Auxiliary functions #######################
 
 #####################################################################
 
@@ -783,7 +783,7 @@ synth_vol_fit <- function(X,
   library(MASS)
   T_star_covariate_df <- matrix(unlist(T_star_covariate_df), ncol = length(shock_est_vec) - 1, byrow = FALSE)
   augmented_X <- cbind(rep(1,nrow(t(T_star_covariate_df))) , t(T_star_covariate_df))
-  beta <- ginv(t(augmented_X)%*%augmented_X)%*%t(augmented_X)%*%shock_est_vec[-1] 
+  beta <- ginv(t(augmented_X)%*%augmented_X)%*%t(augmented_X)%*%shock_est_vec[-1]
   linear_reg_pred <- as.numeric(c(1,X[[1]][T_star[1], , drop = FALSE]) %*% beta)
 
   #Second, we calculate omega_star_hat, which is the dot product of w and the estimated shock effects
@@ -802,6 +802,22 @@ synth_vol_fit <- function(X,
                       solve.tol = .000000000001,
                       control = list(eval.max = 1000000000, iter.max = 1000000000),
                       hessian.control = list(maxit = 1000000000) )
+
+  #We fit a GARCH to the entire series as well
+  garch_1_1_entire <- garchx(Y[[1]][,1],
+                      order = c(garch_param_fit, arch_param_fit, asymmetry_param_fit),
+                      solve.tol = .000000000001,
+                      control = list(eval.max = 1000000000, iter.max = 1000000000),
+                      hessian.control = list(maxit = 1000000000) )
+
+  #We fit a GARCH to the entire series BUT with indicator at shock time(s)
+  indicator_vec <- as.matrix(c(rep(0,T_star[1]), rep(1, shock_lengths[1]), rep(0, length(Y[[1]][,1]) - T_star[1] - shock_lengths[1])))
+  garch_1_1_entire_plus_shock_times <- garchx(Y[[1]][,1],
+                             order = c(garch_param_fit, arch_param_fit, asymmetry_param_fit),
+                             xreg = indicator_vec,
+                             solve.tol = .000000000001,
+                             control = list(eval.max = 1000000000, iter.max = 1000000000),
+                             hessian.control = list(maxit = 1000000000) )
 
   pred <- as.numeric(predict(garch_1_1, n.ahead = shock_lengths[1]))
 
@@ -932,6 +948,39 @@ synth_vol_fit <- function(X,
     lines(sigma2_up_through_T_star, col = 'black')
 
     title(ylab = expression(sigma^2), line = 2.05, cex.lab = 1.99)
+
+    #Now let's plot the adjustment FOCUSING ON THE FINAL POINTS OF THE SERIES
+    par(mfrow=c(1,1))
+
+    plot.ts(fitted(garch_1_1_entire)[(T_star[1]-10):(T_star[1] + 50)],
+            main = 'Proof of Concept: What if we had data beyond the shock time(s)?\nDoes GARCH with an indicator at the shock times catch up faster?',
+            ylab = '', col = 'green',
+            xlab = "Trading Days",
+            ylim = c(0, max(fitted(garch_1_1_entire), Y[[1]][,3][(T_star[1]-10):(T_star[1] + 50)])) ,
+            cex.lab = 3.99)
+
+    lines(Y[[1]][,3][(T_star[1]-10):(T_star[1] + 50)], col = 'black')
+
+    lines(fitted(garch_1_1_entire_plus_shock_times)[(T_star[1]-10):(T_star[1] + 50)], col = 'purple')
+
+    abline(v = T_star[1], col = 'red')
+
+    title(ylab = expression(sigma^2), line = 2.05, cex.lab = 1.99)
+
+    labels_for_legend <- c('Fitted Values from Unadjusted GARCH'
+                           ,'Actual Simulated Values'
+                           ,'Fitted Values Using Indicator at Shock Time(s)')
+
+    # Here is the color scheme we will use
+    colors_for_legend <- c('green', 'black', 'purple')
+
+    legend(x = "topleft",  # Coordinates (x also accepts keywords)
+           legend = labels_for_legend,
+           1:length(labels_for_legend), # Vector with the name of each group
+           colors_for_legend,   # Creates boxes in the legend with the specified colors
+           title = 'Time Series',      # Legend title,
+           cex = .9
+    )
 
     #FINAL PLOT: Plot the volatility of the target series along with
     #(1) for each donor, the prediction adjusted by omega_i_hat
