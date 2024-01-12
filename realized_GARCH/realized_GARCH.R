@@ -122,3 +122,4 @@ forc1 <- ugarchforecast(fit
                         , externalforecasts = list(vregfor = (5)))
 #https://stats.stackexchange.com/questions/566840/how-do-i-forecast-with-external-regressors-in-the-rugarch-package-in-r-the-regr
 forc1
+

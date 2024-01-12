@@ -1,6 +1,6 @@
 
 ########### Items to investigate ########
-# 1) using foreach just once to smash through grid+nsim 
+# 1) using foreach just once to smash through grid+nsim
 # https://cran.r-project.org/web/packages/foreach/vignettes/foreach.html
 # 2) benchmarking the runtime https://www.alexejgossmann.com/benchmarking_r/
 # 3) this has a grid: https://www.blasbenito.com/post/02_parallelizing_loops_with_r/
@@ -35,7 +35,7 @@ start_time <- Sys.time()
 nsim <- as.numeric(command_args[1])
 permutation_shift <- 0
 
-############ We build our parameter grid ############ 
+############ We build our parameter grid ############
 donor_pool_size <- c(10)
 p <- c(5)
 alpha <- c(.1)
@@ -68,8 +68,8 @@ list_of_vars <- list(donor_pool_size
                     , vol_shock_length
                     , level_shock_length
                     , extra_measurement_days
-		    , a
- 	            , b
+		                , a
+ 	                  , b
                     , optimization_norm
                     , mu_eps_star
                     # #, level_GED_alpha
@@ -92,7 +92,7 @@ names(list_of_vars) <- list('donor_pool_size'
                            , 'level_shock_length'
                            , 'extra_measurement_days'
                            , 'a'
-		           , 'b'
+		                       , 'b'
                            , 'optimization_norm'
                            , 'mu_eps_star'
                            # #, 'level_GED_alpha'
@@ -131,13 +131,13 @@ gridd_subset <- gridd_subset[ (gridd_subset$level_model == 'M1' &
                                  gridd_subset$M21_M22_level_mu_delta == 0 &
                                  gridd_subset$M21_M22_level_sd_delta == 0
 									) |
-                                
+
                                 (gridd_subset$level_model %in% c('M21','M22') &
                                    gridd_subset$level_shock_length != 0 &
                                    gridd_subset$mu_eps_star != 0 &
                                    gridd_subset$M21_M22_level_mu_delta != 0 &
                                    gridd_subset$M21_M22_level_sd_delta != 0) |
-                                
+
                                 (gridd_subset$level_model == 'none' &
                                    gridd_subset$level_shock_length == 0 &
                                    gridd_subset$mu_eps_star == 0 &
@@ -146,7 +146,7 @@ gridd_subset <- gridd_subset[ (gridd_subset$level_model == 'M1' &
 
 print('After culling grid rows based on level models, we print dimensions:')
 dim(gridd_subset)
- 
+
 # Get rid of M1 vol models where
 
 # , 'M21_M22_vol_mu_delta'
@@ -156,8 +156,8 @@ dim(gridd_subset)
 
 gridd_subset <- gridd_subset[ (gridd_subset$vol_model == 'M1' &
                                  gridd_subset$M21_M22_vol_mu_delta == 0 &
-                                 gridd_subset$M21_M22_vol_sd_delta == 0) | 
-                                
+                                 gridd_subset$M21_M22_vol_sd_delta == 0) |
+
                                 (gridd_subset$vol_model != 'M1')
                               #     gridd_subset$M21_M22_vol_mu_delta != 0)
                               ,]
@@ -170,8 +170,8 @@ dim(gridd_subset)
 # a) fix the 1-14 names for geometric sets
 # b) fix parameter combinations that don't make sense
 # c) look into why some combinations often lead to GARCH estimation failure
-# d) 
-# 
+# d)
+#
 
 
 # Take stock of what we have
@@ -193,14 +193,14 @@ grid_row_count <- nrow(sim_params)
 global_seed <- 1986
 rng <- RNGseq(nsim * grid_row_count, global_seed)
 
-############ end of parameter grid construction ############ 
+############ end of parameter grid construction ############
 
 
 ########################### Begin parallel architecture ###############################
 
 # simulation time
-system.time( 
-  
+system.time(
+
                             output <- foreach(
                                         n = sim_params$donor_pool_size
                                         , p = sim_params$p
@@ -216,12 +216,12 @@ system.time(
                                         ,vol_shock_length = sim_params$vol_shock_length
                                         ,extra_measurement_days = sim_params$extra_measurement_days
 
-					,a = sim_params$a
-					,b = sim_params$b
+                              					,a = sim_params$a
+                              					,b = sim_params$b
 
                                         ,optimization_norm = sim_params$optimization_norm
                                         ,mu_eps_star = sim_params$mu_eps_star
-                      
+
                                         ,M21_M22_level_mu_delta = sim_params$M21_M22_level_mu_delta
                                         ,M21_M22_level_sd_delta = sim_params$M21_M22_level_sd_delta
 
@@ -245,8 +245,8 @@ system.time(
                                     ,.combine = 'rbind'
                                     ,
                                     .errorhandling = "remove" #pass is another option
-                                    ) %do% { #begin inner loop 
-    							
+                                    ) %do% { #begin inner loop
+
 				    setRNG(selected_seed)
 
                                                         to_return <- simulate_and_analyze(n = n
@@ -275,9 +275,9 @@ system.time(
                                                               )
 
                               return(to_return)
-            
+
                                                               } # end inner loop
-            
+
               } # end outer loop
 ) #end system.time
 
