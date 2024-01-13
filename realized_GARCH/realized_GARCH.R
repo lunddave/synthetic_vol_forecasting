@@ -123,3 +123,23 @@ forc1 <- ugarchforecast(fit
 #https://stats.stackexchange.com/questions/566840/how-do-i-forecast-with-external-regressors-in-the-rugarch-package-in-r-the-regr
 forc1
 
+
+
+## Simulations
+spec = ugarchspec(mean.model = list(armaOrder = c(1, 1), include.mean = TRUE)
+                  , variance.model = list(model = 'realGARCH', garchOrder = c(1, 1)))
+fit <- ugarchfit(spec
+                 ,subset_xts$log_ret
+                 ,solver = 'hybrid'
+                 ,realizedVol = subset_xts$impl_volatility * 100
+)
+specf = spec
+sim1 = ugarchsim(fit, n.sim = 1000, m.sim = 1, n.start = 0, startMethod = 'sample', rseed = 12)
+sim1@simulation$realizedSim
+sim1@simulation$seriesSim
+head(sigma(sim1), n = 50)
+
+sim_dat <- zoo(cbind(sim1@simulation$realizedSim,sim1@simulation$seriesSim))
+plot(sim_dat)
+plot.ts(sim1@simulation$realizedSim)
+lines(sim1@simulation$seriesSim, col = 'green')
