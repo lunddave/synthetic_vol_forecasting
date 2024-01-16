@@ -952,16 +952,23 @@ synth_vol_fit <- function(X,
     #Now let's plot the adjustment FOCUSING ON THE FINAL POINTS OF THE SERIES
     par(mfrow=c(1,1))
 
-    plot.ts(fitted(garch_1_1_entire)[(T_star[1]-10):(T_star[1] + 50)],
+    #We remove NA values from fitted series
+    fitted_garch_1_1_entire <- fitted(garch_1_1_entire)
+    fitted_garch_1_1_entire_plus_shock_times <- fitted(garch_1_1_entire_plus_shock_times)
+
+    non_NA_garch_1_1_entire <- fitted_garch_1_1_entire[is.finite(fitted_garch_1_1_entire)]
+    non_NA_garch_1_1_entire_plus_shock_times <- fitted_garch_1_1_entire_plus_shock_times[is.finite(fitted_garch_1_1_entire_plus_shock_times)]
+
+    plot.ts(Y[[1]][,3][(T_star[1]-10):(T_star[1] + 50)],
             main = 'Proof of Concept: What if we had data beyond the shock time(s)?\nDoes GARCH with an indicator at the shock times catch up faster?',
-            ylab = '', col = 'green',
+            ylab = '', col = 'black',
             xlab = "Trading Days",
-            ylim = c(0, max(fitted(garch_1_1_entire), Y[[1]][,3][(T_star[1]-10):(T_star[1] + 50)])) ,
+            ylim = c(0, max(non_NA_garch_1_1_entire_plus_shock_times, Y[[1]][,3][(T_star[1]-10):(T_star[1] + 50)])) ,
             cex.lab = 3.99)
 
-    lines(Y[[1]][,3][(T_star[1]-10):(T_star[1] + 50)], col = 'black')
+    lines(non_NA_garch_1_1_entire_plus_shock_times[(T_star[1]-10):(T_star[1] + 50)], col = 'purple')
 
-    lines(fitted(garch_1_1_entire_plus_shock_times)[(T_star[1]-10):(T_star[1] + 50)], col = 'purple')
+    lines(non_NA_garch_1_1_entire[(T_star[1]-10):(T_star[1] + 50)], col = 'green')
 
     abline(v = T_star[1], col = 'red')
 
