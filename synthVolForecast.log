@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2023.11.6)  16 JAN 2024 12:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2023.11.6)  17 JAN 2024 13:40
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -707,6 +707,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
 Package hyperref Info: Link coloring ON on input line 121.
+ (./synthVolForecast.out) (./synthVolForecast.out)
 \@outlinefile=\write5
 \openout5 = `synthVolForecast.out'.
 
@@ -756,497 +757,129 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 LaTeX Font Info:    Trying to load font information for U+msb on input line 124.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
+) [1
 
-Package natbib Warning: Citation `lin2021minimizing' on page 1 undefined on input line 126.
-
-
-Package natbib Warning: Citation `Kenton' on page 1 undefined on input line 131.
-
-
-Package natbib Warning: Citation `tsay2005analysis' on page 1 undefined on input line 133.
-
-
-Package natbib Warning: Citation `engle2001good' on page 1 undefined on input line 133.
-
-
-Package natbib Warning: Citation `bauwens2006regime' on page 1 undefined on input line 133.
-
-
-Package natbib Warning: Citation `hansen2012realized' on page 1 undefined on input line 133.
-
-
-Package natbib Warning: Citation `andersen2003modeling' on page 1 undefined on input line 133.
-
-
-Package natbib Warning: Citation `engle2002new' on page 1 undefined on input line 133.
-
-
-Package natbib Warning: Citation `RePEc:pra:mprapa:100301' on page 1 undefined on input line 133.
-
-
-Package natbib Warning: Citation `hansen2012realized' on page 1 undefined on input line 133.
-
-[1
-
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
-
-Package natbib Warning: Citation `sharma2016forecasting' on page 2 undefined on input line 135.
-
-Excluding 'comment' comment.
-
-/home/david/Desktop/synthetic_vol_forecasting/synthVolForecast.tex:191: LaTeX Error: Lonely \item--perhaps a missing list environment.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.191 \item S
-             ee Tsay p. 133: if $t$ is the last index that has been observed...
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-Underfull \hbox (badness 10000) detected at line 191
-[][]
- []
-
-/home/david/Desktop/synthetic_vol_forecasting/synthVolForecast.tex:192: Undefined control sequence.
-\enit@endenumerate ->\enit@after 
-                                 \endlist \ifx \enit@series \relax \else \if...
-l.192 \end{enumerate}
-                     
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-/home/david/Desktop/synthetic_vol_forecasting/synthVolForecast.tex:192: Undefined control sequence.
-\enit@endenumerate ...\else \ifnum \enit@resuming 
-                                                  =\@ne \enit@setresumekeys ...
-l.192 \end{enumerate}
-                     
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-/home/david/Desktop/synthetic_vol_forecasting/synthVolForecast.tex:192: Missing number, treated as zero.
-<to be read again> 
-                   =
-l.192 \end{enumerate}
-                     
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-/home/david/Desktop/synthetic_vol_forecasting/synthVolForecast.tex:192: Undefined control sequence.
-\enit@setresumekeys ...xpandafter {\enit@savekeys 
-                                                  }\xdef \enit@afterlist {#2...
-l.192 \end{enumerate}
-                     
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-/home/david/Desktop/synthetic_vol_forecasting/synthVolForecast.tex:192: Undefined control sequence.
-\enit@setresumekeys ...it@toks }\ifnum \enit@type 
-                                                  =\z@ #3\def \enit@noexcs {...
-l.192 \end{enumerate}
-                     
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-/home/david/Desktop/synthetic_vol_forecasting/synthVolForecast.tex:192: Missing number, treated as zero.
-<to be read again> 
-                   =
-l.192 \end{enumerate}
-                     
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-/home/david/Desktop/synthetic_vol_forecasting/synthVolForecast.tex:192: Undefined control sequence.
-<argument> enit@resume@series@\enit@series 
-                                           
-l.192 \end{enumerate}
-                     
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-/home/david/Desktop/synthetic_vol_forecasting/synthVolForecast.tex:192: Undefined control sequence.
-\enit@setresumekeys ...me@#1}{\csname c@\@listctr 
-                                                  \endcsname \the \csname c@...
-l.192 \end{enumerate}
-                     
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-/home/david/Desktop/synthetic_vol_forecasting/synthVolForecast.tex:192: Undefined control sequence.
-\enit@setresumekeys ...e \the \csname c@\@listctr 
-                                                  \endcsname }\fi }
-l.192 \end{enumerate}
-                     
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-/home/david/Desktop/synthetic_vol_forecasting/synthVolForecast.tex:192: You can't use `\relax' after \the.
-<recently read> \c@ 
-                    
-l.192 \end{enumerate}
-                     
-I'm forgetting what you said and using zero instead.
-
-/home/david/Desktop/synthetic_vol_forecasting/synthVolForecast.tex:192: Undefined control sequence.
-\enit@endenumerate ...t \fi \ifnum \enit@resuming 
-                                                  =\thr@@ \enit@setresumekey...
-l.192 \end{enumerate}
-                     
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-/home/david/Desktop/synthetic_vol_forecasting/synthVolForecast.tex:192: Missing number, treated as zero.
-<to be read again> 
-                   =
-l.192 \end{enumerate}
-                     
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-/home/david/Desktop/synthetic_vol_forecasting/synthVolForecast.tex:192: Undefined control sequence.
-\enit@setresumekeys ...xpandafter {\enit@savekeys 
-                                                  }\xdef \enit@afterlist {#2...
-l.192 \end{enumerate}
-                     
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-/home/david/Desktop/synthetic_vol_forecasting/synthVolForecast.tex:192: Undefined control sequence.
-\enit@setresumekeys ...it@toks }\ifnum \enit@type 
-                                                  =\z@ #3\def \enit@noexcs {...
-l.192 \end{enumerate}
-                     
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-/home/david/Desktop/synthetic_vol_forecasting/synthVolForecast.tex:192: Missing number, treated as zero.
-<to be read again> 
-                   =
-l.192 \end{enumerate}
-                     
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-/home/david/Desktop/synthetic_vol_forecasting/synthVolForecast.tex:192: Undefined control sequence.
-\enit@setresumekeys ...me@#1}{\csname c@\@listctr 
-                                                  \endcsname \the \csname c@...
-l.192 \end{enumerate}
-                     
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-/home/david/Desktop/synthetic_vol_forecasting/synthVolForecast.tex:192: Undefined control sequence.
-\enit@setresumekeys ...e \the \csname c@\@listctr 
-                                                  \endcsname }\fi }
-l.192 \end{enumerate}
-                     
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-/home/david/Desktop/synthetic_vol_forecasting/synthVolForecast.tex:192: You can't use `\relax' after \the.
-<recently read> \c@ 
-                    
-l.192 \end{enumerate}
-                     
-I'm forgetting what you said and using zero instead.
-
-
-/home/david/Desktop/synthetic_vol_forecasting/synthVolForecast.tex:192: LaTeX Error: \begin{document} ended by \end{enumerate}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.192 \end{enumerate}
-                     
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-/home/david/Desktop/synthetic_vol_forecasting/synthVolForecast.tex:192: Extra \endgroup.
-<recently read> \endgroup 
-                          
-l.192 \end{enumerate}
-                     
-Things are pretty mixed up, but I think the worst is over.
-
-
-Package natbib Warning: Citation `box2013box' on page 2 undefined on input line 203.
-
-
-Package natbib Warning: Citation `engle1982autoregressive' on page 2 undefined on input line 203.
-
-
-Package natbib Warning: Citation `bollerslev1986generalized' on page 2 undefined on input line 203.
-
-
-Package natbib Warning: Citation `cont2001empirical' on page 2 undefined on input line 205.
-
-[2] [3]
-
-Package natbib Warning: Citation `brownlees2011practical' on page 4 undefined on input line 246.
-
-
-Package natbib Warning: Citation `brownlees2011practical' on page 4 undefined on input line 252.
-
-
-Package natbib Warning: Citation `mayhew1995implied' on page 4 undefined on input line 268.
-
-
-Package natbib Warning: Citation `christensen1998relation' on page 4 undefined on input line 268.
-
-
-Package natbib Warning: Citation `andersen2009realized' on page 4 undefined on input line 272.
-
-
-LaTeX Warning: Reference `historical_volatility' on page 4 undefined on input line 284.
-
-[4]
-
-Package natbib Warning: Citation `abadie2010synthetic' on page 5 undefined on input line 321.
-
-
-Package natbib Warning: Citation `lin2021minimizing' on page 5 undefined on input line 321.
-
-
-Package natbib Warning: Citation `romer1989does' on page 5 undefined on input line 321.
-
-
-Package natbib Warning: Citation `kilian2017structural' on page 5 undefined on input line 321.
-
-[5] [6]
-
-LaTeX Warning: Reference `eq0' on page 7 undefined on input line 404.
-
-
-Package natbib Warning: Citation `zivot2009practical' on page 7 undefined on input line 404.
-
-[7]
-
-LaTeX Warning: Reference `eq1' on page 8 undefined on input line 433.
-
-
-LaTeX Warning: Reference `eq2' on page 8 undefined on input line 433.
-
-
-LaTeX Warning: Reference `eq3' on page 8 undefined on input line 433.
-
-
-LaTeX Warning: Reference `eq4' on page 8 undefined on input line 433.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 433--435
-
- []
-
-[8] Excluding 'comment' comment.
-
-Package natbib Warning: Citation `han2014asymptotic' on page 9 undefined on input line 573.
-
-
-LaTeX Warning: Reference `stationarity_of_omega_i_t' on page 9 undefined on input line 579.
-
-
-Package natbib Warning: Citation `han2014asymptotic' on page 9 undefined on input line 583.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 583--585
-
- []
-
-
-LaTeX Warning: Reference `consistency' on page 9 undefined on input line 588.
-
-[9]
-Underfull \hbox (badness 10000) in paragraph at lines 612--613
-
- []
-
-
-Package natbib Warning: Citation `zivot2009practical' on page 10 undefined on input line 620.
-
-<simulation_plots/standard_simulation_alpha_.1_beta_.82.png, id=116, 650.43pt x 499.11469pt>
-File: simulation_plots/standard_simulation_alpha_.1_beta_.82.png Graphic file (type png)
-<use simulation_plots/standard_simulation_alpha_.1_beta_.82.png>
-Package pdftex.def Info: simulation_plots/standard_simulation_alpha_.1_beta_.82.png  used on input line 651.
-(pdftex.def)             Requested size: 292.6908pt x 224.59952pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-LaTeX Warning: Reference `fig:heavy_beta' on page 10 undefined on input line 657.
-
-<simulation_plots/standard_simulation_alpha_.82_beta_.1.png, id=117, 650.43pt x 499.11469pt>
-File: simulation_plots/standard_simulation_alpha_.82_beta_.1.png Graphic file (type png)
-<use simulation_plots/standard_simulation_alpha_.82_beta_.1.png>
-Package pdftex.def Info: simulation_plots/standard_simulation_alpha_.82_beta_.1.png  used on input line 665.
-(pdftex.def)             Requested size: 292.6908pt x 224.59952pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-LaTeX Warning: Reference `fig:heavy_alpha' on page 10 undefined on input line 671.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 673.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `superscript' on input line 673.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 673.
-
-<simulation_plots/USE_in_paper_simulation_plot_arithmetic_mean.png, id=118, 481.8pt x 481.8pt>
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] Excluding 'comment' comment.
+<simulation_plots/USE_in_paper_simulation_plot_arithmetic_mean.png, id=200, 481.8pt x 481.8pt>
 File: simulation_plots/USE_in_paper_simulation_plot_arithmetic_mean.png Graphic file (type png)
 <use simulation_plots/USE_in_paper_simulation_plot_arithmetic_mean.png>
-Package pdftex.def Info: simulation_plots/USE_in_paper_simulation_plot_arithmetic_mean.png  used on input line 678.
+Package pdftex.def Info: simulation_plots/USE_in_paper_simulation_plot_arithmetic_mean.png  used on input line 144.
+(pdftex.def)             Requested size: 337.25769pt x 337.25769pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 150--151
+
+ []
+
+[2 <./simulation_plots/USE_in_paper_simulation_plot_arithmetic_mean.png (PNG copy)>] Excluding 'comment' comment.
+Underfull \hbox (badness 10000) in paragraph at lines 170--171
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 172--173
+
+ []
+
+
+Overfull \hbox (8.11958pt too wide) detected at line 185
+[]
+ []
+
+[3] [4] [5] [6] [7] [8] [9]
+Underfull \hbox (badness 10000) in paragraph at lines 432--434
+
+ []
+
+[10] Excluding 'comment' comment.
+Underfull \hbox (badness 10000) in paragraph at lines 582--584
+
+ []
+
+[11]
+Underfull \hbox (badness 10000) in paragraph at lines 611--612
+
+ []
+
+<simulation_plots/standard_simulation_alpha_.1_beta_.82.png, id=368, 650.43pt x 499.11469pt>
+File: simulation_plots/standard_simulation_alpha_.1_beta_.82.png Graphic file (type png)
+<use simulation_plots/standard_simulation_alpha_.1_beta_.82.png>
+Package pdftex.def Info: simulation_plots/standard_simulation_alpha_.1_beta_.82.png  used on input line 650.
+(pdftex.def)             Requested size: 292.6908pt x 224.59952pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<simulation_plots/standard_simulation_alpha_.82_beta_.1.png, id=370, 650.43pt x 499.11469pt>
+File: simulation_plots/standard_simulation_alpha_.82_beta_.1.png Graphic file (type png)
+<use simulation_plots/standard_simulation_alpha_.82_beta_.1.png>
+Package pdftex.def Info: simulation_plots/standard_simulation_alpha_.82_beta_.1.png  used on input line 664.
+(pdftex.def)             Requested size: 292.6908pt x 224.59952pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 672.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `superscript' on input line 672.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 672.
+
+File: simulation_plots/USE_in_paper_simulation_plot_arithmetic_mean.png Graphic file (type png)
+<use simulation_plots/USE_in_paper_simulation_plot_arithmetic_mean.png>
+Package pdftex.def Info: simulation_plots/USE_in_paper_simulation_plot_arithmetic_mean.png  used on input line 677.
 (pdftex.def)             Requested size: 240.8994pt x 240.8994pt.
-[10]
+[12]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[11 <./simulation_plots/standard_simulation_alpha_.1_beta_.82.png (PNG copy)> <./simulation_plots/standard_simulation_alpha_.82_beta_.1.png (PNG copy)>]
-
-Package natbib Warning: Citation `mayhew2008incumbency' on page 12 undefined on input line 702.
-
-
-Package natbib Warning: Citation `goodell2013us' on page 12 undefined on input line 702.
-
-[12 <./simulation_plots/USE_in_paper_simulation_plot_arithmetic_mean.png (PNG copy)>]
-
-Package natbib Warning: Citation `Silver_2016' on page 13 undefined on input line 704.
-
-
-Package natbib Warning: Citation `zivot2009practical' on page 13 undefined on input line 704.
-
-
-Package natbib Warning: Citation `hansen2005forecast' on page 13 undefined on input line 707.
-
-
-Package natbib Warning: Citation `goodell2013us' on page 13 undefined on input line 709.
-
-
-Package natbib Warning: Citation `kane1996p' on page 13 undefined on input line 709.
-
-
-Package natbib Warning: Citation `abadie2003economic' on page 13 undefined on input line 711.
-
-
-Package natbib Warning: Citation `abadie2010synthetic' on page 13 undefined on input line 711.
-
-
-Package natbib Warning: Citation `andersen2009realized' on page 13 undefined on input line 715.
-
-<real_data_output_plots/savetime_WedJan1010:56:32PM2024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png, id=155, 803.0pt x 602.25pt>
+[13 <./simulation_plots/standard_simulation_alpha_.1_beta_.82.png (PNG copy)> <./simulation_plots/standard_simulation_alpha_.82_beta_.1.png (PNG copy)>] [14]
+<real_data_output_plots/savetime_WedJan1010:56:32PM2024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png, id=414, 803.0pt x 602.25pt>
 File: real_data_output_plots/savetime_WedJan1010:56:32PM2024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png Graphic file (type png)
 <use real_data_output_plots/savetime_WedJan1010:56:32PM2024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png>
-Package pdftex.def Info: real_data_output_plots/savetime_WedJan1010:56:32PM2024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png  used on input line 720.
+Package pdftex.def Info: real_data_output_plots/savetime_WedJan1010:56:32PM2024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png  used on input line 719.
 (pdftex.def)             Requested size: 401.49902pt x 301.12425pt.
+
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-LaTeX Warning: Reference `fig:SVF_2016' on page 13 undefined on input line 726.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 726--727
+Underfull \hbox (badness 10000) in paragraph at lines 725--726
 
  []
 
-[13]
-
-Package natbib Warning: Citation `steegen2016increasing' on page 14 undefined on input line 728.
-
-[14 <./real_data_output_plots/savetime_WedJan1010:56:32PM2024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png (PNG copy)>]
-<real_data_output_plots/savetime_WedJan1010:53:23PM2024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-23.png, id=172, 803.0pt x 602.25pt>
+[15]
+<real_data_output_plots/savetime_WedJan1010:53:23PM2024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-23.png, id=435, 803.0pt x 602.25pt>
 File: real_data_output_plots/savetime_WedJan1010:53:23PM2024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-23.png Graphic file (type png)
 <use real_data_output_plots/savetime_WedJan1010:53:23PM2024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-23.png>
-Package pdftex.def Info: real_data_output_plots/savetime_WedJan1010:53:23PM2024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-23.png  used on input line 732.
+Package pdftex.def Info: real_data_output_plots/savetime_WedJan1010:53:23PM2024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-23.png  used on input line 731.
 (pdftex.def)             Requested size: 481.80373pt x 361.35278pt.
- Excluding 'comment' comment. [15 <./real_data_output_plots/savetime_WedJan1010:53:23PM2024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-23.png (PNG copy)>] (./synthVolForecast.bbl)
+ [16 <./real_data_output_plots/savetime_WedJan1010:56:32PM2024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png (PNG copy)>] Excluding 'comment' comment. [17 <./real_data_output_plots/savetime_WedJan1010:53:23PM2024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-23.png (PNG copy)>] (./synthVolForecast.bbl [18
 
-Package natbib Warning: There were undefined citations.
-
-(./synthVolForecast.aux)
+]) [19] (./synthVolForecast.aux)
  ***********
 LaTeX2e <2023-06-01>
 L3 programming layer <2023-06-05>
  ***********
-
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-
-Package rerunfilecheck Warning: File `synthVolForecast.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `synthVolForecast.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  DBB3C047BE336C022B379B56BACC6917;6577.
+Package rerunfilecheck Info: File `synthVolForecast.out' has not changed.
+(rerunfilecheck)             Checksum: A2153E7329EF86F3D8E1B9BB28D98631;8315.
  ) 
 Here is how much of TeX's memory you used:
- 25914 strings out of 475735
- 471319 string characters out of 5784786
+ 26105 strings out of 475735
+ 475424 string characters out of 5784786
  1876759 words of memory out of 5000000
- 46112 multiletter control sequences out of 15000+600000
- 533161 words of font info for 105 fonts, out of 8000000 for 9000
+ 46250 multiletter control sequences out of 15000+600000
+ 533329 words of font info for 106 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,17n,87p,2940b,563s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0600.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0800.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on synthVolForecast.pdf (15 pages, 792354 bytes).
+ 84i,17n,87p,2938b,594s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0600.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0800.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1095.pfb>
+Output written on synthVolForecast.pdf (19 pages, 828034 bytes).
 PDF statistics:
- 294 PDF objects out of 1000 (max. 8388607)
- 225 compressed objects within 3 object streams
- 94 named destinations out of 1000 (max. 500000)
- 38 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 588 PDF objects out of 1000 (max. 8388607)
+ 512 compressed objects within 6 object streams
+ 142 named destinations out of 1000 (max. 500000)
+ 342 words of extra memory for PDF output out of 10000 (max. 10000000)
 

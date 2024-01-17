@@ -137,11 +137,11 @@ The approach herein can be viewed as an attempt to sidestep the functional compl
 % COMMENTING OUT THE FOLLOWING PARAGRAPH BECAUSE IT BELONGS IN DISSERTATION ONLY
 \begin{comment}
   When $(P_{t})_{t\in\mathbb{N}}$ is positive, as one would expect of a price series, the percentage change over any interval of length $k\in\mathbb{N}$ can be approximated by $\text{log}(\frac{P_{t+k}}{P_{t}})$, owing to the fact that for any nonnegative real number y, $\text{log}(y+1)\leq y$.  Equality holds at exactly y = 0, corresponding to the case where $P_{t+k} = P_{t}$.  It is easily verified that the approximation works well when the ratio $\frac{P_{t+k}}{P_{t}} \in (.85,1.15)$, a return absolute value of $15\%$ or less.  The daily log return series $\text{log}(\frac{P_{t+1}}{P_{t}})$, however, not only provides an approximation to the daily return; the logarithm of a price series has the helpful property of being supported on $\mathbb{R}$.  Partly due to that, it earns a pedigree for its role in geometric Brownian motion, the foundation of much of modern financial mathematics, including the Black-Sholes differential equation \citep{tsay2005analysis}.  Additionally, the log transformation is a tried-and-true variance-reduction technique for heteroskedastic data \citep{faraway2016extending} and non-stationary time series.  In many applications, the log-return of a positive time series will allow us to reject the null of a unit-root process using the methods pioneered in \citet{dickey1979distribution} and \citet{dickey1981likelihood}, thus paving the way for the vast family of autoregressive-moving-average models.
-  \end{comment}
+\end{comment}
 
 \begin{figure}[h]
 \begin{center}
-  \includegraphics[scale=.5]{simulation_plots/USE_in_paper_simulation_plot_arithmetic_mean.png}
+  \includegraphics[scale=.7]{simulation_plots/USE_in_paper_simulation_plot_arithmetic_mean.png}
   \caption{Shock aggregation using the arithmetic mean of donor fixed effect estimates.}
   \label{fig:arith_mean_example_introduction}
   \end{center}
@@ -161,6 +161,11 @@ In KNN regression, the hyperparameter K must be learned.  In Synthetic Volatilit
 It would be counter to the method proposed herein to assemble a vast number of donors, lacking careful scrutiny of the qualitative fit, and let the optimization simply pick the donors, via weighting.  What makes a donor good is not merely its quantitative fit but its qualitative fit as well.
 
 \subsection{News shock literature review}
+
+\begin{comment}
+This needs to be commented out because the current draft has no way to accommodate concurrent information.
+\item \citet{lin2021minimizing} requires exogenous information to arrive strictly between $T^{*}$ and $T^{*}+1$.  However, we may want to relax this requirement so as to permit the exogenous information to be concurrent with the trading session or end of session on $T^{*}+1$.
+\end{comment}
 
 We adapt the news shock framework of \citet{kilian2017structural}: \\
 
@@ -184,10 +189,6 @@ Then for any $i,t$, $\E[a^{2}_{i,t}]$ is nothing more than the expectation of th
 \begin{enumerate}
 \item The method under development does not strictly require knowledge of the length of the shocks in the donor pool, but correctly sizing up those shock lengths is helpful to proper estimation of the shocks in the donor pool.  An important question remains: even if the donor pool shock lengths are assumed to be known, how do we advise the operator to forecast the time series under study?  For how long is the forecast reliable?  Should we take a convex combination of the donor pool shock lengths?  Or mean? Or minimum of the donor pool shock lengths?
 
-\begin{comment}
-%This needs to be commented out because the current draft has no way to accommodate concurrent information.
-\item \citet{lin2021minimizing} requires exogenous information to arrive strictly between $T^{*}$ and $T^{*}+1$.  However, we may want to relax this requirement so as to permit the exogenous information to be concurrent with the trading session or end of session on $T^{*}+1$.
-\end{comment}
 \item See Tsay p. 133: if $t$ is the last index that has been observed, then our two-step-ahead forecast is made easier by rewriting the volatility equation as $\sigma^{2}_{i,t+1} = w_{i} + (\alpha_{i} + \beta_{i})\sigma^{2}_{i,t} + \alpha_{1}\sigma^{2}_{i,t}[\epsilon^{2}_{i,t} - 1]= w_{i} + (\alpha_{i} + \beta_{i})\sigma^{2}_{i,t} + \alpha_{1}\sigma^{2}_{i,t}[\epsilon^{2}_{i,t} - 1] $.  Usually, we assume unit variance (though not necessarily a N(0,1)).  However, what is the variance is smaller than 1?  Then in conditional expectation, the term $\alpha_{1}\sigma^{2}_{i,t}[\epsilon^{2}_{i,t} - 1]$ will be negative.  So it seems that for level shock, we want the signal to noise ratio to be large because the mean is high, not because the variance is low.
 \end{enumerate}
 
@@ -215,7 +216,6 @@ Assuming further that $\sigma^{2}_{t}$ depends on a vector of exogenous covariat
 &\sigma_{t}^{2} = \omega+ \sum^{m}_{k=1}\alpha_{k}a^{2}_{t-k} + \sum_{j=1}^{s}\beta_{j}\sigma_{t-j}^{2} + \gamma^{T}\x_{t}\\
 &a_{t} = \sigma_{t}\epsilon_{t}
 \end{align*}
-
 
 We will suppose that a researcher has multivariate time series data $\y_{i,t}$, $t = 1, \ldots,  T_i$ and $i = 1, \ldots, n+1$. We let $\y_{i,t} = (y_{i,t}$, $\x_{i,t}$, $\textbf{v}_{i,t}$) where $y_{i,t}$ is a scalar response,  $\x_{i,t}$ is a vector of covariates that are revealed to the analyst prior to the observation of $y_{1,t}$, and $\textbf{v}_{i,t}$ is a vector of market-implied volatility metrics for the series $i$ that are available prior to the market open at time t.  Suppose that the analyst is interested in forecasting the volatility of $y_{1,t}$, the first time series in the collection.  We require that each time series $\y_{i,t}$ is subject to a news event immediately following $T^*_i \leq T_i + 1$ and before witnessing $T^*_i+1$. 
 
@@ -253,7 +253,6 @@ What distinguishes QL Loss is that it is multiplicative rather than additive.  T
 losses will be a consequence of high volatility without necessarily corresponding to
 deterioration of forecasting ability. The QL avoids this ambiguity, making it easier to
 compare losses across volatility regimes."
-
 
 \subsection{Ground Truth Estimators}
 \label{Ground Truth Estimators}
