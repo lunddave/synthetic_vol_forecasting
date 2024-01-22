@@ -149,54 +149,6 @@ The approach herein can be viewed as an attempt to sidestep the functional compl
 
 As we see in Figure \ref{fig:arith_mean_example_introduction}, the arithmetic mean of estimated shock effects provides perhaps the most straightforward and intuitive way of aggregating information from similar events. Aggregating forecasts using the arithmetic mean is more than merely intuitive; it possesses an empirical pedigree and is known to be optimal under rather restrictive conditions \citep{timmermann2006forecast}.  Synthetic Volatility Forecasting lacks these restrictions and instead assumes a credible, parsimonious parameterization in which the shock is an affine transformation of several key covariates. \\
 
-\section{Literature Review}
-
-\subsection{Connection to forecast combination methods}
-What we are combining, if anything, is subcomponents of forecasts, not forecasts themselves.  However, from a broader perspective, forecast combination is an inapt term for what is being proposed here.  First, the donors are not forecasts. 
-
-\subsection{Why is the proposal here unlike KNN regression?}
-In KNN regression, the hyperparameter K must be learned.  In Synthetic Volatility Forecasting, the number of donors is not learned.  A donor pool is curated, and then careful rules of thumb can be applied to determine whether a given donor should be included or excluded. 
-
-\subsection{Should we gather as many donors as possible and pick them quantitatively?}
-It would be counter to the method proposed herein to assemble a vast number of donors, lacking careful scrutiny of the qualitative fit, and let the optimization simply pick the donors, via weighting.  What makes a donor good is not merely its quantitative fit but its qualitative fit as well.
-
-\subsection{News shock literature review}
-
-\begin{comment}
-This needs to be commented out because the current draft has no way to accommodate concurrent information.
-\item \citet{lin2021minimizing} requires exogenous information to arrive strictly between $T^{*}$ and $T^{*}+1$.  However, we may want to relax this requirement so as to permit the exogenous information to be concurrent with the trading session or end of session on $T^{*}+1$.
-\end{comment}
-
-We adapt the news shock framework of \citet{kilian2017structural}: \\
-
-$z_{T^{*}+1}^{\text{irregular news shock}} \coloneqq z_{T^{*}+1}^{\text{irregular news}} - \E_{T^{*}}[z_{T^{*}+1}^{\text{irregular news}}]$ \\
-
-In our adapted schema, irregular news shocks are $\mathcal{F}_{T^{*}}$-zero-expectation events governed by a GARCH-X process.  As such, $z_{T^{*}+1}^{\text{irregular news shock}}$ admits of the decomposition $z_{T^{*}+1} = \sigma_{T^{*}+1}\epsilon_{T^{*}+1}$
-
-\subsection{Improvements of this current work over its predecessor}
-This present work extends \citet{lin2021minimizing} principally by substituting the GARCH model for an AR(1), i.e. modeling both the mean and volatility of a univariate time series.  We permit both shocks in the mean model and volatility model of GARCH.  As ancillary improvements, the current work permits the shock periods to be of any length, formally $L_{\text{vol}}, L_{\text{level}} \in \mathbb{Z}^{+}$, and the weights applied to the donor pool can come from more exotic subsets of $\mathbb{R}^{n}$.  
-
-At a technical level, the most substantial insight related to \citet{lin2021minimizing} is that the GARCH model provides an elegant forecast function for squared observations of the time series under study. To see this, for each $i,t$, define $\eta_{i,t} \coloneqq a^{2}_{i,t} - \sigma^{2}_{i,t}$, and by adding $\eta_{i,t}$ to both sides of the conditional variance specification of $\mc{M}_1$ and $\mc{M}_2$, we obtain the standard ARMA representation of a GARCH(m,s):
-
-\begin{align}
-a^{2}_{i,t} = a^{2}_{i,t} - \sigma^{2}_{i,t} + \sigma^{2}_{i,t} = \eta_{i,t} + \sigma^{2}_{i,t} &= \eta_{i,t} + \omega_{i} + \omega^{*}_i D_{i,t}  + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \\
-    &= \eta_{i,t} + \omega_{i} + \omega^{*}_i D_{i,t}  + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k}  + \sum_{j=1}^{s_{i}}\beta_{i,j}(a^{2}_{i,t-j} - \eta_{i,t-j}) + \gamma_{i}^{T} \x_{i,t} \\
-    &= \eta_{i,t} + \omega_{i} + \omega^{*}_i D_{i,t}  + \sum^{\text{max}\{m_{i},s_{i}\}}_{k=1}(\alpha_{i,k} + \beta_{i,k})a^{2}_{i,t-k} - \sum_{j=1}^{s_{i}}\beta_{i,j}\eta_{i,t-j} + \gamma_{i}^{T} \x_{i,t}\label{armarep}
-\end{align}
-
-Then for any $i,t$, $\E[a^{2}_{i,t}]$ is nothing more than the expectation of the right-hand side of $(\ref{armarep})$, where $\E[\eta_{i,t}] = 0$ for any $i,t$.  Hence $\E[a^{2}_{i,t}] =  \omega_{i} + \omega^{*}_i D_{i,t}  + \sum^{\text{max}\{m_{i},s_{i}\}}_{k=1}(\alpha_{i,k} + \beta_{i,k})a^{2}_{i,t-k} + \gamma_{i}^{T} \x_{i,t}$
-
-\begin{enumerate}
-\item The method under development does not strictly require knowledge of the length of the shocks in the donor pool, but correctly sizing up those shock lengths is helpful to proper estimation of the shocks in the donor pool.  An important question remains: even if the donor pool shock lengths are assumed to be known, how do we advise the operator to forecast the time series under study?  For how long is the forecast reliable?  Should we take a convex combination of the donor pool shock lengths?  Or mean? Or minimum of the donor pool shock lengths?
-
-\item See Tsay p. 133: if $t$ is the last index that has been observed, then our two-step-ahead forecast is made easier by rewriting the volatility equation as $\sigma^{2}_{i,t+1} = w_{i} + (\alpha_{i} + \beta_{i})\sigma^{2}_{i,t} + \alpha_{1}\sigma^{2}_{i,t}[\epsilon^{2}_{i,t} - 1]= w_{i} + (\alpha_{i} + \beta_{i})\sigma^{2}_{i,t} + \alpha_{1}\sigma^{2}_{i,t}[\epsilon^{2}_{i,t} - 1] $.  Usually, we assume unit variance (though not necessarily a N(0,1)).  However, what is the variance is smaller than 1?  Then in conditional expectation, the term $\alpha_{1}\sigma^{2}_{i,t}[\epsilon^{2}_{i,t} - 1]$ will be negative.  So it seems that for level shock, we want the signal to noise ratio to be large because the mean is high, not because the variance is low.
-\end{enumerate}
-
-\subsection{Why not parameterize the volatility shock as a change in coefficients?}
-\begin{enumerate}
-\item Swamped by shock: If the goal is near-term forecasting, then we don't really care how those coefficients may be changing.  The assumption is that if any changes occur, their influence cannot account for the large shock. Given that the GARCH parameters for a stationary GARCH process must sum to less than 1, there is an upper bound to the forecastable change.
-\item Practically infeasible: If we did that, we would need quite a few time points to reliably estimate the change in the GARCH parameters.  We don't have that.
-\end{enumerate}
 
 \section{Setting}
 \label{section2}
@@ -228,96 +180,6 @@ In light of the foregoing, we can rewrite the GARCH framework we are interested 
 
 % https://latex-tutorial.com/matrices-in-latex/
 % https://www.math-linux.com/latex-26/faq/latex-faq/article/how-to-write-matrices-in-latex-matrix-pmatrix-bmatrix-vmatrix-vmatrix
-
-We are interested in a point forecast for $\sigma^{2}_{1,T^{*}+h}$, $h=1,2,...,H$, the $h$-step ahead conditional variance for the time series under study, up to a forecast length of H.  The forecast performance evaluation uses three distinct loss functions, each computed using three families of estimators for the ground truth that we seek.  Let $L^{h}$ with the subscripted pair $\{$prediction method, ground truth estimator$\}$, denote the loss function for an $h$-step-ahead forecast using a given prediction function and ground truth estimator.  For example, one loss function of interest in this study is the 1-step-ahead MSE using Synthetic Volatility Forecasting and Realized Volatility:
-
-$$ MSE^{1}_{SVF, RV} = (\hat\sigma^{2}_{SVF} - \hat\sigma^{2}_{RV})^{2}$$
-
-In more generality, for an multihorizon volatility forecast with forecast length $H$, the loss function is 
-
-$$ MSE^{H}_{method, ground truth} = \frac{1}{H}\sum_{h=1}^{H}(\hat\sigma^{2}_{h, method} - \hat\sigma^{2}_{h, ground truth})^{2}$$
-
-Also of interest in mean absolute-percentage-error for an h-step-ahead forecast, defined as
-
-\[ 
-\text{MAPE}^{H}_{method, ground truth} = \frac{1}{H}\sum_{h=1}^{H}\frac{|\hat\sigma^{2}_{h, method} - \hat\sigma^{2}_{h, ground truth}|}{\hat\sigma^{2}_{h, ground truth}}
-\]
-
-Finally, we introduce the QL (quasi-likelihood) Loss \citep{brownlees2011practical}:
-
-\[ 
-\text{QL}^{H}_{method, ground truth} = \frac{1}{h}\sum_{h=1}^{H} (\frac{ \hat\sigma^{2}_{h, method} }{\hat\sigma^{2}_{h, ground truth}} - \log{\frac{ \hat\sigma^{2}_{h, method} }{\hat\sigma^{2}_{h, ground truth}}} -1)
-\]
-
-What distinguishes QL Loss is that it is multiplicative rather than additive.  This serves as a basis for some of its virtues, both practical and theoretical.  As \citet{brownlees2011practical} explains, ``[a]mid volatility turmoil, large MSE
-losses will be a consequence of high volatility without necessarily corresponding to
-deterioration of forecasting ability. The QL avoids this ambiguity, making it easier to
-compare losses across volatility regimes."
-
-\subsection{Ground Truth Estimators}
-\label{Ground Truth Estimators}
-
-The price series of a financial asset is a sequence of observable random variables; in particular, for any $t$, $P_{t}$ is realized at $t$ and henceforth no longer random, under the assumption that $(P_{t})_{t\in\mathbb{N}}$ is adapted to $\mc{F}_{t}$.  Time series econometrics has a vast inventory of approaches for modeling $P_{t}$.  In contrast, the time-varying parameter $\sigma^{2}_{t}$ is a quantity for which even identifying an observable effect in the real world is far more challenging.  Approaches come in two basic forms: model-independent and model-dependent.  The naive approach of constructing a rolling unbiased estimator of the variance of a price series is analogous to using a rolling average to estimate the mean of a price series.  Implicitly, these approaches assume a simple, if unrealistic, covariance structure.  Additionally, they offer very little in the way of forward guidance (predictiveness) regarding the series at hand.  For that reason, in this section, we propose three families of estimators of the ground truth that we aim to forecast.
-
-% https://tex.stackexchange.com/questions/186981/is-there-a-subsubsubsection-command
-\subsubsection{Market-Implied Volatility}
-
-Here we introduce implied volatility, a quantity that is derived using the equilibrium price of call and put options on the underlying financial asset.
-
-We note also that Black-Scholes implied volatility is a biased estimator of volatility \citep{mayhew1995implied, christensen1998relation}, with the bias increasing in times of crises when options are out-of-the-money.
-
-\subsubsection{Realized Volatility}
-
-Suppose we examine $K$ units of of time, where each unit is divided into m intervals of length 1/m.  We follow the notation of  \citet{andersen2009realized}. Let $p_{t} = \text{log}(P_{t})$, and let $r(t, 1/m) = p_{t} - p_{t-1/m}$.  We estimate the variance of a log-return series using Realized Volatility, denoted $RV_{K,m}$, using
-
-$$RV_{K,m} = \frac{1}{K}\sum^{Km}_{v=1}r^{2}(v/m,1/m)$$
-
-Assuming that the K units $r(t, 1) = p_{t} - p_{t-1}$ are such that $r(t, 1) \simiid N(\mu, \delta^{2})$, it is easily verified that 
-
-$$\E[RV_{K,m}] = \frac{\mu^{2}}{m} + \delta^{2}$$
-
-which is a biased but consistent estimator of the variance.
-
-\subsubsection{Historical Volatility}\label{historical_volatility}
-
-As discussed in section \ref{historical_volatility}, daily returns exhibit insigificant autocorrelation.  Such a finding could be used to motivate using the empirical volatility.  This is just the unbiased estimator of log-return $\sigma^{2}$ over the preceding M days.
-
-\subsection{Volatility Profile of a Time Series}
-\label{Volatility Profile of a Time Series}
-
-In this section we make a novel contribution to the synthetic prediction framework by constructing a profile of a time series' volatility.  Suppose we have $D$ donors and for each of those $D$ donors, $q$ distinct measurements and/or covariates of volatility.  Abusing notation for RV ( I need some clever way to index (a) date, (b) donor, (c) how many days were used to get the measurement, we have...
-
-\begin{equation*}
-\textbf{V}_{q,D} = 
-\begin{pmatrix}
-\alpha_{T^{*},1} & \alpha_{T^{*},2}  & \cdots & \alpha_{T^{*},D}  \\
-\beta_{T^{*},1} & \beta_{T^{*},2}  & \cdots & \beta_{T^{*},D}  \\
-\vdots  & \vdots  & \ddots & \vdots  \\
-RV_{T^{*},1} & RV_{T^{*},2}  & \cdots & RV_{T^{*},D}  \\
-RV_{T^{*}-1,1}  & RV_{T^{*}-1,2}  & \cdots & RV_{T^{*}-1,D}  \\
-\vdots  & \vdots  & \ddots & \vdots  \\
-IV_{T^{*},1} & IV_{T^{*},2} & \cdots & IV_{T^{*},D} \\
-IV_{T^{*}-1,1}  & IV_{T^{*}-1,2}  & \cdots & IV_{T^{*}-1,D} \\
-\vdots  & \vdots  & \ddots & \vdots  \\
-AbsoluteReturn_{T^{*},1} & AbsoluteReturn_{T^{*},2} & \cdots & AbsoluteReturn_{T^{*},D} \\
-AbsoluteReturn_{T^{*}-1,1}  & AbsoluteReturn_{T^{*}-1,2}  & \cdots & AbsoluteReturn_{T^{*}-1,D} \\
-\vdots  & \vdots  & \ddots & \vdots  \\
-Volume_{T^{*},1}  & Volume_{T^{*},2}  & \cdots & Volume_{T^{*},D} \\
-Volume_{T^{*}-1,1}  & Volume_{T^{*}-1,2}  & \cdots & Volume_{T^{*}-1,D}  \\
-\vdots  & \vdots  & \ddots & \vdots  \\
-\Delta RV_{T^{*},1} & \Delta RV_{T^{*},2}  & \cdots & \Delta RV_{T^{*},D}  \\
-\Delta RV_{T^{*}-1,1}  & \Delta RV_{T^{*}-1,2}  & \cdots & \Delta RV_{T^{*}-1,D}  \\
-\vdots  & \vdots  & \ddots & \vdots  \\
-\end{pmatrix}
-\end{equation*}
-
-\subsection{Aggregation Mechanism}
-\label{Aggregation Mechanism}
-
-Here we explain how we use the volatility profile to arrive at a set of nonnegative weights that sum to 1.  These weights are then used to compute $\hat\omega^{*} = \sum^{n+1}_{i=2}w_{i}\hat\omega_{i}$.  Since the $\{w_{i}\}_{i=2}^{n+1}$ are computed using information from $\mathcal{F}_{T^{*}_{i}}$, the set $\{w_{i}\}_{i=2}^{n+1}$ is deterministic
-
-In \citet{abadie2010synthetic}, the authors advance previous work in causal inference whereby a treatment effect can be estimated by creating a synthetic time series that that represents either the treatment or control unit.  The synthetic unit is constructed using a convex combination of so-called donor series.  The particular convex combination employed is a function of the distance between the time series under study and the donors. \citet{lin2021minimizing} adapt these methods for the purpose of prediction.  Their 1-step-ahead forecasts take inspiration from distance-based-weighting, pooling shock estimates from similar series according to the series' similarity to the series under study.  The use of fixed-effect estimation for structural shocks has a pedigree (\citet{romer1989does} cited in \citet{kilian2017structural}).  Their approach does not take into account the ARCH effects commonly observed in time series, especially financial times series, leaving unaccounted the variability that accompanies predictions of a heteroskedastic time series.  In this present study, we focus on only volatility forecasting.  We furthermore depart from the synthetic prediction framework by weighting series not by their covariates (which would be most appropriate for estimating the parameters of time series' mean model) but by their volatility profile.
-
 
 \subsection{Model setup}
 \label{modelsetup}
@@ -387,7 +249,100 @@ Notice that $\mc{M}_1$ assumes that $\omega^{*}_i$ are i.i.d. with $\E[ \omega^{
     \end{align}\label{parameter}
     where $\Theta$ and $\Theta_1$ can be adapted to $\mc{M}_1$ by dropping $\delta$. We assume this for notational simplicity.
 
-\subsection{Properties of Volatility Shock and Shock Estimators}
+    \subsection{Volatility Profile of a Time Series}
+    \label{Volatility Profile of a Time Series}
+    
+    In this section we make a novel contribution to the synthetic prediction framework by constructing a profile of a time series' volatility.  Suppose we have $D$ donors and for each of those $D$ donors, $q$ distinct measurements and/or covariates of volatility.  Abusing notation for RV ( I need some clever way to index (a) date, (b) donor, (c) how many days were used to get the measurement, we have...
+    
+    \begin{equation*}
+    \textbf{V}_{q,D} = 
+    \begin{pmatrix}
+    \alpha_{T^{*},1} & \alpha_{T^{*},2}  & \cdots & \alpha_{T^{*},D}  \\
+    \beta_{T^{*},1} & \beta_{T^{*},2}  & \cdots & \beta_{T^{*},D}  \\
+    \vdots  & \vdots  & \ddots & \vdots  \\
+    RV_{T^{*},1} & RV_{T^{*},2}  & \cdots & RV_{T^{*},D}  \\
+    RV_{T^{*}-1,1}  & RV_{T^{*}-1,2}  & \cdots & RV_{T^{*}-1,D}  \\
+    \vdots  & \vdots  & \ddots & \vdots  \\
+    IV_{T^{*},1} & IV_{T^{*},2} & \cdots & IV_{T^{*},D} \\
+    IV_{T^{*}-1,1}  & IV_{T^{*}-1,2}  & \cdots & IV_{T^{*}-1,D} \\
+    \vdots  & \vdots  & \ddots & \vdots  \\
+    AbsoluteReturn_{T^{*},1} & AbsoluteReturn_{T^{*},2} & \cdots & AbsoluteReturn_{T^{*},D} \\
+    AbsoluteReturn_{T^{*}-1,1}  & AbsoluteReturn_{T^{*}-1,2}  & \cdots & AbsoluteReturn_{T^{*}-1,D} \\
+    \vdots  & \vdots  & \ddots & \vdots  \\
+    Volume_{T^{*},1}  & Volume_{T^{*},2}  & \cdots & Volume_{T^{*},D} \\
+    Volume_{T^{*}-1,1}  & Volume_{T^{*}-1,2}  & \cdots & Volume_{T^{*}-1,D}  \\
+    \vdots  & \vdots  & \ddots & \vdots  \\
+    \Delta RV_{T^{*},1} & \Delta RV_{T^{*},2}  & \cdots & \Delta RV_{T^{*},D}  \\
+    \Delta RV_{T^{*}-1,1}  & \Delta RV_{T^{*}-1,2}  & \cdots & \Delta RV_{T^{*}-1,D}  \\
+    \vdots  & \vdots  & \ddots & \vdots  \\
+    \end{pmatrix}
+    \end{equation*}
+
+
+
+    \subsection{Aggregation Mechanism}
+    \label{Aggregation Mechanism}
+    
+    Here we explain how we use the volatility profile to arrive at a set of nonnegative weights that sum to 1.  These weights are then used to compute $\hat\omega^{*} = \sum^{n+1}_{i=2}w_{i}\hat\omega_{i}$.  Since the $\{w_{i}\}_{i=2}^{n+1}$ are computed using information from $\mathcal{F}_{T^{*}_{i}}$, the set $\{w_{i}\}_{i=2}^{n+1}$ is deterministic
+    
+    In \citet{abadie2010synthetic}, the authors advance previous work in causal inference whereby a treatment effect can be estimated by creating a synthetic time series that that represents either the treatment or control unit.  The synthetic unit is constructed using a convex combination of so-called donor series.  The particular convex combination employed is a function of the distance between the time series under study and the donors. \citet{lin2021minimizing} adapt these methods for the purpose of prediction.  Their 1-step-ahead forecasts take inspiration from distance-based-weighting, pooling shock estimates from similar series according to the series' similarity to the series under study.  The use of fixed-effect estimation for structural shocks has a pedigree (\citet{romer1989does} cited in \citet{kilian2017structural}).  Their approach does not take into account the ARCH effects commonly observed in time series, especially financial times series, leaving unaccounted the variability that accompanies predictions of a heteroskedastic time series.  In this present study, we focus on only volatility forecasting.  We furthermore depart from the synthetic prediction framework by weighting series not by their covariates (which would be most appropriate for estimating the parameters of time series' mean model) but by their volatility profile.    
+
+\subsection{Loss Functions}
+
+We are interested in a point forecast for $\sigma^{2}_{1,T^{*}+h}$, $h=1,2,...,H$, the $h$-step ahead conditional variance for the time series under study, up to a forecast length of H.  The forecast performance evaluation uses three distinct loss functions, each computed using three families of estimators for the ground truth that we seek.  Let $L^{h}$ with the subscripted pair $\{$prediction method, ground truth estimator$\}$, denote the loss function for an $h$-step-ahead forecast using a given prediction function and ground truth estimator.  For example, one loss function of interest in this study is the 1-step-ahead MSE using Synthetic Volatility Forecasting and Realized Volatility:
+
+$$ MSE^{1}_{SVF, RV} = (\hat\sigma^{2}_{SVF} - \hat\sigma^{2}_{RV})^{2}$$
+
+In more generality, for an multihorizon volatility forecast with forecast length $H$, the loss function is 
+
+$$ MSE^{H}_{method, ground truth} = \frac{1}{H}\sum_{h=1}^{H}(\hat\sigma^{2}_{h, method} - \hat\sigma^{2}_{h, ground truth})^{2}$$
+
+Also of interest in mean absolute-percentage-error for an h-step-ahead forecast, defined as
+
+\[ 
+\text{MAPE}^{H}_{method, ground truth} = \frac{1}{H}\sum_{h=1}^{H}\frac{|\hat\sigma^{2}_{h, method} - \hat\sigma^{2}_{h, ground truth}|}{\hat\sigma^{2}_{h, ground truth}}
+\]
+
+Finally, we introduce the QL (quasi-likelihood) Loss \citep{brownlees2011practical}:
+
+\[ 
+\text{QL}^{H}_{method, ground truth} = \frac{1}{h}\sum_{h=1}^{H} (\frac{ \hat\sigma^{2}_{h, method} }{\hat\sigma^{2}_{h, ground truth}} - \log{\frac{ \hat\sigma^{2}_{h, method} }{\hat\sigma^{2}_{h, ground truth}}} -1)
+\]
+
+What distinguishes QL Loss is that it is multiplicative rather than additive.  This serves as a basis for some of its virtues, both practical and theoretical.  As \citet{brownlees2011practical} explains, ``[a]mid volatility turmoil, large MSE
+losses will be a consequence of high volatility without necessarily corresponding to
+deterioration of forecasting ability. The QL avoids this ambiguity, making it easier to
+compare losses across volatility regimes."
+
+\section{Post-shock Synthetic Volatility Forecasting Methodology}
+\subsection{Ground Truth Estimators}
+\label{Ground Truth Estimators}
+
+The price series of a financial asset is a sequence of observable random variables; in particular, for any $t$, $P_{t}$ is realized at $t$ and henceforth no longer random, under the assumption that $(P_{t})_{t\in\mathbb{N}}$ is adapted to $\mc{F}_{t}$.  Time series econometrics has a vast inventory of approaches for modeling $P_{t}$.  In contrast, the time-varying parameter $\sigma^{2}_{t}$ is a quantity for which even identifying an observable effect in the real world is far more challenging.  Approaches come in two basic forms: model-independent and model-dependent.  The naive approach of constructing a rolling unbiased estimator of the variance of a price series is analogous to using a rolling average to estimate the mean of a price series.  Implicitly, these approaches assume a simple, if unrealistic, covariance structure.  Additionally, they offer very little in the way of forward guidance (predictiveness) regarding the series at hand.  For that reason, in this section, we propose three families of estimators of the ground truth that we aim to forecast.
+
+% https://tex.stackexchange.com/questions/186981/is-there-a-subsubsubsection-command
+\subsubsection{Market-Implied Volatility}
+
+Here we introduce implied volatility, a quantity that is derived using the equilibrium price of call and put options on the underlying financial asset.
+
+We note also that Black-Scholes implied volatility is a biased estimator of volatility \citep{mayhew1995implied, christensen1998relation}, with the bias increasing in times of crises when options are out-of-the-money.
+
+\subsubsection{Realized Volatility}
+
+Suppose we examine $K$ units of of time, where each unit is divided into m intervals of length 1/m.  We follow the notation of  \citet{andersen2009realized}. Let $p_{t} = \text{log}(P_{t})$, and let $r(t, 1/m) = p_{t} - p_{t-1/m}$.  We estimate the variance of a log-return series using Realized Volatility, denoted $RV_{K,m}$, using
+
+$$RV_{K,m} = \frac{1}{K}\sum^{Km}_{v=1}r^{2}(v/m,1/m)$$
+
+Assuming that the K units $r(t, 1) = p_{t} - p_{t-1}$ are such that $r(t, 1) \simiid N(\mu, \delta^{2})$, it is easily verified that 
+
+$$\E[RV_{K,m}] = \frac{\mu^{2}}{m} + \delta^{2}$$
+
+which is a biased but consistent estimator of the variance.
+
+\subsubsection{Historical Volatility}\label{historical_volatility}
+
+As discussed in section \ref{historical_volatility}, daily returns exhibit insigificant autocorrelation.  Such a finding could be used to motivate using the empirical volatility.  This is just the unbiased estimator of log-return $\sigma^{2}$ over the preceding M days.
+\section{Properties of Volatility Shock and Shock Estimators}
 
 The model $\mc{M}_1$ is defined by a volatility equation and mean equation, as is any GARCH model.  The choice to model the volatility shock $\omega^{*}_{i}$ as an additive random effect is straightforward.  However, the choice to model the level effect $\epsilon^{*}_{i,t}$ as a temporary rupture in the otherwise i.i.d. sequence of innovations $\epsilon_{i,t}$ stands in need of deeper justification.  One way of arguing for this choice is that, in a discrete time series model, if we assume the arrival of news in the time between $T^{*}$ and $T^{*}+1$, we do not have an easy way to express a conditional distribution of the innovation $\epsilon_{T^{*}+1}$ given the overnight arrival of information.  Using $\epsilon^{*}_{i,t}$ thus breaks this impasse.  This defense also explains why we do not parameterize the level shock at $T^{*}+1$ as a sum of two shocks, $\epsilon_{i,T^{*}+1}$ and $\epsilon^{*}_{i,T^{*}+1}$, which would represent the level shock as generated by two independent sources of stochasticity.  To do so would inelegant and would also lack motivation as a practical level.  While we want to model the shock at $T^{*}+1$ as large in absolute value, we also want to retain the property of a unitary source of noise.
 
@@ -734,6 +689,54 @@ Naturally, one would ask how sensitive this prediction is to at least two kinds 
 \end{figure}
 
 \section{Discussion}
+
+
+\subsection{Connection to forecast combination methods}
+What we are combining, if anything, is subcomponents of forecasts, not forecasts themselves.  However, from a broader perspective, forecast combination is an inapt term for what is being proposed here.  First, the donors are not forecasts. 
+
+\subsection{Why is the proposal here unlike KNN regression?}
+In KNN regression, the hyperparameter K must be learned.  In Synthetic Volatility Forecasting, the number of donors is not learned.  A donor pool is curated, and then careful rules of thumb can be applied to determine whether a given donor should be included or excluded. 
+
+\subsection{Should we gather as many donors as possible and pick them quantitatively?}
+It would be counter to the method proposed herein to assemble a vast number of donors, lacking careful scrutiny of the qualitative fit, and let the optimization simply pick the donors, via weighting.  What makes a donor good is not merely its quantitative fit but its qualitative fit as well.
+
+\subsection{News shock literature review}
+
+\begin{comment}
+This needs to be commented out because the current draft has no way to accommodate concurrent information.
+\item \citet{lin2021minimizing} requires exogenous information to arrive strictly between $T^{*}$ and $T^{*}+1$.  However, we may want to relax this requirement so as to permit the exogenous information to be concurrent with the trading session or end of session on $T^{*}+1$.
+\end{comment}
+
+We adapt the news shock framework of \citet{kilian2017structural}: \\
+
+$z_{T^{*}+1}^{\text{irregular news shock}} \coloneqq z_{T^{*}+1}^{\text{irregular news}} - \E_{T^{*}}[z_{T^{*}+1}^{\text{irregular news}}]$ \\
+
+In our adapted schema, irregular news shocks are $\mathcal{F}_{T^{*}}$-zero-expectation events governed by a GARCH-X process.  As such, $z_{T^{*}+1}^{\text{irregular news shock}}$ admits of the decomposition $z_{T^{*}+1} = \sigma_{T^{*}+1}\epsilon_{T^{*}+1}$
+
+\subsection{Improvements of this current work over its predecessor}
+This present work extends \citet{lin2021minimizing} principally by substituting the GARCH model for an AR(1), i.e. modeling both the mean and volatility of a univariate time series.  We permit both shocks in the mean model and volatility model of GARCH.  As ancillary improvements, the current work permits the shock periods to be of any length, formally $L_{\text{vol}}, L_{\text{level}} \in \mathbb{Z}^{+}$, and the weights applied to the donor pool can come from more exotic subsets of $\mathbb{R}^{n}$.  
+
+At a technical level, the most substantial insight related to \citet{lin2021minimizing} is that the GARCH model provides an elegant forecast function for squared observations of the time series under study. To see this, for each $i,t$, define $\eta_{i,t} \coloneqq a^{2}_{i,t} - \sigma^{2}_{i,t}$, and by adding $\eta_{i,t}$ to both sides of the conditional variance specification of $\mc{M}_1$ and $\mc{M}_2$, we obtain the standard ARMA representation of a GARCH(m,s):
+
+\begin{align}
+a^{2}_{i,t} = a^{2}_{i,t} - \sigma^{2}_{i,t} + \sigma^{2}_{i,t} = \eta_{i,t} + \sigma^{2}_{i,t} &= \eta_{i,t} + \omega_{i} + \omega^{*}_i D_{i,t}  + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \\
+    &= \eta_{i,t} + \omega_{i} + \omega^{*}_i D_{i,t}  + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k}  + \sum_{j=1}^{s_{i}}\beta_{i,j}(a^{2}_{i,t-j} - \eta_{i,t-j}) + \gamma_{i}^{T} \x_{i,t} \\
+    &= \eta_{i,t} + \omega_{i} + \omega^{*}_i D_{i,t}  + \sum^{\text{max}\{m_{i},s_{i}\}}_{k=1}(\alpha_{i,k} + \beta_{i,k})a^{2}_{i,t-k} - \sum_{j=1}^{s_{i}}\beta_{i,j}\eta_{i,t-j} + \gamma_{i}^{T} \x_{i,t}\label{armarep}
+\end{align}
+
+Then for any $i,t$, $\E[a^{2}_{i,t}]$ is nothing more than the expectation of the right-hand side of $(\ref{armarep})$, where $\E[\eta_{i,t}] = 0$ for any $i,t$.  Hence $\E[a^{2}_{i,t}] =  \omega_{i} + \omega^{*}_i D_{i,t}  + \sum^{\text{max}\{m_{i},s_{i}\}}_{k=1}(\alpha_{i,k} + \beta_{i,k})a^{2}_{i,t-k} + \gamma_{i}^{T} \x_{i,t}$
+
+\begin{enumerate}
+\item The method under development does not strictly require knowledge of the length of the shocks in the donor pool, but correctly sizing up those shock lengths is helpful to proper estimation of the shocks in the donor pool.  An important question remains: even if the donor pool shock lengths are assumed to be known, how do we advise the operator to forecast the time series under study?  For how long is the forecast reliable?  Should we take a convex combination of the donor pool shock lengths?  Or mean? Or minimum of the donor pool shock lengths?
+
+\item See Tsay p. 133: if $t$ is the last index that has been observed, then our two-step-ahead forecast is made easier by rewriting the volatility equation as $\sigma^{2}_{i,t+1} = w_{i} + (\alpha_{i} + \beta_{i})\sigma^{2}_{i,t} + \alpha_{1}\sigma^{2}_{i,t}[\epsilon^{2}_{i,t} - 1]= w_{i} + (\alpha_{i} + \beta_{i})\sigma^{2}_{i,t} + \alpha_{1}\sigma^{2}_{i,t}[\epsilon^{2}_{i,t} - 1] $.  Usually, we assume unit variance (though not necessarily a N(0,1)).  However, what is the variance is smaller than 1?  Then in conditional expectation, the term $\alpha_{1}\sigma^{2}_{i,t}[\epsilon^{2}_{i,t} - 1]$ will be negative.  So it seems that for level shock, we want the signal to noise ratio to be large because the mean is high, not because the variance is low.
+\end{enumerate}
+
+\subsection{Why not parameterize the volatility shock as a change in coefficients?}
+\begin{enumerate}
+\item Swamped by shock: If the goal is near-term forecasting, then we don't really care how those coefficients may be changing.  The assumption is that if any changes occur, their influence cannot account for the large shock. Given that the GARCH parameters for a stationary GARCH process must sum to less than 1, there is an upper bound to the forecastable change.
+\item Practically infeasible: If we did that, we would need quite a few time points to reliably estimate the change in the GARCH parameters.  We don't have that.
+\end{enumerate}
 
 \begin{comment}
 \section{Connection to Signal Recovery}
