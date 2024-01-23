@@ -110,7 +110,7 @@ Thus, there are only two quantitites that matter here: $\Sigma$ and $n$.  Most o
 
 % Presentation structure
 
-\section{The Problem}
+\section{Setting}
 
 % Setting for the problem
 \begin{frame}
@@ -122,6 +122,8 @@ Thus, there are only two quantitites that matter here: $\Sigma$ and $n$.  Most o
 \item We predict $y$ using a linear function of the covariates $X$, but this is $\textit{not}$ an assumption about the data generating process.  We do not assume  $y = f(X) + \epsilon$, but $y$ may contain exogenous noise (called ``label noise'' by the authors.)
 \end{itemize}
 \end{frame}
+
+\subsection{Model Setup}
 
 % Technical Specifications
 \begin{frame}
@@ -194,7 +196,7 @@ Since we have more than one choice of $\theta$, we choose the unique $\hat\theta
 
 \end{frame}
 
-\section{Key Conceptual Innovation: Effective Rank}
+\section{Post-shock Synthetic Volatility Forecasting Methodology}
 
 % Rank of Matrix
 \begin{frame}
@@ -235,7 +237,7 @@ However, this notion of rank is too rigid.  It's integer-valued, and it tells us
 
 \end{frame}
 
-\section{Main Result}
+\section{Properties of Volatility Shock and Shock Estimators}
 
 \begin{frame}
 \fontsize{8pt}{9pt}
@@ -260,7 +262,7 @@ Define $k^{*}= \text{min}\{ k\geq 0 : r_{k}(\Sigma) \geq bn \} $.  For any $\sig
 \end{enumerate}
 \end{frame}
 
-\section{Interpretation and Implications}
+\section{Numerical Examples}
 
 % So what do we want our eigenvalues to look like?
 \begin{frame}
@@ -386,7 +388,18 @@ $\displaystyle \lim_{n\to\infty} \big ( bias(\theta^{*}, \Sigma_{n}, n)  + \frac
 \end{frame}
 
 
-\section{Discussion and Commentary}
+\section{Real Data Example}
+
+\begin{frame}
+\frametitle{Some things to think about with papers like this}
+\begin{itemize}
+\item Has little practical value, at present.  It's a conceptual piece.
+\item The interpretations that the authors give the phenomenon are a little fuzzy.  There's a gap between what the math says and what the authors say it does.
+\item Theorems change between the Arxiv paper, PNAS paper, early presentations, and later presentations!
+\end{itemize}
+\end{frame}
+
+\section{Di}
 
 \begin{frame}
 \frametitle{Some things to think about with papers like this}
