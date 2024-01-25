@@ -1,49 +1,54 @@
-This is BibTeX, Version 0.99d (TeX Live 2023/Debian)
+This is BibTeX, Version 0.99d (TeX Live 2023)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: synthVolForecast.aux
 The style file: plainnat.bst
 Database file #1: synthVolForecast.bib
+Repeated entry---line 1398 of file synthVolForecast.bib
+ : @article{wolfers2016financial
+ :                              ,
+I'm skipping whatever remains of this entry
+Warning--to sort, need author or key in Bloomberg.com_2024
 Warning--empty journal in bauwens2006regime
 Warning--empty year in Kenton
-You've used 31 entries,
+You've used 33 entries,
             2773 wiz_defined-function locations,
-            793 strings with 9673 characters,
-and the built_in function-call counts, 13368 in all, are:
-= -- 1249
-> -- 588
-< -- 30
-+ -- 205
-- -- 174
-* -- 1002
-:= -- 2019
-add.period$ -- 97
-call.type$ -- 31
-change.case$ -- 148
-chr.to.int$ -- 31
-cite$ -- 64
-duplicate$ -- 658
-empty$ -- 1200
-format.name$ -- 226
-if$ -- 2834
+            804 strings with 9998 characters,
+and the built_in function-call counts, 13967 in all, are:
+= -- 1303
+> -- 609
+< -- 31
++ -- 213
+- -- 180
+* -- 1042
+:= -- 2096
+add.period$ -- 102
+call.type$ -- 33
+change.case$ -- 155
+chr.to.int$ -- 33
+cite$ -- 70
+duplicate$ -- 692
+empty$ -- 1265
+format.name$ -- 235
+if$ -- 2968
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 30
-newline$ -- 164
-num.names$ -- 124
-pop$ -- 295
+missing$ -- 31
+newline$ -- 173
+num.names$ -- 128
+pop$ -- 318
 preamble$ -- 1
-purify$ -- 119
+purify$ -- 125
 quote$ -- 0
-skip$ -- 494
+skip$ -- 524
 stack$ -- 0
-substring$ -- 627
-swap$ -- 69
+substring$ -- 632
+swap$ -- 72
 text.length$ -- 6
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 331
-warning$ -- 2
-while$ -- 141
+type$ -- 353
+warning$ -- 3
+while$ -- 144
 width$ -- 0
-write$ -- 407
-(There were 2 warnings)
+write$ -- 428
+(There was 1 error message)
