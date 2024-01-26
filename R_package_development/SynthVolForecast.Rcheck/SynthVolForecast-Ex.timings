@@ -1,0 +1,7 @@
+name	user	system	elapsed
+QL_loss_function	0	0	0	
+SynthPrediction	0	0	0	
+SynthVolForecast	0.031	0.000	0.031	
+dbw	0	0	0	
+plot_maker_garch	0	0	0	
+plot_maker_synthprediction	0	0	0	

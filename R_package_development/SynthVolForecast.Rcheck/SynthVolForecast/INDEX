@@ -1,0 +1,11 @@
+QL_loss_function        Quasi-likelihood Loss
+SynthPrediction         A function that uses synthetic methods to
+                        predict observable levels.
+SynthVolForecast        A function to forecast volatility using
+                        synthetic methods
+dbw                     A function that carries out distance-based
+                        weighting.
+plot_maker_garch        A function that makes plots for
+                        SynthVolForecast
+plot_maker_synthprediction
+                        Function that makes plots for SynthPrediction

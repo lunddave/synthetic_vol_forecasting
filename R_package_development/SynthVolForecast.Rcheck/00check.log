@@ -1,0 +1,256 @@
+* using log directory ‘/home/david/Desktop/synthetic_vol_forecasting/R_package_development/SynthVolForecast.Rcheck’
+* using R version 4.3.2 (2023-10-31)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* R was compiled by
+    gcc (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0
+    GNU Fortran (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0
+* running under: Ubuntu 23.10
+* using session charset: UTF-8
+* using option ‘--as-cran’
+* checking for file ‘SynthVolForecast/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘SynthVolForecast’ version ‘0.1.0’
+* package encoding: UTF-8
+* checking CRAN incoming feasibility ... NOTE
+Maintainer: ‘David Lundquist <davidpatricklundquist@gmail.com>’
+
+New submission
+
+The build time stamp is missing.
+* checking package namespace information ... OK
+* checking package dependencies ... OK
+* checking if this is a source package ... OK
+* checking if there is a namespace ... OK
+* checking for executable files ... OK
+* checking for hidden files and directories ... NOTE
+Found the following hidden files and directories:
+  .RData
+  .Rhistory
+  .Rproj.user
+These were most likely included in error. See section ‘Package
+structure’ in the ‘Writing R Extensions’ manual.
+
+CRAN-pack does not know about
+  .RData
+* checking for portable file names ... OK
+* checking for sufficient/correct file permissions ... OK
+* checking serialization versions ... WARNING
+Found file(s) with version 3 serialization:
+  ‘.RData’
+Such files are only readable in R >= 3.5.0.
+Recreate them with R < 3.5.0 or save(version = 2) or saveRDS(version =
+2) as appropriate
+* checking whether package ‘SynthVolForecast’ can be installed ... WARNING
+Found the following significant warnings:
+  Warning: SynthVolForecast.Rd:356: unexpected END_OF_INPUT '
+See ‘/home/david/Desktop/synthetic_vol_forecasting/R_package_development/SynthVolForecast.Rcheck/00install.out’ for details.
+* checking installed package size ... OK
+* checking package directory ... OK
+* checking for future file timestamps ... OK
+* checking DESCRIPTION meta-information ... NOTE
+Checking should be performed on sources prepared by ‘R CMD build’.
+* checking top-level files ... NOTE
+Non-standard files/directories found at top level:
+  ‘LICENSE.md’ ‘SynthVolForecast.Rproj’
+* checking for left-over files ... OK
+* checking index information ... OK
+* checking package subdirectories ... OK
+* checking R files for non-ASCII characters ... OK
+* checking R files for syntax errors ... OK
+* checking whether the package can be loaded ... OK
+* checking whether the package can be loaded with stated dependencies ... OK
+* checking whether the package can be unloaded cleanly ... OK
+* checking whether the namespace can be loaded with stated dependencies ... OK
+* checking whether the namespace can be unloaded cleanly ... OK
+* checking loading without being on the library search path ... OK
+* checking use of S3 registration ... OK
+* checking dependencies in R code ... OK
+* checking S3 generic/method consistency ... OK
+* checking replacement functions ... OK
+* checking foreign function calls ... OK
+* checking R code for possible problems ... NOTE
+SynthPrediction: no visible global function definition for ‘index’
+SynthPrediction: no visible binding for global variable ‘Y’
+SynthPrediction: no visible global function definition for ‘predict’
+SynthPrediction: no visible global function definition for ‘lag.xts’
+SynthVolForecast: no visible global function definition for ‘index’
+SynthVolForecast: no visible binding for global variable ‘Y’
+SynthVolForecast: no visible global function definition for ‘AIC’
+SynthVolForecast: no visible global function definition for ‘predict’
+SynthVolForecast: no visible global function definition for ‘fitted’
+plot_maker_garch: no visible global function definition for ‘par’
+plot_maker_garch: no visible global function definition for ‘barplot’
+plot_maker_garch: no visible global function definition for ‘title’
+plot_maker_garch: no visible global function definition for ‘plot.ts’
+plot_maker_garch: no visible global function definition for ‘points’
+plot_maker_garch: no visible global function definition for ‘legend’
+plot_maker_synthprediction: no visible global function definition for
+  ‘par’
+plot_maker_synthprediction: no visible global function definition for
+  ‘plot.ts’
+plot_maker_synthprediction: no visible global function definition for
+  ‘lines’
+plot_maker_synthprediction: no visible global function definition for
+  ‘points’
+plot_maker_synthprediction: no visible global function definition for
+  ‘barplot’
+plot_maker_synthprediction: no visible global function definition for
+  ‘title’
+plot_maker_synthprediction: no visible global function definition for
+  ‘legend’
+Undefined global functions or variables:
+  AIC Y barplot fitted index lag.xts legend lines par plot.ts points
+  predict title
+Consider adding
+  importFrom("graphics", "barplot", "legend", "lines", "par", "points",
+             "title")
+  importFrom("stats", "AIC", "fitted", "plot.ts", "predict")
+to your NAMESPACE file.
+* checking Rd files ... WARNING
+prepare_Rd: QL_loss_function.Rd:7-9: Dropping empty section \description
+prepare_Rd: QL_loss_function.Rd:19-21: Dropping empty section \details
+prepare_Rd: QL_loss_function.Rd:22-28: Dropping empty section \value
+prepare_Rd: QL_loss_function.Rd:35-37: Dropping empty section \note
+prepare_Rd: QL_loss_function.Rd:29-31: Dropping empty section \references
+prepare_Rd: QL_loss_function.Rd:41-43: Dropping empty section \seealso
+checkRd: (5) QL_loss_function.Rd:0-58: Must have a \description
+prepare_Rd: SynthPrediction.Rd:7-9: Dropping empty section \description
+prepare_Rd: SynthPrediction.Rd:58-60: Dropping empty section \details
+prepare_Rd: SynthPrediction.Rd:61-67: Dropping empty section \value
+prepare_Rd: SynthPrediction.Rd:74-76: Dropping empty section \note
+prepare_Rd: SynthPrediction.Rd:68-70: Dropping empty section \references
+prepare_Rd: SynthPrediction.Rd:80-82: Dropping empty section \seealso
+checkRd: (5) SynthPrediction.Rd:0-98: Must have a \description
+prepare_Rd: SynthVolForecast.Rd:356: unexpected END_OF_INPUT '
+'
+prepare_Rd: SynthVolForecast.Rd:6-8: Dropping empty section \description
+prepare_Rd: SynthVolForecast.Rd:60-62: Dropping empty section \details
+prepare_Rd: SynthVolForecast.Rd:63-69: Dropping empty section \value
+prepare_Rd: SynthVolForecast.Rd:76-78: Dropping empty section \note
+prepare_Rd: SynthVolForecast.Rd:70-72: Dropping empty section \references
+prepare_Rd: SynthVolForecast.Rd:82-84: Dropping empty section \seealso
+checkRd: (5) SynthVolForecast.Rd:0-357: Must have a \description
+prepare_Rd: dbw.Rd:49-51: Dropping empty section \details
+prepare_Rd: dbw.Rd:52-58: Dropping empty section \value
+prepare_Rd: dbw.Rd:65-67: Dropping empty section \note
+prepare_Rd: dbw.Rd:62-64: Dropping empty section \author
+prepare_Rd: dbw.Rd:59-61: Dropping empty section \references
+prepare_Rd: dbw.Rd:71-73: Dropping empty section \seealso
+prepare_Rd: plot_maker_garch.Rd:6-8: Dropping empty section \description
+prepare_Rd: plot_maker_garch.Rd:48-50: Dropping empty section \details
+prepare_Rd: plot_maker_garch.Rd:51-57: Dropping empty section \value
+prepare_Rd: plot_maker_garch.Rd:64-66: Dropping empty section \note
+prepare_Rd: plot_maker_garch.Rd:58-60: Dropping empty section \references
+prepare_Rd: plot_maker_garch.Rd:70-72: Dropping empty section \seealso
+checkRd: (5) plot_maker_garch.Rd:0-87: Must have a \description
+prepare_Rd: plot_maker_synthprediction.Rd:6-8: Dropping empty section \description
+prepare_Rd: plot_maker_synthprediction.Rd:45-47: Dropping empty section \details
+prepare_Rd: plot_maker_synthprediction.Rd:48-54: Dropping empty section \value
+prepare_Rd: plot_maker_synthprediction.Rd:61-63: Dropping empty section \note
+prepare_Rd: plot_maker_synthprediction.Rd:55-57: Dropping empty section \references
+prepare_Rd: plot_maker_synthprediction.Rd:67-69: Dropping empty section \seealso
+checkRd: (5) plot_maker_synthprediction.Rd:0-86: Must have a \description
+* checking Rd metadata ... OK
+* checking Rd line widths ... NOTE
+Rd file 'SynthPrediction.Rd':
+  \usage lines wider than 90 characters:
+     SynthPrediction(Y_series_list, covariates_series_list, shock_time_vec, shock_length_vec, dbw_scale = TRUE, dbw_center = TRUE, dbw_indic ... [TRUNCATED]
+
+Rd file 'SynthVolForecast.Rd':
+  \usage lines wider than 90 characters:
+     SynthVolForecast(Y_series_list, covariates_series_list, shock_time_vec, shock_length_vec, dbw_scale = TRUE, dbw_center = TRUE, dbw_indi ... [TRUNCATED]
+  \examples lines wider than 100 characters:
+           integer_shock_time_vec_for_convex_hull_based_optimization[i] <- which(index(X[[i]]) == shock_time_vec[i]) #mk
+
+Rd file 'dbw.Rd':
+  \usage lines wider than 90 characters:
+     dbw(X, dbw_indices, shock_time_vec, scale = FALSE, center = FALSE, sum_to_1 = 1, bounded_below_by = 0, bounded_above_by = 1, normchoice ... [TRUNCATED]
+
+Rd file 'plot_maker_garch.Rd':
+  \usage lines wider than 90 characters:
+     plot_maker_garch(fitted_vol, shock_time_labels, shock_time_vec, shock_length_vec, unadjusted_pred, w_hat, omega_star_hat, omega_star_ha ... [TRUNCATED]
+
+Rd file 'plot_maker_synthprediction.Rd':
+  \usage lines wider than 90 characters:
+     plot_maker_synthprediction(Y, shock_time_labels, shock_time_vec, shock_length_vec, unadjusted_pred, w_hat, omega_star_hat, omega_star_h ... [TRUNCATED]
+
+These lines will be truncated in the PDF manual.
+* checking Rd cross-references ... OK
+* checking for missing documentation entries ... OK
+* checking for code/documentation mismatches ... WARNING
+Codoc mismatches from documentation object 'QL_loss_function':
+QL_loss_function
+  Code: function(pred, gt)
+  Docs: function(x)
+  Argument names in code not in docs:
+    pred gt
+  Argument names in docs not in code:
+    x
+  Mismatches in argument names:
+    Position: 1 Code: pred Docs: x
+
+Codoc mismatches from documentation object 'SynthPrediction':
+SynthPrediction
+  Code: function(Y_series_list, covariates_series_list, shock_time_vec,
+                 shock_length_vec, k = 1, dbw_scale = TRUE, dbw_center
+                 = TRUE, dbw_indices = NULL, covariate_indices = NULL,
+                 geometric_sets = NULL, days_before_shocktime_vec =
+                 NULL, arima_order = NULL, user_ic_choice = c("aicc",
+                 "aic", "bic")[1], plots = TRUE,
+                 display_ground_truth_choice = FALSE)
+  Docs: function(Y_series_list, covariates_series_list, shock_time_vec,
+                 shock_length_vec, dbw_scale = TRUE, dbw_center = TRUE,
+                 dbw_indices = NULL, covariate_indices = NULL,
+                 geometric_sets = NULL, days_before_shocktime_vec =
+                 NULL, arima_order = NULL, user_ic_choice = c("aicc",
+                 "aic", "bic")[1], plots = TRUE,
+                 display_ground_truth_choice = FALSE)
+  Argument names in code not in docs:
+    k
+  Mismatches in argument names (first 3):
+    Position: 5 Code: k Docs: dbw_scale
+    Position: 6 Code: dbw_scale Docs: dbw_center
+    Position: 7 Code: dbw_center Docs: dbw_indices
+
+Codoc mismatches from documentation object 'SynthVolForecast':
+SynthVolForecast
+  Code: function(Y_series_list, covariates_series_list, shock_time_vec,
+                 shock_length_vec, k = 1, dbw_scale = TRUE, dbw_center
+                 = TRUE, dbw_indices = NULL, covariate_indices = NULL,
+                 geometric_sets = NULL, days_before_shocktime_vec =
+                 NULL, garch_order = NULL, common_series_assumption =
+                 FALSE, plots = TRUE, shock_time_labels = NULL,
+                 ground_truth_vec = NULL)
+  Docs: function(Y_series_list, covariates_series_list, shock_time_vec,
+                 shock_length_vec, dbw_scale = TRUE, dbw_center = TRUE,
+                 dbw_indices = NULL, covariate_indices = NULL,
+                 geometric_sets = NULL, days_before_shocktime_vec =
+                 NULL, garch_order = NULL, common_series_assumption =
+                 FALSE, plots = TRUE, shock_time_labels,
+                 ground_truth_vec)
+  Argument names in code not in docs:
+    k
+  Mismatches in argument names (first 3):
+    Position: 5 Code: k Docs: dbw_scale
+    Position: 6 Code: dbw_scale Docs: dbw_center
+    Position: 7 Code: dbw_center Docs: dbw_indices
+  Mismatches in argument default values:
+    Name: 'shock_time_labels' Code: NULL Docs: 
+    Name: 'ground_truth_vec' Code: NULL Docs: 
+
+* checking Rd \usage sections ... OK
+* checking Rd contents ... OK
+* checking for unstated dependencies in examples ... OK
+* checking LazyData ... NOTE
+  'LazyData' is specified without a 'data' directory
+* checking examples ... OK
+* checking for unstated dependencies in ‘tests’ ... OK
+* checking tests ... OK
+  Running ‘testthat.R’
+* checking PDF version of manual ... OK
+* checking HTML version of manual ... NOTE
+Skipping checking HTML validation: no command 'tidy' found
+* checking for non-standard things in the check directory ... OK
+* checking for detritus in the temp directory ... OK
+* DONE
+Status: 4 WARNINGs, 8 NOTEs

@@ -1,0 +1,431 @@
+Hmm ... looks like a package
+Converting parsed Rd's to LaTeX 
+Creating pdf output from LaTeX ...
+
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+LaTeX2e <2023-06-01>
+L3 programming layer <2023-06-05>
+(./Rd2.tex
+(/usr/share/texlive/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2023/05/17 v1.4n Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/bk10.clo))
+(/usr/share/R/share/texmf/tex/latex/Rd.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/bm.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/alltt.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/verbatim.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/jknapltx/mathrsfs.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/times.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/inconsolata/zi4.sty
+`inconsolata-zi4' v1.12, 2019/05/17 Text macros for Inconsolata (msharpe)
+(/usr/share/texlive/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/keyval.tex)))))
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/mathcolor.ltx))
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+(/usr/share/texlive/texmf-dist/tex/generic/infwarerr/infwarerr.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/pdfescape/pdfescape.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/hycolor/hycolor.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/auxhook/auxhook.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
+(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/usr/share/texlive/texmf-dist/tex/generic/intcalc/intcalc.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/puenc.def)
+(/usr/share/texlive/texmf-dist/tex/generic/bitset/bitset.sty
+(/usr/share/texlive/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/base/atbegshi-ltx.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
+(/usr/share/texlive/texmf-dist/tex/latex/base/atveryend-ltx.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+(/usr/share/texlive/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty))))
+(/usr/share/texlive/texmf-dist/tex/latex/base/makeidx.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty)
+Writing index file Rd2.idx
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ptm.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def)
+No file Rd2.aux.
+(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/usr/share/texlive/texmf-dist/tex/latex/inconsolata/t1zi4.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1phv.fd)
+No file Rd2.toc.
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/jknapltx/ursfs.fd)
+Overfull \hbox (628.0188pt too wide) in paragraph at lines 43--43
+ []\T1/zi4/m/n/10 dbw(X, dbw_indices, shock_time_vec, scale = FALSE, center = F
+ALSE, sum_to_1 = 1, bounded_below_by = 0, bounded_above_by = 1, normchoice = c(
+"l1", "l2")[2], penalty_normchoice = c("l1", "l2")[1], penalty_lambda = 0) 
+[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf-
+dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips
+/inconsolata/i4-t1-0.enc}]
+Overfull \hbox (598.08014pt too wide) in paragraph at lines 97--97
+ []\T1/zi4/m/n/10 plot_maker_garch(fitted_vol, shock_time_labels, shock_time_ve
+c, shock_length_vec, unadjusted_pred, w_hat, omega_star_hat, omega_star_hat_vec
+, adjusted_pred, arithmetic_mean_based_pred, ground_truth_vec) 
+[2]
+Overfull \hbox (521.41006pt too wide) in paragraph at lines 155--155
+ []\T1/zi4/m/n/10 plot_maker_synthprediction(Y, shock_time_labels, shock_time_v
+ec, shock_length_vec, unadjusted_pred, w_hat, omega_star_hat, omega_star_hat_ve
+c, adjusted_pred, display_ground_truth = FALSE) 
+[3]
+Overfull \hbox (1266.32828pt too wide) in paragraph at lines 239--239
+ []\T1/zi4/m/n/10 SynthPrediction(Y_series_list, covariates_series_list, shock_
+time_vec, shock_length_vec, dbw_scale = TRUE, dbw_center = TRUE, dbw_indices = 
+NULL, covariate_indices = NULL, geometric_sets = NULL, days_before_shocktime_ve
+c = NULL, arima_order = NULL, user_ic_choice = c("aicc", "aic", "bic")[1], plot
+s = TRUE, display_ground_truth_choice = FALSE) 
+[4]
+Overfull \hbox (1221.3385pt too wide) in paragraph at lines 307--307
+ []\T1/zi4/m/n/10 SynthVolForecast(Y_series_list, covariates_series_list, shock
+_time_vec, shock_length_vec, dbw_scale = TRUE, dbw_center = TRUE, dbw_indices =
+ NULL, covariate_indices = NULL, geometric_sets = NULL, days_before_shocktime_v
+ec = NULL, garch_order = NULL, common_series_assumption = FALSE, plots = TRUE, 
+shock_time_labels, ground_truth_vec) 
+[5] [6]
+Overfull \hbox (105.74715pt too wide) in paragraph at lines 415--415
+ []      \T1/zi4/m/n/9 integer_shock_time_vec_for_convex_hull_based_optimizatio
+n[i] <- which(index(X[[i]]) == shock_time_vec[i]) #mk[] 
+(/usr/share/texlive/texmf-dist/tex/latex/inconsolata/ts1zi4.fd)
+Underfull \vbox (badness 10000) has occurred while \output is active [7{/usr/sh
+are/texlive/texmf-dist/fonts/enc/dvips/inconsolata/i4-ts1.enc}]
+Underfull \vbox (badness 10000) has occurred while \output is active [8]
+Overfull \hbox (45.76248pt too wide) in paragraph at lines 557--557
+ []    \T1/zi4/m/n/9 forecast_period <- (integer_shock_time_vec[1]+1):(integer_
+shock_time_vec[1]+shock_length_vec[1])[] 
+
+Underfull \vbox (badness 10000) has occurred while \output is active [9]
+Underfull \vbox (badness 10000) has occurred while \output is active [10]
+No file Rd2.ind.
+[11] (/tmp/Rtmpuzm8Xw/Rd2pdfefc97fcb9756/Rd2.aux)
+
+Package rerunfilecheck Warning: File `Rd2.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+ )
+(see the transcript file for additional information)</usr/share/texlive/texmf-d
+ist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/font
+s/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/tim
+es/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><
+/usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on Rd2.pdf (11 pages, 93869 bytes).
+Transcript written on Rd2.log.
+This is makeindex, version 2.17 [TeX Live 2023] (kpathsea + Thai support).
+Scanning input file Rd2.idx....done (6 entries accepted, 0 rejected).
+Sorting entries....done (15 comparisons).
+Generating output file Rd2.ind....done (19 lines written, 0 warnings).
+Output written in Rd2.ind.
+Transcript written in Rd2.ilg.
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+LaTeX2e <2023-06-01>
+L3 programming layer <2023-06-05>
+(./Rd2.tex
+(/usr/share/texlive/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2023/05/17 v1.4n Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/bk10.clo))
+(/usr/share/R/share/texmf/tex/latex/Rd.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/bm.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/alltt.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/verbatim.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/jknapltx/mathrsfs.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/times.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/inconsolata/zi4.sty
+`inconsolata-zi4' v1.12, 2019/05/17 Text macros for Inconsolata (msharpe)
+(/usr/share/texlive/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/keyval.tex)))))
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/mathcolor.ltx))
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+(/usr/share/texlive/texmf-dist/tex/generic/infwarerr/infwarerr.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/pdfescape/pdfescape.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/hycolor/hycolor.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/auxhook/auxhook.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
+(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/usr/share/texlive/texmf-dist/tex/generic/intcalc/intcalc.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/puenc.def)
+(/usr/share/texlive/texmf-dist/tex/generic/bitset/bitset.sty
+(/usr/share/texlive/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/base/atbegshi-ltx.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
+(/usr/share/texlive/texmf-dist/tex/latex/base/atveryend-ltx.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+(/usr/share/texlive/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty))))
+(/usr/share/texlive/texmf-dist/tex/latex/base/makeidx.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty)
+Writing index file Rd2.idx
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ptm.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def)
+(/tmp/Rtmpuzm8Xw/Rd2pdfefc97fcb9756/Rd2.aux)
+(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/tmp/Rtmpuzm8Xw/Rd2pdfefc97fcb9756/Rd2.out)
+(/tmp/Rtmpuzm8Xw/Rd2pdfefc97fcb9756/Rd2.out)
+(/usr/share/texlive/texmf-dist/tex/latex/inconsolata/t1zi4.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1phv.fd)
+(/tmp/Rtmpuzm8Xw/Rd2pdfefc97fcb9756/Rd2.toc
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/jknapltx/ursfs.fd))
+Overfull \hbox (628.0188pt too wide) in paragraph at lines 43--43
+ []\T1/zi4/m/n/10 dbw(X, dbw_indices, shock_time_vec, scale = FALSE, center = F
+ALSE, sum_to_1 = 1, bounded_below_by = 0, bounded_above_by = 1, normchoice = c(
+"l1", "l2")[2], penalty_normchoice = c("l1", "l2")[1], penalty_lambda = 0) 
+[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf-
+dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips
+/inconsolata/i4-t1-0.enc}]
+Overfull \hbox (598.08014pt too wide) in paragraph at lines 97--97
+ []\T1/zi4/m/n/10 plot_maker_garch(fitted_vol, shock_time_labels, shock_time_ve
+c, shock_length_vec, unadjusted_pred, w_hat, omega_star_hat, omega_star_hat_vec
+, adjusted_pred, arithmetic_mean_based_pred, ground_truth_vec) 
+[2]
+Overfull \hbox (521.41006pt too wide) in paragraph at lines 155--155
+ []\T1/zi4/m/n/10 plot_maker_synthprediction(Y, shock_time_labels, shock_time_v
+ec, shock_length_vec, unadjusted_pred, w_hat, omega_star_hat, omega_star_hat_ve
+c, adjusted_pred, display_ground_truth = FALSE) 
+[3] [4]
+Overfull \hbox (1266.32828pt too wide) in paragraph at lines 239--239
+ []\T1/zi4/m/n/10 SynthPrediction(Y_series_list, covariates_series_list, shock_
+time_vec, shock_length_vec, dbw_scale = TRUE, dbw_center = TRUE, dbw_indices = 
+NULL, covariate_indices = NULL, geometric_sets = NULL, days_before_shocktime_ve
+c = NULL, arima_order = NULL, user_ic_choice = c("aicc", "aic", "bic")[1], plot
+s = TRUE, display_ground_truth_choice = FALSE) 
+[5]
+Overfull \hbox (1221.3385pt too wide) in paragraph at lines 307--307
+ []\T1/zi4/m/n/10 SynthVolForecast(Y_series_list, covariates_series_list, shock
+_time_vec, shock_length_vec, dbw_scale = TRUE, dbw_center = TRUE, dbw_indices =
+ NULL, covariate_indices = NULL, geometric_sets = NULL, days_before_shocktime_v
+ec = NULL, garch_order = NULL, common_series_assumption = FALSE, plots = TRUE, 
+shock_time_labels, ground_truth_vec) 
+[6] [7]
+Overfull \hbox (105.74715pt too wide) in paragraph at lines 415--415
+ []      \T1/zi4/m/n/9 integer_shock_time_vec_for_convex_hull_based_optimizatio
+n[i] <- which(index(X[[i]]) == shock_time_vec[i]) #mk[] 
+(/usr/share/texlive/texmf-dist/tex/latex/inconsolata/ts1zi4.fd)
+Underfull \vbox (badness 10000) has occurred while \output is active [8{/usr/sh
+are/texlive/texmf-dist/fonts/enc/dvips/inconsolata/i4-ts1.enc}]
+Underfull \vbox (badness 10000) has occurred while \output is active [9]
+Overfull \hbox (45.76248pt too wide) in paragraph at lines 557--557
+ []    \T1/zi4/m/n/9 forecast_period <- (integer_shock_time_vec[1]+1):(integer_
+shock_time_vec[1]+shock_length_vec[1])[] 
+
+Underfull \vbox (badness 10000) has occurred while \output is active [10]
+Underfull \vbox (badness 10000) has occurred while \output is active [11]
+(/tmp/Rtmpuzm8Xw/Rd2pdfefc97fcb9756/Rd2.ind [12] [13])
+(/tmp/Rtmpuzm8Xw/Rd2pdfefc97fcb9756/Rd2.aux)
+
+Package rerunfilecheck Warning: File `Rd2.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+ )
+(see the transcript file for additional information)</usr/share/texlive/texmf-d
+ist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/font
+s/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/tim
+es/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><
+/usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on Rd2.pdf (13 pages, 96784 bytes).
+Transcript written on Rd2.log.
+This is makeindex, version 2.17 [TeX Live 2023] (kpathsea + Thai support).
+Scanning input file Rd2.idx....done (6 entries accepted, 0 rejected).
+Sorting entries....done (15 comparisons).
+Generating output file Rd2.ind....done (19 lines written, 0 warnings).
+Output written in Rd2.ind.
+Transcript written in Rd2.ilg.
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+LaTeX2e <2023-06-01>
+L3 programming layer <2023-06-05>
+(./Rd2.tex
+(/usr/share/texlive/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2023/05/17 v1.4n Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/bk10.clo))
+(/usr/share/R/share/texmf/tex/latex/Rd.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/bm.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/alltt.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/verbatim.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/jknapltx/mathrsfs.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/times.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/inconsolata/zi4.sty
+`inconsolata-zi4' v1.12, 2019/05/17 Text macros for Inconsolata (msharpe)
+(/usr/share/texlive/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/keyval.tex)))))
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/mathcolor.ltx))
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+(/usr/share/texlive/texmf-dist/tex/generic/infwarerr/infwarerr.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/pdfescape/pdfescape.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/hycolor/hycolor.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/auxhook/auxhook.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
+(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/usr/share/texlive/texmf-dist/tex/generic/intcalc/intcalc.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/puenc.def)
+(/usr/share/texlive/texmf-dist/tex/generic/bitset/bitset.sty
+(/usr/share/texlive/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/base/atbegshi-ltx.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
+(/usr/share/texlive/texmf-dist/tex/latex/base/atveryend-ltx.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+(/usr/share/texlive/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty))))
+(/usr/share/texlive/texmf-dist/tex/latex/base/makeidx.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty)
+Writing index file Rd2.idx
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ptm.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def)
+(/tmp/Rtmpuzm8Xw/Rd2pdfefc97fcb9756/Rd2.aux)
+(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/tmp/Rtmpuzm8Xw/Rd2pdfefc97fcb9756/Rd2.out)
+(/tmp/Rtmpuzm8Xw/Rd2pdfefc97fcb9756/Rd2.out)
+(/usr/share/texlive/texmf-dist/tex/latex/inconsolata/t1zi4.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1phv.fd)
+(/tmp/Rtmpuzm8Xw/Rd2pdfefc97fcb9756/Rd2.toc
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/jknapltx/ursfs.fd))
+Overfull \hbox (628.0188pt too wide) in paragraph at lines 43--43
+ []\T1/zi4/m/n/10 dbw(X, dbw_indices, shock_time_vec, scale = FALSE, center = F
+ALSE, sum_to_1 = 1, bounded_below_by = 0, bounded_above_by = 1, normchoice = c(
+"l1", "l2")[2], penalty_normchoice = c("l1", "l2")[1], penalty_lambda = 0) 
+[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf-
+dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips
+/inconsolata/i4-t1-0.enc}]
+Overfull \hbox (598.08014pt too wide) in paragraph at lines 97--97
+ []\T1/zi4/m/n/10 plot_maker_garch(fitted_vol, shock_time_labels, shock_time_ve
+c, shock_length_vec, unadjusted_pred, w_hat, omega_star_hat, omega_star_hat_vec
+, adjusted_pred, arithmetic_mean_based_pred, ground_truth_vec) 
+[2]
+Overfull \hbox (521.41006pt too wide) in paragraph at lines 155--155
+ []\T1/zi4/m/n/10 plot_maker_synthprediction(Y, shock_time_labels, shock_time_v
+ec, shock_length_vec, unadjusted_pred, w_hat, omega_star_hat, omega_star_hat_ve
+c, adjusted_pred, display_ground_truth = FALSE) 
+[3] [4]
+Overfull \hbox (1266.32828pt too wide) in paragraph at lines 239--239
+ []\T1/zi4/m/n/10 SynthPrediction(Y_series_list, covariates_series_list, shock_
+time_vec, shock_length_vec, dbw_scale = TRUE, dbw_center = TRUE, dbw_indices = 
+NULL, covariate_indices = NULL, geometric_sets = NULL, days_before_shocktime_ve
+c = NULL, arima_order = NULL, user_ic_choice = c("aicc", "aic", "bic")[1], plot
+s = TRUE, display_ground_truth_choice = FALSE) 
+[5]
+Overfull \hbox (1221.3385pt too wide) in paragraph at lines 307--307
+ []\T1/zi4/m/n/10 SynthVolForecast(Y_series_list, covariates_series_list, shock
+_time_vec, shock_length_vec, dbw_scale = TRUE, dbw_center = TRUE, dbw_indices =
+ NULL, covariate_indices = NULL, geometric_sets = NULL, days_before_shocktime_v
+ec = NULL, garch_order = NULL, common_series_assumption = FALSE, plots = TRUE, 
+shock_time_labels, ground_truth_vec) 
+[6] [7]
+Overfull \hbox (105.74715pt too wide) in paragraph at lines 415--415
+ []      \T1/zi4/m/n/9 integer_shock_time_vec_for_convex_hull_based_optimizatio
+n[i] <- which(index(X[[i]]) == shock_time_vec[i]) #mk[] 
+(/usr/share/texlive/texmf-dist/tex/latex/inconsolata/ts1zi4.fd)
+Underfull \vbox (badness 10000) has occurred while \output is active [8{/usr/sh
+are/texlive/texmf-dist/fonts/enc/dvips/inconsolata/i4-ts1.enc}]
+Underfull \vbox (badness 10000) has occurred while \output is active [9]
+Overfull \hbox (45.76248pt too wide) in paragraph at lines 557--557
+ []    \T1/zi4/m/n/9 forecast_period <- (integer_shock_time_vec[1]+1):(integer_
+shock_time_vec[1]+shock_length_vec[1])[] 
+
+Underfull \vbox (badness 10000) has occurred while \output is active [10]
+Underfull \vbox (badness 10000) has occurred while \output is active [11]
+(/tmp/Rtmpuzm8Xw/Rd2pdfefc97fcb9756/Rd2.ind [12] [13])
+(/tmp/Rtmpuzm8Xw/Rd2pdfefc97fcb9756/Rd2.aux) )
+(see the transcript file for additional information)</usr/share/texlive/texmf-d
+ist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/font
+s/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/tim
+es/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><
+/usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on Rd2.pdf (13 pages, 97350 bytes).
+Transcript written on Rd2.log.
+Saving output to ‘SynthVolForecast-manual.pdf’ ...
+Done
+You may want to clean up by 'rm -Rf /tmp/Rtmpuzm8Xw/Rd2pdfefc97fcb9756'
