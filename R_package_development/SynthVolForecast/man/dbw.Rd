@@ -13,55 +13,45 @@ dbw(X, dbw_indices, shock_time_vec, scale = FALSE, center = FALSE, sum_to_1 = 1,
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{X}{
-%%     ~~Describe \code{X} here~~
+nxp matrix of covariates
 }
   \item{dbw_indices}{
-%%     ~~Describe \code{dbw_indices} here~~
+Indices of X to be used in distance-based-weighting
 }
   \item{shock_time_vec}{
-%%     ~~Describe \code{shock_time_vec} here~~
+Vector of shock times, with first entry corresponding to time series under study.
 }
   \item{scale}{
-%%     ~~Describe \code{scale} here~~
-}
+TRUE/FALSE, whether or not to scale each column to sd = 1}
   \item{center}{
-%%     ~~Describe \code{center} here~~
-}
+TRUE/FALSE, whether or not to de-mean each column}
   \item{sum_to_1}{
-%%     ~~Describe \code{sum_to_1} here~~
-}
+TRUE/FALSE, whether optimization should arrive at weights that sum to 1}
   \item{bounded_below_by}{
-%%     ~~Describe \code{bounded_below_by} here~~
+TRUE/FALSE, whether weights should no less than 0
 }
   \item{bounded_above_by}{
-%%     ~~Describe \code{bounded_above_by} here~~
+TRUE/FALSE, whether weights should be no greater than 1
 }
   \item{normchoice}{
-%%     ~~Describe \code{normchoice} here~~
-}
+L1 or L2 norm used in objection function}
   \item{penalty_normchoice}{
-%%     ~~Describe \code{penalty_normchoice} here~~
+L1 or L2 norm used in optimization penalty}
 }
   \item{penalty_lambda}{
-%%     ~~Describe \code{penalty_lambda} here~~
-}
+Penalty used in optmization}
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+vector of length n
 }
 \references{
-%% ~put references to the literature/web site here ~
+Lin and Eck 2021
 }
 \author{
-%%  ~~who you are~~
-}
+David Lundquist}
 \note{
 %%  ~~further notes~~
 }
