@@ -146,12 +146,20 @@ GARCH models have been shown slow to adapt to spikes in volatility \citep{anders
   \end{center}
 \end{figure}
 
-As we see in Figure \ref{fig:arith_mean_example_introduction}, the arithmetic mean of estimated shock effects provides perhaps the most straightforward and intuitive way of aggregating information from similar events. Aggregating forecasts using the arithmetic mean is more than merely intuitive; it possesses an empirical pedigree and is known to be optimal under rather restrictive conditions \citep{timmermann2006forecast}.  Synthetic Volatility Forecasting lacks these restrictions and instead assumes a credible, parsimonious parameterization in which the shock is an affine transformation of several key covariates. \\
+As we see in Figure \ref{fig:arith_mean_example_introduction}, the arithmetic mean of estimated shock effects provides perhaps the most straightforward and intuitive way of aggregating information from similar events. Aggregating forecasts using the arithmetic mean is more than merely intuitive; it possesses an empirical pedigree and is known to be optimal under rather restrictive conditions \citep{timmermann2006forecast}.  Synthetic Volatility Forecasting lacks these restrictions and instead assumes a credible, parsimonious parameterization in which the shock is an affine transformation of several key covariates. 
+
+\subsection{Schedule and Unscheduled News}
+In \citet{kilian2017structural}
+\subsection{Adjusted Forecasts}
+\citet{foroni2022forecasting} employ ``intercept correction'' in order to adjust forecasts to the COVID-19 shock in the spring of 2020.
+
+\subsection{Connection to forecast combination methods}
+What we are combining, if anything, is subcomponents of forecasts, not forecasts themselves.  However, from a broader perspective, forecast combination is an inapt term for what is being proposed here.  First, the donors are not forecasts. 
 
 \section{Setting}
 \label{section2}
 
-We will suppose that a researcher has multivariate time series data $\ret_{i,t}, t = 1, \ldots,  T_i$ and $i = 1, \ldots, n+1$.  Let $\ret_{i,t} = (r_{i,t}$, $\x_{i,t}$, $\textbf{v}_{i,t}$) where $r_{i,t}$ is a scalar response,  $\x_{i,t}$ is a vector of covariates that are revealed to the analyst prior to the observation of $ret_{1,t}$, and $\textbf{v}_{i,t}$ is a vector of market-implied volatility metrics for the series $i$ that are available prior to the market open at time t.  Suppose that the analyst is interested in forecasting the volatility of $y_{1,t}$, the first time series in the collection.  We require that each time series $\ret_{i,t}$ is subject to an unscheduled news event following $T^*_i \leq T_{i} + 1$ and before witnessing $T^*_i+1$.  We are implicitly leveraging the fact that financial assets are heavily traded during market hours, yet only thinly traded (if traded) outside market hours.  In contrast, the arrival of market-moving news does not obey any such restrictions.
+We will suppose that a researcher has multivariate time series data $\ret_{i,t}, t = 1,$ $\ldots,  T_i$ and $i = 1, \ldots, n+1$.  Let $\ret_{i,t} = (r_{i,t}$, $\x_{i,t}$, $\textbf{v}_{i,t}$) where $r_{i,t}$ is a scalar response,  $\x_{i,t}$ is a vector of covariates that are revealed to the analyst prior to the observation of $ret_{1,t}$, and $\textbf{v}_{i,t}$ is a vector of market-implied volatility metrics for the series $i$ that are available prior to the market open at time t.  Suppose that the analyst is interested in forecasting the volatility of $y_{1,t}$, the first time series in the collection.  We require that each time series $\ret_{i,t}$ is subject to an unscheduled news event following $T^*_i \leq T_{i} + 1$ and before witnessing $T^*_i+1$.  We are implicitly leveraging the fact that financial assets are heavily traded during market hours, yet only thinly traded (if traded) outside market hours.  In contrast, the arrival of market-moving news does not obey any such restrictions.
 
 We follow convention and define the daily log-return as $r_{t} = \text{log}(\frac{P_{t+1}}{P_{t}})$, where $P_{t}$ denotes the price at time $t$.  The class of ARIMA(p,d,q) models developed in the mid-to-late 20th century \citep{box2013box} provides a framework for postulating and quantifying the autoregressive structure of $r_{t}$, all within the framework of frequentist statistics.  These models assume a certain dependence structure between $r_{t}$ and $(r_{k})_{k\leq t}$, yet their errors --- often called innovations in the financial time series context due to how they represent the impact of new information --- are nevertheless assumed to be i.i.d. with mean zero and constant variance.  The ARCH \citep{engle1982autoregressive} and GARCH \citep{bollerslev1986generalized} models provide elegant alternatives to the constant-variance assumption.  In fact, the GARCH framework in its most basic form disregards $r_{t}$ and instead turns its interest to the series $r_{t}^{2}$ (when properly centered, i.e. after assuming a mean-model for returns).  
 
@@ -196,7 +204,7 @@ Let $I(\cdot)$ be an indicator function, $T_i$ be the time length of the time se
 \end{align}
 
  where $D^{vol}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + L_{i, vol}\})$, $D^{level}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + L_{i, level}\})$ 
-and $\x_{i,t} \in \R^{p}$, with $p \geq 1$.  We assume that the 
+and $\x_{i,t} \in \mathbb{R}^{p}$, with $p \geq 1$.  We assume that the 
 $\mbf{x}_{i,t}$ are fixed \footnote{Is this necessary?  Does it serve a purpose?}.\footnote{Need to determine what difference it makes to a GARCH-X model, if any, for the covariates to be random.}\footnote{As for implied volatility as a covariate, the argument for regarding it as a non-random quantity is that we are not primarily concerned with what IV is trying to estimate.  We're concerned with IV itself at a primitive quantity that affects volatility through market sentiment.}  For $i = 1, \ldots, n+1$ and $t=1, \ldots, T_i$, the random effects structure for $\mc{M}_1$ is:
 
 \begin{align*}
@@ -561,8 +569,6 @@ as $t\rightarrow\infty$ by a simple application of Slutsky's Theorem.
 
 \end{proof-of-proposition}
 
-
-
 \subsection{Forecasting}
 
 Here we make reference to Tsay p. 133 and explain, very similarly to Tsay, that the prediction function for a GARCH(m,s) is very similar to an ARMA prediction function.  Modeled after section 2.2 here https://arxiv.org/pdf/2008.11756.pdf
@@ -596,7 +602,7 @@ Recall an $\mc{M}_2$ model on the volatility, which is characterized by an exoge
 
 In order to investigate the Synthetic Volatility Forecasting method
 
-\begin{figure}[h!]
+\begin{figure}[ht!]
 \begin{center}
   \includegraphics[scale=.45]{simulation_plots/standard_simulation_alpha_.1_beta_.82.png}
   \caption{Fixed parameter values: $\alpha = .1, \beta = .82, \mu_{x} = 1, \sigma_{x} = .1$}
@@ -686,10 +692,6 @@ Naturally, one might ask how sensitive this prediction is to at least two kinds 
 \end{figure}
 
 \section{Discussion}
-
-
-\subsection{Connection to forecast combination methods}
-What we are combining, if anything, is subcomponents of forecasts, not forecasts themselves.  However, from a broader perspective, forecast combination is an inapt term for what is being proposed here.  First, the donors are not forecasts. 
 
 \subsection{Why is the proposal here unlike KNN regression?}
 In KNN regression, the hyperparameter K must be learned.  In Synthetic Volatility Forecasting, the number of donors is not learned.  A donor pool is curated, and then careful rules of thumb can be applied to determine whether a given donor should be included or excluded. 
