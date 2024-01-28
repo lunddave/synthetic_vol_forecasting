@@ -155,6 +155,8 @@ In \citet{kilian2017structural}
 \subsection{Adjusted Forecasts}
 \citet{foroni2022forecasting} employ ``intercept correction'' in order to adjust forecasts to the COVID-19 shock in the spring of 2020.
 
+\citet{clements1998forecasting} informally define intercept correction to be explicit modeling of certain errors to be nonzero.  They discuss two strains of intercept correction: one that is subject to the judgment or discretion of the practitioner, and another that is part of an automated strategy.
+
 \subsection{Connection to forecast combination methods}
 What we are combining, if anything, is subcomponents of forecasts, not forecasts themselves.  However, from a broader perspective, forecast combination is an inapt term for what is being proposed here.  First, the donors are not forecasts. 
 
@@ -187,8 +189,6 @@ In light of the foregoing, we can rewrite the GARCH framework we are interested 
 &\sigma_{i,t}^{2} = \omega_{i} + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \begin{pmatrix} \x_{i,t} \\ \textbf{v}_{i,t} \\ \end{pmatrix} \\
 &a_{i,t} = \sigma_{i,t}\epsilon_{i,t}
 \end{align*}
-
-
 
 % https://latex-tutorial.com/matrices-in-latex/
 % https://www.math-linux.com/latex-26/faq/latex-faq/article/how-to-write-matrices-in-latex-matrix-pmatrix-bmatrix-vmatrix-vmatrix
@@ -582,11 +582,18 @@ as $t\rightarrow\infty$ by a simple application of Slutsky's Theorem.
 
 \subsection{Forecasting}
 
+A GARCH model is an ARMA on the squares of the observed scalar time series, as we have already noted.  This fact matters for forecasting because the forecasting function for GARCH model is, just like an ARMA model, the conditional expectation function. \citet{zivot2009practical}
+
 Here we make reference to Tsay p. 133 and explain, very similarly to Tsay, that the prediction function for a GARCH(m,s) is very similar to an ARMA prediction function.  Modeled after section 2.2 here https://arxiv.org/pdf/2008.11756.pdf
 
-OR we could cite \citet{zivot2009practical}
-
 $\mathbb{E}[ \sigma^{2}_{i,T^{*}+r+1} |\mathcal{F}_{T^{*}+r}]$
+
+We present two forecasts:
+
+\begin{align*}
+  \text{Forecast 1: }  & \hat\E_{T^{*}}[\sigma^{2}_{i,t+1}|\mathcal{F}_{T^{*}}] = \omega_{i} + \sum^{m_{i}}_{k=1}\hat\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\hat\beta_{i,j}\sigma_{i,t-j}^{2} + \hat\gamma_{i}^{T} \x_{i,t}\\
+  \text{Forecast 2: }  & \hat\E_{T^{*}}[\sigma^{2}_{i,t+1}|\mathcal{F}_{T^{*}}] + \hat\omega = \omega_{i} + \sum^{m_{i}}_{k=1}\hat\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\hat\beta_{i,j}\sigma_{i,t-j}^{2} + \hat\gamma_{i}^{T} \x_{i,t}+ \hat\omega
+\end{align*}
 
 \section{Numerical Examples}
 

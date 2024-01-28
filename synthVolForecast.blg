@@ -3,52 +3,48 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: synthVolForecast.aux
 The style file: plainnat.bst
 Database file #1: synthVolForecast.bib
-Repeated entry---line 1419 of file synthVolForecast.bib
- : @article{wolfers2016financial
- :                              ,
-I'm skipping whatever remains of this entry
 Warning--to sort, need author or key in Bloomberg.com_2024
 Warning--empty journal in bauwens2006regime
 Warning--empty year in Kenton
-You've used 35 entries,
+You've used 36 entries,
             2773 wiz_defined-function locations,
-            817 strings with 10330 characters,
-and the built_in function-call counts, 14979 in all, are:
-= -- 1395
-> -- 669
-< -- 31
-+ -- 233
-- -- 198
-* -- 1138
-:= -- 2250
-add.period$ -- 108
-call.type$ -- 35
-change.case$ -- 167
-chr.to.int$ -- 35
-cite$ -- 74
-duplicate$ -- 734
-empty$ -- 1347
-format.name$ -- 255
-if$ -- 3176
+            820 strings with 10422 characters,
+and the built_in function-call counts, 15336 in all, are:
+= -- 1423
+> -- 690
+< -- 32
++ -- 240
+- -- 204
+* -- 1161
+:= -- 2307
+add.period$ -- 111
+call.type$ -- 36
+change.case$ -- 171
+chr.to.int$ -- 36
+cite$ -- 76
+duplicate$ -- 754
+empty$ -- 1379
+format.name$ -- 264
+if$ -- 3251
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 33
-newline$ -- 183
-num.names$ -- 136
-pop$ -- 338
+missing$ -- 35
+newline$ -- 188
+num.names$ -- 140
+pop$ -- 351
 preamble$ -- 1
-purify$ -- 135
+purify$ -- 139
 quote$ -- 0
-skip$ -- 554
+skip$ -- 569
 stack$ -- 0
-substring$ -- 686
-swap$ -- 74
+substring$ -- 688
+swap$ -- 75
 text.length$ -- 6
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 375
+type$ -- 381
 warning$ -- 3
-while$ -- 154
+while$ -- 157
 width$ -- 0
-write$ -- 454
-(There was 1 error message)
+write$ -- 466
+(There were 3 warnings)
