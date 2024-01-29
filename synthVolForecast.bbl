@@ -1,4 +1,4 @@
-\begin{thebibliography}{38}
+\begin{thebibliography}{39}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -73,6 +73,11 @@ Rama Cont.
 Yiannis Dendramis, George Kapetanios, and Massimiliano Marcellino.
 \newblock A similarity-based approach for macroeconomic forecasting.
 \newblock \emph{Journal of the Royal Statistical Society Series A: Statistics in Society}, 183\penalty0 (3):\penalty0 801--827, 2020.
+
+\bibitem[Dominguez and Panthaki(2006)]{dominguez2006defines}
+Kathryn~ME Dominguez and Freyan Panthaki.
+\newblock What defines ‘news’ in foreign exchange markets?
+\newblock \emph{Journal of International Money and Finance}, 25\penalty0 (1):\penalty0 168--198, 2006.
 
 \bibitem[Engle(2002)]{engle2002new}
 Robert Engle.
