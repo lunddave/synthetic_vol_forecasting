@@ -152,18 +152,20 @@ Given the preceding review, pause to take stock of several key components of for
 
 \begin{itemize}
   \item Automated or non-automated
-  \item The parametric term to be corrected (e.g. intercept, coefficients), if any
-  \item The correction function 
   \item The collection of data assembled to perform the correction
-\begin{itemize}
-  \item Internal (the time series itself)
-  \item External
-\end{itemize}
+  \begin{itemize}
+    \item Internal (the time series itself)
+    \item External
+  \end{itemize}
+  \item The parametric term to be corrected (e.g. intercept, coefficients), if any
+  \item The correction function (i.e. the mapping from the data to the corrective term)
   \item The weighting scheme applied to the assembled data (e.g. Nearest-Neighbor, arithmetic mean, kernel methods)
 \end{itemize}
 
-\citet{guerron2017macroeconomic}, citing previous work, discuss that intercept corrections find their theoretical basis in structural breaks, whereas Nearest-Neighbor methods, being nonparametric, are theoretically more adept at accounting for nonlinearity.
+\citet{guerron2017macroeconomic}, citing previous work in the literature, discuss that intercept corrections find their theoretical basis in structural breaks, whereas Nearest-Neighbor methods, being nonparametric, are theoretically more adept at accounting for nonlinearity.
 We know of no prior work that both introduces a parametric specification for nonzero residuals and introduces a procedure for weighting appropriately the nonzero residuals of similar shocks. 
+
+In order to motivate our procedure, we show how the aggregation of estimated excess volatilities from donors in the donor pool works when the correction function is the arithmetic mean.
 
 \begin{figure}[h]
   \begin{center}
@@ -277,69 +279,43 @@ Notice that $\mc{M}_1$ assumes that $\omega^{*}_i$ are i.i.d. with $\E[ \omega^{
       \end{array}
     \end{align}\label{parameter}
     where $\Theta$ and $\Theta_1$ can be adapted to $\mc{M}_1$ by dropping $\delta$. We assume this for notational simplicity.
-i
+
     \subsection{Volatility Profile of a Time Series}
     \label{Volatility Profile of a Time Series}
     
-    In this section we make a novel contribution to the synthetic prediction framework by constructing a profile of a time series' volatility.  Suppose we have $D$ donors and for each of those $D$ donors, $q$ distinct measurements and/or covariates of volatility.  Abusing notation for RV ( I need some clever way to index (a) date, (b) donor, (c) how many days were used to get the measurement, we have...
-   
-    \subsection{Justifying the Shock Parameterization}
-    \citet{chinco2019sparse} find that for predicting 1-minute returns, highly transitory firm-specific news is useful.
-
-    There is an important question about the stability of the GARCH parameters under the presence of an exogenous shock.  There are at least two reasons that we do not explore that in this work.  First,the marginal effect of coefficient changes at the shock time would, under the assumptions in this work, be swamped by the random effect.  Second , we would need quite a few time points to reliably estimate the change in the GARCH parameters.  We don't have that.
+    In this section we make a novel contribution to the synthetic prediction framework by constructing a profile of a time series' volatility.  Suppose that for each of the $n$ donors, we posit $q$ distinct covariates in the functional form of the shock.  Abusing notation for RV (Need some clever way to index (a) date, (b) donor, (c) how many days were used to get the measurement), we have...
 
     \begin{equation*}
-    \textbf{V}_{q,D} = 
-    \begin{pmatrix}
-    \alpha_{T^{*},1} & \alpha_{T^{*},2}  & \cdots & \alpha_{T^{*},D}  \\
-    \beta_{T^{*},1} & \beta_{T^{*},2}  & \cdots & \beta_{T^{*},D}  \\
-    \vdots  & \vdots  & \ddots & \vdots  \\
-    RV_{T^{*},1} & RV_{T^{*},2}  & \cdots & RV_{T^{*},D}  \\
-    RV_{T^{*}-1,1}  & RV_{T^{*}-1,2}  & \cdots & RV_{T^{*}-1,D}  \\
-    \vdots  & \vdots  & \ddots & \vdots  \\
-    IV_{T^{*},1} & IV_{T^{*},2} & \cdots & IV_{T^{*},D} \\
-    IV_{T^{*}-1,1}  & IV_{T^{*}-1,2}  & \cdots & IV_{T^{*}-1,D} \\
-    \vdots  & \vdots  & \ddots & \vdots  \\
-    AbsoluteReturn_{T^{*},1} & AbsoluteReturn_{T^{*},2} & \cdots & AbsoluteReturn_{T^{*},D} \\
-    AbsoluteReturn_{T^{*}-1,1}  & AbsoluteReturn_{T^{*}-1,2}  & \cdots & AbsoluteReturn_{T^{*}-1,D} \\
-    \vdots  & \vdots  & \ddots & \vdots  \\
-    Volume_{T^{*},1}  & Volume_{T^{*},2}  & \cdots & Volume_{T^{*},D} \\
-    Volume_{T^{*}-1,1}  & Volume_{T^{*}-1,2}  & \cdots & Volume_{T^{*}-1,D}  \\
-    \vdots  & \vdots  & \ddots & \vdots  \\
-    \Delta RV_{T^{*},1} & \Delta RV_{T^{*},2}  & \cdots & \Delta RV_{T^{*},D}  \\
-    \Delta RV_{T^{*}-1,1}  & \Delta RV_{T^{*}-1,2}  & \cdots & \Delta RV_{T^{*}-1,D}  \\
-    \vdots  & \vdots  & \ddots & \vdots  \\
-    \end{pmatrix}
-    \end{equation*}
+      \textbf{V}_{q,n} = 
+      \begin{pmatrix}
+      \alpha_{T^{*},1} & \alpha_{T^{*},2}  & \cdots & \alpha_{T^{*},D}  \\
+      \beta_{T^{*},1} & \beta_{T^{*},2}  & \cdots & \beta_{T^{*},D}  \\
+      \vdots  & \vdots  & \ddots & \vdots  \\
+      RV_{T^{*},1} & RV_{T^{*},2}  & \cdots & RV_{T^{*},D}  \\
+      RV_{T^{*}-1,1}  & RV_{T^{*}-1,2}  & \cdots & RV_{T^{*}-1,D}  \\
+      \vdots  & \vdots  & \ddots & \vdots  \\
+      IV_{T^{*},1} & IV_{T^{*},2} & \cdots & IV_{T^{*},D} \\
+      IV_{T^{*}-1,1}  & IV_{T^{*}-1,2}  & \cdots & IV_{T^{*}-1,D} \\
+      \vdots  & \vdots  & \ddots & \vdots  \\
+      AbsoluteReturn_{T^{*},1} & AbsoluteReturn_{T^{*},2} & \cdots & AbsoluteReturn_{T^{*},D} \\
+      AbsoluteReturn_{T^{*}-1,1}  & AbsoluteReturn_{T^{*}-1,2}  & \cdots & AbsoluteReturn_{T^{*}-1,D} \\
+      \vdots  & \vdots  & \ddots & \vdots  \\
+      Volume_{T^{*},1}  & Volume_{T^{*},2}  & \cdots & Volume_{T^{*},D} \\
+      Volume_{T^{*}-1,1}  & Volume_{T^{*}-1,2}  & \cdots & Volume_{T^{*}-1,D}  \\
+      \vdots  & \vdots  & \ddots & \vdots  \\
+      \Delta RV_{T^{*},1} & \Delta RV_{T^{*},2}  & \cdots & \Delta RV_{T^{*},D}  \\
+      \Delta RV_{T^{*}-1,1}  & \Delta RV_{T^{*}-1,2}  & \cdots & \Delta RV_{T^{*}-1,D}  \\
+      \vdots  & \vdots  & \ddots & \vdots  \\
+      \end{pmatrix}
+      \end{equation*}
+   
+    \subsection{Justifying the Shock Parameterization}
+    \citet{chinco2019sparse} find that for predicting 1-minute returns, highly transitory firm-specific news is useful.  The authors conclude that news about fundamentals is predictive.
+
+    There is an important question about the stability of the GARCH parameters under the presence of an exogenous shock.  There are at least two reasons that we do not explore that in this work.  First, the marginal effect of coefficient changes at the shock time would, under the assumptions in this work, be swamped by the random effect.  Second, we would need quite a few time points to reliably estimate the change in the GARCH parameters.  We don't have that.
 
 \section{Post-shock Synthetic Volatility Forecasting Methodology}
-\subsection{Ground Truth Estimators}
-\label{Ground Truth Estimators}
 
-The price series of a financial asset is a sequence of observable random variables; in particular, for any $t$, $P_{t}$ is realized at $t$ and henceforth no longer random, under the assumption that $(P_{t})_{t\in\mathbb{N}}$ is adapted to $\mc{F}_{t}$.  Time series econometrics has a vast inventory of approaches for modeling $P_{t}$.  In contrast, the time-varying parameter $\sigma^{2}_{t}$ is a quantity for which even identifying an observable effect in the real world is far more challenging.  Approaches come in two basic forms: model-independent and model-dependent.  The naive approach of constructing a rolling unbiased estimator of the variance of a price series is analogous to using a rolling average to estimate the mean of a price series.  Implicitly, these approaches assume a simple, if unrealistic, covariance structure.  Additionally, they offer very little in the way of forward guidance (predictiveness) regarding the series at hand.  For that reason, in this section, we propose three families of estimators of the ground truth that we aim to forecast.
-
-% https://tex.stackexchange.com/questions/186981/is-there-a-subsubsubsection-command
-\subsubsection{Market-Implied Volatility}
-
-Here we introduce implied volatility, a quantity that is derived using the equilibrium price of call and put options on the underlying financial asset.
-
-We note also that Black-Scholes implied volatility is a biased estimator of volatility \citep{mayhew1995implied, christensen1998relation}, with the bias increasing in times of crises when options are out-of-the-money.
-
-\subsubsection{Realized Volatility}
-
-Suppose we examine $K$ units of of time, where each unit is divided into m intervals of length 1/m.  We follow the notation of  \citet{andersen2009realized}. Let $p_{t} = \text{log}(P_{t})$, and let $r(t, 1/m) = p_{t} - p_{t-1/m}$.  We estimate the variance of a log-return series using Realized Volatility, denoted $RV_{K,m}$, using
-
-$$RV_{K,m} = \frac{1}{K}\sum^{Km}_{v=1}r^{2}(v/m,1/m)$$
-
-Assuming that the K units $r(t, 1) = p_{t} - p_{t-1}$ are such that $r(t, 1) \simiid N(\mu, \delta^{2})$, it is easily verified that 
-
-$$\E[RV_{K,m}] = \frac{\mu^{2}}{m} + \delta^{2}$$
-
-which is a biased but consistent estimator of the variance.
-
-\subsubsection{Historical Volatility}\label{historical_volatility}
-
-As discussed in section \ref{historical_volatility}, daily returns exhibit insigificant autocorrelation.  Such a finding could be used to motivate using the empirical volatility.  This is just the unbiased estimator of log-return $\sigma^{2}$ over the preceding M days.
 
 \subsection{Forecasting}
 
@@ -361,7 +337,7 @@ We present two forecasts:
 \subsubsection{Aggregation Mechanism}
     \label{Aggregation Mechanism}
    
-    The problem of aggregating estimated donor shocks begins with the data constraints.  Taking the estimated shocks as a given, we essentially observe the pair $(\{\hat\omega_{i}\}^{n+1}_{i=2},\{x_{i,T^{*}}\}^{n+1}_{i=2})$.  We wish to recover weights $\{w_{i}\}^{n+1}_{i=2} \in \Delta^{n}$ that will minimize our loss.  Formally, \\ 
+    The problem of aggregating estimated donor shocks begins with the data constraints.  Taking the estimated shocks as a given, we essentially observe the pair $(\{\hat\omega_{i}\}^{n+1}_{i=2},\{x_{i,T^{*}}\}^{n+1}_{i=2})$.  We wish to recover weights $\{w_{i}\}^{n+1}_{i=2} \in \Delta^{n}$ that will minimize our loss.  Let $L$ denote any loss function, not necessarily symmetric, mapping two quantities to the non-negative reals.  Formally, our optimization problem is \\ 
 
     \begin{align*}{
      \argmin_{\{w_{i}\}^{n+1}_{i=2} \in \Delta^{n}} L(\sigma^{2}, \hat\sigma^{2})
@@ -371,6 +347,34 @@ We present two forecasts:
     Here we explain how we use the volatility profile to arrive at a set of nonnegative weights that sum to 1.  These weights are then used to compute $\hat\omega^{*} = \sum^{n+1}_{i=2}w_{i}\hat\omega_{i}$.  Since the $\{w_{i}\}_{i=2}^{n+1}$ are computed using information from $\mathcal{F}_{T^{*}_{i}}$, the set $\{w_{i}\}_{i=2}^{n+1}$ is deterministic.
     
     In \citet{abadie2010synthetic}, the authors advance previous work in causal inference whereby a treatment effect can be estimated by creating a synthetic time series that that represents either the treatment or control unit.  The synthetic unit is constructed using a convex combination of so-called donor series.  The particular convex combination employed is a function of the distance between the time series under study and the donors. \citet{lin2021minimizing} adapt these methods for the purpose of prediction.  Their 1-step-ahead forecasts take inspiration from distance-based-weighting, pooling shock estimates from similar series according to the series' similarity to the series under study.  The use of fixed-effect estimation for structural shocks has a pedigree (\citet{romer1989does} cited in \citet{kilian2017structural}).  Their approach does not take into account the ARCH effects commonly observed in time series, especially financial times series, leaving unaccounted the variability that accompanies predictions of a heteroskedastic time series.  In this present study, we focus on only volatility forecasting.  We furthermore depart from the synthetic prediction framework by weighting series not by their covariates (which would be most appropriate for estimating the parameters of time series' mean model) but by their volatility profile.    
+
+    \subsection{Ground Truth Estimators}
+    \label{Ground Truth Estimators}
+    
+    The price series of a financial asset is a sequence of observable random variables; in particular, for any $t$, $P_{t}$ is realized at $t$ and henceforth no longer random, under the assumption that $(P_{t})_{t\in\mathbb{N}}$ is adapted to $\mc{F}_{t}$.  Time series econometrics has a vast inventory of approaches for modeling $P_{t}$.  In contrast, the time-varying parameter $\sigma^{2}_{t}$ is a quantity for which even identifying an observable effect in the real world is far more challenging.  Approaches come in two basic forms: model-independent and model-dependent.  The naive approach of constructing a rolling unbiased estimator of the variance of a price series is analogous to using a rolling average to estimate the mean of a price series.  Implicitly, these approaches assume a simple, if unrealistic, covariance structure.  Additionally, they offer very little in the way of forward guidance (predictiveness) regarding the series at hand.  For that reason, in this section, we propose three families of estimators of the ground truth that we aim to forecast.
+    
+    % https://tex.stackexchange.com/questions/186981/is-there-a-subsubsubsection-command
+    \subsubsection{Market-Implied Volatility}
+    
+    Here we introduce implied volatility, a quantity that is derived using the equilibrium price of call and put options on the underlying financial asset.
+    
+    We note also that Black-Scholes implied volatility is a biased estimator of volatility \citep{mayhew1995implied, christensen1998relation}, with the bias increasing in times of crises when options are out-of-the-money.
+    
+    \subsubsection{Realized Volatility}
+    
+    Suppose we examine $K$ units of of time, where each unit is divided into m intervals of length 1/m.  We follow the notation of  \citet{andersen2009realized}. Let $p_{t} = \text{log}(P_{t})$, and let $r(t, 1/m) = p_{t} - p_{t-1/m}$.  We estimate the variance of a log-return series using Realized Volatility, denoted $RV_{K,m}$, using
+    
+    $$RV_{K,m} = \frac{1}{K}\sum^{Km}_{v=1}r^{2}(v/m,1/m)$$
+    
+    Assuming that the K units $r(t, 1) = p_{t} - p_{t-1}$ are such that $r(t, 1) \simiid N(\mu, \delta^{2})$, it is easily verified that 
+    
+    $$\E[RV_{K,m}] = \frac{\mu^{2}}{m} + \delta^{2}$$
+    
+    which is a biased but consistent estimator of the variance.
+    
+    \subsubsection{Historical Volatility}\label{historical_volatility}
+    
+    As discussed in section \ref{historical_volatility}, daily returns exhibit insigificant autocorrelation.  Such a finding could be used to motivate using the empirical volatility.  This is just the unbiased estimator of log-return $\sigma^{2}$ over the preceding M days.
 
 \subsection{Loss Functions}
 
