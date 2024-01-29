@@ -1,4 +1,4 @@
-\begin{thebibliography}{36}
+\begin{thebibliography}{38}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -69,6 +69,11 @@ Rama Cont.
 \newblock Empirical properties of asset returns: stylized facts and statistical issues.
 \newblock \emph{Quantitative finance}, 1\penalty0 (2):\penalty0 223, 2001.
 
+\bibitem[Dendramis et~al.(2020)Dendramis, Kapetanios, and Marcellino]{dendramis2020similarity}
+Yiannis Dendramis, George Kapetanios, and Massimiliano Marcellino.
+\newblock A similarity-based approach for macroeconomic forecasting.
+\newblock \emph{Journal of the Royal Statistical Society Series A: Statistics in Society}, 183\penalty0 (3):\penalty0 801--827, 2020.
+
 \bibitem[Engle(2002)]{engle2002new}
 Robert Engle.
 \newblock New frontiers for arch models.
@@ -93,6 +98,11 @@ Claudia Foroni, Massimiliano Marcellino, and Dalibor Stevanovic.
 John~W Goodell and Sami V{\"a}h{\"a}maa.
 \newblock Us presidential elections and implied volatility: The role of political uncertainty.
 \newblock \emph{Journal of Banking \& Finance}, 37\penalty0 (3):\penalty0 1108--1117, 2013.
+
+\bibitem[Guerr{\'o}n-Quintana and Zhong(2017)]{guerron2017macroeconomic}
+Pablo Guerr{\'o}n-Quintana and Molin Zhong.
+\newblock Macroeconomic forecasting in times of crises.
+\newblock 2017.
 
 \bibitem[Han and Kristensen(2014)]{han2014asymptotic}
 Heejoon Han and Dennis Kristensen.

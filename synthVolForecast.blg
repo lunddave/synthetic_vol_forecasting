@@ -5,46 +5,47 @@ The style file: plainnat.bst
 Database file #1: synthVolForecast.bib
 Warning--to sort, need author or key in Bloomberg.com_2024
 Warning--empty journal in bauwens2006regime
+Warning--empty journal in guerron2017macroeconomic
 Warning--empty year in Kenton
-You've used 36 entries,
+You've used 38 entries,
             2773 wiz_defined-function locations,
-            820 strings with 10422 characters,
-and the built_in function-call counts, 15336 in all, are:
-= -- 1423
-> -- 690
-< -- 32
-+ -- 240
-- -- 204
-* -- 1161
-:= -- 2307
-add.period$ -- 111
-call.type$ -- 36
-change.case$ -- 171
-chr.to.int$ -- 36
-cite$ -- 76
-duplicate$ -- 754
-empty$ -- 1379
-format.name$ -- 264
-if$ -- 3251
+            831 strings with 10808 characters,
+and the built_in function-call counts, 16204 in all, are:
+= -- 1500
+> -- 741
+< -- 33
++ -- 257
+- -- 219
+* -- 1232
+:= -- 2441
+add.period$ -- 117
+call.type$ -- 38
+change.case$ -- 182
+chr.to.int$ -- 38
+cite$ -- 81
+duplicate$ -- 794
+empty$ -- 1450
+format.name$ -- 283
+if$ -- 3430
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 35
-newline$ -- 188
-num.names$ -- 140
-pop$ -- 351
+missing$ -- 37
+newline$ -- 198
+num.names$ -- 148
+pop$ -- 373
 preamble$ -- 1
-purify$ -- 139
+purify$ -- 148
 quote$ -- 0
-skip$ -- 569
+skip$ -- 600
 stack$ -- 0
-substring$ -- 688
-swap$ -- 75
+substring$ -- 717
+swap$ -- 76
 text.length$ -- 6
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 381
-warning$ -- 3
-while$ -- 157
+type$ -- 403
+warning$ -- 4
+while$ -- 165
 width$ -- 0
-write$ -- 466
-(There were 3 warnings)
+write$ -- 490
+(There were 4 warnings)
