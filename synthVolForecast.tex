@@ -146,25 +146,23 @@ In \citet{kilian2017structural}
 
 \citet{clements1998forecasting} informally define intercept correction to be a modeling technique in which nonzero residuals are explicitly permitted.  They discuss two strains of intercept correction: one that is subject to the judgment or discretion of the practitioner, and another that is part of an automated strategy.  The latter of the two often makes use of past forecast errors to correct presumed deficiencies in a model at hand.
 
-\citep{guerron2017macroeconomic} use weighted subsets of a scalar series' own past to correct forecast errors by an additive term.
+\citep{guerron2017macroeconomic} use weighted subsets of a scalar series' own past to correct forecast errors by an additive term. \citet{dendramis2020similarity} a introduces a similarity-based forecasting procedure for time-varying coefficients of a linear model. \citet{foroni2022forecasting} employ a form of intercept correction in order to adjust forecasts to the COVID-19 shock in the spring of 2020 based on the proportional misses of the same model applied to the Great Recession.
 
-\citet{dendramis2020similarity} a introduces a similarity-based forecasting procedure for time-varying coefficients of a linear model.  
-
-\citet{foroni2022forecasting} employ a form of intercept correction in order to adjust forecasts to the COVID-19 shock in the spring of 2020.  
-
-Given the preceding review, we take a moment to distinguish several key components of forecast adjustments.
+Given the preceding review, pause to take stock of several key components of forecast adjustments.
 
 \begin{itemize}
   \item Automated or non-automated
-  \item The parametric term to be corrected, if any
-  \item The collection of data accessed to perform the correction
+  \item The parametric term to be corrected (e.g. intercept, coefficients), if any
+  \item The correction function 
+  \item The collection of data assembled to perform the correction
 \begin{itemize}
   \item Internal (the time series itself)
   \item External
 \end{itemize}
-  \item The weighting scheme applied to the 
+  \item The weighting scheme applied to the assembled data (e.g. Nearest-Neighbor, arithmetic mean, kernel methods)
 \end{itemize}
 
+\citet{guerron2017macroeconomic}, citing previous work, discuss that intercept corrections find their theoretical basis in structural breaks, whereas Nearest-Neighbor methods, being nonparametric, are theoretically more adept at accounting for nonlinearity.
 We know of no prior work that both introduces a parametric specification for nonzero residuals and introduces a procedure for weighting appropriately the nonzero residuals of similar shocks. 
 
 \begin{figure}[h]
@@ -358,7 +356,9 @@ We present two forecasts:
   \text{Forecast 2: }  & \hat\E_{T^{*}}[\sigma^{2}_{i,t+1}|\mathcal{F}_{T^{*}}] + \hat\omega = \omega_{i} + \sum^{m_{i}}_{k=1}\hat\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\hat\beta_{i,j}\sigma_{i,t-j}^{2} + \hat\gamma_{i}^{T} \x_{i,t}+ \hat\omega
 \end{align*}
 
-\subsection{Aggregation Mechanism}
+\subsection{Excess Volatility Estimators}
+    \label{Excess Volatility Estimators}
+\subsubsection{Aggregation Mechanism}
     \label{Aggregation Mechanism}
    
     The problem of aggregating estimated donor shocks begins with the data constraints.  Taking the estimated shocks as a given, we essentially observe the pair $(\{\hat\omega_{i}\}^{n+1}_{i=2},\{x_{i,T^{*}}\}^{n+1}_{i=2})$.  We wish to recover weights $\{w_{i}\}^{n+1}_{i=2} \in \Delta^{n}$ that will minimize our loss.  Formally, \\ 
