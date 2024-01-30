@@ -325,13 +325,11 @@ A GARCH model is an ARMA on the squares of the observed scalar time series, as w
 
 Here we make reference to Tsay p. 133 and explain, very similarly to Tsay, that the prediction function for a GARCH(m,s) is very similar to an ARMA prediction function.  Modeled after section 2.2 here https://arxiv.org/pdf/2008.11756.pdf
 
-
-
 We present two forecasts:
 
 \begin{align*}
-  \text{Forecast 1: }  & \hat\E_{T^{*}}[\sigma^{2}_{i,t+1}|\mathcal{F}_{T^{*}}] = \omega_{i} + \sum^{m_{i}}_{k=1}\hat\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\hat\beta_{i,j}\sigma_{i,t-j}^{2} + \hat\gamma_{i}^{T} \x_{i,t}\\
-  \text{Forecast 2: }  & \hat\E_{T^{*}}[\sigma^{2}_{i,t+1}|\mathcal{F}_{T^{*}}] + \hat\omega = \omega_{i} + \sum^{m_{i}}_{k=1}\hat\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\hat\beta_{i,j}\sigma_{i,t-j}^{2} + \hat\gamma_{i}^{T} \x_{i,t}+ \hat\omega
+  \text{Forecast 1: } & \hat\sigma^{2}_{unadjusted} \coloneq \hat\E_{T^{*}}[\sigma^{2}_{i,t+1}|\mathcal{F}_{T^{*}}] = \omega_{i} + \sum^{m_{i}}_{k=1}\hat\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\hat\beta_{i,j}\sigma_{i,t-j}^{2} + \hat\gamma_{i}^{T} \x_{i,t}\\
+  \text{Forecast 2: }  & \hat\sigma^{2}_{adjusted} \coloneq \hat\E_{T^{*}}[\sigma^{2}_{i,t+1}|\mathcal{F}_{T^{*}}] + \hat\omega = \omega_{i} + \sum^{m_{i}}_{k=1}\hat\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\hat\beta_{i,j}\sigma_{i,t-j}^{2} + \hat\gamma_{i}^{T} \x_{i,t}+ \hat\omega
 \end{align*}
 
 \subsection{Excess Volatility Estimators}
@@ -339,14 +337,14 @@ We present two forecasts:
 \subsubsection{Aggregation Mechanism}
     \label{Aggregation Mechanism}
    
-    The problem of aggregating estimated donor shocks begins with the data constraints.  Taking the estimated shocks as a given, we essentially observe the pair $(\{\hat\omega_{i}\}^{n+1}_{i=2},\{x_{i,T^{*}}\}^{n+1}_{i=2})$.  We wish to recover weights $\{w_{i}\}^{n+1}_{i=2} \in \Delta^{n}$ that will minimize our loss.  Let $L$ denote any loss function, not necessarily symmetric, mapping two quantities to the non-negative reals.  Formally, our optimization problem is \\ 
+    The problem of aggregating estimated donor shocks begins with the data constraints.  Taking the estimated shocks as a given, we essentially observe the pair $(\{\hat\omega_{i}\}^{n+1}_{i=2},\{\x_{i,T^{*}}\}^{n+1}_{i=2})$.  We wish to recover weights $\{w_{i}\}^{n+1}_{i=2} \in \Delta^{n}$ that will minimize expected loss.  Let $L(\cdot,\cdot)$ denote any loss function, not necessarily symmetric, mapping two quantities to the non-negative reals.  Let $\hat\sigma^{2}$ denote any forecast for $\sigma^{2}$.  Formally, our optimization problem is \\ 
 
     \begin{align*}{
-     \argmin_{\{w_{i}\}^{n+1}_{i=2} \in \Delta^{n}} L(\sigma^{2}, \hat\sigma^{2})
+     \argmin_{\{w_{i}\}^{n+1}_{i=2} \in \Delta^{n}} \E[L(\sigma^{2}, \hat\sigma^{2})]
     }
     \end{align*}
 
-    Here we explain how we use the volatility profile to arrive at a set of nonnegative weights that sum to 1.  These weights are then used to compute $\hat\omega^{*} = \sum^{n+1}_{i=2}w_{i}\hat\omega_{i}$.  Since the $\{w_{i}\}_{i=2}^{n+1}$ are computed using information from $\mathcal{F}_{T^{*}_{i}}$, the set $\{w_{i}\}_{i=2}^{n+1}$ is deterministic.
+    We now explain how we use the volatility profile to arrive at a set of nonnegative weights that sum to 1.  These weights are then used to compute $\hat\omega^{*} = \sum^{n+1}_{i=2}w_{i}\hat\omega_{i}$.  Since the $\{w_{i}\}_{i=2}^{n+1}$ are computed using information from $\mathcal{F}_{T^{*}_{i}}$, the set $\{w_{i}\}_{i=2}^{n+1}$ is deterministic, $\textit{modulo}$ any stochastic ingredients used in the minimization.
      
     \subsection{Ground Truth Estimators}
     \label{Ground Truth Estimators}
