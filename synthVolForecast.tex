@@ -328,8 +328,8 @@ Here we make reference to Tsay p. 133 and explain, very similarly to Tsay, that 
 We present two forecasts:
 
 \begin{align*}
-  \text{Forecast 1: } & \hat\sigma^{2}_{unadjusted} \coloneq \hat\E_{T^{*}}[\sigma^{2}_{i,t+1}|\mathcal{F}_{T^{*}}] = \omega_{i} + \sum^{m_{i}}_{k=1}\hat\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\hat\beta_{i,j}\sigma_{i,t-j}^{2} + \hat\gamma_{i}^{T} \x_{i,t}\\
-  \text{Forecast 2: }  & \hat\sigma^{2}_{adjusted} \coloneq \hat\E_{T^{*}}[\sigma^{2}_{i,t+1}|\mathcal{F}_{T^{*}}] + \hat\omega = \omega_{i} + \sum^{m_{i}}_{k=1}\hat\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\hat\beta_{i,j}\sigma_{i,t-j}^{2} + \hat\gamma_{i}^{T} \x_{i,t}+ \hat\omega
+  \text{Forecast 1: } & \hat\sigma^{2}_{unadjusted} \coloneq \hat\E_{T^{*}}[\sigma^{2}_{i,T^{*}+1}|\mathcal{F}_{T^{*}}] = \omega_{i} + \sum^{m_{i}}_{k=1}\hat\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\hat\beta_{i,j}\sigma_{i,t-j}^{2} + \hat\gamma_{i}^{T} \x_{i,t}\\
+  \text{Forecast 2: }  & \hat\sigma^{2}_{adjusted} \coloneq \hat\E_{T^{*}}[\sigma^{2}_{i,T^{*}+1}|\mathcal{F}_{T^{*}}] + \hat\omega = \omega_{i} + \sum^{m_{i}}_{k=1}\hat\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\hat\beta_{i,j}\sigma_{i,t-j}^{2} + \hat\gamma_{i}^{T} \x_{i,t}+ \hat\omega
 \end{align*}
 
 \subsection{Excess Volatility Estimators}
