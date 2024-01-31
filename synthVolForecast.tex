@@ -344,7 +344,7 @@ We present two forecasts:
     }
     \end{align*}
 
-    We now explain how we use the volatility profile to arrive at a set of nonnegative weights that sum to 1.  These weights are then used to compute $\hat\omega^{*} = \sum^{n+1}_{i=2}w_{i}\hat\omega_{i}$.  Since the $\{w_{i}\}_{i=2}^{n+1}$ are computed using information from $\mathcal{F}_{T^{*}_{i}}$, the set $\{w_{i}\}_{i=2}^{n+1}$ is deterministic, $\textit{modulo}$ any stochastic ingredients used in the minimization.
+    We now explain how we use the volatility profile to arrive at a set of nonnegative weights that sum to 1.  These weights are then used to compute $\hat\omega^{*} = \sum^{n+1}_{i=2}w_{i}\hat\omega_{i}$.  Since the $\{w_{i}\}_{i=2}^{n+1}$ are computed using information from $\mathcal{F}_{T^{*}_{i}}$, the set $\{w_{i}\}_{i=2}^{n+1}$ is deterministic, $\textit{modulo}$ any stochastic ingredient employed to approximate $\x_{1,T^{*}}$.
      
     \subsection{Ground Truth Estimators}
     \label{Ground Truth Estimators}
@@ -372,7 +372,7 @@ We present two forecasts:
     
     \subsubsection{Historical Volatility}\label{historical_volatility}
     
-    As discussed in section \ref{historical_volatility}, daily returns exhibit insigificant autocorrelation.  Such a finding could be used to motivate using the empirical volatility.  This is just the unbiased estimator of log-return $\sigma^{2}$ over the preceding M days.
+    As discussed in section \ref{historical_volatility}, daily returns exhibit insigificant autocorrelation.  Such a finding could be used to motivate using the empirical volatility.  This is imply the unbiased estimator of $\sigma^{2}$ over the preceding M days.
 
 \subsection{Loss Functions}
 
