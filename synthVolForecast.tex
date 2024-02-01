@@ -274,11 +274,11 @@ Notice that $\mc{M}_1$ assumes that $\omega^{*}_i$ are i.i.d. with $\E[ \omega^{
     We further define the parameter sets
     \begin{align}
       \begin{array}{lll}
-         \Theta &= &\{(\omega^{*}_i, \epsilon_{i,t}, \epsilon^{*}_{i,t}, \delta,\varepsilon_{i,t})\colon t= 1, \ldots, T_i, i = 2, \ldots, n +1\},\\
-         \Theta_{1} &= &\{(\omega^{*}_i, \epsilon_{i,t}, \epsilon^{*}_{i,t}, \varepsilon_{i,t})\colon t= 1, \ldots, T_i, i = 2, \ldots, n +1\},\\
+         \mathcal{F}_{t} &= &\{(\omega^{*}_i, \epsilon_{i,t}, \epsilon^{*}_{i,t}, \delta,\varepsilon_{i,t})\colon t= 1, \ldots, T_i, i = 2, \ldots, n +1\},\\
+         \mathcal{F}_{1,t} &= &\{(\omega^{*}_i, \epsilon_{i,t}, \epsilon^{*}_{i,t}, \varepsilon_{i,t})\colon t= 1, \ldots, T_i, i = 2, \ldots, n +1\},\\
       \end{array}
     \end{align}\label{parameter}
-    where $\Theta$ and $\Theta_1$ can be adapted to $\mc{M}_1$ by dropping $\delta$. We assume this for notational simplicity.
+    where $\mathcal{F}_{t}$ and $\mathcal{F}_{1,t}$ can be adapted to $\mc{M}_1$ by dropping $\delta$. We assume this for notational simplicity.
 
     \subsection{Volatility Profile of a Time Series}
     \label{Volatility Profile of a Time Series}
@@ -344,8 +344,17 @@ We present two forecasts:
     }
     \end{align*}
 
-    We now explain how we use the volatility profile to arrive at a set of nonnegative weights that sum to 1.  These weights are then used to compute $\hat\omega^{*} = \sum^{n+1}_{i=2}w_{i}\hat\omega_{i}$.  Since the $\{w_{i}\}_{i=2}^{n+1}$ are computed using information from $\mathcal{F}_{T^{*}_{i}}$, the set $\{w_{i}\}_{i=2}^{n+1}$ is deterministic, $\textit{modulo}$ any stochastic ingredient employed to approximate $\x_{1,T^{*}}$.
-     
+    We now explain how we use the volatility profile to arrive at a set of nonnegative weights that sum to 1.  These weights are then used to compute $\hat\omega^{*} \coloneq \sum^{n+1}_{i=2}w_{i}\hat\omega_{i}$.  Since the $\{w_{i}\}_{i=2}^{n+1}$ are computed using information from $\mathcal{F}_{T^{*}_{i}}$, the set $\{w_{i}\}_{i=2}^{n+1}$ is deterministic, $\textit{modulo}$ any stochastic ingredient employed to approximate $\x_{1,T^{*}}$.
+
+    Contrast the foregoing with the least-squares estimator for the weight vector $\vec{w}$:
+    
+    \begin{align*}{
+      \argmin_{\vec{w}} \|\hat{\omega} - \X_{T^{*}}\vec{w}\|_{2}
+     }
+     \end{align*}
+    
+     where $\X_{T^{*}}$ denotes the vectors $\x_{i,T^{*}}$ arranged in rows.
+  
     \subsection{Ground Truth Estimators}
     \label{Ground Truth Estimators}
     
@@ -593,7 +602,7 @@ Then $\forall i, \hat\omega_{i,t}^{*} \xrightarrow{p} \E[\omega_{i}^{*}].$
 The result follows from the consistency proof of the QMLE in GARCH-X models, as established by \citet{han2014asymptotic}.
 \end{proof-of-proposition}
 
-  \subsection{Consistency of the Synthetic Volatility prediction function}
+  \subsection{Consistency of the Synthetic Volatility Forecast function}
 \begin{prop}
   Under the conditions in Proposition \ref{consistency}, $\hat\sigma^{2}_{1,T^{*}+r}\xrightarrow{p}\sigma^{2}_{1,T^{*}+r}, r = 1, k =$ max$\{m,s\}$.
 \end{prop}
@@ -620,6 +629,10 @@ which converges in probability to
 as $t\rightarrow\infty$ by a simple application of Slutsky's Theorem.
 
 \end{proof-of-proposition}
+
+\subsection{Risk Minmization Using Synthetic Volatility Forecasting}
+
+We now evaluate the loss and risk of Synthetic Volatility Forecasts under two scenarios: first, under arbitrary distribution of $\sigma^{2}_{t}$, and then second, under the assumption that the data-generating process is correctly specified.
 
 \section{Numerical Examples}
 
