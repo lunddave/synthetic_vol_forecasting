@@ -634,6 +634,14 @@ as $t\rightarrow\infty$ by a simple application of Slutsky's Theorem.
 
 We now evaluate the loss and risk of Synthetic Volatility Forecasts under two scenarios: first, under arbitrary distribution of $\sigma^{2}_{t}$, and then second, under the assumption that the data-generating process is correctly specified.
 
+Consider the difference 
+
+\begin{align*}
+  & QL(\hat\sigma^{2}_{adjusted},\sigma^{2})-QL(\hat\sigma^{2}_{unadjusted},\sigma^{2})\\
+   & =(\frac{\hat\sigma^{2}_{unadjusted}}{\sigma^{2}} - \log{\frac{\hat\sigma^{2}_{unadjusted}}{\sigma^{2}}} - 1) - (\frac{\hat\sigma^{2}_{adjusted}}{\sigma^{2}} - \log{\frac{\hat\sigma^{2}_{adjusted}}{\sigma^{2}}} - 1)\\
+   & = \frac{\hat\sigma^{2}_{unadjusted}-\hat\sigma^{2}_{adjusted}}{\sigma^{2}} - \log{\frac{\hat\sigma^{2}_{adjusted}}{\hat\sigma^{2}_{unadjusted}}}
+\end{align*}
+
 \section{Numerical Examples}
 
 Having introduced the model parameters above, we introduce estimation techniques that can be varied
