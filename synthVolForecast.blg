@@ -6,46 +6,47 @@ Database file #1: synthVolForecast.bib
 Warning--to sort, need author or key in Bloomberg.com_2024
 Warning--empty journal in bauwens2006regime
 Warning--empty journal in guerron2017macroeconomic
+Warning--empty journal in hendry1994theory
 Warning--empty year in Kenton
-You've used 39 entries,
+You've used 40 entries,
             2773 wiz_defined-function locations,
-            837 strings with 10974 characters,
-and the built_in function-call counts, 16660 in all, are:
-= -- 1544
-> -- 762
-< -- 34
-+ -- 264
-- -- 225
-* -- 1269
-:= -- 2509
-add.period$ -- 120
-call.type$ -- 39
-change.case$ -- 187
-chr.to.int$ -- 39
-cite$ -- 83
-duplicate$ -- 814
-empty$ -- 1490
-format.name$ -- 292
-if$ -- 3526
+            842 strings with 11093 characters,
+and the built_in function-call counts, 17022 in all, are:
+= -- 1575
+> -- 783
+< -- 35
++ -- 271
+- -- 231
+* -- 1292
+:= -- 2566
+add.period$ -- 123
+call.type$ -- 40
+change.case$ -- 192
+chr.to.int$ -- 40
+cite$ -- 86
+duplicate$ -- 833
+empty$ -- 1520
+format.name$ -- 301
+if$ -- 3601
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 38
-newline$ -- 203
-num.names$ -- 152
-pop$ -- 381
+missing$ -- 39
+newline$ -- 208
+num.names$ -- 156
+pop$ -- 393
 preamble$ -- 1
-purify$ -- 152
+purify$ -- 156
 quote$ -- 0
-skip$ -- 616
+skip$ -- 632
 stack$ -- 0
-substring$ -- 744
+substring$ -- 746
 swap$ -- 77
 text.length$ -- 6
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 414
-warning$ -- 4
-while$ -- 170
+type$ -- 425
+warning$ -- 5
+while$ -- 173
 width$ -- 0
-write$ -- 503
-(There were 4 warnings)
+write$ -- 514
+(There were 5 warnings)

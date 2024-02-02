@@ -1,4 +1,4 @@
-\begin{thebibliography}{39}
+\begin{thebibliography}{40}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -123,6 +123,11 @@ Peter~R Hansen and Asger Lunde.
 Peter~Reinhard Hansen, Zhuo Huang, and Howard~Howan Shek.
 \newblock Realized garch: a joint model for returns and realized measures of volatility.
 \newblock \emph{Journal of Applied Econometrics}, 27\penalty0 (6):\penalty0 877--906, 2012.
+
+\bibitem[Hendry and Clements(1994)]{hendry1994theory}
+D~Hendry and M~Clements.
+\newblock On a theory of intercept corrections in macroeconometric forecasting.
+\newblock 1994.
 
 \bibitem[Kane et~al.(1996)Kane, Marcus, and Noh]{kane1996p}
 Alex Kane, Alan~J Marcus, and Jaesun Noh.
