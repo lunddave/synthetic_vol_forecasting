@@ -132,13 +132,17 @@ Reacting to a seemingly unprecedented event might prompt the question: what, if 
 In the context of foreign exchange rate market structure, \citet{dominguez2006defines} argue ``[w]hether news is scheduled or non-scheduled its influence on exchange rates may be related
 to the state of the market at the time of the news arrival.  News that arrives during periods of
 high uncertainty may have different effects on the exchange rate, than news that arrives in
-calmer periods.". The authors also note that non-scheduled news may require more time for markets to digest, leading to greater heterogeneity (including but not limited to higher dispersion) of responses.  We take inspiration from these findings, developing a method suitable to the conditions that typically accompany news shocks. 
+calmer periods." . The authors also note that non-scheduled news may require more time for markets to digest, leading to greater heterogeneity (including but not limited to higher dispersion) of responses.  We take inspiration from these findings, developing a method suitable to the conditions that typically accompany news shocks. 
 
-In this work we focus on the second central moment of a time series, the volatility.  The most important stochastic phenomenon of many time series $(P_{t})_{t\in\mathbb{N}}$, especially financial time series, is the volatility of the return series $(r_{t})_{t\in\mathbb{N}}$.  A financial asset's price series may exhibit behavior that makes inapplicable and uninterpretable the traditional methods of time series analysis.  In contrast, the return series is scale-free \citep{tsay2005analysis}, easily-interpreted, and often at least weakly stationary.  Yet even if one could construct credible models for describing and forecasting price series and return series, that would not necessarily tell us much about the variability of such forecasts nor enlighten us about the evolution of the variability of $(P_{t})_{t\in\mathbb{N}}$ and $(r_{t})_{t\in\mathbb{N}}$ over time. Modern portfolio management and theory often requires information about at least the first two moments of a return series, if not higher.  Volatility modeling has grown immensely over the previous four decades to meet the needs of both theoreticians and practitioners \citep{engle2001good}, prompting lines of inquiry to search for novel settings and challenges, as we do in this paper.  No matter how a time series or its transformations are modeled, forecasting in the presence of exogenous shock events requires a methodological framework that sensibly incorporates relevant information that has yet to manifest in market price or derivative quantities like volatility.  In this setting, regime-change models (see \citet{bauwens2006regime} and citations therein) are of little use because under the assumption of a known exogenous shock, there is no need to estimate a regime-change time, nor is there data following the exogenous shock event to fit a model.  Asymmetric GARCH models were an early attempt to account for fact that negative returns typically beget larger volatility than positive returns \citep{hansen2012realized}.  Problematically, such models depend upon the observation of a negative return to provide the most updated volatility forecast, but under the circumstances posited herein, no such return has been observed.
+In this work we focus on the second central moment of a time series, the volatility.  The most important stochastic phenomenon of many time series $(P_{t})_{t\in\mathbb{N}}$, especially financial time series, is the volatility of the return series $(r_{t})_{t\in\mathbb{N}}$.  The reasons for this are at least two-fold.  First, a financial asset's price series may exhibit behavior that makes inapplicable and uninterpretable the traditional methods of time series analysis.  In contrast, the return series is scale-free \citep{tsay2005analysis}, easily-interpreted, and often at least weakly stationary.  Yet even if one could construct credible models for describing and forecasting price series and return series, that would not necessarily tell us much about the variability of such forecasts nor enlighten us about the evolution of the variability of $(P_{t})_{t\in\mathbb{N}}$ and $(r_{t})_{t\in\mathbb{N}}$ over time.  Second, the literature on return series predictability based on news has undergone a considerable shift over the past 50 years.  Whereas once returns were thought to react to specific news events, now stock price movements are believed to be overwhelmingly noise-based (see \citet{boudoukh2019information} and references therein).
+
+Modern portfolio management and theory often requires information about at least the first two moments of a return series, if not higher.  Volatility modeling has grown immensely over the previous four decades to meet the needs of both theoreticians and practitioners \citep{engle2001good}, prompting lines of inquiry to search for novel settings and challenges, as we do in this paper.  No matter how a time series or its transformations are modeled, forecasting in the presence of exogenous shock events requires a methodological framework that sensibly incorporates relevant information that has yet to manifest in market price or derivative quantities like volatility.  In this setting, regime-change models (see \citet{bauwens2006regime} and citations therein) are of little use because under the assumption of a known exogenous shock, there is no need to estimate a regime-change time, nor is there data following the exogenous shock event to fit a model.  Asymmetric GARCH models were an early attempt to account for fact that negative returns typically beget larger volatility than positive returns \citep{hansen2012realized}.  Problematically, such models depend upon the observation of a negative return to provide the most updated volatility forecast, but under the circumstances posited herein, no such return has been observed.
 
 The same problem and more exists for Realized GARCH model, which incorporates 'realized measures' of volatility, like implied volatility.  GARCH models have been shown slow to adapt to spikes in volatility \citep{andersen2003modeling}.  \citet{engle2002new} explored the use of implied volatility as an exogenous regressor in a GARCH model, that is, using a so-called GARCH-X model \citep{RePEc:pra:mprapa:100301}. \citet{hansen2012realized} propose Realized GARCH, which aims to solve both the asymmetry problem as well as the slow-reaction problem by introducing a ``measurement equation" as a tool for modeling the contribution to the conditional variance made by the market-implied volatility measure.  The key insight is that that the market-implied volatility measure is not independent of the conditional variance posited by the GARCH model.  Therefore, including the external measure must be done in a way that accounts for this dependence. 
 
 The approach herein can be viewed as an attempt to sidestep the functional complexity posited by Realized GARCH, with its minimum nine parameters to estimate \citep{sharma2016forecasting}, by substituting modeling assumptions.  Synthetic Volatility Forecasting proceeds under the assumption that similar news events occasion volatility shocks arising from a common shock distribution.  The procedure proposed herein does not require post-shock information like returns or market-implied quantities from the time series under study.  Hence, we also avoid questions about what realized measure to use and when as well as questions about the usefulness of high-frequency data, although these remain intriguing avenues for future work.
+
+Within the vast literature on financial sentimental analysis, theree exists a sub-literature on financial volatility forecasting using news and news sentiment \citep{atkins2018financial}.  The setting herein is one where the valence of the sentiment is reasonably well-understood, and hence the direction of volatility can be well-predicted, although not perfectly, but human intuition.
 
 % COMMENTING OUT THE FOLLOWING PARAGRAPH BECAUSE IT BELONGS IN DISSERTATION ONLY
 \begin{comment}
@@ -170,7 +174,7 @@ In order to motivate our procedure, we show how the aggregation of estimated exc
   \begin{figure}[h]
     \begin{center}
       \includegraphics[scale=.4]{simulation_plots/USE_in_paper_simulation_plot_arithmetic_mean.png}
-      \caption{Shock aggregation using the arithmetic mean of donor fixed effect estimates.}
+      \caption{Shock aggregation using the arithmetic mean of donor fixed effect estimates}
       \label{fig:arith_mean_example_introduction}
       \end{center}
     \end{figure}
@@ -197,7 +201,6 @@ Assuming further that $\sigma^{2}_{t}$ depends on a vector of exogenous covariat
 
 We will suppose that a researcher has multivariate time series data $\ret_{i,t}, t = 1,$ $\ldots,  T_i$ and $i = 1, \ldots, n+1$.  Let $\ret_{i,t} = (r_{i,t}$, $\x_{i,t}$, $\textbf{v}_{i,t}$) where $r_{i,t}$ is a scalar response,  $\x_{i,t}$ is a vector of covariates that are revealed to the analyst prior to the observation of $\ret_{1,t}$, and $\textbf{v}_{i,t}$ is a vector of market-implied volatility metrics for the series $i$ that are available prior to the market's opening at time $t$.  Suppose that the analyst is interested in forecasting the volatility of $y_{1,t}$, the first time series in the collection.  We require that each time series $\ret_{i,t}$ is subject to an news event following $T^*_i \leq T_{i} + 1$ and before witnessing $T^*_i+1$.  We are implicitly leveraging the fact that financial assets are heavily traded during market hours, yet only thinly traded (if traded at all) outside market hours.  In contrast, the arrival of market-moving news does not obey any such restrictions.
 
-
 In light of the foregoing, we can rewrite the GARCH framework we are interested in as such
 
 \begin{align*}
@@ -212,7 +215,7 @@ In light of the foregoing, we can rewrite the GARCH framework we are interested 
 \label{modelsetup}
 In this section, we will describe the assumed dynamic panel models for which 
 post-shock aggregated estimators are provided. The basic structures of these models 
-are the same for all time series in the analysis.  The differences between them lie in the shock effect distributions.  We first sharply distinguish between a volatility shock induced by a return series shock and a volatility shock directly affecting the volatility equation of a GARCH model, without mediation of the return series.
+are the same for all time series in the analysis.  The differences between them lie in the shock distributions.  We first sharply distinguish between a volatility shock induced by a return series shock and a volatility shock directly affecting the volatility equation of a GARCH model, without mediation of the return series.
 
 \subsubsection{Mean Model and Volatility Model}
 
@@ -306,7 +309,8 @@ Notice that $\mc{M}_1$ assumes that $\omega^{*}_i$ are i.i.d. with $\E[ \omega^{
       \end{equation*}
    
     \subsection{Justifying the Shock Parameterization}
-  
+ 
+    Not all of the volatility of an asset return may be related to news \citep{boudoukh2019information}.  This explains our inclusion of an idiosyncratic noise term in the shock specification.  However, this point also gestures in the direction of possible unexplained variation in the shocks.
     
     \citet{chinco2019sparse} find that for predicting 1-minute returns, highly transitory firm-specific news is useful.  The authors conclude that news about fundamentals is predictive.
 
@@ -342,14 +346,12 @@ We present two forecasts:
 
     We now explain how we use the volatility profile to arrive at a set of nonnegative weights that sum to 1.  These weights are then used to compute $\hat\omega^{*} \coloneq \sum^{n+1}_{i=2}w_{i}\hat\omega_{i}$.  Since the $\{w_{i}\}_{i=2}^{n+1}$ are computed using information from $\mathcal{F}_{T^{*}_{i}}$, the set $\{w_{i}\}_{i=2}^{n+1}$ is deterministic, $\textit{modulo}$ any stochastic ingredient employed to approximate $\x_{1,T^{*}}$.
 
-    Contrast the foregoing with the least-squares estimator for the weight vector $\vec{w}$:
-    
+    Contrast the foregoing with least-squares estimation for the weight vector $\vec{w}$:
+
     \begin{align*}{
-      \argmin_{\vec{w}} \|\hat{\omega} - \X_{T^{*}}\vec{w}\|_{2}
-     }
-     \end{align*}
-    
-     where $\X_{T^{*}}$ denotes the vectors $\x_{i,T^{*}}$ arranged in rows.
+    \argmin_{\vec{w}} \|\hat{\omega} - \X_{T^{*}}\vec{w}\|_{2}}
+    \end{align*} 
+    where $\X_{T^{*}}$ denotes the $p$-vectors $\x_{i,T^{*}}$ stacked in $n$ rows.  One immediately visible problem is that this optimization problem is an optmization problem over $p$-vectors $\vec{w}$ --- i.e. a linear combination of the covariates, whereas what we seek is an $n$-vector --- a linear combination of donors.
   
     \subsection{Ground Truth Estimators}
     \label{Ground Truth Estimators}
@@ -736,7 +738,7 @@ For all of these reasons and more, the aftermath of the 2016 presidential electi
   \end{center}
 \end{figure}
 
-We now discuss the three subplots in Figure \ref{fig:SVF_2016} in order from left to right.  On the left, we see that the distanced-based weighting places nearly equal weight on the 2004 and 2012 elections, with only neglible weight on the 2008 election.  Assuming an approximately correct specification of the covariates, this is interpreted to mean that even of the 2016 US election had a general climate of risk and tension less extreme than 2008 and more similar to the 2004 and 2012 elections.  In the middle plot, we notice that the fixed effect estimates for 2008 and 2012, with only 2004 registering a near-zero fixed-effect estimate.  The fixed-effect estimates quantify the amount of surprise the US election results delivered (strictly speaking, not only the presidential race but all November elections in the US with the ability to influence financial markets) under the assumption of a GARCH(1,1).  As estimates gleaned from one data point, they are theoretically high in variance.  On the right, we observe in black the fitted values of $\sigma^{2}$ given the GARCH(1,1) for the time series under study.  We also observe four points, all indicated by the legend: three predictions and the ground truth.  We include the prediction derived by adjusting the GARCH(1,1) prediction by the arithmetic mean of the fixed-effect estimates.  As is evident, the Synthetic Volatility Forecasting method comes reasonably close the ground truth.  The prediction is not only directionally correct; it far outperforms the unadjusted prediction.  Remarkably, the arithmetic-mean based prediction here demonstrates the inherent risk in failing to weight each donor appropriately.  The 2008 election receives far more weight than is called for because simple averaging ignores the radically different conditons on the even of those two events.
+We now discuss the three subplots in Figure \ref{fig:SVF_2016} in order from left to right.  On the left, we see that distanced-based weighting places nearly equal weight on the 2004 and 2012 elections, with only neglible weight on the 2008 election, when financial market conditions were extreme across nearly every dimension.  Assuming an approximately correct specification of the covariates, this is interpreted to mean that even of the 2016 US election had a general climate of risk and tension less extreme than 2008 and more similar to the 2004 and 2012 elections.  In the middle plot, we notice that the fixed effect estimates for 2008 and 2012 are considerable, with only 2004 registering a near-zero fixed-effect estimate.  The fixed-effect estimates quantify the amount of surprise the US election results delivered (strictly speaking, not only the presidential race but all November elections in the US with the ability to influence financial markets) under the assumption of a GARCH(1,1).  As estimates gleaned from only one data point per time series, they are theoretically high in variance.  On the right, we observe in black the fitted values of $\sigma^{2}$ given the GARCH(1,1) for the time series under study.  We also observe four points, all indicated by the legend: three predictions and the ground truth.  We include the prediction derived by adjusting the GARCH(1,1) prediction by the arithmetic mean of the fixed-effect estimates.  As is evident, the Synthetic Volatility Forecasting method comes reasonably close the ground truth.  The prediction is not only directionally correct; it far outperforms the unadjusted prediction.  Remarkably, the arithmetic-mean based prediction here demonstrates the inherent risk in failing to weight each donor appropriately.  The 2008 election receives far more weight than is called for, as simple averaging ignores the radically different conditons on the evening of those two events.  
 
 Naturally, one might ask how sensitive this prediction is to at least two kinds of model specification: donor pool specification and covariate specification.  There are two responses to these concerns.  First, although the practitioner lacks a priori knowledge of the adequacy of the donors with respect to the time series under study, it is possible to gauge the diversity of the donor information by examining the singular values of the volatility profile.  In the prediction presented here, the no singular value represents more than 50$\%$ of the sum of singular values.  Indeed, the first four singular values descend from 50$\%$ to 25$\%$ to 21$\%$ to 5$\%$ of the the cumulative variation, indicating a low concentration or redundancy of information.  Second, we follow \citet{steegen2016increasing} in a executing a multiverse analysis.  In particular, in the supplement, we carry out leave-one-out analyses on both the donor set and the covariate set.  Additionally, in the supplement, we show that with Brexit added as a donor, the results are unchanged, due to the fact that Brexit's covariates do not lie in the convex hull of 2004, 2012, and the time series under study.
 
@@ -756,6 +758,9 @@ In KNN regression, the hyperparameter K must be learned.  In Synthetic Volatilit
 
 \subsection{Should we gather as many donors as possible and pick them quantitatively?}
 It would be counter to the method proposed herein to assemble a vast number of donors, lacking careful scrutiny of the qualitative fit, and let the optimization simply pick the donors, via weighting.  What makes a donor good is not merely its quantitative fit but its qualitative fit as well.
+
+\subsection{Why not use the covariates as covariates in the GARCH model alone or in the GARCH model as well?}
+The data-generating process does not specify that volatility series are well-modeled using ever-present exogenous covariates, and this is fundamentally due to the lack of theoretical justification for such an exogeneity assumption.  
 
 \subsection{News shock literature review}
 
