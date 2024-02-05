@@ -630,11 +630,17 @@ We now evaluate the loss and risk of Synthetic Volatility Forecasts under two sc
 
 Consider the difference 
 
-\begin{align*}
+\begin{align}
   & QL(\hat\sigma^{2}_{adjusted},\sigma^{2})-QL(\hat\sigma^{2}_{unadjusted},\sigma^{2})\\
-   & =(\frac{\hat\sigma^{2}_{unadjusted}}{\sigma^{2}} - \log{\frac{\hat\sigma^{2}_{unadjusted}}{\sigma^{2}}} - 1) - (\frac{\hat\sigma^{2}_{adjusted}}{\sigma^{2}} - \log{\frac{\hat\sigma^{2}_{adjusted}}{\sigma^{2}}} - 1)\\
-   & = \frac{\hat\sigma^{2}_{unadjusted}-\hat\sigma^{2}_{adjusted}}{\sigma^{2}} - \log{\frac{\hat\sigma^{2}_{adjusted}}{\hat\sigma^{2}_{unadjusted}}}
-\end{align*}
+   & =(\frac{\hat\sigma^{2}_{adjusted}}{\sigma^{2}} - \log{\frac{\hat\sigma^{2}_{unadjusted}}{\sigma^{2}}} - 1) - (\frac{\hat\sigma^{2}_{adjusted}}{\sigma^{2}} - \log{\frac{\hat\sigma^{2}_{adjusted}}{\sigma^{2}}} - 1)\\
+   & = \frac{\hat\sigma^{2}_{adjusted}-\hat\sigma^{2}_{unadjusted}}{\sigma^{2}} - \log{\frac{\hat\sigma^{2}_{adjusted}}{\hat\sigma^{2}_{unadjusted}}}\label{QL Loss Consistency}
+\end{align}
+We suppress the indexation of time for the sake of convenience, and for simplicity, as usual we work with a GARCH(1,1) that experiences a volatility shock at a single time point.  Then (\ref{QL Loss Consistency}) can be expressed as
+
+\begin{align}
+   &\frac{(\hat\omega + \hat\alpha a^{2} + \hat\beta\sigma^{2} + \hat\omega^{*})-(\hat\omega + \hat\alpha a^{2} + \hat\beta\sigma^{2})}{\sigma^{2}} - \log{\frac{\hat\omega + \hat\alpha a^{2} + \hat\beta\sigma^{2} + \hat\omega^{*}}{\hat\omega + \hat\alpha a^{2} + \hat\beta\sigma^{2}}}\label{QL Loss Consistency - GARCH(1,1)}\\
+   & =\frac{\hat\omega^{*}}{\sigma^{2}} - \log{\frac{\hat\omega + \hat\alpha a^{2} + \hat\beta\sigma^{2} + \hat\omega^{*}}{\hat\omega + \hat\alpha a^{2} + \hat\beta\sigma^{2}}}\label{QL Loss Consistency - GARCH(1,1)} 
+\end{align}
 
 \section{Numerical Examples}
 
