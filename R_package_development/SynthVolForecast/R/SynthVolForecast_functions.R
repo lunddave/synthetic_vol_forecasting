@@ -27,7 +27,7 @@ dbw <- function(X
 
   # number of time series for pool
   n <- length(X) - 1
-  print(paste('Value of n is ', n))
+  print(paste('Our count of donors ', n, '.' sep = ''))
 
   # COVARIATE FOR TIME SERIES UNDER STUDY AT shock_time_vec
   X1 <- X[[1]][shock_time_vec[1], dbw_indices, drop = FALSE] # we get only 1 row
@@ -48,7 +48,8 @@ dbw <- function(X
   if (scale == TRUE) {print('User has chosen to scale covariates.')}
   if (center == TRUE) {print('User has chosen to center covariates.')}
   
-    dat <- rbind(as.data.frame(X1), as.data.frame(do.call('rbind', X0))) # do.call is for cluster computing?
+    # Now bind the TSUS covariates to the donor covariates
+    dat <- rbind(as.data.frame(X1), as.data.frame(do.call('rbind', X0))) 
     print('Pre-scaling')
     print(dat)
 
@@ -109,7 +110,7 @@ dbw <- function(X
   # 3) option to change the upper bound to NA'
   # 4) option to choose l1 or l2 norm as distance function
 
-  #Thus I need if statements to implement these...
+  #Thus I need if statements to implement these.
 
   # conditional for sum to 1
   if (is.na(sum_to_1) == FALSE) {eq_constraint <- function(W) sum(W) - 1}
