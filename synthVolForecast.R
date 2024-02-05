@@ -41,6 +41,7 @@ dbw <- function(X,
                 sum_to_1 = 1,
                 bounded_below_by = 0,
                 bounded_above_by = 1,
+                princ_comp_count = 2,
                 normchoice = c('l1', 'l2')[2],
                 penalty_normchoice = c('l1', 'l2')[1],
                 penalty_lambda = 0

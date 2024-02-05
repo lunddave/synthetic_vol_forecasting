@@ -13,6 +13,7 @@ dbw <- function(X
                 ,sum_to_1 = 1
                 ,bounded_below_by = 0
                 ,bounded_above_by = 1
+                ,princ_comp_count = ncol(X[[1]])
                 ,normchoice = c('l1', 'l2')[2]
                 ,penalty_normchoice = c('l1', 'l2')[1]
                 ,penalty_lambda = 0
@@ -26,6 +27,7 @@ dbw <- function(X
 
   # number of time series for pool
   n <- length(X) - 1
+  print(paste('Value of n is ', n))
 
   # COVARIATE FOR TIME SERIES UNDER STUDY AT shock_time_vec
   X1 <- X[[1]][shock_time_vec[1], dbw_indices, drop = FALSE] # we get only 1 row
@@ -43,36 +45,31 @@ dbw <- function(X
                         , drop = FALSE] #get 1 row from each donor
   }
 
-  #################################
-  #begin if statement
-  if (scale == TRUE) {
-    print('User has chosen to scale covariates.')
-
+  if (scale == TRUE) {print('User has chosen to scale covariates.')}
+  if (center == TRUE) {print('User has chosen to center covariates.')}
+  
     dat <- rbind(as.data.frame(X1), as.data.frame(do.call('rbind', X0))) # do.call is for cluster computing?
     print('Pre-scaling')
     print(dat)
 
-    dat <- apply(dat, 2, function(x) scale(x, center = TRUE, scale = TRUE))
-    print('Post-scaling')
+    dat <- apply(dat, 2, function(x) scale(x, center = center, scale = scale))
+    print('Post-scaling (nothing will happen if center and scale are set to FALSE).')
     print(dat)
 
-    ## We output details of SVD of matrix X1
+    ## We output details of SVD
     dat.svd <- svd(dat)
     sing_vals <- dat.svd$d / sum(dat.svd$d)
     print('Singular value percentages for the donor pool X data:')
     print(paste(100 * sing_vals, "%", sep = ""))
+    
+    #Now project in direction of first princ_comp_count principal components
+    print(paste('We are using ', princ_comp_count, ' principal components.', sep = ''))
+    dat <- dat %*% dat.svd$v[,1:princ_comp_count]
 
-    X1 <- dat[1, dbw_indices
-              , drop = FALSE]
+    X1 <- dat[1, , drop = FALSE]
 
     X0 <- c()
-
-    for (i in 1:n) {
-      X0[[i]] <- dat[i+1, dbw_indices, drop = FALSE] #we are repopulating X0[[i]] with scaled+centered data
-    } #end loop
-  } #end if statement
-  #################################
-
+    X0 <- split(dat[-1,],seq(nrow(dat[-1,]))) 
 
   # objective function
   weightedX0 <- function(W) {
@@ -428,6 +425,7 @@ SynthVolForecast <- function(Y_series_list
                              ,dbw_scale = TRUE
                              ,dbw_center = TRUE
                              ,dbw_indices = NULL
+                             ,dbw_princ_comp_input = ncol(covariates_series_list[[1]])
                              ,covariate_indices = NULL
                              ,geometric_sets = NULL #tk
                              ,days_before_shocktime_vec = NULL #tk I may want to remove this
@@ -481,6 +479,7 @@ SynthVolForecast <- function(Y_series_list
                scale = dbw_scale,
                center = dbw_center,
                sum_to_1 = TRUE, #tk
+               princ_comp_count = dbw_princ_comp_input,
                bounded_below_by = 0, #tk
                bounded_above_by = 1, #tk
                # normchoice = normchoice, #tk
@@ -687,6 +686,7 @@ SynthPrediction <- function(Y_series_list
                              ,dbw_scale = TRUE
                              ,dbw_center = TRUE
                              ,dbw_indices = NULL
+                             ,princ_comp_input = ncol(covariates_series_list[[1]])
                              ,covariate_indices = NULL
                              ,geometric_sets = NULL #tk
                              ,days_before_shocktime_vec = NULL #tk I may want to remove this

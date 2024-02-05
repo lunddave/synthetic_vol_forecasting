@@ -1,4 +1,4 @@
-library(SynthVolForecast)
+#library(SynthVolForecast)
 
 options(digits = 7, scipen = 7)
 
@@ -25,8 +25,8 @@ k <- 1
 
 TSUS <- 'IYG'
 
-log_ret_covariates <- c(#"GBP=X",
-   #"6B=F",
+log_ret_covariates <- c("GBP=X",
+   "6B=F",
   "CL=F"
   ,"^VIX"
   ,"^IRX"
@@ -47,11 +47,11 @@ FRED_covariates <- c('AAA', 'BAA')
 
 shock_dates <- list('2016 Election' = "2016-11-08"
                  #,'Brexit' = "2016-06-23"
-                 #,'2014 Midterm' = "2014-11-04"
+                 ,'2014 Midterm' = "2014-11-04"
                  ,'2012 Election' = "2012-11-06"
-                 #, '2010 Midterm' ="2010-11-02"
+                 , '2010 Midterm' ="2010-11-02"
                  ,'2008 Election' = "2008-11-04"
-                 #, '2006 Midterm' ="2006-11-07"
+                 , '2006 Midterm' ="2006-11-07"
                  ,'2004 Election' = "2004-11-02"
                  #,'2002 Midterm' =  "2002-11-05"
                  #,'2000 Election' = "2000-11-07"
@@ -232,7 +232,7 @@ for (i in 1:length(start_dates)){
 n <- length(start_dates) - 1
 
 time_date <- gsub(" ", "", format(Sys.time(), "%a%b%d%X%Y"), fixed = TRUE)
-png_save_name <- paste("/home/david/Desktop/synthetic_vol_forecasting/real_data_output_plots/savetime_"
+png_save_name <- paste("~/Desktop/PhD/synthetic_vol_forecasting/real_data_output_plots/savetime_"
                        ,time_date
                        ,'_'
                        ,TSUS
@@ -259,6 +259,7 @@ temp <- SynthVolForecast(Y
                          ,dbw_scale = TRUE
                          ,dbw_center = TRUE
                          ,dbw_indices = NULL
+                         ,dbw_princ_comp_input = 3
                          #,covariate_indices = length(X)
                          ,garch_order = c(1,1,0)
                          ,plots = TRUE
