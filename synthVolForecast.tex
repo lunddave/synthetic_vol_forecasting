@@ -217,33 +217,8 @@ are the same for all time series in the analysis.  The differences between them 
 
 Let $I(\cdot)$ be an indicator function, $T_i$ be the time length of the time series $i$ for $i = 1, \ldots, n+1$, and $T_i^*$ denote the largest time index prior to the arrival of the news shock , with $T_i^* < T_i$.  For $t= 1, \ldots, T_i$ and $i = 1, \ldots, n+1$, the model $\mc{M}_1$ is defined as
 
-\begin{align}
-\mc{M}_1 \colon &\sigma^{2}_{i,t} = \omega_{i} + \omega^{*}_i D^{vol}_{i,t} + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t}\\
-&a_{i,t} = \sigma_{i,t}(\epsilon_{i,t}(1-D^{level}_{i,t}) + \epsilon^{*}_{i}D^{level}_{i,t})\\ 
-&\omega_i^{*} = \mu_{\omega^{*}} + \varepsilon_{i} \label{model1}
-\end{align}
-
- where $D^{vol}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + L_{i, vol}\})$, $D^{level}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + L_{i, level}\})$ 
-and $\x_{i,t} \in \mathbb{R}^{p}$, with $p \geq 1$.  We assume that the 
-$\mbf{x}_{i,t}$ are fixed \footnote{Is this necessary?  Does it serve a purpose?}.\footnote{As for implied volatility as a covariate, the argument for regarding it as a non-random quantity is that we are not primarily concerned with what IV is trying to estimate.  We're concerned with IV itself at a primitive quantity that affects volatility through market sentiment.}  For $i = 1, \ldots, n+1$ and $t=1, \ldots, T_i$, the random effects structure for $\mc{M}_1$ is:
-
 \begin{align*}
-  \omega^{*}_i &\simiid \mc{F}_{\omega^{*}} \text{ with }  \; \mrm{E}_{\mc{F}_{\omega^{*}}}(\omega^{*}_i) = \mu_{\omega^{*}}, \mrm{Var}_{\mc{F}_{\omega^{*}}}(\omega^{*}_i)  = \sigma^2_{\omega^{*}}  \\
-  \epsilon_{i,t} &\simiid \mc{F}_{\epsilon} \text{ with }  \; \mrm{E}_{\mc{F}_{\epsilon}}(\epsilon) = 0, \mrm{Var}_{\mc{F}_{\epsilon}}(\epsilon)  = \sigma^2_{\epsilon}  \\
-  \epsilon^{*}_{i,t} &\simiid \mc{F}_{\epsilon^{*}} \text{ with }  \; \mrm{E}_{\mc{F}_{\epsilon^{*}}}(\epsilon^{*}_{i,t}) = \mu_{\epsilon^{*}}, \mrm{Var}_{\mc{F}_{\epsilon^{*}}}(\epsilon^{*}_i)  = \sigma^2_{\epsilon^{*}}  \\
-  % & \text{Alternatively, } (\omega^{*}, \epsilon^{*})_{i} \sim \mathcal{N}(\mu_{\omega^{*},\epsilon^{*}}, \Sigma_{\omega^{*},\epsilon^{*}}) \\
-  % THESE ARE NOT RANDOM &(\alpha, \beta)_i \simiid \mc{F}_{(\alpha, \beta)} \text{ where } \sum^{ \text{max} \{m,s \} }_{j}\alpha_j + \beta_j < 1 \\
-  % \mathbf{v}_i &\simiid \mc{F}_{\mathbf{v}} \text{ with }  \; \mrm{E}_{\mc{F}_{\mathbf{v}}}(\mathbf{v}_i) = \mu_{\mathbf{v}}, \mrm{Var}_{\mc{F}_{\mathbf{v}}}(\mathbf{v}_i)  = \Sigma^2_{\mathbf{v}} \\
-  \varepsilon_{i,t} & \simiid  \mc{F}_{\varepsilon} \text{ with }  \; \mrm{E}_{\mc{F}_{\varepsilon}}(\varepsilon_{i,t}) = 0, \mrm{Var}_{\mc{F}_{\varepsilon}}(\varepsilon_{i,t}) = \sigma^2_{\varepsilon} \\
-  %l_{i,vol} &\simiid \text{Unif}\{1,2,...,\text{maximum volatility shock length}\}\\
-  %l_{i, level} &\simiid \text{Unif}\{1,2,...,l_{i,vol}\}\\
-  \omega^{*}_{i} &\indep \epsilon_{i,t} \indep \epsilon^{*}_{i,t}  \indep \varepsilon_{i,t}.
-  \end{align*}
-
-Notice that $\mc{M}_1$ assumes that $\omega^{*}_i$ are i.i.d. with $\E[ \omega^{*}_i]=\mu_{\omega^{*}}$ for $i = 1, \ldots, n+1$. We also consider a model where the shock effects are linear functions of covariates with an additional additive mean-zero error. For $i = 1, \ldots, n+1$, the random effects structure for this model (model $\mc{M}_2$) is:
-
-\begin{align*}
-  \mc{M}_2 \colon \begin{array}{l}
+  \mc{M}_1 \colon \begin{array}{l}
      \sigma^{2}_{i,t} = \omega_{i} + \omega^{*}_i D^{vol}_{i,t} + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \text{ }\\[.2cm]
      a_{i,t} = \sigma_{i,t}(\epsilon_{i,t}(1-D^{level}_{i,t}) + \epsilon^{*}_{i}D^{level}_{i,t})\\[.2cm]
      \omega_i^{*} = \mu_{\omega^{*}}+\delta'\mbf{x}_{i, T_i^*}+ \varepsilon_{i},
@@ -265,11 +240,12 @@ Notice that $\mc{M}_1$ assumes that $\omega^{*}_i$ are i.i.d. with $\E[ \omega^{
     %l_{i, level} &\simiid \text{Unif}\{1,2,...,l_{i,vol}\}\\
     \omega^{*}_i & \indep  \epsilon_{i,t} \indep  \epsilon^{*}_{i,t} \indep \delta \indep \varepsilon_{i,t}
     \end{align*}
+where $D^{vol}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + L_{i, vol}\})$, $D^{level}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + L_{i, level}\})$ 
+and $\x_{i,t} \in \mathbb{R}^{p}$, with $p \geq 1$.  Notice that $\mc{M}_1$ assumes that $\omega^{*}_i$ are i.i.d. with $\E[ \omega^{*}_i]=\mu_{\omega^{*}}$ for $i = 1, \ldots, n+1$. 
 
     We further define the parameter sets
     \begin{align}
       \begin{array}{lll}
-         \mathcal{F}_{t} &= &\{(\omega^{*}_i, \epsilon_{i,t}, \epsilon^{*}_{i,t}, \delta,\varepsilon_{i,t})\colon t= 1, \ldots, T_i, i = 2, \ldots, n +1\},\\
          \mathcal{F}_{1,t} &= &\{(\omega^{*}_i, \epsilon_{i,t}, \epsilon^{*}_{i,t}, \varepsilon_{i,t})\colon t= 1, \ldots, T_i, i = 2, \ldots, n +1\},\\
       \end{array}
     \end{align}\label{parameter}
@@ -278,7 +254,7 @@ Notice that $\mc{M}_1$ assumes that $\omega^{*}_i$ are i.i.d. with $\E[ \omega^{
     \subsection{Volatility Profile of a Time Series}
     \label{Volatility Profile of a Time Series}
     
-    In this section we make a novel contribution to the synthetic prediction framework by constructing a profile of a time series' volatility.  Suppose that for each of the $n$ donors, we posit $q$ distinct covariates in the functional form of the shock.  Abusing notation for RV (Need some clever way to index (a) date, (b) donor, (c) how many days were used to get the measurement), we have...
+    In this section, we make a novel contribution to the synthetic prediction framework by constructing a profile of a time series' volatility.  Suppose that for each of the $n$ donors, we posit $q$ distinct covariates in the functional form of the shock.  Abusing notation for RV (Need some clever way to index (a) date, (b) donor, (c) how many days were used to get the measurement), we have...
 
     \begin{equation*}
       \textbf{V}_{q,n} = 
@@ -631,16 +607,19 @@ We now evaluate the loss and risk of Synthetic Volatility Forecasts under two sc
 Consider the difference 
 
 \begin{align}
-  & QL(\hat\sigma^{2}_{adjusted},\sigma^{2})-QL(\hat\sigma^{2}_{unadjusted},\sigma^{2})\\
-   & =(\frac{\hat\sigma^{2}_{adjusted}}{\sigma^{2}} - \log{\frac{\hat\sigma^{2}_{unadjusted}}{\sigma^{2}}} - 1) - (\frac{\hat\sigma^{2}_{adjusted}}{\sigma^{2}} - \log{\frac{\hat\sigma^{2}_{adjusted}}{\sigma^{2}}} - 1)\\
-   & = \frac{\hat\sigma^{2}_{adjusted}-\hat\sigma^{2}_{unadjusted}}{\sigma^{2}} - \log{\frac{\hat\sigma^{2}_{adjusted}}{\hat\sigma^{2}_{unadjusted}}}\label{QL Loss Consistency}
+  & QL(\hat\sigma_{t+1}^{2}_{unadjusted},\sigma^{2})-QL(\hat\sigma^{2}_{adjusted},\sigma^{2})\\
+   & =(\frac{\hat\sigma^{2}_{unadjusted}}{\sigma^{2}} - \log{\frac{\hat\sigma^{2}_{adjusted}}{\sigma^{2}}} - 1) - (\frac{\hat\sigma^{2}_{unadjusted}}{\sigma^{2}} - \log{\frac{\hat\sigma^{2}_{adjusted}}{\sigma^{2}}} - 1)\\
+   & = \frac{\hat\sigma^{2}_{unadjusted}-\hat\sigma^{2}_{adjusted}}{\sigma^{2}} - \log{\frac{\hat\sigma^{2}_{adjusted}}{\hat\sigma^{2}_{unadjusted}}}\label{QL Loss Consistency}
 \end{align}
-We suppress the indexation of time for the sake of convenience, and for simplicity, as usual we work with a GARCH(1,1) that experiences a volatility shock at a single time point.  Then (\ref{QL Loss Consistency}) can be expressed as
+For simplicity, we work with a GARCH(1,1) that experiences a volatility shock at a single time point for which we would like to provide a point forecast.  Then (\ref{QL Loss Consistency}) can be expressed as
 
 \begin{align}
    &\frac{(\hat\omega + \hat\alpha a^{2} + \hat\beta\sigma^{2} + \hat\omega^{*})-(\hat\omega + \hat\alpha a^{2} + \hat\beta\sigma^{2})}{\sigma^{2}} - \log{\frac{\hat\omega + \hat\alpha a^{2} + \hat\beta\sigma^{2} + \hat\omega^{*}}{\hat\omega + \hat\alpha a^{2} + \hat\beta\sigma^{2}}}\label{QL Loss Consistency - GARCH(1,1)}\\
    & =\frac{\hat\omega^{*}}{\sigma^{2}} - \log{\frac{\hat\omega + \hat\alpha a^{2} + \hat\beta\sigma^{2} + \hat\omega^{*}}{\hat\omega + \hat\alpha a^{2} + \hat\beta\sigma^{2}}}\label{QL Loss Consistency - GARCH(1,1)} 
 \end{align}
+
+\subsection{Unique of Convex Combinations}
+\url{https://encyclopediaofmath.org/wiki/Chebyshev_set}
 
 \section{Numerical Examples}
 
@@ -763,6 +742,9 @@ It would be counter to the method proposed herein to assemble a vast number of d
 
 \subsection{Why not use the covariates as covariates in the GARCH model alone or in the GARCH model as well?}
 The data-generating process does not specify that volatility series are well-modeled using ever-present exogenous covariates, and this is fundamentally due to the lack of theoretical justification for such an exogeneity assumption.  
+
+\subsection{Do there exist optimal weights?}
+There are at least two senses of `optimal' weights that one might be interested in here.  First, we can think of optimal weights as a set $\{w_{i}\}_{i=2}^{n+1}$ such that $\omega_{1} = \sum^{n+1}_{i=2}w_{i}\hat\omega_{i}$, i.e., $\omega_{1}$ belongs to convex hull of the estimated shocks.  There also exists a second sense of optimality, in which, for a given $\sigma_{t}^{2}$, the weights allow us to predict with zero loss.
 
 \subsection{News shock literature review}
 
