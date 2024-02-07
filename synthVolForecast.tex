@@ -602,23 +602,26 @@ as $t\rightarrow\infty$ by a simple application of Slutsky's Theorem.
 
 \subsection{Risk Minmization Using Synthetic Volatility Forecasting}
 
-We now evaluate the loss and risk of Synthetic Volatility Forecasts under two scenarios: first, under arbitrary distribution of $\sigma^{2}_{t}$, and then second, under the assumption that the data-generating process is correctly specified.
+We now evaluate the loss and risk of Synthetic Volatility Forecasts under two scenarios: first, under arbitrary distribution of $\sigma^{2}_{t+1}$, and then second, under the assumption that the data-generating process is correctly specified.
 
-Consider the difference 
+For 1-step-ahead prediction of $\sigma^{2}_{t}$, consider the difference 
 
 \begin{align}
-  & QL(\hat\sigma_{t+1}^{2}_{unadjusted},\sigma^{2})-QL(\hat\sigma^{2}_{adjusted},\sigma^{2})\\
-   & =(\frac{\hat\sigma^{2}_{unadjusted}}{\sigma^{2}} - \log{\frac{\hat\sigma^{2}_{adjusted}}{\sigma^{2}}} - 1) - (\frac{\hat\sigma^{2}_{unadjusted}}{\sigma^{2}} - \log{\frac{\hat\sigma^{2}_{adjusted}}{\sigma^{2}}} - 1)\\
-   & = \frac{\hat\sigma^{2}_{unadjusted}-\hat\sigma^{2}_{adjusted}}{\sigma^{2}} - \log{\frac{\hat\sigma^{2}_{adjusted}}{\hat\sigma^{2}_{unadjusted}}}\label{QL Loss Consistency}
+  & QL(\hat\sigma_{t+1, unadjusted}^{2},\sigma^{2})-QL(\hat\sigma^{2}_{t+1, adjusted},\sigma^{2})\\
+   & =(\frac{\hat\sigma^{2}_{t+1,unadjusted}}{\sigma^{2}} - \log{\frac{\hat\sigma^{2}_{t+1,adjusted}}{\sigma^{2}}} - 1) - (\frac{\hat\sigma^{2}_{t+1,adjusted}}{\sigma^{2}} - \log{\frac{\hat\sigma^{2}_{t+1,adjusted}}{\sigma^{2}}} - 1)\\
+   & = \frac{\hat\sigma^{2}_{t+1,unadjusted}-\hat\sigma^{2}_{t+1,adjusted}}{\sigma^{2}} + \log{\frac{\hat\sigma^{2}_{t+1,adjusted}}{\hat\sigma^{2}_{t+1,unadjusted}}}\label{QL Loss Consistency}
 \end{align}
 For simplicity, we work with a GARCH(1,1) that experiences a volatility shock at a single time point for which we would like to provide a point forecast.  Then (\ref{QL Loss Consistency}) can be expressed as
 
 \begin{align}
-   &\frac{(\hat\omega + \hat\alpha a^{2} + \hat\beta\sigma^{2} + \hat\omega^{*})-(\hat\omega + \hat\alpha a^{2} + \hat\beta\sigma^{2})}{\sigma^{2}} - \log{\frac{\hat\omega + \hat\alpha a^{2} + \hat\beta\sigma^{2} + \hat\omega^{*}}{\hat\omega + \hat\alpha a^{2} + \hat\beta\sigma^{2}}}\label{QL Loss Consistency - GARCH(1,1)}\\
-   & =\frac{\hat\omega^{*}}{\sigma^{2}} - \log{\frac{\hat\omega + \hat\alpha a^{2} + \hat\beta\sigma^{2} + \hat\omega^{*}}{\hat\omega + \hat\alpha a^{2} + \hat\beta\sigma^{2}}}\label{QL Loss Consistency - GARCH(1,1)} 
+   &\frac{(\hat\omega + \hat\alpha a^{2} + \hat\beta\sigma^{2}_{t})-(\hat\omega + \hat\alpha a^{2} + \hat\beta\sigma_{t}^{2} + \hat\omega^{*})}{\sigma_{t+1}^{2}} + \log{\frac{\hat\omega + \hat\alpha a^{2} + \hat\beta\sigma_{t}^{2} + \hat\omega^{*}}{\hat\omega + \hat\alpha a^{2} + \hat\beta\sigma_{t}^{2}}}\label{QL Loss Consistency - GARCH(1,1)}\\
+   & = \log{\frac{\hat\omega + \hat\alpha a^{2} + \hat\beta\sigma_{t}^{2} + \hat\omega^{*}}{\hat\omega + \hat\alpha a^{2} + \hat\beta\sigma_{t}^{2}}} - \frac{\hat\omega^{*}}{\sigma^{2}_{t+1}} \label{QL Loss Consistency - GARCH(1,1)} 
 \end{align}
 
-\subsection{Unique of Convex Combinations}
+Recall from Proposition $(\ref{consistency})$ that $\hat\omega \xrightarrow{p} \E[\omega]$ FIX.  Hence whether the adjusted forecast has smaller loss will depend upon how large $\omega$ is.  
+
+The first term in $(\ref{QL Loss Consistency - GARCH(1,1)})$ will be nonnegative so long as $\hat\omega^{*}$ is nonnegative.
+\subsection{Uniqueness of Convex Combinations}
 \url{https://encyclopediaofmath.org/wiki/Chebyshev_set}
 
 \section{Numerical Examples}
@@ -805,6 +808,9 @@ strategy& Observe $y_{i}$; then estimate $x$ with small expected L2 loss & Estim
 \end{table}
 
 \end{comment}
+
+\subsection{Model Adjustment Using Synthetic Methods}
+Here we distinguish 
 
 \section{Supplement}
 We analyze the real-world example with Brexit included.
