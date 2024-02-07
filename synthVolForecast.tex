@@ -199,7 +199,7 @@ Assuming further that $\sigma^{2}_{t}$ depends on a vector of exogenous covariat
 
 We will suppose that a researcher has multivariate time series data $\ret_{i,t}, t = 1,$ $\ldots,  T_i$ and $i = 1, \ldots, n+1$.  Let $\ret_{i,t} = (r_{i,t}$, $\x_{i,t}$, $\textbf{v}_{i,t}$) where $r_{i,t}$ is a scalar response,  $\x_{i,t}$ is a vector of covariates that are revealed to the analyst prior to the observation of $\ret_{1,t}$, and $\textbf{v}_{i,t}$ is a vector of market-implied volatility metrics for the series $i$ that are available prior to the market's opening at time $t$.  Suppose that the analyst is interested in forecasting the volatility of $y_{1,t}$, the first time series in the collection.  We require that each time series $\ret_{i,t}$ is subject to a news event following $T^*_i \leq T_{i} + 1$ and before witnessing $T^*_i+1$.  We are implicitly leveraging the fact that financial assets are heavily traded during market hours, yet only thinly traded (if traded at all) outside market hours.  In contrast, the arrival of market-moving news does not obey any such restrictions.
 
-In light of the foregoing, we can rewrite the GARCH model we are interested in as such
+In light of the foregoing, we can rewrite the GARCH framework we are interested in as such
 
 \begin{align*}
 &\sigma_{i,t}^{2} = \omega_{i} + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \begin{pmatrix} \x_{i,t} \\ \textbf{v}_{i,t} \\ \end{pmatrix} \\
@@ -211,9 +211,9 @@ In light of the foregoing, we can rewrite the GARCH model we are interested in a
 
 \subsection{Model setup}
 \label{modelsetup}
-In this section, we will describe the postulated models for which 
+In this section, we will describe the assumed dynamic panel models for which 
 post-shock aggregated estimators are provided. The basic structures of these models 
-are the same for all time series in the analysis.  We first sharply distinguish between a volatility shock induced by a return series shock and a volatility shock directly affecting the volatility equation of a GARCH model, without mediation of the return series.
+are the same for all time series in the analysis.  The differences between them lie in the shock distributions.  We first sharply distinguish between a volatility shock induced by a return series shock and a volatility shock directly affecting the volatility equation of a GARCH model, without mediation of the return series.
 
 Let $I(\cdot)$ be an indicator function, $T_i$ be the time length of the time series $i$ for $i = 1, \ldots, n+1$, and $T_i^*$ denote the largest time index prior to the arrival of the news shock , with $T_i^* < T_i$.  For $t= 1, \ldots, T_i$ and $i = 1, \ldots, n+1$, the model $\mc{M}_1$ is defined as
 
@@ -241,7 +241,15 @@ Let $I(\cdot)$ be an indicator function, $T_i$ be the time length of the time se
     \omega^{*}_i & \indep  \epsilon_{i,t} \indep  \epsilon^{*}_{i,t} \indep \delta \indep \varepsilon_{i,t}
     \end{align*}
 where $D^{vol}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + L_{i, vol}\})$, $D^{level}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + L_{i, level}\})$ 
-and $\x_{i,t} \in \mathbb{R}^{p}$, with $p \geq 1$.  Notice that $\mc{M}_1$ assumes that $\omega^{*}_i$ are i.i.d. with $\E[ \omega^{*}_i]=\mu_{\omega^{*}}$ for $i = 1, \ldots, n+1$.  
+and $\x_{i,t} \in \mathbb{R}^{p}$, with $p \geq 1$.  Notice that $\mc{M}_1$ assumes that $\omega^{*}_i$ are i.i.d. with $\E[ \omega^{*}_i]=\mu_{\omega^{*}}$ for $i = 1, \ldots, n+1$. 
+
+    We further define the parameter sets
+    \begin{align}
+      \begin{array}{lll}
+         \mathcal{F}_{1,t} &= &\{(\omega^{*}_i, \epsilon_{i,t}, \epsilon^{*}_{i,t}, \varepsilon_{i,t})\colon t= 1, \ldots, T_i, i = 2, \ldots, n +1\},\\
+      \end{array}
+    \end{align}\label{parameter}
+    where $\mathcal{F}_{t}$ and $\mathcal{F}_{1,t}$ can be adapted to $\mc{M}_1$ by dropping $\delta$. We assume this for notational simplicity.
 
     \subsection{Volatility Profile of a Time Series}
     \label{Volatility Profile of a Time Series}
@@ -292,8 +300,8 @@ Here we make reference to Tsay p. 133 and explain, very similarly to Tsay, that 
 We present two forecasts:
 
 \begin{align*}
-  \text{Forecast 1: } & \hat\sigma^{2}_{unadjusted} \coloneq \hat\E_{T^{*}}[\sigma^{2}_{i,T^{*}+1}|\mathcal{F}_{T^{*}}] = \hat\omega_{i} + \sum^{m_{i}}_{k=1}\hat\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\hat\beta_{i,j}\sigma_{i,t-j}^{2} + \hat\gamma_{i}^{T} \x_{i,t}\\
-  \text{Forecast 2: }  & \hat\sigma^{2}_{adjusted} \coloneq \hat\E_{T^{*}}[\sigma^{2}_{i,T^{*}+1}|\mathcal{F}_{T^{*}}] + \hat\omega = \hat\omega_{i} + \sum^{m_{i}}_{k=1}\hat\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\hat\beta_{i,j}\sigma_{i,t-j}^{2} + \hat\gamma_{i}^{T} \x_{i,t}+ \hat\omega
+  \text{Forecast 1: } & \hat\sigma^{2}_{unadjusted} \coloneq \hat\E_{T^{*}}[\sigma^{2}_{i,T^{*}+1}|\mathcal{F}_{T^{*}}] = \omega_{i} + \sum^{m_{i}}_{k=1}\hat\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\hat\beta_{i,j}\sigma_{i,t-j}^{2} + \hat\gamma_{i}^{T} \x_{i,t}\\
+  \text{Forecast 2: }  & \hat\sigma^{2}_{adjusted} \coloneq \hat\E_{T^{*}}[\sigma^{2}_{i,T^{*}+1}|\mathcal{F}_{T^{*}}] + \hat\omega = \omega_{i} + \sum^{m_{i}}_{k=1}\hat\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\hat\beta_{i,j}\sigma_{i,t-j}^{2} + \hat\gamma_{i}^{T} \x_{i,t}+ \hat\omega
 \end{align*}
 
 \subsection{Excess Volatility Estimators}
@@ -600,7 +608,7 @@ For 1-step-ahead prediction of $\sigma^{2}_{t}$, consider the difference
 
 \begin{align}
   & QL(\hat\sigma_{t+1, unadjusted}^{2},\sigma^{2})-QL(\hat\sigma^{2}_{t+1, adjusted},\sigma^{2})\\
-   & =(\frac{\hat\sigma^{2}_{t+1,unadjusted}}{\sigma^{2}} - \log{\frac{\hat\sigma^{2}_{t+1,adjusted}}{\sigma^{2}}} - 1) - (\frac{\hat\sigma^{2}_{t+1,adjusted}}{\sigma^{2}} - \log{\frac{\hat\sigma^{2}_{t+1,adjusted}}{\sigma^{2}}} - 1)\\
+   & =(\frac{\hat\sigma^{2}_{t+1,unadjusted}}{\sigma^{2}} - \log{\frac{\hat\sigma^{2}_{t+1,unadjusted}}{\sigma^{2}}} - 1) - (\frac{\hat\sigma^{2}_{t+1,adjusted}}{\sigma^{2}} - \log{\frac{\hat\sigma^{2}_{t+1,adjusted}}{\sigma^{2}}} - 1)\\
    & = \frac{\hat\sigma^{2}_{t+1,unadjusted}-\hat\sigma^{2}_{t+1,adjusted}}{\sigma^{2}} + \log{\frac{\hat\sigma^{2}_{t+1,adjusted}}{\hat\sigma^{2}_{t+1,unadjusted}}}\label{QL Loss Consistency}
 \end{align}
 For simplicity, we work with a GARCH(1,1) that experiences a volatility shock at a single time point for which we would like to provide a point forecast.  Then (\ref{QL Loss Consistency}) can be expressed as
@@ -609,10 +617,8 @@ For simplicity, we work with a GARCH(1,1) that experiences a volatility shock at
    &\frac{(\hat\omega + \hat\alpha a^{2} + \hat\beta\sigma^{2}_{t})-(\hat\omega + \hat\alpha a^{2} + \hat\beta\sigma_{t}^{2} + \hat\omega^{*})}{\sigma_{t+1}^{2}} + \log{\frac{\hat\omega + \hat\alpha a^{2} + \hat\beta\sigma_{t}^{2} + \hat\omega^{*}}{\hat\omega + \hat\alpha a^{2} + \hat\beta\sigma_{t}^{2}}}\label{QL Loss Consistency - GARCH(1,1)}\\
    & = \log{\frac{\hat\omega + \hat\alpha a^{2} + \hat\beta\sigma_{t}^{2} + \hat\omega^{*}}{\hat\omega + \hat\alpha a^{2} + \hat\beta\sigma_{t}^{2}}} - \frac{\hat\omega^{*}}{\sigma^{2}_{t+1}} \label{QL Loss Consistency - GARCH(1,1)} 
 \end{align}
+By letting $f(\hat\omega^{*}) =\log{\frac{\hat\omega + \hat\alpha a^{2} + \hat\beta\sigma_{t}^{2} + \hat\omega^{*}}{\hat\omega + \hat\alpha a^{2} + \hat\beta\sigma_{t}^{2}}} - \frac{\hat\omega^{*}}{\sigma^{2}_{t+1}}$, it is easily verified that $f$ is minimized for $\hat\omega^{*} = 0$, i.e., as the adjusted forecast converges to the unadjusted.  Similarly, the loss of the unadjusted forecast will be greater, so long as the adjustment term $\hat\omega^{*}$ is in appropriate proportion to the actual volatility $\sigma^{2}_{t+1}$.  
 
-Recall from Proposition $(\ref{consistency})$ that $\hat\omega \xrightarrow{p} \E[\omega]$ FIX.  Hence whether the adjusted forecast has smaller loss will depend upon how large $\omega$ is.  
-
-The first term in $(\ref{QL Loss Consistency - GARCH(1,1)})$ will be nonnegative so long as $\hat\omega^{*}$ is nonnegative.
 \subsection{Uniqueness of Convex Combinations}
 \url{https://encyclopediaofmath.org/wiki/Chebyshev_set}
 
