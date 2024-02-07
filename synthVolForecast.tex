@@ -617,7 +617,7 @@ For simplicity, we work with a GARCH(1,1) that experiences a volatility shock at
    &\frac{(\hat\omega + \hat\alpha a^{2} + \hat\beta\sigma^{2}_{t})-(\hat\omega + \hat\alpha a^{2} + \hat\beta\sigma_{t}^{2} + \hat\omega^{*})}{\sigma_{t+1}^{2}} + \log{\frac{\hat\omega + \hat\alpha a^{2} + \hat\beta\sigma_{t}^{2} + \hat\omega^{*}}{\hat\omega + \hat\alpha a^{2} + \hat\beta\sigma_{t}^{2}}}\label{QL Loss Consistency - GARCH(1,1)}\\
    & = \log{\frac{\hat\omega + \hat\alpha a^{2} + \hat\beta\sigma_{t}^{2} + \hat\omega^{*}}{\hat\omega + \hat\alpha a^{2} + \hat\beta\sigma_{t}^{2}}} - \frac{\hat\omega^{*}}{\sigma^{2}_{t+1}} \label{QL Loss Consistency - GARCH(1,1)} 
 \end{align}
-By letting $f(\hat\omega^{*}) =\log{\frac{\hat\omega + \hat\alpha a^{2} + \hat\beta\sigma_{t}^{2} + \hat\omega^{*}}{\hat\omega + \hat\alpha a^{2} + \hat\beta\sigma_{t}^{2}}} - \frac{\hat\omega^{*}}{\sigma^{2}_{t+1}}$, it is easily verified that $f$ is minimized for $\hat\omega^{*} = 0$, i.e., as the adjusted forecast converges to the unadjusted.  Similarly, the loss of the unadjusted forecast will be greater, so long as the adjustment term $\hat\omega^{*}$ is in appropriate proportion to the actual volatility $\sigma^{2}_{t+1}$.  
+By letting $f(\hat\omega^{*}) =\log{\frac{\hat\omega + \hat\alpha a^{2} + \hat\beta\sigma_{t}^{2} + \hat\omega^{*}}{\hat\omega + \hat\alpha a^{2} + \hat\beta\sigma_{t}^{2}}} - \frac{\hat\omega^{*}}{\sigma^{2}_{t+1}}$, it is easily verified that $f$ is minimized at $\hat\omega^{*} = 0$, i.e., as the adjusted forecast converges to the unadjusted.  Similarly, the loss of the unadjusted forecast will be greater, so long as the estimated adjustment term $\hat\omega^{*}$ is in appropriate proportion to the actual volatility $\sigma^{2}_{t+1}$.  This explains why it is so important to avoid using a naive adjustment estimator like the arithmetic mean of the estimated shocks.  
 
 \subsection{Uniqueness of Convex Combinations}
 \url{https://encyclopediaofmath.org/wiki/Chebyshev_set}
@@ -734,12 +734,12 @@ Naturally, one might ask how sensitive this prediction is to at least two kinds 
 
 \section{Discussion}
 \subsection{Connection to forecast combination methods}
-Because the method proposed herein uses a point in $\Delta^{n}$, it is important to head-off possible confusion.  What we are proposing is not a forecast combination method.  What we are combining, if anything, is subcomponents of forecasts, not forecasts themselves.  However, from a broader perspective, forecast combination is an inapt term for what is being proposed here.  First, the donors are not forecasts. 
+Because the method proposed uses a point in $\Delta^{n}$, it is important to head-off possible confusion.  What we are proposing is not a forecast combination method.  What we are combining, if anything, is subcomponents of forecasts, not forecasts themselves.  However, from a broader perspective, forecast combination is an inapt term for what is being proposed here.  First, the donors are not forecasts. 
 \subsection{Why is the proposal here unlike KNN regression?}
 In KNN regression, the hyperparameter K must be learned.  In Synthetic Volatility Forecasting, the number of donors is not learned.  A donor pool is curated, and then careful rules of thumb can be applied to determine whether a given donor should be included or excluded.  While it would not necessarily hurt to `learn' the appropriate number of donors to use, this information would probably not be as useful as knowing which donors and covariates provide the basis for the best forecasts.  This brings us to a deeper point about the distinction between Synthetic Prediction and KNN.  In KNN, the exogenous variables are taken as a given and `nearness' to object-to-predict depends on the distance function chosen.  In contrast, in Synthetic Prediction, the determination of nearness begins with a qualitative step, i.e. curating the units between which we will calculate distances and from we will ultimately derive weights.
 
 \subsection{Should we gather as many donors as possible and pick them quantitatively?}
-It would be counter to the method proposed herein to assemble a vast number of donors, lacking careful scrutiny of the qualitative fit, and let the optimization simply pick the donors, via weighting.  What makes a donor good is not merely its quantitative fit but its qualitative fit as well.
+It would be counter to the method proposed to assemble a vast number of donors, lacking careful scrutiny of the qualitative fit, and let the optimization simply pick the donors, via weighting.  What makes a donor good is not merely its quantitative fit but its qualitative fit as well.
 
 \subsection{Why not use the covariates as covariates in the GARCH model alone or in the GARCH model as well?}
 The data-generating process does not specify that volatility series are well-modeled using ever-present exogenous covariates, and this is fundamentally due to the lack of theoretical justification for such an exogeneity assumption.  
@@ -756,7 +756,7 @@ This needs to be commented out because the current draft has no way to accommoda
 
 We adapt the news shock framework of \citet{kilian2017structural}: \\
 
-$z_{T^{*}+1}^{\text{irregular news shock}} \coloneqq z_{T^{*}+1}^{\text{irregular news}} - \E_{T^{*}}[z_{T^{*}+1}^{\text{irregular news}}]$ \\
+$z_{T^{*}+1}^{\text{nonscheduled news shock}} \coloneqq z_{T^{*}+1}^{\text{nonscheduled news}} - \E_{T^{*}}[z_{T^{*}+1}^{\text{nonscheduled news}}]$ \\
 
 In our adapted schema, irregular news shocks are $\mathcal{F}_{T^{*}}$-zero-expectation events governed by a GARCH-X process.  As such, $z_{T^{*}+1}^{\text{irregular news shock}}$ admits of the decomposition $z_{T^{*}+1} = \sigma_{T^{*}+1}\epsilon_{T^{*}+1}$
 
@@ -808,7 +808,13 @@ strategy& Observe $y_{i}$; then estimate $x$ with small expected L2 loss & Estim
 \end{comment}
 
 \subsection{Model Adjustment Using Synthetic Methods}
-Here we distinguish 
+Here we distinguish what in this work is essential and inessential to synthetic forecasting.
+
+\begin{enumerate}
+  \item k-dimensional thing to predict
+  \item correction term subject to shock with DGP shared among donors
+  \item 
+\end{enumerate}
 
 \section{Supplement}
 We analyze the real-world example with Brexit included.
