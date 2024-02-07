@@ -316,7 +316,7 @@ We present two forecasts:
     }
     \end{align*}
 
-    We now explain how we use the volatility profile to arrive at a set of nonnegative weights that sum to 1.  These weights are then used to compute $\hat\omega^{*} \coloneq \sum^{n+1}_{i=2}w_{i}\hat\omega_{i}$.  Since the $\{w_{i}\}_{i=2}^{n+1}$ are computed using information from $\mathcal{F}_{T^{*}_{i}}$, the set $\{w_{i}\}_{i=2}^{n+1}$ is deterministic, $\textit{modulo}$ any stochastic ingredient employed to approximate $\x_{1,T^{*}}$.
+    We now explain how we use the volatility profile to arrive at a set of nonnegative weights that sum to 1.  These weights are then used to compute $\hat\omega^{*} \coloneq \sum^{n+1}_{i=2}w_{i}\hat\omega^{*}_{i}$.  Since the $\{w_{i}\}_{i=2}^{n+1}$ are computed using information from $\mathcal{F}_{T^{*}_{i}}$, the set $\{w_{i}\}_{i=2}^{n+1}$ is deterministic, $\textit{modulo}$ any stochastic ingredient employed to approximate $\x_{1,T^{*}}$.
 
     Contrast the foregoing with least-squares estimation for the weight vector $\vec{w}$:
 
@@ -324,6 +324,8 @@ We present two forecasts:
     \argmin_{\vec{w}} \|\hat{\omega} - \X_{T^{*}}\vec{w}\|_{2}}
     \end{align*} 
     where $\X_{T^{*}}$ denotes the $p$-vectors $\x_{i,T^{*}}$ stacked in $n$ rows.  One immediately visible problem is that this optimization problem is an optmization problem over $p$-vectors $\vec{w}$ --- i.e. a linear combination of the covariates, whereas what we seek is an $n$-vector --- a linear combination of donors.
+
+    There is no guarantee that $\vec{w}_{OLS}$ would perform poorly as a tool for producing $\hat\omega = X_{1,T^{*}}$, but given the small number of donors supposed in our setting, it is risky.
   
     \subsection{Ground Truth Estimators}
     \label{Ground Truth Estimators}
@@ -600,7 +602,7 @@ as $t\rightarrow\infty$ by a simple application of Slutsky's Theorem.
 
 \end{proof-of-proposition}
 
-\subsection{Risk Minmization Using Synthetic Volatility Forecasting}
+\subsection{Risk Minimization Using Synthetic Volatility Forecasting}
 
 We now evaluate the loss and risk of Synthetic Volatility Forecasts under two scenarios: first, under arbitrary distribution of $\sigma^{2}_{t+1}$, and then second, under the assumption that the data-generating process is correctly specified.
 
@@ -614,10 +616,10 @@ For 1-step-ahead prediction of $\sigma^{2}_{t}$, consider the difference
 For simplicity, we work with a GARCH(1,1) that experiences a volatility shock at a single time point for which we would like to provide a point forecast.  Then (\ref{QL Loss Consistency}) can be expressed as
 
 \begin{align}
-   &\frac{(\hat\omega + \hat\alpha a^{2} + \hat\beta\sigma^{2}_{t})-(\hat\omega + \hat\alpha a^{2} + \hat\beta\sigma_{t}^{2} + \hat\omega^{*})}{\sigma_{t+1}^{2}} + \log{\frac{\hat\omega + \hat\alpha a^{2} + \hat\beta\sigma_{t}^{2} + \hat\omega^{*}}{\hat\omega + \hat\alpha a^{2} + \hat\beta\sigma_{t}^{2}}}\label{QL Loss Consistency - GARCH(1,1)}\\
+   &\frac{(\hat\omega + \hat\alpha a_{t}^{2} + \hat\beta\sigma^{2}_{t})-(\hat\omega + \hat\alpha a_{t}^{2} + \hat\beta\sigma_{t}^{2} + \hat\omega^{*})}{\sigma_{t+1}^{2}} + \log{\frac{\hat\omega + \hat\alpha a_{t}^{2} + \hat\beta\sigma_{t}^{2} + \hat\omega^{*}}{\hat\omega + \hat\alpha_{t} a^{2} + \hat\beta\sigma_{t}^{2}}}\label{QL Loss Consistency - GARCH(1,1)}\\
    & = \log{\frac{\hat\omega + \hat\alpha a^{2} + \hat\beta\sigma_{t}^{2} + \hat\omega^{*}}{\hat\omega + \hat\alpha a^{2} + \hat\beta\sigma_{t}^{2}}} - \frac{\hat\omega^{*}}{\sigma^{2}_{t+1}} \label{QL Loss Consistency - GARCH(1,1)} 
 \end{align}
-By letting $f(\hat\omega^{*}) =\log{\frac{\hat\omega + \hat\alpha a^{2} + \hat\beta\sigma_{t}^{2} + \hat\omega^{*}}{\hat\omega + \hat\alpha a^{2} + \hat\beta\sigma_{t}^{2}}} - \frac{\hat\omega^{*}}{\sigma^{2}_{t+1}}$, it is easily verified that $f$ is minimized at $\hat\omega^{*} = 0$, i.e., as the adjusted forecast converges to the unadjusted.  Similarly, the loss of the unadjusted forecast will be greater, so long as the estimated adjustment term $\hat\omega^{*}$ is in appropriate proportion to the actual volatility $\sigma^{2}_{t+1}$.  This explains why it is so important to avoid using a naive adjustment estimator like the arithmetic mean of the estimated shocks.  
+By letting $f(\hat\omega^{*}) =\log{\frac{\hat\omega + \hat\alpha a^{2} + \hat\beta\sigma_{t}^{2} + \hat\omega^{*}}{\hat\omega + \hat\alpha a^{2} + \hat\beta\sigma_{t}^{2}}} - \frac{\hat\omega^{*}}{\sigma^{2}_{t+1}}$, it is easily verified that as $\hat\omega^{*} \rightarrow 0^{+}$, the difference goes to zero.  Similarly, the loss of the unadjusted forecast will be greater, so long as the estimated adjustment term $\hat\omega^{*}$ is in appropriate proportion to the actual volatility $\sigma^{2}_{t+1}$.  This explains why it is so important to avoid using a naive adjustment estimator like the arithmetic mean of the estimated shocks.  
 
 \subsection{Uniqueness of Convex Combinations}
 \url{https://encyclopediaofmath.org/wiki/Chebyshev_set}
