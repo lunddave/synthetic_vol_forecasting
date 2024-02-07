@@ -127,7 +127,7 @@ We develop a procedure for forecasting the volatility of a time series immediate
 
 \section{Introduction}
 
-Reacting to a seemingly unprecedented event might prompt the question: what, if anything, does it resemble from the past?  Such might be the case with event-driven investing strategies, where the identification of the event could arise via the news pages or corporate communications and hence contains a qualitative, narrative element \citep{Kenton}.  Matching a current crisis to past events is a problem with unsurprising statistical angles: identification, sample size, weighting, risk, and robustness, among many others.  
+Reacting to a seemingly unprecedented event might involve the question: what, if anything, does it resemble from the past?  Such might be the case with event-driven investing strategies, where the identification of the event could arise via the news pages or corporate communications and hence contains a qualitative, narrative element \citep{Kenton}.  Matching a current crisis to past events is a problem with unsurprising statistical angles: identification, sample size, weighting, risk, and robustness, among many others.  
 
 In the context of foreign exchange rate market structure, \citet{dominguez2006defines} argue ``[w]hether news is scheduled or non-scheduled its influence on exchange rates may be related
 to the state of the market at the time of the news arrival.  News that arrives during periods of
@@ -140,7 +140,7 @@ Modern portfolio management and theory often requires information about at least
 
 The same problem and more exists for Realized GARCH model, which incorporates so-called ``realized measures" of volatility, like implied volatility.  GARCH models have been shown slow to adapt to spikes in volatility \citep{andersen2003modeling}.  \citet{engle2002new} explored the use of implied volatility as an exogenous regressor in a GARCH model, that is, using a so-called GARCH-X model \citep{RePEc:pra:mprapa:100301}. \citet{hansen2012realized} propose Realized GARCH, which aims to solve both the asymmetry problem as well as the slow-reaction problem by introducing a ``measurement equation" as a tool for modeling the contribution to the conditional variance made by the market-implied volatility measure.  The key insight is that that the market-implied volatility measure is not independent of the conditional variance posited by the GARCH model.  Therefore, including the external measure must be done in a way that accounts for this dependence. 
 
-The approach herein can be viewed as an attempt to sidestep the functional complexity posited by Realized GARCH, with its minimum nine parameters to estimate \citep{sharma2016forecasting}, by substituting modeling assumptions.  Synthetic Volatility Forecasting proceeds under the assumption that similar news events occasion volatility shocks arising from a common shock distribution.  The procedure proposed herein does not require post-shock information like returns or market-implied quantities from the time series under study.  Hence, we also avoid questions about what realized measure to use and when as well as questions about the usefulness of high-frequency data, although these remain intriguing avenues for future work.
+The approach herein can be viewed as an attempt to sidestep the functional complexity posited by Realized GARCH, with its minimum nine parameters to estimate \citep{sharma2016forecasting}, by substituting modeling assumptions.  Synthetic Volatility Forecasting proceeds under the assumption that similar news events occasion volatility shocks arising from a common shock distribution.  The procedure proposed does not require post-shock information like returns or market-implied quantities from the time series under study.  Hence, we also avoid questions about what realized measure to use and when as well as questions about the usefulness of high-frequency data, although these remain intriguing avenues for future work.
 
 Within the vast literature on financial sentimental analysis, theree exists a sub-literature on financial volatility forecasting using news and news sentiment \citep{atkins2018financial}.  The setting herein is one where the valence of the sentiment is reasonably well-understood, and hence the direction of volatility can be well-predicted, although not perfectly, by human intuition.
 
@@ -183,7 +183,7 @@ In order to motivate our procedure, we show how the aggregation of estimated exc
 \subsection{A Primer on GARCH}
 We follow convention and define the daily log-return as $r_{t} = \text{log}(\frac{P_{t+1}}{P_{t}})$, where $P_{t}$ denotes the price at time $t$.  The class of ARIMA(p,d,q) models developed in the mid-to-late 20th century \citep{box2013box} provides a framework for postulating and quantifying the autoregressive structure of $r_{t}$, all within the framework of frequentist statistics.  These models assume a certain dependence structure between $r_{t}$ and $(r_{k})_{k\leq t}$, yet their errors --- often called innovations in the financial time series context due to how they represent the impact of new information --- are nevertheless assumed to be i.i.d. with mean zero and constant variance.  The ARCH \citep{engle1982autoregressive} and GARCH \citep{bollerslev1986generalized} models provide elegant alternatives to the constant-variance assumption.  In fact, the GARCH framework in its most basic form disregards $r_{t}$ and instead turns its interest to the series $r_{t}^{2}$ (when properly centered, i.e. after assuming a mean-model for returns).  
 
-To that end, let $a_{t} = r_{t} - \mu_{t}$, where $\mu_{t}$ is the mean of the log return series $r_{t}$.  Implicitly, we are committing ourselves to a mean-model for $r_{t}$ in which $\mu_{t}$, the expected daily log-return, may vary with time, while $a_{t}$ is simply the noise.  As \citet{cont2001empirical} explains, such an assumption is justified by the empirical finding that returns lack significant autocorrelation.  We thus derive a mean-zero process $(a_{t})_{t\in\mathbb{N}}$ with the property that $\E[a^{2}_{t}] = \mrm{Var}[a_{t}]$.  Under the assumption of time-invariant volatility, the series $a_{t}^{2}$ should exhibit no autocorrelation at any lag $\ell\geq1$.  This assumption motivates tests for so-called ARCH effects, that is, tests for the clustering of volatility.  These tests explore the alternative hypothesis that $\sigma_{t}^{2}$ is not only a time-varying parameter but furthermore a function of past squared residuals of the mean model.  In particular, the ARCH(m) model is an autoregressive model in which $\sigma_{t}^{2}$ is fitted using a linear combination of the $m$ past values of $a_{t}^{2}$.  The GARCH(m,s) framework take this one step further but modeling $\sigma_{t}^{2}$ as a linear combination of the $m$ past $a_{t}^{2}$ values and well as the $s$ past values of $\sigma_{t}^{2}$.  In functional form,
+To that end, let $a_{t} = r_{t} - \mu_{t}$, where $\mu_{t}$ is the mean of the log return series $r_{t}$.  Implicitly, we are committing ourselves to a mean-model for $r_{t}$ in which $\mu_{t}$, the expected daily log-return, may vary with time.  As \citet{cont2001empirical} explains, such an assumption is justified by the empirical finding that returns lack significant autocorrelation.  We thus derive a mean-zero process $(a_{t})_{t\in\mathbb{N}}$ with the property that $\E[a^{2}_{t}] = \mrm{Var}[a_{t}]$.  Under the assumption of time-invariant volatility, the series $a_{t}^{2}$ should exhibit no autocorrelation at any lag $\ell\geq1$.  This assumption motivates tests for so-called ARCH effects, that is, tests for the clustering of volatility.  These tests explore the alternative hypothesis that $\sigma_{t}^{2}$ is not only a time-varying parameter but furthermore a function of past squared residuals of the mean model.  In particular, the ARCH(m) model is an autoregressive model in which $\sigma_{t}^{2}$ is fitted using a linear combination of the $m$ past values of $a_{t}^{2}$.  The GARCH(m,s) framework take this one step further but modeling $\sigma_{t}^{2}$ as a linear combination of the $m$ past $a_{t}^{2}$ values and well as the $s$ past values of $\sigma_{t}^{2}$.  In functional form,
 
 \begin{align*}
 &\sigma_{t}^{2} = \omega + \sum^{m}_{k=1}\alpha_{k}a^{2}_{t-k} + \sum_{j=1}^{s}\beta_{j}\sigma_{t-j}^{2}\\
@@ -197,9 +197,9 @@ Assuming further that $\sigma^{2}_{t}$ depends on a vector of exogenous covariat
 &a_{t} = \sigma_{t}\epsilon_{t}
 \end{align*}
 
-We will suppose that a researcher has multivariate time series data $\ret_{i,t}, t = 1,$ $\ldots,  T_i$ and $i = 1, \ldots, n+1$.  Let $\ret_{i,t} = (r_{i,t}$, $\x_{i,t}$, $\textbf{v}_{i,t}$) where $r_{i,t}$ is a scalar response,  $\x_{i,t}$ is a vector of covariates that are revealed to the analyst prior to the observation of $\ret_{1,t}$, and $\textbf{v}_{i,t}$ is a vector of market-implied volatility metrics for the series $i$ that are available prior to the market's opening at time $t$.  Suppose that the analyst is interested in forecasting the volatility of $y_{1,t}$, the first time series in the collection.  We require that each time series $\ret_{i,t}$ is subject to an news event following $T^*_i \leq T_{i} + 1$ and before witnessing $T^*_i+1$.  We are implicitly leveraging the fact that financial assets are heavily traded during market hours, yet only thinly traded (if traded at all) outside market hours.  In contrast, the arrival of market-moving news does not obey any such restrictions.
+We will suppose that a researcher has multivariate time series data $\ret_{i,t}, t = 1,$ $\ldots,  T_i$ and $i = 1, \ldots, n+1$.  Let $\ret_{i,t} = (r_{i,t}$, $\x_{i,t}$, $\textbf{v}_{i,t}$) where $r_{i,t}$ is a scalar response,  $\x_{i,t}$ is a vector of covariates that are revealed to the analyst prior to the observation of $\ret_{1,t}$, and $\textbf{v}_{i,t}$ is a vector of market-implied volatility metrics for the series $i$ that are available prior to the market's opening at time $t$.  Suppose that the analyst is interested in forecasting the volatility of $y_{1,t}$, the first time series in the collection.  We require that each time series $\ret_{i,t}$ is subject to a news event following $T^*_i \leq T_{i} + 1$ and before witnessing $T^*_i+1$.  We are implicitly leveraging the fact that financial assets are heavily traded during market hours, yet only thinly traded (if traded at all) outside market hours.  In contrast, the arrival of market-moving news does not obey any such restrictions.
 
-In light of the foregoing, we can rewrite the GARCH framework we are interested in as such
+In light of the foregoing, we can rewrite the GARCH model we are interested in as such
 
 \begin{align*}
 &\sigma_{i,t}^{2} = \omega_{i} + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \begin{pmatrix} \x_{i,t} \\ \textbf{v}_{i,t} \\ \end{pmatrix} \\
@@ -211,9 +211,9 @@ In light of the foregoing, we can rewrite the GARCH framework we are interested 
 
 \subsection{Model setup}
 \label{modelsetup}
-In this section, we will describe the assumed dynamic panel models for which 
+In this section, we will describe the postulated models for which 
 post-shock aggregated estimators are provided. The basic structures of these models 
-are the same for all time series in the analysis.  The differences between them lie in the shock distributions.  We first sharply distinguish between a volatility shock induced by a return series shock and a volatility shock directly affecting the volatility equation of a GARCH model, without mediation of the return series.
+are the same for all time series in the analysis.  We first sharply distinguish between a volatility shock induced by a return series shock and a volatility shock directly affecting the volatility equation of a GARCH model, without mediation of the return series.
 
 Let $I(\cdot)$ be an indicator function, $T_i$ be the time length of the time series $i$ for $i = 1, \ldots, n+1$, and $T_i^*$ denote the largest time index prior to the arrival of the news shock , with $T_i^* < T_i$.  For $t= 1, \ldots, T_i$ and $i = 1, \ldots, n+1$, the model $\mc{M}_1$ is defined as
 
@@ -241,15 +241,7 @@ Let $I(\cdot)$ be an indicator function, $T_i$ be the time length of the time se
     \omega^{*}_i & \indep  \epsilon_{i,t} \indep  \epsilon^{*}_{i,t} \indep \delta \indep \varepsilon_{i,t}
     \end{align*}
 where $D^{vol}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + L_{i, vol}\})$, $D^{level}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + L_{i, level}\})$ 
-and $\x_{i,t} \in \mathbb{R}^{p}$, with $p \geq 1$.  Notice that $\mc{M}_1$ assumes that $\omega^{*}_i$ are i.i.d. with $\E[ \omega^{*}_i]=\mu_{\omega^{*}}$ for $i = 1, \ldots, n+1$. 
-
-    We further define the parameter sets
-    \begin{align}
-      \begin{array}{lll}
-         \mathcal{F}_{1,t} &= &\{(\omega^{*}_i, \epsilon_{i,t}, \epsilon^{*}_{i,t}, \varepsilon_{i,t})\colon t= 1, \ldots, T_i, i = 2, \ldots, n +1\},\\
-      \end{array}
-    \end{align}\label{parameter}
-    where $\mathcal{F}_{t}$ and $\mathcal{F}_{1,t}$ can be adapted to $\mc{M}_1$ by dropping $\delta$. We assume this for notational simplicity.
+and $\x_{i,t} \in \mathbb{R}^{p}$, with $p \geq 1$.  Notice that $\mc{M}_1$ assumes that $\omega^{*}_i$ are i.i.d. with $\E[ \omega^{*}_i]=\mu_{\omega^{*}}$ for $i = 1, \ldots, n+1$.  
 
     \subsection{Volatility Profile of a Time Series}
     \label{Volatility Profile of a Time Series}
@@ -300,8 +292,8 @@ Here we make reference to Tsay p. 133 and explain, very similarly to Tsay, that 
 We present two forecasts:
 
 \begin{align*}
-  \text{Forecast 1: } & \hat\sigma^{2}_{unadjusted} \coloneq \hat\E_{T^{*}}[\sigma^{2}_{i,T^{*}+1}|\mathcal{F}_{T^{*}}] = \omega_{i} + \sum^{m_{i}}_{k=1}\hat\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\hat\beta_{i,j}\sigma_{i,t-j}^{2} + \hat\gamma_{i}^{T} \x_{i,t}\\
-  \text{Forecast 2: }  & \hat\sigma^{2}_{adjusted} \coloneq \hat\E_{T^{*}}[\sigma^{2}_{i,T^{*}+1}|\mathcal{F}_{T^{*}}] + \hat\omega = \omega_{i} + \sum^{m_{i}}_{k=1}\hat\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\hat\beta_{i,j}\sigma_{i,t-j}^{2} + \hat\gamma_{i}^{T} \x_{i,t}+ \hat\omega
+  \text{Forecast 1: } & \hat\sigma^{2}_{unadjusted} \coloneq \hat\E_{T^{*}}[\sigma^{2}_{i,T^{*}+1}|\mathcal{F}_{T^{*}}] = \hat\omega_{i} + \sum^{m_{i}}_{k=1}\hat\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\hat\beta_{i,j}\sigma_{i,t-j}^{2} + \hat\gamma_{i}^{T} \x_{i,t}\\
+  \text{Forecast 2: }  & \hat\sigma^{2}_{adjusted} \coloneq \hat\E_{T^{*}}[\sigma^{2}_{i,T^{*}+1}|\mathcal{F}_{T^{*}}] + \hat\omega = \hat\omega_{i} + \sum^{m_{i}}_{k=1}\hat\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\hat\beta_{i,j}\sigma_{i,t-j}^{2} + \hat\gamma_{i}^{T} \x_{i,t}+ \hat\omega
 \end{align*}
 
 \subsection{Excess Volatility Estimators}
