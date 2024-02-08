@@ -138,7 +138,7 @@ In this work we focus on the second central moment of a time series, the volatil
 
 Modern portfolio management and theory often requires information about at least the first two moments of a return series, if not higher.  Volatility modeling has grown immensely over the previous four decades to meet the needs of both theoreticians and practitioners \citep{engle2001good}, prompting lines of inquiry to search for novel settings and challenges, as we do in this paper.  No matter how a time series or its transformations are modeled, forecasting in the presence of exogenous shock events requires a methodological framework that sensibly incorporates relevant information that has yet to manifest in market price or derivative quantities like volatility.  In this setting, regime-change models (see \citet{bauwens2006regime} and citations therein) are of little use because under the assumption of a known exogenous shock, there is no need to estimate a regime-change time, nor is there data following the exogenous shock event to fit a model.  Asymmetric GARCH models were an early attempt to account for fact that negative returns typically beget larger volatility than positive returns \citep{hansen2012realized}.  Problematically, such models depend upon the observation of a negative return to provide the most updated volatility forecast, but under the circumstances posited herein, no such return has been observed.
 
-The same problem and more exists for Realized GARCH model, which incorporates so-called ``realized measures" of volatility, like implied volatility.  GARCH models have been shown slow to adapt to spikes in volatility \citep{andersen2003modeling}.  \citet{engle2002new} explored the use of implied volatility as an exogenous regressor in a GARCH model, that is, using a so-called GARCH-X model \citep{RePEc:pra:mprapa:100301}. \citet{hansen2012realized} propose Realized GARCH, which aims to solve both the asymmetry problem as well as the slow-reaction problem by introducing a ``measurement equation" as a tool for modeling the contribution to the conditional variance made by the market-implied volatility measure.  The key insight is that that the market-implied volatility measure is not independent of the conditional variance posited by the GARCH model.  Therefore, including the external measure must be done in a way that accounts for this dependence. 
+The same problem and more exists for Realized GARCH model, which incorporates so-called ``realized measures" of volatility, like implied volatility.  GARCH models have been shown slow to adapt to spikes in volatility \citep{andersen2003modeling}.  \citet{engle2002new} explored the use of implied volatility as an exogenous regressor in a GARCH model, that is, using a so-called GARCH-X model \citep{RePEc:pra:mprapa:100301}. \citet{hansen2012realized} propose Realized GARCH, which aims to solve both the asymmetry problem as well as the slow-reaction problem by introducing a ``measurement equation" as a tool for modeling the contribution to the conditional variance made by the market-implied volatility measure.  The key insight is that that the market-implied volatility measure is not independent of the conditional variance posited by the GARCH model.  Therefore, including the external measure must be done in a way that accounts for this dependence.  We note also that Black-Scholes implied volatility is a biased estimator of volatility \citep{mayhew1995implied, christensen1998relation}, with the bias increasing in times of crises when options are out-of-the-money. 
 
 The approach herein can be viewed as an attempt to sidestep the functional complexity posited by Realized GARCH, with its minimum nine parameters to estimate \citep{sharma2016forecasting}, by substituting modeling assumptions.  Synthetic Volatility Forecasting proceeds under the assumption that similar news events occasion volatility shocks arising from a common shock distribution.  The procedure proposed does not require post-shock information like returns or market-implied quantities from the time series under study.  Hence, we also avoid questions about what realized measure to use and when as well as questions about the usefulness of high-frequency data, although these remain intriguing avenues for future work.
 
@@ -290,12 +290,9 @@ and $\x_{i,t} \in \mathbb{R}^{p}$, with $p \geq 1$.  Notice that $\mc{M}_1$ assu
 
 \section{Post-shock Synthetic Volatility Forecasting Methodology}
 
-
 \subsection{Forecasting}
 
-A GARCH model is an ARMA on the squares of the observed scalar time series, as we have already noted.  This fact matters for forecasting because the forecasting function for GARCH model is, just like for an ARMA model, the conditional expectation function, $\mathbb{E}[ \sigma^{2}_{i,T^{*}+r+1} | \mathcal{F}_{T^{*}+r}]$, or practically speaking, the estimate thereof, $\hat{\mathbb{E}}[ \sigma^{2}_{i,T^{*}+r+1} |\mathcal{F}_{T^{*}+r}]$ \citep{zivot2009practical}.
-
-Here we make reference to Tsay p. 133 and explain, very similarly to Tsay, that the prediction function for a GARCH(m,s) is very similar to an ARMA prediction function.  Modeled after section 2.2 here https://arxiv.org/pdf/2008.11756.pdf
+A GARCH model is an ARMA on the squares of the observed scalar time series \citep{tsay2005analysis}.  This fact matters for forecasting because the forecasting function for GARCH model is, just like for an ARMA model, the conditional expectation function, $\mathbb{E}[ \sigma^{2}_{i,T^{*}+r+1} | \mathcal{F}_{T^{*}+r}]$, or practically speaking, the estimate thereof, $\hat{\mathbb{E}}[ \sigma^{2}_{i,T^{*}+r+1} |\mathcal{F}_{T^{*}+r}]$ \citep{zivot2009practical}.
 
 We present two forecasts:
 
@@ -309,23 +306,22 @@ We present two forecasts:
 \subsubsection{Aggregation Mechanism}
     \label{Aggregation Mechanism}
    
-    The problem of aggregating estimated donor shocks begins with the data constraints.  Taking the estimated shocks as a given, we essentially observe the pair $(\{\hat\omega_{i}\}^{n+1}_{i=2},\{\x_{i,T^{*}}\}^{n+1}_{i=2})$.  We wish to recover weights $\{w_{i}\}^{n+1}_{i=2} \in \Delta^{n}$ that will minimize expected loss.  Let $L(\cdot,\cdot)$ denote any loss function, not necessarily symmetric, mapping two quantities to the non-negative reals.  Let $\hat\sigma^{2}$ denote any forecast for $\sigma^{2}$.  Formally, our optimization problem is \\ 
+    The problem of aggregating estimated donor shocks begins with the data constraints.  Taking the estimated shocks as a given, we essentially observe the pair $(\{\hat\omega^{*}_{i}\}^{n+1}_{i=2},\{\x_{i,T^{*}}\}^{n+1}_{i=2})$.  We wish to recover weights $\{w_{i}\}^{n+1}_{i=2} \in \Delta^{n}$ that will minimize expected loss.  Let $L(\cdot,\cdot)$ denote any loss function, not necessarily symmetric, mapping two quantities to the non-negative reals.  Let $\hat\sigma^{2}$ denote any forecast for $\sigma^{2}$.  Formally, our optimization problem is \\ 
 
     \begin{align*}{
      \argmin_{\{w_{i}\}^{n+1}_{i=2} \in \Delta^{n}} \E[L(\sigma^{2}, \hat\sigma^{2})]
     }
     \end{align*}
-
-    We now explain how we use the volatility profile to arrive at a set of nonnegative weights that sum to 1.  These weights are then used to compute $\hat\omega^{*} \coloneq \sum^{n+1}_{i=2}w_{i}\hat\omega^{*}_{i}$.  Since the $\{w_{i}\}_{i=2}^{n+1}$ are computed using information from $\mathcal{F}_{T^{*}_{i}}$, the set $\{w_{i}\}_{i=2}^{n+1}$ is deterministic, $\textit{modulo}$ any stochastic ingredient employed to approximate $\x_{1,T^{*}}$.
+We now explain how we use the volatility profile to arrive at a set of nonnegative weights that sum to 1.  These weights are then used to compute $\hat\omega^{*} \coloneq \sum^{n+1}_{i=2}w_{i}\hat\omega^{*}_{i}$.  Since the $\{w_{i}\}_{i=2}^{n+1}$ are computed using information from $\mathcal{F}_{T^{*}_{i}}$, the set $\{w_{i}\}_{i=2}^{n+1}$ is deterministic, $\textit{modulo}$ any stochastic ingredient employed to approximate $\x_{1,T^{*}}$.
 
     Contrast the foregoing with least-squares estimation for the weight vector $\vec{w}$:
 
     \begin{align*}{
-    \argmin_{\vec{w}} \|\hat{\omega} - \X_{T^{*}}\vec{w}\|_{2}}
+    \vec{w}_{OLS}=\argmin_{\vec{w}} \|\hat{\omega}^{*} - \X_{T^{*}}\vec{w}\|_{2}}
     \end{align*} 
     where $\X_{T^{*}}$ denotes the $p$-vectors $\x_{i,T^{*}}$ stacked in $n$ rows.  One immediately visible problem is that this optimization problem is an optmization problem over $p$-vectors $\vec{w}$ --- i.e. a linear combination of the covariates, whereas what we seek is an $n$-vector --- a linear combination of donors.
 
-    There is no guarantee that $\vec{w}_{OLS}$ would perform poorly as a tool for producing $\hat\omega = X_{1,T^{*}}$, but given the small number of donors supposed in our setting, it is risky.
+    There is no guarantee that $\vec{w}_{OLS}$ would perform poorly as a tool for producing $\hat\omega^{*}$, but given the small number of donors supposed in our setting, it is risky.
   
     \subsection{Ground Truth Estimators}
     \label{Ground Truth Estimators}
@@ -336,9 +332,7 @@ We present two forecasts:
     \subsubsection{Market-Implied Volatility}
     
     Here we introduce implied volatility, a quantity that is derived using the equilibrium price of call and put options on the underlying financial asset.
-    
-    We note also that Black-Scholes implied volatility is a biased estimator of volatility \citep{mayhew1995implied, christensen1998relation}, with the bias increasing in times of crises when options are out-of-the-money.
-    
+     
     \subsubsection{Realized Volatility}
     
     Suppose we examine $K$ units of of time, where each unit is divided into m intervals of length 1/m.  We follow the notation of  \citet{andersen2009realized}. Let $p_{t} = \text{log}(P_{t})$, and let $r(t, 1/m) = p_{t} - p_{t-1/m}$.  We estimate the variance of a log-return series using Realized Volatility, denoted $RV_{K,m}$, using
@@ -557,7 +551,7 @@ Place here
 
 \subsection{Consistency of the Synthetic Volatility fixed-effect estimators}
 
-\begin{prop}\label{consistency} Assume
+\begin{prop}\label{omega_consistency} Assume
 \begin{enumerate}
   \item $\forall i$, $\{a_{i,t}\}_{t=0,...,T_i}$ obeys a GARCH-X($m,s$) process with volatility shocks found in either $\mc{M}_1$ or $\mc{M}_2$, where $T_i$ is the length of the $i$th series.
   \item $\forall i, \{\omega_{i,t}^{*}\}_{t=0,...,T_i}$ is potentially non-zero at $\{T^{*}_{i}+1,... ,T^{*}_{i}+k\}$, $\omega_{i,T^{*}+1}^{*}\equiv...\equiv\omega_{i,T^{*}+k}^{*}$, and zero otherwise, where the arrival of $T_{i}^{*}$ is governed by a time-invariant distribution on $\{a_{i,t}\}_{t=0,...,T_i}$. \label{stationarity_of_omega_i_t}
@@ -575,8 +569,8 @@ The result follows from the consistency proof of the QMLE in GARCH-X models, as 
 \end{proof-of-proposition}
 
   \subsection{Consistency of the Synthetic Volatility Forecast function}
-\begin{prop}
-  Under the conditions in Proposition \ref{consistency}, $\hat\sigma^{2}_{1,T^{*}+r}\xrightarrow{p}\sigma^{2}_{1,T^{*}+r}, r = 1, k =$ max$\{m,s\}$.
+\begin{prop}\label{sigma_consistency}
+  Under the conditions in Proposition \ref{omega_consistency}, $\hat\sigma^{2}_{1,T^{*}+r}\xrightarrow{p}\sigma^{2}_{1,T^{*}+r}, r = 1, k =$ max$\{m,s\}$.
 \end{prop}
 
 \begin{proof-of-proposition}
@@ -606,20 +600,22 @@ as $t\rightarrow\infty$ by a simple application of Slutsky's Theorem.
 
 We now evaluate the loss and risk of Synthetic Volatility Forecasts under two scenarios: first, under arbitrary distribution of $\sigma^{2}_{t+1}$, and then second, under the assumption that the data-generating process is correctly specified.
 
-For 1-step-ahead prediction of $\sigma^{2}_{t}$, consider the difference 
+For 1-step-ahead prediction of $\sigma^{2}_{t+1}$, consider the difference 
 
 \begin{align}
-  & QL(\hat\sigma_{t+1, unadjusted}^{2},\sigma^{2})-QL(\hat\sigma^{2}_{t+1, adjusted},\sigma^{2})\\
-   & =(\frac{\hat\sigma^{2}_{t+1,unadjusted}}{\sigma^{2}} - \log{\frac{\hat\sigma^{2}_{t+1,unadjusted}}{\sigma^{2}}} - 1) - (\frac{\hat\sigma^{2}_{t+1,adjusted}}{\sigma^{2}} - \log{\frac{\hat\sigma^{2}_{t+1,adjusted}}{\sigma^{2}}} - 1)\\
-   & = \frac{\hat\sigma^{2}_{t+1,unadjusted}-\hat\sigma^{2}_{t+1,adjusted}}{\sigma^{2}} + \log{\frac{\hat\sigma^{2}_{t+1,adjusted}}{\hat\sigma^{2}_{t+1,unadjusted}}}\label{QL Loss Consistency}
+  & QL(\hat\sigma_{t+1, unadjusted}^{2},\sigma^{2}_{t+1})-QL(\hat\sigma^{2}_{t+1, adjusted},\sigma^{2}_{t+1})\\
+   & =(\frac{\hat\sigma^{2}_{t+1,unadjusted}}{\sigma_{t+1}^{2}} - \log{\frac{\hat\sigma^{2}_{t+1,unadjusted}}{\sigma_{t+1}^{2}}} - 1) - (\frac{\hat\sigma^{2}_{t+1,adjusted}}{\sigma_{t+1}^{2}} - \log{\frac{\hat\sigma^{2}_{t+1,adjusted}}{\sigma_{t+1}^{2}}} - 1)\\
+   & = \frac{\hat\sigma^{2}_{t+1,unadjusted}-\hat\sigma^{2}_{t+1,adjusted}}{\sigma_{t+1}^{2}} + \log{\frac{\hat\sigma^{2}_{t+1,adjusted}}{\hat\sigma^{2}_{t+1,unadjusted}}}\label{QL Loss Consistency}
 \end{align}
 For simplicity, we work with a GARCH(1,1) that experiences a volatility shock at a single time point for which we would like to provide a point forecast.  Then (\ref{QL Loss Consistency}) can be expressed as
 
 \begin{align}
-   &\frac{(\hat\omega + \hat\alpha a_{t}^{2} + \hat\beta\sigma^{2}_{t})-(\hat\omega + \hat\alpha a_{t}^{2} + \hat\beta\sigma_{t}^{2} + \hat\omega^{*})}{\sigma_{t+1}^{2}} + \log{\frac{\hat\omega + \hat\alpha a_{t}^{2} + \hat\beta\sigma_{t}^{2} + \hat\omega^{*}}{\hat\omega + \hat\alpha_{t} a^{2} + \hat\beta\sigma_{t}^{2}}}\label{QL Loss Consistency - GARCH(1,1)}\\
-   & = \log{\frac{\hat\omega + \hat\alpha a^{2} + \hat\beta\sigma_{t}^{2} + \hat\omega^{*}}{\hat\omega + \hat\alpha a^{2} + \hat\beta\sigma_{t}^{2}}} - \frac{\hat\omega^{*}}{\sigma^{2}_{t+1}} \label{QL Loss Consistency - GARCH(1,1)} 
+   &\frac{(\hat\omega + \hat\alpha a_{t}^{2} + \hat\beta\sigma^{2}_{t})-(\hat\omega + \hat\alpha a_{t}^{2} + \hat\beta\sigma_{t}^{2} + \hat\omega^{*})}{\sigma_{t+1}^{2}} + \log{\frac{\hat\omega + \hat\alpha a_{t}^{2} + \hat\beta\sigma_{t}^{2} + \hat\omega^{*}}{\hat\omega + \hat\alpha a_{t}^{2} + \hat\beta\sigma_{t}^{2}}}\\
+   & = \log{\frac{\hat\omega + \hat\alpha a_{t}^{2} + \hat\beta\sigma_{t}^{2} + \hat\omega^{*}}{\hat\omega + \hat\alpha a_{t}^{2} + \hat\beta\sigma_{t}^{2}}} - \frac{\hat\omega^{*}}{\sigma^{2}_{t+1}} \label{QL Loss Consistency - GARCH(1,1)} 
 \end{align}
-By letting $f(\hat\omega^{*}) =\log{\frac{\hat\omega + \hat\alpha a^{2} + \hat\beta\sigma_{t}^{2} + \hat\omega^{*}}{\hat\omega + \hat\alpha a^{2} + \hat\beta\sigma_{t}^{2}}} - \frac{\hat\omega^{*}}{\sigma^{2}_{t+1}}$, it is easily verified that as $\hat\omega^{*} \rightarrow 0^{+}$, the difference goes to zero.  Similarly, the loss of the unadjusted forecast will be greater, so long as the estimated adjustment term $\hat\omega^{*}$ is in appropriate proportion to the actual volatility $\sigma^{2}_{t+1}$.  This explains why it is so important to avoid using a naive adjustment estimator like the arithmetic mean of the estimated shocks.  
+By letting $f(\hat\omega^{*}) = \log{\frac{\hat\omega + \hat\alpha a_{t}^{2} + \hat\beta\sigma_{t}^{2} + \hat\omega^{*}}{\hat\omega + \hat\alpha a_{t}^{2} + \hat\beta\sigma_{t}^{2}}} - \frac{\hat\omega^{*}}{\sigma^{2}_{t+1}}$, it's easily verified that as $\hat\omega^{*} \rightarrow 0^{+}$, the difference in the losses to zero.  Similarly, the loss of the unadjusted forecast will be greater, so long as the estimated adjustment term $\hat\omega^{*}$ is in appropriate proportion to the actual volatility $\sigma^{2}_{t+1}$.  This explains why it is so important to avoid using a naive adjustment estimator like the arithmetic mean of the estimated shocks.  
+
+Finally, by applying Propositions $\ref{omega_consistency}$ and $\ref{sigma_consistency}$, we derive an asymptotic result for ($\ref{QL Loss Consistency - GARCH(1,1)}$). 
 
 \subsection{Uniqueness of Convex Combinations}
 \url{https://encyclopediaofmath.org/wiki/Chebyshev_set}
@@ -737,7 +733,11 @@ Naturally, one might ask how sensitive this prediction is to at least two kinds 
 \section{Discussion}
 \subsection{Connection to forecast combination methods}
 Because the method proposed uses a point in $\Delta^{n}$, it is important to head-off possible confusion.  What we are proposing is not a forecast combination method.  What we are combining, if anything, is subcomponents of forecasts, not forecasts themselves.  However, from a broader perspective, forecast combination is an inapt term for what is being proposed here.  First, the donors are not forecasts. 
-\subsection{Why is the proposal here unlike KNN regression?}
+\subsection{Why is the proposal here like and unlike KNN regression?}
+\begin{enumerate}
+  \item They are similar in that a high-dimensional space, i.e. large $p$, corresponding to many covariates, is a difficult space in which to work with distances \citep{hastie2009elements}, and similar to KNN, we are not exploiting the data generating process, which is here assumed to be linear.
+  \item SVF does have a problem in that a convex combination uses $n-1$ degrees of freedom
+\end{enumerate}
 In KNN regression, the hyperparameter K must be learned.  In Synthetic Volatility Forecasting, the number of donors is not learned.  A donor pool is curated, and then careful rules of thumb can be applied to determine whether a given donor should be included or excluded.  While it would not necessarily hurt to `learn' the appropriate number of donors to use, this information would probably not be as useful as knowing which donors and covariates provide the basis for the best forecasts.  This brings us to a deeper point about the distinction between Synthetic Prediction and KNN.  In KNN, the exogenous variables are taken as a given and `nearness' to object-to-predict depends on the distance function chosen.  In contrast, in Synthetic Prediction, the determination of nearness begins with a qualitative step, i.e. curating the units between which we will calculate distances and from we will ultimately derive weights.
 
 \subsection{Should we gather as many donors as possible and pick them quantitatively?}
