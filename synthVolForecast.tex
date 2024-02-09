@@ -122,7 +122,7 @@
 \maketitle
 
 \begin{abstract} 
-We develop a procedure for forecasting the volatility of a time series immediately following a news shock.  Adapting the synthetic prediction framework of \citet{lin2021minimizing}, we exploit series that have experienced similar shocks.  We aggregate their shock-induced excess volatilities by positing the shocks to be affine functions of exogenous covariates.  The volatility shocks are modeled as random effects and estimated as fixed effects.  The aggregation of these estimates is done in service of adjusting the $h$-step-ahead GARCH forecast of the time series under study by an additive term.  The adjusted and unadjusted forecasts are evaluated using three families of benchmarks: the unobservable but easily-estimated realized volatility (RV), implied volatility, and the empirical volatility over horizons of varying length.  We also compare the performance of the adjusted forecast to the performance of the Realized GARCH forecast, which is known to react faster to rapidly-changing volatility than GARCH incorporating implied volatility.  Finally, we combine Realized GARCH modeling with the synthetic prediction framework, using Realized GARCH in both the estimation of random effects as well as the forecast for the time series under study.  A real-world application is provided, as are simulation results suggesting the conditions and hyperparameters under which our method thrives.
+We develop a procedure for forecasting the volatility of a time series immediately following a news shock.  Adapting the synthetic prediction framework of \citet{lin2021minimizing}, we exploit series that have experienced similar shocks.  We aggregate their shock-induced excess volatilities by positing the shocks to be affine functions of exogenous covariates.  The volatility shocks are modeled as random effects and estimated as fixed effects.  The aggregation of these estimates is done in service of adjusting the $h$-step-ahead GARCH forecast of the time series under study by an additive term.  The adjusted and unadjusted forecasts are evaluated the unobservable but easily-estimated realized volatility (RV).  We also compare the performance of the adjusted forecast to the performance of the Realized GARCH forecast, which is known to react faster to rapidly-changing volatility than GARCH incorporating implied volatility.  Finally, we combine Realized GARCH modeling with the synthetic prediction framework, using Realized GARCH in both the estimation of random effects as well as the forecast for the time series under study.  A real-world application is provided, as are simulation results suggesting the conditions and hyperparameters under which our method thrives.
 \end{abstract}
 
 \section{Introduction}
@@ -247,7 +247,6 @@ and $\x_{i,t} \in \mathbb{R}^{p}$, with $p \geq 1$.  Notice that $\mc{M}_1$ assu
          \mathcal{F}_{1,t} &= &\{(\omega^{*}_i, \epsilon_{i,t}, \epsilon^{*}_{i,t}, \varepsilon_{i,t})\colon t= 1, \ldots, T_i, i = 2, \ldots, n +1\},\\
       \end{array}
     \end{align}\label{parameter}
-    where $\mathcal{F}_{t}$ and $\mathcal{F}_{1,t}$ can be adapted to $\mc{M}_1$ by dropping $\delta$. We assume this for notational simplicity.
 
     \subsection{Volatility Profile of a Time Series}
     \label{Volatility Profile of a Time Series}
@@ -311,15 +310,6 @@ We present two forecasts:
     }
     \end{align*}
 We now explain how we use the volatility profile to arrive at a set of nonnegative weights that sum to 1.  These weights are then used to compute $\hat\omega^{*} \coloneq \sum^{n+1}_{i=2}w_{i}\hat\omega^{*}_{i}$.  Since the $\{w_{i}\}_{i=2}^{n+1}$ are computed using information from $\mathcal{F}_{T^{*}_{i}}$, the set $\{w_{i}\}_{i=2}^{n+1}$ is deterministic, $\textit{modulo}$ any stochastic ingredient employed to approximate $\x_{1,T^{*}}$.
-
-    Contrast the foregoing with least-squares estimation for the weight vector $\vec{w}$:
-
-    \begin{align*}{
-    \vec{w}_{OLS}=\argmin_{\vec{w}} \|\hat{\omega}^{*} - \X_{T^{*}}\vec{w}\|_{2}}
-    \end{align*} 
-    where $\X_{T^{*}}$ denotes the $p$-vectors $\x_{i,T^{*}}$ stacked in $n$ rows.  One immediately visible problem is that this optimization problem is an optmization problem over $p$-vectors $\vec{w}$ --- i.e. a linear combination of the covariates, whereas what we seek is an $n$-vector --- a linear combination of donors.
-
-    There is no guarantee that $\vec{w}_{OLS}$ would perform poorly as a tool for producing $\hat\omega^{*}$, but given the small number of donors supposed in our setting, it is risky.
   
     \subsection{Ground Truth Estimators}
     \label{Ground Truth Estimators}
@@ -542,7 +532,7 @@ Place here
 
 \begin{prop}\label{omega_consistency} Assume
 \begin{enumerate}
-  \item $\forall i$, $\{a_{i,t}\}_{t=0,...,T_i}$ obeys a GARCH-X($m,s$) process with volatility shocks found in either $\mc{M}_1$ or $\mc{M}_2$, where $T_i$ is the length of the $i$th series.
+  \item $\forall i$, $\{a_{i,t}\}_{t=0,...,T_i}$ obeys a GARCH-X($m,s$) process with volatility shocks found in $\mc{M}_1$, where $T_i$ is the length of the $i$th series.
   \item $\forall i, \{\omega_{i,t}^{*}\}_{t=0,...,T_i}$ is potentially non-zero at $\{T^{*}_{i}+1,... ,T^{*}_{i}+k\}$, $\omega_{i,T^{*}+1}^{*}\equiv...\equiv\omega_{i,T^{*}+k}^{*}$, and zero otherwise, where the arrival of $T_{i}^{*}$ is governed by a time-invariant distribution on $\{a_{i,t}\}_{t=0,...,T_i}$. \label{stationarity_of_omega_i_t}
   \item Let the conditions in Assumption 0 of \citet{han2014asymptotic} prevail.
 \end{enumerate}
@@ -589,7 +579,7 @@ as $t\rightarrow\infty$ by a simple application of Slutsky's Theorem.
 
 We now evaluate the loss and risk of Synthetic Volatility Forecasts under two scenarios: first, under arbitrary distribution of $\sigma^{2}_{t+1}$, and then second, under the assumption that the data-generating process is correctly specified.
 
-For 1-step-ahead prediction of $\sigma^{2}_{t+1}$, consider the difference 
+For 1-step-ahead forecast of $\sigma^{2}_{t+1}$, consider the difference 
 
 \begin{align}
   & QL(\hat\sigma_{t+1, unadjusted}^{2},\sigma^{2}_{t+1})-QL(\hat\sigma^{2}_{t+1, adjusted},\sigma^{2}_{t+1})\\
@@ -602,12 +592,18 @@ For simplicity, we work with a GARCH(1,1) that experiences a volatility shock at
    &\frac{(\hat\omega + \hat\alpha a_{t}^{2} + \hat\beta\sigma^{2}_{t})-(\hat\omega + \hat\alpha a_{t}^{2} + \hat\beta\sigma_{t}^{2} + \hat\omega^{*})}{\sigma_{t+1}^{2}} + \log{\frac{\hat\omega + \hat\alpha a_{t}^{2} + \hat\beta\sigma_{t}^{2} + \hat\omega^{*}}{\hat\omega + \hat\alpha a_{t}^{2} + \hat\beta\sigma_{t}^{2}}}\\
    & = \log{\frac{\hat\omega + \hat\alpha a_{t}^{2} + \hat\beta\sigma_{t}^{2} + \hat\omega^{*}}{\hat\omega + \hat\alpha a_{t}^{2} + \hat\beta\sigma_{t}^{2}}} - \frac{\hat\omega^{*}}{\sigma^{2}_{t+1}} \label{QL Loss Consistency - GARCH(1,1)} 
 \end{align}
-By letting $f(\hat\omega^{*}) = \log{\frac{\hat\omega + \hat\alpha a_{t}^{2} + \hat\beta\sigma_{t}^{2} + \hat\omega^{*}}{\hat\omega + \hat\alpha a_{t}^{2} + \hat\beta\sigma_{t}^{2}}} - \frac{\hat\omega^{*}}{\sigma^{2}_{t+1}}$, it's easily verified that as $\hat\omega^{*} \rightarrow 0^{+}$, the difference in the losses to zero.  Similarly, the loss of the unadjusted forecast will be greater, so long as the estimated adjustment term $\hat\omega^{*}$ is in appropriate proportion to the actual volatility $\sigma^{2}_{t+1}$.  This explains why it is so important to avoid using a naive adjustment estimator like the arithmetic mean of the estimated shocks.  
+By letting $f(\hat\omega^{*}) = \log{\frac{\hat\omega + \hat\alpha a_{t}^{2} + \hat\beta\sigma_{t}^{2} + \hat\omega^{*}}{\hat\omega + \hat\alpha a_{t}^{2} + \hat\beta\sigma_{t}^{2}}} - \frac{\hat\omega^{*}}{\sigma^{2}_{t+1}}$, it's easily verified that as $\hat\omega^{*} \rightarrow 0^{+}$, the difference in the losses goes to zero.  On the other hand, as $\hat\omega^{*}$ becomes large, the difference in the losses turns negative, with the lesson being that $\hat\omega^{*}$ must be in appropriate proportion to the volatility $\sigma^{2}_{t+1}$ in order for the adjusted forecast to outperform the unadjusted forecast.  This explains why it is so important to avoid using a naive adjustment estimator like the arithmetic mean of the estimated shocks.  
 
-Finally, by applying Propositions $\ref{omega_consistency}$ and $\ref{sigma_consistency}$, we derive an asymptotic result for ($\ref{QL Loss Consistency - GARCH(1,1)}$). 
+Finally, by applying Propositions $\ref{omega_consistency}$ and $\ref{sigma_consistency}$, we derive an asymptotic result for ($\ref{QL Loss Consistency - GARCH(1,1)}$).
 
-\subsection{Uniqueness of Convex Combinations}
-\url{https://encyclopediaofmath.org/wiki/Chebyshev_set}
+\begin{prop}\label{asymptotic_consistency}
+  \begin{enumerate}
+    \item $\forall i$, $\{a_{i,t}\}_{t=0,...,T_i}$ obeys a GARCH-X($m,s$) process with volatility shocks found in $\mc{M}_1$, where $T_i$ is the length of the $i$th series.
+    \item $\forall i, \{\omega_{i,t}^{*}\}_{t=0,...,T_i}$ is potentially non-zero at $\{T^{*}_{i}+1,... ,T^{*}_{i}+k\}$, $\omega_{i,T^{*}+1}^{*}\equiv...\equiv\omega_{i,T^{*}+k}^{*}$, and zero otherwise, where the arrival of $T_{i}^{*}$ is governed by a time-invariant distribution on $\{a_{i,t}\}_{t=0,...,T_i}$. \label{stationarity_of_omega_i_t}
+    \item 
+  \end{enumerate}
+  Then $\forall i, \hat\omega_{i,t}^{*} \xrightarrow{p} \E[\omega_{i}^{*}].$
+\end{prop}
 
 \section{Numerical Examples}
 
@@ -619,7 +615,7 @@ Having introduced the model parameters above, we introduce estimation techniques
 We compare adjusted and unadjusted forecasts using QL Loss, calculating the fraction of the simulations that the adjusted forecast dominates the unadjusted forecast.
 
 \subsection{Monte Carlo results}
-Recall an $\mc{M}_2$ model on the volatility, which is characterized by an exogenous shock to the volatility equation generated by an affine function of the covariates:
+Recall an $\mc{M}_1$ model on the volatility, which is characterized by an exogenous shock to the volatility equation generated by an affine function of the covariates:
 
 \begin{align*}
 \mc{M}_2 \colon \begin{array}{l}
@@ -732,12 +728,22 @@ In KNN regression, the hyperparameter K must be learned.  In Synthetic Volatilit
 \subsection{Should we gather as many donors as possible and pick them quantitatively?}
 It would be counter to the method proposed to assemble a vast number of donors, lacking careful scrutiny of the qualitative fit, and let the optimization simply pick the donors, via weighting.  What makes a donor good is not merely its quantitative fit but its qualitative fit as well.
 
+citet{abadie2022synthetic} make a similar point about large donor pools.  What matters is that the donors chosen are properly situated in the $p$-dimensional predictor space, so as to allow proper estimation of the weights.
 \subsection{Why not use the covariates as covariates in the GARCH model alone or in the GARCH model as well?}
 The data-generating process does not specify that volatility series are well-modeled using ever-present exogenous covariates, and this is fundamentally due to the lack of theoretical justification for such an exogeneity assumption.  
 
 \subsection{Do there exist optimal weights?}
 There are at least two senses of `optimal' weights that one might be interested in here.  First, we can think of optimal weights as a set $\{w_{i}\}_{i=2}^{n+1}$ such that $\omega_{1} = \sum^{n+1}_{i=2}w_{i}\hat\omega_{i}$, i.e., $\omega_{1}$ belongs to convex hull of the estimated shocks.  There also exists a second sense of optimality, in which, for a given $\sigma_{t}^{2}$, the weights allow us to predict with zero loss.
 
+\subsection{Adjustment Using OLS on the Donor Shocks}
+Consider least-squares estimation for the weight vector $\vec{w}$:
+
+\begin{align*}{
+\vec{w}_{OLS}=\argmin_{\vec{w}} \|\hat{\omega}^{*} - \X_{T^{*}}\vec{w}\|_{2}}
+\end{align*} 
+where $\X_{T^{*}}$ denotes the $p$-vectors $\x_{i,T^{*}}$ stacked in $n$ rows.  One immediately visible problem is that this optimization problem is an optmization problem over $p$-vectors $\vec{w}$ --- i.e. a linear combination of the covariates, whereas what we seek is an $n$-vector --- a linear combination of donors.
+
+There is no guarantee that $\vec{w}_{OLS}$ would perform poorly as a tool for producing $\hat\omega^{*}$, but given the small number of donors supposed in our setting, it is risky.
 \subsection{News shock literature review}
 
 \begin{comment}
@@ -796,14 +802,15 @@ strategy& Observe $y_{i}$; then estimate $x$ with small expected L2 loss & Estim
 \end{tabular}
 \end{table}
 
+
 \end{comment}
 
-\subsection{Model Adjustment Using Synthetic Methods}
+\subsection{Model Adjustment Using Synthetic Methods: A Global Overview}
 Here we distinguish what in this work is essential and inessential to synthetic forecasting.
 
 \begin{enumerate}
-  \item k-dimensional thing to predict
-  \item correction term subject to shock with DGP shared among donors
+  \item k-dimensional random object to predict
+  \item correction term subject to shock, with DGP shared among donors
   \item 
 \end{enumerate}
 

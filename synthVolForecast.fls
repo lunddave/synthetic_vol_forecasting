@@ -1182,7 +1182,6 @@ INPUT ./simulation_plots/USE_in_paper_simulation_plot_arithmetic_mean.png
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmti10.tfm
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmti8.tfm
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmti7.tfm
-INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmtt10.tfm
 INPUT ./simulation_plots/standard_simulation_alpha_.1_beta_.82.png
 INPUT ./simulation_plots/standard_simulation_alpha_.1_beta_.82.png
 INPUT simulation_plots/standard_simulation_alpha_.1_beta_.82.png
@@ -1211,6 +1210,7 @@ INPUT ./synthVolForecast.bbl
 INPUT synthVolForecast.bbl
 INPUT ./synthVolForecast.bbl
 INPUT synthVolForecast.bbl
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmtt10.tfm
 INPUT synthVolForecast.aux
 INPUT ./synthVolForecast.out
 INPUT ./synthVolForecast.out
