@@ -19,42 +19,42 @@ suppressPackageStartupMessages(lapply(packs, require, character.only = TRUE))
 ## BEGIN USER DATA INPUTS##
 ground_truth <- c(0.000712, 0.000976)
 ground_truth <- c(0.000712)
-#ground_truth <- c(0.000712, 0.000976, .0006)
+
+ground_truth <- c(0.000712, 0.000976, .0006, .0001, .00001)
+
+ground_truth <- c(0.000712, 0.000976, .0006)
+
+ground_truth <- c(0.000712, 0.000976)
+ground_truth <- c(0.000712)
 
 k <- 1
 
-TSUS <- 'IYG'
+TSUS <- "SPY"
 
-log_ret_covariates <- c(#"GBP=X",
-   "6B=F",
-  "CL=F"
-  ,"^VIX"
-  ,"^IRX"
-  ,"^FVX"
-  ,"^TNX"
-  ,"^TYX"
-  #,"DX-Y.NYB"
-)
+log_ret_covariates <- c("^VIX"
+                        ,"^IRX"
+                        ,"^FVX"
+                        ,"^TNX"
+                        ,"^TYX"
+                        #,"DX-Y.NYB"
+                      )
 
 level_covariates <- c('^VIX'
                       #,"GBP=X"
                       #,'^IRX'
 )
 
-volume_covariates <- c('IYG')
+volume_covariates <- c()
 
 FRED_covariates <- c('AAA', 'BAA')
 
-shock_dates <- list('2016 Election' = "2016-11-08"
-                 ,'Brexit' = "2016-06-23"
-                 ,'2014 Midterm' = "2014-11-04"
-                 ,'2012 Election' = "2012-11-06"
-                 , '2010 Midterm' ="2010-11-02"
-                 ,'2008 Election' = "2008-11-04"
-                 , '2006 Midterm' ="2006-11-07"
-                 ,'2004 Election' = "2004-11-02"
-                 #,'2002 Midterm' =  "2002-11-05"
-                 #,'2000 Election' = "2000-11-07"
+shock_dates <- list('Oct 7' = "2023-10-09"
+                 ,'Rus-Ukr' = '2022-02-24'
+                 ,'2021' = "2021-05-10"
+                 ,'2018' = "2018-04-12"
+                 ,'2014' = "2014-07-07"
+                 , 'Lebanon' = '2006-07-12'
+                 #, '2000' ="2000-10-01"
 )
 
 shock_dates <- c(shock_dates[1], list.reverse(shock_dates[2:length(shock_dates)]))
@@ -66,7 +66,7 @@ create.calendar(name='NYSE', holidays=nyse, weekdays=c('saturday', 'sunday'))
 
 shock_dates_as_dates <- as.Date(as.Date(unlist(shock_dates)))
 
-start_dates <- offset(shock_dates_as_dates, round(-1.8*252), "NYSE")
+start_dates <- offset(shock_dates_as_dates, round(-5*252), "NYSE")
 
 k_periods_after_shock <- offset(shock_dates_as_dates, k, "NYSE")
 
@@ -259,9 +259,9 @@ temp <- SynthVolForecast(Y
                          ,dbw_scale = TRUE
                          ,dbw_center = TRUE
                          ,dbw_indices = NULL
-                         #,dbw_princ_comp_input = 3
+                         ,dbw_princ_comp_input = 3
                          #,covariate_indices = length(X)
-                         ,garch_order = c(1,1,0)
+                         ,garch_order = c(1,1,1)
                          ,plots = TRUE
                          ,shock_time_labels = names(shock_dates)
                          ,ground_truth_vec = ground_truth

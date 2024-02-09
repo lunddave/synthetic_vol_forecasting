@@ -27,7 +27,6 @@ dbw <- function(X
 
   # number of time series for pool
   n <- length(X) - 1
-  print(paste('Our count of donors ', n, '.' sep = ''))
 
   # COVARIATE FOR TIME SERIES UNDER STUDY AT shock_time_vec
   X1 <- X[[1]][shock_time_vec[1], dbw_indices, drop = FALSE] # we get only 1 row
@@ -179,7 +178,7 @@ plot_maker_garch <- function(fitted_vol
   barplot_colors <- RColorBrewer::brewer.pal(length(w_hat),'Set3')
 
   #PLOT ON THE LEFT:
-
+print('We plot the weights.')
   # Plot donor weights
   barplot(w_hat
           , main = 'Donor Pool Weights'
@@ -191,7 +190,7 @@ plot_maker_garch <- function(fitted_vol
           )
 
   #PLOT IN THE MIDDLE
-
+  print('We plot the FE estimates.')
   #Plot FE estimates
     barplot(omega_star_hat_vec
           , main = 'Donor-Pool-Supplied\n FE Estimates'
@@ -215,6 +214,7 @@ plot_maker_garch <- function(fitted_vol
   max_for_y_lim <- max(thing_to_get_max_of)
 
   #PLOT ON THE RIGHT:
+  print('We plot the fitted volatility series.')
   plot.ts(fitted_vol[1:shock_time_vec[1]], #mk
        main = 'Post-Shock Volatility Forecast', #mk can improve this title
        cex.main=1.5,
@@ -482,7 +482,7 @@ SynthVolForecast <- function(Y_series_list
                sum_to_1 = TRUE, #tk
                princ_comp_count = dbw_princ_comp_input,
                bounded_below_by = 0, #tk
-               bounded_above_by = 1, #tk
+               bounded_above_by = 1 #tk
                # normchoice = normchoice, #tk
                # penalty_normchoice = penalty_normchoice,
                # penalty_lambda = penalty_lambda
@@ -707,6 +707,8 @@ SynthPrediction <- function(Y_series_list
     arima_order <- c(1,1,1)
   }
 
+  print('The indices used for distance-based-weight are ')
+  print(dbw_indices)
   if (is.null(dbw_indices) == TRUE) {
     dbw_indices <- 1:ncol(covariates_series_list[[1]]) #tk
   }
