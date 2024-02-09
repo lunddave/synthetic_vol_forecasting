@@ -598,12 +598,12 @@ Finally, by applying Propositions $\ref{omega_consistency}$ and $\ref{sigma_cons
 
 \begin{prop}\label{asymptotic_consistency}
   \begin{enumerate}
-    \item $\forall i$, $\{a_{i,t}\}_{t=0,...,T_i}$ obeys a GARCH-X($m,s$) process with volatility shocks found in $\mc{M}_1$, where $T_i$ is the length of the $i$th series.
-    \item $\forall i, \{\omega_{i,t}^{*}\}_{t=0,...,T_i}$ is potentially non-zero at $\{T^{*}_{i}+1,... ,T^{*}_{i}+k\}$, $\omega_{i,T^{*}+1}^{*}\equiv...\equiv\omega_{i,T^{*}+k}^{*}$, and zero otherwise, where the arrival of $T_{i}^{*}$ is governed by a time-invariant distribution on $\{a_{i,t}\}_{t=0,...,T_i}$. \label{stationarity_of_omega_i_t}
-    \item 
+    \item Assume the conditions in Propositions $\ref{omega_consistency}$ and $\ref{sigma_consistency}$.
   \end{enumerate}
-  Then $\forall i, \hat\omega_{i,t}^{*} \xrightarrow{p} \E[\omega_{i}^{*}].$
+  Then $QL(\hat\sigma_{t+1, unadjusted}^{2},\sigma^{2}_{t+1})-QL(\hat\sigma^{2}_{t+1, adjusted},\sigma^{2}_{t+1})\xrightarrow{p} \log{\frac{\sigma^{2}_{t+1}}{\sigma_{t+1}^{2}-\E[\omega_{i}^{*}]}} - \frac{\E[\omega_{i}^{*}]}{\sigma^{2}_{t+1}} \geq 0 \label{QL Loss Consistency - GARCH(1,1)}$
 \end{prop}
+
+Hence, a correctly specified model will outperform the unadjusted forecast asymptotically.
 
 \section{Numerical Examples}
 
