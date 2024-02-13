@@ -381,9 +381,9 @@ By repeated substitution, in conditional expectation, the shock is $\mathcal{O}(
 \begin{prop}
 Let $a_{t}$ be a mean-zero time series obeying a GARCH(1,1) specification with unit-variance errors, all prior to the arrival of a volatility shock of length $L_{\text{vol}} \geq 1$ and level shock of length $L_{\text{level}}\geq 1$ at some time $T^{*}+1$.  Then for any $r$ such that $r \geq \text{max}\{L_{i, vol},L_{i, level}\} + 1$, 
 
-\begin{align}
-\mathbb{E}[ \sigma^{2}_{i,T^{*}+r+1} |\mathcal{F}_{T^{*}+r}] & = \omega_{i} + \sigma^{2}_{i,T^{*}+r}(\alpha + \beta) \\
-\end{align}
+\begin{align*}
+\mathbb{E}[ \sigma^{2}_{i,T^{*}+r+1} |\mathcal{F}_{T^{*}+r}] & = \omega_{i} + \sigma^{2}_{i,T^{*}+r}(\alpha + \beta)
+\end{align*}
 \end{prop}
 
 \begin{proof-of-proposition}
@@ -396,28 +396,24 @@ We claim
 & = \omega_{i} + \sigma^{2}_{i,T^{*}+r}(\alpha + \beta) \label{eq4}
 \end{align}
 
-The volatility equation of a GARCH(1,1) dictates that for any $r$, the one-step-ahead volatility is given by the expression inside the expectation in (\ref{eq1}).  By the mean-model assumption of a GARCH(1,1), we have $a_{i,t} = \sigma_{i,t}\epsilon_{i,t}$ and hence by substituting $\sigma_{i,t}\epsilon_{i,t}$ for $a_{i,t}$, we arrive at equation (\ref{eq2}) above.  Using the unit-variance assumption regarding $\epsilon_{T^{*}+r})$, we can compute explicitly the expectation in (\ref{eq3}).  Finally, by rearranging terms, we arrive at equation (\ref{eq4}).
+The volatility equation of a GARCH(1,1) dictates that for any $r$, the one-step-ahead volatility is given by the expression inside the expectation in (\ref{eq1}).  By the mean-model assumption of a GARCH(1,1), we have $a_{i,t} = \sigma_{i,t}\epsilon_{i,t}$i, and hence by substituting $\sigma_{i,t}\epsilon_{i,t}$ for $a_{i,t}$, we arrive at equation (\ref{eq2}) above.  Using the unit-variance assumption regarding $\epsilon_{T^{*}+r})$, we can compute explicitly the expectation, yielding (\ref{eq3}).  Finally, by rearranging terms, we arrive at equation (\ref{eq4}).
 \end{proof-of-proposition}
 
 In other words, for a GARCH(1,1), once two time points removed from the longest shock length, the volatility shock and level shock can be subsumed into one.  However, prior to being two time points removed, there is no such guarantee.  For example, one can take $r = 1$ and level shock of length at least one to see that 
 
-\begin{align}
-\mathbb{E}[ \sigma^{2}_{i,T^{*}+r+1} |\mathcal{F}_{T^{*}+r}] & = \mathbb{E}[\omega_{i} + \alpha a_{T^{*}+1}^{2} + \beta\sigma^{2}_{i,T^{*}+1} |\mathcal{F}_{T^{*}+1}] \\
+\begin{align*}
+\mathbb{E}[ \sigma^{2}_{i,T^{*}+2} |\mathcal{F}_{T^{*}+1}] & = \mathbb{E}[\omega_{i} + \alpha a_{T^{*}+1}^{2} + \beta\sigma^{2}_{i,T^{*}+1} |\mathcal{F}_{T^{*}+1}] \\
 & = \omega_{i} + \mathbb{E}[\alpha(\sigma_{i,T^{*}+r}\epsilon^{*}_{T^{*}+1})^{2} |\mathcal{F}_{T^{*}+1}] + \beta\sigma^{2}_{i,T^{*}+1} \\
 & = \omega_{i} + \alpha\sigma^{2}_{i,T^{*}+1}(\mu^{2}_{\epsilon^{*}} + \sigma^{2}_{\epsilon^{*}}) + \beta\sigma^{2}_{i,T^{*}+1} \\
 & = \omega_{i} + \sigma^{2}_{i,T^{*}+1}(\alpha(\mu^{2}_{\epsilon^{*}} + \sigma^{2}_{\epsilon^{*}}) + \beta)
-\end{align}
+\end{align*}
+where $(\alpha(\mu^{2}_{\epsilon^{*}} + \sigma^{2}_{\epsilon^{*}}) + \beta)$ may be greater than 1, permitting explosive behavior, at least in the short term.
 
- For each of the $p$ entries in $\delta$, the $k$th entry should have the property that $\mathbb{E}[ x_{i,t,k} \cdot \delta_{k} ] > 0$
- 
- In principle, you could have an $\mc{M}_{21}$ shock with a covariate that, in expectation, has a negative marginal contribution to the cumulative shock.
-
-Moreover, after both shocks have been exhausted, their influence disappears quickly.  This short-memory effect has implications for the method being developed herein:
+After both shocks have been exhausted, their influence disappears quickly.  This short-memory effect has implications for the method being developed herein:
 
 \begin{enumerate}
-\item Estimation of effects in donor pool should err on the side of underestimating, not overestimating, the length of the max shock, since overestimation of the shock length brings with it the risk of underestimating $\omega^{*}$.
+\item  There may be different risks associated with over/underestimating level shock and vol shock lengths.  Estimation of effects in donor pool should err on the side of underestimating, not overestimating, the length of the max shock, since overestimation of the shock length brings with it the risk of underestimating $\omega^{*}$.
 \item An operator of the method needs some idea of how long the operator expects the shock in the time series under study to be.  Such an idea will guide her trust in the choice of $k$ in the $k$-step ahead forecast the operator produces.  There are couple of obvious strategies: take all the donors, and over all the donor shock lengths, take the minimium.  Alternatively, one could take the maximum.
-\item There may be different risks associated with over/underestimating level shock and vol shock lengths.
 \end{enumerate}
 
 In many settings, it is reasonable to model a volatility shock as occuring without a rupture in the mean-zero, i.i.d. sequence $\epsilon_{i,t}$.  In cases like this, outsize movement in the observable random variable $a_{i,t}$ is due solely to the shock $\omega_{i}^{*}$.  Using the ARMA representation of a GARCH(m,s) model, we can see clearly how the random effect $\omega_{i}^{*}$ increases the expectation of the nonnegative random variable $a_{i,t}^{2}$.  The unconditional mean of an ARMA model tells that the random effects simply contribute to the intercept term (see Tsay p. 132):
@@ -742,6 +738,13 @@ The data-generating process does not specify that volatility series are well-mod
 
 \subsection{Do there exist optimal weights?}
 There are at least two senses of `optimal' weights that one might be interested in here.  First, we can think of optimal weights as a set $\{w_{i}\}_{i=2}^{n+1}$ such that $\omega_{1} = \sum^{n+1}_{i=2}w_{i}\hat\omega_{i}$, i.e., $\omega_{1}$ belongs to convex hull of the estimated shocks.  There also exists a second sense of optimality, in which, for a given $\sigma_{t}^{2}$, the weights allow us to predict with zero loss.
+
+\subsection{Comments on the shock models}
+
+For each of the $p$ entries in $\delta$, the $k$th entry should have the property that $\mathbb{E}[ x_{i,t,k} \cdot \delta_{k} ] > 0$
+ 
+In principle, you could have an $\mc{M}_{21}$ shock with a covariate that, in expectation, has a negative marginal contribution to the cumulative shock.
+
 
 \subsection{Adjustment Using OLS on the Donor Shocks}
 Consider least-squares estimation for the weight vector $\vec{w}$:
