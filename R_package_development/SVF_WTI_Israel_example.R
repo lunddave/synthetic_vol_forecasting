@@ -36,6 +36,7 @@ log_ret_covariates <- c("^VIX"
                         ,"^FVX"
                         ,"^TNX"
                         ,"^TYX"
+                        ,"CL=F"
                         #,"DX-Y.NYB"
                       )
 
@@ -66,7 +67,7 @@ create.calendar(name='NYSE', holidays=nyse, weekdays=c('saturday', 'sunday'))
 
 shock_dates_as_dates <- as.Date(as.Date(unlist(shock_dates)))
 
-start_dates <- offset(shock_dates_as_dates, round(-5*252), "NYSE")
+start_dates <- offset(shock_dates_as_dates, round(-3*252), "NYSE")
 
 k_periods_after_shock <- offset(shock_dates_as_dates, k, "NYSE")
 
@@ -259,7 +260,7 @@ temp <- SynthVolForecast(Y
                          ,dbw_scale = TRUE
                          ,dbw_center = TRUE
                          ,dbw_indices = NULL
-                         ,dbw_princ_comp_input = 3
+                         # ,dbw_princ_comp_input = 3
                          #,covariate_indices = length(X)
                          ,garch_order = c(1,1,1)
                          ,plots = TRUE

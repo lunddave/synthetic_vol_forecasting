@@ -64,7 +64,10 @@ dbw <- function(X
     
     #Now project in direction of first princ_comp_count principal components
     print(paste('We are using ', princ_comp_count, ' principal components.', sep = ''))
-    dat <- dat %*% dat.svd$v[,1:princ_comp_count]
+    print('We print the matrix v')
+    print(dat.svd$v)
+    
+    dat <- dat.svd$v[1:princ_comp_count,] %*% dat
 
     X1 <- dat[1, , drop = FALSE]
 
