@@ -169,8 +169,8 @@ In order to motivate our procedure, we show how the aggregation of estimated exc
 
   \begin{figure}[h]
     \begin{center}
-      \includegraphics[scale=.4]{simulation_plots/USE_in_paper_simulation_plot_arithmetic_mean.png}
-      \caption{Shock aggregation using the arithmetic mean of donor fixed effect estimates}
+      \includegraphics[scale=.7]{simulation_plots/USE_in_paper_simulation_plot_arithmetic_mean.png}
+      \caption{The time series experiences a volatility shock at a uniformly distributed point in the interval [502, 2520] trading days, corresponding to trading years on the interval [2,10].  We have truncated the series following the shock.  The GARCH prediction fails to even approach the volatility spike at $T^{*}+1$, as do some adjusted predictions.  In contrast, the GARCH forecast adjusted by $\overline{\hat\omega^{*}}$, the arithmetic mean of the estimated shocks, recovers the shock in the time series understudy.} 
       \label{fig:arith_mean_example_introduction}
       \end{center}
     \end{figure}
@@ -828,6 +828,9 @@ Here we distinguish what in this work is essential and inessential to synthetic 
 
 \subsection{News Sentiment}
 Within the vast literature on financial sentimental analysis, theree exists a sub-literature on financial volatility forecasting using news and news sentiment \citep{atkins2018financial}.  The setting herein is one where the valence of the sentiment is reasonably well-understood, and hence the direction of volatility can be well-predicted, although not perfectly, by human intuition.
+
+\subsection{Uniqueness of the weight vector $\vec{w}$}
+
 \section{Supplement}
 We analyze the real-world example with Brexit included.
 
