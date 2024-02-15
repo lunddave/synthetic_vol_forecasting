@@ -165,7 +165,7 @@ The foregoing provides a menu, of sorts, from which the researcher can construct
 
 Outside of \citet{lin2021minimizing}, we know of no prior work that both introduces a parametric specification for nonzero errors and introduces a procedure for weighting appropriately the nonzero errors of similar shocks.  Likewise, we are not familiar with any prior scholarship that attempts to account for anticipated nonzero errors using an explicit parametric adjustment.  This current work is a contribution to the forecast adjustment literature but also aims for the virtues of robustness, risk-minization, and model interpretability.  \citet{guerron2017macroeconomic}, citing previous work in the literature, discuss that intercept corrections find their theoretical basis in the occurrence of structural breaks, whereas Nearest-Neighbor methods, being nonparametric, are theoretically more adept at accounting for nonlinearity.  By using convex combinations of donor pool quantities to adjust forecasts, we are generalizing Nearest-Neighbor methods while also providing robustness, risk-minization, and model interpretability.
 
-In order to motivate our procedure, we show how the aggregation of estimated excess volatilities from donors in the donor pool works when the correction function is the arithmetic mean.  As we see in Figure \ref{fig:arith_mean_example_introduction}, the arithmetic mean of excess volatilities provides perhaps the most straightforward and intuitive way of aggregating information from similar events.  Taking the average also coincides with the $K$-Nearest-Neighbor estimator, where $K$ is equal to the number of donors in the donor pool. Aggregating forecasts using the arithmetic mean is more than merely intuitive; it possesses an empirical pedigree and is known to be optimal under rather restrictive conditions \citep{timmermann2006forecast}.  Synthetic Volatility Forecasting lacks these restrictions and instead assumes a credible, parsimonious parameterization in which the shock is an affine transformation of several key covariates. 
+In order to motivate our procedure, we show how the aggregation of estimated excess volatilities from donors in the donor pool works when the correction function is the arithmetic mean.  As we see in Figure \ref{fig:arith_mean_example_introduction}, the arithmetic mean of excess volatilities provides perhaps the most straightforward and intuitive way of aggregating information from similar events.  Taking the average also coincides with the $K$-Nearest-Neighbor estimator, where $K$ is equal to the number of donors in the donor pool. Aggregating forecasts using the arithmetic mean is more than merely intuitive; it possesses an empirical pedigree and is known to be optimal under rather restrictive conditions \citep{timmermann2006forecast}.  Synthetic Volatility Forecasting lacks these restrictions and instead assumes a credible, parsimonious parameterization in which the shock is an affine transformation of several key covariates.  The key story behind this parameterization is that as the strength of the signal increases relative to the idiosyncratic error, the GARCH estimation of these effects increases in accuracy.  From this, it follows that the aggregated shock estimate increases in accuracy. 
 
   \begin{figure}[h]
     \begin{center}
@@ -624,19 +624,18 @@ Recall an $\mc{M}_1$ model on the volatility, which is characterized by an exoge
 
 \subsubsection{Most elementary simulation setup}
 
-In order to investigate the Synthetic Volatility Forecasting method, our most elementary simulation uses $mc{M}_2$.  We vary only two parameters. 
+In order to investigate the Synthetic Volatility Forecasting method, our most elementary simulation uses $\mc{M}_2$.  We vary only two parameters. 
 
 \begin{figure}[ht!]
 \begin{center}
-  \includegraphics[scale=.45]{simulation_plots/standard_simulation_alpha_.1_beta_.82.png}
-  \caption{Fixed parameter values: $\alpha = .1, \beta = .82, \mu_{x} = 1, \sigma_{x} = .1$}
-  \label{fig:heavy_beta}
+  \includegraphics[scale=.75]{simulation_plots/standard_simulation_alpha_.1_beta_.82.png}
+  \caption{Fixed parameter values: $\alpha = .1, \beta = .82, \mu_{x} = 1, \sigma_{x} = .1$}\label{fig:heavy_beta}
 \end{center}
 \end{figure}
 
-In Figure \ref{fig:heavy_beta}, when only two parameters are varied, the shock signal and the shock noise, we observe several encouraging phenomena.  First, for any column selected, an increasing trend exists as the shock signal increases.  Second, for almost all small values of the shock signal, the outperformance rate hovers around .5, supporting the hypothesis that in the absence of a signal, any level of noise renders the method no better at GARCH than a flip of a coin.
+In Figure \ref{fig:heavy_beta}, when only two parameters are varied, the volatility shock signal and the volatility shock noise, we observe several encouraging phenomena.  First, for any column selected, an increasing trend exists as the shock signal increases.  Second, for almost all small values of the shock signal, the outperformance rate hovers around .5, supporting the hypothesis that in the absence of a signal, any level of noise renders the method no better at GARCH than a flip of a coin.
 
-If we switch the values of $\alpha$ and $\beta$, we see similar behavior.  However, for small values of the shock mean, increasing noise does lead to fewer converged simulations, likely due to large negative realizations of the noise term, which in turn lead to near-zero and even negative estimates of the terms $\omega_{i}$.
+If we switch the values of $\alpha$ and $\beta$, we see similar behavior, as in  \ref{fig:heavy_alpha}.  However, for small values of the shock mean, increasing noise does lead to fewer converged simulations, likely due to large negative realizations of the noise term, which in turn lead to near-zero and even negative estimates of the terms $\omega_{i}$.
 \begin{figure}[h!]
   \begin{center}
     \includegraphics[scale=.45]{simulation_plots/standard_simulation_alpha_.82_beta_.1.png}
@@ -644,15 +643,13 @@ If we switch the values of $\alpha$ and $\beta$, we see similar behavior.  Howev
     \label{fig:heavy_alpha}
   \end{center}
   \end{figure}
-  
-As we see in Figure \ref{fig:heavy_alpha}
 
 \subsubsection{Dual shock: both a level and volatility shock at $T^{*}+1$}
 \textit{Hypothesis:} Method should do less well under level shock.
 
 \begin{figure}[h]
   \begin{center}
-    \includegraphics[scale=.5]{simulation_plots/dual_level_vol_shock_FriFeb0911:03:49PM2024.png}
+    \includegraphics[scale=.75]{simulation_plots/dual_level_vol_shock_FriFeb0911:03:49PM2024.png}
     \caption{Dual shock: both a level and volatility shock at $T^{*}+1$, where fixed parameter values are $\alpha = .1, \beta = .82, \mu_{x} = 1, \sigma_{x} = .1$}
     \label{fig:dual_shock_strong_beta}
     \end{center}
@@ -660,7 +657,7 @@ As we see in Figure \ref{fig:heavy_alpha}
 
 \begin{figure}[h]
   \begin{center}
-    \includegraphics[scale=.5]{simulation_plots/dual_level_vol_shock_FriFeb0911:27:59PM2024.png}
+    \includegraphics[scale=.75]{simulation_plots/dual_level_vol_shock_FriFeb0911:27:59PM2024.png}
     \caption{Dual shock: both a level and volatility shock at $T^{*}+1$, where fixed parameter values are $\alpha = .82, \beta = .1, \mu_{x} = 1, \sigma_{x} = .1$}
     \label{fig:dual_shock_strong_alpha}
     \end{center}
