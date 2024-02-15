@@ -229,32 +229,29 @@ print('We plot the weights.')
   title(ylab = expression(sigma^2), line = 2.05, cex.lab = 1.99) # Add y-axis text
 
   # Here is the color scheme we will use
-  colors_for_adjusted_pred <- c('red'
-                              , "green"
-                              , "purple"
-                              , 'blue'
-                              )
+  # https://colorbrewer2.org/?type=diverging&scheme=RdYlBu&n=4
+  colors_for_adjusted_pred <- c('#d7191c','#fdae61','#abd9e9','#2c7bb6')
 
   # Let's add the plain old GARCH prediction
   points(y = unadjusted_pred
          ,x = (shock_time_vec[1]+1):(shock_time_vec[1]+shock_length_vec[1])
          ,col = colors_for_adjusted_pred[1]
-         ,cex = 1.5
+         ,cex = 2
          ,pch = 15)
 
   # Now plot the adjusted predictions
   points(y = adjusted_pred
          ,x = (shock_time_vec[1]+1):(shock_time_vec[1]+shock_length_vec[1])
          ,col = colors_for_adjusted_pred[2]
-         ,cex = 1.5
-         ,pch = 23)
+         ,cex = 2
+         ,pch = 19)
 
   # Now plot the arithmetic mean-based predictions
   points(y = arithmetic_mean_based_pred
          ,x = (shock_time_vec[1]+1):(shock_time_vec[1]+shock_length_vec[1])
          ,col = colors_for_adjusted_pred[3]
-         ,cex = 1.5
-         ,pch = 23)
+         ,cex = 2
+         ,pch = 19)
 
   # Now plot Ground Truth tk
   if (is.null(ground_truth_vec) == FALSE)
@@ -262,8 +259,8 @@ print('We plot the weights.')
     points(y = ground_truth_vec
            ,x = (shock_time_vec[1]+1):(shock_time_vec[1]+shock_length_vec[1])
            ,col = colors_for_adjusted_pred[4]
-           ,cex = 1.5
-           ,pch = 22)
+           ,cex = 2
+           ,pch = 19)
   }
 
   labels_for_legend <- c('GARCH (unadjusted)'
@@ -328,7 +325,7 @@ plot_maker_synthprediction <- function(Y
              ,x = (shock_time_vec[i]+1):(shock_time_vec[i] + shock_length_vec[i])
              # ,col = 'red'
              ,cex = 1.1
-             ,pch = 24)
+             ,pch = 17)
 
     }
   }
@@ -374,7 +371,8 @@ plot_maker_synthprediction <- function(Y
   title(ylab = 'Log-return', line = 2.05, cex.lab = 1.99) # Add y-axis text
 
   # Here is the color scheme we will use
-  colors_for_adjusted_pred <- c('red', "green",'purple')
+  #https://colorbrewer2.org/?type=diverging&scheme=RdYlBu&n=4
+  colors_for_adjusted_pred <- c('#d7191c','#fdae61','#abd9e9')
 
   # Let's add the plain old GARCH prediction
   points(y = unadjusted_pred
@@ -387,8 +385,8 @@ plot_maker_synthprediction <- function(Y
   points(y = adjusted_pred
          ,x = (shock_time_vec[1]+1):(shock_time_vec[1]+shock_length_vec[1])
          ,col = colors_for_adjusted_pred[2]
-         ,cex = 1.1
-         ,pch = 23)
+         ,cex = 2
+         ,pch = 19)
 
   if (display_ground_truth == TRUE){
 
