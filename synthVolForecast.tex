@@ -305,7 +305,7 @@ We present two forecasts:
 \subsubsection{Aggregation Mechanism}
     \label{Aggregation Mechanism}
    
-    The problem of aggregating estimated donor shocks begins with the data constraints.  Taking the estimated shocks as a given, we essentially observe the pair $(\{\hat\omega^{*}_{i}\}^{n+1}_{i=2},\{\x_{i,T^{*}}\}^{n+1}_{i=2})$.  We wish to recover weights $\{w_{i}\}^{n+1}_{i=2} \in \Delta^{n}$ that will minimize expected loss.  Let $L(\cdot,\cdot)$ denote any loss function, not necessarily symmetric, mapping two quantities to the non-negative reals.  Let $\hat\sigma^{2}$ denote any forecast for $\sigma^{2}$.  Formally, our optimization problem is \\ 
+    The problem of aggregating estimated donor shocks begins with the data constraints.  Taking the estimated shocks as a given, we essentially observe the pair $(\{\hat\omega^{*}_{i}\}^{n+1}_{i=2},\{\x_{i,T^{*}}\}^{n+1}_{i=2})$.  We wish to recover weights $\{w_{i}\}^{n+1}_{i=2} \in \Delta^{n}$ that will minimize expected loss.  Let $L(\cdot,\cdot)$ denote any loss function, not necessarily symmetric, mapping two quantities to the non-negative reals.  Let $\hat\sigma^{2}$ denote any forecast for $\sigma^{2}$, where we consider an $h=1$ step-ahead forecast, for simplicity.  Formally, our optimization problem is \\ 
 
     \begin{align*}{
      \argmin_{\{w_{i}\}^{n+1}_{i=2} \in \Delta^{n}} \E[L(\sigma^{2}, \hat\sigma^{2})]
@@ -316,9 +316,7 @@ We now explain how we use the volatility profile to arrive at a set of nonnegati
     \subsection{Ground Truth Estimators}
     \label{Ground Truth Estimators}
     
-    The price series of a financial asset is a sequence of observable random variables; in particular, for any $t$, $P_{t}$ is realized at $t$ and henceforth no longer random, under the assumption that $(P_{t})_{t\in\mathbb{N}}$ is adapted to $\mc{F}_{t}$.  Time series econometrics has a vast inventory of approaches for modeling $P_{t}$.  In contrast, the time-varying parameter $\sigma^{2}_{t}$ is a quantity for which even identifying an observable effect in the real world is far more challenging.
-    
-    \subsection{Realized Volatility}
+    The price series of a financial asset is a sequence of observable random variables; in particular, for any $t$, $P_{t}$ is realized at $t$ and henceforth no longer random, under the assumption that $(P_{t})_{t\in\mathbb{N}}$ is adapted to $\mc{F}_{t}$.  Time series econometrics has a vast inventory of approaches for modeling $P_{t}$.  In contrast, the time-varying parameter $\sigma^{2}_{t}$ is a quantity for which even identifying an observable effect in the real world is far more challenging.  In this work, we use a common estimator of the variance called realized variance (RV).
     
     Suppose we examine $K$ units of of time, where each unit is divided into m intervals of length 1/m.  We follow the notation of  \citet{andersen2009realized}. Let $p_{t} = \text{log}(P_{t})$, and let $r(t, 1/m) = p_{t} - p_{t-1/m}$.  We estimate the variance of a log-return series using Realized Volatility, denoted $RV_{K,m}$, using
     
@@ -328,7 +326,7 @@ We now explain how we use the volatility profile to arrive at a set of nonnegati
     
     $$\E[RV_{K,m}] = \frac{\mu^{2}}{m} + \delta^{2}$$
     
-    which is a biased but consistent estimator of the variance.
+    which is a biased but consistent estimator of the variance.  We will proceed using $m = 77$, corresponding to the 6.5-hour trading day chopped into 5-minute blocks, with the first block ommitted in order to ignore unusual trading behavior at the start of the day.
 
 \subsection{Loss Functions}
 
