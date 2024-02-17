@@ -13,6 +13,7 @@
 %\usepackage[usenames]{color}
 
 \usepackage{graphicx}
+\usepackage{subcaption}
 \usepackage{mathtools}
 \usepackage{enumitem}
 \usepackage{authblk}
@@ -23,7 +24,7 @@
 \usepackage{hyperref}
 \usepackage{caption}
 \usepackage{float}
-\usepackage[caption = false]{subfig}
+%\usepackage[caption = false]{subfig}
 \usepackage{tikz}
 \usepackage{multirow}
 \usepackage[linesnumbered, ruled,vlined]{algorithm2e}
@@ -35,7 +36,6 @@
 % margin setup
 \usepackage{geometry}
 \geometry{margin=0.8in}
-
 
 % function definition
 \newcommand{\ret}{\textbf{r}}
@@ -292,19 +292,17 @@ and $\x_{i,t} \in \mathbb{R}^{p}$.  Notice that $\mc{M}_1$ assumes that $\omega^
 
 \subsection{Forecasting}
 
-A GARCH model is an ARMA on the squares of the observed scalar time series \citep{tsay2005analysis}.  This fact matters for forecasting because the forecasting function for GARCH model is, just like for an ARMA model, the conditional expectation function, $\mathbb{E}[ \sigma^{2}_{i,T^{*}+r+1} | \mathcal{F}_{T^{*}+r}]$, or practically speaking, the estimate thereof, $\hat{\mathbb{E}}[ \sigma^{2}_{i,T^{*}+r+1} |\mathcal{F}_{T^{*}+r}]$ \citep{zivot2009practical}.
+A GARCH model is an ARMA on the squares of the observed scalar time series \citep{tsay2005analysis}.  This fact matters for forecasting because the $h$-step-ahead forecasting function for GARCH model is, just like for an ARMA model, the conditional expectation function, $\mathbb{E}[ \sigma^{2}_{i,T^{*}+h} | \mathcal{F}_{T^{*}}]$, or practically speaking, the estimate thereof, $\hat{\mathbb{E}}[ \sigma^{2}_{i,T^{*}+h} |\mathcal{F}_{T^{*}}]$ \citep{zivot2009practical}.  Here we present forecasts for GARCH(1,1), without loss of generality.  For $h=2,3,4,...$, the conditional expectation is computed recursively, as is standard for iterative autoregressive forecasts.
 
 We present two forecasts:
 
 \begin{align*}
   \text{Forecast 1: } & \hat\sigma^{2}_{unadjusted} \coloneq \hat\E_{T^{*}}[\sigma^{2}_{i,T^{*}+1}|\mathcal{F}_{T^{*}}] = \omega_{i} + \sum^{m_{i}}_{k=1}\hat\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\hat\beta_{i,j}\sigma_{i,t-j}^{2} + \hat\gamma_{i}^{T} \x_{i,t}\\
-  \text{Forecast 2: }  & \hat\sigma^{2}_{adjusted} \coloneq \hat\E_{T^{*}}[\sigma^{2}_{i,T^{*}+1}|\mathcal{F}_{T^{*}}] + \hat\omega = \omega_{i} + \sum^{m_{i}}_{k=1}\hat\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\hat\beta_{i,j}\sigma_{i,t-j}^{2} + \hat\gamma_{i}^{T} \x_{i,t}+ \hat\omega
+  \text{Forecast 2: }  & \hat\sigma^{2}_{adjusted} \coloneq \hat\E_{T^{*}}[\sigma^{2}_{i,T^{*}+1}|\mathcal{F}_{T^{*}}] + \hat\omega^{*} = \omega_{i} + \sum^{m_{i}}_{k=1}\hat\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\hat\beta_{i,j}\sigma_{i,t-j}^{2} + \hat\gamma_{i}^{T} \x_{i,t}+ \hat\omega^{*}
 \end{align*}
 
 \subsection{Excess Volatility Estimators}
     \label{Excess Volatility Estimators}
-\subsubsection{Aggregation Mechanism}
-    \label{Aggregation Mechanism}
    
     The problem of aggregating estimated donor shocks begins with the data constraints.  Taking the estimated shocks as a given, we essentially observe the pair $(\{\hat\omega^{*}_{i}\}^{n+1}_{i=2},\{\x_{i,T^{*}}\}^{n+1}_{i=2})$.  We wish to recover weights $\{w_{i}\}^{n+1}_{i=2} \in \Delta^{n}$ that will minimize expected loss.  Let $L(\cdot,\cdot)$ denote any loss function, not necessarily symmetric, mapping two quantities to the non-negative reals.  Let $\hat\sigma^{2}$ denote any forecast for $\sigma^{2}$, where we consider an $h=1$ step-ahead forecast, for simplicity.  Formally, our optimization problem is \\ 
 
@@ -414,11 +412,12 @@ After both shocks have been exhausted, their influence disappears quickly.  This
 \item  There may be different risks associated with over/underestimating level shock and vol shock lengths.  Estimation of effects in donor pool should err on the side of underestimating, not overestimating, the length of the max shock, since overestimation of the shock length brings with it the risk of underestimating $\omega^{*}$.
 \item An operator of the method needs some idea of how long the operator expects the shock in the time series under study to be.  Such an idea will guide her trust in the choice of $k$ in the $k$-step ahead forecast the operator produces.  There are couple of obvious strategies: take all the donors, and over all the donor shock lengths, take the minimium.  Alternatively, one could take the maximum.
 \end{enumerate}
-In many settings, it is reasonable to model a volatility shock as occuring without a rupture in the mean-zero, i.i.d. sequence $\epsilon_{i,t}$.  In cases like this, outsize movement in the observable random variable $a_{i,t}$ is due solely to the shock $\omega_{i}^{*}$.  Using the ARMA representation of a GARCH(m,s) model, we can see clearly how the random effect $\omega_{i}^{*}$ increases the expectation of the nonnegative random variable $a_{i,t}^{2}$.  The unconditional mean of an ARMA model tells that the random effects simply contribute to the intercept term (see \citet{tsay2005analysis} p. 132):
+In many settings, it is reasonable to model a volatility shock as occuring without a rupture in the mean-zero, i.i.d. sequence $\epsilon_{i,t}$.  In cases like this, outsize movement in the observable random variable $a_{i,t}$ is due solely to the shock $\omega_{i}^{*}$.  Using the ARMA representation of a GARCH(m,s) model, we can see clearly how the random effect $\omega_{i}^{*}$ increases the expectation of the nonnegative random variable $a_{i,t}^{2}$.  The unconditional mean of an ARMA model tells that the random effects simply contribute to the intercept term (see Tsay p. 132):
 
 \begin{align*} 
 \mathbb{E}[a^{2}_{i,t}] = \frac{\omega_{i} + \mathbb{E}[\omega_{i}^{*}] }{1 - \sum^{\text{max(m,s)}}_{k=1}(\alpha_{i,k}+\beta_{i,k})}
 \end{align*} 
+
 However, since it is not known a priori for which $t$ the effect $\omega_{i}^{*}$ will be nonzero, this fact is of little practical guidance.
 
 \begin{comment}
@@ -540,13 +539,13 @@ Then $\forall i, \hat\omega_{i,t}^{*} \xrightarrow{p} \E[\omega_{i}^{*}].$
 The result follows from the consistency proof of the QMLE in GARCH-X models, as established by \citet{han2014asymptotic}.
 \end{proof-of-proposition}
 
-  \subsection{Consistency of the Synthetic Volatility Forecast function}
+  \subsection{Consistency of the Synthetic Volatility Forecast Function}
 \begin{prop}\label{sigma_consistency}
-  Under the conditions in Proposition \ref{omega_consistency}, $\hat\sigma^{2}_{1,T^{*}+r}\xrightarrow{p}\sigma^{2}_{1,T^{*}+r}, r = 1, k =$ max$\{m,s\}$.
+  Under the conditions in Proposition \ref{omega_consistency}, $\hat\sigma^{2}_{1,T^{*}+r}\xrightarrow{p}\sigma^{2}_{1,T^{*}+r}, 1\leq r\leq max\{m,s\}$.
 \end{prop}
 
 \begin{proof-of-proposition}
-Recall the conditional expectation of the variance for the GARCH-X model:
+Recall the conditional expectation of the variance for the GARCH-X($m$,$s$) model:
 
 \begin{align}
 \E_{T^{*}}[\sigma^{2}_{i,t+1}|\mathcal{F}_{T^{*}}] = \omega_{i} + \omega^{*}_i D^{vol}_{i,t} + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t}
@@ -585,7 +584,7 @@ For simplicity, we work with a GARCH(1,1) that experiences a volatility shock at
    &\frac{(\hat\omega + \hat\alpha a_{t}^{2} + \hat\beta\sigma^{2}_{t})-(\hat\omega + \hat\alpha a_{t}^{2} + \hat\beta\sigma_{t}^{2} + \hat\omega^{*})}{\sigma_{t+1}^{2}} + \log{\frac{\hat\omega + \hat\alpha a_{t}^{2} + \hat\beta\sigma_{t}^{2} + \hat\omega^{*}}{\hat\omega + \hat\alpha a_{t}^{2} + \hat\beta\sigma_{t}^{2}}}\\
    & = \log{\frac{\hat\omega + \hat\alpha a_{t}^{2} + \hat\beta\sigma_{t}^{2} + \hat\omega^{*}}{\hat\omega + \hat\alpha a_{t}^{2} + \hat\beta\sigma_{t}^{2}}} - \frac{\hat\omega^{*}}{\sigma^{2}_{t+1}} \label{QL Loss Consistency - GARCH(1,1)} 
 \end{align}
-By letting $f(\hat\omega^{*}) = \log{\frac{\hat\omega + \hat\alpha a_{t}^{2} + \hat\beta\sigma_{t}^{2} + \hat\omega^{*}}{\hat\omega + \hat\alpha a_{t}^{2} + \hat\beta\sigma_{t}^{2}}} - \frac{\hat\omega^{*}}{\sigma^{2}_{t+1}}$, it's easily verified that as $\hat\omega^{*} \rightarrow 0^{+}$, the difference in the losses goes to zero.  On the other hand, as $\hat\omega^{*}$ becomes large, the difference in the losses becomes increasingly negative, with the lesson being that $\hat\omega^{*}$ must be in appropriate proportion to the volatility $\sigma^{2}_{t+1}$ in order for the adjusted forecast to outperform the unadjusted forecast.  This explains why it is so important to avoid using a naive adjustment estimator, like the arithmetic mean $\overline{\omega^{*}}$ of the estimated shocks.  
+By letting $f(\hat\omega^{*}) = \log{\frac{\hat\omega + \hat\alpha a_{t}^{2} + \hat\beta\sigma_{t}^{2} + \hat\omega^{*}}{\hat\omega + \hat\alpha a_{t}^{2} + \hat\beta\sigma_{t}^{2}}} - \frac{\hat\omega^{*}}{\sigma^{2}_{t+1}}$, it's easily verified that as $\hat\omega^{*} \rightarrow 0^{+}$, the difference in the losses goes to zero.  On the other hand, as $\hat\omega^{*}$ becomes large, the difference in the losses turns negative, with the lesson being that $\hat\omega^{*}$ must be in appropriate proportion to the volatility $\sigma^{2}_{t+1}$ in order for the adjusted forecast to outperform the unadjusted forecast.  This explains why it is so important to avoid using a naive adjustment estimator, $\overline{\omega^{*}}$, like the arithmetic mean of the estimated shocks.  We conclude this section with a broader result. 
 
 \begin{prop}\label{asymptotic_consistency}
 Assume the conditions in Propositions $\ref{omega_consistency}$ and $\ref{sigma_consistency}$.\\
@@ -599,39 +598,41 @@ Hence, a correctly specified model will outperform the unadjusted forecast asymp
 
 \section{Numerical Examples}
 
-Having introduced the model parameters above, we introduce estimation techniques that can be varied
-
 \subsection{Modeling Setup}
+In this section, we demonstrate the effectiveness of the proposed method using Monte Carlo simulations.  The first simulation setup will use a $\mc{M}_{2}$ model on the volatility.  The second setup will be a dual shock, i.e. a shock to both the level and volatility. 
 
-Recall an $\mc{M}_{2}$ model on the volatility, which is characterized by an exogenous shock to the volatility equation generated by an affine function of the covariates:
+\subsubsection{Most elementary simulation: one-day volatility shock}
+
+In order to investigate the Synthetic Volatility Forecasting method, our most elementary simulation uses $\mc{M}_2$.  We vary only two parameters. 
+
+Recall an $\mc{M}_2$ model on the volatility, which is characterized by an exogenous shock to the volatility equation generated by an affine function of the covariates:
 
 \begin{align*}
 \mc{M}_2 \colon \begin{array}{l}
    \sigma^{2}_{i,t} = \omega_{i} + \omega^{*}_i D^{vol}_{i,t} + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \text{ }\\[.2cm]
    a_{i,t} = \sigma_{i,t}(\epsilon_{i,t}(1-D^{level}_{i,t}) + \epsilon^{*}_{i}D^{level}_{i,t})\\[.2cm]
-   \omega_i^{*} = \mu_{\omega^{*}}+\delta'\mbf{x}_{i, T_i^*}+ \varepsilon_{i},
+   \omega_i^{*} = \mu_{\omega^{*}}+\delta'\mbf{x}_{i, T_i^*}+ \varepsilon_{i}\\
+   D^{level}_{i,t} \equiv 0
 \end{array}
 \end{align*}
+
+\subsubsection{Dual shock: both a level and volatility shock at $T^{*}+1$}
+\textit{Hypothesis:} Method should do less well under level shock.
 
 \subsection{Peformance Metrics}
 We compare adjusted and unadjusted forecasts using QL Loss, calculating the fraction of the simulations that the adjusted forecast dominates the unadjusted forecast.
 
 \subsection{Monte Carlo results}
 
-\subsubsection{Most elementary simulation setup}
-
-In order to investigate the Synthetic Volatility Forecasting method, our most elementary simulation uses $\mc{M}_2$.  We vary only two parameters. 
-
-\begin{figure}[ht!]
-\begin{center}
-  \includegraphics[scale=.75]{simulation_plots/standard_simulation_alpha_.1_beta_.82.png}
-  \caption{Fixed parameter values: $\alpha = .1, \beta = .82, \mu_{x} = 1, \sigma_{x} = .1$}\label{fig:heavy_beta}
-\end{center}
-\end{figure}
-
 In Figure \ref{fig:heavy_beta}, when only two parameters are varied, the volatility shock signal and the volatility shock noise, we observe several encouraging phenomena.  First, for any column selected, an increasing trend exists as the shock signal increases.  Second, for almost all small values of the shock signal, the outperformance rate hovers around .5, supporting the hypothesis that in the absence of a signal, any level of noise renders the method no better at GARCH than a flip of a coin.
-
-If we switch the values of $\alpha$ and $\beta$, we see similar behavior, as in  \ref{fig:heavy_alpha}.  However, for small values of the shock mean, increasing noise does lead to fewer converged simulations, likely due to large negative realizations of the noise term, which in turn lead to near-zero and even negative estimates of the terms $\omega_{i}$.
+\begin{figure}[h!]
+  \begin{center}
+    \includegraphics[scale=.45]{simulation_plots/standard_simulation_alpha_.1_beta_.82.png}
+    \caption{Fixed parameter values: $\alpha = .1, \beta = .82, \mu_{x} = 1, \sigma_{x} = .1$}\label{fig:heavy_beta}
+  \end{center}
+  \end{figure}
+  
+If we switch the values of $\alpha$ and $\beta$, we see similar behavior, as in  \ref{fig:heavy_alpha}.  However, for small values of the shock mean, increasing noise does lead to fewer converged simulations, likely due to large negative realizations of the noise term, which in turn lead to near-zero and even negative estimates of the terms $\omega_{i}^{*}$.
 \begin{figure}[h!]
   \begin{center}
     \includegraphics[scale=.45]{simulation_plots/standard_simulation_alpha_.82_beta_.1.png}
@@ -640,10 +641,27 @@ If we switch the values of $\alpha$ and $\beta$, we see similar behavior, as in 
   \end{center}
   \end{figure}
 
-\subsubsection{Dual shock: both a level and volatility shock at $T^{*}+1$}
-\textit{Hypothesis:} Method should do less well under level shock.
+  % https://tex.stackexchange.com/questions/37581/latex-figures-side-by-side
+  \begin{figure}[h!]
+    \centering
+    \begin{subfigure}{.5\textwidth}
+      \centering
+      \includegraphics[scale=.45]{simulation_plots/dual_level_vol_shock_FriFeb0911:03:49PM2024.png}
+      \caption{$\alpha = .1, \beta = .82, \mu_{x} = 1, \sigma_{x} = .1$}
+      \label{fig:dual_shock_strong_betas_inside}
+    \end{subfigure}%
+    \begin{subfigure}{.5\textwidth}
+      \centering
+      \includegraphics[scale=.45]{simulation_plots/dual_level_vol_shock_FriFeb0911:27:59PM2024.png}
+      \caption{$\alpha = .82, \beta = .1, \mu_{x} = 1, \sigma_{x} = .1$}
+      \label{fig:dual_shock_strong_alpha_inside}
+    \end{subfigure}
+    \caption{A figure with two subfigures}
+    \label{fig:not_sure_what_write}
+    \end{figure}
 
-\begin{figure}[h]
+\begin{comment}
+  \begin{figure}[h]
   \begin{center}
     \includegraphics[scale=.75]{simulation_plots/dual_level_vol_shock_FriFeb0911:03:49PM2024.png}
     \caption{Dual shock: both a level and volatility shock at $T^{*}+1$, where fixed parameter values are $\alpha = .1, \beta = .82, \mu_{x} = 1, \sigma_{x} = .1$}
@@ -658,6 +676,7 @@ If we switch the values of $\alpha$ and $\beta$, we see similar behavior, as in 
     \label{fig:dual_shock_strong_alpha}
     \end{center}
   \end{figure}
+\end{comment}
 
 \begin{comment}
 \subsubsection{Length of the Volatility Shock}
