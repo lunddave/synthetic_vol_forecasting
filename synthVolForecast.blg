@@ -3,49 +3,48 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: synthVolForecast.aux
 The style file: plainnat.bst
 Database file #1: synthVolForecast.bib
-Warning--to sort, need author or key in Bloomberg.com_2024
 Warning--empty journal in bauwens2006regime
 Warning--empty journal in guerron2017macroeconomic
 Warning--empty journal in hendry1994theory
 You've used 44 entries,
             2773 wiz_defined-function locations,
-            861 strings with 11831 characters,
-and the built_in function-call counts, 18858 in all, are:
-= -- 1730
-> -- 903
-< -- 36
-+ -- 311
-- -- 267
+            863 strings with 11894 characters,
+and the built_in function-call counts, 18921 in all, are:
+= -- 1734
+> -- 913
+< -- 37
++ -- 314
+- -- 270
 * -- 1452
-:= -- 2854
-add.period$ -- 135
+:= -- 2880
+add.period$ -- 136
 call.type$ -- 44
-change.case$ -- 214
+change.case$ -- 216
 chr.to.int$ -- 44
-cite$ -- 93
+cite$ -- 91
 duplicate$ -- 916
-empty$ -- 1668
-format.name$ -- 343
-if$ -- 3979
+empty$ -- 1665
+format.name$ -- 347
+if$ -- 3985
 int.to.chr$ -- 1
 int.to.str$ -- 1
 missing$ -- 45
-newline$ -- 228
-num.names$ -- 172
-pop$ -- 442
+newline$ -- 229
+num.names$ -- 176
+pop$ -- 441
 preamble$ -- 1
-purify$ -- 176
+purify$ -- 177
 quote$ -- 0
-skip$ -- 692
+skip$ -- 691
 stack$ -- 0
-substring$ -- 807
+substring$ -- 806
 swap$ -- 81
 text.length$ -- 6
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 459
-warning$ -- 4
-while$ -- 189
+warning$ -- 3
+while$ -- 192
 width$ -- 0
-write$ -- 565
-(There were 4 warnings)
+write$ -- 568
+(There were 3 warnings)

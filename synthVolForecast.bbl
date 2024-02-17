@@ -5,10 +5,6 @@
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
 
-\bibitem[Blo(2024)]{Bloomberg.com_2024}
-Jan 2024.
-\newblock URL \url{https://www.bloomberg.com/news/articles/2024-01-21/trump-s-2016-win-shook-markets-traders-won-t-get-fooled-again}.
-
 \bibitem[Abadie and Gardeazabal(2003)]{abadie2003economic}
 Alberto Abadie and Javier Gardeazabal.
 \newblock The economic costs of conflict: A case study of the basque country.
@@ -178,6 +174,11 @@ David~R Mayhew.
 Stewart Mayhew.
 \newblock Implied volatility.
 \newblock \emph{Financial Analysts Journal}, 51\penalty0 (4):\penalty0 8--20, 1995.
+
+\bibitem[News(2024)]{News_2024}
+Bloomberg News.
+\newblock Election 2024: What will markets do with trump victory over biden?, Jan 2024.
+\newblock URL \url{https://www.bloomberg.com/news/articles/2024-01-21/trump-s-2016-win-shook-markets-traders-won-t-get-fooled-again}.
 
 \bibitem[Romer and Romer(1989)]{romer1989does}
 Christina~D Romer and David~H Romer.
