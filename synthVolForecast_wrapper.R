@@ -1,10 +1,20 @@
 # David Lundquist
 # Wrapper for Simulations for Synthetic Prediction GARCH
 
-#We will need the two functions here.
-source('~/Desktop/synthetic_vol_forecasting/synthVolForecast.R',
+sysname <- Sys.info()["sysname"]
+
+if(sysname == "Darwin") {
+  setwd("~/Desktop/PhD/synthetic_vol_forecasting/") # example on mac machine
+} else if(sysname == "Linux") {
+  setwd('~/Desktop/synthetic_vol_forecasting/synthVolForecast.R') # example on linux machine
+} 
+
+source('synthVolForecast.R',
        echo = FALSE,
        verbose = FALSE)
+
+#We will need the two functions here.
+
 
 simulate_and_analyze <- function(n = 5,
                                  p = 10,
