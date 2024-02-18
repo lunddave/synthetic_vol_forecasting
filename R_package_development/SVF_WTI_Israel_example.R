@@ -268,7 +268,7 @@ temp <- SynthVolForecast(Y
                          ,dbw_scale = TRUE
                          ,dbw_center = TRUE
                          ,dbw_indices = NULL
-                         # ,dbw_princ_comp_input = 3
+                         # ,dbw_princ_comp_input = 2
                          #,covariate_indices = length(X)
                          ,garch_order = c(1,1,1)
                          ,plots = TRUE

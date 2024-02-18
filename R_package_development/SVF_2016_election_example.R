@@ -35,14 +35,14 @@ k <- 1
 TSUS <- 'IYG'
 
 log_ret_covariates <- c(#"GBP=X",
-   "6B=F",
+  # "6B=F",
   "CL=F"
   ,"^VIX"
   ,"^IRX"
   ,"^FVX"
   ,"^TNX"
   ,"^TYX"
-  ,"DX-Y.NYB"
+  #,"DX-Y.NYB"
 )
 
 level_covariates <- c('^VIX'
@@ -55,7 +55,7 @@ volume_covariates <- c('IYG')
 FRED_covariates <- c('AAA', 'BAA')
 
 shock_dates <- list('2016 Election' = "2016-11-08"
-                 ,'Brexit' = "2016-06-23"
+                 #,'Brexit' = "2016-06-23"
                  #,'2014 Midterm' = "2014-11-04"
                  ,'2012 Election' = "2012-11-06"
                  #, '2010 Midterm' ="2010-11-02"
@@ -268,7 +268,7 @@ temp <- SynthVolForecast(Y
                          ,dbw_scale = TRUE
                          ,dbw_center = TRUE
                          ,dbw_indices = NULL
-                         #,dbw_princ_comp_input = 3
+                         #,dbw_princ_comp_input = 2
                          #,covariate_indices = length(X)
                          ,garch_order = c(1,1,0)
                          ,plots = TRUE

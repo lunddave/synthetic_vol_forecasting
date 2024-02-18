@@ -13,7 +13,7 @@ dbw <- function(X
                 ,sum_to_1 = 1
                 ,bounded_below_by = 0
                 ,bounded_above_by = 1
-                ,princ_comp_count = ncol(X[[1]])
+                ,princ_comp_count = min(length(shock_time_vec), ncol(X[[1]]) )
                 ,normchoice = c('l1', 'l2')[2]
                 ,penalty_normchoice = c('l1', 'l2')[1]
                 ,penalty_lambda = 0
@@ -64,10 +64,8 @@ dbw <- function(X
     
     #Now project in direction of first princ_comp_count principal components
     print(paste('We are using ', princ_comp_count, ' principal components.', sep = ''))
-    print('We print the matrix v')
     print(dat.svd$v)
-    
-    dat <- dat.svd$v[1:princ_comp_count,] %*% dat
+    dat <- dat %*% dat.svd$v[,1:princ_comp_count]
 
     X1 <- dat[1, , drop = FALSE]
 
@@ -427,7 +425,7 @@ SynthVolForecast <- function(Y_series_list
                              ,dbw_scale = TRUE
                              ,dbw_center = TRUE
                              ,dbw_indices = NULL
-                             ,dbw_princ_comp_input = ncol(covariates_series_list[[1]])
+                             ,dbw_princ_comp_input = min(length(shock_time_vec), ncol(covariates_series_list[[1]]))
                              ,covariate_indices = NULL
                              ,geometric_sets = NULL #tk
                              ,days_before_shocktime_vec = NULL #tk I may want to remove this
@@ -688,7 +686,7 @@ SynthPrediction <- function(Y_series_list
                              ,dbw_scale = TRUE
                              ,dbw_center = TRUE
                              ,dbw_indices = NULL
-                             ,princ_comp_input = ncol(covariates_series_list[[1]])
+                             ,princ_comp_input = min(length(shock_time_vec), ncol(covariates_series_list[[1]]))
                              ,covariate_indices = NULL
                              ,geometric_sets = NULL #tk
                              ,days_before_shocktime_vec = NULL #tk I may want to remove this
