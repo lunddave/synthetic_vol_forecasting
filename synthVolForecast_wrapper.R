@@ -6,7 +6,7 @@ sysname <- Sys.info()["sysname"]
 if(sysname == "Darwin") {
   setwd("~/Desktop/PhD/synthetic_vol_forecasting/") # example on mac machine
 } else if(sysname == "Linux") {
-  setwd('~/Desktop/synthetic_vol_forecasting/synthVolForecast.R') # example on linux machine
+  setwd('~/Desktop/synthetic_vol_forecasting/') # example on linux machine
 } 
 
 source('synthVolForecast.R',

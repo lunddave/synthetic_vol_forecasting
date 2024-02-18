@@ -2,6 +2,15 @@
 
 options(digits = 7, scipen = 7)
 
+sysname <- Sys.info()["sysname"]
+
+if(sysname == "Darwin") {
+  setwd("~/Desktop/PhD/synthetic_vol_forecasting/") # example on mac machine
+} else if(sysname == "Linux") {
+  setwd('~/Desktop/synthetic_vol_forecasting/synthVolForecast.R') # example on linux machine
+} 
+
+
 ### BEGIN 2016 election example
 packs <- c('quantmod'
            ,'bizdays'
@@ -33,7 +42,7 @@ log_ret_covariates <- c(#"GBP=X",
   ,"^FVX"
   ,"^TNX"
   ,"^TYX"
-  #,"DX-Y.NYB"
+  ,"DX-Y.NYB"
 )
 
 level_covariates <- c('^VIX'
@@ -47,11 +56,11 @@ FRED_covariates <- c('AAA', 'BAA')
 
 shock_dates <- list('2016 Election' = "2016-11-08"
                  ,'Brexit' = "2016-06-23"
-                 ,'2014 Midterm' = "2014-11-04"
+                 #,'2014 Midterm' = "2014-11-04"
                  ,'2012 Election' = "2012-11-06"
-                 , '2010 Midterm' ="2010-11-02"
+                 #, '2010 Midterm' ="2010-11-02"
                  ,'2008 Election' = "2008-11-04"
-                 , '2006 Midterm' ="2006-11-07"
+                 #, '2006 Midterm' ="2006-11-07"
                  ,'2004 Election' = "2004-11-02"
                  #,'2002 Midterm' =  "2002-11-05"
                  #,'2000 Election' = "2000-11-07"
@@ -66,7 +75,7 @@ create.calendar(name='NYSE', holidays=nyse, weekdays=c('saturday', 'sunday'))
 
 shock_dates_as_dates <- as.Date(as.Date(unlist(shock_dates)))
 
-start_dates <- offset(shock_dates_as_dates, round(-1.8*252), "NYSE")
+start_dates <- offset(shock_dates_as_dates, round(-3.5*252), "NYSE")
 
 k_periods_after_shock <- offset(shock_dates_as_dates, k, "NYSE")
 
@@ -232,7 +241,7 @@ for (i in 1:length(start_dates)){
 n <- length(start_dates) - 1
 
 time_date <- gsub(" ", "", format(Sys.time(), "%a%b%d%X%Y"), fixed = TRUE)
-png_save_name <- paste("~/Desktop/PhD/synthetic_vol_forecasting/real_data_output_plots/savetime_"
+png_save_name <- paste("real_data_output_plots/savetime_"
                        ,time_date
                        ,'_'
                        ,TSUS
