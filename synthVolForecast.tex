@@ -122,7 +122,7 @@
 \maketitle
 
 \begin{abstract} 
-We develop a procedure for forecasting the volatility of a time series immediately following a news shock.  Adapting the synthetic prediction framework of \citet{lin2021minimizing}, we exploit series that have experienced similar shocks.  We aggregate their shock-induced excess volatilities by positing the shocks to be affine functions of exogenous covariates.  The volatility shocks are modeled as random effects and estimated as fixed effects.  The aggregation of these estimates is done in service of adjusting the $h$-step-ahead GARCH forecast of the time series under study by an additive term.  The adjusted and unadjusted forecasts are evaluated the unobservable but easily-estimated realized volatility (RV).  We also compare the performance of the adjusted forecast to the performance of the Realized GARCH forecast, which is known to react faster to rapidly-changing volatility than GARCH incorporating implied volatility.  Finally, we combine Realized GARCH modeling with the synthetic prediction framework, using Realized GARCH in both the estimation of random effects as well as the forecast for the time series under study.  A real-world application is provided, as are simulation results suggesting the conditions and hyperparameters under which our method thrives.
+We develop a procedure for forecasting the volatility of a time series immediately following a news shock.  Adapting the synthetic prediction framework of \citet{lin2021minimizing}, we exploit series that have experienced similar shocks.  We aggregate their shock-induced excess volatilities by positing the shocks to be affine functions of exogenous covariates.  The volatility shocks are modeled as random effects and estimated as fixed effects.  The aggregation of these estimates is done in service of adjusting the $h$-step-ahead GARCH forecast of the time series under study by an additive term.  The adjusted and unadjusted forecasts are evaluated the unobservable but easily-estimated realized volatility (RV).  \textcolor{red}{We also compare the performance of the adjusted forecast to the performance of the Realized GARCH forecast, which is known to react faster to rapidly-changing volatility than GARCH incorporating implied volatility.  Finally, we combine Realized GARCH modeling with the synthetic prediction framework, using Realized GARCH in both the estimation of random effects as well as the forecast for the time series under study.}  A real-world application is provided, as are simulation results suggesting the conditions and hyperparameters under which our method thrives.
 \end{abstract}
 
 \section{Introduction}
@@ -216,14 +216,14 @@ Let $I(\cdot)$ be an indicator function, $T_i$ be the time length of the time se
   \mc{M}_2 \colon \begin{array}{l}
      \sigma^{2}_{i,t} = \omega_{i} + \omega^{*}_i + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \text{ }\\[.2cm]
      a_{i,t} = \sigma_{i,t}(\epsilon_{i,t}(1-D^{level}_{i,t}) + \epsilon^{*}_{i}D^{level}_{i,t})\\[.2cm]
-     \omega_i^{*} = \mu_{\omega^{*}}+\delta'\mbf{x}_{i, T_i^*}+ \varepsilon_{i},
+    \textcolor{red}{\omega_{i,t}^{*} = \mu_{\omega^{*}}+\delta'\mbf{x}_{i, t-1}+ \varepsilon_{i}}
   \end{array}
   \end{align*}
 
   with random effects structure
 
   \begin{align*}
-    \omega^{*}_i &\simiid \mc{F}_{\omega^{*}} \text{ with }  \; \mrm{E}_{\mc{F}_{\omega^{*}}}(\omega^{*}) = \mu_{\omega^{*}}, \mrm{Var}_{\mc{F}_{\omega^{*}_i}}(\omega^{*}_i)  = \sigma^2_{\omega^{*}}  \\
+    \textcolor{red}{\omega^{*}_i} &\simiid \mc{F}_{\omega^{*}} \text{ with }  \; \mrm{E}_{\mc{F}_{\omega^{*}}}(\omega^{*}) = \mu_{\omega^{*}}, \mrm{Var}_{\mc{F}_{\omega^{*}_i}}(\omega^{*}_i)  = \sigma^2_{\omega^{*}}  \\
     \epsilon_{i,t} &\simiid \mc{F}_{\epsilon} \text{ with }  \; \mrm{E}_{\mc{F}_{\epsilon}}(\epsilon) = 0, \mrm{Var}_{\mc{F}_{\epsilon}}(\epsilon)  = 1  \\
     \epsilon^{*}_{i,t} &\simiid \mc{F}_{\epsilon^{*}} \text{ with }  \; \mrm{E}_{\mc{F}_{\epsilon^{*}}}(\epsilon^{*}_{i,t}) = \mu_{\epsilon^{*}}, \mrm{Var}_{\mc{F}_{\epsilon^{*}}}(\epsilon^{*}_i)  = \sigma^2_{\epsilon^{*}}  \\
     % & \text{Alternatively, } (\omega^{*}, \epsilon^{*})_{i} \sim \mathcal{N}(\mu_{\omega^{*},\epsilon^{*}}, \Sigma_{\omega^{*},\epsilon^{*}}) \\
@@ -235,7 +235,7 @@ Let $I(\cdot)$ be an indicator function, $T_i$ be the time length of the time se
     %l_{i, level} &\simiid \text{Unif}\{1,2,...,l_{i,vol}\}\\
     \omega^{*}_i & \indep  \epsilon_{i,t} \indep  \epsilon^{*}_{i,t} \indep \delta \indep \varepsilon_{i,t}
     \end{align*}
-where $D^{level}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + L_{i, level}\})$ and $L_{i,vol},L_{i,level}$ denote the lengths of the volatility and level shocks, respectively. Let $\x_{i,t} \in \mathbb{R}^{p}$.  Let $\mc{M}_{1}$ denote the subclass of $\mc{M}_{2}$ models such that $\delta \equiv 0$.  Notice that $\mc{M}_1$ assumes that $\omega^{*}_i$ have no dependence on the covariates and are i.i.d. with $\E[ \omega^{*}_i]=\mu_{\omega^{*}}$.  We further define the filtrations
+where $D^{level}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + L_{i, level}\})$ and $L_{i,vol},L_{i,level}$ denote the lengths of the volatility and level shocks, respectively. Let $\x_{i,t} \in \mathbb{R}^{p}$.  \textcolor{red}{Let $\mc{M}_{1}$ denote the subclass of $\mc{M}_{2}$ models such that $\delta \equiv 0$}.  Notice that $\mc{M}_1$ assumes that $\omega^{*}_i$ have no dependence on the covariates and are i.i.d. with $\E[ \omega^{*}_i]=\mu_{\omega^{*}}$.  We further define the filtrations
     \begin{align*}
       \begin{array}{lll}
          \mathcal{F}_{i,t}^{\mc{M}_{1}} &= &\{(\x_{i,t}, \omega^{*}_i, \epsilon_{i,t}, \epsilon^{*}_{i,t}, \varepsilon_{i,t})\colon t= 1, \ldots, T_i, i = 2, \ldots, n +1\}\\
@@ -506,7 +506,7 @@ Place here
 \begin{prop}\label{omega_consistency} Assume
 \begin{enumerate}
   \item $\forall i$, $\{a_{i,t}\}_{t=0,...,T_i}$ obeys a GARCH-X($m,s$) process with volatility shocks found in $\mc{M}_{2}$, where $T_i$ is the length of the $i$th series.
-  \item $\forall i, \{\omega_{i,t}^{*}\}_{t=0,...,T_i}$ is potentially non-zero at $\{T^{*}_{i}+1,... ,T^{*}_{i}+k\}$, $\omega_{i,T^{*}+1}^{*}\equiv...\equiv\omega_{i,T^{*}+k}^{*}$, and zero otherwise, where the arrival of $T_{i}^{*}$ is governed by a time-invariant distribution on $\{a_{i,t}\}_{t=0,...,T_i}$. \label{stationarity_of_omega_i_t}
+  \item $\forall i, \textcolor{red}{\{\omega_{i,t}^{*}\}_{t=0,...,T_i}}$ is potentially non-zero at $\{T^{*}_{i}+1,... ,T^{*}_{i}+k\}$, $\omega_{i,T^{*}+1}^{*}\equiv...\equiv\omega_{i,T^{*}+k}^{*}$, and zero otherwise, where the arrival of $T_{i}^{*}$ is governed by a time-invariant distribution on $\{a_{i,t}\}_{t=0,...,T_i}$. \label{stationarity_of_omega_i_t}
   \item Let the conditions in Assumption 0 of \citet{han2014asymptotic} prevail.
 \end{enumerate}
 Then $\forall i, \hat\omega_{i,t}^{*} \xrightarrow{p} \E[\omega_{i}^{*}].$
