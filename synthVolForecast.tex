@@ -190,17 +190,10 @@ To that end, let $a_{t} = r_{t} - \mu_{t}$, where $\mu_{t}$ is the mean of the l
 &\forall k,j, \alpha_{k},\beta_{j}\geq 0\\ 
 &\forall t, \omega, \sigma_{t} > 0 
 \end{align*}
-
 Assuming further that $\sigma^{2}_{t}$ depends on a vector of exogenous covariates $\x_{t}$ (a so-called ``GARCH-X"), the volatility equation becomes
 
 \begin{align*}
 &\sigma_{t}^{2} = \omega+ \sum^{m}_{k=1}\alpha_{k}a^{2}_{t-k} + \sum_{j=1}^{s}\beta_{j}\sigma_{t-j}^{2} + \gamma^{T}\x_{t}\\
-\end{align*}
-
-We will suppose that a researcher has multivariate time series data $\y_{i,t}, t = 1,$ $\ldots,  T_i$ and $i = 1, \ldots, n+1$.  Let $\y_{i,t} = (r_{i,t}$, $\x_{i,t}$) where $r_{i,t}$ is a scalar response (typically the log-return of a financial asset) and  $\x_{i,t}$ is a vector of covariates such that $\x_{i,t}|\mathcal{F}_{i,t-1}$ is deterministic.  Suppose that the analyst is interested in forecasting the volatility of $r_{1,t}$, the first time series in the collection.  We require that each time series $\y_{i,t}$ is subject to a news event following $T^*_i \leq T_{i} + 1$ and before witnessing $T^*_i+1$.  We are implicitly leveraging the fact that financial assets are heavily traded during market hours, yet only thinly traded (if traded at all) outside market hours.  In contrast, the arrival of market-moving news does not obey any such restrictions.  In light of the foregoing, we can denote our collection of GARCH volatility equations of interest using the following notation
-
-\begin{align*}
-&\sigma_{i,t}^{2} = \omega_{i} + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \\
 \end{align*}
 
 % https://latex-tutorial.com/matrices-in-latex/
@@ -212,6 +205,11 @@ In this section, we will describe the assumed dynamic panel models for which
 post-shock aggregated estimators are provided. The basic structures of these models 
 are the same for all time series in the analysis.  The differences between them lie in the shock distributions.  We first sharply distinguish between a volatility shock induced by a return series shock and a volatility shock directly affecting the volatility equation of a GARCH model, without mediation of the return series.
 
+We will suppose that a researcher has multivariate time series data $\y_{i,t}, t = 1,$ $\ldots,  T_i$ and $i = 1, \ldots, n+1$.  Let $\y_{i,t} = (r_{i,t}$, $\x_{i,t}$) where $r_{i,t}$ is a scalar response (typically the log-return of a financial asset) and  $\x_{i,t}$ is a vector of covariates such that $\x_{i,t}|\mathcal{F}_{i,t-1}$ is deterministic.  Suppose that the analyst is interested in forecasting the volatility of $r_{1,t}$, the first time series in the collection.  We require that each time series $\y_{i,t}$ is subject to a news event following $T^*_i \leq T_{i} + 1$ and before witnessing $T^*_i+1$.  We are implicitly leveraging the fact that financial assets are heavily traded during market hours, yet only thinly traded (if traded at all) outside market hours.  In contrast, the arrival of market-moving news does not obey any such restrictions.  In light of the foregoing, we can denote our collection of GARCH volatility equations of interest using the following notation
+
+\begin{align*}
+&\sigma_{i,t}^{2} = \omega_{i} + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \\
+\end{align*}
 Let $I(\cdot)$ be an indicator function, $T_i$ be the time length of the time series $i$ for $i = 1, \ldots, n+1$, and $T_i^*$ denote the largest time index prior to the arrival of the news shock , with $T_i^* < T_i$.  For $t= 1, \ldots, T_i$ and $i = 1, \ldots, n+1$, the model $\mc{M}_2$ is defined as
 
 \begin{align*}
@@ -237,7 +235,7 @@ Let $I(\cdot)$ be an indicator function, $T_i$ be the time length of the time se
     %l_{i, level} &\simiid \text{Unif}\{1,2,...,l_{i,vol}\}\\
     \omega^{*}_i & \indep  \epsilon_{i,t} \indep  \epsilon^{*}_{i,t} \indep \delta \indep \varepsilon_{i,t}
     \end{align*}
-where $D^{level}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + L_{i, level}\})$ and $L_{i,vol},L_{i,level}$ denote the lengths of the volatility and level shocks, respectively. Let $\x_{i,t} \in \mathbb{R}^{p}$.  Let $\mc{M}_{1}$ denote the subclass of $\mc{M}_{2}$ models such that $\delta \equiv 0$.  Notice that $\mc{M}_1$ assumes that $\omega^{*}_i$ are i.i.d. with $\E[ \omega^{*}_i]=\mu_{\omega^{*}}$ and hence have no dependence on the covariates.  We further define the filtrations
+where $D^{level}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + L_{i, level}\})$ and $L_{i,vol},L_{i,level}$ denote the lengths of the volatility and level shocks, respectively. Let $\x_{i,t} \in \mathbb{R}^{p}$.  Let $\mc{M}_{1}$ denote the subclass of $\mc{M}_{2}$ models such that $\delta \equiv 0$.  Notice that $\mc{M}_1$ assumes that $\omega^{*}_i$ have no dependence on the covariates and are i.i.d. with $\E[ \omega^{*}_i]=\mu_{\omega^{*}}$.  We further define the filtrations
     \begin{align*}
       \begin{array}{lll}
          \mathcal{F}_{i,t}^{\mc{M}_{1}} &= &\{(\x_{i,t}, \omega^{*}_i, \epsilon_{i,t}, \epsilon^{*}_{i,t}, \varepsilon_{i,t})\colon t= 1, \ldots, T_i, i = 2, \ldots, n +1\}\\
@@ -292,8 +290,8 @@ A GARCH model is an ARMA on the squares of the observed scalar time series \cite
 We present two forecasts:
 
 \begin{align*}
-  \text{Forecast 1: } & \hat\sigma^{2}_{unadjusted} \coloneq \hat\E_{T^{*}}[\sigma^{2}_{i,T^{*}+1}|\mathcal{F}_{T^{*}}] = \omega_{i} + \sum^{m_{i}}_{k=1}\hat\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\hat\beta_{i,j}\sigma_{i,t-j}^{2} + \hat\gamma_{i}^{T} \x_{i,t}\\
-  \text{Forecast 2: }  & \hat\sigma^{2}_{adjusted} \coloneq \hat\E_{T^{*}}[\sigma^{2}_{i,T^{*}+1}|\mathcal{F}_{T^{*}}] + \hat\omega^{*} = \omega_{i} + \sum^{m_{i}}_{k=1}\hat\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\hat\beta_{i,j}\sigma_{i,t-j}^{2} + \hat\gamma_{i}^{T} \x_{i,t}+ \hat\omega^{*}
+  \text{Forecast 1: } & \hat\sigma^{2}_{unadjusted} \coloneq \hat\E_{T^{*}}[\sigma^{2}_{i,T^{*}+1}|\mathcal{F}_{T^{*}}] = \hat\omega_{i} + \sum^{m_{i}}_{k=1}\hat\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\hat\beta_{i,j}\sigma_{i,t-j}^{2} + \hat\gamma_{i}^{T} \x_{i,t}\\
+  \text{Forecast 2: }  & \hat\sigma^{2}_{adjusted} \coloneq \hat\E_{T^{*}}[\sigma^{2}_{i,T^{*}+1}|\mathcal{F}_{T^{*}}] + \hat\omega^{*} = \hat\omega_{i} + \sum^{m_{i}}_{k=1}\hat\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\hat\beta_{i,j}\sigma_{i,t-j}^{2} + \hat\gamma_{i}^{T} \x_{i,t}+ \hat\omega^{*}
 \end{align*}
 
 \subsection{Excess Volatility Estimators}
@@ -341,7 +339,6 @@ Finally, we introduce the QL (quasi-likelihood) Loss \citep{brownlees2011practic
 \[ 
 \text{QL}^{H}_{method, ground truth} = \frac{1}{h}\sum_{h=1}^{H} (\frac{ \hat\sigma^{2}_{h, method} }{\hat\sigma^{2}_{h, ground truth}} - \log{\frac{ \hat\sigma^{2}_{h, method} }{\hat\sigma^{2}_{h, ground truth}}} -1)
 \]
-
 What distinguishes QL Loss is that it is multiplicative rather than additive.  This serves as a basis for some of its virtues, both practical and theoretical.  As \citet{brownlees2011practical} explains, ``[a]mid volatility turmoil, large MSE
 losses will be a consequence of high volatility without necessarily corresponding to
 deterioration of forecasting ability. The QL avoids this ambiguity, making it easier to
@@ -519,7 +516,7 @@ Place here
 
 \begin{prop}\label{omega_consistency} Assume
 \begin{enumerate}
-  \item $\forall i$, $\{a_{i,t}\}_{t=0,...,T_i}$ obeys a GARCH-X($m,s$) process with volatility shocks found in $\mc{M}_1$, where $T_i$ is the length of the $i$th series.
+  \item $\forall i$, $\{a_{i,t}\}_{t=0,...,T_i}$ obeys a GARCH-X($m,s$) process with volatility shocks found in $\mc{M}_{2}$, where $T_i$ is the length of the $i$th series.
   \item $\forall i, \{\omega_{i,t}^{*}\}_{t=0,...,T_i}$ is potentially non-zero at $\{T^{*}_{i}+1,... ,T^{*}_{i}+k\}$, $\omega_{i,T^{*}+1}^{*}\equiv...\equiv\omega_{i,T^{*}+k}^{*}$, and zero otherwise, where the arrival of $T_{i}^{*}$ is governed by a time-invariant distribution on $\{a_{i,t}\}_{t=0,...,T_i}$. \label{stationarity_of_omega_i_t}
   \item Let the conditions in Assumption 0 of \citet{han2014asymptotic} prevail.
 \end{enumerate}
@@ -543,19 +540,19 @@ The result follows from the consistency proof of the QMLE in GARCH-X models, as 
 Recall the conditional expectation of the variance for the GARCH-X($m$,$s$) model:
 
 \begin{align}
-\E_{T^{*}}[\sigma^{2}_{i,t+1}|\mathcal{F}_{T^{*}}] = \omega_{i} + \omega^{*}_i + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t}
+\E_{T^{*}}[\sigma^{2}_{i,t+1}|\mathcal{F}_{t}] = \omega_{i} + \omega^{*}_i + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t}
 \end{align}
 
 By replacing parameters with their estimates, we arrive at the prediction 
 
 \begin{align}
-\hat\sigma^{2}_{i,t+1}|\mathcal{F}_{T^{*}} = \hat\omega_{i} + \hat\omega^{*}_i + \sum^{m_{i}}_{k=1}\hat\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\hat\beta_{i,j}\hat\sigma_{i,t-j}^{2} + \hat\gamma_{i}^{T} \x_{i,t}
+\hat\sigma^{2}_{i,t+1}|\mathcal{F}_{t} = \hat\omega_{i} + \hat\omega^{*}_i + \sum^{m_{i}}_{k=1}\hat\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\hat\beta_{i,j}\hat\sigma_{i,t-j}^{2} + \hat\gamma_{i}^{T} \x_{i,t}
 \end{align}
 
 which converges in probability to 
 
 \begin{align}
-  \hat\sigma^{2}_{i,t+1}|\mathcal{F}_{T^{*}} = \omega_{i} + \omega^{*}_i + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t}
+  \hat\sigma^{2}_{i,t+1}|\mathcal{F}_{t} = \omega_{i} + \omega^{*}_i + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t}
   \end{align}
 
 as $t\rightarrow\infty$ by a simple application of Slutsky's Theorem.
@@ -588,7 +585,7 @@ Hence, a correctly specified model will outperform the unadjusted forecast asymp
 \end{prop}
 
 \begin{proof-of-proposition}
-  The conclusion follows from fact that the model is correctly specified and consistency is guaranteed by prior results.  Finally, the function $g:(-\infty,\E[\omega_{i}^{*}])\rightarrow \mathbb{R}$ given by $g(x) = \log{\frac{\sigma^{2}_{t+1}}{\sigma_{t+1}^{2}-x}} - \frac{x}{\sigma^{2}_{t+1}}$ is nonnegative. 
+  The conclusion follows from fact that the model is correctly specified and consistency is guaranteed by prior results.  Finally, the function $g:(-\infty,\E[\omega_{i}^{*}])\rightarrow \mathbb{R}$ given by $g(x) = \log{\frac{\sigma^{2}_{t+1}}{\sigma_{t+1}^{2}-x}} - \frac{x}{\sigma^{2}_{t+1}}$ is nonnegative, and being continuous, $g$ preserves consistency. 
 \end{proof-of-proposition}
 
 \section{Numerical Examples}
@@ -764,6 +761,13 @@ Consider least-squares estimation for the weight vector $\vec{w}$:
 One immediately visible problem is that this optimization problem is an optmization problem over $p$-vectors $\vec{w}$ --- i.e. a linear combination of the covariates, whereas what we seek is an $n$-vector --- a linear combination of donors.
 
 There is no guarantee that $\vec{w}_{OLS}$ would perform poorly as a tool for producing $\hat\omega^{*}$, but given the small number of donors supposed in our setting, it is risky.
+
+\subsection{If we assume knowledge of the covariates that parameterize the shock, why not estimate each parameter individually?}
+\begin{enumerate}
+  \item Degrees of freedom is first consideration
+  \item Each estimate will be quite noisy.
+\end{enumerate}
+
 \subsection{News shock literature review}
 
 \begin{comment}
