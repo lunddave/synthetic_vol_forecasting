@@ -260,11 +260,11 @@ simulate_and_analyze <- function(n = 5,
 
 # png('simulation_plot_arithmetic_mean.png')
 
-
 simulate_and_analyze(normchoice = 'l2'
                            , penalty_norm = 'l2'
                            , penalty_lambda = 0
                            , plot_sim = TRUE
                            , plot_fit = TRUE)
 
-# dev.off()
+dev.off()
+
