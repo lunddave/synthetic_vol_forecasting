@@ -308,7 +308,7 @@ We now explain how we use the volatility profile to arrive at a set of nonnegati
     \subsection{Ground Truth Estimators}
     \label{Ground Truth Estimators}
     
-    The price series of a financial asset is a sequence of observable random variables; in particular, for any $t$, $P_{t}$ is realized at $t$ and henceforth no longer random, under the assumption that $(P_{t})_{t\in\mathbb{N}}$ is adapted to $\mc{F}_{t}$.  Time series econometrics has a vast inventory of approaches for modeling $P_{t}$.  In contrast, the time-varying parameter $\sigma^{2}_{t}$ is a quantity for which even identifying an observable effect in the real world is far more challenging.  In this work, we use a common estimator of the variance called realized variance (RV).
+    The price series of a financial asset is a sequence of observable random variables; in particular, for any $t$, $P_{t}$ is realized at $t$ and henceforth no longer random, under the assumption that $(P_{t})_{t\in\mathbb{N}}$ is adapted to $\mc{F}_{t}$.  Time series econometrics has a vast inventory of approaches for modeling $P_{t}$.  In contrast, the time-varying parameter $\sigma^{2}_{t}$ is a quantity for which even identifying an observable effect in the real world is far more challenging.  In this work, we use a common estimator of the variance called realized volatility (RV), one which has the virtue of being ``model-free'' in the sense that it requires no modeling assumptions \citep{andersen2010stochastic}.
     
     Suppose we examine $K$ units of of time, where each unit is divided into m intervals of length 1/m.  We follow the notation of  \citet{andersen2009realized}. Let $p_{t} = \text{log}(P_{t})$, and let $r(t, 1/m) = p_{t} - p_{t-1/m}$.  We estimate the variance of a log-return series using Realized Volatility, denoted $RV_{K,m}$, using
     
@@ -762,6 +762,9 @@ There is no guarantee that $\vec{w}_{OLS}$ would perform poorly as a tool for pr
   \item Degrees of freedom is first consideration
   \item Each estimate will be quite noisy.
 \end{enumerate}
+
+\subsection{Connection to Stochastic Volatility}
+SV stipulates that at any time point, both the return distribution and volatility could each be subject to separate shocks \citep{andersen2010stochastic}.
 
 \subsection{News shock literature review}
 

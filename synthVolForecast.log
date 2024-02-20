@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.21)  19 FEB 2024 15:19
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.21)  19 FEB 2024 21:10
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -753,7 +753,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] Excluding 'comment' comment. [2]
-<simulation_plots/USE_in_paper_simulation_plot_arithmetic_mean.png, id=257, 481.8pt x 481.8pt>
+<simulation_plots/USE_in_paper_simulation_plot_arithmetic_mean.png, id=261, 481.8pt x 481.8pt>
 File: simulation_plots/USE_in_paper_simulation_plot_arithmetic_mean.png Graphic file (type png)
 <use simulation_plots/USE_in_paper_simulation_plot_arithmetic_mean.png>
 Package pdftex.def Info: simulation_plots/USE_in_paper_simulation_plot_arithmetic_mean.png  used on input line 172.
@@ -795,7 +795,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 600.
 
-<simulation_plots/standard_simulation_alpha_.1_beta_.82.png, id=393, 650.43pt x 499.11469pt>
+<simulation_plots/standard_simulation_alpha_.1_beta_.82.png, id=400, 650.43pt x 499.11469pt>
 File: simulation_plots/standard_simulation_alpha_.1_beta_.82.png Graphic file (type png)
 <use simulation_plots/standard_simulation_alpha_.1_beta_.82.png>
 Package pdftex.def Info: simulation_plots/standard_simulation_alpha_.1_beta_.82.png  used on input line 614.
@@ -803,7 +803,7 @@ Package pdftex.def Info: simulation_plots/standard_simulation_alpha_.1_beta_.82.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<simulation_plots/standard_simulation_alpha_.82_beta_.1.png, id=395, 650.43pt x 499.11469pt>
+<simulation_plots/standard_simulation_alpha_.82_beta_.1.png, id=402, 650.43pt x 499.11469pt>
 File: simulation_plots/standard_simulation_alpha_.82_beta_.1.png Graphic file (type png)
 <use simulation_plots/standard_simulation_alpha_.82_beta_.1.png>
 Package pdftex.def Info: simulation_plots/standard_simulation_alpha_.82_beta_.1.png  used on input line 622.
@@ -811,12 +811,12 @@ Package pdftex.def Info: simulation_plots/standard_simulation_alpha_.82_beta_.1.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<simulation_plots/dual_level_vol_shock_FriFeb0911:03:49PM2024.png, id=396, 481.8pt x 481.8pt>
+<simulation_plots/dual_level_vol_shock_FriFeb0911:03:49PM2024.png, id=403, 481.8pt x 481.8pt>
 File: simulation_plots/dual_level_vol_shock_FriFeb0911:03:49PM2024.png Graphic file (type png)
 <use simulation_plots/dual_level_vol_shock_FriFeb0911:03:49PM2024.png>
 Package pdftex.def Info: simulation_plots/dual_level_vol_shock_FriFeb0911:03:49PM2024.png  used on input line 633.
 (pdftex.def)             Requested size: 216.80798pt x 216.80798pt.
-<simulation_plots/dual_level_vol_shock_FriFeb0911:27:59PM2024.png, id=397, 481.8pt x 481.8pt>
+<simulation_plots/dual_level_vol_shock_FriFeb0911:27:59PM2024.png, id=404, 481.8pt x 481.8pt>
 File: simulation_plots/dual_level_vol_shock_FriFeb0911:27:59PM2024.png Graphic file (type png)
 <use simulation_plots/dual_level_vol_shock_FriFeb0911:27:59PM2024.png>
 Package pdftex.def Info: simulation_plots/dual_level_vol_shock_FriFeb0911:27:59PM2024.png  used on input line 639.
@@ -827,70 +827,70 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 Excluding 'comment' comment. Excluding 'comment' comment. [13] [14 <./simulation_plots/standard_simulation_alpha_.1_beta_.82.png (PNG copy)> <./simulation_plots/standard_simulation_alpha_.82_beta_.1.png (PNG copy)>] [15 <./simulation_plots/dual_level_vol_shock_FriFeb0911:03:49PM2024.png (PNG copy)> <./simulation_plots/dual_level_vol_shock_FriFeb0911:27:59PM2024.png (PNG copy)>] [16
 
 ]
-<real_data_output_plots/savetime_SunFeb1817:10:112024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png, id=455, 803.0pt x 602.25pt>
+<real_data_output_plots/savetime_SunFeb1817:10:112024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png, id=462, 803.0pt x 602.25pt>
 File: real_data_output_plots/savetime_SunFeb1817:10:112024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png Graphic file (type png)
 <use real_data_output_plots/savetime_SunFeb1817:10:112024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png>
 Package pdftex.def Info: real_data_output_plots/savetime_SunFeb1817:10:112024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png  used on input line 704.
 (pdftex.def)             Requested size: 401.49902pt x 301.12425pt.
  [17 <./real_data_output_plots/savetime_SunFeb1817:10:112024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png>]
-<real_data_output_plots/savetime_WedJan1010:53:23PM2024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-23.png, id=471, 803.0pt x 602.25pt>
+<real_data_output_plots/savetime_WedJan1010:53:23PM2024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-23.png, id=478, 803.0pt x 602.25pt>
 File: real_data_output_plots/savetime_WedJan1010:53:23PM2024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-23.png Graphic file (type png)
 <use real_data_output_plots/savetime_WedJan1010:53:23PM2024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-23.png>
 Package pdftex.def Info: real_data_output_plots/savetime_WedJan1010:53:23PM2024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-23.png  used on input line 716.
 (pdftex.def)             Requested size: 481.80373pt x 361.35278pt.
  [18] [19 <./real_data_output_plots/savetime_WedJan1010:53:23PM2024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-23.png (PNG copy)>] [20] Excluding 'comment' comment.
-Underfull \hbox (badness 10000) in paragraph at lines 773--774
+Underfull \hbox (badness 10000) in paragraph at lines 776--777
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 775--776
+Underfull \hbox (badness 10000) in paragraph at lines 778--779
 
  []
 
 
-Overfull \hbox (8.11958pt too wide) detected at line 788
+Overfull \hbox (8.11958pt too wide) detected at line 791
 []
  []
 
 [21] Excluding 'comment' comment.
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 840.
+(hyperref)                removing `math shift' on input line 843.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 840.
+(hyperref)                removing `math shift' on input line 843.
 
 [22] (./synthVolForecast.bbl [23
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 179--182
+Underfull \hbox (badness 10000) in paragraph at lines 184--187
 []\OT1/cmr/m/n/10.95 Bloomberg News.  Elec-tion 2024: What will mar-kets do with trump vic-tory over
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 179--182
+Underfull \hbox (badness 10000) in paragraph at lines 184--187
 \OT1/cmr/m/n/10.95 biden?, Jan 2024.  URL [][]$\OT1/cmtt/m/n/10.95 https : / / www . bloomberg . com / news / articles / 2024-[]01-[]21 /
  []
 
 [24]) [25] (./synthVolForecast.aux)
 Package rerunfilecheck Info: File `synthVolForecast.out' has not changed.
-(rerunfilecheck)             Checksum: 595504AC3F9D95EB00FB49095AEB2002;9312.
+(rerunfilecheck)             Checksum: A2C03DFC237FAE6C32164A95785D63FD;9555.
  ) 
 Here is how much of TeX's memory you used:
- 26339 strings out of 476025
- 488236 string characters out of 5790017
+ 26345 strings out of 476025
+ 488385 string characters out of 5790017
  1875388 words of memory out of 5000000
- 46161 multiletter control sequences out of 15000+600000
+ 46165 multiletter control sequences out of 15000+600000
  532229 words of font info for 104 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,16n,80p,2220b,632s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on synthVolForecast.pdf (25 pages, 1117836 bytes).
+Output written on synthVolForecast.pdf (25 pages, 1118791 bytes).
 PDF statistics:
- 687 PDF objects out of 1000 (max. 8388607)
- 598 compressed objects within 6 object streams
- 159 named destinations out of 1000 (max. 500000)
- 344 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 697 PDF objects out of 1000 (max. 8388607)
+ 607 compressed objects within 7 object streams
+ 161 named destinations out of 1000 (max. 500000)
+ 352 words of extra memory for PDF output out of 10000 (max. 10000000)
 

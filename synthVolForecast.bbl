@@ -1,4 +1,4 @@
-\begin{thebibliography}{44}
+\begin{thebibliography}{45}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -14,6 +14,11 @@ Alberto Abadie and Javier Gardeazabal.
 Alberto Abadie, Alexis Diamond, and Jens Hainmueller.
 \newblock Synthetic control methods for comparative case studies: Estimating the effect of california’s tobacco control program.
 \newblock \emph{Journal of the American Statistical Association}, 105\penalty0 (490):\penalty0 493--505, 2010.
+
+\bibitem[Andersen and Benzoni(2010)]{andersen2010stochastic}
+Torben~G Andersen and Luca Benzoni.
+\newblock Stochastic volatility.
+\newblock \emph{CREATES Research Paper}, \penalty0 (2010-10), 2010.
 
 \bibitem[Andersen and Ter{\"a}svirta(2009)]{andersen2009realized}
 Torben~G Andersen and Timo Ter{\"a}svirta.
