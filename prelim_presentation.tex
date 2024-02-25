@@ -54,41 +54,16 @@
 
 % Frame to get intuitions flowing
 \begin{frame}
-A supposedly impossible trinity in supervised learning theory:\\
+A seemingly unprecedented event might provoke the questions
 
 \begin{enumerate}
-    \item Interpolate the training data (i.e. fit with zero loss)
-    \item Minimize the complexity of the fitted model.  For example
-        \begin{itemize}
-        \item $\|\hat\beta\|$ in linear models
-        \item The bandwidth parameter $h$ in kernel regression
-        \item $K$ in KNN regression
-        \end{itemize}
-    \item Achieve nearly zero loss out-of-sample 
+    \item What does it resemble from the past?
+    \item What past events are most relevant?
+    \item Can we incorporate past events in a systematic, principled manner? 
 
 \end{enumerate}
-
 \end{frame}
-
-%Let's throw some images at them
 \begin{frame}
-
-%\begin{figure}[h!]
-%  \includegraphics[width=0.5\textwidth]{ima.jpeg}
-%  \caption{Classification in $\mathbb{R}^{2}$}
-%\end{figure}
-
-\uncover<2-2>{Interpolation is a bit harder to visualize for linear regression...}\\
-
-\end{frame}
-
-%Another image
-\begin{frame}
-
-%\begin{figure}[h!]
-%  \includegraphics[width=0.5\textwidth]{imc.png}
-%  \caption{Linear regression; Data not interpolated}
-%\end{figure}
 
 Yet we know the data can be interpolated by taking $p \geq n$ linearly independent covariates.
 
@@ -109,7 +84,6 @@ Thus, there are only two quantitites that matter here: $\Sigma$ and $n$.  Most o
 \end{frame}
 
 % Presentation structure
-
 \section{Setting}
 
 % Setting for the problem
@@ -158,7 +132,6 @@ In this particular setting, excess risk of an estimator $\theta$ has the form \\
 & = (\theta - \theta^{*})^{T}\Sigma(\theta - \theta^{*})
 \end{align*}
 
-\uncover<1-1>{which we want to minimize, of course.}\\
 
 \end{frame}
 
@@ -169,7 +142,7 @@ In this particular setting, excess risk of an estimator $\theta$ has the form \\
      s.t. & \frac{1}{n}\|X^{T}\theta - y\|^{2}_{2} \leq D
     \end{alignat*}
 
-\uncover<2-4>{Remarks}\\
+
 \begin{enumerate}
 \item<3-4> Heuristically speaking, overfitting means $D << \text{min}_{\theta}\mathbb{E}(x^{T}\theta - y)^{2} $, where $x, y$ are out of sample
 \item<4-4> Of course, we're concerned with interpolation, i.e. $D=0$.
@@ -421,7 +394,6 @@ $\displaystyle \lim_{n\to\infty} \big ( bias(\theta^{*}, \Sigma_{n}, n)  + \frac
 \end{itemize}
 \end{frame}
 
-\section{Future directions for Synthetic Prediction Methods}
 \subsection{Synthetic Impulse Response Functions}
 
 \begin{frame}
@@ -434,11 +406,13 @@ $\displaystyle \lim_{n\to\infty} \big ( bias(\theta^{*}, \Sigma_{n}, n)  + \frac
 \end{frame}
 
 
-\section*{References}
 
-\begin{frame}[t, allowframebreaks]
-\frametitle{References}
-Tsigler, Alexander, and Peter L. Bartlett. ``Benign overfitting in ridge regression." arXiv preprint arXiv:2009.14286 (2020).
+\section{Supplement}
+We analyze the real-world example with Brexit included.
+
+\begin{frame}{Bibliography}
+    \bibliographystyle{plainnat}
+    \bibliography{synthVolForecast}
 \end{frame}
 
 
