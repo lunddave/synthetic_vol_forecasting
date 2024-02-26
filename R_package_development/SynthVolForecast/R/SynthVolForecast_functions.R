@@ -144,6 +144,13 @@ dbw <- function(X
                                            , tol = 1e-27
                                            , outer.iter = 1000000000
                                            , inner.iter = 10000000))
+  
+  #We print the loss from the optimization
+  loss <- round(norm(X1 - object_to_return$pars %*% dat[-1,]),3)
+  print(paste('The L2 loss of distanced-based weighting is ', loss, ',',
+              ' which is ', 
+              100*round(loss/norm(X1),3),
+              "% of the L2-norm of vector we are trying to approximate.", sep = ""))
 
   if (object_to_return$convergence == 0){convergence <- 'convergence'}
   else {convergence <- 'failed_convergence'}
