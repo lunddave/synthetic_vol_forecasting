@@ -127,6 +127,13 @@ We develop a procedure for forecasting the volatility of a time series immediate
 
 \section{Introduction}
 
+\textcolor{red}{
+High level comments
+\begin{itemize}
+	\item Displayed math equations require punctuation.
+\end{itemize}
+}
+
 Reacting to a seemingly unprecedented event might involve the question: what, if anything, does it resemble from the past?  Such might be the case with event-driven investing strategies, where the identification of the event could arise via the news pages or corporate communications and hence contains a qualitative, narrative element \citep{Kenton}.  Matching a current crisis to past events is a problem with unsurprising statistical angles: identification, sample size, weighting, risk, and robustness, among many others.  
 
 In the context of foreign exchange rate market structure, \citet{dominguez2006defines} argue ``[w]hether news is scheduled or non-scheduled its influence on exchange rates may be related
@@ -317,19 +324,19 @@ We present two forecasts: \textcolor{red}{The $:-$ notation is strange, I think 
     
     Suppose we examine $K$ units of of time, where each unit is divided into m intervals of length 1/m.  We follow the notation of  \citet{andersen2009realized}. Let $p_{t} = \text{log}(P_{t})$, and let $r(t, 1/m) = p_{t} - p_{t-1/m}$.  We estimate the variance of a log-return series using Realized Volatility, denoted $RV_{K,m}$, using
     
-    $$RV_{K,m} = \frac{1}{K}\sum^{Km}_{v=1}r^{2}(v/m,1/m)$$
+    $$RV_{K,m} = \frac{1}{K}\sum^{Km}_{v=1}r^{2}(v/m,1/m).$$
     Assuming that the K units $r(t, 1) = p_{t} - p_{t-1}$ are such that $r(t, 1) \simiid N(\mu, \delta^{2})$, it is easily verified that 
     
-    $$\E[RV_{K,m}] = \frac{\mu^{2}}{m} + \delta^{2}$$
+    $$\E[RV_{K,m}] = \frac{\mu^{2}}{m} + \delta^{2},$$
     which is a biased but consistent estimator of the variance.  We will proceed using $m = 77$, corresponding to the 6.5-hour trading day chopped into 5-minute blocks, with the first block omitted in order to ignore unusual trading behavior at the start of the day.
 
 \subsection{Loss Functions}
 
-We are interested in a point forecast for $\sigma^{2}_{1,T^{*}+h}$, $h=1,2,...,H$, the $h$-step ahead conditional variance for the time series under study, up to a forecast length of H.  The forecast performance evaluation uses three distinct loss functions, each computed using three families of estimators for the ground truth that we seek.  Let $L^{h}$ with the subscripted pair $\{$prediction method, ground truth estimator$\}$, denote the loss function for an $h$-step-ahead forecast using a given prediction function and ground truth estimator.  For example, one loss function of interest in this study is the 1-step-ahead MSE using Synthetic Volatility Forecasting and Realized Volatility:
+We are interested in a point forecast for $\sigma^{2}_{1,T^{*}+h}$, $h=1,2,...,H$, the $h$-step ahead conditional variance for the time series under study, up to a forecast length of $H$.  The forecast performance evaluation uses three distinct loss functions, each computed using three families of estimators for the ground truth that we seek.  Let $L^{h}$ with the subscripted pair $\{$prediction method, ground truth estimator$\}$, denote the loss function for an $h$-step-ahead forecast using a given prediction function and ground truth estimator.  For example, one loss function of interest in this study is the 1-step-ahead MSE using Synthetic Volatility Forecasting and Realized Volatility:
 
 $$ MSE^{1}_{SVF, RV} = (\hat\sigma^{2}_{SVF} - \hat\sigma^{2}_{RV})^{2}$$
 
-In more generality, for an multihorizon volatility forecast with forecast length $H$, the loss function is 
+In more generality, for a multihorizon \textcolor{red}{is it multi-horizon?} volatility forecast with forecast length $H$, the loss function is 
 
 $$ MSE^{H}_{method, ground truth} = \frac{1}{H}\sum_{h=1}^{H}(\hat\sigma^{2}_{h, method} - \hat\sigma^{2}_{h, ground truth})^{2}$$
 
