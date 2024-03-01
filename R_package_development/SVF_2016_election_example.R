@@ -8,7 +8,7 @@ if(sysname == "Darwin") {
   setwd("~/Desktop/PhD/synthetic_vol_forecasting/") # example on mac machine
 } else if(sysname == "Linux") {
   setwd('~/Desktop/synthetic_vol_forecasting/synthVolForecast.R') # example on linux machine
-} 
+}
 
 
 ### BEGIN 2016 election example
@@ -34,7 +34,7 @@ k <- 1
 
 TSUS <- 'IYG'
 
-log_ret_covariates <- c("GBP=X",
+log_ret_covariates <- c(#"GBP=X",
    "6B=F",
   "CL=F"
   ,"^VIX"
@@ -42,15 +42,15 @@ log_ret_covariates <- c("GBP=X",
   ,"^FVX"
   ,"^TNX"
   ,"^TYX"
-  ,"DX-Y.NYB"
+  #,"DX-Y.NYB"
 )
 
 level_covariates <- c('^VIX'
-                      ,"GBP=X"
-                      ,'^IRX'
+                      #,"GBP=X"
+                      #,'^IRX'
 )
 
-volume_covariates <- c('IYG')
+volume_covariates <- c()
 
 FRED_covariates <- c('AAA', 'BAA')
 
@@ -268,12 +268,13 @@ temp <- SynthVolForecast(Y
                          ,dbw_scale = TRUE
                          ,dbw_center = TRUE
                          ,dbw_indices = NULL
-                         #,dbw_princ_comp_input = 2
                          #,covariate_indices = length(X)
                          ,garch_order = c(1,1,0)
                          ,plots = TRUE
                          ,shock_time_labels = names(shock_dates)
                          ,ground_truth_vec = ground_truth
+                         ,Y_lookback_indices = list(seq(1,10,1))
+                         ,X_lookback_indices = rep(list(c(1)),ncol(X[[1]]))
                          )
 
 dev.off()

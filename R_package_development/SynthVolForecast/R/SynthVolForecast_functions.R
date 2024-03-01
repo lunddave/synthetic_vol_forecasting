@@ -13,13 +13,13 @@ dbw <- function(X
                 ,sum_to_1 = 1
                 ,bounded_below_by = 0
                 ,bounded_above_by = 1
-                ,princ_comp_count = min(length(shock_time_vec), ncol(X[[1]]) )
+                ,princ_comp_count = NULL
                 ,normchoice = c('l1', 'l2')[2]
                 ,penalty_normchoice = c('l1', 'l2')[1]
                 ,penalty_lambda = 0
                 ,Y = NULL
-                ,Y_lookback_indices = rep(1,length(dbw_indices))
-                ,X_lookback_indices = rep(1,length(dbw_indices))
+                ,Y_lookback_indices = list(seq(1,3,1))
+                ,X_lookback_indices = rep(list(c(1,1)),length(dbw_indices))
 ) { # https://github.com/DEck13/synthetic_prediction/blob/master/prevalence_testing/numerical_studies/COP.R
   # X is a list of covariates for the time series
   # X[[1]] should be the covariate of the time series to predict
@@ -27,57 +27,74 @@ dbw <- function(X
 
   # number of time series for pool
   n <- length(X) - 1
-  
+
   #We notify user if p > n, i.e. if linear system is overdetermined
   p <- length(dbw_indices)
-  
+
   if (p > n){cat('p > n, i.e. system is overdetermined from an unconstrained point-of-view.')}
-  
-  ## We now perform the complicated task of grabbing a specified 
+
+  ## We now perform the complicated task of grabbing a specified
   ## 'lookback' length for each i=1,2,...,n+1 and each covariate.
-  
+
   col_returner <- function(df){return(df[,dbw_indices])}
-  
-  row_returner <- function(df, stv){
-    print(paste('Shock is at ', stv, ".", sep = ''))
-    return(df[stv,])
-    }
-    
+
   X_subset1 <- lapply(X, col_returner)
-  
-  X_subset2 <- mapply(row_returner, df = X_subset1, stv = shock_time_vec, SIMPLIFY=FALSE)
+
+  #Task: for each entry in Y, make it the first column of X's corresponding entry
+  if (is.null(Y) == FALSE){
+    X_lookback_indices <- c(Y_lookback_indices, X_lookback_indices)
+
+    X_Y_combiner <- function(y,x) {return(cbind(y**2,x))}
+
+    combined_X <- mapply(X_Y_combiner, y = Y, x = X, SIMPLIFY = FALSE)
+  }
+  else{
+    combined_X <- X
+  }
+
+  row_returner <- function(df, stv){
+    print(paste('Shock is at ', stv, ", and it looks like...", sep = ''))
+    print(df[(stv-5):stv,])
+    return(df[1:(stv),])
+    }
+
+  X_subset2 <- mapply(row_returner, df = combined_X, stv = shock_time_vec, SIMPLIFY=FALSE)
 
   cov_extractor <- function(X_df){
-    
+
+        #Get the row count of X_df
         len <- nrow(X_df)
-        
-        print(len)
-          
-          vec_ret <- function(x)
+
+        #print(len)
+
+        #Function that maps a vector of indices to a padded vector
+        # of length len, where the vector is TRUE at the indices and FALSE otherwise
+          padded_vector_maker <- function(x)
             {
             vec <- rep(FALSE,len)
             vec[x] <- TRUE
-            return(vec)
+            vec_reversed <- rev(vec)
+            return(vec_reversed)
             }
-          
-          covariates_in_list <- lapply(X_lookback_indices, vec_ret)
+
+          covariates_in_list <- lapply(X_lookback_indices, padded_vector_maker)
           boolmat <- as.matrix(do.call(data.frame, covariates_in_list))
-          return(X_df[boolmat])
-    
+
+          return(as.matrix(X_df)[boolmat])
+
   }
-  
+
+  cat('We defined the covariate extractor.  Now we use it.')
+
   X_subset <- lapply(X_subset2, cov_extractor)
-  
-  cat('Now we print the extracted covariates:')
-  print(X_subset)
-  
+
+  # Now bind the TSUS covariates to the donor covariates
+  dat <- do.call('rbind', X_subset)
+  print('Pre-scaling')
+  print(dat)
+
   if (scale == TRUE) {cat('User has chosen to scale covariates.')}
   if (center == TRUE) {cat('User has chosen to center covariates.')}
-  
-    # Now bind the TSUS covariates to the donor covariates
-    dat <- do.call('rbind', X_subset)
-    print('Pre-scaling')
-    print(dat)
 
     dat <- apply(dat, 2, function(x) scale(x, center = center, scale = scale))
     print('Post-scaling (nothing will happen if center and scale are set to FALSE).')
@@ -88,11 +105,14 @@ dbw <- function(X
     sing_vals <- dat.svd$d / sum(dat.svd$d)
     print('Singular value percentages for the donor pool X data:')
     print(paste(100 * sing_vals, "%", sep = ""))
-    
+
     #Now project in direction of first princ_comp_count principal components
-    print(paste('We are using ', princ_comp_count, ' principal components.', sep = ''))
-    print(dat.svd$v)
-    dat <- dat %*% dat.svd$v[,1:princ_comp_count]
+    if (is.null(princ_comp_count) == FALSE){
+      print(paste('We are using ', princ_comp_count, ' principal components.', sep = ''))
+      print(dat.svd$v)
+      dat <- dat %*% dat.svd$v[,1:princ_comp_count]
+    }
+
 
     X1 <- dat[1, , drop = FALSE]
 
@@ -171,11 +191,11 @@ dbw <- function(X
                                            , tol = 1e-27
                                            , outer.iter = 1000000000
                                            , inner.iter = 10000000))
-  
+
   #We print the loss from the optimization
   loss <- round(norm(X1 - object_to_return$pars %*% dat[-1,]),3)
   print(paste('The L2 loss of distanced-based weighting is ', loss, ',',
-              ' which is ', 
+              ' which is ',
               100*round(loss/norm(X1),3),
               "% of the L2-norm of vector we are trying to approximate.", sep = ""))
 
@@ -460,7 +480,7 @@ SynthVolForecast <- function(Y_series_list
                              ,dbw_center = TRUE
                              ,dbw_indices = NULL
                              ,dbw_Y_lookback = c(0)
-                             ,dbw_princ_comp_input = min(length(shock_time_vec), ncol(covariates_series_list[[1]]))
+                             ,dbw_princ_comp_input = NULL
                              ,covariate_indices = NULL
                              ,geometric_sets = NULL #tk
                              ,days_before_shocktime_vec = NULL #tk I may want to remove this
@@ -469,6 +489,8 @@ SynthVolForecast <- function(Y_series_list
                              ,plots = TRUE
                              ,shock_time_labels = NULL
                              ,ground_truth_vec = NULL
+                             ,Y_lookback_indices_input = list(seq(1,3,1))
+                             ,X_lookback_indices_input = rep(list(c(1)),length(dbw_indices))
 ){
   ### BEGIN Doc string
   #tk
@@ -520,7 +542,9 @@ SynthVolForecast <- function(Y_series_list
                # normchoice = normchoice, #tk
                # penalty_normchoice = penalty_normchoice,
                # penalty_lambda = penalty_lambda
-               Y = Y_series_list
+               Y = Y_series_list,
+               Y_lookback_indices = Y_lookback_indices_input,
+               X_lookback_indices = X_lookback_indices_input
                )
 
   w_hat <- dbw_output[[1]]
@@ -551,10 +575,10 @@ SynthVolForecast <- function(Y_series_list
     for (i in 2:(n+1)){
 
       # Make indicator variable w/ a 1 at only T*+1, T*+2,...,T*+shock_length_vec[i]
-      vec_of_zeros <- rep(0, integer_shock_time_vec[i])
+      vec_of_zeros <- rep(0, integer_shock_time_vec[i] - 1)
       vec_of_ones <- rep(1, shock_length_vec[i])
       post_shock_indicator <- c(vec_of_zeros, vec_of_ones)
-      last_shock_point <- integer_shock_time_vec[i] + shock_length_vec[i]
+      last_shock_point <- integer_shock_time_vec[i] - 1 + shock_length_vec[i]
 
       #subset X_i
       if (is.null(covariate_indices) == TRUE) {
@@ -601,7 +625,7 @@ SynthVolForecast <- function(Y_series_list
 
   if (is.null(covariate_indices) == TRUE){
 
-    fitted_garch <- garchx::garchx(Y_series_list[[1]][1:integer_shock_time_vec[1]]
+    fitted_garch <- garchx::garchx(Y_series_list[[1]][1:(integer_shock_time_vec[1]-1)]
                            , order = garch_order
                            , xreg = NULL
                            , backcast.values = NULL
@@ -620,9 +644,9 @@ SynthVolForecast <- function(Y_series_list
   }
   else{
     ## BEGIN fit GARCH to target series
-    fitted_garch <- garchx::garchx(Y_series_list[[1]][1:integer_shock_time_vec[1]]
+    fitted_garch <- garchx::garchx(Y_series_list[[1]][1:(integer_shock_time_vec[1]-1)]
                            , order = garch_order
-                           , xreg = covariates_series_list[[1]][1:integer_shock_time_vec[1],covariate_indices]
+                           , xreg = covariates_series_list[[1]][1:(integer_shock_time_vec[1]-1),covariate_indices]
                            , backcast.values = NULL
                            , control = list(eval.max = 100000
                                             , iter.max = 1500000
@@ -634,13 +658,13 @@ SynthVolForecast <- function(Y_series_list
     cat('\n===============================================================\n')
 
     #Note: for forecasting, we use last-observed X value
-    X_to_use_in_forecast <- covariates_series_list[[1]][integer_shock_time_vec[1],covariate_indices]
+    X_to_use_in_forecast <- covariates_series_list[[1]][integer_shock_time_vec[1]-1,covariate_indices]
 
     X_replicated_for_forecast_length <- matrix(rep(X_to_use_in_forecast, k)
                                                , nrow = shock_length_vec[1]
                                                , byrow = TRUE)
 
-    forecast_period <- (integer_shock_time_vec[1]+1):(integer_shock_time_vec[1]+shock_length_vec[1])
+    forecast_period <- (integer_shock_time_vec[1]):(integer_shock_time_vec[1]+shock_length_vec[1])
     mat_X_for_forecast <- cbind(Y_series_list[[1]][forecast_period]
                            , X_replicated_for_forecast_length)
 
@@ -841,7 +865,7 @@ SynthPrediction <- function(Y_series_list
 
   if (is.null(covariate_indices) == TRUE){
 
-    arima <- forecast::auto.arima(Y_series_list[[1]][1:integer_shock_time_vec[1]]
+    arima <- forecast::auto.arima(Y_series_list[[1]][1:(integer_shock_time_vec[1]-1)]
                         ,xreg = NULL
                         ,ic = user_ic_choice)
 
