@@ -17,38 +17,65 @@ dbw <- function(X
                 ,normchoice = c('l1', 'l2')[2]
                 ,penalty_normchoice = c('l1', 'l2')[1]
                 ,penalty_lambda = 0
+                ,Y = NULL
+                ,Y_lookback_indices = rep(1,length(dbw_indices))
+                ,X_lookback_indices = rep(1,length(dbw_indices))
 ) { # https://github.com/DEck13/synthetic_prediction/blob/master/prevalence_testing/numerical_studies/COP.R
   # X is a list of covariates for the time series
   # X[[1]] should be the covariate of the time series to predict
   # X[[k]] for k = 2,...,n+1 are covariates for donors
 
-  # T^* is a vector of shock-effects time points
-  # shock effect point must be > 2
-
   # number of time series for pool
   n <- length(X) - 1
-
-  # COVARIATE FOR TIME SERIES UNDER STUDY AT shock_time_vec
-  X1 <- X[[1]][shock_time_vec[1], dbw_indices, drop = FALSE] # we get only 1 row
-
+  
   #We notify user if p > n, i.e. if linear system is overdetermined
   p <- length(dbw_indices)
+  
+  if (p > n){cat('p > n, i.e. system is overdetermined from an unconstrained point-of-view.')}
+  
+  ## We now perform the complicated task of grabbing a specified 
+  ## 'lookback' length for each i=1,2,...,n+1 and each covariate.
+  
+  col_returner <- function(df){return(df[,dbw_indices])}
+  
+  row_returner <- function(df, stv){
+    print(paste('Shock is at ', stv, ".", sep = ''))
+    return(df[stv,])
+    }
+    
+  X_subset1 <- lapply(X, col_returner)
+  
+  X_subset2 <- mapply(row_returner, df = X_subset1, stv = shock_time_vec, SIMPLIFY=FALSE)
 
-  if (p > n){print('p > n, i.e. system is overdetermined from an unconstrained point-of-view.')}
-
-  # LOOP for grab shock_time_vec covariate vector for each donor
-  X0 <- c()
-  for (i in 1:n) {
-    X0[[i]] <- X[[i+1]][shock_time_vec[i+1]
-                        , dbw_indices
-                        , drop = FALSE] #get 1 row from each donor
+  cov_extractor <- function(X_df){
+    
+        len <- nrow(X_df)
+        
+        print(len)
+          
+          vec_ret <- function(x)
+            {
+            vec <- rep(FALSE,len)
+            vec[x] <- TRUE
+            return(vec)
+            }
+          
+          covariates_in_list <- lapply(X_lookback_indices, vec_ret)
+          boolmat <- as.matrix(do.call(data.frame, covariates_in_list))
+          return(X_df[boolmat])
+    
   }
-
-  if (scale == TRUE) {print('User has chosen to scale covariates.')}
-  if (center == TRUE) {print('User has chosen to center covariates.')}
+  
+  X_subset <- lapply(X_subset2, cov_extractor)
+  
+  cat('Now we print the extracted covariates:')
+  print(X_subset)
+  
+  if (scale == TRUE) {cat('User has chosen to scale covariates.')}
+  if (center == TRUE) {cat('User has chosen to center covariates.')}
   
     # Now bind the TSUS covariates to the donor covariates
-    dat <- rbind(as.data.frame(X1), as.data.frame(do.call('rbind', X0))) 
+    dat <- do.call('rbind', X_subset)
     print('Pre-scaling')
     print(dat)
 
@@ -70,7 +97,7 @@ dbw <- function(X
     X1 <- dat[1, , drop = FALSE]
 
     X0 <- c()
-    X0 <- split(dat[-1,],seq(nrow(dat[-1,]))) 
+    X0 <- split(dat[-1,],seq(nrow(dat[-1,]))) #tk what is split doing?
 
   # objective function
   weightedX0 <- function(W) {
@@ -128,7 +155,7 @@ dbw <- function(X
   #conditional for bounding above
   if (is.na(bounded_above_by) == FALSE)
   {
-    upper_bound = rep(1, n)
+    upper_bound = rep(bounded_above_by, n)
   }
   else if (is.na(bounded_above_by) == TRUE)  {
     upper_bound = NULL
@@ -432,6 +459,7 @@ SynthVolForecast <- function(Y_series_list
                              ,dbw_scale = TRUE
                              ,dbw_center = TRUE
                              ,dbw_indices = NULL
+                             ,dbw_Y_lookback = c(0)
                              ,dbw_princ_comp_input = min(length(shock_time_vec), ncol(covariates_series_list[[1]]))
                              ,covariate_indices = NULL
                              ,geometric_sets = NULL #tk
@@ -488,10 +516,11 @@ SynthVolForecast <- function(Y_series_list
                sum_to_1 = TRUE, #tk
                princ_comp_count = dbw_princ_comp_input,
                bounded_below_by = 0, #tk
-               bounded_above_by = 1 #tk
+               bounded_above_by = 1, #tk
                # normchoice = normchoice, #tk
                # penalty_normchoice = penalty_normchoice,
                # penalty_lambda = penalty_lambda
+               Y = Y_series_list
                )
 
   w_hat <- dbw_output[[1]]
@@ -800,6 +829,7 @@ SynthPrediction <- function(Y_series_list
                    # normchoice = normchoice, #tk
                    # penalty_normchoice = penalty_normchoice,
                    # penalty_lambda = penalty_lambda
+                   Y = Y_series_list
   )
 
   w_hat <- dbw_output[[1]]

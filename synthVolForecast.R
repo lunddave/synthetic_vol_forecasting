@@ -130,7 +130,7 @@ dbw <- function(X,
   #conditional for bounding above
   if (is.na(bounded_above_by) == FALSE)
           {
-            upper_bound = rep(1, n)
+            upper_bound = rep(bounded_above_by, n)
           }
           else if (is.na(bounded_above_by) == TRUE)  {
             upper_bound = NULL
