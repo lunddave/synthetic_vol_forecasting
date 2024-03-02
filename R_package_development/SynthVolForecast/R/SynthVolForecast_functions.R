@@ -30,7 +30,6 @@ dbw <- function(X
 
   #We notify user if p > n, i.e. if linear system is overdetermined
   p <- length(dbw_indices)
-
   if (p > n){cat('p > n, i.e. system is overdetermined from an unconstrained point-of-view.')}
 
   ## We now perform the complicated task of grabbing a specified
@@ -44,16 +43,16 @@ dbw <- function(X
   if (is.null(Y_lookback_indices) == FALSE){
     X_lookback_indices <- c(Y_lookback_indices, X_lookback_indices)
 
-    X_Y_combiner <- function(y,x) {return(cbind(y**2,x))}
+    X_Y_combiner <- function(y,x) {return(cbind(y**2,x))} #tk
 
     combined_X <- mapply(X_Y_combiner, y = Y, x = X, SIMPLIFY = FALSE)
   }
   else{
-    combined_X <- X
+    combined_X <- X_subset1
   }
 
   row_returner <- function(df, stv){
-    print(paste('Shock is at ', stv, ", and it looks like...", sep = ''))
+    print(paste('Shock occurs at ', stv, sep = ''))
     return(df[1:(stv),])
     }
 
@@ -63,8 +62,6 @@ dbw <- function(X
 
         #Get the row count of X_df
         len <- nrow(X_df)
-
-        #print(len)
 
         #Function that maps a vector of indices to a padded vector
         # of length len, where the vector is TRUE at the indices and FALSE otherwise
@@ -76,8 +73,8 @@ dbw <- function(X
             return(vec_reversed)
             }
 
-          covariates_in_list <- lapply(X_lookback_indices, padded_vector_maker)
-          boolmat <- as.matrix(do.call(data.frame, covariates_in_list))
+          covariate_vals_in_list <- lapply(X_lookback_indices, padded_vector_maker)
+          boolmat <- as.matrix(do.call(data.frame, covariate_vals_in_list))
 
           return(as.matrix(X_df)[boolmat])
 
@@ -103,7 +100,7 @@ dbw <- function(X
     dat.svd <- svd(dat)
     sing_vals <- dat.svd$d / sum(dat.svd$d)
     print('Singular value percentages for the donor pool X data:')
-    print(paste(100 * sing_vals, "%", sep = ""))
+    print(paste(round(100 * sing_vals,2), "%", sep = ""))
 
     #Now project in direction of first princ_comp_count principal components
     if (is.null(princ_comp_count) == FALSE){
@@ -112,11 +109,12 @@ dbw <- function(X
       dat <- dat %*% dat.svd$v[,1:princ_comp_count]
     }
 
-
     X1 <- dat[1, , drop = FALSE]
 
-    X0 <- c()
     X0 <- split(dat[-1,],seq(nrow(dat[-1,]))) #tk what is split doing?
+
+    print('We print X0')
+    print(X0)
 
   # objective function
   weightedX0 <- function(W) {
@@ -124,28 +122,29 @@ dbw <- function(X
     n <- length(W)
     p <- ncol(X1)
     XW <- matrix(0, nrow = 1, ncol = p)
+
     for (i in 1:n) {
       XW <- XW + W[i] * X0[[i]]
     } #end of loop
 
     #normchoice
     if (normchoice == 'l1') {
-      norm <- as.numeric(norm(matrix(X1 - XW), type = "1"))
+      norm_output <- as.numeric(norm(matrix(X1 - XW), type = "1"))
     }
     else {
-      norm <- as.numeric(crossprod(matrix(X1 - XW)))
+      norm_output <- as.numeric(crossprod(matrix(X1 - XW)))
     }
 
     #now add penalty
     if (penalty_normchoice == 'l1' & penalty_lambda > 0) {
-      norm <- norm + penalty_lambda * norm(as.matrix(W), type = "1")
+      norm_output <- norm_output + penalty_lambda * norm(as.matrix(W), type = "1")
     }
     else if (penalty_normchoice == 'l2' & penalty_lambda > 0) {
-      norm <- norm + penalty_lambda * as.numeric(crossprod(matrix(W)))
+      norm_output <- norm_output + penalty_lambda * as.numeric(crossprod(matrix(W)))
     }
-    else {norm <- norm}
+    else {norm_output <- norm_output}
 
-    return(norm)
+    return(norm_output)
   } #end objective function
 
   # optimization and return statement
@@ -358,7 +357,7 @@ plot_maker_synthprediction <- function(Y
   for (i in 2:(n+1)){
     plot.ts(Y[[i]][1:shock_time_vec[i]]
             ,xlab = 'Trading Days'
-            ,ylab = 'Differenced Logarithm'
+            ,ylab = 'Log Return'
             ,main = paste('Donor ', i,': ', shock_time_labels[i], sep = '')
             ,xlim = c(0, shock_time_vec[i] + 5)
             ,ylim = c(min(Y[[i]]),  max(Y[[i]]))
@@ -419,7 +418,7 @@ plot_maker_synthprediction <- function(Y
           xlim = c(0, shock_time_vec[1] + 5), #mk
           ylim = c(min(0, Y[[1]]),  max_for_y_lim))
 
-  title(ylab = 'Log-return', line = 2.05, cex.lab = 1.99) # Add y-axis text
+  title(ylab = 'Log Return', line = 2.05, cex.lab = 1.99) # Add y-axis text
 
   # Here is the color scheme we will use
   #https://colorbrewer2.org/?type=diverging&scheme=RdYlBu&n=4
@@ -553,6 +552,7 @@ SynthVolForecast <- function(Y_series_list
   ## BEGIN estimate fixed effects in donors
   omega_star_hat_vec <- c()
 
+  #tk
   if (common_series_assumption == TRUE){
     print('tk TODO')
 
@@ -566,7 +566,6 @@ SynthVolForecast <- function(Y_series_list
 
     #step 2: fit model
 
-
   }
 
   else{
@@ -574,10 +573,10 @@ SynthVolForecast <- function(Y_series_list
     for (i in 2:(n+1)){
 
       # Make indicator variable w/ a 1 at only T*+1, T*+2,...,T*+shock_length_vec[i]
-      vec_of_zeros <- rep(0, integer_shock_time_vec[i] - 1)
+      vec_of_zeros <- rep(0, integer_shock_time_vec[i])
       vec_of_ones <- rep(1, shock_length_vec[i])
       post_shock_indicator <- c(vec_of_zeros, vec_of_ones)
-      last_shock_point <- integer_shock_time_vec[i] - 1 + shock_length_vec[i]
+      last_shock_point <- integer_shock_time_vec[i] + shock_length_vec[i]
 
       #subset X_i
       if (is.null(covariate_indices) == TRUE) {
@@ -590,6 +589,9 @@ SynthVolForecast <- function(Y_series_list
         X_i_with_indicator <- cbind(X_i_subset, post_shock_indicator)
         X_i_final <- X_i_with_indicator
       }
+
+      print('We print the tail of the covariate df we use in GARCH model:')
+      print(tail(X_i_final))
 
       fitted_garch <- garchx::garchx(Y_series_list[[i]][1:last_shock_point] #tk
                      , order = garch_order
@@ -624,7 +626,7 @@ SynthVolForecast <- function(Y_series_list
 
   if (is.null(covariate_indices) == TRUE){
 
-    fitted_garch <- garchx::garchx(Y_series_list[[1]][1:(integer_shock_time_vec[1]-1)]
+    fitted_garch <- garchx::garchx(Y_series_list[[1]][1:(integer_shock_time_vec[1])]
                            , order = garch_order
                            , xreg = NULL
                            , backcast.values = NULL
@@ -643,9 +645,9 @@ SynthVolForecast <- function(Y_series_list
   }
   else{
     ## BEGIN fit GARCH to target series
-    fitted_garch <- garchx::garchx(Y_series_list[[1]][1:(integer_shock_time_vec[1]-1)]
+    fitted_garch <- garchx::garchx(Y_series_list[[1]][1:(integer_shock_time_vec[1])]
                            , order = garch_order
-                           , xreg = covariates_series_list[[1]][1:(integer_shock_time_vec[1]-1),covariate_indices]
+                           , xreg = covariates_series_list[[1]][1:(integer_shock_time_vec[1]),covariate_indices]
                            , backcast.values = NULL
                            , control = list(eval.max = 100000
                                             , iter.max = 1500000
@@ -657,7 +659,7 @@ SynthVolForecast <- function(Y_series_list
     cat('\n===============================================================\n')
 
     #Note: for forecasting, we use last-observed X value
-    X_to_use_in_forecast <- covariates_series_list[[1]][integer_shock_time_vec[1]-1,covariate_indices]
+    X_to_use_in_forecast <- covariates_series_list[[1]][integer_shock_time_vec[1],covariate_indices]
 
     X_replicated_for_forecast_length <- matrix(rep(X_to_use_in_forecast, k)
                                                , nrow = shock_length_vec[1]
@@ -805,7 +807,7 @@ SynthPrediction <- function(Y_series_list
   for (i in 2:(n+1)){
 
     # Make indicator variable w/ a 1 at only T*+1, T*+2,...,T*+shock_length_vec[i]
-    vec_of_zeros <- rep(0, integer_shock_time_vec[i]-1)
+    vec_of_zeros <- rep(0, integer_shock_time_vec[i])
     vec_of_ones <- rep(1, shock_length_vec[i])
     post_shock_indicator <- c(vec_of_zeros, vec_of_ones)
     last_shock_point <- integer_shock_time_vec[i] + shock_length_vec[i]
@@ -864,7 +866,7 @@ SynthPrediction <- function(Y_series_list
 
   if (is.null(covariate_indices) == TRUE){
 
-    arima <- forecast::auto.arima(Y_series_list[[1]][1:(integer_shock_time_vec[1]-1)]
+    arima <- forecast::auto.arima(Y_series_list[[1]][1:(integer_shock_time_vec[1])]
                         ,xreg = NULL
                         ,ic = user_ic_choice)
 
