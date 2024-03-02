@@ -41,7 +41,7 @@ dbw <- function(X
   X_subset1 <- lapply(X, col_returner)
 
   #Task: for each entry in Y, make it the first column of X's corresponding entry
-  if (is.null(Y) == FALSE){
+  if (is.null(Y_lookback_indices) == FALSE){
     X_lookback_indices <- c(Y_lookback_indices, X_lookback_indices)
 
     X_Y_combiner <- function(y,x) {return(cbind(y**2,x))}
@@ -54,7 +54,6 @@ dbw <- function(X
 
   row_returner <- function(df, stv){
     print(paste('Shock is at ', stv, ", and it looks like...", sep = ''))
-    print(df[(stv-5):stv,])
     return(df[1:(stv),])
     }
 

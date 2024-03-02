@@ -30,7 +30,7 @@ ground_truth <- c(0.000712, 0.000976)
 ground_truth <- c(0.000712)
 #ground_truth <- c(0.000712, 0.000976, .0006)
 
-k <- 1
+k <- len(ground_truth)
 
 TSUS <- 'IYG'
 
@@ -50,17 +50,17 @@ level_covariates <- c('^VIX'
                       #,'^IRX'
 )
 
-volume_covariates <- c()
+volume_covariates <- c('IYG')
 
 FRED_covariates <- c('AAA', 'BAA')
 
 shock_dates <- list('2016 Election' = "2016-11-08"
                  ,'Brexit' = "2016-06-23"
-                 #,'2014 Midterm' = "2014-11-04"
+                 ,'2014 Midterm' = "2014-11-04"
                  ,'2012 Election' = "2012-11-06"
-                 #, '2010 Midterm' ="2010-11-02"
+                 , '2010 Midterm' ="2010-11-02"
                  ,'2008 Election' = "2008-11-04"
-                 #, '2006 Midterm' ="2006-11-07"
+                 , '2006 Midterm' ="2006-11-07"
                  ,'2004 Election' = "2004-11-02"
                  #,'2002 Midterm' =  "2002-11-05"
                  #,'2000 Election' = "2000-11-07"
@@ -269,12 +269,12 @@ temp <- SynthVolForecast(Y
                          ,dbw_center = TRUE
                          ,dbw_indices = NULL
                          #,covariate_indices = length(X)
-                         ,garch_order = c(1,1,0)
+                         ,garch_order = c(1,1,1)
                          ,plots = TRUE
                          ,shock_time_labels = names(shock_dates)
                          ,ground_truth_vec = ground_truth
-                         ,Y_lookback_indices = list(seq(1,10,1))
-                         ,X_lookback_indices = rep(list(c(1)),ncol(X[[1]]))
+                         ,Y_lookback_indices = list(seq(1,5,1))
+                         ,X_lookback_indices = rep(list(c(1,2)),ncol(X[[1]]))
                          )
 
 dev.off()
