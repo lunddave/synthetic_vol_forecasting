@@ -805,7 +805,7 @@ SynthPrediction <- function(Y_series_list
   for (i in 2:(n+1)){
 
     # Make indicator variable w/ a 1 at only T*+1, T*+2,...,T*+shock_length_vec[i]
-    vec_of_zeros <- rep(0, integer_shock_time_vec[i])
+    vec_of_zeros <- rep(0, integer_shock_time_vec[i]-1)
     vec_of_ones <- rep(1, shock_length_vec[i])
     post_shock_indicator <- c(vec_of_zeros, vec_of_ones)
     last_shock_point <- integer_shock_time_vec[i] + shock_length_vec[i]

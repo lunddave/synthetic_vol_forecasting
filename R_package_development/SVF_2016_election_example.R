@@ -30,7 +30,7 @@ ground_truth <- c(0.000712, 0.000976)
 ground_truth <- c(0.000712)
 #ground_truth <- c(0.000712, 0.000976, .0006)
 
-k <- len(ground_truth)
+k <- length(ground_truth)
 
 TSUS <- 'IYG'
 
@@ -56,11 +56,11 @@ FRED_covariates <- c('AAA', 'BAA')
 
 shock_dates <- list('2016 Election' = "2016-11-08"
                  ,'Brexit' = "2016-06-23"
-                 ,'2014 Midterm' = "2014-11-04"
+                 # ,'2014 Midterm' = "2014-11-04"
                  ,'2012 Election' = "2012-11-06"
-                 , '2010 Midterm' ="2010-11-02"
+                 # , '2010 Midterm' ="2010-11-02"
                  ,'2008 Election' = "2008-11-04"
-                 , '2006 Midterm' ="2006-11-07"
+                 # , '2006 Midterm' ="2006-11-07"
                  ,'2004 Election' = "2004-11-02"
                  #,'2002 Midterm' =  "2002-11-05"
                  #,'2000 Election' = "2000-11-07"
