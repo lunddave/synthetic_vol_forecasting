@@ -35,15 +35,15 @@ k <- length(ground_truth)
 TSUS <- 'IYG'
 
 log_ret_covariates <- c(#"GBP=X",
-   "6B=F",
-  "CL=F"
-  ,"^VIX"
-  ,"^IRX"
-  ,"^FVX"
-  ,"^TNX"
-  ,"^TYX"
-  #,"DX-Y.NYB"
-)
+                         "6B=F",
+                        "CL=F"
+                        ,"^VIX"
+                        ,"^IRX"
+                        ,"^FVX"
+                        ,"^TNX"
+                        ,"^TYX"
+                        #,"DX-Y.NYB"
+                      )
 
 level_covariates <- c('^VIX'
                       #,"GBP=X"

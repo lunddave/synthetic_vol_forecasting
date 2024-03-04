@@ -7,7 +7,7 @@ if(sysname == "Darwin") {
   setwd("~/Desktop/PhD/synthetic_vol_forecasting/") # example on mac machine
 } else if(sysname == "Linux") {
   setwd('~/Desktop/synthetic_vol_forecasting/') # example on linux machine
-} 
+}
 
 source('synthVolForecast.R',
        echo = FALSE,
@@ -263,8 +263,7 @@ simulate_and_analyze <- function(n = 5,
 simulate_and_analyze(normchoice = 'l2'
                            , penalty_norm = 'l2'
                            , penalty_lambda = 0
-                           , plot_sim = TRUE
-                           , plot_fit = TRUE)
+                           , plot_sim = FALSE
+                           , plot_fit = FALSE)
 
 dev.off()
-

@@ -191,11 +191,17 @@ dbw <- function(X
                                            , inner.iter = 10000000))
 
   #We print the loss from the optimization
-  loss <- round(norm(X1 - object_to_return$pars %*% dat[-1,]),3)
-  print(paste('The L2 loss of distanced-based weighting is ', loss, ',',
+  if (normchoice == 'l1') {
+    loss <- round(norm(X1 - object_to_return$pars %*% dat[-1,], type = '1'),3)
+  }
+  else {
+    loss <- round(norm(X1 - object_to_return$pars %*% dat[-1,], type = '2'),3)
+  }
+
+  print(paste('The loss of distanced-based weighting is ', loss, ',',
               ' which is ',
               100*round(loss/norm(X1),3),
-              "% of the L2-norm of vector we are trying to approximate.", sep = ""))
+              "% of the norm of vector we are trying to approximate.", sep = ""))
 
   if (object_to_return$convergence == 0){convergence <- 'convergence'}
   else {convergence <- 'failed_convergence'}
@@ -684,8 +690,8 @@ SynthVolForecast <- function(Y_series_list
     QL_loss_adjusted_pred <- NA
   }
   else {
-    QL_loss_unadjusted_pred <- sum(QL_loss_function(unadjusted_pred, ground_truth_vec))
-    QL_loss_adjusted_pred <- sum(QL_loss_function(adjusted_pred, ground_truth_vec))
+    QL_loss_unadjusted_pred <- sum(QL_loss_function(ground_truth_vec, unadjusted_pred))
+    QL_loss_adjusted_pred <- sum(QL_loss_function(ground_truth_vec, adjusted_pred))
   }
 
 
