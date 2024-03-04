@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.21)  4 MAR 2024 16:17
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.21)  4 MAR 2024 16:30
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -909,21 +909,18 @@ Overfull \hbox (131.60022pt too wide) has occurred while \output is active
 [7
 
 ]
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/prelim_presentation.tex:133: Undefined control sequence.
-<argument>  \mc 
-                {M}_2 \colon \begin {array}{l} \sigma ^{2}_{i,t} = \omega _{...
-l.133 \end{frame}
+/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/prelim_presentation.tex:128: Missing $ inserted.
+<inserted text> 
+                $
+l.128 \end{frame}
                  
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
 
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/prelim_presentation.tex:133: Undefined control sequence.
-<argument> ...a _{i,t-j}^{2} + \gamma _{i}^{T} \x 
+/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/prelim_presentation.tex:128: Undefined control sequence.
+\beamer@doifinframe ...}^{2} + \gamma _{i}^{T} \x 
                                                   _{i,t} \text { }\\[.2cm] a...
-l.133 \end{frame}
+l.128 \end{frame}
                  
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -931,17 +928,75 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/prelim_presentation.tex:133: Double subscript.
-<argument> ... _{i,t-j}^{2} + \gamma _{i}^{T} \x _
+/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/prelim_presentation.tex:128: Double subscript.
+\beamer@doifinframe ...^{2} + \gamma _{i}^{T} \x _
                                                   {i,t} \text { }\\[.2cm] a_...
-l.133 \end{frame}
+l.128 \end{frame}
                  
 I treat `x_1_2' essentially like `x_1{}_2'.
 
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/prelim_presentation.tex:133: Undefined control sequence.
+
+/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/prelim_presentation.tex:128: LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.128 \end{frame}
+                 
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/prelim_presentation.tex:128: Missing $ inserted.
+<inserted text> 
+                $
+l.128 \end{frame}
+                 
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/prelim_presentation.tex:128: Missing $ inserted.
+<inserted text> 
+                $
+l.128 \end{frame}
+                 
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/prelim_presentation.tex:128: LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.128 \end{frame}
+                 
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/prelim_presentation.tex:128: Missing $ inserted.
+<inserted text> 
+                $
+l.128 \end{frame}
+                 
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/prelim_presentation.tex:128: Missing $ inserted.
+<inserted text> 
+                $
+l.128 \end{frame}
+                 
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/prelim_presentation.tex:128: Undefined control sequence.
 <recently read> \mbf 
                      
-l.133 \end{frame}
+l.128 \end{frame}
                  
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -949,45 +1004,35 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/prelim_presentation.tex:133: Undefined control sequence.
-<argument>  \mc 
-                {M}_2 \colon \begin {array}{l} \sigma ^{2}_{i,t} = \omega _{...
-l.133 \end{frame}
+/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/prelim_presentation.tex:128: Extra }, or forgotten $.
+\@textcolor ...otect \leavevmode {\color #1{#2}#3}
+                                                  
+l.128 \end{frame}
                  
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
 
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/prelim_presentation.tex:133: Undefined control sequence.
-<argument> ...a _{i,t-j}^{2} + \gamma _{i}^{T} \x 
-                                                  _{i,t} \text { }\\[.2cm] a...
-l.133 \end{frame}
+/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/prelim_presentation.tex:128: Missing $ inserted.
+<inserted text> 
+                $
+l.128 \end{frame}
                  
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
 
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/prelim_presentation.tex:133: Double subscript.
-<argument> ... _{i,t-j}^{2} + \gamma _{i}^{T} \x _
-                                                  {i,t} \text { }\\[.2cm] a_...
-l.133 \end{frame}
+/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/prelim_presentation.tex:128: Missing } inserted.
+<inserted text> 
+                }
+l.128 \end{frame}
                  
-I treat `x_1_2' essentially like `x_1{}_2'.
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/prelim_presentation.tex:133: Undefined control sequence.
-<recently read> \mbf 
-                     
-l.133 \end{frame}
-                 
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
 
 
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
@@ -1214,23 +1259,23 @@ Overfull \hbox (131.60022pt too wide) has occurred while \output is active
 [39
 
 ]
-LaTeX Font Info:    Calculating math sizes for size <17> on input line 345.
+LaTeX Font Info:    Calculating math sizes for size <17> on input line 340.
 
 
 LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <8.5> not available
-(Font)              size <8> substituted on input line 345.
+(Font)              size <8> substituted on input line 340.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <8.5> not available
-(Font)              size <8> substituted on input line 345.
+(Font)              size <8> substituted on input line 340.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <8.5> not available
-(Font)              size <8> substituted on input line 345.
+(Font)              size <8> substituted on input line 340.
 
 
 LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <8.5> not available
-(Font)              size <8> substituted on input line 345.
+(Font)              size <8> substituted on input line 340.
 
 
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
@@ -1377,15 +1422,15 @@ Package rerunfilecheck Info: Checksums for `prelim_presentation.out':
 (rerunfilecheck)             After:  D121993F0DE3AE8D567B528C3EB3AAAE;2224.
  ) 
 Here is how much of TeX's memory you used:
- 26563 strings out of 476025
- 533937 string characters out of 5790017
- 1886388 words of memory out of 5000000
- 46349 multiletter control sequences out of 15000+600000
+ 26562 strings out of 476025
+ 533935 string characters out of 5790017
+ 1885388 words of memory out of 5000000
+ 46348 multiletter control sequences out of 15000+600000
  532929 words of font info for 109 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,17n,122p,595b,943s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss17.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on prelim_presentation.pdf (56 pages, 439198 bytes).
+Output written on prelim_presentation.pdf (56 pages, 439074 bytes).
 PDF statistics:
  1908 PDF objects out of 2073 (max. 8388607)
  1681 compressed objects within 17 object streams
