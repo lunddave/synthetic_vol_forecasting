@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex prelim_presentation"] 1708827502 "prelim_presentation.aux" "prelim_presentation.bbl" "prelim_presentation" 1708827678 0
+["bibtex prelim_presentation"] 1709583453 "prelim_presentation.aux" "prelim_presentation.bbl" "prelim_presentation" 1709583492 0
   "./synthVolForecast.bib" 1708397472 43857 0f73f170b49dce687ad2b3e2b77aba72 ""
   "/usr/local/texlive/2023/texmf-dist/bibtex/bst/natbib/plainnat.bst" 1233624470 26816 ffe5423d2019860bad9f54bc402fac15 ""
-  "prelim_presentation.aux" 1708827678 7465 c2186c3b3c640ca4e78c7b688294a465 "pdflatex"
+  "prelim_presentation.aux" 1709583492 7465 c2186c3b3c640ca4e78c7b688294a465 "pdflatex"
   (generated)
   "prelim_presentation.bbl"
   "prelim_presentation.blg"
   (rewritten before read)
-["pdflatex"] 1708827673 "/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/prelim_presentation.tex" "prelim_presentation.pdf" "prelim_presentation" 1708827678 0
-  "/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/prelim_presentation.tex" 1708827672 15577 eb38c729f29965c4defe5bdb875cf4cb ""
+["pdflatex"] 1709583489 "/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/prelim_presentation.tex" "prelim_presentation.pdf" "prelim_presentation" 1709583492 0
+  "/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/prelim_presentation.tex" 1709583488 15711 1bc69065a15d45b02a347276a638b95b ""
   "/usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -31,7 +31,6 @@
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmss17.tfm" 1136768653 1320 ed93d62c5f2c16343826001f03341dbc ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmss8.tfm" 1136768653 1296 d77f431d10d47c8ea2cc18cf45346274 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmss9.tfm" 1136768653 1320 49357c421c0d469f88b867dd0c3d10e8 ""
-  "/usr/local/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmssbx10.tfm" 1136768653 1272 e2d13f0df30bf3ad990bb9d028e37f34 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmssi10.tfm" 1136768653 1520 ca2bb4b78ac9800bd686e30c6d19ef95 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmssi8.tfm" 1136768653 1500 7f49257eca65a87057f17452e9fe3ef5 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm" 1136768653 1124 6c73e740cf17375f03eec0ee63599741 ""
@@ -58,7 +57,6 @@
   "/usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss17.pfb" 1248133631 24416 36515493f76659302880e2604105b074 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb" 1248133631 24420 52dbb8e8aa0069a1b987309557f8d303 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb" 1248133631 24373 a91d375736817a75026663adcb2190c1 ""
-  "/usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb" 1248133631 28902 2f5c04fd2884d1878057baa5aad22765 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb" 1248133631 25150 e0d09798d232ab9d00c5c0a8df6cc22d ""
   "/usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi12.pfb" 1248133631 25095 0ff1f6d531b320ecbbd6ea84d875816c ""
   "/usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb" 1248133631 25168 33771b85f45c82138dd7745db7092d1c ""
@@ -261,12 +259,12 @@
   "/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1705898765 4623355 b8cad38412faebe1ce5b780a45db67bd ""
   "/usr/local/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1705898712 7883459 cb6809e0afdf7777ef8c5f2f25f8f275 ""
   "/usr/local/texlive/2023/texmf.cnf" 1678822455 577 1b2b1af17af2508fb20dd85783af4050 ""
-  "prelim_presentation.aux" 1708827678 7465 c2186c3b3c640ca4e78c7b688294a465 "pdflatex"
-  "prelim_presentation.bbl" 1708827502 275 de5ffaf5b665b622658d80bed97ba2a5 "bibtex prelim_presentation"
-  "prelim_presentation.nav" 1708827678 4419 6f4fc6408812aa3881681be6139a18d5 "pdflatex"
-  "prelim_presentation.out" 1708827678 1975 d86560a1c7f32cd0f52413dd807bf2d9 "pdflatex"
-  "prelim_presentation.tex" 1708827672 15577 eb38c729f29965c4defe5bdb875cf4cb ""
-  "prelim_presentation.toc" 1708827678 697 1871621164b89a249b0e2058ba538740 "pdflatex"
+  "prelim_presentation.aux" 1709583492 7465 c2186c3b3c640ca4e78c7b688294a465 "pdflatex"
+  "prelim_presentation.bbl" 1709583453 275 de5ffaf5b665b622658d80bed97ba2a5 "bibtex prelim_presentation"
+  "prelim_presentation.nav" 1709583492 4419 6f4fc6408812aa3881681be6139a18d5 "pdflatex"
+  "prelim_presentation.out" 1709583492 1975 d86560a1c7f32cd0f52413dd807bf2d9 "pdflatex"
+  "prelim_presentation.tex" 1709583488 15711 1bc69065a15d45b02a347276a638b95b ""
+  "prelim_presentation.toc" 1709583492 697 1871621164b89a249b0e2058ba538740 "pdflatex"
   (generated)
   "prelim_presentation.aux"
   "prelim_presentation.log"

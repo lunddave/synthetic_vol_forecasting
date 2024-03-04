@@ -38,7 +38,7 @@
     }
     \makeatother
 
-\title{Synthetic Volatility Forecasting}
+\title{Synthetic Volatility Forecasting and Other Aggregation Techniques for Time Series Forecasting}
 \subtitle{Preliminary Exam}
 \author{David Lundquist\thanks{davidl11@ilinois.edu}}
 \date{\today}
@@ -60,12 +60,18 @@ A seemingly unprecedented event might provoke the questions
     \item What does it resemble from the past?
     \item What past events are most relevant?
     \item Can we incorporate past events in a systematic, principled manner? 
-
 \end{enumerate}
+
 \end{frame}
 \begin{frame}
+When would we ever have to do this?
+    \begin{itemize}
+        \item Event-driven investing strategies (unscheduled news shock) 
+        \item Structural shock to macroeconomic conditions (scheduled news possibly pre-empted by news shock)
+        \item Biomedical panel data subject to exogenous shock or interference
+    \end{itemize}
 
-Yet we know the data can be interpolated by taking $p \geq n$ linearly independent covariates.
+Example: weekend of March 7th and 8th, 2020
 
 \end{frame}
 
@@ -73,9 +79,8 @@ Yet we know the data can be interpolated by taking $p \geq n$ linearly independe
 
 \frametitle{Punchline of the paper}
 
-In linear regression, under assumptions that will follow, near-perfect prediction is possible if \textbf{``the number of directions in $\theta$ that are unimportant for prediction significantly exceeds the sample size''}.\\~\\
+Forecasting is possible under structural shocks, so long as we incorporate external information to account for the nonzero errors.
 
-Thus, there are only two quantitites that matter here: $\Sigma$ and $n$.  Most of our attention will be on $\Sigma$.
 \end{frame}
 
 % Outline frame

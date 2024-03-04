@@ -1,5 +1,3 @@
-#library(SynthVolForecast)
-
 options(digits = 7, scipen = 7)
 
 sysname <- Sys.info()["sysname"]
