@@ -76,11 +76,29 @@ Example: weekend of March 7th and 8th, 2020
 \end{frame}
 
 \begin{frame}
-
 \frametitle{Punchline of the paper}
 
 Forecasting is possible under structural shocks, so long as we incorporate external information to account for the nonzero errors.
 
+\end{frame}
+
+\begin{frame}
+    \frametitle{What gaps does this fill in the literature?}
+    
+    Volatility Modeling
+    \begin{itemize}
+        \item GARCH is slow to react \citep{andersen2003modeling}
+        \item Asymmetric GARCH models may react faster but need post-shock data 
+        \item Realized GARCH \citep{hansen2012realized}, in our setting, would require high-frequency data, and the model is highly parameterized 
+    \end{itemize}
+
+    Forecast Augmentation
+    \begin{itemize}
+        \item A \citet{clements1996intercept,clements1998forecasting} laid the groundwork for modeling nonzero errors in time series forecasting
+        \item A \citet{guerron2017macroeconomic} use a series' own errors to correct the forecast for that series
+        \item A \citet{dendramis2020similarity} use a similarity-based procedure to correct linear parameters in time series forecasts
+        \item A \citet{foroni2022forecasting} adjust pandemic-era forecasts using intercept correction techniques and data from Great Financial Crisis
+    \end{itemize} 
 \end{frame}
 
 % Outline frame
@@ -93,13 +111,25 @@ Forecasting is possible under structural shocks, so long as we incorporate exter
 
 % Setting for the problem
 \begin{frame}
-\frametitle{Setting for the problem}
+\frametitle{The news has broken but markets are closed}
 
 \begin{itemize}
 \item $y\in \mathbb{R}^{n}$, a mean-zero, real-valued response to be predicted 
 \item Mean-zero covariate vectors $x \in \mathbb{H}$, a Hilbert space, where $\mathbb{H}$ can be taken to be $\mathbb{R}^{p}$ for the sake of illustration
 \item We predict $y$ using a linear function of the covariates $X$, but this is $\textit{not}$ an assumption about the data generating process.  We do not assume  $y = f(X) + \epsilon$, but $y$ may contain exogenous noise (called ``label noise'' by the authors.)
 \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{A Primer on GARCH}
+    For this audience, we skip ahead to the most general model
+    \begin{align*}
+    \mc{M}_2 \colon \begin{array}{l}
+       \sigma^{2}_{i,t} = \omega_{i} + \omega^{*}_i + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \text{ }\\[.2cm]
+       a_{i,t} = \sigma_{i,t}(\epsilon_{i,t}(1-D^{level}_{i,t}) + \epsilon^{*}_{i}D^{level}_{i,t})\\[.2cm]
+      \textcolor{red}{\omega_{i,t}^{*} = \mu_{\omega^{*}}+\delta'\mbf{x}_{i, t-1}+ \varepsilon_{i}}
+    \end{array}
+    \end{align*}
 \end{frame}
 
 \subsection{Model Setup}
@@ -128,8 +158,9 @@ Forecasting is possible under structural shocks, so long as we incorporate exter
 
 \end{frame}
 
+\subsection{Volatility Profile of a Time Series}
 \begin{frame}
-\frametitle{What's the goal here?}
+\frametitle{Volatilty Profile}
 In this particular setting, excess risk of an estimator $\theta$ has the form \\~\\
 
 \begin{align*}
@@ -415,11 +446,10 @@ $\displaystyle \lim_{n\to\infty} \big ( bias(\theta^{*}, \Sigma_{n}, n)  + \frac
 \section{Supplement}
 We analyze the real-world example with Brexit included.
 
-\begin{frame}{Bibliography}
+\begin{frame}{References}
     % https://latex.org/forum/viewtopic.php?t=13344
     \bibliographystyle{plainnat}
     \bibliography{synthVolForecast}
 \end{frame}
-
 
 \end{document}

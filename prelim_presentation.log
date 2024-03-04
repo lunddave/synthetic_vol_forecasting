@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.21)  4 MAR 2024 14:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.21)  4 MAR 2024 16:17
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -630,7 +630,8 @@ Package: mathrsfs 1996/01/01 Math RSFS package v1.0 (jk)
 File: l3backend-pdftex.def 2023-01-16 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count341
 \l__pdf_internal_box=\box79
-) (./prelim_presentation.aux)
+)
+No file prelim_presentation.aux.
 \openout1 = `prelim_presentation.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 46.
@@ -651,7 +652,6 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 46.
 LaTeX Font Info:    ... okay on input line 46.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 46.
 LaTeX Font Info:    ... okay on input line 46.
-
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -706,7 +706,6 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
 Package hyperref Info: Link coloring OFF on input line 46.
- (./prelim_presentation.out) (./prelim_presentation.out)
 \@outlinefile=\write5
 \openout5 = `prelim_presentation.out'.
 
@@ -819,7 +818,74 @@ Overfull \hbox (131.60022pt too wide) has occurred while \output is active
 
 [4
 
-] (./prelim_presentation.toc)
+]
+/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/prelim_presentation.tex:102: Undefined control sequence.
+\beamer@doifinframe ...CH is slow to react \citep 
+                                                  {andersen2003modeling} \it...
+l.102 \end{frame}
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/prelim_presentation.tex:102: Undefined control sequence.
+\beamer@doifinframe ...item Realized GARCH \citep 
+                                                  {hansen2012realized}, in o...
+l.102 \end{frame}
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/prelim_presentation.tex:102: Undefined control sequence.
+\beamer@doifinframe ...n {itemize} \item A \citet 
+                                                  {clements1996intercept,cle...
+l.102 \end{frame}
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/prelim_presentation.tex:102: Undefined control sequence.
+\beamer@doifinframe ...forecasting \item A \citet 
+                                                  {guerron2017macroeconomic}...
+l.102 \end{frame}
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/prelim_presentation.tex:102: Undefined control sequence.
+\beamer@doifinframe ...that series \item A \citet 
+                                                  {dendramis2020similarity} ...
+l.102 \end{frame}
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/prelim_presentation.tex:102: Undefined control sequence.
+\beamer@doifinframe ...s forecasts \item A \citet 
+                                                  {foroni2022forecasting} ad...
+l.102 \end{frame}
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
  [][][][]  
  []
@@ -827,6 +893,8 @@ Overfull \hbox (131.60022pt too wide) has occurred while \output is active
 [5
 
 ]
+No file prelim_presentation.toc.
+
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
  [][][][]  
  []
@@ -841,6 +909,87 @@ Overfull \hbox (131.60022pt too wide) has occurred while \output is active
 [7
 
 ]
+/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/prelim_presentation.tex:133: Undefined control sequence.
+<argument>  \mc 
+                {M}_2 \colon \begin {array}{l} \sigma ^{2}_{i,t} = \omega _{...
+l.133 \end{frame}
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/prelim_presentation.tex:133: Undefined control sequence.
+<argument> ...a _{i,t-j}^{2} + \gamma _{i}^{T} \x 
+                                                  _{i,t} \text { }\\[.2cm] a...
+l.133 \end{frame}
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/prelim_presentation.tex:133: Double subscript.
+<argument> ... _{i,t-j}^{2} + \gamma _{i}^{T} \x _
+                                                  {i,t} \text { }\\[.2cm] a_...
+l.133 \end{frame}
+                 
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/prelim_presentation.tex:133: Undefined control sequence.
+<recently read> \mbf 
+                     
+l.133 \end{frame}
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/prelim_presentation.tex:133: Undefined control sequence.
+<argument>  \mc 
+                {M}_2 \colon \begin {array}{l} \sigma ^{2}_{i,t} = \omega _{...
+l.133 \end{frame}
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/prelim_presentation.tex:133: Undefined control sequence.
+<argument> ...a _{i,t-j}^{2} + \gamma _{i}^{T} \x 
+                                                  _{i,t} \text { }\\[.2cm] a...
+l.133 \end{frame}
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/prelim_presentation.tex:133: Double subscript.
+<argument> ... _{i,t-j}^{2} + \gamma _{i}^{T} \x _
+                                                  {i,t} \text { }\\[.2cm] a_...
+l.133 \end{frame}
+                 
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/prelim_presentation.tex:133: Undefined control sequence.
+<recently read> \mbf 
+                     
+l.133 \end{frame}
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
  [][][][]  
  []
@@ -1051,25 +1200,6 @@ Overfull \hbox (131.60022pt too wide) has occurred while \output is active
 [37
 
 ]
-LaTeX Font Info:    Calculating math sizes for size <17> on input line 314.
-
-
-LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <8.5> not available
-(Font)              size <8> substituted on input line 314.
-
-
-LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <8.5> not available
-(Font)              size <8> substituted on input line 314.
-
-
-LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <8.5> not available
-(Font)              size <8> substituted on input line 314.
-
-
-LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <8.5> not available
-(Font)              size <8> substituted on input line 314.
-
-
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
  [][][][]  
  []
@@ -1084,6 +1214,25 @@ Overfull \hbox (131.60022pt too wide) has occurred while \output is active
 [39
 
 ]
+LaTeX Font Info:    Calculating math sizes for size <17> on input line 345.
+
+
+LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <8.5> not available
+(Font)              size <8> substituted on input line 345.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <8.5> not available
+(Font)              size <8> substituted on input line 345.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <8.5> not available
+(Font)              size <8> substituted on input line 345.
+
+
+LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <8.5> not available
+(Font)              size <8> substituted on input line 345.
+
+
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
  [][][][]  
  []
@@ -1174,14 +1323,7 @@ Overfull \hbox (131.60022pt too wide) has occurred while \output is active
 
 [52
 
-] (./prelim_presentation.bbl
-
-LaTeX Warning: Empty `thebibliography' environment on input line 8.
-
-)
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
+]
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
  [][][][]  
  []
@@ -1193,7 +1335,24 @@ Overfull \hbox (131.60022pt too wide) has occurred while \output is active
  [][][][]  
  []
 
-[54]
+[54
+
+] (./prelim_presentation.bbl)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (131.60022pt too wide) has occurred while \output is active
+ [][][][]  
+ []
+
+[55
+
+]
+Overfull \hbox (131.60022pt too wide) has occurred while \output is active
+ [][][][]  
+ []
+
+[56]
 \tf@nav=\write6
 \openout6 = `prelim_presentation.nav'.
 
@@ -1208,22 +1367,28 @@ Overfull \hbox (131.60022pt too wide) has occurred while \output is active
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.5pt have occurred.
 
-Package rerunfilecheck Info: File `prelim_presentation.out' has not changed.
-(rerunfilecheck)             Checksum: D86560A1C7F32CD0F52413DD807BF2D9;1975.
+
+Package rerunfilecheck Warning: File `prelim_presentation.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `prelim_presentation.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  D121993F0DE3AE8D567B528C3EB3AAAE;2224.
  ) 
 Here is how much of TeX's memory you used:
- 26622 strings out of 476025
- 535822 string characters out of 5790017
- 1885388 words of memory out of 5000000
- 46405 multiletter control sequences out of 15000+600000
+ 26563 strings out of 476025
+ 533937 string characters out of 5790017
+ 1886388 words of memory out of 5000000
+ 46349 multiletter control sequences out of 15000+600000
  532929 words of font info for 109 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 128i,17n,122p,595b,944s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 128i,17n,122p,595b,943s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss17.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on prelim_presentation.pdf (54 pages, 433676 bytes).
+Output written on prelim_presentation.pdf (56 pages, 439198 bytes).
 PDF statistics:
- 1898 PDF objects out of 2073 (max. 8388607)
- 1672 compressed objects within 17 object streams
- 120 named destinations out of 1000 (max. 500000)
- 695 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1908 PDF objects out of 2073 (max. 8388607)
+ 1681 compressed objects within 17 object streams
+ 125 named destinations out of 1000 (max. 500000)
+ 601 words of extra memory for PDF output out of 10000 (max. 10000000)
 

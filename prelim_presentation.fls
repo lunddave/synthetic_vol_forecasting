@@ -1365,9 +1365,6 @@ INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/l3backend/l3backend-pdftex.de
 INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
-INPUT ./prelim_presentation.aux
-INPUT prelim_presentation.aux
-INPUT prelim_presentation.aux
 OUTPUT prelim_presentation.aux
 INPUT /usr/local/texlive/2023/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 INPUT /usr/local/texlive/2023/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
@@ -1388,16 +1385,6 @@ INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
-INPUT ./prelim_presentation.out
-INPUT prelim_presentation.out
-INPUT ./prelim_presentation.out
-INPUT prelim_presentation.out
-INPUT ./prelim_presentation.out
-INPUT prelim_presentation.out
-INPUT ./prelim_presentation.out
-INPUT prelim_presentation.out
-INPUT ./prelim_presentation.out
-INPUT ./prelim_presentation.out
 OUTPUT prelim_presentation.out
 INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/translator/translator-basic-dictionary-English.dict
 INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/translator/translator-basic-dictionary-English.dict
@@ -1483,9 +1470,6 @@ INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/sansmathaccent/mathker
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/sansmathaccent/mathkerncmssi8.tfm
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmss8.tfm
 INPUT /usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map
-INPUT ./prelim_presentation.toc
-INPUT prelim_presentation.toc
-INPUT prelim_presentation.toc
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmssi10.tfm
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmssi8.tfm
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmssi8.tfm
