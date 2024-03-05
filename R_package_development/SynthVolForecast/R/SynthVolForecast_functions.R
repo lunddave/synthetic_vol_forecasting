@@ -45,7 +45,9 @@ dbw <- function(X
   if (is.null(Y_lookback_indices) == FALSE){
     X_lookback_indices <- c(Y_lookback_indices, X_lookback_indices)
 
-    X_Y_combiner <- function(y,x) {return(cbind(y**2,x))} #tk
+    X_Y_combiner <- function(y,x) {
+      return(cbind((y-mean(y))**2,x))
+      } #tk what about syntheticprediction, which uses only y ?
 
     combined_X <- mapply(X_Y_combiner, y = Y, x = X, SIMPLIFY = FALSE)
   }
@@ -125,9 +127,6 @@ dbw <- function(X
     } #end of loop
 
     #normchoice
-    print('Here is the normchoice')
-    print(normchoice)
-
     norm_output <- as.numeric(norm(matrix(X1 - XW), type = normchoice_number))
 
     #now add penalty
