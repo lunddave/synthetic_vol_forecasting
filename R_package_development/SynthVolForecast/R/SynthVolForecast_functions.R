@@ -82,8 +82,6 @@ dbw <- function(X
 
   }
 
-  cat('We defined the covariate extractor.  Now we use it.')
-
   X_subset <- lapply(X_subset2, cov_extractor)
 
   # Now bind the TSUS covariates to the donor covariates

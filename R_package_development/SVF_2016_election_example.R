@@ -213,10 +213,7 @@ Y <- list()
 for (i in 1:length(start_dates)){
   Y_i <- market_data_list[[i]][,1]
   Y_i_drop_NA <- Y_i[complete.cases(Y_i)]
-  print('Here is the type of object we are working with:')
-  print(class(Y_i_drop_NA))
-  # print('Here are the rownames')
-  # print(index(Y_i_drop_NA))
+
   print('Here is the shock date')
   print(shock_dates_as_dates[i])
 
