@@ -28,6 +28,8 @@ dbw <- function(X
   # number of time series for pool
   n <- length(X) - 1
 
+  normchoice_number <- unlist(strsplit(normchoice, split = ""))[2]
+
   #We notify user if p > n, i.e. if linear system is overdetermined
   p <- length(dbw_indices)
   if (p > n){cat('p > n, i.e. system is overdetermined from an unconstrained point-of-view.')}
@@ -113,9 +115,6 @@ dbw <- function(X
 
     X0 <- split(dat[-1,],seq(nrow(dat[-1,]))) #tk what is split doing?
 
-    print('We print X0')
-    print(X0)
-
   # objective function
   weightedX0 <- function(W) {
     # W is a vector of weight of the same length of X0
@@ -128,12 +127,10 @@ dbw <- function(X
     } #end of loop
 
     #normchoice
-    if (normchoice == 'l1') {
-      norm_output <- as.numeric(norm(matrix(X1 - XW), type = "1"))
-    }
-    else {
-      norm_output <- as.numeric(crossprod(matrix(X1 - XW)))
-    }
+    print('Here is the normchoice')
+    print(normchoice)
+
+    norm_output <- as.numeric(norm(matrix(X1 - XW), type = normchoice_number))
 
     #now add penalty
     if (penalty_normchoice == 'l1' & penalty_lambda > 0) {
@@ -191,17 +188,12 @@ dbw <- function(X
                                            , inner.iter = 10000000))
 
   #We print the loss from the optimization
-  if (normchoice == 'l1') {
-    loss <- round(norm(X1 - object_to_return$pars %*% dat[-1,], type = '1'),3)
-  }
-  else {
-    loss <- round(norm(X1 - object_to_return$pars %*% dat[-1,], type = '2'),3)
-  }
+  loss <- round(norm(X1 - object_to_return$pars %*% dat[-1,], type = normchoice_number),3)
 
   print(paste('The loss of distanced-based weighting is ', loss, ',',
               ' which is ',
-              100*round(loss/norm(X1),3),
-              "% of the norm of vector we are trying to approximate.", sep = ""))
+              100*round(loss/norm(X1, type=normchoice_number),3),
+              "% of the norm of the vector we are trying to approximate.", sep = ""))
 
   if (object_to_return$convergence == 0){convergence <- 'convergence'}
   else {convergence <- 'failed_convergence'}

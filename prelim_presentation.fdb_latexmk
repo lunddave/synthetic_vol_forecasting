@@ -1,8 +1,8 @@
 # Fdb version 4
-["bibtex prelim_presentation"] 1709591388 "prelim_presentation.aux" "prelim_presentation.bbl" "prelim_presentation" 1709591451 2
+["bibtex prelim_presentation"] 1709591461 "prelim_presentation.aux" "prelim_presentation.bbl" "prelim_presentation" 1709591461 2
   "./synthVolForecast.bib" 1708397472 43857 0f73f170b49dce687ad2b3e2b77aba72 ""
   "/usr/local/texlive/2023/texmf-dist/bibtex/bst/natbib/plainnat.bst" 1233624470 26816 ffe5423d2019860bad9f54bc402fac15 ""
-  "prelim_presentation.aux" 1709591451 8060 1d5649bb15193caa290eaa679de11863 "pdflatex"
+  "prelim_presentation.aux" 1709591461 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
   (generated)
   "prelim_presentation.bbl"
   "prelim_presentation.blg"
@@ -259,12 +259,12 @@
   "/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1705898765 4623355 b8cad38412faebe1ce5b780a45db67bd ""
   "/usr/local/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1705898712 7883459 cb6809e0afdf7777ef8c5f2f25f8f275 ""
   "/usr/local/texlive/2023/texmf.cnf" 1678822455 577 1b2b1af17af2508fb20dd85783af4050 ""
-  "prelim_presentation.aux" 1709591451 8060 1d5649bb15193caa290eaa679de11863 "pdflatex"
-  "prelim_presentation.bbl" 1709591388 0 d41d8cd98f00b204e9800998ecf8427e "bibtex prelim_presentation"
+  "prelim_presentation.aux" 1709591461 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  "prelim_presentation.bbl" 1709591461 0 d41d8cd98f00b204e9800998ecf8427e "bibtex prelim_presentation"
   "prelim_presentation.nav" 1709591451 4810 caa83452d5fad148d1e679aacab4f540 "pdflatex"
-  "prelim_presentation.out" 1709591451 2224 d121993f0de3ae8d567b528c3eb3aaae "pdflatex"
+  "prelim_presentation.out" 0 -1 0 "pdflatex"
   "prelim_presentation.tex" 1709591442 17292 0accbf23443132dbc80dd9c4b1aa7ce9 ""
-  "prelim_presentation.toc" 1709591451 775 e29e0289e5bf0b9fe4e9a63347356991 "pdflatex"
+  "prelim_presentation.toc" 0 -1 0 "pdflatex"
   (generated)
   "prelim_presentation.aux"
   "prelim_presentation.log"
