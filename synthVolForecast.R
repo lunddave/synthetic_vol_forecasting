@@ -935,7 +935,7 @@ synth_vol_fit <- function(X,
 
     # Here is the color scheme we will use
     colors_for_adjusted_pred <- c('black', 'red', "green",
-                                  brewer.pal(length(linear_comb_names) - 1 ,'Set3'))
+                                  brewer.pal(length(linear_comb_names) - 1 ,'Set3')) #tk https://colorbrewer2.org/
 
     # Let's add the ground truth
     points(y = sigma2_shock_period_only,
@@ -992,11 +992,13 @@ synth_vol_fit <- function(X,
             ylim = c(0, max(non_NA_garch_1_1_entire_plus_shock_times, Y[[1]][,3][(T_star[1]-10):(T_star[1] + 50)])) ,
             cex.lab = 3.99)
 
-    lines(non_NA_garch_1_1_entire_plus_shock_times[(T_star[1]-10):(T_star[1] + 50)], col = 'purple')
+    colors_for_plot <- c('#d7191c','#fdae61','#abd9e9','#2c7bb6')
 
-    lines(non_NA_garch_1_1_entire[(T_star[1]-10):(T_star[1] + 50)], col = 'green')
+    lines(non_NA_garch_1_1_entire_plus_shock_times[(T_star[1]-10):(T_star[1] + 50)], col = colors_for_plot[1])
 
-    abline(v = T_star[1], col = 'red')
+    lines(non_NA_garch_1_1_entire[(T_star[1]-10):(T_star[1] + 50)], col = colors_for_plot[2])
+
+    abline(v = T_star[1], col = colors_for_plot[3])
 
     title(ylab = expression(sigma^2), line = 2.05, cex.lab = 1.99)
 
@@ -1005,7 +1007,7 @@ synth_vol_fit <- function(X,
                            ,'Fitted Values Using Indicator at Shock Time(s)')
 
     # Here is the color scheme we will use
-    colors_for_legend <- c('green', 'black', 'purple')
+    colors_for_legend <- c('#d7191c','#fdae61','#abd9e9','#2c7bb6')
 
     legend(x = "topleft",  # Coordinates (x also accepts keywords)
            legend = labels_for_legend,
@@ -1037,7 +1039,7 @@ synth_vol_fit <- function(X,
 
     # Here is the color scheme we will use
     colors_for_adjusted_pred <- c('black', 'red', "green",
-                                  brewer.pal(length(linear_comb_names) - 1 ,'Set3'))
+                                  brewer.pal(length(linear_comb_names) - 1 ,'Set3')) #tk https://colorbrewer2.org/#type=sequential&scheme=BuGn&n=3
 
     # Let's add the ground truth
     points(y = sigma2_shock_period_only,
