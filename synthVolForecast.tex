@@ -540,21 +540,21 @@ The result follows from the consistency proof of the QMLE in GARCH-X models, as 
 \begin{proof-of-proposition}
 Recall the conditional expectation of the variance for the GARCH-X($m$,$s$) model:
 
-\begin{align}
+\begin{align*}
 \E_{T^{*}}[\sigma^{2}_{i,t+1}|\mathcal{F}_{t}] = \omega_{i} + \omega^{*}_i + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t}
-\end{align}
+\end{align*}
 
 By replacing parameters with their estimates, we arrive at the prediction 
 
-\begin{align}
+\begin{align*}
 \hat\sigma^{2}_{i,t+1}|\mathcal{F}_{t} = \hat\omega_{i} + \hat\omega^{*}_i + \sum^{m_{i}}_{k=1}\hat\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\hat\beta_{i,j}\hat\sigma_{i,t-j}^{2} + \hat\gamma_{i}^{T} \x_{i,t}
-\end{align}
+\end{align*}
 
 which converges in probability to 
 
-\begin{align}
+\begin{align*}
   \hat\sigma^{2}_{i,t+1}|\mathcal{F}_{t} = \omega_{i} + \omega^{*}_i + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t}
-  \end{align}
+  \end{align*}
 
 as $t\rightarrow\infty$ by a simple application of Slutsky's Theorem. \textcolor{red}{No need to number any equations that are not referenced later.}
 
@@ -871,6 +871,11 @@ Within the vast literature on financial sentimental analysis, there exists a sub
 
 \subsection{Uniqueness of the weight vector $\vec{w}$}
 \textcolor{red}{not done.}
+
+\textcolor{blue}{Some of the comments and results from \cite{lin2021minimizing} apply here, while some additional comments may be in order: because $(\mathbb{R}^{n}, \|\cdot\|)$ is a Chebyshev space, for any element x and any convex set $C\subset \mathbb{R}^{n}$, there exists a unique element $y\in C$ that minimizes $\|x-y\|$.  However, the pre-image of $y$ with respect to a particular operator and constraint set might not be unique.}
+
+\subsection{Value-at-Risk Under Shocks}
+
 
 \section{Supplement}
 We analyze the real-world example with Brexit included. \\
