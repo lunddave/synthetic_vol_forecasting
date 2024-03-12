@@ -156,13 +156,24 @@ dbw <- function(X,
     loss <- round(norm(X1 - object_to_return$pars %*% dat[-1,], type = '2'),3)
   }
 
-  pair_to_return <- list()
+  #And finally, get norm of X1
+  if (normchoice == 'l1') {
+    X1_norm <- as.numeric(norm(X1, type = "1"))
+  }
+  else {
+    X1_norm <- round(norm(X1, type = '2'),3)
+  }
 
-  pair_to_return[[1]] <- object_to_return$pars
+  output <- list()
 
-  pair_to_return[[2]] <- loss
+  output[[1]] <- object_to_return$pars
 
-  return(pair_to_return)
+  output[[2]] <- loss
+
+  output[[3]] <- X1_norm
+
+
+  return(output)
 
 } #END dbw function
 
@@ -758,6 +769,7 @@ synth_vol_fit <- function(X,
   #NEXT, we get the vectors w for all sensible methods
   w <- list() #initialize
   dbw_loss <- c()
+  X1_norm <- c()
 
   matrix_of_specs <- matrix(c(rep(1,6),
                               rep(NA,6),
@@ -784,6 +796,7 @@ synth_vol_fit <- function(X,
 
   w[[i]] <- dbw_output[[1]]
   dbw_loss[i] <- dbw_output[[2]]
+  X1_norm[i] <- dbw_output[[3]]
 
   }
 
@@ -1104,8 +1117,10 @@ synth_vol_fit <- function(X,
   #What we must do that is pad the dbw_loss vector with two 0 values
 
   dbw_loss <- c(dbw_loss, rep(0, length(display_df$QL_adj) - length(dbw_loss)))
+  X1_norm <- c(X1_norm, rep(0, length(display_df$QL_adj) - length(X1_norm)))
 
   display_df$dbw_loss <- round(dbw_loss, 6)
+  display_df$X1_norm <- round(X1_norm, 6)
 
   #Now add the unadjusted row
   unadjusted_row <- c('GARCH (unadjusted)', 0, MSE_unadjusted, MAPE_unadjusted, QL_unadjusted)

@@ -17,9 +17,18 @@ library(gridExtra)
 dev.new(width=2, height=2)
 
 #https://gist.github.com/bannister/8002800
-path <- '/home/david/Desktop/synthetic_vol_forecasting/simulation_results'
-files <- list.files(path=path, pattern = ".*Apr16.*Rdata$")
-setwd(path)
+
+sysname <- Sys.info()["sysname"]
+
+if(sysname == "Darwin") {
+  setwd("~/Desktop/PhD/simulation_results") # example on mac machine
+} else if(sysname == "Linux") {
+  setwd('~/Desktop/synthetic_vol_forecasting/simulation_results') # example on linux machine
+}
+
+path <- getwd()
+
+files <- list.files(path=path, pattern = ".*simcount_500_savetime_MonMar1100:26:382024_runtime_2.209*.*Rdata$")
 results <- sapply(files, function(x) mget(load(x)), simplify = TRUE)
 output <- do.call(rbind, results)
 rownames(output) <- NULL
@@ -68,7 +77,7 @@ non_NA <- df_only_one_outcome[complete.cases(df_only_one_outcome),]
 
 # https://statisticsglobe.com/heatmap-in-r
 
-
+non_NA <- non_NA[non_NA$p == 45,]
 
 means <- non_NA %>% group_by(vol_shock_sd, M21_M22_vol_mu_delta) %>% summarise(prop=mean(success))
 means <- as.data.frame(sapply(means, as.numeric))
@@ -90,6 +99,7 @@ ggp1 <- ggplot(means,
   theme(plot.title = element_text(hjust = 0.5)) +
   labs(x = "Volatility Shock Standard Deviation", y = "Volatility Shock Mean")
 
+ggp1
 
 #
 # # Now we write a function
