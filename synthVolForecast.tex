@@ -733,32 +733,38 @@ Naturally, one might ask how sensitive this prediction is to at least two kinds 
   \end{center}
 \end{figure}
 
+
 \section{Discussion}
+
+\textcolor{red}{I am not sure if we want to break this up into subsections or present separate paragraphs.}
+
 \subsection{Connection to forecast combination methods}
-Because the method proposed uses a point in $\Delta^{n}$, it is important to head-off possible confusion.  What we are proposing is not a forecast combination method.  What we are combining, if anything, is subcomponents of forecasts, not forecasts themselves.  However, from a broader perspective, forecast combination is an inapt term for what is being proposed here.  First, the donors are not forecasts. 
+Because the method proposed uses a point in $\Delta^{n}$, it is important to head-off possible confusion.  What we are proposing is not a forecast combination method.  What we are combining, if anything, is subcomponents of forecasts, not forecasts themselves.  However, from a broader perspective, forecast combination is an inapt term for what is being proposed here.  First, the donors are not forecasts. \textcolor{red}{This does not seem to be complete. Also, is there a way to get this into a paragraph as a minor point?}
+
+
 \subsection{Why is the proposal here like and unlike KNN regression?}
 \begin{enumerate}
   \item We are not trying to learn a function, first and foremost.  We are trying to estimate a parameter.
   \item KNN runs into the problem: the curse of dimensionality.  In contrast, large $p$ is not a problem in synthetic methods, because the thing estimated is the vector $w$ with $n-1$ degrees of freedom.  For KNN, a high-dimensional space, i.e. large $p$, corresponding to many covariates, is a difficult space in which to work with distances \citep{hastie2009elements}.  In contrast, large $p$ is not a problem in and of itself for synthetic control --- in fact, asymptotic results exist for $p$ \citep{abadie2010synthetic}.  
   \item As is pointed out in \citet{hastie2009elements}, KNN regression performs well when $K$ is chosen small enough that one can simply average the points $\{y_{i}\}_{i=1}^{N_{train}}$in the neighborhood around each $\{y_{i}\}_{i=1}^{N_{test}}$ to get good predictions.  As we have noted above, the arithmetic mean-based estimator of $\omega^{*}$, denoted $\overline{\omega^{*}}$, corresponds to KNN when $K = n$, the number of donors.  Fundamentally, the idea that $n$ is small enough and the donors are homogeneous enough that one could simply average the $\hat\omega_{i}$ is at odds with the assumed variation in the shock effects.
 \end{enumerate}
-In KNN regression, the hyperparameter K must be learned.  In Synthetic Volatility Forecasting, the number of donors is not learned.  A donor pool is curated, and then careful rules of thumb can be applied to determine whether a given donor should be included or excluded.  While it would not necessarily hurt to `learn' the appropriate number of donors to use, this information would probably not be as useful as knowing which donors and covariates provide the basis for the best forecasts.  This brings us to a deeper point about the distinction between Synthetic Prediction and KNN.  In KNN, the exogenous variables are taken as a given and `nearness' to object-to-predict depends on the distance function chosen.  In contrast, in Synthetic Prediction, the determination of nearness begins with a qualitative step, i.e. curating the units between which we will calculate distances and from we will ultimately derive weights.
+
+In KNN regression, the hyperparameter K must be learned.  In Synthetic Volatility Forecasting, the number of donors is not learned.  A donor pool is curated, and then careful rules of thumb can be applied to determine whether a given donor should be included or excluded.  While it would not necessarily hurt to `learn' the appropriate number of donors to use, this information would probably not be as useful as knowing which donors and covariates provide the basis for the best forecasts.  This brings us to a deeper point about the distinction between Synthetic Prediction \textcolor{red}{Synthetic Prediction is not yet a term that can be referenced in this way. Perhaps you can say Synthetic Prediction in the way of Lin and Eck (2021) and this present work.} and KNN.  In KNN, the exogenous variables are taken as a given and `nearness' to object-to-predict depends on the distance function chosen.  In contrast, in Synthetic Prediction, the determination of nearness begins with a qualitative step, i.e. curating the units between which we will calculate distances and from we will ultimately derive weights. \textcolor{red}{I think this paragraph is fine, and the above three bullet points can be removed. }
 
 \subsection{Should we gather as many donors as possible and pick them quantitatively?}
 It would be counter to the method proposed to assemble a vast number of donors, lacking careful scrutiny of the qualitative fit, and let the optimization simply pick the donors, via weighting.  What makes a donor good is not merely its quantitative fit but its qualitative fit as well.
 
-citet{abadie2022synthetic} make a similar point about large donor pools.  What matters is that the donors chosen are properly situated in the $p$-dimensional predictor space, so as to allow proper estimation of the weights.
+\citet{abadie2022synthetic} make a similar point about large donor pools.  What matters is that the donors chosen are properly situated in the $p$-dimensional predictor space, so as to allow proper estimation of the weights.
+
 \subsection{Why not use the covariates as covariates in the GARCH model alone or in the GARCH model as well?}
-The data-generating process does not specify that volatility series are well-modeled using ever-present exogenous covariates, and this is fundamentally due to the lack of theoretical justification for such an exogeneity assumption.  
+The data-generating process does not specify that volatility series are well-modeled using ever-present exogenous covariates, and this is fundamentally due to the lack of theoretical justification for such an exogeneity assumption. \textcolor{red}{I am not sure if this needs to be here. If so, then it can probably be combined with other points in this discussion to form a larger paragraph.}
 
 \subsection{Do there exist optimal weights?}
-There are at least two senses of `optimal' weights that one might be interested in here.  First, we can think of optimal weights as a set $\{w_{i}\}_{i=2}^{n+1}$ such that $\omega_{1} = \sum^{n+1}_{i=2}w_{i}\hat\omega_{i}$, i.e., $\omega_{1}$ belongs to convex hull of the estimated shocks.  There also exists a second sense of optimality, in which, for a given $\sigma_{t}^{2}$, the weights allow us to predict with zero loss.
+There are at least two senses of `optimal' weights that one might be interested in here.  First, we can think of optimal weights as a set $\{w_{i}\}_{i=2}^{n+1}$ such that $\omega_{1} = \sum^{n+1}_{i=2}w_{i}\hat\omega_{i}$, i.e., $\omega_{1}$ belongs to convex hull of the estimated shocks.  There also exists a second sense of optimality, in which, for a given $\sigma_{t}^{2}$, the weights allow us to predict with zero loss. \textcolor{red}{I think this can be ignored or it can be briefly stated as a comment somewhere in the section where weights are introduced.}
 
 \subsection{Comments on the shock models}
 
-For each of the $p$ entries in $\delta$, the $k$th entry should have the property that $\mathbb{E}[ x_{i,t,k} \cdot \delta_{k} ] > 0$
- 
-In principle, you could have an $\mc{M}_{21}$ shock with a covariate that, in expectation, has a negative marginal contribution to the cumulative shock.
+For each of the $p$ entries in $\delta$, the $k$th entry should have the property that $\mathbb{E}[ x_{i,t,k} \cdot \delta_{k} ] > 0$. In principle, you could have an $\mc{M}_{21}$ shock with a covariate that, in expectation, has a negative marginal contribution to the cumulative shock. \textcolor{red}{I think this should be removed.}
 
 
 \subsection{Adjustment Using OLS on the Donor Shocks}
@@ -769,16 +775,18 @@ Consider least-squares estimation for the weight vector $\vec{w}$:
 \end{align*} 
 One immediately visible problem is that this optimization problem is an optmization problem over $p$-vectors $\vec{w}$ --- i.e. a linear combination of the covariates, whereas what we seek is an $n$-vector --- a linear combination of donors.
 
-There is no guarantee that $\vec{w}_{OLS}$ would perform poorly as a tool for producing $\hat\omega^{*}$, but given the small number of donors supposed in our setting, it is risky.
+There is no guarantee that $\vec{w}_{OLS}$ would perform poorly as a tool for producing $\hat\omega^{*}$, but given the small number of donors supposed in our setting, it is risky. \textcolor{red}{I think this should be removed or mentioned as a comment in the section where weights are introduced.}
+
 
 \subsection{If we assume knowledge of the covariates that parameterize the shock, why not estimate each parameter individually?}
+\textcolor{red}{consider removing}
 \begin{enumerate}
   \item Degrees of freedom is first consideration
   \item Each estimate will be quite noisy.
 \end{enumerate}
 
 \subsection{Connection to Stochastic Volatility}
-SV stipulates that at any time point, both the return distribution and volatility could each be subject to separate shocks \citep{andersen2010stochastic}.
+SV stipulates that at any time point, both the return distribution and volatility could each be subject to separate shocks \citep{andersen2010stochastic}. \textcolor{red}{This seems incomplete.}
 
 \subsection{News shock literature review}
 
@@ -791,12 +799,13 @@ We adapt the news shock framework of \citet{kilian2017structural}: \\
 
 $z_{T^{*}+1}^{\text{nonscheduled news shock}} \coloneqq z_{T^{*}+1}^{\text{nonscheduled news}} - \E_{T^{*}}[z_{T^{*}+1}^{\text{nonscheduled news}}]$ \\
 
-In our adapted schema, irregular news shocks are $\mathcal{F}_{T^{*}}$-zero-expectation events governed by a GARCH-X process.  As such, $z_{T^{*}+1}^{\text{irregular news shock}}$ admits of the decomposition $z_{T^{*}+1} = \sigma_{T^{*}+1}\epsilon_{T^{*}+1}$
+In our adapted schema, irregular news shocks are $\mathcal{F}_{T^{*}}$-zero-expectation events governed by a GARCH-X process.  As such, $z_{T^{*}+1}^{\text{irregular news shock}}$ admits of the decomposition $z_{T^{*}+1} = \sigma_{T^{*}+1}\epsilon_{T^{*}+1}$. \textcolor{red}{This seems incomplete.}
 
 \subsection{Improvements of this current work over its predecessor}
+
 This present work extends \citet{lin2021minimizing} principally by substituting the GARCH model for an AR(1), i.e. modeling both the mean and volatility of a univariate time series.  We permit both shocks in the mean model and volatility model of GARCH.  As ancillary improvements, the current work permits the shock periods to be of any length, formally $L_{\text{vol}}, L_{\text{level}} \in \mathbb{Z}^{+}$, and the weights applied to the donor pool can come from more exotic subsets of $\mathbb{R}^{n}$.  
 
-At a technical level, the most substantial insight related to \citet{lin2021minimizing} is that the GARCH model provides an elegant forecast function for squared observations of the time series under study. To see this, for each $i,t$, define $\eta_{i,t} \coloneqq a^{2}_{i,t} - \sigma^{2}_{i,t}$, and by adding $\eta_{i,t}$ to both sides of the conditional variance specification of $\mc{M}_1$ and $\mc{M}_2$, we obtain the standard ARMA representation of a GARCH(m,s):
+At a technical level, the most substantial insight related to \citet{lin2021minimizing} is that the GARCH model provides an elegant forecast function for squared observations of the time series under study. To see this, for each $i,t$, define $\eta_{i,t} \coloneqq a^{2}_{i,t} - \sigma^{2}_{i,t}$, and by adding $\eta_{i,t}$ to both sides of the conditional variance specification of $\mc{M}_1$ and $\mc{M}_2$, we obtain the standard ARMA representation of a GARCH(m,s): \textcolor{red}{I thought this was needed earlier in the manuscript. If so, then it does not need to be repeated here. I think this section can be made shorter.}
 
 \begin{align}
 a^{2}_{i,t} = a^{2}_{i,t} - \sigma^{2}_{i,t} + \sigma^{2}_{i,t} = \eta_{i,t} + \sigma^{2}_{i,t} &= \eta_{i,t} + \omega_{i} + \omega^{*}_i D_{i,t}  + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \\
@@ -842,6 +851,9 @@ strategy& Observe $y_{i}$; then estimate $x$ with small expected L2 loss & Estim
 \end{comment}
 
 \subsection{Model Adjustment Using Synthetic Methods: A Global Overview}
+
+\textcolor{red}{It is a good idea to begin defining a new subfield of forecasting based on the common methodologies of this work and Lin and Eck (2021). }
+
 Here we distinguish what in this work is essential and inessential to synthetic forecasting.
 
 \begin{enumerate}
@@ -849,12 +861,16 @@ Here we distinguish what in this work is essential and inessential to synthetic 
   \item a parametric model shared among donors
   \item a correction term for the model family shared by donors
   \item a parametric specification for the correction term
+  \item \textcolor{red}{an estimation procedure that is reliable for estimating parameters.}
+  \item \textcolor{red}{an aggregation method for estimates of the correction term in the donor pool where the aggregation is designed to favor donors that are similar to the object that we want to predict}
+  \item \textcolor{red}{replace the unknown correction term that has yet to be realized in the object under study with the aggregate correction term computed in the previous step.}
 \end{enumerate}
 
 \subsection{News Sentiment}
-Within the vast literature on financial sentimental analysis, theree exists a sub-literature on financial volatility forecasting using news and news sentiment \citep{atkins2018financial}.  The setting herein is one where the valence of the sentiment is reasonably well-understood, and hence the direction of volatility can be well-predicted, although not perfectly, by human intuition.
+Within the vast literature on financial sentimental analysis, there exists a sub-literature on financial volatility forecasting using news and news sentiment \citep{atkins2018financial}.  The setting herein is one where the valence of the sentiment is reasonably well-understood, and hence the direction of volatility can be well-predicted, although not perfectly, by human intuition.
 
 \subsection{Uniqueness of the weight vector $\vec{w}$}
+\textcolor{red}{not done.}
 
 \section{Supplement}
 We analyze the real-world example with Brexit included. \\
