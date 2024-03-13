@@ -4,6 +4,14 @@
 QL_loss_function <- function(pred, gt){pred/gt - log(pred/gt) - 1}
 ### END QL_loss_function
 
+#We specify some functions for transforming y
+
+#mean_square_y will be used in garch models
+mean_square_y <- function(y){return((y-mean(y))**2)}
+
+#identity function will be used in synthetic prediction models
+id <- function(y){return(y)}
+
 ### START dbw
 dbw <- function(X
                 ,dbw_indices
@@ -18,8 +26,9 @@ dbw <- function(X
                 ,penalty_normchoice = c('l1', 'l2')[1]
                 ,penalty_lambda = 0
                 ,Y = NULL
-                ,Y_lookback_indices = list(seq(1,3,1))
-                ,X_lookback_indices = rep(list(c(1,1)),length(dbw_indices))
+                ,Y_lookback_indices = list(seq(1,1,1))
+                ,X_lookback_indices = rep(list(c(1)),length(dbw_indices))
+                ,inputted_transformation
 ) { # https://github.com/DEck13/synthetic_prediction/blob/master/prevalence_testing/numerical_studies/COP.R
   # X is a list of covariates for the time series
   # X[[1]] should be the covariate of the time series to predict
@@ -38,18 +47,32 @@ dbw <- function(X
   ## 'lookback' length for each i=1,2,...,n+1 and each covariate.
 
   col_returner <- function(df){return(df[,dbw_indices])}
+  print('col_returner succeeded')
 
   X_subset1 <- lapply(X, col_returner)
+  print('col_returner with lapply succeeded')
 
   #Task: for each entry in Y, make it the first column of X's corresponding entry
   if (is.null(Y_lookback_indices) == FALSE){
+    
+    print('User has provided Y_lookback_indices, so we include them.')
     X_lookback_indices <- c(Y_lookback_indices, X_lookback_indices)
-
+    
     X_Y_combiner <- function(y,x) {
-      return(cbind((y-mean(y))**2,x))
-      } #tk what about syntheticprediction, which uses only y ?
+      
+      print('We print the transformation and its class')
+      print(inputted_transformation)
+      print(class(inputted_transformation))
+      
+      transformed_series <- inputted_transformation(y)
+      
+      return(cbind(transformed_series,x))
+      } 
 
-    combined_X <- mapply(X_Y_combiner, y = Y, x = X, SIMPLIFY = FALSE)
+    combined_X <- mapply(X_Y_combiner
+                         , y = Y
+                         , x = X_subset1
+                         , SIMPLIFY = FALSE)
   }
   else{
     combined_X <- X_subset1
@@ -537,7 +560,8 @@ SynthVolForecast <- function(Y_series_list
                # penalty_lambda = penalty_lambda
                Y = Y_series_list,
                Y_lookback_indices = Y_lookback_indices_input,
-               X_lookback_indices = X_lookback_indices_input
+               X_lookback_indices = X_lookback_indices_input,
+               inputted_transformation = mean_square_y
                )
 
   w_hat <- dbw_output[[1]]
@@ -849,7 +873,9 @@ SynthPrediction <- function(Y_series_list
                    # normchoice = normchoice, #tk
                    # penalty_normchoice = penalty_normchoice,
                    # penalty_lambda = penalty_lambda
-                   Y = Y_series_list
+                   Y = Y_series_list,
+                   inputted_transformation = id
+                   
   )
 
   w_hat <- dbw_output[[1]]

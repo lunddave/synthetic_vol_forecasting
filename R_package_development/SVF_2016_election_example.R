@@ -272,5 +272,4 @@ temp <- SynthVolForecast(Y
                          ,X_lookback_indices = rep(list(c(1)),ncol(X[[1]]))
                          )
 
-
 dev.off()
