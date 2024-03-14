@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.21)  12 MAR 2024 14:03
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.21)  13 MAR 2024 21:59
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -977,24 +977,20 @@ Overfull \hbox (131.60022pt too wide) has occurred while \output is active
 [4
 
 ]
-Overfull \vbox (14.19612pt too high) detected at line 186
- []
-
-
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
  [][][][]  
  []
 
 [5
 
-] (./prelim_presentation.toc)
+]
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
  [][][][]  
  []
 
 [6
 
-]
+] (./prelim_presentation.toc)
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
  [][][][]  
  []
@@ -1009,17 +1005,151 @@ Overfull \hbox (131.60022pt too wide) has occurred while \output is active
 [8
 
 ]
-Overfull \vbox (69.72531pt too high) detected at line 330
- []
-
-
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
  [][][][]  
  []
 
 [9
 
- </usr/local/texlive/2023/texmf-dist/tex/latex/beamer/beamericonarticle.pdf>]
+]
+Overfull \hbox (131.60022pt too wide) has occurred while \output is active
+ [][][][]  
+ []
+
+[10
+
+]
+Overfull \hbox (131.60022pt too wide) has occurred while \output is active
+ [][][][]  
+ []
+
+[11
+
+]
+Overfull \hbox (131.60022pt too wide) has occurred while \output is active
+ [][][][]  
+ []
+
+[12
+
+]
+Overfull \hbox (131.60022pt too wide) has occurred while \output is active
+ [][][][]  
+ []
+
+[13
+
+]
+Overfull \hbox (131.60022pt too wide) has occurred while \output is active
+ [][][][]  
+ []
+
+[14
+
+]
+Overfull \hbox (131.60022pt too wide) has occurred while \output is active
+ [][][][]  
+ []
+
+[15
+
+]
+Overfull \hbox (131.60022pt too wide) has occurred while \output is active
+ [][][][]  
+ []
+
+[16
+
+]
+Overfull \hbox (131.60022pt too wide) has occurred while \output is active
+ [][][][]  
+ []
+
+[17
+
+]
+Overfull \hbox (131.60022pt too wide) has occurred while \output is active
+ [][][][]  
+ []
+
+[18
+
+]
+Overfull \hbox (131.60022pt too wide) has occurred while \output is active
+ [][][][]  
+ []
+
+[19
+
+]
+Overfull \hbox (131.60022pt too wide) has occurred while \output is active
+ [][][][]  
+ []
+
+[20
+
+]
+Overfull \hbox (131.60022pt too wide) has occurred while \output is active
+ [][][][]  
+ []
+
+[21
+
+]
+Overfull \hbox (131.60022pt too wide) has occurred while \output is active
+ [][][][]  
+ []
+
+[22
+
+]
+Overfull \hbox (131.60022pt too wide) has occurred while \output is active
+ [][][][]  
+ []
+
+[23
+
+]
+Overfull \hbox (131.60022pt too wide) has occurred while \output is active
+ [][][][]  
+ []
+
+[24
+
+]
+Overfull \hbox (131.60022pt too wide) has occurred while \output is active
+ [][][][]  
+ []
+
+[25
+
+]
+Overfull \hbox (131.60022pt too wide) has occurred while \output is active
+ [][][][]  
+ []
+
+[26
+
+]
+Overfull \vbox (110.52533pt too high) detected at line 327
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (131.60022pt too wide) has occurred while \output is active
+ [][][][]  
+ []
+
+[27
+
+]
+Overfull \hbox (131.60022pt too wide) has occurred while \output is active
+ [][][][]  
+ []
+
+[28 </usr/local/texlive/2023/texmf-dist/tex/latex/beamer/beamericonarticle.pdf>]
 \tf@nav=\write7
 \openout7 = `prelim_presentation.nav'.
 
@@ -1031,24 +1161,24 @@ Overfull \hbox (131.60022pt too wide) has occurred while \output is active
 
  (./prelim_presentation.aux)
 Package rerunfilecheck Info: File `prelim_presentation.out' has not changed.
-(rerunfilecheck)             Checksum: A23FD1CFB198DF87957F52EBA23FC3BD;274.
+(rerunfilecheck)             Checksum: EFE3160B688D8927AD43D84AB357055E;2457.
 Package logreq Info: Writing requests to 'prelim_presentation.run.xml'.
 \openout1 = `prelim_presentation.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 29200 strings out of 476025
- 582027 string characters out of 5790017
- 1866388 words of memory out of 5000000
- 49102 multiletter control sequences out of 15000+600000
+ 29412 strings out of 476025
+ 586215 string characters out of 5790017
+ 1870388 words of memory out of 5000000
+ 49264 multiletter control sequences out of 15000+600000
  522686 words of font info for 69 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,15n,122p,752b,1577s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on prelim_presentation.pdf (9 pages, 108939 bytes).
+</usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on prelim_presentation.pdf (28 pages, 172646 bytes).
 PDF statistics:
- 366 PDF objects out of 1000 (max. 8388607)
- 316 compressed objects within 4 object streams
- 29 named destinations out of 1000 (max. 500000)
- 115 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 997 PDF objects out of 1000 (max. 8388607)
+ 905 compressed objects within 10 object streams
+ 79 named destinations out of 1000 (max. 500000)
+ 281 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -13,20 +13,73 @@
 \headcommand {\beamer@framepages {5}{5}}
 \headcommand {\slideentry {1}{0}{5}{6/6}{}{0}}
 \headcommand {\beamer@framepages {6}{6}}
-\headcommand {\beamer@sectionpages {2}{6}}
-\headcommand {\beamer@subsectionpages {2}{6}}
-\headcommand {\sectionentry {2}{Setting}{7}{Setting}{0}}
-\headcommand {\slideentry {2}{0}{1}{7/7}{}{0}}
+\headcommand {\slideentry {1}{0}{6}{7/7}{}{0}}
 \headcommand {\beamer@framepages {7}{7}}
-\headcommand {\slideentry {2}{0}{2}{8/8}{}{0}}
+\headcommand {\beamer@sectionpages {2}{7}}
+\headcommand {\beamer@subsectionpages {2}{7}}
+\headcommand {\sectionentry {2}{Setting}{8}{Setting}{0}}
+\headcommand {\slideentry {2}{0}{1}{8/8}{}{0}}
 \headcommand {\beamer@framepages {8}{8}}
-\headcommand {\beamer@sectionpages {7}{8}}
-\headcommand {\beamer@subsectionpages {7}{8}}
-\headcommand {\sectionentry {3}{References}{9}{References}{0}}
-\headcommand {\slideentry {3}{0}{0}{9/9}{}{0}}
+\headcommand {\slideentry {2}{0}{2}{9/9}{}{0}}
 \headcommand {\beamer@framepages {9}{9}}
-\headcommand {\beamer@partpages {1}{9}}
-\headcommand {\beamer@subsectionpages {7}{9}}
-\headcommand {\beamer@sectionpages {7}{9}}
-\headcommand {\beamer@documentpages {9}}
-\headcommand {\gdef \inserttotalframenumber {9}}
+\headcommand {\beamer@subsectionpages {8}{9}}
+\headcommand {\beamer@subsectionentry {0}{2}{1}{10}{Model Setup}}
+\headcommand {\slideentry {2}{1}{1}{10/10}{Model Setup}{0}}
+\headcommand {\beamer@framepages {10}{10}}
+\headcommand {\beamer@subsectionpages {10}{10}}
+\headcommand {\beamer@subsectionentry {0}{2}{2}{11}{Volatility Profile of a Time Series}}
+\headcommand {\slideentry {2}{2}{1}{11/11}{Volatility Profile of a Time Series}{0}}
+\headcommand {\beamer@framepages {11}{11}}
+\headcommand {\slideentry {2}{2}{2}{12/12}{Volatility Profile of a Time Series}{0}}
+\headcommand {\beamer@framepages {12}{12}}
+\headcommand {\slideentry {2}{2}{3}{13/13}{Volatility Profile of a Time Series}{0}}
+\headcommand {\beamer@framepages {13}{13}}
+\headcommand {\beamer@sectionpages {8}{13}}
+\headcommand {\beamer@subsectionpages {11}{13}}
+\headcommand {\sectionentry {3}{Post-shock Synthetic Volatility Forecasting Methodology}{14}{Post-shock Synthetic Volatility Forecasting Methodology}{0}}
+\headcommand {\slideentry {3}{0}{1}{14/14}{}{0}}
+\headcommand {\beamer@framepages {14}{14}}
+\headcommand {\beamer@sectionpages {14}{14}}
+\headcommand {\beamer@subsectionpages {14}{14}}
+\headcommand {\sectionentry {4}{Properties of Volatility Shock and Shock Estimators}{15}{Properties of Volatility Shock and Shock Estimators}{0}}
+\headcommand {\slideentry {4}{0}{1}{15/21}{}{0}}
+\headcommand {\beamer@framepages {15}{21}}
+\headcommand {\beamer@sectionpages {15}{21}}
+\headcommand {\beamer@subsectionpages {15}{21}}
+\headcommand {\sectionentry {5}{Real Data Example}{22}{Real Data Example}{0}}
+\headcommand {\slideentry {5}{0}{1}{22/22}{}{0}}
+\headcommand {\beamer@framepages {22}{22}}
+\headcommand {\beamer@sectionpages {22}{22}}
+\headcommand {\beamer@subsectionpages {22}{22}}
+\headcommand {\sectionentry {6}{Numerical Examples}{23}{Numerical Examples}{0}}
+\headcommand {\slideentry {6}{0}{1}{23/23}{}{0}}
+\headcommand {\beamer@framepages {23}{23}}
+\headcommand {\slideentry {6}{0}{2}{24/24}{}{0}}
+\headcommand {\beamer@framepages {24}{24}}
+\headcommand {\slideentry {6}{0}{3}{25/25}{}{0}}
+\headcommand {\beamer@framepages {25}{25}}
+\headcommand {\slideentry {6}{0}{4}{26/26}{}{0}}
+\headcommand {\beamer@framepages {26}{26}}
+\headcommand {\beamer@sectionpages {23}{26}}
+\headcommand {\beamer@subsectionpages {23}{26}}
+\headcommand {\sectionentry {7}{Discussion}{27}{Discussion}{0}}
+\headcommand {\beamer@sectionpages {27}{26}}
+\headcommand {\beamer@subsectionpages {27}{26}}
+\headcommand {\sectionentry {8}{Future directions for Synthetic Volatility Forecasting}{27}{Future directions for Synthetic Volatility Forecasting}{0}}
+\headcommand {\beamer@subsectionpages {27}{26}}
+\headcommand {\beamer@subsectionentry {0}{8}{1}{27}{Signal Recovery}}
+\headcommand {\beamer@subsectionpages {27}{26}}
+\headcommand {\beamer@subsectionentry {0}{8}{2}{27}{Synthetic Impulse Response Functions}}
+\headcommand {\beamer@sectionpages {27}{26}}
+\headcommand {\beamer@subsectionpages {27}{26}}
+\headcommand {\sectionentry {9}{Supplement}{27}{Supplement}{0}}
+\headcommand {\beamer@sectionpages {27}{26}}
+\headcommand {\beamer@subsectionpages {27}{26}}
+\headcommand {\sectionentry {10}{References}{27}{References}{0}}
+\headcommand {\slideentry {10}{0}{0}{27/27}{}{0}}
+\headcommand {\beamer@framepages {27}{27}}
+\headcommand {\beamer@partpages {1}{28}}
+\headcommand {\beamer@subsectionpages {27}{28}}
+\headcommand {\beamer@sectionpages {27}{28}}
+\headcommand {\beamer@documentpages {28}}
+\headcommand {\gdef \inserttotalframenumber {21}}

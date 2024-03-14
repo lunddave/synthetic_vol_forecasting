@@ -1,13 +1,13 @@
 # Fdb version 4
-["biber prelim_presentation"] 1710270225 "prelim_presentation.bcf" "prelim_presentation.bbl" "prelim_presentation" 1710270232 0
-  "./synthVolForecast.bib" 1710269852 43857 0f73f170b49dce687ad2b3e2b77aba72 ""
-  "prelim_presentation.bcf" 1710270232 108300 4197a9e1b008cf0414f54f82e00be19b "pdflatex"
+["biber prelim_presentation"] 1710384010 "prelim_presentation.bcf" "prelim_presentation.bbl" "prelim_presentation" 1710385164 0
+  "./synthVolForecast.bib" 1710278537 43857 0f73f170b49dce687ad2b3e2b77aba72 ""
+  "prelim_presentation.bcf" 1710385164 108372 7102da3904043abdd1bc542a0f6f2e2e "pdflatex"
   (generated)
   "prelim_presentation.bbl"
   "prelim_presentation.blg"
   (rewritten before read)
-["pdflatex"] 1710270231 "/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/prelim_presentation.tex" "prelim_presentation.pdf" "prelim_presentation" 1710270232 0
-  "/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/prelim_presentation.tex" 1710270223 9973 099f35d214ed3ec419bfe92c1e3d11fd ""
+["pdflatex"] 1710385162 "/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/prelim_presentation.tex" "prelim_presentation.pdf" "prelim_presentation" 1710385164 0
+  "/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/prelim_presentation.tex" 1710385159 9802 750b27286e22a425c6f5e526b0f06bc1 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -36,6 +36,8 @@
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/public/sansmathaccent/mathkerncmssi10.tfm" 1336178347 1696 aaa5bbd1f47f001247d42218ce371101 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/public/sansmathaccent/mathkerncmssi8.tfm" 1336178347 1676 fb6c6a335484692abff897d6e8965829 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/public/sansmathaccent/mathkerncmssi9.tfm" 1336178347 1700 6cce8f71de5b3d676f417bc2a77d1db2 ""
+  "/usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb" 1248133631 36299 5f9df58c2139e7edcf37c8fca4bd384d ""
+  "/usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb" 1248133631 37166 8ab3487cbe3ab49ebce74c29ea2418db ""
   "/usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb" 1248133631 24457 5cbb7bdf209d5d1ce9892a9b80a307cc ""
   "/usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb" 1248133631 24393 3b7eb51a67a0a62aec5849271bdb9c2e ""
   "/usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb" 1248133631 24420 52dbb8e8aa0069a1b987309557f8d303 ""
@@ -227,13 +229,13 @@
   "/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1705898765 4623355 b8cad38412faebe1ce5b780a45db67bd ""
   "/usr/local/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1705898712 7883459 cb6809e0afdf7777ef8c5f2f25f8f275 ""
   "/usr/local/texlive/2023/texmf.cnf" 1678822455 577 1b2b1af17af2508fb20dd85783af4050 ""
-  "prelim_presentation.aux" 1710270232 4266 c53efe975abe8bf6cb26b0d4d1bbfe04 "pdflatex"
-  "prelim_presentation.bbl" 1710270227 11425 523071c369f84dbc45b6efa271dfa605 "biber prelim_presentation"
-  "prelim_presentation.nav" 1710270232 1465 3723b43b08f4cdfb25b019fe54a8502d "pdflatex"
-  "prelim_presentation.out" 1710270232 274 a23fd1cfb198df87957f52eba23fc3bd "pdflatex"
-  "prelim_presentation.run.xml" 1710270232 2466 06591bcb04df39c12325d9c8c0493731 "pdflatex"
-  "prelim_presentation.tex" 1710270223 9973 099f35d214ed3ec419bfe92c1e3d11fd ""
-  "prelim_presentation.toc" 1710270232 91 86d69ad0e62954f36d3a588c04129184 "pdflatex"
+  "prelim_presentation.aux" 1710385164 9492 9321cd301788f64308ed912aaf9d26fa "pdflatex"
+  "prelim_presentation.bbl" 1710384012 12770 6430fb954e7b21c197aaa1dcb9e04be6 "biber prelim_presentation"
+  "prelim_presentation.nav" 1710385164 4594 2545fac9ad4d7f67af684f589c2fa5e8 "pdflatex"
+  "prelim_presentation.out" 1710385164 2457 efe3160b688d8927ad43d84ab357055e "pdflatex"
+  "prelim_presentation.run.xml" 1710385164 2466 06591bcb04df39c12325d9c8c0493731 "pdflatex"
+  "prelim_presentation.tex" 1710385159 9802 750b27286e22a425c6f5e526b0f06bc1 ""
+  "prelim_presentation.toc" 1710385164 834 271cde949ef70d676ea87a8076b5312f "pdflatex"
   (generated)
   "prelim_presentation.aux"
   "prelim_presentation.bcf"

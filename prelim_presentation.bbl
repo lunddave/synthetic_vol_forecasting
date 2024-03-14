@@ -288,6 +288,38 @@
       \field{pages}{877\bibrangedash 906}
       \range{pages}{30}
     \endentry
+    \entry{lin2021minimizing}{article}{}
+      \name{author}{2}{}{%
+        {{hash=0840dad5e484231880452bc328d144a2}{%
+           family={Lin},
+           familyi={L\bibinitperiod},
+           given={Jilei},
+           giveni={J\bibinitperiod}}}%
+        {{hash=bf255f8e7ed95e29d355096a5fbf5403}{%
+           family={Eck},
+           familyi={E\bibinitperiod},
+           given={Daniel\bibnamedelima J},
+           giveni={D\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{54ea06fb84f23976c8a0c10e8a121842}
+      \strng{fullhash}{54ea06fb84f23976c8a0c10e8a121842}
+      \strng{bibnamehash}{54ea06fb84f23976c8a0c10e8a121842}
+      \strng{authorbibnamehash}{54ea06fb84f23976c8a0c10e8a121842}
+      \strng{authornamehash}{54ea06fb84f23976c8a0c10e8a121842}
+      \strng{authorfullhash}{54ea06fb84f23976c8a0c10e8a121842}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{International Journal of Forecasting}
+      \field{title}{Minimizing post-shock forecasting error through aggregation of outside information}
+      \field{year}{2021}
+    \endentry
   \enddatalist
 \endrefsection
 \endinput

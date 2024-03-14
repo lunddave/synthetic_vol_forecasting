@@ -151,6 +151,7 @@
 
     \begin{itemize}
         \item Event-driven investing strategies (unscheduled news shock)
+        \item Pairs trading strategies
         \item Structural shock to macroeconomic conditions (scheduled news possibly pre-empted by news shock)
         \item Biomedical panel data subject to exogenous shock or interference
     \end{itemize}
@@ -172,9 +173,13 @@ Forecasting is possible under structural shocks, so long as we incorporate exter
 
     \begin{itemize}
         \item GARCH is slow to react \parencite[][]{andersen2003modeling}
-        \item Asymmetric GARCH models may react faster but need post-shock data
+        \item Asymmetric GARCH models catch up faster but need post-shock data
         \item Realized GARCH \parencite[][]{hansen2012realized}, in our setting, would require post-shock information and/or high-frequency data in order to outperform, and the model is highly parameterized
     \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Background and related methods}
 
     Forecast Augmentation
     \begin{itemize}
@@ -182,9 +187,9 @@ Forecasting is possible under structural shocks, so long as we incorporate exter
         \item \cite[][]{guerron2017macroeconomic} use a series' own errors to correct the forecast for that series
         \item \cite[][]{dendramis2020similarity} use a similarity-based procedure to correct linear parameters in time series forecasts
         \item \cite[][]{foroni2022forecasting} adjust pandemic-era forecasts using intercept correction techniques and data from Great Financial Crisis
+        \item \cite[][]{lin2021minimizing} use distanced-based weighting (a similarity approach) to aggregate and weight fixed effects from a donor pool
     \end{itemize}
 \end{frame}
-
 % Outline frame
 \begin{frame}{Outline}
     \tableofcontents
@@ -210,115 +215,107 @@ Forecasting is possible under structural shocks, so long as we incorporate exter
     %   \textcolor{red}{\omega_{i,t}^{*} = \mu_{\omega^{*}}+\delta'\mbf{x}_{i, t-1}+ \varepsilon_{i}}
 \end{frame}
 
-% \subsection{Model Setup}
+\subsection{Model Setup}
 
-% % Technical Specifications
-% \begin{frame}
-% \frametitle{Technical Specifications (many, but familiar)}
+% Technical Specifications
+\begin{frame}
+\frametitle{Our Model is Nested Within GARCH-X}
 
-% \end{frame}
+\end{frame}
 
-% \subsection{Volatility Profile of a Time Series}
-% \begin{frame}
-% \frametitle{Volatilty Profile}
-% In this particular setting, excess risk of an estimator $\theta$ has the form \\~\\
+\subsection{Volatility Profile of a Time Series}
+\begin{frame}
+\frametitle{Volatilty Profile}
+In this particular setting, excess risk of an estimator $\theta$ has the form \\~\\
 
-% \begin{align*}
-%  R(\theta) & = \mathbb{E}_{x,y}[ (y-x^{T}\theta)^{2} -  (y-x^{T}\theta^{*})^{2}] \\
-% & = (\theta - \theta^{*})^{T}\Sigma(\theta - \theta^{*})
-% \end{align*}
+\begin{align*}
+ R(\theta)
+\end{align*}
 
-% \end{frame}
+\end{frame}
 
-% \begin{frame}
-% \frametitle{What's the method here?}
-%     \begin{alignat*}{12}
-%     2 = 3
-%     \end{alignat*}
+\begin{frame}
+\frametitle{What's the method here?}
+    \begin{alignat*}{12}
+    2 = 3
+    \end{alignat*}
 
-% \end{frame}
+\end{frame}
 
-% % Minimum Norm Estimator
-% \begin{frame}
-% \frametitle{Minimum Norm Estimator}
+\begin{frame}
+\frametitle{Minimum Norm Estimator}
 
-% \end{frame}
+\end{frame}
 
-% \section{Post-shock Synthetic Volatility Forecasting Methodology}
+\section{Post-shock Synthetic Volatility Forecasting Methodology}
 
-% \begin{frame}
-% \frametitle{Key Conceptual Innovation: Effective Rank}
+\begin{frame}
+\frametitle{Key Conceptual Innovation: Effective Rank}
 
-% \end{frame}
-% \section{Properties of Volatility Shock and Shock Estimators}
+\end{frame}
+\section{Properties of Volatility Shock and Shock Estimators}
 
-% \begin{frame}
-% \frametitle{Main Result: Existence Proof, Dichotomy, and Bounds}
+\begin{frame}
+\frametitle{Main Result: Existence Proof, Dichotomy, and Bounds}
 
-% \uncover<2-7>{Remarks}\\
-% \begin{enumerate}
-% \item<3-7> A gives us a (high probability) upper bound on the excess risk.
+\uncover<2-7>{Remarks}\\
+\begin{enumerate}
+\item<3-7> A gives us a (high probability) upper bound on the excess risk.
 
-% \end{enumerate}
-% \end{frame}
+\end{enumerate}
+\end{frame}
 
-% \section{Numerical Examples}
+\section{Real Data Example}
 
-% % So what do we want our eigenvalues to look like?
-% \begin{frame}
-% \fontsize{8pt}{9pt}
-% \frametitle{So what do we want our eigenvalues to look like?}
+\begin{frame}
+\frametitle{Some things to think about with papers like this}
 
-% \end{frame}
+\end{frame}
 
-% \begin{frame}
-% \frametitle{Two Very Simple Examples}
 
-% \end{frame}
+\section{Numerical Examples}
 
-% \begin{frame}
-% \frametitle{A more benign example}
+% So what do we want our eigenvalues to look like?
+\begin{frame}
+\fontsize{8pt}{9pt}
+\frametitle{Simplest Simulation Setup}
 
-% \begin{example}[Coverging at the slowest rate possible]
-% Fix $\alpha = 1, \beta > 1$.  Let $\lambda_{i} = \frac{1}{i \log^{\beta}(i+1)}$.
+\end{frame}
 
-% \end{example}
+\begin{frame}
+\frametitle{A more benign example}
 
-% \end{frame}
+\begin{example}[Coverging at the slowest rate possible]
+Fix $\alpha = 1, \beta > 1$.  Let $\lambda_{i} = \frac{1}{i \log^{\beta}(i+1)}$.
 
-% \begin{frame}
-% \frametitle{What's the point of all this?}
+\end{example}
 
-% \end{frame}
+\end{frame}
 
-% \begin{frame}
-% \frametitle{How noise is hidden just right}
+\begin{frame}
+\frametitle{How noise is hidden just right}
 
-% \end{frame}
+\end{frame}
 
-% \begin{frame}
-% After all of this waiting, we formalize the notion under discussion.
+\begin{frame}
+After all of this waiting, we formalize the notion under discussion.
 
-% \begin{definition}[Asymptotically Benign]
+\begin{definition}[Asymptotically Benign]
 
-% \end{definition}
-% \end{frame}
+\end{definition}
+\end{frame}
 
-% \section{Real Data Example}
 
-% \begin{frame}
-% \frametitle{Some things to think about with papers like this}
+\section{Discussion}
 
-% \end{frame}
+\section{Future directions for Synthetic Volatility Forecasting}
 
-% \section{Discussion}
+\subsection{Signal Recovery}
 
-% \section{Future directions for Synthetic Volatility Forecasting}
+\subsection{Synthetic Impulse Response Functions}
 
-% \subsection{Synthetic Impulse Response Functions}
-
-% \section{Supplement}
-% We analyze the real-world example with Brexit included.
+\section{Supplement}
+We analyze the real-world example with Brexit included.
 
 \begin{frame}
     \frametitle{Bibliography}
