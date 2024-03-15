@@ -200,8 +200,7 @@ Assuming further that $\sigma^{2}_{t}$ depends on a vector of exogenous covariat
 \subsection{Model setup}
 \label{modelsetup}
 In this section, we will describe the assumed dynamic panel models for which 
-post-shock aggregated estimators are provided. The basic structures of these models 
-are the same for all time series in the analysis.  The differences between them lie in the shock distributions.  We first sharply distinguish between a volatility shock induced by a return series shock and a volatility shock directly affecting the volatility equation of a GARCH model, without mediation of the return series.
+post-shock aggregated estimators are provided. The basic structures of these models are the same for all time series in the analysis.  The differences between them lie in the shock distributions.  We first sharply distinguish between a volatility shock induced by a return series shock and a volatility shock directly affecting the volatility equation of a GARCH model, without mediation of the return series.
 
 We will suppose that a researcher has multivariate time series data $\y_{i,t}, t = 1,$ $\ldots,  T_i$ and $i = 1, \ldots, n+1$.  Let $\y_{i,t} = (r_{i,t}$, $\x_{i,t}$) where $r_{i,t}$ is a scalar response (typically the log-return of a financial asset) and  $\x_{i,t}$ is a vector of covariates such that $\x_{i,t}|\mathcal{F}_{i,t-1}$ is deterministic.  Suppose that the analyst is interested in forecasting the volatility of $r_{1,t}$, the first time series in the collection.  We require that each time series $\y_{i,t}$ is subject to a news event following $T^*_i \leq T_{i} + 1$ and before witnessing $T^*_i+1$.  We are implicitly leveraging the fact that financial assets are heavily traded during market hours, yet only thinly traded (if traded at all) outside market hours.  In contrast, the arrival of market-moving news does not obey any such restrictions.  In light of the foregoing, we can denote our collection of GARCH volatility equations of interest using the following notation
 
@@ -302,6 +301,9 @@ We present two forecasts: \textcolor{red}{The $:-$ notation is strange, I think 
     }
     \end{align*}
 \textcolor{red}{Do we actually minimize expected loss? Or do we minimize some empirical quantity?} \textcolor{green}{The direct answer is no, we do not have results about risk minimization.  There is a separate, related question about whether it is nevertheless useful to introduce the problem as an optmization problem.  I will give an argument in favor of that.  The most standard format in which this method is pitched is one where the forecasts are given and the practitioner is now just left with two tasks: find donors and covariates.} We now explain how we use the volatility profile to arrive at a set of nonnegative weights that sum to 1.  These weights are then used to compute $\hat\omega^{*} \coloneq \sum^{n+1}_{i=2}w_{i}\hat\omega^{*}_{i}$.  Since the $\{w_{i}\}_{i=2}^{n+1}$ are computed using information from $\mathcal{F}_{T^{*}_{i}}$, the set $\{w_{i}\}_{i=2}^{n+1}$ is deterministic, $\textit{modulo}$ any stochastic ingredient in the numerical methods employed to approximate $\x_{1,T^{*}}$ using a convex combination of donor covariates.  We will say more about risk minimization in section $\ref{SVF_properties}$. 
+
+There are at least two senses of `optimal' weights that one might be interested in here.  First, we can think of optimal weights as a set $\{w_{i}\}_{i=2}^{n+1}$ such that $\omega_{1} = \sum^{n+1}_{i=2}w_{i}\hat\omega_{i}$, i.e., $\omega_{1}$ belongs to convex hull of the estimated shocks.  There also exists a second sense of optimality, in which, for a given $\sigma_{t}^{2}$, the weights allow us to predict with zero loss. \textcolor{red}{I think this can be ignored or it can be briefly stated as a comment somewhere in the section where weights are introduced.}
+
   
     \subsection{Ground Truth Estimators}
     \label{Ground Truth Estimators}
@@ -705,7 +707,7 @@ For all of these reasons and more, the aftermath of the 2016 presidential electi
 
 \begin{figure}[H]
 \begin{center}
-  \includegraphics[scale=.5]{real_data_output_plots/savetime_SunFeb1817:10:112024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png}
+  \includegraphics[scale=.5]{real_data_output_plots/savetime_FriMar151843582024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png}
   \caption{The volatility induced by the 2016 US election}
   \label{fig:SVF_2016}
   \end{center}
@@ -737,8 +739,7 @@ Naturally, one might ask how sensitive this prediction is to at least two kinds 
     There is an important question about the stability of the GARCH parameters under the presence of an exogenous shock.  There are at least two reasons that we do not herein explore parameter instability or methods to adjust for it.  First, the marginal effect of coefficient changes at the shock time would, under the assumptions in this work, be swamped by the random effect.  Second, the estimation of post-shock parameter values would require at least several --- better yet dozens --- of post-shock data points, whereas this work assumes access to zero post-shock data points.  However, we do leave over that similarity-based estimators for the GARCH coefficients could be produced, for example, by adapting the methods of \citet{dendramis2020similarity}. \textcolor{red}{This section seems better suited for the Discussion section}
 
 \subsection{Connection to forecast combination methods}
-Because the method proposed uses a point in $\Delta^{n}$, it is important to head-off possible confusion.  What we are proposing is not a forecast combination method.  What we are combining, if anything, is subcomponents of forecasts, not forecasts themselves.  However, from a broader perspective, forecast combination is an inapt term for what is being proposed here.  First, the donors are not forecasts. \textcolor{red}{This does not seem to be complete. Also, is there a way to get this into a paragraph as a minor point?}
-
+Because the method proposed uses a point in $\Delta_{n}$, it is important to head-off possible confusion.  What we are proposing is not a forecast combination method.  What we are combining, if anything, is subcomponents of forecasts, not forecasts themselves.  However, from a broader perspective, forecast combination is an inapt term for what is being proposed here.  First, the donors are not forecasts. \textcolor{red}{This does not seem to be complete. Also, is there a way to get this into a paragraph as a minor point?}
 
 \subsection{Why is the proposal here like and unlike KNN regression?}
 \begin{enumerate}
@@ -757,9 +758,6 @@ It would be counter to the method proposed to assemble a vast number of donors, 
 \subsection{Why not use the covariates as covariates in the GARCH model alone or in the GARCH model as well?}
 The data-generating process does not specify that volatility series are well-modeled using ever-present exogenous covariates, and this is fundamentally due to the lack of theoretical justification for such an exogeneity assumption. \textcolor{red}{I am not sure if this needs to be here. If so, then it can probably be combined with other points in this discussion to form a larger paragraph.}
 
-\subsection{Do there exist optimal weights?}
-There are at least two senses of `optimal' weights that one might be interested in here.  First, we can think of optimal weights as a set $\{w_{i}\}_{i=2}^{n+1}$ such that $\omega_{1} = \sum^{n+1}_{i=2}w_{i}\hat\omega_{i}$, i.e., $\omega_{1}$ belongs to convex hull of the estimated shocks.  There also exists a second sense of optimality, in which, for a given $\sigma_{t}^{2}$, the weights allow us to predict with zero loss. \textcolor{red}{I think this can be ignored or it can be briefly stated as a comment somewhere in the section where weights are introduced.}
-
 \subsection{Comments on the shock models}
 
 For each of the $p$ entries in $\delta$, the $k$th entry should have the property that $\mathbb{E}[ x_{i,t,k} \cdot \delta_{k} ] > 0$. In principle, you could have an $\mc{M}_{21}$ shock with a covariate that, in expectation, has a negative marginal contribution to the cumulative shock. \textcolor{red}{I think this should be removed.}
@@ -774,7 +772,6 @@ Consider least-squares estimation for the weight vector $\vec{w}$:
 One immediately visible problem is that this optimization problem is an optmization problem over $p$-vectors $\vec{w}$ --- i.e. a linear combination of the covariates, whereas what we seek is an $n$-vector --- a linear combination of donors.
 
 There is no guarantee that $\vec{w}_{OLS}$ would perform poorly as a tool for producing $\hat\omega^{*}$, but given the small number of donors supposed in our setting, it is risky. \textcolor{red}{I think this should be removed or mentioned as a comment in the section where weights are introduced.}
-
 
 \subsection{If we assume knowledge of the covariates that parameterize the shock, why not estimate each parameter individually?}
 \textcolor{red}{consider removing}
@@ -803,7 +800,7 @@ In our adapted schema, irregular news shocks are $\mathcal{F}_{T^{*}}$-zero-expe
 
 This present work extends \citet{lin2021minimizing} principally by substituting the GARCH model for an AR(1), i.e. modeling both the mean and volatility of a univariate time series.  We permit both shocks in the mean model and volatility model of GARCH.  As ancillary improvements, the current work permits the shock periods to be of any length, formally $L_{\text{vol}}, L_{\text{level}} \in \mathbb{Z}^{+}$, and the weights applied to the donor pool can come from more exotic subsets of $\mathbb{R}^{n}$.  
 
-At a technical level, the most substantial insight related to \citet{lin2021minimizing} is that the GARCH model provides an elegant forecast function for squared observations of the time series under study. To see this, for each $i,t$, define $\eta_{i,t} \coloneqq a^{2}_{i,t} - \sigma^{2}_{i,t}$, and by adding $\eta_{i,t}$ to both sides of the conditional variance specification of $\mc{M}_1$ and $\mc{M}_2$, we obtain the standard ARMA representation of a GARCH(m,s): \textcolor{red}{I thought this was needed earlier in the manuscript. If so, then it does not need to be repeated here. I think this section can be made shorter.}
+At a technical level, the most substantial insight related to \citet{lin2021minimizing} is that the GARCH model provides an elegant forecast function for squared observations of the time series under study. To see this, for each $i,t$, define $\eta_{i,t} \coloneqq a^{2}_{i,t} - \sigma^{2}_{i,t}$, and by adding $\eta_{i,t}$ to both sides of the conditional variance specification of $\mc{M}_1$ and $\mc{M}_2$, we obtain the standard ARMA representation of a GARCH(m,s): \textcolor{red}{I thought this was needed earlier in the manuscript. If so, then it does not need to be repeated here. I think this section can be made shorter.}\textcolor{green}{Yes I think in earlier versions, it appeared earlier in the manuscript.  In any case, it is not an original result and can perhaps be referred to rather than demonstrated at length.}
 
 \begin{align}
 a^{2}_{i,t} = a^{2}_{i,t} - \sigma^{2}_{i,t} + \sigma^{2}_{i,t} = \eta_{i,t} + \sigma^{2}_{i,t} &= \eta_{i,t} + \omega_{i} + \omega^{*}_i D_{i,t}  + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \\
@@ -845,7 +842,6 @@ strategy& Observe $y_{i}$; then estimate $x$ with small expected L2 loss & Estim
 \end{tabular}
 \end{table}
 
-
 \end{comment}
 
 \subsection{Model Adjustment Using Synthetic Methods: A Global Overview}
@@ -871,6 +867,20 @@ Within the vast literature on financial sentimental analysis, there exists a sub
 \textcolor{red}{not done.}
 
 \textcolor{green}{Some of the comments and results from \cite{lin2021minimizing} apply here, while some additional comments may be in order: because $(\mathbb{R}^{n}, \|\cdot\|)$ is a Chebyshev space, for any element x and any convex set $C\subset \mathbb{R}^{n}$, there exists a unique element $y\in C$ that minimizes $\|x-y\|$.  However, the pre-image of $y$ with respect to a particular operator and constraint set might not be unique.}
+
+Let $p'$ denote the number of linearly independent rows of $\X$.\\
+
+
+    \begin{center}
+      \begin{tabular}{ | m{3em} | m{7cm}| m{7cm} | } 
+        \hline
+        $p' \geq n$ & Perfect fit, unique & Fit not perfect unique \\
+        \hline
+        $p' < n$ & Perfect fit, not necessarily unique, Caratheodory applies& Fit not perfect, not necessarily unique, Caratheodory applies \\ 
+        \hline
+
+      \end{tabular}
+      \end{center}
 
 \subsection{Value-at-Risk Under Shocks}
 
