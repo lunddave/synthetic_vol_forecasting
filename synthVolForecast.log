@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.21)  13 MAR 2024 11:14
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.21)  15 MAR 2024 10:33
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -753,115 +753,121 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] Excluding 'comment' comment. [2] [3]
-<simulation_plots/USE_in_paper_simulation_plot_arithmetic_mean.png, id=270, 481.8pt x 481.8pt>
+<simulation_plots/USE_in_paper_simulation_plot_arithmetic_mean.png, id=272, 481.8pt x 481.8pt>
 File: simulation_plots/USE_in_paper_simulation_plot_arithmetic_mean.png Graphic file (type png)
 <use simulation_plots/USE_in_paper_simulation_plot_arithmetic_mean.png>
-Package pdftex.def Info: simulation_plots/USE_in_paper_simulation_plot_arithmetic_mean.png  used on input line 180.
+Package pdftex.def Info: simulation_plots/USE_in_paper_simulation_plot_arithmetic_mean.png  used on input line 169.
 (pdftex.def)             Requested size: 337.25769pt x 337.25769pt.
- [4 <./simulation_plots/USE_in_paper_simulation_plot_arithmetic_mean.png (PNG copy)>] [5] [6] [7]
-Overfull \hbox (6.03752pt too wide) in paragraph at lines 300--301
+ [4 <./simulation_plots/USE_in_paper_simulation_plot_arithmetic_mean.png (PNG copy)>] [5] [6]
+Overfull \hbox (6.03752pt too wide) in paragraph at lines 285--286
 []\OT1/cmr/m/n/10.95 We present two fore-casts: []The $: \OMS/cmsy/m/n/10.95 ^^@$ \OT1/cmr/m/n/10.95 no-ta-tion is strange, I think some-thing went wrong with coloneq[][]Should
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 313--314
+[7]
+Underfull \hbox (badness 10000) in paragraph at lines 298--299
 
  []
 
 [8] [9] [10] Excluding 'comment' comment.
-Underfull \hbox (badness 10000) in paragraph at lines 533--535
+Underfull \hbox (badness 10000) in paragraph at lines 518--520
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 522--524
 
  []
 
 [11]
-Underfull \hbox (badness 10000) in paragraph at lines 537--539
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 566--567
+Underfull \hbox (badness 10000) in paragraph at lines 551--552
 
  []
 
 [12]
-Underfull \hbox (badness 10000) in paragraph at lines 594--596
+Underfull \hbox (badness 10000) in paragraph at lines 579--581
 
  []
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 604.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `superscript' on input line 604.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 604.
 
 [13]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 619.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `superscript' on input line 619.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 619.
-
-<simulation_plots/standard_simulation_alpha_.1_beta_.82.png, id=407, 650.43pt x 499.11469pt>
+<simulation_plots/standard_simulation_alpha_.1_beta_.82.png, id=401, 650.43pt x 499.11469pt>
 File: simulation_plots/standard_simulation_alpha_.1_beta_.82.png Graphic file (type png)
 <use simulation_plots/standard_simulation_alpha_.1_beta_.82.png>
-Package pdftex.def Info: simulation_plots/standard_simulation_alpha_.1_beta_.82.png  used on input line 633.
+Package pdftex.def Info: simulation_plots/standard_simulation_alpha_.1_beta_.82.png  used on input line 618.
 (pdftex.def)             Requested size: 292.6908pt x 224.59952pt.
-<simulation_plots/standard_simulation_alpha_.82_beta_.1.png, id=409, 650.43pt x 499.11469pt>
+<simulation_plots/standard_simulation_alpha_.82_beta_.1.png, id=403, 650.43pt x 499.11469pt>
 File: simulation_plots/standard_simulation_alpha_.82_beta_.1.png Graphic file (type png)
 <use simulation_plots/standard_simulation_alpha_.82_beta_.1.png>
-Package pdftex.def Info: simulation_plots/standard_simulation_alpha_.82_beta_.1.png  used on input line 641.
+Package pdftex.def Info: simulation_plots/standard_simulation_alpha_.82_beta_.1.png  used on input line 626.
 (pdftex.def)             Requested size: 292.6908pt x 224.59952pt.
-[14 <./simulation_plots/standard_simulation_alpha_.1_beta_.82.png (PNG copy)>]
-<simulation_plots/dual_level_vol_shock_FriFeb0911:03:49PM2024.png, id=416, 481.8pt x 481.8pt>
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<simulation_plots/dual_level_vol_shock_FriFeb0911:03:49PM2024.png, id=404, 481.8pt x 481.8pt>
 File: simulation_plots/dual_level_vol_shock_FriFeb0911:03:49PM2024.png Graphic file (type png)
 <use simulation_plots/dual_level_vol_shock_FriFeb0911:03:49PM2024.png>
-Package pdftex.def Info: simulation_plots/dual_level_vol_shock_FriFeb0911:03:49PM2024.png  used on input line 652.
+Package pdftex.def Info: simulation_plots/dual_level_vol_shock_FriFeb0911:03:49PM2024.png  used on input line 637.
 (pdftex.def)             Requested size: 216.80798pt x 216.80798pt.
-<simulation_plots/dual_level_vol_shock_FriFeb0911:27:59PM2024.png, id=417, 481.8pt x 481.8pt>
+<simulation_plots/dual_level_vol_shock_FriFeb0911:27:59PM2024.png, id=405, 481.8pt x 481.8pt>
 File: simulation_plots/dual_level_vol_shock_FriFeb0911:27:59PM2024.png Graphic file (type png)
 <use simulation_plots/dual_level_vol_shock_FriFeb0911:27:59PM2024.png>
-Package pdftex.def Info: simulation_plots/dual_level_vol_shock_FriFeb0911:27:59PM2024.png  used on input line 658.
+Package pdftex.def Info: simulation_plots/dual_level_vol_shock_FriFeb0911:27:59PM2024.png  used on input line 643.
 (pdftex.def)             Requested size: 216.80798pt x 216.80798pt.
- Excluding 'comment' comment. Excluding 'comment' comment. [15 <./simulation_plots/standard_simulation_alpha_.82_beta_.1.png (PNG copy)> <./simulation_plots/dual_level_vol_shock_FriFeb0911:03:49PM2024.png (PNG copy)> <./simulation_plots/dual_level_vol_shock_FriFeb0911:27:59PM2024.png (PNG copy)>] [16
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+Excluding 'comment' comment. Excluding 'comment' comment. [14 <./simulation_plots/standard_simulation_alpha_.1_beta_.82.png (PNG copy)>] [15 <./simulation_plots/standard_simulation_alpha_.82_beta_.1.png (PNG copy)> <./simulation_plots/dual_level_vol_shock_FriFeb0911:03:49PM2024.png (PNG copy)> <./simulation_plots/dual_level_vol_shock_FriFeb0911:27:59PM2024.png (PNG copy)>] [16
 
 ]
-<real_data_output_plots/savetime_SunFeb1817:10:112024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png, id=464, 803.0pt x 602.25pt>
+<real_data_output_plots/savetime_SunFeb1817:10:112024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png, id=458, 803.0pt x 602.25pt>
 File: real_data_output_plots/savetime_SunFeb1817:10:112024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png Graphic file (type png)
 <use real_data_output_plots/savetime_SunFeb1817:10:112024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png>
-Package pdftex.def Info: real_data_output_plots/savetime_SunFeb1817:10:112024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png  used on input line 723.
+Package pdftex.def Info: real_data_output_plots/savetime_SunFeb1817:10:112024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png  used on input line 708.
 (pdftex.def)             Requested size: 401.49902pt x 301.12425pt.
  [17 <./real_data_output_plots/savetime_SunFeb1817:10:112024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png>]
-<real_data_output_plots/savetime_WedJan1010:53:23PM2024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-23.png, id=480, 803.0pt x 602.25pt>
+<real_data_output_plots/savetime_WedJan1010:53:23PM2024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-23.png, id=474, 803.0pt x 602.25pt>
 File: real_data_output_plots/savetime_WedJan1010:53:23PM2024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-23.png Graphic file (type png)
 <use real_data_output_plots/savetime_WedJan1010:53:23PM2024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-23.png>
-Package pdftex.def Info: real_data_output_plots/savetime_WedJan1010:53:23PM2024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-23.png  used on input line 735.
+Package pdftex.def Info: real_data_output_plots/savetime_WedJan1010:53:23PM2024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-23.png  used on input line 720.
 (pdftex.def)             Requested size: 481.80373pt x 361.35278pt.
  [18] [19 <./real_data_output_plots/savetime_WedJan1010:53:23PM2024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-23.png (PNG copy)>] [20] Excluding 'comment' comment.
-Underfull \hbox (badness 10000) in paragraph at lines 803--804
+Underfull \hbox (badness 10000) in paragraph at lines 796--797
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 805--806
+Underfull \hbox (badness 10000) in paragraph at lines 798--799
 
  []
 
-
-Overfull \hbox (8.11958pt too wide) detected at line 819
+[21]
+Overfull \hbox (8.11958pt too wide) detected at line 812
 []
  []
 
-[21] Excluding 'comment' comment. [22]
+Excluding 'comment' comment. [22]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 877.
+(hyperref)                removing `math shift' on input line 870.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 877.
+(hyperref)                removing `math shift' on input line 870.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 886--887
+Underfull \hbox (badness 10000) in paragraph at lines 879--880
 
  []
 
@@ -879,21 +885,21 @@ Underfull \hbox (badness 10000) in paragraph at lines 189--192
 
 [25]) [26] (./synthVolForecast.aux)
 Package rerunfilecheck Info: File `synthVolForecast.out' has not changed.
-(rerunfilecheck)             Checksum: 177FAA2682AB6B43577337EAB91C28DE;9750.
+(rerunfilecheck)             Checksum: A191ABFB2041F687A58061698FB7CD3B;9751.
  ) 
 Here is how much of TeX's memory you used:
  26355 strings out of 476025
- 488546 string characters out of 5790017
- 1875388 words of memory out of 5000000
+ 488548 string characters out of 5790017
+ 1878388 words of memory out of 5000000
  46170 multiletter control sequences out of 15000+600000
  532229 words of font info for 104 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,16n,80p,2220b,634s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on synthVolForecast.pdf (26 pages, 1127850 bytes).
+Output written on synthVolForecast.pdf (26 pages, 1128487 bytes).
 PDF statistics:
- 712 PDF objects out of 1000 (max. 8388607)
- 621 compressed objects within 7 object streams
+ 713 PDF objects out of 1000 (max. 8388607)
+ 622 compressed objects within 7 object streams
  166 named destinations out of 1000 (max. 500000)
  360 words of extra memory for PDF output out of 10000 (max. 10000000)
 
