@@ -54,20 +54,20 @@ dbw <- function(X
 
   #Task: for each entry in Y, make it the first column of X's corresponding entry
   if (is.null(Y_lookback_indices) == FALSE){
-    
+
     print('User has provided Y_lookback_indices, so we include them.')
     X_lookback_indices <- c(Y_lookback_indices, X_lookback_indices)
-    
+
     X_Y_combiner <- function(y,x) {
-      
+
       print('We print the transformation and its class')
       print(inputted_transformation)
       print(class(inputted_transformation))
-      
+
       transformed_series <- inputted_transformation(y)
-      
+
       return(cbind(transformed_series,x))
-      } 
+      }
 
     combined_X <- mapply(X_Y_combiner
                          , y = Y
@@ -284,14 +284,26 @@ print('We plot the weights.')
 
   max_for_y_lim <- max(thing_to_get_max_of)
 
+
+  x_ax_first_point_of_shock <- index(fitted_vol)[shock_time_vec[1]-1] + 1
+  x_ax_end_point <- index(fitted_vol)[shock_time_vec[1]-1] + length(adjusted_pred)
+
+  print('Here is the first point of the shock')
+  print(x_ax_first_point_of_shock)
+
+  print('Here is the last point of the shock')
+  print(x_ax_end_point)
+
   #PLOT ON THE RIGHT:
   print('We plot the fitted volatility series.')
-  plot.ts(fitted_vol[1:shock_time_vec[1]], #mk
+  plot(y = fitted_vol[1:shock_time_vec[1]], #mk
+          x = index(fitted_vol)[1:shock_time_vec[1]],
        main = 'Post-Shock Volatility Forecast', #mk can improve this title
        cex.main=1.5,
        ylab = '',
        xlab = "Trading Days",
-       xlim = c(0, shock_time_vec[1] + 5), #mk
+       type="l",
+       xlim =  as.Date(c(index(fitted_vol)[1], x_ax_end_point)),
        ylim = c(min(0, fitted_vol),  max_for_y_lim))
 
   title(ylab = expression(sigma^2), line = 2.05, cex.lab = 1.99) # Add y-axis text
@@ -302,21 +314,21 @@ print('We plot the weights.')
 
   # Let's add the plain old GARCH prediction
   points(y = unadjusted_pred
-         ,x = (shock_time_vec[1]+1):(shock_time_vec[1]+shock_length_vec[1])
+         ,x = x_ax_first_point_of_shock:x_ax_end_point
          ,col = colors_for_adjusted_pred[1]
          ,cex = 2
          ,pch = 15)
 
   # Now plot the adjusted predictions
   points(y = adjusted_pred
-         ,x = (shock_time_vec[1]+1):(shock_time_vec[1]+shock_length_vec[1])
+         ,x = x_ax_first_point_of_shock:x_ax_end_point
          ,col = colors_for_adjusted_pred[2]
-         ,cex = 2
+         ,cex = 5
          ,pch = 19)
 
   # Now plot the arithmetic mean-based predictions
   points(y = arithmetic_mean_based_pred
-         ,x = (shock_time_vec[1]+1):(shock_time_vec[1]+shock_length_vec[1])
+         ,x = x_ax_first_point_of_shock:x_ax_end_point
          ,col = colors_for_adjusted_pred[3]
          ,cex = 2
          ,pch = 19)
@@ -325,7 +337,7 @@ print('We plot the weights.')
   if (is.null(ground_truth_vec) == FALSE)
     {
     points(y = ground_truth_vec
-           ,x = (shock_time_vec[1]+1):(shock_time_vec[1]+shock_length_vec[1])
+           ,x = x_ax_first_point_of_shock:x_ax_end_point
            ,col = colors_for_adjusted_pred[4]
            ,cex = 2
            ,pch = 19)
@@ -875,7 +887,7 @@ SynthPrediction <- function(Y_series_list
                    # penalty_lambda = penalty_lambda
                    Y = Y_series_list,
                    inputted_transformation = id
-                   
+
   )
 
   w_hat <- dbw_output[[1]]

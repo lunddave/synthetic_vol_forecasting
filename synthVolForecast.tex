@@ -349,11 +349,11 @@ Note that under the popular GARCH(1,1), a dual level-volatility shock has an mar
 
 \begin{align}
 \sigma^{2}_{i,T^{*}+r+1} & = \omega_{i} + \alpha_{i} a_{T^{*}+r}^{2} + \beta_{i}\sigma^{2}_{i,T^{*}+r} \label{eq0}\\
-& = \omega_{i} + \alpha_{i}(\sigma_{i,T^{*}+r}\epsilon_{T^{*}+r})^{2} + \beta_{i}\sigma^{2}_{i,T^{*}+r} \\
-& = \omega_{i} + \sigma^{2}_{i,T^{*}+r}(\alpha_{i} (\epsilon_{T^{*}+r})^{2} + \beta_{i})
+& = \omega_{i} + \alpha_{i}(\sigma_{i,T^{*}+r}\epsilon_{T^{*}+r})^{2} + \beta_{i}\sigma^{2}_{i,T^{*}+r}\notag \\
+& = \omega_{i} + \sigma^{2}_{i,T^{*}+r}(\alpha_{i} (\epsilon_{T^{*}+r})^{2} + \beta_{i})\notag
 \end{align}
 
-In (\ref{eq0}), observe that $\omega_{i}^{*}$ and $\epsilon^{*}_{i,t}$ each appear at most once, through the term $\sigma^{2}_{T^{*}+r}$.  This might lead one to suspect  geometric decay of the shocks $\omega_{i}^{*}$ and $\epsilon^{*}_{i}$.  Such a suspicion is easier to substantiate by examining the conditional expectation of the variance, $\mathbb{E}[ \sigma^{2}_{i,T^{*}+r+1} |\mathcal{F}_{T^{*}+r}]$, which also happens to be the principal forecasting tool for a GARCH model \citep{zivot2009practical}.  Indeed, if we assume unit variance for all $\epsilon_{i,t}$ except, of course, $\epsilon^{*}_{i,t}$, then we have \textcolor{red}{should $\omega_i$ be random. If so, it should have an expected value. Or does conditioning on the filtration return $\omega_i$? It is not clear, because I am not sure what is assumed about $\omega_i$.}
+In (\ref{eq0}), observe that $\omega_{i}^{*}$ and $\epsilon^{*}_{i,t}$ each appear at most once, through the term $\sigma^{2}_{T^{*}+r}$.  This might lead one to suspect  geometric decay of the shocks $\omega_{i}^{*}$ and $\epsilon^{*}_{i}$.  Such a suspicion is easier to substantiate by examining the conditional expectation of the variance, $\mathbb{E}[ \sigma^{2}_{i,T^{*}+r+1} |\mathcal{F}_{T^{*}+r}]$, which also happens to be the principal forecasting tool for a GARCH model \citep{zivot2009practical}.  Indeed, if we assume unit variance for all $\epsilon_{i,t}$ except, of course, $\epsilon^{*}_{i,t}$, then we have \textcolor{red}{should $\omega_i$ be random. If so, it should have an expected value. Or does conditioning on the filtration return $\omega_i$? It is not clear, because I am not sure what is assumed about $\omega_i$.}\textcolor{green}{It's a parameter.  Its estimate is a random variable, of course, but here we're just looking at the process unconditionally, or theoretically, or conditional upon $\mathcal{F}{\infty}$.}
 
 \begin{align*}
 \mathbb{E}[ \sigma^{2}_{i,T^{*}+r+1} |\mathcal{F}_{T^{*}+r}] & = \mathbb{E}[\omega_{i} + \alpha a_{T^{*}+r}^{2} + \beta\sigma^{2}_{i,T^{*}+r} |\mathcal{F}_{T^{*}+r}] \\
@@ -502,8 +502,8 @@ Place here
 
 \begin{prop}\label{omega_consistency} Assume \textcolor{red}{I do not like the $\forall$ notation. This should be written out.}
 \begin{enumerate}
-  \item $\forall i$, $\{a_{i,t}\}_{t=0,...,T_i}$ obeys a GARCH-X($m,s$), as laid out in equation ($\ref{GARCH-X}$) process with volatility shocks found in $\mc{M}_{2}$, where $T_i$ is the length of the $i$th series.
-  \item $\forall i, \textcolor{red}{\{\omega_{i,t}^{*}\}_{t=0,...,T_i}}$ is potentially non-zero at $\{T^{*}_{i}+1,... ,T^{*}_{i}+k\}$, $\omega_{i,T^{*}+1}^{*}\equiv...\equiv\omega_{i,T^{*}+k}^{*}$, and zero otherwise, where the arrival of $T_{i}^{*}$ is governed by a time-invariant distribution on $\{a_{i,t}\}_{t=0,...,T_i}$. \label{stationarity_of_omega_i_t}
+  \item For each $i$, $\{a_{i,t}\}_{t=0,...,T_i}$ obeys a GARCH-X($m,s$), as laid out in equation $(\ref{GARCH-X})$ process with volatility shocks found in $\mc{M}_{2}$, where $T_i$ is the length of the $i$th series.
+  \item For each $i, \textcolor{red}{\{\omega_{i,t}^{*}\}_{t=0,...,T_i}}$ is potentially non-zero at $\{T^{*}_{i}+1,... ,T^{*}_{i}+k\}$, $\omega_{i,T^{*}+1}^{*}\equiv...\equiv\omega_{i,T^{*}+k}^{*}$, and zero otherwise, where the arrival of $T_{i}^{*}$ is governed by a time-invariant distribution on $\{a_{i,t}\}_{t=0,...,T_i}$. \label{stationarity_of_omega_i_t}
   \item Let the conditions in Assumption 0 of \citet{han2014asymptotic} prevail.
 \end{enumerate}
 Then $\forall i, \hat\omega_{i,t}^{*} \xrightarrow{p} \E[\omega_{i}^{*}].$
@@ -514,11 +514,11 @@ Then $\forall i, \hat\omega_{i,t}^{*} \xrightarrow{p} \E[\omega_{i}^{*}].$
 \end{lem}
 
 \begin{proof-of-lemma}
-Since the shock is assumed to arrive uniformly at random for each $i$, $1 \leq i \leq n + 1$, and last for a discrete number of days, the sequence $\{\omega_{i,t}^{*}\}_{t=0,...,T_i}$ is clearly governed a by a distribution $F_{\{\omega_{i,t}^{*}\}_{t=0,...,T_i}}$ such that $F_{\{\omega_{i,t}^{*}\}_{t=0,...,T_i}}$is invariant to shifts in time.
+Since the shock is assumed to arrive uniformly at random for each $i$, $1 \leq i \leq n + 1$, and last for a discrete number of indices, the sequence $\{\omega_{i,t}^{*}\}_{t=0,...,T_i}$ is governed by a distribution $F_{\{\omega_{i,t}^{*}\}_{t=0,...,T_i}}$ that is invariant to shifts in time.
 \end{proof-of-lemma}
 
 \begin{proof-of-proposition}
-The result follows from the consistency proof of the QMLE in GARCH-X models, as established by \citet{han2014asymptotic}. \textcolor{red}{Is this the proof of the Proposition or of the Lemma? I am very confused here.}
+The result follows from the consistency proof of the QMLE in GARCH-X models, as established by \citet{han2014asymptotic}. \textcolor{red}{Is this the proof of the Proposition or of the Lemma? I am very confused here.}\textcolor{green}{Proof of lemma now added.}
 \end{proof-of-proposition}
 
   \subsection{Consistency of the Synthetic Volatility Forecast Function}
@@ -575,7 +575,7 @@ Hence, a correctly specified model will outperform the unadjusted forecast asymp
 \end{prop}
 
 \begin{proof-of-proposition}
-  First, note that the function $g:(-\infty,\E[\omega_{i}^{*}])\rightarrow \mathbb{R}$ given by $g(x) = \log{\frac{\sigma^{2}_{t+1}}{\sigma_{t+1}^{2}-x}} - \frac{x}{\sigma^{2}_{t+1}}$ is nonnegative, and being continuous, $g$ preserves consistency. The conclusion follows from fact that the model is correctly specified and consistency is guaranteed by prior results.  Finally, \textcolor{red}{Proof appears to not be done. Although it looks like it is almost done.}
+  First, note that the function $g:(-\infty,\E[\omega_{i}^{*}])\rightarrow \mathbb{R}$ given by $g(x) = \log{\frac{\sigma^{2}_{t+1}}{\sigma_{t+1}^{2}-x}} - \frac{x}{\sigma^{2}_{t+1}}$ is nonnegative, and being continuous, $g$ preserves consistency. The conclusion follows from fact that the model is correctly specified and consistency is guaranteed Proposition ($\ref{sigma_consistency}$). \textcolor{red}{Proof appears to not be done. Although it looks like it is almost done.}\textcolor{green}{Should Propositions and equations referred to have parentheses around the number?}
 \end{proof-of-proposition}
 
 \section{Numerical Examples}
@@ -706,7 +706,7 @@ For all of these reasons and more, the aftermath of the 2016 presidential electi
 
 \begin{figure}[H]
 \begin{center}
-  \includegraphics[scale=.5]{real_data_output_plots/savetime_FriMar151843582024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png}
+  \includegraphics[scale=.5]{real_data_output_plots/savetime_SatMar161722472024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png}
   \caption{The volatility induced by the 2016 US election}
   \label{fig:SVF_2016}
   \end{center}
@@ -718,7 +718,7 @@ Naturally, one might ask how sensitive this prediction is to at least two kinds 
 
 \begin{figure}[H]
 \begin{center}
-  \includegraphics[scale=.6]{real_data_output_plots/savetime_WedJan1010:53:23PM2024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-23.png}
+  \includegraphics[scale=.6]{real_data_output_plots/savetime_SatMar161644352024_IYG_6B=F-CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-22.png}
   \caption{The volatility induced by the 2016 US election, Brexit included}
   \label{fig:SVF_2016_without_Brexit}
   \end{center}
