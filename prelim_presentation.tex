@@ -138,7 +138,7 @@
 \section{Introduction}
 
 \begin{frame}
-\frametitle{A seemingly unprecedented event might provoke the questions}
+\frametitle{A seemingly unprecedented event might make one ask}
 \begin{enumerate}
     \item What does it resemble from the past?
     \item What past events are most relevant?
@@ -155,8 +155,18 @@
         \item Structural shock to macroeconomic conditions (scheduled news possibly pre-empted by news shock)
         \item Biomedical panel data subject to exogenous shock or interference
     \end{itemize}
+\end{frame}
 
-Example: weekend of March 7th and 8th, 2020
+
+\begin{frame}
+
+    \begin{example}{    Example: weekend of March 7th and 8th, 2020        }
+    \href{https://www.cnbc.com/2020/03/08/opec-deal-collapse-sparks-price-war-20-oil-in-2020-is-coming.html}{\includegraphics[scale=.3]{cnn.png}}
+    \end{example}
+
+    \begin{example}
+    \href{https://www.cnn.com/2020/03/08/investing/oil-prices-crash-opec-russia-saudi-arabia/index.html}{\includegraphics[scale=.3]{cnbc.png}}
+    \end{example}
 
 \end{frame}
 
@@ -203,13 +213,20 @@ Forecasting is possible under structural shocks, so long as we incorporate exter
 \frametitle{The news has broken but markets are closed}
 
 \begin{itemize}
-\item $y\in \mathbb{R}^{n}$, a mean-zero, real-valued response to be predicted
+\item After-hours trading provides a poor forum in which to digest news
+\item The news constitues public, material information relevant to one or more traded assets
+\item The qualitative aspects of the news provide basis upon which to match to past events
 
 \end{itemize}
 \end{frame}
 
 \begin{frame}
     \frametitle{A Primer on GARCH}
+
+    Let $\{a_{t}\}$ denote an observable, real-valued discrete-time stochastic process.\\
+    
+
+    We say $\{a_{t}\}$ is a strong GARCH process with respect to $\{\epsilon_{t}\}$ iff 
     \begin{align*}
         &\sigma_{t}^{2} = \omega + \sum^{m}_{k=1}\alpha_{k}a^{2}_{t-k} + \sum_{j=1}^{s}\beta_{j}\sigma_{t-j}^{2}\\
         &a_{t} = \sigma_{t}\epsilon_{t}\\
@@ -254,11 +271,6 @@ Forecasting is possible under structural shocks, so long as we incorporate exter
     \vdots  & \vdots  & \ddots & \vdots  \\
     \end{pmatrix}
     \end{equation*}
-
-\begin{align*}
- R(\theta)
-\end{align*}
-
 \end{frame}
 
 \begin{frame}
@@ -269,28 +281,10 @@ Forecasting is possible under structural shocks, so long as we incorporate exter
 
 \end{frame}
 
-\begin{frame}
-\frametitle{Minimum Norm Estimator}
-
-\end{frame}
-
 \section{Post-shock Synthetic Volatility Forecasting Methodology}
 
-\begin{frame}
-\frametitle{Key Conceptual Innovation: Effective Rank}
-
-\end{frame}
 \section{Properties of Volatility Shock and Shock Estimators}
 
-\begin{frame}
-\frametitle{Main Result: Existence Proof, Dichotomy, and Bounds}
-
-\uncover<2-7>{Remarks}\\
-\begin{enumerate}
-\item<3-7> A gives us a (high probability) upper bound on the excess risk.
-
-\end{enumerate}
-\end{frame}
 
 \section{Real Data Example}
 

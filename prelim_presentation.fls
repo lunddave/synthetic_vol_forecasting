@@ -1809,6 +1809,16 @@ INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/sansmathaccent/mathker
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/sansmathaccent/mathkerncmssi8.tfm
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmss8.tfm
 INPUT /usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map
+INPUT ./cnn.png
+INPUT ./cnn.png
+INPUT cnn.png
+INPUT ./cnn.png
+INPUT ./cnn.png
+INPUT ./cnbc.png
+INPUT ./cnbc.png
+INPUT cnbc.png
+INPUT ./cnbc.png
+INPUT ./cnbc.png
 INPUT ./prelim_presentation.toc
 INPUT prelim_presentation.toc
 INPUT prelim_presentation.toc
@@ -1850,4 +1860,3 @@ INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.p
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb
-INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb
