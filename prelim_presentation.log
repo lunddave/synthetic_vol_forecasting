@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.21)  13 MAR 2024 21:59
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.21)  16 MAR 2024 12:51
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -772,9 +772,253 @@ Package biblatex Info: ... and expl3
 Package: xparse 2023-02-02 L3 Experimental document command parser
 )
 Package: blx-case-expl3 2023/03/05 v3.19 expl3 case changing code for biblatex
+)) (/usr/local/texlive/2023/texmf-dist/tex/latex/adjustbox/adjustbox.sty
+Package: adjustbox 2022/10/17 v1.3a Adjusting TeX boxes (trim, clip, ...)
+ (/usr/local/texlive/2023/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
+ (/usr/local/texlive/2023/texmf-dist/tex/generic/xkeyval/xkeyval.tex (/usr/local/texlive/2023/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+\XKV@toks=\toks45
+\XKV@tempa@toks=\toks46
+)
+\XKV@depth=\count461
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+)) (/usr/local/texlive/2023/texmf-dist/tex/latex/adjustbox/adjcalc.sty
+Package: adjcalc 2012/05/16 v1.1 Provides advanced setlength with multiple back-ends (calc, etex, pgfmath)
+) (/usr/local/texlive/2023/texmf-dist/tex/latex/adjustbox/trimclip.sty
+Package: trimclip 2020/08/19 v1.2 Trim and clip general TeX material
+ (/usr/local/texlive/2023/texmf-dist/tex/latex/collectbox/collectbox.sty
+Package: collectbox 2022/10/17 v0.4c Collect macro arguments as boxes
+\collectedbox=\box77
+)
+\tc@llx=\dimen294
+\tc@lly=\dimen295
+\tc@urx=\dimen296
+\tc@ury=\dimen297
+Package trimclip Info: Using driver 'tc-pdftex.def'.
+ (/usr/local/texlive/2023/texmf-dist/tex/latex/adjustbox/tc-pdftex.def
+File: tc-pdftex.def 2019/01/04 v2.2 Clipping driver for pdftex
 ))
-\@quotelevel=\count461
-\@quotereset=\count462
+\adjbox@Width=\dimen298
+\adjbox@Height=\dimen299
+\adjbox@Depth=\dimen300
+\adjbox@Totalheight=\dimen301
+\adjbox@pwidth=\dimen302
+\adjbox@pheight=\dimen303
+\adjbox@pdepth=\dimen304
+\adjbox@ptotalheight=\dimen305
+ (/usr/local/texlive/2023/texmf-dist/tex/latex/ifoddpage/ifoddpage.sty
+Package: ifoddpage 2022/10/18 v1.2 Conditionals for odd/even page detection
+\c@checkoddpage=\count462
+) (/usr/local/texlive/2023/texmf-dist/tex/latex/varwidth/varwidth.sty
+Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
+\@vwid@box=\box78
+\sift@deathcycles=\count463
+\@vwid@loff=\dimen306
+\@vwid@roff=\dimen307
+)) (/usr/local/texlive/2023/texmf-dist/tex/latex/datetime2/datetime2.sty
+Package: datetime2 2021/03/21 v1.5.7 (NLCT) date and time formats
+ (/usr/local/texlive/2023/texmf-dist/tex/latex/tracklang/tracklang.sty
+Package: tracklang 2022/12/13 v1.6.1 (NLCT) Track Languages
+ (/usr/local/texlive/2023/texmf-dist/tex/generic/tracklang/tracklang.tex)) (/usr/local/texlive/2023/texmf-dist/tex/latex/datetime2-english/datetime2-english.ldf
+File: datetime2-english.ldf 2019/10/21 v1.05 (NLCT)
+ (/usr/local/texlive/2023/texmf-dist/tex/latex/datetime2-english/datetime2-english-base.ldf
+File: datetime2-english-base.ldf 2019/10/21 v1.05 (NLCT)
+))) (/usr/local/texlive/2023/texmf-dist/tex/latex/tools/verbatim.sty
+Package: verbatim 2022-07-02 v1.5u LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks47
+\verbatim@line=\toks48
+\verbatim@in@stream=\read4
+) (/usr/local/texlive/2023/texmf-dist/tex/latex/mathtools/mathtools.sty
+Package: mathtools 2022/06/29 v1.29 mathematical typesetting tools
+ (/usr/local/texlive/2023/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count464
+\calc@Bcount=\count465
+\calc@Adimen=\dimen308
+\calc@Bdimen=\dimen309
+\calc@Askip=\skip87
+\calc@Bskip=\skip88
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count466
+\calc@Cskip=\skip89
+) (/usr/local/texlive/2023/texmf-dist/tex/latex/mathtools/mhsetup.sty
+Package: mhsetup 2021/03/18 v1.4 programming setup (MH)
+)
+\g_MT_multlinerow_int=\count467
+\l_MT_multwidth_dim=\dimen310
+\origjot=\skip90
+\l_MT_shortvdotswithinadjustabove_dim=\dimen311
+\l_MT_shortvdotswithinadjustbelow_dim=\dimen312
+\l_MT_above_intertext_sep=\dimen313
+\l_MT_below_intertext_sep=\dimen314
+\l_MT_above_shortintertext_sep=\dimen315
+\l_MT_below_shortintertext_sep=\dimen316
+\xmathstrut@box=\box79
+\xmathstrut@dim=\dimen317
+) (/usr/local/texlive/2023/texmf-dist/tex/latex/jknapltx/mathrsfs.sty
+Package: mathrsfs 1996/01/01 Math RSFS package v1.0 (jk)
+\symrsfs=\mathgroup6
+) (/usr/local/texlive/2023/texmf-dist/tex/latex/amsmath/amscd.sty
+Package: amscd 2017/04/14 v2.1 AMS Commutative Diagrams
+\athelp@=\toks49
+\minaw@=\dimen318
+\bigaw@=\dimen319
+\minCDarrowwidth=\dimen320
+) (/usr/local/texlive/2023/texmf-dist/tex/latex/caption/subcaption.sty
+Package: subcaption 2023/02/19 v1.6 Sub-captions (AR)
+ (/usr/local/texlive/2023/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2023/03/12 v3.6j Customizing captions (AR)
+ (/usr/local/texlive/2023/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2023/03/12 v2.4 caption3 kernel (AR)
+\caption@tempdima=\dimen321
+\captionmargin=\dimen322
+\caption@leftmargin=\dimen323
+\caption@rightmargin=\dimen324
+\caption@width=\dimen325
+\caption@indent=\dimen326
+\caption@parindent=\dimen327
+\caption@hangindent=\dimen328
+Package caption Info: beamer document class detected.
+ (/usr/local/texlive/2023/texmf-dist/tex/latex/caption/caption-beamer.sto
+File: caption-beamer.sto 2022/01/06 v2.0c Adaption of the caption package to the beamer document classes (AR)
+))
+\c@caption@flags=\count468
+\c@continuedfloat=\count469
+Package caption Info: hyperref package is loaded.
+Package caption Info: Hyperref support is turned off
+(caption)             because hyperref has stopped early.
+)
+Package caption Info: New subtype `subfigure' on input line 239.
+\c@subfigure=\count470
+Package caption Info: New subtype `subtable' on input line 239.
+\c@subtable=\count471
+) (/usr/local/texlive/2023/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count472
+\float@exts=\toks50
+\float@box=\box80
+\@float@everytoks=\toks51
+\@floatcapt=\box81
+) (/usr/local/texlive/2023/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty (/usr/local/texlive/2023/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+Package: pgf 2023-01-15 v3.1.10 (3.1.10)
+ (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
+File: pgfmoduleshapes.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfnodeparttextbox=\box82
+) (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
+File: pgfmoduleplot.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (/usr/local/texlive/2023/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
+Package: pgfcomp-version-0-65 2023-01-15 v3.1.10 (3.1.10)
+\pgf@nodesepstart=\dimen329
+\pgf@nodesepend=\dimen330
+) (/usr/local/texlive/2023/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
+Package: pgfcomp-version-1-18 2023-01-15 v3.1.10 (3.1.10)
+)) (/usr/local/texlive/2023/texmf-dist/tex/latex/pgf/utilities/pgffor.sty (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
+Package: pgffor 2023-01-15 v3.1.10 (3.1.10)
+\pgffor@iter=\dimen331
+\pgffor@skip=\dimen332
+\pgffor@stack=\toks52
+\pgffor@toks=\toks53
+)) (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+Package: tikz 2023-01-15 v3.1.10 (3.1.10)
+ (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex
+File: pgflibraryplothandlers.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@plot@mark@count=\count473
+\pgfplotmarksize=\dimen333
+)
+\tikz@lastx=\dimen334
+\tikz@lasty=\dimen335
+\tikz@lastxsaved=\dimen336
+\tikz@lastysaved=\dimen337
+\tikz@lastmovetox=\dimen338
+\tikz@lastmovetoy=\dimen339
+\tikzleveldistance=\dimen340
+\tikzsiblingdistance=\dimen341
+\tikz@figbox=\box83
+\tikz@figbox@bg=\box84
+\tikz@tempbox=\box85
+\tikz@tempbox@bg=\box86
+\tikztreelevel=\count474
+\tikznumberofchildren=\count475
+\tikznumberofcurrentchild=\count476
+\tikz@fig@count=\count477
+ (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
+File: pgfmodulematrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfmatrixcurrentrow=\count478
+\pgfmatrixcurrentcolumn=\count479
+\pgf@matrix@numberofcolumns=\count480
+)
+\tikz@expandcount=\count481
+ (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopaths.code.tex
+File: tikzlibrarytopaths.code.tex 2023-01-15 v3.1.10 (3.1.10)
+))) (/usr/local/texlive/2023/texmf-dist/tex/latex/multirow/multirow.sty
+Package: multirow 2021/03/15 v2.8 Span multiple rows of a table
+\multirow@colwidth=\skip91
+\multirow@cntb=\count482
+\multirow@dima=\skip92
+\bigstrutjot=\dimen342
+) (/usr/local/texlive/2023/texmf-dist/tex/latex/algorithm2e/algorithm2e.sty
+Package: algorithm2e 2017/07/18 v5.2 algorithms environments
+\c@AlgoLine=\count483
+\algocf@hangindent=\skip93
+ (/usr/local/texlive/2023/texmf-dist/tex/latex/tools/xspace.sty
+Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
+) (/usr/local/texlive/2023/texmf-dist/tex/latex/relsize/relsize.sty
+Package: relsize 2013/03/29 ver 4.1
+)
+\skiptotal=\skip94
+\skiplinenumber=\skip95
+\skiprule=\skip96
+\skiphlne=\skip97
+\skiptext=\skip98
+\skiplength=\skip99
+\algomargin=\skip100
+\skipalgocfslide=\skip101
+\algowidth=\dimen343
+\inoutsize=\dimen344
+\inoutindent=\dimen345
+\interspacetitleruled=\dimen346
+\interspacealgoruled=\dimen347
+\interspacetitleboxruled=\dimen348
+\algocf@ruledwidth=\skip102
+\algocf@inoutbox=\box87
+\algocf@inputbox=\box88
+\AlCapSkip=\skip103
+\AlCapHSkip=\skip104
+\algoskipindent=\skip105
+\algocf@nlbox=\box89
+\algocf@hangingbox=\box90
+\algocf@untilbox=\box91
+\algocf@skipuntil=\skip106
+\algocf@capbox=\box92
+\algocf@lcaptionbox=\skip107
+\algoheightruledefault=\skip108
+\algoheightrule=\skip109
+\algotitleheightruledefault=\skip110
+\algotitleheightrule=\skip111
+\c@algocfline=\count484
+\c@algocfproc=\count485
+\c@algocf=\count486
+\algocf@algoframe=\box93
+\algocf@algobox=\box94
+) (/usr/local/texlive/2023/texmf-dist/tex/latex/pdflscape/pdflscape.sty
+Package: pdflscape 2022-10-27 v0.13 Display of landscape pages in PDF
+ (/usr/local/texlive/2023/texmf-dist/tex/latex/pdflscape/pdflscape-nometadata.sty
+Package: pdflscape-nometadata 2022-10-28 v0.13 Display of landscape pages in PDF (HO)
+ (/usr/local/texlive/2023/texmf-dist/tex/latex/graphics/lscape.sty
+Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
+)
+Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
+))
+\c@cor=\count487
+\c@lem=\count488
+\c@thm=\count489
+\c@defn=\count490
+\c@prop=\count491
+\c@remark=\count492
+Package hyperref Info: Option `colorlinks' set `true' on input line 105.
+\@quotelevel=\count493
+\@quotereset=\count494
  (./prelim_presentation.aux)
 \openout1 = `prelim_presentation.aux'.
 
@@ -833,24 +1077,24 @@ LaTeX Font Info:    ... okay on input line 131.
 
 (/usr/local/texlive/2023/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count463
-\scratchdimen=\dimen294
-\scratchbox=\box77
-\nofMPsegments=\count464
-\nofMParguments=\count465
-\everyMPshowfont=\toks45
-\MPscratchCnt=\count466
-\MPscratchDim=\dimen295
-\MPnumerator=\count467
-\makeMPintoPDFobject=\count468
-\everyMPtoPDFconversion=\toks46
+\scratchcounter=\count495
+\scratchdimen=\dimen349
+\scratchbox=\box95
+\nofMPsegments=\count496
+\nofMParguments=\count497
+\everyMPshowfont=\toks54
+\MPscratchCnt=\count498
+\MPscratchDim=\dimen350
+\MPnumerator=\count499
+\makeMPintoPDFobject=\count500
+\everyMPtoPDFconversion=\toks55
 ) (/usr/local/texlive/2023/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
  (/usr/local/texlive/2023/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-Package hyperref Info: Link coloring OFF on input line 131.
+Package hyperref Info: Link coloring ON on input line 131.
  (./prelim_presentation.out) (./prelim_presentation.out)
 \@outlinefile=\write6
 \openout6 = `prelim_presentation.out'.
@@ -859,8 +1103,8 @@ LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 131.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
 (Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 131.
-\symnumbers=\mathgroup6
-\sympureletters=\mathgroup7
+\symnumbers=\mathgroup7
+\sympureletters=\mathgroup8
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
 (Font)                  OT1/cmss/m/n --> OT1/cmr/m/n on input line 131.
 LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 131.
@@ -932,9 +1176,12 @@ Package biblatex Info: ... file 'prelim_presentation.bbl' found.
  (./prelim_presentation.bbl)
 Package biblatex Info: Reference section=0 on input line 131.
 Package biblatex Info: Reference segment=0 on input line 131.
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: float package is loaded.
+Package caption Info: End \AtBeginDocument code.
  (./prelim_presentation.nav)
 Overfull \hbox (131.60022pt too wide) in paragraph at lines 131--131
- [][][][]  
+ [][][][][][]  
  []
 
 LaTeX Font Info:    Trying to load font information for U+msa on input line 136.
@@ -945,193 +1192,248 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 136.
  (/usr/local/texlive/2023/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 136.
+ (/usr/local/texlive/2023/texmf-dist/tex/latex/jknapltx/ursfs.fd
+File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
+)
 LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on input line 136.
  (/usr/local/texlive/2023/texmf-dist/tex/latex/sansmathaccent/ot1mathkerncmss.fd
 File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/mathkerncmss.
 )
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
- [][][][]  
+ [][][][][][]  
  []
 
 [1
 
 {/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
- [][][][]  
+ [][][][][][]  
  []
 
 [2
 
 ]
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
- [][][][]  
+ [][][][][][]  
  []
 
 [3
 
 ]
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
- [][][][]  
+ [][][][][][]  
  []
 
 [4
 
 ]
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
- [][][][]  
+ [][][][][][]  
  []
 
 [5
 
 ]
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
- [][][][]  
+ [][][][][][]  
  []
 
 [6
 
 ] (./prelim_presentation.toc)
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
- [][][][]  
+ [][][][][][]  
  []
 
 [7
 
 ]
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
- [][][][]  
+ [][][][][][]  
  []
 
 [8
 
 ]
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
- [][][][]  
+ [][][][][][]  
  []
 
 [9
 
 ]
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
- [][][][]  
+ [][][][][][]  
  []
 
 [10
 
 ]
+LaTeX Font Info:    Calculating math sizes for size <3> on input line 262.
+
+
+LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <2.09999> not available
+(Font)              size <3> substituted on input line 262.
+
+
+LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <1.5> not available
+(Font)              size <3> substituted on input line 262.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <3> not available
+(Font)              size <5> substituted on input line 262.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <2.09999> not available
+(Font)              size <5> substituted on input line 262.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <1.5> not available
+(Font)              size <5> substituted on input line 262.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <3> not available
+(Font)              size <5> substituted on input line 262.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <2.09999> not available
+(Font)              size <5> substituted on input line 262.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <1.5> not available
+(Font)              size <5> substituted on input line 262.
+
+
+LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <3> not available
+(Font)              size <5> substituted on input line 262.
+
+
+LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <2.09999> not available
+(Font)              size <5> substituted on input line 262.
+
+
+LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <1.5> not available
+(Font)              size <5> substituted on input line 262.
+
+
+Overfull \vbox (104.93109pt too high) detected at line 262
+ []
+
+
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
- [][][][]  
+ [][][][][][]  
  []
 
 [11
 
 ]
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
- [][][][]  
+ [][][][][][]  
  []
 
 [12
 
 ]
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
- [][][][]  
+ [][][][][][]  
  []
 
 [13
 
 ]
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
- [][][][]  
+ [][][][][][]  
  []
 
 [14
 
 ]
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
- [][][][]  
+ [][][][][][]  
  []
 
 [15
 
 ]
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
- [][][][]  
+ [][][][][][]  
  []
 
 [16
 
 ]
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
- [][][][]  
+ [][][][][][]  
  []
 
 [17
 
 ]
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
- [][][][]  
+ [][][][][][]  
  []
 
 [18
 
 ]
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
- [][][][]  
+ [][][][][][]  
  []
 
 [19
 
 ]
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
- [][][][]  
+ [][][][][][]  
  []
 
 [20
 
 ]
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
- [][][][]  
+ [][][][][][]  
  []
 
 [21
 
 ]
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
- [][][][]  
+ [][][][][][]  
  []
 
 [22
 
 ]
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
- [][][][]  
+ [][][][][][]  
  []
 
 [23
 
 ]
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
- [][][][]  
+ [][][][][][]  
  []
 
 [24
 
 ]
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
- [][][][]  
+ [][][][][][]  
  []
 
 [25
 
 ]
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
- [][][][]  
+ [][][][][][]  
  []
 
 [26
 
 ]
-Overfull \vbox (110.52533pt too high) detected at line 327
+Overfull \vbox (110.52533pt too high) detected at line 354
  []
 
 
@@ -1139,14 +1441,14 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
- [][][][]  
+ [][][][][][]  
  []
 
 [27
 
 ]
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
- [][][][]  
+ [][][][][][]  
  []
 
 [28 </usr/local/texlive/2023/texmf-dist/tex/latex/beamer/beamericonarticle.pdf>]
@@ -1160,6 +1462,10 @@ Overfull \hbox (131.60022pt too wide) has occurred while \output is active
 \openout9 = `prelim_presentation.snm'.
 
  (./prelim_presentation.aux)
+
+LaTeX Font Warning: Size substitutions with differences
+(Font)              up to 3.5pt have occurred.
+
 Package rerunfilecheck Info: File `prelim_presentation.out' has not changed.
 (rerunfilecheck)             Checksum: EFE3160B688D8927AD43D84AB357055E;2457.
 Package logreq Info: Writing requests to 'prelim_presentation.run.xml'.
@@ -1167,18 +1473,18 @@ Package logreq Info: Writing requests to 'prelim_presentation.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 29412 strings out of 476025
- 586215 string characters out of 5790017
- 1870388 words of memory out of 5000000
- 49264 multiletter control sequences out of 15000+600000
- 522686 words of font info for 69 fonts, out of 8000000 for 9000
+ 39495 strings out of 476025
+ 804411 string characters out of 5790017
+ 1888388 words of memory out of 5000000
+ 59187 multiletter control sequences out of 15000+600000
+ 527223 words of font info for 88 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 128i,15n,122p,752b,1577s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on prelim_presentation.pdf (28 pages, 172646 bytes).
+ 128i,15n,131p,752b,1588s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on prelim_presentation.pdf (28 pages, 228757 bytes).
 PDF statistics:
- 997 PDF objects out of 1000 (max. 8388607)
- 905 compressed objects within 10 object streams
+ 1027 PDF objects out of 1200 (max. 8388607)
+ 923 compressed objects within 10 object streams
  79 named destinations out of 1000 (max. 500000)
  281 words of extra memory for PDF output out of 10000 (max. 10000000)
 
