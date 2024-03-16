@@ -183,7 +183,7 @@ To that end, let $a_{t} = r_{t} - \mu_{t}$, where $\mu_{t}$ is the mean of the l
 \begin{align*}
 &\sigma_{t}^{2} = \omega + \sum^{m}_{k=1}\alpha_{k}a^{2}_{t-k} + \sum_{j=1}^{s}\beta_{j}\sigma_{t-j}^{2}\\
 &a_{t} = \sigma_{t}\epsilon_{t}\\
-&\epsilon_{t} \simiid F\\
+&\epsilon_{t} \simiid E[\epsilon_{t}], Var[\epsilon_{t}] = 1\\
 &\forall k,j, \alpha_{k},\beta_{j}\geq 0\\ 
 &\forall t, \omega, \sigma_{t} > 0 
 \end{align*}
@@ -613,6 +613,8 @@ Consider now a shock to both the volatility and the level beginning at $T^{*}+1$
 We compare adjusted and unadjusted forecasts using QL Loss, calculating the fraction of the simulations that the adjusted forecast dominates the unadjusted forecast.
 
 \subsection{Monte Carlo results}
+
+Here we cite \citet[p. 22]{francq2019garch} in motivating simulations for large $alpha$ values and then large $\beta$ values.
 
 In Figure \ref{fig:heavy_beta}, when only two parameters are varied, the volatility shock signal and the volatility shock noise, we observe several encouraging phenomena.  First, for any column selected, an increasing trend exists as the shock signal increases.  Second, for almost all small values of the shock signal, the outperformance rate hovers around .5, supporting the hypothesis that in the absence of a signal, any level of noise renders the method no better at GARCH than a flip of a coin.
 \begin{figure}[h!]
