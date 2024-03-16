@@ -301,7 +301,6 @@ print('We plot the weights.')
        main = 'Post-Shock Volatility Forecast', #mk can improve this title
        cex.main=1.5,
        ylab = '',
-       xlab = "Trading Days",
        type="l",
        xlim =  as.Date(c(index(fitted_vol)[1], x_ax_end_point)),
        ylim = c(min(0, fitted_vol),  max_for_y_lim))
