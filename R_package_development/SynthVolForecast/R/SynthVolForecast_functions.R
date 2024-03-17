@@ -385,7 +385,7 @@ plot_maker_synthprediction <- function(Y
 
   for (i in 2:(n+1)){
     plot.ts(Y[[i]][1:shock_time_vec[i]]
-            ,xlab = 'Trading Days'
+            #,xlab = 'Trading Days'
             ,ylab = 'Log Return'
             ,main = paste('Donor ', i,': ', shock_time_labels[i], sep = '')
             ,xlim = c(0, shock_time_vec[i] + 5)
@@ -443,7 +443,7 @@ plot_maker_synthprediction <- function(Y
   plot.ts(Y[[1]][1:shock_time_vec[1]], #mk
           main = 'Post-shock Forecasts',
           ylab = '',
-          xlab = "Trading Days",
+          #xlab = "Trading Days",
           xlim = c(0, shock_time_vec[1] + 5), #mk
           ylim = c(min(0, Y[[1]]),  max_for_y_lim))
 
