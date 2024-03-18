@@ -8,7 +8,7 @@ if(sysname == "Darwin") {
   setwd("~/Desktop/PhD/synthetic_vol_forecasting/") # example on mac machine
 } else if(sysname == "Linux") {
   setwd('~/Desktop/synthetic_vol_forecasting/') # example on linux machine
-} 
+}
 
 ### BEGIN 2016 election example
 packs <- c('quantmod'
@@ -240,7 +240,7 @@ for (i in 1:length(start_dates)){
 
 n <- length(start_dates) - 1
 
-time_date <- gsub(" ", "", format(Sys.time(), "%a%b%d%X%Y"), fixed = TRUE)
+time_date <- gsub(" ", "", gsub(':', '', format(Sys.time(), "%a%b%d%X%Y")), fixed = TRUE)
 png_save_name <- paste("real_data_output_plots/savetime_"
                        ,time_date
                        ,'_'

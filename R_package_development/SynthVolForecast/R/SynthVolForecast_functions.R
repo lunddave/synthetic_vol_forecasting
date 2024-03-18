@@ -288,12 +288,6 @@ print('We plot the weights.')
   x_ax_first_point_of_shock <- index(fitted_vol)[shock_time_vec[1]-1] + 1
   x_ax_end_point <- index(fitted_vol)[shock_time_vec[1]-1] + length(adjusted_pred)
 
-  print('Here is the first point of the shock')
-  print(x_ax_first_point_of_shock)
-
-  print('Here is the last point of the shock')
-  print(x_ax_end_point)
-
   #PLOT ON THE RIGHT:
   print('We plot the fitted volatility series.')
   plot(y = fitted_vol[1:shock_time_vec[1]], #mk
@@ -302,6 +296,7 @@ print('We plot the weights.')
        cex.main=1.5,
        ylab = '',
        type="l",
+       xlab = '',
        xlim =  as.Date(c(index(fitted_vol)[1], x_ax_end_point)),
        ylim = c(min(0, fitted_vol),  max_for_y_lim))
 
@@ -385,7 +380,7 @@ plot_maker_synthprediction <- function(Y
 
   for (i in 2:(n+1)){
     plot.ts(Y[[i]][1:shock_time_vec[i]]
-            #,xlab = 'Trading Days'
+            ,xlab = ' '
             ,ylab = 'Log Return'
             ,main = paste('Donor ', i,': ', shock_time_labels[i], sep = '')
             ,xlim = c(0, shock_time_vec[i] + 5)
@@ -443,7 +438,7 @@ plot_maker_synthprediction <- function(Y
   plot.ts(Y[[1]][1:shock_time_vec[1]], #mk
           main = 'Post-shock Forecasts',
           ylab = '',
-          #xlab = "Trading Days",
+          xlab = ' ',
           xlim = c(0, shock_time_vec[1] + 5), #mk
           ylim = c(min(0, Y[[1]]),  max_for_y_lim))
 
