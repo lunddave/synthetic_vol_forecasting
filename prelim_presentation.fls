@@ -1822,6 +1822,9 @@ INPUT ./cnbc.png
 INPUT ./prelim_presentation.toc
 INPUT prelim_presentation.toc
 INPUT prelim_presentation.toc
+INPUT ./prelim_presentation.toc
+INPUT prelim_presentation.toc
+INPUT prelim_presentation.toc
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmss8.tfm
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm

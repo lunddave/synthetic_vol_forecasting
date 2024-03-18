@@ -1,13 +1,13 @@
 # Fdb version 4
-["biber prelim_presentation"] 1710620071 "prelim_presentation.bcf" "prelim_presentation.bbl" "prelim_presentation" 1710645897 0
-  "./synthVolForecast.bib" 1710645528 44201 940467ec554db78f2386adf98287eaf4 ""
-  "prelim_presentation.bcf" 1710645897 108372 7102da3904043abdd1bc542a0f6f2e2e "pdflatex"
+["biber prelim_presentation"] 1710724975 "prelim_presentation.bcf" "prelim_presentation.bbl" "prelim_presentation" 1710726102 0
+  "./synthVolForecast.bib" 1710688455 44768 2699089a3886d80f136414830b3a3369 ""
+  "prelim_presentation.bcf" 1710726102 108372 7102da3904043abdd1bc542a0f6f2e2e "pdflatex"
   (generated)
   "prelim_presentation.bbl"
   "prelim_presentation.blg"
   (rewritten before read)
-["pdflatex"] 1710645893 "/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/prelim_presentation.tex" "prelim_presentation.pdf" "prelim_presentation" 1710645897 0
-  "/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/prelim_presentation.tex" 1710645890 11169 1c16b2f00411e502fafe8b678915fea5 ""
+["pdflatex"] 1710726098 "/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/prelim_presentation.tex" "prelim_presentation.pdf" "prelim_presentation" 1710726102 0
+  "/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/prelim_presentation.tex" 1710726098 11280 1c6d283572831f4a3f3c7f37c0f306b9 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -286,13 +286,13 @@
   "/usr/local/texlive/2023/texmf.cnf" 1678822455 577 1b2b1af17af2508fb20dd85783af4050 ""
   "cnbc.png" 1710618103 102544 2326aa3cc6016a49274e9b1bdce419c8 ""
   "cnn.png" 1710618085 88925 9e7e7ac5a27d450d466be211198fc300 ""
-  "prelim_presentation.aux" 1710645897 9481 52cada79e7380c3e8e407d9ff023fe5c "pdflatex"
-  "prelim_presentation.bbl" 1710620074 12770 6430fb954e7b21c197aaa1dcb9e04be6 "biber prelim_presentation"
-  "prelim_presentation.nav" 1710645897 4500 4c141941e3ad7d0f5577f46b2ba5374f "pdflatex"
-  "prelim_presentation.out" 1710645897 2624 17d611b092212535f57307c5f7781a5f "pdflatex"
-  "prelim_presentation.run.xml" 1710645897 2466 06591bcb04df39c12325d9c8c0493731 "pdflatex"
-  "prelim_presentation.tex" 1710645890 11169 1c16b2f00411e502fafe8b678915fea5 ""
-  "prelim_presentation.toc" 1710645897 898 0e0798eeef1e851ab729182643ed415e "pdflatex"
+  "prelim_presentation.aux" 1710726102 9953 a136543149c379a78fb1a539dca48b4e "pdflatex"
+  "prelim_presentation.bbl" 1710724978 12770 6430fb954e7b21c197aaa1dcb9e04be6 "biber prelim_presentation"
+  "prelim_presentation.nav" 1710726102 4828 66d032e7841981997e9cef3e8a946ebf "pdflatex"
+  "prelim_presentation.out" 1710726102 2818 e63768eb844f59d94ae752ecac74d8b5 "pdflatex"
+  "prelim_presentation.run.xml" 1710726102 2466 06591bcb04df39c12325d9c8c0493731 "pdflatex"
+  "prelim_presentation.tex" 1710726098 11280 1c6d283572831f4a3f3c7f37c0f306b9 ""
+  "prelim_presentation.toc" 1710726102 898 77c1e4f0f208d9297f7ce5e9d38e91ba "pdflatex"
   (generated)
   "prelim_presentation.aux"
   "prelim_presentation.bcf"

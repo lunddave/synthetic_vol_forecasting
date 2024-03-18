@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.21)  16 MAR 2024 22:24
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.21)  17 MAR 2024 20:41
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1184,19 +1184,19 @@ Overfull \hbox (131.60022pt too wide) in paragraph at lines 131--131
  [][][][][][]  
  []
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 136.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 137.
 (/usr/local/texlive/2023/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 136.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 137.
  (/usr/local/texlive/2023/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 136.
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 137.
  (/usr/local/texlive/2023/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
-LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on input line 136.
+LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on input line 137.
  (/usr/local/texlive/2023/texmf-dist/tex/latex/sansmathaccent/ot1mathkerncmss.fd
 File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/mathkerncmss.
 )
@@ -1221,15 +1221,15 @@ Overfull \hbox (131.60022pt too wide) has occurred while \output is active
 [3
 
 ]
-<cnn.png, id=181, 898.35625pt x 204.765pt>
+<cnn.png, id=189, 898.35625pt x 204.765pt>
 File: cnn.png Graphic file (type png)
 <use cnn.png>
-Package pdftex.def Info: cnn.png  used on input line 171.
+Package pdftex.def Info: cnn.png  used on input line 172.
 (pdftex.def)             Requested size: 269.50894pt x 61.42996pt.
-<cnbc.png, id=196, 997.7275pt x 174.6525pt>
+<cnbc.png, id=204, 997.7275pt x 174.6525pt>
 File: cnbc.png Graphic file (type png)
 <use cnbc.png>
-Package pdftex.def Info: cnbc.png  used on input line 171.
+Package pdftex.def Info: cnbc.png  used on input line 172.
 (pdftex.def)             Requested size: 299.32056pt x 52.39615pt.
 
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
@@ -1259,7 +1259,7 @@ Overfull \hbox (131.60022pt too wide) has occurred while \output is active
 
 [7
 
-] (./prelim_presentation.toc)
+] (./prelim_presentation.toc) (./prelim_presentation.toc)
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
  [][][][][][]  
  []
@@ -1288,54 +1288,54 @@ Overfull \hbox (131.60022pt too wide) has occurred while \output is active
 [11
 
 ]
-LaTeX Font Info:    Calculating math sizes for size <3> on input line 274.
+LaTeX Font Info:    Calculating math sizes for size <3> on input line 277.
 
 
 LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <2.09999> not available
-(Font)              size <3> substituted on input line 274.
+(Font)              size <3> substituted on input line 277.
 
 
 LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <1.5> not available
-(Font)              size <3> substituted on input line 274.
+(Font)              size <3> substituted on input line 277.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <3> not available
-(Font)              size <5> substituted on input line 274.
+(Font)              size <5> substituted on input line 277.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <2.09999> not available
-(Font)              size <5> substituted on input line 274.
+(Font)              size <5> substituted on input line 277.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <1.5> not available
-(Font)              size <5> substituted on input line 274.
+(Font)              size <5> substituted on input line 277.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <3> not available
-(Font)              size <5> substituted on input line 274.
+(Font)              size <5> substituted on input line 277.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <2.09999> not available
-(Font)              size <5> substituted on input line 274.
+(Font)              size <5> substituted on input line 277.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <1.5> not available
-(Font)              size <5> substituted on input line 274.
+(Font)              size <5> substituted on input line 277.
 
 
 LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <3> not available
-(Font)              size <5> substituted on input line 274.
+(Font)              size <5> substituted on input line 277.
 
 
 LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <2.09999> not available
-(Font)              size <5> substituted on input line 274.
+(Font)              size <5> substituted on input line 277.
 
 
 LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <1.5> not available
-(Font)              size <5> substituted on input line 274.
+(Font)              size <5> substituted on input line 277.
 
 
-Overfull \vbox (76.25105pt too high) detected at line 274
+Overfull \vbox (76.25105pt too high) detected at line 277
  []
 
 
@@ -1388,7 +1388,7 @@ Overfull \hbox (131.60022pt too wide) has occurred while \output is active
 [18
 
 ]
-Overfull \vbox (110.52533pt too high) detected at line 350
+Overfull \vbox (110.52533pt too high) detected at line 353
  []
 
 
@@ -1422,24 +1422,24 @@ LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 3.5pt have occurred.
 
 Package rerunfilecheck Info: File `prelim_presentation.out' has not changed.
-(rerunfilecheck)             Checksum: 17D611B092212535F57307C5F7781A5F;2624.
+(rerunfilecheck)             Checksum: E63768EB844F59D94AE752ECAC74D8B5;2818.
 Package logreq Info: Writing requests to 'prelim_presentation.run.xml'.
 \openout1 = `prelim_presentation.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 39505 strings out of 476025
- 804949 string characters out of 5790017
+ 39533 strings out of 476025
+ 805584 string characters out of 5790017
  1887388 words of memory out of 5000000
- 59209 multiletter control sequences out of 15000+600000
+ 59233 multiletter control sequences out of 15000+600000
  527223 words of font info for 88 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,15n,131p,752b,1588s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on prelim_presentation.pdf (20 pages, 338333 bytes).
+Output written on prelim_presentation.pdf (20 pages, 338677 bytes).
 PDF statistics:
- 834 PDF objects out of 1000 (max. 8388607)
- 726 compressed objects within 8 object streams
- 64 named destinations out of 1000 (max. 500000)
- 371 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 844 PDF objects out of 1000 (max. 8388607)
+ 735 compressed objects within 8 object streams
+ 66 named destinations out of 1000 (max. 500000)
+ 393 words of extra memory for PDF output out of 10000 (max. 10000000)
 

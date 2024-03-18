@@ -130,6 +130,7 @@
 
 \begin{document}
 
+\part{one}
 %% title frame
 \begin{frame}
 \titlepage
@@ -160,7 +161,7 @@
 
 \begin{frame}
 
-    \begin{example}{    Example: weekend of March 7th and 8th, 2020        }
+    \begin{example}
     \href{https://www.cnbc.com/2020/03/08/opec-deal-collapse-sparks-price-war-20-oil-in-2020-is-coming.html}{\includegraphics[scale=.3]{cnn.png}}
     \end{example}
 
@@ -184,7 +185,7 @@ Forecasting is possible under structural shocks, so long as we incorporate exter
     \begin{itemize}
         \item GARCH is slow to react \parencite[][]{andersen2003modeling}
         \item Asymmetric GARCH models catch up faster but need post-shock data
-        \item Realized GARCH \parencite[][]{hansen2012realized}, in our setting, would require post-shock information and/or high-frequency data in order to outperform, and the model is highly parameterized
+        \item Realized GARCH \parencite[][]{hansen2012realized}, in our setting, would require post-shock information and/or high-frequency data in order to outperform, and Realized GARCH is highly parameterized
     \end{itemize}
 \end{frame}
 
@@ -200,13 +201,15 @@ Forecasting is possible under structural shocks, so long as we incorporate exter
         \item \cite[][]{lin2021minimizing} use distanced-based weighting (a similarity approach) to aggregate and weight fixed effects from a donor pool
     \end{itemize}
 \end{frame}
+
+\part{two}
+\section{Setting}
 % Outline frame
-\begin{frame}{Outline}
-    \tableofcontents
+\begin{frame}{Outline} % https://tex.stackexchange.com/questions/73196/beamer-table-of-contents-shade-all-previous-sections
+    \tableofcontents[part=1,currentsection]\tableofcontents
 \end{frame}
 
 % Presentation structure
-\section{Setting}
 
 % Setting for the problem
 \begin{frame}
