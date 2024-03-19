@@ -14,8 +14,6 @@ library(gridExtra)
 
 # https://stackoverflow.com/questions/69054275/loading-multiple-rdata-and-binding-into-a-single-data-frame
 
-dev.new(width=2, height=2)
-
 #https://gist.github.com/bannister/8002800
 
 sysname <- Sys.info()["sysname"]
@@ -28,9 +26,10 @@ if(sysname == "Darwin") {
 
 path <- getwd()
 
-files <- list.files(path=path, pattern = ".*TueMar1215*.*Rdata$")
-results <- sapply(files, function(x) mget(load(x)), simplify = TRUE)
-output <- do.call(rbind, results)
+files <- list.files(path=path, pattern = ".*Mar18*.*Rdata$")
+#results <- sapply(files, function(x) mget(load(x)), simplify = TRUE)
+#output <- do.call(rbind, results)
+output <- load(files)
 rownames(output) <- NULL
 data.frame(sapply(output,class))
 
@@ -39,8 +38,6 @@ data.frame(sapply(output,length_unique))
 
 output <- as.data.frame(sapply(output, as.numeric)) #<- sapply is here
 data.frame(sapply(output,class))
-
-
 
 #Check that things vary correctly cross vol models
 check <- output %>% group_by(vol_model) %>%
@@ -55,6 +52,8 @@ unique_count_df <- apply(output, 2, function(x) length(unique(x)))
 # We drop these columns.
 columns_we_want <- names(unique_count_df)[unique_count_df != 1]
 reduced_df <- output[names(output) %in% columns_we_want]
+
+print(columns_we_want)
 
 #First specify which vol model one want to focus on
 #vol_model_chosen <- reduced_df[reduced_df$vol_model == 1,]
