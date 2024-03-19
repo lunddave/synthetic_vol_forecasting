@@ -217,7 +217,7 @@ Forecasting is possible under structural shocks, so long as we incorporate exter
 
 \begin{itemize}
 \item After-hours trading provides a poor forum in which to digest news
-\item The news constitues public, material information relevant to one or more traded assets
+\item The news constitutes public, material information relevant to one or more traded assets
 \item The qualitative aspects of the news provide basis upon which to match to past events
 
 \end{itemize}
@@ -313,15 +313,7 @@ Populate once notational details are decided.
 \section{Properties of Volatility Shock and Shock Estimators}
 \frametitle{Two Consistency Results}
 
-
-
 \section{Real Data Example}
-
-\begin{frame}
-\frametitle{Some things to think about with papers like this}
-
-\end{frame}
-
 
 \section{Numerical Examples}
 
@@ -333,7 +325,7 @@ Populate once notational details are decided.
 \end{frame}
 
 \begin{frame}
-\frametitle{A more benign example}
+\frametitle{Additional Simulations}
 
 \begin{example}[Coverging at the slowest rate possible]
 Fix $\alpha = 1, \beta > 1$.  Let $\lambda_{i} = \frac{1}{i \log^{\beta}(i+1)}$.
@@ -341,20 +333,6 @@ Fix $\alpha = 1, \beta > 1$.  Let $\lambda_{i} = \frac{1}{i \log^{\beta}(i+1)}$.
 \end{example}
 
 \end{frame}
-
-\begin{frame}
-\frametitle{How noise is hidden just right}
-
-\end{frame}
-
-\begin{frame}
-After all of this waiting, we formalize the notion under discussion.
-
-\begin{definition}[Asymptotically Benign]
-
-\end{definition}
-\end{frame}
-
 
 \section{Discussion}
 
@@ -384,13 +362,20 @@ After all of this waiting, we formalize the notion under discussion.
         \end{itemize}
 \end{frame}
    
-
 \begin{frame}
     \frametitle{New Frontiers in Aggregation Methods}
     \begin{itemize}
-        
+        \item Integrate lessons from literature on under/over reactions to information shocks \parencite[][]{jiang2017information}
         \item{Synthetic Impulse Response Functions}
         \end{itemize}
+\end{frame}
+
+\begin{frame}{Synthetic Impulse Response Functions: A Proposal}
+    \begin{itemize}
+        \item Suppose we have a multivariate time series of dimension $p times T$ subject to shocks from a common shock distribution
+        \item Using an IRF estimate aggregated from the first $n$ shocks of interest, we predict the response of variable $i$ from variable $j$, $1\leq i \leq j \leq p$. 
+    \end{itemize}
+    
 \end{frame}
 \section{Supplement}
 We analyze the real-world example with Brexit included.

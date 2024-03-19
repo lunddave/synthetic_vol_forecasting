@@ -77,7 +77,9 @@ non_NA <- df_only_one_outcome[complete.cases(df_only_one_outcome),]
 
 # https://statisticsglobe.com/heatmap-in-r
 
-non_NA <- non_NA[non_NA$p == 45,]
+unique(non_NA$p)
+
+non_NA <- non_NA[non_NA$p == 30,]
 
 means <- non_NA %>% group_by(vol_shock_sd, M21_M22_vol_mu_delta) %>% summarise(prop=mean(success))
 means <- as.data.frame(sapply(means, as.numeric))

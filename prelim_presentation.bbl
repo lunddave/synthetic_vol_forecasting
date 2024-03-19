@@ -288,6 +288,42 @@
       \field{pages}{877\bibrangedash 906}
       \range{pages}{30}
     \endentry
+    \entry{jiang2017information}{article}{}
+      \name{author}{2}{}{%
+        {{hash=3ce7e499edd7b3bb4d263d96aaca0b30}{%
+           family={Jiang},
+           familyi={J\bibinitperiod},
+           given={George\bibnamedelima J},
+           giveni={G\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=d3ddc3579890e7be921c441b81429fe4}{%
+           family={Zhu},
+           familyi={Z\bibinitperiod},
+           given={Kevin\bibnamedelima X},
+           giveni={K\bibinitperiod\bibinitdelim X\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{232b872a5ac874291776cfd83b95b1c7}
+      \strng{fullhash}{232b872a5ac874291776cfd83b95b1c7}
+      \strng{bibnamehash}{232b872a5ac874291776cfd83b95b1c7}
+      \strng{authorbibnamehash}{232b872a5ac874291776cfd83b95b1c7}
+      \strng{authornamehash}{232b872a5ac874291776cfd83b95b1c7}
+      \strng{authorfullhash}{232b872a5ac874291776cfd83b95b1c7}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Financial Economics}
+      \field{number}{1}
+      \field{title}{Information shocks and short-term market underreaction}
+      \field{volume}{124}
+      \field{year}{2017}
+      \field{pages}{43\bibrangedash 64}
+      \range{pages}{22}
+    \endentry
     \entry{lin2021minimizing}{article}{}
       \name{author}{2}{}{%
         {{hash=0840dad5e484231880452bc328d144a2}{%

@@ -57,41 +57,37 @@
 \headcommand {\beamer@sectionpages {19}{18}}
 \headcommand {\beamer@subsectionpages {19}{18}}
 \headcommand {\sectionentry {5}{Real Data Example}{19}{Real Data Example}{2}}
-\headcommand {\slideentry {5}{0}{1}{19/19}{}{2}}
+\headcommand {\beamer@sectionpages {19}{18}}
+\headcommand {\beamer@subsectionpages {19}{18}}
+\headcommand {\sectionentry {6}{Numerical Examples}{19}{Numerical Examples}{2}}
+\headcommand {\slideentry {6}{0}{1}{19/19}{}{2}}
 \headcommand {\beamer@framepages {19}{19}}
-\headcommand {\beamer@sectionpages {19}{19}}
-\headcommand {\beamer@subsectionpages {19}{19}}
-\headcommand {\sectionentry {6}{Numerical Examples}{20}{Numerical Examples}{2}}
-\headcommand {\slideentry {6}{0}{1}{20/20}{}{2}}
+\headcommand {\slideentry {6}{0}{2}{20/20}{}{2}}
 \headcommand {\beamer@framepages {20}{20}}
-\headcommand {\slideentry {6}{0}{2}{21/21}{}{2}}
+\headcommand {\beamer@sectionpages {19}{20}}
+\headcommand {\beamer@subsectionpages {19}{20}}
+\headcommand {\sectionentry {7}{Discussion}{21}{Discussion}{2}}
+\headcommand {\beamer@sectionpages {21}{20}}
+\headcommand {\beamer@subsectionpages {21}{20}}
+\headcommand {\sectionentry {8}{Future directions for Synthetic Volatility Forecasting}{21}{Future directions for Synthetic Volatility Forecasting}{2}}
+\headcommand {\slideentry {8}{0}{1}{21/21}{}{2}}
 \headcommand {\beamer@framepages {21}{21}}
-\headcommand {\slideentry {6}{0}{3}{22/22}{}{2}}
+\headcommand {\slideentry {8}{0}{2}{22/22}{}{2}}
 \headcommand {\beamer@framepages {22}{22}}
-\headcommand {\slideentry {6}{0}{4}{23/23}{}{2}}
+\headcommand {\slideentry {8}{0}{3}{23/23}{}{2}}
 \headcommand {\beamer@framepages {23}{23}}
-\headcommand {\beamer@sectionpages {20}{23}}
-\headcommand {\beamer@subsectionpages {20}{23}}
-\headcommand {\sectionentry {7}{Discussion}{24}{Discussion}{2}}
-\headcommand {\beamer@sectionpages {24}{23}}
-\headcommand {\beamer@subsectionpages {24}{23}}
-\headcommand {\sectionentry {8}{Future directions for Synthetic Volatility Forecasting}{24}{Future directions for Synthetic Volatility Forecasting}{2}}
-\headcommand {\slideentry {8}{0}{1}{24/24}{}{2}}
+\headcommand {\slideentry {8}{0}{4}{24/24}{}{2}}
 \headcommand {\beamer@framepages {24}{24}}
-\headcommand {\slideentry {8}{0}{2}{25/25}{}{2}}
+\headcommand {\beamer@sectionpages {21}{24}}
+\headcommand {\beamer@subsectionpages {21}{24}}
+\headcommand {\sectionentry {9}{Supplement}{25}{Supplement}{2}}
+\headcommand {\beamer@sectionpages {25}{24}}
+\headcommand {\beamer@subsectionpages {25}{24}}
+\headcommand {\sectionentry {10}{References}{25}{References}{2}}
+\headcommand {\slideentry {10}{0}{0}{25/25}{}{2}}
 \headcommand {\beamer@framepages {25}{25}}
-\headcommand {\slideentry {8}{0}{3}{26/26}{}{2}}
-\headcommand {\beamer@framepages {26}{26}}
-\headcommand {\beamer@sectionpages {24}{26}}
-\headcommand {\beamer@subsectionpages {24}{26}}
-\headcommand {\sectionentry {9}{Supplement}{27}{Supplement}{2}}
-\headcommand {\beamer@sectionpages {27}{26}}
-\headcommand {\beamer@subsectionpages {27}{26}}
-\headcommand {\sectionentry {10}{References}{27}{References}{2}}
-\headcommand {\slideentry {10}{0}{0}{27/27}{}{2}}
-\headcommand {\beamer@framepages {27}{27}}
-\headcommand {\beamer@partpages {8}{28}}
-\headcommand {\beamer@subsectionpages {27}{28}}
-\headcommand {\beamer@sectionpages {27}{28}}
-\headcommand {\beamer@documentpages {28}}
-\headcommand {\gdef \inserttotalframenumber {27}}
+\headcommand {\beamer@partpages {8}{26}}
+\headcommand {\beamer@subsectionpages {25}{26}}
+\headcommand {\beamer@sectionpages {25}{26}}
+\headcommand {\beamer@documentpages {26}}
+\headcommand {\gdef \inserttotalframenumber {25}}
