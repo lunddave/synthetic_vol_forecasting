@@ -26,11 +26,11 @@ if(sysname == "Darwin") {
 
 path <- getwd()
 
-files <- list.files(path=path, pattern = ".*Mar18*.*Rdata$")
+files <- list.files(path=path, pattern = ".*MonMar1823*.*Rdata$")
 #results <- sapply(files, function(x) mget(load(x)), simplify = TRUE)
 #output <- do.call(rbind, results)
-output <- load(files)
-rownames(output) <- NULL
+load(files)
+# rownames(output) <- NULL
 data.frame(sapply(output,class))
 
 length_unique <- function(x) {return(length(unique(x)))}
@@ -78,11 +78,11 @@ non_NA <- df_only_one_outcome[complete.cases(df_only_one_outcome),]
 
 unique(non_NA$p)
 
-non_NA <- non_NA[non_NA$p == 30,]
+non_NA <- non_NA[non_NA$p == 5,]
 
 means <- non_NA %>% group_by(vol_shock_sd, M21_M22_vol_mu_delta) %>% summarise(prop=mean(success))
 means <- as.data.frame(sapply(means, as.numeric))
-means$prop <- round(means$prop, 2)
+means$prop <- round(means$prop, 3)
 
 count <- non_NA %>% group_by(vol_shock_sd, M21_M22_vol_mu_delta) %>% count()
 count
