@@ -9,36 +9,36 @@ Warning--empty journal in guerron2017macroeconomic
 Warning--empty journal in hendry1994theory
 You've used 49 entries,
             2773 wiz_defined-function locations,
-            893 strings with 12638 characters,
-and the built_in function-call counts, 20919 in all, are:
-= -- 1919
-> -- 1015
+            891 strings with 12632 characters,
+and the built_in function-call counts, 20993 in all, are:
+= -- 1923
+> -- 1026
 < -- 41
-+ -- 349
-- -- 300
-* -- 1602
-:= -- 3196
-add.period$ -- 153
++ -- 352
+- -- 303
+* -- 1611
+:= -- 3203
+add.period$ -- 151
 call.type$ -- 49
-change.case$ -- 240
+change.case$ -- 241
 chr.to.int$ -- 49
 cite$ -- 102
 duplicate$ -- 1014
-empty$ -- 1835
-format.name$ -- 387
-if$ -- 4402
+empty$ -- 1839
+format.name$ -- 392
+if$ -- 4418
 int.to.chr$ -- 1
 int.to.str$ -- 1
 missing$ -- 50
-newline$ -- 256
+newline$ -- 254
 num.names$ -- 196
-pop$ -- 482
+pop$ -- 485
 preamble$ -- 1
-purify$ -- 196
+purify$ -- 197
 quote$ -- 0
-skip$ -- 766
+skip$ -- 769
 stack$ -- 0
-substring$ -- 860
+substring$ -- 872
 swap$ -- 86
 text.length$ -- 6
 text.prefix$ -- 0
@@ -47,5 +47,5 @@ type$ -- 514
 warning$ -- 4
 while$ -- 211
 width$ -- 0
-write$ -- 636
+write$ -- 632
 (There were 4 warnings)

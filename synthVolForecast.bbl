@@ -10,6 +10,11 @@ Alberto Abadie and Javier Gardeazabal.
 \newblock The economic costs of conflict: A case study of the basque country.
 \newblock \emph{American Economic Review}, 93\penalty0 (1):\penalty0 113--132, 2003.
 
+\bibitem[Abadie and L’hour(2021)]{abadie2021penalized}
+Alberto Abadie and J{\'e}r{\'e}my L’hour.
+\newblock A penalized synthetic control estimator for disaggregated data.
+\newblock \emph{Journal of the American Statistical Association}, 116\penalty0 (536):\penalty0 1817--1834, 2021.
+
 \bibitem[Abadie and Vives-i Bastida(2022)]{abadie2022synthetic}
 Alberto Abadie and Jaume Vives-i Bastida.
 \newblock Synthetic controls in action.
@@ -184,13 +189,6 @@ Lutz Kilian and Helmut L{\"u}tkepohl.
 Jilei Lin and Daniel~J Eck.
 \newblock Minimizing post-shock forecasting error through aggregation of outside information.
 \newblock \emph{International Journal of Forecasting}, 2021.
-
-\bibitem[Markowitz(1952)]{markowitz1952}
-Harry Markowitz.
-\newblock Portfolio selection.
-\newblock \emph{The Journal of Finance}, 7\penalty0 (1):\penalty0 77--91, 1952.
-\newblock ISSN 00221082, 15406261.
-\newblock URL \url{http://www.jstor.org/stable/2975974}.
 
 \bibitem[Mayhew(2008)]{mayhew2008incumbency}
 David~R Mayhew.
