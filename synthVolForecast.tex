@@ -38,6 +38,7 @@
 \geometry{margin=0.8in}
 
 % function definition
+\newcommand{\weight}{\pi}
 \newcommand{\ret}{\textbf{r}}
 \newcommand{\y}{\textbf{y}}
 \newcommand{\w}{\textbf{w}}
@@ -163,7 +164,7 @@ Our procedure is an automated procedure for intercept adjustments using either d
 
 Outside of \citet{lin2021minimizing}, we know of no prior work that both introduces a parametric specification for nonzero errors and introduces a procedure for weighting appropriately the nonzero errors of similar shocks.  Likewise, we are not familiar with any prior work that attempts to account for anticipated nonzero errors using an explicit parametric adjustment.  This current work is a contribution to the forecast adjustment literature but also aims for the virtues of robustness, risk-minization, and model interpretability, akin to the departures from nearest neighbors discussed in \citet{abadie2021penalized}.  \citet{guerron2017macroeconomic}, citing previous work, discuss that intercept corrections find their theoretical basis in the occurrence of structural breaks, whereas Nearest-Neighbor methods, being nonparametric, are theoretically more adept at accounting for nonlinearity.  By using convex combinations of donor pool quantities to adjust forecasts, we are generalizing Nearest-Neighbor methods while also providing robustness, risk-minization, and model interpretability \textcolor{red}{is our work actually a generalization of Nearest-Neighbor methods in the sense that Nearest-Neighbor methods make more restrictive assumptions? I would be careful here}\textcolor{green}{One can view NN as a particular case of distance-based weighting where the donor pool is initially chosen to be large and then the number of donors with nonzero weights is exactly $1/k$ for some reasonable choice of $k.$.  The particular location of the time series under study is not considered once neighors are identified.  Here, we do the curation but then weight the donors so as to recover the time series under study.  Now, does it flatter our method to say it that way?}. 
 
-In order to motivate our procedure, we show how the aggregation of estimated excess volatilities from donors in the donor pool works when the correction function is the arithmetic mean.  As we see in Figure \ref{fig:arith_mean_example_introduction}, the arithmetic mean of excess volatilities provides perhaps the most straightforward and intuitive way of aggregating information from similar events.  Taking the average also coincides with the $K$-Nearest-Neighbor estimator, where $K$ is equal to the number of donors in the donor pool. Aggregating forecasts using the arithmetic mean is more than merely intuitive; it is known to be optimal under rather restrictive conditions \citep{timmermann2006forecast}.  Synthetic Volatility Forecasting lacks these restrictions \textcolor{red}{What restrictions? The previous sentences do not mention any restrictions}\textcolor{green}{Yes combining forecasts by weighting by the inverse of sigma is known to be good -- but it might be unnecessary to explain this in more detail} and instead assumes a credible, parsimonious parameterization in which the shock is an affine transformation of several key covariates.  The key intuition behind this parameterization is that as the strength of the signal increases relative to the idiosyncratic error, the GARCH estimation of these effects increases in accuracy.  From this, it follows that the aggregated shock estimate increases in accuracy. 
+In order to motivate our procedure, we show how the aggregation of estimated excess volatilities from donors in the donor pool works when the correction function is the arithmetic mean.  As we see in Figure \ref{fig:arith_mean_example_introduction}, the arithmetic mean of excess volatilities provides perhaps the most straightforward and intuitive way of aggregating information from similar events.  Taking the average also coincides with the $K$-Nearest-Neighbor estimator, where $K$ is equal to the number of donors in the donor pool. Although using the arithmetic mean is intuitive and enjoys some empirical track record, its grounding in theory is much less impressive \citep{timmermann2006forecast}.  Synthetic Volatility Forecasting assumes a credible, parsimonious parameterization in which the shock is an affine transformation of several key covariates.  The key intuition behind this shock parameterization is that as the strength of the linear signal increases relative to the idiosyncratic error, the GARCH estimation of these effects increases in accuracy.  From this, it follows that the aggregated shock estimate increases in accuracy. 
 
   \begin{figure}[h]
     \begin{center}
@@ -186,9 +187,9 @@ To that end, let $a_{t} = r_{t} - \mu_{t}$, where $\mu_{t}$ is the mean of the l
 &a_{t} = \sigma_{t}\epsilon_{t}\\
 &\epsilon_{t} \simiid E[\epsilon_{t}]=0, Var[\epsilon_{t}] = 1\\
 &\forall k,j, \alpha_{k},\beta_{j}\geq 0\\ 
-&\forall t, \omega, \sigma_{t} > 0 
+&\forall t, \omega, \sigma_{t} > 0 \text { .} 
 \end{align*}
-Assuming further that $\sigma^{2}_{t}$ depends on a vector of exogenous covariates $\x_{t}$, we have a  GARCH-X$(m,s)$. \textcolor{green}{Readers will assume that we did not invent this model?}.  The volatility equation then becomes 
+Assuming further that $\sigma^{2}_{t}$ depends on a vector of exogenous covariates $\x_{t}$, we have a  GARCH-X$(m,s)$.  The volatility equation then becomes 
 
 
 \begin{align}
@@ -278,8 +279,8 @@ where $D^{level}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + L_{i, level}\})$ and $L
 We present two forecasts:
 
 \begin{align*}
-  \text{Forecast 1: } & \hat\sigma^{2}_{unadjusted}  \hat\E_{T^{*}}[\sigma^{2}_{i,T^{*}+1}|\mathcal{F}_{T^{*}}] = \hat\omega_{i} + \sum^{m_{i}}_{k=1}\hat\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\hat\beta_{i,j}\sigma_{i,t-j}^{2} + \hat\gamma_{i}^{T} \x_{i,t}\\
-  \text{Forecast 2: }  & \hat\sigma^{2}_{adjusted}  \hat\E_{T^{*}}[\sigma^{2}_{i,T^{*}+1}|\mathcal{F}_{T^{*}}] + \hat\omega^{*} = \hat\omega_{i} + \sum^{m_{i}}_{k=1}\hat\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\hat\beta_{i,j}\sigma_{i,t-j}^{2} + \hat\gamma_{i}^{T} \x_{i,t} + \hat\omega^{*} 
+  \text{Forecast 1: } & \hat\sigma^{2}_{unadjusted} = \hat\E_{T^{*}}[\sigma^{2}_{i,T^{*}+1}|\mathcal{F}_{T^{*}}] = \hat\omega_{i} + \sum^{m_{i}}_{k=1}\hat\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\hat\beta_{i,j}\sigma_{i,t-j}^{2} + \hat\gamma_{i}^{T} \x_{i,t}\\
+  \text{Forecast 2: } & \hat\sigma^{2}_{adjusted} = \hat\E_{T^{*}}[\sigma^{2}_{i,T^{*}+1}|\mathcal{F}_{T^{*}}] + \hat\omega^{*} = \hat\omega_{i} + \sum^{m_{i}}_{k=1}\hat\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\hat\beta_{i,j}\sigma_{i,t-j}^{2} + \hat\gamma_{i}^{T} \x_{i,t} + \hat\omega^{*} \text{ .}
 \end{align*}
 
 A GARCH model is an ARMA on the squares of the observed scalar time series \citep{tsay2005analysis}.  This fact matters for forecasting because the $h$-step-ahead forecasting function for GARCH model is, just like for an ARMA model, the conditional expectation function, $\mathbb{E}[ \sigma^{2}_{i,T^{*}+h} | \mathcal{F}_{T^{*}}]$, or practically speaking, the estimate thereof, $\hat{\mathbb{E}}[ \sigma^{2}_{i,T^{*}+h} |\mathcal{F}_{T^{*}}]$ \citep{zivot2009practical}.  Here we present forecasts for GARCH(1,1), without loss of generality.  For $h=2,3,4,...$, the conditional expectation is computed recursively, as is standard for iterative autoregressive forecasts.
@@ -287,10 +288,10 @@ A GARCH model is an ARMA on the squares of the observed scalar time series \cite
 \subsection{Excess Volatility Estimators}
     \label{Excess Volatility Estimators}
    
-    The problem of aggregating estimated donor shocks begins with the data constraints.  Taking the estimated shocks as a given, we essentially observe the pair $(\{\hat\omega^{*}_{i}\}^{n+1}_{i=2},\{\x_{i,T^{*}}\}^{n+1}_{i=2})$.  We wish to recover weights $\{w_{i}\}^{n+1}_{i=2} \in \Delta^{n}$ that will minimize expected loss.  Let $L(\cdot,\cdot)$ denote any loss function, not necessarily symmetric, mapping two quantities to the non-negative reals.  Let $\hat\sigma^{2}$ denote any forecast for $\sigma^{2}$, where we consider an $h=1$ step-ahead forecast, for simplicity.  
-We now explain how we use the volatility profile to arrive at a set of nonnegative weights that sum to 1.  These weights are then used to compute $\hat\omega^{*} \coloneq \sum^{n+1}_{i=2}w_{i}\hat\omega^{*}_{i}$.  Since the $\{w_{i}\}_{i=2}^{n+1}$ are computed using information from $\mathcal{F}_{T^{*}_{i}}$, the set $\{w_{i}\}_{i=2}^{n+1}$ is deterministic, $\textit{modulo}$ any stochastic ingredient in the numerical methods employed to approximate $\x_{1,T^{*}}$ using a convex combination of donor covariates.  We will say more about risk minimization in section $\ref{SVF_properties}$. 
+    The problem of aggregating estimated donor shocks begins with the data constraints.  Taking the estimated shocks as a given, we essentially observe the pair $(\{\hat\omega^{*}_{i}\}^{n+1}_{i=2},\{\x_{i,T^{*}}\}^{n+1}_{i=2})$.  We wish to recover weights $\{\weight_{i}\}^{n+1}_{i=2} \in \Delta^{n}$ that will minimize expected loss.  Let $L(\cdot,\cdot)$ denote any loss function, not necessarily symmetric, mapping two quantities to the non-negative reals.  Let $\hat\sigma^{2}$ denote any forecast for $\sigma^{2}$, where we consider an $h=1$ step-ahead forecast, for simplicity.  
+We now explain how we use the volatility profile to arrive at a set of nonnegative weights that sum to 1.  These weights are then used to compute $\hat\omega^{*} \coloneq \sum^{n+1}_{i=2}\weight_{i}\hat\omega^{*}_{i}$.  Since the $\{\weight_{i}\}_{i=2}^{n+1}$ are computed using $\mathcal{F}_{T^{*}_{i}}$, the set $\{\weight_{i}\}_{i=2}^{n+1}$ is deterministic, $\textit{modulo}$ any stochastic ingredient in the numerical methods employed to approximate $\x_{1,T^{*}}$ using a convex combination of donor covariates.  We will say more about risk minimization in section $\ref{SVF_properties}$. 
 
-There are at least two senses of optimal weights that one might be interested in.  First, we can think of optimal weights as a set $\{w_{i}\}_{i=2}^{n+1}$ such that $\omega_{1} = \sum^{n+1}_{i=2}w_{i}\hat\omega_{i}$, i.e., $\omega_{1}$ belongs to convex hull of the estimated shocks.  There also exists a second sense of optimality, in which, for a given $\sigma_{t}^{2}$, the weights allow us to predict with zero loss. \textcolor{red}{I think this can be ignored or it can be briefly stated as a comment somewhere in the section where weights are introduced.}\textcolor{green}{Moved to this section.}
+There are at least two senses of optimal weights that one might be interested in.  First, we can think of optimal weights as a set $\{\weight_{i}\}_{i=2}^{n+1}$ such that $\omega_{1} = \sum^{n+1}_{i=2}\weight_{i}\hat\omega_{i}$, i.e., $\omega_{1}$ is recovered perfectly, as it belongs to convex hull of the estimated shocks.  There also exists a second sense of optimality, in which, for a given $\sigma_{t}^{2}$, the weights allow us to predict with zero loss. \textcolor{red}{I think this can be ignored or it can be briefly stated as a comment somewhere in the section where weights are introduced.}\textcolor{green}{Moved to this section.}
   
     \subsection{Ground Truth Estimators}
     \label{Ground Truth Estimators}
@@ -307,13 +308,13 @@ There are at least two senses of optimal weights that one might be interested in
 
 \subsection{Loss Functions}
 
-We are interested in a point forecast for $\sigma^{2}_{1,T^{*}+h}$, $h=1,2,...,H$, the $h$-step ahead conditional variance for the time series under study, up to a forecast length of $H$.  \textcolor{red}{The forecast performance evaluation uses three distinct loss functions, each computed using three families of estimators for the ground truth that we seek.  This should change, since we are using just QL in the paper.}.  Let $L^{h}$ with the subscripted pair $\{$prediction method, ground truth estimator$\}$, denote the loss function for an $h$-step-ahead forecast using a given prediction function and ground truth estimator.  For example, one loss function of interest in this study is the 1-step-ahead MSE using Synthetic Volatility Forecasting and Realized Volatility:
+We are interested in point forecasts for $\sigma^{2}_{1,T^{*}+h}|\mathcal{F}_{T^{*}}$, $h=1,2,...,H$, the $h$-step ahead conditional variance for the time series under study, up to a forecast length of $H$.  Let $L^{h}$ with the subscripted pair $\{$prediction method, ground truth estimator$\}$, denote the loss function for an $h$-step-ahead forecast using a given prediction function and ground truth estimator.  For example, one loss function of interest in this study is the 1-step-ahead MSE using Synthetic Volatility Forecasting and Realized Volatility:
 
-$$ MSE^{1}_{SVF, RV} = (\hat\sigma^{2}_{SVF} - \hat\sigma^{2}_{RV})^{2}$$
+$$ \text{MSE}^{1}_{\text{SVF, RV}} = (\hat\sigma^{2}_{SVF} - \hat\sigma^{2}_{RV})^{2}$$
 
-In more generality, for a volatility forecast with forecast length $H$, the loss function is 
+In more generality, for a volatility forecast with forecast length $H$, the MSE is 
 
-$$ MSE^{H}_{method, ground truth} = \frac{1}{H}\sum_{h=1}^{H}(\hat\sigma^{2}_{h, method} - \hat\sigma^{2}_{h, ground truth})^{2}$$
+$$ \text{MSE}^{H}_{method, ground truth} = \frac{1}{H}\sum_{h=1}^{H}(\hat\sigma^{2}_{h, method} - \hat\sigma^{2}_{h, ground truth})^{2}$$
 
 Also of interest in mean absolute-percentage-error for an h-step-ahead forecast, defined as
 
@@ -338,18 +339,18 @@ The model $\mc{M}_1$ is defined by a volatility equation and mean equation, as i
 Note that under the popular GARCH(1,1), a dual level-volatility shock has an marginal effect on the conditional variance $\sigma^{2}_{i,t}$ that reflects the geometric decay of innovations in autoregressive models.  As usual, assume $\alpha+\beta < 1$.  Furthermore, assume that both the volatility shock $\omega^{*}_{i}$ and the level shock $\epsilon^{*}_{i,t}$ are of length one only, and consider a circumstance with no exogenous regressor $\x_{i,t}$. Assume also that $r\geq 2$, which is necessary in order to isolate the effects of the level shock $\epsilon^{*}_{i,t}$.
 
 \begin{align}
-\sigma^{2}_{i,T^{*}+r+1} & = \omega_{i} + \alpha_{i} a_{T^{*}+r}^{2} + \beta_{i}\sigma^{2}_{i,T^{*}+r} \label{eq0}\\
+\sigma^{2}_{i,T^{*}+r+1} | \mathcal{F}_{T^{*}+r} & = \omega_{i} + \alpha_{i} a_{T^{*}+r}^{2} + \beta_{i}\sigma^{2}_{i,T^{*}+r} \label{eq0}\\
 & = \omega_{i} + \alpha_{i}(\sigma_{i,T^{*}+r}\epsilon_{T^{*}+r})^{2} + \beta_{i}\sigma^{2}_{i,T^{*}+r}\notag \\
 & = \omega_{i} + \sigma^{2}_{i,T^{*}+r}(\alpha_{i} (\epsilon_{T^{*}+r})^{2} + \beta_{i})\notag
 \end{align}
 
-In (\ref{eq0}), observe that $\omega_{i}^{*}$ and $\epsilon^{*}_{i,t}$ each appear at most once, through the term $\sigma^{2}_{T^{*}+r}$.  This might lead one to suspect  geometric decay of the shocks $\omega_{i}^{*}$ and $\epsilon^{*}_{i}$.  Such a suspicion is easier to substantiate by examining the conditional expectation of the variance, $\mathbb{E}[ \sigma^{2}_{i,T^{*}+r+1} |\mathcal{F}_{T^{*}+r}]$, which also happens to be the principal forecasting tool for a GARCH model \citep{zivot2009practical}.  Indeed, if we assume unit variance for all $\epsilon_{i,t}$ except, of course, $\epsilon^{*}_{i,t}$, then we have \textcolor{red}{should $\omega_i$ be random. If so, it should have an expected value. Or does conditioning on the filtration return $\omega_i$? It is not clear, because I am not sure what is assumed about $\omega_i$.}\textcolor{green}{It's a parameter.  Its estimate is a random variable, of course, but here we're just looking at the process unconditionally, or theoretically, or conditional upon $\mathcal{F}{\infty}$.}
+In (\ref{eq0}), observe that $\omega_{i,t}^{*}$ and $\epsilon^{*}_{i,t}$ each appear at most once, through the term $\sigma^{2}_{T^{*}+r}$.  This might lead one to suspect  geometric decay of the shocks $\omega_{i,t}^{*}$ and $\epsilon^{*}_{i}$.  Such a suspicion is easier to substantiate by examining the conditional expectation of the variance, $\mathbb{E}[ \sigma^{2}_{i,T^{*}+r+1} |\mathcal{F}_{T^{*}+r}]$, which also happens to be the principal forecasting tool for a GARCH model \citep{zivot2009practical}.  Indeed, if we assume unit variance for all $\epsilon_{i,t}$ except, of course, $\epsilon^{*}_{i,t}$, then we have
 
 \begin{align*}
 \mathbb{E}[ \sigma^{2}_{i,T^{*}+r+1} |\mathcal{F}_{T^{*}+r}] & = \mathbb{E}[\omega_{i} + \alpha a_{T^{*}+r}^{2} + \beta\sigma^{2}_{i,T^{*}+r} |\mathcal{F}_{T^{*}+r}] \\
 & = \omega_{i} + \mathbb{E}[\alpha(\sigma_{i,T^{*}+r}\epsilon_{T^{*}+r})^{2} |\mathcal{F}_{T^{*}+r}] + \beta\sigma^{2}_{i,T^{*}+r} \\
 & = \omega_{i} + \alpha\sigma_{i,T^{*}+r}^{2} + \beta\sigma^{2}_{i,T^{*}+r} \tag{Due to the unit variance assumption}\\
-& = \omega_{i} + \sigma^{2}_{i,T^{*}+r}(\alpha + \beta) \\
+& = \omega_{i} + \sigma^{2}_{i,T^{*}+r}(\alpha + \beta) \text{ .} \\
 \end{align*}
 
 By repeated substitution, in conditional expectation, the shock is $\mathcal{O}((\alpha+\beta)^{r})$.  We generalize this observation in the following proposition.
@@ -509,25 +510,25 @@ Since the shock is assumed to arrive uniformly at random for each $i$, $1 \leq i
 \end{proof-of-lemma}
 
 \begin{proof-of-proposition}
-The result follows from the consistency proof of the QMLE in GARCH-X models, as established by \citet{han2014asymptotic}. \textcolor{red}{Is this the proof of the Proposition or of the Lemma? I am very confused here.}\textcolor{green}{Proof of lemma now added.}
+The result follows from the consistency proof of the QMLE in GARCH-X models, as established by \citet{han2014asymptotic}. 
 \end{proof-of-proposition}
 
   \subsection{Consistency of the Synthetic Volatility Forecast Function}
 \begin{prop}\label{sigma_consistency}
-  Under the conditions in Proposition \ref{omega_consistency}, $\hat\sigma^{2}_{1,T^{*}+r}\xrightarrow{p}\sigma^{2}_{1,T^{*}+r}, 1\leq r\leq max\{m,s\}$.
+  Under the conditions in Proposition \ref{omega_consistency}, $\hat\sigma^{2}_{adjusted}\xrightarrow{p}\sigma^{2}_{1,T^{*}+1}$. 
 \end{prop}
 
 \begin{proof-of-proposition}
 Recall the conditional expectation of the variance for the GARCH-X($m$,$s$) model:
 
 \begin{align*}
-\E_{T^{*}}[\sigma^{2}_{i,t+1}|\mathcal{F}_{t}] = \omega_{i} + \omega^{*}_i + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t}
+\E_{T^{*}}[\sigma^{2}_{i,t+1}|\mathcal{F}_{t}] = \omega_{i} + \omega^{*}_i + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \text{ .}
 \end{align*}
 
 By replacing parameters with their estimates, we arrive at the prediction 
 
 \begin{align*}
-\hat\sigma^{2}_{i,t+1}|\mathcal{F}_{t} = \hat\omega_{i} + \hat\omega^{*}_i + \sum^{m_{i}}_{k=1}\hat\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\hat\beta_{i,j}\hat\sigma_{i,t-j}^{2} + \hat\gamma_{i}^{T} \x_{i,t}
+\hat\sigma^{2}_{i,t+1}|\mathcal{F}_{t} = \hat\omega_{i} + \hat\omega^{*}_i + \sum^{m_{i}}_{k=1}\hat\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\hat\beta_{i,j}\hat\sigma_{i,t-j}^{2} + \hat\gamma_{i}^{T} \x_{i,t} \text { ,}
 \end{align*}
 
 which converges in probability to 
@@ -536,7 +537,7 @@ which converges in probability to
   \hat\sigma^{2}_{i,t+1}|\mathcal{F}_{t} = \omega_{i} + \omega^{*}_i + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t}
   \end{align*}
 
-as $t\rightarrow\infty$ by a simple application of Slutsky's Theorem. \textcolor{red}{No need to number any equations that are not referenced later.}
+as $t\rightarrow\infty$ by a simple application of Slutsky's Theorem.
 
 \end{proof-of-proposition}
 
@@ -581,6 +582,8 @@ In this section, we demonstrate the effectiveness of the proposed method using M
 In order to investigate the Synthetic Volatility Forecasting method, our most elementary simulation uses $\mc{M}_2$.  We vary only two parameters. 
 
 Recall an $\mc{M}_2$ model on the volatility, which is characterized by an exogenous shock to the volatility equation generated by an affine function of the covariates:
+
+\textcolor{green}{Make sure to bring this into line with final model notation decisions.}
 
 \begin{align*}
 \mc{M}_2 \colon \begin{array}{l}
@@ -730,7 +733,7 @@ Naturally, one might ask how sensitive this prediction is to at least two kinds 
     There is an important question about the stability of the GARCH parameters under the presence of an exogenous shock.  There are at least two reasons that we do not herein explore parameter instability or methods to adjust for it.  First, the marginal effect of coefficient changes at the shock time would, under the assumptions in this work, be swamped by the random effect.  Second, the estimation of post-shock parameter values would require at least several --- better yet dozens --- of post-shock data points, whereas this work assumes access to zero post-shock data points.  However, we do leave over that similarity-based estimators for the GARCH coefficients could be produced, for example, by adapting the methods of \citet{dendramis2020similarity}. \textcolor{red}{This section seems better suited for the Discussion section}\textcolor{green}{Agreed. It has been moved.}
 
 \subsection{Connection to forecast combination methods}
-Because the method proposed uses a point in $\Delta_{n}$, it is important to head-off possible confusion.  What we are proposing is not a forecast combination method.  What we are combining, if anything, is subcomponents of forecasts, not forecasts themselves.  However, from a broader perspective, forecast combination is an inapt term for what is being proposed here.  First, the donors are not forecasts. \textcolor{red}{This does not seem to be complete. Also, is there a way to get this into a paragraph as a minor point?}
+Because the method proposed uses a point in $\Delta^{n}$, it is important to head-off possible confusion.  What we are proposing is not a forecast combination method.  What we are combining, if anything, is subcomponents of forecasts, not forecasts themselves.  However, from a broader perspective, forecast combination is an inapt term for what is being proposed here.  First, the donors are not forecasts. \textcolor{red}{This does not seem to be complete. Also, is there a way to get this into a paragraph as a minor point?}
 
 \subsection{Why is the proposal here like and unlike KNN regression?}
 We are not trying to learn a function, first and foremost.  We are trying to estimate a parameter.
@@ -804,7 +807,7 @@ Then for any $i,t$, $\E[a^{2}_{i,t}|\mathcal{F}_{t-1}]$ is nothing more than the
 \begin{enumerate}
 \item The method under development does not strictly require knowledge of the length of the shocks in the donor pool, but correctly sizing up those shock lengths is helpful to proper estimation of the shocks in the donor pool.  An important question remains: even if the donor pool shock lengths are assumed to be known, how do we advise the operator to forecast the time series under study?  For how long is the forecast reliable?  Should we take a convex combination of the donor pool shock lengths?  Or mean? Or minimum of the donor pool shock lengths?
 
-\item See Tsay p. 133: if $t$ is the last index that has been observed, then our two-step-ahead forecast is made easier by rewriting the volatility equation as $\sigma^{2}_{i,t+1} = w_{i} + (\alpha_{i} + \beta_{i})\sigma^{2}_{i,t} + \alpha_{1}\sigma^{2}_{i,t}[\epsilon^{2}_{i,t} - 1]= w_{i} + (\alpha_{i} + \beta_{i})\sigma^{2}_{i,t} + \alpha_{1}\sigma^{2}_{i,t}[\epsilon^{2}_{i,t} - 1] $.  Usually, we assume unit variance (though not necessarily a N(0,1)).  However, what is the variance is smaller than 1?  Then in conditional expectation, the term $\alpha_{1}\sigma^{2}_{i,t}[\epsilon^{2}_{i,t} - 1]$ will be negative.  So it seems that for level shock, we want the signal to noise ratio to be large because the mean is high, not because the variance is low.
+\item See Tsay p. 133: if $t$ is the last index that has been observed, then our two-step-ahead forecast is made easier by rewriting the volatility equation as $\sigma^{2}_{i,t+1} = \omega_{i} + (\alpha_{i} + \beta_{i})\sigma^{2}_{i,t} + \alpha_{1}\sigma^{2}_{i,t}[\epsilon^{2}_{i,t} - 1]= \omega_{i} + (\alpha_{i} + \beta_{i})\sigma^{2}_{i,t} + \alpha_{1}\sigma^{2}_{i,t}[\epsilon^{2}_{i,t} - 1] $.  Usually, we assume unit variance (though not necessarily a N(0,1)).  However, what is the variance is smaller than 1?  Then in conditional expectation, the term $\alpha_{1}\sigma^{2}_{i,t}[\epsilon^{2}_{i,t} - 1]$ will be negative.  So it seems that for level shock, we want the signal to noise ratio to be large because the mean is high, not because the variance is low.
 \end{enumerate}
 
 \begin{comment}
