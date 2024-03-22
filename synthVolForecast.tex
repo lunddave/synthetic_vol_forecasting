@@ -163,14 +163,14 @@ A researcher interested in forecast adjustment can choose between an procedures 
 
 Our procedure is an automated procedure for intercept adjustments using either data internal or external to the time series under study.  The correction function, as we shall see, involves an optimization step inspired by the causal inference literature.  In particular, in \citet{abadie2010synthetic}, the authors build upon previous work in causal inference whereby a treatment effect can be estimated by creating a synthetic time series that that represents either the treatment or control unit.  The synthetic unit is constructed using a convex combination of the so-called donor series.  The particular convex combination employed is a function of the distance between the time series under study and the donors.  \citet{lin2021minimizing} adapted these methods for the purpose of prediction.  Their 1-step-ahead forecasts use distance-based-weighting to pool shock estimates from similar series according to the donor series' similarity to the series under study.  Their approach does not take into account the ARCH effects commonly observed in time series, especially financial times series, leaving unaccounted for the variability that accompanies predictions of a heteroskedastic time series.  In this present study, we focus on only volatility forecasting.  We furthermore depart from the Synthetic Prediction framework by weighting series not by their covariates (which would be most appropriate for estimating the parameters of time series' mean model) but by their volatility profile.  
 
-Outside of \citet{lin2021minimizing}, we know of no prior work that both introduces a parametric specification for nonzero errors and introduces a procedure for weighting appropriately the nonzero errors of similar shocks.  Likewise, we are not familiar with any prior work that attempts to account for anticipated nonzero errors using an explicit parametric adjustment.  This current work is a contribution to the forecast adjustment literature but also aims for the virtues of robustness, risk-minization, and model interpretability, akin to the departures from nearest neighbors discussed in \citet{abadie2021penalized}.  \citet{guerron2017macroeconomic}, citing previous work, discuss that intercept corrections find their theoretical basis in the occurrence of structural breaks, whereas Nearest-Neighbor methods, being nonparametric, are theoretically more adept at accounting for nonlinearity.  By using convex combinations of donor pool quantities to adjust forecasts, we are generalizing Nearest-Neighbor methods while also providing robustness, risk-minization, and model interpretability \textcolor{red}{is our work actually a generalization of Nearest-Neighbor methods in the sense that Nearest-Neighbor methods make more restrictive assumptions? I would be careful here}\textcolor{green}{One can view NN as a particular case of distance-based weighting where the donor pool is initially chosen to be large and then the number of donors with nonzero weights is exactly $1/k$ for some reasonable choice of $k.$.  The particular location of the time series under study is not considered once neighors are identified.  Here, we do the curation but then weight the donors so as to recover the time series under study.  Now, does it flatter our method to say it that way?}. 
+Outside of \citet{lin2021minimizing}, we know of no prior work that both introduces a parametric specification for nonzero errors and introduces a procedure for weighting appropriately the nonzero errors of similar shocks.  Likewise, we are not familiar with any prior work that attempts to account for anticipated nonzero errors using an explicit parametric adjustment.  This current work is a contribution to the forecast adjustment literature but also aims for the virtues of robustness, risk-minimization, and model interpretability, akin to the departures from nearest neighbors discussed in \citet{abadie2021penalized}.  \citet{guerron2017macroeconomic}, citing previous work, discuss that intercept corrections find their theoretical basis in the occurrence of structural breaks, whereas Nearest-Neighbor methods, being nonparametric, are theoretically more adept at accounting for nonlinearity.  By using convex combinations of donor pool quantities to adjust forecasts, we are generalizing Nearest-Neighbor methods while also providing robustness, risk-minization, and model interpretability.
 
 In order to motivate our procedure, we show how the aggregation of estimated excess volatilities from donors in the donor pool works when the correction function is the arithmetic mean.  As we see in Figure \ref{fig:arith_mean_example_introduction}, the arithmetic mean of excess volatilities provides perhaps the most straightforward and intuitive way of aggregating information from similar events.  Taking the average also coincides with the $K$-Nearest-Neighbor estimator, where $K$ is equal to the number of donors in the donor pool. Although using the arithmetic mean is intuitive and enjoys some empirical track record, its grounding in theory is much less impressive \citep{timmermann2006forecast}.  Synthetic Volatility Forecasting assumes a credible, parsimonious parameterization in which the shock is an affine transformation of several key covariates.  The key intuition behind this shock parameterization is that as the strength of the linear signal increases relative to the idiosyncratic error, the GARCH estimation of these effects increases in accuracy.  From this, it follows that the aggregated shock estimate increases in accuracy. 
 
   \begin{figure}[h]
     \begin{center}
       \includegraphics[scale=.7]{simulation_plots/USE_in_paper_simulation_plot_arithmetic_mean.png}
-      \caption{The time series experiences a volatility shock at a uniformly distributed point in the interval [756, 2520] trading days, corresponding to trading years on the interval [3,10].  We have truncated the series following the shock.  The GARCH prediction fails even to approach the volatility spike at $T^{*}+1$, as do some adjusted predictions.  In contrast, the GARCH forecast adjusted by $\overline{\hat\omega^{*}}$, the arithmetic mean of the estimated shocks, recovers the shock in the time series under study.} 
+      \caption{The time series experiences a volatility shock at a uniformly distributed point in the interval [756, 2520] trading days, corresponding to trading years on the interval [3,10].  We have truncated the series after $T^{*}+1$.  The GARCH prediction fails even to approach the volatility spike at $T^{*}+1$, as do some adjusted predictions.  In contrast, the GARCH forecast adjusted by $\overline{\hat\omega^{*}}$, the arithmetic mean of the estimated shocks, recovers the shock in the time series under study.} 
       \label{fig:arith_mean_example_introduction}
       \end{center}
     \end{figure}
@@ -219,7 +219,7 @@ Let $I(\cdot)$ be an indicator function, $T_i$ be the time length of the time se
   \end{array}
   \end{align*}
 
-  The random effects structure is as follows.
+  The random effects \textcolor{green}{stochastic?} structure is as follows.
 
   \begin{align*}
     \epsilon_{i,t} &\simiid \mc{F}_{\epsilon} \text{ with }  \; \mrm{E}_{\mc{F}_{\epsilon}}(\epsilon) = 0, \mrm{Var}_{\mc{F}_{\epsilon}}(\epsilon)  = 1  \\
@@ -232,8 +232,9 @@ Let $I(\cdot)$ be an indicator function, $T_i$ be the time length of the time se
     %l_{i, level} &\simiid \text{Unif}\{1,2,...,l_{i,vol}\}\\
     \epsilon_{i,t} & \indep  \epsilon^{*}_{i,t}  \indep u_{i,t}
     \end{align*}
-where $D^{return}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + L_{i, return}\})$ and $D^{vol}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + L_{i, vol}\})$ and $L_{i,return},L_{i,vol}$ denote the lengths of the log return and volatility shocks, respectively. Let $\x_{i,t} \in \mathbb{R}^{p}$.  Let $\mc{M}_{0}$ denote the subclass of $\mc{M}_{1}$ models such that $\delta \equiv 0$.  Notice that $\mc{M}_{0}$ assumes that $\omega^{*}_i$ have no dependence on the covariates and are i.i.d. with $\E[ \omega^{*}_i]=\mu_{\omega^{*}}$. 
+where $D^{return}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + L_{i, return}\})$ and $D^{vol}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + L_{i, vol}\})$ and $L_{i,return},L_{i,vol}$ denote the lengths of the log return and volatility shocks, respectively. Let $\delta, \x_{i,t} \in \mathbb{R}^{p}$.  Let $\mc{M}_{0}$ denote the subclass of $\mc{M}_{1}$ models such that $\delta \equiv 0$.  Notice that $\mc{M}_{0}$ assumes that $\omega^{*}_i$ have no dependence on the covariates and are i.i.d. with $\E[ \omega^{*}_i]=\mu_{\omega^{*}}$. 
 
+For each of the $p$ entries in $\delta$, the $k$th entry should have the property that $\mathbb{E}[ x_{i,t,k} \cdot \delta_{k} ] > 0$. In principle, you could have an $\mc{M}_{21}$ shock with a covariate that, in expectation, has a negative marginal contribution to the cumulative shock.   
     \subsection{Volatility Profile of a Time Series}
     \label{Volatility Profile of a Time Series}
     
@@ -285,12 +286,14 @@ A GARCH model is an ARMA on the squares of the observed scalar time series $a^{2
    
     The problem of aggregating estimated donor shocks begins with the data constraints.  Taking the estimated shocks as a given, we essentially observe the pair $(\{\hat\omega^{*}_{i}\}^{n+1}_{i=2},\{\x_{i,T^{*}}\}^{n+1}_{i=2})$.  We wish to recover weights $\{\weight_{i}\}^{n+1}_{i=2} \in \Delta^{n}$ leading to favorable forecasting properties.  These weights are used to compute $\hat\omega^{*} \coloneq \sum^{n+1}_{i=2}\weight_{i}\hat\omega^{*}_{i}$, our forecast adjustment term.  Since the $\{\weight_{i}\}_{i=2}^{n+1}$ are computed using $\mathcal{F}_{T^{*}_{i}}$, the set $\{\weight_{i}\}_{i=2}^{n+1}$ is deterministic, $\textit{modulo}$ any stochastic ingredient in the numerical methods employed to approximate $\x_{1,T^{*}}$ using a convex combination of donor covariates.  We will say more about the properties of $\omega^{*}_{i}$ in section $\ref{SVF_properties}$. 
 
-    Following \citet{abadie2003economic,abadie2010synthetic}, let $\|\cdot\|_{\textbf{V}}$ denote any semi-norm, and define
+    Following \citet{abadie2003economic,abadie2010synthetic}, let $\|\cdot\|_{\textbf{S}}$ denote any semi-norm, and define
 
     \begin{align*}
-    \{\pi\}_{i=2}^{n+1} = \argmin_{\pi}\|\textbf{v}_{1} - \V_{p,n}\pi \|_{\textbf{V}}
+    \{\pi\}_{i=2}^{n+1} = \argmin_{\pi}\|\textbf{v}_{1} - \V_{p,n}\pi \|_{\textbf{S}}
     \end{align*}
-      
+     
+    
+  
 There are at least two senses of optimal weights that one might be interested in.  First, we can think of optimal weights as a set $\{\weight_{i}\}_{i=2}^{n+1}$ such that $\omega_{1} = \sum^{n+1}_{i=2}\weight_{i}\hat\omega_{i}$, i.e., $\omega_{1}$ is recovered perfectly, as it belongs to convex hull of the estimated shocks.  Similarly, $\textbf{v}_{1} = \sum^{n+1}_{i=2}\weight_{i}\textbf{v}_{i}$, meaning that .  This is certainly a There also exists a second sense of optimality, in which, for a given $\sigma_{t}^{2}$, the weights allow us to predict with zero loss.
   
     \subsection{Ground Truth Estimators}
@@ -579,9 +582,9 @@ In this section, we demonstrate the effectiveness of the proposed method using M
 
 \subsubsection{Most elementary simulation: one-day volatility shock}
 
-In order to investigate the Synthetic Volatility Forecasting method, our most elementary simulation uses $\mc{M}_2$.  We vary only two parameters. 
+In order to investigate the Synthetic Volatility Forecasting method, our most elementary simulation uses $\mc{M}_1$.  We vary only two parameters. 
 
-Recall an $\mc{M}_2$ model on the volatility, which is characterized by an exogenous shock to the volatility equation generated by an affine function of the covariates:
+Recall an $\mc{M}_1$ model on the volatility, which is characterized by an exogenous shock to the volatility equation generated by an affine function of the covariates:
 
 \textcolor{green}{Make sure to bring this into line with final model notation decisions.}
 
@@ -752,11 +755,6 @@ It would be counter to the method proposed to assemble a vast number of donors, 
 \subsection{Why not use the covariates as covariates in the GARCH model alone or in the GARCH model as well?}
 The data-generating process does not specify that volatility series are well-modeled using ever-present exogenous covariates, and this is fundamentally due to the lack of theoretical justification for such an exogeneity assumption. \textcolor{red}{I am not sure if this needs to be here. If so, then it can probably be combined with other points in this discussion to form a larger paragraph.}
 
-\subsection{Comments on the shock models}
-
-For each of the $p$ entries in $\delta$, the $k$th entry should have the property that $\mathbb{E}[ x_{i,t,k} \cdot \delta_{k} ] > 0$. In principle, you could have an $\mc{M}_{21}$ shock with a covariate that, in expectation, has a negative marginal contribution to the cumulative shock. \textcolor{red}{I think this should be removed.}\textcolor{green}{Agreed.}
-
-
 \subsection{Adjustment Using OLS on the Donor Shocks}
 Consider least-squares estimation for the weight vector $\vec{w}$:
 
@@ -794,7 +792,7 @@ In our adapted schema, irregular news shocks are $\mathcal{F}_{T^{*}}$-zero-expe
 
 This present work extends \citet{lin2021minimizing} principally by substituting the GARCH model for an AR(1), i.e. modeling both the mean and volatility of a univariate time series.  We permit both shocks in the mean model and volatility model of GARCH.  As ancillary improvements, the current work permits the shock periods to be of any length, formally $L_{\text{vol}}, L_{\text{level}} \in \mathbb{Z}^{+}$, and the weights applied to the donor pool can come from more exotic subsets of $\mathbb{R}^{n}$.  
 
-At a technical level, the most substantial insight related to \citet{lin2021minimizing} is that the GARCH model provides an elegant forecast function for squared observations of the time series under study. To see this, for each $i,t$, define $\eta_{i,t} \coloneqq a^{2}_{i,t} - \sigma^{2}_{i,t}$, and by adding $\eta_{i,t}$ to both sides of the conditional variance specification of $\mc{M}_1$ and $\mc{M}_2$, we obtain the standard ARMA representation of a GARCH(m,s): \textcolor{red}{I thought this was needed earlier in the manuscript. If so, then it does not need to be repeated here. I think this section can be made shorter.}\textcolor{green}{Yes I think in earlier versions, it appeared earlier in the manuscript.  In any case, it is not an original result and can perhaps be referred to rather than demonstrated at length.}
+At a technical level, the most substantial insight related to \citet{lin2021minimizing} is that the GARCH model provides an elegant forecast function for squared observations of the time series under study. To see this, for each $i,t$, define $\eta_{i,t} \coloneqq a^{2}_{i,t} - \sigma^{2}_{i,t}$, and by adding $\eta_{i,t}$ to both sides of the conditional variance specification of $\mc{M}_{0}$ and $\mc{M}_{1}$, we obtain the standard ARMA representation of a GARCH(m,s): \textcolor{red}{I thought this was needed earlier in the manuscript. If so, then it does not need to be repeated here. I think this section can be made shorter.}\textcolor{green}{Yes I think in earlier versions, it appeared earlier in the manuscript.  In any case, it is not an original result and can perhaps be referred to rather than demonstrated at length.}
 
 \begin{align}
 a^{2}_{i,t} = a^{2}_{i,t} - \sigma^{2}_{i,t} + \sigma^{2}_{i,t} = \eta_{i,t} + \sigma^{2}_{i,t} &= \eta_{i,t} + \omega_{i} + \omega^{*}_i D_{i,t}  + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \\
