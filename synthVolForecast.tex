@@ -38,6 +38,7 @@
 \geometry{margin=0.8in}
 
 % function definition
+\newcommand{\V}{\textbf{V}}
 \newcommand{\weight}{\pi}
 \newcommand{\ret}{\textbf{r}}
 \newcommand{\y}{\textbf{y}}
@@ -231,13 +232,7 @@ Let $I(\cdot)$ be an indicator function, $T_i$ be the time length of the time se
     %l_{i, level} &\simiid \text{Unif}\{1,2,...,l_{i,vol}\}\\
     \epsilon_{i,t} & \indep  \epsilon^{*}_{i,t}  \indep u_{i,t}
     \end{align*}
-where $D^{return}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + L_{i, return}\})$ and $D^{vol}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + L_{i, vol}\})$ and $L_{i,return},L_{i,vol}$ denote the lengths of the log return and volatility shocks, respectively. Let $\x_{i,t} \in \mathbb{R}^{p}$.  Let $\mc{M}_{0}$ denote the subclass of $\mc{M}_{1}$ models such that $\delta \equiv 0$.  Notice that $\mc{M}_{0}$ assumes that $\omega^{*}_i$ have no dependence on the covariates and are i.i.d. with $\E[ \omega^{*}_i]=\mu_{\omega^{*}}$.  We further define the filtrations \textcolor{green}{We might not need to define these.  I rarely see filtrations defined.}
-    \begin{align*}
-      \begin{array}{lll}
-         \mathcal{F}_{t}^{\mc{M}_{1}} &= &\{(\x_{i,l}, \omega^{*}_i, \epsilon_{i,l}, \epsilon^{*}_{i,l}, \varepsilon_{i,l})\colon l\leq t\}\\
-         \mathcal{F}_{t}^{\mc{M}_{2}} &= &\{(\x_{i,l}, \omega^{*}_i, \epsilon_{i,l}, \epsilon^{*}_{i,l},  \varepsilon_{i,t})\colon l \leq t\}\\
-        \end{array}
-    \end{align*}\label{parameter}
+where $D^{return}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + L_{i, return}\})$ and $D^{vol}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + L_{i, vol}\})$ and $L_{i,return},L_{i,vol}$ denote the lengths of the log return and volatility shocks, respectively. Let $\x_{i,t} \in \mathbb{R}^{p}$.  Let $\mc{M}_{0}$ denote the subclass of $\mc{M}_{1}$ models such that $\delta \equiv 0$.  Notice that $\mc{M}_{0}$ assumes that $\omega^{*}_i$ have no dependence on the covariates and are i.i.d. with $\E[ \omega^{*}_i]=\mu_{\omega^{*}}$. 
 
     \subsection{Volatility Profile of a Time Series}
     \label{Volatility Profile of a Time Series}
@@ -288,10 +283,15 @@ A GARCH model is an ARMA on the squares of the observed scalar time series $a^{2
 \subsection{Excess Volatility Estimators}
     \label{Excess Volatility Estimators}
    
-    The problem of aggregating estimated donor shocks begins with the data constraints.  Taking the estimated shocks as a given, we essentially observe the pair $(\{\hat\omega^{*}_{i}\}^{n+1}_{i=2},\{\x_{i,T^{*}}\}^{n+1}_{i=2})$.  We wish to recover weights $\{\weight_{i}\}^{n+1}_{i=2} \in \Delta^{n}$ that will minimize expected loss.  Let $L(\cdot,\cdot)$ denote any loss function, not necessarily symmetric, mapping two quantities to the non-negative reals.  Let $\hat\sigma^{2}$ denote any forecast for $\sigma^{2}$, where we consider an $h=1$ step-ahead forecast, for simplicity.  
-We now explain how we use the volatility profile to arrive at a set of nonnegative weights that sum to 1.  These weights are then used to compute $\hat\omega^{*} \coloneq \sum^{n+1}_{i=2}\weight_{i}\hat\omega^{*}_{i}$.  Since the $\{\weight_{i}\}_{i=2}^{n+1}$ are computed using $\mathcal{F}_{T^{*}_{i}}$, the set $\{\weight_{i}\}_{i=2}^{n+1}$ is deterministic, $\textit{modulo}$ any stochastic ingredient in the numerical methods employed to approximate $\x_{1,T^{*}}$ using a convex combination of donor covariates.  We will say more about the properties of $\omega^{*}_{i}$ in section $\ref{SVF_properties}$. 
+    The problem of aggregating estimated donor shocks begins with the data constraints.  Taking the estimated shocks as a given, we essentially observe the pair $(\{\hat\omega^{*}_{i}\}^{n+1}_{i=2},\{\x_{i,T^{*}}\}^{n+1}_{i=2})$.  We wish to recover weights $\{\weight_{i}\}^{n+1}_{i=2} \in \Delta^{n}$ leading to favorable forecasting properties.  These weights are used to compute $\hat\omega^{*} \coloneq \sum^{n+1}_{i=2}\weight_{i}\hat\omega^{*}_{i}$, our forecast adjustment term.  Since the $\{\weight_{i}\}_{i=2}^{n+1}$ are computed using $\mathcal{F}_{T^{*}_{i}}$, the set $\{\weight_{i}\}_{i=2}^{n+1}$ is deterministic, $\textit{modulo}$ any stochastic ingredient in the numerical methods employed to approximate $\x_{1,T^{*}}$ using a convex combination of donor covariates.  We will say more about the properties of $\omega^{*}_{i}$ in section $\ref{SVF_properties}$. 
 
-There are at least two senses of optimal weights that one might be interested in.  First, we can think of optimal weights as a set $\{\weight_{i}\}_{i=2}^{n+1}$ such that $\omega_{1} = \sum^{n+1}_{i=2}\weight_{i}\hat\omega_{i}$, i.e., $\omega_{1}$ is recovered perfectly, as it belongs to convex hull of the estimated shocks.  There also exists a second sense of optimality, in which, for a given $\sigma_{t}^{2}$, the weights allow us to predict with zero loss. \textcolor{red}{I think this can be ignored or it can be briefly stated as a comment somewhere in the section where weights are introduced.}\textcolor{green}{Moved to this section.}
+    Following \citet{abadie2003economic,abadie2010synthetic}, let $\|\cdot\|_{\textbf{V}}$ denote any semi-norm, and define
+
+    \begin{align*}
+    \{\pi\}_{i=2}^{n+1} = \argmin_{\pi}\|\textbf{v}_{1} - \V_{p,n}\pi \|_{\textbf{V}}
+    \end{align*}
+      
+There are at least two senses of optimal weights that one might be interested in.  First, we can think of optimal weights as a set $\{\weight_{i}\}_{i=2}^{n+1}$ such that $\omega_{1} = \sum^{n+1}_{i=2}\weight_{i}\hat\omega_{i}$, i.e., $\omega_{1}$ is recovered perfectly, as it belongs to convex hull of the estimated shocks.  Similarly, $\textbf{v}_{1} = \sum^{n+1}_{i=2}\weight_{i}\textbf{v}_{i}$, meaning that .  This is certainly a There also exists a second sense of optimality, in which, for a given $\sigma_{t}^{2}$, the weights allow us to predict with zero loss.
   
     \subsection{Ground Truth Estimators}
     \label{Ground Truth Estimators}
