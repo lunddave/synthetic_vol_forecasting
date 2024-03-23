@@ -231,9 +231,18 @@ For each of the $p$ entries in $\delta$, the $k$th entry should have the propert
 We now emphasize the connection between the model above and the factor model from \citet{abadie2010synthetic}:
 
 \begin{align*}
-Y^{N}_{i,t} = 
+Y^{N}_{i,t} = \delta_{t} + \boldsymbol\theta_{t}\textbf{Z}_{i}+\boldsymbol\lambda_{t}\boldsymbol\mu_{i}+\varepsilon_{it} \text{ ,}
 \end{align*}
   
+which happens to nest the ARMA representation of a GARCH model, where
+
+\begin{align*}
+\delta_{t} & \sim \omega \\
+\boldsymbol\theta_{t} & \sim \boldsymbol\alpha \\
+\textbf{Z}_{i} & \sim \boldsymbol a_{t}  \\
+\boldsymbol \lambda_{t} & \sim \boldsymbol\beta \\
+\boldsymbol \mu_{i} & \sim \boldsymbol \sigma_{t}^{2}  \\
+\end{align*}
 
     \subsection{Volatility Profile of a Time Series}
     \label{Volatility Profile of a Time Series}
