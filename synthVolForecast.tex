@@ -237,11 +237,11 @@ Y^{N}_{i,t} = \delta_{t} + \boldsymbol\theta_{t}\textbf{Z}_{i}+\boldsymbol\lambd
 which happens to nest the ARMA representation of a GARCH model, where
 
 \begin{align*}
-\delta_{t} & \sim \omega & \textbf{a location parameter shared across donors}\\
-\boldsymbol\theta_{t} & \sim \boldsymbol\alpha & \textbf{the ARCH parameters} \\
-\textbf{Z}_{i} & \sim \boldsymbol a_{t-k} & \textbf{observable quantities} \\
-\boldsymbol \lambda_{t} & \sim \boldsymbol\beta & \textbf{the GARCH parameters} \\
-\boldsymbol \mu_{i} & \sim \boldsymbol \sigma_{i,t-k}^{2} & \textbf{latent quantities}   \\
+\delta_{t} & \sim \omega,  \textbf{a location parameter shared across donors}\\
+\boldsymbol\theta_{t} & \sim \boldsymbol\alpha_{k},  \textbf{the ARCH parameters shared across donors} \\
+\textbf{Z}_{i} & \sim \boldsymbol a_{t-k}, \textbf{observable quantities specific to each donor} \\
+\boldsymbol \lambda_{t} & \sim \boldsymbol\beta_{j}, \textbf{the GARCH parameters shared across donors} \\
+\boldsymbol \mu_{i} & \sim \boldsymbol \sigma_{i,t-j}^{2}, \textbf{latent quantities specific to each donor}   \\
 \end{align*}
 
     \subsection{Volatility Profile of a Time Series}

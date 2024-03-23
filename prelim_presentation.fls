@@ -1809,6 +1809,11 @@ INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/sansmathaccent/mathker
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/sansmathaccent/mathkerncmssi8.tfm
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmss8.tfm
 INPUT /usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map
+INPUT ./NYS_state.png
+INPUT ./NYS_state.png
+INPUT NYS_state.png
+INPUT ./NYS_state.png
+INPUT ./NYS_state.png
 INPUT ./cnn.png
 INPUT ./cnn.png
 INPUT cnn.png

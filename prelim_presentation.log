@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.21)  23 MAR 2024 12:45
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.21)  23 MAR 2024 14:10
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1221,16 +1221,25 @@ Overfull \hbox (131.60022pt too wide) has occurred while \output is active
 [3
 
 ]
-<cnn.png, id=169, 898.35625pt x 204.765pt>
+<NYS_state.png, id=169, 558.085pt x 337.26pt>
+File: NYS_state.png Graphic file (type png)
+<use NYS_state.png>
+Package pdftex.def Info: NYS_state.png  used on input line 174.
+(pdftex.def)             Requested size: 167.42679pt x 101.17877pt.
+<cnn.png, id=172, 898.35625pt x 204.765pt>
 File: cnn.png Graphic file (type png)
 <use cnn.png>
-Package pdftex.def Info: cnn.png  used on input line 172.
+Package pdftex.def Info: cnn.png  used on input line 174.
 (pdftex.def)             Requested size: 269.50894pt x 61.42996pt.
-<cnbc.png, id=184, 997.7275pt x 174.6525pt>
+<cnbc.png, id=174, 997.7275pt x 174.6525pt>
 File: cnbc.png Graphic file (type png)
 <use cnbc.png>
-Package pdftex.def Info: cnbc.png  used on input line 172.
+Package pdftex.def Info: cnbc.png  used on input line 174.
 (pdftex.def)             Requested size: 299.32056pt x 52.39615pt.
+
+Overfull \vbox (0.57147pt too high) detected at line 174
+ []
+
 
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
  [][][][][][]  
@@ -1238,7 +1247,7 @@ Overfull \hbox (131.60022pt too wide) has occurred while \output is active
 
 [4
 
- <./cnn.png> <./cnbc.png>]
+ <./NYS_state.png> <./cnn.png> <./cnbc.png>]
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
  [][][][][][]  
  []
@@ -1295,54 +1304,54 @@ Overfull \hbox (131.60022pt too wide) has occurred while \output is active
 [12
 
 ]
-LaTeX Font Info:    Calculating math sizes for size <3> on input line 281.
+LaTeX Font Info:    Calculating math sizes for size <3> on input line 283.
 
 
 LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <2.09999> not available
-(Font)              size <3> substituted on input line 281.
+(Font)              size <3> substituted on input line 283.
 
 
 LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <1.5> not available
-(Font)              size <3> substituted on input line 281.
+(Font)              size <3> substituted on input line 283.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <3> not available
-(Font)              size <5> substituted on input line 281.
+(Font)              size <5> substituted on input line 283.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <2.09999> not available
-(Font)              size <5> substituted on input line 281.
+(Font)              size <5> substituted on input line 283.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <1.5> not available
-(Font)              size <5> substituted on input line 281.
+(Font)              size <5> substituted on input line 283.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <3> not available
-(Font)              size <5> substituted on input line 281.
+(Font)              size <5> substituted on input line 283.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <2.09999> not available
-(Font)              size <5> substituted on input line 281.
+(Font)              size <5> substituted on input line 283.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <1.5> not available
-(Font)              size <5> substituted on input line 281.
+(Font)              size <5> substituted on input line 283.
 
 
 LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <3> not available
-(Font)              size <5> substituted on input line 281.
+(Font)              size <5> substituted on input line 283.
 
 
 LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <2.09999> not available
-(Font)              size <5> substituted on input line 281.
+(Font)              size <5> substituted on input line 283.
 
 
 LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <1.5> not available
-(Font)              size <5> substituted on input line 281.
+(Font)              size <5> substituted on input line 283.
 
 
-Overfull \vbox (76.25105pt too high) detected at line 281
+Overfull \vbox (76.25105pt too high) detected at line 283
  []
 
 
@@ -1430,7 +1439,7 @@ Overfull \hbox (131.60022pt too wide) has occurred while \output is active
 [24
 
 ]
-Overfull \vbox (151.32535pt too high) detected at line 397
+Overfull \vbox (151.32535pt too high) detected at line 399
  []
 
 
@@ -1470,18 +1479,18 @@ Package logreq Info: Writing requests to 'prelim_presentation.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 39507 strings out of 476025
- 804600 string characters out of 5790017
+ 39508 strings out of 476025
+ 804466 string characters out of 5790017
  1887388 words of memory out of 5000000
  59198 multiletter control sequences out of 15000+600000
  527223 words of font info for 88 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,15n,131p,752b,1588s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on prelim_presentation.pdf (26 pages, 348329 bytes).
+Output written on prelim_presentation.pdf (26 pages, 515924 bytes).
 PDF statistics:
- 975 PDF objects out of 1000 (max. 8388607)
- 865 compressed objects within 9 object streams
+ 966 PDF objects out of 1000 (max. 8388607)
+ 860 compressed objects within 9 object streams
  75 named destinations out of 1000 (max. 500000)
- 317 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 286 words of extra memory for PDF output out of 10000 (max. 10000000)
 
