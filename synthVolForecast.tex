@@ -124,7 +124,7 @@
 \maketitle
 
 \begin{abstract} 
-We develop a procedure for forecasting the volatility of a time series immediately following a news shock.  Adapting the synthetic prediction framework of \citet{lin2021minimizing}, we exploit series that have experienced similar shocks.  We aggregate their shock-induced excess volatilities by positing the shocks to be affine functions of exogenous covariates.  The volatility shocks are modeled as random effects and estimated as fixed effects.  The aggregation of these estimates is done in service of adjusting the $h$-step-ahead GARCH forecast of the time series under study by an additive term.  The adjusted and unadjusted forecasts are evaluated the unobservable but easily-estimated realized volatility (RV).  A real-world application is provided, as are simulation results suggesting the conditions and hyperparameters under which our method thrives.
+We develop a procedure for forecasting the volatility of a time series immediately following a news shock.  Adapting the synthetic prediction framework of \citet{lin2021minimizing}, we exploit series that have experienced similar shocks.  We aggregate their shock-induced excess volatilities by positing the shocks to be affine functions of exogenous covariates.  The volatility shocks are modeled as random effects and estimated as fixed effects.  The aggregation of these estimates is done in service of adjusting the $h$-step-ahead GARCH forecast of the time series under study by an additive term.  The adjusted and unadjusted forecasts are evaluated using the unobservable but easily-estimated realized volatility (RV).  A real-world application is provided, as are simulation results suggesting the conditions and hyperparameters under which our method thrives.
 \end{abstract}
 
 \section{Introduction}
@@ -171,9 +171,9 @@ In order to motivate our procedure, we show how the aggregation of estimated exc
 \label{section2}
 
 \subsection{A Primer on GARCH}
-We define the daily log return as $r_{t} = \text{log}(\frac{P_{t+1}}{P_{t}})$, where $P_{t}$ denotes the price at time $t$.  The class of ARIMA(p,d,q) models  \citep{box2013box} provides a framework for postulating and quantifying the autoregressive structure of $r_{t}$, all within the framework of frequentist statistics.  These models assume a certain dependence structure between $r_{t}$ and $(r_{k})_{k\leq t}$, yet their errors --- often called innovations in the financial time series context due to how they represent the impact of new information --- are nevertheless assumed to be i.i.d. with mean zero and constant variance.  The ARCH \citep{engle1982autoregressive} and GARCH \citep{bollerslev1986generalized} models provide elegant alternatives to the homoskedasticity assumption.  In fact, the GARCH framework in its most basic form disregards $r_{t}$ and instead turns its interest to the series $r_{t}^{2}$ (when properly centered, i.e. after assuming a mean-model for returns).  
+We define the daily log return as $r_{t} = \text{log}(\frac{P_{t+1}}{P_{t}})$, where $P_{t}$ denotes the price at time $t$.  The class of ARIMA($p,d,q$) models  \citep{box2013box} provides a framework for postulating and quantifying the autoregressive structure of $r_{t}$, all within the framework of frequentist statistics.  These models assume a certain dependence structure between $r_{t}$ and $(r_{k})_{k\leq t}$, yet their errors --- often called innovations in the financial time series context due to how they represent the impact of new information --- are nevertheless assumed to be i.i.d. with mean zero and constant variance.  The ARCH \citep{engle1982autoregressive} and GARCH \citep{bollerslev1986generalized} models provide elegant alternatives to the homoskedasticity assumption.  In fact, the GARCH framework in its most basic form disregards $r_{t}$ and instead turns its interest to the series $r_{t}^{2}$ (when properly centered, i.e. after assuming a mean-model for returns).  
 
-To that end, let $a_{t} = r_{t} - \mu_{t}$, where $\mu_{t}$ is the mean of the log return series $r_{t}$.  Implicitly, we are committing ourselves to a mean-model for $r_{t}$ in which $\mu_{t}$, the expected daily log return, may vary with time.  As \citet{cont2001empirical} explains, such an assumption is justified by the empirical finding that returns lack significant autocorrelation.  We thus derive a mean-zero process $(a_{t})_{t\in\mathbb{N}}$ with the property that $\E[a^{2}_{t}] = \mrm{Var}[a_{t}]$.  Under the assumption of time-invariant volatility, the series $a_{t}^{2}$ should exhibit no autocorrelation at any lag $\ell\geq1$.  This assumption motivates tests for so-called ARCH effects, that is, tests for the clustering of volatility.  These tests explore the alternative hypothesis that $\sigma_{t}^{2}$ is not only a time-varying parameter but furthermore a function of past squared residuals of the mean model.  In particular, the ARCH(m) model is an autoregressive model in which $\sigma_{t}^{2}$ is fitted using a linear combination of the past $m$ values of $r_{t}^{2}$.  The GARCH(m,s) framework take this one step further but modeling $\sigma_{t}^{2}$ as a linear combination of the past $m$ values of $r_{t}^{2}$ and well as the past $s$ values of $\sigma_{t}^{2}$.  In functional form, a GARCH process (sometimes called a strong GARCH process \citep[p. 19]{francq2019garch}) is given by
+To that end, let $a_{t} = r_{t} - \mu_{t}$, where $\mu_{t}$ is the mean of the log return series $r_{t}$.  We thus derive a mean-zero process $(a_{t})_{t\in\mathbb{N}}$ with the property that $\E[a^{2}_{t}] = \mrm{Var}[a_{t}]$.  Under the assumption of time-invariant volatility, the series $a_{t}^{2}$ should exhibit no autocorrelation at any lag $\ell\geq1$.  This assumption motivates tests for so-called ARCH effects, that is, tests for the clustering of volatility.  These tests explore the alternative hypothesis that $\sigma_{t}^{2}$ is not only a time-varying parameter but furthermore a function of past squared residuals of the mean model.  In particular, the ARCH($m$) model is an autoregressive model in which $\sigma_{t}^{2}$ is fitted using a linear combination of the past $m$ values of $r_{t}^{2}$.  The GARCH($m,s$) framework take this one step further but modeling $\sigma_{t}^{2}$ as a linear combination of the past $m$ values of $r_{t}^{2}$ and well as the past $s$ values of $\sigma_{t}^{2}$.  In functional form, a GARCH process (sometimes called a strong GARCH process \citep[p. 19]{francq2019garch}) is given by
 
 \begin{align*}
 &\sigma_{t}^{2} = \omega + \sum^{m}_{k=1}\alpha_{k}a^{2}_{t-k} + \sum_{j=1}^{s}\beta_{j}\sigma_{t-j}^{2}\\
@@ -186,7 +186,7 @@ Assuming further that $\sigma^{2}_{t}$ depends on a vector of exogenous covariat
 
 
 \begin{align}
-&\sigma_{t}^{2} = \omega+ \sum^{m}_{k=1}\alpha_{k}a^{2}_{t-k} + \sum_{j=1}^{s}\beta_{j}\sigma_{t-j}^{2} + \gamma^{T}\x_{t}.\label{GARCH-X}\\
+&\sigma_{t}^{2} = \omega+ \sum^{m}_{k=1}\alpha_{k}a^{2}_{t-k} + \sum_{j=1}^{s}\beta_{j}\sigma_{t-j}^{2} + \gamma^{T}\x_{t} \text{ .}\label{GARCH-X}
 \end{align}
 
 % https://latex-tutorial.com/matrices-in-latex/
@@ -194,10 +194,7 @@ Assuming further that $\sigma^{2}_{t}$ depends on a vector of exogenous covariat
 
 \subsection{Model setup}
 \label{modelsetup}
-In this section, we will describe the assumed dynamic panel models for which 
-post-shock aggregated estimators are provided. The basic structures of these models are the same for all time series in the analysis.  The differences between them lie in the shock distributions.  We first sharply distinguish between a volatility shock induced by a return series shock and a volatility shock directly affecting the volatility equation of a GARCH model, without mediation of the return series.
-
-We will suppose that a researcher has multivariate time series data $\y_{i,t}, t = 1,$ $\ldots,  T_i$ and $i = 1, \ldots, n+1$.  Let $\y_{i,t} = (r_{i,t}$, $\x_{i,t}$) where $r_{i,t}$ is a scalar response (typically the log return of a financial asset) and  $\x_{i,t}$ is a vector of covariates such that $\x_{i,t}|\mathcal{F}_{i,t-1}$ is deterministic.  Suppose that the analyst is interested in forecasting the volatility of $r_{1,t}$, the first time series in the collection.  We require that each time series $\y_{i,t}$ is subject to a news event following $T^*_i \leq T_{i} + 1$ and before witnessing $T^*_i+1$.  We are implicitly leveraging the fact that financial assets are heavily traded during market hours, yet only thinly traded (if traded at all) outside market hours.  In contrast, the arrival of market-moving news does not obey any such restrictions.  In light of the foregoing, we can denote our collection of GARCH volatility equations of interest using the following notation
+We will suppose that a researcher has multivariate time series data $\y_{i,t} = (r_{i,t}$, $\x_{i,t}$), $t = 1,$ $\ldots,  T_i$ and $i = 1, \ldots, n+1$, where $r_{i,t}$ is a scalar response (typically the log return of a financial asset) and  $\x_{i,t}$ is a vector of covariates such that $\x_{i,t}|\mathcal{F}_{i,t-1}$ is deterministic.  Suppose that the analyst is interested in forecasting the volatility of $r_{1,t}$, the first time series in the collection.  We require that each time series $\y_{i,t}$ is subject to a news event following $T^*_i \leq T_{i} + 1$ and before witnessing $T^*_i+1$.  We are implicitly leveraging the fact that financial assets are heavily traded during market hours, yet only thinly traded (if traded at all) outside market hours.  In contrast, the arrival of market-moving news does not obey any such restrictions.  In light of the foregoing, we can denote our collection of GARCH volatility equations of interest using the following notation
 
 \begin{align*}
 &\sigma_{i,t}^{2} = \omega_{i} + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \text{ }. \\
@@ -235,7 +232,7 @@ which happens to nest the ARMA representation of a GARCH model, where
 
 \begin{align*}
 \delta_{t} & \sim \omega,  \textbf{a location parameter shared across donors}\\
-\boldsymbol\theta_{t} & \sim \boldsymbol\alpha_{k},  \textbf{a vector of ARCH parameters shared across donors} \\
+\boldsymbol\theta_{t} & \sim \boldsymbol\alpha_{k},  \textbf{a vector of ARCH parameters and other coefficients shared across donors} \\
 \textbf{Z}_{i} & \sim \boldsymbol a_{i,t-k}, \textbf{a vector of observable quantities specific to each donor} \\
 \boldsymbol \lambda_{t} & \sim \boldsymbol\beta_{j}, \textbf{a vector of GARCH parameters shared across donors} \\
 \boldsymbol \mu_{i} & \sim \boldsymbol \sigma_{i,t-j}^{2}, \textbf{a vector of latent quantities specific to each donor}   \\
@@ -243,9 +240,9 @@ which happens to nest the ARMA representation of a GARCH model, where
 and $\varepsilon_{i,t}$ is idiosyncratic noise, uncorrelated across time and donors.
 
     \subsection{Volatility Profile of a Time Series}
-    \label{Volatility Profile of a Time Series}
+    \label{Volatility Shock Profile of a Time Series}
     
-    In this section, we make a novel contribution to prediction via distance-based weighting by constructing a profile of a time series' volatility.  Suppose that for each of the $n$ donors, we posit $p$ distinct covariates in the functional form of the shock.  The volatility profile is defined as the $pn \times n$ matrix 
+    In this section, we make a novel contribution to prediction via distance-based weighting by constructing a profile of a time series' volatility, the analogue of a covariate matrix in a synthetic control framework.  What distinguishes a volatility shock profile is that .  Suppose that for each of the $n$ donors, we posit $p$ distinct covariates in the functional form of the shock.  The volatility profile is defined as the $pn \times n$ matrix 
 
     \begin{equation*}
       \textbf{V} = 
@@ -390,12 +387,7 @@ In other words, for a GARCH(1,1), once two time points removed from the longest 
 & = \omega_{i} + \alpha\sigma^{2}_{i,T^{*}+1}(\mu^{2}_{\epsilon^{*}} + \sigma^{2}_{\epsilon^{*}}) + \beta\sigma^{2}_{i,T^{*}+1} \\
 & = \omega_{i} + \sigma^{2}_{i,T^{*}+1}(\alpha(\mu^{2}_{\epsilon^{*}} + \sigma^{2}_{\epsilon^{*}}) + \beta)\text{ .}
 \end{align*}
-where $(\alpha(\mu^{2}_{\epsilon^{*}} + \sigma^{2}_{\epsilon^{*}}) + \beta)$ may be greater than 1, permitting explosive behavior, at least in the short term.  After both shocks have been exhausted, their influence disappears quickly.  This short-memory effect has implications for the method being developed herein:
-
-\begin{enumerate}
-\item  There may be different risks associated with over/underestimating level shock and vol shock lengths.  Estimation of effects in donor pool should err on the side of underestimating, not overestimating, the length of the max shock, since overestimation of the shock length brings with it the risk of underestimating $\omega^{*}$.
-\item An operator of the method needs some idea of how long the operator expects the shock in the time series under study to be.  Such an idea will guide her trust in the choice of $k$ in the $k$-step ahead forecast the operator produces.  There are couple of obvious strategies: take all the donors, and over all the donor shock lengths, take the minimium.  Alternatively, one could take the maximum.
-\end{enumerate}
+where $(\alpha(\mu^{2}_{\epsilon^{*}} + \sigma^{2}_{\epsilon^{*}}) + \beta)$ may be greater than 1, permitting explosive behavior, at least in the short term.  After both shocks have been exhausted, their influence disappears quickly.  This short-memory effect has implications for the method being developed herein.  First, there may be different risks associated with over/underestimating level shock and vol shock lengths.  Estimation of effects in donor pool should err on the side of underestimating, not overestimating, the length of the max shock, since overestimation of the shock length brings with it the risk of underestimating $\omega^{*}$.  Second, a practitioner of the method needs some idea of how long the operator expects the respective shocks in the time series under study to be.  There are couple of obvious strategies: take all the donors, and over all the donor shock lengths, take the minimium.  Alternatively, one could take the maximum.
 
 \begin{comment}
 
@@ -506,7 +498,7 @@ Assume
   \item For each $i, \{\omega_{i,t}^{*}\}_{t=0,...,T_i}$ is potentially non-zero at $\{T^{*}_{i}+1,... ,T^{*}_{i}+k\}$, $\omega_{i,T^{*}+1}^{*}\equiv...\equiv\omega_{i,T^{*}+k}^{*}$, and zero otherwise, where the arrival of $T_{i}^{*}$ is governed by a time-invariant distribution on $\{a_{i,t}\}_{t=0,...,T_i-1}$. \label{stationarity_of_omega_i_t}
   \item The conditions in Assumption 0 of \citet{han2014asymptotic} prevail.
 \end{enumerate}
-Then $\forall i, \hat\omega_{i,t}^{*} \xrightarrow{p} \E[\omega_{i}^{*}].$
+Then for any $i$, $\hat\omega_{i,t}^{*} \xrightarrow{p} \E[\omega_{i}^{*}].$
 \end{prop}
 
 \begin{lem}

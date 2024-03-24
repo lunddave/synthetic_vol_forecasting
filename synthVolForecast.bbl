@@ -1,4 +1,4 @@
-\begin{thebibliography}{49}
+\begin{thebibliography}{48}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -89,11 +89,6 @@ Bent~J Christensen and Nagpurnanand~R Prabhala.
 Michael Clements and David~F Hendry.
 \newblock \emph{Forecasting economic time series}.
 \newblock Cambridge University Press, 1998.
-
-\bibitem[Cont(2001)]{cont2001empirical}
-Rama Cont.
-\newblock Empirical properties of asset returns: stylized facts and statistical issues.
-\newblock \emph{Quantitative finance}, 1\penalty0 (2):\penalty0 223, 2001.
 
 \bibitem[De~Luca et~al.(2006)]{de2006forecasting}
 Giovanni De~Luca et~al.
