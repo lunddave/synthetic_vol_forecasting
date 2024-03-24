@@ -231,7 +231,7 @@ For each of the $p$ entries in $\delta$, the $k$th entry should have the propert
 We now emphasize the connection between the model above and the factor model from \citet{abadie2010synthetic}:
 
 \begin{align*}
-Y^{N}_{i,t} = \delta_{t} + \boldsymbol\theta_{t}\textbf{Z}_{i}+\boldsymbol\lambda_{t}\boldsymbol\mu_{i}+\varepsilon_{it} \text{ ,}
+Y^{N}_{i,t} = \delta_{t} + \boldsymbol\theta_{t}\textbf{Z}_{i}+\boldsymbol\lambda_{t}\boldsymbol\mu_{i}+\varepsilon_{i,t} \text{ ,}
 \end{align*}
   
 which happens to nest the ARMA representation of a GARCH model, where
@@ -294,7 +294,7 @@ A GARCH model is an ARMA on the squares of the observed scalar time series $a^{2
    
     The problem of aggregating estimated donor shocks begins with the data constraints.  Taking the estimated shocks as a given, we essentially observe the pair $(\{\hat\omega^{*}_{i}\}^{n+1}_{i=2},\{\x_{i,T^{*}}\}^{n+1}_{i=2})$.  We wish to recover weights $\{\weight_{i}\}^{n+1}_{i=2} \in \Delta^{n}$ leading to favorable forecasting properties.  These weights are used to compute $\hat\omega^{*} \coloneq \sum^{n+1}_{i=2}\weight_{i}\hat\omega^{*}_{i}$, our forecast adjustment term.  Since the $\{\weight_{i}\}_{i=2}^{n+1}$ are computed using $\mathcal{F}_{T^{*}_{i}}$, the set $\{\weight_{i}\}_{i=2}^{n+1}$ is deterministic, $\textit{modulo}$ any stochastic ingredient in the numerical methods employed to approximate $\x_{1,T^{*}}$ using a convex combination of donor covariates.  We will say more about the properties of $\omega^{*}_{i}$ in section $\ref{SVF_properties}$. 
 
-    Following \citet{abadie2003economic,abadie2010synthetic}, let $\|\cdot\|_{\textbf{S}}$ denote any semi-norm, and define
+    Following \citet{abadie2003economic,abadie2010synthetic}, let $\|\cdot\|_{\textbf{S}}$ denote any semi-norm on $\mathbb{R}^{p}$, and define
 
     \begin{align*}
     \{\pi\}_{i=2}^{n+1} = \argmin_{\pi}\|\textbf{v}_{1} - \V_{p,n}\pi \|_{\textbf{S}} \text{ .}
@@ -302,7 +302,7 @@ A GARCH model is an ARMA on the squares of the observed scalar time series $a^{2
      
     
   
-There are at least two senses of optimal weights that one might be interested in.  First, we can think of optimal weights as a set $\{\weight_{i}\}_{i=2}^{n+1}$ such that $\omega_{1} = \sum^{n+1}_{i=2}\weight_{i}\hat\omega_{i}$, i.e., $\omega_{1}$ is recovered perfectly, as it belongs to convex hull of the estimated shocks.  Similarly, $\textbf{v}_{1} = \sum^{n+1}_{i=2}\weight_{i}\textbf{v}_{i}$, meaning that .  This is certainly a There also exists a second sense of optimality, in which, for a given $\sigma_{t}^{2}$, the weights allow us to predict with zero loss.
+There are at least two senses of optimal weights that one might be interested in.  First, we can think of optimal weights as a set $\{\weight_{i}\}_{i=2}^{n+1}$ such that $\omega_{1} = \sum^{n+1}_{i=2}\weight_{i}\hat\omega_{i}$, i.e., $\omega_{1}$ is recovered perfectly, as it belongs to convex hull of the estimated shocks.  Similarly, $\textbf{v}_{1} = \sum^{n+1}_{i=2}\weight_{i}\textbf{v}_{i}$, meaning that .  This is certainly a There also exists a second sense of optimality, in which, for a given $\sigma_{t}^{2}$, the weights allow us to predict with zero loss or some other optimality criterion directly related to predictive performance, like minimaxity, risk-minimization, or variance reduction, among others.
   
     \subsection{Ground Truth Estimators}
     \label{Ground Truth Estimators}
@@ -336,7 +336,7 @@ Also of interest in mean absolute percentage error for an $h$-step-ahead forecas
 Finally, we introduce the QL (quasi-likelihood) Loss \citep{brownlees2011practical}:
 
 \[ 
-\text{QL}^{H}_{method, ground truth} = \frac{1}{h}\sum_{h=1}^{H} (\frac{ \hat\sigma^{2}_{h, method} }{\hat\sigma^{2}_{h, ground truth}} - \log{\frac{ \hat\sigma^{2}_{h, method} }{\hat\sigma^{2}_{h, ground truth}}} -1) \text{ .}
+\text{QL}^{H}_{method, ground truth} = \frac{1}{H}\sum_{h=1}^{H} (\frac{ \hat\sigma^{2}_{h, method} }{\hat\sigma^{2}_{h, ground truth}} - \log{\frac{ \hat\sigma^{2}_{h, method} }{\hat\sigma^{2}_{h, ground truth}}} -1) \text{ .}
 \]
 What distinguishes QL Loss is that it is multiplicative rather than additive.  This serves as a basis for some of its virtues, both practical and theoretical.  As \citet{brownlees2011practical} explains, ``[a]mid volatility turmoil, large MSE
 losses will be a consequence of high volatility without necessarily corresponding to
@@ -506,7 +506,7 @@ Place here
 Assume
 \begin{enumerate}
   \item For each $i$, $\{a_{i,t}\}_{t=0,...,T_i}$ obeys a GARCH-X($m,s$), as laid out in equation $(\ref{GARCH-X})$ process with volatility shocks found in $\mc{M}_{2}$, where $T_i$ is the length of the $i$th series.
-  \item For each $i, \{\omega_{i,t}^{*}\}_{t=0,...,T_i}$ is potentially non-zero at $\{T^{*}_{i}+1,... ,T^{*}_{i}+k\}$, $\omega_{i,T^{*}+1}^{*}\equiv...\equiv\omega_{i,T^{*}+k}^{*}$, and zero otherwise, where the arrival of $T_{i}^{*}$ is governed by a time-invariant distribution on $\{a_{i,t}\}_{t=0,...,T_i}$. \label{stationarity_of_omega_i_t}
+  \item For each $i, \{\omega_{i,t}^{*}\}_{t=0,...,T_i}$ is potentially non-zero at $\{T^{*}_{i}+1,... ,T^{*}_{i}+k\}$, $\omega_{i,T^{*}+1}^{*}\equiv...\equiv\omega_{i,T^{*}+k}^{*}$, and zero otherwise, where the arrival of $T_{i}^{*}$ is governed by a time-invariant distribution on $\{a_{i,t}\}_{t=0,...,T_i-1}$. \label{stationarity_of_omega_i_t}
   \item The conditions in Assumption 0 of \citet{han2014asymptotic} prevail.
 \end{enumerate}
 Then $\forall i, \hat\omega_{i,t}^{*} \xrightarrow{p} \E[\omega_{i}^{*}].$
@@ -585,27 +585,19 @@ Hence, a correctly specified model will outperform the unadjusted forecast asymp
 
 \section{Numerical Examples}
 
-\textcolor{red}{I do not think this should be broken up into short subsections. Can everything be written in paragraphs? I think more emphasis should be given to why the simulation hyperparameters were chosen.}
-
-\subsection{Modeling Setup}
-In this section, we demonstrate the effectiveness of the proposed method using Monte Carlo simulations.  The first simulation setup will use a $\mc{M}_{2}$ model on the volatility.  The second setup will be a dual shock, i.e. a shock to both the level and volatility. 
-
-\subsubsection{Most elementary simulation: one-day volatility shock}
+\textcolor{red}{more emphasis should be given to why the simulation hyperparameters were chosen.}
+In this section, we demonstrate the effectiveness of the proposed method using Monte Carlo simulations.  The first simulation setup will use a $\mc{M}_{2}$ model on the volatility.  The second setup will be a dual shock, i.e. a shock to both the level and volatility.\textcolor{red}{Might need to remove this, of course} 
 
 In order to investigate the Synthetic Volatility Forecasting method, our most elementary simulation uses $\mc{M}_1$.  We vary only two parameters.  Recall an $\mc{M}_1$ model on the volatility, which is characterized by an exogenous shock to the volatility equation generated by an affine function of the covariates:
 
-\textcolor{green}{Make sure to bring this into line with final model notation decisions.}
-
-\begin{align*}
-\mc{M}_2 \colon \begin{array}{l}
-   \sigma^{2}_{i,t} = \omega_{i} + \omega^{*}_i + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \text{ }\\[.2cm]
-   a_{i,t} = \sigma_{i,t}(\epsilon_{i,t}(1-D^{level}_{i,t}) + \epsilon^{*}_{i}D^{level}_{i,t})\\[.2cm]
-   \omega_i^{*} = \mu_{\omega^{*}}+\delta'\mbf{x}_{i, T_i^*}+ \varepsilon_{i}\\
-   D^{level}_{i,t} \equiv 0
-\end{array}
-\end{align*}
-
-\subsubsection{Dual shock: both a level and volatility shock at $T^{*}+1$}
+  \begin{align*}
+    \mc{M}_1 \colon \begin{array}{l}
+       \sigma^{2}_{i,t} = \omega_{i} + \omega^{*}_i + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \text{ }\\[.2cm]
+       a_{i,t} = \sigma_{i,t}((1-D^{return}_{i,t})\epsilon_{i,t} + D^{return}_{i,t}\epsilon^{*}_{i})\\[.2cm]
+      \omega_{i,t}^{*} = D^{vol}_{i,t}[\mu_{\omega^{*}}+\delta'\mbf{x}_{i, t-1}+ u_{i,t}]\\[.2cm]
+      D^{level}_{i,t} \equiv 0
+    \end{array}
+    \end{align*}
 
 \textcolor{green}{It's worth discussing whether a simultaneous shock to the level and volatility makes sense or adds much.}
 
@@ -613,12 +605,10 @@ Consider now a shock to both the volatility and the level beginning at $T^{*}+1$
 
 \textit{Hypothesis:} Method should do less well under a concommitant volatility and level shock.  A dual shock is in essence a squared observable with two independent sources of randomness.
 
-\subsection{Peformance Metrics}
+\subsection{Evaluative Framework and Monte Carlo Results}
 We compare adjusted and unadjusted forecasts using QL Loss, calculating the fraction of the simulations that the adjusted forecast dominates the unadjusted forecast.
 
-\subsection{Monte Carlo results}
-
-Here we cite \citet[p. 22]{francq2019garch} in motivating simulations for large $alpha$ values and then large $\beta$ values.
+Here we cite \citet[p. 22]{francq2019garch} in motivating simulations for large $\alpha$ values and then large $\beta$ values.
 
 In Figure \ref{fig:heavy_beta}, when only two parameters are varied, the volatility shock signal and the volatility shock noise, we observe several encouraging phenomena.  First, for any column selected, an increasing trend exists as the shock signal increases.  Second, for almost all small values of the shock signal, the outperformance rate hovers around .5, supporting the hypothesis that in the absence of a signal, any level of noise renders the method no better at GARCH than a flip of a coin.
 \begin{figure}[h!]
@@ -704,7 +694,7 @@ For all of these reasons and more, the aftermath of the 2016 presidential electi
 
     \item \textbf{Covariate Choice} We choose covariates that could plausibly satisfy the model assumptions spelled out earlier, that is, risk-related and macroeconomic covariates that could plausibly be weighted and summed in a shock distribution.  We thus choose the log return Crude Oil (CL.F), the VIX (VIX) and the log return of the VIX, the log returns of the 3-month, 5-year, 10-year, and 30-year US Treasuries, as well as the log return of the most recently available monthly spread between AAA and BAA corporate debt, widely considered a proxy for lending risk \citep{goodell2013us, kane1996p}.  We also include the log return in the trading volume of the ETF IYG itself, which serves as a proxy for panic.
 
-    \item \textbf{Donor pool construction} Synthetic Control, an a tool of causal inference, often goes about weighting control units by first identifying a natural set of donors or standard donors such as the untreated units within a set of subnational units like US states or Spanish provinces \citep{abadie2003economic, abadie2010synthetic}.  While such a procedure does not necessarily preclude considered judgments (e.g. should Canadian provinces be used as donors for a treated US state?), as a tool of small-$n$ prediction, distanced-based weighting faces a decidedly more difficult task in constructing a donor pool. \textcolor{red}{I do not think we should antagonise the synthetic control literature. Let's just state our donors and then leave some differences between us and Abadie et al. brief.}\textcolor{green}{I see.  I can leave out the judgment that it's more difficult to build a donor pool.}
+    \item \textbf{Donor pool construction} Synthetic Control, an a tool of causal inference, often goes about weighting control units by first identifying a natural set of donors or standard donors such as the untreated units within a set of subnational units like US states or Spanish provinces \citep{abadie2003economic, abadie2010synthetic}.  While such a procedure does not necessarily preclude considered judgments (e.g. should Canadian provinces be used as donors for a treated US state?), as a tool of small-$n$ prediction, distanced-based weighting may favor somewhat different considerations in constructing a donor pool. 
     
     For our purposes, we choose the three most recent US presidential elections prior to the 2016 election.  The three US presidential elections are the only presidential elections since the advent of the ETF IYG.  We exclude the midterm congressional elections in the US (i.e. those held in even years not divisible by four), which generate far lower voter turnout and feature no national races.
 
@@ -739,7 +729,7 @@ Naturally, one might ask how sensitive this prediction is to at least two kinds 
     
     \citet{chinco2019sparse} find that for predicting 1-minute returns, highly transitory firm-specific news is useful.  The authors conclude that news about fundamentals is predictive.
 
-    There is an important question about the stability of the GARCH parameters under the presence of an exogenous shock.  There are at least two reasons that we do not herein explore parameter instability or methods to adjust for it.  First, the marginal effect of coefficient changes at the shock time would, under the assumptions in this work, be swamped by the random effect.  Second, the estimation of post-shock parameter values would require at least several --- better yet dozens --- of post-shock data points, whereas this work assumes access to zero post-shock data points.  However, we do leave over that similarity-based estimators for the GARCH coefficients could be produced, for example, by adapting the methods of \citet{dendramis2020similarity}. \textcolor{red}{This section seems better suited for the Discussion section}\textcolor{green}{Agreed. It has been moved.}
+    There is an important question about the stability of the GARCH parameters under the presence of an exogenous shock.  There are at least two reasons that we do not herein explore parameter instability or methods to adjust for it.  First, the marginal effect of coefficient changes at the shock time would, under the assumptions in this work, be swamped by the random effect.  Second, the estimation of post-shock parameter values would require at least several --- better yet dozens --- of post-shock data points, whereas this work assumes access to zero post-shock data points.  However, we do leave over that similarity-based estimators for the GARCH coefficients could be produced, for example, by adapting the methods of \citet{dendramis2020similarity}.
 
 \subsection{Connection to forecast combination methods}
 Because the method proposed uses a point in $\Delta^{n}$, it is important to head-off possible confusion.  What we are proposing is not a forecast combination method.  What we aggregating and weighting (not combining) is subcomponents of forecasts, not forecasts themselves.  Moreover, from a broader perspective, forecast combination is an inapt term for what is being proposed here.  First, the donors are not forecasts. \textcolor{red}{This does not seem to be complete. Also, is there a way to get this into a paragraph as a minor point?}
@@ -844,9 +834,7 @@ strategy& Observe $y_{i}$; then estimate $x$ with small expected L2 loss & Estim
 
 \subsection{Model Adjustment Using Synthetic Methods: A Global Overview}
 
-\textcolor{red}{It is a good idea to begin defining a new subfield of forecasting based on the common methodologies of this work and Lin and Eck (2021). }
-
-Here we distinguish what in this work is essential and inessential to synthetic forecasting.
+We propose a subfield of forecasting based on the common methodologies of this work and \citet{lin2021minimizing}.  We begin by distinguishing what in this work is essential and inessential to synthetic forecasting.
 
 \begin{enumerate}
   \item $k$-dimensional random object to predict
@@ -884,7 +872,7 @@ Let $p'$ denote the number of linearly independent rows of $\X$.\\
 
 
 \section{Supplement}
-We analyze the real-world example with Brexit included and using the daily return in the Pound-Dollar exchange rate as a covariate. \\
+We analyze the real-data example with Brexit included and using the daily return in the Pound-Dollar exchange rate as a covariate. \\
 
 Note that by inspecting the fit of the distance-based weighting approximation quantitatively, we can gain some degree of foresight into how well the forecast will be.
 
