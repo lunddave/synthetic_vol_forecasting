@@ -226,32 +226,29 @@ Let $I(\cdot)$ be an indicator function.  Let $T_i$ denote the time length of th
     \end{align*}
 where $D^{return}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + L_{i, return}\})$ and $D^{vol}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + L_{i, vol}\})$ and $L_{i,return},L_{i,vol}$ denote the lengths of the log return and volatility shocks, respectively. Let $\delta, \x_{i,t} \in \mathbb{R}^{p}$.  Let $\mc{M}_{0}$ denote the subclass of $\mc{M}_{1}$ models such that $\delta \equiv 0$.  Notice that $\mc{M}_{0}$ assumes that $\omega^{*}_i$ have no dependence on the covariates and are i.i.d. with $\E[ \omega^{*}_i]=\mu_{\omega^{*}}$. 
 
-For each of the $p$ entries in $\delta$, the $k$th entry should have the property that $\mathbb{E}[ x_{i,t,k} \cdot \delta_{k} ] > 0$. In principle, you could have an $\mc{M}_{21}$ shock with a covariate that, in expectation, has a negative marginal contribution to the cumulative shock.  
-
-We now emphasize the connection between the model above and the factor model from \citet{abadie2010synthetic}:
+We now draw the connection between the model above and the factor model from \citet{abadie2010synthetic}, where an untreated unit is governed by:
 
 \begin{align*}
 Y^{N}_{i,t} = \delta_{t} + \boldsymbol\theta_{t}\textbf{Z}_{i}+\boldsymbol\lambda_{t}\boldsymbol\mu_{i}+\varepsilon_{i,t} \text{ ,}
 \end{align*}
-  
 which happens to nest the ARMA representation of a GARCH model, where
 
 \begin{align*}
 \delta_{t} & \sim \omega,  \textbf{a location parameter shared across donors}\\
-\boldsymbol\theta_{t} & \sim \boldsymbol\alpha_{k},  \textbf{the ARCH parameters shared across donors} \\
-\textbf{Z}_{i} & \sim \boldsymbol a_{t-k}, \textbf{observable quantities specific to each donor} \\
-\boldsymbol \lambda_{t} & \sim \boldsymbol\beta_{j}, \textbf{the GARCH parameters shared across donors} \\
-\boldsymbol \mu_{i} & \sim \boldsymbol \sigma_{i,t-j}^{2}, \textbf{latent quantities specific to each donor}   \\
+\boldsymbol\theta_{t} & \sim \boldsymbol\alpha_{k},  \textbf{a vector of ARCH parameters shared across donors} \\
+\textbf{Z}_{i} & \sim \boldsymbol a_{i,t-k}, \textbf{a vector of observable quantities specific to each donor} \\
+\boldsymbol \lambda_{t} & \sim \boldsymbol\beta_{j}, \textbf{a vector of GARCH parameters shared across donors} \\
+\boldsymbol \mu_{i} & \sim \boldsymbol \sigma_{i,t-j}^{2}, \textbf{a vector of latent quantities specific to each donor}   \\
 \end{align*}
+and $\varepsilon_{i,t}$ is idiosyncratic noise, uncorrelated across time and donors.
 
     \subsection{Volatility Profile of a Time Series}
     \label{Volatility Profile of a Time Series}
     
-    \textcolor{red}{This section is clunky. More description of the components of $\textbf{V}_{p,n}$ and the novelty of $\textbf{V}_{p,n}$ is needed.}
-    In this section, we make a novel contribution to the synthetic prediction framework by constructing a profile of a time series' volatility.  Suppose that for each of the $n$ donors, we posit $p$ distinct covariates in the functional form of the shock.  The volatility profile is defined as the $pn \times n$ matrix 
+    In this section, we make a novel contribution to prediction via distance-based weighting by constructing a profile of a time series' volatility.  Suppose that for each of the $n$ donors, we posit $p$ distinct covariates in the functional form of the shock.  The volatility profile is defined as the $pn \times n$ matrix 
 
     \begin{equation*}
-      \textbf{V}_{p,n} = 
+      \textbf{V} = 
       \begin{pmatrix}
       \alpha_{T^{*},1} & \alpha_{T^{*},2}  & \cdots & \alpha_{T^{*},n}  \\
       \beta_{T^{*},1} & \beta_{T^{*},2}  & \cdots & \beta_{T^{*},n}  \\
@@ -273,7 +270,7 @@ which happens to nest the ARMA representation of a GARCH model, where
       \vdots  & \vdots  & \ddots & \vdots  \\
       \end{pmatrix}
       \end{equation*}
-      Several comments are in order here.  Although as shown, $\textbf{V}_{p,n}$ displays `balance' in that each of the $p$ covariates is replicated $n$ times, in practice, it may be that some donors do not possess or do not require such information. $\textbf{V}_{p,n}$
+      Several comments are in order here.  Although as shown, $\textbf{V}$ displays `balance' in that each of the $p$ covariates is replicated $n$ times, in practice, it may be that some donors do not possess or do not require such information. $\textbf{V}$
     
 
 \section{Post-shock Synthetic Volatility Forecasting Methodology}
@@ -287,7 +284,7 @@ We present two forecasts:
   \text{Forecast 2: } & \hat\sigma^{2}_{adjusted} = \hat\E_{T^{*}}[\sigma^{2}_{i,T^{*}+1}|\mathcal{F}_{T^{*}}] + \hat\omega^{*} = \hat\omega_{i} + \sum^{m_{i}}_{k=1}\hat\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\hat\beta_{i,j}\sigma_{i,t-j}^{2} + \hat\gamma_{i}^{T} \x_{i,t} + \hat\omega^{*} \text{ .}
 \end{align*}
 
-A GARCH model is an ARMA on the squares of the observed scalar time series $a^{2}_{t}$ \citep[][p. 18, p. 46]{tsay2005analysis,francq2019garch}, assuming that $a^{t}$ satisfies fourth-order stationarity.  This fact matters for forecasting because the $h$-step-ahead forecasting function for GARCH model is, just like for an ARMA model, the conditional expectation function, $\mathbb{E}[ \sigma^{2}_{i,T^{*}+h} | \mathcal{F}_{T^{*}}]$, or practically speaking, the estimate thereof, $\hat{\mathbb{E}}[ \sigma^{2}_{i,T^{*}+h} |\mathcal{F}_{T^{*}}]$ \citep{zivot2009practical}.  Here we present one-step-ahead forecasts for a GARCH(1,1), without loss of generality.  For $h=2,3,4,...$, the conditional expectation is computed recursively, as is standard for iterative autoregressive forecasts.
+A GARCH model is an ARMA on the squares of the observed scalar time series $a^{2}_{t}$ \citep[][p. 18, p. 46]{tsay2005analysis,francq2019garch}, assuming that $a_{t}$ satisfies fourth-order stationarity.  This fact matters for forecasting because the $h$-step-ahead forecasting function for GARCH model is, just like for an ARMA model, the conditional expectation function, $\mathbb{E}[ \sigma^{2}_{i,T^{*}+h} | \mathcal{F}_{T^{*}}]$, or practically speaking, the estimate thereof, $\hat{\mathbb{E}}[ \sigma^{2}_{i,T^{*}+h} |\mathcal{F}_{T^{*}}]$ \citep{zivot2009practical}.  Here we present one-step-ahead forecasts for a GARCH(1,1), without loss of generality.  For $h=2,3,4,...$, the conditional expectation is computed recursively, as is standard for iterative autoregressive forecasts.
 
 \subsection{Excess Volatility Estimators}
     \label{Excess Volatility Estimators}
