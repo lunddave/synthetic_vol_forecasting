@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.21)  23 MAR 2024 14:10
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.21)  25 MAR 2024 16:03
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1439,7 +1439,7 @@ Overfull \hbox (131.60022pt too wide) has occurred while \output is active
 [24
 
 ]
-Overfull \vbox (151.32535pt too high) detected at line 399
+Overfull \vbox (178.52536pt too high) detected at line 401
  []
 
 
@@ -1479,18 +1479,18 @@ Package logreq Info: Writing requests to 'prelim_presentation.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 39508 strings out of 476025
- 804466 string characters out of 5790017
+ 39514 strings out of 476025
+ 804664 string characters out of 5790017
  1887388 words of memory out of 5000000
- 59198 multiletter control sequences out of 15000+600000
+ 59203 multiletter control sequences out of 15000+600000
  527223 words of font info for 88 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 128i,15n,131p,752b,1588s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 128i,15n,131p,752b,1596s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on prelim_presentation.pdf (26 pages, 515924 bytes).
+Output written on prelim_presentation.pdf (26 pages, 517600 bytes).
 PDF statistics:
- 966 PDF objects out of 1000 (max. 8388607)
- 860 compressed objects within 9 object streams
- 75 named destinations out of 1000 (max. 500000)
+ 968 PDF objects out of 1000 (max. 8388607)
+ 862 compressed objects within 9 object streams
+ 76 named destinations out of 1000 (max. 500000)
  286 words of extra memory for PDF output out of 10000 (max. 10000000)
 
