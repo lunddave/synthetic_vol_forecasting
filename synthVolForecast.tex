@@ -140,7 +140,7 @@ In this work we focus on the second central moment of a time series, the volatil
 
 No matter how a time series or its transformations are modeled, forecasting in the presence of exogenous shock events requires a methodological framework that sensibly incorporates relevant information that has yet to manifest in market price or derivative quantities like volatility.  In this setting, regime-change models (see \citet{bauwens2006regime} and citations therein) are of little use because under the assumption of a known exogenous shock, there is no need to estimate a regime-change time, nor is there data following the exogenous shock event to fit a model.  Asymmetric GARCH models were an early attempt to account for fact that negative returns typically beget greater volatility than positive returns \citep{hansen2012realized}.  Problematically, such models depend upon the observation of a negative return to provide the most updated volatility forecast, but under the circumstances posited herein, no such return has been observed.
 
-Similar problems and and more exist for Realized GARCH models \citep{hansen2012realized}, which incorporates observable measures of volatility, known as  ``realized measures", like implied volatility.  Under the assumptions herein, no post-shock data is available, and even if it were, Realized GARCH does not promise to perform well, since Black-Scholes implied volatility is a biased estimator of volatility \citep{mayhew1995implied, christensen1998relation}, with the bias increasing in times of crises, when options are likely to be out-of-the-money.  GARCH models have been shown slow to adapt to spikes in volatility \citep{andersen2003modeling}.  \citet{engle2002new} explored the use of implied volatility as an exogenous regressor in a GARCH model, that is, using a so-called GARCH-X model \citep{RePEc:pra:mprapa:100301}.  Realized GARCH aims to solve both the asymmetry problem as well as the slow-reaction problem by introducing a ``measurement equation" as a tool for modeling the contribution to the conditional variance made by the market-implied volatility measure.  The key insight is that a realized measure of volatility will often fail to be independent of the log return of the asset.  Therefore, including the external measure must be done in a way that accounts for this dependence.
+Similar problems and more exist for Realized GARCH models \citep{hansen2012realized}, which incorporates observable measures of volatility, known as  ``realized measures", like implied volatility.  Under the assumptions herein, no post-shock data is available, and even if it were, Realized GARCH does not promise to perform well, since Black-Scholes implied volatility is a biased estimator of volatility \citep{mayhew1995implied, christensen1998relation}, with the bias increasing in times of crises, when options are likely to be out-of-the-money.  GARCH models have been shown slow to adapt to spikes in volatility \citep{andersen2003modeling}.  \citet{engle2002new} explored the use of implied volatility as an exogenous regressor in a GARCH model, that is, using a so-called GARCH-X model \citep{RePEc:pra:mprapa:100301}.  Realized GARCH aims to solve both the asymmetry problem as well as the slow-reaction problem by introducing a ``measurement equation" as a tool for modeling the contribution to the conditional variance made by the market-implied volatility measure.  The key insight is that a realized measure of volatility will often fail to be independent of the log return of the asset.  Therefore, including the external measure must be done in a way that accounts for this dependence.
 
 The approach herein can be viewed as an attempt to sidestep the functional complexity posited by Realized GARCH, with its minimum nine parameters to estimate \citep{sharma2016forecasting}, by substituting modeling assumptions.  Synthetic Volatility Forecasting proceeds under the assumption that similar news events occasion volatility shocks arising from a common shock distribution.  The procedure proposed does not require post-shock information like returns or market-implied quantities from the time series under study.  Hence, we also avoid questions about what realized measure to use and when as well as questions about the usefulness of high-frequency data, although these remain intriguing avenues for future work.
 
@@ -171,7 +171,7 @@ In order to motivate our procedure, we show how the aggregation of estimated exc
 \label{section2}
 
 \subsection{A Primer on GARCH}
-We define the daily log return as $r_{t} = \text{log}(\frac{P_{t+1}}{P_{t}})$, where $P_{t}$ denotes the price at time $t$.  The class of ARIMA($p,d,q$) models  \citep{box2013box} provides a framework for postulating and quantifying the autoregressive structure of $r_{t}$, all within the framework of frequentist statistics.  These models assume a certain dependence structure between $r_{t}$ and $(r_{k})_{k\leq t}$, yet their errors --- often called innovations in the financial time series context due to how they represent the impact of new information --- are nevertheless assumed to be i.i.d. with mean zero and constant variance.  The ARCH \citep{engle1982autoregressive} and GARCH \citep{bollerslev1986generalized} models provide elegant alternatives to the homoskedasticity assumption.  In fact, the GARCH framework in its most basic form disregards $r_{t}$ and instead turns its interest to the series $r_{t}^{2}$ (when properly centered, i.e. after assuming a mean-model for returns).  
+We define the log return of an asset between $t-1$ and $t$ as $r_{t} = \text{log}(\frac{P_{t+1}}{P_{t}})$, where $P_{t}$ denotes the price at time $t$.  The class of ARIMA($p,d,q$) models  \citep{box2013box} provides a framework for postulating and quantifying the autoregressive structure of $r_{t}$, all within the framework of frequentist statistics.  These models assume a certain dependence structure between $r_{t}$ and $(r_{k})_{k\leq t}$, yet their errors --- often called innovations in the financial time series context due to how they represent the impact of new information --- are nevertheless assumed to be i.i.d. with mean zero and constant variance.  The ARCH \citep{engle1982autoregressive} and GARCH \citep{bollerslev1986generalized} models provide elegant alternatives to the homoskedasticity assumption.  In fact, the GARCH framework in its most basic form disregards $r_{t}$ and instead turns its interest to the series $r_{t}^{2}$ (when properly centered, i.e. after assuming a mean-model for returns).  
 
 To that end, let $a_{t} = r_{t} - \mu_{t}$, where $\mu_{t}$ is the mean of the log return series $r_{t}$.  We thus derive a mean-zero process $(a_{t})_{t\in\mathbb{N}}$ with the property that $\E[a^{2}_{t}] = \mrm{Var}[a_{t}]$.  Under the assumption of time-invariant volatility, the series $a_{t}^{2}$ should exhibit no autocorrelation at any lag $\ell\geq1$.  This assumption motivates tests for so-called ARCH effects, that is, tests for the clustering of volatility.  These tests explore the alternative hypothesis that $\sigma_{t}^{2}$ is not only a time-varying parameter but furthermore a function of past squared residuals of the mean model.  In particular, the ARCH($m$) model is an autoregressive model in which $\sigma_{t}^{2}$ is fitted using a linear combination of the past $m$ values of $r_{t}^{2}$.  The GARCH($m,s$) framework take this one step further but modeling $\sigma_{t}^{2}$ as a linear combination of the past $m$ values of $r_{t}^{2}$ and well as the past $s$ values of $\sigma_{t}^{2}$.  In functional form, a GARCH process (sometimes called a strong GARCH process \citep[p. 19]{francq2019garch}) is given by
 
@@ -199,16 +199,15 @@ We will suppose that a researcher has multivariate time series data $\y_{i,t} = 
 \begin{align*}
 &\sigma_{i,t}^{2} = \omega_{i} + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \text{ }. \\
 \end{align*}
-Let $I(\cdot)$ be an indicator function.  Let $T_i$ denote the time length of the time series $i$ for $i = 1, \ldots, n+1$, and let $T_i^*$ denote the largest time index prior to the arrival of the news shock, with $T_i^* < T_i$.  For $t= 1, \ldots, T_i$ and $i = 1, \ldots, n+1$, the model $\mc{M}_1$ is defined as follows.  
+Let $I(\cdot)$ be an indicator function.  Let $T_i$ denote the time length of the time series $i$ for $i = 1, \ldots, n+1$, and let $T_i^*$ denote the largest time index prior to the arrival of the news shock, with $T_i^* < T_i$.  Let $\delta, \x_{i,t} \in \mathbb{R}^{p}$.  For $t= 1, \ldots, T_i$ and $i = 1, \ldots, n+1$, the model $\mc{M}_1$ is defined as 
 \begin{align*}
   \mc{M}_1 \colon \begin{array}{l}
      \sigma^{2}_{i,t} = \omega_{i} + \omega^{*}_i + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \text{ }\\[.2cm]
      a_{i,t} = \sigma_{i,t}((1-D^{return}_{i,t})\epsilon_{i,t} + D^{return}_{i,t}\epsilon^{*}_{i})\\[.2cm]
-    \omega_{i,t}^{*} = D^{vol}_{i,t}[\mu_{\omega^{*}}+\delta'\mbf{x}_{i, t-1}+ u_{i,t}]
+    \omega_{i,t}^{*} = D^{vol}_{i,t}[\mu_{\omega^{*}}+\delta'\mbf{x}_{i, t-1}+ u_{i,t}],
   \end{array}
   \end{align*}
-
-  The random effects \textcolor{green}{stochastic?} structure is as follows.
+with error structure
 
   \begin{align*}
     \epsilon_{i,t} &\simiid \mc{F}_{\epsilon} \text{ with }  \; \mrm{E}_{\mc{F}_{\epsilon}}(\epsilon) = 0, \mrm{Var}_{\mc{F}_{\epsilon}}(\epsilon)  = 1  \\
@@ -221,7 +220,7 @@ Let $I(\cdot)$ be an indicator function.  Let $T_i$ denote the time length of th
     %l_{i, level} &\simiid \text{Unif}\{1,2,...,l_{i,vol}\}\\
     \epsilon_{i,t} & \indep  \epsilon^{*}_{i,t}  \indep u_{i,t}
     \end{align*}
-where $D^{return}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + L_{i, return}\})$ and $D^{vol}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + L_{i, vol}\})$ and $L_{i,return},L_{i,vol}$ denote the lengths of the log return and volatility shocks, respectively. Let $\delta, \x_{i,t} \in \mathbb{R}^{p}$.  Let $\mc{M}_{0}$ denote the subclass of $\mc{M}_{1}$ models such that $\delta \equiv 0$.  Notice that $\mc{M}_{0}$ assumes that $\omega^{*}_i$ have no dependence on the covariates and are i.i.d. with $\E[ \omega^{*}_i]=\mu_{\omega^{*}}$. 
+where $D^{return}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + L_{i, return}\})$ and $D^{vol}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + L_{i, vol}\})$ and $L_{i,return},L_{i,vol}$ denote the lengths of the log return and volatility shocks, respectively.  Let $\mc{M}_{0}$ denote the subclass of $\mc{M}_{1}$ models such that $\delta \equiv 0$.  Note that $\mc{M}_{0}$ assumes that $\omega^{*}_i$ have no dependence on the covariates and are i.i.d. with $\E[ \omega^{*}_i]=\mu_{\omega^{*}}$. 
 
 We now draw the connection between the model above and the factor model from \citet{abadie2010synthetic}, where an untreated unit is governed by:
 
@@ -267,9 +266,11 @@ and $\varepsilon_{i,t}$ is idiosyncratic noise, uncorrelated across time and don
       \Delta RV_{1,t} & \Delta RV_{2,t}  & \cdots & \Delta RV_{n,t}  \\
       \Delta RV_{1,t-1}  & \Delta RV_{2,t-1}  & \cdots & \Delta RV_{n,t-1}  \\
       \vdots  & \vdots  & \ddots & \vdots  \\
-      \end{pmatrix}
+      \end{pmatrix},
       \end{equation*}
-      As shown, $\textbf{V}_{t}$ displays `balance' in that $p$ covariates exists for each of the $n$.  In practice, missing values, corrupted values, or unacceptably extreme or noisy estimates may necessitate some sort of matrix completion, a problem that we do not tackle in this work.  We now turn to the next section, where $\textbf{V}_{t}$ is employed in a procedure to arrive at a forecast adjustment. 
+      where RV and IV denote realized volatility and implied volatility, respectively.  Covariates chosen for inclusion in a given volatility profile may be levels, log differences in levels, percentage changes in levels, or absolute values thereof, among many choices.
+
+      As shown, $\textbf{V}_{t}$ displays `balance' in that $p$ covariates exists for each of the $n$ donors.  In practice, missing values, corrupted values, or unacceptably extreme or noisy estimates may necessitate some sort of matrix completion, a problem that we do not tackle in this work.  We now turn to the next section, where $\textbf{V}_{t}$ is employed in a procedure to arrive at a forecast adjustment. 
     
 
 \section{Post-shock Synthetic Volatility Forecasting Methodology}
@@ -283,17 +284,17 @@ We present two forecasts:
   \text{Forecast 2: } & \hat\sigma^{2}_{adjusted} = \hat\E_{T^{*}}[\sigma^{2}_{i,T^{*}+1}|\mathcal{F}_{T^{*}}] + \hat\omega^{*} = \hat\omega_{i} + \sum^{m_{i}}_{k=1}\hat\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\hat\beta_{i,j}\sigma_{i,t-j}^{2} + \hat\gamma_{i}^{T} \x_{i,t} + \hat\omega^{*} \text{ .}
 \end{align*}
 
-A GARCH model is an ARMA on the squares of the observed scalar time series $a^{2}_{t}$ \citep[][p. 18, p. 46]{tsay2005analysis,francq2019garch}, assuming that $a_{t}$ satisfies fourth-order stationarity.  This fact matters for forecasting because the $h$-step-ahead forecasting function for GARCH model is, just like for an ARMA model, the conditional expectation function, $\mathbb{E}[ \sigma^{2}_{i,T^{*}+h} | \mathcal{F}_{T^{*}}]$, or practically speaking, the estimate thereof, $\hat{\mathbb{E}}[ \sigma^{2}_{i,T^{*}+h} |\mathcal{F}_{T^{*}}]$ \citep{zivot2009practical}.  Here we present one-step-ahead forecasts for a GARCH(1,1), without loss of generality.  For $h=2,3,4,...$, the conditional expectation is computed recursively, as is standard for iterative autoregressive forecasts.
+A GARCH model is an ARMA on the squares of the observed scalar time series $a^{2}_{t}$ \citep[][p. 18, p. 46]{tsay2005analysis,francq2019garch}, assuming that $a_{t}$ satisfies fourth-order stationarity.  This fact matters for forecasting because the $h$-step-ahead forecasting function for GARCH model is, just like for an ARMA model, the conditional expectation function, $\mathbb{E}[ \sigma^{2}_{i,T^{*}+h} | \mathcal{F}_{T^{*}}]$, or practically speaking, the estimate thereof, $\hat{\mathbb{E}}[ \sigma^{2}_{i,T^{*}+h} |\mathcal{F}_{T^{*}}]$ \citep{zivot2009practical}.  Here we have presented one-step-ahead forecasts for a GARCH-X(1,1), without loss of generality.  For $h=2,3,4,...$, the conditional expectation is computed recursively, as is standard for iterative autoregressive forecasts.
 
 \subsection{Excess Volatility Estimators}
     \label{Excess Volatility Estimators}
    
-    The problem of aggregating estimated donor shocks begins with the data constraints.  Taking the estimated shocks as a given, we essentially observe the pair $(\{\hat\omega^{*}_{i}\}^{n+1}_{i=2},\{\x_{i,T^{*}}\}^{n+1}_{i=2})$.  We wish to recover weights $\{\weight_{i}\}^{n+1}_{i=2} \in \Delta^{n}$ leading to favorable forecasting properties.  These weights are used to compute $\hat\omega^{*} \coloneq \sum^{n+1}_{i=2}\weight_{i}\hat\omega^{*}_{i}$, our forecast adjustment term.  Since the $\{\weight_{i}\}_{i=2}^{n+1}$ are computed using $\mathcal{F}_{T^{*}_{i}}$, the set $\{\weight_{i}\}_{i=2}^{n+1}$ is deterministic, $\textit{modulo}$ any stochastic ingredient in the numerical methods employed to approximate $\x_{1,T^{*}}$ using a convex combination of donor covariates.  We will say more about the properties of $\omega^{*}_{i}$ in section $\ref{SVF_properties}$. 
+    The problem of aggregating estimated donor shocks begins with the data constraints.  Taking the estimated shocks as a given, we essentially observe the pair $(\{\hat\omega^{*}_{i}\}^{n+1}_{i=2},\{\textbf{v}_{i}\}^{n+1}_{i=2})$.  We wish to recover weights $\{\weight_{i}\}^{n+1}_{i=2} \in \Delta^{n}$ leading to favorable forecasting properties.  These weights are used to compute $\hat\omega^{*} \coloneq \sum^{n+1}_{i=2}\weight_{i}\hat\omega^{*}_{i}$, our forecast adjustment term.  Since the $\{\weight_{i}\}_{i=2}^{n+1}$ are computed using $\mathcal{F}_{T^{*}_{i}}$, the set $\{\weight_{i}\}_{i=2}^{n+1}$ is deterministic, $\textit{modulo}$ any stochastic ingredient in the numerical methods employed to approximate $\x_{1,T^{*}}$ using a convex combination of donor covariates.  We will say more about the properties of $\omega^{*}_{i}$ in section $\ref{SVF_properties}$. 
 
     Following \citet{abadie2003economic,abadie2010synthetic}, let $\|\cdot\|_{\textbf{S}}$ denote any semi-norm on $\mathbb{R}^{p}$, and define
 
     \begin{align*}
-    \{\pi\}_{i=2}^{n+1} = \argmin_{\pi}\|\textbf{v}_{1} - \V_{p,n}\pi \|_{\textbf{S}} \text{ .}
+    \{\pi\}_{i=2}^{n+1} = \argmin_{\pi}\|\textbf{v}_{1} - \V_{t}\pi \|_{\textbf{S}} \text{ .}
     \end{align*}
      
     
@@ -305,10 +306,11 @@ There are at least two senses of optimal weights that one might be interested in
     
     The time-varying parameter $\sigma^{2}_{t}$ is a quantity for which even identifying an observable effect in the real world is far more challenging.  In this work, we use a common estimator of the variance called realized volatility (RV), one which has the virtue of being ``model-free'' in the sense that it requires no modeling assumptions \citep{andersen2010stochastic}.  The realized variance itself can be decomposed into the sum of a continous component and a jump component, with the former being less predictable and less persistent \citep{andersen2007roughing}, cited in \citet{de2006forecasting}, two factors that further motivate the method employed herein.
     
-    Suppose we examine $K$ units of of time, where each unit is divided into $m$ intervals of length $\frac{1}{m}$.  We follow the notation of  \citet{andersen2009realized}. Let $p_{t} = \text{log}(P_{t})$, and let $r(t,\frac{1}{m}) = p_{t} - p_{t-\frac{1}{m}}$.  We estimate the variance of $i$th log return series using Realized Volatility of the $K$ consecutive trading days that conclude with day $t$, denoted $RV_{i,t}^{K,m}$, using
+    Suppose we examine $K$ units of of time, where each unit is divided into $m$ intervals of length $\frac{1}{m}$.  We follow the notation of \citet{andersen2009realized}. Let $p_{t} = \log{P_{t}}$, and let $\tilde{r}(t,\frac{1}{m}) = p_{t} - p_{t-\frac{1}{m}}$.  We estimate the variance of $i$th log return series using Realized Volatility of the $K$ consecutive trading days that conclude with day $t$, denoted $RV_{i,t}^{K,m}$, using
     
-    $$RV^{K,m} = \frac{1}{K}\sum^{Km}_{v=1}r^{2}(v/m,1/m).$$
-    Assuming that the K units $r(t, 1) = p_{t} - p_{t-1}$ are such that $r(t, 1) \simiid N(\mu, \delta^{2})$, it is easily verified that 
+    $$RV^{K,m} = \frac{1}{K}\sum^{Km}_{v=1}\tilde{r}^{2}(v/m,1/m).$$
+
+    Assuming that the K units $\tilde{r}(t, 1) = p_{t} - p_{t-1}$ are such that $\tilde{r}(t, 1) \simiid N(\mu, \delta^{2})$, it is easily verified that 
     
     $$\E[RV^{K,m}] = \frac{\mu^{2}}{m} + \delta^{2},$$
     which is a biased but consistent estimator of the variance.  We will proceed using $m = 77$, corresponding to the 6.5-hour trading day chopped into 5-minute blocks, with the first block omitted in order to ignore unusual trading behavior at the start of the day.
@@ -496,7 +498,7 @@ Place here
 \begin{prop}\label{omega_consistency}
 Assume
 \begin{enumerate}
-  \item For each $i$, $\{a_{i,t}\}_{t=0,...,T_i}$ obeys a GARCH-X($m,s$), as laid out in equation $(\ref{GARCH-X})$ process with volatility shocks found in $\mc{M}_{2}$, where $T_i$ is the length of the $i$th series.
+  \item For each $i$, $\{a_{i,t}\}_{t=0,...,T_i}$ obeys a GARCH-X($m,s$), as laid out in equation $(\ref{GARCH-X})$, with volatility shocks found in $\mc{M}_{2}$, where $T_i$ is the length of the $i$th series.
   \item For each $i, \{\omega_{i,t}^{*}\}_{t=0,...,T_i}$ is potentially non-zero at $\{T^{*}_{i}+1,... ,T^{*}_{i}+k\}$, $\omega_{i,T^{*}+1}^{*}\equiv...\equiv\omega_{i,T^{*}+k}^{*}$, and zero otherwise, where the arrival of $T_{i}^{*}$ is governed by a time-invariant distribution on $\{a_{i,t}\}_{t=0,...,T_i-1}$. \label{stationarity_of_omega_i_t}
   \item The conditions in Assumption 0 of \citet{han2014asymptotic} prevail.
 \end{enumerate}
@@ -556,10 +558,11 @@ For 1-step-ahead forecast of $\sigma^{2}_{t+1}$, consider the difference
 \end{align*}
 For simplicity, we work with a GARCH(1,1) that experiences a volatility shock at a single time point for which we would like to provide a point forecast.  Then (\ref{QL Loss Consistency}) can be expressed as
 
-\begin{align}
+\begin{align*}
    &\frac{(\hat\omega + \hat\alpha a_{t}^{2} + \hat\beta\sigma^{2}_{t})-(\hat\omega + \hat\alpha a_{t}^{2} + \hat\beta\sigma_{t}^{2} + \hat\omega^{*})}{\sigma_{t+1}^{2}} + \log{\frac{\hat\omega + \hat\alpha a_{t}^{2} + \hat\beta\sigma_{t}^{2} + \hat\omega^{*}}{\hat\omega + \hat\alpha a_{t}^{2} + \hat\beta\sigma_{t}^{2}}}\\
-   & = \log{\frac{\hat\omega + \hat\alpha a_{t}^{2} + \hat\beta\sigma_{t}^{2} + \hat\omega^{*}}{\hat\omega + \hat\alpha a_{t}^{2} + \hat\beta\sigma_{t}^{2}}} - \frac{\hat\omega^{*}}{\sigma^{2}_{t+1}} \label{QL Loss Consistency - GARCH(1,1)} \text{ .}
-\end{align}
+   & = \log{\frac{\hat\omega + \hat\alpha a_{t}^{2} + \hat\beta\sigma_{t}^{2} + \hat\omega^{*}}{\hat\omega + \hat\alpha a_{t}^{2} + 
+   \hat\beta\sigma_{t}^{2}}} - \frac{\hat\omega^{*}}{\sigma^{2}_{t+1}} \text{ .} 
+\end{align*}\label{QL Loss Consistency - GARCH(1,1)} 
 By letting $f(\hat\omega^{*}) = \log{\frac{\hat\omega + \hat\alpha a_{t}^{2} + \hat\beta\sigma_{t}^{2} + \hat\omega^{*}}{\hat\omega + \hat\alpha a_{t}^{2} + \hat\beta\sigma_{t}^{2}}} - \frac{\hat\omega^{*}}{\sigma^{2}_{t+1}}$, it's easily verified that as $\hat\omega^{*} \rightarrow 0^{+}$, the difference in the losses goes to zero.  On the other hand, as $\hat\omega^{*}$ becomes large, the difference in the losses turns negative, with the lesson being that $\hat\omega^{*}$ must be in appropriate proportion to the volatility $\sigma^{2}_{t+1}$ in order for the adjusted forecast to outperform the unadjusted forecast.  This explains why it is so important to avoid using a naive adjustment estimator, $\overline{\omega^{*}}$, the arithmetic mean of the estimated shocks.  We conclude this section with a broader result. 
 
 \begin{prop}\label{asymptotic_consistency}
