@@ -225,49 +225,51 @@ where $D^{return}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + L_{i, return}\})$ and 
 
 We now draw the connection between the model above and the factor model from \citet{abadie2010synthetic}, where an untreated unit is governed by:
 
-\begin{align*}
-Y^{N}_{i,t} = \delta_{t} + \boldsymbol\theta_{t}\textbf{Z}_{i}+\boldsymbol\lambda_{t}\boldsymbol\mu_{i}+\varepsilon_{i,t} \text{ ,}
-\end{align*}
-which happens to nest the ARMA representation of a GARCH model, where
+\begin{align}
+Y^{N}_{i,t} = \delta_{t} + \boldsymbol\theta_{t}\textbf{Z}_{i}+\boldsymbol\lambda_{t}\boldsymbol\mu_{i}+\varepsilon_{i,t} \text{ ,} \label{abadie_factor_model}
+\end{align}
+which happens to nest the GARCH model's volatilty equation (putting aside that $\sigma_{t}$ is latent in the GARCH model) as well as as the ARMA representation of a GARCH model, where
 
 \begin{align*}
-\delta_{t} & \sim \omega,  \textbf{a location parameter shared across donors}\\
-\boldsymbol\theta_{t} & \sim \boldsymbol\alpha_{k},  \textbf{a vector of ARCH parameters and other coefficients shared across donors} \\
-\textbf{Z}_{i} & \sim \boldsymbol a_{i,t-k}, \textbf{a vector of observable quantities specific to each donor} \\
-\boldsymbol \lambda_{t} & \sim \boldsymbol\beta_{j}, \textbf{a vector of GARCH parameters shared across donors} \\
-\boldsymbol \mu_{i} & \sim \boldsymbol \sigma_{i,t-j}^{2}, \textbf{a vector of latent quantities specific to each donor}   \\
+\delta_{t} & \sim \omega,  \text{a location parameter shared across donors}\\
+\boldsymbol\theta_{t} & \sim \boldsymbol\alpha_{k},  \text{a vector of ARCH parameters and other coefficients shared across donors} \\
+\textbf{Z}_{i} & \sim \boldsymbol a_{i,t-k}, \text{a vector of observable quantities specific to each donor} \\
+\boldsymbol \lambda_{t} & \sim \boldsymbol\beta_{j}, \text{a vector of GARCH parameters shared across donors} \\
+\boldsymbol \mu_{i} & \sim \boldsymbol \sigma_{i,t-j}^{2}, \text{a vector of latent quantities specific to each donor}   \\
 \end{align*}
 and $\varepsilon_{i,t}$ is idiosyncratic noise, uncorrelated across time and donors.
 
     \subsection{Volatility Profile of a Time Series}
     \label{Volatility Shock Profile of a Time Series}
     
-    In this section, we make a novel contribution to prediction via distance-based weighting by constructing a profile of a time series' volatility, the analogue of a covariate matrix in a synthetic control framework. \textcolor{red}{What distinguishes a volatility shock profile is that -- ALSO, how I index time?} .  Suppose that for each of the $n$ donors, we posit $p$ distinct covariates in the functional form of the shock.  The volatility profile is defined as the $pn \times n$ matrix 
+    In this section, we make a novel contribution to prediction via distance-based weighting by constructing a profile of a time series' volatility, the analogue of a covariate matrix in a synthetic control framework.  The volatility profile for a given GARCH-X process is nothing more than a vector of observable covariates that parameterize a shock.  A collection of $n$ such vectors yields a matrix of $n$ columns.  What distinguishes a volatility profile, principally, is that the time-varying parameters that correspond to the volatility profile are non-zero at only the shock times, whereas no such restriction exists in ($\ref{abadie_factor_model}$).  
+    
+    Suppose that for each of the $n$ donors, we posit $p$ distinct covariates in the functional form of the shock.  The volatility profile could take the form of the $pn \times n$ matrix 
 
     \begin{equation*}
       \textbf{V}_{t} = 
       \begin{pmatrix}
-      \alpha_{T^{*},1} & \alpha_{T^{*},2}  & \cdots & \alpha_{T^{*},n}  \\
-      \beta_{T^{*},1} & \beta_{T^{*},2}  & \cdots & \beta_{T^{*},n}  \\
+      \hat\alpha_{1,t} & \hat\alpha_{t,2}  & \cdots & \hat\alpha_{t,n}  \\
+      \hat\beta_{1,t} & \hat\beta_{t,2}  & \cdots & \hat\beta_{t,n}  \\
       \vdots  & \vdots  & \ddots & \vdots  \\
-      RV_{T^{*},1} & RV_{T^{*},2}  & \cdots & RV_{T^{*},n}  \\
-      RV_{T^{*}-1,1}  & RV_{T^{*}-1,2}  & \cdots & RV_{T^{*}-1,n}  \\
+      RV_{1,t} & RV_{2,t}  & \cdots & RV_{n,t}  \\
+      RV_{1,t-1}  & RV_{2,t-1}  & \cdots & RV_{n,t-1}  \\
       \vdots  & \vdots  & \ddots & \vdots  \\
-      IV_{T^{*},1} & IV_{T^{*},2} & \cdots & IV_{T^{*},n} \\
-      IV_{T^{*}-1,1}  & IV_{T^{*}-1,2}  & \cdots & IV_{T^{*}-1,n} \\
+      IV_{1,t} & IV_{2,t} & \cdots & IV_{n,t} \\
+      IV_{1,t-1}  & IV_{2,t-1}  & \cdots & IV_{n,t-1} \\
       \vdots  & \vdots  & \ddots & \vdots  \\
-      AbsoluteReturn_{T^{*},1} & AbsoluteReturn_{T^{*},2} & \cdots & AbsoluteReturn_{T^{*},n} \\
-      AbsoluteReturn_{T^{*}-1,1}  & AbsoluteReturn_{T^{*}-1,2}  & \cdots & AbsoluteReturn_{T^{*}-1,n} \\
+      |r_{1,t}| & |r_{2,t}| & \cdots & |r_{n,t}| \\
+      |r_{1,t-1}|  & |r_{2,t-1}|  & \cdots & |r_{n,t-1}| \\
       \vdots  & \vdots  & \ddots & \vdots  \\
-      Volume_{T^{*},1}  & Volume_{T^{*},2}  & \cdots & Volume_{T^{*},n} \\
-      Volume_{T^{*}-1,1}  & Volume_{T^{*}-1,2}  & \cdots & Volume_{T^{*}-1,n}  \\
+      Volume_{1,t}  & Volume_{2,t}  & \cdots & Volume_{n,t} \\
+      Volume_{1,t-1}  & Volume_{2,t-1}  & \cdots & Volume_{n,t-1}  \\
       \vdots  & \vdots  & \ddots & \vdots  \\
-      \Delta RV_{T^{*},1} & \Delta RV_{T^{*},2}  & \cdots & \Delta RV_{T^{*},n}  \\
-      \Delta RV_{T^{*}-1,1}  & \Delta RV_{T^{*}-1,2}  & \cdots & \Delta RV_{T^{*}-1,n}  \\
+      \Delta RV_{1,t} & \Delta RV_{2,t}  & \cdots & \Delta RV_{n,t}  \\
+      \Delta RV_{1,t-1}  & \Delta RV_{2,t-1}  & \cdots & \Delta RV_{n,t-1}  \\
       \vdots  & \vdots  & \ddots & \vdots  \\
       \end{pmatrix}
       \end{equation*}
-      Several comments are in order here.  Although as shown, $\textbf{V}$ displays `balance' in that each of the $p$ covariates is replicated $n$ times, in practice, it may be that some donors do not possess or do not require such information. $\textbf{V}$
+      As shown, $\textbf{V}_{t}$ displays `balance' in that $p$ covariates exists for each of the $n$.  In practice, missing values, corrupted values, or unacceptably extreme or noisy estimates may necessitate some sort of matrix completion, a problem that we do not tackle in this work.  We now turn to the next section, where $\textbf{V}_{t}$ is employed in a procedure to arrive at a forecast adjustment. 
     
 
 \section{Post-shock Synthetic Volatility Forecasting Methodology}
@@ -303,12 +305,12 @@ There are at least two senses of optimal weights that one might be interested in
     
     The time-varying parameter $\sigma^{2}_{t}$ is a quantity for which even identifying an observable effect in the real world is far more challenging.  In this work, we use a common estimator of the variance called realized volatility (RV), one which has the virtue of being ``model-free'' in the sense that it requires no modeling assumptions \citep{andersen2010stochastic}.  The realized variance itself can be decomposed into the sum of a continous component and a jump component, with the former being less predictable and less persistent \citep{andersen2007roughing}, cited in \citet{de2006forecasting}, two factors that further motivate the method employed herein.
     
-    Suppose we examine $K$ units of of time, where each unit is divided into $m$ intervals of length $\frac{1}{m}$.  We follow the notation of  \citet{andersen2009realized}. Let $p_{t} = \text{log}(P_{t})$, and let $r(t,\frac{1}{m}) = p_{t} - p_{t-\frac{1}{m}}$.  We estimate the variance of a log return series using Realized Volatility, denoted $RV_{K,m}$, using
+    Suppose we examine $K$ units of of time, where each unit is divided into $m$ intervals of length $\frac{1}{m}$.  We follow the notation of  \citet{andersen2009realized}. Let $p_{t} = \text{log}(P_{t})$, and let $r(t,\frac{1}{m}) = p_{t} - p_{t-\frac{1}{m}}$.  We estimate the variance of $i$th log return series using Realized Volatility of the $K$ consecutive trading days that conclude with day $t$, denoted $RV_{i,t}^{K,m}$, using
     
-    $$RV_{K,m} = \frac{1}{K}\sum^{Km}_{v=1}r^{2}(v/m,1/m).$$
+    $$RV^{K,m} = \frac{1}{K}\sum^{Km}_{v=1}r^{2}(v/m,1/m).$$
     Assuming that the K units $r(t, 1) = p_{t} - p_{t-1}$ are such that $r(t, 1) \simiid N(\mu, \delta^{2})$, it is easily verified that 
     
-    $$\E[RV_{K,m}] = \frac{\mu^{2}}{m} + \delta^{2},$$
+    $$\E[RV^{K,m}] = \frac{\mu^{2}}{m} + \delta^{2},$$
     which is a biased but consistent estimator of the variance.  We will proceed using $m = 77$, corresponding to the 6.5-hour trading day chopped into 5-minute blocks, with the first block omitted in order to ignore unusual trading behavior at the start of the day.
 
 \subsection{Loss Functions}
@@ -597,8 +599,6 @@ Consider now a shock to both the volatility and the level beginning at $T^{*}+1$
 \subsection{Evaluative Framework and Monte Carlo Results}
 We compare adjusted and unadjusted forecasts using QL Loss, calculating the fraction of the simulations that the adjusted forecast dominates the unadjusted forecast.
 
-Here we cite \citet[p. 22]{francq2019garch} in motivating simulations for large $\alpha$ values and then large $\beta$ values.
-
 In Figure \ref{fig:heavy_beta}, when only two parameters are varied, the volatility shock signal and the volatility shock noise, we observe several encouraging phenomena.  First, for any column selected, an increasing trend exists as the shock signal increases.  Second, for almost all small values of the shock signal, the outperformance rate hovers around .5, supporting the hypothesis that in the absence of a signal, any level of noise renders the method no better at GARCH than a flip of a coin.
 \begin{figure}[h!]
   \begin{center}
@@ -607,7 +607,7 @@ In Figure \ref{fig:heavy_beta}, when only two parameters are varied, the volatil
   \end{center}
   \end{figure}
   
-If we switch the values of $\alpha$ and $\beta$, we see similar behavior, as in \ref{fig:heavy_alpha}.  However, for small values of the shock mean, increasing noise does lead to fewer converged simulations, likely due to large negative realizations of the noise term, which in turn lead to near-zero and even negative estimates of the terms $\omega_{i}^{*}$.
+If we switch the values of $\alpha$ and $\beta$, we see similar behavior, as in \ref{fig:heavy_alpha}.  Here we cite \citet[p. 22]{francq2019garch} in motivating simulations for large $\alpha$ values and then large $\beta$ values.  However, for small values of the shock mean, increasing noise does lead to fewer converged simulations, likely due to large negative realizations of the noise term, which in turn lead to near-zero and even negative estimates of the terms $\omega_{i}^{*}$.
 \begin{figure}[h!]
   \begin{center}
     \includegraphics[scale=.45]{simulation_plots/standard_simulation_alpha_.82_beta_.1.png}
