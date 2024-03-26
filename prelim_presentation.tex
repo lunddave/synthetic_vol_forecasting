@@ -176,7 +176,7 @@
 \begin{frame}
 \frametitle{Punchline of the paper}
 
-Forecasting is possible under structural shocks, so long as we incorporate external information to account for the nonzero errors.
+Forecasting is possible under news shocks, so long as we incorporate external information to account for the nonzero errors.
 
 \end{frame}
 
@@ -241,9 +241,31 @@ Forecasting is possible under structural shocks, so long as we incorporate exter
         \end{align*}
 \end{frame}
 
-\begin{frame}
+\begin{frame}{size: 9pt}
+    \frametitle{Model Preliminaries}
+    Let $I(\cdot)$ be an indicator function.  Let $T_i$ denote the time length of the time series $i$ for $i = 1, \ldots, n+1$, and let $T_i^*$ denote the largest time index prior to the arrival of the news shock, with $T_i^* < T_i$.  Let $\delta, \x_{i,t} \in \mathbb{R}^{p}$.  
+\end{frame}
+
+\begin{frame}{size: 9pt}
 \frametitle{Model Setup}
-populate once model choice is firm
+
+For $t= 1, \ldots, T_i$ and $i = 1, \ldots, n+1$, the model $\mc{M}_1$ is defined as 
+\begin{align*}
+  \mc{M}_1 \colon \begin{array}{l}
+     \sigma^{2}_{i,t} = \omega_{i} + \omega^{*}_i + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \text{ }\\[.2cm]
+     a_{i,t} = \sigma_{i,t}((1-D^{return}_{i,t})\epsilon_{i,t} + D^{return}_{i,t}\epsilon^{*}_{i})\\[.2cm]
+    \omega_{i,t}^{*} = D^{vol}_{i,t}[\mu_{\omega^{*}}+\delta'\mbf{x}_{i, t-1}+ u_{i,t}],
+  \end{array}
+  \end{align*}
+with error structure
+
+  \begin{align*}
+    \epsilon_{i,t} &\simiid \mc{F}_{\epsilon} \text{ with }  \; \mrm{E}_{\mc{F}_{\epsilon}}(\epsilon) = 0, \mrm{Var}_{\mc{F}_{\epsilon}}(\epsilon)  = 1  \\
+    \epsilon^{*}_{i,t} &\simiid \mc{F}_{\epsilon^{*}} \text{ with }  \; \mrm{E}_{\mc{F}_{\epsilon^{*}}}(\epsilon) = \mu_{\epsilon^{*}}, \mrm{Var}_{\mc{F}_{\epsilon^{*}}}(\epsilon^{*})  = \sigma^2_{\epsilon^{*}}  \\
+    u_{i,t} & \simiid  \mc{F}_{u} \text{ with }  \; \mrm{E}_{\mc{F}_{u}}(u) = 0, \mrm{Var}_{\mc{F}_{u}}(u) = \sigma^2_{u}\\
+    \epsilon_{i,t} & \indep  \epsilon^{*}_{i,t}  \indep u_{i,t}
+    \end{align*}
+where $D^{return}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + L_{i, return}\})$ and $D^{vol}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + L_{i, vol}\})$ and $L_{i,return},L_{i,vol}$ denote the lengths of the log return and volatility shocks, respectively.  Let $\mc{M}_{0}$ denote the subclass of $\mc{M}_{1}$ models such that $\delta \equiv 0$.  Note that $\mc{M}_{0}$ assumes that $\omega^{*}_i$ have no dependence on the covariates and are i.i.d. with $\E[ \omega^{*}_i]=\mu_{\omega^{*}}$.  
 \end{frame}
 
 % Technical Specifications
