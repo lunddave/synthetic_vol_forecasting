@@ -45,11 +45,6 @@ Torben~G Andersen, Tim Bollerslev, and Francis~X Diebold.
 \newblock Roughing it up: Including jump components in the measurement, modeling, and forecasting of return volatility.
 \newblock \emph{The review of economics and statistics}, 89\penalty0 (4):\penalty0 701--720, 2007.
 
-\bibitem[Atkins et~al.(2018)Atkins, Niranjan, and Gerding]{atkins2018financial}
-Adam Atkins, Mahesan Niranjan, and Enrico Gerding.
-\newblock Financial news predicts stock market volatility better than close price.
-\newblock \emph{The Journal of Finance and Data Science}, 4\penalty0 (2):\penalty0 120--137, 2018.
-
 \bibitem[Bauwens et~al.(2006)Bauwens, Preminger, and Rombouts]{bauwens2006regime}
 Luc Bauwens, Arie Preminger, and Jeroen~VK Rombouts.
 \newblock Regime switching garch models.
@@ -235,6 +230,11 @@ Allan Timmermann.
 Ruey~S Tsay.
 \newblock \emph{Analysis of financial time series}, volume 543.
 \newblock John wiley \& sons, 2005.
+
+\bibitem[Wang et~al.(2023)Wang, Hyndman, Li, and Kang]{wang2023forecast}
+Xiaoqian Wang, Rob~J Hyndman, Feng Li, and Yanfei Kang.
+\newblock Forecast combinations: An over 50-year review.
+\newblock \emph{International Journal of Forecasting}, 39\penalty0 (4):\penalty0 1518--1547, 2023.
 
 \bibitem[Wolfers and Zitzewitz(2016)]{wolfers2016financial}
 Justin Wolfers and Eric Zitzewitz.

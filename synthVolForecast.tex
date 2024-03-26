@@ -136,9 +136,9 @@ to the state of the market at the time of the news arrival.  News that arrives d
 high uncertainty may have different effects on the exchange rate, than news that arrives in
 calmer periods." The authors also note that non-scheduled news may require more time for markets to digest, leading to greater heterogeneity (including but not limited to higher dispersion) of responses.  We take inspiration from these arguments, developing a method suitable to the conditions that typically accompany news shocks. 
 
-In this work we focus on the second central moment of a time series, the volatility.  One of the most important stochastic phenomenon of many time series $(P_{t})_{t\in\mathbb{N}}$, especially financial time series, is the volatility of the return series $(r_{t})_{t\in\mathbb{N}}$.  A financial asset's price series may exhibit behavior that makes inapplicable and uninterpretable the traditional methods of time series analysis.  In contrast, the return series is scale-free \citep{tsay2005analysis}, easily-interpreted, and often at least weakly stationary.  Even if one could construct credible models for describing and forecasting price series and return series, that would not necessarily tell us much about the variability of such forecasts nor enlighten us about the evolution of the variability of $(P_{t})_{t\in\mathbb{N}}$ and $(r_{t})_{t\in\mathbb{N}}$ over time.  Second, the literature on return series predictability based on news has undergone a considerable shift over the past 50 years (see \citet{boudoukh2019information} and references therein).  Whereas once returns were thought to react to specific news events, now stock price movements are believed to be overwhelmingly noise-based.
+In this work we focus on the second central moment of a time series, the volatility.  One of the most important stochastic phenomenon of positively-valued time series $(P_{t})_{t\in\mathbb{N}}$, especially financial time series, is the volatility of the return series $(r_{t})_{t\in\mathbb{N}}$.  A financial asset's price series may exhibit behavior that makes inapplicable and uninterpretable the traditional methods of time series analysis.  In contrast, the return series is scale-free \citep{tsay2005analysis}, easily-interpreted, and often at least weakly stationary.  Even if one could construct credible models for describing and forecasting price series and return series, that would not necessarily tell us much about the variability of such forecasts nor enlighten us about the evolution of the variability of $(P_{t})_{t\in\mathbb{N}}$ and $(r_{t})_{t\in\mathbb{N}}$ over time.  The literature on return series predictability based on news has undergone a considerable shift over the past 50 years (see \citet{boudoukh2019information} and references therein).  Whereas once returns were thought to react to specific news events, now stock price movements are believed to be overwhelmingly noise-based.
 
-No matter how a time series or its transformations are modeled, forecasting in the presence of exogenous shock events requires a methodological framework that sensibly incorporates relevant information that has yet to manifest in market price or derivative quantities like volatility.  In this setting, regime-change models (see \citet{bauwens2006regime} and citations therein) are of little use because under the assumption of a known exogenous shock, there is no need to estimate a regime-change time, nor is there data following the exogenous shock event to fit a model.  Asymmetric GARCH models were an early attempt to account for fact that negative returns typically beget greater volatility than positive returns \citep{hansen2012realized}.  Problematically, such models depend upon the observation of a negative return to provide the most updated volatility forecast, but under the circumstances posited herein, no such return has been observed.
+No matter how a time series or its transformations are modeled, forecasting in the presence of news shocks requires a methodological framework that sensibly incorporates relevant information that has yet to manifest in market price or derivative quantities like volatility.  In this setting, regime-change models (see \citet{bauwens2006regime} and citations therein) are of little use because under the assumption of a known exogenous shock, there is no need to estimate a regime-change time, nor is there data following the exogenous shock event to fit a model.  Asymmetric GARCH models were an early attempt to account for fact that negative returns typically beget greater volatility than positive returns \citep{hansen2012realized}.  Problematically, such models depend upon the observation of a negative return to provide the most updated volatility forecast, but under the circumstances posited herein, no such return has been observed.
 
 Similar problems and more exist for Realized GARCH models \citep{hansen2012realized}, which incorporates observable measures of volatility, known as  ``realized measures", like implied volatility.  Under the assumptions herein, no post-shock data is available, and even if it were, Realized GARCH does not promise to perform well, since Black-Scholes implied volatility is a biased estimator of volatility \citep{mayhew1995implied, christensen1998relation}, with the bias increasing in times of crises, when options are likely to be out-of-the-money.  GARCH models have been shown slow to adapt to spikes in volatility \citep{andersen2003modeling}.  \citet{engle2002new} explored the use of implied volatility as an exogenous regressor in a GARCH model, that is, using a so-called GARCH-X model \citep{RePEc:pra:mprapa:100301}.  Realized GARCH aims to solve both the asymmetry problem as well as the slow-reaction problem by introducing a ``measurement equation" as a tool for modeling the contribution to the conditional variance made by the market-implied volatility measure.  The key insight is that a realized measure of volatility will often fail to be independent of the log return of the asset.  Therefore, including the external measure must be done in a way that accounts for this dependence.
 
@@ -151,7 +151,7 @@ The approach herein can be viewed as an attempt to sidestep the functional compl
 
 The primary methodological tool presented in this work is fixed effect estimation followed by an appropriate procedure for pooling those estimates.  The use of fixed effect estimation for the study of structural shocks has a pedigree in macroeconomic analysis (\citet{romer1989does} cited in \citet{kilian2017structural}; see also discussion of determinstic exogenous events in \citet{engle2001good}).  In the forecasting literature, the term ``intercept correction'' has come to refer to a modeling technique in which nonzero errors are explicitly permitted \citep{hendry1994theory, clements1998forecasting}.  They summarize the literature as distinguishing two families of intercept correction: intercept corrections that attempt to account for future events, without hard-coding an ad-hoc adjustment into the model specification, and second, intercept corrections that attempt to adjust for persistent misspecification using past errors.  \citet{guerron2017macroeconomic} use weighted subsets of a scalar series' own past to correct forecast errors by an additive term. \citet{dendramis2020similarity} a introduces a similarity-based forecasting procedure for time-varying coefficients of a linear model. \citet{foroni2022forecasting} employ a form of intercept correction in order to adjust forecasts to the COVID-19 shock in the spring of 2020 based on the proportional misses of the same model applied to the Great Recession.
 
-A researcher interested in forecast adjustment can choose between an procedures that automated or non-automated, the collection of data assembled to perform the correction, whether the data is internal (the time series itself) or external, ehe parametric term to be corrected (e.g. intercept, coefficients), if any, as well as the correction function (i.e. the mapping from the data to the corrective term), including the weighting applied to the assembled data (e.g. Nearest-Neighbor, arithmetic mean, kernel methods).
+A researcher interested in forecast adjustment can choose between procedures that automated or non-automated, a variety of choices for the collection of data assembled to perform the correction, whether the data is internal (the time series itself) or external, the parametric term to be corrected (e.g. intercept, coefficients), if any, as well as the correction function (i.e. the mapping from the data to the corrective term), including the weighting applied to the assembled data (e.g. Nearest-Neighbor, arithmetic mean, kernel methods).
 
 Our procedure is an automated procedure for intercept adjustments using either data internal or external to the time series under study.  The correction function, as we shall see, involves an optimization step inspired by the causal inference literature.  In particular, in \citet{abadie2010synthetic}, the authors build upon previous work in causal inference whereby a treatment effect can be estimated by creating a synthetic time series that that represents either the treatment or control unit.  The synthetic unit is constructed using a convex combination of the so-called donor series.  The particular convex combination employed is a function of the distance between the time series under study and the donors.  \citet{lin2021minimizing} adapted these methods for the purpose of prediction.  Their 1-step-ahead forecasts use distance-based-weighting to pool shock estimates from similar series according to the donor series' similarity to the series under study.  Their approach does not take into account the ARCH effects commonly observed in time series, especially financial times series, leaving unaccounted for the variability that accompanies predictions of a heteroskedastic time series.  In this present study, we focus on only volatility forecasting.  We furthermore depart from \citet{lin2021minimizing} framework by weighting series not by their covariates (which would be most appropriate for estimating the parameters of time series' mean model) but by their volatility profile.  
 
@@ -296,11 +296,10 @@ A GARCH model is an ARMA on the squares of the observed scalar time series $a^{2
     \begin{align*}
     \{\pi\}_{i=2}^{n+1} = \argmin_{\pi}\|\textbf{v}_{1} - \V_{t}\pi \|_{\textbf{S}} \text{ .}
     \end{align*}
-     
 
-There are at least two senses of optimal weights that one might be interested in.  First, we can think of optimal weights as a set $\{\weight_{i}\}_{i=2}^{n+1}$ such that $\omega_{1} = \sum^{n+1}_{i=2}\weight_{i}\hat\omega_{i}$, i.e., $\omega_{1}$ is recovered perfectly, as it belongs to convex hull of the estimated shocks.  Similarly, $\textbf{v}_{1} = \sum^{n+1}_{i=2}\weight_{i}\textbf{v}_{i}$, meaning that .  This is certainly a There also exists a second sense of optimality, in which, for a given $\sigma_{t}^{2}$, the weights allow us to predict with zero loss or some other optimality criterion directly related to predictive performance, like minimaxity, risk-minimization, or variance reduction, among others.
- 
-Because the method proposed uses a point in $\Delta^{n}$, it is important to head-off possible confusion.  What we are proposing is not a forecast combination method.  What we aggregating and weighting (not combining) is subcomponents of forecasts, not forecasts themselves.  Moreover, from a broader perspective, forecast combination is an inapt term for what is being proposed here.  First, the donors are not forecasts.
+In the forecast combination literature, it is discussed whether the weights employed to aggregate forecasts strive toward and meet various optimality criteria \citep{timmermann2006forecast,wang2023forecast}.  In this work, there are at least two senses of optimal weights that one might be interested in.  First, we can think of optimal weights as a set $\{\weight_{i}\}_{i=2}^{n+1}$ such that $\omega_{1} = \sum^{n+1}_{i=2}\weight_{i}\hat\omega_{i}$, i.e., $\omega_{1}$ is recovered perfectly, as it belongs to convex hull of the estimated shocks. However, $\omega_{1}$ is never revealed to the practitioner, and hence there is no way of verifying the extent to which this condition is satifised.
+
+A more promising aim is finding weights such that $\textbf{v}_{1} = \sum^{n+1}_{i=2}\weight_{i}\textbf{v}_{i}$, meaning that the volatility profile of the time series under study lies within the convex hull of the donor volatility profile.  This condition underwrites asymptotic results in \citet{abadie2010synthetic}, and the intuition there extends to this work: if the shock is parameterized by an affine function of covariates, then finding a linear combination that recreates the shock should serve us well.  Because the method proposed uses a point in $\Delta^{n}$, it is important to head-off possible confusion.  What we are proposing is not a forecast combination method.  What we aggregating and weighting (not combining) is subcomponents of forecasts, not forecasts themselves.  Moreover, from a broader perspective, forecast combination is an inapt term for what is being proposed here.  First, the donor time series do not provide forecasts, nor would forecasts been needed for random variables that have already been realized.  Second and more fundamentally, the theoretical underpinnings of forecast combination, while diverse \citep{wang2023forecast}, are distinct from the setting presumed in this work, where the model family is not in doubt but the parameter values and how they prevail must be learned.
 
 A question naturally arises regarding the uniqueness of weights.  Remarks by \cite{lin2021minimizing, abadie2022synthetic} apply here.  We make additional comments as well. $(\mathbb{R}^{n}, \|\cdot\|)$ is a Chebyshev space, and hence for any element x and any convex set $C\subset \mathbb{R}^{n}$, there exists a unique element $y\in C$ that minimizes $\|x-y\|$.  However, the pre-image of $y$ with respect to a particular operator and constraint set might not be unique.
 
@@ -318,6 +317,14 @@ Let $p'$ denote the number of linearly independent rows of $\X$.\\
       \end{tabular}
       \end{center}
 
+Comparison with least-squares estimation is illustrative.  Consider least-squares for the weight vector $\vec{w}$:
+
+\begin{align*}{
+\vec{w}_{OLS}=\argmin_{\vec{w}} \|\hat{\omega}^{*} - \textbf{V}_{t}\vec{w}\|_{2}}
+\end{align*} 
+One immediately visible problem is that this optimization problem is an optmization problem over $p$-vectors $\vec{w}$ --- i.e. a linear combination of the covariates, whereas what we seek is an $n$-vector --- a linear combination of donors.
+
+There is no guarantee that $\vec{w}_{OLS}$ would perform poorly as a tool for producing $\hat\omega^{*}$, but given the small number of donors supposed in our setting, it is risky. \textcolor{red}{I think this should be removed or mentioned as a comment in the section where weights are introduced.}\textcolor{green}{I will think about where to put this.  The deep point that could be made, and perhaps should be made, is that finding an optimal or at least suitable convex combination of the donors works because of the assumptions about the DGP, and those assumptions don't necessarily support OLS much.}
     \subsection{Ground Truth Estimators}
     \label{Ground Truth Estimators}
     
@@ -362,11 +369,11 @@ compare losses across volatility regimes."  For this reason, we proceed to evalu
 
 Not all of the volatility of an asset return may be related to news \citep{boudoukh2019information}.  This explains our inclusion of an idiosyncratic noise term in the shock specification.  However, this point also gestures in the direction of possible unexplained variation in the shocks.  \citet{chinco2019sparse} find that for predicting 1-minute returns, highly transitory firm-specific news is useful.  The authors conclude that news about fundamentals is predictive.
 
-There is an important question about the stability of the GARCH parameters under the presence of an exogenous shock.  There are at least two reasons that we do not herein explore parameter instability or methods to adjust for it.  First, the marginal effect of coefficient changes at the shock time would, under the assumptions in this work, be swamped by the random effect.  Second, the estimation of post-shock parameter values would require at least several --- better yet, dozens --- of post-shock data points, whereas this work assumes access to zero post-shock data points.  However, we do leave over that similarity-based estimators for the GARCH coefficients could be produced, for example, by adapting the methods of \citet{dendramis2020similarity}.
+There is an important question about the stability of the GARCH parameters under the presence of a shock.  There are at least two reasons that we do not herein explore parameter instability or methods to adjust for it.  First, the marginal effect of coefficient changes at the shock time would, under the assumptions in this work, be swamped by the random effect.  Second, the estimation of post-shock parameter values would require at least several --- better yet, dozens --- of post-shock data points, whereas this work assumes access to zero post-shock data points.  However, we do leave over that similarity-based estimators for the GARCH coefficients could be produced, for example, by adapting the methods of \citet{dendramis2020similarity}.
 
 The model $\mc{M}_1$ is defined by a volatility equation and mean equation, as is any GARCH model.  The choice to model the volatility shock $\omega^{*}_{i}$ as an additive random effect is straightforward.  However, the choice to model the level effect $\epsilon^{*}_{i,t}$ as a temporary rupture in the otherwise i.i.d. sequence of innovations $\epsilon_{i,t}$ stands in need of deeper justification.  One way of arguing for this choice is that, in a discrete time series model, if we assume the arrival of news in the time between $T^{*}$ and $T^{*}+1$, we do not have an easy way to express a conditional distribution of the innovation $\epsilon_{T^{*}+1}$ given the overnight arrival of information.  Using $\epsilon^{*}_{i,t}$ thus breaks this impasse.  This defense also explains why we do not parameterize the level shock at $T^{*}+1$ as a sum of two shocks, $\epsilon_{i,T^{*}+1}$ and $\epsilon^{*}_{i,T^{*}+1}$, which would represent the level shock as generated by two independent sources of stochasticity.  To do so would be inelegant and would also lack motivation as a practical level.  While we want to model the shock at $T^{*}+1$ as large in absolute value, we also want to retain the property of a unitary source of noise.
 
-Note that under the popular GARCH(1,1), a dual level-volatility shock has an marginal effect on the conditional variance $\sigma^{2}_{i,t}$ that reflects the geometric decay of innovations in autoregressive models.  As usual, assume $\alpha+\beta < 1$.  Furthermore, assume that both the volatility shock $\omega^{*}_{i}$ and the level shock $\epsilon^{*}_{i,t}$ are of length one only, and consider a circumstance with no exogenous regressor $\x_{i,t}$. Assume also that $r\geq 2$, which is necessary in order to isolate the effects of the level shock $\epsilon^{*}_{i,t}$.  Then
+Note that under the popular GARCH(1,1), a dual level-volatility shock has an marginal effect on the conditional variance $\sigma^{2}_{i,t}$ that reflects the geometric decay of innovations in autoregressive models.  As usual, assume $\alpha+\beta < 1$.  Furthermore, assume that both the volatility shock $\omega^{*}_{i}$ and the level shock $\epsilon^{*}_{i,t}$ are of length one only, and consider a circumstance with no exogenous covariate $\x_{i,t}$. Assume also that $r\geq 2$, which is necessary in order to isolate the effects of the level shock $\epsilon^{*}_{i,t}$.  Then
 
 \begin{align}
 \sigma^{2}_{i,T^{*}+r+1} | \mathcal{F}_{T^{*}+r} & = \omega_{i} + \alpha_{i} a_{T^{*}+r}^{2} + \beta_{i}\sigma^{2}_{i,T^{*}+r} \label{eq0}\\
@@ -736,11 +743,7 @@ Naturally, one might ask how sensitive this prediction is to at least two kinds 
 
 \section{Discussion}
 
-\subsection{Improvements of this current work over its predecessor}
-
-This present work extends \citet{lin2021minimizing} principally by substituting the GARCH model for an AR(1), i.e. modeling both the mean and volatility of a univariate time series.  We permit both shocks in the mean model and volatility model of GARCH.  As ancillary improvements, the current work permits the shock periods to be of any length, formally $L_{\text{vol}}, L_{\text{level}} \in\{0,1,2,...\}$, and the weights applied to the donor pool can come from more exotic subsets of $\mathbb{R}^{n}$.  
-
-At a technical level, the most substantial insight related to \citet{lin2021minimizing} is that the GARCH model provides an elegant forecast function for squared observations of the time series under study. 
+This present work extends \citet{lin2021minimizing} principally by substituting the GARCH model for an AR(1), i.e. modeling both the mean and volatility of a univariate time series.  We permit both shocks in the mean model and volatility model of GARCH.  As ancillary improvements, the current work permits the shock periods to be of any length, formally $L_{\text{vol}}, L_{\text{level}} \in\{0,1,2,...\}$, and the weights applied to the donor pool can come from more exotic subsets of $\mathbb{R}^{n}$.  At a more technical level, the most substantial insight related to \citet{lin2021minimizing} is that the GARCH model provides an elegant forecast function for squared observations of the time series under study. However, this use-case becomes less attractive in situations where the sign of the time series under study following the shock is uncertain.
 
 The method under development does not strictly require knowledge of the length of the shocks in the donor pool, but correctly sizing up those shock lengths is helpful to proper estimation of the shocks in the donor pool.  An important question remains: even if the donor pool shock lengths are assumed to be known, how do we advise the operator to forecast the time series under study?  For how long is the forecast reliable?  Should we take a convex combination of the donor pool shock lengths?  Or mean? Or minimum of the donor pool shock lengths?
 
@@ -759,8 +762,7 @@ Then for any $i,t$, $\E[a^{2}_{i,t}|\mathcal{F}_{t-1}]$ is nothing more than the
 \item See Tsay p. 133: if $t$ is the last index that has been observed, then our two-step-ahead forecast is made easier by rewriting the volatility equation as $\sigma^{2}_{i,t+1} = \omega_{i} + (\alpha_{i} + \beta_{i})\sigma^{2}_{i,t} + \alpha_{1}\sigma^{2}_{i,t}[\epsilon^{2}_{i,t} - 1]= \omega_{i} + (\alpha_{i} + \beta_{i})\sigma^{2}_{i,t} + \alpha_{1}\sigma^{2}_{i,t}[\epsilon^{2}_{i,t} - 1] $.  Usually, we assume unit variance (though not necessarily a N(0,1)).  However, what is the variance is smaller than 1?  Then in conditional expectation, the term $\alpha_{1}\sigma^{2}_{i,t}[\epsilon^{2}_{i,t} - 1]$ will be negative.  So it seems that for level shock, we want the signal to noise ratio to be large because the mean is high, not because the variance is low.
 \end{comment}
 
-\subsection{Why is the proposal here like and unlike KNN regression?}
-We are not trying to learn a function, first and foremost.  We are trying to estimate a parameter.
+The proposed method is unlike KNN in that are not trying to learn a function, first and foremost.  We are trying to estimate a parameter.
 
 KNN runs into the problem: the curse of dimensionality.  In contrast, large $p$ is not a problem in synthetic methods, because the thing estimated is the vector $w$ with $n-1$ degrees of freedom.  For KNN, a high-dimensional space, i.e. large $p$, corresponding to many covariates, is a difficult space in which to work with distances \citep{hastie2009elements}.  In contrast, large $p$ is not a problem in and of itself for synthetic control --- in fact, asymptotic results exist for $p$ \citep{abadie2010synthetic}.  
 
@@ -768,24 +770,12 @@ As is pointed out in \citet{hastie2009elements}, KNN regression performs well wh
 
 In KNN regression, the hyperparameter K must be learned.  In Synthetic Volatility Forecasting, the number of donors is not learned.  A donor pool is curated, and then careful rules of thumb can be applied to determine whether a given donor should be included or excluded.  While it would not necessarily hurt to `learn' the appropriate number of donors to use, this information would probably not be as useful as knowing which donors and covariates provide the basis for the best forecasts.  This brings us to a deeper point about the distinction between Synthetic Prediction in the way of \citet{lin2021minimizing} and KNN.  In KNN, the exogenous variables are taken as a given and `nearness' to object-to-predict depends on the distance function chosen.  In contrast, in \citet{lin2021minimizing}, the determination of nearness begins with a qualitative step, i.e. curating the units between which we will calculate distances and from we will ultimately derive weights.
 
-\subsection{Should we gather as many donors as possible and pick them quantitatively?}
-It would be counter to the method proposed to assemble a vast number of donors, lacking careful scrutiny of the qualitative fit, and let the optimization simply pick the donors, via weighting.  What makes a donor good is not merely its quantitative fit but its qualitative fit as well.
+Should we gather as many donors as possible and pick them quantitatively?  It would be counter to the method proposed to assemble a vast number of donors, lacking careful scrutiny of the qualitative fit, and let the optimization simply pick the donors, via weighting.  What makes a donor good is not merely its quantitative fit but its qualitative fit as well.
 
 \citet{abadie2022synthetic} make a similar point about large donor pools.  What matters is that the donors chosen are properly situated in the $p$-dimensional predictor space, so as to allow proper estimation of the weights.
 
-\subsection{Why not use the covariates as covariates in the GARCH model alone or in the GARCH model as well?}
-The data-generating process does not specify that volatility series are well-modeled using ever-present exogenous covariates, and this is fundamentally due to the lack of theoretical justification for such an exogeneity assumption. \textcolor{red}{I am not sure if this needs to be here. If so, then it can probably be combined with other points in this discussion to form a larger paragraph.}
-
-\subsection{Adjustment Using OLS on the Donor Shocks}
-Consider least-squares estimation for the weight vector $\vec{w}$:
-
-\begin{align*}{
-\vec{w}_{OLS}=\argmin_{\vec{w}} \|\hat{\omega}^{*} - \textbf{V}_{p,n}\vec{w}\|_{2}}
-\end{align*} 
-One immediately visible problem is that this optimization problem is an optmization problem over $p$-vectors $\vec{w}$ --- i.e. a linear combination of the covariates, whereas what we seek is an $n$-vector --- a linear combination of donors.
-
-There is no guarantee that $\vec{w}_{OLS}$ would perform poorly as a tool for producing $\hat\omega^{*}$, but given the small number of donors supposed in our setting, it is risky. \textcolor{red}{I think this should be removed or mentioned as a comment in the section where weights are introduced.}\textcolor{green}{I will think about where to put this.  The deep point that could be made, and perhaps should be made, is that finding an optimal or at least suitable convex combination of the donors works because of the assumptions about the DGP, and those assumptions don't necessarily support OLS much.}
-
+\begin{comment}
+  
 \subsection{If we assume knowledge of the covariates that parameterize the shock, why not estimate each parameter individually?}
 \textcolor{red}{consider removing}\textcolor{green}{I am considering moving this to the part where I discuss that the GARCH model is nested inside the factor model from \citet{abadie2010synthetic}.}
 \begin{enumerate}
@@ -793,15 +783,18 @@ There is no guarantee that $\vec{w}_{OLS}$ would perform poorly as a tool for pr
   \item Each estimate will be quite noisy.
 \end{enumerate}
 
+
 \subsection{Connection to Stochastic Volatility}
 SV stipulates that at any time point, both the return distribution and volatility could each be subject to separate shocks \citep{andersen2010stochastic}. \textcolor{red}{This seems incomplete.}
 
-\subsection{News shock literature review}
+\end{comment}
 
 \begin{comment}
-This needs to be commented out because the current draft has no way to accommodate concurrent information.
-\item \citet{lin2021minimizing} requires exogenous information to arrive strictly between $T^{*}$ and $T^{*}+1$.  However, we may want to relax this requirement so as to permit the exogenous information to be concurrent with the trading session or end of session on $T^{*}+1$.
-\end{comment}
+  This needs to be commented out because the current draft has no way to accommodate concurrent information.
+  \item \citet{lin2021minimizing} requires exogenous information to arrive strictly between $T^{*}$ and $T^{*}+1$.  However, we may want to relax this requirement so as to permit the exogenous information to be concurrent with the trading session or end of session on $T^{*}+1$.
+  \end{comment}
+
+\subsection{News shock literature review}
 
 We adapt the news shock framework of \citet{kilian2017structural}: \\
 
@@ -852,13 +845,11 @@ We conclude our discussion by proposing a subfield of forecasting based on the c
   \item a correction function that aggregates (i.e. maps) donor correction terms based on some notion of similarity
 \end{enumerate}
 
+\begin{comment}
+  
 \subsection{News Sentiment}
 Within the vast literature on financial sentimental analysis, there exists a sub-literature on financial volatility forecasting using news and news sentiment \citep{atkins2018financial}.  The setting herein is one where the valence of the sentiment is reasonably well-understood, and hence the direction of volatility can be well-predicted, although not perfectly, by human intuition.
-
-
-
-\subsection{Value-at-Risk Under Shocks}
-
+\end{comment}
 
 \section{Supplement}
 We analyze the real-data example with Brexit included and using the daily return in the Pound-Dollar exchange rate as a covariate. \\
@@ -871,5 +862,3 @@ Note that by inspecting the fit of the distance-based weighting approximation qu
 \bibliography{synthVolForecast}
  
 \end{document}
-
-
