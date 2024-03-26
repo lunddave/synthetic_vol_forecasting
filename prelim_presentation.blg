@@ -1,0 +1,17 @@
+[0] Config.pm:307> INFO - This is Biber 2.19
+[0] Config.pm:310> INFO - Logfile is 'prelim_presentation.blg'
+[48] biber-darwin:340> INFO - === Tue Mar 26, 2024, 10:14:29
+[59] Biber.pm:419> INFO - Reading 'prelim_presentation.bcf'
+[112] Biber.pm:979> INFO - Found 10 citekeys in bib section 0
+[121] Biber.pm:4419> INFO - Processing section 0
+[130] Biber.pm:4610> INFO - Looking for bibtex file 'synthVolForecast.bib' for section 0
+[133] bibtex.pm:1713> INFO - LaTeX decoding ...
+[224] bibtex.pm:1519> INFO - Found BibTeX data source 'synthVolForecast.bib'
+[285] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[285] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[285] Biber.pm:4239> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'en-US'
+[285] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-US'
+[293] bbl.pm:660> INFO - Writing 'prelim_presentation.bbl' with encoding 'UTF-8'
+[298] bbl.pm:763> INFO - Output to prelim_presentation.bbl
+[298] Biber.pm:131> WARN - Duplicate entry key: 'newbold2002forecast' in file 'synthVolForecast.bib', skipping ...
+[298] Biber.pm:133> INFO - WARNINGS: 1
