@@ -1,51 +1,48 @@
 This is BibTeX, Version 0.99d (TeX Live 2023)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: synthVolForecast.aux
-The style file: plainnat.bst
-Database file #1: synthVolForecast.bib
-Warning--there's a number but no volume in andersen2010stochastic
-Warning--empty journal in bauwens2006regime
-Warning--empty journal in guerron2017macroeconomic
-Warning--empty journal in hendry1994theory
-You've used 48 entries,
-            2773 wiz_defined-function locations,
-            887 strings with 12471 characters,
-and the built_in function-call counts, 20719 in all, are:
-= -- 1898
-> -- 1025
-< -- 40
-+ -- 351
-- -- 303
-* -- 1595
-:= -- 3160
-add.period$ -- 148
-call.type$ -- 48
-change.case$ -- 238
-chr.to.int$ -- 48
-cite$ -- 100
-duplicate$ -- 994
-empty$ -- 1805
-format.name$ -- 391
-if$ -- 4359
-int.to.chr$ -- 1
-int.to.str$ -- 1
-missing$ -- 49
-newline$ -- 249
-num.names$ -- 192
-pop$ -- 480
-preamble$ -- 1
-purify$ -- 195
+I found no \citation commands---while reading file synthVolForecast.aux
+I found no \bibdata command---while reading file synthVolForecast.aux
+I found no \bibstyle command---while reading file synthVolForecast.aux
+You've used 0 entries,
+            0 wiz_defined-function locations,
+            83 strings with 506 characters,
+and the built_in function-call counts, 0 in all, are:
+= -- 0
+> -- 0
+< -- 0
++ -- 0
+- -- 0
+* -- 0
+:= -- 0
+add.period$ -- 0
+call.type$ -- 0
+change.case$ -- 0
+chr.to.int$ -- 0
+cite$ -- 0
+duplicate$ -- 0
+empty$ -- 0
+format.name$ -- 0
+if$ -- 0
+int.to.chr$ -- 0
+int.to.str$ -- 0
+missing$ -- 0
+newline$ -- 0
+num.names$ -- 0
+pop$ -- 0
+preamble$ -- 0
+purify$ -- 0
 quote$ -- 0
-skip$ -- 757
+skip$ -- 0
 stack$ -- 0
-substring$ -- 867
-swap$ -- 85
-text.length$ -- 6
+substring$ -- 0
+swap$ -- 0
+text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 503
-warning$ -- 4
-while$ -- 207
+type$ -- 0
+warning$ -- 0
+while$ -- 0
 width$ -- 0
-write$ -- 619
-(There were 4 warnings)
+write$ -- 0
+(There were 3 error messages)
