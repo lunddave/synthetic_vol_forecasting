@@ -1,13 +1,13 @@
 # Fdb version 4
-["biber prelim_presentation"] 0 "prelim_presentation.bcf" "prelim_presentation.bbl" "prelim_presentation" 1711491609 -1
+["biber prelim_presentation"] 1711556798 "prelim_presentation.bcf" "prelim_presentation.bbl" "prelim_presentation" 1711556912 0
   "./synthVolForecast.bib" 1711460983 45860 e6f9cf8a2dc82c5baafefd4da46be3a0 ""
-  "prelim_presentation.bcf" 1711491608 108668 185c6618c8405f7bab9c2c7a31f38a65 "pdflatex"
+  "prelim_presentation.bcf" 1711556912 109127 ec46283ee127682b67efb0652b67416d "pdflatex"
   (generated)
   "prelim_presentation.bbl"
   "prelim_presentation.blg"
   (rewritten before read)
-["pdflatex"] 1711491604 "/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/prelim_presentation.tex" "prelim_presentation.pdf" "prelim_presentation" 1711491609 0
-  "/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/prelim_presentation.tex" 1711491599 16904 c0496dcd673746c39e9e977178fa6e30 ""
+["pdflatex"] 1711556907 "/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/prelim_presentation.tex" "prelim_presentation.pdf" "prelim_presentation" 1711556912 0
+  "/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/prelim_presentation.tex" 1711556897 20267 6b4156eac313d79950b05e5cbe5e6a9f ""
   "/usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -33,6 +33,7 @@
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmss9.tfm" 1136768653 1320 49357c421c0d469f88b867dd0c3d10e8 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmssbx10.tfm" 1136768653 1272 e2d13f0df30bf3ad990bb9d028e37f34 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmssi10.tfm" 1136768653 1520 ca2bb4b78ac9800bd686e30c6d19ef95 ""
+  "/usr/local/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmssi8.tfm" 1136768653 1500 7f49257eca65a87057f17452e9fe3ef5 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm" 1136768653 1124 6c73e740cf17375f03eec0ee63599741 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmsy6.tfm" 1136768653 1116 933a60c408fc0a863a92debe84b2d294 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmsy8.tfm" 1136768653 1120 8b7d695260f3cff42e636090a8002094 ""
@@ -295,13 +296,13 @@
   "NYS_state.png" 1711217136 311928 df65aa17dff9b6e6aab779de8a3fce40 ""
   "cnbc.png" 1710618103 102544 2326aa3cc6016a49274e9b1bdce419c8 ""
   "cnn.png" 1710618085 88925 9e7e7ac5a27d450d466be211198fc300 ""
-  "prelim_presentation.aux" 1711491608 10461 a19ce398cd2513e8ce803b8977b9bf15 "pdflatex"
-  "prelim_presentation.bbl" 1711491406 18510 14905a7da2b055f3f78ac746a47f833f "biber prelim_presentation"
-  "prelim_presentation.nav" 1711491608 4758 03df537346e4add38eb85a70995f1d64 "pdflatex"
-  "prelim_presentation.out" 1711491608 1900 4e94eb42541a1af7644faf9f0bb9fe83 "pdflatex"
-  "prelim_presentation.run.xml" 1711491608 2466 06591bcb04df39c12325d9c8c0493731 "pdflatex"
-  "prelim_presentation.tex" 1711491599 16904 c0496dcd673746c39e9e977178fa6e30 ""
-  "prelim_presentation.toc" 1711491608 565 7930318372bd7027a40e307a74c9a79b "pdflatex"
+  "prelim_presentation.aux" 1711556912 11841 d7d7b2d6fa23cdabde69b7eb82297cf5 "pdflatex"
+  "prelim_presentation.bbl" 1711556801 25555 b5c65fbb1f8da6340f3715db6a70135c "biber prelim_presentation"
+  "prelim_presentation.nav" 1711556912 4758 03df537346e4add38eb85a70995f1d64 "pdflatex"
+  "prelim_presentation.out" 1711556912 1900 4e94eb42541a1af7644faf9f0bb9fe83 "pdflatex"
+  "prelim_presentation.run.xml" 1711556912 2466 06591bcb04df39c12325d9c8c0493731 "pdflatex"
+  "prelim_presentation.tex" 1711556897 20267 6b4156eac313d79950b05e5cbe5e6a9f ""
+  "prelim_presentation.toc" 1711556912 565 7930318372bd7027a40e307a74c9a79b "pdflatex"
   (generated)
   "prelim_presentation.aux"
   "prelim_presentation.bcf"

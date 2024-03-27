@@ -2372,8 +2372,14 @@
     <bcf:citekey order="7" intorder="1">lin2021minimizing</bcf:citekey>
     <bcf:citekey order="8" intorder="1">abadie2003economic</bcf:citekey>
     <bcf:citekey order="8" intorder="2">abadie2010synthetic</bcf:citekey>
-    <bcf:citekey order="9" intorder="1">ferwana2022optimal</bcf:citekey>
-    <bcf:citekey order="10" intorder="1">jiang2017information</bcf:citekey>
+    <bcf:citekey order="9" intorder="1">andersen2010stochastic</bcf:citekey>
+    <bcf:citekey order="10" intorder="1">andersen2007roughing</bcf:citekey>
+    <bcf:citekey order="11" intorder="1">de2006forecasting</bcf:citekey>
+    <bcf:citekey order="12" intorder="1">andersen2009realized</bcf:citekey>
+    <bcf:citekey order="13" intorder="1">brownlees2011practical</bcf:citekey>
+    <bcf:citekey order="14" intorder="1">brownlees2011practical</bcf:citekey>
+    <bcf:citekey order="15" intorder="1">ferwana2022optimal</bcf:citekey>
+    <bcf:citekey order="16" intorder="1">jiang2017information</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nyt">

@@ -93,6 +93,111 @@
       \field{pages}{113\bibrangedash 132}
       \range{pages}{20}
     \endentry
+    \entry{andersen2010stochastic}{article}{}
+      \name{author}{2}{}{%
+        {{hash=09c85c9c10e1f8f0e62363a927495479}{%
+           family={Andersen},
+           familyi={A\bibinitperiod},
+           given={Torben\bibnamedelima G},
+           giveni={T\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+        {{hash=16348fc4f0758ae2d590b8dcbbf577e1}{%
+           family={Benzoni},
+           familyi={B\bibinitperiod},
+           given={Luca},
+           giveni={L\bibinitperiod}}}%
+      }
+      \strng{namehash}{49f3ed84d6c41c9e6799d682134c819f}
+      \strng{fullhash}{49f3ed84d6c41c9e6799d682134c819f}
+      \strng{bibnamehash}{49f3ed84d6c41c9e6799d682134c819f}
+      \strng{authorbibnamehash}{49f3ed84d6c41c9e6799d682134c819f}
+      \strng{authornamehash}{49f3ed84d6c41c9e6799d682134c819f}
+      \strng{authorfullhash}{49f3ed84d6c41c9e6799d682134c819f}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{CREATES Research Paper}
+      \field{number}{2010-10}
+      \field{title}{Stochastic volatility}
+      \field{year}{2010}
+    \endentry
+    \entry{andersen2007roughing}{article}{}
+      \name{author}{3}{}{%
+        {{hash=09c85c9c10e1f8f0e62363a927495479}{%
+           family={Andersen},
+           familyi={A\bibinitperiod},
+           given={Torben\bibnamedelima G},
+           giveni={T\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+        {{hash=39f8f5a428abd62057a0152546172106}{%
+           family={Bollerslev},
+           familyi={B\bibinitperiod},
+           given={Tim},
+           giveni={T\bibinitperiod}}}%
+        {{hash=15cc2e3b52b5ea2d3045be532376a348}{%
+           family={Diebold},
+           familyi={D\bibinitperiod},
+           given={Francis\bibnamedelima X},
+           giveni={F\bibinitperiod\bibinitdelim X\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {The MIT Press}%
+      }
+      \strng{namehash}{3cdc87177c9c65d6c82cbb521aedb4ee}
+      \strng{fullhash}{3cdc87177c9c65d6c82cbb521aedb4ee}
+      \strng{bibnamehash}{3cdc87177c9c65d6c82cbb521aedb4ee}
+      \strng{authorbibnamehash}{3cdc87177c9c65d6c82cbb521aedb4ee}
+      \strng{authornamehash}{3cdc87177c9c65d6c82cbb521aedb4ee}
+      \strng{authorfullhash}{3cdc87177c9c65d6c82cbb521aedb4ee}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The review of economics and statistics}
+      \field{number}{4}
+      \field{title}{Roughing it up: Including jump components in the measurement, modeling, and forecasting of return volatility}
+      \field{volume}{89}
+      \field{year}{2007}
+      \field{pages}{701\bibrangedash 720}
+      \range{pages}{20}
+    \endentry
+    \entry{andersen2009realized}{incollection}{}
+      \name{author}{2}{}{%
+        {{hash=09c85c9c10e1f8f0e62363a927495479}{%
+           family={Andersen},
+           familyi={A\bibinitperiod},
+           given={Torben\bibnamedelima G},
+           giveni={T\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+        {{hash=77b26b761b5b55458b37655c5470dce1}{%
+           family={Teräsvirta},
+           familyi={T\bibinitperiod},
+           given={Timo},
+           giveni={T\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{9ce18a60bc4b651cc25b5abc804abb70}
+      \strng{fullhash}{9ce18a60bc4b651cc25b5abc804abb70}
+      \strng{bibnamehash}{9ce18a60bc4b651cc25b5abc804abb70}
+      \strng{authorbibnamehash}{9ce18a60bc4b651cc25b5abc804abb70}
+      \strng{authornamehash}{9ce18a60bc4b651cc25b5abc804abb70}
+      \strng{authorfullhash}{9ce18a60bc4b651cc25b5abc804abb70}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Handbook of financial time series}
+      \field{title}{Realized volatility}
+      \field{year}{2009}
+      \field{pages}{555\bibrangedash 575}
+      \range{pages}{21}
+    \endentry
     \entry{andersen2003modeling}{article}{}
       \name{author}{4}{}{%
         {{hash=09c85c9c10e1f8f0e62363a927495479}{%
@@ -138,6 +243,40 @@
       \field{year}{2003}
       \field{pages}{579\bibrangedash 625}
       \range{pages}{47}
+    \endentry
+    \entry{brownlees2011practical}{article}{}
+      \name{author}{3}{}{%
+        {{hash=71e21f329333ac71a21a447f175226ef}{%
+           family={Brownlees},
+           familyi={B\bibinitperiod},
+           given={Christian\bibnamedelima T},
+           giveni={C\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
+        {{hash=d491df6781389ebb4ef255c1ec0ca7ed}{%
+           family={Engle},
+           familyi={E\bibinitperiod},
+           given={Robert\bibnamedelima F},
+           giveni={R\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+        {{hash=72eb4034e228252ba570afc3379a23f6}{%
+           family={Kelly},
+           familyi={K\bibinitperiod},
+           given={Bryan\bibnamedelima T},
+           giveni={B\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
+      }
+      \strng{namehash}{8ff13a836ebdc59ecee1b89cba20ec7c}
+      \strng{fullhash}{8ff13a836ebdc59ecee1b89cba20ec7c}
+      \strng{bibnamehash}{8ff13a836ebdc59ecee1b89cba20ec7c}
+      \strng{authorbibnamehash}{8ff13a836ebdc59ecee1b89cba20ec7c}
+      \strng{authornamehash}{8ff13a836ebdc59ecee1b89cba20ec7c}
+      \strng{authorfullhash}{8ff13a836ebdc59ecee1b89cba20ec7c}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Available at SSRN 1502915}
+      \field{title}{A practical guide to volatility forecasting through calm and storm}
+      \field{year}{2011}
     \endentry
     \entry{clements1998forecasting}{book}{}
       \name{author}{2}{}{%
@@ -207,6 +346,33 @@
       \field{year}{1996}
       \field{pages}{475\bibrangedash 494}
       \range{pages}{20}
+    \endentry
+    \entry{de2006forecasting}{article}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{1}{}{%
+        {{hash=bc9bd5295463e3b7b5c21688e4f68965}{%
+           family={De\bibnamedelima Luca},
+           familyi={D\bibinitperiod\bibinitdelim L\bibinitperiod},
+           given={Giovanni},
+           giveni={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{3087b22fc86bdf95c1b61cef26298a60}
+      \strng{fullhash}{3087b22fc86bdf95c1b61cef26298a60}
+      \strng{bibnamehash}{3087b22fc86bdf95c1b61cef26298a60}
+      \strng{authorbibnamehash}{3087b22fc86bdf95c1b61cef26298a60}
+      \strng{authornamehash}{3087b22fc86bdf95c1b61cef26298a60}
+      \strng{authorfullhash}{3087b22fc86bdf95c1b61cef26298a60}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Statistica Applicata}
+      \field{title}{Forecasting Volatility using High-Frequency Data}
+      \field{volume}{18}
+      \field{year}{2006}
     \endentry
     \entry{dendramis2020similarity}{article}{}
       \name{author}{3}{}{%

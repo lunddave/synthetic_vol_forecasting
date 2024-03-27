@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.21)  26 MAR 2024 17:20
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.21)  27 MAR 2024 11:28
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1016,30 +1016,30 @@ Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 \c@defn=\count490
 \c@prop=\count491
 \c@remark=\count492
-Package hyperref Info: Option `colorlinks' set `true' on input line 106.
+Package hyperref Info: Option `colorlinks' set `true' on input line 107.
 \@quotelevel=\count493
 \@quotereset=\count494
  (./prelim_presentation.aux)
 \openout1 = `prelim_presentation.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 132.
-LaTeX Font Info:    ... okay on input line 132.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 132.
-LaTeX Font Info:    ... okay on input line 132.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 132.
-LaTeX Font Info:    ... okay on input line 132.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 132.
-LaTeX Font Info:    ... okay on input line 132.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 132.
-LaTeX Font Info:    ... okay on input line 132.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 132.
-LaTeX Font Info:    ... okay on input line 132.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 132.
-LaTeX Font Info:    ... okay on input line 132.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 132.
-LaTeX Font Info:    ... okay on input line 132.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 132.
-LaTeX Font Info:    ... okay on input line 132.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1094,60 +1094,60 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
  (/usr/local/texlive/2023/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-Package hyperref Info: Link coloring ON on input line 132.
+Package hyperref Info: Link coloring ON on input line 133.
  (./prelim_presentation.out) (./prelim_presentation.out)
 \@outlinefile=\write6
 \openout6 = `prelim_presentation.out'.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 132.
+(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 133.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 132.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 133.
 \symnumbers=\mathgroup7
 \sympureletters=\mathgroup8
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/cmr/m/n on input line 132.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 132.
+(Font)                  OT1/cmss/m/n --> OT1/cmr/m/n on input line 133.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 133.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 132.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 133.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 132.
-LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 132.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 133.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 133.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/m/n on input line 132.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/m/n on input line 133.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> OT1/cmss/m/n on input line 132.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 132.
+(Font)                  OT1/cmss/bx/n --> OT1/cmss/m/n on input line 133.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 133.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> OT1/cmss/m/it on input line 132.
+(Font)                  OT1/cmr/m/it --> OT1/cmss/m/it on input line 133.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> OT1/cmss/m/it on input line 132.
-LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 132.
+(Font)                  OT1/cmr/bx/it --> OT1/cmss/m/it on input line 133.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 133.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 132.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 133.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 132.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 133.
 LaTeX Font Info:    Overwriting symbol font `numbers' in version `bold'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 132.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 133.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 132.
+(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 133.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
-(Font)                  OT1/cmss/b/n --> OT1/cmr/b/n on input line 132.
+(Font)                  OT1/cmss/b/n --> OT1/cmr/b/n on input line 133.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmss/b/n --> OT1/cmss/b/n on input line 132.
+(Font)                  OT1/cmss/b/n --> OT1/cmss/b/n on input line 133.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 132.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 133.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 132.
+(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 133.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/b/n on input line 132.
-LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 132.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/b/n on input line 133.
+LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 133.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `normal'
-(Font)                  OT1/cmss/m/it --> OT1/mathkerncmss/m/sl on input line 132.
+(Font)                  OT1/cmss/m/it --> OT1/mathkerncmss/m/sl on input line 133.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  OT1/cmss/b/it --> OT1/mathkerncmss/m/sl on input line 132.
+(Font)                  OT1/cmss/b/it --> OT1/mathkerncmss/m/sl on input line 133.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  OT1/mathkerncmss/m/sl --> OT1/mathkerncmss/bx/sl on input line 132.
+(Font)                  OT1/mathkerncmss/m/sl --> OT1/mathkerncmss/bx/sl on input line 133.
  (/usr/local/texlive/2023/texmf-dist/tex/latex/translator/translator-basic-dictionary-English.dict
 Dictionary: translator-basic-dictionary, Language: English 
 ) (/usr/local/texlive/2023/texmf-dist/tex/latex/translator/translator-bibliography-dictionary-English.dict
@@ -1174,29 +1174,29 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'prelim_presentation.bbl' found.
  (./prelim_presentation.bbl)
-Package biblatex Info: Reference section=0 on input line 132.
-Package biblatex Info: Reference segment=0 on input line 132.
+Package biblatex Info: Reference section=0 on input line 133.
+Package biblatex Info: Reference segment=0 on input line 133.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
 Package caption Info: End \AtBeginDocument code.
  (./prelim_presentation.nav)
-Overfull \hbox (131.60022pt too wide) in paragraph at lines 132--132
+Overfull \hbox (131.60022pt too wide) in paragraph at lines 133--133
  [][][][][][]  
  []
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 138.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 139.
 (/usr/local/texlive/2023/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 138.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 139.
  (/usr/local/texlive/2023/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 138.
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 139.
  (/usr/local/texlive/2023/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
-LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on input line 138.
+LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on input line 139.
  (/usr/local/texlive/2023/texmf-dist/tex/latex/sansmathaccent/ot1mathkerncmss.fd
 File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/mathkerncmss.
 )
@@ -1224,20 +1224,20 @@ Overfull \hbox (131.60022pt too wide) has occurred while \output is active
 <NYS_state.png, id=169, 558.085pt x 337.26pt>
 File: NYS_state.png Graphic file (type png)
 <use NYS_state.png>
-Package pdftex.def Info: NYS_state.png  used on input line 175.
+Package pdftex.def Info: NYS_state.png  used on input line 176.
 (pdftex.def)             Requested size: 167.42679pt x 101.17877pt.
 <cnn.png, id=172, 898.35625pt x 204.765pt>
 File: cnn.png Graphic file (type png)
 <use cnn.png>
-Package pdftex.def Info: cnn.png  used on input line 175.
+Package pdftex.def Info: cnn.png  used on input line 176.
 (pdftex.def)             Requested size: 269.50894pt x 61.42996pt.
 <cnbc.png, id=174, 997.7275pt x 174.6525pt>
 File: cnbc.png Graphic file (type png)
 <use cnbc.png>
-Package pdftex.def Info: cnbc.png  used on input line 175.
+Package pdftex.def Info: cnbc.png  used on input line 176.
 (pdftex.def)             Requested size: 299.32056pt x 52.39615pt.
 
-Overfull \vbox (0.57147pt too high) detected at line 175
+Overfull \vbox (0.57147pt too high) detected at line 176
  []
 
 
@@ -1297,15 +1297,6 @@ Overfull \hbox (131.60022pt too wide) has occurred while \output is active
 [11
 
 ]
-LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <6> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 278.
-LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <5> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 278.
-
-Overfull \vbox (24.82407pt too high) detected at line 278
- []
-
-
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
  [][][][][][]  
  []
@@ -1313,6 +1304,15 @@ Overfull \hbox (131.60022pt too wide) has occurred while \output is active
 [12
 
 ]
+LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <6> not available
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 288.
+LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <5> not available
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 288.
+
+Overfull \vbox (24.82407pt too high) detected at line 288
+ []
+
+
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
  [][][][][][]  
  []
@@ -1320,76 +1320,92 @@ Overfull \hbox (131.60022pt too wide) has occurred while \output is active
 [13
 
 ]
-LaTeX Font Info:    Calculating math sizes for size <3> on input line 318.
+LaTeX Font Info:    Calculating math sizes for size <2> on input line 314.
 
 
-LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <2.09999> not available
-(Font)              size <3> substituted on input line 318.
+LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <2> not available
+(Font)              size <3> substituted on input line 314.
 
 
-LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <1.5> not available
-(Font)              size <3> substituted on input line 318.
+LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <1.4> not available
+(Font)              size <3> substituted on input line 314.
 
 
-LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <2.09999> not available
-(Font)              size <3> substituted on input line 318.
+LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <1> not available
+(Font)              size <3> substituted on input line 314.
 
 
-LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <1.5> not available
-(Font)              size <3> substituted on input line 318.
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <2> not available
+(Font)              size <3> substituted on input line 314.
 
 
-LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <3> not available
-(Font)              size <5> substituted on input line 318.
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <1.4> not available
+(Font)              size <3> substituted on input line 314.
 
 
-LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <2.09999> not available
-(Font)              size <5> substituted on input line 318.
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <1> not available
+(Font)              size <3> substituted on input line 314.
 
 
-LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <1.5> not available
-(Font)              size <5> substituted on input line 318.
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <2> not available
+(Font)              size <5> substituted on input line 314.
 
 
-LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <3> not available
-(Font)              size <5> substituted on input line 318.
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <1.4> not available
+(Font)              size <5> substituted on input line 314.
 
 
-LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <2.09999> not available
-(Font)              size <5> substituted on input line 318.
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <1> not available
+(Font)              size <5> substituted on input line 314.
 
 
-LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <1.5> not available
-(Font)              size <5> substituted on input line 318.
-
-LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <3> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 318.
-LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <2.09999> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 318.
-
-LaTeX Font Warning: Font shape `OT1/cmss/bx/n' in size <2.09999> not available
-(Font)              size <3> substituted on input line 318.
-
-LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <1.5> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 318.
-
-LaTeX Font Warning: Font shape `OT1/cmss/bx/n' in size <1.5> not available
-(Font)              size <3> substituted on input line 318.
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <2> not available
+(Font)              size <5> substituted on input line 314.
 
 
-LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <3> not available
-(Font)              size <5> substituted on input line 318.
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <1.4> not available
+(Font)              size <5> substituted on input line 314.
 
 
-LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <2.09999> not available
-(Font)              size <5> substituted on input line 318.
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <1> not available
+(Font)              size <5> substituted on input line 314.
+
+LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <2> not available
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 314.
+
+LaTeX Font Warning: Font shape `OT1/cmss/bx/n' in size <2> not available
+(Font)              size <3> substituted on input line 314.
+
+LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <1.4> not available
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 314.
+
+LaTeX Font Warning: Font shape `OT1/cmss/bx/n' in size <1.4> not available
+(Font)              size <3> substituted on input line 314.
+
+LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <1> not available
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 314.
+
+LaTeX Font Warning: Font shape `OT1/cmss/bx/n' in size <1> not available
+(Font)              size <3> substituted on input line 314.
 
 
-LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <1.5> not available
-(Font)              size <5> substituted on input line 318.
+LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <2> not available
+(Font)              size <5> substituted on input line 314.
 
 
-Overfull \vbox (127.7844pt too high) detected at line 318
+LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <1.4> not available
+(Font)              size <5> substituted on input line 314.
+
+
+LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <1> not available
+(Font)              size <5> substituted on input line 314.
+
+
+LaTeX Font Warning: Font shape `OT1/cmss/bx/n' in size <2> not available
+(Font)              size <3> substituted on input line 314.
+
+
+Overfull \vbox (8.19937pt too high) detected at line 314
  []
 
 
@@ -1400,11 +1416,6 @@ Overfull \hbox (131.60022pt too wide) has occurred while \output is active
 [14
 
 ]
-LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <10.95> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 327.
-LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <8> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 327.
-
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
  [][][][][][]  
  []
@@ -1412,7 +1423,12 @@ Overfull \hbox (131.60022pt too wide) has occurred while \output is active
 [15
 
 ]
-Overfull \hbox (115.9311pt too wide) detected at line 340
+LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <10.95> not available
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 332.
+LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <8> not available
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 332.
+
+Overfull \hbox (115.9311pt too wide) detected at line 332
 []
  []
 
@@ -1431,6 +1447,10 @@ Overfull \hbox (131.60022pt too wide) has occurred while \output is active
 [17
 
 ]
+Overfull \vbox (158.18015pt too high) detected at line 369
+ []
+
+
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
  [][][][][][]  
  []
@@ -1438,6 +1458,10 @@ Overfull \hbox (131.60022pt too wide) has occurred while \output is active
 [18
 
 ]
+Overfull \vbox (250.35481pt too high) detected at line 398
+ []
+
+
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
  [][][][][][]  
  []
@@ -1487,7 +1511,7 @@ Overfull \hbox (131.60022pt too wide) has occurred while \output is active
 [25
 
 ]
-Overfull \vbox (273.7254pt too high) detected at line 448
+Overfull \vbox (450.52548pt too high) detected at line 482
  []
 
 
@@ -1518,7 +1542,7 @@ Overfull \hbox (131.60022pt too wide) has occurred while \output is active
  (./prelim_presentation.aux)
 
 LaTeX Font Warning: Size substitutions with differences
-(Font)              up to 3.5pt have occurred.
+(Font)              up to 4.0pt have occurred.
 
 Package rerunfilecheck Info: File `prelim_presentation.out' has not changed.
 (rerunfilecheck)             Checksum: 4E94EB42541A1AF7644FAF9F0BB9FE83;1900.
@@ -1527,18 +1551,18 @@ Package logreq Info: Writing requests to 'prelim_presentation.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 39542 strings out of 476025
- 805092 string characters out of 5790017
- 1887388 words of memory out of 5000000
- 59225 multiletter control sequences out of 15000+600000
- 529280 words of font info for 95 fonts, out of 8000000 for 9000
+ 39586 strings out of 476025
+ 806232 string characters out of 5790017
+ 1881388 words of memory out of 5000000
+ 59261 multiletter control sequences out of 15000+600000
+ 529982 words of font info for 97 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 128i,18n,131p,965b,1596s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 128i,18n,131p,773b,1596s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on prelim_presentation.pdf (27 pages, 562064 bytes).
+Output written on prelim_presentation.pdf (27 pages, 571117 bytes).
 PDF statistics:
- 1014 PDF objects out of 1200 (max. 8388607)
- 902 compressed objects within 10 object streams
- 80 named destinations out of 1000 (max. 500000)
+ 1029 PDF objects out of 1200 (max. 8388607)
+ 917 compressed objects within 10 object streams
+ 87 named destinations out of 1000 (max. 500000)
  250 words of extra memory for PDF output out of 10000 (max. 10000000)
 
