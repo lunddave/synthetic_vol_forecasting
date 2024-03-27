@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.21)  27 MAR 2024 11:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.21)  27 MAR 2024 14:33
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1221,17 +1221,17 @@ Overfull \hbox (131.60022pt too wide) has occurred while \output is active
 [3
 
 ]
-<NYS_state.png, id=169, 558.085pt x 337.26pt>
+<NYS_state.png, id=177, 558.085pt x 337.26pt>
 File: NYS_state.png Graphic file (type png)
 <use NYS_state.png>
 Package pdftex.def Info: NYS_state.png  used on input line 176.
 (pdftex.def)             Requested size: 167.42679pt x 101.17877pt.
-<cnn.png, id=172, 898.35625pt x 204.765pt>
+<cnn.png, id=180, 898.35625pt x 204.765pt>
 File: cnn.png Graphic file (type png)
 <use cnn.png>
 Package pdftex.def Info: cnn.png  used on input line 176.
 (pdftex.def)             Requested size: 269.50894pt x 61.42996pt.
-<cnbc.png, id=174, 997.7275pt x 174.6525pt>
+<cnbc.png, id=182, 997.7275pt x 174.6525pt>
 File: cnbc.png Graphic file (type png)
 <use cnbc.png>
 Package pdftex.def Info: cnbc.png  used on input line 176.
@@ -1305,13 +1305,9 @@ Overfull \hbox (131.60022pt too wide) has occurred while \output is active
 
 ]
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <6> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 288.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 291.
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <5> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 288.
-
-Overfull \vbox (24.82407pt too high) detected at line 288
- []
-
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 291.
 
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
  [][][][][][]  
@@ -1320,94 +1316,10 @@ Overfull \hbox (131.60022pt too wide) has occurred while \output is active
 [13
 
 ]
-LaTeX Font Info:    Calculating math sizes for size <2> on input line 314.
-
-
-LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <2> not available
-(Font)              size <3> substituted on input line 314.
-
-
-LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <1.4> not available
-(Font)              size <3> substituted on input line 314.
-
-
-LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <1> not available
-(Font)              size <3> substituted on input line 314.
-
-
-LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <2> not available
-(Font)              size <3> substituted on input line 314.
-
-
-LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <1.4> not available
-(Font)              size <3> substituted on input line 314.
-
-
-LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <1> not available
-(Font)              size <3> substituted on input line 314.
-
-
-LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <2> not available
-(Font)              size <5> substituted on input line 314.
-
-
-LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <1.4> not available
-(Font)              size <5> substituted on input line 314.
-
-
-LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <1> not available
-(Font)              size <5> substituted on input line 314.
-
-
-LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <2> not available
-(Font)              size <5> substituted on input line 314.
-
-
-LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <1.4> not available
-(Font)              size <5> substituted on input line 314.
-
-
-LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <1> not available
-(Font)              size <5> substituted on input line 314.
-
-LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <2> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 314.
-
-LaTeX Font Warning: Font shape `OT1/cmss/bx/n' in size <2> not available
-(Font)              size <3> substituted on input line 314.
-
-LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <1.4> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 314.
-
-LaTeX Font Warning: Font shape `OT1/cmss/bx/n' in size <1.4> not available
-(Font)              size <3> substituted on input line 314.
-
-LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <1> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 314.
-
-LaTeX Font Warning: Font shape `OT1/cmss/bx/n' in size <1> not available
-(Font)              size <3> substituted on input line 314.
-
-
-LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <2> not available
-(Font)              size <5> substituted on input line 314.
-
-
-LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <1.4> not available
-(Font)              size <5> substituted on input line 314.
-
-
-LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <1> not available
-(Font)              size <5> substituted on input line 314.
-
-
-LaTeX Font Warning: Font shape `OT1/cmss/bx/n' in size <2> not available
-(Font)              size <3> substituted on input line 314.
-
-
-Overfull \vbox (8.19937pt too high) detected at line 314
- []
-
+LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <10.95> not available
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 298.
+LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <8> not available
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 298.
 
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
  [][][][][][]  
@@ -1423,14 +1335,73 @@ Overfull \hbox (131.60022pt too wide) has occurred while \output is active
 [15
 
 ]
-LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <10.95> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 332.
-LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <8> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 332.
+LaTeX Font Info:    Calculating math sizes for size <2.6> on input line 345.
 
-Overfull \hbox (115.9311pt too wide) detected at line 332
-[]
- []
+
+LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <1.81999> not available
+(Font)              size <3> substituted on input line 345.
+
+
+LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <1.3> not available
+(Font)              size <3> substituted on input line 345.
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <1.81999> not available
+(Font)              size <3> substituted on input line 345.
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <1.3> not available
+(Font)              size <3> substituted on input line 345.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <2.6> not available
+(Font)              size <5> substituted on input line 345.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <1.81999> not available
+(Font)              size <5> substituted on input line 345.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <1.3> not available
+(Font)              size <5> substituted on input line 345.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <2.6> not available
+(Font)              size <5> substituted on input line 345.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <1.81999> not available
+(Font)              size <5> substituted on input line 345.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <1.3> not available
+(Font)              size <5> substituted on input line 345.
+
+LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <2.6> not available
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 345.
+LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <1.81999> not available
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 345.
+
+LaTeX Font Warning: Font shape `OT1/cmss/bx/n' in size <1.81999> not available
+(Font)              size <3> substituted on input line 345.
+
+LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <1.3> not available
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 345.
+
+LaTeX Font Warning: Font shape `OT1/cmss/bx/n' in size <1.3> not available
+(Font)              size <3> substituted on input line 345.
+
+
+LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <2.6> not available
+(Font)              size <5> substituted on input line 345.
+
+
+LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <1.81999> not available
+(Font)              size <5> substituted on input line 345.
+
+
+LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <1.3> not available
+(Font)              size <5> substituted on input line 345.
 
 
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
@@ -1447,8 +1418,37 @@ Overfull \hbox (131.60022pt too wide) has occurred while \output is active
 [17
 
 ]
-Overfull \vbox (158.18015pt too high) detected at line 369
- []
+LaTeX Font Info:    Calculating math sizes for size <5.6> on input line 365.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <3.91998> not available
+(Font)              size <5> substituted on input line 365.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <2.8> not available
+(Font)              size <5> substituted on input line 365.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <3.91998> not available
+(Font)              size <5> substituted on input line 365.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <2.8> not available
+(Font)              size <5> substituted on input line 365.
+
+LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <5.6> not available
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 365.
+LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <3.91998> not available
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 365.
+LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <2.8> not available
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 365.
+
+LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <3.91998> not available
+(Font)              size <5> substituted on input line 365.
+
+
+LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <2.8> not available
+(Font)              size <5> substituted on input line 365.
 
 
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
@@ -1458,10 +1458,6 @@ Overfull \hbox (131.60022pt too wide) has occurred while \output is active
 [18
 
 ]
-Overfull \vbox (250.35481pt too high) detected at line 398
- []
-
-
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
  [][][][][][]  
  []
@@ -1469,6 +1465,10 @@ Overfull \hbox (131.60022pt too wide) has occurred while \output is active
 [19
 
 ]
+Overfull \vbox (158.18015pt too high) detected at line 402
+ []
+
+
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
  [][][][][][]  
  []
@@ -1476,17 +1476,7 @@ Overfull \hbox (131.60022pt too wide) has occurred while \output is active
 [20
 
 ]
-<simulation_plots/standard_simulation_alpha_.1_beta_.82.png, id=724, 650.43pt x 499.11469pt>
-File: simulation_plots/standard_simulation_alpha_.1_beta_.82.png Graphic file (type png)
-<use simulation_plots/standard_simulation_alpha_.1_beta_.82.png>
-Package pdftex.def Info: simulation_plots/standard_simulation_alpha_.1_beta_.82.png  used on input line 438.
-(pdftex.def)             Requested size: 292.6908pt x 224.59952pt.
-LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <10> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 438.
-LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <7> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 438.
-
-Overfull \vbox (121.11534pt too high) detected at line 438
+Overfull \vbox (250.35481pt too high) detected at line 431
  []
 
 
@@ -1496,14 +1486,8 @@ Overfull \hbox (131.60022pt too wide) has occurred while \output is active
 
 [21
 
- <./simulation_plots/standard_simulation_alpha_.1_beta_.82.png (PNG copy)>]
-<simulation_plots/standard_simulation_alpha_.82_beta_.1.png, id=757, 650.43pt x 499.11469pt>
-File: simulation_plots/standard_simulation_alpha_.82_beta_.1.png Graphic file (type png)
-<use simulation_plots/standard_simulation_alpha_.82_beta_.1.png>
-Package pdftex.def Info: simulation_plots/standard_simulation_alpha_.82_beta_.1.png  used on input line 453.
-(pdftex.def)             Requested size: 292.6908pt x 224.59952pt.
-
-Overfull \vbox (94.51445pt too high) detected at line 453
+]
+Overfull \vbox (297.71602pt too high) detected at line 451
  []
 
 
@@ -1513,14 +1497,20 @@ Overfull \hbox (131.60022pt too wide) has occurred while \output is active
 
 [22
 
- <./simulation_plots/standard_simulation_alpha_.82_beta_.1.png (PNG copy)>]
+]
+<real_data_output_plots/savetime_SunMar172252462024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png, id=797, 803.0pt x 602.25pt>
+File: real_data_output_plots/savetime_SunMar172252462024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png Graphic file (type png)
+<use real_data_output_plots/savetime_SunMar172252462024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png>
+Package pdftex.def Info: real_data_output_plots/savetime_SunMar172252462024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png  used on input line 463.
+(pdftex.def)             Requested size: 160.59715pt x 120.44786pt.
+
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
  [][][][][][]  
  []
 
 [23
 
-]
+ <./real_data_output_plots/savetime_SunMar172252462024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png>]
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
  [][][][][][]  
  []
@@ -1528,20 +1518,44 @@ Overfull \hbox (131.60022pt too wide) has occurred while \output is active
 [24
 
 ]
+<simulation_plots/standard_simulation_alpha_.1_beta_.82.png, id=859, 650.43pt x 499.11469pt>
+File: simulation_plots/standard_simulation_alpha_.1_beta_.82.png Graphic file (type png)
+<use simulation_plots/standard_simulation_alpha_.1_beta_.82.png>
+Package pdftex.def Info: simulation_plots/standard_simulation_alpha_.1_beta_.82.png  used on input line 498.
+(pdftex.def)             Requested size: 292.6908pt x 224.59952pt.
+LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <10> not available
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 498.
+LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <7> not available
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 498.
+
+Overfull \vbox (107.51534pt too high) detected at line 498
+ []
+
+
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
  [][][][][][]  
  []
 
 [25
 
-]
+ <./simulation_plots/standard_simulation_alpha_.1_beta_.82.png (PNG copy)>]
+<simulation_plots/standard_simulation_alpha_.82_beta_.1.png, id=890, 650.43pt x 499.11469pt>
+File: simulation_plots/standard_simulation_alpha_.82_beta_.1.png Graphic file (type png)
+<use simulation_plots/standard_simulation_alpha_.82_beta_.1.png>
+Package pdftex.def Info: simulation_plots/standard_simulation_alpha_.82_beta_.1.png  used on input line 513.
+(pdftex.def)             Requested size: 292.6908pt x 224.59952pt.
+
+Overfull \vbox (94.51445pt too high) detected at line 513
+ []
+
+
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
  [][][][][][]  
  []
 
 [26
 
-]
+ <./simulation_plots/standard_simulation_alpha_.82_beta_.1.png (PNG copy)>]
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
  [][][][][][]  
  []
@@ -1549,13 +1563,6 @@ Overfull \hbox (131.60022pt too wide) has occurred while \output is active
 [27
 
 ]
-Overfull \vbox (491.3255pt too high) detected at line 519
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
  [][][][][][]  
  []
@@ -1567,7 +1574,35 @@ Overfull \hbox (131.60022pt too wide) has occurred while \output is active
  [][][][][][]  
  []
 
-[29 </usr/local/texlive/2023/texmf-dist/tex/latex/beamer/beamericonarticle.pdf>]
+[29
+
+]
+Overfull \hbox (131.60022pt too wide) has occurred while \output is active
+ [][][][][][]  
+ []
+
+[30
+
+]
+Overfull \vbox (613.72556pt too high) detected at line 572
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (131.60022pt too wide) has occurred while \output is active
+ [][][][][][]  
+ []
+
+[31
+
+]
+Overfull \hbox (131.60022pt too wide) has occurred while \output is active
+ [][][][][][]  
+ []
+
+[32 </usr/local/texlive/2023/texmf-dist/tex/latex/beamer/beamericonarticle.pdf>]
 \tf@nav=\write7
 \openout7 = `prelim_presentation.nav'.
 
@@ -1580,27 +1615,27 @@ Overfull \hbox (131.60022pt too wide) has occurred while \output is active
  (./prelim_presentation.aux)
 
 LaTeX Font Warning: Size substitutions with differences
-(Font)              up to 4.0pt have occurred.
+(Font)              up to 3.7pt have occurred.
 
 Package rerunfilecheck Info: File `prelim_presentation.out' has not changed.
-(rerunfilecheck)             Checksum: 4E94EB42541A1AF7644FAF9F0BB9FE83;1900.
+(rerunfilecheck)             Checksum: 9DDF228707BB7BCFA8832DE3D9B1C495;2118.
 Package logreq Info: Writing requests to 'prelim_presentation.run.xml'.
 \openout1 = `prelim_presentation.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 39663 strings out of 476025
- 808250 string characters out of 5790017
+ 39768 strings out of 476025
+ 811358 string characters out of 5790017
  1881388 words of memory out of 5000000
- 59327 multiletter control sequences out of 15000+600000
- 533355 words of font info for 110 fonts, out of 8000000 for 9000
+ 59418 multiletter control sequences out of 15000+600000
+ 537050 words of font info for 124 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 128i,18n,131p,773b,1596s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on prelim_presentation.pdf (29 pages, 927729 bytes).
+ 128i,18n,131p,809b,1680s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm5.pfb>
+Output written on prelim_presentation.pdf (32 pages, 975334 bytes).
 PDF statistics:
- 1097 PDF objects out of 1200 (max. 8388607)
- 979 compressed objects within 10 object streams
- 94 named destinations out of 1000 (max. 500000)
- 260 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1206 PDF objects out of 1440 (max. 8388607)
+ 1082 compressed objects within 11 object streams
+ 106 named destinations out of 1000 (max. 500000)
+ 281 words of extra memory for PDF output out of 10000 (max. 10000000)
 
