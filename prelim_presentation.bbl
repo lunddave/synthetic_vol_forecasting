@@ -583,42 +583,6 @@
       \field{title}{Macroeconomic forecasting in times of crises}
       \field{year}{2017}
     \endentry
-    \entry{hansen2005forecast}{article}{}
-      \name{author}{2}{}{%
-        {{hash=1b69f8d059ca7b024817e06b9be0fda6}{%
-           family={Hansen},
-           familyi={H\bibinitperiod},
-           given={Peter\bibnamedelima R},
-           giveni={P\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
-        {{hash=8d526c5bfbc93e7d59acb3e0d9853324}{%
-           family={Lunde},
-           familyi={L\bibinitperiod},
-           given={Asger},
-           giveni={A\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {Wiley Online Library}%
-      }
-      \strng{namehash}{938766e2ed127e1c0c61a8b9084ade36}
-      \strng{fullhash}{938766e2ed127e1c0c61a8b9084ade36}
-      \strng{bibnamehash}{938766e2ed127e1c0c61a8b9084ade36}
-      \strng{authorbibnamehash}{938766e2ed127e1c0c61a8b9084ade36}
-      \strng{authornamehash}{938766e2ed127e1c0c61a8b9084ade36}
-      \strng{authorfullhash}{938766e2ed127e1c0c61a8b9084ade36}
-      \field{sortinit}{H}
-      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Journal of applied econometrics}
-      \field{number}{7}
-      \field{title}{A forecast comparison of volatility models: does anything beat a GARCH (1, 1)?}
-      \field{volume}{20}
-      \field{year}{2005}
-      \field{pages}{873\bibrangedash 889}
-      \range{pages}{17}
-    \endentry
     \entry{hansen2012realized}{article}{}
       \name{author}{3}{}{%
         {{hash=851986f5b859aa8517f12b14968c618d}{%

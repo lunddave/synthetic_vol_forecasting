@@ -171,8 +171,6 @@
         \href{https://www.cnn.com/2020/03/08/investing/oil-prices-crash-opec-russia-saudi-arabia/index.html}{\includegraphics[scale=.3]{cnbc.png}}
         \end{example}
 
-
- 
 \end{frame}
 
 \begin{frame}
@@ -300,21 +298,24 @@ where $D^{return}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + L_{i, return}\})$ and 
 \begin{frame}
 \frametitle{Our Model is Nested inside a Factor Model}
 
-% Consider the connection between the model above and the factor model from \cite[][]{abadie2010synthetic}, where an untreated unit is governed by:
+\fontsize{6}{7.2}
 
-% \begin{align}
-% Y^{N}_{i,t} = \delta_{t} + \boldsymbol\theta_{t}\textbf{Z}_{i}+\boldsymbol\lambda_{t}\boldsymbol\mu_{i}+\varepsilon_{i,t} \text{ ,} \label{abadie_factor_model}
-% \end{align}
+Consider the preceding with the factor model from \cite[][]{abadie2010synthetic}, where an untreated unit is governed by:
 
-% which happens to nest the GARCH model's volatilty equation (putting aside that $\sigma_{t}$ is latent in the GARCH model) as well as as the ARMA representation of a GARCH model, where
+$$Y^{N}_{i,t} = \delta_{t} + \boldsymbol\theta_{t}\textbf{Z}_{i}+\boldsymbol\lambda_{t}\boldsymbol\mu_{i}+\varepsilon_{i,t}$$
 
-% \begin{align}
-% \delta_{t} & \sim \omega, \text{a location parameter shared across donors}\\
-% \boldsymbol\theta_{t} & \sim \boldsymbol\alpha_{k}, \text{a vector of ARCH parameters and other coefficients shared across donors} \\
-% \textbf{Z}_{i} & \sim \boldsymbol a_{i,t-k}, \text{a vector of observable quantities specific to each donor} \\
-% \boldsymbol \lambda_{t} & \sim \boldsymbol\beta_{j}, \text{a vector of GARCH parameters shared across donors} \\
-% \boldsymbol \mu_{i} & \sim \boldsymbol \sigma_{i,t-j}^{2}, \text{a vector of latent quantities specific to each donor}   \\
-% \end{align}
+%\label{abadie_factor_model}
+
+
+which happens to nest the GARCH model's volatilty equation (putting aside that $\sigma_{t}$ is latent in the GARCH model) as well as as the ARMA representation of a GARCH model, where
+
+\begin{align*}
+\delta_{t} & \sim \omega, \text{a location parameter shared across donors}\\
+\boldsymbol\theta_{t} & \sim \boldsymbol\alpha_{k}, \text{a vector of ARCH parameters and other coefficients shared across donors} \\
+\textbf{Z}_{i} & \sim \boldsymbol a_{i,t-k}, \text{a vector of observable quantities specific to each donor} \\
+\boldsymbol \lambda_{t} & \sim \boldsymbol\beta_{j}, \text{a vector of GARCH parameters shared across donors} \\
+\boldsymbol \mu_{i} & \sim \boldsymbol \sigma_{i,t-j}^{2}, \text{a vector of latent quantities specific to each donor}   \\
+\end{align*}
 
 % and $\varepsilon_{i,t}$ is idiosyncratic noise, uncorrelated across time and donors.
 \end{frame}
@@ -385,8 +386,11 @@ Following \cite[][]{abadie2003economic,abadie2010synthetic}, let $\|\cdot\|_{\te
 
 \begin{frame}
 \frametitle{Ground Truth Estimators}
+\fontsize{5.6}{5.6}
 
-The time-varying parameter $\sigma^{2}_{t}$ is a quantity for which even identifying an observable effect in the real world is far more challenging.  In this work, we use a common estimator of the variance called realized volatility (RV), one which has the virtue of being ``model-free'' in the sense that it requires no modeling assumptions \parencite[][]{andersen2010stochastic}.  The realized variance itself can be decomposed into the sum of a continous component and a jump component, with the former being less predictable and less persistent \parencite[][]{andersen2007roughing}, cited in \cite[][]{de2006forecasting}, two factors that further motivate the method employed herein.
+
+
+We use realized volatility (RV); has virtue of being ``model-free'' in the sense that it requires no modeling assumptions \parencite[][]{andersen2010stochastic}.  RV can be decomposed into the sum of a continous component and a jump component, with the former being less predictable and less persistent \parencite[][]{andersen2007roughing}, cited in \cite[][]{de2006forecasting}, two factors that further motivate the method employed herein.
     
 Suppose we examine $K$ units of of time, where each unit is divided into $m$ intervals of length $\frac{1}{m}$.  We follow the notation of \parencite[][]{andersen2009realized}. Let $p_{t} = \log{P_{t}}$, and let $\tilde{r}(t,\frac{1}{m}) = p_{t} - p_{t-\frac{1}{m}}$.  We estimate the variance of $i$th log return series using Realized Volatility of the $K$ consecutive trading days that conclude with day $t$, denoted $RV_{i,t}^{K,m}$, using
 
@@ -404,7 +408,15 @@ which is a biased but consistent estimator of the variance.  We will proceed usi
 \begin{frame}
 \frametitle{Loss Functions}
 
-We are interested in point forecasts for $\sigma^{2}_{1,T^{*}+h}|\mathcal{F}_{T^{*}}$, $h=1,2,...,H$, the $h$-step ahead conditional variance for the time series under study, up to a forecast length of $H$.  Let $L^{h}$ with the subscripted pair $\{$prediction method, ground truth estimator$\}$, denote the loss function for an $h$-step-ahead forecast using a given prediction function and ground truth estimator.  For example, one loss function of interest in this study is the 1-step-ahead MSE using Synthetic Volatility Forecasting and Realized Volatility:
+Goal: point forecasts for $\sigma^{2}_{1,T^{*}+h}|\mathcal{F}_{T^{*}}$, $h=1,2,...,H$, the $h$-step ahead conditional variance for the time series under study, up to a forecast length of $H$.\\
+ 
+Let $L^{h}$ with the subscripted pair $\{$prediction method, ground truth estimator$\}$, denote the loss function for an $h$-step-ahead forecast using a given prediction function and ground truth estimator.  
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Loss Function Examples}
+For example, one loss function of interest in this study is the 1-step-ahead MSE using Synthetic Volatility Forecasting and Realized Volatility:
 
 $$ \text{MSE}^{1}_{\text{SVF, RV}} = (\hat\sigma^{2}_{SVF} - \hat\sigma^{2}_{RV})^{2}$$
 
@@ -417,6 +429,10 @@ Also of interest in mean absolute percentage error for an $h$-step-ahead forecas
 \[ 
 \text{MAPE}^{H}_{method, ground truth} = \frac{1}{H}\sum_{h=1}^{H}\frac{|\hat\sigma^{2}_{h, method} - \hat\sigma^{2}_{h, ground truth}|}{\hat\sigma^{2}_{h, ground truth}}
 \]
+
+\end{frame}
+
+\begin{frame}\frametitle{Our choice of Loss Function}
 
 Finally, we introduce the QL (quasi-likelihood) Loss \parencite[][]{brownlees2011practical}:
 
@@ -437,15 +453,13 @@ compare losses across volatility regimes."  For this reason, we proceed to evalu
 \subsection{Preliminaries}
 \begin{frame}
 \begin{enumerate}
-    \item \textbf{Model choice} We assume a GARCH(1,1) for the daily log return series of IYG in each donor.  As argued in \cite[][]{hansen2005forecast}, a GARCH(1,1) is rarely dominated by more heavily-parameterized GARCH specifications.  It thus provides a defensible choice when motivation or time for choosing another model is lacking.  For the time series under study and the donor series alike, we fit a GARCH(1,1) on almost four years of market data prior to the shock.
+    \item \textbf{Model choice} GARCH(1,1) on the daily log return series of IYG in each donor
 
-    \item \textbf{Covariate Choice} We choose covariates that could plausibly satisfy the model assumptions spelled out earlier, that is, risk-related and macroeconomic covariates that could plausibly be weighted and summed in a shock distribution.  We thus choose the log return Crude Oil (CL.F), the VIX (VIX) and the log return of the VIX, the log returns of the 3-month, 5-year, 10-year, and 30-year US Treasuries, as well as the log return of the most recently available monthly spread between AAA and BAA corporate debt, widely considered a proxy for lending risk \parencite[][]{goodell2013us, kane1996p}.  We also include the log return in the trading volume of the ETF IYG itself, which serves as a proxy for panic.
+    \item \textbf{Covariate Choice} log return Crude Oil (CL.F), the VIX (VIX) and the log return of the VIX, the log returns of the 3-month, 5-year, 10-year, and 30-year US Treasuries, return of the most recently available monthly spread between AAA and BAA corporate debt, widely considered a proxy for lending risk \parencite[][]{goodell2013us, kane1996p}.  We also include the log return in the trading volume of the ETF IYG itself, which serves as a proxy for panic.
 
-    \item \textbf{Donor pool construction} Synthetic Control, an a tool of causal inference, often goes about weighting control units by first identifying a natural set of donors or standard donors such as the untreated units within a set of subnational units like US states or Spanish provinces \parencite[][]{abadie2003economic, abadie2010synthetic}.  While such a procedure does not necessarily preclude considered judgments (e.g. should Canadian provinces be used as donors for a treated US state?), as a tool of small-$n$ prediction, distanced-based weighting may favor somewhat different considerations in constructing a donor pool. 
-    
-    For our purposes, we choose the three most recent US presidential elections prior to the 2016 election.  The three US presidential elections are the only presidential elections since the advent of the ETF IYG.  We exclude the midterm congressional elections in the US (i.e. those held in even years not divisible by four), which generate far lower voter turnout and feature no national races.
+    \item \textbf{Donor pool construction} the three most recent US presidential elections prior to the 2016 election.  The three US presidential elections are the only presidential elections since the advent of the ETF IYG.  We exclude the midterm congressional elections in the US, which generate far lower voter turnout and feature no national races.
 
-    \item \textbf{Choice of estimator for volatility} We use the sum of squared 5-minute log returns of IYG on November 9th, 2016, otherwise known as the Realized Volatility estimator of volatility \parencite[][]{andersen2009realized}, as our proxy.  We exclude the first five minutes of the trading day, resulting in a sum of 77 squared five-minute returns generated between 9:35am and 4pm.
+    \item \textbf{Choice of estimator for volatility} Sum of squared 5-minute log returns of IYG on November 9th, 2016, otherwise known as the Realized Volatility estimator of volatility \parencite[][]{andersen2009realized}, as our proxy.  We exclude the first five minutes of the trading day, resulting in a sum of 77 squared five-minute returns generated between 9:35am and 4pm.
 \end{enumerate} 
 
 \end{frame}
@@ -494,13 +508,11 @@ In order to investigate the Synthetic Volatility Forecasting method, our most el
       \end{center}
       \end{figure}
 
-
 \end{frame}
-
 
 \begin{frame}
     \fontsize{8pt}{9pt}
-  
+
     If we switch the values of $\alpha$ and $\beta$, we see similar behavior, as in \ref{fig:heavy_alpha}.  Here we cite \cite[p. 22]{francq2019garch} in motivating simulations for large $\alpha$ values and then large $\beta$ values.  However, for small values of the shock mean, increasing noise does lead to fewer converged simulations, likely due to large negative realizations of the noise term, which in turn lead to near-zero and even negative estimates of the terms $\omega_{i}^{*}$.
     \begin{figure}[h!]
       \begin{center}
