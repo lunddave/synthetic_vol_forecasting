@@ -184,7 +184,6 @@ To that end, let $a_{t} = r_{t} - \mu_{t}$, where $\mu_{t}$ is the mean of the l
 \end{align*}
 Assuming further that $\sigma^{2}_{t}$ depends on a vector of exogenous covariates $\x_{t}$, we have a  GARCH-X$(m,s)$.  The volatility equation then becomes 
 
-
 \begin{align}
 &\sigma_{t}^{2} = \omega+ \sum^{m}_{k=1}\alpha_{k}a^{2}_{t-k} + \sum_{j=1}^{s}\beta_{j}\sigma_{t-j}^{2} + \gamma^{T}\x_{t} \text{ .}\label{GARCH-X}
 \end{align}
@@ -569,7 +568,7 @@ as $t\rightarrow\infty$ by a simple application of Slutsky's Theorem.
 
 \end{proof-of-proposition}
 
-\subsection{Risk Minimization Using Synthetic Volatility Forecasting}
+\subsection{Asymptotic Loss Using Synthetic Volatility Forecasting}
 
 We now evaluate the loss and risk of Synthetic Volatility Forecasts under two scenarios: first, under arbitrary distribution of $\sigma^{2}_{t+1}$, and then second, under the assumption that the data-generating process is correctly specified.
 
@@ -592,7 +591,7 @@ By letting $f(\hat\omega^{*}) = \log{\frac{\hat\omega + \hat\alpha a_{t}^{2} + \
 \begin{prop}\label{asymptotic_consistency}
 Assume the conditions in Propositions $\ref{omega_consistency}$ and $\ref{sigma_consistency}$.  Let $1\leq i\leq n+1$.\\
   Then $QL(\hat\sigma_{t+1, unadjusted}^{2},\sigma^{2}_{t+1})-QL(\hat\sigma^{2}_{t+1, adjusted},\sigma^{2}_{t+1})\xrightarrow{p} \log{\frac{\sigma^{2}_{t+1}}{\sigma_{t+1}^{2}-\E[\omega_{i}^{*}]}} - \frac{\E[\omega_{i}^{*}]}{\sigma^{2}_{t+1}} \geq 0.$
-Hence, a correctly specified model will outperform the unadjusted forecast asymptotically.
+Hence, a correctly specified $\mc{M}_1$ model will outperform the unadjusted forecast asymptotically.
 \end{prop}
 
 \begin{proof-of-proposition}

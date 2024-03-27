@@ -1,17 +1,17 @@
 [0] Config.pm:307> INFO - This is Biber 2.19
 [0] Config.pm:310> INFO - Logfile is 'prelim_presentation.blg'
-[45] biber-darwin:340> INFO - === Wed Mar 27, 2024, 11:26:41
-[56] Biber.pm:419> INFO - Reading 'prelim_presentation.bcf'
-[111] Biber.pm:979> INFO - Found 17 citekeys in bib section 0
-[120] Biber.pm:4419> INFO - Processing section 0
-[126] Biber.pm:4610> INFO - Looking for bibtex file 'synthVolForecast.bib' for section 0
-[130] bibtex.pm:1713> INFO - LaTeX decoding ...
-[217] bibtex.pm:1519> INFO - Found BibTeX data source 'synthVolForecast.bib'
-[297] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[297] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[297] Biber.pm:4239> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'en-US'
-[297] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-US'
-[308] bbl.pm:660> INFO - Writing 'prelim_presentation.bbl' with encoding 'UTF-8'
-[314] bbl.pm:763> INFO - Output to prelim_presentation.bbl
-[314] Biber.pm:131> WARN - Duplicate entry key: 'newbold2002forecast' in file 'synthVolForecast.bib', skipping ...
-[314] Biber.pm:133> INFO - WARNINGS: 1
+[42] biber-darwin:340> INFO - === Wed Mar 27, 2024, 11:53:44
+[54] Biber.pm:419> INFO - Reading 'prelim_presentation.bcf'
+[107] Biber.pm:979> INFO - Found 18 citekeys in bib section 0
+[115] Biber.pm:4419> INFO - Processing section 0
+[122] Biber.pm:4610> INFO - Looking for bibtex file 'synthVolForecast.bib' for section 0
+[126] bibtex.pm:1713> INFO - LaTeX decoding ...
+[220] bibtex.pm:1519> INFO - Found BibTeX data source 'synthVolForecast.bib'
+[326] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[326] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[326] Biber.pm:4239> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'en-US'
+[326] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-US'
+[338] bbl.pm:660> INFO - Writing 'prelim_presentation.bbl' with encoding 'UTF-8'
+[345] bbl.pm:763> INFO - Output to prelim_presentation.bbl
+[346] Biber.pm:131> WARN - Duplicate entry key: 'newbold2002forecast' in file 'synthVolForecast.bib', skipping ...
+[346] Biber.pm:133> INFO - WARNINGS: 1
