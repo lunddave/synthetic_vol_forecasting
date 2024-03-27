@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.21)  27 MAR 2024 17:42
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.21)  27 MAR 2024 18:08
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1469,10 +1469,6 @@ Overfull \hbox (131.60022pt too wide) has occurred while \output is active
 [19
 
 ]
-Overfull \vbox (91.66785pt too high) detected at line 406
- []
-
-
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
  [][][][][][]  
  []
@@ -1480,6 +1476,10 @@ Overfull \hbox (131.60022pt too wide) has occurred while \output is active
 [20
 
 ]
+Overfull \vbox (4.4678pt too high) detected at line 422
+ []
+
+
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
  [][][][][][]  
  []
@@ -1501,10 +1501,6 @@ Overfull \hbox (131.60022pt too wide) has occurred while \output is active
 [23
 
 ]
-Overfull \vbox (39.3159pt too high) detected at line 465
- []
-
-
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
  [][][][][][]  
  []
@@ -1512,11 +1508,9 @@ Overfull \hbox (131.60022pt too wide) has occurred while \output is active
 [24
 
 ]
-<real_data_output_plots/savetime_SunMar172252462024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png, id=851, 803.0pt x 602.25pt>
-File: real_data_output_plots/savetime_SunMar172252462024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png Graphic file (type png)
-<use real_data_output_plots/savetime_SunMar172252462024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png>
-Package pdftex.def Info: real_data_output_plots/savetime_SunMar172252462024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png  used on input line 477.
-(pdftex.def)             Requested size: 160.59715pt x 120.44786pt.
+Overfull \vbox (39.3159pt too high) detected at line 483
+ []
+
 
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
  [][][][][][]  
@@ -1524,42 +1518,38 @@ Overfull \hbox (131.60022pt too wide) has occurred while \output is active
 
 [25
 
- <./real_data_output_plots/savetime_SunMar172252462024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png>]
+]
+<real_data_output_plots/savetime_SunMar172252462024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png, id=877, 803.0pt x 602.25pt>
+File: real_data_output_plots/savetime_SunMar172252462024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png Graphic file (type png)
+<use real_data_output_plots/savetime_SunMar172252462024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png>
+Package pdftex.def Info: real_data_output_plots/savetime_SunMar172252462024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png  used on input line 495.
+(pdftex.def)             Requested size: 160.59715pt x 120.44786pt.
+
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
  [][][][][][]  
  []
 
 [26
 
-]
-<simulation_plots/standard_simulation_alpha_.1_beta_.82.png, id=913, 650.43pt x 499.11469pt>
-File: simulation_plots/standard_simulation_alpha_.1_beta_.82.png Graphic file (type png)
-<use simulation_plots/standard_simulation_alpha_.1_beta_.82.png>
-Package pdftex.def Info: simulation_plots/standard_simulation_alpha_.1_beta_.82.png  used on input line 511.
-(pdftex.def)             Requested size: 292.6908pt x 224.59952pt.
-LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <10> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 511.
-LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <7> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 511.
-
-Overfull \vbox (107.51534pt too high) detected at line 511
- []
-
-
+ <./real_data_output_plots/savetime_SunMar172252462024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png>]
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
  [][][][][][]  
  []
 
 [27
 
- <./simulation_plots/standard_simulation_alpha_.1_beta_.82.png (PNG copy)>]
-<simulation_plots/standard_simulation_alpha_.82_beta_.1.png, id=944, 650.43pt x 499.11469pt>
-File: simulation_plots/standard_simulation_alpha_.82_beta_.1.png Graphic file (type png)
-<use simulation_plots/standard_simulation_alpha_.82_beta_.1.png>
-Package pdftex.def Info: simulation_plots/standard_simulation_alpha_.82_beta_.1.png  used on input line 525.
+]
+<simulation_plots/standard_simulation_alpha_.1_beta_.82.png, id=938, 650.43pt x 499.11469pt>
+File: simulation_plots/standard_simulation_alpha_.1_beta_.82.png Graphic file (type png)
+<use simulation_plots/standard_simulation_alpha_.1_beta_.82.png>
+Package pdftex.def Info: simulation_plots/standard_simulation_alpha_.1_beta_.82.png  used on input line 529.
 (pdftex.def)             Requested size: 292.6908pt x 224.59952pt.
+LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <10> not available
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 529.
+LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <7> not available
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 529.
 
-Overfull \vbox (94.51445pt too high) detected at line 525
+Overfull \vbox (107.51534pt too high) detected at line 529
  []
 
 
@@ -1569,14 +1559,24 @@ Overfull \hbox (131.60022pt too wide) has occurred while \output is active
 
 [28
 
- <./simulation_plots/standard_simulation_alpha_.82_beta_.1.png (PNG copy)>]
+ <./simulation_plots/standard_simulation_alpha_.1_beta_.82.png (PNG copy)>]
+<simulation_plots/standard_simulation_alpha_.82_beta_.1.png, id=969, 650.43pt x 499.11469pt>
+File: simulation_plots/standard_simulation_alpha_.82_beta_.1.png Graphic file (type png)
+<use simulation_plots/standard_simulation_alpha_.82_beta_.1.png>
+Package pdftex.def Info: simulation_plots/standard_simulation_alpha_.82_beta_.1.png  used on input line 543.
+(pdftex.def)             Requested size: 292.6908pt x 224.59952pt.
+
+Overfull \vbox (94.51445pt too high) detected at line 543
+ []
+
+
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
  [][][][][][]  
  []
 
 [29
 
-]
+ <./simulation_plots/standard_simulation_alpha_.82_beta_.1.png (PNG copy)>]
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
  [][][][][][]  
  []
@@ -1598,7 +1598,14 @@ Overfull \hbox (131.60022pt too wide) has occurred while \output is active
 [32
 
 ]
-Overfull \vbox (572.92554pt too high) detected at line 584
+Overfull \hbox (131.60022pt too wide) has occurred while \output is active
+ [][][][][][]  
+ []
+
+[33
+
+]
+Overfull \vbox (572.92554pt too high) detected at line 602
  []
 
 
@@ -1609,14 +1616,14 @@ Overfull \hbox (131.60022pt too wide) has occurred while \output is active
  [][][][][][]  
  []
 
-[33
+[34
 
 ]
 Overfull \hbox (131.60022pt too wide) has occurred while \output is active
  [][][][][][]  
  []
 
-[34 </usr/local/texlive/2023/texmf-dist/tex/latex/beamer/beamericonarticle.pdf>]
+[35 </usr/local/texlive/2023/texmf-dist/tex/latex/beamer/beamericonarticle.pdf>]
 \tf@nav=\write7
 \openout7 = `prelim_presentation.nav'.
 
@@ -1632,24 +1639,24 @@ LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 3.7pt have occurred.
 
 Package rerunfilecheck Info: File `prelim_presentation.out' has not changed.
-(rerunfilecheck)             Checksum: 231C5E89F5AA53918EED34A7ABB8C131;2118.
+(rerunfilecheck)             Checksum: 9E0233C3FEABCF8AF2169B41795A285C;2118.
 Package logreq Info: Writing requests to 'prelim_presentation.run.xml'.
 \openout1 = `prelim_presentation.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 39782 strings out of 476025
- 811389 string characters out of 5790017
+ 39783 strings out of 476025
+ 811390 string characters out of 5790017
  1880388 words of memory out of 5000000
  59422 multiletter control sequences out of 15000+600000
- 540551 words of font info for 131 fonts, out of 8000000 for 9000
+ 539849 words of font info for 129 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,18n,131p,752b,1680s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm5.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfso0800.pfb>
-Output written on prelim_presentation.pdf (34 pages, 991783 bytes).
+Output written on prelim_presentation.pdf (35 pages, 993551 bytes).
 PDF statistics:
- 1271 PDF objects out of 1440 (max. 8388607)
- 1140 compressed objects within 12 object streams
- 109 named destinations out of 1000 (max. 500000)
+ 1297 PDF objects out of 1440 (max. 8388607)
+ 1165 compressed objects within 12 object streams
+ 111 named destinations out of 1000 (max. 500000)
  281 words of extra memory for PDF output out of 10000 (max. 10000000)
 
