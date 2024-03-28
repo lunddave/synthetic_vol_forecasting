@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.21)  27 MAR 2024 20:55
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.21)  27 MAR 2024 22:18
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1221,17 +1221,17 @@ Overfull \hbox (89.43394pt too wide) has occurred while \output is active
 [3
 
 ]
-<NYS_state.png, id=172, 558.085pt x 337.26pt>
+<NYS_state.png, id=164, 558.085pt x 337.26pt>
 File: NYS_state.png Graphic file (type png)
 <use NYS_state.png>
 Package pdftex.def Info: NYS_state.png  used on input line 174.
 (pdftex.def)             Requested size: 167.42679pt x 101.17877pt.
-<cnn.png, id=175, 898.35625pt x 204.765pt>
+<cnn.png, id=167, 898.35625pt x 204.765pt>
 File: cnn.png Graphic file (type png)
 <use cnn.png>
 Package pdftex.def Info: cnn.png  used on input line 174.
 (pdftex.def)             Requested size: 269.50894pt x 61.42996pt.
-<cnbc.png, id=177, 997.7275pt x 174.6525pt>
+<cnbc.png, id=169, 997.7275pt x 174.6525pt>
 File: cnbc.png Graphic file (type png)
 <use cnbc.png>
 Package pdftex.def Info: cnbc.png  used on input line 174.
@@ -1329,72 +1329,24 @@ Overfull \hbox (89.43394pt too wide) has occurred while \output is active
 [15
 
 {/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}]
-LaTeX Font Info:    Calculating math sizes for size <2.6> on input line 343.
+LaTeX Font Info:    Calculating math sizes for size <6.6> on input line 343.
 
 
-LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <1.81999> not available
-(Font)              size <3> substituted on input line 343.
-
-
-LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <1.3> not available
-(Font)              size <3> substituted on input line 343.
-
-
-LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <1.81999> not available
-(Font)              size <3> substituted on input line 343.
-
-
-LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <1.3> not available
-(Font)              size <3> substituted on input line 343.
-
-
-LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <2.6> not available
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <3.3> not available
 (Font)              size <5> substituted on input line 343.
 
 
-LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <1.81999> not available
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <3.3> not available
 (Font)              size <5> substituted on input line 343.
 
-
-LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <1.3> not available
-(Font)              size <5> substituted on input line 343.
-
-
-LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <2.6> not available
-(Font)              size <5> substituted on input line 343.
-
-
-LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <1.81999> not available
-(Font)              size <5> substituted on input line 343.
-
-
-LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <1.3> not available
-(Font)              size <5> substituted on input line 343.
-
-LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <2.6> not available
+LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <6.6> not available
 (Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 343.
-LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <1.81999> not available
+LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <4.61998> not available
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 343.
+LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <3.3> not available
 (Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 343.
 
-LaTeX Font Warning: Font shape `OT1/cmss/bx/n' in size <1.81999> not available
-(Font)              size <3> substituted on input line 343.
-
-LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <1.3> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 343.
-
-LaTeX Font Warning: Font shape `OT1/cmss/bx/n' in size <1.3> not available
-(Font)              size <3> substituted on input line 343.
-
-
-LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <2.6> not available
-(Font)              size <5> substituted on input line 343.
-
-
-LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <1.81999> not available
-(Font)              size <5> substituted on input line 343.
-
-
-LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <1.3> not available
+LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <3.3> not available
 (Font)              size <5> substituted on input line 343.
 
 
@@ -1494,10 +1446,10 @@ Overfull \hbox (89.43394pt too wide) has occurred while \output is active
 [24
 
 ]
-<iyg.png, id=838, 774.895pt x 108.405pt>
+<iyg.png, id=828, 774.895pt x 108.405pt>
 File: iyg.png Graphic file (type png)
 <use iyg.png>
-Package pdftex.def Info: iyg.png  used on input line 496.
+Package pdftex.def Info: iyg.png  used on input line 490.
 (pdftex.def)             Requested size: 154.97626pt x 21.6806pt.
 
 Overfull \hbox (89.43394pt too wide) has occurred while \output is active
@@ -1507,10 +1459,10 @@ Overfull \hbox (89.43394pt too wide) has occurred while \output is active
 [25
 
  <./iyg.png>]
-<real_data_output_plots/savetime_SunMar172252462024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png, id=874, 803.0pt x 602.25pt>
+<real_data_output_plots/savetime_SunMar172252462024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png, id=865, 803.0pt x 602.25pt>
 File: real_data_output_plots/savetime_SunMar172252462024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png Graphic file (type png)
 <use real_data_output_plots/savetime_SunMar172252462024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png>
-Package pdftex.def Info: real_data_output_plots/savetime_SunMar172252462024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png  used on input line 508.
+Package pdftex.def Info: real_data_output_plots/savetime_SunMar172252462024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png  used on input line 500.
 (pdftex.def)             Requested size: 160.59715pt x 120.44786pt.
 
 Overfull \hbox (89.43394pt too wide) has occurred while \output is active
@@ -1521,7 +1473,7 @@ Overfull \hbox (89.43394pt too wide) has occurred while \output is active
 
  <./real_data_output_plots/savetime_SunMar172252462024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png>]
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <8> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 534.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 526.
 
 Overfull \hbox (89.43394pt too wide) has occurred while \output is active
  [][][][][][]  
@@ -1530,10 +1482,10 @@ Overfull \hbox (89.43394pt too wide) has occurred while \output is active
 [27
 
 ]
-<simulation_plots/standard_simulation_alpha_.1_beta_.82.png, id=934, 650.43pt x 499.11469pt>
+<simulation_plots/standard_simulation_alpha_.1_beta_.82.png, id=924, 650.43pt x 499.11469pt>
 File: simulation_plots/standard_simulation_alpha_.1_beta_.82.png Graphic file (type png)
 <use simulation_plots/standard_simulation_alpha_.1_beta_.82.png>
-Package pdftex.def Info: simulation_plots/standard_simulation_alpha_.1_beta_.82.png  used on input line 551.
+Package pdftex.def Info: simulation_plots/standard_simulation_alpha_.1_beta_.82.png  used on input line 543.
 (pdftex.def)             Requested size: 188.61986pt x 144.73955pt.
 
 Overfull \hbox (89.43394pt too wide) has occurred while \output is active
@@ -1543,10 +1495,10 @@ Overfull \hbox (89.43394pt too wide) has occurred while \output is active
 [28
 
  <./simulation_plots/standard_simulation_alpha_.1_beta_.82.png (PNG copy)>]
-<simulation_plots/standard_simulation_alpha_.82_beta_.1.png, id=964, 650.43pt x 499.11469pt>
+<simulation_plots/standard_simulation_alpha_.82_beta_.1.png, id=953, 650.43pt x 499.11469pt>
 File: simulation_plots/standard_simulation_alpha_.82_beta_.1.png Graphic file (type png)
 <use simulation_plots/standard_simulation_alpha_.82_beta_.1.png>
-Package pdftex.def Info: simulation_plots/standard_simulation_alpha_.82_beta_.1.png  used on input line 565.
+Package pdftex.def Info: simulation_plots/standard_simulation_alpha_.82_beta_.1.png  used on input line 557.
 (pdftex.def)             Requested size: 188.61986pt x 144.73955pt.
 
 Overfull \hbox (89.43394pt too wide) has occurred while \output is active
@@ -1584,10 +1536,10 @@ Overfull \hbox (89.43394pt too wide) has occurred while \output is active
 [33
 
 ]
-<real_data_output_plots/savetime_SunMar172251232024_IYG_6B=F-CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-22.png, id=1105, 803.0pt x 602.25pt>
+<real_data_output_plots/savetime_SunMar172251232024_IYG_6B=F-CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-22.png, id=1094, 803.0pt x 602.25pt>
 File: real_data_output_plots/savetime_SunMar172251232024_IYG_6B=F-CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-22.png Graphic file (type png)
 <use real_data_output_plots/savetime_SunMar172251232024_IYG_6B=F-CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-22.png>
-Package pdftex.def Info: real_data_output_plots/savetime_SunMar172251232024_IYG_6B=F-CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-22.png  used on input line 619.
+Package pdftex.def Info: real_data_output_plots/savetime_SunMar172251232024_IYG_6B=F-CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-22.png  used on input line 611.
 (pdftex.def)             Requested size: 256.96526pt x 192.72392pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -1633,27 +1585,27 @@ Overfull \hbox (89.43394pt too wide) has occurred while \output is active
  (./prelim_presentation.aux)
 
 LaTeX Font Warning: Size substitutions with differences
-(Font)              up to 3.7pt have occurred.
+(Font)              up to 2.2pt have occurred.
 
 Package rerunfilecheck Info: File `prelim_presentation.out' has not changed.
-(rerunfilecheck)             Checksum: 54A26AE835D569DE608715BBF1FCDA74;2015.
+(rerunfilecheck)             Checksum: C435D7E3FBBFA062AAC55603933E74AF;1797.
 Package logreq Info: Writing requests to 'prelim_presentation.run.xml'.
 \openout1 = `prelim_presentation.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 39777 strings out of 476025
- 812472 string characters out of 5790017
- 1876388 words of memory out of 5000000
- 59412 multiletter control sequences out of 15000+600000
- 535863 words of font info for 114 fonts, out of 8000000 for 9000
+ 39751 strings out of 476025
+ 811746 string characters out of 5790017
+ 1873388 words of memory out of 5000000
+ 59388 multiletter control sequences out of 15000+600000
+ 536158 words of font info for 115 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,18n,131p,752b,1688s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm5.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfso0800.pfb>
-Output written on prelim_presentation.pdf (37 pages, 1040444 bytes).
+</usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm5.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfso0800.pfb>
+Output written on prelim_presentation.pdf (37 pages, 1055243 bytes).
 PDF statistics:
- 1347 PDF objects out of 1440 (max. 8388607)
- 1210 compressed objects within 13 object streams
- 113 named destinations out of 1000 (max. 500000)
- 283 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1344 PDF objects out of 1440 (max. 8388607)
+ 1203 compressed objects within 13 object streams
+ 111 named destinations out of 1000 (max. 500000)
+ 267 words of extra memory for PDF output out of 10000 (max. 10000000)
 

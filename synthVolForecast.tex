@@ -336,26 +336,20 @@ There is no guarantee that $\vec{w}_{OLS}$ would perform poorly as a tool for pr
 
 \subsection{Loss Functions}
 
-We are interested in point forecasts for $\sigma^{2}_{1,T^{*}+h}|\mathcal{F}_{T^{*}}$, $h=1,2,...,H$, the $h$-step ahead conditional variance for the time series under study, up to a forecast length of $H$.  Let $L^{h}$ with the subscripted pair $\{$prediction method, ground truth estimator$\}$, denote the loss function for an $h$-step-ahead forecast using a given prediction function and ground truth estimator.  For example, one loss function of interest in this study is the 1-step-ahead MSE using Synthetic Volatility Forecasting and Realized Volatility:
+We are interested in point forecasts for $\sigma^{2}_{1,T^{*}+h}|\mathcal{F}_{T^{*}}$, $h=1,2,...,$ the $h$-step ahead conditional variance for the time series under study.  Let $L^{h}$ with the subscripted pair $\{$prediction method, ground truth estimator$\}$, denote the loss function for an $h$-step-ahead forecast using a given prediction function and ground truth estimator.  For example, the 1-step-ahead MSE using Synthetic Volatility Forecasting and Realized Volatility is
 
 $$ \text{MSE}^{1}_{\text{SVF, RV}} = (\hat\sigma^{2}_{SVF} - \hat\sigma^{2}_{RV})^{2}$$
-
-In more generality, for a volatility forecast with forecast length $H$, the MSE is 
-
-$$ \text{MSE}^{H}_{method, ground truth} = \frac{1}{H}\sum_{h=1}^{H}(\hat\sigma^{2}_{h, method} - \hat\sigma^{2}_{h, ground truth})^{2}$$
-
 Also of interest in mean absolute percentage error for an $h$-step-ahead forecast, defined as
 
 \[ 
-\text{MAPE}^{H}_{method, ground truth} = \frac{1}{H}\sum_{h=1}^{H}\frac{|\hat\sigma^{2}_{h, method} - \hat\sigma^{2}_{h, ground truth}|}{\hat\sigma^{2}_{h, ground truth}}
+\text{MAPE}^{h}_{method, ground truth} = \frac{|\hat\sigma^{2}_{h, method} - \hat\sigma^{2}_{h, ground truth}|}{\hat\sigma^{2}_{h, ground truth}}
 \]
-
 Finally, we introduce the QL (quasi-likelihood) Loss \citep{brownlees2011practical}:
 
 \[ 
-\text{QL}^{H}_{method, ground truth} = \frac{1}{H}\sum_{h=1}^{H} (\frac{ \hat\sigma^{2}_{h, method} }{\hat\sigma^{2}_{h, ground truth}} - \log{\frac{ \hat\sigma^{2}_{h, method} }{\hat\sigma^{2}_{h, ground truth}}} -1) \text{ .}
+\text{QL}^{h}_{method, ground truth} = \frac{ \hat\sigma^{2}_{h, method} }{\hat\sigma^{2}_{h, ground truth}} - \log{\frac{ \hat\sigma^{2}_{h, method} }{\hat\sigma^{2}_{h, ground truth}}} -1 \text{ .}
 \]
-What distinguishes QL Loss is that it is multiplicative rather than additive.  This has benefits, both practical and theoretical.  As \citet{brownlees2011practical} explains, ``[a]mid volatility turmoil, large MSE
+What distinguishes QL Loss is that it is multiplicative rather than additive.  This has benefits, both practical and theoretical.  As \citet{brownlees2011practical} explain, ``[a]mid volatility turmoil, large MSE
 losses will be a consequence of high volatility without necessarily corresponding to
 deterioration of forecasting ability. The QL avoids this ambiguity, making it easier to
 compare losses across volatility regimes."  For this reason, we proceed to evaluate the method, both in simuations and real data examples, using the QL loss.
