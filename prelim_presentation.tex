@@ -128,7 +128,7 @@
 \title{Synthetic Volatility Forecasting and Other Aggregation Techniques for Time Series Forecasting}
 \subtitle{Preliminary Exam}
 \author{David Lundquist\thanks{davidl11@ilinois.edu}, Daniel Eck\thanks{dje13@illinois.edu} (advisor)}
-\date{\today}
+\date{April 10th, 2024}
 
 \begin{document}
 
@@ -379,7 +379,7 @@ Observe the pair $(\{\hat\omega^{*}_{i}\}^{n+1}_{i=2},\{\textbf{v}_{i}\}^{n+1}_{
 
 \bigbreak
 
-Goal: recover weights $\{\weight_{i}\}^{n+1}_{i=2} \in \Delta^{n}$ and compute $\hat\omega^{*} \coloneq \sum^{n+1}_{i=2}\weight_{i}\hat\omega^{*}_{i}$, our forecast adjustment term, where set $\{\weight_{i}\}_{i=2}^{n+1}$ is deterministic with respect to $\mathcal{F_{T^{*}}}$.
+Goal: recover weights $\{\weight_{i}\}^{n+1}_{i=2} \in \Delta^{n}$ and compute $\hat\omega^{*} \coloneq \sum^{n+1}_{i=2}\weight_{i}\hat\omega^{*}_{i}$, our forecast adjustment term.
 
 \bigbreak
 
@@ -388,6 +388,8 @@ Following \cite[][]{abadie2003economic,abadie2010synthetic}, let $\|\cdot\|_{\te
 \begin{align*}
 \{\pi\}_{i=2}^{n+1} = \argmin_{\pi}\|\textbf{v}_{1,T^{*}} - \V_{T^{*}}\pi \|_{\textbf{S}} \text{ .}
 \end{align*}
+
+Nota bene: the weights $\{\weight_{i}\}_{i=2}^{n+1}$ are deterministic with respect to $\mathcal{F_{T^{*}}}$.
 
 \end{frame}
 
