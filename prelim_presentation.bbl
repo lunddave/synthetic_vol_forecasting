@@ -485,37 +485,6 @@
       \field{pages}{596\bibrangedash 612}
       \range{pages}{17}
     \endentry
-    \entry{francq2019garch}{book}{}
-      \name{author}{2}{}{%
-        {{hash=16d165f3845ed4f7fce4d851d8118120}{%
-           family={Francq},
-           familyi={F\bibinitperiod},
-           given={Christian},
-           giveni={C\bibinitperiod}}}%
-        {{hash=f06beb112568ba4767814cd4b74cb8db}{%
-           family={Zakoian},
-           familyi={Z\bibinitperiod},
-           given={Jean-Michel},
-           giveni={J\bibinithyphendelim M\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {John Wiley \& Sons}%
-      }
-      \strng{namehash}{a02a2b57363902630e68a905b4943b22}
-      \strng{fullhash}{a02a2b57363902630e68a905b4943b22}
-      \strng{bibnamehash}{a02a2b57363902630e68a905b4943b22}
-      \strng{authorbibnamehash}{a02a2b57363902630e68a905b4943b22}
-      \strng{authornamehash}{a02a2b57363902630e68a905b4943b22}
-      \strng{authorfullhash}{a02a2b57363902630e68a905b4943b22}
-      \field{sortinit}{F}
-      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{GARCH models: structure, statistical inference and financial applications}
-      \field{year}{2019}
-    \endentry
     \entry{goodell2013us}{article}{}
       \name{author}{2}{}{%
         {{hash=bcdadaf798387c60540981cbf541a9d4}{%

@@ -2382,9 +2382,8 @@
     <bcf:citekey order="16" intorder="1">goodell2013us</bcf:citekey>
     <bcf:citekey order="16" intorder="2">kane1996p</bcf:citekey>
     <bcf:citekey order="17" intorder="1">andersen2009realized</bcf:citekey>
-    <bcf:citekey order="18" intorder="1">francq2019garch</bcf:citekey>
-    <bcf:citekey order="19" intorder="1">ferwana2022optimal</bcf:citekey>
-    <bcf:citekey order="20" intorder="1">jiang2017information</bcf:citekey>
+    <bcf:citekey order="18" intorder="1">ferwana2022optimal</bcf:citekey>
+    <bcf:citekey order="19" intorder="1">jiang2017information</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nyt">
