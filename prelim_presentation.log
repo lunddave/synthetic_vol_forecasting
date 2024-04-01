@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.21)  27 MAR 2024 22:28
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.21)  1 APR 2024 12:41
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1536,10 +1536,24 @@ Overfull \hbox (89.43394pt too wide) has occurred while \output is active
 [33
 
 ]
-<real_data_output_plots/savetime_SunMar172251232024_IYG_6B=F-CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-22.png, id=1094, 803.0pt x 602.25pt>
+Overfull \hbox (89.43394pt too wide) has occurred while \output is active
+ [][][][][][]  
+ []
+
+[34
+
+]
+Overfull \hbox (89.43394pt too wide) has occurred while \output is active
+ [][][][][][]  
+ []
+
+[35
+
+]
+<real_data_output_plots/savetime_SunMar172251232024_IYG_6B=F-CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-22.png, id=1149, 803.0pt x 602.25pt>
 File: real_data_output_plots/savetime_SunMar172251232024_IYG_6B=F-CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-22.png Graphic file (type png)
 <use real_data_output_plots/savetime_SunMar172251232024_IYG_6B=F-CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-22.png>
-Package pdftex.def Info: real_data_output_plots/savetime_SunMar172251232024_IYG_6B=F-CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-22.png  used on input line 613.
+Package pdftex.def Info: real_data_output_plots/savetime_SunMar172251232024_IYG_6B=F-CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-22.png  used on input line 629.
 (pdftex.def)             Requested size: 256.96526pt x 192.72392pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -1549,19 +1563,19 @@ Overfull \hbox (89.43394pt too wide) has occurred while \output is active
  [][][][][][]  
  []
 
-[34
+[36
 
  <./real_data_output_plots/savetime_SunMar172251232024_IYG_6B=F-CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-22.png>]
 Overfull \hbox (89.43394pt too wide) has occurred while \output is active
  [][][][][][]  
  []
 
-[35 </usr/local/texlive/2023/texmf-dist/tex/latex/beamer/beamericonarticle.pdf>]
+[37 </usr/local/texlive/2023/texmf-dist/tex/latex/beamer/beamericonarticle.pdf>]
 Overfull \hbox (89.43394pt too wide) has occurred while \output is active
  [][][][][][]  
  []
 
-[36
+[38
 
 
 ]
@@ -1569,7 +1583,7 @@ Overfull \hbox (89.43394pt too wide) has occurred while \output is active
  [][][][][][]  
  []
 
-[37
+[39
 
 
 ]
@@ -1594,18 +1608,18 @@ Package logreq Info: Writing requests to 'prelim_presentation.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 39751 strings out of 476025
- 811746 string characters out of 5790017
+ 39759 strings out of 476025
+ 811820 string characters out of 5790017
  1873388 words of memory out of 5000000
- 59388 multiletter control sequences out of 15000+600000
+ 59392 multiletter control sequences out of 15000+600000
  536158 words of font info for 115 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,18n,131p,752b,1688s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm5.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfso0800.pfb>
-Output written on prelim_presentation.pdf (37 pages, 1055351 bytes).
+Output written on prelim_presentation.pdf (39 pages, 1059111 bytes).
 PDF statistics:
- 1344 PDF objects out of 1440 (max. 8388607)
- 1203 compressed objects within 13 object streams
- 111 named destinations out of 1000 (max. 500000)
+ 1399 PDF objects out of 1440 (max. 8388607)
+ 1256 compressed objects within 13 object streams
+ 115 named destinations out of 1000 (max. 500000)
  267 words of extra memory for PDF output out of 10000 (max. 10000000)
 

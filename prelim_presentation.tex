@@ -563,10 +563,20 @@ Recall an \hyperlink{model_1}{$\mc{M}_1$} model on the volatility, which is char
 \section{Future directions for Synthetic Volatility Forecasting}
 
 \begin{frame}
-\frametitle{Alternative Ways of Estimating Fixed Effects}
+We shall group the extensions into four buckets:
 \begin{itemize}
+    \item Alternatives for fixed effect estimation
+    \item Alternative estimators and estimands
+    \item What can you do with a volatility forecast?
+    \item Where else is distanced-based weighting useful?
+\end{itemize}
+\end{frame}
 
-\item{Could we do all of the above with high-frequency data?}
+\begin{frame}
+\frametitle{Alternative Ways of Estimating Fixed Effects}
+High-frequency data?
+
+\begin{itemize}
 
 \item{Realized GARCH with High-Frequency Data}
 
@@ -577,21 +587,27 @@ Recall an \hyperlink{model_1}{$\mc{M}_1$} model on the volatility, which is char
 \begin{frame}
     \frametitle{Alternative Estimators and Estimands in Volatility Modeling}
     \begin{itemize}
-        \item{Realized GARCH with High-Frequency Data}
         
-        \item{Overnight returns instead of open-to-close}
+        \item Factors in volatility profile
+        \item Overnight returns instead of open-to-close
         
-        \item{Value-at-Risk using SVF-based $\hat\sigma^{2}_{t}$}
+        \item Signal Recovery Perspective \parencite{ferwana2022optimal}
         
-        \item{Signal Recovery Perspective \parencite{ferwana2022optimal}}
-        
-        \item{Stochastic Volatility: Correlation between errors}
+        \item Stochastic Volatility: Correlation between errors
+        \item Multivariate GARCH
         
         \end{itemize}
 \end{frame}
-   
+
 \begin{frame}
-    \frametitle{New Frontiers in Aggregation Methods}
+    \frametitle{What can you do with a volatility forecast?}
+    \begin{itemize}
+        \item{Value-at-Risk using SVF-based $\hat\sigma^{2}_{t}$}
+        \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{New Frontiers in Distance-based Weighting }
     \begin{itemize}
         \item Integrate lessons from literature on under/over reactions to information shocks \parencite[][]{jiang2017information}
         \item{Synthetic Impulse Response Functions}
