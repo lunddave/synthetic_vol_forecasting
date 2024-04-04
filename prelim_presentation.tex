@@ -160,7 +160,6 @@
     \end{itemize}
 \end{frame}
 
-
 \begin{frame}
 
     \begin{example}[Weekend of March 6th - 8th, 2020]
@@ -177,7 +176,12 @@
 \frametitle{Punchline of the paper}
 
 Credible forecasting is possible under news shocks, so long as we incorporate external information to account for the nonzero errors.
-
+\begin{figure}[H]
+    \begin{center}
+      \includegraphics[scale=.4]{simulation_plots/alternative_USE_in_paper_simulation_plot_arithmetic_mean.png}
+      \caption{Predicting Volatility Using Only Arithmetic Mean of Donors}
+      \end{center}
+    \end{figure}
 \end{frame}
 
 \begin{frame}
@@ -563,8 +567,9 @@ Recall an \hyperlink{model_1}{$\mc{M}_1$} model on the volatility, which is char
 \section{Future directions for Synthetic Volatility Forecasting}
 
 \begin{frame}
-We shall group the extensions into four buckets:
+We shall group the extensions into five buckets:
 \begin{itemize}
+    \item How much can we automate?
     \item Alternatives for fixed effect estimation
     \item Alternative estimators and estimands
     \item What can you do with a volatility forecast?
