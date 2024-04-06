@@ -26,7 +26,7 @@ if(sysname == "Darwin") {
 
 path <- getwd()
 
-files <- list.files(path=path, pattern = ".*MonMar1823*.*Rdata$")
+files <- list.files(path=path, pattern = "*savetime_ThuApr0403:55:172024*.*Rdata$")
 #results <- sapply(files, function(x) mget(load(x)), simplify = TRUE)
 #output <- do.call(rbind, results)
 load(files)
@@ -76,9 +76,9 @@ non_NA <- df_only_one_outcome[complete.cases(df_only_one_outcome),]
 
 # https://statisticsglobe.com/heatmap-in-r
 
-unique(non_NA$p)
+unique(non_NA$mu_omega_star)
 
-non_NA <- non_NA[non_NA$p == 5,]
+non_NA <- non_NA[non_NA$mu_omega_star== .15,]
 
 means <- non_NA %>% group_by(vol_shock_sd, M21_M22_vol_mu_delta) %>% summarise(prop=mean(success))
 means <- as.data.frame(sapply(means, as.numeric))

@@ -1,0 +1,40 @@
+---
+title: "SVF 2016 Election tech report"
+author: "David Lundquist"
+date: "`r Sys.Date()`"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+options(digits = 7, scipen = 7)
+
+sysname <- Sys.info()["sysname"]
+
+if(sysname == "Darwin") {
+  setwd("~/Desktop/PhD/synthetic_vol_forecasting/") # example on mac machine
+} else if(sysname == "Linux") {
+  setwd('~/Desktop/synthetic_vol_forecasting/synthVolForecast.R') # example on linux machine
+}
+
+```
+
+https://bookdown.org/yihui/rmarkdown/r-code.html
+
+```{r, load_packs, echo=FALSE}
+### BEGIN 2016 election example
+packs <- c('quantmod'
+           ,'bizdays'
+           ,'lubridate'
+           ,'rlist'
+           ,'Rsolnp'
+           ,'garchx'
+           ,'lmtest'
+           ,'RColorBrewer'
+           ,'forecast'
+)
+```
+
