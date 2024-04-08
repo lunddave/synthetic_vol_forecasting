@@ -155,8 +155,10 @@
     \begin{itemize}
         \item Event-driven investing strategies (unscheduled news shock)
         \item Pairs trading strategies
-        \item Structural shock to macroeconomic conditions (scheduled news possibly pre-empted by news shock)
-        \item Biomedical panel data subject to exogenous shock or interference
+        \item Structural shock to macroeconomy (scheduled news possibly pre-empted by additional news)
+        
+
+        \href{https://www.wsj.com/articles/bad-inflation-reports-raise-odds-of-surprise-0-75-percentage-point-rate-rise-this-week-11655147927}{\includegraphics[scale=.3]{WSJ_rate_hike_2022.png}}
     \end{itemize}
 \end{frame}
 
@@ -178,7 +180,7 @@
 Credible forecasting is possible under news shocks, so long as we incorporate external information to account for the nonzero errors.
 \begin{figure}[H]
     \begin{center}
-      \includegraphics[scale=.4]{simulation_plots/alternative_USE_in_paper_simulation_plot_arithmetic_mean.png}
+      \includegraphics[scale=.3]{simulation_plots/alternative_USE_in_paper_simulation_plot_arithmetic_mean.png}
       \caption{Predicting Volatility Using Only Arithmetic Mean of Donors}
       \end{center}
     \end{figure}
@@ -224,8 +226,11 @@ Credible forecasting is possible under news shocks, so long as we incorporate ex
 \begin{itemize}
 \item After-hours trading provides a poor forum in which to digest news
 \item The news constitutes public, material information relevant to one or more traded assets
-\item The qualitative aspects of the news provide a basis upon which to match to past events
-
+\item The qualitative aspects of the news provide a basis upon which to 
+\begin{itemize}
+    \item match to past events
+    \item match in a $p$-dimensional covariate space
+\end{itemize}
 \end{itemize}
 \end{frame}
 
@@ -304,11 +309,11 @@ where $D^{return}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + L_{i, return}\})$ and 
 
 \fontsize{6}{7.2}
 
-Consider $\mc{M}_{0}$ in the context of the factor model from \cite[][]{abadie2010synthetic}, where an untreated unit is governed by:
+Consider $\mc{M}_{1}$ in the context of the factor model from \cite[][]{abadie2010synthetic}, where an untreated unit is governed by:
 
 $$Y^{N}_{i,t} = \delta_{t} + \boldsymbol\theta_{t}\textbf{Z}_{i}+\boldsymbol\lambda_{t}\boldsymbol\mu_{i}+\varepsilon_{i,t}$$
 
-which nests the GARCH model's volatilty equation (putting aside that $\sigma_{t}$ is latent in the GARCH model) as well as the ARMA representation of a GARCH model, where
+which nests the GARCH model's volatilty equation as well as the ARMA representation of a GARCH model, where
 
 \begin{align*}
 \delta_{t} & \sim \omega, \text{a location parameter shared across donors}\\
@@ -343,16 +348,17 @@ which nests the GARCH model's volatilty equation (putting aside that $\sigma_{t}
     \end{pmatrix},
     \end{equation*}
     \bigbreak
-    where RV denotes realized variance, IV the implied volatility
+    where RV denotes realized variance and IV the implied volatility
 \end{frame}
 
 \begin{frame}
     \frametitle{Significance of the Volatility Profile}
-    Covariates chosen for inclusion in a given volatility profile may be \begin{itemize}
+    Covariates chosen for inclusion in a given volatility profile may be any $\mathcal{F}_{t}$-measurable function, for example
+    \begin{itemize}
         \item levels
         \item differences in levels
-        \item log differences in levels
-        \item percentage changes in levels
+        \item log returns
+        \item percentage returns
         \item absolute values of the above
     \end{itemize}
 
@@ -366,7 +372,7 @@ which nests the GARCH model's volatilty equation (putting aside that $\sigma_{t}
 \begin{frame}
 \frametitle{Forecasting}
 
-\fontsize{5.6}{7}
+\fontsize{7.6}{7}
 
 We present two forecasts:
 
@@ -393,7 +399,7 @@ Following \cite[][]{abadie2003economic,abadie2010synthetic}, let $\|\cdot\|_{\te
 \{\pi\}_{i=2}^{n+1} = \argmin_{\pi}\|\textbf{v}_{1,T^{*}} - \V_{T^{*}}\pi \|_{\textbf{S}} \text{ .}
 \end{align*}
 
-Nota bene: the weights $\{\weight_{i}\}_{i=2}^{n+1}$ are deterministic with respect to $\mathcal{F_{T^{*}}}$.
+Nota bene: the weights $\{\weight_{i}\}_{i=2}^{n+1}$ are deterministic with respect to $\mathcal{F}_{T^{*}}$.
 
 \end{frame}
 
@@ -460,7 +466,7 @@ What distinguishes QL Loss? \\
 
 \begin{itemize}
 
-\item multiplicative rather than additive
+\item Multiplicative rather than additive
 
 \item This has benefits, both practical and theoretical.  
 
@@ -498,7 +504,7 @@ losses will be a consequence of high volatility without necessarily correspondin
 \begin{frame}{2016 Election}
     \begin{figure}[H]
         \begin{center}
-          \includegraphics[scale=.2]{real_data_output_plots/savetime_SunMar172252462024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png}
+          \includegraphics[scale=.3]{real_data_output_plots/savetime_SunMar172252462024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png}
           \caption{The volatility induced by the 2016 US election}
           \label{fig:SVF_2016}
           \end{center}

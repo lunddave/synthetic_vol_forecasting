@@ -26,7 +26,7 @@ if(sysname == "Darwin") {
 
 path <- getwd()
 
-files <- list.files(path=path, pattern = "*savetime_ThuApr0403:55:172024*.*Rdata$")
+files <- list.files(path=path, pattern = "*MonApr08*.*Rdata$")
 #results <- sapply(files, function(x) mget(load(x)), simplify = TRUE)
 #output <- do.call(rbind, results)
 load(files)
@@ -68,39 +68,53 @@ vol_model_chosen <- as.data.frame(lapply(vol_model_chosen, as.numeric))
 #Make vol model into factor
 #reduced_df$vol_model <- as.factor(reduced_df$vol_model)
 
+#Define outcomes variable(s)
 vol_model_chosen$success <- as.integer(vol_model_chosen$QL_adj1 <= vol_model_chosen$QL_adj14)
-df_only_one_outcome <- cbind(vol_model_chosen[,1:11], vol_model_chosen$success)
-names(df_only_one_outcome) <- c(names(df_only_one_outcome)[1:11], 'success')
+vol_model_chosen$success_versus_mean <- as.integer(vol_model_chosen$MSE_adj1 <= vol_model_chosen$MSE_adj12)
+
+df_only_one_outcome <- cbind(vol_model_chosen[,1:11],
+                             vol_model_chosen$success,
+                             vol_model_chosen$success_versus_mean )
+names(df_only_one_outcome) <- c(names(df_only_one_outcome)[1:11], 'success', 'against_mean')
 
 non_NA <- df_only_one_outcome[complete.cases(df_only_one_outcome),]
 
 # https://statisticsglobe.com/heatmap-in-r
 
-unique(non_NA$mu_omega_star)
+apply(non_NA, 2, function(x) unique(x))[c(1,3,4,5)]
 
-non_NA <- non_NA[non_NA$mu_omega_star== .15,]
+non_NA <- non_NA[non_NA$vol_shock_sd == 0,]
+non_NA <- non_NA[non_NA$mu_omega_star == 0,]
 
-means <- non_NA %>% group_by(vol_shock_sd, M21_M22_vol_mu_delta) %>% summarise(prop=mean(success))
-means <- as.data.frame(sapply(means, as.numeric))
-means$prop <- round(means$prop, 3)
+hm_generator <- function(y_input, x_input, outcome)
+{
 
-count <- non_NA %>% group_by(vol_shock_sd, M21_M22_vol_mu_delta) %>% count()
-count
+  means <- non_NA %>% group_by({{x_input}}, {{y_input}}) %>% summarise(prop=mean({{outcome}}))
+  means <- as.data.frame(sapply(means, as.numeric))
+  means$prop <- round(means$prop, 3)
 
-means$n <- count$n
+  count <- non_NA %>% group_by({{x_input}}, {{y_input}}) %>% count()
 
-ggp1 <- ggplot(means,
-              aes(x = factor(vol_shock_sd), y = factor(M21_M22_vol_mu_delta), fill = prop)) +
-  scale_fill_gradient(low="white",  high="red") +
-  geom_tile() +
-  geom_text(aes(label = paste(prop, '\n(',n,')', sep =''))) +
-  guides(fill = guide_colourbar(title = "Success Proportion")) +
-  ggtitle("Synthetic Volatility Forecast Outperformance of Unadjusted Forecast
-          \n Each Square: Outperformance Proportion and (Simulation Count)") +
-  theme(plot.title = element_text(hjust = 0.5)) +
-  labs(x = "Volatility Shock Standard Deviation", y = "Volatility Shock Mean")
+  means$n <- count$n
 
-ggp1
+  print(means)
+
+  ggp1 <- ggplot(means,
+                aes(x = factor({{x_input}}), y = factor({{y_input}}), fill = prop)) +
+    scale_fill_gradient(low="white",  high="red") +
+    geom_tile() +
+    geom_text(aes(label = paste(prop, '\n(',n,')', sep =''))) +
+    guides(fill = guide_colourbar(title = "Success Proportion")) +
+    ggtitle("Synthetic Volatility Forecast Outperformance of Unadjusted Forecast
+            \n Each Square: Outperformance Proportion and (Simulation Count)") +
+    theme(plot.title = element_text(hjust = 0.5)) +
+    labs(x = "Volatility Shock Standard Deviation", y = "Volatility Shock Mean")
+
+  ggp1
+
+}
+
+hm_generator(M21_M22_vol_mu_delta, sigma_x, success)
 
 #
 # # Now we write a function
