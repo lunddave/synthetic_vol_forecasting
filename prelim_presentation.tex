@@ -153,9 +153,9 @@
     \frametitle{When would we ever have to do this?}
 
     \begin{itemize}
-        \item Event-driven investing strategies (unscheduled news shock)
-        \item Pairs trading strategies
-        \item Structural shock to macroeconomy (scheduled news possibly pre-empted by additional news)
+        \item <1-> Event-driven investing strategies (unscheduled news shock)
+        \item <2-> Pairs trading strategies
+        \item <3-> Structural shock to macroeconomy (scheduled news possibly pre-empted by additional news)
         
 
         \href{https://www.wsj.com/articles/bad-inflation-reports-raise-odds-of-surprise-0-75-percentage-point-rate-rise-this-week-11655147927}{\includegraphics[scale=.3]{WSJ_rate_hike_2022.png}}
@@ -178,8 +178,8 @@
 \frametitle{Punchline of the paper}
 
 \begin{itemize}
-    \item <1-> Credible forecasting is possible under news shocks, so long as we incorporate external information to account for the nonzero errors.
-    \item <2-> \begin{figure}[H]
+    \item[] <1-> Credible forecasting is possible under news shocks, so long as we incorporate external information to account for the nonzero errors.
+    \item[] <2-> \begin{figure}[H]
         \begin{center}
           \includegraphics[scale=.3]{simulation_plots/alternative_USE_in_paper_simulation_plot_arithmetic_mean.png}
           \caption{Predicting Volatility Using Only Arithmetic Mean of Donors}
@@ -286,7 +286,7 @@ For $t= 1, \ldots, T_i$ and $i = 1, \ldots, n+1$, the model $\mc{M}_1$ is define
   \mc{M}_1 \colon \begin{array}{l}
      \sigma^{2}_{i,t} = \omega_{i} + \omega^{*}_i + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \text{ }\\[.2cm]
      a_{i,t} = \sigma_{i,t}((1-D^{return}_{i,t})\epsilon_{i,t} + D^{return}_{i,t}\epsilon^{*}_{i})\\[.2cm]
-    \omega_{i,t}^{*} = D^{vol}_{i,t}[\mu_{\omega^{*}}+\delta'\mbf{x}_{i, t-1}+ u_{i,t}],
+    \omega_{i,t}^{*} = D^{vol}_{i,t}[\mu_{\omega^{*}}+\delta'\mbf{x}_{i, t}+ u_{i,t}],
   \end{array}
   \end{align*}\label{model_1}
 with error structure
