@@ -482,6 +482,9 @@ losses will be a consequence of high volatility without necessarily correspondin
 
 \section{Real Data Example}
 
+\begin{frame}{Why apply our method to the 2016 US Election?}
+    
+\end{frame}
 \begin{frame}
     \begin{figure}[H]
         \begin{center}
@@ -527,9 +530,9 @@ Recall an \hyperlink{model_1}{$\mc{M}_1$} model on the volatility, which is char
 
   \begin{align*}
     \mc{M}_1 \colon \begin{array}{l}
-       \sigma^{2}_{i,t} = \omega_{i} + \omega^{*}_i + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \text{ }\\[.2cm]
+       \sigma^{2}_{i,t} = \omega_{i} + \omega^{*}_{i,t} + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \text{ }\\[.2cm]
        a_{i,t} = \sigma_{i,t}((1-D^{return}_{i,t})\epsilon_{i,t} + D^{return}_{i,t}\epsilon^{*}_{i})\\[.2cm]
-      \omega_{i,t}^{*} = D^{vol}_{i,t}[\mu_{\omega^{*}}+\delta'\mbf{x}_{i, t-1}+ u_{i,t}]\\[.2cm]
+      \omega_{i,t}^{*} = D^{vol}_{i,t}[\mu_{\omega^{*}}+\delta'\mbf{x}_{i, t}+ u_{i,t}]\\[.2cm]
       D^{return}_{i,t} \equiv 0
     \end{array}
     \end{align*}
@@ -583,6 +586,11 @@ We shall group the extensions into five buckets:
 \end{itemize}
 \end{frame}
 
+\begin{frame}{How much can we automate?}
+
+    
+\end{frame}
+
 \begin{frame}
 \frametitle{Alternative Ways of Estimating Fixed Effects}
 High-frequency data?
@@ -618,7 +626,7 @@ High-frequency data?
 \end{frame}
 
 \begin{frame}
-    \frametitle{New Frontiers in Distance-based Weighting }
+    \frametitle{New Frontiers in Distance-based Weighting}
     \begin{itemize}
         \item Integrate lessons from literature on under/over reactions to information shocks \parencite[][]{jiang2017information}
         \item{Synthetic Impulse Response Functions}
