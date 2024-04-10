@@ -1,6 +1,9 @@
 \beamer@slide {GARCH-X}{16}
 \beamer@slide {model_1}{18}
-\beamer@slide {SVF_properties}{32}
+\beamer@slide {SVF_properties}{31}
+\beamer@slide {omega_consistency}{31}
+\beamer@slide {stationarity_of_omega_i_t}{31}
+\beamer@slide {sigma_consistency}{31}
 \beamer@slide {fig:SVF_2016}{34}
 \beamer@slide {fig:heavy_beta}{41}
 \beamer@slide {fig:heavy_alpha}{42}

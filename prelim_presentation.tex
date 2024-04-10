@@ -155,7 +155,7 @@
     \begin{itemize}
         \item <1-> Event-driven investing strategies (unscheduled news shock)
         \item <2-> Pairs trading strategies
-        \item <3-> Structural shock to macroeconomy (scheduled news possibly pre-empted by additional news)
+        \item <3-> Scheduled macroeconomic news possibly pre-empted by a news leak
         
 
         \href{https://www.wsj.com/articles/bad-inflation-reports-raise-odds-of-surprise-0-75-percentage-point-rate-rise-this-week-11655147927}{\includegraphics[scale=.3]{WSJ_rate_hike_2022.png}}
@@ -182,7 +182,7 @@
     \item[] <2-> \begin{figure}[H]
         \begin{center}
           \includegraphics[scale=.3]{simulation_plots/alternative_USE_in_paper_simulation_plot_arithmetic_mean.png}
-          \caption{Predicting Volatility Using Only Arithmetic Mean of Donors}
+          \caption{Adjusting our One-Step-Ahead Forecast Using Only Arithmetic Mean of Donors}
           \end{center}
         \end{figure}
 \end{itemize}
@@ -206,7 +206,7 @@
     \begin{itemize}
         \item \cite[][]{clements1996intercept,clements1998forecasting} laid the groundwork for modeling nonzero errors in time series forecasting
         \item \cite[][]{guerron2017macroeconomic} use a series' own errors to correct the forecast for that series
-        \item \cite[][]{dendramis2020similarity} use a similarity-based procedure to correct linear parameters in time series forecasts
+        \item \cite[][]{dendramis2020similarity} use a similarity-based procedure to correct $\hat\beta$ in time series forecasts
         \item \cite[][]{foroni2022forecasting} adjust pandemic-era forecasts using intercept correction techniques and data from Great Financial Crisis
         \item \cite[][]{lin2021minimizing} use distanced-based weighting (a similarity approach) to aggregate and weight fixed effects from a donor pool
     \end{itemize}
@@ -227,10 +227,10 @@
 
 \begin{itemize}
 \item After-hours trading provides a poor forum in which to digest news
-\item The news constitutes public, material information relevant to one or more traded assets
+\item News constitutes public, material information for one or more traded assets
 \item The \textcolor{red}{qualitative aspects} of the news provide a basis upon which to 
 \begin{itemize}
-    \item match to past events
+    \item match to past news shocks
     \item match in a $p$-dimensional covariate space
 \end{itemize}
 \end{itemize}
@@ -238,11 +238,14 @@
 
 \begin{frame}
     \frametitle{A Primer on GARCH}
+   
+    \begin{Definition}
 
     Let $\{a_{t}\}$ denote an observable, real-valued discrete-time stochastic process.\\
     
-
-    We say $\{a_{t}\}$ is a strong GARCH process with respect to $\{\epsilon_{t}\}$ iff 
+    \bigbreak
+    
+    We call $\{a_{t}\}$ a strong GARCH process \parencite[][]{francq2019garch} with respect to $\{\epsilon_{t}\}$ iff 
     \begin{align*}
         &\sigma_{t}^{2} = \omega + \sum^{m}_{k=1}\alpha_{k}a^{2}_{t-k} + \sum_{j=1}^{s}\beta_{j}\sigma_{t-j}^{2}\\
         &a_{t} = \sigma_{t}\epsilon_{t}\\
@@ -250,6 +253,9 @@
         &\forall k,j, \alpha_{k},\beta_{j}\geq 0\\ 
         &\forall t, \omega, \sigma_{t} > 0 
         \end{align*}
+
+    \end{Definition}
+
 \end{frame}
 
 \begin{frame}
@@ -258,7 +264,9 @@
     \begin{align*}
         &\sigma_{t}^{2} = \omega+ \sum^{m}_{k=1}\alpha_{k}a^{2}_{t-k} + \sum_{j=1}^{s}\beta_{j}\sigma_{t-j}^{2} + \gamma^{T}\x_{t} \text{ .}\label{GARCH-X}
     \end{align*}
-    
+
+    We will be looking at only one exogenous term.
+
     \end{frame}
     
 \begin{frame}
@@ -272,7 +280,7 @@
     \bigbreak
     Let $T_i^*$ denote the largest time index prior to news shock, with $T_i^* < T_i$ (i.e. we assume at least one post-shock observation). \\
     \bigbreak
-    Let $\delta, \x_{i,t} \in \mathbb{R}^{p}$.  
+    Let $\delta, \textbf{v}_{i,t} \in \mathbb{R}^{p},  \x_{i,t} \in \mathbb{R}^{d}$.  
 \end{frame}
 
 \begin{frame}
@@ -285,7 +293,7 @@ For $t= 1, \ldots, T_i$ and $i = 1, \ldots, n+1$, the model $\mc{M}_1$ is define
   \mc{M}_1 \colon \begin{array}{l}
      \sigma^{2}_{i,t} = \omega_{i} + \omega^{*}_{i,t} + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \text{ }\\[.2cm]
      a_{i,t} = \sigma_{i,t}((1-D^{return}_{i,t})\epsilon_{i,t} + D^{return}_{i,t}\epsilon^{*}_{i})\\[.2cm]
-    \omega_{i,t}^{*} = D^{vol}_{i,t}[\mu_{\omega^{*}}+\delta'\mbf{x}_{i, t}+ u_{i,t}],
+    \omega_{i,t}^{*} = D^{vol}_{i,t}[\mu_{\omega^{*}}+\delta'\textbf{v}_{i, t}+ u_{i,t}],
   \end{array}
   \end{align*}\label{model_1}
 with error structure
@@ -297,14 +305,19 @@ with error structure
     \epsilon_{i,t} & \indep  \epsilon^{*}_{i,t}  \indep u_{i,t}
     \end{align*}
 where $D^{return}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + L_{i, return}\})$ and $D^{vol}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + L_{i, vol}\})$ and $L_{i,return},L_{i,vol}$ denote lengths of log return and volatility shocks, respectively.  
+
+\bigbreak
+
+\textcolor{red}{Note: we will be looking GARCH(1,1) only in this presentation.}
 \end{frame}
 
-\begin{frame}
-    \frametitle{Model Details}
-    Let $\mc{M}_{0}$ denote the subclass of $\mc{M}_{1}$ models such that $\delta \equiv 0$.  \\
-    \bigbreak
-    Note that $\mc{M}_{0}$ assumes that $\omega^{*}_{i,t}$ have no dependence on the covariates and are i.i.d. with $\E[ \omega^{*}_i]=\mu_{\omega^{*}}$.  
-\end{frame}
+
+% \begin{frame}
+%     \frametitle{Model Details}
+%     Let $\mc{M}_{0}$ denote the subclass of $\mc{M}_{1}$ models such that $\delta \equiv 0$.  \\
+%     \bigbreak
+%     $\mc{M}_{0}$ assumes $\omega^{*}_{i,t}$ have no dependence on the covariates and are i.i.d. with $\E[ \omega^{*}_i]=\mu_{\omega^{*}}$.  
+% \end{frame}
 
 \begin{frame}
 \frametitle{Our Model is Nested inside a Factor Model}
@@ -333,7 +346,7 @@ which nests the GARCH model's volatilty equation as well as the ARMA representat
 \frametitle{Volatility Profile of a Time Series}
 \fontsize{6.6}{7}
 
-Consider the $p \times n$ matrix that stores all donor and covariate information
+Consider the $p \times n$ matrix that stores donor and covariate information at time $t$
 
 \begin{equation*}
     \V_{t} = 
@@ -363,12 +376,12 @@ Consider the $p \times n$ matrix that stores all donor and covariate information
         \item differences in levels
         \item log returns
         \item percentage returns
-        \item absolute values of the above
+        \item measurable transformations of the above
     \end{itemize}
 
     \bigbreak 
 
-    Key criterion for inclusion: how plausible is the covariate as a proxy for risk conditions?
+    Key criterion for inclusion: how plausible is the covariate as a \textcolor{red}{proxy for risk conditions} for the volatility series to be forecasted?
 \end{frame}
 
 \section{Post-shock Synthetic Volatility Forecasting Methodology}
@@ -382,7 +395,7 @@ We present two forecasts:
 
 \begin{align*}
   \text{Forecast 1: } & \hat\sigma^{2}_{unadjusted} = \hat\E[\sigma^{2}_{1,T_{1}^{*}+1}|\mathcal{F}_{T^{*}}] = \hat\omega_{i} + \sum^{m_{i}}_{k=1}\hat\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\hat\beta_{i,j}\sigma_{i,t-j}^{2} + \hat\gamma_{i}^{T} \x_{i,t}\\
-  \text{Forecast 2: } & \hat\sigma^{2}_{adjusted} = \hat\E[\sigma^{2}_{1,T_{1}^{*}+1}|\mathcal{F}_{T^{*}}] + \hat\omega^{*} = \hat\omega_{i} + \sum^{m_{i}}_{k=1}\hat\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\hat\beta_{i,j}\sigma_{i,t-j}^{2} + \hat\gamma_{i}^{T} \x_{i,t} + \hat\omega^{*} \text{ .}
+  \text{Forecast 2: } & \hat\sigma^{2}_{adjusted} = \hat\E[\sigma^{2}_{1,T_{1}^{*}+1}|\mathcal{F}_{T^{*}}] + \textcolor{red}{\hat\omega^{*}} = \hat\omega_{i} + \sum^{m_{i}}_{k=1}\hat\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\hat\beta_{i,j}\sigma_{i,t-j}^{2} + \hat\gamma_{i}^{T} \x_{i,t} + \textcolor{red}{\hat\omega^{*} } \text{ .}
 \end{align*}
 \end{frame}
 
@@ -397,13 +410,16 @@ We present two forecasts:
 
 \item <3-> Following \cite[][]{abadie2003economic,abadie2010synthetic}, let $\|\cdot\|_{\textbf{S}}$ denote any semi-norm on $\mathbb{R}^{p}$, and define
 
+
 \begin{align*}
 \{\pi\}_{i=2}^{n+1} = \argmin_{\pi}\|\textbf{v}_{1,T^{*}} - \V_{T^{*}}\pi \|_{\textbf{S}} \text{ .}
 \end{align*}
 
+% Nota bene: the weights $\{\weight_{i}\}_{i=2}^{n+1}$ are deterministic with respect to $\mathcal{F}_{T^{*}}$.
+
+
 \end{itemize}
 
-Nota bene: the weights $\{\weight_{i}\}_{i=2}^{n+1}$ are deterministic with respect to $\mathcal{F}_{T^{*}}$.
 
 \end{frame}
 
@@ -413,7 +429,7 @@ Nota bene: the weights $\{\weight_{i}\}_{i=2}^{n+1}$ are deterministic with resp
 We use realized volatility (RV)
 \begin{itemize}
 \item ``model-free'' in the sense that it requires no modeling assumptions \parencite[][]{andersen2010stochastic}.  
-\item RV can be decomposed into the sum of a \textcolor{red}{continous component} and a \textcolor{red}{jump component}, with the latter being less predictable and less persistent \parencite[][]{andersen2007roughing}, cited in \cite[][]{de2006forecasting}, two factors that further motivate our method.
+\item RV can be decomposed into the sum of a \textcolor{red}{continuous component} and a \textcolor{red}{jump component}, with the latter being less predictable and less persistent \parencite[][]{andersen2007roughing}, cited in \cite[][]{de2006forecasting}, two facts that further motivate our method.
 \end{itemize}
 
 \end{frame}
@@ -480,28 +496,67 @@ losses will be a consequence of high volatility without necessarily correspondin
 \end{frame}
 
 \section{Properties of Volatility Shock and Shock Estimators}\label{SVF_properties}
-\frametitle{Two Consistency Results}
+
+\begin{frame}\frametitle{Two Consistency Results}
+    
+    \begin{prop}\label{omega_consistency}
+    Assume
+    \begin{enumerate}
+      \item For each $i$, $\{a_{i,t}\}_{t=0,...,T_i}$ obeys a GARCH-X($m,s$) with volatility shocks found in $\mc{M}_{1}$, where $T_i$ is the length of the $i$th series.
+      \item For each $i, \{\omega_{i,t}^{*}\}_{t=0,...,T_i}$ is potentially non-zero at $\{T^{*}_{i}+1,... ,T^{*}_{i}+k\}$, $\omega_{i,T^{*}+1}^{*}\equiv...\equiv\omega_{i,T^{*}+k}^{*}$, and zero otherwise, where the arrival of $T_{i}^{*}$ is governed by a time-invariant distribution on $\{a_{i,t}\}_{t=0,...,T_i-1}$. \label{stationarity_of_omega_i_t}
+      \item The conditions in Assumption 0 of \cite[][]{han2014asymptotic} prevail.
+    \end{enumerate}
+    Then for any $i$, $\hat\omega_{i,t}^{*} \xrightarrow{p} \omega_{i}^{*}$.
+    \end{prop}
+
+    \begin{prop}\label{sigma_consistency}
+        Assume
+        \begin{enumerate}
+          \item All conditions from the previous proposition.
+          \item There exist weights $\{\pi_{i}\}_{i=2}^{n=1}$ such that $\textbf{v}_{1,T^{*}} = \sum^{n+1}_{i=2}\weight_{i} \textbf{v}_{i,T^{*}}$.
+         \end{enumerate}
+      Then $\hat\sigma^{2}_{adjusted}\xrightarrow{p}\sigma^{2}_{1,T^{*}+1}$. 
+      \end{prop}
+
+\end{frame}
 
 \section{Real Data Example}
 
 \begin{frame}{Why apply our method to the 2016 US Election?}
+
+    \begin{itemize}
+        \item You can win the US Presidency without a majority.
+        \item No incumbent candidate
+        \item Donald J. Trump espoused unorthodox, populist positions on healthcare, trade, foreign policy
+        \item Donald J. Trump had no record to assess or criticize
+        \item It was not predicted -- hence it delivered news.
+    \end{itemize}
     
 \end{frame}
 \begin{frame}
     \begin{figure}[H]
         \begin{center}
           \includegraphics[scale=.2]{iyg.png}
-          \caption{Includes: JPM, BAC, WF, among other financial majors}
+          \caption{IYG includes JPM, BAC, WF, CITI, among other financial majors}
           \end{center}
         \end{figure}
 \begin{enumerate}
     \item \textbf{Model choice} GARCH(1,1) on the daily log return series of IYG in each donor
 
-    \item \textbf{Covariate Choice} log return Crude Oil (CL.F), the VIX (VIX) and the log return of the VIX, the log returns of the 3-month, 5-year, 10-year, and 30-year US Treasuries, return of the most recently available monthly spread between AAA and BAA corporate debt, widely considered a proxy for lending risk \parencite[][]{goodell2013us, kane1996p}.  We also include the log return in the trading volume of the ETF IYG itself, which serves as a proxy for panic.
+    \item \textbf{Covariate Choice} 
+    \begin{itemize}
+        \item previous 30 log returns of IYG (large pre-treatment period, in the language of SC)
+        \item log return Crude Oil (CL.F)
+        \item VIX
+        \item log return of the VIX
+        \item log returns of the 3-month, 5-year, 10-year, and 30-year US Treasuries
+        \item return of the most recently available monthly spread between AAA and BAA corporate debt
+        \item log return in the trading volume of the ETF IYG itself
+    \end{itemize}
 
-    \item \textbf{Donor pool construction} the three most recent US presidential elections prior to the 2016 election.  The three US presidential elections are the only presidential elections since the advent of the ETF IYG.  We exclude the midterm congressional elections in the US, which generate far lower voter turnout and feature no national races.
+    \item \textbf{Donor pool construction} US Elections from 2004, 2008, 2012
 
-    \item \textbf{Choice of estimator for volatility} Sum of squared 5-minute log returns of IYG on November 9th, 2016, otherwise known as the Realized Volatility estimator of volatility \parencite[][]{andersen2009realized}, as our proxy.  We exclude the first five minutes of the trading day, resulting in a sum of 77 squared five-minute returns generated between 9:35am and 4pm.
+    \item \textbf{Choice of estimator for volatility} Sum of 77 squared five-minute returns generated between 9:35am and 4pm on November 9th, 2016.
 \end{enumerate} 
 
 \end{frame}
@@ -509,7 +564,7 @@ losses will be a consequence of high volatility without necessarily correspondin
 \begin{frame}{2016 Election}
     \begin{figure}[H]
         \begin{center}
-          \includegraphics[scale=.3]{real_data_output_plots/savetime_SunMar172252462024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png}
+          \includegraphics[scale=.34]{real_data_output_plots/savetime_SunMar172252462024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png}
           \caption{The volatility induced by the 2016 US election}
           \label{fig:SVF_2016}
           \end{center}
@@ -521,11 +576,11 @@ losses will be a consequence of high volatility without necessarily correspondin
 \begin{frame}{Hypotheses to Test Via Simulations}
     Ceteris paribus...
     \begin{enumerate}
-        \item <1-> Distance-based weighting should outperform the unadjusted forecast as $\textcolor{blue}{\delta}$ increases (signal-to-noise)
-        \item <2-> Distance-based weighting should underperform as the variability in $\textcolor{blue}{u_{i,t}}$ increases (signal-to-noise)
-        \item <3-> Distance-based weighting should outperform the arithmetic mean as the variability of $\textcolor{blue}{\x_{i,T^{*}}}$ increases between donors
-        \item <4-> Distance-based weighting should underperform the arithmetic mean as $\textcolor{blue}{\mu_{\omega^{*}}}$ increases
-        \item <5-> When $D^{return}_{i,T^{*}+1} = 1 = D^{vol}_{i,T^{*}+1}$, i.e. when there is both a \textcolor{red}{return shock} and \textcolor{red}{volatility shock}, our adjustment methods should underperform due to failed identification in $a_{T^{*}+1} = \sigma_{T^{*}+1}\epsilon_{T^{*}+1}$
+        \item <1-> Distance-based weighting should \textcolor{red}{outperform} the unadjusted forecast as $\textcolor{blue}{\delta}$ increases (signal-to-noise)
+        \item <2-> Distance-based weighting should \textcolor{red}{underperform} as the variability in $\textcolor{blue}{u_{i,t}}$ increases (signal-to-noise)
+        \item <3-> Distance-based weighting should \textcolor{red}{outperform} the arithmetic mean as the variability of $\textcolor{blue}{\textbf{v}_{i,T^{*}}}$ increases between donors (importance of linear signal)
+        \item <4-> Distance-based weighting should \textcolor{red}{underperform} the arithmetic mean as $\textcolor{blue}{\mu_{\omega^{*}}}$ increases (importance of linear signal)
+        \item <5-> When $D^{return}_{i,T^{*}+1} = 1 = D^{vol}_{i,T^{*}+1}$, i.e. when there is both a \textcolor{red}{return shock} and \textcolor{red}{volatility shock}, our adjustment methods should \textcolor{red}{underperform} due to failed identification in $a_{T^{*}+1} = \sigma_{T^{*}+1}\epsilon_{T^{*}+1}$
     \end{enumerate}
 \end{frame}
 
@@ -544,7 +599,7 @@ Recall an \hyperlink{model_1}{$\mc{M}_1$} model on the volatility, which is char
     \mc{M}_1 \colon \begin{array}{l}
        \sigma^{2}_{i,t} = \omega_{i} + \omega^{*}_{i,t} + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \text{ }\\[.2cm]
        a_{i,t} = \sigma_{i,t}((1-D^{return}_{i,t})\epsilon_{i,t} + D^{return}_{i,t}\epsilon^{*}_{i})\\[.2cm]
-      \omega_{i,t}^{*} = D^{vol}_{i,t}[\mu_{\omega^{*}}+\textcolor{blue}{\delta}'\mbf{x}_{i, t}+ \textcolor{blue}{u_{i,t}}]\\[.2cm]
+      \omega_{i,t}^{*} = D^{vol}_{i,t}[\mu_{\omega^{*}}+\textcolor{blue}{\delta}'\textbf{v}_{i, t}+ \textcolor{blue}{u_{i,t}}]\\[.2cm]
       D^{return}_{i,t} \equiv 0
     \end{array}
     \end{align*}
@@ -578,7 +633,6 @@ Recall an \hyperlink{model_1}{$\mc{M}_1$} model on the volatility, which is char
 
 \end{frame}
 
-\section{Discussion}
 
 \section{Future directions for Synthetic Volatility Forecasting}
 
@@ -595,7 +649,27 @@ We shall group the extensions into five buckets:
 
 \begin{frame}{How much can we automate?}
 
-    
+Use NLP to identify donors.
+
+\begin{figure}[H]
+    \begin{center}
+      \includegraphics[scale=.18]{iphone.png}
+      \end{center}
+    \end{figure}
+
+
+\end{frame}
+
+\begin{frame}{How much can we automate?}
+
+    What if the variables in the volatility profile are difficult to specify?
+
+    \bigbreak
+    Proposed solution:
+
+    \bigbreak
+
+    Use shrinkage estimation to detect fleeting signals in the cross section of $a_{t}^{2}$ \parencite[][]{chinco2019sparse}. 
 \end{frame}
 
 \begin{frame}
@@ -641,11 +715,25 @@ High-frequency data?
 \end{frame}
 
 \begin{frame}{Synthetic Impulse Response Functions: A Proposal}
+    Suppose 
     \begin{itemize}
-        \item Suppose we have a multivariate time series of dimension $p \times T$ subject to shocks from a common shock distribution
-        \item Using an IRF estimate aggregated from the first $n$ shocks of interest, we predict the response of variable $i$ from variable $j$, $1\leq i \leq j \leq p$. 
+        \item We have a collection of $p$-variate time series of lengths $T_{i}, i=1,2,...n+1)$.
+        \item We are interested in the response of variable $r$ to shocks in variable $j$, $1\leq r \leq j \leq p$. 
+
     \end{itemize}
     
+\bigbreak
+There many ways to estimate $IRF_{1}(r,j).$
+
+\bigbreak
+Can we somehow aggregate the estimates $\widehat{IRF}_{i}(r,j)$, $i = 2,3,...,n+1$? \\
+
+Additional research questions:
+\begin{itemize}
+    \item What DGP would best motivate/justify such a method?
+    \item Which method of IRF estimation would perform best?
+
+\end{itemize}
 \end{frame}
 \section{Supplement}
 We analyze the real data example with Brexit included.

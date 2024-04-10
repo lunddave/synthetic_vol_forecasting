@@ -521,7 +521,7 @@ Assume
   \item For each $i, \{\omega_{i,t}^{*}\}_{t=0,...,T_i}$ is potentially non-zero at $\{T^{*}_{i}+1,... ,T^{*}_{i}+k\}$, $\omega_{i,T^{*}+1}^{*}\equiv...\equiv\omega_{i,T^{*}+k}^{*}$, and zero otherwise, where the arrival of $T_{i}^{*}$ is governed by a time-invariant distribution on $\{a_{i,t}\}_{t=0,...,T_i-1}$. \label{stationarity_of_omega_i_t}
   \item The conditions in Assumption 0 of \citet{han2014asymptotic} prevail.
 \end{enumerate}
-Then for any $i$, $\hat\omega_{i,t}^{*} \xrightarrow{p} \E[\omega_{i}^{*}].$
+Then for any $i$, $\hat\omega_{i,t}^{*} \xrightarrow{p} \omega_{i}^{*}$., and by Slutsky, consistency is preserved under any convex combination of the estimates.
 \end{prop}
 
 \begin{lem}
@@ -537,9 +537,15 @@ The result follows from the consistency proof of the QMLE in GARCH-X models, as 
 \end{proof-of-proposition}
 
   \subsection{Consistency of the Synthetic Volatility Forecast Function}
-\begin{prop}\label{sigma_consistency}
-  Under the conditions in Proposition \ref{omega_consistency}, $\hat\sigma^{2}_{adjusted}\xrightarrow{p}\sigma^{2}_{1,T^{*}+1}$. 
-\end{prop}
+  \begin{prop}\label{sigma_consistency}
+    Assume
+    \begin{enumerate}
+      \item All conditions from the previous proposition.
+      \item There exist weights $\{\pi_{i}\}_{i=2}^{n=1}$ such that $\textbf{v}_{1,T^{*}} = \sum^{n+1}_{i=2}\weight_{i} \textbf{v}_{i,T^{*}}$.
+     \end{enumerate}
+  Then $\hat\sigma^{2}_{adjusted}\xrightarrow{p}\sigma^{2}_{1,T^{*}+1}$. 
+  \end{prop}
+
 
 \begin{proof-of-proposition}
 Recall the conditional expectation of the variance for the GARCH-X($m$,$s$) model:
