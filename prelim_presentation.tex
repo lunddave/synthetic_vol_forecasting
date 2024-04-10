@@ -143,9 +143,9 @@
 \begin{frame}
 \frametitle{A seemingly unprecedented event might make one ask}
 \begin{enumerate}
-    \item What does it resemble from the past?
-    \item What past events are most relevant?
-    \item Can we incorporate past events in a systematic, principled manner?
+    \item <1-> What does it resemble from the past?
+    \item <2-> What past events are most relevant for our objectives?
+    \item <3-> Can we incorporate past events in a systematic, principled manner?
 \end{enumerate}
 \end{frame}
 
@@ -178,7 +178,7 @@
 \frametitle{Punchline of the paper}
 
 \begin{itemize}
-    \item[] <1-> Credible forecasting is possible under news shocks, so long as we incorporate external information to account for the nonzero errors.
+    \item[] <1-> Credible forecasting is possible under news shocks, so long as we incorporate external information to account for the \textcolor{red}{nonzero errors}.
     \item[] <2-> \begin{figure}[H]
         \begin{center}
           \includegraphics[scale=.3]{simulation_plots/alternative_USE_in_paper_simulation_plot_arithmetic_mean.png}
@@ -187,7 +187,6 @@
         \end{figure}
 \end{itemize}
 \end{frame}
-
 
 \begin{frame}
     \frametitle{Background and related methods}
@@ -203,7 +202,7 @@
 \begin{frame}
     \frametitle{Background and related methods}
 
-    Forecast Augmentation
+    Forecast Adjustment
     \begin{itemize}
         \item \cite[][]{clements1996intercept,clements1998forecasting} laid the groundwork for modeling nonzero errors in time series forecasting
         \item \cite[][]{guerron2017macroeconomic} use a series' own errors to correct the forecast for that series
@@ -229,7 +228,7 @@
 \begin{itemize}
 \item After-hours trading provides a poor forum in which to digest news
 \item The news constitutes public, material information relevant to one or more traded assets
-\item The qualitative aspects of the news provide a basis upon which to 
+\item The \textcolor{red}{qualitative aspects} of the news provide a basis upon which to 
 \begin{itemize}
     \item match to past events
     \item match in a $p$-dimensional covariate space
@@ -271,7 +270,7 @@
 \bigbreak
     Let $T_i$ denote the time length of the time series $i$ for $i = 1, \ldots, n+1$.\\
     \bigbreak
-    Let $T_i^*$ denote the largest time index prior to news shock, with $T_i^* < T_i$. \\
+    Let $T_i^*$ denote the largest time index prior to news shock, with $T_i^* < T_i$ (i.e. we assume at least one post-shock observation). \\
     \bigbreak
     Let $\delta, \x_{i,t} \in \mathbb{R}^{p}$.  
 \end{frame}
@@ -284,7 +283,7 @@
 For $t= 1, \ldots, T_i$ and $i = 1, \ldots, n+1$, the model $\mc{M}_1$ is defined as 
 \begin{align*}
   \mc{M}_1 \colon \begin{array}{l}
-     \sigma^{2}_{i,t} = \omega_{i} + \omega^{*}_i + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \text{ }\\[.2cm]
+     \sigma^{2}_{i,t} = \omega_{i} + \omega^{*}_{i,t} + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \text{ }\\[.2cm]
      a_{i,t} = \sigma_{i,t}((1-D^{return}_{i,t})\epsilon_{i,t} + D^{return}_{i,t}\epsilon^{*}_{i})\\[.2cm]
     \omega_{i,t}^{*} = D^{vol}_{i,t}[\mu_{\omega^{*}}+\delta'\mbf{x}_{i, t}+ u_{i,t}],
   \end{array}
@@ -304,7 +303,7 @@ where $D^{return}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + L_{i, return}\})$ and 
     \frametitle{Model Details}
     Let $\mc{M}_{0}$ denote the subclass of $\mc{M}_{1}$ models such that $\delta \equiv 0$.  \\
     \bigbreak
-    Note that $\mc{M}_{0}$ assumes that $\omega^{*}_i$ have no dependence on the covariates and are i.i.d. with $\E[ \omega^{*}_i]=\mu_{\omega^{*}}$.  
+    Note that $\mc{M}_{0}$ assumes that $\omega^{*}_{i,t}$ have no dependence on the covariates and are i.i.d. with $\E[ \omega^{*}_i]=\mu_{\omega^{*}}$.  
 \end{frame}
 
 \begin{frame}
@@ -314,7 +313,7 @@ where $D^{return}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + L_{i, return}\})$ and 
 
 Consider $\mc{M}_{1}$ in the context of the factor model from \cite[][]{abadie2010synthetic}, where an untreated unit is governed by:
 
-$$Y^{N}_{i,t} = \delta_{t} + \boldsymbol\theta_{t}\textbf{Z}_{i}+\boldsymbol\lambda_{t}\boldsymbol\mu_{i}+\varepsilon_{i,t}$$
+$$Y^{N}_{i,t} = \delta_{t} + \boldsymbol\theta_{t}^{'}\textbf{Z}_{i}+\boldsymbol\lambda_{t}^{'}\boldsymbol\mu_{i}+\varepsilon_{i,t}$$
 
 which nests the GARCH model's volatilty equation as well as the ARMA representation of a GARCH model, where
 
@@ -333,6 +332,8 @@ which nests the GARCH model's volatilty equation as well as the ARMA representat
 \begin{frame}
 \frametitle{Volatility Profile of a Time Series}
 \fontsize{6.6}{7}
+
+Consider the $p \times n$ matrix that stores all donor and covariate information
 
 \begin{equation*}
     \V_{t} = 
@@ -380,27 +381,27 @@ which nests the GARCH model's volatilty equation as well as the ARMA representat
 We present two forecasts:
 
 \begin{align*}
-  \text{Forecast 1: } & \hat\sigma^{2}_{unadjusted} = \hat\E_{T^{*}}[\sigma^{2}_{1,T_{1}^{*}+1}|\mathcal{F}_{T^{*}}] = \hat\omega_{i} + \sum^{m_{i}}_{k=1}\hat\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\hat\beta_{i,j}\sigma_{i,t-j}^{2} + \hat\gamma_{i}^{T} \x_{i,t}\\
-  \text{Forecast 2: } & \hat\sigma^{2}_{adjusted} = \hat\E_{T^{*}}[\sigma^{2}_{1,T_{1}^{*}+1}|\mathcal{F}_{T^{*}}] + \hat\omega^{*} = \hat\omega_{i} + \sum^{m_{i}}_{k=1}\hat\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\hat\beta_{i,j}\sigma_{i,t-j}^{2} + \hat\gamma_{i}^{T} \x_{i,t} + \hat\omega^{*} \text{ .}
+  \text{Forecast 1: } & \hat\sigma^{2}_{unadjusted} = \hat\E[\sigma^{2}_{1,T_{1}^{*}+1}|\mathcal{F}_{T^{*}}] = \hat\omega_{i} + \sum^{m_{i}}_{k=1}\hat\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\hat\beta_{i,j}\sigma_{i,t-j}^{2} + \hat\gamma_{i}^{T} \x_{i,t}\\
+  \text{Forecast 2: } & \hat\sigma^{2}_{adjusted} = \hat\E[\sigma^{2}_{1,T_{1}^{*}+1}|\mathcal{F}_{T^{*}}] + \hat\omega^{*} = \hat\omega_{i} + \sum^{m_{i}}_{k=1}\hat\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\hat\beta_{i,j}\sigma_{i,t-j}^{2} + \hat\gamma_{i}^{T} \x_{i,t} + \hat\omega^{*} \text{ .}
 \end{align*}
 \end{frame}
 
 \begin{frame}
 \frametitle{Excess Volatility Estimators}
 
-Observe the pair $(\{\hat\omega^{*}_{i}\}^{n+1}_{i=2},\{\textbf{v}_{i}\}^{n+1}_{i=2})$.  \\
+\begin{itemize}
 
-\bigbreak
+\item <1->  Observe the pair $(\{\hat\omega^{*}_{i}\}^{n+1}_{i=2},\{\textbf{v}_{i}\}^{n+1}_{i=2})$.  \\
 
-Goal: recover weights $\{\weight_{i}\}^{n+1}_{i=2} \in \Delta^{n}$ and compute $\hat\omega^{*} \coloneq \sum^{n+1}_{i=2}\weight_{i}\hat\omega^{*}_{i}$, our forecast adjustment term.
+\item <2-> Goal: recover weights $\{\weight_{i}\}^{n+1}_{i=2} \in \Delta^{n}$ and compute $\hat\omega^{*} \coloneq \sum^{n+1}_{i=2}\weight_{i}\hat\omega^{*}_{i}$, our forecast adjustment term.
 
-\bigbreak
-
-Following \cite[][]{abadie2003economic,abadie2010synthetic}, let $\|\cdot\|_{\textbf{S}}$ denote any semi-norm on $\mathbb{R}^{p}$, and define
+\item <3-> Following \cite[][]{abadie2003economic,abadie2010synthetic}, let $\|\cdot\|_{\textbf{S}}$ denote any semi-norm on $\mathbb{R}^{p}$, and define
 
 \begin{align*}
 \{\pi\}_{i=2}^{n+1} = \argmin_{\pi}\|\textbf{v}_{1,T^{*}} - \V_{T^{*}}\pi \|_{\textbf{S}} \text{ .}
 \end{align*}
+
+\end{itemize}
 
 Nota bene: the weights $\{\weight_{i}\}_{i=2}^{n+1}$ are deterministic with respect to $\mathcal{F}_{T^{*}}$.
 
@@ -412,7 +413,7 @@ Nota bene: the weights $\{\weight_{i}\}_{i=2}^{n+1}$ are deterministic with resp
 We use realized volatility (RV)
 \begin{itemize}
 \item ``model-free'' in the sense that it requires no modeling assumptions \parencite[][]{andersen2010stochastic}.  
-\item RV can be decomposed into the sum of a continous component and a jump component, with the latter being less predictable and less persistent \parencite[][]{andersen2007roughing}, cited in \cite[][]{de2006forecasting}, two factors that further motivate our method.
+\item RV can be decomposed into the sum of a \textcolor{red}{continous component} and a \textcolor{red}{jump component}, with the latter being less predictable and less persistent \parencite[][]{andersen2007roughing}, cited in \cite[][]{de2006forecasting}, two factors that further motivate our method.
 \end{itemize}
 
 \end{frame}
@@ -450,7 +451,7 @@ Let $L^{h}$ with the subscripted pair $\{$prediction method, ground truth estima
 
 \begin{frame}
     \frametitle{Loss Function Examples}
-For example, one loss function of interest in this study is the 1-step-ahead MSE using Synthetic Volatility Forecasting and Realized Volatility:
+For example, one loss possible function of interest in this study is the 1-step-ahead MSE using Synthetic \textcolor{red}{Volatility Forecasting} and \textcolor{red}{Realized Volatility}:
 
 $$\text{MSE}^{1}_{\text{SVF, RV}} = (\hat\sigma^{2}_{SVF} - \hat\sigma^{2}_{RV})^{2}$$
 Also of interest in mean absolute percentage error for an $h$-step-ahead forecast, defined as
@@ -469,9 +470,7 @@ What distinguishes QL Loss? \\
 
 \begin{itemize}
 
-\item Multiplicative rather than additive
-
-\item This has benefits, both practical and theoretical.  
+\item Multiplicative rather than additive  
 
 \item As \cite[][]{brownlees2011practical} explain, ``[a]mid volatility turmoil, large MSE
 losses will be a consequence of high volatility without necessarily corresponding to deterioration of forecasting ability. The QL avoids this ambiguity, making it easier to compare losses across volatility regimes."
@@ -519,13 +518,23 @@ losses will be a consequence of high volatility without necessarily correspondin
 
 \section{Numerical Examples}
 
-% So what do we want our eigenvalues to look like?
+\begin{frame}{Hypotheses to Test Via Simulations}
+    Ceteris paribus...
+    \begin{enumerate}
+        \item <1-> Distance-based weighting should outperform the unadjusted forecast as $\textcolor{blue}{\delta}$ increases (signal-to-noise)
+        \item <2-> Distance-based weighting should underperform as the variability in $\textcolor{blue}{u_{i,t}}$ increases (signal-to-noise)
+        \item <3-> Distance-based weighting should outperform the arithmetic mean as the variability of $\textcolor{blue}{\x_{i,T^{*}}}$ increases between donors
+        \item <4-> Distance-based weighting should underperform the arithmetic mean as $\textcolor{blue}{\mu_{\omega^{*}}}$ increases
+        \item <5-> When $D^{return}_{i,T^{*}+1} = 1 = D^{vol}_{i,T^{*}+1}$, i.e. when there is both a \textcolor{red}{return shock} and \textcolor{red}{volatility shock}, our adjustment methods should underperform due to failed identification in $a_{T^{*}+1} = \sigma_{T^{*}+1}\epsilon_{T^{*}+1}$
+    \end{enumerate}
+\end{frame}
+
 \begin{frame}
 \fontsize{8pt}{9pt}
 
 \frametitle{Simplest Simulation Setup}
 
-Most elementary simulation uses $\mc{M}_1$ and varies only \textcolor{blue}{two} parameters.\\
+Most elementary simulation regime tests Hypothesis 1 and 2 by varying $\textcolor{blue}{\delta}$ and $\textcolor{blue}{u_{i,t}}$.\\
 
 \bigbreak
 
@@ -535,7 +544,7 @@ Recall an \hyperlink{model_1}{$\mc{M}_1$} model on the volatility, which is char
     \mc{M}_1 \colon \begin{array}{l}
        \sigma^{2}_{i,t} = \omega_{i} + \omega^{*}_{i,t} + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \text{ }\\[.2cm]
        a_{i,t} = \sigma_{i,t}((1-D^{return}_{i,t})\epsilon_{i,t} + D^{return}_{i,t}\epsilon^{*}_{i})\\[.2cm]
-      \omega_{i,t}^{*} = D^{vol}_{i,t}[\mu_{\omega^{*}}+\delta'\mbf{x}_{i, t}+ u_{i,t}]\\[.2cm]
+      \omega_{i,t}^{*} = D^{vol}_{i,t}[\mu_{\omega^{*}}+\textcolor{blue}{\delta}'\mbf{x}_{i, t}+ \textcolor{blue}{u_{i,t}}]\\[.2cm]
       D^{return}_{i,t} \equiv 0
     \end{array}
     \end{align*}
@@ -545,11 +554,6 @@ Recall an \hyperlink{model_1}{$\mc{M}_1$} model on the volatility, which is char
 
 \begin{frame}
     \fontsize{8pt}{9pt}
-    What do we vary?\\
-
-    \bigbreak
-    
-    The volatility shock signal $\delta$ and the variance of volatility shock noise $u_{t}$\\
     
     \begin{figure}[h!]
       \begin{center}

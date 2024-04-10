@@ -84,9 +84,13 @@ non_NA <- df_only_one_outcome[complete.cases(df_only_one_outcome),]
 apply(non_NA, 2, function(x) unique(x))[c(1,3,4,5)]
 
 non_NA <- non_NA[non_NA$vol_shock_sd == 0,]
-non_NA <- non_NA[non_NA$mu_omega_star == 0,]
+non_NA <- non_NA[non_NA$sigma_x == 1,]
 
-hm_generator <- function(y_input, x_input, outcome)
+hm_generator <- function(y_input
+                         , x_input
+                         , outcome
+                         , xlab
+                         , ylab)
 {
 
   means <- non_NA %>% group_by({{x_input}}, {{y_input}}) %>% summarise(prop=mean({{outcome}}))
@@ -108,13 +112,17 @@ hm_generator <- function(y_input, x_input, outcome)
     ggtitle("Synthetic Volatility Forecast Outperformance of Unadjusted Forecast
             \n Each Square: Outperformance Proportion and (Simulation Count)") +
     theme(plot.title = element_text(hjust = 0.5)) +
-    labs(x = "Volatility Shock Standard Deviation", y = "Volatility Shock Mean")
+    labs(x = xlab, y = ylab)
 
   ggp1
 
 }
 
-hm_generator(M21_M22_vol_mu_delta, sigma_x, success)
+hm_generator(M21_M22_vol_mu_delta
+             , mu_omega_star
+             , against_mean
+             ,'x'
+             ,'y')
 
 #
 # # Now we write a function
