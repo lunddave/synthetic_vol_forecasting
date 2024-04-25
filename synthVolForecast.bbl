@@ -30,11 +30,6 @@ Torben~G Andersen and Luca Benzoni.
 \newblock Stochastic volatility.
 \newblock \emph{CREATES Research Paper}, \penalty0 (2010-10), 2010.
 
-\bibitem[Andersen and Ter{\"a}svirta(2009)]{andersen2009realized}
-Torben~G Andersen and Timo Ter{\"a}svirta.
-\newblock Realized volatility.
-\newblock In \emph{Handbook of financial time series}, pages 555--575. Springer, 2009.
-
 \bibitem[Andersen et~al.(2003)Andersen, Bollerslev, Diebold, and Labys]{andersen2003modeling}
 Torben~G Andersen, Tim Bollerslev, Francis~X Diebold, and Paul Labys.
 \newblock Modeling and forecasting realized volatility.
@@ -44,6 +39,11 @@ Torben~G Andersen, Tim Bollerslev, Francis~X Diebold, and Paul Labys.
 Torben~G Andersen, Tim Bollerslev, and Francis~X Diebold.
 \newblock Roughing it up: Including jump components in the measurement, modeling, and forecasting of return volatility.
 \newblock \emph{The review of economics and statistics}, 89\penalty0 (4):\penalty0 701--720, 2007.
+
+\bibitem[Andersen and Benzoni(2008)]{andersen2008realized}
+Torben~Gustav Andersen and Luca Benzoni.
+\newblock Realized volatility, working paper 2008-14.
+\newblock 2008.
 
 \bibitem[Bauwens et~al.(2006)Bauwens, Preminger, and Rombouts]{bauwens2006regime}
 Luc Bauwens, Arie Preminger, and Jeroen~VK Rombouts.
