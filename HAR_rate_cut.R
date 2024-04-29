@@ -4,36 +4,17 @@ library(tidyverse)
 QL <- function(adj, unadj) {adj/unadj - log(adj/unadj) - 1}
 
 
-# Example 1: HAR
-# Forecasting daily Realized volatility for the
-# S&P 500 using the basic HARmodel: HAR
-library(xts)
-RVSPY <- as.xts(SPYRM$RV5, order.by = SPYRM$DT)
-x <- HARmodel(data = RVSPY,
-              periods = c(1,5,22),
-              RVest = c("rCov"),
-              type = "HAR",
-              h = 1,
-              transform = NULL,
-              inputType = "RM")
-class(x)
 
-x
-summary(x)
-plot(x)
-predict(x)
-
-foo = as.data.frame(RVSPY)
-head(foo)
-
-RVSPY <- as.xts(SPYRM$RV5, order.by = SPYRM$DT)
+RVSPY <- as.xts(SPYRM$RV1, order.by = SPYRM$DT)
 
 foo = data.frame(
   Date = SPYRM$DT,
-  RV5 = SPYRM$RV5
+  RV1 = SPYRM$RV1
 )
+
 head(foo)
-foo %>% arrange(desc(RV5))
+
+foo %>% arrange(desc(RV1))
 
 
 ## https://www.forbes.com/advisor/investing/fed-funds-rate-history/
@@ -61,27 +42,33 @@ foo %>% filter(Date %in% Fed_rate_cuts)
 #  Dec. 15, 2016	+25	0.5% to 0.75%
 #  Dec. 17, 2015	+25	0.25% to 0.50%
 
-
 library(RcppRoll)
 bar = foo %>%
-  mutate(RV5_5 = roll_sum(RV5, 5, align = "right", fill = NA)/5) %>%
-  mutate(RV5_22 = roll_sum(RV5, 22, align = "right", fill = NA)/22)
+  mutate(Y = lead(RV1)) %>%
+  mutate(RV1 = RV1) %>%
+  mutate(RV5 = roll_mean(RV1, 5, align = "right", fill = NA)) %>%
+  mutate(RV5_22 = roll_mean(RV1, 22, align = "right", fill = NA))
+
 baz = bar[complete.cases(bar), ]
 head(baz)
 
-qux = data.frame(
-  Y = baz$RV5[-nrow(baz)],
-  baz[-1, ]) %>%
-  mutate(rate_cut = ifelse(Date %in% Fed_rate_cuts,1,0))
+qux = data.frame(baz %>% mutate(rate_cut = ifelse(Date %in% Fed_rate_cuts,1,0)))
+
+qux$log_Y <- log(qux$Y)
+
 qux[qux$rate_cut == 1, "rate_cut"] = 1:8
+
 qux$rate_cut = as.factor(qux$rate_cut)
 
-m1 = lm(Y ~ RV5 + RV5_5 + RV5_22 + rate_cut + 0, data = qux)
+m1 = lm(Y ~ RV1 + RV5 + RV5_22 + rate_cut + 0, data = qux)
 summary(m1)
-
 plot(m1)
 
-rate_cut_9 = qux[qux$Date == "2018-12-20", ]
+log_lin = lm(log_Y ~ RV1 + RV5 + RV5_22 + rate_cut + 0, data = qux)
+summary(log_lin)
+plot(log_lin)
+
+rate_cut_9 = qux[qux$Date == as.Date("2018-12-20") - 1, ]
 rate_cut_9
 
 newdat = data.frame(RV5 = 0.0004136769,
@@ -89,7 +76,7 @@ newdat = data.frame(RV5 = 0.0004136769,
                     RV5_22 = 0.0001593874,
                     rate_cut = 0)
 
-newdat <- rate_cut_9[,3:6]
+newdat <- rate_cut_9[,c(2,4,5,6)]
 
 newdat$rate_cut = as.factor(newdat$rate_cut)
 
@@ -110,8 +97,11 @@ resid_unadjusted_SE - resid_adjusted_SE
 
 
 QL_loss_adjusted <- QL(rate_cut_9_pred + mean(coef(m1)[5:12]), rate_cut_9$Y)
-
 QL_loss_unadjusted <- QL(rate_cut_9_pred, rate_cut_9$Y)
+QL_loss_unadjusted > QL_loss_adjusted
 
+# We exponentiate predictions of log values
+QL_loss_adjusted <- QL(exp(rate_cut_9_pred + mean(coef(m1)[5:12])), exp(rate_cut_9$Y))
+QL_loss_unadjusted <- QL(exp(rate_cut_9_pred), exp(rate_cut_9$Y))
 QL_loss_unadjusted > QL_loss_adjusted
 
