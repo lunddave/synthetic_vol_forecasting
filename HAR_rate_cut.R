@@ -79,6 +79,8 @@ qux$rate_cut = as.factor(qux$rate_cut)
 m1 = lm(Y ~ RV5 + RV5_5 + RV5_22 + rate_cut + 0, data = qux)
 summary(m1)
 
+plot(m1)
+
 rate_cut_9 = qux[qux$Date == "2018-12-20", ]
 rate_cut_9
 
