@@ -89,6 +89,8 @@ newdat = data.frame(RV5 = 0.0004136769,
                     RV5_22 = 0.0001593874,
                     rate_cut = 0)
 
+newdat <- rate_cut_9[,3:6]
+
 newdat$rate_cut = as.factor(newdat$rate_cut)
 
 rate_cut_9_pred = predict(m1, newdata = newdat)
@@ -97,7 +99,7 @@ rate_cut_9$Y - rate_cut_9_pred
 
 alpha_mean = mean(coef(m1)[5:12]) #use arithmetic mean
 
-resid_adjusted <- rate_cut_9$Y - (rate_cut_9_pred + mean(coef(m1)[5:12]))
+resid_adjusted <- rate_cut_9$Y - (rate_cut_9_pred + alpha_mean)
 resid_adjusted_SE <- resid_adjusted**2
 
 resid_unadjusted <- rate_cut_9$Y - rate_cut_9_pred
