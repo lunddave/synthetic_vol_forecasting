@@ -2,7 +2,7 @@ library(highfrequency)
 library(tidyverse)
 library(xts)
 
-QL <- function(adj, unadj) {adj/unadj - log(adj/unadj) - 1}
+QL <- function(pred, vol) {pred/vol - log(pred/vol) - 1}
 
 RVSPY <- as.xts(SPYRM$RV1, order.by = SPYRM$DT)
 
