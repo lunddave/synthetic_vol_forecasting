@@ -25,13 +25,14 @@ foo %>% filter(Date %in% Fed_rate_cuts)
 
 library(RcppRoll)
 
-bar = foo %>%
-  mutate(tomorrow_RV1 = lead(RV1)) %>%
-  mutate(RV1 = RV1) %>%
-  mutate(RV5 = roll_mean(RV1, 5, align = "right", fill = NA)) %>%
-  mutate(RV5_22 = roll_mean(RV1, 22, align = "right", fill = NA))
+bar = foo %>% mutate(tomorrow_RV1 = lead(RV1))
 
-baz = bar[complete.cases(bar), ]
+
+bar2 = bar %>%
+  mutate(RV5 = roll_mean(RV1, 5, align = "right", fill = NA)) %>%
+  mutate(RV_22 = roll_mean(RV1, 22, align = "right", fill = NA))
+
+baz = bar2[complete.cases(bar2), ]
 head(baz)
 
 qux = data.frame(baz %>% mutate(rate_cut = ifelse(Date %in% Fed_rate_cuts,1,0)))
@@ -42,7 +43,7 @@ qux[qux$rate_cut == 1, "rate_cut"] = Fed_rate_cuts
 
 qux$rate_cut = as.factor(qux$rate_cut)
 
-m1 = lm(tomorrow_RV1 ~ RV1 + RV5 + RV5_22 + rate_cut, data = qux)
+m1 = lm(tomorrow_RV1 ~ RV1 + RV5 + RV_22 + rate_cut, data = qux)
 summary(m1)
 plot(m1)
 
@@ -83,3 +84,4 @@ adjusted_pred <- exp(pred + FE_mean)
 QL_loss_adjusted <- QL(adjusted_pred, forecast_period$tomorrow_RV1)
 QL_loss_unadjusted <- QL(exp(pred), forecast_period$tomorrow_RV1)
 QL_loss_unadjusted > QL_loss_adjusted
+

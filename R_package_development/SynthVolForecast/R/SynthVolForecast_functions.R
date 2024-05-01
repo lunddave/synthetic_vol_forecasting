@@ -1043,7 +1043,7 @@ HAR <- function(Y_series_list
                              ,covariates_series_list
                              ,shock_time_vec
                              ,shock_length_vec
-                             ,k=1
+                             ,k=1 #does it make sense for a k-step ahead?
                              ,dbw_scale = TRUE
                              ,dbw_center = TRUE
                              ,dbw_indices = NULL
@@ -1061,7 +1061,27 @@ HAR <- function(Y_series_list
                              ,X_lookback_indices_input = rep(list(c(1)),length(dbw_indices))
 ){
   ### BEGIN Doc string
-  #tk
+  # Input:
+  #   Y_series_list - a list of df, where in each df, realized measure is first col
+  # ,covariates_series_list
+  # ,shock_time_vec
+  # ,shock_length_vec
+  # ,k=1
+  # ,dbw_scale = TRUE
+  # ,dbw_center = TRUE
+  # ,dbw_indices = NULL
+  # ,dbw_Y_lookback = c(0)
+  # ,dbw_princ_comp_input = NULL
+  # ,covariate_indices = NULL
+  # ,geometric_sets = NULL #tk
+  # ,days_before_shocktime_vec = NULL #tk I may want to remove this
+  # ,garch_order = NULL
+  # ,common_series_assumption = FALSE
+  # ,plots = TRUE
+  # ,shock_time_labels = NULL
+  # ,ground_truth_vec = NULL
+  # ,Y_lookback_indices_input = list(seq(1,3,1))
+  # ,X_lookback_indices_input = rep(list(c(1)),length(dbw_indices))
   ### END Doc string
 
   ### BEGIN Populate defaults
