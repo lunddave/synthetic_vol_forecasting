@@ -8,7 +8,8 @@ RVSPY <- as.xts(SPYRM$RV1, order.by = SPYRM$DT)
 
 foo = data.frame(
   Date = SPYRM$DT,
-  RV1 = SPYRM$RV1
+  RV1 = SPYRM$RV1,
+  close = SPYRM$CLOSE
 )
 
 head(foo)
@@ -25,7 +26,9 @@ foo %>% filter(Date %in% Fed_rate_cuts)
 
 library(RcppRoll)
 
-bar = foo %>% mutate(tomorrow_RV1 = lead(RV1))
+bar = foo %>%
+  mutate(tomorrow_RV1 = lead(RV1)) %>%
+  mutate(dl_close = c(NA,diff(log(close))))
 
 
 bar2 = bar %>%
@@ -43,13 +46,16 @@ qux[qux$rate_cut == 1, "rate_cut"] = Fed_rate_cuts
 
 qux$rate_cut = as.factor(qux$rate_cut)
 
-m1 = lm(tomorrow_RV1 ~ RV1 + RV5 + RV_22 + rate_cut, data = qux)
+qux$RV1_neg <- ifelse(qux$dl_close > 0, 0, qux$RV1)
+
+
+m1 = lm(tomorrow_RV1 ~ RV1 + RV5 + RV_22 + RV1_neg + rate_cut, data = qux)
 summary(m1)
 plot(m1)
 
 forecast_period = qux[qux$Date == as.Date("2018-12-20") - 1, ]
 
-newdat <- forecast_period[,c(2,4,5,6)]
+newdat <- forecast_period[,c("RV1" , "RV5", "RV_22" , "RV1_neg",  "rate_cut" )]
 
 newdat$rate_cut = as.factor(newdat$rate_cut)
 newdat

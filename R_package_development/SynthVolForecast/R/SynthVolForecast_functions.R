@@ -1051,8 +1051,6 @@ HAR <- function(Y_series_list
                              ,dbw_princ_comp_input = NULL
                              ,covariate_indices = NULL
                              ,geometric_sets = NULL #tk
-                             ,days_before_shocktime_vec = NULL #tk I may want to remove this
-                             ,garch_order = NULL
                              ,common_series_assumption = FALSE
                              ,plots = TRUE
                              ,shock_time_labels = NULL
@@ -1061,6 +1059,7 @@ HAR <- function(Y_series_list
                              ,X_lookback_indices_input = rep(list(c(1)),length(dbw_indices))
 ){
   ### BEGIN Doc string
+
   # Input:
   #   Y_series_list - a list of df, where in each df, realized measure is first col
   # ,covariates_series_list
@@ -1082,6 +1081,7 @@ HAR <- function(Y_series_list
   # ,ground_truth_vec = NULL
   # ,Y_lookback_indices_input = list(seq(1,3,1))
   # ,X_lookback_indices_input = rep(list(c(1)),length(dbw_indices))
+
   ### END Doc string
 
   ### BEGIN Populate defaults
