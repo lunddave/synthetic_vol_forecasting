@@ -8,7 +8,6 @@ if(sysname == "Darwin") {
   setwd('~/Desktop/synthetic_vol_forecasting/synthVolForecast.R') # example on linux machine
 }
 
-
 ### BEGIN 2016 election example
 packs <- c('quantmod'
            ,'bizdays'
@@ -19,19 +18,19 @@ packs <- c('quantmod'
            ,'lmtest'
            ,'RColorBrewer'
            ,'forecast'
+           ,'highfrequency'
+           ,'tidyverse'
+           ,'xts'
 )
 
 suppressPackageStartupMessages(lapply(packs, require, character.only = TRUE))
 
 ## BEGIN USER DATA INPUTS##
-ground_truth <- c()
+ground_truth <- c(5)
 
-k <- length(ground_truth)
+k <- length(ground_truth) # not sure how much sense it makes to have k > 1
 
-TSUS <- 'IYG'
-
-log_ret_covariates <- c(#"GBP=X",
-                        # "6B=F",
+log_ret_covariates <- c(
                         "CL=F"
                         ,"^VIX"
                         ,"^IRX"
@@ -42,24 +41,22 @@ log_ret_covariates <- c(#"GBP=X",
                       )
 
 level_covariates <- c('^VIX'
-                      #,"GBP=X"
-                      #,'^IRX'
+                      ,'^IRX'
 )
 
 volume_covariates <- c()
 
 FRED_covariates <- c('AAA', 'BAA')
 
-shock_dates <- list('2016 Election' = "2016-11-08"
-                 #,'Brexit' = "2016-06-22"
-                 # ,'2014 Midterm' = "2014-11-04"
-                 ,'2012 Election' = "2012-11-06"
-                 # , '2010 Midterm' ="2010-11-02"
-                 ,'2008 Election' = "2008-11-04"
-                 # , '2006 Midterm' ="2006-11-07"
-                 ,'2004 Election' = "2004-11-02"
-                 #,'2002 Midterm' =  "2002-11-05"
-                 #,'2000 Election' = "2000-11-07"
+shock_dates <- list('Powell Hikes' = "2018-12-20"
+                ,'2016 Election' = "2015-12-17"
+                 ,'Brexit' = "2016-12-15"
+                 ,'2014 Midterm' = "2017-03-16"
+                 ,'2012 Election' = "2017-06-15"
+                 , '2010 Midterm' ="2017-12-14"
+                 ,'2008 Election' = "2018-03-22"
+                 ,'2004 Election' = "2018-06-14"
+                 ,'2002 Midterm' =  "2018-09-27"
 )
 
 shock_dates <- c(shock_dates[1], list.reverse(shock_dates[2:length(shock_dates)]))
@@ -71,7 +68,7 @@ create.calendar(name='NYSE', holidays=nyse, weekdays=c('saturday', 'sunday'))
 
 shock_dates_as_dates <- as.Date(as.Date(unlist(shock_dates)))
 
-start_dates <- offset(shock_dates_as_dates, round(-3.5*252), "NYSE")
+start_dates <- offset(shock_dates_as_dates, round(-.3*252), "NYSE")
 
 k_periods_after_shock <- offset(shock_dates_as_dates, k, "NYSE")
 
@@ -83,13 +80,6 @@ names(market_data_list) <- names(shock_dates)
 for (i in 1:length(shock_dates)){
 
   print(shock_dates_as_dates[i])
-
-  data_TSUS <- lapply(TSUS, function(sym) {
-    dailyReturn(na.omit(getSymbols(sym
-                                   ,from=start_dates[i]
-                                   ,to=k_periods_after_shock[i]+20 #tk +10
-                                   ,auto.assign=FALSE))[,6]
-                ,type='log')})
 
   data_log_ret_covariates <- lapply(log_ret_covariates, function(sym) {
     dailyReturn(na.omit(getSymbols(sym
@@ -151,8 +141,7 @@ for (i in 1:length(shock_dates)){
 
     } #end lapply for FRED covariates
 
-    to_add <- c(data_TSUS
-                , data_log_ret_covariates
+    to_add <- c(data_log_ret_covariates
                 , data_level_covariates
                 , data_volume_covariates
                 , data_absolute_return_covariates
@@ -182,8 +171,7 @@ for (i in 1:length(shock_dates)){
     else
     {abs_log_ret_covariates_colname <- c()}
 
-    colnames(merged_data) <- c(TSUS
-                               , log_ret_covariates_colname
+    colnames(merged_data) <- c(log_ret_covariates_colname
                                , level_covariates_colname
                                , volume_covariates_colname
                                , abs_log_ret_covariates_colname
@@ -206,24 +194,47 @@ for (i in 1:length(shock_dates)){
 
 ##################################
 
-#now build Y
-Y <- list()
-for (i in 1:length(start_dates)){
-  Y_i <- market_data_list[[i]][,1]
-  Y_i_drop_NA <- Y_i[complete.cases(Y_i)]
+#Build Y
+RVSPY <- as.xts(SPYRM$RV1, order.by = SPYRM$DT)
 
-  print('Here is the shock date')
-  print(shock_dates_as_dates[i])
+RVSPY_subset <- data.frame(
+  Date = SPYRM$DT,
+  RV1 = SPYRM$RV1,
+  close = SPYRM$CLOSE
+)
 
-  if (shock_dates[i] %in% index(Y_i_drop_NA)){
-    print('The shock date is in the series.')
-  }
-  else{
-    print(paste('Shock date ', i, ' NOT in series ',i,".", sep = ''))
-  }
+RVSPY_subset_2 <- foo %>%
+  mutate(tomorrow_RV1 = lead(RV1)) %>%
+  mutate(dl_close = c(NA,diff(log(close))))
 
-  Y[[i]] <- Y_i_drop_NA
-} #end for loop for building Y
+
+RVSPY_subset_3 = RVSPY_subset_2 %>%
+  mutate(RV5 = roll_mean(RV1, 5, align = "right", fill = NA)) %>%
+  mutate(RV_22 = roll_mean(RV1, 22, align = "right", fill = NA))
+
+RVSPY_complete <- RVSPY_subset_3[complete.cases(RVSPY_subset_3), ]
+head(RVSPY_complete)
+
+RVSPY_complete <- data.frame(RVSPY_complete %>% mutate(donor = ifelse(Date %in% shock_dates,1,0)))
+
+RVSPY_complete$log_tomorrow_RV1 <- log(RVSPY_complete$tomorrow_RV1)
+
+RVSPY_complete[RVSPY_complete$rate_move == 1, "donor"] <- shock_dates_as_dates
+
+RVSPY_complete$donor = as.factor(RVSPY_complete$donor)
+
+RVSPY_complete$RV1_neg <- ifelse(RVSPY_complete$dl_close > 0, 0, RVSPY_complete$RV1)
+
+RVSPY_final <- xts(RVSPY_complete, order.by = RVSPY_complete$Date)
+
+RVSPY_final <- RVSPY_final[,c('tomorrow_RV1', 'RV1', 'RV5', 'RV_22', 'donor')]
+
+head(RVSPY_final)
+#Date index
+#First column is outcome
+#Last column is donor indicator
+#Columns in between are regressors
+
 
 #Now build X
 X <- list()
@@ -237,7 +248,7 @@ time_date <- gsub(" ", "", gsub(':', '', format(Sys.time(), "%a%b%d%X%Y")), fixe
 png_save_name <- paste("real_data_output_plots/savetime_"
                        ,time_date
                        ,'_'
-                       ,TSUS
+                       #,TSUS
                        ,'_'
                        ,paste(log_ret_covariates,collapse='-')
                        ,'_'

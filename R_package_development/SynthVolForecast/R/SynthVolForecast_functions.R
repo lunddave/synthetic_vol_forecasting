@@ -1178,27 +1178,19 @@ HAR <- function(Y_series_list
         X_i_final <- X_i_with_indicator
       }
 
-      print('We print the tail of the covariate df we use in GARCH model:')
+      print('We print the tail of the covariate df we use in the model:')
       print(tail(X_i_final))
 
-      fitted_garch <- garchx::garchx(Y_series_list[[i]][1:last_shock_point] #tk
-                                     , order = garch_order
-                                     , xreg = X_i_final
-                                     , backcast.values = NULL
-                                     , control = list(eval.max = 100000
-                                                      , iter.max = 1500000
-                                                      , rel.tol = 1e-8))
+      #Insert linear model here #tk
+      HAR_lm <- ()
 
       cat('\n===============================================================\n')
-      print(paste('Outputting GARCH estimates for donor series number ', i,'.', sep = ''))
-      print(fitted_garch)
-      print(paste('Outputting AIC for donor series number ', i,'.', sep = ''))
-      print(AIC(fitted_garch))
+      print()
       cat('\n===============================================================\n')
 
-      coef_test <- lmtest::coeftest(fitted_garch)
-      extracted_fixed_effect <- coef_test[dim(lmtest::coeftest(fitted_garch))[1], 1]
-      omega_star_hat_vec <- c(omega_star_hat_vec, extracted_fixed_effect)
+      coef_test <- lmtest::coeftest(HAR_lm)
+      extracted_fixed_effect <- coef_test[dim(lmtest::coeftest(HAR_lm))[1], 1]
+      omega_star_hat_vec <- c(omega_star_hat_vec, HAR_lm)
 
     } ## END loop for computing fixed effects
 
@@ -1214,36 +1206,22 @@ HAR <- function(Y_series_list
 
   if (is.null(covariate_indices) == TRUE){
 
-    fitted_garch <- garchx::garchx(Y_series_list[[1]][1:(integer_shock_time_vec[1])]
-                                   , order = garch_order
-                                   , xreg = NULL
-                                   , backcast.values = NULL
-                                   , control = list(eval.max = 100000
-                                                    , iter.max = 1500000
-                                                    , rel.tol = 1e-8))
+    HAR_lm_TSUS <- lm()
 
     cat('\n===============================================================\n')
-    print('Outputting the fitted GARCH for time series under study.')
-    print(fitted_garch)
-    print('Outputting AIC for time series under study.')
-    print(AIC(fitted_garch))
+    print()
     cat('\n===============================================================\n')
 
-    unadjusted_pred <- predict(fitted_garch, n.ahead = shock_length_vec[1])
+    unadjusted_pred <- predict(HAR_lm_TSUS, newdata = ) #tk
+
   }
   else{
     ## BEGIN fit GARCH to target series
-    fitted_garch <- garchx::garchx(Y_series_list[[1]][1:(integer_shock_time_vec[1])]
-                                   , order = garch_order
-                                   , xreg = covariates_series_list[[1]][1:(integer_shock_time_vec[1]),covariate_indices]
-                                   , backcast.values = NULL
-                                   , control = list(eval.max = 100000
-                                                    , iter.max = 1500000
-                                                    , rel.tol = 1e-8))
+    HAR_lm_TSUS <- lm()
 
     cat('\n===============================================================\n')
-    print('Outputting the fitted GARCH for the time series under study.')
-    print(fitted_garch)
+    print('Outputting the fitted model for the time series under study.')
+    print(HAR_lm_TSUS)
     cat('\n===============================================================\n')
 
     #Note: for forecasting, we use last-observed X value
@@ -1254,12 +1232,11 @@ HAR <- function(Y_series_list
                                                , byrow = TRUE)
 
     forecast_period <- (integer_shock_time_vec[1]):(integer_shock_time_vec[1]+shock_length_vec[1])
+
     mat_X_for_forecast <- cbind(Y_series_list[[1]][forecast_period]
                                 , X_replicated_for_forecast_length)
 
-    unadjusted_pred <- predict(fitted_garch
-                               , n.ahead = shock_length_vec[1]
-                               , newxreg = mat_X_for_forecast[,-1])
+    unadjusted_pred <- predict(HAR_lm_TSUS, newdata = shock_length_vec[1])
   }
 
   print('Now we get the adjusted predictions.')
@@ -1288,7 +1265,7 @@ HAR <- function(Y_series_list
 
   ## tk OUTPUT
   cat('--------------------------------------------------------------\n',
-      '-------------------SynthVolForecast Results-------------------','\n',
+      '-------------------HAR Results-------------------','\n',
       '--------------------------------------------------------------\n',
       'Donors:', n, '\n',  '\n',
       'Shock times:', shock_time_vec, '\n', '\n',
@@ -1307,9 +1284,10 @@ HAR <- function(Y_series_list
 
   ## PLOTS
 
+  #tk make plot_maker_HAR
   if (plots == TRUE){
     cat('\n User has opted to produce plots.','\n')
-    plot_maker_garch(fitted(fitted_garch)
+    plot_maker_HAR(fitted(fitted_garch)
                      ,shock_time_labels
                      ,integer_shock_time_vec
                      ,shock_length_vec
