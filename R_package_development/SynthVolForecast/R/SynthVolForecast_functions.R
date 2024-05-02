@@ -1039,24 +1039,24 @@ SynthVolForecast <- function(Y_series_list
 # Begin HAR
 
 ### START SynthVolForecast
-HAR <- function(Y_series_list
-                             ,covariates_series_list
-                             ,shock_time_vec
-                             ,shock_length_vec
-                             ,k=1 #does it make sense for a k-step ahead?
-                             ,dbw_scale = TRUE
-                             ,dbw_center = TRUE
-                             ,dbw_indices = NULL
-                             ,dbw_Y_lookback = c(0)
-                             ,dbw_princ_comp_input = NULL
-                             ,covariate_indices = NULL
-                             ,geometric_sets = NULL #tk
-                             ,common_series_assumption = FALSE
-                             ,plots = TRUE
-                             ,shock_time_labels = NULL
-                             ,ground_truth_vec = NULL
-                             ,Y_lookback_indices_input = list(seq(1,3,1))
-                             ,X_lookback_indices_input = rep(list(c(1)),length(dbw_indices))
+HAR <- function(Y
+               ,covariates_series_list
+               ,shock_date_vec
+               ,shock_time_vec
+               ,shock_length_vec
+               ,k=1 #does it make sense for a k-step ahead?
+               ,dbw_scale = TRUE
+               ,dbw_center = TRUE
+               ,dbw_indices = NULL
+               ,dbw_Y_lookback = c(0)
+               ,dbw_princ_comp_input = NULL
+               ,covariate_indices = NULL
+               ,geometric_sets = NULL #tk
+               ,plots = TRUE
+               ,shock_time_labels = NULL
+               ,ground_truth_vec = NULL
+               ,Y_lookback_indices_input = list(seq(1,3,1))
+               ,X_lookback_indices_input = rep(list(c(1)),length(dbw_indices))
 ){
   ### BEGIN Doc string
 
@@ -1085,13 +1085,13 @@ HAR <- function(Y_series_list
   ### END Doc string
 
   ### BEGIN Populate defaults
-  n <- length(Y_series_list) - 1
+  n <- length(Y) - 1
   ### END Populate defaults
 
   # Common series assumption is going to be big here!
 
   ## BEGIN Check that inputs are all comformable/acceptable
-  n <- length(Y_series_list) - 1 #tk
+  n <- length(Y) - 1 #tk
   ## END Check that inputs are all comformable/acceptable
 
   integer_shock_time_vec <- c() #mk
@@ -1127,7 +1127,7 @@ HAR <- function(Y_series_list
                     # normchoice = normchoice, #tk
                     # penalty_normchoice = penalty_normchoice,
                     # penalty_lambda = penalty_lambda
-                    Y = Y_series_list,
+                    Y = Y,
                     Y_lookback_indices = Y_lookback_indices_input,
                     X_lookback_indices = X_lookback_indices_input,
                     inputted_transformation = mean_square_y
@@ -1141,8 +1141,38 @@ HAR <- function(Y_series_list
   omega_star_hat_vec <- c()
 
   #tk
-  if (common_series_assumption == TRUE){ # This matters more for HA
-    print('tk TODO')
+  if (is.list(Y) == FALSE){
+
+    Y_with_donor_col <- data.frame(Y_series_list %>% mutate(donor = ifelse(Date %in% shock_date_vec,1,0)))
+
+    Y_with_donor_col[Y_with_donor_col$donor == 1, "donor"] <- shock_date_vec
+
+    Y_with_donor_col$donor = as.factor(RVSPY_complete$donor)
+
+    m1 = lm(tomorrow_RV1 ~ RV1 + RV5 + RV_22 + RV1_neg + rate_cut, data = qux)
+    summary(m1)
+    plot(m1)
+
+    forecast_period = qux[qux$Date == as.Date("2018-12-20") - 1, ]
+
+    newdat <- forecast_period[,-c(1)] #drop the outcome var
+
+    newdat$donor = as.factor(newdat$donor)
+
+    pred = predict(m1, newdata = newdat)
+
+    no_events <- length(Fed_rate_cuts)
+    no_coef <- length(coef(m1))
+
+    FE_mean <- mean(coef(m1)[(no_coef-no_events+1):no_coef])
+
+    adjusted_pred <- pred + FE_mean
+
+    QL_loss_adjusted <- QL(adjusted_pred, forecast_period$tomorrow_RV1)
+    QL_loss_unadjusted <- QL(pred, forecast_period$tomorrow_RV1)
+    QL_loss_unadjusted > QL_loss_adjusted
+
+    #tk DO I need this?
 
     #step 1: create dummy vector with n+1 shocks
     #NOTA BENE: n different fixed effects, or
@@ -1182,7 +1212,7 @@ HAR <- function(Y_series_list
       print(tail(X_i_final))
 
       #Insert linear model here #tk
-      HAR_lm <- ()
+      #HAR_lm <- ()
 
       cat('\n===============================================================\n')
       print()

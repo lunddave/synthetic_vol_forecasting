@@ -217,13 +217,13 @@ head(RVSPY_complete)
 
 RVSPY_complete <- data.frame(RVSPY_complete %>% mutate(donor = ifelse(Date %in% shock_dates,1,0)))
 
-RVSPY_complete$log_tomorrow_RV1 <- log(RVSPY_complete$tomorrow_RV1)
+#RVSPY_complete$log_tomorrow_RV1 <- log(RVSPY_complete$tomorrow_RV1)
 
 RVSPY_complete[RVSPY_complete$rate_move == 1, "donor"] <- shock_dates_as_dates
 
 RVSPY_complete$donor = as.factor(RVSPY_complete$donor)
 
-RVSPY_complete$RV1_neg <- ifelse(RVSPY_complete$dl_close > 0, 0, RVSPY_complete$RV1)
+# RVSPY_complete$RV1_neg <- ifelse(RVSPY_complete$dl_close > 0, 0, RVSPY_complete$RV1)
 
 RVSPY_final <- xts(RVSPY_complete, order.by = RVSPY_complete$Date)
 
@@ -265,20 +265,23 @@ png_save_name <- paste("real_data_output_plots/savetime_"
 png(png_save_name,width = 800, height = 600)
 
 #Now run the algorithm
-temp <- SynthVolForecast(Y
-                         ,X
-                         ,shock_time_vec = unlist(shock_dates)
-                         ,rep(k, n+1)
-                         ,dbw_scale = TRUE
-                         ,dbw_center = TRUE
-                         ,dbw_indices = NULL
-                         #,covariate_indices = length(X)
-                         ,garch_order = c(1,1,0)
-                         ,plots = TRUE
-                         ,shock_time_labels = names(shock_dates)
-                         ,ground_truth_vec = ground_truth
-                         ,Y_lookback_indices = list(seq(1,30,1))
-                         ,X_lookback_indices = rep(list(c(1)),ncol(X[[1]]))
-                         )
+temp <- HAR(RVSPY_final
+                        ,covariates_series_list
+                        ,shock_time_vec
+                        ,shock_length_vec
+                        ,k=1 #does it make sense for a k-step ahead?
+                        ,dbw_scale = TRUE
+                        ,dbw_center = TRUE
+                        ,dbw_indices = NULL
+                        ,dbw_Y_lookback = c(0)
+                        ,dbw_princ_comp_input = NULL
+                        ,covariate_indices = NULL
+                        ,geometric_sets = NULL #tk
+                        ,plots = TRUE
+                        ,shock_time_labels = NULL
+                        ,ground_truth_vec = NULL
+                        ,Y_lookback_indices_input = list(seq(1,3,1))
+                        ,X_lookback_indices_input = rep(list(c(1)),length(dbw_indices))
+)
 
 dev.off()
