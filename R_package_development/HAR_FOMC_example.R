@@ -198,15 +198,15 @@ for (i in 1:length(shock_dates)){
 RVSPY <- as.xts(SPYRM$RV1, order.by = SPYRM$DT)
 
 RVSPY_subset <- data.frame(
-  Date = SPYRM$DT,
-  RV1 = SPYRM$RV1,
-  close = SPYRM$CLOSE
+  Date = SPYRM$DT
+  ,RV1 = SPYRM$RV1
+  #,close = SPYRM$CLOSE
 )
 
-RVSPY_subset_2 <- foo %>%
-  mutate(tomorrow_RV1 = lead(RV1)) %>%
-  mutate(dl_close = c(NA,diff(log(close))))
+RVSPY_subset_2 <- RVSPY_subset %>%
+  mutate(tomorrow_RV1 = lead(RV1))
 
+# RVSPY_subset_3 <- RVSPY_subset_3 %>% mutate(dl_close = c(NA,diff(log(close))))
 
 RVSPY_subset_3 = RVSPY_subset_2 %>%
   mutate(RV5 = roll_mean(RV1, 5, align = "right", fill = NA)) %>%
@@ -215,21 +215,22 @@ RVSPY_subset_3 = RVSPY_subset_2 %>%
 RVSPY_complete <- RVSPY_subset_3[complete.cases(RVSPY_subset_3), ]
 head(RVSPY_complete)
 
-RVSPY_complete <- data.frame(RVSPY_complete %>% mutate(donor = ifelse(Date %in% shock_dates,1,0)))
+#RVSPY_complete <- data.frame(RVSPY_complete %>% mutate(donor = ifelse(Date %in% shock_dates,1,0)))
 
 #RVSPY_complete$log_tomorrow_RV1 <- log(RVSPY_complete$tomorrow_RV1)
 
-RVSPY_complete[RVSPY_complete$rate_move == 1, "donor"] <- shock_dates_as_dates
+#RVSPY_complete[RVSPY_complete$rate_move == 1, "donor"] <- shock_dates_as_dates
 
-RVSPY_complete$donor = as.factor(RVSPY_complete$donor)
+#RVSPY_complete$donor = as.factor(RVSPY_complete$donor)
 
 # RVSPY_complete$RV1_neg <- ifelse(RVSPY_complete$dl_close > 0, 0, RVSPY_complete$RV1)
 
 RVSPY_final <- xts(RVSPY_complete, order.by = RVSPY_complete$Date)
 
-RVSPY_final <- RVSPY_final[,c('tomorrow_RV1', 'RV1', 'RV5', 'RV_22', 'donor')]
+RVSPY_final <- RVSPY_final[,c('tomorrow_RV1', 'RV1', 'RV5', 'RV_22')]
 
 head(RVSPY_final)
+
 #Date index
 #First column is outcome
 #Last column is donor indicator
@@ -266,8 +267,8 @@ png(png_save_name,width = 800, height = 600)
 
 #Now run the algorithm
 temp <- HAR(RVSPY_final
-                        ,covariates_series_list
-                        ,shock_time_vec
+                        ,X
+                        ,shock_dates
                         ,shock_length_vec
                         ,k=1 #does it make sense for a k-step ahead?
                         ,dbw_scale = TRUE
@@ -277,7 +278,7 @@ temp <- HAR(RVSPY_final
                         ,dbw_princ_comp_input = NULL
                         ,covariate_indices = NULL
                         ,geometric_sets = NULL #tk
-                        ,plots = TRUE
+                        ,plots = FALSE #tk
                         ,shock_time_labels = NULL
                         ,ground_truth_vec = NULL
                         ,Y_lookback_indices_input = list(seq(1,3,1))

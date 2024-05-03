@@ -1041,7 +1041,6 @@ SynthVolForecast <- function(Y_series_list
 ### START SynthVolForecast
 HAR <- function(Y
                ,covariates_series_list
-               ,shock_date_vec
                ,shock_time_vec
                ,shock_length_vec
                ,k=1 #does it make sense for a k-step ahead?
@@ -1084,15 +1083,12 @@ HAR <- function(Y
 
   ### END Doc string
 
-  ### BEGIN Populate defaults
-  n <- length(Y) - 1
-  ### END Populate defaults
+  if (is.null(dbw_indices) == TRUE) {dbw_indices <- 1:ncol(covariates_series_list[[1]])}
 
-  # Common series assumption is going to be big here!
+  cat('We print the dbw_indices')
+  print(length(dbw_indices))
 
-  ## BEGIN Check that inputs are all comformable/acceptable
-  n <- length(Y) - 1 #tk
-  ## END Check that inputs are all comformable/acceptable
+  n <- length(X) - 1 #tk
 
   integer_shock_time_vec <- c() #mk
   integer_shock_time_vec_for_convex_hull_based_optimization <- c() #mk
@@ -1143,23 +1139,24 @@ HAR <- function(Y
   #tk
   if (is.list(Y) == FALSE){
 
-    Y_with_donor_col <- data.frame(Y_series_list %>% mutate(donor = ifelse(Date %in% shock_date_vec,1,0)))
+    Y_with_donor_col <- data.frame(Y_series_list %>% mutate(donor = ifelse(Date %in% shock_time_vec,1,0)))
 
-    Y_with_donor_col[Y_with_donor_col$donor == 1, "donor"] <- shock_date_vec
+    Y_with_donor_col[Y_with_donor_col$donor == 1, "donor"] <- shock_time_vec
 
-    Y_with_donor_col$donor = as.factor(RVSPY_complete$donor)
+    Y_with_donor_col$donor = as.factor(Y_with_donor_col$donor)
 
-    m1 = lm(tomorrow_RV1 ~ RV1 + RV5 + RV_22 + RV1_neg + rate_cut, data = qux)
+    m1 = lm(Y_with_donor_col[,1] ~. , data = Y_with_donor_col[,-c(1)])
+
+    cat('We inspect the fitted linear model.')
     summary(m1)
-    plot(m1)
 
-    forecast_period = qux[qux$Date == as.Date("2018-12-20") - 1, ]
+    forecast_period = Y_with_donor_col[Y_with_donor_col$Date == as.Date(shock_time_vec[1]) - 1, ]
 
     newdat <- forecast_period[,-c(1)] #drop the outcome var
 
-    newdat$donor = as.factor(newdat$donor)
+    newdat$donor <- as.factor(newdat$donor)
 
-    pred = predict(m1, newdata = newdat)
+    pred <- predict(m1, newdata = newdat)
 
     no_events <- length(Fed_rate_cuts)
     no_coef <- length(coef(m1))
@@ -1171,16 +1168,6 @@ HAR <- function(Y
     QL_loss_adjusted <- QL(adjusted_pred, forecast_period$tomorrow_RV1)
     QL_loss_unadjusted <- QL(pred, forecast_period$tomorrow_RV1)
     QL_loss_unadjusted > QL_loss_adjusted
-
-    #tk DO I need this?
-
-    #step 1: create dummy vector with n+1 shocks
-    #NOTA BENE: n different fixed effects, or
-    # 1 fixed effect estimated at n shocks?
-    vec_of_zeros <- rep(0, integer_shock_time_vec[i])
-    vec_of_ones <- rep(1, shock_length_vec[i])
-    post_shock_indicator <- c(vec_of_zeros, vec_of_ones)
-    last_shock_point <- integer_shock_time_vec[i] + shock_length_vec[i]
 
     #step 2: fit model
 
