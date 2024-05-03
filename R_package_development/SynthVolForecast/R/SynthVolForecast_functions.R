@@ -1083,6 +1083,9 @@ HAR <- function(Y
 
   ### END Doc string
 
+  #Big thing to consider: what needs to change when Y is a just a df?
+
+  # If the dbw_indices are not specified, we use all the covariates in the dbw
   if (is.null(dbw_indices) == TRUE) {dbw_indices <- 1:ncol(covariates_series_list[[1]])}
 
   cat('We print the dbw_indices')
@@ -1095,7 +1098,7 @@ HAR <- function(Y
 
   ## BEGIN Check whether shock_time_vec is int/date
 
-  for (i in 1:(n+1)){
+  for (i in 1:length(shock_time_vec)){
 
     if (is.character(shock_time_vec[i]) == TRUE){
       integer_shock_time_vec[i] <- which(index(Y[[i]]) == shock_time_vec[i]) #mk
@@ -1108,40 +1111,32 @@ HAR <- function(Y
 
   }
 
+  print(integer_shock_time_vec)
+  print(integer_shock_time_vec_for_convex_hull_based_optimization)
+
   ## END Check whether shock_time_vec is int/date
-
-  ## BEGIN calculate weight vector
-  dbw_output <- dbw(covariates_series_list, #tk
-                    dbw_indices,
-                    integer_shock_time_vec_for_convex_hull_based_optimization,
-                    scale = dbw_scale,
-                    center = dbw_center,
-                    sum_to_1 = TRUE, #tk
-                    princ_comp_count = dbw_princ_comp_input,
-                    bounded_below_by = 0, #tk
-                    bounded_above_by = 1, #tk
-                    # normchoice = normchoice, #tk
-                    # penalty_normchoice = penalty_normchoice,
-                    # penalty_lambda = penalty_lambda
-                    Y = Y,
-                    Y_lookback_indices = Y_lookback_indices_input,
-                    X_lookback_indices = X_lookback_indices_input,
-                    inputted_transformation = mean_square_y
-  )
-
-  w_hat <- dbw_output[[1]]
-
-  ## END calculate weight vector
 
   ## BEGIN estimate fixed effects in donors
   omega_star_hat_vec <- c()
 
-  #tk
-  if (is.list(Y) == FALSE){
+  #tk CASE where Y is just a df
+  if (is.data.frame(Y) == TRUE){
 
-    Y_with_donor_col <- data.frame(Y_series_list %>% mutate(donor = ifelse(Date %in% shock_time_vec,1,0)))
+    print('Y is a dataframe')
 
-    Y_with_donor_col[Y_with_donor_col$donor == 1, "donor"] <- shock_time_vec
+    shock_dates_as_dates <- as.Date(as.Date(unlist(shock_dates)))[-1]
+
+    print(shock_dates_as_dates)
+
+    Y_with_donor_col <- data.frame(Y %>% mutate(donor = ifelse(index(Y) %in% shock_dates_as_dates,1,0)))
+
+    print('Now we use actual dates for the FE estimates.')
+
+    Y_with_donor_col[Y_with_donor_col$donor == 1, "donor"] <- shock_dates_as_dates
+
+    print(Y_with_donor_col)
+
+    print('Now we make the donor column as factor.')
 
     Y_with_donor_col$donor = as.factor(Y_with_donor_col$donor)
 
@@ -1150,7 +1145,7 @@ HAR <- function(Y
     cat('We inspect the fitted linear model.')
     summary(m1)
 
-    forecast_period = Y_with_donor_col[Y_with_donor_col$Date == as.Date(shock_time_vec[1]) - 1, ]
+    forecast_period = Y_with_donor_col[Y_with_donor_col$Date == as.Date(shock_dates_as_dates[1]) - 1, ]
 
     newdat <- forecast_period[,-c(1)] #drop the outcome var
 
@@ -1177,6 +1172,8 @@ HAR <- function(Y
 
     for (i in 2:(n+1)){
 
+      print('Y is not a dataframe.')
+
       # Make indicator variable w/ a 1 at only T*+1, T*+2,...,T*+shock_length_vec[i]
       vec_of_zeros <- rep(0, integer_shock_time_vec[i])
       vec_of_ones <- rep(1, shock_length_vec[i])
@@ -1185,7 +1182,7 @@ HAR <- function(Y
 
       #subset X_i
       if (is.null(covariate_indices) == TRUE) {
-        X_i_penultimate <- cbind(Y_series_list[[i]][1:last_shock_point] #tk
+        X_i_penultimate <- cbind(Y[[i]][1:last_shock_point] #tk
                                  , post_shock_indicator)
         X_i_final <- X_i_penultimate[,2]
       }
@@ -1214,6 +1211,29 @@ HAR <- function(Y
   }
 
   ## END estimate fixed effects in donors
+
+  ## BEGIN calculate weight vector
+  dbw_output <- dbw(covariates_series_list, #tk
+                    dbw_indices,
+                    integer_shock_time_vec_for_convex_hull_based_optimization,
+                    scale = dbw_scale,
+                    center = dbw_center,
+                    sum_to_1 = TRUE, #tk
+                    princ_comp_count = dbw_princ_comp_input,
+                    bounded_below_by = 0, #tk
+                    bounded_above_by = 1, #tk
+                    # normchoice = normchoice, #tk
+                    # penalty_normchoice = penalty_normchoice,
+                    # penalty_lambda = penalty_lambda
+                    Y = Y,
+                    Y_lookback_indices = Y_lookback_indices_input,
+                    X_lookback_indices = X_lookback_indices_input,
+                    inputted_transformation = mean_square_y
+  )
+  ## END calculate weight vector
+
+
+  w_hat <- dbw_output[[1]]
 
   ## BEGIN compute linear combination of fixed effects
   omega_star_hat <- w_hat %*% omega_star_hat_vec
@@ -1250,7 +1270,7 @@ HAR <- function(Y
 
     forecast_period <- (integer_shock_time_vec[1]):(integer_shock_time_vec[1]+shock_length_vec[1])
 
-    mat_X_for_forecast <- cbind(Y_series_list[[1]][forecast_period]
+    mat_X_for_forecast <- cbind(Y[[1]][forecast_period]
                                 , X_replicated_for_forecast_length)
 
     unadjusted_pred <- predict(HAR_lm_TSUS, newdata = shock_length_vec[1])

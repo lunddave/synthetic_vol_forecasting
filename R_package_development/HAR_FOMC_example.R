@@ -21,6 +21,7 @@ packs <- c('quantmod'
            ,'highfrequency'
            ,'tidyverse'
            ,'xts'
+           ,'dplyr'
 )
 
 suppressPackageStartupMessages(lapply(packs, require, character.only = TRUE))
@@ -225,9 +226,13 @@ head(RVSPY_complete)
 
 # RVSPY_complete$RV1_neg <- ifelse(RVSPY_complete$dl_close > 0, 0, RVSPY_complete$RV1)
 
-RVSPY_final <- xts(RVSPY_complete, order.by = RVSPY_complete$Date)
+rownames(RVSPY_complete) <- RVSPY_complete$Date
 
-RVSPY_final <- RVSPY_final[,c('tomorrow_RV1', 'RV1', 'RV5', 'RV_22')]
+head(RVSPY_complete)
+
+# RVSPY_final <- xts(RVSPY_complete, order.by = RVSPY_complete$Date)
+
+RVSPY_final <- RVSPY_complete[,c('tomorrow_RV1', 'RV1', 'RV5', 'RV_22')]
 
 head(RVSPY_final)
 
