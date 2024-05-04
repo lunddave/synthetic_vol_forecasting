@@ -1154,7 +1154,9 @@ HAR <- function(Y
     cat('We inspect the fitted linear model.')
     print(summary(m1))
 
-    forecast_period <- Y[row.names(Y) == as.Date(shock_dates_as_dates[1]) - 1, ] #tk
+    forecast_period <- Y_with_donor_col[row.names(Y_with_donor_col) == as.Date(shock_dates_as_dates[1]) - 1, ] #tk
+
+    outcome <- forecast_period[,1]
 
     print('Inspect the forecast period:')
     print(head(forecast_period))
@@ -1174,6 +1176,86 @@ HAR <- function(Y
   else{
 
     print('Y is not a dataframe.')
+
+    for (i in 1:length(shock_time_vec)){
+
+      if (is.character(shock_time_vec[i]) == TRUE){
+        integer_shock_time_vec[i] <- which(index(Y[[i]]) == shock_time_vec[i]) #mk
+        integer_shock_time_vec_for_convex_hull_based_optimization[i] <- which(index(covariates_series_list[[i]]) == shock_time_vec[i]) #mk
+      }
+      else{
+        integer_shock_time_vec[i] <- shock_time_vec[i]
+        integer_shock_time_vec_for_convex_hull_based_optimization[i] <- shock_time_vec[i]
+      }
+
+    } #end of loop
+
+    for (i in 2:(n+1)){
+
+      # Make indicator variable w/ a 1 at only T*+1, T*+2,...,T*+shock_length_vec[i]
+      vec_of_zeros <- rep(0, integer_shock_time_vec[i])
+      vec_of_ones <- rep(1, shock_length_vec[i])
+      post_shock_indicator <- c(vec_of_zeros, vec_of_ones)
+      last_shock_point <- integer_shock_time_vec[i] + shock_length_vec[i]
+
+      #subset X_i
+      if (is.null(covariate_indices) == TRUE) {
+        X_i_penultimate <- cbind(Y[[i]][1:last_shock_point] #tk
+                                 , post_shock_indicator)
+        X_i_final <- X_i_penultimate[,2]
+      }
+      else {
+        X_i_subset <- covariates_series_list[[i]][1:last_shock_point,covariate_indices]
+        X_i_with_indicator <- cbind(X_i_subset, post_shock_indicator)
+        X_i_final <- X_i_with_indicator
+      }
+
+      print('We print the tail of the covariate df we use in the model:')
+      print(tail(X_i_final))
+
+      #Insert linear model here #tk
+      #HAR_lm <- ()
+
+      cat('\n===============================================================\n')
+      print()
+      cat('\n===============================================================\n')
+
+      omega_star_hat_vec <- c(omega_star_hat_vec, HAR_lm)
+
+      ## BEGIN fit GARCH to target series
+
+      if (is.null(covariate_indices) == TRUE){
+
+        HAR_lm_TSUS <- lm()
+
+        cat('\n===============================================================\n')
+        cat('\n===============================================================\n')
+
+        unadjusted_pred <- predict(HAR_lm_TSUS, newdata = ) #tk
+
+      }
+      else{
+        ## BEGIN fit GARCH to target series
+        HAR_lm_TSUS <- lm()
+
+        cat('\n===============================================================\n')
+        print('Outputting the fitted model for the time series under study.')
+        print(HAR_lm_TSUS)
+        cat('\n===============================================================\n')
+
+        #Note: for forecasting, we use last-observed X value
+        X_to_use_in_forecast <- covariates_series_list[[1]][integer_shock_time_vec[1],covariate_indices]
+
+        X_replicated_for_forecast_length <- matrix(rep(X_to_use_in_forecast, k)
+                                                   , nrow = shock_length_vec[1]
+                                                   , byrow = TRUE)
+
+        forecast_period <- (integer_shock_time_vec[1]):(integer_shock_time_vec[1]+shock_length_vec[1])
+
+        mat_X_for_forecast <- cbind(Y[[1]][forecast_period]
+                                    , X_replicated_for_forecast_length)
+
+        unadjusted_pred <- predict(HAR_lm_TSUS, newdata = shock_length_vec[1])
 
   }
 
@@ -1230,14 +1312,8 @@ HAR <- function(Y
 
   adjusted_pred <- unadjusted_pred + omega_star_hat
 
-  if (is.null(ground_truth_vec) == TRUE){
-    QL_loss_unadjusted_pred <- NA
-    QL_loss_adjusted_pred <- NA
-  }
-  else {
-    QL_loss_adjusted <- QL(adjusted_pred, forecast_period$tomorrow_RV1) #tk
-    QL_loss_unadjusted <- QL(unadjusted_pred, forecast_period$tomorrow_RV1) #tk
-  }
+  QL_loss_adjusted <- QL(adjusted_pred, outcome) #tk
+  QL_loss_unadjusted <- QL(unadjusted_pred, outcome) #tk
 
   list_of_linear_combinations <- list(w_hat)
   list_of_forecasts <- list(unadjusted_pred, adjusted_pred)
@@ -1265,8 +1341,8 @@ HAR <- function(Y
       'Adjusted Forecast:', adjusted_pred,'\n', '\n',
       'Arithmetic-Mean-Based Forecast:',arithmetic_mean_based_pred,'\n','\n',
       'Ground Truth (estimated by realized volatility):', ground_truth_vec,'\n', '\n',
-      'QL Loss of unadjusted:', QL_loss_unadjusted_pred,'\n', '\n',
-      'QL Loss of adjusted:', QL_loss_adjusted_pred,'\n', '\n'
+      'QL Loss of unadjusted:', QL_loss_unadjusted,'\n', '\n',
+      'QL Loss of adjusted:', QL_loss_adjusted,'\n', '\n'
   )
 
 
