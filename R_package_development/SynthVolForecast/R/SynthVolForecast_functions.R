@@ -34,9 +34,6 @@ dbw <- function(X
   # X[[1]] should be the covariate of the time series to predict
   # X[[k]] for k = 2,...,n+1 are covariates for donors
 
-  print('We print the Y from inside dbw function:')
-  print(class(Y))
-
   # number of time series for pool
   n <- length(X) - 1
 
@@ -63,72 +60,38 @@ dbw <- function(X
     print('User has provided Y_lookback_indices, so we include them.')
     X_lookback_indices <- c(Y_lookback_indices, X_lookback_indices)
 
-    print(X_lookback_indices)
-
-    print('Have we reach the point we have used lookback indices?')
-
-    X_Y_combiner_for_dataframe <- function(y,x) {
-
-      print('We print the transformation and its class')
-      print(inputted_transformation)
-      print(class(inputted_transformation))
-
-      print(class(y))
-
-      transformed_series <- inputted_transformation(y)
-
-      print('Transformation complete.')
-
-      print('Now we merge Y and X')
-
-      merged <- merge(transformed_series, x, by="row.names", all=TRUE) #tk we need to change [,2]
-
-      return(merged)
-
-    } #end X_Y_combiner_for_dataframe
-
     X_Y_combiner <- function(y,x) {
 
-          print('We print the transformation and its class')
-          print(inputted_transformation)
-          print(class(inputted_transformation))
+          # print('We print the transformation and its class')
+          # print(inputted_transformation)
+          # print(class(inputted_transformation))
 
-          transformed_series <- inputted_transformation(y)
+          #transformed_series <- inputted_transformation(y) #tk
 
-          print('Transformation complete.')
+          transformed_series <- y
 
-          return(cbind(transformed_series,x))
+          return(merge(transformed_series,x, all = FALSE))
 
     } #end X_Y_combiner
 
-    #Now we create a list with Y in it, if Y is a just a dataframe
-    if (is.data.frame(Y) == TRUE){
+    print('We are about to combine X_subset1 and Y...')
+    print(class(Y))
+    print(length(Y))
+    print(class(X_subset1))
+    print(length(X_subset1))
 
-      print("Y is a dataframe.")
-
-      combined_X <- mapply(X_Y_combiner
-                           , y = Y
-                           , x = X_subset1
-                           , SIMPLIFY = FALSE)
-    }
-    else {
-      combined_X <- mapply(X_Y_combiner
-                           , y = Y
-                           , x = X_subset1
-                           , SIMPLIFY = FALSE)
-    }
+    combined_X <- mapply(X_Y_combiner
+                         , y = Y
+                         , x = X_subset1
+                         , SIMPLIFY = FALSE)
 
   }
-
   else{combined_X <- X_subset1}
 
   row_returner <- function(df, stv){
-    print(paste('Shock occurs at ', stv, sep = ''))
+    #print(paste('Shock occurs at ', stv, sep = ''))
     return(df[1:(stv),])
   }
-
-  print('We print the shock_time_vec:')
-  print(shock_time_vec)
 
   X_subset2 <- mapply(row_returner, df = combined_X, stv = shock_time_vec, SIMPLIFY=FALSE)
 
@@ -182,8 +145,12 @@ dbw <- function(X
     }
 
     X1 <- dat[1, , drop = FALSE]
-
     X0 <- split(dat[-1,],seq(nrow(dat[-1,]))) #tk what is split doing?
+
+    print('We inspect X1.')
+    print(X1)
+    print('We inspect X0.')
+    print(X0)
 
   # objective function
   weightedX0 <- function(W) {
@@ -1084,24 +1051,25 @@ SynthVolForecast <- function(Y_series_list
 } ### END SynthVolForecast
 
 
+
 ### START HAR
 HAR <- function(Y
-               ,covariates_series_list
-               ,shock_time_vec
-               ,shock_length_vec
-               ,k=1 #does it make sense for a k-step ahead?
-               ,dbw_scale = TRUE
-               ,dbw_center = TRUE
-               ,dbw_indices = 1:ncol(covariates_series_list[[1]])
-               ,dbw_Y_lookback = c(0)
-               ,dbw_princ_comp_input = NULL
-               ,covariate_indices = NULL
-               ,geometric_sets = NULL #tk
-               ,plots = TRUE
-               ,shock_time_labels = NULL
-               ,ground_truth_vec = NULL
-               ,Y_lookback_indices_input = list(seq(1,3,1))
-               ,X_lookback_indices_input = rep(list(c(1)),length(dbw_indices))
+                ,covariates_series_list
+                ,shock_time_vec
+                ,shock_length_vec
+                ,k=1 #does it make sense for a k-step ahead?
+                ,dbw_scale = TRUE
+                ,dbw_center = TRUE
+                ,dbw_indices = 1:ncol(covariates_series_list[[1]])
+                ,dbw_Y_lookback = c(0)
+                ,dbw_princ_comp_input = NULL
+                ,covariate_indices = NULL
+                ,geometric_sets = NULL #tk
+                ,plots = TRUE
+                ,shock_time_labels = NULL
+                ,ground_truth_vec = NULL
+                ,Y_lookback_indices_input = list(seq(1,3,1))
+                ,X_lookback_indices_input = rep(list(c(1)),length(dbw_indices))
 ){
   ### BEGIN Doc string
 
@@ -1130,69 +1098,41 @@ HAR <- function(Y
 
   #Big thing to consider: what needs to change when Y is a just a df?
 
-  cat('We print the dbw_indices')
-  print(dbw_indices)
-
   n <- length(X) - 1 #tk
 
   integer_shock_time_vec <- c() #mk
   integer_shock_time_vec_for_convex_hull_based_optimization <- c() #mk
 
-  ## BEGIN Check whether shock_time_vec is int/date
-
-if (is.data.frame(Y) == TRUE){
-  for (i in 1:length(shock_time_vec)){
-
-    print('Y is a dataframe')
-
-    if (is.character(shock_time_vec[i]) == TRUE){
-      integer_shock_time_vec[i] <- which(row.names(Y) == shock_time_vec[i]) #mk
-      integer_shock_time_vec_for_convex_hull_based_optimization[i] <- which(index(covariates_series_list[[i]]) == shock_time_vec[i]) #mk
-    }
-    else{
-      integer_shock_time_vec[i] <- shock_time_vec[i]
-      integer_shock_time_vec_for_convex_hull_based_optimization[i] <- shock_time_vec[i]
-    }
-
-  }
-}
-else{
-  for (i in 1:length(shock_time_vec)){
-
-    if (is.character(shock_time_vec[i]) == TRUE){
-      integer_shock_time_vec[i] <- which(index(Y[[i]]) == shock_time_vec[i]) #mk
-      integer_shock_time_vec_for_convex_hull_based_optimization[i] <- which(index(covariates_series_list[[i]]) == shock_time_vec[i]) #mk
-    }
-    else{
-      integer_shock_time_vec[i] <- shock_time_vec[i]
-      integer_shock_time_vec_for_convex_hull_based_optimization[i] <- shock_time_vec[i]
-    }
-
-  }
-}
-
-  print('We print the integers of the shock times.')
-  print(integer_shock_time_vec)
-
-  print('We print the booleans for the shock times.')
-  print(integer_shock_time_vec_for_convex_hull_based_optimization)
-
-  ## END Check whether shock_time_vec is int/date
-
-  ## BEGIN estimate fixed effects in donors
   omega_star_hat_vec <- c()
 
-  #tk CASE where Y is just a df
+
   if (is.data.frame(Y) == TRUE){
 
     print('Y is a dataframe')
 
-    shock_dates_as_dates <- as.Date(as.Date(unlist(shock_dates)))[-1]
+    ## BEGIN Check whether shock_time_vec is int/date
+
+    for (i in 1:length(shock_time_vec)){
+
+      print(paste('The ', i, 'th shock time is ', shock_time_vec[i], sep = ''))
+
+      if (is.character(shock_time_vec[i]) == TRUE){
+        integer_shock_time_vec[i] <- which(row.names(Y) == shock_time_vec[i]) #mk
+        print("We print the X index at the shock time")
+        print(index(covariates_series_list[[i]]))
+        integer_shock_time_vec_for_convex_hull_based_optimization[i] <- which(index(covariates_series_list[[i]]) == shock_time_vec[i]) #mk
+      }
+      else{
+        integer_shock_time_vec[i] <- shock_time_vec[i]
+        integer_shock_time_vec_for_convex_hull_based_optimization[i] <- shock_time_vec[i]
+      }
+
+    }
+    ## END Check whether shock_time_vec is int/date
+
+    shock_dates_as_dates <- as.Date(as.Date(unlist(shock_dates)))
 
     print(shock_dates_as_dates)
-
-    print('Here is the index of Y')
-    print(row.names(Y))
 
     Y_with_donor_col <- data.frame(Y %>% mutate(donor = ifelse(row.names(RVSPY_final) %in% shock_dates_as_dates,1,0)))
 
@@ -1203,96 +1143,55 @@ else{
 
     Y_with_donor_col[Y_with_donor_col$donor == 1, "donor"] <- shock_dates_as_dates
 
-    #print(Y_with_donor_col)
-
     print('Now we make the donor column as factor.')
 
     Y_with_donor_col$donor = as.factor(Y_with_donor_col$donor)
 
     training_period <- Y_with_donor_col[row.names(Y_with_donor_col) < as.Date(shock_dates_as_dates[1]) , ] #tk
 
-    m1 <- lm(Y_with_donor_col[,1] ~. , data = Y_with_donor_col[,-c(1)])
+    m1 <- lm(training_period[,1] ~. , data = training_period[,-c(1)])
 
     cat('We inspect the fitted linear model.')
     print(summary(m1))
 
-    forecast_period = Y_with_donor_col[Y_with_donor_col$Date == as.Date(shock_dates_as_dates[1]) - 1, ]
+    forecast_period <- Y[row.names(Y) == as.Date(shock_dates_as_dates[1]) - 1, ] #tk
+
+    print('Inspect the forecast period:')
+    print(head(forecast_period))
 
     newdat <- forecast_period[,-c(1)] #drop the outcome var
 
     newdat$donor <- as.factor(newdat$donor)
 
-    pred <- predict(m1, newdata = newdat)
+    unadjusted_pred <- predict(m1, newdata = newdat)
 
     no_events <- length(shock_dates_as_dates) - 1
     no_coef <- length(coef(m1))
 
     omega_star_hat_vec <- c(omega_star_hat_vec, coef(m1)[(no_coef-no_events+1):no_coef])
 
-    FE_mean <- mean(coef(m1)[(no_coef-no_events+1):no_coef])
-
-    adjusted_pred <- pred + FE_mean
-
-    QL_loss_adjusted <- QL(adjusted_pred, forecast_period$tomorrow_RV1)
-    QL_loss_unadjusted <- QL(pred, forecast_period$tomorrow_RV1)
-    QL_loss_unadjusted > QL_loss_adjusted
-
-    #step 2: fit model
-
   }
-
   else{
 
-    for (i in 2:(n+1)){
-
-      print('Y is not a dataframe.')
-
-      # Make indicator variable w/ a 1 at only T*+1, T*+2,...,T*+shock_length_vec[i]
-      vec_of_zeros <- rep(0, integer_shock_time_vec[i])
-      vec_of_ones <- rep(1, shock_length_vec[i])
-      post_shock_indicator <- c(vec_of_zeros, vec_of_ones)
-      last_shock_point <- integer_shock_time_vec[i] + shock_length_vec[i]
-
-      #subset X_i
-      if (is.null(covariate_indices) == TRUE) {
-        X_i_penultimate <- cbind(Y[[i]][1:last_shock_point] #tk
-                                 , post_shock_indicator)
-        X_i_final <- X_i_penultimate[,2]
-      }
-      else {
-        X_i_subset <- covariates_series_list[[i]][1:last_shock_point,covariate_indices]
-        X_i_with_indicator <- cbind(X_i_subset, post_shock_indicator)
-        X_i_final <- X_i_with_indicator
-      }
-
-      print('We print the tail of the covariate df we use in the model:')
-      print(tail(X_i_final))
-
-      #Insert linear model here #tk
-      #HAR_lm <- ()
-
-      cat('\n===============================================================\n')
-      print()
-      cat('\n===============================================================\n')
-
-      omega_star_hat_vec <- c(omega_star_hat_vec, HAR_lm)
-
-    } ## END loop for computing fixed effects
+    print('Y is not a dataframe.')
 
   }
 
-  ## END estimate fixed effects in donors
+  print('We print the integers of the shock times.')
+  print(integer_shock_time_vec)
 
-  print('Again we print the dbw_indices')
+  print('We print the booleans for the shock times.')
+  print(integer_shock_time_vec_for_convex_hull_based_optimization) #tk seems wrong
 
-  print(dbw_indices)
+  print('Here is the Y data we will use in dbw:')
+  make_xts <- xts(Y[,2], order.by = as.Date(row.names(Y)))
 
+  colnames(make_xts) <- c('User_chosen_Y')
 
-  print(head(row.names(Y)))
+  Y_list <- rep(list(make_xts), n+1) #tk as.Date here is inelegant
 
-  Y <- xts(Y[,2], order.by = as.Date(row.names(Y))) #tk as.Date here is inelegant
-
-  print(head(Y))
+  print('We print some info about Y_list..')
+  print(length(Y_list))
 
   ## BEGIN calculate weight vector
   dbw_output <- dbw(covariates_series_list, #tk
@@ -1307,73 +1206,38 @@ else{
                     # normchoice = normchoice, #tk
                     # penalty_normchoice = penalty_normchoice,
                     # penalty_lambda = penalty_lambda
-                    Y = Y,
+                    Y = Y_list,
                     Y_lookback_indices = Y_lookback_indices_input,
                     X_lookback_indices = X_lookback_indices_input,
                     inputted_transformation = id
   )
   ## END calculate weight vector
 
+  ## BEGIN compute linear combination of fixed effects
   print('The length of our weight vector is...')
   print(length(dbw_output[[1]]))
 
-  w_hat <- dbw_output[[1]]
+  print('The length of omega_star_hat is...')
+  print(length(omega_star_hat_vec))
 
-  ## BEGIN compute linear combination of fixed effects
+  w_hat <- dbw_output[[1]]
   omega_star_hat <- w_hat %*% omega_star_hat_vec
   ## END compute linear combination of fixed effects
 
-  ## BEGIN fit GARCH to target series
+  ## Forecasts and loss
 
-  if (is.null(covariate_indices) == TRUE){
+  arithmetic_mean_based_pred <- mean(omega_star_hat_vec) + unadjusted_pred
 
-    HAR_lm_TSUS <- lm()
-
-    cat('\n===============================================================\n')
-    print()
-    cat('\n===============================================================\n')
-
-    unadjusted_pred <- predict(HAR_lm_TSUS, newdata = ) #tk
-
-  }
-  else{
-    ## BEGIN fit GARCH to target series
-    HAR_lm_TSUS <- lm()
-
-    cat('\n===============================================================\n')
-    print('Outputting the fitted model for the time series under study.')
-    print(HAR_lm_TSUS)
-    cat('\n===============================================================\n')
-
-    #Note: for forecasting, we use last-observed X value
-    X_to_use_in_forecast <- covariates_series_list[[1]][integer_shock_time_vec[1],covariate_indices]
-
-    X_replicated_for_forecast_length <- matrix(rep(X_to_use_in_forecast, k)
-                                               , nrow = shock_length_vec[1]
-                                               , byrow = TRUE)
-
-    forecast_period <- (integer_shock_time_vec[1]):(integer_shock_time_vec[1]+shock_length_vec[1])
-
-    mat_X_for_forecast <- cbind(Y[[1]][forecast_period]
-                                , X_replicated_for_forecast_length)
-
-    unadjusted_pred <- predict(HAR_lm_TSUS, newdata = shock_length_vec[1])
-  }
-
-  print('Now we get the adjusted predictions.')
-  adjusted_pred <- unadjusted_pred + rep(omega_star_hat, k)
-
-  arithmetic_mean_based_pred <- rep(mean(omega_star_hat_vec), k) + unadjusted_pred
+  adjusted_pred <- unadjusted_pred + omega_star_hat
 
   if (is.null(ground_truth_vec) == TRUE){
     QL_loss_unadjusted_pred <- NA
     QL_loss_adjusted_pred <- NA
   }
   else {
-    QL_loss_unadjusted_pred <- sum(QL_loss_function(ground_truth_vec, unadjusted_pred))
-    QL_loss_adjusted_pred <- sum(QL_loss_function(ground_truth_vec, adjusted_pred))
+    QL_loss_adjusted <- QL(adjusted_pred, forecast_period$tomorrow_RV1) #tk
+    QL_loss_unadjusted <- QL(unadjusted_pred, forecast_period$tomorrow_RV1) #tk
   }
-
 
   list_of_linear_combinations <- list(w_hat)
   list_of_forecasts <- list(unadjusted_pred, adjusted_pred)
@@ -1384,13 +1248,15 @@ else{
 
   names(output_list) <- c('linear_combinations', 'predictions')
 
+  ##
+
   ## tk OUTPUT
   cat('--------------------------------------------------------------\n',
       '-------------------HAR Results-------------------','\n',
       '--------------------------------------------------------------\n',
       'Donors:', n, '\n',  '\n',
       'Shock times:', shock_time_vec, '\n', '\n',
-      'Lengths of shock times:', shock_length_vec, '\n', '\n',
+      'Lengths of shock times:', '#tk FIX', '\n', '\n',
       'Optimization Success:', dbw_output[[2]], '\n', '\n',
       'Convex combination:',w_hat,'\n', '\n',
       'Shock estimates:', omega_star_hat_vec, '\n', '\n',
@@ -1403,22 +1269,23 @@ else{
       'QL Loss of adjusted:', QL_loss_adjusted_pred,'\n', '\n'
   )
 
+
   ## PLOTS
 
   #tk make plot_maker_HAR
   if (plots == TRUE){
     cat('\n User has opted to produce plots.','\n')
     plot_maker_HAR(fitted(fitted_garch)
-                     ,shock_time_labels
-                     ,integer_shock_time_vec
-                     ,shock_length_vec
-                     ,unadjusted_pred
-                     ,w_hat
-                     ,omega_star_hat
-                     ,omega_star_hat_vec
-                     ,adjusted_pred
-                     ,arithmetic_mean_based_pred
-                     ,ground_truth_vec)
+                   ,shock_time_labels
+                   ,integer_shock_time_vec
+                   ,shock_length_vec
+                   ,unadjusted_pred
+                   ,w_hat
+                   ,omega_star_hat
+                   ,omega_star_hat_vec
+                   ,adjusted_pred
+                   ,arithmetic_mean_based_pred
+                   ,ground_truth_vec)
   }
 
   return(output_list)
