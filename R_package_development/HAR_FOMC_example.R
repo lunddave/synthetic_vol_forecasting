@@ -49,15 +49,15 @@ volume_covariates <- c()
 
 FRED_covariates <- c('AAA', 'BAA')
 
-shock_dates <- list('Powell Hikes' = "2018-12-20"
-                ,'2016 Election' = "2015-12-17"
-                 ,'Brexit' = "2016-12-15"
-                 ,'2014 Midterm' = "2017-03-16"
-                 ,'2012 Election' = "2017-06-15"
-                 , '2010 Midterm' ="2017-12-14"
-                 ,'2008 Election' = "2018-03-22"
-                 ,'2004 Election' = "2018-06-14"
-                 ,'2002 Midterm' =  "2018-09-27"
+shock_dates <- list('Powell Hikes' = "2018-12-19"
+                ,'2016 Election' = "2015-12-16"
+                 ,'Brexit' = "2016-12-14"
+                 ,'2014 Midterm' = "2017-03-15"
+                 ,'2012 Election' = "2017-06-14"
+                 , '2010 Midterm' ="2017-12-13"
+                 ,'2008 Election' = "2018-03-21"
+                 ,'2004 Election' = "2018-06-13"
+                 ,'2002 Midterm' =  "2018-09-26"
 )
 
 shock_dates <- c(shock_dates[1], list.reverse(shock_dates[2:length(shock_dates)]))
@@ -283,11 +283,14 @@ temp <- HAR(RVSPY_final
                         ,dbw_princ_comp_input = NULL
                         ,covariate_indices = NULL
                         ,geometric_sets = NULL #tk
-                        ,plots = FALSE #tk
+                        ,plots = TRUE #tk
                         ,shock_time_labels = NULL
                         ,ground_truth_vec = NULL
                         ,Y_lookback_indices_input = list(seq(1,3,1))
                         ,X_lookback_indices_input = rep(list(c(1)),length(1:ncol(X[[1]])))
 )
+
+temp$predictions
+temp$linear_combinations
 
 dev.off()

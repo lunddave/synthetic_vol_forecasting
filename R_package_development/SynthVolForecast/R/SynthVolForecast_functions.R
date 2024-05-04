@@ -504,9 +504,166 @@ plot_maker_synthprediction <- function(Y
 }
 ### END plot_maker_synthprediction
 
+### START plot_maker_HAR
+plot_maker_HAR <- function(Y
+                           ,shock_time_labels = NULL
+                           ,shock_time_vec #mk
+                           ,shock_length_vec = 1
+                           ,unadjusted_pred
+                           ,w_hat
+                           ,omega_star_hat
+                           ,omega_star_hat_vec
+                           ,adjusted_pred
+                           ,display_ground_truth = FALSE){
+
+  n <- length(shock_time_vec) - 1
+
+  if (is.character(shock_time_labels) == FALSE | is.null(shock_time_labels) == TRUE){
+    shock_time_labels <- 1:(n+1)
+  }
+
+  print('Before we plot anything, here is our basic info...')
+  print('Shock time labels, shock time vec, shock time length...')
+  print(shock_time_labels)
+  print(shock_time_vec)
+  print(shock_length_vec)
+
+  #First print donor series
+  print('WE PRINT THE OBSERVED SERIES.')
+
+  par(mfrow = c(round(sqrt(n)),ceiling(sqrt(n))))
+
+  for (i in 2:(n+1)){
+    plot.ts(Y[[i]][1:shock_time_vec[i]]
+            ,xlab = ' '
+            ,ylab = 'Realized Measure'
+            ,main = paste('Donor ', i,': ', shock_time_labels[i], sep = '')
+            ,xlim = c(0, shock_time_vec[i] + 5)
+            ,ylim = c(min(Y[[i]]),  max(Y[[i]]))
+    )
+
+    print('If the user wishes, we also add in ground truth.')
+
+    if (display_ground_truth == TRUE){
+
+      print(i)
+      print(shock_time_labels[i])
+      print(shock_time_vec[i])
+      print(shock_length_vec[i])
+
+      print('We print the lines...')
+
+      lines(y = Y[[i]][shock_time_vec[i]:(shock_time_vec[i] + shock_length_vec[i])]
+            ,x = shock_time_vec[i]:(shock_time_vec[i] + shock_length_vec[i])
+            ,col = 'purple'
+            ,cex = 1.1
+            ,lty = 3)
+
+      print('We print the points...')
+
+      #tk points not working?
+
+      # points(y = Y[[i]][(shock_time_vec[i]+1):(shock_time_vec[i] + shock_length_vec[i])]
+      #        ,x = (shock_time_vec[i]+1):(shock_time_vec[i] + shock_length_vec[i])
+      #        # ,col = 'red'
+      #        ,cex = 1.1
+      #        ,pch = 17)
+
+    }
+  }
+
+  print('Time for barplots.')
+
+  #Now print time series under study
+  par(mfrow = c(1,3), mar=c(15,6,4,2))
+
+  barplot_colors <- RColorBrewer::brewer.pal(length(w_hat),'Set3')
+
+  #PLOT ON THE LEFT:
+  #Plot donor weights
+  barplot(w_hat
+          , main = 'Donor Pool Weights'
+          , names.arg = shock_time_labels[-1]
+          , cex.names=.95
+          , las=2
+          , col = barplot_colors)
+
+  #PLOT IN THE MIDDLE
+
+  #Plot FE estimates
+  barplot(omega_star_hat_vec
+          , main = 'Donor-Pool-Supplied \n FE Estimates'
+          , names.arg = shock_time_labels[-1]
+          , cex.names=.95
+          , las=2
+          , col = barplot_colors)
+
+  #Plot target series and prediction
+
+  thing_to_get_max_of <- c(as.numeric(Y[[1]]), unadjusted_pred, adjusted_pred)
+
+  max_for_y_lim <- max(thing_to_get_max_of)
+
+  #PLOT ON THE RIGHT:
+  plot.ts(Y[[1]][1:shock_time_vec[1]], #mk
+          main = 'Post-shock Forecasts',
+          ylab = '',
+          xlab = ' ',
+          xlim = c(0, shock_time_vec[1] + 5), #mk
+          ylim = c(min(0, Y[[1]]),  max_for_y_lim))
+
+  title(ylab = 'Realized Measure', line = 2.05, cex.lab = 1.99) # Add y-axis text
+
+  # Here is the color scheme we will use
+  #https://colorbrewer2.org/?type=diverging&scheme=RdYlBu&n=4
+  colors_for_adjusted_pred <- c('#d7191c','#fdae61','#abd9e9')
+
+  # Let's add the plain old GARCH prediction
+  points(y = unadjusted_pred
+         ,x = (shock_time_vec[1]+1):(shock_time_vec[1]+shock_length_vec[1])
+         ,col = colors_for_adjusted_pred[1]
+         ,cex = .9
+         ,pch = 15)
+
+  # Now plot the adjusted predictions
+  points(y = adjusted_pred
+         ,x = (shock_time_vec[1]+1):(shock_time_vec[1]+shock_length_vec[1])
+         ,col = colors_for_adjusted_pred[2]
+         ,cex = 2
+         ,pch = 19)
+
+  if (display_ground_truth == TRUE){
+
+    lines(y = Y[[1]][shock_time_vec[1]:(shock_time_vec[1] + shock_length_vec[1])]
+          ,x = shock_time_vec[1]:(shock_time_vec[1] + shock_length_vec[1])
+          ,col = colors_for_adjusted_pred[3]
+          ,cex = 1.1
+          ,lty = 3)
+
+    points(y = Y[[1]][(shock_time_vec[1]+1):(shock_time_vec[1] + shock_length_vec[1])]
+           ,x = (shock_time_vec[1]+1):(shock_time_vec[1] + shock_length_vec[1])
+           ,col = colors_for_adjusted_pred[3]
+           ,cex = 1.1
+           ,pch = 24)
+
+  }
+
+  labels_for_legend <- c('ARIMA (unadjusted)', 'Adjusted Prediction', 'Actual')
+
+  legend(x = "topleft",  # Coordinates (x also accepts keywords) #mk
+         legend = labels_for_legend,
+         1:length(labels_for_legend), # Vector with the name of each group
+         colors_for_adjusted_pred,   # Creates boxes in the legend with the specified colors
+         title = 'Prediction Method',      # Legend title,
+         cex = .9)
+
+}
+### END plot_maker_HAR
+
+
 ####################### END Auxiliary functions #######################
 
-############################# HAR#tk
+############################# HAR
 
 ### START SynthVolForecast
 SynthVolForecast <- function(Y_series_list
@@ -1299,23 +1456,21 @@ HAR <- function(Y
       'QL Loss of adjusted:', QL_loss_adjusted,'\n', '\n'
   )
 
-
   ## PLOTS
 
   #tk make plot_maker_HAR
   if (plots == TRUE){
     cat('\n User has opted to produce plots.','\n')
-    plot_maker_HAR(fitted(fitted_garch)
-                   ,shock_time_labels
-                   ,integer_shock_time_vec
-                   ,shock_length_vec
+    plot_maker_HAR(Y
+                   ,shock_time_labels = shock_time_vec
+                   ,shock_time_vec = integer_shock_time_vec
+                   ,shock_length_vec = rep(1, n)
                    ,unadjusted_pred
                    ,w_hat
                    ,omega_star_hat
                    ,omega_star_hat_vec
                    ,adjusted_pred
-                   ,arithmetic_mean_based_pred
-                   ,ground_truth_vec)
+                   ,display_ground_truth = TRUE)
   }
 
   return(output_list)
