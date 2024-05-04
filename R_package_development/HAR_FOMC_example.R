@@ -273,12 +273,12 @@ png(png_save_name,width = 800, height = 600)
 #Now run the algorithm
 temp <- HAR(RVSPY_final
                         ,X
-                        ,shock_dates
+                        ,shock_time_vec = unlist(shock_dates)
                         ,shock_length_vec
                         ,k=1 #does it make sense for a k-step ahead?
                         ,dbw_scale = TRUE
                         ,dbw_center = TRUE
-                        ,dbw_indices = NULL
+                        ,dbw_indices = 1:ncol(X[[1]])
                         ,dbw_Y_lookback = c(0)
                         ,dbw_princ_comp_input = NULL
                         ,covariate_indices = NULL
@@ -287,7 +287,7 @@ temp <- HAR(RVSPY_final
                         ,shock_time_labels = NULL
                         ,ground_truth_vec = NULL
                         ,Y_lookback_indices_input = list(seq(1,3,1))
-                        ,X_lookback_indices_input = rep(list(c(1)),length(dbw_indices))
+                        ,X_lookback_indices_input = rep(list(c(1)),length(1:ncol(X[[1]])))
 )
 
 dev.off()

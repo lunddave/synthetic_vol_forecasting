@@ -34,6 +34,9 @@ dbw <- function(X
   # X[[1]] should be the covariate of the time series to predict
   # X[[k]] for k = 2,...,n+1 are covariates for donors
 
+  print('We print the Y from inside dbw function:')
+  print(class(Y))
+
   # number of time series for pool
   n <- length(X) - 1
 
@@ -41,6 +44,8 @@ dbw <- function(X
 
   #We notify user if p > n, i.e. if linear system is overdetermined
   p <- length(dbw_indices)
+  print('Here is the number of covariates used in dbw:')
+  print(p)
   if (p > n){cat('p > n, i.e. system is overdetermined from an unconstrained point-of-view.')}
 
   ## We now perform the complicated task of grabbing a specified
@@ -58,30 +63,72 @@ dbw <- function(X
     print('User has provided Y_lookback_indices, so we include them.')
     X_lookback_indices <- c(Y_lookback_indices, X_lookback_indices)
 
-    X_Y_combiner <- function(y,x) {
+    print(X_lookback_indices)
+
+    print('Have we reach the point we have used lookback indices?')
+
+    X_Y_combiner_for_dataframe <- function(y,x) {
 
       print('We print the transformation and its class')
       print(inputted_transformation)
       print(class(inputted_transformation))
 
+      print(class(y))
+
       transformed_series <- inputted_transformation(y)
 
-      return(cbind(transformed_series,x))
-      }
+      print('Transformation complete.')
 
-    combined_X <- mapply(X_Y_combiner
-                         , y = Y
-                         , x = X_subset1
-                         , SIMPLIFY = FALSE)
+      print('Now we merge Y and X')
+
+      merged <- merge(transformed_series, x, by="row.names", all=TRUE) #tk we need to change [,2]
+
+      return(merged)
+
+    } #end X_Y_combiner_for_dataframe
+
+    X_Y_combiner <- function(y,x) {
+
+          print('We print the transformation and its class')
+          print(inputted_transformation)
+          print(class(inputted_transformation))
+
+          transformed_series <- inputted_transformation(y)
+
+          print('Transformation complete.')
+
+          return(cbind(transformed_series,x))
+
+    } #end X_Y_combiner
+
+    #Now we create a list with Y in it, if Y is a just a dataframe
+    if (is.data.frame(Y) == TRUE){
+
+      print("Y is a dataframe.")
+
+      combined_X <- mapply(X_Y_combiner
+                           , y = Y
+                           , x = X_subset1
+                           , SIMPLIFY = FALSE)
+    }
+    else {
+      combined_X <- mapply(X_Y_combiner
+                           , y = Y
+                           , x = X_subset1
+                           , SIMPLIFY = FALSE)
+    }
+
   }
-  else{
-    combined_X <- X_subset1
-  }
+
+  else{combined_X <- X_subset1}
 
   row_returner <- function(df, stv){
     print(paste('Shock occurs at ', stv, sep = ''))
     return(df[1:(stv),])
-    }
+  }
+
+  print('We print the shock_time_vec:')
+  print(shock_time_vec)
 
   X_subset2 <- mapply(row_returner, df = combined_X, stv = shock_time_vec, SIMPLIFY=FALSE)
 
@@ -1036,9 +1083,8 @@ SynthVolForecast <- function(Y_series_list
 
 } ### END SynthVolForecast
 
-# Begin HAR
 
-### START SynthVolForecast
+### START HAR
 HAR <- function(Y
                ,covariates_series_list
                ,shock_time_vec
@@ -1046,7 +1092,7 @@ HAR <- function(Y
                ,k=1 #does it make sense for a k-step ahead?
                ,dbw_scale = TRUE
                ,dbw_center = TRUE
-               ,dbw_indices = NULL
+               ,dbw_indices = 1:ncol(covariates_series_list[[1]])
                ,dbw_Y_lookback = c(0)
                ,dbw_princ_comp_input = NULL
                ,covariate_indices = NULL
@@ -1074,7 +1120,6 @@ HAR <- function(Y
   # ,geometric_sets = NULL #tk
   # ,days_before_shocktime_vec = NULL #tk I may want to remove this
   # ,garch_order = NULL
-  # ,common_series_assumption = FALSE
   # ,plots = TRUE
   # ,shock_time_labels = NULL
   # ,ground_truth_vec = NULL
@@ -1085,11 +1130,8 @@ HAR <- function(Y
 
   #Big thing to consider: what needs to change when Y is a just a df?
 
-  # If the dbw_indices are not specified, we use all the covariates in the dbw
-  if (is.null(dbw_indices) == TRUE) {dbw_indices <- 1:ncol(covariates_series_list[[1]])}
-
   cat('We print the dbw_indices')
-  print(length(dbw_indices))
+  print(dbw_indices)
 
   n <- length(X) - 1 #tk
 
@@ -1098,6 +1140,23 @@ HAR <- function(Y
 
   ## BEGIN Check whether shock_time_vec is int/date
 
+if (is.data.frame(Y) == TRUE){
+  for (i in 1:length(shock_time_vec)){
+
+    print('Y is a dataframe')
+
+    if (is.character(shock_time_vec[i]) == TRUE){
+      integer_shock_time_vec[i] <- which(row.names(Y) == shock_time_vec[i]) #mk
+      integer_shock_time_vec_for_convex_hull_based_optimization[i] <- which(index(covariates_series_list[[i]]) == shock_time_vec[i]) #mk
+    }
+    else{
+      integer_shock_time_vec[i] <- shock_time_vec[i]
+      integer_shock_time_vec_for_convex_hull_based_optimization[i] <- shock_time_vec[i]
+    }
+
+  }
+}
+else{
   for (i in 1:length(shock_time_vec)){
 
     if (is.character(shock_time_vec[i]) == TRUE){
@@ -1110,8 +1169,12 @@ HAR <- function(Y
     }
 
   }
+}
 
+  print('We print the integers of the shock times.')
   print(integer_shock_time_vec)
+
+  print('We print the booleans for the shock times.')
   print(integer_shock_time_vec_for_convex_hull_based_optimization)
 
   ## END Check whether shock_time_vec is int/date
@@ -1128,22 +1191,30 @@ HAR <- function(Y
 
     print(shock_dates_as_dates)
 
-    Y_with_donor_col <- data.frame(Y %>% mutate(donor = ifelse(index(Y) %in% shock_dates_as_dates,1,0)))
+    print('Here is the index of Y')
+    print(row.names(Y))
+
+    Y_with_donor_col <- data.frame(Y %>% mutate(donor = ifelse(row.names(RVSPY_final) %in% shock_dates_as_dates,1,0)))
+
+    print('Here are the rows with 1 in the indicator variable:')
+    print(Y_with_donor_col[Y_with_donor_col$donor == 1,])
 
     print('Now we use actual dates for the FE estimates.')
 
     Y_with_donor_col[Y_with_donor_col$donor == 1, "donor"] <- shock_dates_as_dates
 
-    print(Y_with_donor_col)
+    #print(Y_with_donor_col)
 
     print('Now we make the donor column as factor.')
 
     Y_with_donor_col$donor = as.factor(Y_with_donor_col$donor)
 
-    m1 = lm(Y_with_donor_col[,1] ~. , data = Y_with_donor_col[,-c(1)])
+    training_period <- Y_with_donor_col[row.names(Y_with_donor_col) < as.Date(shock_dates_as_dates[1]) , ] #tk
+
+    m1 <- lm(Y_with_donor_col[,1] ~. , data = Y_with_donor_col[,-c(1)])
 
     cat('We inspect the fitted linear model.')
-    summary(m1)
+    print(summary(m1))
 
     forecast_period = Y_with_donor_col[Y_with_donor_col$Date == as.Date(shock_dates_as_dates[1]) - 1, ]
 
@@ -1153,8 +1224,10 @@ HAR <- function(Y
 
     pred <- predict(m1, newdata = newdat)
 
-    no_events <- length(Fed_rate_cuts)
+    no_events <- length(shock_dates_as_dates) - 1
     no_coef <- length(coef(m1))
+
+    omega_star_hat_vec <- c(omega_star_hat_vec, coef(m1)[(no_coef-no_events+1):no_coef])
 
     FE_mean <- mean(coef(m1)[(no_coef-no_events+1):no_coef])
 
@@ -1202,8 +1275,6 @@ HAR <- function(Y
       print()
       cat('\n===============================================================\n')
 
-      coef_test <- lmtest::coeftest(HAR_lm)
-      extracted_fixed_effect <- coef_test[dim(lmtest::coeftest(HAR_lm))[1], 1]
       omega_star_hat_vec <- c(omega_star_hat_vec, HAR_lm)
 
     } ## END loop for computing fixed effects
@@ -1211,6 +1282,17 @@ HAR <- function(Y
   }
 
   ## END estimate fixed effects in donors
+
+  print('Again we print the dbw_indices')
+
+  print(dbw_indices)
+
+
+  print(head(row.names(Y)))
+
+  Y <- xts(Y[,2], order.by = as.Date(row.names(Y))) #tk as.Date here is inelegant
+
+  print(head(Y))
 
   ## BEGIN calculate weight vector
   dbw_output <- dbw(covariates_series_list, #tk
@@ -1228,10 +1310,12 @@ HAR <- function(Y
                     Y = Y,
                     Y_lookback_indices = Y_lookback_indices_input,
                     X_lookback_indices = X_lookback_indices_input,
-                    inputted_transformation = mean_square_y
+                    inputted_transformation = id
   )
   ## END calculate weight vector
 
+  print('The length of our weight vector is...')
+  print(length(dbw_output[[1]]))
 
   w_hat <- dbw_output[[1]]
 
@@ -1339,4 +1423,4 @@ HAR <- function(Y
 
   return(output_list)
 
-} ### END SynthVolForecast
+} ### END HAR
