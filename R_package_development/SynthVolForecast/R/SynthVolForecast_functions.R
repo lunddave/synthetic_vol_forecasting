@@ -1179,8 +1179,12 @@ HAR <- function(Y
 
     for (i in 1:length(shock_time_vec)){
 
+      print(paste('The ', i, 'th shock time is ', shock_time_vec[i], sep = ''))
+
       if (is.character(shock_time_vec[i]) == TRUE){
-        integer_shock_time_vec[i] <- which(index(Y[[i]]) == shock_time_vec[i]) #mk
+        integer_shock_time_vec[i] <- which(row.names(Y) == shock_time_vec[i]) #mk
+        print("We print the X index at the shock time")
+        print(index(covariates_series_list[[i]]))
         integer_shock_time_vec_for_convex_hull_based_optimization[i] <- which(index(covariates_series_list[[i]]) == shock_time_vec[i]) #mk
       }
       else{
@@ -1188,7 +1192,7 @@ HAR <- function(Y
         integer_shock_time_vec_for_convex_hull_based_optimization[i] <- shock_time_vec[i]
       }
 
-    } #end of loop
+    } #end loop
 
     for (i in 2:(n+1)){
 
@@ -1213,49 +1217,9 @@ HAR <- function(Y
       print('We print the tail of the covariate df we use in the model:')
       print(tail(X_i_final))
 
-      #Insert linear model here #tk
-      #HAR_lm <- ()
-
-      cat('\n===============================================================\n')
-      print()
-      cat('\n===============================================================\n')
-
       omega_star_hat_vec <- c(omega_star_hat_vec, HAR_lm)
 
-      ## BEGIN fit GARCH to target series
-
-      if (is.null(covariate_indices) == TRUE){
-
-        HAR_lm_TSUS <- lm()
-
-        cat('\n===============================================================\n')
-        cat('\n===============================================================\n')
-
-        unadjusted_pred <- predict(HAR_lm_TSUS, newdata = ) #tk
-
-      }
-      else{
-        ## BEGIN fit GARCH to target series
-        HAR_lm_TSUS <- lm()
-
-        cat('\n===============================================================\n')
-        print('Outputting the fitted model for the time series under study.')
-        print(HAR_lm_TSUS)
-        cat('\n===============================================================\n')
-
-        #Note: for forecasting, we use last-observed X value
-        X_to_use_in_forecast <- covariates_series_list[[1]][integer_shock_time_vec[1],covariate_indices]
-
-        X_replicated_for_forecast_length <- matrix(rep(X_to_use_in_forecast, k)
-                                                   , nrow = shock_length_vec[1]
-                                                   , byrow = TRUE)
-
-        forecast_period <- (integer_shock_time_vec[1]):(integer_shock_time_vec[1]+shock_length_vec[1])
-
-        mat_X_for_forecast <- cbind(Y[[1]][forecast_period]
-                                    , X_replicated_for_forecast_length)
-
-        unadjusted_pred <- predict(HAR_lm_TSUS, newdata = shock_length_vec[1])
+    } #end loop?
 
   }
 
@@ -1271,9 +1235,6 @@ HAR <- function(Y
   colnames(make_xts) <- c('User_chosen_Y')
 
   Y_list <- rep(list(make_xts), n+1) #tk as.Date here is inelegant
-
-  print('We print some info about Y_list..')
-  print(length(Y_list))
 
   ## BEGIN calculate weight vector
   dbw_output <- dbw(covariates_series_list, #tk
@@ -1296,12 +1257,6 @@ HAR <- function(Y
   ## END calculate weight vector
 
   ## BEGIN compute linear combination of fixed effects
-  print('The length of our weight vector is...')
-  print(length(dbw_output[[1]]))
-
-  print('The length of omega_star_hat is...')
-  print(length(omega_star_hat_vec))
-
   w_hat <- dbw_output[[1]]
   omega_star_hat <- w_hat %*% omega_star_hat_vec
   ## END compute linear combination of fixed effects
@@ -1319,8 +1274,7 @@ HAR <- function(Y
   list_of_forecasts <- list(unadjusted_pred, adjusted_pred)
   names(list_of_forecasts) <- c('unadjusted_pred', 'adjusted_pred')
 
-  output_list <- list(list_of_linear_combinations
-                      , list_of_forecasts)
+  output_list <- list(list_of_linear_combinations, list_of_forecasts)
 
   names(output_list) <- c('linear_combinations', 'predictions')
 
