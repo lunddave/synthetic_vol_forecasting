@@ -534,9 +534,15 @@ plot_maker_HAR <- function(Y
   par(mfrow = c(round(sqrt(n)),ceiling(sqrt(n))))
 
   for (i in 2:(n+1)){
+
+    print(i)
+    print(shock_time_labels[i])
+    print(shock_time_vec[i])
+    print(shock_length_vec[i])
+
     plot.ts(Y[[i]][1:shock_time_vec[i]]
             ,xlab = ' '
-            ,ylab = 'Realized Measure'
+            ,ylab = 'Realized Measure of Volatility'
             ,main = paste('Donor ', i,': ', shock_time_labels[i], sep = '')
             ,xlim = c(0, shock_time_vec[i] + 5)
             ,ylim = c(min(Y[[i]]),  max(Y[[i]]))
@@ -545,11 +551,6 @@ plot_maker_HAR <- function(Y
     print('If the user wishes, we also add in ground truth.')
 
     if (display_ground_truth == TRUE){
-
-      print(i)
-      print(shock_time_labels[i])
-      print(shock_time_vec[i])
-      print(shock_length_vec[i])
 
       print('We print the lines...')
 
@@ -563,11 +564,11 @@ plot_maker_HAR <- function(Y
 
       #tk points not working?
 
-      # points(y = Y[[i]][(shock_time_vec[i]+1):(shock_time_vec[i] + shock_length_vec[i])]
-      #        ,x = (shock_time_vec[i]+1):(shock_time_vec[i] + shock_length_vec[i])
-      #        # ,col = 'red'
-      #        ,cex = 1.1
-      #        ,pch = 17)
+      points(y = Y[[i]][(shock_time_vec[i]+1):(shock_time_vec[i] + shock_length_vec[i])]
+             ,x = (shock_time_vec[i]+1):(shock_time_vec[i] + shock_length_vec[i])
+             # ,col = 'red'
+             ,cex = 1.1
+             ,pch = 17)
 
     }
   }
@@ -600,19 +601,25 @@ plot_maker_HAR <- function(Y
 
   #Plot target series and prediction
 
-  thing_to_get_max_of <- c(as.numeric(Y[[1]]), unadjusted_pred, adjusted_pred)
+  Y_to_plot <- Y[[1]][(shock_time_vec[1]-30):shock_time_vec[1]]
+
+  print('Here is what we would like to plot...')
+
+  print(Y_to_plot)
+
+  thing_to_get_max_of <- c(as.numeric(Y_to_plot), unadjusted_pred, adjusted_pred)
 
   max_for_y_lim <- max(thing_to_get_max_of)
 
   #PLOT ON THE RIGHT:
-  plot.ts(Y[[1]][1:shock_time_vec[1]], #mk
+  plot.ts(Y_to_plot, #tk 30 days? allow user to adjust?
           main = 'Post-shock Forecasts',
           ylab = '',
           xlab = ' ',
-          xlim = c(0, shock_time_vec[1] + 5), #mk
-          ylim = c(min(0, Y[[1]]),  max_for_y_lim))
+          xlim = c((shock_time_vec[1]-30), shock_time_vec[1] + 5), #mk
+          ylim = c(0,  max_for_y_lim))
 
-  title(ylab = 'Realized Measure', line = 2.05, cex.lab = 1.99) # Add y-axis text
+  title(ylab = 'Realized Measure of Volatility', line = 2.05, cex.lab = 1.99) # Add y-axis text
 
   # Here is the color scheme we will use
   #https://colorbrewer2.org/?type=diverging&scheme=RdYlBu&n=4
@@ -622,8 +629,8 @@ plot_maker_HAR <- function(Y
   points(y = unadjusted_pred
          ,x = (shock_time_vec[1]+1):(shock_time_vec[1]+shock_length_vec[1])
          ,col = colors_for_adjusted_pred[1]
-         ,cex = .9
-         ,pch = 15)
+         ,cex = 2
+         ,pch = 19)
 
   # Now plot the adjusted predictions
   points(y = adjusted_pred
@@ -643,12 +650,12 @@ plot_maker_HAR <- function(Y
     points(y = Y[[1]][(shock_time_vec[1]+1):(shock_time_vec[1] + shock_length_vec[1])]
            ,x = (shock_time_vec[1]+1):(shock_time_vec[1] + shock_length_vec[1])
            ,col = colors_for_adjusted_pred[3]
-           ,cex = 1.1
+           ,cex = 3
            ,pch = 24)
 
   }
 
-  labels_for_legend <- c('ARIMA (unadjusted)', 'Adjusted Prediction', 'Actual')
+  labels_for_legend <- c('HAR (unadjusted)', 'Adjusted HAR Prediction', 'Actual')
 
   legend(x = "topleft",  # Coordinates (x also accepts keywords) #mk
          legend = labels_for_legend,
@@ -662,8 +669,6 @@ plot_maker_HAR <- function(Y
 
 
 ####################### END Auxiliary functions #######################
-
-############################# HAR
 
 ### START SynthVolForecast
 SynthVolForecast <- function(Y_series_list
@@ -1461,10 +1466,10 @@ HAR <- function(Y
   #tk make plot_maker_HAR
   if (plots == TRUE){
     cat('\n User has opted to produce plots.','\n')
-    plot_maker_HAR(Y
-                   ,shock_time_labels = shock_time_vec
+    plot_maker_HAR(Y_list
+                   ,shock_time_labels = shock_time_labels
                    ,shock_time_vec = integer_shock_time_vec
-                   ,shock_length_vec = rep(1, n)
+                   ,shock_length_vec = rep(1, n+1) #tk
                    ,unadjusted_pred
                    ,w_hat
                    ,omega_star_hat

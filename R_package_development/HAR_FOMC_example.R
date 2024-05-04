@@ -50,17 +50,17 @@ volume_covariates <- c()
 FRED_covariates <- c('AAA', 'BAA')
 
 shock_dates <- list('Powell Hikes' = "2018-12-19"
-                ,'2016 Election' = "2015-12-16"
-                 ,'Brexit' = "2016-12-14"
-                 ,'2014 Midterm' = "2017-03-15"
-                 ,'2012 Election' = "2017-06-14"
-                 , '2010 Midterm' ="2017-12-13"
-                 ,'2008 Election' = "2018-03-21"
-                 ,'2004 Election' = "2018-06-13"
-                 ,'2002 Midterm' =  "2018-09-26"
+                ,'Dec. 2015' = "2015-12-16"
+                 ,'Dec. 2016' = "2016-12-14"
+                 ,'Mar. 2017' = "2017-03-15"
+                 ,'Jun. 2017' = "2017-06-14"
+                 , 'Dec. 2017' ="2017-12-13"
+                 ,'Mar. 2018' = "2018-03-21"
+                 ,'Jun. 2018' = "2018-06-13"
+                 ,'Sept. 2018' =  "2018-09-26"
 )
 
-shock_dates <- c(shock_dates[1], list.reverse(shock_dates[2:length(shock_dates)]))
+#shock_dates <- c(shock_dates[1], list.reverse(shock_dates[2:length(shock_dates)]))
 
 ## END USER DATA INPUTS##
 
@@ -284,7 +284,7 @@ temp <- HAR(RVSPY_final
                         ,covariate_indices = NULL
                         ,geometric_sets = NULL #tk
                         ,plots = TRUE #tk
-                        ,shock_time_labels = NULL
+                        ,shock_time_labels = names(shock_dates)
                         ,ground_truth_vec = NULL
                         ,Y_lookback_indices_input = list(seq(1,3,1))
                         ,X_lookback_indices_input = rep(list(c(1)),length(1:ncol(X[[1]])))
