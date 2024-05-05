@@ -50,7 +50,7 @@ volume_covariates <- c()
 
 FRED_covariates <- c('AAA', 'BAA')
 
-shock_dates <- list('Powell Hikes' = "2018-12-19"
+shock_dates <- list('Powell Hikes' = "2018-12-18"
                 ,'Dec. 2015' = "2015-12-15"
                  ,'Dec. 2016' = "2016-12-13"
                  ,'Mar. 2017' = "2017-03-14"
