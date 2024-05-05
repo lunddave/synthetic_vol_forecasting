@@ -69,7 +69,7 @@ create.calendar(name='NYSE', holidays=nyse, weekdays=c('saturday', 'sunday'))
 
 shock_dates_as_dates <- as.Date(as.Date(unlist(shock_dates)))
 
-start_dates <- offset(shock_dates_as_dates, round(-.3*252), "NYSE")
+start_dates <- offset(shock_dates_as_dates, round(-.1*252), "NYSE")
 
 k_periods_after_shock <- offset(shock_dates_as_dates, k, "NYSE")
 
@@ -272,22 +272,22 @@ png(png_save_name,width = 800, height = 600)
 
 #Now run the algorithm
 temp <- HAR(RVSPY_final
-                        ,X
-                        ,shock_time_vec = unlist(shock_dates)
-                        ,shock_length_vec
-                        ,k=1 #does it make sense for a k-step ahead?
-                        ,dbw_scale = TRUE
-                        ,dbw_center = TRUE
-                        ,dbw_indices = 1:ncol(X[[1]])
-                        ,dbw_Y_lookback = c(0)
-                        ,dbw_princ_comp_input = NULL
-                        ,covariate_indices = NULL
-                        ,geometric_sets = NULL #tk
-                        ,plots = TRUE #tk
-                        ,shock_time_labels = names(shock_dates)
-                        ,ground_truth_vec = NULL
-                        ,Y_lookback_indices_input = list(seq(1,3,1))
-                        ,X_lookback_indices_input = rep(list(c(1)),length(1:ncol(X[[1]])))
+            ,X
+            ,shock_time_vec = unlist(shock_dates)
+            ,shock_length_vec
+            ,k=1 #does it make sense for a k-step ahead?
+            ,dbw_scale = TRUE
+            ,dbw_center = TRUE
+            ,dbw_indices = 1:ncol(X[[1]])
+            ,dbw_Y_lookback = c(0)
+            ,dbw_princ_comp_input = NULL
+            ,covariate_indices = NULL
+            ,geometric_sets = NULL #tk
+            ,plots = TRUE #tk
+            ,shock_time_labels = names(shock_dates)
+            ,ground_truth_vec = NULL
+            ,Y_lookback_indices_input = list(seq(1,10,1))
+            ,X_lookback_indices_input = rep(list(c(1)),length(1:ncol(X[[1]])))
 )
 
 temp$predictions

@@ -298,8 +298,7 @@ print('We plot the weights.')
 
   max_for_y_lim <- max(thing_to_get_max_of)
 
-
-  x_ax_first_point_of_shock <- index(fitted_vol)[shock_time_vec[1]-1] + 1
+  x_ax_first_point_of_shock <- index(fitted_vol)[shock_time_vec[1]-1] + 1 #do I use this?
   x_ax_end_point <- index(fitted_vol)[shock_time_vec[1]-1] + length(adjusted_pred)
 
   #PLOT ON THE RIGHT:
@@ -601,23 +600,28 @@ plot_maker_HAR <- function(Y
 
   #Plot target series and prediction
 
-  Y_to_plot <- Y[[1]][(shock_time_vec[1]-30):shock_time_vec[1]]
+  Y_to_plot <- Y[[1]][(shock_time_vec[1]-45):(shock_time_vec[1]-1)] #tk 30?
 
-  print('Here is what we would like to plot...')
+  x_ax_first_point_of_shock <- index(Y[[1]])[(shock_time_vec[1]-45)] #tk rename
+  x_ax_end_point <- index(Y[[1]])[shock_time_vec[1]] + 5 #tk why 5
 
-  print(Y_to_plot)
-
-  thing_to_get_max_of <- c(as.numeric(Y_to_plot), unadjusted_pred, adjusted_pred)
+  thing_to_get_max_of <- c(as.numeric(Y[[1]]) #tk should we shorten time frame?
+                           , unadjusted_pred
+                           , adjusted_pred)
 
   max_for_y_lim <- max(thing_to_get_max_of)
 
   #PLOT ON THE RIGHT:
-  plot.ts(Y_to_plot, #tk 30 days? allow user to adjust?
-          main = 'Post-shock Forecasts',
-          ylab = '',
-          xlab = ' ',
-          xlim = c((shock_time_vec[1]-30), shock_time_vec[1] + 5), #mk
-          ylim = c(0,  max_for_y_lim))
+  plot(y = Y_to_plot, #mk
+       x = index(Y_to_plot),
+       main = 'Post-Shock Volatility Forecast', #mk can improve this title
+       cex.main=1.5,
+       ylab = '',
+       type="l",
+       xlab = '',
+       xlim =  as.Date(c(x_ax_first_point_of_shock, x_ax_end_point)),
+       ylim = c(min(0, Y_to_plot),  max_for_y_lim)
+       )
 
   title(ylab = 'Realized Measure of Volatility', line = 2.05, cex.lab = 1.99) # Add y-axis text
 
@@ -625,34 +629,40 @@ plot_maker_HAR <- function(Y
   #https://colorbrewer2.org/?type=diverging&scheme=RdYlBu&n=4
   colors_for_adjusted_pred <- c('#d7191c','#fdae61','#abd9e9')
 
-  # Let's add the plain old GARCH prediction
+  # Let's add the HAR prediction
   points(y = unadjusted_pred
-         ,x = (shock_time_vec[1]+1):(shock_time_vec[1]+shock_length_vec[1])
+         ,x =  index(Y[[1]])[shock_time_vec[1]]
          ,col = colors_for_adjusted_pred[1]
          ,cex = 2
          ,pch = 19)
 
   # Now plot the adjusted predictions
   points(y = adjusted_pred
-         ,x = (shock_time_vec[1]+1):(shock_time_vec[1]+shock_length_vec[1])
+         ,x =  index(Y[[1]])[shock_time_vec[1]]
          ,col = colors_for_adjusted_pred[2]
          ,cex = 2
          ,pch = 19)
 
-  if (display_ground_truth == TRUE){
+  if (display_ground_truth == TRUE){ #tk what is this doing? printing the actual, if it exists
 
-    lines(y = Y[[1]][shock_time_vec[1]:(shock_time_vec[1] + shock_length_vec[1])]
-          ,x = shock_time_vec[1]:(shock_time_vec[1] + shock_length_vec[1])
-          ,col = colors_for_adjusted_pred[3]
+    Y_not_yet_plotted <- Y[[1]][shock_time_vec[1]:(shock_time_vec[1]+1)] #tk need to fix
+    connecting_the_two <- Y[[1]][(shock_time_vec[1]-1):shock_time_vec[1]]
+
+    print('Here is the post-shock data we will plot...')
+    print(Y_not_yet_plotted)
+
+    lines(y = connecting_the_two
+          ,x = index(connecting_the_two)
+          ,col = 'black'
           ,cex = 1.1
-          ,lty = 3)
+          ,lty = 3
+          ,lwd = 3)
 
-    points(y = Y[[1]][(shock_time_vec[1]+1):(shock_time_vec[1] + shock_length_vec[1])]
-           ,x = (shock_time_vec[1]+1):(shock_time_vec[1] + shock_length_vec[1])
+    points(y = Y_not_yet_plotted[1:length(adjusted_pred)]
+           ,x = index(Y_not_yet_plotted)[1:length(adjusted_pred)]
            ,col = colors_for_adjusted_pred[3]
-           ,cex = 3
-           ,pch = 24)
-
+           ,cex = 2
+           ,pch = 19)
   }
 
   labels_for_legend <- c('HAR (unadjusted)', 'Adjusted HAR Prediction', 'Actual')
@@ -662,11 +672,10 @@ plot_maker_HAR <- function(Y
          1:length(labels_for_legend), # Vector with the name of each group
          colors_for_adjusted_pred,   # Creates boxes in the legend with the specified colors
          title = 'Prediction Method',      # Legend title,
-         cex = .9)
+         cex = 1.3)
 
 }
 ### END plot_maker_HAR
-
 
 ####################### END Auxiliary functions #######################
 
@@ -1429,8 +1438,8 @@ HAR <- function(Y
 
   adjusted_pred <- unadjusted_pred + omega_star_hat
 
-  QL_loss_adjusted <- QL(adjusted_pred, outcome) #tk
-  QL_loss_unadjusted <- QL(unadjusted_pred, outcome) #tk
+  QL_loss_adjusted <- QL_loss_function(adjusted_pred, outcome) #tk
+  QL_loss_unadjusted <- QL_loss_function(unadjusted_pred, outcome) #tk
 
   list_of_linear_combinations <- list(w_hat)
   list_of_forecasts <- list(unadjusted_pred, adjusted_pred)
@@ -1475,7 +1484,7 @@ HAR <- function(Y
                    ,omega_star_hat
                    ,omega_star_hat_vec
                    ,adjusted_pred
-                   ,display_ground_truth = TRUE)
+                   ,display_ground_truth = TRUE) #tk what is this set to true?
   }
 
   return(output_list)
