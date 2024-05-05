@@ -507,7 +507,7 @@ plot_maker_synthprediction <- function(Y
 plot_maker_HAR <- function(Y
                            ,shock_time_labels = NULL
                            ,shock_time_vec #mk
-                           ,shock_length_vec = 1
+                           ,shock_length_vec = 1 #tk
                            ,unadjusted_pred
                            ,w_hat
                            ,omega_star_hat
@@ -521,23 +521,9 @@ plot_maker_HAR <- function(Y
     shock_time_labels <- 1:(n+1)
   }
 
-  print('Before we plot anything, here is our basic info...')
-  print('Shock time labels, shock time vec, shock time length...')
-  print(shock_time_labels)
-  print(shock_time_vec)
-  print(shock_length_vec)
-
-  #First print donor series
-  print('WE PRINT THE OBSERVED SERIES.')
-
   par(mfrow = c(round(sqrt(n)),ceiling(sqrt(n))))
 
   for (i in 2:(n+1)){
-
-    print(i)
-    print(shock_time_labels[i])
-    print(shock_time_vec[i])
-    print(shock_length_vec[i])
 
     plot.ts(Y[[i]][1:shock_time_vec[i]]
             ,xlab = ' '
@@ -558,8 +544,6 @@ plot_maker_HAR <- function(Y
             ,col = 'purple'
             ,cex = 1.1
             ,lty = 3)
-
-      print('We print the points...')
 
       #tk points not working?
 
@@ -611,6 +595,9 @@ plot_maker_HAR <- function(Y
 
   max_for_y_lim <- max(thing_to_get_max_of)
 
+  print('Here is the Y we will plot...')
+  print(Y_to_plot)
+
   #PLOT ON THE RIGHT:
   plot(y = Y_to_plot, #mk
        x = index(Y_to_plot),
@@ -648,8 +635,6 @@ plot_maker_HAR <- function(Y
     Y_not_yet_plotted <- Y[[1]][shock_time_vec[1]:(shock_time_vec[1]+1)] #tk need to fix
     connecting_the_two <- Y[[1]][(shock_time_vec[1]-1):shock_time_vec[1]]
 
-    print('Here is the post-shock data we will plot...')
-    print(Y_not_yet_plotted)
 
     lines(y = connecting_the_two
           ,x = index(connecting_the_two)
@@ -1221,8 +1206,6 @@ SynthVolForecast <- function(Y_series_list
 
 } ### END SynthVolForecast
 
-
-
 ### START HAR
 HAR <- function(Y
                 ,covariates_series_list
@@ -1318,7 +1301,7 @@ HAR <- function(Y
 
     Y_with_donor_col$donor = as.factor(Y_with_donor_col$donor)
 
-    training_period <- Y_with_donor_col[row.names(Y_with_donor_col) < as.Date(shock_dates_as_dates[1]) , ] #tk
+    training_period <- Y_with_donor_col[row.names(Y_with_donor_col) < as.Date(shock_dates_as_dates[1]), ] #tk
 
     m1 <- lm(training_period[,1] ~. , data = training_period[,-c(1)])
 
@@ -1401,7 +1384,7 @@ HAR <- function(Y
   print(integer_shock_time_vec_for_convex_hull_based_optimization) #tk seems wrong
 
   print('Here is the Y data we will use in dbw:')
-  make_xts <- xts(Y[,2], order.by = as.Date(row.names(Y)))
+  make_xts <- xts(Y[,1], order.by = as.Date(row.names(Y))) #tk
 
   colnames(make_xts) <- c('User_chosen_Y')
 
@@ -1465,7 +1448,7 @@ HAR <- function(Y
       'Unadjusted Forecast:', unadjusted_pred,'\n', '\n',
       'Adjusted Forecast:', adjusted_pred,'\n', '\n',
       'Arithmetic-Mean-Based Forecast:',arithmetic_mean_based_pred,'\n','\n',
-      'Ground Truth (estimated by realized volatility):', ground_truth_vec,'\n', '\n',
+      'Ground Truth (estimated by realized volatility):', outcome,'\n', '\n',
       'QL Loss of unadjusted:', QL_loss_unadjusted,'\n', '\n',
       'QL Loss of adjusted:', QL_loss_adjusted,'\n', '\n'
   )

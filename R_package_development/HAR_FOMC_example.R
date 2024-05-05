@@ -22,14 +22,14 @@ packs <- c('quantmod'
            ,'tidyverse'
            ,'xts'
            ,'dplyr'
+           ,'RcppRoll'
 )
 
 suppressPackageStartupMessages(lapply(packs, require, character.only = TRUE))
 
 ## BEGIN USER DATA INPUTS##
-ground_truth <- c(5)
 
-k <- length(ground_truth) # not sure how much sense it makes to have k > 1
+k <-1
 
 log_ret_covariates <- c(
                         "CL=F"
@@ -38,11 +38,12 @@ log_ret_covariates <- c(
                         ,"^FVX"
                         ,"^TNX"
                         ,"^TYX"
+                        ,'^XAU'
                         #,"DX-Y.NYB"
                       )
 
 level_covariates <- c('^VIX'
-                      ,'^IRX'
+                      #,'^IRX'
 )
 
 volume_covariates <- c()
@@ -50,14 +51,14 @@ volume_covariates <- c()
 FRED_covariates <- c('AAA', 'BAA')
 
 shock_dates <- list('Powell Hikes' = "2018-12-19"
-                ,'Dec. 2015' = "2015-12-16"
-                 ,'Dec. 2016' = "2016-12-14"
-                 ,'Mar. 2017' = "2017-03-15"
-                 ,'Jun. 2017' = "2017-06-14"
-                 , 'Dec. 2017' ="2017-12-13"
-                 ,'Mar. 2018' = "2018-03-21"
-                 ,'Jun. 2018' = "2018-06-13"
-                 ,'Sept. 2018' =  "2018-09-26"
+                ,'Dec. 2015' = "2015-12-15"
+                 ,'Dec. 2016' = "2016-12-13"
+                 ,'Mar. 2017' = "2017-03-14"
+                 ,'Jun. 2017' = "2017-06-13"
+                 , 'Dec. 2017' ="2017-12-12"
+                 ,'Mar. 2018' = "2018-03-20"
+                 ,'Jun. 2018' = "2018-06-12"
+                 ,'Sept. 2018' =  "2018-09-25"
 )
 
 #shock_dates <- c(shock_dates[1], list.reverse(shock_dates[2:length(shock_dates)]))
@@ -211,20 +212,23 @@ RVSPY_subset_2 <- RVSPY_subset %>%
 
 RVSPY_subset_3 = RVSPY_subset_2 %>%
   mutate(RV5 = roll_mean(RV1, 5, align = "right", fill = NA)) %>%
-  mutate(RV_22 = roll_mean(RV1, 22, align = "right", fill = NA))
+  mutate(RV22 = roll_mean(RV1, 22, align = "right", fill = NA))
 
 RVSPY_complete <- RVSPY_subset_3[complete.cases(RVSPY_subset_3), ]
 head(RVSPY_complete)
 
 #RVSPY_complete <- data.frame(RVSPY_complete %>% mutate(donor = ifelse(Date %in% shock_dates,1,0)))
 
-#RVSPY_complete$log_tomorrow_RV1 <- log(RVSPY_complete$tomorrow_RV1)
+RVSPY_complete$log <- log(RVSPY_complete$tomorrow_RV1)
+RVSPY_complete$difflog <- c(NA,diff(log(RVSPY_complete$tomorrow_RV1)))
 
 #RVSPY_complete[RVSPY_complete$rate_move == 1, "donor"] <- shock_dates_as_dates
 
 #RVSPY_complete$donor = as.factor(RVSPY_complete$donor)
 
-# RVSPY_complete$RV1_neg <- ifelse(RVSPY_complete$dl_close > 0, 0, RVSPY_complete$RV1)
+RVSPY_complete$RV1_neg <- ifelse(RVSPY_complete$difflog > 0, 0, RVSPY_complete$RV1)
+RVSPY_complete$RV5_neg <- ifelse(RVSPY_complete$difflog > 0, 0, RVSPY_complete$RV5)
+RVSPY_complete$RV22_neg <- ifelse(RVSPY_complete$difflog > 0, 0, RVSPY_complete$RV22)
 
 rownames(RVSPY_complete) <- RVSPY_complete$Date
 
@@ -232,7 +236,13 @@ head(RVSPY_complete)
 
 # RVSPY_final <- xts(RVSPY_complete, order.by = RVSPY_complete$Date)
 
-RVSPY_final <- RVSPY_complete[,c('tomorrow_RV1', 'RV1', 'RV5', 'RV_22')]
+RVSPY_final <- RVSPY_complete[,c('log'
+                                 , 'RV1'
+                                 , 'RV5'
+                                 , 'RV22'
+                                 , 'RV1_neg'
+                                 ,'RV5_neg'
+                                 ,'RV22_neg')]
 
 head(RVSPY_final)
 
@@ -286,7 +296,7 @@ temp <- HAR(RVSPY_final
             ,plots = TRUE #tk
             ,shock_time_labels = names(shock_dates)
             ,ground_truth_vec = NULL
-            ,Y_lookback_indices_input = list(seq(1,10,1))
+            ,Y_lookback_indices_input = list(seq(1,1,1))
             ,X_lookback_indices_input = rep(list(c(1)),length(1:ncol(X[[1]])))
 )
 
