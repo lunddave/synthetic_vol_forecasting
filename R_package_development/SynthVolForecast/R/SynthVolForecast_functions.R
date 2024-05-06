@@ -1168,8 +1168,6 @@ HAR <- function(Y
 
       if (is.character(shock_time_vec[i]) == TRUE){
         integer_shock_time_vec[i] <- which(row.names(Y) == shock_time_vec[i]) #mk
-        print("We print the X index at the shock time")
-        print(index(covariates_series_list[[i]]))
         integer_shock_time_vec_for_convex_hull_based_optimization[i] <- which(index(covariates_series_list[[i]]) == shock_time_vec[i]) #mk
       }
       else{
@@ -1182,40 +1180,42 @@ HAR <- function(Y
 
     shock_dates_as_dates <- as.Date(as.Date(unlist(shock_dates)))
 
-    print(shock_dates_as_dates)
+    shock_dates_as_dates_without_TSUS <- shock_dates_as_dates[-1]
 
-    Y_with_donor_col <- data.frame(Y %>% mutate(donor = ifelse(row.names(RVSPY_final) %in% shock_dates_as_dates,1,0)))
+    Y_with_donor_col <- data.frame(Y %>% mutate(donor = ifelse(row.names(RVSPY_final) %in% shock_dates_as_dates_without_TSUS,1,0)))
 
     print('Here are the rows with 1 in the indicator variable:')
     print(Y_with_donor_col[Y_with_donor_col$donor == 1,])
 
-    print('Now we use actual dates for the FE estimates.')
-
-    Y_with_donor_col[Y_with_donor_col$donor == 1, "donor"] <- shock_dates_as_dates
+    Y_with_donor_col[Y_with_donor_col$donor == 1, "donor"] <- shock_dates_as_dates_without_TSUS
 
     print('Now we make the donor column as factor.')
 
     Y_with_donor_col$donor = as.factor(Y_with_donor_col$donor)
 
-    training_period <- Y_with_donor_col[row.names(Y_with_donor_col) < as.Date(shock_dates_as_dates[1]), ] #tk
+    training_period <- Y_with_donor_col[row.names(Y_with_donor_col) <= as.Date(shock_dates_as_dates[1]), ] #tk
+
+    print('We inspect the last few rows of the training period:')
+    print(tail(training_period))
 
     m1 <- lm(training_period[,1] ~. , data = training_period[,-c(1)])
 
     cat('We inspect the fitted linear model.')
     print(summary(m1))
 
-    forecast_period <- Y_with_donor_col[row.names(Y_with_donor_col) == as.Date(shock_dates_as_dates[1]) - 1, ] #tk
+    forecast_period <- Y_with_donor_col[row.names(Y_with_donor_col) == as.Date(shock_dates_as_dates[1]), ] #tk
 
     outcome <- forecast_period[,1]
 
     print('Inspect the forecast period:')
     print(head(forecast_period))
 
-    newdat <- forecast_period[,-c(1)] #drop the outcome var
+    forecast_period_w_outcome_dropped <- forecast_period[,-c(1)] #drop the outcome var
 
-    newdat$donor <- as.factor(newdat$donor)
+    print('Make the donor variable a factor:')
+    forecast_period_w_outcome_dropped$donor <- as.factor(forecast_period_w_outcome_dropped$donor)
 
-    unadjusted_pred <- predict(m1, newdata = newdat)
+    unadjusted_pred <- predict(m1, newdata = forecast_period_w_outcome_dropped)
 
     no_events <- length(shock_dates_as_dates) - 1
     no_coef <- length(coef(m1))
@@ -1233,8 +1233,6 @@ HAR <- function(Y
 
       if (is.character(shock_time_vec[i]) == TRUE){
         integer_shock_time_vec[i] <- which(row.names(Y) == shock_time_vec[i]) #mk
-        print("We print the X index at the shock time")
-        print(index(covariates_series_list[[i]]))
         integer_shock_time_vec_for_convex_hull_based_optimization[i] <- which(index(covariates_series_list[[i]]) == shock_time_vec[i]) #mk
       }
       else{
@@ -1317,8 +1315,14 @@ HAR <- function(Y
 
   adjusted_pred <- unadjusted_pred + omega_star_hat
 
-  QL_loss_adjusted <- QL_loss_function(adjusted_pred, outcome) #tk
-  QL_loss_unadjusted <- QL_loss_function(unadjusted_pred, outcome) #tk
+  if (min(Y[[1]]) < 0){
+    QL_loss_adjusted <- QL_loss_function(exp(adjusted_pred), exp(outcome)) #tk
+    QL_loss_unadjusted <- QL_loss_function(exp(unadjusted_pred), exp(outcome)) #tk
+  }
+  else{
+    QL_loss_adjusted <- QL_loss_function(adjusted_pred, outcome) #tk
+    QL_loss_unadjusted <- QL_loss_function(unadjusted_pred, outcome) #tk
+  }
 
   list_of_linear_combinations <- list(w_hat)
   list_of_forecasts <- list(unadjusted_pred, adjusted_pred)
@@ -1327,8 +1331,6 @@ HAR <- function(Y
   output_list <- list(list_of_linear_combinations, list_of_forecasts)
 
   names(output_list) <- c('linear_combinations', 'predictions')
-
-  ##
 
   ## tk OUTPUT
   cat('--------------------------------------------------------------\n',

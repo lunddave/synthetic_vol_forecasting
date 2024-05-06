@@ -208,8 +208,6 @@ RVSPY_subset <- data.frame(
 RVSPY_subset_2 <- RVSPY_subset %>%
   mutate(tomorrow_RV1 = lead(RV1))
 
-# RVSPY_subset_3 <- RVSPY_subset_3 %>% mutate(dl_close = c(NA,diff(log(close))))
-
 RVSPY_subset_3 = RVSPY_subset_2 %>%
   mutate(RV5 = roll_mean(RV1, 5, align = "right", fill = NA)) %>%
   mutate(RV22 = roll_mean(RV1, 22, align = "right", fill = NA))
@@ -219,7 +217,7 @@ head(RVSPY_complete)
 
 #RVSPY_complete <- data.frame(RVSPY_complete %>% mutate(donor = ifelse(Date %in% shock_dates,1,0)))
 
-RVSPY_complete$log <- log(RVSPY_complete$tomorrow_RV1)
+RVSPY_complete$log_tomorrow_RV1 <- log(RVSPY_complete$tomorrow_RV1)
 RVSPY_complete$difflog <- c(NA,diff(log(RVSPY_complete$tomorrow_RV1)))
 
 #RVSPY_complete[RVSPY_complete$rate_move == 1, "donor"] <- shock_dates_as_dates
@@ -236,7 +234,7 @@ head(RVSPY_complete)
 
 # RVSPY_final <- xts(RVSPY_complete, order.by = RVSPY_complete$Date)
 
-RVSPY_final <- RVSPY_complete[,c('log'
+RVSPY_final <- RVSPY_complete[,c('log_tomorrow_RV1'
                                  , 'RV1'
                                  , 'RV5'
                                  , 'RV22'
