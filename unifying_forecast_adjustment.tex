@@ -1,0 +1,152 @@
+\documentclass[11pt]{article}
+
+\pdfminorversion=4
+
+% use packages
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amscd}
+\usepackage{amssymb}
+\usepackage{natbib}
+\usepackage{url}
+\usepackage[table,xcdraw,usenames]{xcolor}
+%\usepackage[usenames]{color}
+
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage{authblk}
+\usepackage{bm}
+\usepackage{comment}
+\usepackage{pdfpages}
+
+\usepackage{hyperref}
+\usepackage{caption}
+\usepackage{float}
+%\usepackage[caption = false]{subfig}
+\usepackage{tikz}
+\usepackage{multirow}
+\usepackage[linesnumbered, ruled,vlined]{algorithm2e}
+\usepackage{pdflscape}
+\usepackage{etoolbox}
+
+%\AtBeginEnvironment{align}{\setcounter{equation}{0}} % https://tex.stackexchange.com/questions/349247/how-do-i-reset-the-counter-in-align
+
+% margin setup
+\usepackage{geometry}
+\geometry{margin=0.8in}
+
+% function definition
+\newcommand{\V}{\textbf{V}}
+\newcommand{\weight}{\pi}
+\newcommand{\ret}{\textbf{r}}
+\newcommand{\y}{\textbf{y}}
+\newcommand{\w}{\textbf{w}}
+\newcommand{\x}{\textbf{x}}
+\newcommand{\dbf}{\textbf{d}}
+\newcommand{\X}{\textbf{X}}
+\newcommand{\Y}{\textbf{Y}}
+%\newcommand{\L}{\textbf{L}}
+\newcommand{\Hist}{\mathcal{H}}
+\newcommand{\Prob}{\mathbb{P}}
+\def\mbf#1{\mathbf{#1}} % bold but not italic
+\def\ind#1{\mathrm{1}(#1)} % indicator function
+\newcommand{\simiid}{\stackrel{iid}{\sim}} %[] IID 
+\def\where{\text{ where }} % where
+\newcommand{\indep}{\perp \!\!\! \perp } % independent symbols
+\def\cov#1#2{\mathrm{Cov}(#1, #2)} % covariance 
+\def\mrm#1{\mathrm{#1}} % remove math
+\newcommand{\reals}{\mathbb{R}} % Real number symbol
+\def\t#1{\tilde{#1}} % tilde
+\def\normal#1#2{\mathcal{N}(#1,#2)} % normal
+\def\mbi#1{\boldsymbol{#1}} % Bold and italic (math bold italic)
+\def\v#1{\mbi{#1}} % Vector notation
+\def\mc#1{\mathcal{#1}} % mathical
+\DeclareMathOperator*{\argmax}{arg\,max} % arg max
+\DeclareMathOperator*{\argmin}{arg\,min} % arg min
+\def\E{\mathbb{E}} % Expectation symbol
+\def\mc#1{\mathcal{#1}}
+\def\var#1{\mathrm{Var}(#1)} % Variance symbol
+\def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;} % checkmark
+\newcommand\red[1]{{\color{red}#1}}
+\def\bs#1{\boldsymbol{#1}}
+\def\P{\mathbb{P}}
+\def\var{\mathbf{Var}}
+\def\naturals{\mathbb{N}}
+\def\cp{\overset{p}{\to}}
+\def\clt{\overset{\mathcal{L}^2}{\to}}
+
+\setcounter{tocdepth}{4}
+\setcounter{secnumdepth}{4}
+
+\newtheorem{corollary}{Corollary}
+\newcommand{\ceil}[1]{\lceil #1 \rceil}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert} % A norm with 1 argument
+\DeclareMathOperator{\Var}{Var} % Variance symbol
+
+\newtheorem{cor}{Corollary}
+\newtheorem{lem}{Lemma}
+\newtheorem{thm}{Theorem}
+\newtheorem{defn}{Definition}
+\newtheorem{prop}{Proposition}
+\theoremstyle{definition}
+\newtheorem{remark}{Remark}
+\hypersetup{
+  linkcolor  = blue,
+  citecolor  = blue,
+  urlcolor   = blue,
+  colorlinks = true,
+} % color setup
+
+% proof to proposition 
+\newenvironment{proof-of-proposition}[1][{}]{\noindent{\bf
+    Proof of Proposition {#1}}
+  \hspace*{.5em}}{\qed\bigskip\\}
+% general proof of corollary
+  \newenvironment{proof-of-corollary}[1][{}]{\noindent{\bf
+    Proof of Corollary {#1}}
+  \hspace*{.5em}}{\qed\bigskip\\}
+% general proof of lemma
+  \newenvironment{proof-of-lemma}[1][{}]{\noindent{\bf
+    Proof of Lemma {#1}}
+  \hspace*{.5em}}{\qed\bigskip\\}
+
+\allowdisplaybreaks
+
+\title{Forecast Adjustment Under Shocks: A Unification}
+\author{David Lundquist\thanks{davidl11@ilinois.edu}, Daniel Eck\thanks{dje13@illinois.edu} }
+\affil{Department of Statistics, University of Illinois at Urbana-Champaign}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract} 
+This work systematizes and unifies the rich landscape of model adjustment and model correction methods, with a special focus on forecast adjustment under the presence of shocks.
+\end{abstract}
+
+\section{Introduction}
+
+\subsection{Model Adjustment Using Synthetic Methods: A Global Overview}
+
+\begin{enumerate}
+  \item $k$-dimensional random object to predict
+  \item a parametric model family shared by donors
+  \item a correction term for the model family shared by donors
+  \item a parametric specification for the correction term
+  \item a reliable estimation procedure for the shared model
+  \item a reliable estimation procedure for the correction term 
+  \item a correction function that aggregates (i.e. maps) donor correction terms based on some notion of similarity
+\end{enumerate}
+
+
+\clearpage
+
+\bibliographystyle{plainnat}
+\bibliography{synthVolForecast}
+ 
+\end{document}

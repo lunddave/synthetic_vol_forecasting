@@ -234,7 +234,7 @@ head(RVSPY_complete)
 
 # RVSPY_final <- xts(RVSPY_complete, order.by = RVSPY_complete$Date)
 
-RVSPY_final <- RVSPY_complete[,c('log_tomorrow_RV1'
+RVSPY_final <- RVSPY_complete[,c('tomorrow_RV1'
                                  , 'RV1'
                                  , 'RV5'
                                  , 'RV22'
