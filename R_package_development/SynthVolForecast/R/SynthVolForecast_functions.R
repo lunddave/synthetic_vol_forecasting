@@ -1048,8 +1048,8 @@ SynthVolForecast <- function(Y_series_list
     QL_loss_adjusted_pred <- NA
   }
   else {
-    QL_loss_unadjusted_pred <- sum(QL_loss_function(ground_truth_vec, unadjusted_pred))
-    QL_loss_adjusted_pred <- sum(QL_loss_function(ground_truth_vec, adjusted_pred))
+    QL_loss_unadjusted_pred <- sum(QL_loss_function(unadjusted_pred, ground_truth_vec))
+    QL_loss_adjusted_pred <- sum(QL_loss_function(adjusted_pred, ground_truth_vec))
   }
 
 
@@ -1176,6 +1176,11 @@ HAR <- function(Y
       }
 
     }
+
+    # Now, we adjust integer_shock_time_vec_for_convex_hull_based_optimization back one day
+
+    integer_shock_time_vec_for_convex_hull_based_optimization <- integer_shock_time_vec_for_convex_hull_based_optimization
+
     ## END Check whether shock_time_vec is int/date
 
     shock_dates_as_dates <- as.Date(as.Date(unlist(shock_dates)))
@@ -1193,7 +1198,7 @@ HAR <- function(Y
 
     Y_with_donor_col$donor = as.factor(Y_with_donor_col$donor)
 
-    training_period <- Y_with_donor_col[row.names(Y_with_donor_col) <= as.Date(shock_dates_as_dates[1]), ] #tk
+    training_period <- Y_with_donor_col[row.names(Y_with_donor_col) <= as.Date(shock_dates_as_dates[1]) , ] #tk
 
     print('We inspect the last few rows of the training period:')
     print(tail(training_period))
@@ -1316,10 +1321,12 @@ HAR <- function(Y
   adjusted_pred <- unadjusted_pred + omega_star_hat
 
   if (min(Y[[1]]) < 0){
+    QL_loss_arithmetic_mean <- QL_loss_function(exp(arithmetic_mean_based_pred), exp(outcome))
     QL_loss_adjusted <- QL_loss_function(exp(adjusted_pred), exp(outcome)) #tk
     QL_loss_unadjusted <- QL_loss_function(exp(unadjusted_pred), exp(outcome)) #tk
   }
   else{
+    QL_loss_arithmetic_mean <- QL_loss_function(arithmetic_mean_based_pred, outcome)
     QL_loss_adjusted <- QL_loss_function(adjusted_pred, outcome) #tk
     QL_loss_unadjusted <- QL_loss_function(unadjusted_pred, outcome) #tk
   }
@@ -1347,6 +1354,7 @@ HAR <- function(Y
       'Adjusted Forecast:', adjusted_pred,'\n', '\n',
       'Arithmetic-Mean-Based Forecast:',arithmetic_mean_based_pred,'\n','\n',
       'Ground Truth (estimated by realized volatility):', outcome,'\n', '\n',
+      'QL Loss of Arithmetic Mean', QL_loss_arithmetic_mean, '\n', '\n',
       'QL Loss of unadjusted:', QL_loss_unadjusted,'\n', '\n',
       'QL Loss of adjusted:', QL_loss_adjusted,'\n', '\n'
   )
