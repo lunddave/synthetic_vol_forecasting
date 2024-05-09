@@ -738,23 +738,7 @@ Naturally, one might ask how sensitive this prediction is to at least two kinds 
 This present work extends \citet{lin2021minimizing} principally by substituting the GARCH model for an AR(1), i.e. modeling both the mean and volatility of a univariate time series.  We permit both shocks in the mean model and volatility model of GARCH.  As ancillary improvements, the current work permits the shock periods to be of any length, formally $L_{\text{vol}}, L_{\text{return}} \in\{0,1,2,...\}$, and the weights applied to the donor pool can come from more exotic subsets of $\mathbb{R}^{n}$.  At a more technical level, the most substantial insight related to \citet{lin2021minimizing} is that the GARCH model provides an elegant forecast function for squared observations of the time series under study. However, this use-case becomes less attractive in situations where the sign of the time series under study following the shock is uncertain.
 
 The method under development does not strictly require knowledge of the length of the shocks in the donor pool, but correctly sizing up those shock lengths is helpful to proper estimation of the shocks in the donor pool.  An important question remains: even if the donor pool shock lengths are assumed to be known, how do we advise the operator to forecast the time series under study?  For how long is the forecast reliable?  Should we take a convex combination of the donor pool shock lengths?  Or mean? Or minimum of the donor pool shock lengths?
-
-\begin{comment}
-To see this, for each $i,t$, define $\eta_{i,t} \coloneqq a^{2}_{i,t} - \sigma^{2}_{i,t}$, and by adding $\eta_{i,t}$ to both sides of the conditional variance specification of $\mc{M}_{0}$ and $\mc{M}_{1}$, we obtain the standard ARMA representation of a GARCH(m,s):
-
-\begin{align}
-a^{2}_{i,t} = a^{2}_{i,t} - \sigma^{2}_{i,t} + \sigma^{2}_{i,t} = \eta_{i,t} + \sigma^{2}_{i,t} &= \eta_{i,t} + \omega_{i} + \omega^{*}_i D_{i,t}  + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \\
-    &= \eta_{i,t} + \omega_{i} + \omega^{*}_i D_{i,t}  + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k}  + \sum_{j=1}^{s_{i}}\beta_{i,j}(a^{2}_{i,t-j} - \eta_{i,t-j}) + \gamma_{i}^{T} \x_{i,t} \\
-    &= \eta_{i,t} + \omega_{i} + \omega^{*}_i D_{i,t}  + \sum^{\text{max}\{m_{i},s_{i}\}}_{k=1}(\alpha_{i,k} + \beta_{i,k})a^{2}_{i,t-k} - \sum_{j=1}^{s_{i}}\beta_{i,j}\eta_{i,t-j} + \gamma_{i}^{T} \x_{i,t}\label{armarep}
-\end{align}
-
-Then for any $i,t$, $\E[a^{2}_{i,t}|\mathcal{F}_{t-1}]$ is nothing more than the conditional expectation of the right-hand side of $(\ref{armarep})$, where $\E[\eta_{i,t}] = 0$ for any $i,t$.
-
-
-\item See Tsay p. 133: if $t$ is the last index that has been observed, then our two-step-ahead forecast is made easier by rewriting the volatility equation as $\sigma^{2}_{i,t+1} = \omega_{i} + (\alpha_{i} + \beta_{i})\sigma^{2}_{i,t} + \alpha_{1}\sigma^{2}_{i,t}[\epsilon^{2}_{i,t} - 1]= \omega_{i} + (\alpha_{i} + \beta_{i})\sigma^{2}_{i,t} + \alpha_{1}\sigma^{2}_{i,t}[\epsilon^{2}_{i,t} - 1] $.  Usually, we assume unit variance (though not necessarily a N(0,1)).  However, what is the variance is smaller than 1?  Then in conditional expectation, the term $\alpha_{1}\sigma^{2}_{i,t}[\epsilon^{2}_{i,t} - 1]$ will be negative.  So it seems that for level shock, we want the signal to noise ratio to be large because the mean is high, not because the variance is low.
-\end{comment}
-
-The proposed method is unlike KNN in that are not trying to learn a function, first and foremost.  We are trying to estimate a parameter.
+unlike KNN in that are not trying to learn a function, first and foremost.  We are trying to estimate a parameter.
 
 KNN runs into the problem: the curse of dimensionality.  In contrast, large $p$ is not a problem in synthetic methods, because the thing estimated is the vector $w$ with $n-1$ degrees of freedom.  For KNN, a high-dimensional space, i.e. large $p$, corresponding to many covariates, is a difficult space in which to work with distances \citep{hastie2009elements}.  In contrast, large $p$ is not a problem in and of itself for synthetic control --- in fact, asymptotic results exist for $p$ \citep{abadie2010synthetic}.  
 
@@ -823,19 +807,7 @@ strategy& Observe $y_{i}$; then estimate $x$ with small expected L2 loss & Estim
 
 \end{comment}
 
-\subsection{Model Adjustment Using Synthetic Methods: A Global Overview}
 
-We conclude our discussion by proposing a subfield of forecasting based on the common methodologies of this work and \citet{lin2021minimizing}.  We begin by distinguishing what in this work is essential and inessential to synthetic forecasting.
-
-\begin{enumerate}
-  \item $k$-dimensional random object to predict
-  \item a parametric model family shared by donors
-  \item a correction term for the model family shared by donors
-  \item a parametric specification for the correction term
-  \item a reliable estimation procedure for the shared model
-  \item a reliable estimation procedure for the correction term 
-  \item a correction function that aggregates (i.e. maps) donor correction terms based on some notion of similarity
-\end{enumerate}
 
 \begin{comment}
   
