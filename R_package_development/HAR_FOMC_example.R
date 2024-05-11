@@ -32,8 +32,8 @@ suppressPackageStartupMessages(lapply(packs, require, character.only = TRUE))
 k <-1
 
 log_ret_covariates <- c(
-                        "CL=F"
-                        ,"^VIX"
+                       # "CL=F"
+                        "^VIX"
                         ,"^IRX"
                         # ,"^FVX"
                         # ,"^TNX"
@@ -61,16 +61,16 @@ shock_dates <- list('Powell Hikes' = "2018-12-18"
                  ,'Sept. 2018' =  "2018-09-25"
 )
 
-shock_dates <- list('Powell Hikes' = "2018-12-19"
-                    ,'Dec. 2015' = "2015-12-16"
-                    ,'Dec. 2016' = "2016-12-14"
-                    ,'Mar. 2017' = "2017-03-15"
-                    ,'Jun. 2017' = "2017-06-14"
-                    , 'Dec. 2017' ="2017-12-13"
-                    ,'Mar. 2018' = "2018-03-21"
-                    ,'Jun. 2018' = "2018-06-13"
-                    ,'Sept. 2018' =  "2018-09-26"
-)
+# shock_dates <- list('Powell Hikes' = "2018-12-19"
+#                     ,'Dec. 2015' = "2015-12-16"
+#                     ,'Dec. 2016' = "2016-12-14"
+#                     ,'Mar. 2017' = "2017-03-15"
+#                     ,'Jun. 2017' = "2017-06-14"
+#                     , 'Dec. 2017' ="2017-12-13"
+#                     ,'Mar. 2018' = "2018-03-21"
+#                     ,'Jun. 2018' = "2018-06-13"
+#                     ,'Sept. 2018' =  "2018-09-26"
+# )
 
 
 #shock_dates <- c(shock_dates[1], list.reverse(shock_dates[2:length(shock_dates)]))

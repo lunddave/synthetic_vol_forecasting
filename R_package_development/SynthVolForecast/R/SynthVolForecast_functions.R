@@ -1177,10 +1177,6 @@ HAR <- function(Y
 
     }
 
-    # Now, we adjust integer_shock_time_vec_for_convex_hull_based_optimization back one day
-
-    integer_shock_time_vec_for_convex_hull_based_optimization <- integer_shock_time_vec_for_convex_hull_based_optimization
-
     ## END Check whether shock_time_vec is int/date
 
     shock_dates_as_dates <- as.Date(as.Date(unlist(shock_dates)))
@@ -1193,8 +1189,6 @@ HAR <- function(Y
     print(Y_with_donor_col[Y_with_donor_col$donor == 1,])
 
     Y_with_donor_col[Y_with_donor_col$donor == 1, "donor"] <- shock_dates_as_dates_without_TSUS
-
-    print('Now we make the donor column as factor.')
 
     Y_with_donor_col$donor = as.factor(Y_with_donor_col$donor)
 
