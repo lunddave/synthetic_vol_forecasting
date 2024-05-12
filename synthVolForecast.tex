@@ -269,7 +269,7 @@ and $\varepsilon_{i,t}$ is idiosyncratic noise, uncorrelated across time and don
       As shown, $\textbf{V}_{t}$ displays `balance' in that $p$ covariates exist for each of the $n$ donors.  In practice, missing values, corrupted values, or unacceptably extreme or noisy estimates may necessitate some sort of matrix completion, a problem that we do not tackle in this work.  We now turn to the next section, where $\textbf{V}_{t}$ is employed in a procedure to arrive at a forecast adjustment. 
     
 
-\section{Methodology for Forecasting Using Similarity-based Parameter Correction}
+\section{Methodology for Similarity-based Parameter Correction}
 
 \subsection{Forecasting}
 
@@ -715,7 +715,7 @@ For all of these reasons and more, the aftermath of the 2016 presidential electi
 
 \begin{figure}[H]
 \begin{center}
-  \includegraphics[scale=.5]{real_data_output_plots/savetime_SunMar172252462024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png}
+  \includegraphics[scale=.5]{real_data_output_plots/savetime_SatMay112045002024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png}
   \caption{The volatility induced by the 2016 US election}
   \label{fig:SVF_2016}
   \end{center}
@@ -727,7 +727,7 @@ Naturally, one might ask how sensitive this prediction is to at least two kinds 
 
 \begin{figure}[H]
 \begin{center}
-  \includegraphics[scale=.6]{real_data_output_plots/savetime_SunMar172251232024_IYG_6B=F-CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-22.png}
+  \includegraphics[scale=.6]{real_data_output_plots/savetime_SatMay112045002024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06}
   \label{fig:SVF_2016_without_Brexit}
   \end{center}
 \end{figure}
@@ -819,6 +819,15 @@ Within the vast literature on financial sentimental analysis, there exists a sub
 We analyze the real-data example with Brexit included and using the daily return in the Pound-Dollar exchange rate as a covariate. \\
 
 Note that by inspecting the fit of the distance-based weighting approximation quantitatively, we can gain some degree of foresight into how well the forecast will be.
+
+
+
+\begin{figure}[H]
+  \begin{center}
+    \includegraphics[scale=.6]{real_data_output_plots/savetime_SatMay112046072024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-22.png}
+    \label{fig:SVF_2016_without_Brexit}
+    \end{center}
+  \end{figure}
 
 \clearpage
 

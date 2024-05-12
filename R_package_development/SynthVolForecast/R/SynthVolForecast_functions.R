@@ -62,13 +62,11 @@ dbw <- function(X
 
     X_Y_combiner <- function(y,x) {
 
-          # print('We print the transformation and its class')
-          # print(inputted_transformation)
-          # print(class(inputted_transformation))
+          print('We print the transformation and its class')
+          print(inputted_transformation)
+          print(class(inputted_transformation))
 
-          #transformed_series <- inputted_transformation(y) #tk
-
-          transformed_series <- y
+          transformed_series <- inputted_transformation(y) #tk
 
           return(merge(transformed_series,x, all = FALSE))
 
@@ -89,7 +87,8 @@ dbw <- function(X
   else{combined_X <- X_subset1}
 
   row_returner <- function(df, stv){
-    #print(paste('Shock occurs at ', stv, sep = ''))
+    print(paste('Shock occurs at ', stv, sep = ''))
+    print(paste('Row count of the series is ', nrow(df), sep = ''))
     return(df[1:(stv),])
   }
 
@@ -323,21 +322,21 @@ print('We plot the weights.')
   points(y = unadjusted_pred
          ,x = x_ax_first_point_of_shock:x_ax_end_point
          ,col = colors_for_adjusted_pred[1]
-         ,cex = 2
+         ,cex = 3.5
          ,pch = 15)
 
   # Now plot the adjusted predictions
   points(y = adjusted_pred
          ,x = x_ax_first_point_of_shock:x_ax_end_point
          ,col = colors_for_adjusted_pred[2]
-         ,cex = 5
-         ,pch = 19)
+         ,cex = 3.5
+         ,pch = 18)
 
   # Now plot the arithmetic mean-based predictions
   points(y = arithmetic_mean_based_pred
          ,x = x_ax_first_point_of_shock:x_ax_end_point
          ,col = colors_for_adjusted_pred[3]
-         ,cex = 2
+         ,cex = 3.5
          ,pch = 19)
 
   # Now plot Ground Truth tk
@@ -346,8 +345,8 @@ print('We plot the weights.')
     points(y = ground_truth_vec
            ,x = x_ax_first_point_of_shock:x_ax_end_point
            ,col = colors_for_adjusted_pred[4]
-           ,cex = 2
-           ,pch = 19)
+           ,cex = 3.5
+           ,pch = 17)
   }
 
   labels_for_legend <- c('GARCH (unadjusted)'
