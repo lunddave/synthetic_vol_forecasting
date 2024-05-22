@@ -1,8 +1,7 @@
-\documentclass[11pt]{article}
-
-\pdfminorversion=4
+\documentclass[11pt,3p,review,authoryear]{elsarticle}
 
 % use packages
+% \usepackage{ecrc} %required for elsarticle https://www.elsevier.com/researcher/author/policies-and-guidelines/latex-instructions
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{amsthm}
@@ -18,7 +17,6 @@
 \usepackage{subcaption}
 \usepackage{mathtools}
 \usepackage{enumitem}
-\usepackage{authblk}
 \usepackage{bm}
 \usepackage{comment}
 \usepackage{pdfpages}
@@ -110,24 +108,37 @@
     Proof of Corollary {#1}}
   \hspace*{.5em}}{\qed\bigskip\\}
 % general proof of lemma
-  \newenvironment{proof-of-lemma}[1][{}]{\noindent{\bf
-    Proof of Lemma {#1}}
-  \hspace*{.5em}}{\qed\bigskip\\}
+\newenvironment{proof-of-lemma}[1][{}]{\noindent{\bf
+Proof of Lemma {#1}}
+\hspace*{.5em}}{\qed\bigskip\\}
 
 \allowdisplaybreaks
 
-\title{Volatility Forecasting Using Similarity-based Parameter Correction and Aggregated Shock Information}
-\author{David Lundquist\thanks{davidl11@ilinois.edu}, Daniel Eck\thanks{dje13@illinois.edu} }
-\affil{Department of Statistics, University of Illinois at Urbana-Champaign}
-\date{\today}
+\journal{International Journal of Forecasting}
 
+\bibliographystyle{plainnat}
+%\bibliographystyle{model5-names}
+\biboptions{longnamesfirst}
+ 
 \begin{document}
 
-\maketitle
+\begin{frontmatter}
 
-\begin{abstract} 
-We develop a procedure for forecasting the volatility of a time series immediately following a news shock.  Adapting the similarity-based framework of \citet{lin2021minimizing}, we exploit series that have experienced similar shocks.  We aggregate their shock-induced excess volatilities by positing the shocks to be affine functions of exogenous covariates.  The volatility shocks are modeled as random effects and estimated as fixed effects.  The aggregation of these estimates is done in service of adjusting the $h$-step-ahead GARCH forecast of the time series under study by an additive term.  The adjusted and unadjusted forecasts are evaluated using the unobservable but easily-estimated realized volatility (RV).  A real-world application is provided, as are simulation results suggesting the conditions and hyperparameters under which our method thrives.
+\title{Volatility Forecasting Using Similarity-based Parameter Correction and Aggregated Shock Information}
+
+\begin{abstract}
+  We develop a procedure for forecasting the volatility of a time series immediately following a news shock.  Adapting the similarity-based framework of \citet{lin2021minimizing}, we exploit series that have experienced similar shocks.  We aggregate their shock-induced excess volatilities by positing the shocks to be affine functions of exogenous covariates.  The volatility shocks are modeled as random effects and estimated as fixed effects.  The aggregation of these estimates is done in service of adjusting the $h$-step-ahead GARCH forecast of the time series under study by an additive term.  The adjusted and unadjusted forecasts are evaluated using the unobservable but easily-estimated realized volatility (RV).  A real-world application is provided, as are simulation results suggesting the conditions and hyperparameters under which our method thrives.
 \end{abstract}
+
+\begin{keyword}
+  GARCH \sep 
+ Prospective forecasting \sep 
+ Volatility \sep 
+ARMA \sep 
+Risk
+\end{keyword}
+
+\end{frontmatter}
 
 \section{Introduction}
 
@@ -820,18 +831,16 @@ We analyze the real-data example with Brexit included and using the daily return
 
 Note that by inspecting the fit of the distance-based weighting approximation quantitatively, we can gain some degree of foresight into how well the forecast will be.
 
-
-
 \begin{figure}[H]
   \begin{center}
     \includegraphics[scale=.6]{real_data_output_plots/savetime_SatMay112046072024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-22.png}
-    \label{fig:SVF_2016_without_Brexit}
+    \label{fig:SVF_2016_with_Brexit}
     \end{center}
   \end{figure}
 
 \clearpage
 
-\bibliographystyle{plainnat}
+\section{References}
 \bibliography{synthVolForecast}
- 
+
 \end{document}

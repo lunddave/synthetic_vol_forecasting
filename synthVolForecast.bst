@@ -97,6 +97,16 @@
  year = {2022}
  } 
 
+@incollection{alquist2013forecasting,
+  title={Forecasting the price of oil},
+  author={Alquist, Ron and Kilian, Lutz and Vigfusson, Robert J},
+  booktitle={Handbook of economic forecasting},
+  volume={2},
+  pages={427--507},
+  year={2013},
+  publisher={Elsevier}
+}
+
 @article{andersen2008realized,
   title={Realized Volatility, Working Paper 2008-14},
   author={Andersen, Torben Gustav and Benzoni, Luca},
@@ -117,7 +127,7 @@
   pages={67--137},
   year={2010},
   publisher={Elsevier},
-  annote  = "{The authors introduce a tri-partite conceptual distinction with regard to the concept of volatility.  They discuss Notional, Expected, and Instantaneous Volatility, each of which has a certain grounding in both intuition and economic practice.}"
+  annote    = "{The authors introduce a tri-partite conceptual distinction with regard to the concept of volatility.  They discuss Notional, Expected, and Instantaneous Volatility, each of which has a certain grounding in both intuition and economic practice.}"
 }
 
 @incollection{zivot2009practical,
@@ -201,6 +211,43 @@
   publisher={Wiley Online Library}
 }
 
+@ARTICLE{bates1969combination,
+  title={The combination of forecasts},
+  author={Bates, John M and Granger, Clive WJ},
+  journal={Journal of the Operational Research Society},
+  volume={20},
+  number={4},
+  pages={451--468},
+  year={1969},
+  publisher={Taylor \& Francis}
+}
+
+@ARTICLE{bauer2018economic,
+  title={Economic Forecasts with the Yield Curve},
+  author={Michael D. Bauer and  Thomas M. Mertens},
+  journal={Federal Reserve Bank of San Francisco Economic Letter},
+  pages={1--5},
+  year={2018}
+}
+
+@ARTICLE{baumeister2014real,
+  title={Real-time analysis of oil price risks using forecast scenarios},
+  author={Baumeister, Christiane and Kilian, Lutz},
+  journal={IMF Economic Review},
+  volume={62},
+  number={1},
+  pages={119--145},
+  year={2014},
+  publisher={Springer}
+}
+
+@ARTICLE{baumeister2014general,
+  title={A general approach to recovering market expectations from futures prices with an application to crude oil},
+  author={Baumeister, Christiane and Kilian, Lutz},
+  year={2014},
+  publisher={CFS Working Paper}
+}
+
 @ARTICLE{berkowitz2000recent,
   title={Recent developments in bootstrapping time series},
   author={Berkowitz, Jeremy and Kilian, Lutz},
@@ -244,11 +291,45 @@
 }
 
 
+
+@ARTICLE{braniff2011towards,
+  title={Towards global jihadism: Al-Qaeda’s strategic, ideological and structural adaptations since 9/11},
+  author={Braniff, Bill and Moghadam, Assaf},
+  journal={Perspectives on Terrorism},
+  volume={5},
+  number={2},
+  pages={36--49},
+  year={2011},
+  publisher={JSTOR}
+}
+
 @article{brownlees2011practical,
   title={A practical guide to volatility forecasting through calm and storm},
   author={Brownlees, Christian T and Engle, Robert F and Kelly, Bryan T},
   journal={Available at SSRN 1502915},
   year={2011}
+}
+
+@ARTICLE{bun2017maximum,
+  title={On maximum likelihood estimation of dynamic panel data models},
+  author={Bun, Maurice JG and Carree, Martin A and Juodis, Art{\=u}ras},
+  journal={Oxford Bulletin of Economics and Statistics},
+  volume={79},
+  number={4},
+  pages={463--494},
+  year={2017},
+  publisher={Wiley Online Library}
+}
+
+@ARTICLE{burns1981causal,
+  title={Causal and diagnostic inferences: A comparison of validity},
+  author={Burns, Michael and Pearl, Judea},
+  journal={Organizational Behavior and Human Performance},
+  volume={28},
+  number={3},
+  pages={379--394},
+  year={1981},
+  publisher={Elsevier}
 }
 
 @article{chinco2019sparse,
@@ -301,6 +382,21 @@
   institution={Economic Modelling and Forecasting Group}
 }
 
+@misc{conocowhatwedo,
+  year = {2020},
+  author = {ConocoPhillips},
+  title = {What We Do},
+  howpublished = {\url{http://www.conocophillips.com/about-us/how-energy-works/}},
+  note = {Accessed on 2020-05-24}
+}
+
+@misc{conocohist,
+  year = {2020},
+  author = {ConocoPhillips},
+  title = {Our History: 2009-1990},
+  howpublished = {\url{http://www.conocophillips.com/about-us/our-history/2009-1990/}},
+  note = {Accessed on 2020-05-24}
+}
 
 @article{cont2001empirical,
   title={Empirical properties of asset returns: stylized facts and statistical issues},
@@ -431,6 +527,15 @@
   publisher={CRC press}
 }
 
+@misc{floyd2001terror,
+  year = {2001},
+  author = {Norris Floyd and Jonathan Fuerbringer},
+  title = {A DAY OF TERROR: THE MARKETS; Stocks Tumble Abroad; Exchanges in New York Never Opened for the Day},
+  howpublished = {\url{https://www.nytimes.com/2001/09/12/business/day-terror-markets-stocks-tumble-abroad-exchanges-new-york-never-opened-for-day.html
+}},
+  note = {Accessed on 2020-05-24}
+}
+
 @article{foroni2022forecasting,
   title={Forecasting the Covid-19 recession and recovery: Lessons from the financial crisis},
   author={Foroni, Claudia and Marcellino, Massimiliano and Stevanovic, Dalibor},
@@ -533,7 +638,31 @@
   publisher={Wiley Online Library}
 }
 
+@ARTICLE{he2010global,
+  title={Global economic activity and crude oil prices: A cointegration analysis},
+  author={He, Yanan and Wang, Shouyang and Lai, Kin Keung},
+  journal={Energy Economics},
+  volume={32},
+  number={4},
+  pages={868--876},
+  year={2010},
+  publisher={Elsevier}
+}
 
+@techreport{huppmann2015opec,
+  title={What about the OPEC Cartel?},
+  author={Huppmann, Daniel and Holz, Franziska},
+  year={2015},
+  institution={DIW Roundup: Politik im Fokus}
+}
+
+@ARTICLE{johnston2006impact,
+  title={The impact of terrorism on financial markets},
+  author={Johnston, R Barry and Nedelescu, Oana M},
+  journal={Journal of Financial Crime},
+  year={2006},
+  publisher={Emerald Group Publishing Limited}
+}
 
 @article{kane1996p,
   title={The P/E multiple and market volatility},
@@ -576,6 +705,15 @@
   pages={867--886},
   year={2012},
   publisher={Wiley Online Library}
+}
+
+@ARTICLE{kunsch1989jackknife,
+  title={The jackknife and the bootstrap for general stationary observations},
+  author={K\"{u}nsch, Hans R},
+  journal={The Annals of Statistics},
+  pages={1217--1241},
+  year={1989},
+  publisher={JSTOR}
 }
 
 @ARTICLE{lee2015model,
@@ -958,15 +1096,7 @@
   publisher={Elsevier}
 }
 
-@misc{News_2024, 
-title={Election 2024: What will markets do with trump victory over Biden?}, 
-howpublished={\url{https://www.bloomberg.com/news/articles/2024-01-21/trump-s-2016-win-shook-markets-traders-won-t-get-fooled-again}}, 
-journal={Bloomberg.com}, 
-publisher={Bloomberg}, 
-author={News, Bloomberg}, 
-year={2024}, 
-month={Jan}
-} 
+@misc{News_2024, title={Election 2024: What will markets do with trump victory over Biden?}, url={https://www.bloomberg.com/news/articles/2024-01-21/trump-s-2016-win-shook-markets-traders-won-t-get-fooled-again}, journal={Bloomberg.com}, publisher={Bloomberg}, author={News, Bloomberg}, year={2024}, month={Jan}} 
 
 @misc{cnbc,
   year = {2020},
@@ -975,6 +1105,7 @@ month={Jan}
   howpublished = {\url{https://www.cnbc.com/2020/03/08/saudi-arabia-to-hike-oil-output-above-10-million-bpd-in-april-after-opec-deal-collapse.html}},
   note = {Accessed on 2020-05-24}
 }
+
 @misc{cnn,
   year = {2020},
   author = {Jamiel Lynch},
@@ -991,6 +1122,7 @@ month={Jan}
   note = {Accessed on 2020-05-24}
 }
 
+
 @misc{newsweek,
   year = {2020},
   author = {Matthew Impelli},
@@ -1004,6 +1136,14 @@ month={Jan}
   author = {Stan Choe},
   title = {Potential recession signal: A key `yield curve' has inverted},
   howpublished = {\url{https://apnews.com/a0af7de008924d789c6d2bddc1ee9168}},
+  note = {Accessed on 2020-05-24}
+}
+
+@misc{latimes,
+  year = {2011},
+  author = {Jim Puzzanghera},
+  title = {Potential recession signal: A key `yield curve' has inverted},
+  howpublished = {\url{https://www.latimes.com/world/la-xpm-2011-aug-06-la-fi-us-debt-downgrade-20110806-story.html}},
   note = {Accessed on 2020-05-24}
 }
 
