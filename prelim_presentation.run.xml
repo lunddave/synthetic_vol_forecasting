@@ -80,7 +80,7 @@
       <file>prelim_presentation.bcf</file>
     </requires>
     <requires type="editable">
-      <file>synthVolForecast.bib</file>
+      <file>prelim.bib</file>
     </requires>
   </external>
 </requests>

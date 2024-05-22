@@ -112,6 +112,7 @@
       \strng{authorbibnamehash}{49f3ed84d6c41c9e6799d682134c819f}
       \strng{authornamehash}{49f3ed84d6c41c9e6799d682134c819f}
       \strng{authorfullhash}{49f3ed84d6c41c9e6799d682134c819f}
+      \field{extraname}{1}
       \field{sortinit}{A}
       \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
       \field{extradatescope}{labelyear}
@@ -164,40 +165,6 @@
       \field{pages}{701\bibrangedash 720}
       \range{pages}{20}
     \endentry
-    \entry{andersen2009realized}{incollection}{}
-      \name{author}{2}{}{%
-        {{hash=09c85c9c10e1f8f0e62363a927495479}{%
-           family={Andersen},
-           familyi={A\bibinitperiod},
-           given={Torben\bibnamedelima G},
-           giveni={T\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
-        {{hash=77b26b761b5b55458b37655c5470dce1}{%
-           family={Teräsvirta},
-           familyi={T\bibinitperiod},
-           given={Timo},
-           giveni={T\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {Springer}%
-      }
-      \strng{namehash}{9ce18a60bc4b651cc25b5abc804abb70}
-      \strng{fullhash}{9ce18a60bc4b651cc25b5abc804abb70}
-      \strng{bibnamehash}{9ce18a60bc4b651cc25b5abc804abb70}
-      \strng{authorbibnamehash}{9ce18a60bc4b651cc25b5abc804abb70}
-      \strng{authornamehash}{9ce18a60bc4b651cc25b5abc804abb70}
-      \strng{authorfullhash}{9ce18a60bc4b651cc25b5abc804abb70}
-      \field{sortinit}{A}
-      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{booktitle}{Handbook of financial time series}
-      \field{title}{Realized volatility}
-      \field{year}{2009}
-      \field{pages}{555\bibrangedash 575}
-      \range{pages}{21}
-    \endentry
     \entry{andersen2003modeling}{article}{}
       \name{author}{4}{}{%
         {{hash=09c85c9c10e1f8f0e62363a927495479}{%
@@ -243,6 +210,35 @@
       \field{year}{2003}
       \field{pages}{579\bibrangedash 625}
       \range{pages}{47}
+    \endentry
+    \entry{andersen2008realized}{article}{}
+      \name{author}{2}{}{%
+        {{hash=8a4670fbb0cfadae9bd2d5516104f66a}{%
+           family={Andersen},
+           familyi={A\bibinitperiod},
+           given={Torben\bibnamedelima Gustav},
+           giveni={T\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+        {{hash=16348fc4f0758ae2d590b8dcbbf577e1}{%
+           family={Benzoni},
+           familyi={B\bibinitperiod},
+           given={Luca},
+           giveni={L\bibinitperiod}}}%
+      }
+      \strng{namehash}{2b516d7f773ba170c6a8ec672f7e19ad}
+      \strng{fullhash}{2b516d7f773ba170c6a8ec672f7e19ad}
+      \strng{bibnamehash}{2b516d7f773ba170c6a8ec672f7e19ad}
+      \strng{authorbibnamehash}{2b516d7f773ba170c6a8ec672f7e19ad}
+      \strng{authornamehash}{2b516d7f773ba170c6a8ec672f7e19ad}
+      \strng{authorfullhash}{2b516d7f773ba170c6a8ec672f7e19ad}
+      \field{extraname}{2}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Realized Volatility, Working Paper 2008-14}
+      \field{year}{2008}
     \endentry
     \entry{brownlees2011practical}{article}{}
       \name{author}{3}{}{%
