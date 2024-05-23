@@ -3,51 +3,50 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: synthVolForecast.aux
 The style file: plainnat.bst
 Database file #1: synthVolForecast.bib
-Warning--I didn't find a database entry for "abadie2021penalized"
 Warning--there's a number but no volume in andersen2010stochastic
 Warning--empty journal in andersen2008realized
 Warning--empty journal in bauwens2006regime
 Warning--empty journal in guerron2017macroeconomic
 Warning--empty journal in hendry1994theory
-You've used 47 entries,
+You've used 48 entries,
             2773 wiz_defined-function locations,
-            881 strings with 12368 characters,
-and the built_in function-call counts, 20017 in all, are:
-= -- 1822
-> -- 1004
-< -- 38
-+ -- 344
-- -- 297
-* -- 1541
-:= -- 3069
-add.period$ -- 144
-call.type$ -- 47
-change.case$ -- 233
-chr.to.int$ -- 47
-cite$ -- 99
-duplicate$ -- 960
-empty$ -- 1740
-format.name$ -- 382
-if$ -- 4196
+            886 strings with 12490 characters,
+and the built_in function-call counts, 20491 in all, are:
+= -- 1868
+> -- 1025
+< -- 39
++ -- 351
+- -- 303
+* -- 1580
+:= -- 3139
+add.period$ -- 147
+call.type$ -- 48
+change.case$ -- 238
+chr.to.int$ -- 48
+cite$ -- 101
+duplicate$ -- 980
+empty$ -- 1782
+format.name$ -- 391
+if$ -- 4296
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 48
-newline$ -- 244
-num.names$ -- 188
-pop$ -- 471
+missing$ -- 49
+newline$ -- 249
+num.names$ -- 192
+pop$ -- 479
 preamble$ -- 1
-purify$ -- 191
+purify$ -- 195
 quote$ -- 0
-skip$ -- 729
+skip$ -- 745
 stack$ -- 0
-substring$ -- 802
-swap$ -- 74
+substring$ -- 835
+swap$ -- 75
 text.length$ -- 5
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 492
+type$ -- 503
 warning$ -- 5
-while$ -- 199
+while$ -- 204
 width$ -- 0
-write$ -- 603
-(There were 6 warnings)
+write$ -- 616
+(There were 5 warnings)

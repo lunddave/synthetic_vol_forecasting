@@ -52,224 +52,247 @@ volume_covariates <- c()
 
 FRED_covariates <- c('AAA', 'BAA')
 
-shock_dates <- list('2016 Election' = "2016-11-08"
-                  ,'Brexit' = "2016-06-22"
-                 # ,'2014 Midterm' = "2014-11-04"
-                 ,'2012 Election' = "2012-11-06"
-                 # , '2010 Midterm' ="2010-11-02"
-                 ,'2008 Election' = "2008-11-04"
-                 # , '2006 Midterm' ="2006-11-07"
-                 ,'2004 Election' = "2004-11-02"
-                 #,'2002 Midterm' =  "2002-11-05"
-                 #,'2000 Election' = "2000-11-07"
-)
+shock_dates_outside_loop <- list('2016 Election' = "2016-11-08"
+                                ,'Brexit' = "2016-06-22"
+                               # ,'2014 Midterm' = "2014-11-04"
+                               ,'2012 Election' = "2012-11-06"
+                               # , '2010 Midterm' ="2010-11-02"
+                               ,'2008 Election' = "2008-11-04"
+                               # , '2006 Midterm' ="2006-11-07"
+                               ,'2004 Election' = "2004-11-02"
+                               #,'2002 Midterm' =  "2002-11-05"
+                               #,'2000 Election' = "2000-11-07"
+              )
 
-shock_dates <- c(shock_dates[1], list.reverse(shock_dates[2:length(shock_dates)]))
-
+shock_dates_outside_loop <- c(shock_dates_outside_loop[1]
+                              , list.reverse(shock_dates_outside_loop[2:length(shock_dates_outside_loop)]))
 ## END USER DATA INPUTS##
 
-nyse <- timeDate::holidayNYSE(2000:year(Sys.Date())+1)
-create.calendar(name='NYSE', holidays=nyse, weekdays=c('saturday', 'sunday'))
+#We now loop through donors 2...n+1 as part of LOO procedure
 
-shock_dates_as_dates <- as.Date(as.Date(unlist(shock_dates)))
+number_of_covariates <- length(log_ret_covariates) +
+                        length(level_covariates) +
+                        length(volume_covariates) +
+                        2 #The +2 is for the TSUS and the FRED covariates
 
-start_dates <- offset(shock_dates_as_dates, round(-3.5*252), "NYSE")
+for (u in 1:number_of_covariates){
 
-k_periods_after_shock <- offset(shock_dates_as_dates, k, "NYSE")
+  for (z in 2:length(shock_dates_outside_loop)){
 
-market_data_list <- vector("list", length(shock_dates))
-names(market_data_list) <- names(shock_dates)
+    shock_dates <- shock_dates_outside_loop[-z]
 
-# Now we loop through shock dates
+    nyse <- timeDate::holidayNYSE(2000:year(Sys.Date())+1)
+    create.calendar(name='NYSE', holidays=nyse, weekdays=c('saturday', 'sunday'))
 
-for (i in 1:length(shock_dates)){
+    shock_dates_as_dates <- as.Date(as.Date(unlist(shock_dates)))
 
-  print(shock_dates_as_dates[i])
+    start_dates <- offset(shock_dates_as_dates, round(-3.5*252), "NYSE")
 
-  data_TSUS <- lapply(TSUS, function(sym) {
-    dailyReturn(na.omit(getSymbols(sym
-                                   ,from=start_dates[i]
-                                   ,to=k_periods_after_shock[i]+20 #tk +10
-                                   ,auto.assign=FALSE))[,6]
-                ,type='log')})
+    k_periods_after_shock <- offset(shock_dates_as_dates, k, "NYSE")
 
-  data_log_ret_covariates <- lapply(log_ret_covariates, function(sym) {
-    dailyReturn(na.omit(getSymbols(sym
-                                   ,from=start_dates[i]
-                                   ,to=k_periods_after_shock[i]+20 #tk +10
-                                   ,auto.assign=FALSE))[,6]
-                ,type='log')})
+    market_data_list <- vector("list", length(shock_dates))
+    names(market_data_list) <- names(shock_dates)
 
-  data_level_covariates <- lapply(level_covariates, function(sym) {
-    na.omit(getSymbols(sym
-                       ,from=start_dates[i]
-                       ,to=k_periods_after_shock[i]+20 #tk +10
-                       ,auto.assign=FALSE))[,6]})
+    # Now we loop through shock dates
 
-  data_volume_covariates <- lapply(volume_covariates, function(sym) {
-    dailyReturn(na.omit(getSymbols(sym
-                                   ,from=start_dates[i]
-                                   ,to=k_periods_after_shock[i]+20 #tk +10
-                                   ,auto.assign=FALSE))[,6])})
+    for (i in 1:length(shock_dates)){
 
-  data_absolute_return_covariates <- lapply(data_log_ret_covariates, abs)
+      print(shock_dates_as_dates[i])
 
-  data_absolute_return_covariates <- c()
+      data_TSUS <- lapply(TSUS, function(sym) {
+        dailyReturn(na.omit(getSymbols(sym
+                                       ,from=start_dates[i]
+                                       ,to=k_periods_after_shock[i]+20 #tk +10
+                                       ,auto.assign=FALSE))[,6]
+                    ,type='log')})
 
-  if (length(FRED_covariates) > 0){
+      data_log_ret_covariates <- lapply(log_ret_covariates, function(sym) {
+        dailyReturn(na.omit(getSymbols(sym
+                                       ,from=start_dates[i]
+                                       ,to=k_periods_after_shock[i]+20 #tk +10
+                                       ,auto.assign=FALSE))[,6]
+                    ,type='log')})
 
-    #Get FRED data (requires subtracting one series from another)
-    data_FRED_covariates <- lapply(FRED_covariates, function(sym) {
-      na.omit(getSymbols(sym
-                         ,src = 'FRED'
-                         ,from=start_dates[i]
-                         ,to=k_periods_after_shock[i]+20 #tk +10
-                         ,auto.assign=FALSE))[,1]})
+      data_level_covariates <- lapply(level_covariates, function(sym) {
+        na.omit(getSymbols(sym
+                           ,from=start_dates[i]
+                           ,to=k_periods_after_shock[i]+20 #tk +10
+                           ,auto.assign=FALSE))[,6]})
 
-    # Now we are going manually and carefully add the spread between BAA and AAA credit
+      data_volume_covariates <- lapply(volume_covariates, function(sym) {
+        dailyReturn(na.omit(getSymbols(sym
+                                       ,from=start_dates[i]
+                                       ,to=k_periods_after_shock[i]+20 #tk +10
+                                       ,auto.assign=FALSE))[,6])})
 
-    diff_log_FRED_spread <- diff(log(data_FRED_covariates[[2]] - data_FRED_covariates[[1]]))
+      data_absolute_return_covariates <- lapply(data_log_ret_covariates, abs)
 
-    month_before_shock <- month(shock_dates_as_dates[i]) - 1
-    year_of_shock <- year(shock_dates_as_dates[i]) #This is not necessarily robust to a shock in January
+      data_absolute_return_covariates <- c()
 
-    first_of_month_before_shock <- paste(year_of_shock
-                                         ,'-'
-                                         ,month_before_shock
-                                         ,'-'
-                                         ,'01'
-                                         ,sep = '')
+      if (length(FRED_covariates) > 0){
 
-    first_of_month_before_shock <- as.Date(first_of_month_before_shock)
+        #Get FRED data (requires subtracting one series from another)
+        data_FRED_covariates <- lapply(FRED_covariates, function(sym) {
+          na.omit(getSymbols(sym
+                             ,src = 'FRED'
+                             ,from=start_dates[i]
+                             ,to=k_periods_after_shock[i]+20 #tk +10
+                             ,auto.assign=FALSE))[,1]})
 
-    diff_log_FRED_spread_latest_before_shock <- diff_log_FRED_spread[first_of_month_before_shock]
+        # Now we are going manually and carefully add the spread between BAA and AAA credit
 
-    # date <- shock_dates_as_dates[i]
-    # data <- as.numeric(diff_log_FRED_spread_latest_before_shock)
-    # row_to_add <- xts(data, order.by = date)
+        diff_log_FRED_spread <- diff(log(data_FRED_covariates[[2]] - data_FRED_covariates[[1]]))
 
-    #Drop NA
-    diff_log_FRED_spread_latest_before_shock <- na.omit(diff_log_FRED_spread_latest_before_shock)
+        month_before_shock <- month(shock_dates_as_dates[i]) - 1
+        year_of_shock <- year(shock_dates_as_dates[i]) #This is not necessarily robust to a shock in January
 
-    } #end lapply for FRED covariates
+        first_of_month_before_shock <- paste(year_of_shock
+                                             ,'-'
+                                             ,month_before_shock
+                                             ,'-'
+                                             ,'01'
+                                             ,sep = '')
 
-    to_add <- c(data_TSUS
-                , data_log_ret_covariates
-                , data_level_covariates
-                , data_volume_covariates
-                , data_absolute_return_covariates
-    )
+        first_of_month_before_shock <- as.Date(first_of_month_before_shock)
 
-    merged_data <- do.call(merge, to_add)
+        diff_log_FRED_spread_latest_before_shock <- diff_log_FRED_spread[first_of_month_before_shock]
 
-    #We add column names to the data so we can analyze it more easily when we print it
+        # date <- shock_dates_as_dates[i]
+        # data <- as.numeric(diff_log_FRED_spread_latest_before_shock)
+        # row_to_add <- xts(data, order.by = date)
 
-    if (length(log_ret_covariates) > 0)
-    {log_ret_covariates_colname <- paste(log_ret_covariates, "_log_ret", sep="")}
-    else
-    {log_ret_covariates_colname <- c()}
+        #Drop NA
+        diff_log_FRED_spread_latest_before_shock <- na.omit(diff_log_FRED_spread_latest_before_shock)
 
-    if (length(level_covariates) > 0)
-    {level_covariates_colname <- paste(level_covariates, "_raw", sep="")}
-    else
-    {level_covariates_colname <- c()}
+        } #end lapply for FRED covariates
 
-    if (length(volume_covariates) > 0)
-    {volume_covariates_colname <- paste(volume_covariates, "_volume", sep="")}
-    else
-    {volume_covariates_colname <- c()}
+        to_add <- c(data_TSUS
+                    , data_log_ret_covariates
+                    , data_level_covariates
+                    , data_volume_covariates
+                    , data_absolute_return_covariates
+        )
 
-    if (length(data_absolute_return_covariates) > 0)
-    {abs_log_ret_covariates_colname <- paste(log_ret_covariates, "_abs_log_ret", sep="")}
-    else
-    {abs_log_ret_covariates_colname <- c()}
+        merged_data <- do.call(merge, to_add)
 
-    colnames(merged_data) <- c(TSUS
-                               , log_ret_covariates_colname
-                               , level_covariates_colname
-                               , volume_covariates_colname
-                               , abs_log_ret_covariates_colname
-    )
+        #We add column names to the data so we can analyze it more easily when we print it
 
-    if (length(FRED_covariates) > 0){
+        if (length(log_ret_covariates) > 0)
+        {log_ret_covariates_colname <- paste(log_ret_covariates, "_log_ret", sep="")}
+        else
+        {log_ret_covariates_colname <- c()}
 
-      dates <- index(merged_data)
-      times <- length(dates)
-      data <- rep(as.numeric(diff_log_FRED_spread_latest_before_shock), times)
-      Debt_Risk_Spread <- xts(data, order.by = dates)
+        if (length(level_covariates) > 0)
+        {level_covariates_colname <- paste(level_covariates, "_raw", sep="")}
+        else
+        {level_covariates_colname <- c()}
 
-      #Merge FRED data
-      merged_data <- merge(merged_data, Debt_Risk_Spread)
+        if (length(volume_covariates) > 0)
+        {volume_covariates_colname <- paste(volume_covariates, "_volume", sep="")}
+        else
+        {volume_covariates_colname <- c()}
 
-    } #end conditional for FRED_covariates
+        if (length(data_absolute_return_covariates) > 0)
+        {abs_log_ret_covariates_colname <- paste(log_ret_covariates, "_abs_log_ret", sep="")}
+        else
+        {abs_log_ret_covariates_colname <- c()}
 
-    market_data_list[[i]] <- merged_data
-  }
+        colnames(merged_data) <- c(TSUS
+                                   , log_ret_covariates_colname
+                                   , level_covariates_colname
+                                   , volume_covariates_colname
+                                   , abs_log_ret_covariates_colname
+        )
 
-##################################
+        if (length(FRED_covariates) > 0){
 
-#now build Y
-Y <- list()
-for (i in 1:length(start_dates)){
-  Y_i <- market_data_list[[i]][,1]
-  Y_i_drop_NA <- Y_i[complete.cases(Y_i)]
+          dates <- index(merged_data)
+          times <- length(dates)
+          data <- rep(as.numeric(diff_log_FRED_spread_latest_before_shock), times)
+          Debt_Risk_Spread <- xts(data, order.by = dates)
 
-  print('Here is the shock date')
-  print(shock_dates_as_dates[i])
+          #Merge FRED data
+          merged_data <- merge(merged_data, Debt_Risk_Spread)
 
-  if (shock_dates[i] %in% index(Y_i_drop_NA)){
-    print('The shock date is in the series.')
-  }
-  else{
-    print(paste('Shock date ', i, ' NOT in series ',i,".", sep = ''))
-  }
+          print('Number of rows in merged_data')
+          print(ncol(merged_data))
 
-  Y[[i]] <- Y_i_drop_NA
-} #end for loop for building Y
+          print('Value of number_of_covariates')
+          print(number_of_covariates)
 
-#Now build X
-X <- list()
-for (i in 1:length(start_dates)){
-  X[[i]] <- market_data_list[[i]][,-1]
-}
+          merged_data_uth_covariate_dropped <- merged_data[,-(u)]
 
-n <- length(start_dates) - 1
+          covariates_col_names <- colnames(merged_data_uth_covariate_dropped)
 
-time_date <- gsub(" ", "", gsub(':', '', format(Sys.time(), "%a%b%d%X%Y")), fixed = TRUE)
-png_save_name <- paste("real_data_output_plots/savetime_"
-                       ,time_date
-                       ,'_'
-                       ,TSUS
-                       ,'_'
-                       ,paste(log_ret_covariates,collapse='-')
-                       ,'_'
-                       ,paste(level_covariates,collapse='-')
-                       ,'_'
-                       # ,paste(volume_covariates,collapse='-')
-                       # ,'_'
-                       # ,paste(data_absolute_return_covariates,collapse='-')
-                       # ,'_'
-                       ,paste(shock_dates,collapse='-')
-                       ,".png"
-                       ,sep="")
+          covariate_string <- paste(covariates_col_names,collapse="_")
 
-png(png_save_name,width = 800, height = 600)
+        } #end conditional for FRED_covariates
 
-#Now run the algorithm
-temp <- SynthVolForecast(Y
-                         ,X
-                         ,shock_time_vec = unlist(shock_dates)
-                         ,rep(k, n+1)
-                         ,dbw_scale = TRUE
-                         ,dbw_center = TRUE
-                         ,dbw_indices = NULL
-                         #,covariate_indices = length(X)
-                         ,garch_order = c(1,1,0)
-                         ,plots = TRUE
-                         ,shock_time_labels = names(shock_dates)
-                         ,ground_truth_vec = ground_truth
-                         ,Y_lookback_indices = list(seq(1,30,1))
-                         ,X_lookback_indices = rep(list(c(1)),ncol(X[[1]]))
-                         )
+        market_data_list[[i]] <- merged_data_uth_covariate_dropped
+    }
 
-dev.off()
+    ##################################
+
+    #now build Y
+    Y <- list()
+    for (i in 1:length(start_dates)){
+      Y_i <- market_data_list[[i]][,1]
+      Y_i_drop_NA <- Y_i[complete.cases(Y_i)]
+
+      print('Here is the shock date')
+      print(shock_dates_as_dates[i])
+
+      if (shock_dates[i] %in% index(Y_i_drop_NA)){
+        print('The shock date is in the series.')
+      }
+      else{
+        print(paste('Shock date ', i, ' NOT in series ',i,".", sep = ''))
+      }
+
+      Y[[i]] <- Y_i_drop_NA
+    } #end for loop for building Y
+
+    #Now build X
+    X <- list()
+    for (i in 1:length(start_dates)){
+      X[[i]] <- market_data_list[[i]][,-1]
+    }
+
+    n <- length(start_dates) - 1
+
+    time_date <- gsub(" ", "", gsub(':', '', format(Sys.time(), "%a%b%d%X%Y")), fixed = TRUE)
+    png_save_name <- paste("real_data_output_plots/"
+                           ,time_date
+                           ,'_'
+                           ,TSUS
+                           ,'_'
+                           ,covariate_string
+                            ,'_'
+                           ,paste(shock_dates,collapse='-')
+                           ,".png"
+                           ,sep="")
+
+    png(png_save_name,width = 800, height = 600)
+
+    #Now run the algorithm
+    temp <- SynthVolForecast(Y
+                             ,X
+                             ,shock_time_vec = unlist(shock_dates)
+                             ,rep(k, n+1)
+                             ,dbw_scale = TRUE
+                             ,dbw_center = TRUE
+                             ,dbw_indices = NULL
+                             #,covariate_indices = length(X)
+                             ,garch_order = c(1,1,0)
+                             ,plots = TRUE
+                             ,shock_time_labels = names(shock_dates)
+                             ,ground_truth_vec = ground_truth
+                             ,Y_lookback_indices = list(seq(1,30,1))
+                             ,X_lookback_indices = rep(list(c(1)),ncol(X[[1]]))
+                             )
+
+    dev.off()
+
+  }#end loop for dropping donors
+
+}#end loop for dropping covariates
