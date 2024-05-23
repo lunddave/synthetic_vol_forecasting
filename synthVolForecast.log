@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.21)  23 MAY 2024 13:48
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.21)  23 MAY 2024 13:49
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -893,19 +893,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 634--635
 
  []
 
-Excluding 'comment' comment. Excluding 'comment' comment. Excluding 'comment' comment. Excluding 'comment' comment. Excluding 'comment' comment.
 
-LaTeX Warning: Reference `' on page 25 undefined on input line 835.
+LaTeX Warning: Reference `' on page 25 undefined on input line 641.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 840--841
+Underfull \hbox (badness 10000) in paragraph at lines 646--647
 
  []
 
 <real_data_output_plots/savetime_SatMay112046072024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-22.png, id=509, 803.0pt x 602.25pt>
 File: real_data_output_plots/savetime_SatMay112046072024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-22.png Graphic file (type png)
 <use real_data_output_plots/savetime_SatMay112046072024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-22.png>
-Package pdftex.def Info: real_data_output_plots/savetime_SatMay112046072024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-22.png  used on input line 846.
+Package pdftex.def Info: real_data_output_plots/savetime_SatMay112046072024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-22.png  used on input line 652.
 (pdftex.def)             Requested size: 481.80373pt x 361.35278pt.
 [25] [26 <./real_data_output_plots/savetime_SatMay112046072024_IYG_CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-22.png>] (./synthVolForecast.bbl [27
 
@@ -922,10 +921,10 @@ Package rerunfilecheck Info: File `synthVolForecast.out' has not changed.
 (rerunfilecheck)             Checksum: 671BFC30E3909C7818CE7095289CE036;4116.
  ) 
 Here is how much of TeX's memory you used:
- 26706 strings out of 476025
- 495936 string characters out of 5790017
+ 26705 strings out of 476025
+ 495926 string characters out of 5790017
  1874388 words of memory out of 5000000
- 46550 multiletter control sequences out of 15000+600000
+ 46549 multiletter control sequences out of 15000+600000
  526666 words of font info for 83 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,17n,80p,2243b,636s stack positions out of 10000i,1000n,20000p,200000b,200000s
