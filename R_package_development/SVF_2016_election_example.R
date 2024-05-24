@@ -73,7 +73,9 @@ shock_dates_outside_loop <- c(shock_dates_outside_loop[1]
 number_of_covariates <- length(log_ret_covariates) +
                         length(level_covariates) +
                         length(volume_covariates) +
-                        2 #The +2 is for the TSUS and the FRED covariates
+                        2 #The +2 is for the TSUS and the FRED covariates'
+
+list_from_looping <- list()
 
 for (u in 1:number_of_covariates){
 
@@ -291,8 +293,17 @@ for (u in 1:number_of_covariates){
                              ,X_lookback_indices = rep(list(c(1)),ncol(X[[1]]))
                              )
 
+    list_from_looping <- append(list_from_looping, temp)
+
     dev.off()
 
   }#end loop for dropping donors
 
 }#end loop for dropping covariates
+
+df_final <- do.call(rbind.data.frame, list_from_looping)
+
+df_final <- as.data.frame(unlist(list_from_looping))
+
+my_dataframe <- as.data.frame(list_from_looping)
+
