@@ -1,7 +1,7 @@
 ####################### BEGIN Auxiliary functions #######################
 
 ### START QL_loss_function
-QL_loss_function <- function(pred, gt){pred/gt - log(pred/gt) - 1}
+QL_loss_function <- function(pred, gt){gt/pred - log(gt/pred) - 1}
 ### END QL_loss_function
 
 #We specify some functions for transforming y

@@ -307,23 +307,26 @@ df_final <- as.data.frame(unlist(list_from_looping))
 
 my_dataframe <- as.data.frame(list_from_looping)
 
-t <- sapply(list_from_looping,"[[",1)
-t
-df_final <- do.call(rbind.data.frame, t)
-names(df_final) <- c('d1','d2','d3')
-apply(df_final, 1, sum)
+lin_combs <- sapply(list_from_looping,"[[",1)
+df_lin_combs <- do.call(rbind.data.frame, lin_combs)
+names(df_lin_combs) <- c('d1','d2','d3')
+apply(df_lin_combs, 1, sum)
+lin_combs_averages <- apply(df_lin_combs[-(1:4),], 2, mean)
+lin_combs_averages #these are no meaningful averages, since we drop donors
 
-v <- sapply(list_from_looping,"[[",2)
-v
-df_final <- do.call(rbind.data.frame, v)
-names(df_final) <- c('d1','d2','d3')
-apply(df_final, 1, sum)
+prediction_matrix <- sapply(list_from_looping,"[[",2)
+prediction_matrix <- matrix(as.numeric(t(prediction_matrix)), ncol = 3)
+apply(prediction_matrix[-(1:4),], 2, mean)
+
+#And what's the loss on these averaged forecasts?
+
+
 
 loss_matrix <- sapply(list_from_looping,"[[",3)
-t(loss_matrix)
-df_final <- do.call(rbind.data.frame, g)
-names(df_final) <- c('d1','d2','d3')
-apply(df_final, 1, sum)
+loss_matrix <- matrix(as.numeric(t(loss_matrix)), ncol = 3)
+loss_matrix
+apply(loss_matrix[-(1:4),], 2, mean)
+
 
 
 #Things we want from the loop:

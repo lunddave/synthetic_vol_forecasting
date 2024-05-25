@@ -356,7 +356,7 @@ Also of interest in mean absolute percentage error for an $h$-step-ahead forecas
 Finally, we introduce the QL (quasi-likelihood) Loss \citep{brownlees2011practical}:
 
 \[ 
-\text{QL}^{h}_{method, ground truth} = \frac{ \hat\sigma^{2}_{h, method} }{\hat\sigma^{2}_{h, ground truth}} - \log{\frac{ \hat\sigma^{2}_{h, method} }{\hat\sigma^{2}_{h, ground truth}}} -1 \text{ .}
+\text{QL}^{h}_{method, ground truth} = \frac{\hat\sigma^{2}_{h, ground truth}}{ \hat\sigma^{2}_{h, method}} - \log{\frac{\hat\sigma^{2}_{h, ground truth}}{ \hat\sigma^{2}_{h, method}}} -1 \text{ .}
 \]
 What distinguishes QL Loss is that it is multiplicative rather than additive.  This has benefits, both practical and theoretical.  As \citet{brownlees2011practical} explain, ``[a]mid volatility turmoil, large MSE
 losses will be a consequence of high volatility without necessarily corresponding to
