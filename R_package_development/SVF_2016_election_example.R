@@ -53,7 +53,7 @@ volume_covariates <- c()
 FRED_covariates <- c('AAA', 'BAA')
 
 shock_dates_outside_loop <- list('2016 Election' = "2016-11-08"
-                                ,'Brexit' = "2016-06-22"
+                                 ,'Brexit' = "2016-06-22"
                                # ,'2014 Midterm' = "2014-11-04"
                                ,'2012 Election' = "2012-11-06"
                                # , '2010 Midterm' ="2010-11-02"
@@ -77,11 +77,16 @@ number_of_covariates <- length(log_ret_covariates) +
 
 list_from_looping <- list()
 
+#NOTE: to run without an Leave-one-out procedures, set...
+# z <- u <- 0
+
 for (u in 1:number_of_covariates){
 
   for (z in 2:length(shock_dates_outside_loop)){
 
-    shock_dates <- shock_dates_outside_loop[-z]
+    if (z > 0){
+      shock_dates <- shock_dates_outside_loop[-z]
+      } else {shock_dates <- shock_dates_outside_loop}
 
     nyse <- timeDate::holidayNYSE(2000:year(Sys.Date())+1)
     create.calendar(name='NYSE', holidays=nyse, weekdays=c('saturday', 'sunday'))
@@ -222,7 +227,12 @@ for (u in 1:number_of_covariates){
           print('Value of number_of_covariates')
           print(number_of_covariates)
 
-          merged_data_uth_covariate_dropped <- merged_data[,-(u)]
+          if (u > 0){
+            merged_data_uth_covariate_dropped <- merged_data[,-u]
+          }
+          else {
+            merged_data_uth_covariate_dropped <- merged_data
+          }
 
           covariates_col_names <- colnames(merged_data_uth_covariate_dropped)
 
@@ -271,8 +281,12 @@ for (u in 1:number_of_covariates){
                            ,covariate_string
                             ,'_'
                            ,paste(shock_dates,collapse='-')
-                           ,".png"
+                           #,".png"
                            ,sep="")
+
+    png_save_name <- gsub('.', '', png_save_name, fixed = TRUE)
+
+    png_save_name <- paste(png_save_name, '.png', sep = "")
 
     png(png_save_name,width = 800, height = 600)
 
@@ -301,31 +315,49 @@ for (u in 1:number_of_covariates){
 
 }#end loop for dropping covariates
 
-df_final <- do.call(rbind.data.frame, list_from_looping)
-
-df_final <- as.data.frame(unlist(list_from_looping))
-
-my_dataframe <- as.data.frame(list_from_looping)
-
 lin_combs <- sapply(list_from_looping,"[[",1)
 df_lin_combs <- do.call(rbind.data.frame, lin_combs)
 names(df_lin_combs) <- c('d1','d2','d3')
 apply(df_lin_combs, 1, sum)
 lin_combs_averages <- apply(df_lin_combs[-(1:4),], 2, mean)
 lin_combs_averages #these are no meaningful averages, since we drop donors
+#tk but what about calculating averages for sets with same donors?
 
 prediction_matrix <- sapply(list_from_looping,"[[",2)
 prediction_matrix <- matrix(as.numeric(t(prediction_matrix)), ncol = 3)
 apply(prediction_matrix[-(1:4),], 2, mean)
 
 #And what's the loss on these averaged forecasts?
+forecast_averages <- apply(prediction_matrix[-(1:4),], 2, mean)
 
-
+losses_from_averaging <- QL_loss_function(forecast_averages
+                                , ground_truth)
+losses_from_averaging
 
 loss_matrix <- sapply(list_from_looping,"[[",3)
 loss_matrix <- matrix(as.numeric(t(loss_matrix)), ncol = 3)
-loss_matrix
+loss_matrix <- as.data.frame(loss_matrix)
 apply(loss_matrix[-(1:4),], 2, mean)
+
+nrow_loss_matrix <- nrow(loss_matrix)
+
+loss_matrix$loss_from_avg <- rep(losses_from_averaging[2], nrow_loss_matrix)
+
+names(loss_matrix) <- c('unadj', 'adj', 'arith_mean','loss_from_avg')
+
+
+loss_matrix$CH_wins <- ifelse(loss_matrix_with_forecast_averages$unadj > loss_matrix_with_forecast_averages$adj
+                              , TRUE, FALSE)
+loss_matrix$AM_wins <- ifelse(loss_matrix_with_forecast_averages$unadj > loss_matrix_with_forecast_averages$arith_mean
+                              , TRUE, FALSE)
+loss_matrix$average_adjusted_wins <- ifelse(loss_matrix_with_forecast_averages$unadj > loss_matrix_with_forecast_averages$arith_mean
+                              , TRUE, FALSE)
+
+t(apply(loss_matrix, 1, function(x) x == min(x)))
+
+win_df <- t(apply(loss_matrix, 1, function(x) x == min(x)))
+
+colSums(win_df)
 
 
 
