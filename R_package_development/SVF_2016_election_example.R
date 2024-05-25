@@ -293,7 +293,7 @@ for (u in 1:number_of_covariates){
                              ,X_lookback_indices = rep(list(c(1)),ncol(X[[1]]))
                              )
 
-    list_from_looping <- append(list_from_looping, temp)
+    list_from_looping <- append(list_from_looping, list(temp))
 
     dev.off()
 
@@ -306,4 +306,30 @@ df_final <- do.call(rbind.data.frame, list_from_looping)
 df_final <- as.data.frame(unlist(list_from_looping))
 
 my_dataframe <- as.data.frame(list_from_looping)
+
+t <- sapply(list_from_looping,"[[",1)
+t
+df_final <- do.call(rbind.data.frame, t)
+names(df_final) <- c('d1','d2','d3')
+apply(df_final, 1, sum)
+
+v <- sapply(list_from_looping,"[[",2)
+v
+df_final <- do.call(rbind.data.frame, v)
+names(df_final) <- c('d1','d2','d3')
+apply(df_final, 1, sum)
+
+loss_matrix <- sapply(list_from_looping,"[[",3)
+t(loss_matrix)
+df_final <- do.call(rbind.data.frame, g)
+names(df_final) <- c('d1','d2','d3')
+apply(df_final, 1, sum)
+
+
+#Things we want from the loop:
+# 1) each convex comb
+# 2) unadj, adj, and arithmetic_mean
+# 3) loss of unadj, adj, and arithmetic_mean
+# 4) the FE estimates? this is not easy to justify
+
 

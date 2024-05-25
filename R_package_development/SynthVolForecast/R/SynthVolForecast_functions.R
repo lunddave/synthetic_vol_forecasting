@@ -1047,19 +1047,39 @@ SynthVolForecast <- function(Y_series_list
     QL_loss_adjusted_pred <- NA
   }
   else {
-    QL_loss_unadjusted_pred <- sum(QL_loss_function(unadjusted_pred, ground_truth_vec))
-    QL_loss_adjusted_pred <- sum(QL_loss_function(adjusted_pred, ground_truth_vec))
+    QL_loss_unadjusted_pred <- sum(QL_loss_function(unadjusted_pred
+                                                    , ground_truth_vec))
+    QL_loss_adjusted_pred <- sum(QL_loss_function(adjusted_pred
+                                                  , ground_truth_vec))
+    QL_loss_arithmetic_mean_based_pred <- sum(QL_loss_function(arithmetic_mean_based_pred
+                                                   , ground_truth_vec))
   }
 
-
   list_of_linear_combinations <- list(w_hat)
-  list_of_forecasts <- list(unadjusted_pred, adjusted_pred)
-  names(list_of_forecasts) <- c('unadjusted_pred', 'adjusted_pred')
+
+  list_of_forecasts <- list(unadjusted_pred
+                            , adjusted_pred
+                            , arithmetic_mean_based_pred)
+
+  list_of_losses <- list(QL_loss_unadjusted_pred
+                         , QL_loss_adjusted_pred
+                         , QL_loss_arithmetic_mean_based_pred)
+
+  names(list_of_forecasts) <- c('unadjusted_pred'
+                                , 'adjusted_pred'
+                                , 'arithmetic_mean_based_pred')
+
+  names(list_of_losses) <- c('unadjusted_pred'
+                                , 'adjusted_pred'
+                                , 'arithmetic_mean_based_pred')
 
   output_list <- list(list_of_linear_combinations
-                      , list_of_forecasts)
+                      , list_of_forecasts
+                      , list_of_losses)
 
-  names(output_list) <- c('linear_combinations', 'predictions')
+  names(output_list) <- c('linear_combinations'
+                          , 'predictions'
+                          , 'loss')
 
   ## tk OUTPUT
   cat('--------------------------------------------------------------\n',
@@ -1153,7 +1173,6 @@ HAR <- function(Y
   integer_shock_time_vec_for_convex_hull_based_optimization <- c() #mk
 
   omega_star_hat_vec <- c()
-
 
   if (is.data.frame(Y) == TRUE){
 
@@ -1325,12 +1344,24 @@ HAR <- function(Y
   }
 
   list_of_linear_combinations <- list(w_hat)
-  list_of_forecasts <- list(unadjusted_pred, adjusted_pred)
-  names(list_of_forecasts) <- c('unadjusted_pred', 'adjusted_pred')
 
-  output_list <- list(list_of_linear_combinations, list_of_forecasts)
+  list_of_forecasts <- list(unadjusted_pred
+                            , adjusted_pred
+                            , arithmetic_mean_based_pred)
 
-  names(output_list) <- c('linear_combinations', 'predictions')
+  list_of_losses <- list(QL_loss_unadjusted
+                         , QL_loss_adjusted
+                         , QL_loss_arithmetic_mean)
+
+  names(list_of_forecasts) <- c('unadjusted_pred'
+                                , 'adjusted_pred'
+                                , 'arithmetic_mean_based_pred')
+
+  output_list <- list(list_of_linear_combinations
+                      , list_of_forecasts
+                      , list_of_losses)
+
+  names(output_list) <- c('linear_combinations', 'predictions', 'loss')
 
   ## tk OUTPUT
   cat('--------------------------------------------------------------\n',
