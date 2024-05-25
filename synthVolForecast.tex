@@ -484,12 +484,13 @@ We now evaluate the loss and risk of our method under two scenarios: first, unde
 
 For 1-step-ahead forecast of $\sigma^{2}_{t+1}$, consider the difference 
 
-\begin{align*}
+\begin{align}
   & QL(\hat\sigma_{t+1, unadjusted}^{2},\sigma^{2}_{t+1})-QL(\hat\sigma^{2}_{t+1, adjusted},\sigma^{2}_{t+1})\\
-   & =(\frac{\hat\sigma^{2}_{t+1,unadjusted}}{\sigma_{t+1}^{2}} - \log{\frac{\hat\sigma^{2}_{t+1,unadjusted}}{\sigma_{t+1}^{2}}} - 1) - (\frac{\hat\sigma^{2}_{t+1,adjusted}}{\sigma_{t+1}^{2}} - \log{\frac{\hat\sigma^{2}_{t+1,adjusted}}{\sigma_{t+1}^{2}}} - 1)\\
-   & = \frac{\hat\sigma^{2}_{t+1,unadjusted}-\hat\sigma^{2}_{t+1,adjusted}}{\sigma_{t+1}^{2}} + \log{\frac{\hat\sigma^{2}_{t+1,adjusted}}{\hat\sigma^{2}_{t+1,unadjusted}}}\label{QL Loss Consistency} \text{ .}
-\end{align*}
-For simplicity, we work with a GARCH(1,1) that experiences a volatility shock at a single time point for which we would like to provide a point forecast.  Then (\ref{QL Loss Consistency}) can be expressed as
+   & =(\frac{\sigma_{t+1}^{2}}{\hat\sigma^{2}_{t+1,unadjusted}} - \log{\frac{\sigma_{t+1}^{2}}{\hat\sigma^{2}_{t+1,unadjusted}} } - 1) - (\frac{\sigma_{t+1}^{2}}{\hat\sigma^{2}_{t+1,adjusted}} - \log{\frac{\sigma_{t+1}^{2}}{\hat\sigma^{2}_{t+1,adjusted}}} - 1)\\
+   & = \frac{\sigma_{t+1}^{2}}{\hat\sigma^{2}_{t+1,unadjusted}} - \frac{\sigma_{t+1}^{2}}{\hat\sigma^{2}_{t+1,adjusted}}+ \log{\frac{\hat\sigma^{2}_{t+1,unadjusted}}{\hat\sigma^{2}_{t+1,adjusted}}}\\
+   & = \frac{\sigma_{t+1}^{2}(\hat\sigma^{2}_{t+1,adjusted}-\hat\sigma^{2}_{t+1,unadjusted})}{\hat\sigma^{2}_{t+1,adjusted}\hat\sigma^{2}_{t+1,unadjusted}} + \log{\frac{\hat\sigma^{2}_{t+1,unadjusted}}{\hat\sigma^{2}_{t+1,adjusted}}}\label{QL Loss toy example} \text{ .}
+\end{align}
+For simplicity, we work with a GARCH(1,1) that experiences a volatility shock at a single time point for which we would like to provide a point forecast.  Then (\ref{QL Loss toy example}) can be expressed as
 
 \begin{align*}
    &\frac{(\hat\omega + \hat\alpha a_{t}^{2} + \hat\beta\sigma^{2}_{t})-(\hat\omega + \hat\alpha a_{t}^{2} + \hat\beta\sigma_{t}^{2} + \hat\omega^{*})}{\sigma_{t+1}^{2}} + \log{\frac{\hat\omega + \hat\alpha a_{t}^{2} + \hat\beta\sigma_{t}^{2} + \hat\omega^{*}}{\hat\omega + \hat\alpha a_{t}^{2} + \hat\beta\sigma_{t}^{2}}}\\
