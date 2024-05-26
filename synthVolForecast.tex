@@ -493,20 +493,18 @@ For 1-step-ahead forecast of $\sigma^{2}_{t+1}$, consider the difference
 For simplicity, we work with a GARCH(1,1) that experiences a volatility shock at a single time point for which we would like to provide a point forecast.  Then (\ref{QL Loss toy example}) can be expressed as
 
 \begin{align*}
-   &\frac{(\hat\omega + \hat\alpha a_{t}^{2} + \hat\beta\sigma^{2}_{t})-(\hat\omega + \hat\alpha a_{t}^{2} + \hat\beta\sigma_{t}^{2} + \hat\omega^{*})}{\sigma_{t+1}^{2}} + \log{\frac{\hat\omega + \hat\alpha a_{t}^{2} + \hat\beta\sigma_{t}^{2} + \hat\omega^{*}}{\hat\omega + \hat\alpha a_{t}^{2} + \hat\beta\sigma_{t}^{2}}}\\
-   & = \log{\frac{\hat\omega + \hat\alpha a_{t}^{2} + \hat\beta\sigma_{t}^{2} + \hat\omega^{*}}{\hat\omega + \hat\alpha a_{t}^{2} + 
-   \hat\beta\sigma_{t}^{2}}} - \frac{\hat\omega^{*}}{\sigma^{2}_{t+1}} \text{ .} 
-\end{align*}\label{QL Loss Consistency - GARCH(1,1)} 
-By letting $f(\hat\omega^{*}) = \log{\frac{\hat\omega + \hat\alpha a_{t}^{2} + \hat\beta\sigma_{t}^{2} + \hat\omega^{*}}{\hat\omega + \hat\alpha a_{t}^{2} + \hat\beta\sigma_{t}^{2}}} - \frac{\hat\omega^{*}}{\sigma^{2}_{t+1}}$, it's easily verified that as $\hat\omega^{*} \rightarrow 0^{+}$, the difference in the losses goes to zero.  On the other hand, as $\hat\omega^{*}$ becomes large, the difference in the losses turns negative, with the lesson being that $\hat\omega^{*}$ must be in appropriate proportion to the volatility $\sigma^{2}_{t+1}$ in order for the adjusted forecast to outperform the unadjusted forecast.  This explains why it is so important to avoid using a naive adjustment estimator, $\overline{\omega^{*}}$, the arithmetic mean of the estimated shocks.  We conclude this section with a broader result. 
+   &\frac{\sigma^{2}_{t+1}\hat\omega^{*}}{\hat\sigma^{2}_{t+1,adjusted}\hat\sigma^{2}_{t+1,unadjusted}} + \log{\frac{\hat\omega + \hat\alpha a_{t}^{2} + \hat\beta\sigma_{t}^{2}}{\hat\omega + \hat\alpha a_{t}^{2} + \hat\beta\sigma_{t}^{2} + \hat\omega^{*}}}\\
+\end{align*}\label{QL Loss Consistency - GARCH(1,1)}
+It is easily verified that as $\hat\omega^{*} \rightarrow 0^{+}$, the difference in the losses goes to zero.  On the other hand, as $\hat\omega^{*}$ becomes large, the difference in the losses turns negative, with the lesson being that $\hat\omega^{*}$ must be in appropriate proportion to the volatility $\sigma^{2}_{t+1}$ in order for the adjusted forecast to outperform the unadjusted forecast.  This explains why it is so important to avoid using a naive adjustment estimator, $\overline{\omega^{*}}$, the arithmetic mean of the estimated shocks.  We conclude this section with a broader result. 
 
 \begin{prop}\label{asymptotic_consistency}
 Assume the conditions in Propositions $\ref{omega_consistency}$ and $\ref{sigma_consistency}$.  Let $1\leq i\leq n+1$.\\
-  Then $QL(\hat\sigma_{t+1, unadjusted}^{2},\sigma^{2}_{t+1})-QL(\hat\sigma^{2}_{t+1, adjusted},\sigma^{2}_{t+1})\xrightarrow{p} \log{\frac{\sigma^{2}_{t+1}}{\sigma_{t+1}^{2}-\E[\omega_{i}^{*}]}} - \frac{\E[\omega_{i}^{*}]}{\sigma^{2}_{t+1}} \geq 0.$
+  Then $QL(\hat\sigma_{t+1, unadjusted}^{2},\sigma^{2}_{t+1})-QL(\hat\sigma^{2}_{t+1, adjusted},\sigma^{2}_{t+1})\xrightarrow{p} \frac{\E[\omega_{i}^{*}]}{\sigma^{2}_{t+1}-\E[\omega_{i}^{*}]} + \log{\frac{\sigma_{t+1}^{2}-\E[\omega_{i}^{*}]}{\sigma_{t+1}^{2}} } \geq 0. $
 Hence, a correctly specified $\mc{M}_1$ model will outperform the unadjusted forecast asymptotically.
 \end{prop}
 
 \begin{proof-of-proposition}
-  First, note that the function $g:(-\infty,\E[\omega_{i}^{*}])\rightarrow \mathbb{R}$ given by $g(x) = \log{\frac{\sigma^{2}_{t+1}}{\sigma_{t+1}^{2}-x}} - \frac{x}{\sigma^{2}_{t+1}}$ is nonnegative, and being continuous, $g$ preserves consistency. The conclusion follows from fact that the model is correctly specified and consistency is guaranteed Proposition ($\ref{sigma_consistency}$). 
+  First, note that the function $g:(-\infty,\E[\omega_{i}^{*}])\rightarrow \mathbb{R}$ given by $g(x) = \frac{x}{\sigma^{2}_{t+1}-x} + \log{\frac{\sigma_{t+1}^{2}-x}{\sigma_{t+1}^{2}} }$ is nonnegative, convex, obtains a minimum at $x = 0$, and being continuous, $g$ preserves consistency. The conclusion follows from fact that the model is correctly specified and consistency is guaranteed Proposition ($\ref{sigma_consistency}$). 
   
 \end{proof-of-proposition}
 
