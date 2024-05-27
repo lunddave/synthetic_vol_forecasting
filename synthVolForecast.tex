@@ -132,10 +132,13 @@ Proof of Lemma {#1}}
 
 \begin{keyword}
   GARCH \sep 
- Prospective forecasting \sep 
+ Forecasting \sep 
  Volatility \sep 
-ARMA \sep 
-Risk
+Finance \sep
+Risk \sep
+Pooling \sep
+Aggregation \sep
+Similarity
 \end{keyword}
 
 \end{frontmatter}
@@ -537,7 +540,7 @@ In Figure \ref{fig:heavy_beta}, when only two parameters are varied, the volatil
   \end{center}
   \end{figure}
   
-If we switch the values of $\alpha$ and $\beta$, we see similar behavior, as in \ref{fig:heavy_alpha}.  Here we cite \citet[p. 22]{francq2019garch} in motivating simulations for large $\alpha$ values and then large $\beta$ values.  However, for small values of the shock mean, increasing noise does lead to fewer converged simulations, likely due to large negative realizations of the noise term, which in turn lead to near-zero and even negative estimates of the terms $\omega_{i}^{*}$.
+If we switch the values of $\alpha$ and $\beta$, we see similar behavior, as in Figure \ref{fig:heavy_alpha}.  Here we cite \citet[p. 22]{francq2019garch} in motivating simulations for large $\alpha$ values and then large $\beta$ values.  However, for small values of the shock mean, increasing noise does lead to fewer converged simulations, likely due to large negative realizations of the noise term, which in turn lead to near-zero and even negative estimates of the terms $\omega_{i}^{*}$.
 \begin{figure}[h!]
   \begin{center}
     \includegraphics[scale=.45]{simulation_plots/standard_simulation_alpha_.82_beta_.1.png}

@@ -80,9 +80,9 @@ list_from_looping <- list()
 #NOTE: to run without an Leave-one-out procedures, set...
 # z <- u <- 0
 
-for (u in 1:number_of_covariates){
+for (u in 0:number_of_covariates){
 
-  for (z in 2:length(shock_dates_outside_loop)){
+  for (z in c(0,2:length(shock_dates_outside_loop))){
 
     if (z > 0){
       shock_dates <- shock_dates_outside_loop[-z]
@@ -315,20 +315,27 @@ for (u in 1:number_of_covariates){
 
 }#end loop for dropping covariates
 
+prediction_matrix <- sapply(list_from_looping,"[[",2)
+prediction_matrix <- matrix(as.numeric(t(prediction_matrix)), ncol = 3)
+
+median_unadj_pred <- round(median(prediction_matrix[,1]),5)
+indices_we_want <- round(prediction_matrix[,1],5) == median_unadj_pred
+#we exclude indices where a non-2016 election is the TSUS
+
+apply(prediction_matrix[indices_we_want,], 2, mean)
+
 lin_combs <- sapply(list_from_looping,"[[",1)
 df_lin_combs <- do.call(rbind.data.frame, lin_combs)
 names(df_lin_combs) <- c('d1','d2','d3')
 apply(df_lin_combs, 1, sum)
-lin_combs_averages <- apply(df_lin_combs[-(1:4),], 2, mean)
+lin_combs_averages <- apply(df_lin_combs[indices_we_want,], 2, mean)
 lin_combs_averages #these are no meaningful averages, since we drop donors
 #tk but what about calculating averages for sets with same donors?
 
-prediction_matrix <- sapply(list_from_looping,"[[",2)
-prediction_matrix <- matrix(as.numeric(t(prediction_matrix)), ncol = 3)
-apply(prediction_matrix[-(1:4),], 2, mean)
+
 
 #And what's the loss on these averaged forecasts?
-forecast_averages <- apply(prediction_matrix[-(1:4),], 2, mean)
+forecast_averages <- apply(prediction_matrix[indices_we_want,], 2, mean)
 
 losses_from_averaging <- QL_loss_function(forecast_averages
                                 , ground_truth)
@@ -337,13 +344,16 @@ losses_from_averaging
 loss_matrix <- sapply(list_from_looping,"[[",3)
 loss_matrix <- matrix(as.numeric(t(loss_matrix)), ncol = 3)
 loss_matrix <- as.data.frame(loss_matrix)
-apply(loss_matrix[-(1:4),], 2, mean)
+apply(loss_matrix[indices_we_want,], 2, mean)
 
 nrow_loss_matrix <- nrow(loss_matrix)
 
 loss_matrix$loss_from_avg <- rep(losses_from_averaging[2], nrow_loss_matrix)
 
-names(loss_matrix) <- c('unadj', 'adj', 'arith_mean','loss_from_avg')
+names(loss_matrix) <- c('unadj'
+                        , 'adj'
+                        , 'arith_mean'
+                        ,'LOSS_from_averaging_all_forecasts')
 
 
 loss_matrix$CH_wins <- ifelse(loss_matrix_with_forecast_averages$unadj > loss_matrix_with_forecast_averages$adj
@@ -352,8 +362,6 @@ loss_matrix$AM_wins <- ifelse(loss_matrix_with_forecast_averages$unadj > loss_ma
                               , TRUE, FALSE)
 loss_matrix$average_adjusted_wins <- ifelse(loss_matrix_with_forecast_averages$unadj > loss_matrix_with_forecast_averages$arith_mean
                               , TRUE, FALSE)
-
-t(apply(loss_matrix, 1, function(x) x == min(x)))
 
 win_df <- t(apply(loss_matrix, 1, function(x) x == min(x)))
 

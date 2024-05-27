@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.21)  26 MAY 2024 13:20
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.21)  26 MAY 2024 23:49
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -799,39 +799,39 @@ Overfull \hbox (2.43333pt too wide) has occurred while \output is active
 <simulation_plots/USE_in_paper_simulation_plot_arithmetic_mean.png, id=207, 481.8pt x 481.8pt>
 File: simulation_plots/USE_in_paper_simulation_plot_arithmetic_mean.png Graphic file (type png)
 <use simulation_plots/USE_in_paper_simulation_plot_arithmetic_mean.png>
-Package pdftex.def Info: simulation_plots/USE_in_paper_simulation_plot_arithmetic_mean.png  used on input line 173.
+Package pdftex.def Info: simulation_plots/USE_in_paper_simulation_plot_arithmetic_mean.png  used on input line 176.
 (pdftex.def)             Requested size: 337.25769pt x 337.25769pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [4] [5 <./simulation_plots/USE_in_paper_simulation_plot_arithmetic_mean.png (PNG copy)>] [6] [7] [8] [9]
-Underfull \hbox (badness 10000) in paragraph at lines 308--309
+Underfull \hbox (badness 10000) in paragraph at lines 311--312
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 317--317
+Underfull \hbox (badness 10000) in paragraph at lines 320--320
 []|\OT1/cmr/m/n/10.95 Perfect fit, not nec-es-sar-ily unique,
  []
 
 [10] [11] [12] [13]
-Underfull \hbox (badness 10000) in paragraph at lines 440--442
+Underfull \hbox (badness 10000) in paragraph at lines 443--445
 
  []
 
 [14]
-Underfull \hbox (badness 10000) in paragraph at lines 444--446
+Underfull \hbox (badness 10000) in paragraph at lines 447--449
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 479--480
+Underfull \hbox (badness 10000) in paragraph at lines 482--483
 
  []
 
 [15]
-Underfull \hbox (badness 10000) in paragraph at lines 509--510
+Underfull \hbox (badness 10000) in paragraph at lines 512--513
 
  []
 
@@ -839,7 +839,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 509--510
 <simulation_plots/standard_simulation_alpha_.1_beta_.82.png, id=393, 650.43pt x 499.11469pt>
 File: simulation_plots/standard_simulation_alpha_.1_beta_.82.png Graphic file (type png)
 <use simulation_plots/standard_simulation_alpha_.1_beta_.82.png>
-Package pdftex.def Info: simulation_plots/standard_simulation_alpha_.1_beta_.82.png  used on input line 535.
+Package pdftex.def Info: simulation_plots/standard_simulation_alpha_.1_beta_.82.png  used on input line 538.
 (pdftex.def)             Requested size: 292.6908pt x 224.59952pt.
 
 
@@ -848,7 +848,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <simulation_plots/standard_simulation_alpha_.82_beta_.1.png, id=397, 650.43pt x 499.11469pt>
 File: simulation_plots/standard_simulation_alpha_.82_beta_.1.png Graphic file (type png)
 <use simulation_plots/standard_simulation_alpha_.82_beta_.1.png>
-Package pdftex.def Info: simulation_plots/standard_simulation_alpha_.82_beta_.1.png  used on input line 543.
+Package pdftex.def Info: simulation_plots/standard_simulation_alpha_.82_beta_.1.png  used on input line 546.
 (pdftex.def)             Requested size: 292.6908pt x 224.59952pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -856,12 +856,12 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <simulation_plots/dual_level_vol_shock_FriFeb0911:03:49PM2024.png, id=398, 481.8pt x 481.8pt>
 File: simulation_plots/dual_level_vol_shock_FriFeb0911:03:49PM2024.png Graphic file (type png)
 <use simulation_plots/dual_level_vol_shock_FriFeb0911:03:49PM2024.png>
-Package pdftex.def Info: simulation_plots/dual_level_vol_shock_FriFeb0911:03:49PM2024.png  used on input line 554.
+Package pdftex.def Info: simulation_plots/dual_level_vol_shock_FriFeb0911:03:49PM2024.png  used on input line 557.
 (pdftex.def)             Requested size: 216.80798pt x 216.80798pt.
 <simulation_plots/dual_level_vol_shock_FriFeb0911:27:59PM2024.png, id=399, 481.8pt x 481.8pt>
 File: simulation_plots/dual_level_vol_shock_FriFeb0911:27:59PM2024.png Graphic file (type png)
 <use simulation_plots/dual_level_vol_shock_FriFeb0911:27:59PM2024.png>
-Package pdftex.def Info: simulation_plots/dual_level_vol_shock_FriFeb0911:27:59PM2024.png  used on input line 560.
+Package pdftex.def Info: simulation_plots/dual_level_vol_shock_FriFeb0911:27:59PM2024.png  used on input line 563.
 (pdftex.def)             Requested size: 216.80798pt x 216.80798pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -872,35 +872,35 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <real_data_output_plots/SatMay251520432024_IYG_IYG_CLF_log_ret_XVIX_log_ret_XIRX_log_ret_XFVX_log_ret_XTNX_log_ret_XTYX_log_ret_XVIX_raw_Debt_Risk_Spread_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png, id=468, 803.0pt x 602.25pt>
 File: real_data_output_plots/SatMay251520432024_IYG_IYG_CLF_log_ret_XVIX_log_ret_XIRX_log_ret_XFVX_log_ret_XTNX_log_ret_XTYX_log_ret_XVIX_raw_Debt_Risk_Spread_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png Graphic file (type png)
 <use real_data_output_plots/SatMay251520432024_IYG_IYG_CLF_log_ret_XVIX_log_ret_XIRX_log_ret_XFVX_log_ret_XTNX_log_ret_XTYX_log_ret_XVIX_raw_Debt_Risk_Spread_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png>
-Package pdftex.def Info: real_data_output_plots/SatMay251520432024_IYG_IYG_CLF_log_ret_XVIX_log_ret_XIRX_log_ret_XFVX_log_ret_XTNX_log_ret_XTYX_log_ret_XVIX_raw_Debt_Risk_Spread_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png  used on input line 593.
+Package pdftex.def Info: real_data_output_plots/SatMay251520432024_IYG_IYG_CLF_log_ret_XVIX_log_ret_XIRX_log_ret_XFVX_log_ret_XTNX_log_ret_XTYX_log_ret_XVIX_raw_Debt_Risk_Spread_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png  used on input line 596.
 (pdftex.def)             Requested size: 401.49902pt x 301.12425pt.
  [22 <./real_data_output_plots/SatMay251520432024_IYG_IYG_CLF_log_ret_XVIX_log_ret_XIRX_log_ret_XFVX_log_ret_XTNX_log_ret_XTYX_log_ret_XVIX_raw_Debt_Risk_Spread_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png>]
 File: real_data_output_plots/SatMay251520432024_IYG_IYG_CLF_log_ret_XVIX_log_ret_XIRX_log_ret_XFVX_log_ret_XTNX_log_ret_XTYX_log_ret_XVIX_raw_Debt_Risk_Spread_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png Graphic file (type png)
 <use real_data_output_plots/SatMay251520432024_IYG_IYG_CLF_log_ret_XVIX_log_ret_XIRX_log_ret_XFVX_log_ret_XTNX_log_ret_XTYX_log_ret_XVIX_raw_Debt_Risk_Spread_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png>
-Package pdftex.def Info: real_data_output_plots/SatMay251520432024_IYG_IYG_CLF_log_ret_XVIX_log_ret_XIRX_log_ret_XFVX_log_ret_XTNX_log_ret_XTYX_log_ret_XVIX_raw_Debt_Risk_Spread_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png  used on input line 605.
+Package pdftex.def Info: real_data_output_plots/SatMay251520432024_IYG_IYG_CLF_log_ret_XVIX_log_ret_XIRX_log_ret_XFVX_log_ret_XTNX_log_ret_XTYX_log_ret_XVIX_raw_Debt_Risk_Spread_2016-11-08-2004-11-02-2008-11-04-2012-11-06.png  used on input line 608.
 (pdftex.def)             Requested size: 481.80373pt x 361.35278pt.
  [23] [24]
-Underfull \hbox (badness 10000) in paragraph at lines 630--631
+Underfull \hbox (badness 10000) in paragraph at lines 633--634
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 632--633
+Underfull \hbox (badness 10000) in paragraph at lines 635--636
 
  []
 
 
-LaTeX Warning: Reference `' on page 25 undefined on input line 639.
+LaTeX Warning: Reference `' on page 25 undefined on input line 642.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 644--645
+Underfull \hbox (badness 10000) in paragraph at lines 647--648
 
  []
 
 <real_data_output_plots/SatMay251522332024_IYG_IYG_CLF_log_ret_XVIX_log_ret_XIRX_log_ret_XFVX_log_ret_XTNX_log_ret_XTYX_log_ret_XVIX_raw_Debt_Risk_Spread_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-22.png, id=515, 803.0pt x 602.25pt>
 File: real_data_output_plots/SatMay251522332024_IYG_IYG_CLF_log_ret_XVIX_log_ret_XIRX_log_ret_XFVX_log_ret_XTNX_log_ret_XTYX_log_ret_XVIX_raw_Debt_Risk_Spread_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-22.png Graphic file (type png)
 <use real_data_output_plots/SatMay251522332024_IYG_IYG_CLF_log_ret_XVIX_log_ret_XIRX_log_ret_XFVX_log_ret_XTNX_log_ret_XTYX_log_ret_XVIX_raw_Debt_Risk_Spread_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-22.png>
-Package pdftex.def Info: real_data_output_plots/SatMay251522332024_IYG_IYG_CLF_log_ret_XVIX_log_ret_XIRX_log_ret_XFVX_log_ret_XTNX_log_ret_XTYX_log_ret_XVIX_raw_Debt_Risk_Spread_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-22.png  used on input line 650.
+Package pdftex.def Info: real_data_output_plots/SatMay251522332024_IYG_IYG_CLF_log_ret_XVIX_log_ret_XIRX_log_ret_XFVX_log_ret_XTNX_log_ret_XTYX_log_ret_XVIX_raw_Debt_Risk_Spread_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-22.png  used on input line 653.
 (pdftex.def)             Requested size: 481.80373pt x 361.35278pt.
 [25] [26 <./real_data_output_plots/SatMay251522332024_IYG_IYG_CLF_log_ret_XVIX_log_ret_XIRX_log_ret_XFVX_log_ret_XTNX_log_ret_XTYX_log_ret_XVIX_raw_Debt_Risk_Spread_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-22.png>] (./synthVolForecast.bbl [27
 
@@ -919,13 +919,13 @@ Package rerunfilecheck Info: File `synthVolForecast.out' has not changed.
 Here is how much of TeX's memory you used:
  26709 strings out of 476025
  497110 string characters out of 5790017
- 1873388 words of memory out of 5000000
+ 1874388 words of memory out of 5000000
  46549 multiletter control sequences out of 15000+600000
  526666 words of font info for 83 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,17n,80p,2243b,636s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on synthVolForecast.pdf (28 pages, 1098632 bytes).
+Output written on synthVolForecast.pdf (28 pages, 1098647 bytes).
 PDF statistics:
  671 PDF objects out of 1000 (max. 8388607)
  582 compressed objects within 6 object streams
