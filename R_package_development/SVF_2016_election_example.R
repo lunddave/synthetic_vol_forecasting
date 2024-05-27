@@ -86,7 +86,11 @@ for (u in 0:number_of_covariates){
 
     if (z > 0){
       shock_dates <- shock_dates_outside_loop[-z]
-      } else {shock_dates <- shock_dates_outside_loop}
+      dropped_donor <- shock_dates_outside_loop[z]
+    } else {
+        shock_dates <- shock_dates_outside_loop
+        dropped_donor <- NA
+        }
 
     nyse <- timeDate::holidayNYSE(2000:year(Sys.Date())+1)
     create.calendar(name='NYSE', holidays=nyse, weekdays=c('saturday', 'sunday'))
@@ -229,14 +233,13 @@ for (u in 0:number_of_covariates){
 
           if (u > 0){
             merged_data_uth_covariate_dropped <- merged_data[,-u]
+            covariate_string <- names(merged_data[,u])
           }
           else {
             merged_data_uth_covariate_dropped <- merged_data
-          }
-
-          covariates_col_names <- colnames(merged_data_uth_covariate_dropped)
-
-          covariate_string <- paste(covariates_col_names,collapse="_")
+            covariates_col_names <- colnames(merged_data_uth_covariate_dropped)
+            covariate_string <- paste(covariates_col_names,collapse="_")
+            }
 
         } #end conditional for FRED_covariates
 
@@ -273,6 +276,10 @@ for (u in 0:number_of_covariates){
     n <- length(start_dates) - 1
 
     time_date <- gsub(" ", "", gsub(':', '', format(Sys.time(), "%a%b%d%X%Y")), fixed = TRUE)
+
+    #We have two naming conventions:
+
+    #1 What donors and covariates are INCLUDED?
     png_save_name <- paste("real_data_output_plots/"
                            ,time_date
                            ,'_'
@@ -280,7 +287,7 @@ for (u in 0:number_of_covariates){
                            ,'_'
                            ,covariate_string
                             ,'_'
-                           ,paste(shock_dates,collapse='-')
+                           ,dropped_donor
                            #,".png"
                            ,sep="")
 
@@ -318,9 +325,7 @@ for (u in 0:number_of_covariates){
 prediction_matrix <- sapply(list_from_looping,"[[",2)
 prediction_matrix <- matrix(as.numeric(t(prediction_matrix)), ncol = 3)
 
-median_unadj_pred <- round(median(prediction_matrix[,1]),5)
-indices_we_want <- round(prediction_matrix[,1],5) == median_unadj_pred
-#we exclude indices where a non-2016 election is the TSUS
+indices_we_want <- 1:nrow(prediction_matrix)
 
 apply(prediction_matrix[indices_we_want,], 2, mean)
 
@@ -337,9 +342,15 @@ lin_combs_averages #these are no meaningful averages, since we drop donors
 #And what's the loss on these averaged forecasts?
 forecast_averages <- apply(prediction_matrix[indices_we_want,], 2, mean)
 
+forecast_medians <- apply(prediction_matrix[indices_we_want,], 2, median)
+
 losses_from_averaging <- QL_loss_function(forecast_averages
                                 , ground_truth)
 losses_from_averaging
+
+losses_from_medians <- QL_loss_function(forecast_medians
+                                          , ground_truth)
+losses_from_medians
 
 loss_matrix <- sapply(list_from_looping,"[[",3)
 loss_matrix <- matrix(as.numeric(t(loss_matrix)), ncol = 3)
@@ -350,18 +361,14 @@ nrow_loss_matrix <- nrow(loss_matrix)
 
 loss_matrix$loss_from_avg <- rep(losses_from_averaging[2], nrow_loss_matrix)
 
+loss_matrix$loss_from_median <- rep(losses_from_medians[2], nrow_loss_matrix)
+
+
 names(loss_matrix) <- c('unadj'
                         , 'adj'
                         , 'arith_mean'
-                        ,'LOSS_from_averaging_all_forecasts')
-
-
-loss_matrix$CH_wins <- ifelse(loss_matrix_with_forecast_averages$unadj > loss_matrix_with_forecast_averages$adj
-                              , TRUE, FALSE)
-loss_matrix$AM_wins <- ifelse(loss_matrix_with_forecast_averages$unadj > loss_matrix_with_forecast_averages$arith_mean
-                              , TRUE, FALSE)
-loss_matrix$average_adjusted_wins <- ifelse(loss_matrix_with_forecast_averages$unadj > loss_matrix_with_forecast_averages$arith_mean
-                              , TRUE, FALSE)
+                        ,'averaging'
+                        ,'median')
 
 win_df <- t(apply(loss_matrix, 1, function(x) x == min(x)))
 
