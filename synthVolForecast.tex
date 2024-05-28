@@ -622,6 +622,7 @@ Should we gather as many donors as possible and pick them quantitatively?  It wo
 \subsection{Future directions}
 \begin{itemize}
   \item High-frequency data
+  \item Should we fit $n$ models or only 1 or something in between?
 \end{itemize}
 
 \section{Supplement}
@@ -629,6 +630,61 @@ Should we gather as many donors as possible and pick them quantitatively?  It wo
 \subsection{Leave one out: how we analyzed a multiverse of 50 predictions}
 
 Given the option of redoing our analysis, with nine covariates and four donors, a natural question from a place of skepticism is, how stable are the results --- how contingent are they on a particular specification?  To answer these questions, we generate all fifty predictions yielded the decision of leave out any one of the donors (or none) and any one of the covariates (or none).  This analysis includes the prediction presented above, which can be viewed as the `null' model, at least in the sense that it provides and baseline for comparison.
+\begin{table}[ht]
+  \centering
+  \begin{tabular}{rrrrrrll}
+    \hline
+   & unadj & adj & arith\_mean & averaging & median & dropped\_covariate & dropped\_donor \\ 
+    \hline
+  15 & 2.3529 & 0.0003 & 0.5700 & 0.0056 & 0.0042 & X.VIX\_log\_ret & 2016-06-22 \\ 
+    18 & 2.3529 & 0.0012 & 0.0135 & 0.0056 & 0.0042 & X.IRX\_log\_ret & 2008-11-04 \\ 
+    35 & 2.3529 & 0.0013 & 0.5702 & 0.0056 & 0.0042 & X.TYX\_log\_ret & 2016-06-22 \\ 
+    31 & 2.3528 & 0.0014 & 0.4302 & 0.0056 & 0.0042 & X.TYX\_log\_ret & none \\ 
+    33 & 2.3530 & 0.0017 & 0.0137 & 0.0056 & 0.0042 & X.TYX\_log\_ret & 2008-11-04 \\ 
+    30 & 2.3528 & 0.0019 & 0.5699 & 0.0056 & 0.0042 & X.TNX\_log\_ret & 2016-06-22 \\ 
+    28 & 2.3531 & 0.0022 & 0.0136 & 0.0056 & 0.0042 & X.TNX\_log\_ret & 2008-11-04 \\ 
+    23 & 2.3530 & 0.0027 & 0.0136 & 0.0056 & 0.0042 & X.FVX\_log\_ret & 2008-11-04 \\ 
+    38 & 2.3529 & 0.0030 & 0.0137 & 0.0056 & 0.0042 & X.VIX\_raw & 2008-11-04 \\ 
+    26 & 2.3530 & 0.0034 & 0.4303 & 0.0056 & 0.0042 & X.TNX\_log\_ret & none \\ 
+    10 & 2.3529 & 0.0036 & 0.5702 & 0.0056 & 0.0042 & CL.F\_log\_ret & 2016-06-22 \\ 
+    13 & 2.3529 & 0.0039 & 0.0139 & 0.0056 & 0.0042 & X.VIX\_log\_ret & 2008-11-04 \\ 
+    45 & 2.3528 & 0.0041 & 0.5708 & 0.0056 & 0.0042 & Debt\_Risk\_Spread & 2016-06-22 \\ 
+    3 & 2.3529 & 0.0042 & 0.0135 & 0.0056 & 0.0042 & none & 2008-11-04 \\ 
+    25 & 2.3530 & 0.0047 & 0.5701 & 0.0056 & 0.0042 & X.FVX\_log\_ret & 2016-06-22 \\ 
+    40 & 2.3530 & 0.0053 & 0.5701 & 0.0056 & 0.0042 & X.VIX\_raw & 2016-06-22 \\ 
+    8 & 2.3530 & 0.0060 & 0.0136 & 0.0056 & 0.0042 & CL.F\_log\_ret & 2008-11-04 \\ 
+    5 & 2.3529 & 0.0069 & 0.5702 & 0.0056 & 0.0042 & none & 2016-06-22 \\ 
+    20 & 2.3529 & 0.0077 & 0.5699 & 0.0056 & 0.0042 & X.IRX\_log\_ret & 2016-06-22 \\ 
+    21 & 2.3529 & 0.0078 & 0.4312 & 0.0056 & 0.0042 & X.FVX\_log\_ret & none \\ 
+    16 & 2.3529 & 0.0102 & 0.4304 & 0.0056 & 0.0042 & X.IRX\_log\_ret & none \\ 
+    43 & 2.3529 & 0.0103 & 0.0136 & 0.0056 & 0.0042 & Debt\_Risk\_Spread & 2008-11-04 \\ 
+    11 & 2.3528 & 0.0114 & 0.4301 & 0.0056 & 0.0042 & X.VIX\_log\_ret & none \\ 
+    36 & 2.3532 & 0.0135 & 0.4311 & 0.0056 & 0.0042 & X.VIX\_raw & none \\ 
+    1 & 2.3531 & 0.0136 & 0.4301 & 0.0056 & 0.0042 & none & none \\ 
+    6 & 2.3530 & 0.0138 & 0.4293 & 0.0056 & 0.0042 & CL.F\_log\_ret & none \\ 
+    41 & 2.3533 & 0.0153 & 0.4301 & 0.0056 & 0.0042 & Debt\_Risk\_Spread & none \\ 
+    29 & 2.3528 & 0.0571 & 0.4768 & 0.0056 & 0.0042 & X.TNX\_log\_ret & 2012-11-06 \\ 
+    14 & 2.3542 & 0.0748 & 0.4768 & 0.0056 & 0.0042 & X.VIX\_log\_ret & 2012-11-06 \\ 
+    27 & 2.3530 & 0.0805 & 0.6217 & 0.0056 & 0.0042 & X.TNX\_log\_ret & 2004-11-02 \\ 
+    32 & 2.3530 & 0.0805 & 0.6222 & 0.0056 & 0.0042 & X.TYX\_log\_ret & 2004-11-02 \\ 
+    12 & 2.3529 & 0.0809 & 0.6216 & 0.0056 & 0.0042 & X.VIX\_log\_ret & 2004-11-02 \\ 
+    44 & 2.3528 & 0.0851 & 0.4769 & 0.0056 & 0.0042 & Debt\_Risk\_Spread & 2012-11-06 \\ 
+    4 & 2.3529 & 0.0867 & 0.4768 & 0.0056 & 0.0042 & none & 2012-11-06 \\ 
+    39 & 2.3529 & 0.0868 & 0.4768 & 0.0056 & 0.0042 & X.VIX\_raw & 2012-11-06 \\ 
+    17 & 2.3530 & 0.0902 & 0.6219 & 0.0056 & 0.0042 & X.IRX\_log\_ret & 2004-11-02 \\ 
+    19 & 2.3529 & 0.0903 & 0.4763 & 0.0056 & 0.0042 & X.IRX\_log\_ret & 2012-11-06 \\ 
+    9 & 2.3529 & 0.0906 & 0.4769 & 0.0056 & 0.0042 & CL.F\_log\_ret & 2012-11-06 \\ 
+    37 & 2.3529 & 0.0911 & 0.6215 & 0.0056 & 0.0042 & X.VIX\_raw & 2004-11-02 \\ 
+    2 & 2.3527 & 0.0913 & 0.6223 & 0.0056 & 0.0042 & none & 2004-11-02 \\ 
+    22 & 2.3530 & 0.0917 & 0.6197 & 0.0056 & 0.0042 & X.FVX\_log\_ret & 2004-11-02 \\ 
+    42 & 2.3529 & 0.0921 & 0.6209 & 0.0056 & 0.0042 & Debt\_Risk\_Spread & 2004-11-02 \\ 
+    7 & 2.3530 & 0.0934 & 0.6227 & 0.0056 & 0.0042 & CL.F\_log\_ret & 2004-11-02 \\ 
+    34 & 2.3529 & 0.0997 & 0.4772 & 0.0056 & 0.0042 & X.TYX\_log\_ret & 2012-11-06 \\ 
+    24 & 2.3530 & 0.1144 & 0.4767 & 0.0056 & 0.0042 & X.FVX\_log\_ret & 2012-11-06 \\ 
+     \hline
+  \end{tabular}
+  \end{table}
+  
 
 
 \subsection{Sensitivity to Covariates Chosen}

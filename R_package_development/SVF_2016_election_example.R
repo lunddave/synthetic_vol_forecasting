@@ -53,7 +53,8 @@ volume_covariates <- c()
 FRED_covariates <- c('AAA', 'BAA')
 
 shock_dates_outside_loop <- list('2016 Election' = "2016-11-08"
-                                 ,'Brexit' = "2016-06-22"
+                                 ,'Brexit_early' = "2016-06-22"
+                                 ,'Brexit_later' = '2016-06-23'
                                # ,'2014 Midterm' = "2014-11-04"
                                ,'2012 Election' = "2012-11-06"
                                # , '2010 Midterm' ="2010-11-02"
@@ -80,7 +81,7 @@ list_from_looping <- list()
 #NOTE: to run without an Leave-one-out procedures, set...
 # z <- u <- 0
 
-for (u in 0:number_of_covariates){
+for (u in c(0,2:number_of_covariates)){
 
   for (z in c(0,2:length(shock_dates_outside_loop))){
 
@@ -89,7 +90,7 @@ for (u in 0:number_of_covariates){
       dropped_donor <- shock_dates_outside_loop[z]
     } else {
         shock_dates <- shock_dates_outside_loop
-        dropped_donor <- NA
+        dropped_donor <- 'none'
         }
 
     nyse <- timeDate::holidayNYSE(2000:year(Sys.Date())+1)
@@ -238,7 +239,7 @@ for (u in 0:number_of_covariates){
           else {
             merged_data_uth_covariate_dropped <- merged_data
             covariates_col_names <- colnames(merged_data_uth_covariate_dropped)
-            covariate_string <- paste(covariates_col_names,collapse="_")
+            covariate_string <- 'none'
             }
 
         } #end conditional for FRED_covariates
@@ -314,7 +315,9 @@ for (u in 0:number_of_covariates){
                              ,X_lookback_indices = rep(list(c(1)),ncol(X[[1]]))
                              )
 
-    function_output[[4]] <- png_save_name
+    function_output[[4]] <- covariate_string
+    function_output[[5]] <- dropped_donor
+
 
     list_from_looping <- append(list_from_looping, list(function_output))
 
@@ -323,6 +326,12 @@ for (u in 0:number_of_covariates){
   }#end loop for dropping donors
 
 }#end loop for dropping covariates
+
+library(xtable)
+
+covs <- sapply(list_from_looping,"[[",4)
+dons <- sapply(list_from_looping,"[[",5)
+
 
 prediction_matrix <- sapply(list_from_looping,"[[",2)
 prediction_matrix <- matrix(as.numeric(t(prediction_matrix)), ncol = 3)
@@ -365,12 +374,34 @@ loss_matrix$loss_from_avg <- rep(losses_from_averaging[2], nrow_loss_matrix)
 
 loss_matrix$loss_from_median <- rep(losses_from_medians[2], nrow_loss_matrix)
 
-
 names(loss_matrix) <- c('unadj'
                         , 'adj'
                         , 'arith_mean'
                         ,'averaging'
                         ,'median')
+
+loss_matrix$dropped_covariate <- covs
+loss_matrix$dropped_donor <- dons
+
+loss_matrix <- as.data.frame(lapply(loss_matrix, unlist))
+
+loss_matrix$dropped_donor
+
+loss_matrix[order(loss_matrix$adj),]
+
+print(xtable(loss_matrix[order(loss_matrix$adj),],,digits=4))
+
+
+lm1 <- lm(as.numeric(loss_matrix$adj) ~ 0 + as.factor(loss_matrix$dropped_covariate) + as.factor(loss_matrix$dropped_donor))
+summary(lm1)
+
+lm1 <- lm(as.numeric(loss_matrix$adj) ~ 0 + as.factor(loss_matrix$dropped_donor))
+summary(lm1)
+
+lm1 <- lm(as.numeric(loss_matrix$adj) ~ 0 + as.factor(loss_matrix$dropped_covariate) )
+summary(lm1)
+
+plot(lm1)
 
 win_df <- t(apply(loss_matrix, 1, function(x) x == min(x)))
 
