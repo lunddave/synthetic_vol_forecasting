@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex synthVolForecast"] 1716856917 "synthVolForecast.aux" "synthVolForecast.bbl" "synthVolForecast" 1716856919 0
+["bibtex synthVolForecast"] 1716872364 "synthVolForecast.aux" "synthVolForecast.bbl" "synthVolForecast" 1716872366 0
   "./synthVolForecast.bib" 1716402325 17980 f32abf1eeeb7cc4e105691f6d1229163 ""
   "/usr/local/texlive/2023/texmf-dist/bibtex/bst/natbib/plainnat.bst" 1233624470 26816 ffe5423d2019860bad9f54bc402fac15 ""
-  "synthVolForecast.aux" 1716856919 14648 ce58b48ddeb472b10c4e732963e5930f "pdflatex"
+  "synthVolForecast.aux" 1716872365 14605 d723b066c1ceae38f77113207af95098 "pdflatex"
   (generated)
   "synthVolForecast.bbl"
   "synthVolForecast.blg"
   (rewritten before read)
-["pdflatex"] 1716856917 "/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/synthVolForecast.tex" "synthVolForecast.pdf" "synthVolForecast" 1716856919 0
-  "/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/synthVolForecast.tex" 1716856912 73230 a830434d1ca44b1efe214a447e1564ad ""
+["pdflatex"] 1716872364 "/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/synthVolForecast.tex" "synthVolForecast.pdf" "synthVolForecast" 1716872366 0
+  "/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/synthVolForecast.tex" 1716872362 72791 4ca411c34fae0f412a4b5215cc179eec ""
   "/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/jknappen/ec/tcrm1095.tfm" 1136768653 1536 02c06700a42be0f5a28664c7273f82e7 ""
@@ -241,11 +241,11 @@
   "simulation_plots/dual_level_vol_shock_FriFeb0911:27:59PM2024.png" 1710269852 126675 ac3c70f219c840028b5696e15c3e0709 ""
   "simulation_plots/standard_simulation_alpha_.1_beta_.82.png" 1710269852 167587 55a75e2ce2e6d050c7673ef4aa4cea63 ""
   "simulation_plots/standard_simulation_alpha_.82_beta_.1.png" 1710269852 171868 25bc858049ec0b74d160e812962cb21b ""
-  "synthVolForecast.aux" 1716856919 14648 ce58b48ddeb472b10c4e732963e5930f "pdflatex"
-  "synthVolForecast.bbl" 1716856917 12220 603db4da8c35a68f03d8af9912b2ec40 "bibtex synthVolForecast"
-  "synthVolForecast.out" 1716856919 4911 1d7f613e8efaddaab0151183369c2bea "pdflatex"
-  "synthVolForecast.spl" 1716856919 44 f890db90dc9bb371be25b5df78fd112c "pdflatex"
-  "synthVolForecast.tex" 1716856912 73230 a830434d1ca44b1efe214a447e1564ad ""
+  "synthVolForecast.aux" 1716872365 14605 d723b066c1ceae38f77113207af95098 "pdflatex"
+  "synthVolForecast.bbl" 1716872364 12220 603db4da8c35a68f03d8af9912b2ec40 "bibtex synthVolForecast"
+  "synthVolForecast.out" 1716872365 4850 263bf3e5e95e4ffe0c5cac9693b2745c "pdflatex"
+  "synthVolForecast.spl" 1716872365 44 f890db90dc9bb371be25b5df78fd112c "pdflatex"
+  "synthVolForecast.tex" 1716872362 72791 4ca411c34fae0f412a4b5215cc179eec ""
   (generated)
   "synthVolForecast.aux"
   "synthVolForecast.log"

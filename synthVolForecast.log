@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.21)  27 MAY 2024 20:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.21)  28 MAY 2024 00:59
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -874,31 +874,21 @@ File: real_data_output_plots/MonMay271221252024_IYG_IYG_CLF_log_ret_XVIX_log_ret
 <use real_data_output_plots/MonMay271221252024_IYG_IYG_CLF_log_ret_XVIX_log_ret_XIRX_log_ret_XFVX_log_ret_XTNX_log_ret_XTYX_log_ret_XVIX_raw_Debt_Risk_Spread_2016-06-22.png>
 Package pdftex.def Info: real_data_output_plots/MonMay271221252024_IYG_IYG_CLF_log_ret_XVIX_log_ret_XIRX_log_ret_XFVX_log_ret_XTNX_log_ret_XTYX_log_ret_XVIX_raw_Debt_Risk_Spread_2016-06-22.png  used on input line 594.
 (pdftex.def)             Requested size: 401.49902pt x 301.12425pt.
- [22 <./real_data_output_plots/MonMay271221252024_IYG_IYG_CLF_log_ret_XVIX_log_ret_XIRX_log_ret_XFVX_log_ret_XTNX_log_ret_XTYX_log_ret_XVIX_raw_Debt_Risk_Spread_2016-06-22.png>] [23]
-Underfull \hbox (badness 10000) in paragraph at lines 624--625
+ [22 <./real_data_output_plots/MonMay271221252024_IYG_IYG_CLF_log_ret_XVIX_log_ret_XIRX_log_ret_XFVX_log_ret_XTNX_log_ret_XTYX_log_ret_XVIX_raw_Debt_Risk_Spread_2016-06-22.png>] [23] [24{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
+
+LaTeX Warning: Reference `' on page 25 undefined on input line 635.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 642--643
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 626--627
-
- []
-
-[24]
-
-LaTeX Warning: Reference `' on page 25 undefined on input line 638.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 645--646
-
- []
-
-<real_data_output_plots/MonMay271220512024_IYG_IYG_CLF_log_ret_XVIX_log_ret_XIRX_log_ret_XFVX_log_ret_XTNX_log_ret_XTYX_log_ret_XVIX_raw_Debt_Risk_Spread_NA.png, id=521, 803.0pt x 602.25pt>
+<real_data_output_plots/MonMay271220512024_IYG_IYG_CLF_log_ret_XVIX_log_ret_XIRX_log_ret_XFVX_log_ret_XTNX_log_ret_XTYX_log_ret_XVIX_raw_Debt_Risk_Spread_NA.png, id=520, 803.0pt x 602.25pt>
 File: real_data_output_plots/MonMay271220512024_IYG_IYG_CLF_log_ret_XVIX_log_ret_XIRX_log_ret_XFVX_log_ret_XTNX_log_ret_XTYX_log_ret_XVIX_raw_Debt_Risk_Spread_NA.png Graphic file (type png)
 <use real_data_output_plots/MonMay271220512024_IYG_IYG_CLF_log_ret_XVIX_log_ret_XIRX_log_ret_XFVX_log_ret_XTNX_log_ret_XTYX_log_ret_XVIX_raw_Debt_Risk_Spread_NA.png>
-Package pdftex.def Info: real_data_output_plots/MonMay271220512024_IYG_IYG_CLF_log_ret_XVIX_log_ret_XIRX_log_ret_XFVX_log_ret_XTNX_log_ret_XTYX_log_ret_XVIX_raw_Debt_Risk_Spread_NA.png  used on input line 658.
+Package pdftex.def Info: real_data_output_plots/MonMay271220512024_IYG_IYG_CLF_log_ret_XVIX_log_ret_XIRX_log_ret_XFVX_log_ret_XTNX_log_ret_XTYX_log_ret_XVIX_raw_Debt_Risk_Spread_NA.png  used on input line 655.
 (pdftex.def)             Requested size: 481.80373pt x 361.35278pt.
-[25{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] [26 <./real_data_output_plots/MonMay271220512024_IYG_IYG_CLF_log_ret_XVIX_log_ret_XIRX_log_ret_XFVX_log_ret_XTNX_log_ret_XTYX_log_ret_XVIX_raw_Debt_Risk_Spread_NA.png>] (./synthVolForecast.bbl [27
+[25] [26 <./real_data_output_plots/MonMay271220512024_IYG_IYG_CLF_log_ret_XVIX_log_ret_XIRX_log_ret_XFVX_log_ret_XTNX_log_ret_XTYX_log_ret_XVIX_raw_Debt_Risk_Spread_NA.png>] (./synthVolForecast.bbl [27
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 209--212
@@ -910,7 +900,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 209--212
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `synthVolForecast.out' has not changed.
-(rerunfilecheck)             Checksum: 1D7F613E8EFADDAAB0151183369C2BEA;4911.
+(rerunfilecheck)             Checksum: 263BF3E5E95E4FFE0C5CAC9693B2745C;4850.
  ) 
 Here is how much of TeX's memory you used:
  26712 strings out of 476025
@@ -921,10 +911,10 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  84i,17n,80p,2243b,636s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on synthVolForecast.pdf (28 pages, 1108399 bytes).
+Output written on synthVolForecast.pdf (28 pages, 1105461 bytes).
 PDF statistics:
- 679 PDF objects out of 1000 (max. 8388607)
- 588 compressed objects within 6 object streams
+ 677 PDF objects out of 1000 (max. 8388607)
+ 586 compressed objects within 6 object streams
  136 named destinations out of 1000 (max. 500000)
  248 words of extra memory for PDF output out of 10000 (max. 10000000)
 
