@@ -298,7 +298,7 @@ for (u in 0:number_of_covariates){
     png(png_save_name,width = 800, height = 600)
 
     #Now run the algorithm
-    temp <- SynthVolForecast(Y
+    function_output <- SynthVolForecast(Y
                              ,X
                              ,shock_time_vec = unlist(shock_dates)
                              ,rep(k, n+1)
@@ -314,7 +314,9 @@ for (u in 0:number_of_covariates){
                              ,X_lookback_indices = rep(list(c(1)),ncol(X[[1]]))
                              )
 
-    list_from_looping <- append(list_from_looping, list(temp))
+    function_output[[4]] <- png_save_name
+
+    list_from_looping <- append(list_from_looping, list(function_output))
 
     dev.off()
 
