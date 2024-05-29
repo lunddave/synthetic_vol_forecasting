@@ -633,10 +633,12 @@ Given the option of redoing our analysis, with nine covariates and four donors, 
 
 \begin{table}[ht]
   \centering
-  \begingroup\fontsize{9pt}{10pt}\selectfont
-  \begin{tabular}{rll}
+  \captionof{table}{Adjusted Forecasts Ranked by QL Loss} \label{tab:title} 
+  \begingroup\fontsize{7pt}{8pt}\selectfont
+  \begin{tabular}{ccc}
+    
     \hline
-  QLLoss.AdjustedForecast. & dropped\_covariate & dropped\_donor \\ 
+ QL Loss of the Adjusted Forecast& Omitted Covariate & Omitted Donor \\ 
     \hline
   0.0003 & X.VIX\_log\_ret & 2016-06-22 \\ 
     0.0013 & X.IRX\_log\_ret & 2008-11-04 \\ 
@@ -703,12 +705,13 @@ We note that dropping the 2008 Election vastly improves the performance of the a
 \subsubsection{Brexit}
 We analyze the real-data example with Brexit included and using the daily return in the Pound-Dollar exchange rate as a covariate. \\
 
-\subsection{Can we combine forecasts to outperform the individual forecasts?}
+\subsubsection{Assessing the model fit before predicting}
+
 Note that by inspecting the fit of the distance-based weighting approximation quantitatively, we can gain some degree of foresight into how well the forecast will be.
 
+\subsection{Can we combine forecasts to outperform the individual forecasts?}
+
 \begin{itemize}
-  \item Table of predictions, dropped covariate, dropped donor
-  \item Table of losses, dropped covariate, dropped donor 
   \item How often does average or median forecast dominate?
 \end{itemize}
 

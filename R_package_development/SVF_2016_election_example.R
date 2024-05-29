@@ -90,7 +90,7 @@ for (u in c(-1,0,2:number_of_covariates)){
       dropped_donor <- shock_dates_outside_loop[z]
     } else {
         shock_dates <- shock_dates_outside_loop
-        dropped_donor <- 'none'
+        dropped_donor <- 'None'
         }
 
     nyse <- timeDate::holidayNYSE(2000:year(Sys.Date())+1)
@@ -190,22 +190,22 @@ for (u in c(-1,0,2:number_of_covariates)){
         #We add column names to the data so we can analyze it more easily when we print it
 
         if (length(log_ret_covariates) > 0)
-        {log_ret_covariates_colname <- paste(log_ret_covariates, "_log_ret", sep="")}
+        {log_ret_covariates_colname <- paste("Log_Return_of_", log_ret_covariates, sep="")}
         else
         {log_ret_covariates_colname <- c()}
 
         if (length(level_covariates) > 0)
-        {level_covariates_colname <- paste(level_covariates, "_raw", sep="")}
+        {level_covariates_colname <- paste("Raw", level_covariates, sep="")}
         else
         {level_covariates_colname <- c()}
 
         if (length(volume_covariates) > 0)
-        {volume_covariates_colname <- paste(volume_covariates, "_volume", sep="")}
+        {volume_covariates_colname <- paste("Volume", volume_covariates, sep="")}
         else
         {volume_covariates_colname <- c()}
 
         if (length(data_absolute_return_covariates) > 0)
-        {abs_log_ret_covariates_colname <- paste(log_ret_covariates, "_abs_log_ret", sep="")}
+        {abs_log_ret_covariates_colname <- paste("Absolute_Log_Return_of", log_ret_covariates, sep="")}
         else
         {abs_log_ret_covariates_colname <- c()}
 
@@ -240,7 +240,7 @@ for (u in c(-1,0,2:number_of_covariates)){
           else if (u == 0){
             merged_data_uth_covariate_dropped <- merged_data
             covariates_col_names <- colnames(merged_data_uth_covariate_dropped)
-            covariate_string <- 'none'
+            covariate_string <- 'None'
             Y_lookback_indices_u_loop <- list(seq(1,30,1))
           }
           else{ #This case is for the time series under study not being used in the DBW
@@ -394,8 +394,6 @@ loss_matrix$dropped_donor <- dons
 
 loss_matrix <- as.data.frame(lapply(loss_matrix, unlist))
 
-
-
 print(loss_matrix[order(loss_matrix[,2]),], row.names = FALSE)
 
 print(xtable(loss_matrix[order(loss_matrix[,2]),c(2,6,7)],digits=4)
@@ -403,13 +401,13 @@ print(xtable(loss_matrix[order(loss_matrix[,2]),c(2,6,7)],digits=4)
       , size="\\fontsize{9pt}{10pt}\\selectfont")
 
 
-lm1 <- lm(as.numeric(loss_matrix$adj) ~ 0 + as.factor(loss_matrix$dropped_covariate) + as.factor(loss_matrix$dropped_donor))
+lm1 <- lm(as.numeric(loss_matrix[,2]) ~ 0 + as.factor(loss_matrix$dropped_covariate) + as.factor(loss_matrix$dropped_donor))
 summary(lm1)
 
-lm1 <- lm(as.numeric(loss_matrix$adj) ~ 0 + as.factor(loss_matrix$dropped_donor))
+lm1 <- lm(as.numeric(loss_matrix[,2]) ~ 0 + as.factor(loss_matrix$dropped_donor))
 summary(lm1)
 
-lm1 <- lm(as.numeric(loss_matrix$adj) ~ 0 + as.factor(loss_matrix$dropped_covariate) )
+lm1 <- lm(as.numeric(loss_matrix[,2]) ~ 0 + as.factor(loss_matrix$dropped_covariate) )
 summary(lm1)
 
 plot(lm1)
