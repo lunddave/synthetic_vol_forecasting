@@ -6,7 +6,6 @@ options(digits = 6)
 
 library(dplyr)
 library("reshape")
-library(dplyr)
 library(ggplot2)
 library(Amelia)
 library(gridExtra)
@@ -25,7 +24,7 @@ if(sysname == "Darwin") {
 
 path <- getwd()
 
-files <- list.files(path=path, pattern = "*MonApr08*.*Rdata$")
+files <- list.files(path=path, pattern = "*ThuMay30*.*Rdata$")
 #results <- sapply(files, function(x) mget(load(x)), simplify = TRUE)
 #output <- do.call(rbind, results)
 load(files)
@@ -80,16 +79,26 @@ non_NA <- df_only_one_outcome[complete.cases(df_only_one_outcome),]
 
 # https://statisticsglobe.com/heatmap-in-r
 
-apply(non_NA, 2, function(x) unique(x))[c(1,3,4,5)]
+apply(non_NA, 2, function(x) unique(x))[c( "p"
+                                           ,"mu_x"
+                                           ,"sigma_x"
+                                          , 'M21_M22_vol_mu_delta'
+                                           , "mu_omega_star"
+                                           ,"vol_shock_sd" )]
 
-non_NA <- non_NA[non_NA$vol_shock_sd == 0,]
-non_NA <- non_NA[non_NA$sigma_x == 1,]
+non_NA <- non_NA[non_NA$p == 15,]
+non_NA <- non_NA[non_NA$mu_x == 2,]
+#non_NA <- non_NA[non_NA$sigma_x == .1,]
+#non_NA <- non_NA[non_NA$M21_M22_vol_mu_delta == 0,]
+non_NA <- non_NA[non_NA$mu_omega_star == .3,]
+
+non_NA <- non_NA[non_NA$vol_shock_sd == .05,]
 
 hm_generator <- function(y_input
                          , x_input
                          , outcome
-                         , xlab
-                         , ylab)
+                         , ylab
+                         , xlab)
 {
 
   means <- non_NA %>% group_by({{x_input}}, {{y_input}}) %>% summarise(prop=mean({{outcome}}))
@@ -118,10 +127,10 @@ hm_generator <- function(y_input
 }
 
 hm_generator(M21_M22_vol_mu_delta
-             , mu_omega_star
+             , sigma_x
              , against_mean
-             ,'x'
-             ,'y')
+             ,'y'
+             ,'x')
 
 #
 # # Now we write a function

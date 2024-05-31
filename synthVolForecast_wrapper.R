@@ -47,7 +47,7 @@ simulate_and_analyze <- function(n = 5,
                                  M21_M22_level_mu_delta = .05,
                                  M21_M22_level_sd_delta = .1,
 
-                                 mu_omega_star = .05,
+                                 mu_omega_star = .09,
                                  vol_shock_sd = .01,
 
                                  M21_M22_vol_mu_delta = .15,
@@ -263,7 +263,7 @@ simulate_and_analyze <- function(n = 5,
 simulate_and_analyze(normchoice = 'l2'
                            , penalty_norm = 'l2'
                            , penalty_lambda = 0
-                           , plot_sim = FALSE
-                           , plot_fit = FALSE)
+                           , plot_sim = TRUE
+                           , plot_fit = TRUE)
 
 dev.off()

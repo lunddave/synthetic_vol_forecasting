@@ -999,33 +999,33 @@ synth_vol_fit <- function(X,
     non_NA_garch_1_1_entire_plus_shock_times <- fitted_garch_1_1_entire_plus_shock_times[is.finite(fitted_garch_1_1_entire_plus_shock_times)]
 
     plot.ts(Y[[1]][,3][(T_star[1]-10):(T_star[1] + 50)],
-            main = 'Proof of Concept: What if we had data beyond the shock time(s)?\nDoes GARCH with an indicator at the shock times catch up faster?',
+            #main = 'Proof of Concept: What if we had data beyond the shock time(s)?\n
+            #Does GARCH with an indicator at the shock times catch up faster?',
             ylab = '', col = 'black',
             xlab = "Trading Days",
             ylim = c(0, max(non_NA_garch_1_1_entire_plus_shock_times, Y[[1]][,3][(T_star[1]-10):(T_star[1] + 50)])) ,
             cex.lab = 3.99)
 
-    colors_for_plot <- c('#d7191c','#fdae61','#abd9e9','#2c7bb6')
+    colors_for_plot_and_legend <- c('black', '#d7191c','#fdae61')
 
-    lines(non_NA_garch_1_1_entire_plus_shock_times[(T_star[1]-10):(T_star[1] + 50)], col = colors_for_plot[1])
+    lines(non_NA_garch_1_1_entire_plus_shock_times[(T_star[1]-10):(T_star[1] + 50)]
+          , col = colors_for_plot_and_legend[2])
 
-    lines(non_NA_garch_1_1_entire[(T_star[1]-10):(T_star[1] + 50)], col = colors_for_plot[2])
+    lines(non_NA_garch_1_1_entire[(T_star[1]-10):(T_star[1] + 50)]
+          , col = colors_for_plot_and_legend[3])
 
-    abline(v = T_star[1], col = colors_for_plot[3])
+    abline(v = T_star[1], col = 'black')
 
     title(ylab = expression(sigma^2), line = 2.05, cex.lab = 1.99)
 
-    labels_for_legend <- c('Fitted Values from Unadjusted GARCH'
-                           ,'Actual Simulated Values'
-                           ,'Fitted Values Using Indicator at Shock Time(s)')
+    labels_for_legend <- c('Volatility of Simulated GARCH Process'
+                           ,'Fitted Volatility Using Indicator at Shock Time(s)'
+                           ,'Fitted Volatility from Unadjusted GARCH')
 
-    # Here is the color scheme we will use
-    colors_for_legend <- c('#d7191c','#fdae61','#abd9e9','#2c7bb6')
-
-    legend(x = "topleft",  # Coordinates (x also accepts keywords)
-           legend = labels_for_legend,
-           1:length(labels_for_legend), # Vector with the name of each group
-           colors_for_legend,   # Creates boxes in the legend with the specified colors
+    legend(x = "topright",  # Coordinates (x also accepts keywords)
+           legend = labels_for_legend ,
+           1:length(colors_for_plot_and_legend), # Vector with the name of each group
+           colors_for_plot_and_legend,   # Creates boxes in the legend with the specified colors
            title = 'Time Series',      # Legend title,
            cex = .9
     )
@@ -1037,7 +1037,7 @@ synth_vol_fit <- function(X,
     par(mfrow=c(1,1))
 
     plot(sigma2_up_through_T_star_plus_k,
-         main = 'Aggregating Predictions Reduces Risk',
+         #main = 'Aggregating Predictions Reduces Risk',
          ylab = '',
          xlab = "Trading Days",
          xlim = c(0, length(sigma2_up_through_T_star_plus_k) + 5),
@@ -1067,41 +1067,44 @@ synth_vol_fit <- function(X,
            cex = 1.3, pch = 15)
 
     # Now plot the predictions given to use by each donor
+    # Here is the color scheme we will use
+    colors_for_adjusted_pred <- c('black'
+                                  , '#d7191c'
+                                  ,'#fdae61'
+                                  , 'Deep Sky Blue')
+
     for (i in 2:length(shock_est_vec))
     {
       adjusted_pred_based_on_omega_i_hat <- pred + rep(shock_est_vec[i],shock_lengths[1])
 
       points(y = adjusted_pred_based_on_omega_i_hat,
              x = (T_star[1]+1):(T_star[1]+shock_lengths[1]),
-             col = 'blue', cex = 1.9, pch = 10)
+             col = colors_for_adjusted_pred[3], cex = 1.9, pch = 10)
     }
 
     #Now plot the average of those adjustments
     points(y = adjusted_pred_list[[12]],
            x = (T_star[1]+1):(T_star[1]+shock_lengths[1]),
-           col = 'green', cex = 3.9, pch = 10)
+           col = colors_for_adjusted_pred[4], cex = 3.9, pch = 10)
 
-    labels_for_legend <- c('Actual','GARCH (unadjusted)',
-                           TeX(r'(GARCH prediction adjusted by $\hat{\omega}^{*}_{i}$)'),
-                           'Aggregated Prediction')
-
-    # Here is the color scheme we will use
-    colors_for_adjusted_pred <- c('black', 'red',  'blue', "green",
-                                  brewer.pal(length(labels_for_legend) ,'Set3'))
+    labels_for_legend <- c('Actual'
+                           ,'GARCH (unadjusted)'
+                           ,TeX(r'(GARCH Prediction of Donor $i$ Adjusted By $\hat{\omega}^{*}_{i}$)')
+                           ,TeX(r'(GARCH Prediction Adjusted By $\bar{\omega}^{*}_{i}$)'))
 
     legend(x = "topleft",  # Coordinates (x also accepts keywords)
            legend = labels_for_legend,
            1:length(labels_for_legend), # Vector with the name of each group
            colors_for_adjusted_pred,   # Creates boxes in the legend with the specified colors
-           title = 'Prediction Method',      # Legend title,
+           #title = 'Prediction Method',      # Legend title,
            cex = .9
     )
 
     #Now we label
 
     text(700, max(sigma2_up_through_T_star_plus_k) - 1,
-         TeX(r'($\hat{\omega}^{*}_{avg} = \frac{1}{n}\Sigma^{n+1}_{i=2}\hat{\omega}^{*}_{i}$)'),
-         col = 'green')
+         TeX(r'($\bar{\omega}^{*} = \frac{1}{n}\Sigma^{n+1}_{i=2}\hat{\omega}^{*}_{i}$)'),
+         col = 'Deep Sky Blue')
 
   } #end the conditional for plots
 

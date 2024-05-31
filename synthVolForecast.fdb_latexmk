@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex synthVolForecast"] 1717022586 "synthVolForecast.aux" "synthVolForecast.bbl" "synthVolForecast" 1717022587 0
+["bibtex synthVolForecast"] 1717121638 "synthVolForecast.aux" "synthVolForecast.bbl" "synthVolForecast" 1717121672 0
   "./synthVolForecast.bib" 1716402325 17980 f32abf1eeeb7cc4e105691f6d1229163 ""
   "/usr/local/texlive/2023/texmf-dist/bibtex/bst/natbib/plainnat.bst" 1233624470 26816 ffe5423d2019860bad9f54bc402fac15 ""
-  "synthVolForecast.aux" 1717022587 15019 84c74bfc878bcc221558aa9ba2778f3d "pdflatex"
+  "synthVolForecast.aux" 1717121672 16198 2438d85b2638c948913d6ad9ff2d25f9 "pdflatex"
   (generated)
   "synthVolForecast.bbl"
   "synthVolForecast.blg"
   (rewritten before read)
-["pdflatex"] 1717022586 "/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/synthVolForecast.tex" "synthVolForecast.pdf" "synthVolForecast" 1717022587 0
-  "/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/synthVolForecast.tex" 1717022584 75532 363058a4172c40fbc9910ee26a985237 ""
+["pdflatex"] 1717121671 "/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/synthVolForecast.tex" "synthVolForecast.pdf" "synthVolForecast" 1717121672 0
+  "/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/synthVolForecast.tex" 1717121670 76203 f685df82f2200570e5551a9cf9d6f6aa ""
   "/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/jknappen/ec/tcrm1095.tfm" 1136768653 1536 02c06700a42be0f5a28664c7273f82e7 ""
@@ -240,16 +240,18 @@
   "/usr/local/texlive/2023/texmf.cnf" 1678822455 577 1b2b1af17af2508fb20dd85783af4050 ""
   "real_data_output_plots/MonMay271220512024_IYG_IYG_CLF_log_ret_XVIX_log_ret_XIRX_log_ret_XFVX_log_ret_XTNX_log_ret_XTYX_log_ret_XVIX_raw_Debt_Risk_Spread_NA.png" 1716830452 50327 7292a64412cf4eedf30a5769974cff1d ""
   "real_data_output_plots/MonMay271221252024_IYG_IYG_CLF_log_ret_XVIX_log_ret_XIRX_log_ret_XFVX_log_ret_XTNX_log_ret_XTYX_log_ret_XVIX_raw_Debt_Risk_Spread_2016-06-22.png" 1716830485 46364 10aab6ab3295e8e104da9ed0f0600a4f ""
-  "simulation_plots/USE_in_paper_simulation_plot_arithmetic_mean.png" 1710269852 39607 d52a936f53d431eb8546c15fd4c2aff4 ""
   "simulation_plots/dual_level_vol_shock_FriFeb0911:03:49PM2024.png" 1710269852 129594 6412c8b8133fee92af50f9b0bd02fdfc ""
   "simulation_plots/dual_level_vol_shock_FriFeb0911:27:59PM2024.png" 1710269852 126675 ac3c70f219c840028b5696e15c3e0709 ""
+  "simulation_plots/motivating_piece_arithmetic_mean.png" 1717048245 59504 4af03160e1c58f0f28bb3d2b685e5e73 ""
+  "simulation_plots/proof_concept.png" 1717046453 49112 f919234a7f1cfb75cba47b5c8fd4e3c7 ""
   "simulation_plots/standard_simulation_alpha_.1_beta_.82.png" 1710269852 167587 55a75e2ce2e6d050c7673ef4aa4cea63 ""
   "simulation_plots/standard_simulation_alpha_.82_beta_.1.png" 1710269852 171868 25bc858049ec0b74d160e812962cb21b ""
-  "synthVolForecast.aux" 1717022587 15019 84c74bfc878bcc221558aa9ba2778f3d "pdflatex"
-  "synthVolForecast.bbl" 1717022586 12220 603db4da8c35a68f03d8af9912b2ec40 "bibtex synthVolForecast"
-  "synthVolForecast.out" 1717022587 5138 5e5d1f83049275228ff61f9b9895e445 "pdflatex"
-  "synthVolForecast.spl" 1717022587 44 f890db90dc9bb371be25b5df78fd112c "pdflatex"
-  "synthVolForecast.tex" 1717022584 75532 363058a4172c40fbc9910ee26a985237 ""
+  "simulation_plots/vol_series_six_plots.png" 1717045099 125984 4253d07175702654e777c0ff47113e7b ""
+  "synthVolForecast.aux" 1717121672 16198 2438d85b2638c948913d6ad9ff2d25f9 "pdflatex"
+  "synthVolForecast.bbl" 1717121638 12220 603db4da8c35a68f03d8af9912b2ec40 "bibtex synthVolForecast"
+  "synthVolForecast.out" 1717121672 5138 5e5d1f83049275228ff61f9b9895e445 "pdflatex"
+  "synthVolForecast.spl" 1717121672 44 f890db90dc9bb371be25b5df78fd112c "pdflatex"
+  "synthVolForecast.tex" 1717121670 76203 f685df82f2200570e5551a9cf9d6f6aa ""
   (generated)
   "synthVolForecast.aux"
   "synthVolForecast.log"
