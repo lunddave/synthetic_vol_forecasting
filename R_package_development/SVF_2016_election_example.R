@@ -327,7 +327,6 @@ for (u in c(-1,0,2:number_of_covariates)){
     function_output[[4]] <- covariate_string
     function_output[[5]] <- dropped_donor
 
-
     list_from_looping <- append(list_from_looping, list(function_output))
 
     dev.off()
@@ -415,13 +414,3 @@ plot(lm1)
 win_df <- t(apply(loss_matrix, 1, function(x) x == min(x)))
 
 colSums(win_df)
-
-
-
-#Things we want from the loop:
-# 1) each convex comb
-# 2) unadj, adj, and arithmetic_mean
-# 3) loss of unadj, adj, and arithmetic_mean
-# 4) the FE estimates? this is not easy to justify
-
-
