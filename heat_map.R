@@ -25,7 +25,7 @@ if(sysname == "Darwin") {
 
 path <- getwd()
 
-files <- list.files(path=path, pattern = "*SatJun0107:05:492024*.*Rdata$")
+files <- list.files(path=path, pattern = "*SatJun0113*.*Rdata$")
 #results <- sapply(files, function(x) mget(load(x)), simplify = TRUE)
 #output <- do.call(rbind, results)
 load(files)
@@ -69,7 +69,7 @@ vol_model_chosen <- as.data.frame(lapply(vol_model_chosen, as.numeric))
 
 #Define outcomes variable(s)
 vol_model_chosen$success <- as.integer(vol_model_chosen$QL_adj1 <= vol_model_chosen$QL_adj14)
-vol_model_chosen$success_versus_mean <- as.integer(vol_model_chosen$MSE_adj1 <= vol_model_chosen$MSE_adj12)
+vol_model_chosen$success_versus_mean <- as.integer(vol_model_chosen$QL_adj1 <= vol_model_chosen$QL_adj12)
 
 df_only_one_outcome <- cbind(vol_model_chosen[,1:11],
                              vol_model_chosen$success,
@@ -80,7 +80,7 @@ non_NA <- df_only_one_outcome[complete.cases(df_only_one_outcome),]
 
 scatterplot3d(non_NA[,c(6,5,2)], pch = 16, color=non_NA$success)
 
-success_glm <- glm(non_NA$success ~.^2, data = non_NA[,c("mu_x"
+success_glm <- glm(success ~.^2, data = non_NA[,c("mu_x"
                                           ,"sigma_x"
                                           , 'M21_M22_vol_mu_delta'
                                           , "mu_omega_star"
@@ -89,12 +89,12 @@ success_glm <- glm(non_NA$success ~.^2, data = non_NA[,c("mu_x"
 
 summary(success_glm)
 
-against_mean_glm <- glm(non_NA$against_mean ~., data = non_NA[,c("mu_x"
+against_mean_glm <- glm(against_mean ~.^2, data = non_NA[,c("mu_x"
                                                        ,"sigma_x"
                                                        , 'M21_M22_vol_mu_delta'
                                                        , "mu_omega_star"
                                                        ,"vol_shock_sd"
-                                                       ,"success")])
+                                                       ,"against_mean")])
 
 summary(against_mean_glm)
 
@@ -109,11 +109,11 @@ apply(non_NA, 2, function(x) unique(x))[c(
 
 #non_NA <- non_NA[non_NA$p == 15,]
 
-#non_NA <- non_NA[non_NA$mu_x == 0.01,]
-non_NA <- non_NA[non_NA$sigma_x == 1e-04 ,]
+non_NA <- non_NA[non_NA$mu_x == 1,]
+non_NA <- non_NA[non_NA$sigma_x == .125,]
 #non_NA <- non_NA[non_NA$M21_M22_vol_mu_delta == .2,]
-non_NA <- non_NA[non_NA$mu_omega_star == 1,]
-non_NA <- non_NA[non_NA$vol_shock_sd == 1,]
+non_NA <- non_NA[non_NA$mu_omega_star == .125,]
+#non_NA <- non_NA[non_NA$vol_shock_sd == .0001,]
 
 hm_generator <- function(y_input
                          , x_input
@@ -148,8 +148,8 @@ hm_generator <- function(y_input
 }
 
 hm_generator(y_input = M21_M22_vol_mu_delta
-             ,x_input = mu_x
-             , against_mean
+             ,x_input = vol_shock_sd
+             , success
              ,'y'
              ,'x')
 
