@@ -9,6 +9,7 @@ library("reshape")
 library(ggplot2)
 library(Amelia)
 library(gridExtra)
+library("scatterplot3d")
 
 # https://stackoverflow.com/questions/69054275/loading-multiple-rdata-and-binding-into-a-single-data-frame
 
@@ -24,7 +25,7 @@ if(sysname == "Darwin") {
 
 path <- getwd()
 
-files <- list.files(path=path, pattern = "*FriMay3104*.*Rdata$")
+files <- list.files(path=path, pattern = "*SatJun0107:05:492024*.*Rdata$")
 #results <- sapply(files, function(x) mget(load(x)), simplify = TRUE)
 #output <- do.call(rbind, results)
 load(files)
@@ -77,22 +78,42 @@ names(df_only_one_outcome) <- c(names(df_only_one_outcome)[1:11], 'success', 'ag
 
 non_NA <- df_only_one_outcome[complete.cases(df_only_one_outcome),]
 
+scatterplot3d(non_NA[,c(6,5,2)], pch = 16, color=non_NA$success)
+
+success_glm <- glm(non_NA$success ~.^2, data = non_NA[,c("mu_x"
+                                          ,"sigma_x"
+                                          , 'M21_M22_vol_mu_delta'
+                                          , "mu_omega_star"
+                                          ,"vol_shock_sd"
+                                          ,"success")])
+
+summary(success_glm)
+
+against_mean_glm <- glm(non_NA$against_mean ~., data = non_NA[,c("mu_x"
+                                                       ,"sigma_x"
+                                                       , 'M21_M22_vol_mu_delta'
+                                                       , "mu_omega_star"
+                                                       ,"vol_shock_sd"
+                                                       ,"success")])
+
+summary(against_mean_glm)
+
 # https://statisticsglobe.com/heatmap-in-r
 
-apply(non_NA, 2, function(x) unique(x))[c( "p"
-                                           ,"mu_x"
+apply(non_NA, 2, function(x) unique(x))[c(
+                                           "mu_x"
                                            ,"sigma_x"
                                           , 'M21_M22_vol_mu_delta'
                                            , "mu_omega_star"
                                            ,"vol_shock_sd" )]
 
-non_NA <- non_NA[non_NA$p == 15,]
-non_NA <- non_NA[non_NA$mu_x == 2,]
-#non_NA <- non_NA[non_NA$sigma_x == .1,]
-#non_NA <- non_NA[non_NA$M21_M22_vol_mu_delta == 0,]
-non_NA <- non_NA[non_NA$mu_omega_star == .3,]
+#non_NA <- non_NA[non_NA$p == 15,]
 
-non_NA <- non_NA[non_NA$vol_shock_sd == .05,]
+#non_NA <- non_NA[non_NA$mu_x == 0.01,]
+non_NA <- non_NA[non_NA$sigma_x == 1e-04 ,]
+#non_NA <- non_NA[non_NA$M21_M22_vol_mu_delta == .2,]
+non_NA <- non_NA[non_NA$mu_omega_star == 1,]
+non_NA <- non_NA[non_NA$vol_shock_sd == 1,]
 
 hm_generator <- function(y_input
                          , x_input
@@ -126,11 +147,14 @@ hm_generator <- function(y_input
 
 }
 
-hm_generator(M21_M22_vol_mu_delta
-             , sigma_x
+hm_generator(y_input = M21_M22_vol_mu_delta
+             ,x_input = mu_x
              , against_mean
              ,'y'
              ,'x')
+
+#Let's generate 3d scatterplots
+
 
 #
 # # Now we write a function
