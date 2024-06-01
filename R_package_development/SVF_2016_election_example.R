@@ -338,7 +338,13 @@ for (u in c(-1,0,2:number_of_covariates)){
 library(xtable)
 
 covs <- sapply(list_from_looping,"[[",4)
+
+covs <- gsub("_", " ", covs, fixed = TRUE)
+covs <- gsub(" .", " ", covs, fixed = TRUE)
+covs
+
 dons <- sapply(list_from_looping,"[[",5)
+
 
 
 prediction_matrix <- sapply(list_from_looping,"[[",2)

@@ -24,7 +24,7 @@ if(sysname == "Darwin") {
 
 path <- getwd()
 
-files <- list.files(path=path, pattern = "*ThuMay30*.*Rdata$")
+files <- list.files(path=path, pattern = "*FriMay3104*.*Rdata$")
 #results <- sapply(files, function(x) mget(load(x)), simplify = TRUE)
 #output <- do.call(rbind, results)
 load(files)
