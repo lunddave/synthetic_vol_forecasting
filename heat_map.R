@@ -25,7 +25,7 @@ if(sysname == "Darwin") {
 
 path <- getwd()
 
-files <- list.files(path=path, pattern = "*SatJun0113*.*Rdata$")
+files <- list.files(path=path, pattern = "*_SunJun0216*.*Rdata$")
 #results <- sapply(files, function(x) mget(load(x)), simplify = TRUE)
 #output <- do.call(rbind, results)
 load(files)
@@ -107,14 +107,6 @@ apply(non_NA, 2, function(x) unique(x))[c(
                                            , "mu_omega_star"
                                            ,"vol_shock_sd" )]
 
-#non_NA <- non_NA[non_NA$p == 15,]
-
-non_NA <- non_NA[non_NA$mu_x == 1,]
-non_NA <- non_NA[non_NA$sigma_x == .125,]
-#non_NA <- non_NA[non_NA$M21_M22_vol_mu_delta == .2,]
-non_NA <- non_NA[non_NA$mu_omega_star == .125,]
-#non_NA <- non_NA[non_NA$vol_shock_sd == .0001,]
-
 hm_generator <- function(y_input
                          , x_input
                          , outcome
@@ -124,7 +116,7 @@ hm_generator <- function(y_input
 
   means <- non_NA %>% group_by({{x_input}}, {{y_input}}) %>% summarise(prop=mean({{outcome}}))
   means <- as.data.frame(sapply(means, as.numeric))
-  means$prop <- round(means$prop, 3)
+  means$prop <- round(means$prop, 2)
 
   count <- non_NA %>% group_by({{x_input}}, {{y_input}}) %>% count()
 
@@ -147,14 +139,107 @@ hm_generator <- function(y_input
 
 }
 
+## Subsets to include in paper:
+
+## Subset 1:
+non_NA <- df_only_one_outcome[complete.cases(df_only_one_outcome),]
+non_NA <- non_NA[non_NA$mu_x == 0.125,]
+non_NA <- non_NA[non_NA$sigma_x == .125,]
+#non_NA <- non_NA[non_NA$M21_M22_vol_mu_delta == .2,]
+non_NA <- non_NA[non_NA$mu_omega_star == .125,]
+#non_NA <- non_NA[non_NA$vol_shock_sd == .125,]
+
 hm_generator(y_input = M21_M22_vol_mu_delta
              ,x_input = vol_shock_sd
              , success
              ,'y'
              ,'x')
 
-#Let's generate 3d scatterplots
+## Subset 2:
+non_NA <- df_only_one_outcome[complete.cases(df_only_one_outcome),]
+non_NA <- non_NA[non_NA$mu_x == 1,]
+non_NA <- non_NA[non_NA$sigma_x == .125,]
+#non_NA <- non_NA[non_NA$M21_M22_vol_mu_delta == .2,]
+non_NA <- non_NA[non_NA$mu_omega_star == .125,]
+#non_NA <- non_NA[non_NA$vol_shock_sd == .125,]
 
+hm_generator(y_input = M21_M22_vol_mu_delta
+             ,x_input = vol_shock_sd
+             , success
+             ,'y'
+             ,'x')
+
+## Subset 3:
+non_NA <- df_only_one_outcome[complete.cases(df_only_one_outcome),]
+non_NA <- non_NA[non_NA$mu_x == .5,]
+non_NA <- non_NA[non_NA$sigma_x == .125,]
+#non_NA <- non_NA[non_NA$M21_M22_vol_mu_delta == .2,]
+non_NA <- non_NA[non_NA$mu_omega_star == .125,]
+#non_NA <- non_NA[non_NA$vol_shock_sd == .125,]
+
+hm_generator(y_input = M21_M22_vol_mu_delta
+             ,x_input = vol_shock_sd
+             , success
+             ,'y'
+             ,'x')
+
+## Subset 4:
+non_NA <- df_only_one_outcome[complete.cases(df_only_one_outcome),]
+#non_NA <- non_NA[non_NA$mu_x == .5,]
+non_NA <- non_NA[non_NA$sigma_x == .125,]
+#non_NA <- non_NA[non_NA$M21_M22_vol_mu_delta == .2,]
+non_NA <- non_NA[non_NA$mu_omega_star == .125,]
+non_NA <- non_NA[non_NA$vol_shock_sd == .125,]
+
+hm_generator(y_input = M21_M22_vol_mu_delta
+             ,x_input = mu_x
+             , success
+             ,'y'
+             ,'x')
+
+## Subset 5:
+non_NA <- df_only_one_outcome[complete.cases(df_only_one_outcome),]
+#non_NA <- non_NA[non_NA$mu_x == .5,]
+non_NA <- non_NA[non_NA$sigma_x == .125,]
+#non_NA <- non_NA[non_NA$M21_M22_vol_mu_delta == .2,]
+non_NA <- non_NA[non_NA$mu_omega_star == .125,]
+non_NA <- non_NA[non_NA$vol_shock_sd == 1,]
+
+hm_generator(y_input = M21_M22_vol_mu_delta
+             ,x_input = mu_x
+             , success
+             ,'y'
+             ,'x')
+
+## Subset 6:
+non_NA <- df_only_one_outcome[complete.cases(df_only_one_outcome),]
+#non_NA <- non_NA[non_NA$mu_x == .5,]
+non_NA <- non_NA[non_NA$sigma_x == .125,]
+non_NA <- non_NA[non_NA$M21_M22_vol_mu_delta == .125,]
+non_NA <- non_NA[non_NA$mu_omega_star == .125,]
+#non_NA <- non_NA[non_NA$vol_shock_sd == 1,]
+
+hm_generator(y_input = mu_x
+             ,x_input = vol_shock_sd
+             , success
+             ,'y'
+             ,'x')
+
+## Subset 7:
+non_NA <- df_only_one_outcome[complete.cases(df_only_one_outcome),]
+non_NA <- non_NA[non_NA$mu_x == .125,]
+non_NA <- non_NA[non_NA$sigma_x == .125,]
+non_NA <- non_NA[non_NA$M21_M22_vol_mu_delta == .125,]
+#non_NA <- non_NA[non_NA$mu_omega_star == .125,]
+#non_NA <- non_NA[non_NA$vol_shock_sd == 1,]
+
+hm_generator(y_input = mu_omega_star
+             ,x_input = vol_shock_sd
+             , success
+             ,'y'
+             ,'x')
+
+#Let's generate 3d scatterplots
 
 #
 # # Now we write a function

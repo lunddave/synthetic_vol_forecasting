@@ -1,4 +1,4 @@
-\begin{thebibliography}{48}
+\begin{thebibliography}{50}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -195,6 +195,11 @@ Bloomberg News.
 \newblock Election 2024: What will markets do with trump victory over biden?
 \newblock \url{https://www.bloomberg.com/news/articles/2024-01-21/trump-s-2016-win-shook-markets-traders-won-t-get-fooled-again}, Jan 2024.
 
+\bibitem[Phillips(1996)]{phillips1996forecasting}
+Robert~F Phillips.
+\newblock Forecasting in the presence of large shocks.
+\newblock \emph{Journal of Economic Dynamics and Control}, 20\penalty0 (9-10):\penalty0 1581--1608, 1996.
+
 \bibitem[Romer and Romer(1989)]{romer1989does}
 Christina~D Romer and David~H Romer.
 \newblock Does monetary policy matter? a new test in the spirit of friedman and schwartz.
@@ -230,6 +235,11 @@ Allan Timmermann.
 Ruey~S Tsay.
 \newblock \emph{Analysis of financial time series}, volume 543.
 \newblock John wiley \& sons, 2005.
+
+\bibitem[Wang et~al.(2020)Wang, Ma, and Liu]{wang2020forecasting}
+Lu~Wang, Feng Ma, and Guoshan Liu.
+\newblock Forecasting stock volatility in the presence of extreme shocks: Short-term and long-term effects.
+\newblock \emph{Journal of Forecasting}, 39\penalty0 (5):\penalty0 797--810, 2020.
 
 \bibitem[Wang et~al.(2023)Wang, Hyndman, Li, and Kang]{wang2023forecast}
 Xiaoqian Wang, Rob~J Hyndman, Feng Li, and Yanfei Kang.
