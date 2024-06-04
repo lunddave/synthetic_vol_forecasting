@@ -19,6 +19,8 @@ packs <- c('quantmod'
            ,'lmtest'
            ,'RColorBrewer'
            ,'forecast'
+           ,'MCS'
+
 )
 
 suppressPackageStartupMessages(lapply(packs, require, character.only = TRUE))
@@ -420,3 +422,26 @@ plot(lm1)
 win_df <- t(apply(loss_matrix, 1, function(x) x == min(x)))
 
 colSums(win_df)
+
+#MCS
+loss_only <- as.data.frame(t(as.matrix(loss_matrix[,2], ncol = 1)))
+loss_only[2,] <- rgamma(50,1,1)
+cols <- as.vector(paste(dons, covs, sep = ''))
+
+colnames(loss_only) <- cols
+
+loss_xts <- xts(x=loss_only, order.by=as.Date(c("2016-11-08","2016-11-09")))
+
+dim(loss_xts)
+head(loss_xts)
+
+dimnames(loss_xts)
+
+class(dimnames(loss_xts)[[2]])
+
+dimnames(Loss)
+class(dimnames(Loss)[[2]])
+
+MCS <- MCSprocedure(Loss=loss_xts,alpha=0.1,B=5000,statistic='Tmax',cl=NULL)
+
+MCS

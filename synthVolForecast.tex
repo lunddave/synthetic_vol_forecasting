@@ -161,7 +161,6 @@ Similar problems and more exist for Realized GARCH models \citep{hansen2012reali
 
 
 The approach herein can be viewed as an attempt to sidestep the functional complexity posited by Realized GARCH, with its minimum nine parameters to estimate \citep{sharma2016forecasting}, by substituting modeling assumptions.  The method herein proceeds under the assumption that similar news events occasion volatility shocks arising from a common shock distribution.  The procedure proposed does not require post-shock information like returns or market-implied quantities from the time series under study.  Hence, we also avoid questions about what realized measure to use and when as well as questions about the usefulness of high-frequency data, although these remain intriguing avenues for future work.
-g
 
 
 The primary methodological tool presented in this work is fixed effect estimation followed by an appropriate procedure for pooling those estimates.  The use of fixed effect estimation for the study of structural shocks has a pedigree in macroeconomic analysis (\citet{romer1989does} cited in \citet{kilian2017structural}; see also discussion of determinstic exogenous events in \citet{engle2001good}).  We employ fixed effect estimation on the basis of a well-established conceptual assumption that shocks of economic time series can be modeled as mixtures, in particular, mixtures of ordinary innovations and rare events (see \cite{phillips1996forecasting} and references therein).  In the forecasting literature, the term ``intercept correction'' has come to refer to a modeling technique in which nonzero errors are explicitly permitted \citep{hendry1994theory, clements1998forecasting}.  They summarize the literature as distinguishing two families of intercept correction: so-called ``discretionary" intercept corrections that attempt to account for future events, without hard-coding an ad-hoc adjustment into the model specification, and second, ``automated" intercept corrections that attempt to adjust for persistent misspecification using past errors.  \citet{guerron2017macroeconomic} use weighted subsets of a scalar series' own past to correct forecast errors by an additive term. \citet{dendramis2020similarity} a introduces a similarity-based forecasting procedure for time-varying coefficients of a linear model. \citet{foroni2022forecasting} employ a form of intercept correction in order to adjust forecasts to the COVID-19 shock in the spring of 2020 based on the proportional misses of the same model applied to the Great Recession.
@@ -177,7 +176,7 @@ In order to motivate our procedure, we show how the aggregation of estimated exc
 \begin{figure}[h]
   \begin{center}
     \includegraphics[scale=.4]{simulation_plots/vol_series_six_plots.png}
-    \caption{Six i.i.d. GARCH volatility, each of which experiences a volatility shock, indicated with a red vertical line, at a uniformly distributed point in the interval [756, 2520] trading days, corresponding to trading years on the interval [3,10].} 
+    \caption{Volatility series of six i.i.d. GARCH processes, each of which experiences a volatility shock, indicated with a red vertical line, at a uniformly distributed point in the interval [756, 2520] trading days, corresponding to trading years on the interval [3,10].} 
     \label{fig:six_plots}
     \end{center}
   \end{figure}
@@ -202,7 +201,7 @@ In order to motivate our procedure, we show how the aggregation of estimated exc
 \label{section2}
 
 \subsection{A Primer on GARCH}
-We define the log return of an asset between $t-1$ and $t$ as $r_{t} = \text{log}(\frac{P_{t+1}}{P_{t}})$, where $P_{t}$ denotes the price at time $t$.  The class of ARIMA($p,d,q$) models  \citep{box2013box} provides a framework for modeling the autoregressive structure of $r_{t}$, all under the umbrella of frequentist statistics.  These models assume a certain dependence structure between $r_{t}$ and $(r_{k})_{k\leq t}$, yet their errors --- often called innovations in the financial time series context due to how they represent the impact of new information --- are nevertheless assumed to be i.i.d. with mean zero and constant variance.  The ARCH \citep{engle1982autoregressive} and GARCH \citep{bollerslev1986generalized} models provide elegant alternatives to the homoskedasticity assumption.  In fact, the GARCH framework in its most basic form disregards $r_{t}$ and instead turns its interest to the series $r_{t}^{2}$ (when properly centered, i.e. after assuming a mean-model for returns).  
+We define the log return of an asset between $t$ and $t+1$ as $r_{t} = \text{log}(\frac{P_{t+1}}{P_{t}})$, where $P_{t}$ denotes the price at time $t$.  The class of ARIMA($p,d,q$) models  \citep{box2013box} provides a framework for modeling the autoregressive structure of $r_{t}$, all under the umbrella of frequentist statistics.  These models assume a certain dependence structure between $r_{t}$ and $(r_{k})_{k\leq t}$, yet their errors --- often called innovations in the financial time series context due to how they represent the impact of new information --- are nevertheless assumed to be i.i.d. with mean zero and constant variance.  The ARCH \citep{engle1982autoregressive} and GARCH \citep{bollerslev1986generalized} models provide elegant alternatives to the homoskedasticity assumption.  In fact, the GARCH framework in its most basic form disregards $r_{t}$ and instead turns its interest to the series $r_{t}^{2}$ (when properly centered, i.e. after assuming a mean-model for returns).  
 
 To that end, let $a_{t} = r_{t} - \mu_{t}$, where $\mu_{t}$ is the mean of the log return series $r_{t}$.  We thus derive a mean-zero process $(a_{t})_{t\in\mathbb{N}}$ with the property that $\E[a^{2}_{t}] = \mrm{Var}[a_{t}]$.  Under the assumption of time-invariant volatility, the series $a_{t}^{2}$ should exhibit no autocorrelation at any lag $\ell\geq1$.  This assumption motivates tests for so-called ARCH effects, that is, tests for the clustering of volatility.  These tests explore the alternative hypothesis that $\sigma_{t}^{2}$ is not only a time-varying parameter but furthermore a function of past squared residuals of the mean model.  In particular, the ARCH($m$) model is an autoregressive model in which $\sigma_{t}^{2}$ is fitted using a linear combination of the past $m$ values of $r_{t}^{2}$.  The GARCH($m,s$) framework take this one step further but modeling $\sigma_{t}^{2}$ as a linear combination of the past $m$ values of $r_{t}^{2}$ and well as the past $s$ values of $\sigma_{t}^{2}$.  In functional form, a GARCH process (sometimes called a strong GARCH process \citep[p. 19]{francq2019garch}) is given by
 
@@ -389,7 +388,7 @@ compare losses across volatility regimes."  For this reason, we proceed to evalu
 
 Not all of the volatility of an asset return may be related to news \citep{boudoukh2019information}.  This explains our inclusion of an idiosyncratic noise term in the shock specification.  However, this point also gestures in the direction of possible unexplained variation in the shocks.  \citet{chinco2019sparse} find that for predicting 1-minute returns, highly transitory firm-specific news is useful.  The authors conclude that news about fundamentals is predictive.
 
-There is an important question about the stability of the GARCH parameters under the presence of a shock.  There are at least two reasons that we do not herein explore parameter instability or methods to adjust for it.  First, the marginal effect of coefficient changes at the shock time would, under the assumptions in this work, be swamped by the random effect.  Second, the estimation of post-shock parameter values would require at least several --- better yet, dozens --- of post-shock data points, whereas this work assumes access to zero post-shock data points.  However, we do leave over that similarity-based estimators for the GARCH coefficients could be produced, for example, by adapting the methods of \citet{dendramis2020similarity}.
+There is an important question about the stability of the GARCH parameters under the presence of a shock.  There are at least two reasons that we do not herein explore parameter instability or methods to adjust for it.  First, the marginal effect of coefficient changes at the shock time would, under the assumptions in this work, be swamped by the random effect.  Second, the estimation of post-shock parameter values would require at least several --- better yet, dozens --- of post-shock data points, whereas this work assumes access to zero post-shock data points.  However, it is possible that similarity-based estimators for the GARCH coefficients could be produced, for example, by adapting the methods of \citet{dendramis2020similarity}.
 
 The model $\mc{M}_1$ is defined by a volatility equation and mean equation, as is any GARCH model.  The choice to model the volatility shock $\omega^{*}_{i}$ as an additive random effect is straightforward.  However, the choice to model the level effect $\epsilon^{*}_{i,t}$ as a temporary rupture in the otherwise i.i.d. sequence of innovations $\epsilon_{i,t}$ stands in need of deeper justification.  One way of arguing for this choice is that, in a discrete time series model, if we assume the arrival of news in the time between $T^{*}$ and $T^{*}+1$, we do not have an easy way to express a conditional distribution of the innovation $\epsilon_{T^{*}+1}$ given the overnight arrival of information.  Using $\epsilon^{*}_{i,t}$ thus breaks this impasse.  This defense also explains why we do not parameterize the level shock at $T^{*}+1$ as a sum of two shocks, $\epsilon_{i,T^{*}+1}$ and $\epsilon^{*}_{i,T^{*}+1}$, which would represent the level shock as generated by two independent sources of stochasticity.  To do so would be inelegant and would also lack motivation as a practical level.  While we want to model the shock at $T^{*}+1$ as large in absolute value, we also want to retain the property of a unitary source of noise.
 
@@ -451,7 +450,7 @@ Assume
   \item For each $i, \{\omega_{i,t}^{*}\}_{t=0,...,T_i}$ is potentially non-zero at $\{T^{*}_{i}+1,... ,T^{*}_{i}+k\}$, $\omega_{i,T^{*}+1}^{*}\equiv...\equiv\omega_{i,T^{*}+k}^{*}$, and zero otherwise, where the arrival of $T_{i}^{*}$ is governed by a time-invariant distribution on $\{a_{i,t}\}_{t=0,...,T_i-1}$. \label{stationarity_of_omega_i_t}
   \item The conditions in Assumption 0 of \citet{han2014asymptotic} prevail.
 \end{enumerate}
-Then for any $i$, $\hat\omega_{i,t}^{*} \xrightarrow{p} \omega_{i}^{*}$, and by Slutsky, consistency is preserved under any convex combination of the estimates due to the i.i.d assumption on $\{\omega_{i,t}\}_{i=1}^{n+1}$.
+Then for any $i$, $\hat\omega_{i,t}^{*} \xrightarrow{p} \omega_{i}^{*}$.
 \end{prop}
 
 \begin{lem}
@@ -532,19 +531,19 @@ Hence, a correctly specified $\mc{M}_1$ model will outperform the unadjusted for
 
 \section{Numerical Examples}
 
-In this section, we demonstrate the effectiveness of the proposed method using Monte Carlo simulations.  The first simulation setup will use a $\mc{M}_{2}$ model on the volatility.  The second setup will be a dual shock, i.e. a shock to both the level and volatility.
+In this section, we demonstrate the effectiveness of the proposed method using Monte Carlo simulations.  The first simulation setup will use a $\mc{M}_{1}$ model on the volatility.  The second setup will be a dual shock, i.e. a shock to both the level and volatility.
 
 In order to investigate the forecasting method presented herein, our most elementary simulation uses $\mc{M}_1$.  We vary only two parameters.  Recall an $\mc{M}_1$ model on the volatility, which is characterized by an exogenous shock to the volatility equation generated by an affine function of the covariates:
 
 \begin{align*}
   \mc{M}_1 \colon \begin{array}{l}
      \sigma^{2}_{i,t} = \omega_{i} + \omega^{*}_{i,t} + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \text{ }\\[.2cm]
-     a_{i,t} = \sigma_{i,t}((1-D^{return}_{i,t})\epsilon_{i,t} + D^{return}_{i,t}\epsilon^{*}_{i})\\[.2cm]
+     a_{i,t} = \sigma_{i,t}((1-D^{return}_{i,t})\epsilon_{i,t} + D^{return}_{i,t}\epsilon^{*}_{i,t})\\[.2cm]
     \omega_{i,t}^{*} = D^{vol}_{i,t}[\mu_{\omega^{*}}+\delta'\mbf{x}_{i, t}+ u_{i,t}]\\[.2cm]
     D^{return}_{i,t} \equiv 0
   \end{array}
   \end{align*}
-Consider now a shock to both the volatility and the level beginning at $T^{*}+1$.  In particular, we will explore the performance of the method when a  $\mc{M}_{1}$ shock hits the volatility, while an $\mc{M}_{0}$ shock hits the level.  There is a good reason we explore an $\mc{M}_{0}$ shock to the level: we have no method to account for an $\mc{M}_{1}$ shock, except for the method of \citet{lin2021minimizing}, which fails to account for heteroskedastic innovations.
+Consider now a shock to both the volatility and the level beginning at $T^{*}+1$.  In particular, we will explore the performance of the method when a  $\mc{M}_{1}$ shock hits the volatility, while an $\mc{M}_{0}$ shock hits the level. There is a good reason we explore an $\mc{M}_{0}$ shock to the level: this work proposes no procedure to predict the unobservable quantity $\epsilon^{*}_{i}$, and even if one could construct one (for example, by employing the procedure in \cite{lin2021minimizing} and computing $\epsilon^{*}_{i} = \frac{\hat a^{i,t}}{\hat\sigma^2_{i,t}}$, it is unclear what practical value that estimate would provide).
 
 \textit{Hypothesis:} Method should do less well under a concommitant volatility and level shock.  A dual shock is in essence a squared observable with two independent sources of randomness.
 
@@ -569,24 +568,24 @@ If we switch the values of $\alpha$ and $\beta$, we see similar behavior, as in 
   \end{figure}
 
   % https://tex.stackexchange.com/questions/37581/latex-figures-side-by-side
-  \begin{figure}[h!]
-    \centering
-    \textbf{Simulations with shocks to both the mean and volatility function}\par\medskip
-    \begin{subfigure}{.5\textwidth}
-      \centering
-      \includegraphics[scale=.45]{simulation_plots/dual_level_vol_shock_FriFeb0911:03:49PM2024.png}
-      \caption{$\alpha = .1, \beta = .82, \mu_{x} = 1, \sigma_{x} = .1$}
-      \label{fig:dual_shock_strong_betas_inside}
-    \end{subfigure}%
-    \begin{subfigure}{.5\textwidth}
-      \centering
-      \includegraphics[scale=.45]{simulation_plots/dual_level_vol_shock_FriFeb0911:27:59PM2024.png}
-      \caption{$\alpha = .82, \beta = .1, \mu_{x} = 1, \sigma_{x} = .1$}
-      \label{fig:dual_shock_strong_alpha_inside}
-    \end{subfigure}
-    \caption{Shocks to both the mean function and the volatility equation}
-    \label{fig:not_sure_what_write}
-    \end{figure}
+  % \begin{figure}[h!]
+  %   \centering
+  %   \textbf{Simulations with shocks to both the mean and volatility function}\par\medskip
+  %   \begin{subfigure}{.5\textwidth}
+  %     \centering
+  %     \includegraphics[scale=.45]{simulation_plots/dual_level_vol_shock_FriFeb0911:03:49PM2024.png}
+  %     \caption{$\alpha = .1, \beta = .82, \mu_{x} = 1, \sigma_{x} = .1$}
+  %     \label{fig:dual_shock_strong_betas_inside}
+  %   \end{subfigure}%
+  %   \begin{subfigure}{.5\textwidth}
+  %     \centering
+  %     \includegraphics[scale=.45]{simulation_plots/dual_level_vol_shock_FriFeb0911:27:59PM2024.png}
+  %     \caption{$\alpha = .82, \beta = .1, \mu_{x} = 1, \sigma_{x} = .1$}
+  %     \label{fig:dual_shock_strong_alpha_inside}
+  %   \end{subfigure}
+  %   \caption{Shocks to both the mean function and the volatility equation}
+  %   \label{fig:not_sure_what_write}
+  %   \end{figure}
 
 
 \clearpage 
@@ -612,7 +611,7 @@ For all of these reasons and more, the aftermath of the 2016 presidential electi
 \begin{figure}[H]
 \begin{center}
   \textbf{Real Data Example: 2016 Election}\par\medskip
-  \includegraphics[scale=.5]{real_data_output_plots/MonMay271221252024_IYG_IYG_CLF_log_ret_XVIX_log_ret_XIRX_log_ret_XFVX_log_ret_XTNX_log_ret_XTYX_log_ret_XVIX_raw_Debt_Risk_Spread_2016-06-22.png}
+  \includegraphics[scale=.5]{real_data_output_plots/FriMay311830522024_IYG_None_2016-06-22.png}
   \caption{The volatility induced by the 2016 US election}
   \label{fig:SVF_2016}
   \end{center}
@@ -739,7 +738,7 @@ Note that by inspecting the fit of the distance-based weighting approximation qu
 \begin{figure}[H]
   \begin{center}
     \textbf{Real Data Example: 2016 Election with an additional donor}\par\medskip
-    \includegraphics[scale=.6]{real_data_output_plots/MonMay271220512024_IYG_IYG_CLF_log_ret_XVIX_log_ret_XIRX_log_ret_XFVX_log_ret_XTNX_log_ret_XTYX_log_ret_XVIX_raw_Debt_Risk_Spread_NA.png}
+    \includegraphics[scale=.6]{real_data_output_plots/FriMay311830182024_IYG_None_None.png}
     \caption{Here Brexit is included as a fourth donor.}
     \label{fig:SVF_2016_with_Brexit}
     \end{center}
