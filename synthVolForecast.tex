@@ -627,6 +627,8 @@ Naturally, one might ask how sensitive this prediction is to at least two kinds 
 
 This present work extends \citet{lin2021minimizing} principally by substituting the GARCH model for an AR(1), i.e. modeling both the mean and volatility of a univariate time series.  We permit both shocks in the mean model and volatility model of GARCH.  As ancillary improvements, the current work permits the shock periods to be of any length, formally $L_{\text{vol}}, L_{\text{return}} \in\{0,1,2,...\}$, and the weights applied to the donor pool can come from more exotic subsets of $\mathbb{R}^{n}$.  At a more technical level, the most substantial insight related to \citet{lin2021minimizing} is that the GARCH model provides an elegant forecast function for squared observations of the time series under study. However, this use-case becomes less attractive in situations where the sign of the time series under study following the shock is uncertain.
 
+This work as well as \citet{lin2021minimizing} itself can be viewed as a generalization of \cite{phillips1996forecasting} where the rare event probability $\lambda$ is assumed to be 1 and the error associated with the rare event is estimated using external series.  Comparison with \citet{phillips1996forecasting} is insightful.  In our setting, if the shock to the time series under study were known and yet so underdescribed, i.e. so lacking in qualitative context, then \cite{phillips1996forecasting} would be recommended.  However, in our setting the rare event is not only rare but also contains specific qualitative features that are best accounted for via data aggregation.
+
 The method under development does not strictly require knowledge of the length of the shocks in the donor pool, but correctly sizing up those shock lengths is helpful to proper estimation of the shocks in the donor pool.  An important question remains: even if the donor pool shock lengths are assumed to be known, how do we advise the operator to forecast the time series under study?  For how long is the forecast reliable?  Should we take a convex combination of the donor pool shock lengths?  Or mean? Or minimum of the donor pool shock lengths?
 unlike KNN in that are not trying to learn a function, first and foremost.  We are trying to estimate a parameter.
 
@@ -639,6 +641,7 @@ In KNN regression, the hyperparameter K must be learned.  In similarity-based pa
 Should we gather as many donors as possible and pick them quantitatively?  It would be counter to the method proposed to assemble a vast number of donors, lacking careful scrutiny of the qualitative fit, and let the optimization simply pick the donors, via weighting.  What makes a donor good is not merely its quantitative fit but its qualitative fit as well.
 
 \citet{abadie2022synthetic} make a similar point about large donor pools.  What matters is that the donors chosen are properly situated in the $p$-dimensional predictor space, so as to allow proper estimation of the weights.
+
 
 \subsection{Future directions}
 \begin{itemize}
