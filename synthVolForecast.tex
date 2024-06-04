@@ -450,7 +450,7 @@ Assume
   \item For each $i, \{\omega_{i,t}^{*}\}_{t=0,...,T_i}$ is potentially non-zero at $\{T^{*}_{i}+1,... ,T^{*}_{i}+k\}$, $\omega_{i,T^{*}+1}^{*}\equiv...\equiv\omega_{i,T^{*}+k}^{*}$, and zero otherwise, where the arrival of $T_{i}^{*}$ is governed by a time-invariant distribution on $\{a_{i,t}\}_{t=0,...,T_i-1}$. \label{stationarity_of_omega_i_t}
   \item The conditions in Assumption 0 of \citet{han2014asymptotic} prevail.
 \end{enumerate}
-Then for any $i$, $\hat\omega_{i,t}^{*} \xrightarrow{p} \omega_{i}^{*}$.
+Then for any $i$, $\hat\omega_{i,t}^{*} \xrightarrow{p} \omega_{i,T^{*}+1}^{*}$.
 \end{prop}
 
 \begin{lem}
@@ -520,12 +520,13 @@ It is easily verified that as $\hat\omega^{*} \rightarrow 0^{+}$, the difference
 
 \begin{prop}\label{asymptotic_consistency}
 Assume the conditions in Propositions $\ref{omega_consistency}$ and $\ref{sigma_consistency}$.  Let $1\leq i\leq n+1$.\\
-  Then $QL(\hat\sigma_{t+1, unadjusted}^{2},\sigma^{2}_{t+1})-QL(\hat\sigma^{2}_{t+1, adjusted},\sigma^{2}_{t+1})\xrightarrow{p} \frac{\E[\omega_{i}^{*}]}{\sigma^{2}_{t+1}-\E[\omega_{i}^{*}]} + \log{\frac{\sigma_{t+1}^{2}-\E[\omega_{i}^{*}]}{\sigma_{t+1}^{2}} } \geq 0. $
+  Then $QL(\hat\sigma_{t+1, unadjusted}^{2},\sigma^{2}_{t+1})-QL(\hat\sigma^{2}_{t+1, adjusted},\sigma^{2}_{t+1})\xrightarrow{p} \frac{\omega_{i}^{*}}{\sigma^{2}_{t+1}-\omega_{i}^{*}} + \log{\frac{\sigma_{t+1}^{2}-\omega_{i}^{*}}{\sigma_{t+1}^{2}} } \geq 0. $
+
 Hence, a correctly specified $\mc{M}_1$ model will outperform the unadjusted forecast asymptotically.
 \end{prop}
 
 \begin{proof-of-proposition}
-  First, note that the function $g:(-\infty,\E[\omega_{i}^{*}])\rightarrow \mathbb{R}$ given by $g(x) = \frac{x}{\sigma^{2}_{t+1}-x} + \log{\frac{\sigma_{t+1}^{2}-x}{\sigma_{t+1}^{2}} }$ is nonnegative, convex, obtains a minimum at $x = 0$, and being continuous, $g$ preserves consistency. The conclusion follows from fact that the model is correctly specified and consistency is guaranteed Proposition ($\ref{sigma_consistency}$). 
+  First, note that the function $g:(-\infty,\omega_{i}^{*})\rightarrow \mathbb{R}$ given by $g(x) = \frac{x}{\sigma^{2}_{t+1}-x} + \log{\frac{\sigma_{t+1}^{2}-x}{\sigma_{t+1}^{2}} }$ is nonnegative, convex, obtains a minimum at $x = 0$, and being continuous, $g$ preserves consistency. The conclusion follows from fact that the model is correctly specified and consistency is guaranteed Proposition ($\ref{sigma_consistency}$). 
   
 \end{proof-of-proposition}
 
