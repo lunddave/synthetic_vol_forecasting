@@ -133,6 +133,9 @@ hm_generator <- function(y_input
 
   print(means)
 
+
+
+
   ggp1 <- ggplot(means,
                 aes(x = factor({{x_input}}), y = factor({{y_input}}), fill = prop)) +
     scale_fill_gradient(low="white",  high="red") +
@@ -144,7 +147,15 @@ hm_generator <- function(y_input
     theme(plot.title = element_text(hjust = 0.5)) +
     labs(x = xlab, y = ylab)
 
-  ggp1
+  file_name <- paste('~/Desktop/PhD/synthetic_vol_forecasting/simulation_plots/'
+                     ,'delete'
+                     ,'later'
+                     ,'.png'
+                     ,sep = '')
+
+  ggsave(filename=file_name, plot = ggp1, width = 8, height = 6, dpi = 300)
+
+  dev.off()
 
 }
 
@@ -158,15 +169,11 @@ non_NA <- non_NA[non_NA$sigma_x == .125,]
 non_NA <- non_NA[non_NA$mu_omega_star == .125,]
 #non_NA <- non_NA[non_NA$vol_shock_sd == .125,]
 
-png(filename="~/Desktop/PhD/simulation_plots/M1_vol_M0_level_M21_M22_vol_mu_delta_vol_shock_sd")
-
 hm_generator(y_input = M21_M22_vol_mu_delta
              ,x_input = vol_shock_sd
              , success
              ,expression(delta)
              ,expression(sigma[u]))
-
-dev.off()
 
 #Comment: it is hard to explain why increasing vol_shock_sd increases prop
 
@@ -181,8 +188,8 @@ non_NA <- non_NA[non_NA$mu_omega_star == .125,]
 hm_generator(y_input = M21_M22_vol_mu_delta
              ,x_input = vol_shock_sd
              , success
-             ,'M21_M22_vol_mu_delta'
-             ,'vol_shock_sd')
+             ,expression(delta)
+             ,expression(sigma[u]))
 
 #Comment: by increasing mu_x, we not only increase effect of M21_M22_vol_mu_delta,
 #we also see negative effect of vol_shock_sd
@@ -198,8 +205,8 @@ non_NA <- non_NA[non_NA$mu_omega_star == .125,]
 hm_generator(y_input = M21_M22_vol_mu_delta
              ,x_input = vol_shock_sd
              , success
-             ,'M21_M22_vol_mu_delta'
-             ,'vol_shock_sd')
+             ,expression(delta)
+             ,expression(sigma[u]))
 
 #Comment: with mu_x at .5, the phenomena that we're tracking are somewhere in
 #the middle
@@ -215,8 +222,8 @@ non_NA <- non_NA[non_NA$vol_shock_sd == .125,]
 hm_generator(y_input = M21_M22_vol_mu_delta
              ,x_input = mu_x
              , success
-             ,'M21_M22_vol_mu_delta'
-             ,'mu_x')
+             ,expression(delta)
+             ,expression(mu[x]))
 
 #Comment: mu_x is on display
 
@@ -231,8 +238,8 @@ non_NA <- non_NA[non_NA$vol_shock_sd == 1,]
 hm_generator(y_input = M21_M22_vol_mu_delta
              ,x_input = mu_x
              , success
-             ,'M21_M22_vol_mu_delta'
-             ,'mu_x')
+             ,expression(delta)
+             ,expression(mu[x]))
 
 #Comment: with vol_shock_sd = 1, we get a much more muted effect.
 #Also, notice the number of non-convergent simulations.
@@ -248,8 +255,8 @@ non_NA <- non_NA[non_NA$mu_omega_star == .125,]
 hm_generator(y_input = mu_x
              ,x_input = vol_shock_sd
              , success
-             ,'mu_x'
-             ,'vol_shock_sd')
+             ,expression(mu[x])
+             ,expression(sigma[u]))
 
 #Comment: we see a strange increase in proportion with rising vol_shock_sd
 
@@ -266,8 +273,8 @@ non_NA <- non_NA[non_NA$M21_M22_vol_mu_delta == .125,]
 hm_generator(y_input = mu_omega_star
              ,x_input = vol_shock_sd
              , success
-             ,'mu_omega_star'
-             ,'vol_shock_sd')
+             ,expression(mu[omega^"*"])
+             ,expression(sigma[u]))
 
 ## Subset 8:
 non_NA <- df_only_one_outcome[complete.cases(df_only_one_outcome),]
@@ -280,8 +287,8 @@ non_NA <- non_NA[non_NA$M21_M22_vol_mu_delta == 2,]
 hm_generator(y_input = mu_omega_star
              ,x_input = vol_shock_sd
              , success
-             ,'mu_omega_star'
-             ,'vol_shock_sd')
+             ,expression(mu[omega^"*"])
+             ,expression(sigma[u]))
 
 #Let's generate 3d scatterplots
 
