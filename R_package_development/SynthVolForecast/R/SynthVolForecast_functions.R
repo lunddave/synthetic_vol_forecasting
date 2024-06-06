@@ -364,7 +364,6 @@ print('We plot the weights.')
 
   #par(mfrow = c(1,1), mar=c(15,6,4,2))
 
-
 }
 ### END plot_maker_garch
 

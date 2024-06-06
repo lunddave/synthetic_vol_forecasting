@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.21)  6 JUN 2024 11:35
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.21)  6 JUN 2024 14:15
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -796,12 +796,12 @@ Overfull \hbox (2.43333pt too wide) has occurred while \output is active
 [1
 
 {/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
-<simulation_plots/vol_series_six_plots.png, id=226, 1126.2075pt x 453.695pt>
+<simulation_plots/vol_series_six_plots.png, id=234, 1126.2075pt x 453.695pt>
 File: simulation_plots/vol_series_six_plots.png Graphic file (type png)
 <use simulation_plots/vol_series_six_plots.png>
 Package pdftex.def Info: simulation_plots/vol_series_six_plots.png  used on input line 175.
 (pdftex.def)             Requested size: 450.47502pt x 181.47478pt.
-<simulation_plots/proof_concept.png, id=228, 868.24374pt x 453.695pt>
+<simulation_plots/proof_concept.png, id=236, 868.24374pt x 453.695pt>
 File: simulation_plots/proof_concept.png Graphic file (type png)
 <use simulation_plots/proof_concept.png>
 Package pdftex.def Info: simulation_plots/proof_concept.png  used on input line 183.
@@ -810,7 +810,7 @@ Package pdftex.def Info: simulation_plots/proof_concept.png  used on input line 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<simulation_plots/motivating_piece_arithmetic_mean.png, id=229, 868.24374pt x 453.695pt>
+<simulation_plots/motivating_piece_arithmetic_mean.png, id=237, 868.24374pt x 453.695pt>
 File: simulation_plots/motivating_piece_arithmetic_mean.png Graphic file (type png)
 <use simulation_plots/motivating_piece_arithmetic_mean.png>
 Package pdftex.def Info: simulation_plots/motivating_piece_arithmetic_mean.png  used on input line 191.
@@ -848,16 +848,16 @@ Underfull \hbox (badness 10000) in paragraph at lines 530--531
 
  []
 
-<simulation_plots/standard_simulation_alpha_.1_beta_.82.png, id=418, 650.43pt x 499.11469pt>
+[17]
+<simulation_plots/standard_simulation_alpha_.1_beta_.82.png, id=431, 650.43pt x 499.11469pt>
 File: simulation_plots/standard_simulation_alpha_.1_beta_.82.png Graphic file (type png)
 <use simulation_plots/standard_simulation_alpha_.1_beta_.82.png>
-Package pdftex.def Info: simulation_plots/standard_simulation_alpha_.1_beta_.82.png  used on input line 556.
+Package pdftex.def Info: simulation_plots/standard_simulation_alpha_.1_beta_.82.png  used on input line 562.
 (pdftex.def)             Requested size: 292.6908pt x 224.59952pt.
-[17]
-<simulation_plots/standard_simulation_alpha_.82_beta_.1.png, id=427, 650.43pt x 499.11469pt>
+<simulation_plots/standard_simulation_alpha_.82_beta_.1.png, id=435, 650.43pt x 499.11469pt>
 File: simulation_plots/standard_simulation_alpha_.82_beta_.1.png Graphic file (type png)
 <use simulation_plots/standard_simulation_alpha_.82_beta_.1.png>
-Package pdftex.def Info: simulation_plots/standard_simulation_alpha_.82_beta_.1.png  used on input line 564.
+Package pdftex.def Info: simulation_plots/standard_simulation_alpha_.82_beta_.1.png  used on input line 570.
 (pdftex.def)             Requested size: 292.6908pt x 224.59952pt.
 
 
@@ -866,20 +866,20 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 [18 <./simulation_plots/standard_simulation_alpha_.1_beta_.82.png (PNG copy)>] [19 <./simulation_plots/standard_simulation_alpha_.82_beta_.1.png (PNG copy)>] [20
 
 ] [21]
-<real_data_output_plots/FriMay311830522024_IYG_None_2016-06-22.png, id=491, 803.0pt x 602.25pt>
+<real_data_output_plots/FriMay311830522024_IYG_None_2016-06-22.png, id=499, 803.0pt x 602.25pt>
 File: real_data_output_plots/FriMay311830522024_IYG_None_2016-06-22.png Graphic file (type png)
 <use real_data_output_plots/FriMay311830522024_IYG_None_2016-06-22.png>
-Package pdftex.def Info: real_data_output_plots/FriMay311830522024_IYG_None_2016-06-22.png  used on input line 614.
+Package pdftex.def Info: real_data_output_plots/FriMay311830522024_IYG_None_2016-06-22.png  used on input line 620.
 (pdftex.def)             Requested size: 401.49902pt x 301.12425pt.
  [22 <./real_data_output_plots/FriMay311830522024_IYG_None_2016-06-22.png>] [23] [24]
 
-LaTeX Warning: Reference `' on page 25 undefined on input line 730.
+LaTeX Warning: Reference `' on page 25 undefined on input line 736.
 
 [25{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
-<real_data_output_plots/FriMay311830182024_IYG_None_None.png, id=557, 803.0pt x 602.25pt>
+<real_data_output_plots/FriMay311830182024_IYG_None_None.png, id=565, 803.0pt x 602.25pt>
 File: real_data_output_plots/FriMay311830182024_IYG_None_None.png Graphic file (type png)
 <use real_data_output_plots/FriMay311830182024_IYG_None_None.png>
-Package pdftex.def Info: real_data_output_plots/FriMay311830182024_IYG_None_None.png  used on input line 752.
+Package pdftex.def Info: real_data_output_plots/FriMay311830182024_IYG_None_None.png  used on input line 758.
 (pdftex.def)             Requested size: 481.80373pt x 361.35278pt.
  [26 <./real_data_output_plots/FriMay311830182024_IYG_None_None.png>] [27] (./synthVolForecast.bbl [28
 
@@ -893,21 +893,21 @@ Underfull \hbox (badness 10000) in paragraph at lines 214--217
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `synthVolForecast.out' has not changed.
-(rerunfilecheck)             Checksum: 44E07B1B894E1FE3C27DEB264AF5AF72;5579.
+(rerunfilecheck)             Checksum: 2F090B8FC2B70AE6D803282B5011B6E6;5871.
  ) 
 Here is how much of TeX's memory you used:
- 26730 strings out of 476025
- 494119 string characters out of 5790017
+ 26734 strings out of 476025
+ 494179 string characters out of 5790017
  1873388 words of memory out of 5000000
- 46556 multiletter control sequences out of 15000+600000
+ 46558 multiletter control sequences out of 15000+600000
  528573 words of font info for 90 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,17n,80p,2243b,683s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on synthVolForecast.pdf (29 pages, 1015599 bytes).
+Output written on synthVolForecast.pdf (29 pages, 1016420 bytes).
 PDF statistics:
- 719 PDF objects out of 1000 (max. 8388607)
- 621 compressed objects within 7 object streams
- 144 named destinations out of 1000 (max. 500000)
- 280 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 729 PDF objects out of 1000 (max. 8388607)
+ 631 compressed objects within 7 object streams
+ 146 named destinations out of 1000 (max. 500000)
+ 296 words of extra memory for PDF output out of 10000 (max. 10000000)
 

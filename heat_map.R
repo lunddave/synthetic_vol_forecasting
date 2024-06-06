@@ -98,6 +98,15 @@ against_mean_glm <- glm(against_mean ~.^2, data = non_NA[,c("mu_x"
 
 summary(against_mean_glm)
 
+fitting_loss <- lm(log(dbw_loss1) ~.^2, data = reduced_df[,c("mu_x"
+                                                            ,"sigma_x"
+                                                            , 'M21_M22_vol_mu_delta'
+                                                            , "mu_omega_star"
+                                                            ,"vol_shock_sd"
+                                                            ,"dbw_loss1")])
+
+summary(fitting_loss)
+
 # https://statisticsglobe.com/heatmap-in-r
 
 apply(non_NA, 2, function(x) unique(x))[c(
@@ -149,32 +158,19 @@ non_NA <- non_NA[non_NA$sigma_x == .125,]
 non_NA <- non_NA[non_NA$mu_omega_star == .125,]
 #non_NA <- non_NA[non_NA$vol_shock_sd == .125,]
 
+png(filename="~/Desktop/PhD/simulation_plots/M1_vol_M0_level_M21_M22_vol_mu_delta_vol_shock_sd")
+
 hm_generator(y_input = M21_M22_vol_mu_delta
              ,x_input = vol_shock_sd
              , success
-             ,'y'
-             ,'x')
+             ,expression(delta)
+             ,expression(sigma[u]))
+
+dev.off()
 
 #Comment: it is hard to explain why increasing vol_shock_sd increases prop
 
 ## Subset 2:
-non_NA <- df_only_one_outcome[complete.cases(df_only_one_outcome),]
-non_NA <- non_NA[non_NA$mu_x == 1,]
-non_NA <- non_NA[non_NA$sigma_x == .125,]
-#non_NA <- non_NA[non_NA$M21_M22_vol_mu_delta == .2,]
-non_NA <- non_NA[non_NA$mu_omega_star == .125,]
-#non_NA <- non_NA[non_NA$vol_shock_sd == .125,]
-
-hm_generator(y_input = M21_M22_vol_mu_delta
-             ,x_input = vol_shock_sd
-             , success
-             ,'y'
-             ,'x')
-
-#Comment: by increasing mu_x, we not only increase effect of M21_M22_vol_mu_delta,
-#we also see negative effect of vol_shock_sd
-
-## Subset 3:
 non_NA <- df_only_one_outcome[complete.cases(df_only_one_outcome),]
 non_NA <- non_NA[non_NA$mu_x == .5,]
 non_NA <- non_NA[non_NA$sigma_x == .125,]
@@ -185,8 +181,25 @@ non_NA <- non_NA[non_NA$mu_omega_star == .125,]
 hm_generator(y_input = M21_M22_vol_mu_delta
              ,x_input = vol_shock_sd
              , success
-             ,'y'
-             ,'x')
+             ,'M21_M22_vol_mu_delta'
+             ,'vol_shock_sd')
+
+#Comment: by increasing mu_x, we not only increase effect of M21_M22_vol_mu_delta,
+#we also see negative effect of vol_shock_sd
+
+## Subset 3:
+non_NA <- df_only_one_outcome[complete.cases(df_only_one_outcome),]
+non_NA <- non_NA[non_NA$mu_x == 1,]
+non_NA <- non_NA[non_NA$sigma_x == .125,]
+#non_NA <- non_NA[non_NA$M21_M22_vol_mu_delta == .2,]
+non_NA <- non_NA[non_NA$mu_omega_star == .125,]
+#non_NA <- non_NA[non_NA$vol_shock_sd == .125,]
+
+hm_generator(y_input = M21_M22_vol_mu_delta
+             ,x_input = vol_shock_sd
+             , success
+             ,'M21_M22_vol_mu_delta'
+             ,'vol_shock_sd')
 
 #Comment: with mu_x at .5, the phenomena that we're tracking are somewhere in
 #the middle
@@ -202,8 +215,8 @@ non_NA <- non_NA[non_NA$vol_shock_sd == .125,]
 hm_generator(y_input = M21_M22_vol_mu_delta
              ,x_input = mu_x
              , success
-             ,'y'
-             ,'x')
+             ,'M21_M22_vol_mu_delta'
+             ,'mu_x')
 
 #Comment: mu_x is on display
 
@@ -218,8 +231,8 @@ non_NA <- non_NA[non_NA$vol_shock_sd == 1,]
 hm_generator(y_input = M21_M22_vol_mu_delta
              ,x_input = mu_x
              , success
-             ,'y'
-             ,'x')
+             ,'M21_M22_vol_mu_delta'
+             ,'mu_x')
 
 #Comment: with vol_shock_sd = 1, we get a much more muted effect.
 #Also, notice the number of non-convergent simulations.
@@ -235,10 +248,12 @@ non_NA <- non_NA[non_NA$mu_omega_star == .125,]
 hm_generator(y_input = mu_x
              ,x_input = vol_shock_sd
              , success
-             ,'y'
-             ,'x')
+             ,'mu_x'
+             ,'vol_shock_sd')
 
 #Comment: we see a strange increase in proportion with rising vol_shock_sd
+
+# I WILL SKIP THIS ONE.
 
 ## Subset 7:
 non_NA <- df_only_one_outcome[complete.cases(df_only_one_outcome),]
@@ -251,8 +266,22 @@ non_NA <- non_NA[non_NA$M21_M22_vol_mu_delta == .125,]
 hm_generator(y_input = mu_omega_star
              ,x_input = vol_shock_sd
              , success
-             ,'y'
-             ,'x')
+             ,'mu_omega_star'
+             ,'vol_shock_sd')
+
+## Subset 8:
+non_NA <- df_only_one_outcome[complete.cases(df_only_one_outcome),]
+non_NA <- non_NA[non_NA$mu_x == .125,]
+non_NA <- non_NA[non_NA$sigma_x == .125,]
+non_NA <- non_NA[non_NA$M21_M22_vol_mu_delta == 2,]
+#non_NA <- non_NA[non_NA$mu_omega_star == .125,]
+#non_NA <- non_NA[non_NA$vol_shock_sd == 1,]
+
+hm_generator(y_input = mu_omega_star
+             ,x_input = vol_shock_sd
+             , success
+             ,'mu_omega_star'
+             ,'vol_shock_sd')
 
 #Let's generate 3d scatterplots
 
