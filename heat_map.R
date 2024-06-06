@@ -155,6 +155,8 @@ hm_generator(y_input = M21_M22_vol_mu_delta
              ,'y'
              ,'x')
 
+#Comment: it is hard to explain why increasing vol_shock_sd increases prop
+
 ## Subset 2:
 non_NA <- df_only_one_outcome[complete.cases(df_only_one_outcome),]
 non_NA <- non_NA[non_NA$mu_x == 1,]
@@ -168,6 +170,9 @@ hm_generator(y_input = M21_M22_vol_mu_delta
              , success
              ,'y'
              ,'x')
+
+#Comment: by increasing mu_x, we not only increase effect of M21_M22_vol_mu_delta,
+#we also see negative effect of vol_shock_sd
 
 ## Subset 3:
 non_NA <- df_only_one_outcome[complete.cases(df_only_one_outcome),]
@@ -183,6 +188,9 @@ hm_generator(y_input = M21_M22_vol_mu_delta
              ,'y'
              ,'x')
 
+#Comment: with mu_x at .5, the phenomena that we're tracking are somewhere in
+#the middle
+
 ## Subset 4:
 non_NA <- df_only_one_outcome[complete.cases(df_only_one_outcome),]
 #non_NA <- non_NA[non_NA$mu_x == .5,]
@@ -196,6 +204,8 @@ hm_generator(y_input = M21_M22_vol_mu_delta
              , success
              ,'y'
              ,'x')
+
+#Comment: mu_x is on display
 
 ## Subset 5:
 non_NA <- df_only_one_outcome[complete.cases(df_only_one_outcome),]
@@ -211,6 +221,9 @@ hm_generator(y_input = M21_M22_vol_mu_delta
              ,'y'
              ,'x')
 
+#Comment: with vol_shock_sd = 1, we get a much more muted effect.
+#Also, notice the number of non-convergent simulations.
+
 ## Subset 6:
 non_NA <- df_only_one_outcome[complete.cases(df_only_one_outcome),]
 #non_NA <- non_NA[non_NA$mu_x == .5,]
@@ -224,6 +237,8 @@ hm_generator(y_input = mu_x
              , success
              ,'y'
              ,'x')
+
+#Comment: we see a strange increase in proportion with rising vol_shock_sd
 
 ## Subset 7:
 non_NA <- df_only_one_outcome[complete.cases(df_only_one_outcome),]
