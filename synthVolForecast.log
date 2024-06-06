@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.21)  5 JUN 2024 17:09
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.21)  5 JUN 2024 22:38
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -777,35 +777,126 @@ Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
 Package hyperref Info: Link coloring ON on input line 123.
-(./synthVolForecast.out) (./synthVolForecast.out)
 \@outlinefile=\write6
 \openout6 = `synthVolForecast.out'.
 
+
+Package natbib Warning: Citation `lin2021minimizing' on page 1 undefined on input line 130.
+
 LaTeX Font Info:    Trying to load font information for U+msa on input line 130.
- (/usr/local/texlive/2023/texmf-dist/tex/latex/amsfonts/umsa.fd
+(/usr/local/texlive/2023/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Trying to load font information for U+msb on input line 130.
  (/usr/local/texlive/2023/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
+
+Package natbib Warning: Citation `Kenton' on page 1 undefined on input line 148.
+
+
+Package natbib Warning: Citation `dominguez2006defines' on page 1 undefined on input line 150.
+
+
+Package natbib Warning: Citation `tsay2005analysis' on page 1 undefined on input line 155.
+
+
+Package natbib Warning: Citation `boudoukh2019information' on page 1 undefined on input line 155.
+
+
 Overfull \hbox (2.43333pt too wide) has occurred while \output is active
 [] 
  []
 
 [1
 
-{/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
-<simulation_plots/vol_series_six_plots.png, id=218, 1126.2075pt x 453.695pt>
+{/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+
+Package natbib Warning: Citation `bauwens2006regime' on page 2 undefined on input line 157.
+
+
+Package natbib Warning: Citation `hansen2012realized' on page 2 undefined on input line 157.
+
+
+Package natbib Warning: Citation `wang2020forecasting' on page 2 undefined on input line 157.
+
+
+Package natbib Warning: Citation `hansen2012realized' on page 2 undefined on input line 159.
+
+
+Package natbib Warning: Citation `mayhew1995implied' on page 2 undefined on input line 159.
+
+
+Package natbib Warning: Citation `christensen1998relation' on page 2 undefined on input line 159.
+
+
+Package natbib Warning: Citation `andersen2003modeling' on page 2 undefined on input line 159.
+
+
+Package natbib Warning: Citation `sharma2016forecasting' on page 2 undefined on input line 161.
+
+
+Package natbib Warning: Citation `romer1989does' on page 2 undefined on input line 163.
+
+
+Package natbib Warning: Citation `kilian2017structural' on page 2 undefined on input line 163.
+
+
+Package natbib Warning: Citation `engle2001good' on page 2 undefined on input line 163.
+
+
+Package natbib Warning: Citation `phillips1996forecasting' on page 2 undefined on input line 163.
+
+
+Package natbib Warning: Citation `hendry1994theory' on page 2 undefined on input line 163.
+
+
+Package natbib Warning: Citation `clements1998forecasting' on page 2 undefined on input line 163.
+
+
+Package natbib Warning: Citation `guerron2017macroeconomic' on page 2 undefined on input line 163.
+
+
+Package natbib Warning: Citation `dendramis2020similarity' on page 2 undefined on input line 163.
+
+
+Package natbib Warning: Citation `foroni2022forecasting' on page 2 undefined on input line 163.
+
+[2]
+
+Package natbib Warning: Citation `abadie2010synthetic' on page 3 undefined on input line 167.
+
+
+Package natbib Warning: Citation `lin2021minimizing' on page 3 undefined on input line 167.
+
+
+Package natbib Warning: Citation `lin2021minimizing' on page 3 undefined on input line 169.
+
+
+Package natbib Warning: Citation `abadie2021penalized' on page 3 undefined on input line 169.
+
+
+Package natbib Warning: Citation `guerron2017macroeconomic' on page 3 undefined on input line 169.
+
+[3]
+
+LaTeX Warning: Reference `fig:six_plots' on page 4 undefined on input line 171.
+
+
+LaTeX Warning: Reference `fig:proof_concept' on page 4 undefined on input line 171.
+
+
+LaTeX Warning: Reference `fig:arith_mean_example_introduction' on page 4 undefined on input line 171.
+
+
+Package natbib Warning: Citation `timmermann2006forecast' on page 4 undefined on input line 171.
+
+<simulation_plots/vol_series_six_plots.png, id=30, 1126.2075pt x 453.695pt>
 File: simulation_plots/vol_series_six_plots.png Graphic file (type png)
 <use simulation_plots/vol_series_six_plots.png>
 Package pdftex.def Info: simulation_plots/vol_series_six_plots.png  used on input line 175.
 (pdftex.def)             Requested size: 450.47502pt x 181.47478pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<simulation_plots/proof_concept.png, id=220, 868.24374pt x 453.695pt>
+<simulation_plots/proof_concept.png, id=32, 868.24374pt x 453.695pt>
 File: simulation_plots/proof_concept.png Graphic file (type png)
 <use simulation_plots/proof_concept.png>
 Package pdftex.def Info: simulation_plots/proof_concept.png  used on input line 183.
@@ -813,7 +904,7 @@ Package pdftex.def Info: simulation_plots/proof_concept.png  used on input line 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<simulation_plots/motivating_piece_arithmetic_mean.png, id=221, 868.24374pt x 453.695pt>
+<simulation_plots/motivating_piece_arithmetic_mean.png, id=33, 868.24374pt x 453.695pt>
 File: simulation_plots/motivating_piece_arithmetic_mean.png Graphic file (type png)
 <use simulation_plots/motivating_piece_arithmetic_mean.png>
 Package pdftex.def Info: simulation_plots/motivating_piece_arithmetic_mean.png  used on input line 191.
@@ -821,98 +912,389 @@ Package pdftex.def Info: simulation_plots/motivating_piece_arithmetic_mean.png  
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[4] [5 <./simulation_plots/vol_series_six_plots.png> <./simulation_plots/proof_concept.png>] [6 <./simulation_plots/motivating_piece_arithmetic_mean.png>] [7] [8] [9] [10]
-Underfull \hbox (badness 10000) in paragraph at lines 326--327
+
+Package natbib Warning: Citation `box2013box' on page 4 undefined on input line 203.
+
+
+Package natbib Warning: Citation `engle1982autoregressive' on page 4 undefined on input line 203.
+
+
+Package natbib Warning: Citation `bollerslev1986generalized' on page 4 undefined on input line 203.
+
+[4 <./simulation_plots/vol_series_six_plots.png>]
+
+Package natbib Warning: Citation `francq2019garch' on page 5 undefined on input line 205.
+
+[5 <./simulation_plots/proof_concept.png>] [6 <./simulation_plots/motivating_piece_arithmetic_mean.png>]
+
+Package natbib Warning: Citation `abadie2010synthetic' on page 7 undefined on input line 248.
+
+[7]
+
+LaTeX Warning: Reference `abadie_factor_model' on page 8 undefined on input line 267.
+
+[8]
+
+Package natbib Warning: Citation `tsay2005analysis' on page 9 undefined on input line 310.
+
+
+Package natbib Warning: Citation `francq2019garch' on page 9 undefined on input line 310.
+
+
+Package natbib Warning: Citation `zivot2009practical' on page 9 undefined on input line 310.
+
+
+LaTeX Warning: Reference `SVF_properties' on page 9 undefined on input line 315.
+
+
+Package natbib Warning: Citation `abadie2003economic' on page 9 undefined on input line 317.
+
+
+Package natbib Warning: Citation `abadie2010synthetic' on page 9 undefined on input line 317.
+
+
+Package natbib Warning: Citation `timmermann2006forecast' on page 9 undefined on input line 322.
+
+
+Package natbib Warning: Citation `wang2023forecast' on page 9 undefined on input line 322.
+
+[9]
+
+Package natbib Warning: Citation `abadie2010synthetic' on page 10 undefined on input line 324.
+
+
+Package natbib Warning: Citation `wang2023forecast' on page 10 undefined on input line 324.
+
+
+Package natbib Warning: Citation `lin2021minimizing' on page 10 undefined on input line 326.
+
+
+Package natbib Warning: Citation `abadie2022synthetic' on page 10 undefined on input line 326.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 328--329
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 335--335
+Package natbib Warning: Citation `abadie2022synthetic' on page 10 undefined on input line 337.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 337--337
 []|\OT1/cmr/m/n/10.95 Perfect fit, not nec-es-sar-ily unique,
  []
 
-[11] [12] [13] [14]
-Underfull \hbox (badness 10000) in paragraph at lines 458--460
+Runaway argument?
+{ \vec {w}_{OLS}=\argmin _{{w} \|\hat {\omega }^{*} - w^{T}\textbf {V\ETC.
+/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/synthVolForecast.tex:348: Paragraph ended before \align* was complete.
+<to be read again> 
+                   \par 
+l.348 
+      
+I suspect you've forgotten a `}', causing me to apply this
+control sequence to too much text. How can we recover?
+My plan is to forget the whole thing and hope for the best.
+
+/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/synthVolForecast.tex:348: Missing $ inserted.
+<inserted text> 
+                $
+l.348 
+      
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/synthVolForecast.tex:348: Missing \endgroup inserted.
+<inserted text> 
+                \endgroup 
+l.348 
+      
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/synthVolForecast.tex:348: Display math should end with $$.
+<to be read again> 
+                   \tex_par:D 
+l.348 
+      
+The `$' that I just saw supposedly matches a previous `$$'.
+So I shall assume that you typed `$$' both times.
+
+[10]
+
+Package natbib Warning: Citation `andersen2010stochastic' on page 11 undefined on input line 353.
+
+
+Package natbib Warning: Citation `andersen2007roughing' on page 11 undefined on input line 353.
+
+
+Package natbib Warning: Citation `de2006forecasting' on page 11 undefined on input line 353.
+
+
+Package natbib Warning: Citation `andersen2008realized' on page 11 undefined on input line 355.
+
+
+Package natbib Warning: Citation `brownlees2011practical' on page 11 undefined on input line 376.
+
+[11]
+
+Package natbib Warning: Citation `brownlees2011practical' on page 12 undefined on input line 381.
+
+
+Package natbib Warning: Citation `boudoukh2019information' on page 12 undefined on input line 388.
+
+
+Package natbib Warning: Citation `chinco2019sparse' on page 12 undefined on input line 388.
+
+
+Package natbib Warning: Citation `dendramis2020similarity' on page 12 undefined on input line 390.
+
+[12]
+
+LaTeX Warning: Reference `eq0' on page 13 undefined on input line 402.
+
+
+Package natbib Warning: Citation `zivot2009practical' on page 13 undefined on input line 402.
+
+[13]
+
+LaTeX Warning: Reference `eq1' on page 14 undefined on input line 430.
+
+
+LaTeX Warning: Reference `eq2' on page 14 undefined on input line 430.
+
+
+LaTeX Warning: Reference `eq3' on page 14 undefined on input line 430.
+
+
+LaTeX Warning: Reference `eq4' on page 14 undefined on input line 430.
+
+
+LaTeX Warning: Reference `GARCH-X' on page 14 undefined on input line 448.
+
+[14]
+
+Package natbib Warning: Citation `han2014asymptotic' on page 15 undefined on input line 450.
+
+
+LaTeX Warning: Reference `stationarity_of_omega_i_t' on page 15 undefined on input line 456.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 460--462
+
+ []
+
+
+Package natbib Warning: Citation `han2014asymptotic' on page 15 undefined on input line 464.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 464--466
+
+ []
+
+
+LaTeX Warning: Reference `omega_consistency' on page 15 undefined on input line 471.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 499--500
 
  []
 
 [15]
-Underfull \hbox (badness 10000) in paragraph at lines 462--464
 
- []
+LaTeX Warning: Reference `QL Loss toy example' on page 16 undefined on input line 513.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 497--498
+LaTeX Warning: Reference `omega_consistency' on page 16 undefined on input line 521.
+
+
+LaTeX Warning: Reference `sigma_consistency' on page 16 undefined on input line 521.
+
+
+LaTeX Warning: Reference `sigma_consistency' on page 16 undefined on input line 528.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 530--531
 
  []
 
 [16]
-Underfull \hbox (badness 10000) in paragraph at lines 528--529
 
- []
+Package natbib Warning: Citation `lin2021minimizing' on page 17 undefined on input line 546.
 
-[17]
-<simulation_plots/standard_simulation_alpha_.1_beta_.82.png, id=415, 650.43pt x 499.11469pt>
+
+LaTeX Warning: Reference `fig:heavy_beta' on page 17 undefined on input line 553.
+
+<simulation_plots/standard_simulation_alpha_.1_beta_.82.png, id=142, 650.43pt x 499.11469pt>
 File: simulation_plots/standard_simulation_alpha_.1_beta_.82.png Graphic file (type png)
 <use simulation_plots/standard_simulation_alpha_.1_beta_.82.png>
-Package pdftex.def Info: simulation_plots/standard_simulation_alpha_.1_beta_.82.png  used on input line 554.
+Package pdftex.def Info: simulation_plots/standard_simulation_alpha_.1_beta_.82.png  used on input line 556.
 (pdftex.def)             Requested size: 292.6908pt x 224.59952pt.
-
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<simulation_plots/standard_simulation_alpha_.82_beta_.1.png, id=419, 650.43pt x 499.11469pt>
+
+LaTeX Warning: Reference `fig:heavy_alpha' on page 17 undefined on input line 561.
+
+
+Package natbib Warning: Citation `francq2019garch' on page 17 undefined on input line 561.
+
+<simulation_plots/standard_simulation_alpha_.82_beta_.1.png, id=143, 650.43pt x 499.11469pt>
 File: simulation_plots/standard_simulation_alpha_.82_beta_.1.png Graphic file (type png)
 <use simulation_plots/standard_simulation_alpha_.82_beta_.1.png>
-Package pdftex.def Info: simulation_plots/standard_simulation_alpha_.82_beta_.1.png  used on input line 562.
+Package pdftex.def Info: simulation_plots/standard_simulation_alpha_.82_beta_.1.png  used on input line 564.
 (pdftex.def)             Requested size: 292.6908pt x 224.59952pt.
+[17] [18 <./simulation_plots/standard_simulation_alpha_.1_beta_.82.png (PNG copy)> <./simulation_plots/standard_simulation_alpha_.82_beta_.1.png (PNG copy)>]
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+Package natbib Warning: Citation `mayhew2008incumbency' on page 19 undefined on input line 597.
 
-[18] [19 <./simulation_plots/standard_simulation_alpha_.1_beta_.82.png (PNG copy)> <./simulation_plots/standard_simulation_alpha_.82_beta_.1.png (PNG copy)>] [20
 
-] [21]
-<real_data_output_plots/FriMay311830522024_IYG_None_2016-06-22.png, id=483, 803.0pt x 602.25pt>
-File: real_data_output_plots/FriMay311830522024_IYG_None_2016-06-22.png Graphic file (type png)
-<use real_data_output_plots/FriMay311830522024_IYG_None_2016-06-22.png>
-Package pdftex.def Info: real_data_output_plots/FriMay311830522024_IYG_None_2016-06-22.png  used on input line 612.
-(pdftex.def)             Requested size: 401.49902pt x 301.12425pt.
- [22 <./real_data_output_plots/FriMay311830522024_IYG_None_2016-06-22.png>] [23] [24]
+Package natbib Warning: Citation `News_2024' on page 19 undefined on input line 597.
 
-LaTeX Warning: Reference `' on page 25 undefined on input line 720.
 
-<real_data_output_plots/FriMay311830182024_IYG_None_None.png, id=533, 803.0pt x 602.25pt>
-File: real_data_output_plots/FriMay311830182024_IYG_None_None.png Graphic file (type png)
-<use real_data_output_plots/FriMay311830182024_IYG_None_None.png>
-Package pdftex.def Info: real_data_output_plots/FriMay311830182024_IYG_None_None.png  used on input line 742.
-(pdftex.def)             Requested size: 481.80373pt x 361.35278pt.
-[25{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] [26 <./real_data_output_plots/FriMay311830182024_IYG_None_None.png>] [27] (./synthVolForecast.bbl [28
+Package natbib Warning: Citation `wolfers2016financial' on page 19 undefined on input line 597.
+
+
+Package natbib Warning: Citation `goodell2013us' on page 19 undefined on input line 597.
+
+
+Package natbib Warning: Citation `Silver_2016' on page 19 undefined on input line 597.
+
+
+Package natbib Warning: Citation `zivot2009practical' on page 19 undefined on input line 599.
+
+[19
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 209--212
-[]\OT1/cmr/m/n/9 Nate Sil-ver.  2016 elec-tion fore-cast, Nov 2016.  URL [][]$\OT1/cmtt/m/n/9 https : / / projects . fivethirtyeight . com /
- []
 
-) [29] (./synthVolForecast.aux)
+Package natbib Warning: Citation `hansen2005forecast' on page 20 undefined on input line 602.
+
+
+Package natbib Warning: Citation `goodell2013us' on page 20 undefined on input line 604.
+
+
+Package natbib Warning: Citation `kane1996p' on page 20 undefined on input line 604.
+
+
+Package natbib Warning: Citation `abadie2003economic' on page 20 undefined on input line 606.
+
+
+Package natbib Warning: Citation `abadie2010synthetic' on page 20 undefined on input line 606.
+
+
+Package natbib Warning: Citation `andersen2008realized' on page 20 undefined on input line 608.
+
+<real_data_output_plots/FriMay311830522024_IYG_None_2016-06-22.png, id=166, 803.0pt x 602.25pt>
+File: real_data_output_plots/FriMay311830522024_IYG_None_2016-06-22.png Graphic file (type png)
+<use real_data_output_plots/FriMay311830522024_IYG_None_2016-06-22.png>
+Package pdftex.def Info: real_data_output_plots/FriMay311830522024_IYG_None_2016-06-22.png  used on input line 614.
+(pdftex.def)             Requested size: 401.49902pt x 301.12425pt.
+[20]
+
+LaTeX Warning: Reference `fig:SVF_2016' on page 21 undefined on input line 620.
+
+[21 <./real_data_output_plots/FriMay311830522024_IYG_None_2016-06-22.png>]
+
+Package natbib Warning: Citation `steegen2016increasing' on page 22 undefined on input line 622.
+
+
+Package natbib Warning: Citation `lin2021minimizing' on page 22 undefined on input line 627.
+
+
+Package natbib Warning: Citation `lin2021minimizing' on page 22 undefined on input line 627.
+
+
+Package natbib Warning: Citation `lin2021minimizing' on page 22 undefined on input line 629.
+
+
+Package natbib Warning: Citation `phillips1996forecasting' on page 22 undefined on input line 629.
+
+
+Package natbib Warning: Citation `phillips1996forecasting' on page 22 undefined on input line 629.
+
+
+Package natbib Warning: Citation `phillips1996forecasting' on page 22 undefined on input line 629.
+
+[22]
+
+Package natbib Warning: Citation `hastie2009elements' on page 23 undefined on input line 634.
+
+
+Package natbib Warning: Citation `abadie2010synthetic' on page 23 undefined on input line 634.
+
+
+Package natbib Warning: Citation `hastie2009elements' on page 23 undefined on input line 636.
+
+
+Package natbib Warning: Citation `lin2021minimizing' on page 23 undefined on input line 638.
+
+
+Package natbib Warning: Citation `lin2021minimizing' on page 23 undefined on input line 638.
+
+
+Package natbib Warning: Citation `abadie2022synthetic' on page 23 undefined on input line 642.
+
+[23{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
+
+LaTeX Warning: Reference `' on page 24 undefined on input line 722.
+
+<real_data_output_plots/FriMay311830182024_IYG_None_None.png, id=192, 803.0pt x 602.25pt>
+File: real_data_output_plots/FriMay311830182024_IYG_None_None.png Graphic file (type png)
+<use real_data_output_plots/FriMay311830182024_IYG_None_None.png>
+Package pdftex.def Info: real_data_output_plots/FriMay311830182024_IYG_None_None.png  used on input line 744.
+(pdftex.def)             Requested size: 481.80373pt x 361.35278pt.
+[24] [25 <./real_data_output_plots/FriMay311830182024_IYG_None_None.png>] [26] (./synthVolForecast.bbl)
+
+Package natbib Warning: There were undefined citations.
+
+
+/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/synthVolForecast.tex:754: LaTeX Error: \begin{align*} on input line 344 ended by \end{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.754 \end{document}
+                    
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+(./synthVolForecast.aux)
 
 LaTeX Warning: There were undefined references.
 
-Package rerunfilecheck Info: File `synthVolForecast.out' has not changed.
-(rerunfilecheck)             Checksum: 737CFAEDF343EA6D582960C0E7A0DBB1;5143.
- ) 
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `synthVolForecast.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `synthVolForecast.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  B7013E2BACB9C2A24C7B7F5DE6679B8E;5241.
+ )
+(\end occurred inside a group at level 1)
+
+### semi simple group (level 1) entered at line 344 (\begingroup)
+### bottom level 
 Here is how much of TeX's memory you used:
- 26719 strings out of 476025
- 493892 string characters out of 5790017
- 1875388 words of memory out of 5000000
- 46549 multiletter control sequences out of 15000+600000
- 528573 words of font info for 90 fonts, out of 8000000 for 9000
+ 26437 strings out of 476025
+ 487453 string characters out of 5790017
+ 1873388 words of memory out of 5000000
+ 46323 multiletter control sequences out of 15000+600000
+ 528406 words of font info for 89 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,17n,80p,2243b,636s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on synthVolForecast.pdf (29 pages, 1015747 bytes).
+ 84i,17n,80p,2247b,771s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
+Output written on synthVolForecast.pdf (26 pages, 976860 bytes).
 PDF statistics:
- 702 PDF objects out of 1000 (max. 8388607)
- 604 compressed objects within 7 object streams
- 140 named destinations out of 1000 (max. 500000)
- 256 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 338 PDF objects out of 1000 (max. 8388607)
+ 247 compressed objects within 3 object streams
+ 89 named destinations out of 1000 (max. 500000)
+ 48 words of extra memory for PDF output out of 10000 (max. 10000000)
 
