@@ -363,7 +363,7 @@ There is no guarantee that $\vec{w}_{OLS}$ would perform poorly as a tool for pr
     $$\E[RV^{K,m}] = \frac{\mu^{2}}{m} + \delta^{2},$$
     which is a biased but consistent estimator of the variance.  We will proceed using $m = 77$, corresponding to the 6.5-hour trading day chopped into 5-minute blocks, with the first block omitted in order to ignore unusual trading behavior at the start of the day.
 
-\subsection{Loss Functions}
+\subsection{Loss Functions}\label{loss_function}
 
 We are interested in point forecasts for $\sigma^{2}_{1,T^{*}+h}|\mathcal{F}_{T^{*}}$, $h=1,2,...,$ the $h$-step ahead conditional variance for the time series under study.  Let $L^{h}$ with the subscripted pair $\{$prediction method, ground truth estimator$\}$, denote the loss function for an $h$-step-ahead forecast using a given prediction function and ground truth estimator.  For example, the 1-step-ahead MSE using our method and Realized Volatility is
 
@@ -549,10 +549,10 @@ In this section, we demonstrate the effectiveness of the proposed method using M
   \subsection{Varying Parameters}
 
 \textcolor{red}{
-Consider now a shock to both the volatility and the level beginning at $T^{*}+1$.  In particular, we will explore the performance of the method when a  $\mc{M}_{1}$ shock hits the volatility, while an $\mc{M}_{0}$ shock hits the level. There is a good reason we explore an $\mc{M}_{0}$ shock to the level: this work proposes no procedure to predict the unobservable quantity $\epsilon^{*}_{i}$, and even if one could construct one (for example, by employing the procedure in \cite{lin2021minimizing} and computing $\epsilon^{*}_{i} = \frac{\hat a^{i,t}}{\hat\sigma^2_{i,t}}$, it is unclear what practical value that estimate would provide).  Hypothesis: Method should do less well under a concommitant volatility and level shock.  A dual shock is in essence a squared observable with two independent sources of randomness.}
+Consider now a shock to both the volatility and the level beginning at $T^{*}+1$.  In particular, we will explore the performance of the method when a  $\mc{M}_{1}$ shock hits the volatility, while an $\mc{M}_{0}$ shock hits the level. There is a good reason we explore an $\mc{M}_{0}$ shock to the level: this work proposes no procedure to predict the unobservable quantity $\epsilon^{*}_{i}$, and even if one could construct one (for example, by employing the procedure in \cite{lin2021minimizing} and computing $\hat\epsilon^{*}_{i} = \frac{\hat a^{i,t}}{\hat\sigma^2_{i,t}}$, it is unclear what practical value that estimate would provide).  Hypothesis: Method should do less well under a concommitant volatility and level shock.  A dual shock is in essence a squared observable with two independent sources of randomness.}
 
 \subsection{Evaluative Framework and Monte Carlo Results}
-We compare adjusted and unadjusted forecasts using QL Loss, calculating the fraction of the simulations that the adjusted forecast dominates the unadjusted forecast.
+Consistent with our evaluative framework declared in \ref{loss_function}, we compare adjusted and unadjusted forecasts using QL Loss, calculating the fraction of the simulations that the adjusted forecast dominates the unadjusted forecast.
 
 
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.21)  6 JUN 2024 14:15
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.21)  6 JUN 2024 23:30
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -849,12 +849,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 530--531
  []
 
 [17]
-<simulation_plots/standard_simulation_alpha_.1_beta_.82.png, id=431, 650.43pt x 499.11469pt>
+<simulation_plots/standard_simulation_alpha_.1_beta_.82.png, id=432, 650.43pt x 499.11469pt>
 File: simulation_plots/standard_simulation_alpha_.1_beta_.82.png Graphic file (type png)
 <use simulation_plots/standard_simulation_alpha_.1_beta_.82.png>
 Package pdftex.def Info: simulation_plots/standard_simulation_alpha_.1_beta_.82.png  used on input line 562.
 (pdftex.def)             Requested size: 292.6908pt x 224.59952pt.
-<simulation_plots/standard_simulation_alpha_.82_beta_.1.png, id=435, 650.43pt x 499.11469pt>
+<simulation_plots/standard_simulation_alpha_.82_beta_.1.png, id=436, 650.43pt x 499.11469pt>
 File: simulation_plots/standard_simulation_alpha_.82_beta_.1.png Graphic file (type png)
 <use simulation_plots/standard_simulation_alpha_.82_beta_.1.png>
 Package pdftex.def Info: simulation_plots/standard_simulation_alpha_.82_beta_.1.png  used on input line 570.
@@ -866,7 +866,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 [18 <./simulation_plots/standard_simulation_alpha_.1_beta_.82.png (PNG copy)>] [19 <./simulation_plots/standard_simulation_alpha_.82_beta_.1.png (PNG copy)>] [20
 
 ] [21]
-<real_data_output_plots/FriMay311830522024_IYG_None_2016-06-22.png, id=499, 803.0pt x 602.25pt>
+<real_data_output_plots/FriMay311830522024_IYG_None_2016-06-22.png, id=500, 803.0pt x 602.25pt>
 File: real_data_output_plots/FriMay311830522024_IYG_None_2016-06-22.png Graphic file (type png)
 <use real_data_output_plots/FriMay311830522024_IYG_None_2016-06-22.png>
 Package pdftex.def Info: real_data_output_plots/FriMay311830522024_IYG_None_2016-06-22.png  used on input line 620.
@@ -876,7 +876,7 @@ Package pdftex.def Info: real_data_output_plots/FriMay311830522024_IYG_None_2016
 LaTeX Warning: Reference `' on page 25 undefined on input line 736.
 
 [25{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
-<real_data_output_plots/FriMay311830182024_IYG_None_None.png, id=565, 803.0pt x 602.25pt>
+<real_data_output_plots/FriMay311830182024_IYG_None_None.png, id=566, 803.0pt x 602.25pt>
 File: real_data_output_plots/FriMay311830182024_IYG_None_None.png Graphic file (type png)
 <use real_data_output_plots/FriMay311830182024_IYG_None_None.png>
 Package pdftex.def Info: real_data_output_plots/FriMay311830182024_IYG_None_None.png  used on input line 758.
@@ -896,18 +896,18 @@ Package rerunfilecheck Info: File `synthVolForecast.out' has not changed.
 (rerunfilecheck)             Checksum: 2F090B8FC2B70AE6D803282B5011B6E6;5871.
  ) 
 Here is how much of TeX's memory you used:
- 26734 strings out of 476025
- 494179 string characters out of 5790017
+ 26735 strings out of 476025
+ 494194 string characters out of 5790017
  1873388 words of memory out of 5000000
- 46558 multiletter control sequences out of 15000+600000
+ 46559 multiletter control sequences out of 15000+600000
  528573 words of font info for 90 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,17n,80p,2243b,683s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on synthVolForecast.pdf (29 pages, 1016420 bytes).
+Output written on synthVolForecast.pdf (29 pages, 1016589 bytes).
 PDF statistics:
- 729 PDF objects out of 1000 (max. 8388607)
- 631 compressed objects within 7 object streams
+ 730 PDF objects out of 1000 (max. 8388607)
+ 632 compressed objects within 7 object streams
  146 named destinations out of 1000 (max. 500000)
  296 words of extra memory for PDF output out of 10000 (max. 10000000)
 

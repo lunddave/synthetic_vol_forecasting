@@ -147,9 +147,14 @@ hm_generator <- function(y_input
     theme(plot.title = element_text(hjust = 0.5)) +
     labs(x = xlab, y = ylab)
 
+  time_date <- gsub(" ", "", gsub(':', '', format(Sys.time(), "%b%d_%X_%Y")), fixed = TRUE)
+
   file_name <- paste('~/Desktop/PhD/synthetic_vol_forecasting/simulation_plots/'
-                     ,'delete'
-                     ,'later'
+                     ,time_date
+                     '_'
+                     ,ylab
+                     ,'_'
+                     ,xlab
                      ,'.png'
                      ,sep = '')
 
