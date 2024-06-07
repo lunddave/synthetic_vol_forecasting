@@ -556,26 +556,60 @@ Consistent with our evaluative framework declared in \ref{loss_function}, we com
 
 \subsubsection{The Signal-to-Noise Question}
 
-\subsubsection{The Role of the Covariate X mean}
-\subsubsection{The Role of the Intercept}
-
-In Figure \ref{fig:heavy_beta}, when only two parameters are varied, the volatility shock signal and the volatility shock noise, we observe several encouraging phenomena.  First, for any column selected, an increasing trend exists as the shock signal increases.  Second, for almost all small values of the shock signal, the outperformance rate hovers around .5, supporting the hypothesis that in the absence of a signal, any level of noise renders the method no better at GARCH than a flip of a coin.
 \begin{figure}[h!]
   \begin{center}
-    \includegraphics[scale=.45]{simulation_plots/standard_simulation_alpha_.1_beta_.82.png}
-    \caption{Fixed parameter values: $\alpha = .1, \beta = .82, \mu_{x} = 1, \sigma_{x} = .1$}\label{fig:heavy_beta}
+    \includegraphics[scale=.45]{simulation_plots/Jun06_233740_2024_delta_sigma[u].png}
+    \caption{Fixed parameter values: $\omega = .2, \alpha = .1, \beta = .82, \mu_{x} = .125, \sigma_{x} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_1}
   \end{center}
   \end{figure}
   
-If we switch the values of $\alpha$ and $\beta$, we see similar behavior, as in Figure \ref{fig:heavy_alpha}.  Here we cite \citet[p. 22]{francq2019garch} in motivating simulations for large $\alpha$ values and then large $\beta$ values.  However, for small values of the shock mean, increasing noise does lead to fewer converged simulations, likely due to large negative realizations of the noise term, which in turn lead to near-zero and even negative estimates of the terms $\omega_{i}^{*}$.
 \begin{figure}[h!]
-  \begin{center}
-    \includegraphics[scale=.45]{simulation_plots/standard_simulation_alpha_.82_beta_.1.png}
-    \caption{Fixed parameter values: $\alpha = .82, \beta = .1, \mu_{x} = 1, \sigma_{x} = .1$}
-    \label{fig:heavy_alpha}
+    \begin{center}
+    \includegraphics[scale=.45]{simulation_plots/Jun06_233900_2024_delta_sigma[u].png}
+    \caption{Fixed parameter values: $\omega = .2, \alpha = .1, \beta = .82, \mu_{x} = .5, \sigma_{x} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_2}
   \end{center}
   \end{figure}
 
+  \begin{figure}[h!]
+    \begin{center}
+      \includegraphics[scale=.45]{simulation_plots/Jun06_234115_2024_delta_mu[x].png}
+      \caption{Fixed parameter values: $\omega = .2, \alpha = .1, \beta = .82, \mu_{x} = .1, \sigma_{x} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_3}
+    \end{center}
+    \end{figure}
+\subsubsection{The Role of the Covariate X mean}
+
+
+\begin{figure}[h!]
+  \begin{center}
+    \includegraphics[scale=.45]{simulation_plots/Jun06_234115_2024_delta_mu[x].png}
+    \caption{Fixed parameter values: $\omega = .2, \alpha = .1, \beta = .82, \mu_{x} = .125, \sigma_{x} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_4}
+  \end{center}
+  \end{figure}
+  
+\begin{figure}[h!]
+    \begin{center}
+    \includegraphics[scale=.45]{simulation_plots/Jun06_234119_2024_delta_mu[x].png}
+    \caption{Fixed parameter values: $\omega = .2, \alpha = .1, \beta = .82, \mu_{x} = .5, \sigma_{x} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_5}
+  \end{center}
+  \end{figure}
+
+\subsubsection{The Role of the Intercept}
+
+\begin{figure}[h!]
+  \begin{center}
+    \includegraphics[scale=.45]{simulation_plots/Jun06_234137_2024_mu_omega_star_sigma_u.png}
+    \caption{Fixed parameter values: $\omega = .2, \alpha = .1, \beta = .82, \mu_{x} = .125, \sigma_{x} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_6}
+  \end{center}
+  \end{figure}
+  
+\begin{figure}[h!]
+    \begin{center}
+    \includegraphics[scale=.45]{simulation_plots/Jun06_234154_2024_mu_omega_star_sigma_u.png}
+    \caption{Fixed parameter values: $\omega = .2, \alpha = .1, \beta = .82, \mu_{x} = .5, \sigma_{x} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_7}
+  \end{center}
+  \end{figure}
+
+In Figure \ref{fig:sim_1}, when only two parameters are varied, the volatility shock signal and the volatility shock noise, we observe several encouraging phenomena.  First, for any column selected, an increasing trend exists as the shock signal increases.  Second, for almost all small values of the shock signal, the outperformance rate hovers around .5, supporting the hypothesis that in the absence of a signal, any level of noise renders the method no better at GARCH than a flip of a coin.
   % https://tex.stackexchange.com/questions/37581/latex-figures-side-by-side
   % \begin{figure}[h!]
   %   \centering
