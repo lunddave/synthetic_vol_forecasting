@@ -556,48 +556,27 @@ Consistent with our evaluative framework declared in \ref{loss_function}, we com
 
 \subsubsection{The Signal-to-Noise Question}
 
-% \begin{figure}[h!]
-%   \begin{center}
-%     \includegraphics[scale=.45]{simulation_plots/Jun06_233740_2024_delta_sigma[u].png}
-%     \caption{Fixed parameter values: $\omega = .2, \alpha = .1, \beta = .82, \mu_{x} = .125, \sigma_{x} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_1}
-%   \end{center}
-%   \end{figure}
-  
-% \begin{figure}[h!]
-%     \begin{center}
-%     \includegraphics[scale=.45]{simulation_plots/Jun06_233900_2024_delta_sigma[u].png}
-%     \caption{Fixed parameter values: $\omega = .2, \alpha = .1, \beta = .82, \mu_{x} = .5, \sigma_{x} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_2}
-%   \end{center}
-%   \end{figure}
-
-%   \begin{figure}[h!]
-%     \begin{center}
-%       \includegraphics[scale=.45]{simulation_plots/Jun06_233900_2024_delta_sigma[u].png}
-%       \caption{Fixed parameter values: $\omega = .2, \alpha = .1, \beta = .82, \mu_{x} = .1, \sigma_{x} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_3}
-%     \end{center}
-%     \end{figure}
-
     \begin{figure}[!h]
       \centering
       \textbf{Signal and Noise}\par\medskip
     \begin{subfigure}{.44\linewidth} 
       \centering
         \includegraphics[scale = .42]{simulation_plots/Jun06_233740_2024_delta_sigma[u].png}
-        \caption{Fixed parameter values: $\omega = .2, \alpha = .1, \beta = .82, \mu_{x} = .125, \sigma_{x} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_6}
+        \caption{Fixed parameter values: $\omega = .2, \alpha = .1, \beta = .82, \mu_{x} = .125, \sigma_{x} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_1}
     \end{subfigure}\hspace{12mm} %
     \begin{subfigure}{.44\linewidth} 
       \centering
         \includegraphics[scale=.42]{simulation_plots/Jun06_233900_2024_delta_sigma[u].png}
-        \caption{Fixed parameter values: $\omega = .2, \alpha = .1, \beta = .82, \mu_{x} = .5, \sigma_{x} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_7}
+        \caption{Fixed parameter values: $\omega = .2, \alpha = .1, \beta = .82, \mu_{x} = .5, \sigma_{x} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_2}
     \end{subfigure}
 
     \begin{subfigure}{.44\linewidth} 
       \centering
-        \includegraphics[scale=.42]{simulation_plots/Jun06_233900_2024_delta_sigma[u].png}
-        \caption{Fixed parameter values: $\omega = .2, \alpha = .1, \beta = .82, \mu_{x} = .5, \sigma_{x} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_7}
+        \includegraphics[scale=.42]{simulation_plots/Jun06_234111_2024_delta_sigma[u].png}
+        \caption{Fixed parameter values: $\omega = .2, \alpha = .1, \beta = .82, \mu_{x} = 1, \sigma_{x} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_3}
     \end{subfigure}
     
-        \caption{the whole thing is over}
+        \caption{In the progression from (a) to (b) to (c), we see that increasing $\delta$ leads to improved performance of the adjusted forecast, and this effect is intensified as $\mu_{x}$ increases.  However, it is not consistently true that an increasing noise undermines the performance of the adjusted forecast.  Rather, that phenomenon requires both large quantites of $\delta$ and $\mu{x}$.}
         \label{fig:signoise}
       \end{figure}
 
@@ -609,12 +588,12 @@ Consistent with our evaluative framework declared in \ref{loss_function}, we com
   \begin{subfigure}{.44\linewidth} 
     \centering
       \includegraphics[scale = .42]{simulation_plots/Jun06_234115_2024_delta_mu[x].png}
-      \caption{Fixed parameter values: $\omega = .2, \alpha = .1, \beta = .82, \mu_{x} = .125, \sigma_{x} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_6}
+      \caption{Fixed parameter values: $\omega = .2, \alpha = .1, \beta = .82,  \sigma_{x} = .125, \mu_{\omega^{*}} = .125, \sigma_{u} = .125$}\label{fig:sim_4}
   \end{subfigure}\hspace{12mm} %
   \begin{subfigure}{.44\linewidth} 
     \centering
       \includegraphics[scale=.42]{simulation_plots/Jun06_234119_2024_delta_mu[x].png}
-      \caption{Fixed parameter values: $\omega = .2, \alpha = .1, \beta = .82, \mu_{x} = .5, \sigma_{x} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_7}
+      \caption{Fixed parameter values: $\omega = .2, \alpha = .1, \beta = .82, \sigma_{x} = .125, \mu_{\omega^{*}} = .125, \sigma_{u} = 1$}\label{fig:sim_5}
   \end{subfigure}
   
       \caption{the whole thing is over}
@@ -629,12 +608,12 @@ Consistent with our evaluative framework declared in \ref{loss_function}, we com
 \begin{subfigure}{.44\linewidth} 
   \centering
     \includegraphics[scale = .42]{simulation_plots/Jun06_234137_2024_mu_omega_star_sigma_u.png}
-    \caption{Fixed parameter values: $\omega = .2, \alpha = .1, \beta = .82, \mu_{x} = .125, \sigma_{x} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_6}
+    \caption{Fixed parameter values: $\omega = .2, \alpha = .1, \beta = .82, \mu_{x} = .125, \sigma_{x} = .125, \delta = .125$}\label{fig:sim_6}
 \end{subfigure}\hspace{12mm} %
 \begin{subfigure}{.44\linewidth} 
   \centering
     \includegraphics[scale=.42]{simulation_plots/Jun06_234154_2024_mu_omega_star_sigma_u.png}
-    \caption{Fixed parameter values: $\omega = .2, \alpha = .1, \beta = .82, \mu_{x} = .5, \sigma_{x} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_7}
+    \caption{Fixed parameter values: $\omega = .2, \alpha = .1, \beta = .82, \mu_{x} = .125, \sigma_{x} = .125, \delta = .125$}\label{fig:sim_7}
 \end{subfigure}
 
     \caption{the whole thing is over}

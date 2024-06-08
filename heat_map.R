@@ -151,7 +151,7 @@ hm_generator <- function(y_input
 
   file_name <- paste('~/Desktop/PhD/synthetic_vol_forecasting/simulation_plots/'
                      ,time_date
-                     '_'
+                     ,'_'
                      ,ylab
                      ,'_'
                      ,xlab
