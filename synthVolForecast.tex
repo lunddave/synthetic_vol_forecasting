@@ -556,80 +556,92 @@ Consistent with our evaluative framework declared in \ref{loss_function}, we com
 
 \subsubsection{The Signal-to-Noise Question}
 
-\begin{figure}[h!]
-  \begin{center}
-    \includegraphics[scale=.45]{simulation_plots/Jun06_233740_2024_delta_sigma[u].png}
-    \caption{Fixed parameter values: $\omega = .2, \alpha = .1, \beta = .82, \mu_{x} = .125, \sigma_{x} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_1}
-  \end{center}
-  \end{figure}
+% \begin{figure}[h!]
+%   \begin{center}
+%     \includegraphics[scale=.45]{simulation_plots/Jun06_233740_2024_delta_sigma[u].png}
+%     \caption{Fixed parameter values: $\omega = .2, \alpha = .1, \beta = .82, \mu_{x} = .125, \sigma_{x} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_1}
+%   \end{center}
+%   \end{figure}
   
-\begin{figure}[h!]
-    \begin{center}
-    \includegraphics[scale=.45]{simulation_plots/Jun06_233900_2024_delta_sigma[u].png}
-    \caption{Fixed parameter values: $\omega = .2, \alpha = .1, \beta = .82, \mu_{x} = .5, \sigma_{x} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_2}
-  \end{center}
-  \end{figure}
+% \begin{figure}[h!]
+%     \begin{center}
+%     \includegraphics[scale=.45]{simulation_plots/Jun06_233900_2024_delta_sigma[u].png}
+%     \caption{Fixed parameter values: $\omega = .2, \alpha = .1, \beta = .82, \mu_{x} = .5, \sigma_{x} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_2}
+%   \end{center}
+%   \end{figure}
 
-  \begin{figure}[h!]
-    \begin{center}
-      \includegraphics[scale=.45]{simulation_plots/Jun06_234115_2024_delta_mu[x].png}
-      \caption{Fixed parameter values: $\omega = .2, \alpha = .1, \beta = .82, \mu_{x} = .1, \sigma_{x} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_3}
-    \end{center}
-    \end{figure}
+%   \begin{figure}[h!]
+%     \begin{center}
+%       \includegraphics[scale=.45]{simulation_plots/Jun06_233900_2024_delta_sigma[u].png}
+%       \caption{Fixed parameter values: $\omega = .2, \alpha = .1, \beta = .82, \mu_{x} = .1, \sigma_{x} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_3}
+%     \end{center}
+%     \end{figure}
+
+    \begin{figure}[!h]
+      \centering
+      \textbf{Signal and Noise}\par\medskip
+    \begin{subfigure}{.44\linewidth} 
+      \centering
+        \includegraphics[scale = .42]{simulation_plots/Jun06_233740_2024_delta_sigma[u].png}
+        \caption{Fixed parameter values: $\omega = .2, \alpha = .1, \beta = .82, \mu_{x} = .125, \sigma_{x} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_6}
+    \end{subfigure}\hspace{12mm} %
+    \begin{subfigure}{.44\linewidth} 
+      \centering
+        \includegraphics[scale=.42]{simulation_plots/Jun06_233900_2024_delta_sigma[u].png}
+        \caption{Fixed parameter values: $\omega = .2, \alpha = .1, \beta = .82, \mu_{x} = .5, \sigma_{x} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_7}
+    \end{subfigure}
+
+    \begin{subfigure}{.44\linewidth} 
+      \centering
+        \includegraphics[scale=.42]{simulation_plots/Jun06_233900_2024_delta_sigma[u].png}
+        \caption{Fixed parameter values: $\omega = .2, \alpha = .1, \beta = .82, \mu_{x} = .5, \sigma_{x} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_7}
+    \end{subfigure}
+    
+        \caption{the whole thing is over}
+        \label{fig:signoise}
+      \end{figure}
+
 \subsubsection{The Role of the Covariate X mean}
 
-
-\begin{figure}[h!]
-  \begin{center}
-    \includegraphics[scale=.45]{simulation_plots/Jun06_234115_2024_delta_mu[x].png}
-    \caption{Fixed parameter values: $\omega = .2, \alpha = .1, \beta = .82, \mu_{x} = .125, \sigma_{x} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_4}
-  \end{center}
-  \end{figure}
+  \begin{figure}[!h]
+    \centering
+    \textbf{The relation between the mean of X and the signal}\par\medskip
+  \begin{subfigure}{.44\linewidth} 
+    \centering
+      \includegraphics[scale = .42]{simulation_plots/Jun06_234115_2024_delta_mu[x].png}
+      \caption{Fixed parameter values: $\omega = .2, \alpha = .1, \beta = .82, \mu_{x} = .125, \sigma_{x} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_6}
+  \end{subfigure}\hspace{12mm} %
+  \begin{subfigure}{.44\linewidth} 
+    \centering
+      \includegraphics[scale=.42]{simulation_plots/Jun06_234119_2024_delta_mu[x].png}
+      \caption{Fixed parameter values: $\omega = .2, \alpha = .1, \beta = .82, \mu_{x} = .5, \sigma_{x} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_7}
+  \end{subfigure}
   
-\begin{figure}[h!]
-    \begin{center}
-    \includegraphics[scale=.45]{simulation_plots/Jun06_234119_2024_delta_mu[x].png}
-    \caption{Fixed parameter values: $\omega = .2, \alpha = .1, \beta = .82, \mu_{x} = .5, \sigma_{x} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_5}
-  \end{center}
-  \end{figure}
+      \caption{the whole thing is over}
+      \label{fig:signoise}
+    \end{figure}
 
 \subsubsection{The Role of the Intercept}
 
-\begin{figure}[h!]
-  \begin{center}
-    \includegraphics[scale=.45]{simulation_plots/Jun06_234137_2024_mu_omega_star_sigma_u.png}
+\begin{figure}[!h]
+  \centering
+  \textbf{The relation between the intercept of the shock and the noise}\par\medskip
+\begin{subfigure}{.44\linewidth} 
+  \centering
+    \includegraphics[scale = .42]{simulation_plots/Jun06_234137_2024_mu_omega_star_sigma_u.png}
     \caption{Fixed parameter values: $\omega = .2, \alpha = .1, \beta = .82, \mu_{x} = .125, \sigma_{x} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_6}
-  \end{center}
-  \end{figure}
-  
-\begin{figure}[h!]
-    \begin{center}
-    \includegraphics[scale=.45]{simulation_plots/Jun06_234154_2024_mu_omega_star_sigma_u.png}
+\end{subfigure}\hspace{12mm} %
+\begin{subfigure}{.44\linewidth} 
+  \centering
+    \includegraphics[scale=.42]{simulation_plots/Jun06_234154_2024_mu_omega_star_sigma_u.png}
     \caption{Fixed parameter values: $\omega = .2, \alpha = .1, \beta = .82, \mu_{x} = .5, \sigma_{x} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_7}
-  \end{center}
+\end{subfigure}
+
+    \caption{the whole thing is over}
+    \label{fig:signoise}
   \end{figure}
 
 In Figure \ref{fig:sim_1}, when only two parameters are varied, the volatility shock signal and the volatility shock noise, we observe several encouraging phenomena.  First, for any column selected, an increasing trend exists as the shock signal increases.  Second, for almost all small values of the shock signal, the outperformance rate hovers around .5, supporting the hypothesis that in the absence of a signal, any level of noise renders the method no better at GARCH than a flip of a coin.
-  % https://tex.stackexchange.com/questions/37581/latex-figures-side-by-side
-  % \begin{figure}[h!]
-  %   \centering
-  %   \textbf{Simulations with shocks to both the mean and volatility function}\par\medskip
-  %   \begin{subfigure}{.5\textwidth}
-  %     \centering
-  %     \includegraphics[scale=.45]{simulation_plots/dual_level_vol_shock_FriFeb0911:03:49PM2024.png}
-  %     \caption{$\alpha = .1, \beta = .82, \mu_{x} = 1, \sigma_{x} = .1$}
-  %     \label{fig:dual_shock_strong_betas_inside}
-  %   \end{subfigure}%
-  %   \begin{subfigure}{.5\textwidth}
-  %     \centering
-  %     \includegraphics[scale=.45]{simulation_plots/dual_level_vol_shock_FriFeb0911:27:59PM2024.png}
-  %     \caption{$\alpha = .82, \beta = .1, \mu_{x} = 1, \sigma_{x} = .1$}
-  %     \label{fig:dual_shock_strong_alpha_inside}
-  %   \end{subfigure}
-  %   \caption{Shocks to both the mean function and the volatility equation}
-  %   \label{fig:not_sure_what_write}
-  %   \end{figure}
-
 
 \clearpage 
 
