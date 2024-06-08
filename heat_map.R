@@ -133,9 +133,6 @@ hm_generator <- function(y_input
 
   print(means)
 
-
-
-
   ggp1 <- ggplot(means,
                 aes(x = factor({{x_input}}), y = factor({{y_input}}), fill = prop)) +
     scale_fill_gradient(low="white",  high="red") +
@@ -144,7 +141,11 @@ hm_generator <- function(y_input
     guides(fill = guide_colourbar(title = "Success Proportion")) +
     ggtitle("Synthetic Volatility Forecast Outperformance of Unadjusted Forecast
             \n Each Square: Outperformance Proportion and (Simulation Count)") +
-    theme(plot.title = element_text(hjust = 0.5)) +
+    theme(plot.title = element_text(hjust = 0.5),
+          axis.text.x = element_text(size = 14),
+          axis.text.y = element_text(size = 14),
+          axis.title = element_text(size = 20)
+          ) +
     labs(x = xlab, y = ylab)
 
   time_date <- gsub(" ", "", gsub(':', '', format(Sys.time(), "%b%d_%X_%Y")), fixed = TRUE)
@@ -177,7 +178,7 @@ non_NA <- non_NA[non_NA$mu_omega_star == .125,]
 hm_generator(y_input = M21_M22_vol_mu_delta
              ,x_input = vol_shock_sd
              , success
-             ,expression(delta)
+             ,expression(mu[delta])
              ,expression(sigma[u]))
 
 #Comment: it is hard to explain why increasing vol_shock_sd increases prop
@@ -193,7 +194,7 @@ non_NA <- non_NA[non_NA$mu_omega_star == .125,]
 hm_generator(y_input = M21_M22_vol_mu_delta
              ,x_input = vol_shock_sd
              , success
-             ,expression(delta)
+             ,expression(mu[delta])
              ,expression(sigma[u]))
 
 #Comment: by increasing mu_x, we not only increase effect of M21_M22_vol_mu_delta,
@@ -210,7 +211,7 @@ non_NA <- non_NA[non_NA$mu_omega_star == .125,]
 hm_generator(y_input = M21_M22_vol_mu_delta
              ,x_input = vol_shock_sd
              , success
-             ,expression(delta)
+             ,expression(mu[delta])
              ,expression(sigma[u]))
 
 #Comment: with mu_x at .5, the phenomena that we're tracking are somewhere in
@@ -227,7 +228,7 @@ non_NA <- non_NA[non_NA$vol_shock_sd == .125,]
 hm_generator(y_input = M21_M22_vol_mu_delta
              ,x_input = mu_x
              , success
-             ,expression(delta)
+             ,expression(mu[delta])
              ,expression(mu[x]))
 
 #Comment: mu_x is on display
@@ -243,7 +244,7 @@ non_NA <- non_NA[non_NA$vol_shock_sd == 1,]
 hm_generator(y_input = M21_M22_vol_mu_delta
              ,x_input = mu_x
              , success
-             ,expression(delta)
+             ,expression(mu[delta])
              ,expression(mu[x]))
 
 #Comment: with vol_shock_sd = 1, we get a much more muted effect.
