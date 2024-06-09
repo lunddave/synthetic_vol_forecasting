@@ -614,7 +614,7 @@ Consistent with our evaluative framework declared in \ref{loss_function}, we com
 
 \clearpage 
 
-\section{Real Data Example}
+\section{Real Data Example}\label{Real Data Example}
 
 We show the applicability of our method using a real data example that sits at the crossroads of financial trading and electoral politics.  In the spring of 2016 in the United States, the Republican Party's primary election process narrowed down candidates until Donald J. Trump cleared the threshold of votes to win the nomination formally at the party's convention that summer.  He would go on to face the Democratic Party's nominee, Hillary Rodham Clinton.   
 
@@ -688,7 +688,7 @@ There is an important question about the stability of the GARCH parameters under
 
 \subsection{Leave-one-out: How we analyzed a multiverse of 50 predictions}
 
-Given the option of redoing our analysis, with nine covariates and four donors, a natural question from a place of skepticism is, how stable are the results --- how contingent are they on a particular specification?  To answer these questions, in \ref{prediction_table} we generate all fifty predictions yielded the decision of leave out any one of the donors (or none) and any one of the covariates (or none).  This analysis includes the prediction presented above, which can be viewed as the null model, at least in the sense that it provides and baseline for comparison.
+Given the option of redoing our analysis, with nine covariates and four donors, a natural question from a place of skepticism is, how stable are the results --- how contingent are they on a particular specification?  To answer these questions, in Table \ref{tab:prediction_table} we generate all fifty predictions yielded the decision of leave out any one of the donors (or none) and any one of the covariates (or none).  This analysis includes the prediction presented above, which can be viewed as the null model, at least in the sense that it provides and baseline for comparison.
 
 \begin{table}[ht]
   \centering
@@ -756,14 +756,20 @@ Given the option of redoing our analysis, with nine covariates and four donors, 
   \end{table}
 
 \subsection{Sensitivity to Covariates Chosen}
-Any covariate that appears more often closer to the bottom of the \ref{prediction_table} is, $\textit{ceteris paribus}$, a more important covariate for this prediction task, since by dropping it, a larger loss results.  The covariates that thus stand out are the demeaned log return of IYG, the VIX, the Debt Risk Spread (spread between between AAA and BAA corporate debt), and last but not least, the choice of dropping none of the covariates.  The demeaned log return of IYG, of which we use the 30 days preceeding the $T^{*}$, suggests an unusually strong relevance in matching donors to the time series under study.
+Any covariate that appears more often closer to the bottom of the \ref{tab:prediction_table} is, $\textit{ceteris paribus}$, a more important covariate for this prediction task, since by dropping it, a larger loss results.  The covariates that thus stand out are the demeaned log return of IYG, the VIX, the Debt Risk Spread (spread between between AAA and BAA corporate debt), and last but not least, the choice of dropping none of the covariates.  The demeaned log return of IYG, of which we use the 30 days preceeding the $T_{i}^{*}$, suggests an unusually strong relevance in matching donors to the time series under study.  The Debt Risk Spread is also deserving of additional comment and attention, perhaps alongside the poor performance of the log return of the VIX.  The Debt Risk Spread is available at a monthly frequency via FRED (add citation), whereas the VIX is available daily via Yahoo Finance (I need to explain that and cite Yahoo Finance and quantmod).  It may be the case that the true conditional shock distribution includes low-frequency data as well as data in levels (like the VIX), while the daily changes in the VIX are absent.
 
 \subsection{Sensitivity to Donors Chosen}
 
-We note that dropping the 2008 Election vastly improves the performance of the arithmetic mean forecast.
+The most glaring result visible in \ref{tab:prediction_table} regarding donor selection is the poor performance of the 2008 US Election.  In hindsight, this is unsurprising, given the large estimated fixed effect for November 5th, 2008 as well as the swirl of complex events occurring in financial markets around that time.  It is possible that the GARCH(1,1) used to fit the run-up to that election is underparameterized.  The weight given to the 2008 US election is near-zero, but in our method, unsuitable donors can influence the distance-based weighting by affecting that dispersion of one or more of the $p$ covariates present in the volatility profile.  Recall that for each of the $p$ covariates, we transform the $n+1$-vector of variables to Z-scores.  The lesson here is that more careful pre-quantitative inspection of the donors may be warranted as well as ordinary outlier analysis for the volatility profile.
+
+The donors most conducive to good predictions in this task are the 2004 and 2008 US elections.  The estimated fixed effects tell a story of only modest surprise due to these election results: the estimate is nearly zero for 2004, while 2012 is nonzero but small.  Given that the presidential election results of these two did not deliver much surprise, it is possible that the surprise could be due more so to non-presidential races.
 
 \subsubsection{Brexit}
 We analyze the real-data example with Brexit.
+
+In the pre-quantitative analysis of donors, there was only one competitor to the setup that was ultimately selected and presented in Section \ref{Real Data Example}. 
+
+We note that dropping the 2008 Election vastly improves the performance of the arithmetic mean forecast.
 
 \subsubsection{Assessing the model fit before predicting}
 
