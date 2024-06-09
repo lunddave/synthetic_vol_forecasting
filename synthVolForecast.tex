@@ -158,7 +158,7 @@ No matter how a time series or its transformations are modeled, forecasting in t
 
 Similar problems and more exist for Realized GARCH models \citep{hansen2012realized}, which incorporates observable measures of volatility, known as  ``realized measures", like implied volatility.  Under the assumptions herein, no post-shock data is available, and even if it were, Realized GARCH does not promise to perform well, since Black-Scholes implied volatility is a biased estimator of volatility \citep{mayhew1995implied, christensen1998relation}, with the bias increasing in times of crises, when options are likely to be out-of-the-money.  GARCH models have been shown slow to adapt to spikes in volatility \citep{andersen2003modeling}.
 
-The approach herein sidesteps the functional complexity posited by Realized GARCH, with its minimum nine parameters to estimate \citep{sharma2016forecasting}, by substituting modeling assumptions.  The method herein proceeds under the assumption that similar news events occasion volatility shocks arising from a common shock distribution.  The procedure proposed does not require post-shock information like returns or market-implied quantities from the time series under study.  Hence, we also avoid questions about what realized measure to use and when as well as questions about the usefulness of high-frequency data, although these remain intriguing avenues for future work.
+The approach herein sidesteps the functional complexity posited by Realized GARCH, with its minimum nine parameters to estimate \citep{sharma2016forecasting}, by substituting modeling assumptions.  The method herein proceeds under the assumption that similar news events occasion volatility shocks arising from a common conditional shock distribution.  The procedure proposed does not require post-shock information like returns or market-implied quantities from the time series under study.  Hence, we also avoid questions about what realized measure to use and when as well as questions about the usefulness of high-frequency data, although these remain intriguing avenues for future work.
 
 The primary methodological tool presented in this work is fixed effect estimation followed by an appropriate procedure for pooling those estimates.  The use of fixed effect estimation for the study of structural shocks has a pedigree in macroeconomic analysis (\citet{romer1989does} cited in \citet{kilian2017structural}; see also discussion of determinstic exogenous events in \citet{engle2001good}).  We employ fixed effect estimation on the basis of a well-established conceptual assumption that shocks of economic time series can be modeled as mixtures, in particular, mixtures of ordinary innovations and rare events (see \cite{phillips1996forecasting} and references therein).  In the forecasting literature, the term ``intercept correction'' has come to refer to a modeling technique in which nonzero errors are explicitly permitted \citep{hendry1994theory, clements1998forecasting}.  They summarize the literature as distinguishing two families of intercept correction: so-called ``discretionary" intercept corrections that attempt to account for future events, without hard-coding an ad-hoc adjustment into the model specification, and second, ``automated" intercept corrections that attempt to adjust for persistent misspecification using past errors.  \citet{guerron2017macroeconomic} use weighted subsets of a scalar series' own past to correct forecast errors by an additive term. \citet{dendramis2020similarity} a introduces a similarity-based forecasting procedure for time-varying coefficients of a linear model. \citet{foroni2022forecasting} employ a form of intercept correction in order to adjust forecasts to the COVID-19 shock in the spring of 2020 based on the proportional misses of the same model applied to the Great Recession.
 
@@ -173,12 +173,12 @@ In order to motivate our procedure, we provide several visual illustrations.  In
 \begin{figure}[h!]
   \begin{center}
     \includegraphics[scale=.4]{simulation_plots/vol_series_six_plots.png}
-    \caption{Volatility series of six i.i.d. GARCH processes, each of which experiences a volatility shock, indicated with a red vertical line, at a uniformly distributed point in the interval [756, 2520] trading days, corresponding to trading years on the interval [3,10].} 
+    \caption{Volatility series of six i.i.d. GARCH processes, each of which experiences a volatility shock, indicated with a red vertical line, at a uniformly distributed point in the set $\{756,...,2520\}$ trading days, corresponding to between 3 and 10 years of daily trading data.}
     \label{fig:six_plots}
     \end{center}
   \end{figure}
 
-  \begin{figure}[h]
+  \begin{figure}[h!]
     \begin{center}
       \includegraphics[scale=.4]{simulation_plots/proof_concept.png}
       \caption{A simple illustration of the benefits of knowing a priori the time of large shocks to the volatility process.} 
@@ -186,7 +186,7 @@ In order to motivate our procedure, we provide several visual illustrations.  In
       \end{center}
     \end{figure}
 
-  \begin{figure}[h]
+  \begin{figure}[h!]
     \begin{center}
       \includegraphics[scale=.4]{simulation_plots/motivating_piece_arithmetic_mean.png}
       \caption{The time series experiences a volatility shock at a uniformly distributed point in the interval [756, 2520] trading days, corresponding to trading years on the interval [3,10].  We have truncated the series after $T^{*}+1$.  The GARCH prediction fails even to approach the volatility spike at $T^{*}+1$, as do some adjusted predictions.  In contrast, the GARCH forecast adjusted by $\overline{\hat\omega^{*}}$, the arithmetic mean of the estimated shocks, recovers the shock in the time series under study.} 
@@ -334,7 +334,7 @@ Let $p', n'$ denote the number of linearly independent rows of $\V_{t}$ and line
         \hline
         $p' \geq n'$ & Perfect fit; fit unique & Fit not perfect; fit unique \\
         \hline
-        $p' < n'$ & Perfect fit, not necessarily unique, Caratheodory applies \citep{abadie2022synthetic}& Fit not perfect, not necessarily unique, Caratheodory applies \\ 
+        $p' < n'$ & Perfect fit, not necessarily unique, Carath\'eodory Theorem applies \citep{abadie2022synthetic}& Fit not perfect, not necessarily unique, Carath\'eodory Theorem applies \\ 
         \hline
       \end{tabular}
       \end{center} 
@@ -342,11 +342,9 @@ Let $p', n'$ denote the number of linearly independent rows of $\V_{t}$ and line
 Comparison with least-squares estimation is illustrative.  Consider least-squares for the $n$-vector of estimated volatlity shocks $\hat\omega^{*}$:
 
 \begin{align*}
-\vec{w}_{OLS}=\argmin_{{w} \|\hat{\omega}^{*} - w^{T}\textbf{V}_{t}\|_{2}}
+\vec{w}_{OLS}=\argmin_{{w}} \|\hat{\omega}^{*} - w^{T}\textbf{V}_{t}\|_{2}
 \end{align*} 
-One immediately visible problem is that this optimization problem is an optimization problem over $p$-vectors $\vec{w}$ --- i.e. over linear combinations of the covariates, whereas what we seek is an $n$-vector --- a linear combination of donors.
-
-There is no guarantee that $\vec{w}_{OLS}$ would perform poorly as a tool for producing $\hat\omega^{*}$, but given the small number of donors supposed in our setting, it is risky.
+One immediately visible problem is that this optimization problem is an optimization problem over $p$-vectors $\vec{w}$ --- i.e. over linear combinations of the covariates, whereas what we seek is an $n$-vector --- a linear combination of donors.  Additionally, there is no guarantee that $\vec{w}_{OLS}$ would perform poorly as a tool for producing $\hat\omega^{*}$, but given the small number of donors supposed in our setting, it is risky.
     \subsection{Ground Truth Estimators}
     \label{Ground Truth Estimators}
     
@@ -365,7 +363,7 @@ There is no guarantee that $\vec{w}_{OLS}$ would perform poorly as a tool for pr
 
 \subsection{Loss Functions}\label{loss_function}
 
-We are interested in point forecasts for $\sigma^{2}_{1,T^{*}+h}|\mathcal{F}_{T^{*}}$, $h=1,2,...,$ the $h$-step ahead conditional variance for the time series under study.  Let $L^{h}$ with the subscripted pair $\{$prediction method, ground truth estimator$\}$, denote the loss function for an $h$-step-ahead forecast using a given prediction function and ground truth estimator.  For example, the 1-step-ahead MSE using our method and Realized Volatility is
+We are interested in point forecasts for $\sigma^{2}_{1,T^{*}+h}|\mathcal{F}_{T^{*}}$, $h=1,2,...,$ the $h$-step ahead conditional variance for the time series under study.  Let $L^{h}$ with the subscripted pair $\{$prediction method, ground truth estimator$\}$, denote the loss function for an $h$-step-ahead forecast using a given prediction function and ground truth estimator.  For example, if we suppress the time index, the one-step-ahead MSE using our method and Realized Volatility as the ground truth is
 
 $$ \text{MSE}^{1}_{\text{SVF, RV}} = (\hat\sigma^{2}_{SVF} - \hat\sigma^{2}_{RV})^{2}$$
 Also of interest in mean absolute percentage error for an $h$-step-ahead forecast, defined as
@@ -384,10 +382,6 @@ deterioration of forecasting ability. The QL avoids this ambiguity, making it ea
 compare losses across volatility regimes."  For this reason, we proceed to evaluate the method, both in simuations and real data examples, using the QL loss.
 
 \section{Properties of Volatility Shocks and Shock Estimators}\label{SVF_properties}
-
-Not all of the volatility of an asset return may be related to news \citep{boudoukh2019information}.  This explains our inclusion of an idiosyncratic noise term in the shock specification.  However, this point also gestures in the direction of possible unexplained variation in the shocks.  \citet{chinco2019sparse} find that for predicting 1-minute returns, highly transitory firm-specific news is useful.  The authors conclude that news about fundamentals is predictive.
-
-There is an important question about the stability of the GARCH parameters under the presence of a shock.  There are at least two reasons that we do not herein explore parameter instability or methods to adjust for it.  First, the marginal effect of coefficient changes at the shock time would, under the assumptions in this work, be swamped by the random effect.  Second, the estimation of post-shock parameter values would require at least several --- better yet, dozens --- of post-shock data points, whereas this work assumes access to zero post-shock data points.  However, it is possible that similarity-based estimators for the GARCH coefficients could be produced, for example, by adapting the methods of \citet{dendramis2020similarity}.
 
 The model $\mc{M}_1$ is defined by a volatility equation and mean equation, as is any GARCH model.  The choice to model the volatility shock $\omega^{*}_{i}$ as an additive random effect is straightforward.  However, the choice to model the level effect $\epsilon^{*}_{i,t}$ as a temporary rupture in the otherwise i.i.d. sequence of innovations $\epsilon_{i,t}$ stands in need of deeper justification.  One way of arguing for this choice is that, in a discrete time series model, if we assume the arrival of news in the time between $T^{*}$ and $T^{*}+1$, we do not have an easy way to express a conditional distribution of the innovation $\epsilon_{T^{*}+1}$ given the overnight arrival of information.  Using $\epsilon^{*}_{i,t}$ thus breaks this impasse.  This defense also explains why we do not parameterize the level shock at $T^{*}+1$ as a sum of two shocks, $\epsilon_{i,T^{*}+1}$ and $\epsilon^{*}_{i,T^{*}+1}$, which would represent the level shock as generated by two independent sources of stochasticity.  To do so would be inelegant and would also lack motivation as a practical level.  While we want to model the shock at $T^{*}+1$ as large in absolute value, we also want to retain the property of a unitary source of noise.
 
@@ -531,7 +525,7 @@ Hence, a correctly specified $\mc{M}_1$ model will outperform the unadjusted for
 
 \section{Numerical Examples}
 
-In this section, we demonstrate the effectiveness of the proposed method using Monte Carlo simulations.  The first simulation setup will use a $\mc{M}_{1}$ model on the volatility.  \textcolor{red}{The second setup will be a dual shock, i.e. a shock to both the level and volatility.}  In order to investigate the forecasting method presented herein, our most elementary simulation uses $\mc{M}_1$.  We vary only two parameters.  Recall an $\mc{M}_1$ model on the volatility, which is characterized by an exogenous shock to the volatility equation generated by an affine function of the covariates:
+In this section, we demonstrate the effectiveness of the proposed method using Monte Carlo simulations.  The first simulation setup will use a $\mc{M}_{1}$ model on the volatility.  \textcolor{red}{Likely to be deleted: The second setup will be a dual shock, i.e. a shock to both the level and volatility.}  In order to investigate the forecasting method presented herein, all of our simulations will use $\mc{M}_1$ volatility models.  Recall an $\mc{M}_1$ model on the volatility, which is characterized by an exogenous shock to the volatility equation generated by an affine function of the covariates:
 
 \begin{align*}
   \mc{M}_1 \colon \begin{array}{l}
@@ -678,7 +672,11 @@ Should we gather as many donors as possible and pick them quantitatively?  It wo
 
 \citet{abadie2022synthetic} make a similar point about large donor pools.  What matters is that the donors chosen are properly situated in the $p$-dimensional predictor space, so as to allow proper estimation of the weights.
 
+\subsection{Misc}
 
+Not all of the volatility of an asset return may be related to news \citep{boudoukh2019information}.  This explains our inclusion of an idiosyncratic noise term in the shock specification.  However, this point also gestures in the direction of possible unexplained variation in the shocks.  \citet{chinco2019sparse} find that for predicting 1-minute returns, highly transitory firm-specific news is useful.  The authors conclude that news about fundamentals is predictive.
+
+There is an important question about the stability of the GARCH parameters under the presence of a shock.  There are at least two reasons that we do not herein explore parameter instability or methods to adjust for it.  First, the marginal effect of coefficient changes at the shock time would, under the assumptions in this work, be swamped by the random effect.  Second, the estimation of post-shock parameter values would require at least several --- better yet, dozens --- of post-shock data points, whereas this work assumes access to zero post-shock data points.  However, it is possible that similarity-based estimators for the GARCH coefficients could be produced, for example, by adapting the methods of \citet{dendramis2020similarity}.
 \subsection{Future directions}
 \begin{itemize}
   \item High-frequency data
