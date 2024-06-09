@@ -686,13 +686,13 @@ There is an important question about the stability of the GARCH parameters under
 
 \section{Supplement}
 
-\subsection{Leave one out: how we analyzed a multiverse of 50 predictions}
+\subsection{Leave-one-out: How we analyzed a multiverse of 50 predictions}
 
-Given the option of redoing our analysis, with nine covariates and four donors, a natural question from a place of skepticism is, how stable are the results --- how contingent are they on a particular specification?  To answer these questions, we generate all fifty predictions yielded the decision of leave out any one of the donors (or none) and any one of the covariates (or none).  This analysis includes the prediction presented above, which can be viewed as the `null' model, at least in the sense that it provides and baseline for comparison.
+Given the option of redoing our analysis, with nine covariates and four donors, a natural question from a place of skepticism is, how stable are the results --- how contingent are they on a particular specification?  To answer these questions, in \ref{prediction_table} we generate all fifty predictions yielded the decision of leave out any one of the donors (or none) and any one of the covariates (or none).  This analysis includes the prediction presented above, which can be viewed as the null model, at least in the sense that it provides and baseline for comparison.
 
 \begin{table}[ht]
   \centering
-  \captionof{table}{Adjusted Forecasts Ranked by QL Loss} \label{tab:title} 
+  \captionof{table}{Adjusted Forecasts Ranked by QL Loss} \label{tab:prediction_table} 
   \begingroup\fontsize{7pt}{8pt}\selectfont
   \begin{tabular}{ccc}
     
@@ -707,14 +707,14 @@ Given the option of redoing our analysis, with nine covariates and four donors, 
     0.0019 & Log Return of TNX & 2016-06-22 \\ 
     0.0020 & Log Return of TNX & 2008-11-04 \\ 
     0.0027 & Log Return of FVX & 2008-11-04 \\ 
-    0.0029 & Raw VIX & 2008-11-04 \\ 
+    0.0029 & VIX & 2008-11-04 \\ 
     0.0034 & Log Return of TNX & None \\ 
     0.0036 & Log Return of CL.F & 2016-06-22 \\ 
     0.0037 & Log Return of VIX & 2008-11-04 \\ 
     0.0041 & Debt Risk Spread & 2016-06-22 \\ 
     0.0043 & None & 2008-11-04 \\ 
     0.0047 & Log Return of FVX & 2016-06-22 \\ 
-    0.0053 & Raw VIX & 2016-06-22 \\ 
+    0.0053 & VIX & 2016-06-22 \\ 
     0.0062 & Log Return of CL.F & 2008-11-04 \\ 
     \rowcolor{yellow} 0.0070 & None & 2016-06-22 \\ 
     0.0075 & Log Return of FVX & None \\ 
@@ -722,7 +722,7 @@ Given the option of redoing our analysis, with nine covariates and four donors, 
     0.0102 & Log Return of IRX & None \\ 
     0.0103 & Debt Risk Spread & 2008-11-04 \\ 
     0.0113 & Log Return of VIX & None \\ 
-    0.0135 & Raw VIX & None \\ 
+    0.0135 & VIX & None \\ 
     0.0135 & IYG & 2008-11-04 \\ 
     \rowcolor{yellow} 0.0136 & None & None \\ 
     0.0137 & Log Return of CL.F & None \\ 
@@ -736,11 +736,11 @@ Given the option of redoing our analysis, with nine covariates and four donors, 
     0.0816 & Log Return of VIX & 2004-11-02 \\ 
     0.0851 & Debt Risk Spread & 2012-11-06 \\ 
     0.0864 & None & 2012-11-06 \\ 
-    0.0872 & Raw VIX & 2012-11-06 \\ 
+    0.0872 & VIX & 2012-11-06 \\ 
     0.0899 & Log Return of IRX & 2004-11-02 \\ 
     0.0900 & Log Return of CL.F & 2012-11-06 \\ 
     0.0907 & Log Return of IRX & 2012-11-06 \\ 
-    0.0913 & Raw VIX & 2004-11-02 \\ 
+    0.0913 & VIX & 2004-11-02 \\ 
     0.0916 & Log Return of FVX & 2004-11-02 \\ 
     0.0917 & None & 2004-11-02 \\ 
     0.0925 & Debt Risk Spread & 2004-11-02 \\ 
@@ -756,7 +756,7 @@ Given the option of redoing our analysis, with nine covariates and four donors, 
   \end{table}
 
 \subsection{Sensitivity to Covariates Chosen}
-As mentioned in \ref{}
+Any covariate that appears more often closer to the bottom of the \ref{prediction_table} is, $\textit{ceteris paribus}$, a more important covariate for this prediction task, since by dropping it, a larger loss results.  The covariates that thus stand out are the demeaned log return of IYG, the VIX, the Debt Risk Spread (spread between between AAA and BAA corporate debt), and last but not least, the choice of dropping none of the covariates.  The demeaned log return of IYG, of which we use the 30 days preceeding the $T^{*}$, suggests an unusually strong relevance in matching donors to the time series under study.
 
 \subsection{Sensitivity to Donors Chosen}
 
