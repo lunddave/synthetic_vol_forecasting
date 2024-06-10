@@ -443,7 +443,7 @@ Assume
   \item For each $i, \{\omega_{i,t}^{*}\}_{t=0,...,T_i}$ is potentially non-zero at $\{T^{*}_{i}+1,... ,T^{*}_{i}+k\}$, $\omega_{i,T^{*}+1}^{*}\equiv...\equiv\omega_{i,T^{*}+k}^{*}$, and zero otherwise, where the arrival of $T_{i}^{*}$ is governed by a time-invariant distribution on $\{a_{i,t}\}_{t=0,...,T_i-1}$. \label{stationarity_of_omega_i_t}
   \item The conditions in Assumption 0 of \citet{han2014asymptotic} prevail.
 \end{enumerate}
-Then for any $i$, $\hat\omega_{i,t}^{*} \xrightarrow{p} \omega_{i,T^{*}+1}^{*}$.
+Then for any $i$, $\hat\omega_{i,t}^{*} \xrightarrow{p} \omega_{i,T^{*}+1}^{*}$ as $t\rightarrow\infty$.
 \end{prop}
 
 \begin{lem}
@@ -465,7 +465,7 @@ The result follows from the consistency proof of the QMLE in GARCH-X models, as 
       \item All conditions listed in Proposition \ref{omega_consistency}.
       \item There exist weights $\{\pi_{i}\}_{i=2}^{n=1}$ such that $\textbf{v}_{1,T^{*}} = \sum^{n+1}_{i=2}\weight_{i} \textbf{v}_{i,T^{*}}$.
      \end{enumerate}
-  Then $\hat\sigma^{2}_{adjusted}\xrightarrow{p}\sigma^{2}_{1,T^{*}+1}$. 
+  Then $\hat\sigma^{2}_{adjusted}\xrightarrow{p}\sigma^{2}_{1,T^{*}+1}$ as $t\rightarrow\infty$. 
   \end{prop}
 
 
@@ -496,7 +496,7 @@ as $t\rightarrow\infty$ by a simple application of Slutsky's Theorem.
 
 We now evaluate the loss and risk of our method under two scenarios: first, under arbitrary distribution of $\sigma^{2}_{t+1}$, and then second, under the assumption that the data-generating process is correctly specified.
 
-For 1-step-ahead forecast of $\sigma^{2}_{t+1}$, consider the difference 
+For 1-step-ahead forecast of $\sigma^{2}_{t+1}$ where $t=T^{*}$, consider the difference 
 
 \begin{align}
   & QL(\hat\sigma_{t+1, unadjusted}^{2},\sigma^{2}_{t+1})-QL(\hat\sigma^{2}_{t+1, adjusted},\sigma^{2}_{t+1})\\
@@ -507,13 +507,13 @@ For 1-step-ahead forecast of $\sigma^{2}_{t+1}$, consider the difference
 For simplicity, we work with a GARCH(1,1) that experiences a volatility shock at a single time point for which we would like to provide a point forecast.  Then (\ref{QL Loss toy example}) can be expressed as
 
 \begin{align*}
-   &\frac{\sigma^{2}_{t+1}\hat\omega^{*}}{\hat\sigma^{2}_{t+1,adjusted}\hat\sigma^{2}_{t+1,unadjusted}} + \log{\frac{\hat\omega + \hat\alpha a_{t}^{2} + \hat\beta\sigma_{t}^{2}}{\hat\omega + \hat\alpha a_{t}^{2} + \hat\beta\sigma_{t}^{2} + \hat\omega^{*}}}\\
+   &\frac{\sigma^{2}_{t+1}\hat\omega^{*}_{t+1} }{\hat\sigma^{2}_{t+1,adjusted}\hat\sigma^{2}_{t+1,unadjusted}} + \log{\frac{\hat\omega + \hat\alpha a_{t}^{2} + \hat\beta\sigma_{t}^{2}}{\hat\omega + \hat\alpha a_{t}^{2} + \hat\beta\sigma_{t}^{2} + \hat\omega^{*}_{t+1}}}\\
 \end{align*}\label{QL Loss Consistency - GARCH(1,1)}
-It is easily verified that as $\hat\omega^{*} \rightarrow 0^{+}$, the difference in the losses goes to zero.  On the other hand, as $\hat\omega^{*}$ becomes large, the difference in the losses turns negative, with the lesson being that $\hat\omega^{*}$ must be in appropriate proportion to the volatility $\sigma^{2}_{t+1}$ in order for the adjusted forecast to outperform the unadjusted forecast.  This explains why it is so important to avoid using a naive adjustment estimator, $\overline{\omega^{*}}$, the arithmetic mean of the estimated shocks.  We conclude this section with a broader result. 
+It is easily verified that as $\hat\omega^{*}_{t+1} \rightarrow 0^{+}$, the difference in the losses goes to zero.  On the other hand, as $\hat\omega^{*}_{t+1}$ becomes large, the difference in the losses turns negative, with the lesson being that $\hat\omega^{*}_{t+1}$ must be in appropriate proportion to the volatility $\sigma^{2}_{t+1}$ in order for the adjusted forecast to outperform the unadjusted forecast.  This explains why it is so important to avoid using a naive adjustment estimator, $\overline{\omega^{*}}$, the arithmetic mean of the estimated shocks.  We conclude this section with a broader result. 
 
 \begin{prop}\label{asymptotic_consistency}
 Assume the conditions in Propositions $\ref{omega_consistency}$ and $\ref{sigma_consistency}$.  Let $1\leq i\leq n+1$.\\
-  Then $QL(\hat\sigma_{t+1, unadjusted}^{2},\sigma^{2}_{t+1})-QL(\hat\sigma^{2}_{t+1, adjusted},\sigma^{2}_{t+1})\xrightarrow{p} \frac{\omega_{i}^{*}}{\sigma^{2}_{t+1}-\omega_{i}^{*}} + \log{\frac{\sigma_{t+1}^{2}-\omega_{i}^{*}}{\sigma_{t+1}^{2}} } \geq 0. $
+  Then $QL(\hat\sigma_{t+1, unadjusted}^{2},\sigma^{2}_{t+1})-QL(\hat\sigma^{2}_{t+1, adjusted},\sigma^{2}_{t+1})\xrightarrow{p} \frac{\omega_{i,t+1}^{*}}{\sigma^{2}_{t+1}-\omega_{i,t+1}^{*}} + \log{\frac{\sigma_{t+1}^{2}-\omega_{i,t+1}^{*}}{\sigma_{t+1}^{2}} } \geq 0. $ as $t\rightarrow \infty$.
 
 Hence, a correctly specified $\mc{M}_1$ model will outperform the unadjusted forecast asymptotically.
 \end{prop}
@@ -765,7 +765,9 @@ The most glaring result visible in \ref{tab:prediction_table} regarding donor se
 The donors most conducive to good predictions in this task are the 2004 and 2008 US elections.  The estimated fixed effects tell a story of only modest surprise due to these election results: the estimate is nearly zero for 2004, while 2012 is nonzero but small.  Given that the presidential election results of these two did not deliver much surprise, it is possible that the surprise could be due more so to non-presidential races.
 
 \subsubsection{Brexit}
-In the pre-quantitative analysis of donors, there was only one competitor to the setup that was ultimately selected and presented in Section \ref{Real Data Example}, and that competitor donor pool used Brexit.  The inclusion of Brexit is based on the fundamental belief that the conditional shock distribution governing IYG's volatility shocks may be shared among US elections and some political events elsewhere.
+In the pre-quantitative analysis of donors, there was only one competitor to the setup that was ultimately selected and presented in Section \ref{Real Data Example}, and that competitor donor pool used Brexit.  The inclusion of Brexit is based on the fundamental belief that the conditional shock distribution governing IYG's volatility shocks may be shared among US elections and some political events elsewhere, like the Brexit referendum of July 23rd, 2016.  That referendum shared some important qualities with the 2016 US elections, which we have discussed above.
+
+We now turn, however, to why the inclusion of Brexit failed to perform nearly as well our primary specification.  First, note time zone differences between the UK and the US make difficult the analysis of after-hour shocks on US markets.  Additionally, like many election results, that the ``Leave'' side of the referendum would prevail was not revealed at any discrete time, of course, but became more certain as vote tallies across the UK progressed.  These facts pose a challenge for any method that uses daily data.  Of prime concern is whether we should consider $T^{*}$ for Brexit to have occurred after market hours on June 23rd, 2016, Eastern Standard Time, which ignores the fact Brexit was a foregone conclusion much earlier in the day, or alternatively, consider the shock to have occurred after hours on June 22nd, which implies that $T^{*}+1$ is June 23rd, and hence the reaction of IYG to Brexit can be deciphered from late-day trading on that date.  We opt for the latter.
 
 \subsection{Can we combine forecasts to outperform the individual forecasts?}
 
