@@ -767,10 +767,17 @@ The donors most conducive to good predictions in this task are the 2004 and 2008
 \subsubsection{Brexit}
 In the pre-quantitative analysis of donors, there was only one competitor to the setup that was ultimately selected and presented in Section \ref{Real Data Example}, and that competitor donor pool used Brexit.  The inclusion of Brexit is based on the fundamental belief that the conditional shock distribution governing IYG's volatility shocks may be shared among US elections and some political events elsewhere, like the Brexit referendum of July 23rd, 2016.  That referendum shared some important qualities with the 2016 US elections, which we have discussed above.
 
-We now turn, however, to why the inclusion of Brexit failed to perform nearly as well our primary specification.  First, note time zone differences between the UK and the US make difficult the analysis of after-hour shocks on US markets.  Additionally, like many election results, that the ``Leave'' side of the referendum would prevail was not revealed at any discrete time, of course, but became more certain as vote tallies across the UK progressed.  These facts pose a challenge for any method that uses daily data.  Of prime concern is whether we should consider $T^{*}$ for Brexit to have occurred after market hours on June 23rd, 2016, Eastern Standard Time, which ignores the fact Brexit was a foregone conclusion much earlier in the day, or alternatively, consider the shock to have occurred after hours on June 22nd, which implies that $T^{*}+1$ is June 23rd, and hence the reaction of IYG to Brexit can be deciphered from late-day trading on that date.  We opt for the latter.
+We now turn, however, to why the inclusion of Brexit failed to perform nearly as well our primary specification.  First, note time zone differences between the UK and the US make difficult the analysis of after-hour shocks on US markets.  Additionally, like many election results, that the ``Leave'' side of the referendum would prevail was not revealed at any discrete time, of course, but became more certain as vote tallies across the UK progressed.  These facts pose a challenge for any method that uses daily data.  Of prime concern is whether we should consider $T^{*}$ for Brexit to have occurred after market hours on June 23rd, 2016, Eastern Standard Time, which ignores the steady percolation of information and uncertainty that attend election days, or alternatively, consider the shock to have occurred after hours on June 22nd, 2016, which implies that $T^{*}+1$ is June 23rd, 2016, and hence the reaction of IYG to Brexit can be estimated and extracted from late-day trading on that date.  We opt for...
+
+"At 03:45 BST Leave were ahead by over 500,000 votes"
+https://www.bbc.com/news/uk-politics-eu-referendum-36612368
+
+how BBC is constrained
+https://www.bbc.com/news/uk-politics-48124106
 
 \subsection{Can we combine forecasts to outperform the individual forecasts?}
 
+Forecast combination is technique with a vast, sprawling literature that we have referred to above.  While forecast combination can be justified in any number of ways, here we invoke forecast combination as a way to robustify forecasts against misspecification.  We combine in two simply ways, using the mean of all 50 forecasts and the median of all 50 forecasts.  The results are presented in TABLE
 \begin{itemize}
   \item How often does average or median forecast dominate?
 \end{itemize}
