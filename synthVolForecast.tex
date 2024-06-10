@@ -760,20 +760,12 @@ Any covariate that appears more often closer to the bottom of the \ref{tab:predi
 
 \subsection{Sensitivity to Donors Chosen}
 
-The most glaring result visible in \ref{tab:prediction_table} regarding donor selection is the poor performance of the 2008 US Election.  In hindsight, this is unsurprising, given the large estimated fixed effect for November 5th, 2008 as well as the swirl of complex events occurring in financial markets around that time.  It is possible that the GARCH(1,1) used to fit the run-up to that election is underparameterized.  The weight given to the 2008 US election is near-zero, but in our method, unsuitable donors can influence the distance-based weighting by affecting that dispersion of one or more of the $p$ covariates present in the volatility profile.  Recall that for each of the $p$ covariates, we transform the $n+1$-vector of variables to Z-scores.  The lesson here is that more careful pre-quantitative inspection of the donors may be warranted as well as ordinary outlier analysis for the volatility profile.
+The most glaring result visible in \ref{tab:prediction_table} regarding donor selection is the poor performance of the 2008 US Election.  In hindsight, this is unsurprising, given the large estimated fixed effect for November 5th, 2008 as well as the swirl of complex events occurring in financial markets around that time.  It is possible that the GARCH(1,1) used to fit the run-up to that election is underparameterized.  The weight given to the 2008 US election is near-zero, but in our method, unsuitable donors can influence the distance-based weighting by affecting that dispersion of one or more of the $p$ covariates present in the volatility profile.  Recall that for each of the $p$ covariates, we transform the $n+1$-vector of variables to Z-scores.  The lesson here is that more careful pre-quantitative inspection of the donors may be warranted as well as ordinary outlier analysis for the volatility profile.  As an additional note, dropping the 2008 Election vastly improves the performance of the arithmetic mean forecast.  This provides a cautionary tale against using the arithmetic mean estimator for the conditional shock effect.  
 
 The donors most conducive to good predictions in this task are the 2004 and 2008 US elections.  The estimated fixed effects tell a story of only modest surprise due to these election results: the estimate is nearly zero for 2004, while 2012 is nonzero but small.  Given that the presidential election results of these two did not deliver much surprise, it is possible that the surprise could be due more so to non-presidential races.
 
 \subsubsection{Brexit}
-We analyze the real-data example with Brexit.
-
-In the pre-quantitative analysis of donors, there was only one competitor to the setup that was ultimately selected and presented in Section \ref{Real Data Example}. 
-
-We note that dropping the 2008 Election vastly improves the performance of the arithmetic mean forecast.
-
-\subsubsection{Assessing the model fit before predicting}
-
-Note that by inspecting the fit of the distance-based weighting approximation quantitatively, we can gain some degree of foresight into how well the forecast will be.
+In the pre-quantitative analysis of donors, there was only one competitor to the setup that was ultimately selected and presented in Section \ref{Real Data Example}, and that competitor donor pool used Brexit.  The inclusion of Brexit is based on the fundamental belief that the conditional shock distribution governing IYG's volatility shocks may be shared among US elections and some political events elsewhere.
 
 \subsection{Can we combine forecasts to outperform the individual forecasts?}
 
