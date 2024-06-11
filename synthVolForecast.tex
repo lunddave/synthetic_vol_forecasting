@@ -168,7 +168,7 @@ Our procedure is a discretionary procedure for intercept correction that  incorp
 
 Outside of \citet{lin2021minimizing}, we know of no prior work that both introduces a parametric specification for nonzero errors and introduces a procedure for weighting appropriately the nonzero errors of similar shocks occurring outside the time series under study.  Likewise, we are not familiar with any prior work that attempts to account for anticipated nonzero errors using an explicit parametric adjustment, i.e., what we will call a ``correction function''.  
 
-In order to motivate our procedure, we provide several visual illustrations.  In Figure \ref{fig:six_plots}, we provide a panel of volatility series of i.i.d. GARCH processes, corresponding to a setting in which five donors exist.  Next, in Figure \ref{fig:proof_concept}, we demonstrate the usefulness of indicator variables in the estimation of GARCH processes.  Last, in Figure \ref{fig:arith_mean_example_introduction}, we show how the aggregation of estimated excess volatilities from donors in the donor pool works when the correction function is the arithmetic mean.  The arithmetic mean of excess volatilities provides perhaps the most straightforward and intuitive way of aggregating information from similar events.  Taking the average also coincides with the $K$-Nearest-Neighbor estimator, where $K$ is equal to the number of donors in the donor pool. Although using the arithmetic mean is intuitive and enjoys some empirical track record, its grounding in theory is much less impressive \citep{timmermann2006forecast}.  Our method assumes a credible, parsimonious parameterization in which the shock is an affine transformation of several key covariates.  The key intuition behind this shock parameterization is that as the strength of the linear signal increases relative to the idiosyncratic error, the GARCH estimation of these effects increases in accuracy.  From this, it follows that the aggregated shock estimate increases in accuracy.
+In order to motivate our procedure, we provide visual illustrations.  In Figure \ref{fig:six_plots}, we provide a panel of volatility series of i.i.d. GARCH processes, corresponding to a setting in which five donors exist.  Next, in Figure \ref{fig:arith_mean_example_introduction}, we show how the aggregation of estimated excess volatilities from donors in the donor pool works when the correction function is the arithmetic mean.  The arithmetic mean of excess volatilities provides perhaps the most straightforward and intuitive way of aggregating information from similar events.  Taking the average also coincides with the $K$-Nearest-Neighbor estimator, where $K$ is equal to the number of donors in the donor pool. Although using the arithmetic mean is intuitive and enjoys some empirical track record, its grounding in theory is much less impressive \citep{timmermann2006forecast}.  Our method assumes a credible, parsimonious parameterization in which the shock is an affine transformation of several key covariates.  The key intuition behind this shock parameterization is that as the strength of the linear signal increases relative to the idiosyncratic error, the GARCH estimation of these effects increases in accuracy.  From this, it follows that the aggregated shock estimate increases in accuracy.
 
 \begin{figure}[h!]
   \begin{center}
@@ -177,14 +177,6 @@ In order to motivate our procedure, we provide several visual illustrations.  In
     \label{fig:six_plots}
     \end{center}
   \end{figure}
-
-  \begin{figure}[h!]
-    \begin{center}
-      \includegraphics[scale=.4]{simulation_plots/proof_concept.png}
-      \caption{A simple illustration of the benefits of knowing a priori the time of large shocks to the volatility process.} 
-      \label{fig:proof_concept}
-      \end{center}
-    \end{figure}
 
   \begin{figure}[h!]
     \begin{center}
@@ -264,7 +256,7 @@ and $\varepsilon_{i,t}$ is idiosyncratic noise, uncorrelated across time and don
     \subsection{Volatility Profile of a Time Series}
     \label{Volatility Shock Profile of a Time Series}
     
-    In this section, we make a novel contribution to prediction via distance-based weighting by constructing a profile of a time series' volatility, the analogue of a covariate matrix in a synthetic control framework.  The volatility profile for a given GARCH-X process is nothing more than a vector of observable covariates that parameterize a shock.  A collection of $n$ such vectors yields a matrix of $n$ columns.  What distinguishes a volatility profile, principally, is that the time-varying parameters that correspond to the volatility profile are non-zero at only the shock times, whereas no such restriction exists in Equation ($\ref{abadie_factor_model}$).  
+    In this section, we make a novel contribution to prediction via distance-based weighting by constructing a profile of a time series' volatility, the analogue of a covariate matrix in a synthetic control framework.  The volatility profile for a given GARCH-X process is nothing more than a vector of observable covariates that parameterize a shock.  A collection of $n$ such vectors yields a matrix of $n$ columns.  What distinguishes a volatility profile, principally, is that the time-varying parameters that correspond to the volatility profile are non-zero at only the shock times, whereas no such restriction exists in Equation $\eqref{abadie_factor_model}$.  
     
     Suppose that for each of the $n$ donors, we have available $p$ distinct covariates in the functional form of the shock.  The volatility profile could take the form of the $p \times n$ matrix 
 
@@ -421,7 +413,7 @@ We claim
 & = \omega_{i} + \alpha\sigma_{i,T^{*}+r}^{2} + \beta\sigma^{2}_{i,T^{*}+r} \label{eq3}\\
 & = \omega_{i} + \sigma^{2}_{i,T^{*}+r}(\alpha + \beta) \label{eq4} \text{ .}
 \end{align}
-The volatility equation of a GARCH(1,1) dictates that for any $r$, the one-step-ahead volatility is given by the expression inside the expectation in (\ref{eq1}).  By the mean-model assumption of a GARCH(1,1), we have $a_{i,t} = \sigma_{i,t}\epsilon_{i,t}$, and hence by substituting $\sigma_{i,t}\epsilon_{i,t}$ for $a_{i,t}$, we arrive at equation (\ref{eq2}) above.  Using the unit-variance assumption regarding $\epsilon_{T^{*}+r}$, we can compute explicitly the expectation, yielding (\ref{eq3}).  Finally, by rearranging terms, we arrive at equation (\ref{eq4}).
+The volatility equation of a GARCH(1,1) dictates that for any $r$, the one-step-ahead volatility is given by the expression inside the expectation in \eqref{eq1}.  By the mean-model assumption of a GARCH(1,1), we have $a_{i,t} = \sigma_{i,t}\epsilon_{i,t}$, and hence by substituting $\sigma_{i,t}\epsilon_{i,t}$ for $a_{i,t}$, we arrive at equation \eqref{eq2} above.  Using the unit-variance assumption regarding $\epsilon_{T^{*}+r}$, we can compute explicitly the expectation, yielding (\ref{eq3}).  Finally, by rearranging terms, we arrive at equation \eqref{eq4}.
 \end{proof-of-proposition}
 In other words, for a GARCH(1,1), once two time points removed from the longest shock length, the volatility shock and level shock can be subsumed into one.  However, prior to being two time points removed, there is no such guarantee.  For example, one can take $r = 1$ and level shock of length at least 1 to see that 
 
@@ -439,7 +431,7 @@ where $(\alpha(\mu^{2}_{\epsilon^{*}} + \sigma^{2}_{\epsilon^{*}}) + \beta)$ may
 \begin{prop}\label{omega_consistency}
 Assume
 \begin{enumerate}
-  \item For each $i$, $\{a_{i,t}\}_{t=0,...,T_i}$ obeys a GARCH-X($m,s$), as laid out in equation $(\ref{GARCH-X})$, with volatility shocks found in $\mc{M}_{1}$, where $T_i$ is the length of the $i$th series.
+  \item For each $i$, $\{a_{i,t}\}_{t=0,...,T_i}$ obeys a GARCH-X($m,s$), as laid out in equation $\eqref{GARCH-X}$, with volatility shocks found in $\mc{M}_{1}$, where $T_i$ is the length of the $i$th series.
   \item For each $i, \{\omega_{i,t}^{*}\}_{t=0,...,T_i}$ is potentially non-zero at $\{T^{*}_{i}+1,... ,T^{*}_{i}+k\}$, $\omega_{i,T^{*}+1}^{*}\equiv...\equiv\omega_{i,T^{*}+k}^{*}$, and zero otherwise, where the arrival of $T_{i}^{*}$ is governed by a time-invariant distribution on $\{a_{i,t}\}_{t=0,...,T_i-1}$. \label{stationarity_of_omega_i_t}
   \item The conditions in Assumption 0 of \citet{han2014asymptotic} prevail.
 \end{enumerate}
@@ -749,6 +741,7 @@ Given the option of redoing our analysis, with nine covariates and four donors, 
     0.1142 & Log Return of FVX & 2012-11-06 \\ 
     0.2143 & IYG & 2004-11-02 \\ 
     2.3529 & IYG & 2012-11-06 \\ 
+    \rowcolor{red} 2.3529 & All & All \\
      \hline
   \end{tabular}
   

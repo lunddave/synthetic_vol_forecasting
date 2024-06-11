@@ -1198,11 +1198,6 @@ INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmmib
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmmib5.tfm
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy9.tfm
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy5.tfm
-INPUT ./simulation_plots/proof_concept.png
-INPUT ./simulation_plots/proof_concept.png
-INPUT simulation_plots/proof_concept.png
-INPUT ./simulation_plots/proof_concept.png
-INPUT ./simulation_plots/proof_concept.png
 INPUT ./simulation_plots/motivating_piece_arithmetic_mean.png
 INPUT ./simulation_plots/motivating_piece_arithmetic_mean.png
 INPUT simulation_plots/motivating_piece_arithmetic_mean.png
