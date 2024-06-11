@@ -848,7 +848,7 @@ SynthVolForecast <- function(Y_series_list
                              ,plots = TRUE
                              ,shock_time_labels = NULL
                              ,ground_truth_vec = NULL
-                             ,Y_lookback_indices_input = list(seq(1,3,1))
+                             ,Y_lookback_indices_input = list(seq(1,30,1))
                              ,X_lookback_indices_input = rep(list(c(1)),length(dbw_indices))
 ){
   ### BEGIN Doc string
