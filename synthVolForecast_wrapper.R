@@ -27,7 +27,7 @@ simulate_and_analyze <- function(n = 5,
                                  vol_model = c('M1','M21','M22','none')[2],
 
                                  sigma_GARCH_innov = 1, # the sd that goes into rnorm
-                                 mu_x = 1,
+                                 mu_x = 2,
                                  sigma_x = .1, # the sd that goes into the covariates
 
                                  min_shock_time = 0,
@@ -44,7 +44,7 @@ simulate_and_analyze <- function(n = 5,
                                  mu_eps_star_GED_alpha = sqrt(2), # note: beta = 2, alpha = sqrt(2) is N(0,1)
                                  mu_eps_star_GED_beta = 2, # note: beta = 2, alpha = sqrt(2) is N(0,1))
 
-                                 M21_M22_level_mu_delta = .05,
+                                 M21_M22_level_mu_delta = .5,
                                  M21_M22_level_sd_delta = .1,
 
                                  mu_omega_star = .09,
