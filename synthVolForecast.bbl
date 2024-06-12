@@ -1,4 +1,4 @@
-\begin{thebibliography}{50}
+\begin{thebibliography}{52}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -205,6 +205,11 @@ Christina~D Romer and David~H Romer.
 \newblock Does monetary policy matter? a new test in the spirit of friedman and schwartz.
 \newblock \emph{NBER macroeconomics annual}, 4:\penalty0 121--170, 1989.
 
+\bibitem[Ryan et~al.(2015)Ryan, Ulrich, Thielen, Teetor, Bronder, and Ulrich]{ryan2015package}
+Jeffrey~A Ryan, Joshua~M Ulrich, Wouter Thielen, Paul Teetor, Steve Bronder, and Maintainer Joshua~M Ulrich.
+\newblock Package ‘quantmod’.
+\newblock 2015.
+
 \bibitem[Sharma et~al.(2016)]{sharma2016forecasting}
 Prateek Sharma et~al.
 \newblock Forecasting stock market volatility using realized garch model: International evidence.
@@ -235,6 +240,11 @@ Allan Timmermann.
 Ruey~S Tsay.
 \newblock \emph{Analysis of financial time series}, volume 543.
 \newblock John wiley \& sons, 2005.
+
+\bibitem[Wachowicz(2020)]{wachowicz2020wharton}
+Erin Wachowicz.
+\newblock Wharton research data services (wrds).
+\newblock \emph{Journal of Business \& Finance Librarianship}, 25\penalty0 (3-4):\penalty0 184--187, 2020.
 
 \bibitem[Wang et~al.(2020)Wang, Ma, and Liu]{wang2020forecasting}
 Lu~Wang, Feng Ma, and Guoshan Liu.

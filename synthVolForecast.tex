@@ -38,15 +38,15 @@
 \geometry{margin=0.8in}
 
 % function definition
-\newcommand{\V}{\textbf{V}}
 \newcommand{\weight}{\pi}
 \newcommand{\ret}{\textbf{r}}
 \newcommand{\y}{\textbf{y}}
 \newcommand{\w}{\textbf{w}}
-\newcommand{\x}{\textbf{x}}
+\newcommand{\x}{\textbf{v}}
 \newcommand{\dbf}{\textbf{d}}
 \newcommand{\X}{\textbf{X}}
 \newcommand{\Y}{\textbf{Y}}
+\newcommand{\V}{\textbf{V}}
 %\newcommand{\L}{\textbf{L}}
 \newcommand{\Hist}{\mathcal{H}}
 \newcommand{\Prob}{\mathbb{P}}
@@ -186,8 +186,6 @@ In order to motivate our procedure, we provide visual illustrations.  In Figure 
       \end{center}
     \end{figure}
 
-\subsection{Notation}
-
 \section{Setting}
 \label{section2}
 
@@ -206,7 +204,7 @@ To that end, let $a_{t} = r_{t} - \mu_{t}$, where $\mu_{t}$ is the mean of the l
 Assuming further that $\sigma^{2}_{t}$ depends on a vector of exogenous covariates $\x_{t}$, we have a  GARCH-X$(m,s)$.  The volatility equation then becomes 
 
 \begin{align}
-&\sigma_{t}^{2} = \omega+ \sum^{m}_{k=1}\alpha_{k}a^{2}_{t-k} + \sum_{j=1}^{s}\beta_{j}\sigma_{t-j}^{2} + \gamma^{T}\x_{t} \text{ .}\label{GARCH-X}
+\sigma_{t}^{2} = \omega+ \sum^{m}_{k=1}\alpha_{k}a^{2}_{t-k} + \sum_{j=1}^{s}\beta_{j}\sigma_{t-j}^{2} + \gamma^{T}\x_{t} \text{ .}\label{GARCH-X}
 \end{align}
 
 % https://latex-tutorial.com/matrices-in-latex/
@@ -214,7 +212,7 @@ Assuming further that $\sigma^{2}_{t}$ depends on a vector of exogenous covariat
 
 \subsection{Model setup}
 \label{modelsetup}
-We will suppose that a researcher has multivariate time series data $\y_{i,t} = (r_{i,t}$, $\x_{i,t}$), $t = 1,$ $\ldots,  T_i$, $i = 1, \ldots, n+1$, and  $\textbf{x}_{i,t}$ is a vector of covariates such that $\x_{i,t}|\mathcal{F}_{i,t-1}$ is deterministic.  Suppose that the analyst is interested in forecasting the volatility of $r_{1,t}$, the first time series in the collection, which we will denote the time series under study.  We require that each time series $\y_{i,t}$ is subject to a news event following $T^*_i \leq T_{i} + 1$ and before witnessing $T^*_i+1$.  We are implicitly leveraging the fact that financial assets are heavily traded during market hours, yet only thinly traded (if traded at all) outside market hours.  In contrast, the arrival of market-moving news does not obey any such restrictions.  In light of the foregoing, we can denote our collection of GARCH volatility equations of interest using the following notation
+We will suppose that a researcher has multivariate time series data $\y_{i,t} = (r_{i,t}$, $\x_{i,t}$), $t = 1,$ $\ldots,  T_i$, $i = 1, \ldots, n+1$, and  $\x_{i,t}$ is a vector of covariates such that $\x_{i,t}|\mathcal{F}_{i,t-1}$ is deterministic.  Suppose that the analyst is interested in forecasting the volatility of $r_{1,t}$, the first time series in the collection, which we will denote the time series under study.  We require that each time series $\y_{i,t}$ is subject to a news event following $T^*_i \leq T_{i} + 1$ and before witnessing $T^*_i+1$.  We are implicitly leveraging the fact that financial assets are heavily traded during market hours, yet only thinly traded (if traded at all) outside market hours.  In contrast, the arrival of market-moving news does not obey any such restrictions.  In light of the foregoing, we can denote our collection of GARCH volatility equations of interest using the following notation
 
 \begin{align*}
 &\sigma_{i,t}^{2} = \omega_{i} + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \text{ }. \\
@@ -224,7 +222,7 @@ Let $I(\cdot)$ be an indicator function.  Let $T_i$ denote the time length of th
   \mc{M}_1 \colon \begin{array}{l}
      \sigma^{2}_{i,t} = \omega_{i} + \omega^{*}_{i,t} + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \text{ }\\[.2cm]
      a_{i,t} = \sigma_{i,t}((1-D^{return}_{i,t})\epsilon_{i,t} + D^{return}_{i,t}\epsilon^{*}_{i})\\[.2cm]
-    \omega_{i,t}^{*} = D^{vol}_{i,t}[\mu_{\omega^{*}}+\delta'\mbf{x}_{i, t}+ u_{i,t}],
+    \omega_{i,t}^{*} = D^{vol}_{i,t}[\mu_{\omega^{*}}+\delta'\x_{i,t}+ u_{i,t}],
   \end{array}
   \end{align*}
 with error structure
@@ -237,7 +235,8 @@ with error structure
     \end{align*}
 where $D^{return}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + L_{i, return}\})$ and $D^{vol}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + L_{i, vol}\})$ and $L_{i,return},L_{i,vol}$ denote the lengths of the log return and volatility shocks, respectively.  Let $\mc{M}_{0}$ denote the subclass of $\mc{M}_{1}$ models such that $\delta \equiv 0$.  Note that $\mc{M}_{0}$ assumes that $\omega^{*}_i$ have no dependence on the covariates and are i.i.d. with $\E[ \omega^{*}_i]=\mu_{\omega^{*}}$.  
 
-Consider the connection between the model above and the factor model from \citet{abadie2010synthetic}, where an untreated unit is governed by:
+\textcolor{red}{
+Remove: Consider the connection between the model above and the factor model from \citet{abadie2010synthetic}, where an untreated unit is governed by:}
 
 \begin{align}
 Y^{N}_{i,t} = \delta_{t} + \boldsymbol\theta_{t}\textbf{Z}_{i}+\boldsymbol\lambda_{t}\boldsymbol\mu_{i}+\varepsilon_{i,t} \text{ ,} \label{abadie_factor_model}
@@ -252,6 +251,7 @@ which happens to nest the GARCH model's volatilty equation (putting aside that $
 \boldsymbol \mu_{i} & \sim \boldsymbol \sigma_{i,t-j}^{2}, \text{a vector of latent quantities specific to each donor}   \\
 \end{align*}
 and $\varepsilon_{i,t}$ is idiosyncratic noise, uncorrelated across time and donors.
+
 
     \subsection{Volatility Profile of a Time Series}
     \label{Volatility Shock Profile of a Time Series}
@@ -622,6 +622,7 @@ For all of these reasons and more, the aftermath of the 2016 presidential electi
     \item \textbf{Donor pool construction} Synthetic Control, as a tool of causal inference, often goes about weighting control units by first identifying a natural set of donors or standard donors such as the untreated units within a set of subnational units like US states or Spanish provinces \citep{abadie2003economic, abadie2010synthetic}.  While such a procedure does not necessarily preclude considered judgments (e.g. should Canadian provinces be used as donors for a treated US state?), as a tool of small-$n$ prediction, distanced-based weighting may favor somewhat different considerations in constructing a donor pool.  For our purposes, we choose the three most recent US presidential elections prior to the 2016 election.  The three US presidential elections are the only presidential elections since the advent of the ETF IYG.  We exclude the midterm congressional elections in the US (i.e. those held in even years not divisible by four), which generate far lower voter turnout and feature no national races.
 
     \item \textbf{Choice of estimator for volatility} We use the sum of squared 5-minute log returns of IYG on November 9th, 2016, otherwise known as the Realized Volatility estimator of volatility \citep{andersen2008realized}, as our proxy.  We exclude the first five minutes of the trading day, resulting in a sum of 77 squared five-minute returns generated between 9:35am and 4pm.
+    \item \textbf{Data Sources} All daily market data is provided via the YahooFinance API available in the quantmod package in R \citep{ryan2015package}.  The realized volatility is computed using high-frequency quote data available from Wharton Research Data Services (WRDS) \citep{wachowicz2020wharton}.  The spread between is AAA and BAA yields is provided by Federal Reserve Economic Data (FRED) and accessed via the quantmod package.
 \end{enumerate} 
 
 \begin{figure}[H]
@@ -756,6 +757,8 @@ Any covariate that appears more often closer to the bottom of the \ref{tab:predi
 The most glaring result visible in \ref{tab:prediction_table} regarding donor selection is the poor performance of the 2008 US Election.  In hindsight, this is unsurprising, given the large estimated fixed effect for November 5th, 2008 as well as the swirl of complex events occurring in financial markets around that time.  It is possible that the GARCH(1,1) used to fit the run-up to that election is underparameterized.  The weight given to the 2008 US election is near-zero, but in our method, unsuitable donors can influence the distance-based weighting by affecting that dispersion of one or more of the $p$ covariates present in the volatility profile.  Recall that for each of the $p$ covariates, we transform the $n+1$-vector of variables to Z-scores.  The lesson here is that more careful pre-quantitative inspection of the donors may be warranted as well as ordinary outlier analysis for the volatility profile.  As an additional note, dropping the 2008 Election vastly improves the performance of the arithmetic mean forecast.  This provides a cautionary tale against using the arithmetic mean estimator for the conditional shock effect.  
 
 The donors most conducive to good predictions in this task are the 2004 and 2008 US elections.  The estimated fixed effects tell a story of only modest surprise due to these election results: the estimate is nearly zero for 2004, while 2012 is nonzero but small.  Given that the presidential election results of these two did not deliver much surprise, it is possible that the surprise could be due more so to non-presidential races.
+
+We discuss one last remarkable phenomenon.  The prediction that dropped the preceding 30 days of demeaned log returns of IYG as well as the 2012 Election yielded the same QL Loss as the unadjusted forecast.  By inspecting the donor weight and donor fixed effect estimates, we can see that nearly zero adjustment was made because the 2004 Election is given nearly all the weight.
 
 \subsubsection{Brexit}
 In the pre-quantitative analysis of donors, there was only one competitor to the setup that was ultimately selected and presented in Section \ref{Real Data Example}, and that competitor donor pool used Brexit.  The inclusion of Brexit is based on the fundamental belief that the conditional shock distribution governing IYG's volatility shocks may be shared among US elections and some political events elsewhere, like the Brexit referendum of July 23rd, 2016.  That referendum shared some important qualities with the 2016 US elections, which we have discussed above.
