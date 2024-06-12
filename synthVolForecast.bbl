@@ -1,4 +1,4 @@
-\begin{thebibliography}{52}
+\begin{thebibliography}{53}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -9,11 +9,6 @@
 Alberto Abadie and Javier Gardeazabal.
 \newblock The economic costs of conflict: A case study of the basque country.
 \newblock \emph{American Economic Review}, 93\penalty0 (1):\penalty0 113--132, 2003.
-
-\bibitem[Abadie and L’hour(2021)]{abadie2021penalized}
-Alberto Abadie and J{\'e}r{\'e}my L’hour.
-\newblock A penalized synthetic control estimator for disaggregated data.
-\newblock \emph{Journal of the American Statistical Association}, 116\penalty0 (536):\penalty0 1817--1834, 2021.
 
 \bibitem[Abadie and Vives-i Bastida(2022)]{abadie2022synthetic}
 Alberto Abadie and Jaume Vives-i Bastida.
@@ -204,6 +199,16 @@ Robert~F Phillips.
 Christina~D Romer and David~H Romer.
 \newblock Does monetary policy matter? a new test in the spirit of friedman and schwartz.
 \newblock \emph{NBER macroeconomics annual}, 4:\penalty0 121--170, 1989.
+
+\bibitem[Rossi(2013)]{rossi2013advances}
+Barbara Rossi.
+\newblock Advances in forecasting under instability.
+\newblock In \emph{Handbook of economic forecasting}, volume~2, pages 1203--1324. Elsevier, 2013.
+
+\bibitem[Rossi(2021)]{rossi2021forecasting}
+Barbara Rossi.
+\newblock Forecasting in the presence of instabilities: How we know whether models predict well and how to improve them.
+\newblock \emph{Journal of Economic Literature}, 59\penalty0 (4):\penalty0 1135--1190, 2021.
 
 \bibitem[Ryan et~al.(2015)Ryan, Ulrich, Thielen, Teetor, Bronder, and Ulrich]{ryan2015package}
 Jeffrey~A Ryan, Joshua~M Ulrich, Wouter Thielen, Paul Teetor, Steve Bronder, and Maintainer Joshua~M Ulrich.

@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex unifying_forecast_adjustment"] 1717623677 "unifying_forecast_adjustment.aux" "unifying_forecast_adjustment.bbl" "unifying_forecast_adjustment" 1717623678 0
-  "./synthVolForecast.bib" 1717298744 18575 361a71f0edefeecec7633cfa7029dd41 ""
+["bibtex unifying_forecast_adjustment"] 1718164910 "unifying_forecast_adjustment.aux" "unifying_forecast_adjustment.bbl" "unifying_forecast_adjustment" 1718164910 0
+  "./synthVolForecast.bib" 1718164910 19443 6d5e7ae6fde2baaf85471f8033e37c8f ""
   "/usr/local/texlive/2023/texmf-dist/bibtex/bst/natbib/plainnat.bst" 1233624470 26816 ffe5423d2019860bad9f54bc402fac15 ""
   "unifying_forecast_adjustment.aux" 1717623678 2023 fc97afc3cb7126c01f4a561cd642407a "pdflatex"
   (generated)
   "unifying_forecast_adjustment.bbl"
   "unifying_forecast_adjustment.blg"
   (rewritten before read)
-["pdflatex"] 1717623677 "/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/unifying_forecast_adjustment.tex" "unifying_forecast_adjustment.pdf" "unifying_forecast_adjustment" 1717623678 0
+["pdflatex"] 1717623677 "/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/unifying_forecast_adjustment.tex" "unifying_forecast_adjustment.pdf" "unifying_forecast_adjustment" 1718164910 0
   "/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/unifying_forecast_adjustment.tex" 1717623675 6399 fbb460f58c8819dce8e35dd3276f81cb ""
   "/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -220,7 +220,7 @@
   "/usr/local/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1705898712 7883459 cb6809e0afdf7777ef8c5f2f25f8f275 ""
   "/usr/local/texlive/2023/texmf.cnf" 1678822455 577 1b2b1af17af2508fb20dd85783af4050 ""
   "unifying_forecast_adjustment.aux" 1717623678 2023 fc97afc3cb7126c01f4a561cd642407a "pdflatex"
-  "unifying_forecast_adjustment.bbl" 1717623677 700 1f6be1650f67b7137c4476115a5452c0 "bibtex unifying_forecast_adjustment"
+  "unifying_forecast_adjustment.bbl" 1718164910 700 1f6be1650f67b7137c4476115a5452c0 "bibtex unifying_forecast_adjustment"
   "unifying_forecast_adjustment.out" 1717623678 1389 ac19a3eab8ac78b524b02041dacb974d "pdflatex"
   "unifying_forecast_adjustment.tex" 1717623675 6399 fbb460f58c8819dce8e35dd3276f81cb ""
   (generated)
