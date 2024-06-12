@@ -1,5 +1,7 @@
 \documentclass[11pt,3p,review,authoryear]{elsarticle}
 
+%\documentclass{document}
+
 % use packages
 % \usepackage{ecrc} %required for elsarticle https://www.elsevier.com/researcher/author/policies-and-guidelines/latex-instructions
 \usepackage[utf8]{inputenc}
@@ -173,7 +175,7 @@ In order to motivate our procedure, we provide visual illustrations.  In \hyperr
 \begin{figure}[h!]
   \begin{center}
     \includegraphics[scale=.4]{simulation_plots/vol_series_six_plots.png}
-    \caption{Volatility series of six i.i.d. GARCH processes, each of which experiences a volatility shock, indicated with a red vertical line, at a uniformly distributed point in the set $\{756,...,2520\}$ trading days, corresponding to between 3 and 10 years of daily trading data.}
+    \caption{Volatility series of six i.i.d. GARCH processes, each of which experiences a volatility shock, indicated with a red vertical line, at a uniformly distributed point in the set $\{756,...,2520\}$ of trading days, corresponding to between 3 and 10 years of daily trading data.}
     \label{fig:six_plots}
     \end{center}
   \end{figure}
@@ -181,7 +183,7 @@ In order to motivate our procedure, we provide visual illustrations.  In \hyperr
   \begin{figure}[h!]
     \begin{center}
       \includegraphics[scale=.4]{simulation_plots/motivating_piece_arithmetic_mean.png}
-      \caption{The time series experiences a volatility shock at a uniformly distributed point in the interval [756, 2520] trading days, corresponding to trading years on the interval [3,10].  We have truncated the series after $T^{*}+1$.  The GARCH prediction fails even to approach the volatility spike at $T^{*}+1$, as do some adjusted predictions.  In contrast, the GARCH forecast adjusted by $\overline{\hat\omega^{*}}$, the arithmetic mean of the estimated shocks, recovers the shock in the time series under study.} 
+      \caption{The time series experiences a volatility shock at a uniformly distributed point in the set $\{756,...,2520\}$ of trading days, corresponding to between 3 and 10 years of daily trading data..  We have truncated the series after $T^{*}+1$.  The GARCH prediction fails even to approach the volatility spike at $T^{*}+1$, as do some adjusted predictions.  In contrast, the GARCH forecast adjusted by $\overline{\hat\omega^{*}}$, the arithmetic mean of the estimated shocks, recovers the shock in the time series under study.} 
       \label{fig:arith_mean_example_introduction}
       \end{center}
     \end{figure}
@@ -643,15 +645,17 @@ Naturally, one might ask how sensitive this prediction is to at least two kinds 
 
 This present work applies and innovates techniques in similarity-based forecasting and information aggregation in order to provide better GARCH forecasts under news shocks.  It extends \citet{lin2021minimizing} principally by substituting the GARCH model for an AR(1), i.e. by modeling both the mean and volatility of a univariate time series.  An interesting connection insight related to \citet{lin2021minimizing} is that the GARCH model, under weak assumptions, can be represented as an ARMA on the squared residuals $a^{2}_{t}$.  Hence, a shock $\omega^{*}_{i,t}$ to the volatility at time $t$ is an identical shock to $a^{2}_{t}$. However, this use-case becomes less attractive in situations where the sign of the time series under study following the shock is uncertain.  Insofar as this work has made advances that accommodate heteroskedastic time series, the benefits may redound most amply to applications like Value-At-Risk (VaR) and Expected Shortfall, where $\sigma^{2}_{t}$ is an input.
 
-This work as well as \citet{lin2021minimizing} itself can be viewed as a generalization of \cite{phillips1996forecasting} where the rare event probability $\lambda$ is assumed to be 1 and the error associated with the rare event is estimated using external series.  Comparison with \citet{phillips1996forecasting} is insightful.  In our setting, if the shock to the time series under study were known and yet so underdescribed, i.e. so lacking in qualitative context, then \cite{phillips1996forecasting} would be recommended.  However, in our setting the rare event is not only rare but also contains specific qualitative features that are best accounted for via data aggregation.
+This work as well as \citet{lin2021minimizing} itself can be viewed as a generalization of \cite{phillips1996forecasting} where the rare event probability $\lambda$ is assumed to be 1 and the error associated with the rare event is estimated using external series.  In our setting, if the shock to the time series under study were known and yet so underdescribed, i.e. so lacking in qualitative context, then \cite{phillips1996forecasting} would be recommended.  However, in our setting the rare event is not only rare but also contains specific qualitative features that are best accounted for via data aggregation.
 
 The method under development does not strictly require knowledge of the length of the shocks in the donor pool, but correctly sizing up those shock lengths is helpful to proper estimation of the shocks in the donor pool.  An important question remains: even if the donor pool shock lengths are assumed to be known, how do we advise the operator to forecast the time series under study?  In other words, for how long is the adjustment estimator $\omega^{*}$ valid, applicable, and reliable?  One idea suggested by the paper is obvious: why not aggregate the shock lengths from the donors as well and round that quantity or take the floor or ceiling of any non-integer value?  This is worth pursuing.  However, it may be that estimating the persistence of a volatility shock induced by news is an endeavor deserving of its own study, where aggregation methods might naturally arise as helpful tools.
+
+There is also a broader discusion to be had regarding the degree of model heterogeneity permitted in fitting the donors' series.  
 
 \subsection{Comparison with KNN}
 
 \cite{clements1996intercept} (cited in \cite{guerron2017macroeconomic})  note intercept corrections find their theoretical basis in the occurrence of structural breaks, whereas Nearest-Neighbor methods, being nonparametric, are theoretically more adept at accounting for nonlinearity.  The present work examines news shocks, which are more closely related to structural breaks.  Hence, neither nearest neighbor methods nor nonlinearity figure heavily in our work.  However, there are deeper observations to be made about KNN as it relates to our method.
 
-The method presented here is unlike traditional KNN in that we are not trying to learn a function, first and foremost.  We are trying to estimate a parameter.KNN runs into the problem: the curse of dimensionality.  In contrast, large $p$ is not a problem in synthetic methods, because the thing estimated is the vector $w$ with $n-1$ degrees of freedom.  For KNN, a high-dimensional space, i.e. large $p$, corresponding to many covariates, is a difficult space in which to work with distances \citep{hastie2009elements}.  In contrast, large $p$ is not a problem in and of itself for synthetic control --- in fact, asymptotic results exist for $p$ \citep{abadie2010synthetic}.  
+The method presented here is unlike traditional KNN in that we are not trying to learn a function, first and foremost.  We are trying to estimate a parameter.  KNN runs into the problem: the curse of dimensionality.  In contrast, large $p$ is not a problem in synthetic methods, because the thing estimated is the vector $w$ with $n-1$ degrees of freedom.  For KNN, a high-dimensional space, i.e. large $p$, corresponding to many covariates, is a difficult space in which to work with distances \citep{hastie2009elements}.  In contrast, large $p$ is not a problem in and of itself for synthetic control --- in fact, asymptotic results exist for $p$ \citep{abadie2010synthetic}.  
 
 As is pointed out in \citet{hastie2009elements}, KNN regression performs well when $K$ is chosen small enough that one can simply average the points $\{y_{i}\}_{i=1}^{N_{train}}$in the neighborhood around each element in $\{y_{i}\}_{i=1}^{N_{test}}$ to get good predictions.  As we have noted above, the arithmetic mean-based estimator of $\omega^{*}$, denoted $\overline{\omega^{*}}$, corresponds to KNN when $K = n$, the number of donors.  Fundamentally, the idea that $n$ is small enough and the donors are homogeneous enough that one could simply average the $\hat\omega_{i}$ is at odds with the assumed variation in the shock effects.
 
@@ -661,21 +665,15 @@ In KNN regression, the hyperparameter K must be learned.  In similarity-based pa
 
 Should we gather as many donors as possible and pick them quantitatively?  It would be counter to the method proposed to assemble a vast number of donors, lacking careful scrutiny of the qualitative fit, and let the optimization simply pick the donors, via weighting.  What makes a donor good is not merely its quantitative fit but its qualitative fit as well.  \citet{abadie2022synthetic} make a similar point about large donor pools.  What matters is that the donors chosen are properly situated in the $p$-dimensional predictor space, so as to allow proper estimation of the weights.  For more on this question, see the Supplement, where the donors and the volatility profile are treated with a leave-one-out analysis.
 
-\subsection{The Nature of Volatility Shocks}
+\subsection{The Nature and Estimation of Volatility Shocks}
 
 Not all of the volatility of an asset return may be related to news \citep{boudoukh2019information}.  This explains our inclusion of an idiosyncratic noise term in the shock specification.  However, this point also gestures in the direction of possible unexplained variation in the shocks.  \citet{chinco2019sparse} find that for predicting 1-minute returns, highly transitory firm-specific news is useful.  The authors conclude that news about fundamentals is predictive.
 
-It would be a pyrrhic victory for our method if the volatility profile indeed underlies real-world shocks but the volatility profile is radically high-dimensional or overwhelmed by the noise term.
+It would be a pyrrhic victory for our method if the volatility profile indeed underlies real-world shocks but the volatility profile is radically high-dimensional or the signal in the shocks is overwhelmed by the noise term.  Even unbiased predictions can be unhelpful if they are high in variability, and in Section \ref{forecastcomb}, we show how the benefits of forecast combination.  Another possibility is high-frequency data and the use of linear models like HAR \citep{corsi2012har}.  HAR would not only increase the sample size available for discovering the autoregressive structure of a series' realized volatility.  It would also open the door to high-dimensional regression methods, shrinkage estimators, and more.
 
 \subsection{Parameter Stability}
 
 There is an important question about the stability of the GARCH parameters under the presence of a shock, and on parameter instability as it pertains to forecasting, we refer readers to \cite{rossi2013advances, rossi2021forecasting}.  There are at least two reasons that we do not herein explore parameter instability or methods to adjust for it.  First, the marginal effect of coefficient changes at the shock time would, under the assumptions in this work, be swamped by the random effect.  Second, the estimation of post-shock parameter values would require at least several --- better yet, dozens --- of post-shock data points, whereas this work assumes access to zero post-shock data points.  However, it is possible that similarity-based estimators for the GARCH coefficients could be produced, for example, by adapting the methods of \citet{dendramis2020similarity}.
-\subsection{Future directions}
-\begin{itemize}
-  \item High-frequency data
-  \item Should we fit $n$ models or only 1 or something in between?
-  \item Formal results regarding risk, robustness, covariate choice, donor choice
-\end{itemize}
 
 \section{Supplement}
 
@@ -685,7 +683,7 @@ Given the option of redoing our analysis, with nine covariates and four donors, 
 
 \begin{table}[ht]
   \centering
-  \captionof{table}{Adjusted Forecasts Ranked by QL Loss} \label{tab:prediction_table} 
+  \captionof{table}{Adjusted Forecasts Ranked by QL Loss with Brexit as June 22nd, 2016} \label{tab:prediction_table_with Brexit as June 22nd, 2016} 
   \begingroup\fontsize{7pt}{8pt}\selectfont
   \begin{tabular}{ccc}
     
@@ -707,8 +705,10 @@ Given the option of redoing our analysis, with nine covariates and four donors, 
     0.0041 & Debt Risk Spread & 2016-06-22 \\ 
     0.0043 & None & 2008-11-04 \\ 
     0.0047 & Log Return of FVX & 2016-06-22 \\ 
+    \rowcolor{gray} 0.005 & NA (Median Forecast) & NA (Median Forecast)\\  
     0.0053 & VIX & 2016-06-22 \\ 
-    0.0062 & Log Return of CL.F & 2008-11-04 \\ 
+    0.0062 & Log Return of CL.F & 2008-11-04 \\
+    \rowcolor{gray} 0.0068 & NA (Average Forecast) & NA (Average Forecast)\\ 
     \rowcolor{yellow} 0.0070 & None & 2016-06-22 \\ 
     0.0075 & Log Return of FVX & None \\ 
     0.0077 & Log Return of IRX & 2016-06-22 \\ 
@@ -720,7 +720,8 @@ Given the option of redoing our analysis, with nine covariates and four donors, 
     \rowcolor{yellow} 0.0136 & None & None \\ 
     0.0137 & Log Return of CL.F & None \\ 
     0.0154 & Debt Risk Spread & None \\ 
-    0.0268 & IYG & 2016-06-22 \\ 
+    0.0268 & IYG & 2016-06-22 \\
+     
     0.0568 & Log Return of TNX & 2012-11-06 \\ 
     0.0670 & IYG & None \\ 
     0.0748 & Log Return of VIX & 2012-11-06 \\ 
@@ -749,12 +750,80 @@ Given the option of redoing our analysis, with nine covariates and four donors, 
   \endgroup
   \end{table}
 
+  \begin{table}[ht]
+    \centering
+    \captionof{table}{Adjusted Forecasts Ranked by QL Loss with Brexit as June 23rd, 2016} \label{tab:prediction_table_with Brexit as June 23rd, 2016} 
+    \begingroup\fontsize{7pt}{8pt}\selectfont
+    \begin{tabular}{ccc}
+      
+      \hline
+   QL Loss of the Adjusted Forecast& Omitted Covariate & Omitted Donor \\ 
+      \hline
+      0.0003 & Log Return of VIX & 2016-06-23 \\ 
+  0.0013 & Log Return of TYX & 2016-06-23 \\ 
+  0.0019 & Log Return of TNX & 2016-06-23 \\ 
+  0.0036 & Log Return of CL.F & 2016-06-23 \\ 
+  0.0041 & Debt Risk Spread & 2016-06-23 \\ 
+  0.0047 & Log Return of FVX & 2016-06-23 \\ 
+  0.0054 & Raw.VIX & 2016-06-23 \\ 
+  \rowcolor{yellow}0.0070 & None & 2016-06-23 \\ 
+  0.0079 & Log Return of IRX & 2016-06-23 \\ 
+  0.0268 & IYG & 2016-06-23 \\ 
+  0.0362 & IYG & None \\ 
+  0.1113 & IYG & 2008-11-04 \\ 
+  0.2401 & Log Return of TNX & 2012-11-06 \\ 
+  0.2420 & Log Return of FVX & 2012-11-06 \\ 
+  0.2553 & Log Return of TNX & None \\ 
+  0.2678 & IYG & 2012-11-06 \\ 
+  0.2717 & Log Return of FVX & None \\ 
+  0.2725 & Log Return of TYX & None \\ 
+  0.2766 & Log Return of CL.F & None \\ 
+  0.2881 & Raw.VIX & None \\ 
+  0.2884 & Debt Risk Spread & None \\ 
+  \rowcolor{yellow} 0.2905 & None & None \\ 
+  0.2954 & Log Return of IRX & None \\ 
+  0.2964 & Log Return of TYX & 2012-11-06 \\ 
+  0.3086 & Log Return of IRX & 2012-11-06 \\ 
+  \rowcolor{gray}0.3125 & NA (Median Forecast) & NA (Median Forecast)\\
+  0.3164 & Raw.VIX & 2012-11-06 \\ 
+  0.3186 & Log Return of CL.F & 2012-11-06 \\ 
+  0.3219 & None & 2012-11-06 \\ 
+  0.3257 & Debt Risk Spread & 2012-11-06 \\ 
+  0.3289 & Raw.VIX & 2008-11-04 \\ 
+  0.3344 & Log Return of CL.F & 2008-11-04 \\ 
+  \rowcolor{gray}0.3125 & NA (Average Forecast) & NA (Average Forecast)\\
+  0.3475 & Log Return of VIX & 2012-11-06 \\ 
+  0.3581 & Log Return of IRX & 2008-11-04 \\ 
+  0.3586 & None & 2008-11-04 \\ 
+  0.3617 & Log Return of FVX & 2008-11-04 \\ 
+  0.3619 & Debt Risk Spread & 2008-11-04 \\ 
+  0.3642 & Log Return of TNX & 2008-11-04 \\ 
+  0.3695 & Log Return of TYX & 2008-11-04 \\ 
+  0.3801 & Log Return of VIX & None \\ 
+  0.3902 & Log Return of VIX & 2008-11-04 \\ 
+  0.5510 & IYG & 2004-11-02 \\ 
+  0.7452 & Log Return of FVX & 2004-11-02 \\ 
+  0.7532 & Log Return of TNX & 2004-11-02 \\ 
+  0.7591 & Log Return of CL.F & 2004-11-02 \\ 
+  0.7616 & Debt Risk Spread & 2004-11-02 \\ 
+  0.7681 & None & 2004-11-02 \\ 
+  0.7683 & Raw.VIX & 2004-11-02 \\ 
+  0.7753 & Log Return of IRX & 2004-11-02 \\ 
+  0.8034 & Log Return of VIX & 2004-11-02 \\ 
+  0.8618 & Log Return of TYX & 2004-11-02 \\ 
+      \rowcolor{red} 2.3529 & All & All \\
+       \hline
+    \end{tabular}
+    
+    \endgroup
+    \end{table}
+
 \subsection{Sensitivity to Covariates Chosen}
 Any covariate that appears more often closer to the bottom of the \ref{tab:prediction_table} is, $\textit{ceteris paribus}$, a more important covariate for this prediction task, since by dropping it, a larger loss results.  The covariates that thus stand out are the demeaned log return of IYG, the VIX, the Debt Risk Spread (spread between between AAA and BAA corporate debt), and last but not least, the choice of dropping none of the covariates.  The demeaned log return of IYG, of which we use the 30 days preceeding the $T_{i}^{*}$, suggests an unusually strong relevance in matching donors to the time series under study.  The Debt Risk Spread is also deserving of additional comment and attention, perhaps alongside the poor performance of the log return of the VIX.  The Debt Risk Spread is available at a monthly frequency via FRED (add citation), whereas the VIX is available daily via Yahoo Finance (I need to explain that and cite Yahoo Finance and quantmod).  It may be the case that the true conditional shock distribution includes low-frequency data as well as data in levels (like the VIX), while the daily changes in the VIX are absent.
 
 \subsection{Sensitivity to Donors Chosen}
 
-The most glaring result visible in \ref{tab:prediction_table} regarding donor selection is the poor performance of the 2008 US Election.  In hindsight, this is unsurprising, given the large estimated fixed effect for November 5th, 2008 as well as the swirl of complex events occurring in financial markets around that time.  It is possible that the GARCH(1,1) used to fit the run-up to that election is underparameterized.  The weight given to the 2008 US election is near-zero, but in our method, unsuitable donors can influence the distance-based weighting by affecting that dispersion of one or more of the $p$ covariates present in the volatility profile.  Recall that for each of the $p$ covariates, we transform the $n+1$-vector of variables to Z-scores.  The lesson here is that more careful pre-quantitative inspection of the donors may be warranted as well as ordinary outlier analysis for the volatility profile.  As an additional note, dropping the 2008 Election vastly improves the performance of the arithmetic mean forecast.  This provides a cautionary tale against using the arithmetic mean estimator for the conditional shock effect.  
+The most glaring result visible in \ref{tab:prediction_table_with Brexit as June 22nd, 2016} regarding donor selection is the poor performance of the 2008 US Election.  In hindsight, this is unsurprising, given the large estimated fixed effect for November 5th, 2008 as well as the swirl of complex events occurring in financial markets around that time.  It is possible that the GARCH(1,1) used to fit the run-up to that election is underparameterized.  The weight given to the 2008 US election is near-zero, but in our method, unsuitable donors can influence the distance-based weighting by affecting that dispersion of one or more of the $p$ covariates present in the volatility profile.  Recall that for each of the $p$ covariates, we transform the $n+1$-vector of variables to Z-scores.  The lesson here is that more careful pre-quantitative inspection of the donors may be warranted as well as ordinary outlier analysis for the volatility profile.  As an additional note, dropping the 2008 Election vastly improves the performance of the arithmetic mean forecast.  This provides a cautionary tale against using the arithmetic mean estimator for the conditional shock effect.  
 
 The donors most conducive to good predictions in this task are the 2004 and 2008 US elections.  The estimated fixed effects tell a story of only modest surprise due to these election results: the estimate is nearly zero for 2004, while 2012 is nonzero but small.  Given that the presidential election results of these two did not deliver much surprise, it is possible that the surprise could be due more so to non-presidential races.
 
@@ -763,30 +832,32 @@ We discuss one last remarkable phenomenon.  The prediction that dropped the prec
 \subsubsection{Brexit}
 In the pre-quantitative analysis of donors, there was only one competitor to the setup that was ultimately selected and presented in Section \ref{Real Data Example}, and that competitor donor pool used Brexit.  The inclusion of Brexit is based on the fundamental belief that the conditional shock distribution governing IYG's volatility shocks may be shared among US elections and some political events elsewhere, like the Brexit referendum of July 23rd, 2016.  That referendum shared some important qualities with the 2016 US elections, which we have discussed above.
 
-We now turn, however, to why the inclusion of Brexit failed to perform nearly as well our primary specification.  First, note time zone differences between the UK and the US make difficult the analysis of after-hour shocks on US markets.  Additionally, like many election results, that the ``Leave'' side of the referendum would prevail was not revealed at any discrete time, of course, but became more certain as vote tallies across the UK progressed.  These facts pose a challenge for any method that uses daily data.  Of prime concern is whether we should consider $T^{*}$ for Brexit to have occurred after market hours on June 23rd, 2016, Eastern Standard Time, which ignores the steady percolation of information and uncertainty that attend election days, or alternatively, consider the shock to have occurred after hours on June 22nd, 2016, which implies that $T^{*}+1$ is June 23rd, 2016, and hence the reaction of IYG to Brexit can be estimated and extracted from late-day trading on that date.  We opt for...
+We now turn, however, to why the inclusion of Brexit failed to perform nearly as well our primary specification.  First, note time zone differences between the UK and the US make difficult the analysis of after-hour shocks on US markets.  Additionally, like many election results, that the ``Leave'' side of the referendum would prevail was not revealed at any discrete time, of course, but became more certain as observation of voting turnout and informal vote tallies across the UK progressed \citep{BBC_News_2016}.  This is in spite of UK news outlets adhering to various rules and guidelines regarding reportage of polling results \citep{Bailey_2024}.  These facts pose a challenge for any method that uses daily data.  Of prime concern is whether we should consider $T^{*}$ for Brexit to have occurred after market hours on June 23rd, 2016, Eastern Standard Time, which ignores the steady percolation of information and uncertainty that attend election days, or alternatively, consider the shock to have occurred after hours on June 22nd, 2016, which implies that $T^{*}+1$ is June 23rd, 2016, and hence the reaction of IYG to Brexit can be estimated and extracted from late-day trading on that date.  Given this dilemma, we opt for dropping Brexit from our predictive model completely.
 
-"At 03:45 BST Leave were ahead by over 500,000 votes"
-https://www.bbc.com/news/uk-politics-eu-referendum-36612368
+\subsection{Can we combine forecasts to outperform the individual forecasts?}\label{forecastcomb}
 
-how BBC is constrained
-https://www.bbc.com/news/uk-politics-48124106
+Forecast combination is technique with a vast, sprawling literature that we have referred to above.  While forecast combination can be justified in any number of ways, here we invoke forecast combination as a way to robustify forecasts against misspecification.  We combine in two simply ways, using the mean of all 50 forecasts and the median of all 50 forecasts.  The results are presented in Tables \ref{tab:prediction_table_with Brexit as June 22nd, 2016} and \ref{tab:prediction_table_with Brexit as June 23rd, 2016}.
 
-\subsection{Can we combine forecasts to outperform the individual forecasts?}
-
-Forecast combination is technique with a vast, sprawling literature that we have referred to above.  While forecast combination can be justified in any number of ways, here we invoke forecast combination as a way to robustify forecasts against misspecification.  We combine in two simply ways, using the mean of all 50 forecasts and the median of all 50 forecasts.  The results are presented in TABLE
-\begin{itemize}
-  \item How often does average or median forecast dominate?
-\end{itemize}
 
 \begin{figure}[H]
   \begin{center}
-    \textbf{Real Data Example: 2016 Election with an additional donor}\par\medskip
+    \textbf{Real Data Example: 2016 Election with Brexit as June 22nd, 2016}\par\medskip
     \includegraphics[scale=.6]{real_data_output_plots/FriMay311830182024_IYG_None_None.png}
-    \caption{Here Brexit is included as a fourth donor.}
+    \caption{When Brexit is taken to be June 22nd, 2016, it is shares equal weight with the 2004 and 2008 elections, while its modest fixed effect estimate is the smallest of the three nonzero estimates.}
     \label{fig:SVF_2016_with_Brexit}
     \end{center}
   \end{figure}
 
+  
+  \begin{figure}[H]
+    \begin{center}
+      \textbf{Real Data Example: 2016 Election with an Brexit as June 23rd, 2016}\par\medskip
+      \includegraphics[scale=.6]{real_data_output_plots/WedJun121222522024_IYG_None_None.png}
+      \caption{When Brexit is taken to be June 23rd, 2016, its own weight is unchanged but others' weights are.  The large fixed effect estimate of Brexit contributes to a substantial overprediction.}
+      \label{fig:SVF_2016_with_Brexit}
+      \end{center}
+    \end{figure}
+  
 \clearpage
 
 \bibliography{synthVolForecast}

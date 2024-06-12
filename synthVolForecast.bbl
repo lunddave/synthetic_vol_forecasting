@@ -1,4 +1,4 @@
-\begin{thebibliography}{53}
+\begin{thebibliography}{56}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -39,6 +39,11 @@ Torben~G Andersen, Tim Bollerslev, and Francis~X Diebold.
 Torben~Gustav Andersen and Luca Benzoni.
 \newblock Realized volatility, working paper 2008-14.
 \newblock 2008.
+
+\bibitem[Bailey(2024)]{Bailey_2024}
+Ric Bailey.
+\newblock How the bbc reports polling day, May 2024.
+\newblock URL \url{https://www.bbc.com/news/uk-politics-48124106}.
 
 \bibitem[Bauwens et~al.(2006)Bauwens, Preminger, and Rombouts]{bauwens2006regime}
 Luc Bauwens, Arie Preminger, and Jeroen~VK Rombouts.
@@ -84,6 +89,11 @@ Michael Clements and David~F Hendry.
 Michael~P Clements and David~F Hendry.
 \newblock Intercept corrections and structural change.
 \newblock \emph{Journal of Applied Econometrics}, 11\penalty0 (5):\penalty0 475--494, 1996.
+
+\bibitem[Corsi et~al.(2012)Corsi, Audrino, and Ren{\'o}]{corsi2012har}
+Fulvio Corsi, Francesco Audrino, and Roberto Ren{\'o}.
+\newblock Har modeling for realized volatility forecasting.
+\newblock 2012.
 
 \bibitem[De~Luca et~al.(2006)]{de2006forecasting}
 Giovanni De~Luca et~al.
@@ -189,6 +199,11 @@ Stewart Mayhew.
 Bloomberg News.
 \newblock Election 2024: What will markets do with trump victory over biden?
 \newblock \url{https://www.bloomberg.com/news/articles/2024-01-21/trump-s-2016-win-shook-markets-traders-won-t-get-fooled-again}, Jan 2024.
+
+\bibitem[None(2016)]{BBC_News_2016}
+None.
+\newblock Leave campaign ahead in uk's eu referendum vote, Jun 2016.
+\newblock URL \url{https://www.bbc.com/news/uk-politics-eu-referendum-36612368}.
 
 \bibitem[Phillips(1996)]{phillips1996forecasting}
 Robert~F Phillips.

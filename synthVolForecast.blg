@@ -6,48 +6,49 @@ Database file #1: synthVolForecast.bib
 Warning--there's a number but no volume in andersen2010stochastic
 Warning--empty journal in andersen2008realized
 Warning--empty journal in bauwens2006regime
+Warning--empty journal in corsi2012har
 Warning--empty journal in guerron2017macroeconomic
 Warning--empty journal in hendry1994theory
 Warning--empty journal in ryan2015package
-You've used 53 entries,
+You've used 56 entries,
             2773 wiz_defined-function locations,
-            908 strings with 13336 characters,
-and the built_in function-call counts, 22930 in all, are:
-= -- 2095
-> -- 1142
-< -- 44
-+ -- 392
-- -- 339
-* -- 1773
-:= -- 3502
-add.period$ -- 163
-call.type$ -- 53
-change.case$ -- 265
-chr.to.int$ -- 53
-cite$ -- 112
-duplicate$ -- 1096
-empty$ -- 1992
-format.name$ -- 432
-if$ -- 4814
+            925 strings with 13736 characters,
+and the built_in function-call counts, 23940 in all, are:
+= -- 2180
+> -- 1192
+< -- 46
++ -- 410
+- -- 354
+* -- 1841
+:= -- 3658
+add.period$ -- 172
+call.type$ -- 56
+change.case$ -- 279
+chr.to.int$ -- 56
+cite$ -- 119
+duplicate$ -- 1146
+empty$ -- 2087
+format.name$ -- 450
+if$ -- 5025
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 54
-newline$ -- 274
-num.names$ -- 212
-pop$ -- 534
+missing$ -- 55
+newline$ -- 289
+num.names$ -- 224
+pop$ -- 572
 preamble$ -- 1
-purify$ -- 217
+purify$ -- 228
 quote$ -- 0
-skip$ -- 832
+skip$ -- 873
 stack$ -- 0
-substring$ -- 966
-swap$ -- 91
+substring$ -- 972
+swap$ -- 95
 text.length$ -- 7
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 558
-warning$ -- 6
-while$ -- 228
+type$ -- 591
+warning$ -- 7
+while$ -- 237
 width$ -- 0
-write$ -- 681
-(There were 6 warnings)
+write$ -- 716
+(There were 7 warnings)

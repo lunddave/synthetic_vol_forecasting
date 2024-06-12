@@ -320,8 +320,8 @@ for (u in c(-1,0,2:number_of_covariates)){
     function_output <- SynthVolForecast(Y
                              ,X
                              ,shock_time_vec = unlist(shock_dates)
-                             #,rep(k, n+1)
-                             ,shck_lengths
+                             ,rep(k, n+1)
+                             #,shck_lengths
                              ,dbw_scale = TRUE
                              ,dbw_center = TRUE
                              ,dbw_indices = NULL
@@ -430,6 +430,12 @@ plot(lm1)
 win_df <- t(apply(loss_matrix, 1, function(x) x == min(x)))
 
 colSums(win_df)
+
+
+print(xtable(colSums(win_df),digits=4)
+      , include.rownames = FALSE
+      , size="\\fontsize{9pt}{10pt}\\selectfont")
+
 
 #MCS
 loss_only <- as.data.frame(t(as.matrix(loss_matrix[,2], ncol = 1)))
