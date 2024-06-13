@@ -15,9 +15,6 @@
 \usepackage[table,xcdraw,usenames]{xcolor}
 %\usepackage[usenames]{color}
 
-
-\usepackage{authblk}
-
 \usepackage{graphicx}
 \usepackage{subcaption}
 \usepackage{mathtools}
@@ -176,7 +173,7 @@ In order to motivate our procedure, we provide visual illustrations.  In \hyperr
 
 \begin{figure}[h!]
   \begin{center}
-    \includegraphics[scale=.4]{simulation_plots/vol_series_six_plots.png}
+    \includegraphics[scale=.4]{vol_series_six_plots.png}
     \caption{Volatility series of six i.i.d. GARCH processes, each of which experiences a volatility shock, indicated with a red vertical line, at a uniformly distributed point in the set $\{756,...,2520\}$ of trading days, corresponding to between 3 and 10 years of daily trading data.}
     \label{fig:six_plots}
     \end{center}
@@ -184,7 +181,7 @@ In order to motivate our procedure, we provide visual illustrations.  In \hyperr
 
   \begin{figure}[h!]
     \begin{center}
-      \includegraphics[scale=.4]{simulation_plots/motivating_piece_arithmetic_mean.png}
+      \includegraphics[scale=.4]{motivating_piece_arithmetic_mean.png}
       \caption{The time series experiences a volatility shock at a uniformly distributed point in the set $\{756,...,2520\}$ of trading days, corresponding to between 3 and 10 years of daily trading data..  We have truncated the series after $T^{*}+1$.  The GARCH prediction fails even to approach the volatility spike at $T^{*}+1$, as do some adjusted predictions.  In contrast, the GARCH forecast adjusted by $\overline{\hat\omega^{*}}$, the arithmetic mean of the estimated shocks, recovers the shock in the time series under study.} 
       \label{fig:arith_mean_example_introduction}
       \end{center}
@@ -547,18 +544,18 @@ Consistent with our evaluative framework declared in \ref{loss_function}, we com
       \textbf{Signal and Noise}\par\medskip
     \begin{subfigure}{.44\linewidth} 
       \centering
-        \includegraphics[scale = .42]{simulation_plots/Jun06_233740_2024_delta_sigma[u].png}
+        \includegraphics[scale = .42]{Jun06_233740_2024_delta_sigma_u.png}
         \caption{Fixed parameter values: $\omega = .2, \alpha = .1, \beta = .82, \mu_{x} = .125, \sigma_{x} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_1}
     \end{subfigure}\hspace{12mm} %
     \begin{subfigure}{.44\linewidth} 
       \centering
-        \includegraphics[scale=.42]{simulation_plots/Jun06_233900_2024_delta_sigma[u].png}
+        \includegraphics[scale=.42]{Jun06_233900_2024_delta_sigma_u.png}
         \caption{Fixed parameter values: $\omega = .2, \alpha = .1, \beta = .82, \mu_{x} = .5, \sigma_{x} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_2}
     \end{subfigure}
 
     \begin{subfigure}{.44\linewidth} 
       \centering
-        \includegraphics[scale=.42]{simulation_plots/Jun06_234111_2024_delta_sigma[u].png}
+        \includegraphics[scale=.42]{Jun06_234111_2024_delta_sigma_u.png}
         \caption{Fixed parameter values: $\omega = .2, \alpha = .1, \beta = .82, \mu_{x} = 1, \sigma_{x} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_3}
     \end{subfigure}
     
@@ -571,12 +568,12 @@ Consistent with our evaluative framework declared in \ref{loss_function}, we com
     \textbf{Interaction between the signal and volatility profile means}\par\medskip
   \begin{subfigure}{.44\linewidth} 
     \centering
-      \includegraphics[scale = .42]{simulation_plots/Jun06_234115_2024_delta_mu[x].png}
+      \includegraphics[scale = .42]{Jun06_234115_2024_delta_mu_x.png}
       \caption{Fixed parameter values: $\omega = .2, \alpha = .1, \beta = .82,  \sigma_{x} = .125, \mu_{\omega^{*}} = .125, \sigma_{u} = .125$}\label{fig:sim_4}
   \end{subfigure}\hspace{12mm} %
   \begin{subfigure}{.44\linewidth} 
     \centering
-      \includegraphics[scale=.42]{simulation_plots/Jun06_234119_2024_delta_mu[x].png}
+      \includegraphics[scale=.42]{Jun06_234119_2024_delta_mu_x.png}
       \caption{Fixed parameter values: $\omega = .2, \alpha = .1, \beta = .82, \sigma_{x} = .125, \mu_{\omega^{*}} = .125, \sigma_{u} = 1$}\label{fig:sim_5}
   \end{subfigure}
   
@@ -589,12 +586,12 @@ Consistent with our evaluative framework declared in \ref{loss_function}, we com
   \textbf{The Interaction of the Shock Intercept and Shock Noise}\par\medskip
 \begin{subfigure}{.44\linewidth} 
   \centering
-    \includegraphics[scale = .42]{simulation_plots/Jun06_234137_2024_mu_omega_star_sigma_u.png}
+    \includegraphics[scale = .42]{Jun06_234137_2024_mu_omega_star_sigma_u.png}
     \caption{Fixed parameter values: $\omega = .2, \alpha = .1, \beta = .82, \mu_{x} = .125, \sigma_{x} = .125, \delta = .125$}\label{fig:sim_6}
 \end{subfigure}\hspace{12mm} %
 \begin{subfigure}{.44\linewidth} 
   \centering
-    \includegraphics[scale=.42]{simulation_plots/Jun06_234154_2024_mu_omega_star_sigma_u.png}
+    \includegraphics[scale=.42]{Jun06_234154_2024_mu_omega_star_sigma_u.png}
     \caption{Fixed parameter values: $\omega = .2, \alpha = .1, \beta = .82, \mu_{x} = .125, \sigma_{x} = .125, \delta = 2$}\label{fig:sim_7}
 \end{subfigure}
 
@@ -626,7 +623,7 @@ For all of these reasons and more, the aftermath of the 2016 presidential electi
 \begin{figure}[H]
 \begin{center}
   \textbf{Real Data Example: 2016 Election}\par\medskip
-  \includegraphics[scale=.5]{real_data_output_plots/FriMay311830522024_IYG_None_2016-06-22.png}
+  \includegraphics[scale=.5]{FriMay311830522024_IYG_None_2016-06-22.png}
   \caption{The volatility induced by the 2016 US election}
   \label{fig:SVF_2016}
   \end{center}
@@ -838,7 +835,7 @@ Forecast combination is technique with a vast, sprawling literature that we have
 \begin{figure}[H]
   \begin{center}
     \textbf{Real Data Example: 2016 Election with Brexit as June 22nd, 2016}\par\medskip
-    \includegraphics[scale=.6]{real_data_output_plots/FriMay311830182024_IYG_None_None.png}
+    \includegraphics[scale=.6]{FriMay311830182024_IYG_None_None.png}
     \caption{When Brexit is taken to be June 22nd, 2016, it is shares equal weight with the 2004 and 2008 elections, while its modest fixed effect estimate is the smallest of the three nonzero estimates.}
     \label{fig:SVF_2016_with_Brexit}
     \end{center}
@@ -848,7 +845,7 @@ Forecast combination is technique with a vast, sprawling literature that we have
   \begin{figure}[H]
     \begin{center}
       \textbf{Real Data Example: 2016 Election with an Brexit as June 23rd, 2016}\par\medskip
-      \includegraphics[scale=.6]{real_data_output_plots/WedJun121222522024_IYG_None_None.png}
+      \includegraphics[scale=.6]{WedJun121222522024_IYG_None_None.png}
       \caption{When Brexit is taken to be June 23rd, 2016, its own weight is unchanged but others' weights are.  The large fixed effect estimate of Brexit contributes to a substantial overprediction.}
       \label{fig:SVF_2016_with_Brexit}
       \end{center}

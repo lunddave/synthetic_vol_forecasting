@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.21)  12 JUN 2024 18:56
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.21)  12 JUN 2024 21:14
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/synthVolForecast_arxiv.tex
-(/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/synthVolForecast_arxiv.tex
+**/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/ArXiv_upload/synthVolForecast_arxiv.tex
+(/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/ArXiv_upload/synthVolForecast_arxiv.tex
 LaTeX2e <2022-11-01> patch level 1
 L3 programming layer <2023-02-22> (/usr/local/texlive/2023/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2022/07/02 v1.4n Standard LaTeX document class
@@ -159,13 +159,6 @@ Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1373.
 Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1374.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1375.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1376.
-) (/usr/local/texlive/2023/texmf-dist/tex/latex/preprint/authblk.sty
-Package: authblk 2001/02/27 1.3 (PWD)
-\affilsep=\skip61
-\@affilsep=\skip62
-\c@Maxaffil=\count273
-\c@authors=\count274
-\c@affil=\count275
 ) (/usr/local/texlive/2023/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
  (/usr/local/texlive/2023/texmf-dist/tex/latex/graphics/keyval.sty
@@ -198,33 +191,33 @@ Package: caption3 2023/03/12 v2.4 caption3 kernel (AR)
 \caption@hangindent=\dimen164
 Package caption Info: Standard document class detected.
 )
-\c@caption@flags=\count276
-\c@continuedfloat=\count277
+\c@caption@flags=\count273
+\c@continuedfloat=\count274
 )
 Package caption Info: New subtype `subfigure' on input line 239.
-\c@subfigure=\count278
+\c@subfigure=\count275
 Package caption Info: New subtype `subtable' on input line 239.
-\c@subtable=\count279
+\c@subtable=\count276
 ) (/usr/local/texlive/2023/texmf-dist/tex/latex/mathtools/mathtools.sty
 Package: mathtools 2022/06/29 v1.29 mathematical typesetting tools
  (/usr/local/texlive/2023/texmf-dist/tex/latex/tools/calc.sty
 Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count280
-\calc@Bcount=\count281
+\calc@Acount=\count277
+\calc@Bcount=\count278
 \calc@Adimen=\dimen165
 \calc@Bdimen=\dimen166
-\calc@Askip=\skip63
-\calc@Bskip=\skip64
+\calc@Askip=\skip61
+\calc@Bskip=\skip62
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count282
-\calc@Cskip=\skip65
+\calc@Ccount=\count279
+\calc@Cskip=\skip63
 ) (/usr/local/texlive/2023/texmf-dist/tex/latex/mathtools/mhsetup.sty
 Package: mhsetup 2021/03/18 v1.4 programming setup (MH)
 )
-\g_MT_multlinerow_int=\count283
+\g_MT_multlinerow_int=\count280
 \l_MT_multwidth_dim=\dimen167
-\origjot=\skip66
+\origjot=\skip64
 \l_MT_shortvdotswithinadjustabove_dim=\dimen168
 \l_MT_shortvdotswithinadjustbelow_dim=\dimen169
 \l_MT_above_intertext_sep=\dimen170
@@ -235,12 +228,12 @@ Package: mhsetup 2021/03/18 v1.4 programming setup (MH)
 \xmathstrut@dim=\dimen174
 ) (/usr/local/texlive/2023/texmf-dist/tex/latex/enumitem/enumitem.sty
 Package: enumitem 2019/06/20 v3.9 Customized lists
-\labelindent=\skip67
+\labelindent=\skip65
 \enit@outerparindent=\dimen175
 \enit@toks=\toks33
 \enit@inbox=\box56
-\enit@count@id=\count284
-\enitdp@description=\count285
+\enit@count@id=\count281
+\enitdp@description=\count282
 ) (/usr/local/texlive/2023/texmf-dist/tex/latex/tools/bm.sty
 Package: bm 2022/01/05 v1.2f Bold Symbol Support (DPC/FMi)
 \symboldoperators=\mathgroup6
@@ -267,13 +260,13 @@ Package: eso-pic 2020/10/14 v3.0a eso-pic (RN)
  (/usr/local/texlive/2023/texmf-dist/tex/latex/pdfpages/pppdftex.def
 File: pppdftex.def 2022/12/19 v0.5x Pdfpages driver for pdfTeX (AM)
 )
-\pdfpages@includegraphics@status=\count286
+\pdfpages@includegraphics@status=\count283
 \AM@pagebox=\box57
 \AM@global@opts=\toks34
-\AM@pagecnt=\count287
+\AM@pagecnt=\count284
 \AM@toc@title=\toks35
 \AM@lof@heading=\toks36
-\c@AM@survey=\count288
+\c@AM@survey=\count285
 \AM@templatesizebox=\box58
 ) (/usr/local/texlive/2023/texmf-dist/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2023-02-07 v7.00v Hypertext links for LaTeX
@@ -310,11 +303,11 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
  (/usr/local/texlive/2023/texmf-dist/tex/latex/kvoptions/kvoptions.sty
 Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
 ))
-\c@section@level=\count289
+\c@section@level=\count286
 )
 \@linkdim=\dimen181
-\Hy@linkcounter=\count290
-\Hy@pagecounter=\count291
+\Hy@linkcounter=\count287
+\Hy@pagecounter=\count288
  (/usr/local/texlive/2023/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2023-02-07 v7.00v Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
@@ -324,7 +317,7 @@ Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 ) (/usr/local/texlive/2023/texmf-dist/tex/generic/etexcmds/etexcmds.sty
 Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
 )
-\Hy@SavedSpaceFactor=\count292
+\Hy@SavedSpaceFactor=\count289
  (/usr/local/texlive/2023/texmf-dist/tex/latex/hyperref/puenc.def
 File: puenc.def 2023-02-07 v7.00v Hyperref: PDF Unicode definition (HO)
 Now handling font encoding PU ...
@@ -337,7 +330,7 @@ Package hyperref Info: Plain pages OFF on input line 4192.
 Package hyperref Info: Backreferencing OFF on input line 4197.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4425.
-\c@Hy@tempcnt=\count293
+\c@Hy@tempcnt=\count290
 LaTeX Info: Redefining \url on input line 4763.
 \XeTeXLinkMargin=\dimen182
  (/usr/local/texlive/2023/texmf-dist/tex/generic/bitset/bitset.sty
@@ -345,7 +338,7 @@ Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
  (/usr/local/texlive/2023/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
 ))
-\Fld@menulength=\count294
+\Fld@menulength=\count291
 \Field@Width=\dimen183
 \Fld@charsize=\dimen184
 Package hyperref Info: Hyper figures OFF on input line 6042.
@@ -359,9 +352,9 @@ Package hyperref Info: PDF/A mode OFF on input line 6072.
 Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
 package with kernel methods
 )
-\Hy@abspage=\count295
-\c@Item=\count296
-\c@Hfootnote=\count297
+\Hy@abspage=\count292
+\c@Item=\count293
+\c@Hfootnote=\count294
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
  (/usr/local/texlive/2023/texmf-dist/tex/latex/hyperref/hpdftex.def
@@ -370,8 +363,8 @@ File: hpdftex.def 2023-02-07 v7.00v Hyperref driver for pdfTeX
 Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend package
 with kernel methods
 )
-\Fld@listcount=\count298
-\c@bookmark@seq@number=\count299
+\Fld@listcount=\count295
+\c@bookmark@seq@number=\count296
  (/usr/local/texlive/2023/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
 Package: rerunfilecheck 2022-07-10 v1.10 Rerun checks for auxiliary files (HO)
  (/usr/local/texlive/2023/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
@@ -379,10 +372,10 @@ Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 )
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 285.
 )
-\Hy@SectionHShift=\skip68
+\Hy@SectionHShift=\skip66
 ) (/usr/local/texlive/2023/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count300
+\c@float@type=\count297
 \float@exts=\toks37
 \float@box=\box59
 \@float@everytoks=\toks38
@@ -417,14 +410,14 @@ Package: pgfsys 2023-01-15 v3.1.10 (3.1.10)
 \pgf@yd=\dimen196
 \w@pgf@writea=\write4
 \r@pgf@reada=\read2
-\c@pgf@counta=\count301
-\c@pgf@countb=\count302
-\c@pgf@countc=\count303
-\c@pgf@countd=\count304
+\c@pgf@counta=\count298
+\c@pgf@countb=\count299
+\c@pgf@countc=\count300
+\c@pgf@countd=\count301
 \t@pgf@toka=\toks43
 \t@pgf@tokb=\toks44
 \t@pgf@tokc=\toks45
-\pgf@sys@id@count=\count305
+\pgf@sys@id@count=\count302
  (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
 File: pgf.cfg 2023-01-15 v3.1.10 (3.1.10)
 )
@@ -435,21 +428,21 @@ File: pgfsys-pdftex.def 2023-01-15 v3.1.10 (3.1.10)
 File: pgfsys-common-pdf.def 2023-01-15 v3.1.10 (3.1.10)
 ))) (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
 File: pgfsyssoftpath.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfsyssoftpath@smallbuffer@items=\count306
-\pgfsyssoftpath@bigbuffer@items=\count307
+\pgfsyssoftpath@smallbuffer@items=\count303
+\pgfsyssoftpath@bigbuffer@items=\count304
 ) (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
 File: pgfsysprotocol.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )) (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
 Package: pgfcore 2023-01-15 v3.1.10 (3.1.10)
  (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex) (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
 \pgfmath@dimen=\dimen197
-\pgfmath@count=\count308
+\pgfmath@count=\count305
 \pgfmath@box=\box62
 \pgfmath@toks=\toks46
 \pgfmath@stack@operand=\toks47
 \pgfmath@stack@operation=\toks48
 ) (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex) (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code.tex) (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonometric.code.tex) (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.code.tex) (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison.code.tex) (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex) (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code.tex) (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex) (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithmetics.code.tex) (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex) (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count309
+\c@pgfmathroundto@lastzeros=\count306
 )) (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfint.code.tex) (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
 File: pgfcorepoints.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgf@picminx=\dimen198
@@ -479,7 +472,7 @@ File: pgfcorescopes.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgfpic=\box63
 \pgf@hbox=\box64
 \pgf@layerbox@main=\box65
-\pgf@picture@serial@count=\count310
+\pgf@picture@serial@count=\count307
 ) (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex
 File: pgfcoregraphicstate.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgflinewidth=\dimen272
@@ -500,8 +493,8 @@ File: pgfcorearrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
 File: pgfcoreshade.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgf@max=\dimen277
-\pgf@sys@shading@range@num=\count311
-\pgf@shadingcount=\count312
+\pgf@sys@shading@range@num=\count308
+\pgf@shadingcount=\count309
 ) (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
 File: pgfcoreimage.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex
@@ -536,7 +529,7 @@ Package: pgffor 2023-01-15 v3.1.10 (3.1.10)
 Package: tikz 2023-01-15 v3.1.10 (3.1.10)
  (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex
 File: pgflibraryplothandlers.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@plot@mark@count=\count313
+\pgf@plot@mark@count=\count310
 \pgfplotmarksize=\dimen282
 )
 \tikz@lastx=\dimen283
@@ -551,74 +544,74 @@ File: pgflibraryplothandlers.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \tikz@figbox@bg=\box69
 \tikz@tempbox=\box70
 \tikz@tempbox@bg=\box71
-\tikztreelevel=\count314
-\tikznumberofchildren=\count315
-\tikznumberofcurrentchild=\count316
-\tikz@fig@count=\count317
+\tikztreelevel=\count311
+\tikznumberofchildren=\count312
+\tikznumberofcurrentchild=\count313
+\tikz@fig@count=\count314
  (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
 File: pgfmodulematrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfmatrixcurrentrow=\count318
-\pgfmatrixcurrentcolumn=\count319
-\pgf@matrix@numberofcolumns=\count320
+\pgfmatrixcurrentrow=\count315
+\pgfmatrixcurrentcolumn=\count316
+\pgf@matrix@numberofcolumns=\count317
 )
-\tikz@expandcount=\count321
+\tikz@expandcount=\count318
  (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopaths.code.tex
 File: tikzlibrarytopaths.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ))) (/usr/local/texlive/2023/texmf-dist/tex/latex/multirow/multirow.sty
 Package: multirow 2021/03/15 v2.8 Span multiple rows of a table
-\multirow@colwidth=\skip69
-\multirow@cntb=\count322
-\multirow@dima=\skip70
+\multirow@colwidth=\skip67
+\multirow@cntb=\count319
+\multirow@dima=\skip68
 \bigstrutjot=\dimen291
 ) (/usr/local/texlive/2023/texmf-dist/tex/latex/algorithm2e/algorithm2e.sty
 Package: algorithm2e 2017/07/18 v5.2 algorithms environments
-\c@AlgoLine=\count323
-\algocf@hangindent=\skip71
+\c@AlgoLine=\count320
+\algocf@hangindent=\skip69
  (/usr/local/texlive/2023/texmf-dist/tex/latex/ifoddpage/ifoddpage.sty
 Package: ifoddpage 2022/10/18 v1.2 Conditionals for odd/even page detection
-\c@checkoddpage=\count324
+\c@checkoddpage=\count321
 ) (/usr/local/texlive/2023/texmf-dist/tex/latex/tools/xspace.sty
 Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
-)
-(/usr/local/texlive/2023/texmf-dist/tex/latex/relsize/relsize.sty
+) (/usr/local/texlive/2023/texmf-dist/tex/latex/relsize/relsize.sty
 Package: relsize 2013/03/29 ver 4.1
 )
-\skiptotal=\skip72
-\skiplinenumber=\skip73
-\skiprule=\skip74
-\skiphlne=\skip75
-\skiptext=\skip76
-\skiplength=\skip77
-\algomargin=\skip78
-\skipalgocfslide=\skip79
+\skiptotal=\skip70
+\skiplinenumber=\skip71
+\skiprule=\skip72
+\skiphlne=\skip73
+\skiptext=\skip74
+\skiplength=\skip75
+\algomargin=\skip76
+\skipalgocfslide=\skip77
 \algowidth=\dimen292
 \inoutsize=\dimen293
 \inoutindent=\dimen294
 \interspacetitleruled=\dimen295
 \interspacealgoruled=\dimen296
 \interspacetitleboxruled=\dimen297
-\algocf@ruledwidth=\skip80
+\algocf@ruledwidth=\skip78
 \algocf@inoutbox=\box72
 \algocf@inputbox=\box73
-\AlCapSkip=\skip81
-\AlCapHSkip=\skip82
-\algoskipindent=\skip83
+\AlCapSkip=\skip79
+\AlCapHSkip=\skip80
+\algoskipindent=\skip81
 \algocf@nlbox=\box74
 \algocf@hangingbox=\box75
 \algocf@untilbox=\box76
-\algocf@skipuntil=\skip84
+\algocf@skipuntil=\skip82
 \algocf@capbox=\box77
-\algocf@lcaptionbox=\skip85
-\algoheightruledefault=\skip86
-\algoheightrule=\skip87
-\algotitleheightruledefault=\skip88
-\algotitleheightrule=\skip89
-\c@algocfline=\count325
-\c@algocfproc=\count326
-\c@algocf=\count327
+\algocf@lcaptionbox=\skip83
+\algoheightruledefault=\skip84
+\algoheightrule=\skip85
+\algotitleheightruledefault=\skip86
+\algotitleheightrule=\skip87
+\c@algocfline=\count322
+\c@algocfproc=\count323
+\c@algocf=\count324
 \algocf@algoframe=\box78
 \algocf@algobox=\box79
-) (/usr/local/texlive/2023/texmf-dist/tex/latex/pdflscape/pdflscape.sty
+)
+(/usr/local/texlive/2023/texmf-dist/tex/latex/pdflscape/pdflscape.sty
 Package: pdflscape 2022-10-27 v0.13 Display of landscape pages in PDF
  (/usr/local/texlive/2023/texmf-dist/tex/latex/pdflscape/pdflscape-nometadata.sty
 Package: pdflscape-nometadata 2022-10-28 v0.13 Display of landscape pages in PDF (HO)
@@ -628,15 +621,15 @@ Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
 Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 )) (/usr/local/texlive/2023/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count328
+\etb@tempcnta=\count325
 ) (/usr/local/texlive/2023/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2020/01/02 v5.9 Page Geometry
  (/usr/local/texlive/2023/texmf-dist/tex/generic/iftex/ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 )
-\Gm@cnth=\count329
-\Gm@cntv=\count330
-\c@Gm@tempcnt=\count331
+\Gm@cnth=\count326
+\Gm@cntv=\count327
+\c@Gm@tempcnt=\count328
 \Gm@bindingoffset=\dimen298
 \Gm@wd@mp=\dimen299
 \Gm@odd@mp=\dimen300
@@ -647,55 +640,52 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 \Gm@layoutvoffset=\dimen305
 \Gm@dimlist=\toks51
 )
-\c@corollary=\count332
-\c@cor=\count333
-\c@lem=\count334
-\c@thm=\count335
-\c@defn=\count336
-\c@prop=\count337
-\c@remark=\count338
-Package hyperref Info: Option `colorlinks' set `true' on input line 105.
+\c@corollary=\count329
+\c@cor=\count330
+\c@lem=\count331
+\c@thm=\count332
+\c@defn=\count333
+\c@prop=\count334
+\c@remark=\count335
+Package hyperref Info: Option `colorlinks' set `true' on input line 102.
  (/usr/local/texlive/2023/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2023-01-16 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count339
+\l__color_backend_stack_int=\count336
 \l__pdf_internal_box=\box80
-) (./synthVolForecast_arxiv.aux
-
-LaTeX Warning: Label `fig:SVF_2016_with_Brexit' multiply defined.
-
 )
+No file synthVolForecast_arxiv.aux.
 \openout1 = `synthVolForecast_arxiv.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 142.
-LaTeX Font Info:    ... okay on input line 142.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 142.
-LaTeX Font Info:    ... okay on input line 142.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 142.
-LaTeX Font Info:    ... okay on input line 142.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 142.
-LaTeX Font Info:    ... okay on input line 142.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 142.
-LaTeX Font Info:    ... okay on input line 142.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 142.
-LaTeX Font Info:    ... okay on input line 142.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 142.
-LaTeX Font Info:    ... okay on input line 142.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 142.
-LaTeX Font Info:    ... okay on input line 142.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 142.
-LaTeX Font Info:    ... okay on input line 142.
- (/usr/local/texlive/2023/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 139.
+LaTeX Font Info:    ... okay on input line 139.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 139.
+LaTeX Font Info:    ... okay on input line 139.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 139.
+LaTeX Font Info:    ... okay on input line 139.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 139.
+LaTeX Font Info:    ... okay on input line 139.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 139.
+LaTeX Font Info:    ... okay on input line 139.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 139.
+LaTeX Font Info:    ... okay on input line 139.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 139.
+LaTeX Font Info:    ... okay on input line 139.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 139.
+LaTeX Font Info:    ... okay on input line 139.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 139.
+LaTeX Font Info:    ... okay on input line 139.
+(/usr/local/texlive/2023/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count340
+\scratchcounter=\count337
 \scratchdimen=\dimen306
 \scratchbox=\box81
-\nofMPsegments=\count341
-\nofMParguments=\count342
+\nofMPsegments=\count338
+\nofMParguments=\count339
 \everyMPshowfont=\toks52
-\MPscratchCnt=\count343
+\MPscratchCnt=\count340
 \MPscratchDim=\dimen307
-\MPnumerator=\count344
-\makeMPintoPDFobject=\count345
+\MPnumerator=\count341
+\makeMPintoPDFobject=\count342
 \everyMPtoPDFconversion=\toks53
 ) (/usr/local/texlive/2023/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -707,8 +697,7 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring ON on input line 142.
- (./synthVolForecast_arxiv.out) (./synthVolForecast_arxiv.out)
+Package hyperref Info: Link coloring ON on input line 139.
 \@outlinefile=\write5
 \openout5 = `synthVolForecast_arxiv.out'.
 
@@ -747,184 +736,571 @@ Package hyperref Info: Link coloring ON on input line 142.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 145.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 142.
 (/usr/local/texlive/2023/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 145.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 142.
  (/usr/local/texlive/2023/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1
+)
 
-{/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] [2]
-<simulation_plots/vol_series_six_plots.png, id=229, 1126.2075pt x 453.695pt>
-File: simulation_plots/vol_series_six_plots.png Graphic file (type png)
-<use simulation_plots/vol_series_six_plots.png>
-Package pdftex.def Info: simulation_plots/vol_series_six_plots.png  used on input line 179.
+Package natbib Warning: Citation `lin2021minimizing' on page 1 undefined on input line 144.
+
+
+Package natbib Warning: Citation `Kenton' on page 1 undefined on input line 149.
+
+
+Package natbib Warning: Citation `dominguez2006defines' on page 1 undefined on input line 151.
+
+
+Package natbib Warning: Citation `tsay2005analysis' on page 1 undefined on input line 156.
+
+
+Package natbib Warning: Citation `boudoukh2019information' on page 1 undefined on input line 156.
+
+
+Package natbib Warning: Citation `bauwens2006regime' on page 1 undefined on input line 158.
+
+
+Package natbib Warning: Citation `hansen2012realized' on page 1 undefined on input line 158.
+
+
+Package natbib Warning: Citation `wang2020forecasting' on page 1 undefined on input line 158.
+
+[1
+
+{/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
+
+Package natbib Warning: Citation `hansen2012realized' on page 2 undefined on input line 160.
+
+
+Package natbib Warning: Citation `mayhew1995implied' on page 2 undefined on input line 160.
+
+
+Package natbib Warning: Citation `christensen1998relation' on page 2 undefined on input line 160.
+
+
+Package natbib Warning: Citation `andersen2003modeling' on page 2 undefined on input line 160.
+
+
+Package natbib Warning: Citation `sharma2016forecasting' on page 2 undefined on input line 162.
+
+
+Package natbib Warning: Citation `romer1989does' on page 2 undefined on input line 164.
+
+
+Package natbib Warning: Citation `kilian2017structural' on page 2 undefined on input line 164.
+
+
+Package natbib Warning: Citation `engle2001good' on page 2 undefined on input line 164.
+
+
+Package natbib Warning: Citation `phillips1996forecasting' on page 2 undefined on input line 164.
+
+
+Package natbib Warning: Citation `hendry1994theory' on page 2 undefined on input line 164.
+
+
+Package natbib Warning: Citation `clements1998forecasting' on page 2 undefined on input line 164.
+
+
+Package natbib Warning: Citation `guerron2017macroeconomic' on page 2 undefined on input line 164.
+
+
+Package natbib Warning: Citation `dendramis2020similarity' on page 2 undefined on input line 164.
+
+
+Package natbib Warning: Citation `foroni2022forecasting' on page 2 undefined on input line 164.
+
+
+Package natbib Warning: Citation `abadie2010synthetic' on page 2 undefined on input line 168.
+
+
+Package natbib Warning: Citation `lin2021minimizing' on page 2 undefined on input line 168.
+
+
+Package natbib Warning: Citation `lin2021minimizing' on page 2 undefined on input line 170.
+
+
+LaTeX Warning: Hyper reference `fig:six_plots' on page 2 undefined on input line 172.
+
+
+LaTeX Warning: Reference `fig:six_plots' on page 2 undefined on input line 172.
+
+
+LaTeX Warning: Reference `fig:arith_mean_example_introduction' on page 2 undefined on input line 172.
+
+
+Package natbib Warning: Citation `timmermann2006forecast' on page 2 undefined on input line 172.
+
+[2]
+<vol_series_six_plots.png, id=32, 1126.2075pt x 453.695pt>
+File: vol_series_six_plots.png Graphic file (type png)
+<use vol_series_six_plots.png>
+Package pdftex.def Info: vol_series_six_plots.png  used on input line 176.
 (pdftex.def)             Requested size: 450.47502pt x 181.47478pt.
-<simulation_plots/motivating_piece_arithmetic_mean.png, id=231, 1016.79875pt x 532.99126pt>
-File: simulation_plots/motivating_piece_arithmetic_mean.png Graphic file (type png)
-<use simulation_plots/motivating_piece_arithmetic_mean.png>
-Package pdftex.def Info: simulation_plots/motivating_piece_arithmetic_mean.png  used on input line 187.
+<motivating_piece_arithmetic_mean.png, id=34, 1016.79875pt x 532.99126pt>
+File: motivating_piece_arithmetic_mean.png Graphic file (type png)
+<use motivating_piece_arithmetic_mean.png>
+Package pdftex.def Info: motivating_piece_arithmetic_mean.png  used on input line 184.
 (pdftex.def)             Requested size: 406.7123pt x 213.19272pt.
 
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+Package natbib Warning: Citation `box2013box' on page 3 undefined on input line 194.
 
-[3 <./simulation_plots/vol_series_six_plots.png>] [4 <./simulation_plots/motivating_piece_arithmetic_mean.png>] [5] [6]
-Underfull \hbox (badness 10000) in paragraph at lines 321--322
+
+Package natbib Warning: Citation `engle1982autoregressive' on page 3 undefined on input line 194.
+
+
+Package natbib Warning: Citation `bollerslev1986generalized' on page 3 undefined on input line 194.
+
+[3 <./vol_series_six_plots.png> <./motivating_piece_arithmetic_mean.png>]
+
+Package natbib Warning: Citation `francq2019garch' on page 4 undefined on input line 196.
+
+[4]
+
+LaTeX Warning: Reference `abadie_factor_model' on page 5 undefined on input line 257.
+
+[5]
+
+Package natbib Warning: Citation `tsay2005analysis' on page 6 undefined on input line 300.
+
+
+Package natbib Warning: Citation `francq2019garch' on page 6 undefined on input line 300.
+
+
+Package natbib Warning: Citation `zivot2009practical' on page 6 undefined on input line 300.
+
+
+LaTeX Warning: Reference `SVF_properties' on page 6 undefined on input line 305.
+
+[6]
+
+Package natbib Warning: Citation `abadie2003economic' on page 7 undefined on input line 307.
+
+
+Package natbib Warning: Citation `abadie2010synthetic' on page 7 undefined on input line 307.
+
+
+Package natbib Warning: Citation `timmermann2006forecast' on page 7 undefined on input line 312.
+
+
+Package natbib Warning: Citation `wang2023forecast' on page 7 undefined on input line 312.
+
+
+Package natbib Warning: Citation `abadie2010synthetic' on page 7 undefined on input line 314.
+
+
+Package natbib Warning: Citation `wang2023forecast' on page 7 undefined on input line 314.
+
+
+Package natbib Warning: Citation `lin2021minimizing' on page 7 undefined on input line 316.
+
+
+Package natbib Warning: Citation `abadie2022synthetic' on page 7 undefined on input line 316.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 318--319
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 330--330
+Package natbib Warning: Citation `abadie2022synthetic' on page 7 undefined on input line 327.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 327--327
 []|\OT1/cmr/m/n/10 Perfect fit, not nec-es-sar-ily unique,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 330--330
-\OT1/cmr/m/n/10 Carath^^Seodory The-o-rem ap-plies [[][]Abadie
- []
-
-
-Underfull \hbox (badness 3690) in paragraph at lines 330--331
+Underfull \hbox (badness 3690) in paragraph at lines 327--328
 []|\OT1/cmr/m/n/10 Fit not per-fect, not nec-es-sar-ily unique,
  []
 
-[7] [8] [9]
-Underfull \hbox (badness 10000) in paragraph at lines 447--449
+
+Package natbib Warning: Citation `andersen2010stochastic' on page 7 undefined on input line 341.
+
+
+Package natbib Warning: Citation `andersen2007roughing' on page 7 undefined on input line 341.
+
+
+Package natbib Warning: Citation `de2006forecasting' on page 7 undefined on input line 341.
+
+
+Package natbib Warning: Citation `andersen2008realized' on page 7 undefined on input line 343.
+
+[7]
+
+Package natbib Warning: Citation `brownlees2011practical' on page 8 undefined on input line 364.
+
+
+Package natbib Warning: Citation `brownlees2011practical' on page 8 undefined on input line 369.
+
+[8]
+
+LaTeX Warning: Reference `eq0' on page 9 undefined on input line 386.
+
+
+Package natbib Warning: Citation `zivot2009practical' on page 9 undefined on input line 386.
+
+
+LaTeX Warning: Reference `eq1' on page 9 undefined on input line 414.
+
+
+LaTeX Warning: Reference `eq2' on page 9 undefined on input line 414.
+
+
+LaTeX Warning: Reference `eq3' on page 9 undefined on input line 414.
+
+
+LaTeX Warning: Reference `eq4' on page 9 undefined on input line 414.
+
+[9]
+
+LaTeX Warning: Reference `GARCH-X' on page 10 undefined on input line 432.
+
+
+Package natbib Warning: Citation `han2014asymptotic' on page 10 undefined on input line 434.
+
+
+LaTeX Warning: Reference `stationarity_of_omega_i_t' on page 10 undefined on input line 440.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 444--446
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 451--453
+Package natbib Warning: Citation `han2014asymptotic' on page 10 undefined on input line 448.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 448--450
+
+ []
+
+
+LaTeX Warning: Reference `omega_consistency' on page 10 undefined on input line 455.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 483--484
 
  []
 
 [10]
-Underfull \hbox (badness 10000) in paragraph at lines 486--487
 
- []
+LaTeX Warning: Reference `QL Loss toy example' on page 11 undefined on input line 497.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 517--518
+LaTeX Warning: Reference `omega_consistency' on page 11 undefined on input line 505.
+
+
+LaTeX Warning: Reference `sigma_consistency' on page 11 undefined on input line 505.
+
+
+LaTeX Warning: Reference `sigma_consistency' on page 11 undefined on input line 512.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 514--515
 
  []
 
 [11]
-<simulation_plots/Jun06_233740_2024_delta_sigma[u].png, id=400, 578.16pt x 433.62pt>
-File: simulation_plots/Jun06_233740_2024_delta_sigma[u].png Graphic file (type png)
-<use simulation_plots/Jun06_233740_2024_delta_sigma[u].png>
-Package pdftex.def Info: simulation_plots/Jun06_233740_2024_delta_sigma[u].png  used on input line 550.
-(pdftex.def)             Requested size: 242.82555pt x 182.11916pt.
 
-Overfull \hbox (23.4128pt too wide) in paragraph at lines 550--551
- [][] 
- []
+Package natbib Warning: Citation `RePEc:pra:mprapa:100301' on page 12 undefined on input line 532.
 
-<simulation_plots/Jun06_233900_2024_delta_sigma[u].png, id=401, 578.16pt x 433.62pt>
-File: simulation_plots/Jun06_233900_2024_delta_sigma[u].png Graphic file (type png)
-<use simulation_plots/Jun06_233900_2024_delta_sigma[u].png>
-Package pdftex.def Info: simulation_plots/Jun06_233900_2024_delta_sigma[u].png  used on input line 555.
-(pdftex.def)             Requested size: 242.82555pt x 182.11916pt.
 
-Overfull \hbox (23.4128pt too wide) in paragraph at lines 555--556
- [][] 
- []
+LaTeX Warning: Reference `loss_function' on page 12 undefined on input line 540.
 
-<simulation_plots/Jun06_234111_2024_delta_sigma[u].png, id=402, 578.16pt x 433.62pt>
-File: simulation_plots/Jun06_234111_2024_delta_sigma[u].png Graphic file (type png)
-<use simulation_plots/Jun06_234111_2024_delta_sigma[u].png>
-Package pdftex.def Info: simulation_plots/Jun06_234111_2024_delta_sigma[u].png  used on input line 561.
-(pdftex.def)             Requested size: 242.82555pt x 182.11916pt.
 
-Overfull \hbox (23.4128pt too wide) in paragraph at lines 561--562
- [][] 
- []
+LaTeX Warning: File `Jun06_233740_2024_delta_sigma_u.png' not found on input line 547.
+
+
+/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/ArXiv_upload/synthVolForecast_arxiv.tex:547: Package pdftex.def Error: File `Jun06_233740_2024_delta_sigma_u.png' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.547 ....42]{Jun06_233740_2024_delta_sigma_u.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `Jun06_233900_2024_delta_sigma_u.png' not found on input line 552.
+
+
+/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/ArXiv_upload/synthVolForecast_arxiv.tex:552: Package pdftex.def Error: File `Jun06_233900_2024_delta_sigma_u.png' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.552 ....42]{Jun06_233900_2024_delta_sigma_u.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `Jun06_234111_2024_delta_sigma_u.png' not found on input line 558.
+
+
+/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/ArXiv_upload/synthVolForecast_arxiv.tex:558: Package pdftex.def Error: File `Jun06_234111_2024_delta_sigma_u.png' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.558 ....42]{Jun06_234111_2024_delta_sigma_u.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: Reference `fig:sim_1' on page 12 undefined on input line 562.
+
+
+LaTeX Warning: Reference `fig:sim_2' on page 12 undefined on input line 562.
+
+
+LaTeX Warning: Reference `fig:sim_3' on page 12 undefined on input line 562.
+
+
+LaTeX Warning: Reference `fig:sim_1' on page 12 undefined on input line 562.
+
+
+LaTeX Warning: Reference `fig:sim_2' on page 12 undefined on input line 562.
+
+
+LaTeX Warning: Reference `fig:sim_3' on page 12 undefined on input line 562.
+
+
+LaTeX Warning: File `Jun06_234115_2024_delta_mu_x.png' not found on input line 571.
+
+
+/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/ArXiv_upload/synthVolForecast_arxiv.tex:571: Package pdftex.def Error: File `Jun06_234115_2024_delta_mu_x.png' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.571 ... = .42]{Jun06_234115_2024_delta_mu_x.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `Jun06_234119_2024_delta_mu_x.png' not found on input line 576.
+
+
+/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/ArXiv_upload/synthVolForecast_arxiv.tex:576: Package pdftex.def Error: File `Jun06_234119_2024_delta_mu_x.png' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.576 ...le=.42]{Jun06_234119_2024_delta_mu_x.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<simulation_plots/Jun06_234115_2024_delta_mu[x].png, id=409, 578.16pt x 433.62pt>
-File: simulation_plots/Jun06_234115_2024_delta_mu[x].png Graphic file (type png)
-<use simulation_plots/Jun06_234115_2024_delta_mu[x].png>
-Package pdftex.def Info: simulation_plots/Jun06_234115_2024_delta_mu[x].png  used on input line 574.
+<Jun06_234137_2024_mu_omega_star_sigma_u.png, id=124, 578.16pt x 433.62pt>
+File: Jun06_234137_2024_mu_omega_star_sigma_u.png Graphic file (type png)
+<use Jun06_234137_2024_mu_omega_star_sigma_u.png>
+Package pdftex.def Info: Jun06_234137_2024_mu_omega_star_sigma_u.png  used on input line 589.
 (pdftex.def)             Requested size: 242.82555pt x 182.11916pt.
 
-Overfull \hbox (23.4128pt too wide) in paragraph at lines 574--575
+Overfull \hbox (23.4128pt too wide) in paragraph at lines 589--590
  [][] 
  []
 
-<simulation_plots/Jun06_234119_2024_delta_mu[x].png, id=410, 578.16pt x 433.62pt>
-File: simulation_plots/Jun06_234119_2024_delta_mu[x].png Graphic file (type png)
-<use simulation_plots/Jun06_234119_2024_delta_mu[x].png>
-Package pdftex.def Info: simulation_plots/Jun06_234119_2024_delta_mu[x].png  used on input line 579.
+<Jun06_234154_2024_mu_omega_star_sigma_u.png, id=125, 578.16pt x 433.62pt>
+File: Jun06_234154_2024_mu_omega_star_sigma_u.png Graphic file (type png)
+<use Jun06_234154_2024_mu_omega_star_sigma_u.png>
+Package pdftex.def Info: Jun06_234154_2024_mu_omega_star_sigma_u.png  used on input line 594.
 (pdftex.def)             Requested size: 242.82555pt x 182.11916pt.
 
-Overfull \hbox (23.4128pt too wide) in paragraph at lines 579--580
+Overfull \hbox (23.4128pt too wide) in paragraph at lines 594--595
  [][] 
  []
+
+
+LaTeX Warning: Reference `fig:sim_7' on page 12 undefined on input line 598.
+
+
+LaTeX Warning: Reference `fig:sim_7' on page 12 undefined on input line 598.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<simulation_plots/Jun06_234137_2024_mu_omega_star_sigma_u.png, id=411, 578.16pt x 433.62pt>
-File: simulation_plots/Jun06_234137_2024_mu_omega_star_sigma_u.png Graphic file (type png)
-<use simulation_plots/Jun06_234137_2024_mu_omega_star_sigma_u.png>
-Package pdftex.def Info: simulation_plots/Jun06_234137_2024_mu_omega_star_sigma_u.png  used on input line 592.
-(pdftex.def)             Requested size: 242.82555pt x 182.11916pt.
+[12] [13 <./Jun06_234137_2024_mu_omega_star_sigma_u.png> <./Jun06_234154_2024_mu_omega_star_sigma_u.png>]
 
-Overfull \hbox (23.4128pt too wide) in paragraph at lines 592--593
- [][] 
- []
-
-<simulation_plots/Jun06_234154_2024_mu_omega_star_sigma_u.png, id=412, 578.16pt x 433.62pt>
-File: simulation_plots/Jun06_234154_2024_mu_omega_star_sigma_u.png Graphic file (type png)
-<use simulation_plots/Jun06_234154_2024_mu_omega_star_sigma_u.png>
-Package pdftex.def Info: simulation_plots/Jun06_234154_2024_mu_omega_star_sigma_u.png  used on input line 597.
-(pdftex.def)             Requested size: 242.82555pt x 182.11916pt.
-
-Overfull \hbox (23.4128pt too wide) in paragraph at lines 597--598
- [][] 
- []
+Package natbib Warning: Citation `mayhew2008incumbency' on page 14 undefined on input line 608.
 
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+Package natbib Warning: Citation `News_2024' on page 14 undefined on input line 608.
 
-[12] [13 <./simulation_plots/Jun06_233740_2024_delta_sigma[u].png> <./simulation_plots/Jun06_233900_2024_delta_sigma[u].png> <./simulation_plots/Jun06_234111_2024_delta_sigma[u].png>] [14 <./simulation_plots/Jun06_234115_2024_delta_mu[x].png> <./simulation_plots/Jun06_234119_2024_delta_mu[x].png> <./simulation_plots/Jun06_234137_2024_mu_omega_star_sigma_u.png> <./simulation_plots/Jun06_234154_2024_mu_omega_star_sigma_u.png>] [15
+
+Package natbib Warning: Citation `wolfers2016financial' on page 14 undefined on input line 608.
+
+
+Package natbib Warning: Citation `goodell2013us' on page 14 undefined on input line 608.
+
+
+Package natbib Warning: Citation `Silver_2016' on page 14 undefined on input line 608.
+
+
+Package natbib Warning: Citation `zivot2009practical' on page 14 undefined on input line 610.
+
+
+Package natbib Warning: Citation `hansen2005forecast' on page 14 undefined on input line 613.
+
+
+Package natbib Warning: Citation `goodell2013us' on page 14 undefined on input line 615.
+
+
+Package natbib Warning: Citation `kane1996p' on page 14 undefined on input line 615.
+
+
+Package natbib Warning: Citation `abadie2003economic' on page 14 undefined on input line 617.
+
+
+Package natbib Warning: Citation `abadie2010synthetic' on page 14 undefined on input line 617.
+
+[14
 
 ]
-<real_data_output_plots/FriMay311830522024_IYG_None_2016-06-22.png, id=479, 803.0pt x 602.25pt>
-File: real_data_output_plots/FriMay311830522024_IYG_None_2016-06-22.png Graphic file (type png)
-<use real_data_output_plots/FriMay311830522024_IYG_None_2016-06-22.png>
-Package pdftex.def Info: real_data_output_plots/FriMay311830522024_IYG_None_2016-06-22.png  used on input line 629.
-(pdftex.def)             Requested size: 401.49902pt x 301.12425pt.
- [16 <./real_data_output_plots/FriMay311830522024_IYG_None_2016-06-22.png>] [17]
 
-LaTeX Warning: Reference `tab:prediction_table' on page 18 undefined on input line 678.
+Package natbib Warning: Citation `andersen2008realized' on page 15 undefined on input line 619.
+
+
+Package natbib Warning: Citation `ryan2015package' on page 15 undefined on input line 620.
+
+
+Package natbib Warning: Citation `wachowicz2020wharton' on page 15 undefined on input line 620.
+
+<FriMay311830522024_IYG_None_2016-06-22.png, id=155, 803.0pt x 602.25pt>
+File: FriMay311830522024_IYG_None_2016-06-22.png Graphic file (type png)
+<use FriMay311830522024_IYG_None_2016-06-22.png>
+Package pdftex.def Info: FriMay311830522024_IYG_None_2016-06-22.png  used on input line 626.
+(pdftex.def)             Requested size: 401.49902pt x 301.12425pt.
+
+LaTeX Warning: Reference `fig:SVF_2016' on page 15 undefined on input line 632.
+
+[15 <./FriMay311830522024_IYG_None_2016-06-22.png>]
+
+Package natbib Warning: Citation `steegen2016increasing' on page 16 undefined on input line 634.
+
+
+Package natbib Warning: Citation `lin2021minimizing' on page 16 undefined on input line 639.
+
+
+Package natbib Warning: Citation `lin2021minimizing' on page 16 undefined on input line 639.
+
+
+Package natbib Warning: Citation `lin2021minimizing' on page 16 undefined on input line 641.
+
+
+Package natbib Warning: Citation `phillips1996forecasting' on page 16 undefined on input line 641.
+
+
+Package natbib Warning: Citation `phillips1996forecasting' on page 16 undefined on input line 641.
+
+
+Package natbib Warning: Citation `clements1996intercept' on page 16 undefined on input line 649.
+
+
+Package natbib Warning: Citation `guerron2017macroeconomic' on page 16 undefined on input line 649.
+
+
+Package natbib Warning: Citation `hastie2009elements' on page 16 undefined on input line 651.
+
+
+Package natbib Warning: Citation `abadie2010synthetic' on page 16 undefined on input line 651.
+
+
+Package natbib Warning: Citation `hastie2009elements' on page 16 undefined on input line 653.
+
+[16]
+
+Package natbib Warning: Citation `lin2021minimizing' on page 17 undefined on input line 655.
+
+
+Package natbib Warning: Citation `lin2021minimizing' on page 17 undefined on input line 655.
+
+
+Package natbib Warning: Citation `abadie2022synthetic' on page 17 undefined on input line 659.
+
+
+Package natbib Warning: Citation `boudoukh2019information' on page 17 undefined on input line 663.
+
+
+Package natbib Warning: Citation `chinco2019sparse' on page 17 undefined on input line 663.
+
+
+LaTeX Warning: Reference `forecastcomb' on page 17 undefined on input line 665.
+
+
+Package natbib Warning: Citation `corsi2012har' on page 17 undefined on input line 665.
+
+
+Package natbib Warning: Citation `rossi2013advances' on page 17 undefined on input line 669.
+
+
+Package natbib Warning: Citation `rossi2021forecasting' on page 17 undefined on input line 669.
+
+
+Package natbib Warning: Citation `dendramis2020similarity' on page 17 undefined on input line 669.
+
+
+LaTeX Warning: Reference `tab:prediction_table' on page 17 undefined on input line 675.
+
+
+LaTeX Warning: Reference `tab:prediction_table' on page 17 undefined on input line 815.
+
+[17]
+
+LaTeX Warning: Reference `tab:prediction_table_with Brexit as June 22nd, 2016' on page 18 undefined on input line 819.
 
 [18]
 
-LaTeX Warning: Reference `tab:prediction_table' on page 19 undefined on input line 818.
+LaTeX Warning: Reference `Real Data Example' on page 19 undefined on input line 826.
 
-[19] [20]
-<real_data_output_plots/FriMay311830182024_IYG_None_None.png, id=568, 803.0pt x 602.25pt>
-File: real_data_output_plots/FriMay311830182024_IYG_None_None.png Graphic file (type png)
-<use real_data_output_plots/FriMay311830182024_IYG_None_None.png>
-Package pdftex.def Info: real_data_output_plots/FriMay311830182024_IYG_None_None.png  used on input line 841.
+[19]
+
+Package natbib Warning: Citation `BBC_News_2016' on page 20 undefined on input line 828.
+
+
+Package natbib Warning: Citation `Bailey_2024' on page 20 undefined on input line 828.
+
+
+LaTeX Warning: Reference `tab:prediction_table_with Brexit as June 22nd, 2016' on page 20 undefined on input line 832.
+
+
+LaTeX Warning: Reference `tab:prediction_table_with Brexit as June 23rd, 2016' on page 20 undefined on input line 832.
+
+<FriMay311830182024_IYG_None_None.png, id=193, 803.0pt x 602.25pt>
+File: FriMay311830182024_IYG_None_None.png Graphic file (type png)
+<use FriMay311830182024_IYG_None_None.png>
+Package pdftex.def Info: FriMay311830182024_IYG_None_None.png  used on input line 838.
 (pdftex.def)             Requested size: 481.80373pt x 361.35278pt.
- [21]
-<real_data_output_plots/WedJun121222522024_IYG_None_None.png, id=576, 803.0pt x 602.25pt>
-File: real_data_output_plots/WedJun121222522024_IYG_None_None.png Graphic file (type png)
-<use real_data_output_plots/WedJun121222522024_IYG_None_None.png>
-Package pdftex.def Info: real_data_output_plots/WedJun121222522024_IYG_None_None.png  used on input line 851.
+[20]
+<WedJun121222522024_IYG_None_None.png, id=200, 803.0pt x 602.25pt>
+File: WedJun121222522024_IYG_None_None.png Graphic file (type png)
+<use WedJun121222522024_IYG_None_None.png>
+Package pdftex.def Info: WedJun121222522024_IYG_None_None.png  used on input line 848.
 (pdftex.def)             Requested size: 481.80373pt x 361.35278pt.
- [22 <./real_data_output_plots/FriMay311830182024_IYG_None_None.png>] [23 <./real_data_output_plots/WedJun121222522024_IYG_None_None.png>] (./synthVolForecast_arxiv.bbl
+ [21 <./FriMay311830182024_IYG_None_None.png>] [22 <./WedJun121222522024_IYG_None_None.png>] (./synthVolForecast_arxiv.bbl
 Underfull \hbox (badness 5133) in paragraph at lines 44--47
 []\OT1/cmr/m/n/10 Ric Bai-ley.  How the bbc re-ports polling day, May 2024.  URL [][]$\OT1/cmtt/m/n/10 https : / / www . bbc . com / news /
  []
 
-[24
+[23
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 199--202
@@ -936,29 +1312,44 @@ Underfull \hbox (badness 5260) in paragraph at lines 239--242
 []\OT1/cmr/m/n/10 Nate Sil-ver.  2016 elec-tion fore-cast, Nov 2016.  URL [][]$\OT1/cmtt/m/n/10 https : / / projects . fivethirtyeight . com /
  []
 
-[25]) [26] (./synthVolForecast_arxiv.aux)
+[24])
+
+Package natbib Warning: There were undefined citations.
+
+[25] (./synthVolForecast_arxiv.aux
+
+Package natbib Warning: Citation(s) may have changed.
+(natbib)                Rerun to get citations correct.
+
+)
 
 LaTeX Warning: There were undefined references.
 
 
-LaTeX Warning: There were multiply-defined labels.
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
-Package rerunfilecheck Info: File `synthVolForecast_arxiv.out' has not changed.
-(rerunfilecheck)             Checksum: 4DEF5BF2EA3B25D503C0E95C9399B4D1;5795.
+
+Package rerunfilecheck Warning: File `synthVolForecast_arxiv.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `synthVolForecast_arxiv.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  4DEF5BF2EA3B25D503C0E95C9399B4D1;5795.
  ) 
 Here is how much of TeX's memory you used:
- 26406 strings out of 476025
- 489811 string characters out of 5790017
+ 26414 strings out of 476025
+ 492035 string characters out of 5790017
  1890388 words of memory out of 5000000
- 46231 multiletter control sequences out of 15000+600000
+ 46240 multiletter control sequences out of 15000+600000
  530493 words of font info for 97 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,17n,80p,2248b,648s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb>
-Output written on synthVolForecast_arxiv.pdf (26 pages, 1901645 bytes).
+ 84i,17n,80p,2266b,648s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb>
+Output written on synthVolForecast_arxiv.pdf (25 pages, 1046618 bytes).
 PDF statistics:
- 775 PDF objects out of 1000 (max. 8388607)
- 653 compressed objects within 7 object streams
- 152 named destinations out of 1000 (max. 500000)
- 313 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 457 PDF objects out of 1000 (max. 8388607)
+ 352 compressed objects within 4 object streams
+ 151 named destinations out of 1000 (max. 500000)
+ 48 words of extra memory for PDF output out of 10000 (max. 10000000)
 
