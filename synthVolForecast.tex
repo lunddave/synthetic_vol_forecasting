@@ -679,7 +679,7 @@ There is an important question about the stability of the GARCH parameters under
 
 \subsection{Leave-one-out: How we analyzed a multiverse of 50 predictions}
 
-Given the option of redoing our analysis, with nine covariates and four donors, a natural question from a place of skepticism is, how stable are the results --- how contingent are they on a particular specification?  To answer these questions, in Table \ref{tab:prediction_table} we generate all fifty predictions yielded the decision of leave out any one of the donors (or none) and any one of the covariates (or none).  This analysis includes the prediction presented above, which can be viewed as the null model, at least in the sense that it provides and baseline for comparison.
+Given the option of redoing our analysis, with nine covariates and four donors, a natural question from a place of skepticism is, how stable are the results --- how contingent are they on a particular specification?  To answer these questions, in Table \ref{tab:prediction_table_with Brexit as June 22nd, 2016} we generate all fifty predictions yielded the decision of leave out any one of the donors (or none) and any one of the covariates (or none).  This analysis includes the prediction presented above, which can be viewed as the null model, at least in the sense that it provides and baseline for comparison.
 
 \begin{table}[ht]
   \centering
@@ -819,7 +819,8 @@ Given the option of redoing our analysis, with nine covariates and four donors, 
     \end{table}
 
 \subsection{Sensitivity to Covariates Chosen}
-Any covariate that appears more often closer to the bottom of the \ref{tab:prediction_table} is, $\textit{ceteris paribus}$, a more important covariate for this prediction task, since by dropping it, a larger loss results.  The covariates that thus stand out are the demeaned log return of IYG, the VIX, the Debt Risk Spread (spread between between AAA and BAA corporate debt), and last but not least, the choice of dropping none of the covariates.  The demeaned log return of IYG, of which we use the 30 days preceeding the $T_{i}^{*}$, suggests an unusually strong relevance in matching donors to the time series under study.  The Debt Risk Spread is also deserving of additional comment and attention, perhaps alongside the poor performance of the log return of the VIX.  The Debt Risk Spread is available at a monthly frequency via FRED (add citation), whereas the VIX is available daily via Yahoo Finance (I need to explain that and cite Yahoo Finance and quantmod).  It may be the case that the true conditional shock distribution includes low-frequency data as well as data in levels (like the VIX), while the daily changes in the VIX are absent.
+Any covariate that appears more often closer to the bottom of Table \ref{tab:prediction_table_with Brexit as June 22nd, 2016} is, $\textit{ceteris paribus}$, a more important covariate for this prediction task, since by dropping it, a larger loss results.  The covariates that thus stand out are the demeaned log return of IYG, the VIX, the Debt Risk Spread (spread between between AAA and BAA corporate debt), and last but not least, the choice of dropping none of the covariates.  The demeaned log return of IYG, of which we use the 30 days preceeding the $T_{i}^{*}$, suggests an unusually strong relevance in matching donors to the time series under study.  The Debt Risk Spread is also deserving of additional comment and attention, perhaps alongside the poor performance of the log return of the VIX.  The Debt Risk Spread is available at a monthly frequency via FRED (add citation), whereas the VIX is available daily via Yahoo Finance (I need to explain that and cite Yahoo Finance and quantmod).  It may be the case that the true conditional shock distribution includes low-frequency data as well as data in levels (like the VIX), while the daily changes in the VIX are absent.
+
 
 \subsection{Sensitivity to Donors Chosen}
 
@@ -837,7 +838,6 @@ We now turn, however, to why the inclusion of Brexit failed to perform nearly as
 \subsection{Can we combine forecasts to outperform the individual forecasts?}\label{forecastcomb}
 
 Forecast combination is technique with a vast, sprawling literature that we have referred to above.  While forecast combination can be justified in any number of ways, here we invoke forecast combination as a way to robustify forecasts against misspecification.  We combine in two simply ways, using the mean of all 50 forecasts and the median of all 50 forecasts.  The results are presented in Tables \ref{tab:prediction_table_with Brexit as June 22nd, 2016} and \ref{tab:prediction_table_with Brexit as June 23rd, 2016}.
-
 
 \begin{figure}[H]
   \begin{center}
