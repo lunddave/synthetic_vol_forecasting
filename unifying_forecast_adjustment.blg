@@ -3,44 +3,46 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: unifying_forecast_adjustment.aux
 The style file: plainnat.bst
 Database file #1: synthVolForecast.bib
-You've used 2 entries,
+Warning--empty journal in hendry1994theory
+You've used 3 entries,
             2773 wiz_defined-function locations,
-            603 strings with 5181 characters,
-and the built_in function-call counts, 753 in all, are:
-= -- 60
-> -- 42
-< -- 2
-+ -- 14
-- -- 12
-* -- 48
-:= -- 125
-add.period$ -- 6
-call.type$ -- 2
-change.case$ -- 9
-chr.to.int$ -- 2
-cite$ -- 4
-duplicate$ -- 39
-empty$ -- 63
-format.name$ -- 18
-if$ -- 152
+            608 strings with 5300 characters,
+and the built_in function-call counts, 1115 in all, are:
+= -- 91
+> -- 63
+< -- 3
++ -- 21
+- -- 18
+* -- 71
+:= -- 182
+add.period$ -- 9
+call.type$ -- 3
+change.case$ -- 14
+chr.to.int$ -- 3
+cite$ -- 7
+duplicate$ -- 58
+empty$ -- 93
+format.name$ -- 27
+if$ -- 227
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 3
-newline$ -- 18
-num.names$ -- 8
-pop$ -- 23
+missing$ -- 4
+newline$ -- 23
+num.names$ -- 12
+pop$ -- 35
 preamble$ -- 1
-purify$ -- 8
+purify$ -- 12
 quote$ -- 0
-skip$ -- 32
+skip$ -- 48
 stack$ -- 0
-substring$ -- 4
+substring$ -- 6
 swap$ -- 2
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 17
-warning$ -- 0
-while$ -- 6
+type$ -- 28
+warning$ -- 1
+while$ -- 9
 width$ -- 0
-write$ -- 31
+write$ -- 42
+(There was 1 warning)
