@@ -133,11 +133,11 @@ This work systematizes and unifies the rich landscape of model adjustment and mo
 
 \section{Introduction}
 
-With many prediction tasks in time series in panel data, the salient challenge is not predicting when an event will occur but what its direction, sign, magnitude, duration, and/or after-effects will be. This is not to say that predicting when a given event will occur is easy. In some cases, it may be difficult or impossible, and in those situations in particular, preparing for the shock is the best one can hope for.
+For various modeling and prediction tasks in time series and panel data, the salient challenge is not predicting when an event will occur but what its direction, sign, magnitude, duration, correlation structure, or after-effects will be. This is not to say that predicting when a given event will occur is easy. In some cases, it may be difficult or impossible, and in those situations in particular, preparing for the shock is the best one can hope for.
 
-This work focuses on model adjustment admidst structual shocks that undermine the reliability of the base model.  Forecasting amid anticipated shocks raises unavoidable questions: should the forecast model be abandoned in favor of a discretionary or ad-hoc or one-off adjustment?  Does the does the discretion of a forecaster rule out a quantitative method for making the adjustment?  What is the ultimate purpose of the adjustment, and how it is to be used?  For how long is the adjustment necessary or reliable?
+This work focuses on model adjustment amid structual shocks that undermine the reliability of the  model at hand.  Forecasting under anticipated shocks raises unavoidable questions: should the forecast model be abandoned in favor of a discretionary or ad-hoc or one-off adjustment?  Does the does the discretion of a forecaster rule out a quantitative method for making the adjustment?  What is the ultimate purpose of the adjustment, and how it is to be used?  For how long is the adjustment necessary or reliable?
 
-Herein we systematize and unify a range of conceptual approaches and tools that have developed across the broad ecosystem of the econometric and forecasting literatures.\\
+Herein we systematize and unify a range of conceptual approaches and tools that have developed across the broad ecosystem of the econometric and forecasting literatures.  Additionally, we delineate a specific type of forecasting problem called post-shock forecasting, which we broadly define as forecasting when the a shock intervenes.\\
 
 difference between discretionary and automated \citep{hendry1994theory}\\
 
@@ -150,6 +150,7 @@ The role and meaning of similarity\\
 How important is a shared DGP?\\
 
 Bias-variance tradeoff and MSE decomposition\\
+
 
 Mismeasured data is discussed in \cite[p. 166]{hendry1994theory} as a motivator for intercept correction.  Could similarity-based correction help?\\
 
@@ -187,6 +188,8 @@ Quinton-Guerrera and Zhong
     \end{enumerate}
   \item a correction function that aggregates (i.e. maps) donor correction terms based on some notion of similarity
 \end{enumerate}
+Emphasize that there is a non-parametric version of the above: for example, one can use LSTM to predict each of the donor shocks, and then the residuals of those $n$ models can be weighted to arrive at a correction term.
+
 
 \section{Setting}
 
