@@ -1,4 +1,4 @@
-\begin{thebibliography}{3}
+\begin{thebibliography}{4}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -9,6 +9,11 @@
 Michael Clements and David~F Hendry.
 \newblock \emph{Forecasting economic time series}.
 \newblock Cambridge University Press, 1998.
+
+\bibitem[Clements and Hendry(2005)]{clements2005evaluating}
+Michael~P Clements and David~F Hendry.
+\newblock Evaluating a model by forecast performance.
+\newblock \emph{Oxford Bulletin of Economics and Statistics}, 67:\penalty0 931--956, 2005.
 
 \bibitem[Hendry and Clements(1994)]{hendry1994theory}
 D~Hendry and M~Clements.
