@@ -78,7 +78,7 @@ Alex Chinco, Adam~D Clark-Joseph, and Mao Ye.
 \bibitem[Christensen and Prabhala(1998)]{christensen1998relation}
 Bent~J Christensen and Nagpurnanand~R Prabhala.
 \newblock The relation between implied and realized volatility.
-\newblock \emph{Journal of financial economics}, 50\penalty0 (2):\penalty0 125--150, 1998.
+\newblock \emph{Journal of Financial Economics}, 50\penalty0 (2):\penalty0 125--150, 1998.
 
 \bibitem[Clements and Hendry(1998)]{clements1998forecasting}
 Michael Clements and David~F Hendry.
@@ -143,11 +143,11 @@ Pablo Guerr{\'o}n-Quintana and Molin Zhong.
 \bibitem[Han and Kristensen(2014)]{han2014asymptotic}
 Heejoon Han and Dennis Kristensen.
 \newblock Asymptotic theory for the qmle in garch-x models with stationary and nonstationary covariates.
-\newblock \emph{Journal of business \& economic statistics}, 32\penalty0 (3):\penalty0 416--429, 2014.
+\newblock \emph{Journal of Business \& Economic Statistics}, 32\penalty0 (3):\penalty0 416--429, 2014.
 
 \bibitem[Hansen and Lunde(2005)]{hansen2005forecast}
 Peter~R Hansen and Asger Lunde.
-\newblock A forecast comparison of volatility models: does anything beat a garch (1, 1)?
+\newblock A forecast comparison of volatility models: does anything beat a garch (1,1)?
 \newblock \emph{Journal of applied econometrics}, 20\penalty0 (7):\penalty0 873--889, 2005.
 
 \bibitem[Hansen et~al.(2012)Hansen, Huang, and Shek]{hansen2012realized}
@@ -284,6 +284,6 @@ Justin Wolfers and Eric Zitzewitz.
 \bibitem[Zivot(2009)]{zivot2009practical}
 Eric Zivot.
 \newblock Practical issues in the analysis of univariate garch models.
-\newblock In \emph{Handbook of financial time series}, pages 113--155. Springer, 2009.
+\newblock In \emph{Handbook of Financial Time Series}, pages 113--155. Springer, 2009.
 
 \end{thebibliography}
