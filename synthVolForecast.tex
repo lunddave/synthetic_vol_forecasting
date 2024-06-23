@@ -248,27 +248,25 @@ where $D^{return}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + L_{i, return}\})$ and 
     \begin{equation*}
       \textbf{V}_{t} = 
       \begin{pmatrix}
-      \hat\alpha_{1,t} & \hat\alpha_{t,2}  & \cdots & \hat\alpha_{t,n}  \\
-      \hat\beta_{1,t} & \hat\beta_{t,2}  & \cdots & \hat\beta_{t,n}  \\
+
+      RV_{2,t}  & RV_{1,t} &  \cdots & RV_{n+1,t}  \\
+      RV_{1,t-1}  & RV_{2,t-1}  & \cdots & RV_{n+1,t-1}  \\
       \vdots  & \vdots  & \ddots & \vdots  \\
-      RV_{1,t} & RV_{2,t}  & \cdots & RV_{n,t}  \\
-      RV_{1,t-1}  & RV_{2,t-1}  & \cdots & RV_{n,t-1}  \\
+      IV_{1,t} & IV_{2,t} & \cdots & IV_{n+1,t} \\
+      IV_{1,t-1}  & IV_{2,t-1}  & \cdots & IV_{n+1,t-1} \\
       \vdots  & \vdots  & \ddots & \vdots  \\
-      IV_{1,t} & IV_{2,t} & \cdots & IV_{n,t} \\
-      IV_{1,t-1}  & IV_{2,t-1}  & \cdots & IV_{n,t-1} \\
+      |r_{1,t}| & |r_{2,t}| & \cdots & |r_{n+1,t}| \\
+      |r_{1,t-1}|  & |r_{2,t-1}|  & \cdots & |r_{n+1,t-1}| \\
       \vdots  & \vdots  & \ddots & \vdots  \\
-      |r_{1,t}| & |r_{2,t}| & \cdots & |r_{n,t}| \\
-      |r_{1,t-1}|  & |r_{2,t-1}|  & \cdots & |r_{n,t-1}| \\
+      Volume_{1,t}  & Volume_{2,t}  & \cdots & Volume_{n+1,t} \\
+      Volume_{1,t-1}  & Volume_{2,t-1}  & \cdots & Volume_{n+1,t-1}  \\
       \vdots  & \vdots  & \ddots & \vdots  \\
-      Volume_{1,t}  & Volume_{2,t}  & \cdots & Volume_{n,t} \\
-      Volume_{1,t-1}  & Volume_{2,t-1}  & \cdots & Volume_{n,t-1}  \\
-      \vdots  & \vdots  & \ddots & \vdots  \\
-      \Delta RV_{1,t} & \Delta RV_{2,t}  & \cdots & \Delta RV_{n,t}  \\
-      \Delta RV_{1,t-1}  & \Delta RV_{2,t-1}  & \cdots & \Delta RV_{n,t-1}  \\
+      \Delta RV_{1,t} & \Delta RV_{2,t}  & \cdots & \Delta RV_{n+1,t}  \\
+      \Delta RV_{1,t-1}  & \Delta RV_{2,t-1}  & \cdots & \Delta RV_{n+1,t-1}  \\
       \vdots  & \vdots  & \ddots & \vdots  \\
       \end{pmatrix},
       \end{equation*}
-      where RV and IV denote realized volatility and implied volatility, respectively.  Covariates chosen for inclusion in a given volatility profile may be levels, log differences in levels, percentage changes in levels, or absolute values thereof, among many choices.
+      where $\hat\alpha_{i,k}, \hat\beta_{i,j}$ denote the estimated parameters of the $i$th donor denoteRV and IV denote realized volatility and implied volatility, respectively.  Covariates chosen for inclusion in a given volatility profile may be levels, log differences in levels, percentage changes in levels, or absolute values thereof, among many choices.
 
       As shown, $\textbf{V}_{t}$ displays `balance' in that $p$ covariates exist for each of the $n$ donors.  In practice, missing values, corrupted values, or unacceptably extreme or noisy estimates may necessitate some sort of matrix completion, a problem that we do not tackle in this work.  We now turn to the next section, where $\textbf{V}_{t}$ is employed in a procedure to arrive at a forecast adjustment. 
     
