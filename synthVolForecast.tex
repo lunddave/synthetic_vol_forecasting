@@ -176,13 +176,6 @@ Outside of \citet{lin2021minimizing}, we know of no prior work that both introdu
 
 In order to motivate our procedure, we provide visual illustrations.  In \hyperref[fig:six_plots]{Figure} \ref{fig:six_plots} \textcolor{red}{We need to standardize link conventions or the lack thereof for Figures, Tables, etc}, we provide a panel of volatility series of i.i.d. GARCH processes, corresponding to a setting in which five donors exist.  Next, in Figure \ref{fig:arith_mean_example_introduction}, we show how the aggregation of estimated excess volatilities from donors in the donor pool works when the correction function is the arithmetic mean of the donors' fixed effects.  The arithmetic mean of excess volatility estimates provides perhaps the most straightforward and intuitive way of aggregating information from similar events.  Although using the arithmetic mean is intuitive and enjoys some empirical track record, its grounding in theory is much less impressive \citep{timmermann2006forecast}.  Our method assumes a credible, parsimonious parameterization in which the shock is an affine transformation of several key covariates.  The key intuition behind this shock parameterization is that as the strength of the linear signal increases relative to the idiosyncratic error, the GARCH estimation of these effects increases in accuracy.  From this, it follows that the aggregated shock estimate increases in accuracy.
 
-\begin{figure}[h!]
-  \begin{center}
-    \includegraphics[scale=.4]{simulation_plots/vol_series_six_plots.png}
-    \caption{Volatility series of six i.i.d. GARCH processes, each of which experiences a volatility shock, indicated with a red vertical line, at a uniformly distributed point in the set $\{756,...,2520\}$ of trading days, corresponding to between 3 and 10 years of daily trading data.}
-    \label{fig:six_plots}
-    \end{center}
-  \end{figure}
 
   \begin{figure}[h!]
     \begin{center}
@@ -416,7 +409,7 @@ Assume
   \item For each $i, \{\omega_{i,t}^{*}\}_{t=0,...,T_i}$ is potentially non-zero at $\{T^{*}_{i}+1,... ,T^{*}_{i}+k\}$, $\omega_{i,T^{*}+1}^{*}\equiv...\equiv\omega_{i,T^{*}+k}^{*}$, and zero otherwise, where the arrival of $T_{i}^{*}$ is governed by a time-invariant distribution on $\{a_{i,t}\}_{t=0,...,T_i-1}$. \label{stationarity_of_omega_i_t}
   \item The conditions in Assumption 0 of \citet{han2014asymptotic} prevail.
 \end{enumerate}
-Then for any $i$, $\hat\omega_{i,t}^{*} \xrightarrow{p} \omega_{i,T^{*}+1}^{*}$ as $t\rightarrow\infty$.
+Then for any $i$, $\hat\omega_{i,t}^{*} \xlongrightarrow{p} \omega_{i,T^{*}+1}^{*}$ as $t\rightarrow\infty$.
 \end{prop}
 
 \begin{lem}
@@ -438,7 +431,7 @@ The result follows from the consistency proof of the QMLE in GARCH-X models, as 
       \item All conditions listed in Proposition \ref{omega_consistency}.
       \item There exist weights $\{\pi_{i}\}_{i=2}^{n=1}$ such that $\textbf{v}_{1,T^{*}} = \sum^{n+1}_{i=2}\weight_{i} \textbf{v}_{i,T^{*}}$.
      \end{enumerate}
-  Then $\hat\sigma^{2}_{adjusted}\xrightarrow{p}\sigma^{2}_{1,T^{*}+1}$ as $t\rightarrow\infty$. 
+  Then $\hat\sigma^{2}_{adjusted}\xlongrightarrow{p}\sigma^{2}_{1,T^{*}+1}$ as $t\rightarrow\infty$. 
   \end{prop}
 
 
@@ -485,12 +478,9 @@ For simplicity, we work with a GARCH(1,1) that experiences a volatility shock at
 It is easily verified that as $\hat\omega^{*}_{t+1} \rightarrow 0^{+}$, the difference in the losses goes to zero.  On the other hand, as $\hat\omega^{*}_{t+1}$ becomes large, the difference in the losses turns negative, with the lesson being that $\hat\omega^{*}_{t+1}$ must be in appropriate proportion to the volatility $\sigma^{2}_{t+1}$ in order for the adjusted forecast to outperform the unadjusted forecast.  This explains why it is so important to avoid using a naive adjustment estimator, $\overline{\omega^{*}}$, the arithmetic mean of the estimated shocks.  We conclude this section with a broader result. 
 
 \begin{prop}\label{asymptotic_consistency}
-Assume the conditions in Propositions $\ref{omega_consistency}$ and $\ref{sigma_consistency}$.  Let $1\leq i\leq n+1$.\\
-  Then 
+Assume the conditions in Propositions $\ref{omega_consistency}$ and $\ref{sigma_consistency}$.  Let $1\leq i\leq n+1$.  Then as $t\rightarrow \infty$
   
-$$QL(\hat\sigma_{t+1, unadjusted}^{2},\sigma^{2}_{t+1})-QL(\hat\sigma^{2}_{t+1, adjusted},\sigma^{2}_{t+1})\xrightarrow{p} \frac{\omega_{i,t+1}^{*}}{\sigma^{2}_{t+1}-\omega_{i,t+1}^{*}} + \log{\frac{\sigma_{t+1}^{2}-\omega_{i,t+1}^{*}}{\sigma_{t+1}^{2}} } \geq 0$$
-
-$\mathrm{as} \, t\rightarrow \infty.$\\
+$$QL(\hat\sigma_{t+1, unadjusted}^{2},\sigma^{2}_{t+1})-QL(\hat\sigma^{2}_{t+1, adjusted},\sigma^{2}_{t+1})\xlongrightarrow{p} \frac{\omega_{i,t+1}^{*}}{\sigma^{2}_{t+1}-\omega_{i,t+1}^{*}} + \log{\frac{\sigma_{t+1}^{2}-\omega_{i,t+1}^{*}}{\sigma_{t+1}^{2}} } \geq 0.$$\\
 
 Hence, a correctly specified $\mc{M}_1$ model will outperform the unadjusted forecast asymptotically.
 \end{prop}
@@ -513,9 +503,6 @@ Each simulation is a GARCH(1,1) process with $n$ chosen randomly from the set of
   We vary exactly five parameters: $\mu_{X}, \sigma_{X}, \mu_{\delta}, \mu_{\omega^{*}}, \sigma_{u}$, each of which is critical to evaluating the method's responsiveness to changing conditions in the shock distribution. $\mu_{X}, \sigma_{X}$ govern the elements of the volatility profile. $mu_{\delta}$ interacts with $X$ via the dot-product operation, of course.  $\mu_{\omega^{*}}$ is a location parameter for the volatility shock, and $\sigma_{u}$ is the idiosyncratic noise of the volatility shock.
   
   We add an important note about the parameter $\mu_{\delta}$, which governs a vector $\delta$ of length $p$ with elements that increase monotonically in proportion to $1,...,p$, after which they are scaled by the factor $\frac{2\cdot\mu_{\delta}}{p(p+1)}$, so that a randomly selected element has mean $\mu_{\delta}$.  The heterogeneity of the elements is critical to simulating the plausible heterogeneity that will exist in the random effects structure.  Absent a heterogeneous vector $\delta$, the shock would not vary systematically with regard to each variable chosen for the volatility profile, which would fail to approximate the realities of financial markets.
-
-\textcolor{red}{
-Consider now a shock to both the volatility and the level beginning at $T^{*}+1$.  In particular, we will explore the performance of the method when a  $\mc{M}_{1}$ shock hits the volatility, while an $\mc{M}_{0}$ shock hits the level. There is a good reason we explore an $\mc{M}_{0}$ shock to the level: this work proposes no procedure to predict the unobservable quantity $\epsilon^{*}_{i}$, and even if one could construct one (for example, by employing the procedure in \cite{lin2021minimizing} and computing $\hat\epsilon^{*}_{i} = \frac{\hat a^{i,t}}{\hat\sigma^2_{i,t}}$, it is unclear what practical value that estimate would provide).  Hypothesis: Method should do less well under a concommitant volatility and level shock.  A dual shock is in essence a squared observable with two independent sources of randomness.}
 
 \subsection{Evaluative Framework and Monte Carlo Results}
 Consistent with our evaluative framework declared in \ref{loss_function}, we compare adjusted and unadjusted forecasts using QL Loss, calculating the fraction of the simulations that the adjusted forecast yields a QL Loss no smaller than that of the unadjusted forecast.
