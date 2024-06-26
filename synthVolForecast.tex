@@ -299,7 +299,7 @@ In the forecast combination literature, it is discussed whether the weights empl
 
 A more promising aim is finding weights such that $\textbf{v}_{1} = \sum^{n+1}_{i=2}\weight_{i}\textbf{v}_{i}$, meaning that the volatility profile of the time series under study lies within the convex hull of the donor volatility profile.  This condition underwrites asymptotic results in \citet{abadie2010synthetic}, and the intuition there extends to this work: if the shock is parameterized by an affine function of covariates, then finding a linear combination that recreates the shock should serve us well.  Because the method proposed uses a point in $\Delta^{n}$, it is important to head-off possible confusion.  What we are proposing is not a forecast combination method.  What we are aggregating and weighting (not combining) are subcomponents of forecasts, not forecasts themselves.  Moreover, from a broader perspective, forecast combination is an inapt term for what is being proposed here.  First, the donor time series do not provide forecasts, nor would forecasts be needed for random variables that have already been realized.  Second and more fundamentally, the theoretical underpinnings of forecast combination, while diverse \citep{wang2023forecast}, are distinct from the setting presumed in this work, where the model family is not in doubt but the parameter values and how they prevail must be learned.
 
-A question naturally arises regarding the uniqueness of weights.  Remarks by \cite{lin2021minimizing, abadie2022synthetic} apply here.  We make additional comments as well. $(\mathbb{R}^{n}, \|\cdot\|)$ is a Chebyshev space, and hence for any element x and any convex set $C\subset \mathbb{R}^{n}$, there exists a unique element $y\in C$ that minimizes $\|x-y\|$.  However, the pre-image of $y$ with respect to a particular operator and constraint set might not be unique.
+A question naturally arises regarding the uniqueness of  Remarks by \cite{lin2021minimizing, abadie2022synthetic} apply here.  We make additional comments as well. $(\mathbb{R}^{n}, \|\cdot\|)$ is a Chebyshev space, and hence for any element x and any convex set $C\subset \mathbb{R}^{n}$, there exists a unique element $y\in C$ that minimizes $\|x-y\|$.  However, the pre-image of $y$ with respect to a particular operator and constraint set might not be unique.
 
 Let $p', n'$ denote the number of linearly independent rows of $\V_{t}$ and linearly independent columns of $\V_{t}$, respectively.  Let col($\cdot$) denote the column space of a matrix, and let Conv($\cdot$) denote the convex hull of a set of column vectors.  \\
 
@@ -526,18 +526,18 @@ Consistent with our evaluative framework declared in \ref{loss_function}, we com
     \begin{subfigure}{.44\linewidth} 
       \centering
         \includegraphics[scale = .42]{simulation_plots/Jun06_233740_2024_delta_sigma[u].png}
-        \caption{Fixed parameter values: $\omega = .2, \alpha = .1, \beta = .82, \mu_{x} = .125, \sigma_{x} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_1}
+        \caption{Fixed parameter values: $\mu_{x} = .125, \sigma_{x} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_1}
     \end{subfigure}\hspace{12mm} %
     \begin{subfigure}{.44\linewidth} 
       \centering
         \includegraphics[scale=.42]{simulation_plots/Jun06_233900_2024_delta_sigma[u].png}
-        \caption{Fixed parameter values: $\omega = .2, \alpha = .1, \beta = .82, \mu_{x} = .5, \sigma_{x} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_2}
+        \caption{Fixed parameter values: $\mu_{x} = .5, \sigma_{x} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_2}
     \end{subfigure}
 
     \begin{subfigure}{.44\linewidth} 
       \centering
         \includegraphics[scale=.42]{simulation_plots/Jun06_234111_2024_delta_sigma[u].png}
-        \caption{Fixed parameter values: $\omega = .2, \alpha = .1, \beta = .82, \mu_{x} = 1, \sigma_{x} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_3}
+        \caption{Fixed parameter values: $\mu_{x} = 1, \sigma_{x} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_3}
     \end{subfigure}
     
         \caption{In the progression from \ref{fig:sim_1} to \ref{fig:sim_2} to \ref{fig:sim_3}, we see that increasing $\delta$ leads to improved performance of the adjusted forecast, and this effect is intensified as $\mu_{x}$ increases.  However, it is not consistently true that an increasing noise undermines the performance of the adjusted forecast.  Rather, that phenomenon requires both large quantites of $\delta$ and $\mu_{X}$.}
@@ -550,12 +550,12 @@ Consistent with our evaluative framework declared in \ref{loss_function}, we com
   \begin{subfigure}{.44\linewidth} 
     \centering
       \includegraphics[scale = .42]{simulation_plots/Jun06_234115_2024_delta_mu[x].png}
-      \caption{Fixed parameter values: $\omega = .2, \alpha = .1, \beta = .82,  \sigma_{x} = .125, \mu_{\omega^{*}} = .125, \sigma_{u} = .125$}\label{fig:sim_4}
+      \caption{Fixed parameter values: $\sigma_{x} = .125, \mu_{\omega^{*}} = .125, \sigma_{u} = .125$}\label{fig:sim_4}
   \end{subfigure}\hspace{12mm} %
   \begin{subfigure}{.44\linewidth} 
     \centering
       \includegraphics[scale=.42]{simulation_plots/Jun06_234119_2024_delta_mu[x].png}
-      \caption{Fixed parameter values: $\omega = .2, \alpha = .1, \beta = .82, \sigma_{x} = .125, \mu_{\omega^{*}} = .125, \sigma_{u} = 1$}\label{fig:sim_5}
+      \caption{Fixed parameter values: $\sigma_{x} = .125, \mu_{\omega^{*}} = .125, \sigma_{u} = 1$}\label{fig:sim_5}
   \end{subfigure}
   
       \caption{We compare the interaction of $\delta$ and $\mu_{X}$ at two different levels of shock noise.  In the low-noise regime, the peak performance of the adjusted forecast is higher, and the ascent is faster along both dimensions.   However, in the high-noise regime, the adjusted forecast performs well even at low levels of $\delta$ and $\mu_{X}$.}
@@ -568,12 +568,12 @@ Consistent with our evaluative framework declared in \ref{loss_function}, we com
 \begin{subfigure}{.44\linewidth} 
   \centering
     \includegraphics[scale = .42]{simulation_plots/Jun06_234137_2024_mu_omega_star_sigma_u.png}
-    \caption{Fixed parameter values: $\omega = .2, \alpha = .1, \beta = .82, \mu_{x} = .125, \sigma_{x} = .125, \delta = .125$}\label{fig:sim_6}
+    \caption{Fixed parameter values: $\mu_{x} = .125, \sigma_{x} = .125, \delta = .125$}\label{fig:sim_6}
 \end{subfigure}\hspace{12mm} %
 \begin{subfigure}{.44\linewidth} 
   \centering
     \includegraphics[scale=.42]{simulation_plots/Jun06_234154_2024_mu_omega_star_sigma_u.png}
-    \caption{Fixed parameter values: $\omega = .2, \alpha = .1, \beta = .82, \mu_{x} = .125, \sigma_{x} = .125, \delta = 2$}\label{fig:sim_7}
+    \caption{Fixed parameter values: $\mu_{x} = .125, \sigma_{x} = .125, \delta = 2$}\label{fig:sim_7}
 \end{subfigure}
 
     \caption{The interaction between the intercept $\mu_{\omega^{*}}$ and $\sigma_{u}$ suggests that the parameters behave as expected.  However, a larger value of $delta$ in \ref{fig:sim_7} attenuates the effect of increasing noise.}
