@@ -1,4 +1,4 @@
-\begin{thebibliography}{56}
+\begin{thebibliography}{58}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -59,6 +59,11 @@ Tim Bollerslev.
 Jacob Boudoukh, Ronen Feldman, Shimon Kogan, and Matthew Richardson.
 \newblock Information, trading, and volatility: Evidence from firm-specific news.
 \newblock \emph{The Review of Financial Studies}, 32\penalty0 (3):\penalty0 992--1033, 2019.
+
+\bibitem[Bowes(2018)]{bowes2018stock}
+David~R Bowes.
+\newblock Stock market volatility and presidential election uncertainty: Evidence from political futures markets.
+\newblock \emph{Journal of Applied Business Research}, 34\penalty0 (1), 2018.
 
 \bibitem[Box(2013)]{box2013box}
 George Box.
@@ -179,6 +184,11 @@ Will Kenton.
 Lutz Kilian and Helmut L{\"u}tkepohl.
 \newblock \emph{Structural vector autoregressive analysis}.
 \newblock Cambridge University Press, 2017.
+
+\bibitem[Li and Born(2006)]{li2006presidential}
+Jinliang Li and Jeffery~A Born.
+\newblock Presidential election uncertainty and common stock returns in the united states.
+\newblock \emph{Journal of Financial Research}, 29\penalty0 (4):\penalty0 609--622, 2006.
 
 \bibitem[Lin and Eck(2021)]{lin2021minimizing}
 Jilei Lin and Daniel~J Eck.

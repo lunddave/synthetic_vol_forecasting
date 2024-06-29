@@ -10,45 +10,45 @@ Warning--empty journal in corsi2012har
 Warning--empty journal in guerron2017macroeconomic
 Warning--empty journal in hendry1994theory
 Warning--empty journal in ryan2015package
-You've used 56 entries,
+You've used 58 entries,
             2773 wiz_defined-function locations,
-            925 strings with 13735 characters,
-and the built_in function-call counts, 23940 in all, are:
-= -- 2180
-> -- 1192
-< -- 46
-+ -- 410
-- -- 354
-* -- 1841
-:= -- 3658
-add.period$ -- 172
-call.type$ -- 56
-change.case$ -- 279
-chr.to.int$ -- 56
-cite$ -- 119
-duplicate$ -- 1146
-empty$ -- 2087
-format.name$ -- 450
-if$ -- 5025
+            937 strings with 14075 characters,
+and the built_in function-call counts, 24703 in all, are:
+= -- 2251
+> -- 1223
+< -- 48
++ -- 421
+- -- 363
+* -- 1897
+:= -- 3776
+add.period$ -- 178
+call.type$ -- 58
+change.case$ -- 288
+chr.to.int$ -- 58
+cite$ -- 123
+duplicate$ -- 1185
+empty$ -- 2158
+format.name$ -- 463
+if$ -- 5185
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 55
-newline$ -- 289
-num.names$ -- 224
-pop$ -- 572
+missing$ -- 57
+newline$ -- 299
+num.names$ -- 232
+pop$ -- 587
 preamble$ -- 1
-purify$ -- 228
+purify$ -- 235
 quote$ -- 0
-skip$ -- 873
+skip$ -- 903
 stack$ -- 0
-substring$ -- 972
-swap$ -- 95
+substring$ -- 1001
+swap$ -- 97
 text.length$ -- 7
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 591
+type$ -- 613
 warning$ -- 7
-while$ -- 237
+while$ -- 245
 width$ -- 0
-write$ -- 716
+write$ -- 742
 (There were 7 warnings)
