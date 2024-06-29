@@ -890,7 +890,7 @@ synth_vol_fit <- function(X,
   QL_unadjusted <-  round(mean( sigma2_shock_period_only / pred - log(sigma2_shock_period_only/pred) - 1), 6)
 
   #We now make a vector with the names of each of the sensible linear combinations
-  linear_comb_names <- c('Convex Hull',
+  linear_comb_names <- c('Adjusted',
                          '1 -1 NA',
                          'Drop Bounded Below',
                          'Unit Ball: Sum-to-1',
@@ -904,7 +904,7 @@ synth_vol_fit <- function(X,
                          'Arithmetic Mean',
                          'Linear Regression')
 
-  labels_for_legend <- c('Actual','GARCH (unadjusted)', linear_comb_names)
+  labels_for_legend <- c('Ground Truth','GARCH (unadjusted)', linear_comb_names)
 
   if (plots == TRUE){
 
@@ -925,6 +925,77 @@ synth_vol_fit <- function(X,
               names.arg = 2:(length(T_star)),
               ylim = c(minn, maxx))
     }
+
+    ##### We now create a simple plot that will go in the draft
+    par(mfrow=c(1,1))
+
+    trimmed_prediction_vec_for_plotting <- Winsorize(unlist(adjusted_pred_list), probs = c(0, 0.72))
+
+    how_many_indices <- 50
+
+    plot(sigma2_up_through_T_star_plus_k[-how_many_indices:-1],
+         #main = 'GARCH Prediction versus \nAdjusted Predictions versus Actual',
+         ylab = '',
+         xlab = "Trading Days",
+         xlim = c(length(sigma2_up_through_T_star_plus_k) - how_many_indices, length(sigma2_up_through_T_star_plus_k) + 5),
+         ylim = c(0,  max(pred, trimmed_prediction_vec_for_plotting, sigma2_up_through_T_star_plus_k) ) )
+
+    title(ylab = expression(sigma^2), line = 2.05, cex.lab = 1.99) # Add y-axis text
+
+    # We also plot, in a different line style, the post-shock period
+    lines(y = c(sigma2_up_through_T_star[T_star[1]],  sigma2_shock_period_only),
+          x = T_star[1]:(T_star[1]+shock_lengths[1]),  lty=2, lwd=2,
+          ylim = c(0,  max(pred, trimmed_prediction_vec_for_plotting, sigma2_up_through_T_star_plus_k) ) )
+
+    # Here is the color scheme we will use
+    colors_for_adjusted_pred <- c('black', 'red', "green",
+                                  brewer.pal(length(linear_comb_names) - 1 ,'Set3')) #tk https://colorbrewer2.org/
+
+    # Let's add the ground truth
+    points(y = sigma2_shock_period_only,
+           x = (T_star[1]+1):(T_star[1]+shock_lengths[1]),
+           col = colors_for_adjusted_pred[1],
+           cex = 1.3, pch = 16)
+
+    # Let's add the plain old GARCH prediction
+    points(y = pred,
+           x = (T_star[1]+1):(T_star[1]+shock_lengths[1]),
+           col = colors_for_adjusted_pred[2],
+           cex = 1.3, pch = 15)
+
+    # Now plot the adjusted predictions
+    for (i in 1:3)
+    {
+      points(y = adjusted_pred_list[[i]], x = (T_star[1]+1):(T_star[1]+shock_lengths[1]),
+             col = colors_for_adjusted_pred[i+2], cex = 1.9, pch = 10)
+    }
+
+    legend(x = "topleft",  # Coordinates (x also accepts keywords)
+           legend = labels_for_legend[1:3],
+           1:3, # Vector with the name of each group
+           colors_for_adjusted_pred[1:3],   # Creates boxes in the legend with the specified colors
+           title = 'Prediction Method',      # Legend title,
+           cex = .9
+    )
+
+
+    for (i in 2:length(shock_est_vec))
+    {
+      adjusted_pred_based_on_omega_i_hat <- pred + rep(shock_est_vec[i],shock_lengths[1])
+
+      points(y = adjusted_pred_based_on_omega_i_hat,
+             x = (T_star[1]+1):(T_star[1]+shock_lengths[1]),
+             col = 'purple', cex = 1.9, pch = 10)
+    }
+
+
+    # labels_for_legend <- c('Actual'
+    #                        ,'GARCH (unadjusted)'
+    #                        ,TeX(r'(GARCH Prediction of Donor $i$ Adjusted By $\hat{\omega}^{*}_{i}$)')
+    #                        ,TeX(r'(GARCH Prediction Adjusted By $\bar{\omega}^{*}_{i}$)'))
+    #
+
+    ##### END plot that appears in the draft
 
     #Now let's plot the adjustment
     par(mfrow=c(1,2))
