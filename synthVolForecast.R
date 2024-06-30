@@ -13,6 +13,7 @@ library(LaplacesDemon)
 library(mvtnorm)
 library(latex2exp)
 library(MASS)
+library(tikzDevice)
 
 options(scipen = 7)
 
@@ -1113,7 +1114,9 @@ synth_vol_fit <- function(X,
          col = 'Deep Sky Blue')
 
     ##### We now create a simple plot that will go in the draft
-    par(mfrow=c(1,1))
+    par(mfrow=c(1,1),mar=c(.1,.1,.1,.1))
+
+    tikz('normal5.tex', standAlone = TRUE, width=1, height=1)
 
     trimmed_prediction_vec_for_plotting <- Winsorize(unlist(adjusted_pred_list), probs = c(0, 0.72))
 
@@ -1159,6 +1162,16 @@ synth_vol_fit <- function(X,
     points(y = adjusted_pred_list[[1]], x = (T_star[1]+1):(T_star[1]+shock_lengths[1]),
            col = "blue", cex = 3.9, pch = 10)
 
+    #Now an arrow between the unadj and the adj predictions
+    arrows( T_star[1] + 2, pred, T_star[1] + 2,  adjusted_pred_list[[1]], col = "blue", length = .3)
+    arrows( T_star[1] + 2,  adjusted_pred_list[[1]], T_star[1] + 2, pred, col = "blue", length = .3)
+
+    #Now an arrow between the unadj and the adj predictions
+    arrows( T_star[1] -1, as.numeric(sigma2_shock_period_only), T_star[1] -1,  adjusted_pred_list[[1]], col = "blue", length = .3)
+    arrows( T_star[1] -1,  adjusted_pred_list[[1]], T_star[1] -1, as.numeric(sigma2_shock_period_only), col = "blue", length = .3)
+
+    abline(h = T_star[1],col="magenta" )
+
     legend(x = "topleft",  # Coordinates (x also accepts keywords)
            legend = c(labels_for_legend[2], labels_for_legend[3], labels_for_legend[1]),
            1:3, # Vector with the name of each group
@@ -1185,6 +1198,17 @@ synth_vol_fit <- function(X,
     #
 
     ##### END plot that appears in the draft
+
+    # Normal distribution curve
+
+    #Add some equations as labels
+    text(T_star[1], pred, paste("data", sep=''))
+
+    #Close the device
+    dev.off()
+
+    # Compile the tex file
+    tools::texi2dvi('normal5.tex',pdf=T)
 
   } #end the conditional for plots
 

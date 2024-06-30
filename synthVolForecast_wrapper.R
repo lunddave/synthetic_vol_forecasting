@@ -28,7 +28,7 @@ simulate_and_analyze <- function(n = 10,
 
                                  sigma_GARCH_innov = 1, # the sd that goes into rnorm
                                  mu_x = 4,
-                                 sigma_x = .2, # the sd that goes into the covariates
+                                 sigma_x = .5, # the sd that goes into the covariates
 
                                  min_shock_time = 0,
                                  shock_time_vec = NULL,
