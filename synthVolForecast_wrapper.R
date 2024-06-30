@@ -16,19 +16,19 @@ source('synthVolForecast.R',
 #We will need the two functions here.
 
 
-simulate_and_analyze <- function(n = 5,
-                                 p = 10,
+simulate_and_analyze <- function(n = 10,
+                                 p = 20,
                                  model = NULL,
-                                 arch_param = c(.1),
-                                 garch_param = c(.82),
+                                 arch_param = c(.19),
+                                 garch_param = c(.55),
                                  asymmetry_param = c(),
 
                                  level_model = c('M1','M21','M22','none')[4],
                                  vol_model = c('M1','M21','M22','none')[2],
 
                                  sigma_GARCH_innov = 1, # the sd that goes into rnorm
-                                 mu_x = 2,
-                                 sigma_x = .1, # the sd that goes into the covariates
+                                 mu_x = 4,
+                                 sigma_x = .2, # the sd that goes into the covariates
 
                                  min_shock_time = 0,
                                  shock_time_vec = NULL,
@@ -47,10 +47,10 @@ simulate_and_analyze <- function(n = 5,
                                  M21_M22_level_mu_delta = .5,
                                  M21_M22_level_sd_delta = .1,
 
-                                 mu_omega_star = .09,
-                                 vol_shock_sd = .01,
+                                 mu_omega_star = .03,
+                                 vol_shock_sd = .05,
 
-                                 M21_M22_vol_mu_delta = .15,
+                                 M21_M22_vol_mu_delta = .4,
                                  M21_M22_vol_sd_delta = 0,
 
                                  permutation_shift = 0,
@@ -266,4 +266,4 @@ simulate_and_analyze(normchoice = 'l2'
                            , plot_sim = TRUE
                            , plot_fit = TRUE)
 
-dev.off()
+#dev.off()
