@@ -1114,13 +1114,15 @@ synth_vol_fit <- function(X,
          col = 'Deep Sky Blue')
 
     ##### We now create a simple plot that will go in the draft
-    par(mfrow=c(1,1),mar=c(.1,.1,.1,.1))
+    par(mfrow=c(1,1)
+        #,mar=c(.1,.1,.1,.1)
+        )
 
-    tikz('normal5.tex', standAlone = TRUE, width=1, height=1)
+    # tikz('normal5.tex', standAlone = TRUE, width=1, height=1)
 
     trimmed_prediction_vec_for_plotting <- Winsorize(unlist(adjusted_pred_list), probs = c(0, 0.72))
 
-    how_many_indices <- 10
+    how_many_indices <- 40
 
     plot(sigma2_up_through_T_star[-how_many_indices:-1],
          #main = 'GARCH Prediction versus \nAdjusted Predictions versus Actual',
@@ -1163,14 +1165,14 @@ synth_vol_fit <- function(X,
            col = "blue", cex = 3.9, pch = 10)
 
     #Now an arrow between the unadj and the adj predictions
-    arrows( T_star[1] + 2, pred, T_star[1] + 2,  adjusted_pred_list[[1]], col = "blue", length = .3)
-    arrows( T_star[1] + 2,  adjusted_pred_list[[1]], T_star[1] + 2, pred, col = "blue", length = .3)
+    arrows( T_star[1] + 2, pred, T_star[1] + 2,  adjusted_pred_list[[1]], col = "blue", length = .03)
+    arrows( T_star[1] + 2,  adjusted_pred_list[[1]], T_star[1] + 2, pred, col = "blue", length = .03)
 
     #Now an arrow between the unadj and the adj predictions
-    arrows( T_star[1] -1, as.numeric(sigma2_shock_period_only), T_star[1] -1,  adjusted_pred_list[[1]], col = "blue", length = .3)
-    arrows( T_star[1] -1,  adjusted_pred_list[[1]], T_star[1] -1, as.numeric(sigma2_shock_period_only), col = "blue", length = .3)
+    arrows( T_star[1] -1, as.numeric(sigma2_shock_period_only), T_star[1] -1,  adjusted_pred_list[[1]], col = "blue", length = .03)
+    arrows( T_star[1] -1,  adjusted_pred_list[[1]], T_star[1] -1, as.numeric(sigma2_shock_period_only), col = "blue", length = .03)
 
-    abline(h = T_star[1],col="magenta" )
+    abline(v = T_star[1],col="magenta", lty = 2)
 
     legend(x = "topleft",  # Coordinates (x also accepts keywords)
            legend = c(labels_for_legend[2], labels_for_legend[3], labels_for_legend[1]),
@@ -1199,16 +1201,14 @@ synth_vol_fit <- function(X,
 
     ##### END plot that appears in the draft
 
-    # Normal distribution curve
-
     #Add some equations as labels
-    text(T_star[1], pred, paste("data", sep=''))
+    #text(T_star[1], pred, paste("data", sep=''))
 
     #Close the device
-    dev.off()
-
-    # Compile the tex file
-    tools::texi2dvi('normal5.tex',pdf=T)
+    # dev.off()
+    #
+    # # Compile the tex file
+    # tools::texi2dvi('normal5.tex',pdf=T)
 
   } #end the conditional for plots
 
