@@ -144,7 +144,7 @@ hm_generator <- function(y_input
     theme(plot.title = element_text(hjust = 0.5),
           axis.text.x = element_text(size = 14),
           axis.text.y = element_text(size = 14),
-          axis.title = element_text(size = 20)
+          axis.title = element_text(size = 30)
           ) +
     labs(x = xlab, y = ylab)
 
@@ -229,7 +229,7 @@ hm_generator(y_input = M21_M22_vol_mu_delta
              ,x_input = mu_x
              , success
              ,expression(mu[delta])
-             ,expression(mu[x]))
+             ,expression(mu[v]))
 
 #Comment: mu_x is on display
 
@@ -245,7 +245,7 @@ hm_generator(y_input = M21_M22_vol_mu_delta
              ,x_input = mu_x
              , success
              ,expression(mu[delta])
-             ,expression(mu[x]))
+             ,expression(mu[v]))
 
 #Comment: with vol_shock_sd = 1, we get a much more muted effect.
 #Also, notice the number of non-convergent simulations.
@@ -261,7 +261,7 @@ non_NA <- non_NA[non_NA$mu_omega_star == .125,]
 hm_generator(y_input = mu_x
              ,x_input = vol_shock_sd
              , success
-             ,expression(mu[x])
+             ,expression(mu[v])
              ,expression(sigma[u]))
 
 #Comment: we see a strange increase in proportion with rising vol_shock_sd

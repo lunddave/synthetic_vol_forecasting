@@ -1123,12 +1123,13 @@ synth_vol_fit <- function(X,
     trimmed_prediction_vec_for_plotting <- Winsorize(unlist(adjusted_pred_list), probs = c(0, 0.72))
 
     how_many_indices <- 40
+    unplotted_space_to_right <- 20
 
     plot(sigma2_up_through_T_star[-how_many_indices:-1],
          #main = 'GARCH Prediction versus \nAdjusted Predictions versus Actual',
          ylab = '',
          xlab = "Trading Days",
-         xlim = c(length(sigma2_up_through_T_star_plus_k) - how_many_indices, length(sigma2_up_through_T_star_plus_k) + 10),
+         xlim = c(length(sigma2_up_through_T_star_plus_k) - how_many_indices, length(sigma2_up_through_T_star_plus_k) + unplotted_space_to_right),
          ylim = c(0,  max(pred + max(shock_est_vec), trimmed_prediction_vec_for_plotting, sigma2_up_through_T_star_plus_k) ) )
 
     title(ylab = expression(sigma^2), line = 2.05, cex.lab = 1.99) # Add y-axis text
@@ -1169,8 +1170,8 @@ synth_vol_fit <- function(X,
     arrows( T_star[1] + 2,  adjusted_pred_list[[1]], T_star[1] + 2, pred, col = "blue", length = .03)
 
     #Now an arrow between the unadj and the adj predictions
-    arrows( T_star[1] -1, as.numeric(sigma2_shock_period_only), T_star[1] -1,  adjusted_pred_list[[1]], col = "blue", length = .03)
-    arrows( T_star[1] -1,  adjusted_pred_list[[1]], T_star[1] -1, as.numeric(sigma2_shock_period_only), col = "blue", length = .03)
+    # arrows( T_star[1] -1, as.numeric(sigma2_shock_period_only), T_star[1] -1,  adjusted_pred_list[[1]], col = "blue", length = .03)
+    # arrows( T_star[1] -1,  adjusted_pred_list[[1]], T_star[1] -1, as.numeric(sigma2_shock_period_only), col = "blue", length = .03)
 
     abline(v = T_star[1],col="magenta", lty = 2)
 

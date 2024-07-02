@@ -184,7 +184,7 @@ In order to motivate our procedure, we provide a visual illustration.  In Figure
         \node[draw,text width=2.62cm] at (14.8,2.8) {$\textcolor{blue}{\hat\omega^{*} = \sum^{n+1}_{i=2}\pi_{i}\hat\omega^{*}_{i}}$ };    
         
     \end{tikzpicture}
-      \caption{The simulated time series experiences a volatility shock between trading days 1223 and 1224.  We have truncated the series after $T^{*}+1 = 1224$.  The GARCH prediction, in red, fails even to approach the volatility spike at $T^{*}+1$, as do some adjusted predictions, which are orange.  In contrast, the GARCH forecast adjusted by $\hat\omega^{*}$, a convex combination of the estimated shocks in the donor pool, achieves directional correctness as well as a absolute loss in its prediction.}    \label{fig:motivating_piece_convex_combination}
+      \caption{The simulated time series experiences a volatility shock between trading days 1223 and 1224.  We have truncated the series after $T^{*}+1 = 1224$.  The GARCH prediction, in red, fails even to approach the volatility spike at $T^{*}+1$, as do some adjusted predictions, which are orange.  In contrast, the GARCH forecast adjusted by $\hat\omega^{*}$, a convex combination of the estimated shocks in the donor pool, achieves directional correctness as well as a smaller absolute loss in its prediction.}    \label{fig:motivating_piece_convex_combination}
    
       \end{center}
     \end{figure}
@@ -499,34 +499,40 @@ In this section, we demonstrate the effectiveness of the proposed method using M
   In order to tell a story about the Monte Carlo results, we first explain the parameters to be varied, the parameters that remain fixed, and the behavior we expect to observe.  For our purposes, a parameter is defined to be fixed whenever it does not vary across any of the simulations performed, and conversely a parameter is varying whenever it varies across at least two simulations performed.
 
   \subsection{Fixed Parameters}
-Each simulation is a GARCH(1,1) process with $n$ chosen randomly from the set of intergers $\{756,...,2520\}$, corresponding to approximately 3-10 years of daily financial data.  We fixed the intercept of the processes at the $\textit{garchx}$ package default of $\omega = .2$ \citep{RePEc:pra:mprapa:100301}.  We also use the values $\alpha=.1, \beta = .82$, corresponding to a GARCH process with longer memory.
+Each simulation, $i=1,...n+1$ is a GARCH(1,1) process with length $T_{i}$ chosen randomly from the set of integers $\{756,...,2520\}$, corresponding to approximately 3-10 years of daily financial data.  We fixed the intercept of the processes at the $\textit{garchx}$ package default of $\omega = .2$ \citep{RePEc:pra:mprapa:100301}.  We also use the values $\alpha=.1, \beta = .82$, corresponding to a GARCH process with greater influence from past values of $\sigma^{2}_{i,t}$.
   \subsection{Varying Parameters}
 
-  We vary exactly five parameters: $\mu_{X}, \sigma_{X}, \mu_{\delta}, \mu_{\omega^{*}}, \sigma_{u}$, each of which is critical to evaluating the method's responsiveness to changing conditions in the shock distribution. $\mu_{X}, \sigma_{X}$ govern the elements of the volatility profile. $mu_{\delta}$ interacts with $X$ via the dot-product operation, of course.  $\mu_{\omega^{*}}$ is a location parameter for the volatility shock, and $\sigma_{u}$ is the idiosyncratic noise of the volatility shock.
+  We vary exactly five parameters: $\mu_{X}, \sigma_{X}, \mu_{\delta}, \mu_{\omega^{*}}, \sigma_{u}$, each of which is critical to evaluating the method's responsiveness to changing conditions in the shock distribution. $\mu_{V}, \sigma_{V}$ govern the elements of the volatility profile. $\mu_{\delta}$ interacts with $V$ via the dot-product operation, of course.  $\mu_{\omega^{*}}$ is a location parameter for the volatility shock, and $\sigma_{u}$ is the idiosyncratic noise of the volatility shock.
   
-  We add an important note about the parameter $\mu_{\delta}$, which governs a vector $\delta$ of length $p$ with elements that increase monotonically in proportion to $1,...,p$, after which they are scaled by the factor $\frac{2\cdot\mu_{\delta}}{p(p+1)}$, so that a randomly selected element has mean $\mu_{\delta}$.  The heterogeneity of the elements is critical to simulating the plausible heterogeneity that will exist in the random effects structure.  Absent a heterogeneous vector $\delta$, the shock would not vary systematically with regard to each variable chosen for the volatility profile, which would fail to approximate the realities of financial markets.
+  We add an important note about the parameter $\mu_{\delta}$, which governs a vector $\delta$ of length $p$ with elements that increase monotonically in proportion to $1,...,p$, after which they are scaled by the factor $\frac{2\cdot\mu_{\delta}}{p(p+1)}$, so that a randomly selected entry of the vector has mean $\mu_{\delta}$.  The heterogeneity of the elements is critical to simulating the plausible heterogeneity that will exist in the random effects structure.  Absent a heterogeneous vector $\delta$, the shock would not vary systematically with regard to each variable chosen for the volatility profile, which would fail to approximate the realities of financial markets.
 
 \subsection{Evaluative Framework and Monte Carlo Results}
-Consistent with our evaluative framework declared in \ref{loss_function}, we compare adjusted and unadjusted forecasts using QL Loss, calculating the fraction of the simulations that the adjusted forecast yields a QL Loss no smaller than that of the unadjusted forecast.
+Consistent with our evaluative framework declared in \ref{loss_function}, we compare adjusted and unadjusted forecasts using QL Loss, calculating the fraction of the simulations in which the adjusted forecast yields a QL Loss no smaller than that of the unadjusted forecast.  The simulations fall into three broad categories, which we will denote \textbf{Signal and Noise} (displayed in Figure \ref{fig:signoise}), \textbf{Interaction between Signal and Volatility Profile Means} (displayed in Figure \ref{fig:sig_volprof}),, and lastly, \textbf{Interaction between Shock Intercept and Shock Noise} (displayed in Figure \ref{fig:intercept_noise}),. 
+
+The first category plots two parameters of the shock equation, $\delta$ and $\sigma_{u}$, while increasing the mean of the covariate vectors $\v$.  Recall that $\delta$ is a parameter shared between donors, whereas the vectors $\v$ in the volatility profile are i.i.d. multivariate normal.
+
+The second category of simulations examines $\delta$ and $\mu_{x}$.
+
+Lastly, the third set of simulations takes a look at the role of the intercept of the conditional shock distribution, $\mu_{\omega^{*}}$, in particular, its interaction with $\sigma_{u}$.  We can think of $\mu_{\omega^{*}}$ as being the sole component of $\x$ that has no variance, i.e. because it's corresponding entry in the vector $\x$ is the scalar 1.
 
     \begin{figure}[!h]
       \centering
       \textbf{Signal and Noise}\par\medskip
     \begin{subfigure}{.44\linewidth} 
       \centering
-        \includegraphics[scale = .42]{simulation_plots/Jun06_233740_2024_delta_sigma[u].png}
-        \caption{Fixed parameter values: $\mu_{x} = .125, \sigma_{x} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_1}
+        \includegraphics[scale = .42]{simulation_plots/Jul01_192350_2024_mu[delta]_sigma[u].png}
+        \caption{Fixed values: $\mu_{x} = .125, \sigma_{x} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_1}
     \end{subfigure}\hspace{12mm} %
     \begin{subfigure}{.44\linewidth} 
       \centering
-        \includegraphics[scale=.42]{simulation_plots/Jun06_233900_2024_delta_sigma[u].png}
-        \caption{Fixed parameter values: $\mu_{x} = .5, \sigma_{x} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_2}
+        \includegraphics[scale=.42]{simulation_plots/Jul01_192510_2024_mu[delta]_sigma[u].png}
+        \caption{Fixed values: $\mu_{x} = .5, \sigma_{x} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_2}
     \end{subfigure}
 
     \begin{subfigure}{.44\linewidth} 
       \centering
-        \includegraphics[scale=.42]{simulation_plots/Jun06_234111_2024_delta_sigma[u].png}
-        \caption{Fixed parameter values: $\mu_{x} = 1, \sigma_{x} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_3}
+        \includegraphics[scale=.42]{simulation_plots/Jul01_192518_2024_mu[delta]_sigma[u].png}
+        \caption{Fixed values: $\mu_{x} = 1, \sigma_{x} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_3}
     \end{subfigure}
     
         \caption{In the progression from \ref{fig:sim_1} to \ref{fig:sim_2} to \ref{fig:sim_3}, we see that increasing $\delta$ leads to improved performance of the adjusted forecast, and this effect is intensified as $\mu_{x}$ increases.  However, it is not consistently true that an increasing noise undermines the performance of the adjusted forecast.  Rather, that phenomenon requires both large quantites of $\delta$ and $\mu_{X}$.}
@@ -535,16 +541,16 @@ Consistent with our evaluative framework declared in \ref{loss_function}, we com
 
   \begin{figure}[!h]
     \centering
-    \textbf{Interaction between the signal and volatility profile means}\par\medskip
+    \textbf{Interaction between Signal and Volatility Profile Means}\par\medskip
   \begin{subfigure}{.44\linewidth} 
     \centering
-      \includegraphics[scale = .42]{simulation_plots/Jun06_234115_2024_delta_mu[x].png}
-      \caption{Fixed parameter values: $\sigma_{x} = .125, \mu_{\omega^{*}} = .125, \sigma_{u} = .125$}\label{fig:sim_4}
+      \includegraphics[scale = .42]{simulation_plots/Jul01_192528_2024_mu[delta]_mu[v].png}
+      \caption{Fixed values: $\sigma_{x} = .125, \mu_{\omega^{*}} = .125, \sigma_{u} = .125$}\label{fig:sim_4}
   \end{subfigure}\hspace{12mm} %
   \begin{subfigure}{.44\linewidth} 
     \centering
-      \includegraphics[scale=.42]{simulation_plots/Jun06_234119_2024_delta_mu[x].png}
-      \caption{Fixed parameter values: $\sigma_{x} = .125, \mu_{\omega^{*}} = .125, \sigma_{u} = 1$}\label{fig:sim_5}
+      \includegraphics[scale=.42]{simulation_plots/Jul01_192539_2024_mu[delta]_mu[v].png}
+      \caption{Fixed values: $\sigma_{x} = .125, \mu_{\omega^{*}} = .125, \sigma_{u} = 1$}\label{fig:sim_5}
   \end{subfigure}
   
       \caption{We compare the interaction of $\delta$ and $\mu_{X}$ at two different levels of shock noise.  In the low-noise regime, the peak performance of the adjusted forecast is higher, and the ascent is faster along both dimensions.   However, in the high-noise regime, the adjusted forecast performs well even at low levels of $\delta$ and $\mu_{X}$.}
@@ -553,19 +559,19 @@ Consistent with our evaluative framework declared in \ref{loss_function}, we com
 
 \begin{figure}[!h]
   \centering
-  \textbf{The Interaction of the Shock Intercept and Shock Noise}\par\medskip
+  \textbf{Interaction between Shock Intercept and Shock Noise}\par\medskip
 \begin{subfigure}{.44\linewidth} 
   \centering
-    \includegraphics[scale = .42]{simulation_plots/Jun06_234137_2024_mu_omega_star_sigma_u.png}
-    \caption{Fixed parameter values: $\mu_{x} = .125, \sigma_{x} = .125, \delta = .125$}\label{fig:sim_6}
+    \includegraphics[scale = .42]{simulation_plots/Jul01_192548_2024_mu[omega^star]_sigma[u].png}
+    \caption{Fixed values: $\mu_{x} = .125, \sigma_{x} = .125, \delta = .125$}\label{fig:sim_6}
 \end{subfigure}\hspace{12mm} %
 \begin{subfigure}{.44\linewidth} 
   \centering
-    \includegraphics[scale=.42]{simulation_plots/Jun06_234154_2024_mu_omega_star_sigma_u.png}
-    \caption{Fixed parameter values: $\mu_{x} = .125, \sigma_{x} = .125, \delta = 2$}\label{fig:sim_7}
+    \includegraphics[scale=.42]{simulation_plots/Jul01_192601_2024_mu[omega^star]_sigma[u].png}
+    \caption{Fixed values: $\mu_{x} = .125, \sigma_{x} = .125, \delta = 2$}\label{fig:sim_7}
 \end{subfigure}
 
-    \caption{The interaction between the intercept $\mu_{\omega^{*}}$ and $\sigma_{u}$ suggests that the parameters behave as expected.  However, a larger value of $delta$ in \ref{fig:sim_7} attenuates the effect of increasing noise.}
+    \caption{The interaction between the intercept $\mu_{\omega^{*}}$ and $\sigma_{u}$ suggests that the parameters behave as expected.  However, a larger value of $\delta$ in \ref{fig:sim_7} attenuates the effect of increasing noise.}
     \label{fig:intercept_noise}
   \end{figure}
 
