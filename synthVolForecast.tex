@@ -248,23 +248,23 @@ where $D^{return}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + L_{i, return}\})$ and 
       \begin{pmatrix}
 
       RV_{2,t}  & RV_{3,t} &  \cdots & RV_{n+1,t}  \\
-      RV_{1,t-1}  & RV_{2,t-1}  & \cdots & RV_{n+1,t-1}  \\
+      RV_{2,t-1}  & RV_{3,t-1}  & \cdots & RV_{n+1,t-1}  \\
       \vdots  & \vdots  & \ddots & \vdots  \\
-      IV_{1,t} & IV_{2,t} & \cdots & IV_{n+1,t} \\
-      IV_{1,t-1}  & IV_{2,t-1}  & \cdots & IV_{n+1,t-1} \\
+      IV_{2,t} & IV_{3,t} & \cdots & IV_{n+1,t} \\
+      IV_{2,t-1}  & IV_{3,t-1}  & \cdots & IV_{n+1,t-1} \\
       \vdots  & \vdots  & \ddots & \vdots  \\
-      |r_{1,t}| & |r_{2,t}| & \cdots & |r_{n+1,t}| \\
-      |r_{1,t-1}|  & |r_{2,t-1}|  & \cdots & |r_{n+1,t-1}| \\
+      |a_{2,t}| & |a_{3,t}| & \cdots & |a_{n+1,t}| \\
+      |a_{2,t-1}|  & |a_{3,t-1}|  & \cdots & |a_{n+1,t-1}| \\
       \vdots  & \vdots  & \ddots & \vdots  \\
-      Volume_{1,t}  & Volume_{2,t}  & \cdots & Volume_{n+1,t} \\
-      Volume_{1,t-1}  & Volume_{2,t-1}  & \cdots & Volume_{n+1,t-1}  \\
+      Volume_{2,t}  & Volume_{3,t}  & \cdots & Volume_{n+1,t} \\
+      Volume_{2,t-1}  & Volume_{3,t-1}  & \cdots & Volume_{n+1,t-1}  \\
       \vdots  & \vdots  & \ddots & \vdots  \\
-      \Delta RV_{1,t} & \Delta RV_{2,t}  & \cdots & \Delta RV_{n+1,t}  \\
-      \Delta RV_{1,t-1}  & \Delta RV_{2,t-1}  & \cdots & \Delta RV_{n+1,t-1}  \\
+      \Delta RV_{2,t} & \Delta RV_{3,t}  & \cdots & \Delta RV_{n+1,t}  \\
+      \Delta RV_{2,t-1}  & \Delta RV_{3,t-1}  & \cdots & \Delta RV_{n+1,t-1}  \\
       \vdots  & \vdots  & \ddots & \vdots  \\
       \end{pmatrix},
       \end{equation*}
-      where \textcolor{red}{HERE I NEED AN ELEGANT WAY OF EXPLAINING ALL ELEMENTS OF V} $\hat\alpha_{i,k}, \hat\beta_{i,j}$ denote the estimated parameters of the $i$th donor denoteRV and IV denote realized volatility and implied volatility, respectively.  Covariates chosen for inclusion in a given volatility profile may be levels, log differences in levels, percentage changes in levels, or absolute values thereof, among many choices.
+      where RV and IV denote realized volatility and implied volatility, respectively, $\Delta$ denotes the lag operator between consecutive realizations of a variable, and \textit{Volume} denotes the quantity of traded shares or other units of an asset.  Covariates chosen for inclusion in a given volatility profile may be levels, log differences in levels, percentage changes in levels, or absolute values thereof, among many choices.
 
       As shown, $\textbf{V}_{t}$ displays `balance' in that $p$ covariates exist for each of the $n$ donors.  In practice, missing values, corrupted values, or unacceptably extreme or noisy estimates may necessitate some sort of matrix completion, a problem that we do not tackle in this work.  We now turn to the next section, where $\textbf{V}_{t}$ is employed in a procedure to arrive at a forecast adjustment. 
     
@@ -296,7 +296,7 @@ In the forecast combination literature, it is discussed whether the weights empl
 
 A more promising aim is finding weights such that $\textbf{v}_{1} = \sum^{n+1}_{i=2}\weight_{i}\textbf{v}_{i}$, meaning that the volatility profile of the time series under study lies within the convex hull of the donor volatility profile.  This condition underwrites asymptotic results in \citet{abadie2010synthetic}, and the intuition there extends to this work: if the shock is parameterized by an affine function of covariates, then finding a linear combination that recreates the shock should serve us well.  Because the method proposed uses a point in $\Delta^{n}$, it is important to head-off possible confusion.  What we are proposing is not a forecast combination method.  What we are aggregating and weighting (not combining) are subcomponents of forecasts, not forecasts themselves.  Moreover, from a broader perspective, forecast combination is an inapt term for what is being proposed here.  First, the donor time series do not provide forecasts, nor would forecasts be needed for random variables that have already been realized.  Second and more fundamentally, the theoretical underpinnings of forecast combination, while diverse \citep{wang2023forecast}, are distinct from the setting presumed in this work, where the model family is not in doubt but the parameter values and how they prevail must be learned.
 
-Supposing that we can define optimal weights, are they necessarily unique?  Remarks by \cite{lin2021minimizing, abadie2022synthetic} apply here.  We make additional comments as well. $(\mathbb{R}^{n}, \|\cdot\|)$ is a Chebyshev space, and hence for any element x and any convex set $C\subset \mathbb{R}^{n}$, there exists a unique element $y\in C$ that minimizes $\|x-y\|$.  However, the pre-image of $y$ with respect to a particular operator and constraint set might not be unique.  Let $p', n'$ denote the number of linearly independent rows of $\V_{t}$ and linearly independent columns of $\V_{t}$, respectively.  Let col($\cdot$) denote the column space of a matrix, and let Conv($\cdot$) denote the convex hull of a set of column vectors.  \\
+Supposing that we can define optimal weights, are they necessarily unique?  \cite{lin2021minimizing} discuss sufficient conditions for uniqueness as well as the implications of non-uniqueness.  \cite{abadie2022synthetic} invoke the Carath\'eodory Theorem to argue for the sparseness of the weight vector.  We make additional comments as well. $(\mathbb{R}^{n}, \|\cdot\|)$ is a Chebyshev space, and hence for any element x and any convex set $C\subset \mathbb{R}^{n}$, there exists a unique element $y\in C$ that minimizes $\|x-y\|$.  However, the pre-image of $y$ with respect to a particular operator and constraint set might not be unique.  Let $p', n'$ denote the number of linearly independent rows of $\V_{t}$ and linearly independent columns of $\V_{t}$, respectively.  Let col($\cdot$) denote the column space of a matrix, and let Conv($\cdot$) denote the convex hull of a set of column vectors.  \\
 
     \begin{center}
       \begin{tabular}{ | m{3em} | m{7cm}| m{7cm} | } 
@@ -305,7 +305,7 @@ Supposing that we can define optimal weights, are they necessarily unique?  Rema
         \hline
         $p' \geq n'$ & Perfect fit; fit unique & Fit not perfect; fit unique \\
         \hline
-        $p' < n'$ & Perfect fit, not necessarily unique, Carath\'eodory Theorem applies \citep{abadie2022synthetic}& Fit not perfect, not necessarily unique, Carath\'eodory Theorem applies \\ 
+        $p' < n'$ & Perfect fit, not necessarily unique, Carath\'eodory Theorem applies& Fit not perfect, not necessarily unique, Carath\'eodory Theorem applies \\ 
         \hline
       \end{tabular}
       \end{center} 
@@ -431,7 +431,7 @@ The result follows from the consistency proof of the QMLE in GARCH-X models, as 
     Assume
     \begin{enumerate}
       \item All conditions listed in Proposition \ref{omega_consistency}.
-      \item There exist weights $\{\pi_{i}\}_{i=2}^{n=1}$ such that $\textbf{v}_{1,T^{*}} = \sum^{n+1}_{i=2}\weight_{i} \textbf{v}_{i,T^{*}}$.
+      \item There exist weights $\{\pi_{i}\}_{i=2}^{n+1}$ such that $\textbf{v}_{1,T^{*}} = \sum^{n+1}_{i=2}\weight_{i} \textbf{v}_{i,T^{*}}$.
      \end{enumerate}
   Then $\hat\sigma^{2}_{adjusted}\xlongrightarrow{p}\sigma^{2}_{1,T^{*}+1}$ as $t\rightarrow\infty$. 
   \end{prop}
@@ -494,26 +494,25 @@ Hence, a correctly specified $\mc{M}_1$ model will outperform the unadjusted for
 
 \section{Numerical Examples}
 
-In this section, we demonstrate the effectiveness of the proposed method using Monte Carlo simulations.  The first simulation setup will use a $\mc{M}_{1}$ model on the volatility.  \textcolor{red}{Likely to be deleted: The second setup will be a dual shock, i.e. a shock to both the level and volatility.}  In order to investigate the forecasting method presented herein, all of our simulations will use $\mc{M}_1$ volatility models and $\mc{M}_0$ models on the returns, i.e. $  D^{return}_{i,t} \equiv 0$.
-
-  In order to tell a story about the Monte Carlo results, we first explain the parameters to be varied, the parameters that remain fixed, and the behavior we expect to observe.  For our purposes, a parameter is defined to be fixed whenever it does not vary across any of the simulations performed, and conversely a parameter is varying whenever it varies across at least two simulations performed.
+In this section, we demonstrate the effectiveness of the proposed method using Monte Carlo simulations.  In order to investigate the forecasting method presented herein, all of our simulations will use $\mc{M}_1$ volatility models and $\mc{M}_0$ models on the returns, i.e. $  D^{return}_{i,t} \equiv 0$.  We first explain the parameters to be varied, the parameters that remain fixed, and the behavior we expect to observe.  For our purposes, a parameter is defined to be fixed whenever it does not vary across any of the simulations performed, and conversely a parameter is varying whenever it varies across at least two simulations performed.
 
   \subsection{Fixed Parameters}
 Each simulation, $i=1,...n+1$ is a GARCH(1,1) process with length $T_{i}$ chosen randomly from the set of integers $\{756,...,2520\}$, corresponding to approximately 3-10 years of daily financial data.  We fixed the intercept of the processes at the $\textit{garchx}$ package default of $\omega = .2$ \citep{RePEc:pra:mprapa:100301}.  We also use the values $\alpha=.1, \beta = .82$, corresponding to a GARCH process with greater influence from past values of $\sigma^{2}_{i,t}$.
   \subsection{Varying Parameters}
 
-  We vary exactly five parameters: $\mu_{X}, \sigma_{X}, \mu_{\delta}, \mu_{\omega^{*}}, \sigma_{u}$, each of which is critical to evaluating the method's responsiveness to changing conditions in the shock distribution. $\mu_{V}, \sigma_{V}$ govern the elements of the volatility profile. $\mu_{\delta}$ interacts with $V$ via the dot-product operation, of course.  $\mu_{\omega^{*}}$ is a location parameter for the volatility shock, and $\sigma_{u}$ is the idiosyncratic noise of the volatility shock.
+  We vary exactly five parameters: $\mu_{V}, \sigma_{V}, \mu_{\delta}, \mu_{\omega^{*}}, \sigma_{u}$, each of which is critical to evaluating the method's responsiveness to changing conditions in the shock distribution. $\mu_{V}, \sigma_{V}$ govern the elements of the volatility profile. $\mu_{\delta}$ interacts with $V$ via the dot-product operation, of course.  $\mu_{\omega^{*}}$ is a location parameter for the volatility shock, and $\sigma_{u}$ is the idiosyncratic noise of the volatility shock.
   
-  We add an important note about the parameter $\mu_{\delta}$, which governs a vector $\delta$ of length $p$ with elements that increase monotonically in proportion to $1,...,p$, after which they are scaled by the factor $\frac{2\cdot\mu_{\delta}}{p(p+1)}$, so that a randomly selected entry of the vector has mean $\mu_{\delta}$.  The heterogeneity of the elements is critical to simulating the plausible heterogeneity that will exist in the random effects structure.  Absent a heterogeneous vector $\delta$, the shock would not vary systematically with regard to each variable chosen for the volatility profile, which would fail to approximate the realities of financial markets.
+  We add an important note about the parameter $\mu_{\delta}$, which governs a vector $\delta$ of length $p$ with elements that increase monotonically in proportion to $1,...,p$, after which they are scaled by the factor $\frac{2\cdot\mu_{\delta}}{p(p+1)}$, so that a randomly selected entry of the vector has mean $\mu_{\delta}$.  The heterogeneity of the entries is critical to simulating the plausible heterogeneity that will exist in the random effects structure.  Absent a heterogeneous vector $\delta$, the shock would not vary systematically with regard to each variable chosen for the volatility profile, which would fail to approximate the realities of financial markets.
 
 \subsection{Evaluative Framework and Monte Carlo Results}
-Consistent with our evaluative framework declared in \ref{loss_function}, we compare adjusted and unadjusted forecasts using QL Loss, calculating the fraction of the simulations in which the adjusted forecast yields a QL Loss no smaller than that of the unadjusted forecast.  The simulations fall into three broad categories, which we will denote \textbf{Signal and Noise} (displayed in Figure \ref{fig:signoise}), \textbf{Interaction between Signal and Volatility Profile Means} (displayed in Figure \ref{fig:sig_volprof}),, and lastly, \textbf{Interaction between Shock Intercept and Shock Noise} (displayed in Figure \ref{fig:intercept_noise}),. 
+Consistent with our evaluative framework declared in \ref{loss_function}, we compare adjusted and unadjusted forecasts using QL Loss, calculating the fraction of the simulations in which the adjusted forecast yields a QL Loss no smaller than that of the unadjusted forecast.  The simulations fall into three broad categories, which we will denote \textbf{Signal and Noise} (displayed in Figure \ref{fig:signoise}), \textbf{Interaction between Signal and Volatility Profile Means} (displayed in Figure \ref{fig:sig_volprof}), and lastly, \textbf{Interaction between Shock Intercept and Shock Noise} (displayed in Figure \ref{fig:intercept_noise}).  
 
-The first category plots two parameters of the shock equation, $\delta$ and $\sigma_{u}$, while increasing the mean of the covariate vectors $\v$.  Recall that $\delta$ is a parameter shared between donors, whereas the vectors $\v$ in the volatility profile are i.i.d. multivariate normal.
+The first category plots two parameters of the shock equation, $\mu_{\delta}$ and $\sigma_{u}$, in grids while increasing the mean of the covariate vectors $\x$ over three plots.  Recall that $\delta$ is a parameter shared between donors, whereas the vectors $\v_{i}$ in the volatility profile are i.i.d. multivariate normal.  In Figure \ref{fig:sim_1}, we see very little variation across the grid.  However, in Figures \ref{fig:sim_2} and \ref{fig:sim_3}, where $\mu_{v}$ is increased, we observe an expected phenomenon: for any fixed column of the plots, the performance of the adjusted forecast improves with increasing $\mu_{\delta}$.  A somewhat subtler phenomenon is also observed: for a fixed row of the grids in Figures \ref{fig:sim_2} and \ref{fig:sim_3}, for $\mu_{\delta} \geq .5$, increasing $\sigma_{u}$ leads to a decline in performance.  However, this is not observed for smaller levels of $\mu_{\delta}$, where the signal is too weak.
 
-The second category of simulations examines $\delta$ and $\mu_{x}$.
+The second category of simulations examines $\mu_{\delta}$ and $\mu_{v}$, while increasing the noise $\sigma_{u}$.  The row-wise and column-wise increases in performance that we witnessed in the first category largely hold in the second category of simulations, with one similar disclaimer: the relationship is strained under large levels of noise, like $\sigma_{u} = 1$.
 
-Lastly, the third set of simulations takes a look at the role of the intercept of the conditional shock distribution, $\mu_{\omega^{*}}$, in particular, its interaction with $\sigma_{u}$.  We can think of $\mu_{\omega^{*}}$ as being the sole component of $\x$ that has no variance, i.e. because it's corresponding entry in the vector $\x$ is the scalar 1.
+
+Lastly, the third set of simulations takes a look at the role of the intercept of the conditional shock distribution, $\mu_{\omega^{*}}$, in particular, its interaction with $\sigma_{u}$.  We can think of $\mu_{\omega^{*}}$ as being the sole component of $\x$ that has no variance, i.e. because it's corresponding entry in the vector $\x$ is the scalar 1.  For larger values of $\mu_{\omega^{*}}$, the outperformance of the adjusted forecast declines with increase noise $\sigma_{u}$, but this effect is absent for smaller values of $\mu_{\omega^{*}}$ 
 
     \begin{figure}[!h]
       \centering
@@ -521,21 +520,21 @@ Lastly, the third set of simulations takes a look at the role of the intercept o
     \begin{subfigure}{.44\linewidth} 
       \centering
         \includegraphics[scale = .42]{simulation_plots/Jul01_192350_2024_mu[delta]_sigma[u].png}
-        \caption{Fixed values: $\mu_{x} = .125, \sigma_{x} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_1}
+        \caption{Fixed values: $\mu_{v} = .125, \sigma_{v} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_1}
     \end{subfigure}\hspace{12mm} %
     \begin{subfigure}{.44\linewidth} 
       \centering
         \includegraphics[scale=.42]{simulation_plots/Jul01_192510_2024_mu[delta]_sigma[u].png}
-        \caption{Fixed values: $\mu_{x} = .5, \sigma_{x} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_2}
+        \caption{Fixed values: $\mu_{v} = .5, \sigma_{v} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_2}
     \end{subfigure}
 
     \begin{subfigure}{.44\linewidth} 
       \centering
         \includegraphics[scale=.42]{simulation_plots/Jul01_192518_2024_mu[delta]_sigma[u].png}
-        \caption{Fixed values: $\mu_{x} = 1, \sigma_{x} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_3}
+        \caption{Fixed values: $\mu_{v} = 1, \sigma_{v} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_3}
     \end{subfigure}
     
-        \caption{In the progression from \ref{fig:sim_1} to \ref{fig:sim_2} to \ref{fig:sim_3}, we see that increasing $\delta$ leads to improved performance of the adjusted forecast, and this effect is intensified as $\mu_{x}$ increases.  However, it is not consistently true that an increasing noise undermines the performance of the adjusted forecast.  Rather, that phenomenon requires both large quantites of $\delta$ and $\mu_{X}$.}
+        \caption{In the progression from \ref{fig:sim_1} to \ref{fig:sim_2} to \ref{fig:sim_3}, we see that increasing $\mu_{\delta}$ leads to improved performance of the adjusted forecast, and this effect is intensified as $\mu_{v}$ increases.  However, it is not consistently true that an increasing noise undermines the performance of the adjusted forecast.  Rather, that phenomenon requires both large quantites of $\mu_{\delta}$ and $\mu_{v}$.}
         \label{fig:signoise}
       \end{figure}
 
@@ -545,15 +544,15 @@ Lastly, the third set of simulations takes a look at the role of the intercept o
   \begin{subfigure}{.44\linewidth} 
     \centering
       \includegraphics[scale = .42]{simulation_plots/Jul01_192528_2024_mu[delta]_mu[v].png}
-      \caption{Fixed values: $\sigma_{x} = .125, \mu_{\omega^{*}} = .125, \sigma_{u} = .125$}\label{fig:sim_4}
+      \caption{Fixed values: $\sigma_{v} = .125, \mu_{\omega^{*}} = .125, \sigma_{u} = .125$}\label{fig:sim_4}
   \end{subfigure}\hspace{12mm} %
   \begin{subfigure}{.44\linewidth} 
     \centering
       \includegraphics[scale=.42]{simulation_plots/Jul01_192539_2024_mu[delta]_mu[v].png}
-      \caption{Fixed values: $\sigma_{x} = .125, \mu_{\omega^{*}} = .125, \sigma_{u} = 1$}\label{fig:sim_5}
+      \caption{Fixed values: $\sigma_{v} = .125, \mu_{\omega^{*}} = .125, \sigma_{u} = 1$}\label{fig:sim_5}
   \end{subfigure}
   
-      \caption{We compare the interaction of $\delta$ and $\mu_{X}$ at two different levels of shock noise.  In the low-noise regime, the peak performance of the adjusted forecast is higher, and the ascent is faster along both dimensions.   However, in the high-noise regime, the adjusted forecast performs well even at low levels of $\delta$ and $\mu_{X}$.}
+      \caption{We compare the interaction of $\mu_{\delta}$ and $\mu_{v}$ at two different levels of shock noise.  In the low-noise regime, the peak performance of the adjusted forecast is higher, and the ascent is faster along both dimensions.   However, in the high-noise regime, the adjusted forecast performs well even at low levels of $\mu_{\delta}$ and $\mu_{v}$.}
       \label{fig:sig_volprof}
     \end{figure}
 
@@ -563,12 +562,12 @@ Lastly, the third set of simulations takes a look at the role of the intercept o
 \begin{subfigure}{.44\linewidth} 
   \centering
     \includegraphics[scale = .42]{simulation_plots/Jul01_192548_2024_mu[omega^star]_sigma[u].png}
-    \caption{Fixed values: $\mu_{x} = .125, \sigma_{x} = .125, \delta = .125$}\label{fig:sim_6}
+    \caption{Fixed values: $\mu_{v} = .125, \sigma_{v} = .125, \delta = .125$}\label{fig:sim_6}
 \end{subfigure}\hspace{12mm} %
 \begin{subfigure}{.44\linewidth} 
   \centering
     \includegraphics[scale=.42]{simulation_plots/Jul01_192601_2024_mu[omega^star]_sigma[u].png}
-    \caption{Fixed values: $\mu_{x} = .125, \sigma_{x} = .125, \delta = 2$}\label{fig:sim_7}
+    \caption{Fixed values: $\mu_{v} = .125, \sigma_{v} = .125, \delta = 2$}\label{fig:sim_7}
 \end{subfigure}
 
     \caption{The interaction between the intercept $\mu_{\omega^{*}}$ and $\sigma_{u}$ suggests that the parameters behave as expected.  However, a larger value of $\delta$ in \ref{fig:sim_7} attenuates the effect of increasing noise.}
@@ -590,7 +589,7 @@ For all of these reasons and more, the aftermath of the 2016 presidential electi
 
     \item \textbf{Covariate Choice} We choose covariates that could plausibly satisfy the model assumptions spelled out earlier, that is, risk-related and macroeconomic covariates that could plausibly be weighted and summed in a shock distribution.  We thus choose the log return Crude Oil (CL.F), the VIX (VIX) and the log return of the VIX, the log returns of the 3-month, 5-year, 10-year, and 30-year US Treasuries, as well as the log return of the most recently available monthly spread between AAA and BAA corporate debt, widely considered a proxy for lending risk \citep{goodell2013us, kane1996p}.  We also include the log return in the trading volume of the ETF IYG itself, which serves as a proxy for panic.  Finally, we include the squares of the demeaned log return of IYG for the 30 trading days preceding the shocks.  For each variable in the volatility profile, we compute the sample mean and sample standard deviation across the $n+1$ events, allowing us to scale the variables to have zero mean and unit variance.  Hence, no single variable can dominate the distance-based weighting procedure.
 
-    \item \textbf{Donor pool construction} \textcolor{red}{First sentence here may be deleted.} Synthetic Control, as a tool of causal inference, often goes about weighting control units by first identifying a natural set of donors or standard donors such as the untreated units within a set of subnational units like US states or Spanish provinces \citep{abadie2003economic, abadie2010synthetic}.  In our example, the aggregate units are the elections themselves (arguably composed of individual voters and/or interests).  We choose the three most recent US presidential elections prior to the 2016 election.  The three US presidential elections are the only presidential elections since the advent of the ETF IYG.  We exclude the midterm congressional elections in the US (i.e. those held in even years not divisible by four), which generate far lower voter turnout and feature no national races.
+    \item \textbf{Donor pool construction} We choose the three most recent US presidential elections prior to the 2016 election.  The three US presidential elections are the only presidential elections since the advent of the ETF IYG.  We exclude the midterm congressional elections in the US (i.e. those held in even years not divisible by four), which generate far lower voter turnout and feature no national races.
 
     \item \textbf{Choice of estimator for volatility} We use the sum of squared 5-minute log returns of IYG on November 9th, 2016, otherwise known as the Realized Volatility estimator of volatility \citep{andersen2008realized}, as our proxy.  We exclude the first five minutes of the trading day, resulting in a sum of 77 squared five-minute returns generated between 9:35am and 4pm.
     \item \textbf{Data Sources} All daily market data is provided via the YahooFinance API available in the quantmod package in R \citep{ryan2015package}.  In order to calculate log equity returns, we use Adjusted Close of IYG.  The realized volatility is computed using high-frequency quote data available from Wharton Research Data Services (WRDS) \citep{wachowicz2020wharton}.  The spread between is AAA and BAA yields is provided by Federal Reserve Economic Data (FRED) and accessed via the quantmod package.
@@ -787,12 +786,12 @@ Given the option of redoing our analysis, with nine covariates and four donors, 
     \end{table}
 
 \subsection{Sensitivity to Covariates Chosen}
-Any covariate that appears more often closer to the bottom of Table \ref{tab:prediction_table_with Brexit as June 22nd, 2016} is, $\textit{ceteris paribus}$, a more important covariate for this prediction task, since by dropping it, a larger loss results.  The covariates that thus stand out are the demeaned log return of IYG, the VIX, the Debt Risk Spread (spread between between AAA and BAA corporate debt), and last but not least, the choice of dropping none of the covariates.  The demeaned log return of IYG, of which we use the 30 days preceeding the $T_{i}^{*}$, suggests an unusually strong relevance in matching donors to the time series under study.  The Debt Risk Spread is also deserving of additional comment and attention, perhaps alongside the poor performance of the log return of the VIX.  The Debt Risk Spread is available at a monthly frequency via FRED (add citation), whereas the VIX is available daily via Yahoo Finance (I need to explain that and cite Yahoo Finance and quantmod).  It may be the case that the true conditional shock distribution includes low-frequency data as well as data in levels (like the VIX), while the daily changes in the VIX are absent.
+Any covariate that appears more often closer to the bottom of Table \ref{tab:prediction_table_with Brexit as June 22nd, 2016} is, $\textit{ceteris paribus}$, a more important covariate for this prediction task, since by dropping it, a larger loss results.  The covariates that thus stand out are the demeaned log return of IYG, the VIX, the Debt Risk Spread (spread between between AAA and BAA corporate debt), and last but not least, the choice of dropping none of the covariates.  The demeaned log return of IYG, of which we use the 30 days preceeding the $T_{i}^{*}$, suggests an unusually strong relevance in matching donors to the time series under study.  The Debt Risk Spread is also deserving of additional comment and attention, perhaps alongside the poor performance of the log return of the VIX.  The Debt Risk Spread is available at a monthly frequency via FRED (add citation), whereas the VIX is available daily via Yahoo Finance.  It may be the case that the true conditional shock distribution includes low-frequency data as well as data in levels (like the VIX), while the daily changes in the VIX are absent.
 
 
 \subsection{Sensitivity to Donors Chosen}
 
-The most glaring result visible in \ref{tab:prediction_table_with Brexit as June 22nd, 2016} regarding donor selection is the poor performance of the 2008 US Election.  In hindsight, this is unsurprising, given the large estimated fixed effect for November 5th, 2008 as well as the swirl of complex events occurring in financial markets around that time.  It is possible that the GARCH(1,1) used to fit the run-up to that election is underparameterized.  The weight given to the 2008 US election is near-zero, but in our method, unsuitable donors can influence the distance-based weighting by affecting that dispersion of one or more of the $p$ covariates present in the volatility profile.  Recall that for each of the $p$ covariates, we transform the $n+1$-vector of variables to Z-scores.  The lesson here is that more careful pre-quantitative inspection of the donors may be warranted as well as ordinary outlier analysis for the volatility profile.  As an additional note, dropping the 2008 Election vastly improves the performance of the arithmetic mean forecast.  This provides a cautionary tale against using the arithmetic mean estimator for the conditional shock effect.  
+The most glaring result visible in Table \ref{tab:prediction_table_with Brexit as June 22nd, 2016} regarding donor selection is the poor performance of the 2008 US Election.  In hindsight, this is unsurprising, given the large estimated fixed effect for November 5th, 2008 as well as the swirl of complex events occurring in financial markets around that time.  It is possible that the GARCH(1,1) used to fit the run-up to that election is underparameterized.  The weight given to the 2008 US election is near-zero, but in our method, unsuitable donors can influence the distance-based weighting by affecting that dispersion of one or more of the $p$ covariates present in the volatility profile.  Recall that for each of the $p$ covariates, we transform the $n+1$-vector of variables to Z-scores.  The lesson here is that more careful pre-quantitative inspection of the donors may be warranted as well as ordinary outlier analysis for the volatility profile.  As an additional note, dropping the 2008 Election vastly improves the performance of the arithmetic mean forecast.  This provides a cautionary tale against using the arithmetic mean estimator for the conditional shock effect.  
 
 The donors most conducive to good predictions in this task are the 2004 and 2008 US elections.  The estimated fixed effects tell a story of only modest surprise due to these election results: the estimate is nearly zero for 2004, while 2012 is nonzero but small.  Given that the presidential election results of these two did not deliver much surprise, it is possible that the surprise could be due more so to non-presidential races.
 

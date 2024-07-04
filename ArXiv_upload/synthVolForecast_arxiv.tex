@@ -124,7 +124,7 @@ Proof of Lemma {#1}}
 %\biboptions{longnamesfirst}
 
 \title{Volatility Forecasting Using Similarity-based Parameter Correction and Aggregated Shock Information}
-\author{David Lundquist\thanks{davidl11@ilinois.edu}, Daniel J. Eck\thanks{dje13@illinois.edu}\\Department of Statistics, University of Illinois at Urbana-Champaign }
+\author{David P. Lundquist\thanks{davidl11@ilinois.edu}, Daniel J. Eck\thanks{dje13@illinois.edu}\\Department of Statistics, University of Illinois at Urbana-Champaign }
 
 \date{\today}
  
@@ -145,7 +145,7 @@ to the state of the market at the time of the news arrival.  News that arrives d
 high uncertainty may have different effects on the exchange rate, than news that arrives in
 calmer periods." The authors also note that non-scheduled news may require more time for markets to digest, leading to greater heterogeneity (including but not limited to higher dispersion) of responses.  We take inspiration from these arguments, developing a method suitable to the conditions that typically accompany news shocks. 
 
-In this work we focus on the second central moment of a time series, the volatility.  One of the most important stochastic phenomenon of positively-valued time series $(P_{t})_{t\in\mathbb{N}}$, especially financial time series, is the volatility of the return series $(r_{t})_{t\in\mathbb{N}}$.  A financial asset's price series may exhibit behavior that makes inapplicable and uninterpretable the traditional methods of time series analysis.  In contrast, the return series is scale-free \citep{tsay2005analysis}, easily-interpreted, and often at least weakly stationary.  Even if one could construct credible models for describing and forecasting price series and return series, that would not necessarily tell us much about the variability of such forecasts nor enlighten us about the evolution of the variability of $(P_{t})_{t\in\mathbb{N}}$ and $(r_{t})_{t\in\mathbb{N}}$ over time.  The literature on return series predictability based on news has undergone a considerable shift over the past 50 years.  Whereas once returns were thought to react to specific news events, now stock price movements are believed to be overwhelmingly noise-based (see \citet{boudoukh2019information} and references therein).
+In this work we focus on the second central moment of a time series, the volatility.  One of the most important stochastic phenomena of positively-valued time series $(P_{t})_{t\in\mathbb{N}}$, especially financial time series, is the volatility of the return series $(r_{t})_{t\in\mathbb{N}}$.  A financial asset's price series may exhibit behavior that makes inapplicable and uninterpretable the traditional methods of time series analysis.  In contrast, the return series is scale-free \citep{tsay2005analysis}, easily-interpreted, and often at least weakly stationary.  Our reasons for studying volatility are two-fold.  Whereas once returns were thought to react to specific news events, now stock price movements are believed to be overwhelmingly noise-based (see \citet{boudoukh2019information} and references therein), and even if one could construct credible models for describing and forecasting price series and return series, that would not necessarily tell us much about the variability of such forecasts nor enlighten us about the evolution of the variability of $(P_{t})_{t\in\mathbb{N}}$ and $(r_{t})_{t\in\mathbb{N}}$ over time.  
 
 No matter how a time series or its transformations are modeled, forecasting in the presence of news shocks requires a methodological framework that sensibly incorporates relevant information that has yet to manifest in market price or derivative quantities like volatility.  In this setting, regime-change models (see \citet{bauwens2006regime} and citations therein) are of little use because under the assumption of a known exogenous shock, there is no need to estimate a regime-change time, nor is there data following the exogenous shock event to fit a model.  Asymmetric GARCH models were an early attempt to account for fact that negative returns typically beget greater volatility than positive returns \citep{hansen2012realized}.  Asymmetry and mixed-frequency are employed in \cite{wang2020forecasting} to forecast under the presence of extreme shocks.  Problematically, any asymmetric model will depend upon the observation of a negative return to provide the most updated volatility forecast, but under the circumstances posited herein, no such return has been observed.
 
@@ -157,33 +157,31 @@ The primary methodological tool presented in this work is fixed effect estimatio
 
 A researcher interested in forecast adjustment can choose between procedures that discretionary or automated, a variety of choices for the collection of data assembled to perform the correction, whether the data is internal (i.e. from the time series itself) or external, the parametric term to be corrected (e.g. intercept, coefficients), if any, as well as the correction function (i.e. the mapping from the data to the corrective term), including the weighting applied to the assembled data (e.g. Nearest-Neighbor, arithmetic mean, kernel methods).
 
-Our procedure is a discretionary procedure for intercept correction that  incorporates systematically data internal or external to the time series under study.  The correction function, as we shall see, involves an optimization step inspired by the causal inference literature.  In particular, in \citet{abadie2010synthetic}, the authors build upon previous work in causal inference whereby a treatment effect can be estimated via comparison with a synthetic time series that that represents either the treatment or control unit.  The synthetic unit is constructed using a convex combination of the donors.  The particular convex combination employed is a function of the distance between the time series under study and the donors.  \citet{lin2021minimizing} adapt these methods for the purpose of prediction.  Their one-step-ahead forecasts use distance-based-weighting to pool shock estimates from similar series according to the donor series' similarity to the series under study.  Their approach does not take into account the ARCH effects commonly observed in time series, especially financial times series, leaving unaccounted for the variability that accompanies predictions of a heteroskedastic time series.
+Our procedure is a discretionary procedure for intercept correction that  incorporates systematically data internal or external to the time series under study.  The correction function, as we shall see, involves an optimization step inspired by the causal inference literature.  In particular, in \citet{abadie2010synthetic}, the authors build upon previous work in causal inference whereby a treatment effect can be estimated via comparison with a synthetic time series that that represents either the treatment or control unit.  The synthetic unit is constructed using a convex combination of the donors.  The particular convex combination employed is a function of the distance between the time series under study and the donors.  \citet{lin2021minimizing} adapt these methods for the purpose of prediction.  Their one-step-ahead forecasts use distance-based-weighting to pool shock estimates from similar series according to the donor series' similarity to the series under study.  Their approach does not take into account the ARCH effects commonly observed in time series, especially financial times series, leaving unaccounted for the variability that accompanies predictions of a heteroskedastic time series.  Outside of \citet{lin2021minimizing}, we know of no prior work that both introduces a parametric specification for nonzero errors and introduces a procedure for weighting appropriately the nonzero errors of similar shocks occurring outside the time series under study.  Likewise, we are not familiar with any prior work that attempts to account for anticipated nonzero errors using an explicit parametric adjustment, i.e., what we will call a ``correction function''.  
 
-Outside of \citet{lin2021minimizing}, we know of no prior work that both introduces a parametric specification for nonzero errors and introduces a procedure for weighting appropriately the nonzero errors of similar shocks occurring outside the time series under study.  Likewise, we are not familiar with any prior work that attempts to account for anticipated nonzero errors using an explicit parametric adjustment, i.e., what we will call a ``correction function''.  
+The method proposed herein is supported by both numerical evidence as well as a real data example.  The numerical evidence takes the form of simulations and analysis of the method's performance across a considerable grid of varying parameters, allowing us to confirm reasonable hypotheses about the method but also uncover some intriguing nuances.  The real data example, on the other hand, demonstrates the usefulness of the method by applying it to the most closely-followed democratic political event on earth, the US Presidential Election.  We find that the method would have allowed a researcher to predict the volatility of a financial asset that immediately followed the 2016 US Presidential Election in the United States.  Our discussion of this example sheds light on some subtleties of the method as well as its robustness to various choices that must be made to construct and assemble donors and appropriate covariates.
 
-In order to motivate our procedure, we provide visual illustrations.  In \hyperref[fig:six_plots]{Figure} \ref{fig:six_plots}, we provide a panel of volatility series of i.i.d. GARCH processes, corresponding to a setting in which five donors exist.  Next, in Figure \ref{fig:arith_mean_example_introduction}, we show how the aggregation of estimated excess volatilities from donors in the donor pool works when the correction function is the arithmetic mean of the donors' fixed effects.  The arithmetic mean of excess volatilities provides perhaps the most straightforward and intuitive way of aggregating information from similar events.  Taking the average also coincides with the $K$-Nearest-Neighbor estimator, where $K$ is equal to the number of donors in the donor pool. Although using the arithmetic mean is intuitive and enjoys some empirical track record, its grounding in theory is much less impressive \citep{timmermann2006forecast}.  Our method assumes a credible, parsimonious parameterization in which the shock is an affine transformation of several key covariates.  The key intuition behind this shock parameterization is that as the strength of the linear signal increases relative to the idiosyncratic error, the GARCH estimation of these effects increases in accuracy.  From this, it follows that the aggregated shock estimate increases in accuracy.
+\section{Setting}\label{Setting}
 
-\begin{figure}[h!]
-  \begin{center}
-    \includegraphics[scale=.4]{vol_series_six_plots.png}
-    \caption{Volatility series of six i.i.d. GARCH processes, each of which experiences a volatility shock, indicated with a red vertical line, at a uniformly distributed point in the set $\{756,...,2520\}$ of trading days, corresponding to between 3 and 10 years of daily trading data.}
-    \label{fig:six_plots}
-    \end{center}
-  \end{figure}
+In order to motivate our procedure, we provide a visual illustration.  In Figure \ref{fig:motivating_piece_convex_combination}, we show how the aggregation of estimated excess volatilities from donors in the donor pool works when the correction function is a specially-chosen convex combination of fixed effects from the donor pool.  Our method assumes a credible, parsimonious parameterization in which the shock is an affine transformation of several key covariates.  The key intuition behind this shock parameterization is that as the strength of the linear signal increases relative to the idiosyncratic error, the GARCH estimation of these effects increases in accuracy.  From this, it follows that the aggregated shock estimate increases in accuracy.
+
 
   \begin{figure}[h!]
     \begin{center}
-      \includegraphics[scale=.4]{motivating_piece_arithmetic_mean.png}
-      \caption{The time series experiences a volatility shock at a uniformly distributed point in the set $\{756,...,2520\}$ of trading days, corresponding to between 3 and 10 years of daily trading data..  We have truncated the series after $T^{*}+1$.  The GARCH prediction fails even to approach the volatility spike at $T^{*}+1$, as do some adjusted predictions.  In contrast, the GARCH forecast adjusted by $\overline{\hat\omega^{*}}$, the arithmetic mean of the estimated shocks, recovers the shock in the time series under study.} 
-      \label{fig:arith_mean_example_introduction}
+      \begin{tikzpicture}
+        \node[anchor=south west,inner sep=0] at (0,0) {\includegraphics[width=\textwidth]{simulation_plots/motivating_piece_convex_combination.png}};
+        % \draw[red,ultra thick,rounded corners] (7.5,5.3) rectangle (9.4,6.2);
+        \node[draw,text width=4.45cm] at (9.8,3.2) {$\textcolor{blue}{\hat\sigma^{2}_{adjusted} = \hat\sigma^{2}_{unadjusted} + \hat\omega^{*}}$ };
+        \node[draw,text width=2.62cm] at (14.8,2.8) {$\textcolor{blue}{\hat\omega^{*} = \sum^{n+1}_{i=2}\pi_{i}\hat\omega^{*}_{i}}$ };    
+        
+    \end{tikzpicture}
+      \caption{The simulated time series experiences a volatility shock between trading days 1223 and 1224.  We have truncated the series after $T^{*}+1 = 1224$.  The GARCH prediction, in red, fails even to approach the volatility spike at $T^{*}+1$, as do some adjusted predictions, which are orange.  In contrast, the GARCH forecast adjusted by $\hat\omega^{*}$, a convex combination of the estimated shocks in the donor pool, achieves directional correctness as well as a smaller absolute loss in its prediction.}    \label{fig:motivating_piece_convex_combination}
+   
       \end{center}
     \end{figure}
 
-\section{Setting}
-\label{section2}
-
-\subsection{A Primer on GARCH}
-We define the log return of an asset between $t$ and $t+1$ as $r_{t} = \text{log}(\frac{P_{t+1}}{P_{t}})$, where $P_{t}$ denotes the price at time $t$.  The class of ARIMA($p,d,q$) models  \citep{box2013box} provides a framework for modeling the autoregressive structure of $r_{t}$, all under the umbrella of frequentist statistics.  These models assume a certain dependence structure between $r_{t}$ and $(r_{k})_{k\leq t}$, yet their errors --- often called innovations in the financial time series context due to how they represent the impact of new information --- are nevertheless assumed to be i.i.d. with mean zero and constant variance.  The ARCH \citep{engle1982autoregressive} and GARCH \citep{bollerslev1986generalized} models provide elegant alternatives to the homoskedasticity assumption.  In fact, the GARCH framework in its most basic form disregards $r_{t}$ and instead turns its interest to the series $r_{t}^{2}$ (once properly centered, i.e. after assuming a mean-model for returns).  
+  \subsection{A Primer on GARCH}
+We define the log return of an asset between $t-1$ and $t$ as $r_{t} = \text{log}(\frac{P_{t}}{P_{t-1}})$, where $P_{t}$ denotes the price at time $t$.  The class of ARIMA($p,d,q$) models  \citep{box2013box} provides a framework for modeling the autoregressive structure of $r_{t}$, all under the umbrella of frequentist statistics.  These models assume a certain dependence structure between $r_{t}$ and $(r_{k})_{k\leq t}$, yet their errors --- often called innovations in the financial time series context due to how they represent the impact of new information --- are nevertheless assumed to be i.i.d. with mean zero and constant variance.  The ARCH \citep{engle1982autoregressive} and GARCH \citep{bollerslev1986generalized} models provide elegant alternatives to the homoskedasticity assumption.  In fact, the GARCH framework in its most basic form disregards $r_{t}$ and instead turns its interest to the series $r_{t}^{2}$ (once properly centered, i.e. after assuming a mean-model for returns).  
 
 To that end, let $a_{t} = r_{t} - \mu_{t}$, where $\mu_{t}$ is the mean of the log return series $r_{t}$.  We thus derive a mean-zero process $(a_{t})_{t\in\mathbb{N}}$ with the property that $\E[a^{2}_{t}] = \mrm{Var}[a_{t}]$.  Under the assumption of time-invariant volatility, the series $a_{t}^{2}$ should exhibit no autocorrelation at any lag $\ell\geq1$.  This assumption motivates tests for so-called ARCH effects, that is, tests for the clustering of volatility.  These tests explore the alternative hypothesis that $\sigma_{t}^{2}$ is not only a time-varying parameter but furthermore a function of past squared residuals of the mean model.  In particular, the ARCH($m$) model is an autoregressive model in which $\sigma_{t}^{2}$ is a deterministic function of the past $m$ values of $r_{t}^{2}$.  The GARCH($m,s$) framework take this one step further by modeling $\sigma_{t}^{2}$ as a linear combination of the past $m$ values of $r_{t}^{2}$ and well as the past $s$ values of $\sigma_{t}^{2}$.  In functional form, a GARCH process (sometimes called a strong GARCH process \citep[p. 19]{francq2019garch}) is given by
 
@@ -228,52 +226,36 @@ with error structure
     \end{align*}
 where $D^{return}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + L_{i, return}\})$ and $D^{vol}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + L_{i, vol}\})$ and $L_{i,return},L_{i,vol}$ denote the lengths of the log return and volatility shocks, respectively.  Let $\mc{M}_{0}$ denote the subclass of $\mc{M}_{1}$ models such that $\delta \equiv 0$.  Note that $\mc{M}_{0}$ assumes that $\omega^{*}_i$ have no dependence on the covariates and are i.i.d. with $\E[ \omega^{*}_i]=\mu_{\omega^{*}}$.  
 
-\begin{align}
-Y^{N}_{i,t} = \delta_{t} + \boldsymbol\theta_{t}\textbf{Z}_{i}+\boldsymbol\lambda_{t}\boldsymbol\mu_{i}+\varepsilon_{i,t} \text{ ,} \label{abadie_factor_model}
-\end{align}
-which happens to nest the GARCH model's volatilty equation (putting aside that $\sigma_{t}$ is latent in the GARCH model) as well as as the ARMA representation of a GARCH model, where
-
-\begin{align*}
-\delta_{t} & \sim \omega,  \text{a location parameter shared across donors}\\
-\boldsymbol\theta_{t} & \sim \boldsymbol\alpha_{k},  \text{a vector of ARCH parameters and other coefficients shared across donors} \\
-\textbf{Z}_{i} & \sim \boldsymbol a_{i,t-k}, \text{a vector of observable quantities specific to each donor} \\
-\boldsymbol \lambda_{t} & \sim \boldsymbol\beta_{j}, \text{a vector of GARCH parameters shared across donors} \\
-\boldsymbol \mu_{i} & \sim \boldsymbol \sigma_{i,t-j}^{2}, \text{a vector of latent quantities specific to each donor}   \\
-\end{align*}
-and $\varepsilon_{i,t}$ is idiosyncratic noise, uncorrelated across time and donors.
-
 
     \subsection{Volatility Profile of a Time Series}
     \label{Volatility Shock Profile of a Time Series}
     
-    In this section, we make a novel contribution to prediction via distance-based weighting by constructing a profile of a time series' volatility, the analogue of a covariate matrix in a synthetic control framework.  The volatility profile for a given GARCH-X process is nothing more than a vector of observable covariates that parameterize a shock.  A collection of $n$ such vectors yields a matrix of $n$ columns.  What distinguishes a volatility profile, principally, is that the time-varying parameters that correspond to the volatility profile are non-zero at only the shock times, whereas no such restriction exists in Equation $\eqref{abadie_factor_model}$.  
+    We now introduce prediction via distance-based weighting by constructing a profile of a time series' volatility, the analogue of a covariate matrix in a synthetic control framework.  The volatility profile for a given GARCH-X process is nothing more than a vector of observable covariates that parameterize a shock.  A collection of $n$ such vectors yields a matrix of $n$ columns.  What distinguishes a volatility profile, principally, is that the time-varying parameters that correspond to the volatility profile are non-zero at only the shock times.  
     
     Suppose that for each of the $n$ donors, we have available $p$ distinct covariates in the functional form of the shock.  The volatility profile could take the form of the $p \times n$ matrix 
 
     \begin{equation*}
       \textbf{V}_{t} = 
       \begin{pmatrix}
-      \hat\alpha_{1,t} & \hat\alpha_{t,2}  & \cdots & \hat\alpha_{t,n}  \\
-      \hat\beta_{1,t} & \hat\beta_{t,2}  & \cdots & \hat\beta_{t,n}  \\
+
+      RV_{2,t}  & RV_{3,t} &  \cdots & RV_{n+1,t}  \\
+      RV_{2,t-1}  & RV_{3,t-1}  & \cdots & RV_{n+1,t-1}  \\
       \vdots  & \vdots  & \ddots & \vdots  \\
-      RV_{1,t} & RV_{2,t}  & \cdots & RV_{n,t}  \\
-      RV_{1,t-1}  & RV_{2,t-1}  & \cdots & RV_{n,t-1}  \\
+      IV_{2,t} & IV_{3,t} & \cdots & IV_{n+1,t} \\
+      IV_{2,t-1}  & IV_{3,t-1}  & \cdots & IV_{n+1,t-1} \\
       \vdots  & \vdots  & \ddots & \vdots  \\
-      IV_{1,t} & IV_{2,t} & \cdots & IV_{n,t} \\
-      IV_{1,t-1}  & IV_{2,t-1}  & \cdots & IV_{n,t-1} \\
+      |a_{2,t}| & |a_{3,t}| & \cdots & |a_{n+1,t}| \\
+      |a_{2,t-1}|  & |a_{3,t-1}|  & \cdots & |a_{n+1,t-1}| \\
       \vdots  & \vdots  & \ddots & \vdots  \\
-      |r_{1,t}| & |r_{2,t}| & \cdots & |r_{n,t}| \\
-      |r_{1,t-1}|  & |r_{2,t-1}|  & \cdots & |r_{n,t-1}| \\
+      Volume_{2,t}  & Volume_{3,t}  & \cdots & Volume_{n+1,t} \\
+      Volume_{2,t-1}  & Volume_{3,t-1}  & \cdots & Volume_{n+1,t-1}  \\
       \vdots  & \vdots  & \ddots & \vdots  \\
-      Volume_{1,t}  & Volume_{2,t}  & \cdots & Volume_{n,t} \\
-      Volume_{1,t-1}  & Volume_{2,t-1}  & \cdots & Volume_{n,t-1}  \\
-      \vdots  & \vdots  & \ddots & \vdots  \\
-      \Delta RV_{1,t} & \Delta RV_{2,t}  & \cdots & \Delta RV_{n,t}  \\
-      \Delta RV_{1,t-1}  & \Delta RV_{2,t-1}  & \cdots & \Delta RV_{n,t-1}  \\
+      \Delta RV_{2,t} & \Delta RV_{3,t}  & \cdots & \Delta RV_{n+1,t}  \\
+      \Delta RV_{2,t-1}  & \Delta RV_{3,t-1}  & \cdots & \Delta RV_{n+1,t-1}  \\
       \vdots  & \vdots  & \ddots & \vdots  \\
       \end{pmatrix},
       \end{equation*}
-      where RV and IV denote realized volatility and implied volatility, respectively.  Covariates chosen for inclusion in a given volatility profile may be levels, log differences in levels, percentage changes in levels, or absolute values thereof, among many choices.
+      where RV and IV denote realized volatility and implied volatility, respectively, $\Delta$ denotes the lag operator between consecutive realizations of a variable, and \textit{Volume} denotes the quantity of traded shares or other units of an asset.  Covariates chosen for inclusion in a given volatility profile may be levels, log differences in levels, percentage changes in levels, or absolute values thereof, among many choices.
 
       As shown, $\textbf{V}_{t}$ displays `balance' in that $p$ covariates exist for each of the $n$ donors.  In practice, missing values, corrupted values, or unacceptably extreme or noisy estimates may necessitate some sort of matrix completion, a problem that we do not tackle in this work.  We now turn to the next section, where $\textbf{V}_{t}$ is employed in a procedure to arrive at a forecast adjustment. 
     
@@ -282,7 +264,7 @@ and $\varepsilon_{i,t}$ is idiosyncratic noise, uncorrelated across time and don
 
 \subsection{Forecasting}
 
-We present two forecasts for the time series under study:
+So far we have presented a setting and a data generating process for which we intend to furnish a statistical method.  Now, we present two forecasts for the time series, the latter of which benefits from the proposed method.  In particular, we present the GARCH forecast, also called the \textit{unadjusted} forecast, as well as the \textit{adjusted} forecast, which differs by an additive term:
 
 \begin{align*}
   \text{Forecast 1: } & \hat\sigma^{2}_{unadjusted} = \hat\E[\sigma^{2}_{1,T_{1}^{*}+1}|\mathcal{F}_{T^{*}}] = \hat\omega_{i} + \sum^{m_{i}}_{k=1}\hat\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\hat\beta_{i,j}\sigma_{i,t-j}^{2} + \hat\gamma_{i}^{T} \x_{i,t}\\
@@ -305,9 +287,7 @@ In the forecast combination literature, it is discussed whether the weights empl
 
 A more promising aim is finding weights such that $\textbf{v}_{1} = \sum^{n+1}_{i=2}\weight_{i}\textbf{v}_{i}$, meaning that the volatility profile of the time series under study lies within the convex hull of the donor volatility profile.  This condition underwrites asymptotic results in \citet{abadie2010synthetic}, and the intuition there extends to this work: if the shock is parameterized by an affine function of covariates, then finding a linear combination that recreates the shock should serve us well.  Because the method proposed uses a point in $\Delta^{n}$, it is important to head-off possible confusion.  What we are proposing is not a forecast combination method.  What we are aggregating and weighting (not combining) are subcomponents of forecasts, not forecasts themselves.  Moreover, from a broader perspective, forecast combination is an inapt term for what is being proposed here.  First, the donor time series do not provide forecasts, nor would forecasts be needed for random variables that have already been realized.  Second and more fundamentally, the theoretical underpinnings of forecast combination, while diverse \citep{wang2023forecast}, are distinct from the setting presumed in this work, where the model family is not in doubt but the parameter values and how they prevail must be learned.
 
-A question naturally arises regarding the uniqueness of weights.  Remarks by \cite{lin2021minimizing, abadie2022synthetic} apply here.  We make additional comments as well. $(\mathbb{R}^{n}, \|\cdot\|)$ is a Chebyshev space, and hence for any element x and any convex set $C\subset \mathbb{R}^{n}$, there exists a unique element $y\in C$ that minimizes $\|x-y\|$.  However, the pre-image of $y$ with respect to a particular operator and constraint set might not be unique.
-
-Let $p', n'$ denote the number of linearly independent rows of $\V_{t}$ and linearly independent columns of $\V_{t}$ respectively.  Let col($\cdot$) denote the column space of a matrix, and let Conv($\cdot$) denote the convex hull of a set of vectors.  \\
+Supposing that we can define optimal weights, are they necessarily unique?  \cite{lin2021minimizing} discuss sufficient conditions for uniqueness as well as the implications of non-uniqueness.  \cite{abadie2022synthetic} invoke the Carath\'eodory Theorem to argue for the sparseness of the weight vector.  We make additional comments as well. $(\mathbb{R}^{n}, \|\cdot\|)$ is a Chebyshev space, and hence for any element x and any convex set $C\subset \mathbb{R}^{n}$, there exists a unique element $y\in C$ that minimizes $\|x-y\|$.  However, the pre-image of $y$ with respect to a particular operator and constraint set might not be unique.  Let $p', n'$ denote the number of linearly independent rows of $\V_{t}$ and linearly independent columns of $\V_{t}$, respectively.  Let col($\cdot$) denote the column space of a matrix, and let Conv($\cdot$) denote the convex hull of a set of column vectors.  \\
 
     \begin{center}
       \begin{tabular}{ | m{3em} | m{7cm}| m{7cm} | } 
@@ -316,7 +296,7 @@ Let $p', n'$ denote the number of linearly independent rows of $\V_{t}$ and line
         \hline
         $p' \geq n'$ & Perfect fit; fit unique & Fit not perfect; fit unique \\
         \hline
-        $p' < n'$ & Perfect fit, not necessarily unique, Carath\'eodory Theorem applies \citep{abadie2022synthetic}& Fit not perfect, not necessarily unique, Carath\'eodory Theorem applies \\ 
+        $p' < n'$ & Perfect fit, not necessarily unique, Carath\'eodory Theorem applies& Fit not perfect, not necessarily unique, Carath\'eodory Theorem applies \\ 
         \hline
       \end{tabular}
       \end{center} 
@@ -358,10 +338,7 @@ Finally, we introduce the QL (quasi-likelihood) Loss \citep{brownlees2011practic
 \[ 
 \text{QL}^{h}_{method, ground truth} = \frac{\hat\sigma^{2}_{h, ground truth}}{ \hat\sigma^{2}_{h, method}} - \log{\frac{\hat\sigma^{2}_{h, ground truth}}{ \hat\sigma^{2}_{h, method}}} -1 \text{ .}
 \]
-What distinguishes QL Loss is that it is multiplicative rather than additive.  This has benefits, both practical and theoretical.  As \citet{brownlees2011practical} explain, ``[a]mid volatility turmoil, large MSE
-losses will be a consequence of high volatility without necessarily corresponding to
-deterioration of forecasting ability. The QL avoids this ambiguity, making it easier to
-compare losses across volatility regimes."  For this reason, we proceed to evaluate the method, both in simuations and real data examples, using the QL loss.
+What distinguishes QL Loss is that it is multiplicative rather than additive.  This has benefits, both practical and theoretical.  As \citet{brownlees2011practical} explain, the technical properties of the QL Loss allow researchers to compare forecasts across heterogeneous time series, whereas additive loss functions like MSE unfairly penalize forecasts made under market turbulence.  For this reason and others, we proceed to evaluate the method, both in simulations and real data examples, using the QL loss.
 
 \section{Properties of Volatility Shocks and Shock Estimators}\label{SVF_properties}
 
@@ -425,7 +402,7 @@ Assume
   \item For each $i, \{\omega_{i,t}^{*}\}_{t=0,...,T_i}$ is potentially non-zero at $\{T^{*}_{i}+1,... ,T^{*}_{i}+k\}$, $\omega_{i,T^{*}+1}^{*}\equiv...\equiv\omega_{i,T^{*}+k}^{*}$, and zero otherwise, where the arrival of $T_{i}^{*}$ is governed by a time-invariant distribution on $\{a_{i,t}\}_{t=0,...,T_i-1}$. \label{stationarity_of_omega_i_t}
   \item The conditions in Assumption 0 of \citet{han2014asymptotic} prevail.
 \end{enumerate}
-Then for any $i$, $\hat\omega_{i,t}^{*} \xrightarrow{p} \omega_{i,T^{*}+1}^{*}$ as $t\rightarrow\infty$.
+Then for any $i$, $\hat\omega_{i,t}^{*} \xlongrightarrow{p} \omega_{i,T^{*}+1}^{*}$ as $t\rightarrow\infty$.
 \end{prop}
 
 \begin{lem}
@@ -445,9 +422,9 @@ The result follows from the consistency proof of the QMLE in GARCH-X models, as 
     Assume
     \begin{enumerate}
       \item All conditions listed in Proposition \ref{omega_consistency}.
-      \item There exist weights $\{\pi_{i}\}_{i=2}^{n=1}$ such that $\textbf{v}_{1,T^{*}} = \sum^{n+1}_{i=2}\weight_{i} \textbf{v}_{i,T^{*}}$.
+      \item There exist weights $\{\pi_{i}\}_{i=2}^{n+1}$ such that $\textbf{v}_{1,T^{*}} = \sum^{n+1}_{i=2}\weight_{i} \textbf{v}_{i,T^{*}}$.
      \end{enumerate}
-  Then $\hat\sigma^{2}_{adjusted}\xrightarrow{p}\sigma^{2}_{1,T^{*}+1}$ as $t\rightarrow\infty$. 
+  Then $\hat\sigma^{2}_{adjusted}\xlongrightarrow{p}\sigma^{2}_{1,T^{*}+1}$ as $t\rightarrow\infty$. 
   \end{prop}
 
 
@@ -481,9 +458,9 @@ We now evaluate the loss and risk of our method under two scenarios: first, unde
 For 1-step-ahead forecast of $\sigma^{2}_{t+1}$ where $t=T^{*}$, consider the difference 
 
 \begin{align}
-  & QL(\hat\sigma_{t+1, unadjusted}^{2},\sigma^{2}_{t+1})-QL(\hat\sigma^{2}_{t+1, adjusted},\sigma^{2}_{t+1})\\
-   & =(\frac{\sigma_{t+1}^{2}}{\hat\sigma^{2}_{t+1,unadjusted}} - \log{\frac{\sigma_{t+1}^{2}}{\hat\sigma^{2}_{t+1,unadjusted}} } - 1) - (\frac{\sigma_{t+1}^{2}}{\hat\sigma^{2}_{t+1,adjusted}} - \log{\frac{\sigma_{t+1}^{2}}{\hat\sigma^{2}_{t+1,adjusted}}} - 1)\\
-   & = \frac{\sigma_{t+1}^{2}}{\hat\sigma^{2}_{t+1,unadjusted}} - \frac{\sigma_{t+1}^{2}}{\hat\sigma^{2}_{t+1,adjusted}}+ \log{\frac{\hat\sigma^{2}_{t+1,unadjusted}}{\hat\sigma^{2}_{t+1,adjusted}}}\\
+  & QL(\hat\sigma_{t+1, unadjusted}^{2},\sigma^{2}_{t+1})-QL(\hat\sigma^{2}_{t+1, adjusted},\sigma^{2}_{t+1})\notag \\
+   & =(\frac{\sigma_{t+1}^{2}}{\hat\sigma^{2}_{t+1,unadjusted}} - \log{\frac{\sigma_{t+1}^{2}}{\hat\sigma^{2}_{t+1,unadjusted}} } - 1) - (\frac{\sigma_{t+1}^{2}}{\hat\sigma^{2}_{t+1,adjusted}} - \log{\frac{\sigma_{t+1}^{2}}{\hat\sigma^{2}_{t+1,adjusted}}} - 1)\notag\\
+   & = \frac{\sigma_{t+1}^{2}}{\hat\sigma^{2}_{t+1,unadjusted}} - \frac{\sigma_{t+1}^{2}}{\hat\sigma^{2}_{t+1,adjusted}}+ \log{\frac{\hat\sigma^{2}_{t+1,unadjusted}}{\hat\sigma^{2}_{t+1,adjusted}}}\notag\\
    & = \frac{\sigma_{t+1}^{2}(\hat\sigma^{2}_{t+1,adjusted}-\hat\sigma^{2}_{t+1,unadjusted})}{\hat\sigma^{2}_{t+1,adjusted}\hat\sigma^{2}_{t+1,unadjusted}} + \log{\frac{\hat\sigma^{2}_{t+1,unadjusted}}{\hat\sigma^{2}_{t+1,adjusted}}}\label{QL Loss toy example} \text{ .}
 \end{align}
 For simplicity, we work with a GARCH(1,1) that experiences a volatility shock at a single time point for which we would like to provide a point forecast.  Then (\ref{QL Loss toy example}) can be expressed as
@@ -494,100 +471,97 @@ For simplicity, we work with a GARCH(1,1) that experiences a volatility shock at
 It is easily verified that as $\hat\omega^{*}_{t+1} \rightarrow 0^{+}$, the difference in the losses goes to zero.  On the other hand, as $\hat\omega^{*}_{t+1}$ becomes large, the difference in the losses turns negative, with the lesson being that $\hat\omega^{*}_{t+1}$ must be in appropriate proportion to the volatility $\sigma^{2}_{t+1}$ in order for the adjusted forecast to outperform the unadjusted forecast.  This explains why it is so important to avoid using a naive adjustment estimator, $\overline{\omega^{*}}$, the arithmetic mean of the estimated shocks.  We conclude this section with a broader result. 
 
 \begin{prop}\label{asymptotic_consistency}
-Assume the conditions in Propositions $\ref{omega_consistency}$ and $\ref{sigma_consistency}$.  Let $1\leq i\leq n+1$.\\
-  Then $QL(\hat\sigma_{t+1, unadjusted}^{2},\sigma^{2}_{t+1})-QL(\hat\sigma^{2}_{t+1, adjusted},\sigma^{2}_{t+1})\xrightarrow{p} \frac{\omega_{i,t+1}^{*}}{\sigma^{2}_{t+1}-\omega_{i,t+1}^{*}} + \log{\frac{\sigma_{t+1}^{2}-\omega_{i,t+1}^{*}}{\sigma_{t+1}^{2}} } \geq 0. $ as $t\rightarrow \infty$.
+Assume the conditions in Propositions $\ref{omega_consistency}$ and $\ref{sigma_consistency}$.  Let $1\leq i\leq n+1$.  Then as $t\rightarrow \infty$
+  
+$$QL(\hat\sigma_{t+1, unadjusted}^{2},\sigma^{2}_{t+1})-QL(\hat\sigma^{2}_{t+1, adjusted},\sigma^{2}_{t+1})\xlongrightarrow{p} \frac{\omega_{i,t+1}^{*}}{\sigma^{2}_{t+1}-\omega_{i,t+1}^{*}} + \log{\frac{\sigma_{t+1}^{2}-\omega_{i,t+1}^{*}}{\sigma_{t+1}^{2}} } \geq 0.$$\\
 
 Hence, a correctly specified $\mc{M}_1$ model will outperform the unadjusted forecast asymptotically.
 \end{prop}
 
 \begin{proof-of-proposition}
-  First, note that the function $g:(-\infty,\omega_{i}^{*})\rightarrow \mathbb{R}$ given by $g(x) = \frac{x}{\sigma^{2}_{t+1}-x} + \log{\frac{\sigma_{t+1}^{2}-x}{\sigma_{t+1}^{2}} }$ is nonnegative, convex, obtains a minimum at $x = 0$, and being continuous, $g$ preserves consistency. The conclusion follows from fact that the model is correctly specified and consistency is guaranteed Proposition ($\ref{sigma_consistency}$). 
+  First, note that the function $g:(-\infty,\omega_{i}^{*})\rightarrow \mathbb{R}$ given by $g(x) = \frac{x}{\sigma^{2}_{t+1}-x} + \log{\frac{\sigma_{t+1}^{2}-x}{\sigma_{t+1}^{2}} }$ is nonnegative, convex, obtains a minimum at $x = 0$, and being continuous, preserves consistency. The conclusion follows from fact that the model is correctly specified and consistency of $sigma^{2}_{adjusted}$ is guaranteed Proposition ($\ref{sigma_consistency}$). 
   
 \end{proof-of-proposition}
 
 \section{Numerical Examples}
 
-In this section, we demonstrate the effectiveness of the proposed method using Monte Carlo simulations.  The first simulation setup will use a $\mc{M}_{1}$ model on the volatility.  In order to investigate the forecasting method presented herein, all of our simulations will use $\mc{M}_1$ volatility models.  Recall an $\mc{M}_1$ model on the volatility, which is characterized by an exogenous shock to the volatility equation generated by an affine function of the covariates:
-
-\begin{align*}
-  \mc{M}_1 \colon \begin{array}{l}
-     \sigma^{2}_{i,t} = \omega_{i} + \omega^{*}_{i,t} + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \text{ }\\[.2cm]
-     a_{i,t} = \sigma_{i,t}((1-D^{return}_{i,t})\epsilon_{i,t} + D^{return}_{i,t}\epsilon^{*}_{i,t})\\[.2cm]
-    \omega_{i,t}^{*} = D^{vol}_{i,t}[\mu_{\omega^{*}}+\delta'\mbf{x}_{i, t}+ u_{i,t}]\\[.2cm]
-    D^{return}_{i,t} \equiv 0
-  \end{array}
-  \end{align*}
-
-  In order to tell a story about the Monte Carlo results, we first explain the parameters to be varied, the parameters that remain fixed, and the behavior we expect to observe.  To be clear, when we refer to fixed parameters, we are referring to quantities that may or may not govern pseudorandom numbers.  For our purposes, a parameter is defined to be fixed whenever it does not vary across any of the simulations performed, and conversely a parameter is varying whenever it varies across at least two simulations performed.
+In this section, we demonstrate the effectiveness of the proposed method using Monte Carlo simulations.  In order to investigate the forecasting method presented herein, all of our simulations will use $\mc{M}_1$ volatility models and $\mc{M}_0$ models on the returns, i.e. $  D^{return}_{i,t} \equiv 0$.  We first explain the parameters to be varied, the parameters that remain fixed, and the behavior we expect to observe.  For our purposes, a parameter is defined to be fixed whenever it does not vary across any of the simulations performed, and conversely a parameter is varying whenever it varies across at least two simulations performed.
 
   \subsection{Fixed Parameters}
-Each simulation is a GARCH(1,1) process with $n$ chosen randomly from the set of intergers $\{756,...,2520\}$, corresponding to approximately 3-10 years of daily financial data.  We fixed the intercept of the processes at the $\textit{garchx}$ package default of $\omega = .2$ \citep{RePEc:pra:mprapa:100301}.  We also use the values $\alpha=.1, \beta = .82$, corresponding to a GARCH process with longer memory.
+Each simulation, $i=1,...n+1$ is a GARCH(1,1) process with length $T_{i}$ chosen randomly from the set of integers $\{756,...,2520\}$, corresponding to approximately 3-10 years of daily financial data.  We fixed the intercept of the processes at the $\textit{garchx}$ package default of $\omega = .2$ \citep{RePEc:pra:mprapa:100301}.  We also use the values $\alpha=.1, \beta = .82$, corresponding to a GARCH process with greater influence from past values of $\sigma^{2}_{i,t}$.
   \subsection{Varying Parameters}
 
-  We vary exactly five parameters: $\mu_{X}, \sigma_{X}, mu_{\delta}, \mu_{\omega^{*}}, \sigma_{u}$, each of which is critical to evaluating the method's responsiveness to changing conditions in the shock distribution. $\mu_{X}, \sigma_{X}$ govern the elements of the volatility profile. $mu_{\delta}$ interacts with $X$ via the dot-product operation, of course.  $\mu_{\omega^{*}}$ is a location parameter for the volatility shock, and $\sigma_{u}$ is the idiosyncratic noise of the volatility shock.
+  We vary exactly five parameters: $\mu_{V}, \sigma_{V}, \mu_{\delta}, \mu_{\omega^{*}}, \sigma_{u}$, each of which is critical to evaluating the method's responsiveness to changing conditions in the shock distribution. $\mu_{V}, \sigma_{V}$ govern the elements of the volatility profile. $\mu_{\delta}$ interacts with $V$ via the dot-product operation, of course.  $\mu_{\omega^{*}}$ is a location parameter for the volatility shock, and $\sigma_{u}$ is the idiosyncratic noise of the volatility shock.
   
-  We add an important note about the parameter $\mu_{\delta}$, which governs a vector $\delta$ of length $p$ with elements that increase monotonically in proportion to $1,...,p$, after which they are scaled by the factor $\frac{2\cdot\mu_{\delta}}{p(p+1)}$, so that a randomly selected element has mean $\mu_{\delta}$.  The heterogeneity of the elements is critical to simulating the plausible heterogeneity that will exist in the random effects structure.  Absent a heterogeneous vector $\delta$, the shock would not vary systematically with regard to each variable chosen for the volatility profile, which would fail to approximate the realities of financial markets.
+  We add an important note about the parameter $\mu_{\delta}$, which governs a vector $\delta$ of length $p$ with elements that increase monotonically in proportion to $1,...,p$, after which they are scaled by the factor $\frac{2\cdot\mu_{\delta}}{p(p+1)}$, so that a randomly selected entry of the vector has mean $\mu_{\delta}$.  The heterogeneity of the entries is critical to simulating the plausible heterogeneity that will exist in the random effects structure.  Absent a heterogeneous vector $\delta$, the shock would not vary systematically with regard to each variable chosen for the volatility profile, which would fail to approximate the realities of financial markets.
 
 \subsection{Evaluative Framework and Monte Carlo Results}
-Consistent with our evaluative framework declared in \ref{loss_function}, we compare adjusted and unadjusted forecasts using QL Loss, calculating the fraction of the simulations that the adjusted forecast yields a QL Loss no smaller than that of the unadjusted forecast.
+Consistent with our evaluative framework declared in \ref{loss_function}, we compare adjusted and unadjusted forecasts using QL Loss, calculating the fraction of the simulations in which the adjusted forecast yields a QL Loss no smaller than that of the unadjusted forecast.  The simulations fall into three broad categories, which we will denote \textbf{Signal and Noise} (displayed in Figure \ref{fig:signoise}), \textbf{Interaction between Signal and Volatility Profile Means} (displayed in Figure \ref{fig:sig_volprof}), and lastly, \textbf{Interaction between Shock Intercept and Shock Noise} (displayed in Figure \ref{fig:intercept_noise}).  
+
+The first category plots two parameters of the shock equation, $\mu_{\delta}$ and $\sigma_{u}$, in grids while increasing the mean of the covariate vectors $\x$ over three plots.  Recall that $\delta$ is a parameter shared between donors, whereas the vectors $\v_{i}$ in the volatility profile are i.i.d. multivariate normal.  In Figure \ref{fig:sim_1}, we see very little variation across the grid.  However, in Figures \ref{fig:sim_2} and \ref{fig:sim_3}, where $\mu_{v}$ is increased, we observe an expected phenomenon: for any fixed column of the plots, the performance of the adjusted forecast improves with increasing $\mu_{\delta}$.  A somewhat subtler phenomenon is also observed: for a fixed row of the grids in Figures \ref{fig:sim_2} and \ref{fig:sim_3}, for $\mu_{\delta} \geq .5$, increasing $\sigma_{u}$ leads to a decline in performance.  However, this is not observed for smaller levels of $\mu_{\delta}$, where the signal is too weak.
+
+The second category of simulations examines $\mu_{\delta}$ and $\mu_{v}$, while increasing the noise $\sigma_{u}$.  The row-wise and column-wise increases in performance that we witnessed in the first category largely hold in the second category of simulations, with one similar disclaimer: the relationship is strained under large levels of noise, like $\sigma_{u} = 1$.
+
+
+Lastly, the third set of simulations takes a look at the role of the intercept of the conditional shock distribution, $\mu_{\omega^{*}}$, in particular, its interaction with $\sigma_{u}$.  We can think of $\mu_{\omega^{*}}$ as being the sole component of $\x$ that has no variance, i.e. because it's corresponding entry in the vector $\x$ is the scalar 1.  For larger values of $\mu_{\omega^{*}}$, the outperformance of the adjusted forecast declines with increase noise $\sigma_{u}$, but this effect is absent for smaller values of $\mu_{\omega^{*}}$ 
 
     \begin{figure}[!h]
       \centering
       \textbf{Signal and Noise}\par\medskip
     \begin{subfigure}{.44\linewidth} 
       \centering
-        \includegraphics[scale = .42]{Jun06_233740_2024_delta_sigma_u.png}
-        \caption{Fixed parameter values: $\omega = .2, \alpha = .1, \beta = .82, \mu_{x} = .125, \sigma_{x} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_1}
+        \includegraphics[scale = .42]{simulation_plots/Jul01_192350_2024_mu_delta__sigma_u_.png	}
+        \caption{Fixed values: $\mu_{v} = .125, \sigma_{v} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_1}
     \end{subfigure}\hspace{12mm} %
     \begin{subfigure}{.44\linewidth} 
       \centering
-        \includegraphics[scale=.42]{Jun06_233900_2024_delta_sigma_u.png}
-        \caption{Fixed parameter values: $\omega = .2, \alpha = .1, \beta = .82, \mu_{x} = .5, \sigma_{x} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_2}
+        \includegraphics[scale=.42]{simulation_plots/Jul01_192510_2024_mu_delta__sigma_u_.png}
+        \caption{Fixed values: $\mu_{v} = .5, \sigma_{v} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_2}
     \end{subfigure}
 
     \begin{subfigure}{.44\linewidth} 
       \centering
-        \includegraphics[scale=.42]{Jun06_234111_2024_delta_sigma_u.png}
-        \caption{Fixed parameter values: $\omega = .2, \alpha = .1, \beta = .82, \mu_{x} = 1, \sigma_{x} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_3}
+        \includegraphics[scale=.42]{simulation_plots/Jul01_192518_2024_mu_delta__sigma_u_.png}
+        \caption{Fixed values: $\mu_{v} = 1, \sigma_{v} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_3}
     \end{subfigure}
     
-        \caption{In the progression from \ref{fig:sim_1} to \ref{fig:sim_2} to \ref{fig:sim_3}, we see that increasing $\delta$ leads to improved performance of the adjusted forecast, and this effect is intensified as $\mu_{x}$ increases.  However, it is not consistently true that an increasing noise undermines the performance of the adjusted forecast.  Rather, that phenomenon requires both large quantites of $\delta$ and $\mu_{X}$.}
+        \caption{In the progression from \ref{fig:sim_1} to \ref{fig:sim_2} to \ref{fig:sim_3}, we see that increasing $\mu_{\delta}$ leads to improved performance of the adjusted forecast, and this effect is intensified as $\mu_{v}$ increases.  However, it is not consistently true that an increasing noise undermines the performance of the adjusted forecast.  Rather, that phenomenon requires both large quantites of $\mu_{\delta}$ and $\mu_{v}$.}
         \label{fig:signoise}
       \end{figure}
 
   \begin{figure}[!h]
     \centering
-    \textbf{Interaction between the signal and volatility profile means}\par\medskip
+    \textbf{Interaction between Signal and Volatility Profile Means}\par\medskip
   \begin{subfigure}{.44\linewidth} 
     \centering
-      \includegraphics[scale = .42]{Jun06_234115_2024_delta_mu_x.png}
-      \caption{Fixed parameter values: $\omega = .2, \alpha = .1, \beta = .82,  \sigma_{x} = .125, \mu_{\omega^{*}} = .125, \sigma_{u} = .125$}\label{fig:sim_4}
+      \includegraphics[scale = .42]{simulation_plots/Jul01_192528_2024_mu_delta__mu_v_.png}
+      \caption{Fixed values: $\sigma_{v} = .125, \mu_{\omega^{*}} = .125, \sigma_{u} = .125$}\label{fig:sim_4}
   \end{subfigure}\hspace{12mm} %
   \begin{subfigure}{.44\linewidth} 
     \centering
-      \includegraphics[scale=.42]{Jun06_234119_2024_delta_mu_x.png}
-      \caption{Fixed parameter values: $\omega = .2, \alpha = .1, \beta = .82, \sigma_{x} = .125, \mu_{\omega^{*}} = .125, \sigma_{u} = 1$}\label{fig:sim_5}
+      \includegraphics[scale=.42]{simulation_plots/Jul01_192539_2024_mu_delta__mu_v_.png}
+      \caption{Fixed values: $\sigma_{v} = .125, \mu_{\omega^{*}} = .125, \sigma_{u} = 1$}\label{fig:sim_5}
   \end{subfigure}
   
-      \caption{We compare the interaction of $\delta$ and $\mu_{X}$ at two different levels of shock noise.  In the low-noise regime, the peak performance of the adjusted forecast is higher, and the ascent is faster along both dimensions.   However, in the high-noise regime, the adjusted forecast performs well even at low levels of $\delta$ and $\mu_{X}$.}
+      \caption{We compare the interaction of $\mu_{\delta}$ and $\mu_{v}$ at two different levels of shock noise.  In the low-noise regime, the peak performance of the adjusted forecast is higher, and the ascent is faster along both dimensions.   However, in the high-noise regime, the adjusted forecast performs well even at low levels of $\mu_{\delta}$ and $\mu_{v}$.}
       \label{fig:sig_volprof}
     \end{figure}
 
 \begin{figure}[!h]
   \centering
-  \textbf{The Interaction of the Shock Intercept and Shock Noise}\par\medskip
+  \textbf{Interaction between Shock Intercept and Shock Noise}\par\medskip
 \begin{subfigure}{.44\linewidth} 
   \centering
-    \includegraphics[scale = .42]{Jun06_234137_2024_mu_omega_star_sigma_u.png}
-    \caption{Fixed parameter values: $\omega = .2, \alpha = .1, \beta = .82, \mu_{x} = .125, \sigma_{x} = .125, \delta = .125$}\label{fig:sim_6}
+    \includegraphics[scale = .42]{simulation_plots/Jul01_192548_2024_mu_omega_star__sigma_u_.png}
+    \caption{Fixed values: $\mu_{v} = .125, \sigma_{v} = .125, \delta = .125$}\label{fig:sim_6}
 \end{subfigure}\hspace{12mm} %
 \begin{subfigure}{.44\linewidth} 
   \centering
-    \includegraphics[scale=.42]{Jun06_234154_2024_mu_omega_star_sigma_u.png}
-    \caption{Fixed parameter values: $\omega = .2, \alpha = .1, \beta = .82, \mu_{x} = .125, \sigma_{x} = .125, \delta = 2$}\label{fig:sim_7}
+    \includegraphics[scale=.42]{simulation_plots/Jul01_192601_2024_mu_omega_star__sigma_u_.png}
+    \caption{Fixed values: $\mu_{v} = .125, \sigma_{v} = .125, \delta = 2$}\label{fig:sim_7}
 \end{subfigure}
 
-    \caption{The interaction between the intercept $\mu_{\omega^{*}}$ and $\sigma_{u}$ suggests that the parameters behave as expected.  However, a larger value of $delta$ in \ref{fig:sim_7} attenuates the effect of increasing noise.}
+    \caption{The interaction between the intercept $\mu_{\omega^{*}}$ and $\sigma_{u}$ suggests that the parameters behave as expected.  However, a larger value of $\delta$ in \ref{fig:sim_7} attenuates the effect of increasing noise.}
     \label{fig:intercept_noise}
   \end{figure}
 
@@ -597,7 +571,7 @@ Consistent with our evaluative framework declared in \ref{loss_function}, we com
 
 We show the applicability of our method using a real data example that sits at the crossroads of financial trading and electoral politics.  In the spring of 2016 in the United States, the Republican Party's primary election process narrowed down candidates until Donald J. Trump cleared the threshold of votes to win the nomination formally at the party's convention that summer.  He would go on to face the Democratic Party's nominee, Hillary Rodham Clinton.   
 
-From an ex-ante perspective, several qualities of the 2016 US election cycle as well as the candidates themselves made the election difficult to prognosticate.  The Electoral College permits victory without a majority or even plurality of the popular vote, which can render presidential races more competitive than a raw vote total would, elevating the uncertainty surrounding the country's future leadership.  The election featured no incumbent, ruling out any incumbent-advantage of the empirical, ``statistical" kind distinguished by \citet{mayhew2008incumbency}.  The Republican Party candidate espoused unorthodox, populist positions on matters such as healthcare, trade, and foreign policy, some of which could be considered rare in either of the major two parties.  Additionally, Donald J. Trump, lacking any experience in government --- either electoral or appointed service --- possessed neither a voting record nor any on-the-job performance for voters to judge or his opponents to attack. As one financial industry professional commented, comparing the 2016 election to the upcoming 2024 election, ``this time the markets will be aware of both possibilities and price them to some extent — we wouldn’t expect the same volatility as we saw in 2016 after the election" \citep{News_2024}. Gleaning signals from financial options markets and betting markets, \citet{wolfers2016financial} predicted that markets would decline prodigiously following a Trump victory in November 2016.  Finally, the election outcome delivered significant ``news", in the econometric sense of the word, in the simple sense that it was not predicted.  \citet{goodell2013us} found support for the theory that the polling-implied probabilities of election outcomes encode information about future macroeconomic conditions, which is itself reflected in market volatility.  In its final post before the election result, acclaimed forecasting outfit 538, headed by economist Nate Silver, predicted a Clinton victory with a probability of .714, more than 2-to-1 odds \citep{Silver_2016}, suggesting that Trump's victory was at least somewhat surprising.  
+From an ex-ante perspective, several qualities of the 2016 US election cycle as well as the candidates themselves made the election difficult to prognosticate.  The Electoral College permits victory without a majority or even plurality of the popular vote, which can render presidential races more competitive than a raw vote total would, elevating the uncertainty surrounding the country's future leadership.  The election featured no incumbent, ruling out any incumbent-advantage of the empirical, ``statistical" kind distinguished by \citet{mayhew2008incumbency}.  The Republican Party candidate espoused unorthodox, populist positions on matters such as healthcare, trade, and foreign policy, some of which could be considered rare in either of the major two parties.  Additionally, Donald J. Trump, lacking any experience in government --- either electoral or appointed service --- possessed neither a voting record nor any on-the-job performance for voters to judge or his opponents to attack. As one financial industry professional commented, comparing the 2016 election to the upcoming 2024 election, ``this time the markets will be aware of both possibilities and price them to some extent — we wouldn’t expect the same volatility as we saw in 2016 after the election" \citep{News_2024}. Gleaning signals from financial options markets and betting markets, \citet{wolfers2016financial} predicted that markets would decline prodigiously following a Trump victory in November 2016.  Finally, the election outcome delivered significant ``news", in the econometric sense of the word, in the simple sense that it was not predicted.  \citet{goodell2013us} found support for the theory that the polling-implied probabilities of election outcomes encode information about future macroeconomic conditions, which is itself reflected in market volatility.  In its final post before the election result, acclaimed forecasting outfit 538, headed by economist Nate Silver, predicted a Clinton victory with a probability of .714, more than 2-to-1 odds \citep{Silver_2016}, suggesting that Trump's victory was at least somewhat surprising.  The lack of uncertainty exerts downward pressure on volatility \citep{li2006presidential,bowes2018stock}, setting the table for a surprise.
 
 For all of these reasons and more, the aftermath of the 2016 presidential election meets the standard of an interesting and notable event for which a quantitative researcher might seek a volatility point prediction.  On a more technical level, the election outcome was not known until the evening of election day, well after the closing of financial markets at 4pm Eastern Time.  This satisfies the condition that the shock be not yet digested by liquid markets.  We therefore proceed to make the following technical specifications in order to predict the volatility of financial services ETF IYG\footnote{It has been noted that GARCH effects are more attenuated in aggregated returns \citep{zivot2009practical}, which suggests against using the S\&P 500 or similar indices as an example.} (an ETF composed of American financial majors JPMorgan, Bank of American, etcetera) on Wednesday November 9th, 2016.
 
@@ -606,25 +580,24 @@ For all of these reasons and more, the aftermath of the 2016 presidential electi
 
     \item \textbf{Covariate Choice} We choose covariates that could plausibly satisfy the model assumptions spelled out earlier, that is, risk-related and macroeconomic covariates that could plausibly be weighted and summed in a shock distribution.  We thus choose the log return Crude Oil (CL.F), the VIX (VIX) and the log return of the VIX, the log returns of the 3-month, 5-year, 10-year, and 30-year US Treasuries, as well as the log return of the most recently available monthly spread between AAA and BAA corporate debt, widely considered a proxy for lending risk \citep{goodell2013us, kane1996p}.  We also include the log return in the trading volume of the ETF IYG itself, which serves as a proxy for panic.  Finally, we include the squares of the demeaned log return of IYG for the 30 trading days preceding the shocks.  For each variable in the volatility profile, we compute the sample mean and sample standard deviation across the $n+1$ events, allowing us to scale the variables to have zero mean and unit variance.  Hence, no single variable can dominate the distance-based weighting procedure.
 
-    \item \textbf{Donor pool construction} Synthetic Control, as a tool of causal inference, often goes about weighting control units by first identifying a natural set of donors or standard donors such as the untreated units within a set of subnational units like US states or Spanish provinces \citep{abadie2003economic, abadie2010synthetic}.  While such a procedure does not necessarily preclude considered judgments (e.g. should Canadian provinces be used as donors for a treated US state?), as a tool of small-$n$ prediction, distanced-based weighting may favor somewhat different considerations in constructing a donor pool.  For our purposes, we choose the three most recent US presidential elections prior to the 2016 election.  The three US presidential elections are the only presidential elections since the advent of the ETF IYG.  We exclude the midterm congressional elections in the US (i.e. those held in even years not divisible by four), which generate far lower voter turnout and feature no national races.
+    \item \textbf{Donor pool construction} We choose the three most recent US presidential elections prior to the 2016 election.  The three US presidential elections are the only presidential elections since the advent of the ETF IYG.  We exclude the midterm congressional elections in the US (i.e. those held in even years not divisible by four), which generate far lower voter turnout and feature no national races.
 
     \item \textbf{Choice of estimator for volatility} We use the sum of squared 5-minute log returns of IYG on November 9th, 2016, otherwise known as the Realized Volatility estimator of volatility \citep{andersen2008realized}, as our proxy.  We exclude the first five minutes of the trading day, resulting in a sum of 77 squared five-minute returns generated between 9:35am and 4pm.
-    \item \textbf{Data Sources} All daily market data is provided via the YahooFinance API available in the quantmod package in R \citep{ryan2015package}.  The realized volatility is computed using high-frequency quote data available from Wharton Research Data Services (WRDS) \citep{wachowicz2020wharton}.  The spread between is AAA and BAA yields is provided by Federal Reserve Economic Data (FRED) and accessed via the quantmod package.
+    \item \textbf{Data Sources} All daily market data is provided via the YahooFinance API available in the quantmod package in R \citep{ryan2015package}.  In order to calculate log equity returns, we use Adjusted Close of IYG.  The realized volatility is computed using high-frequency quote data available from Wharton Research Data Services (WRDS) \citep{wachowicz2020wharton}.  The spread between is AAA and BAA yields is provided by Federal Reserve Economic Data (FRED) and accessed via the quantmod package.
 \end{enumerate} 
 
-\begin{figure}[H]
-\begin{center}
-  \textbf{Real Data Example: 2016 Election}\par\medskip
-  \includegraphics[scale=.5]{FriMay311830522024_IYG_None_2016-06-22.png}
-  \caption{The volatility induced by the 2016 US election}
-  \label{fig:SVF_2016}
-  \end{center}
-\end{figure}
+% \begin{figure}[H]
+% \begin{center}
+%   \textbf{Real Data Example: 2016 Election}\par\medskip
+%   \includegraphics[scale=.5]{real_data_output_plots/FriMay311830522024_IYG_None_2016-06-22.png}
+%   \caption{The volatility induced by the 2016 US election}
+%   \label{fig:SVF_2016}
+%   \end{center}
+% \end{figure}
 
 We now discuss the three subplots in Figure \ref{fig:SVF_2016} in order from left to right.  On the left, we see that distanced-based weighting places nearly equal weight on the 2004 and 2012 elections, with only neglible weight on the 2008 election, when financial market conditions were extreme across nearly every dimension.  Assuming an approximately correct specification of the covariates, this is interpreted to mean that even of the 2016 US election had a general climate of risk and tension less extreme than 2008 and more similar to the 2004 and 2012 elections.  In the middle plot, we notice that the fixed effect estimates for 2008 and 2012 are considerable, with only 2004 registering a near-zero fixed effect estimate.  The fixed effect estimates quantify the amount of surprise the US election results delivered (strictly speaking, not only the presidential race but all November elections in the US with the ability to influence financial markets) under the assumption of a GARCH(1,1).  As estimates gleaned from only one data point per time series, they are theoretically high in variance.  On the right, we observe in black the  $\hat\sigma^{2}$ yielded by the GARCH(1,1) for the time series under study.  We also observe four colored points, each listen in the legend: three predictions and the ground truth.  We include the prediction derived by adjusting the GARCH(1,1) prediction by the arithmetic mean of the fixed effect estimates.  As is evident, our method comes reasonably close the ground truth.  The prediction is not only directionally correct, i.e. we predict a volatility spike where there is one; the prediction far outperforms the unadjusted prediction.  Remarkably, the arithmetic-mean based prediction here demonstrates the inherent risk in failing to weight each donor appropriately.  The 2008 election receives far more weight than is called for, as simple averaging ignores the radically different conditons on the evening of those two events.  
 
-Naturally, one might ask how sensitive this prediction is to at least two kinds of model specification: donor pool specification and covariate specification.  There are two responses to these concerns.  First, although the practitioner lacks a priori knowledge of the adequacy of the donors with respect to the time series under study, it is possible to gauge the diversity of the donor information by examining the singular values of the volatility profile.  In the prediction presented here, the singular values descend from 62$\%$ to 23$\%$ to 15$\%$ of the the cumulative variation, indicating a moderate concentration or redundancy of information in the three donors.  Second, we follow \citet{steegen2016increasing} in a executing a multiverse analysis.  In particular, in the supplement, we carry out leave-one-out analyses on both the donor set and the covariate set.  Additionally, in the supplement, we show that with Brexit added as a donor, the results are essentially unchanged.
-
+Naturally, one might ask how sensitive this prediction is to at least two kinds of model specification: donor pool specification and covariate specification.  There are two responses to these concerns.  First, although the practitioner lacks a priori knowledge of the adequacy of the donors with respect to the time series under study, it is possible to gauge the diversity of the donor information by examining the singular values of the volatility profile.  In the prediction presented here, the singular values descend from 62$\%$ to 23$\%$ to 15$\%$ of the the cumulative variation, indicating a moderate concentration or redundancy of information in the three donors.  Second, we follow \citet{steegen2016increasing} in a executing a multiverse analysis.  In particular, in the supplement, we carry out leave-one-out analyses on both the donor set and the covariate set.  Our multiverse analysis concludes that our adjustment approach beats the unadjusted forecast in every leave-one-out configuration. These results include an added donor representing Brexit.
 
 \section{Discussion}
 
@@ -664,7 +637,7 @@ There is an important question about the stability of the GARCH parameters under
 
 \subsection{Leave-one-out: How we analyzed a multiverse of 50 predictions}
 
-Given the option of redoing our analysis, with nine covariates and four donors, a natural question from a place of skepticism is, how stable are the results --- how contingent are they on a particular specification?  To answer these questions, in Table \ref{tab:prediction_table} we generate all fifty predictions yielded the decision of leave out any one of the donors (or none) and any one of the covariates (or none).  This analysis includes the prediction presented above, which can be viewed as the null model, at least in the sense that it provides and baseline for comparison.
+Given the option of redoing our analysis, with nine covariates and four donors, a natural question from a place of skepticism is, how stable are the results --- how contingent are they on a particular specification?  To answer these questions, in Table \ref{tab:prediction_table_with Brexit as June 22nd, 2016} we generate all fifty predictions yielded the decision of leave out any one of the donors (or none) and any one of the covariates (or none).  This analysis includes the prediction presented above, which can be viewed as the null model, at least in the sense that it provides and baseline for comparison.
 
 \begin{table}[ht]
   \centering
@@ -804,11 +777,12 @@ Given the option of redoing our analysis, with nine covariates and four donors, 
     \end{table}
 
 \subsection{Sensitivity to Covariates Chosen}
-Any covariate that appears more often closer to the bottom of the \ref{tab:prediction_table} is, $\textit{ceteris paribus}$, a more important covariate for this prediction task, since by dropping it, a larger loss results.  The covariates that thus stand out are the demeaned log return of IYG, the VIX, the Debt Risk Spread (spread between between AAA and BAA corporate debt), and last but not least, the choice of dropping none of the covariates.  The demeaned log return of IYG, of which we use the 30 days preceeding the $T_{i}^{*}$, suggests an unusually strong relevance in matching donors to the time series under study.  The Debt Risk Spread is also deserving of additional comment and attention, perhaps alongside the poor performance of the log return of the VIX.  The Debt Risk Spread is available at a monthly frequency via FRED (add citation), whereas the VIX is available daily via Yahoo Finance (I need to explain that and cite Yahoo Finance and quantmod).  It may be the case that the true conditional shock distribution includes low-frequency data as well as data in levels (like the VIX), while the daily changes in the VIX are absent.
+Any covariate that appears more often closer to the bottom of Table \ref{tab:prediction_table_with Brexit as June 22nd, 2016} is, $\textit{ceteris paribus}$, a more important covariate for this prediction task, since by dropping it, a larger loss results.  The covariates that thus stand out are the demeaned log return of IYG, the VIX, the Debt Risk Spread (spread between between AAA and BAA corporate debt), and last but not least, the choice of dropping none of the covariates.  The demeaned log return of IYG, of which we use the 30 days preceeding the $T_{i}^{*}$, suggests an unusually strong relevance in matching donors to the time series under study.  The Debt Risk Spread is also deserving of additional comment and attention, perhaps alongside the poor performance of the log return of the VIX.  The Debt Risk Spread is available at a monthly frequency via FRED (add citation), whereas the VIX is available daily via Yahoo Finance.  It may be the case that the true conditional shock distribution includes low-frequency data as well as data in levels (like the VIX), while the daily changes in the VIX are absent.
+
 
 \subsection{Sensitivity to Donors Chosen}
 
-The most glaring result visible in \ref{tab:prediction_table_with Brexit as June 22nd, 2016} regarding donor selection is the poor performance of the 2008 US Election.  In hindsight, this is unsurprising, given the large estimated fixed effect for November 5th, 2008 as well as the swirl of complex events occurring in financial markets around that time.  It is possible that the GARCH(1,1) used to fit the run-up to that election is underparameterized.  The weight given to the 2008 US election is near-zero, but in our method, unsuitable donors can influence the distance-based weighting by affecting that dispersion of one or more of the $p$ covariates present in the volatility profile.  Recall that for each of the $p$ covariates, we transform the $n+1$-vector of variables to Z-scores.  The lesson here is that more careful pre-quantitative inspection of the donors may be warranted as well as ordinary outlier analysis for the volatility profile.  As an additional note, dropping the 2008 Election vastly improves the performance of the arithmetic mean forecast.  This provides a cautionary tale against using the arithmetic mean estimator for the conditional shock effect.  
+The most glaring result visible in Table \ref{tab:prediction_table_with Brexit as June 22nd, 2016} regarding donor selection is the poor performance of the 2008 US Election.  In hindsight, this is unsurprising, given the large estimated fixed effect for November 5th, 2008 as well as the swirl of complex events occurring in financial markets around that time.  It is possible that the GARCH(1,1) used to fit the run-up to that election is underparameterized.  The weight given to the 2008 US election is near-zero, but in our method, unsuitable donors can influence the distance-based weighting by affecting that dispersion of one or more of the $p$ covariates present in the volatility profile.  Recall that for each of the $p$ covariates, we transform the $n+1$-vector of variables to Z-scores.  The lesson here is that more careful pre-quantitative inspection of the donors may be warranted as well as ordinary outlier analysis for the volatility profile.  As an additional note, dropping the 2008 Election vastly improves the performance of the arithmetic mean forecast.  This provides a cautionary tale against using the arithmetic mean estimator for the conditional shock effect.  
 
 The donors most conducive to good predictions in this task are the 2004 and 2008 US elections.  The estimated fixed effects tell a story of only modest surprise due to these election results: the estimate is nearly zero for 2004, while 2012 is nonzero but small.  Given that the presidential election results of these two did not deliver much surprise, it is possible that the surprise could be due more so to non-presidential races.
 
@@ -823,21 +797,22 @@ We now turn, however, to why the inclusion of Brexit failed to perform nearly as
 
 Forecast combination is technique with a vast, sprawling literature that we have referred to above.  While forecast combination can be justified in any number of ways, here we invoke forecast combination as a way to robustify forecasts against misspecification.  We combine in two simply ways, using the mean of all 50 forecasts and the median of all 50 forecasts.  The results are presented in Tables \ref{tab:prediction_table_with Brexit as June 22nd, 2016} and \ref{tab:prediction_table_with Brexit as June 23rd, 2016}.
 
-
 \begin{figure}[H]
   \begin{center}
     \textbf{Real Data Example: 2016 Election with Brexit as June 22nd, 2016}\par\medskip
-    \includegraphics[scale=.6]{FriMay311830182024_IYG_None_None.png}
+    \includegraphics[scale=.6]{real_data_output_plots/FriMay311830182024_IYG_None_None.png}
     \caption{When Brexit is taken to be June 22nd, 2016, it is shares equal weight with the 2004 and 2008 elections, while its modest fixed effect estimate is the smallest of the three nonzero estimates.}
     \label{fig:SVF_2016_with_Brexit}
     \end{center}
   \end{figure}
 
+
   
+
   \begin{figure}[H]
     \begin{center}
       \textbf{Real Data Example: 2016 Election with an Brexit as June 23rd, 2016}\par\medskip
-      \includegraphics[scale=.6]{WedJun121222522024_IYG_None_None.png}
+      \includegraphics[scale=.6]{real_data_output_plots/WedJun121222522024_IYG_None_None.png}
       \caption{When Brexit is taken to be June 23rd, 2016, its own weight is unchanged but others' weights are.  The large fixed effect estimate of Brexit contributes to a substantial overprediction.}
       \label{fig:SVF_2016_with_Brexit}
       \end{center}

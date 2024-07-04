@@ -139,7 +139,7 @@ hm_generator <- function(y_input
     geom_tile() +
     geom_text(aes(label = paste(prop, '\n(',n,')', sep =''))) +
     guides(fill = guide_colourbar(title = "Success Proportion")) +
-    ggtitle("Synthetic Volatility Forecast Outperformance of Unadjusted Forecast
+    ggtitle("Forecast Performance of Adjusted Forecast
             \n Each Square: Outperformance Proportion and (Simulation Count)") +
     theme(plot.title = element_text(hjust = 0.5),
           axis.text.x = element_text(size = 14),
@@ -386,7 +386,7 @@ ggp2 <- ggplot(means,
   geom_tile() +
   geom_text(aes(label = paste(prop, '\n(',n,')', sep =''))) +
   guides(fill = guide_colourbar(title = "Success Proportion")) +
-  ggtitle("Synthetic Volatility Forecast Outperformance of Unadjusted Forecast
+  ggtitle("Forecast Performance of Adjusted Forecast
           \n Each Square: Outperformance Proportion and (Simulation Count)") +
   theme(plot.title = element_text(hjust = 0.5)) +
   labs(x = "Volatility Shock Standard Deviation", y = "Volatility Shock Mean")
@@ -479,7 +479,7 @@ ggp3 <- ggplot(means,
   geom_tile() +
   geom_text(aes(label = paste(prop, '\n(',n,')', sep =''))) +
   guides(fill = guide_colourbar(title = "Success Proportion")) +
-  ggtitle("Synthetic Volatility Forecast Outperformance of Unadjusted Forecast
+  ggtitle("Forecast Performance of Adjusted Forecast
           \n Each Square: Outperformance Proportion and (Simulation Count)") +
   theme(plot.title = element_text(hjust = 0.5)) +
   labs(x = "Volatility Shock Standard Deviation", y = "Volatility Shock Mean")
