@@ -206,10 +206,12 @@ Asymmetric distance functions are useful when we want to explore differences bet
 
 What about qualitative ways of determining similarity -- \cite{lundquist2024volatility} donors are identified qualitatively
 
-\subsection{Model Adjustment Using Similarity-Based Parameter Correction: A Global Overview}
+\section{Setting}\label{Section}
+\section{Model Adjustment Using Similarity-Based Parameter Correction: A Global Overview}
 
+In this section, we introduce and discuss a particular approach to model adjustment that is motivated by the circumstances laid out in Section \ref{Section}.
 \begin{enumerate}
-  \item a random object to forecast that depends on a linear specification
+  \item a random object to forecast that depends on a linear specification or a specification that can be linearized
   \item a parametric model family shared by donors
   \item a correction term for the model family shared by donors
   \item a parametric specification for the correction term
@@ -227,7 +229,9 @@ What about qualitative ways of determining similarity -- \cite{lundquist2024vola
 Emphasize that there is a non-parametric version of the above: for example, one can use LSTM to predict each of the donor shocks, and then the residuals (or transformations of those residuals, e.g. to percentages) of those $n$ models can be weighted to arrive at a correction term.
 
 
-\section{Setting}
+
+
+
 
 \section{Model-Specific Considerations}
 
