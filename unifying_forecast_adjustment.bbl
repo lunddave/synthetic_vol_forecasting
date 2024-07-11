@@ -1,4 +1,4 @@
-\begin{thebibliography}{4}
+\begin{thebibliography}{6}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -9,6 +9,11 @@
 Michael Clements and David~F Hendry.
 \newblock \emph{Forecasting economic time series}.
 \newblock Cambridge University Press, 1998.
+
+\bibitem[Clements and Hendry(1996)]{clements1996intercept}
+Michael~P Clements and David~F Hendry.
+\newblock Intercept corrections and structural change.
+\newblock \emph{Journal of Applied Econometrics}, 11\penalty0 (5):\penalty0 475--494, 1996.
 
 \bibitem[Clements and Hendry(2005)]{clements2005evaluating}
 Michael~P Clements and David~F Hendry.
@@ -24,5 +29,10 @@ D~Hendry and M~Clements.
 Jilei Lin and Daniel~J Eck.
 \newblock Minimizing post-shock forecasting error through aggregation of outside information.
 \newblock \emph{International Journal of Forecasting}, 2021.
+
+\bibitem[Lundquist and Eck(2024)]{lundquist2024volatility}
+David Lundquist and Daniel Eck.
+\newblock Volatility forecasting using similarity-based parameter correction and aggregated shock information.
+\newblock \emph{arXiv preprint arXiv:2406.08738}, 2024.
 
 \end{thebibliography}
