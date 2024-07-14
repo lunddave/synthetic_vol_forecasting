@@ -1,4 +1,4 @@
-\begin{thebibliography}{6}
+\begin{thebibliography}{7}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -19,6 +19,11 @@ Michael~P Clements and David~F Hendry.
 Michael~P Clements and David~F Hendry.
 \newblock Evaluating a model by forecast performance.
 \newblock \emph{Oxford Bulletin of Economics and Statistics}, 67:\penalty0 931--956, 2005.
+
+\bibitem[Guerr{\'o}n-Quintana and Zhong(2017)]{guerron2017macroeconomic}
+Pablo Guerr{\'o}n-Quintana and Molin Zhong.
+\newblock Macroeconomic forecasting in times of crises.
+\newblock 2017.
 
 \bibitem[Hendry and Clements(1994)]{hendry1994theory}
 D~Hendry and M~Clements.

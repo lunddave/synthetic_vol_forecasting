@@ -126,7 +126,7 @@
 \maketitle
 
 \begin{abstract} 
-This work systematizes and unifies the rich landscape of model adjustment and model correction methods, with a special focus on forecast adjustment under the presence of shocks.
+Shocks to time series may give an observer reason to doubt the credibility of the default forecasting function.  This work systematizes and unifies the rich landscape of model adjustment and model correction methods, with a special focus on forecast adjustment under the presence of shocks.
 
 
 \end{abstract}
@@ -162,7 +162,7 @@ This work focuses on model adjustment amid structual shocks that undermine the r
 
 Herein we systematize and unify a range of conceptual approaches and tools that have developed across the broad ecosystem of the econometric and forecasting literatures.  Additionally, we delineate a specific type of forecasting task called post-shock forecasting, which we broadly define as forecasting under a known shock.
 
-Forecast model adjustment, known most widely perhaps by the term intercept-correction, has recevied the most attention in several articles and book chapters \citep{hendry1994theory,clements1996intercept,clements1998forecasting}.  Of special importance is the distinction between discretionary and automated intercepts corrections. \cite{hendry1994theory} define scalar intercept corrections to be automated when they follow the simple rule of adding an estimation residual $e_{t}$ to subsequent (possibly but not necessarily all) forecasts $\hat f_{t+1},\hat f_{t+2},...$.  This procedure can colloquially referred to as setting the model back on track \citep{hendry1994theory}.
+Forecast model adjustment, known most widely perhaps by the term intercept-correction, has received the most attention in several articles and book chapters \citep{hendry1994theory,clements1996intercept,clements1998forecasting}.  Of special importance is the distinction between discretionary and automated intercepts corrections. \cite{hendry1994theory} define scalar intercept corrections to be automated when they follow the simple rule of adding an estimation residual $e_{t}$ to subsequent (possibly but not necessarily all) forecasts $\hat f_{t+1},\hat f_{t+2},...$.  This procedure can colloquially referred to as setting the model back on track \citep{hendry1994theory}.
 
 
 
@@ -174,7 +174,7 @@ Bias-variance tradeoff and MSE decomposition\\
 
 Mismeasured data is discussed in \cite[p. 166]{hendry1994theory} as a motivator for intercept correction.  Could similarity-based correction help?\\
 
-Quinton-Guerrera and Zhong - concerned with correcting $\beta$ using similarity\\
+Quinton-Guerrera and Zhong \cite{guerron2017macroeconomic} - concerned with correcting $\beta$ using similarity\\
 
 Evaluating a Model by Forecast Performance \cite{clements2005evaluating}
 \begin{enumerate}
@@ -205,6 +205,13 @@ Asymmetric distance functions are useful when we want to explore differences bet
 What about qualitative ways of determining similarity -- \cite{lundquist2024volatility} donors are identified qualitatively
 
 \section{Setting}\label{Section}
+
+
+In order to motivate our procedure, we provide a visual illustration.  In Figure [decide on which figure to include] %\ref{fig:motivating_piece_convex_combination}, 
+we show how the aggregation of estimated excess volatilities from donors in the donor pool works when the correction function is a specially-chosen convex combination of fixed effects from the donor pool.  Our method assumes a credible, parsimonious parameterization in which the shock is an affine transformation of several key covariates.  The key intuition behind this shock parameterization is that as the strength of the linear signal increases relative to the idiosyncratic error, the GARCH estimation of these effects increases in accuracy.  From this, it follows that the aggregated shock estimate increases in accuracy.
+
+
+
 \section{Model Adjustment Using Similarity-Based Parameter Correction: A Global Overview}
 
 In this section, we introduce and discuss a particular approach to model adjustment that is motivated by the circumstances laid out in Section \ref{Section}.
@@ -233,6 +240,8 @@ This is important because with a parametric specification, we cannot get key sca
     \end{enumerate}
   \item a correction function, based on the correction term, that aggregates (i.e. maps) donor correction terms based on some notion of similarity
 \end{enumerate}
+
+\subsection{How is the proposed method distinct from existing tools?}
 
 \subsection{Relaxation of Assumptions}
 \subsubsection{How important is a shared DGP?}
@@ -277,6 +286,10 @@ The forecast horizon --- does it matter?  If so, how so?  \cite{lin2021minimizin
   \item Density Forecasts
   \item Quantile Forecasts
 \end{itemize}
+
+\subsection{Extensions}
+
+\subsection{Limitations}
 
 \subsection{Forecast Combination}
 what we are talking about here is not forecast combination, but there may be, nevertheless, a role for forecast combination: combining the forecasts generated by small differences in covariate and/or donor choice, as is done in \cite{lundquist2024volatility}. \\
