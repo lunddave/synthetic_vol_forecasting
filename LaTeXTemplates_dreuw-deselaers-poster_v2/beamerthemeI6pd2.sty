@@ -1,0 +1,143 @@
+
+%----------------------------------------------------------------------------------------
+%	SETUP
+%----------------------------------------------------------------------------------------
+
+\ProvidesPackage{beamerthemeI6pd2}  % This style was created by Thomas Deselaers and Philippe Dreuw and modified lightly by Vel (vel@latextemplates.com)
+
+\RequirePackage{tangocolors} % Import colors
+\selectcolormodel{cmyk}
+\mode<presentation>
+
+%----------------------------------------------------------------------------------------
+%	SET COLORS
+%----------------------------------------------------------------------------------------
+
+\setbeamercolor{headline}{fg=tabutter,bg=black}
+\setbeamercolor{footline}{fg=tabutter, bg=ta3gray}
+\setbeamerfont{footline}{size=\large,series=\tt}
+\setbeamercolor{separation line}{bg=ta2orange}
+\setbeamercolor{title in headline}{fg=tabutter}
+\setbeamercolor{author in headline}{fg=ta2orange}
+\setbeamercolor{institute in headline}{fg=ta3orange}
+
+\setbeamercolor{framesubtitle}{fg=ta3orange, bg=ta2gray}
+\setbeamercolor{author in head/foot}{fg=ta2orange, bg=black}
+\setbeamercolor{title in head/foot}{fg=ta2orange, bg=black}
+
+\setbeamercolor*{normal text}{fg=black, bg=ta3gray}
+\setbeamercolor*{block body}{bg=ta3aluminium,fg=black}
+\setbeamercolor*{block title}{fg=taorange,bg=ta2gray}
+\setbeamerfont{block title}{size=\large,series=\bf}
+\setbeamercolor{upper separation line head}{fg=ta2orange}
+
+\setbeamercolor*{example body}{fg=ta3aluminium,bg=black}
+\setbeamercolor*{example text}{fg=ta3aluminium,bg=black}
+\setbeamercolor*{example title}{bg=taorange,fg=ta2gray}
+
+%\setbeamercolor{alerted text}{fg=ta3gray}
+
+%\setbeamercolor{example text}{fg=taorange}
+\setbeamercolor{structure}{fg=ta3skyblue}
+
+\setbeamertemplate{bibliography item}[text]
+\setbeamercolor{bibliography item}{fg=black,bg=white}
+\setbeamercolor{bibliography entry author}{fg=black,bg=white}
+\setbeamercolor{bibliography item}{fg=black,bg=white}
+
+%----------------------------------------------------------------------------------------
+%	BLOCK TITLES AND BODIES
+%----------------------------------------------------------------------------------------
+
+\setbeamertemplate{block begin}{
+  \begin{beamercolorbox}[ht=4.5ex,leftskip=1ex,colsep*=.75ex]{block title}%
+    \usebeamerfont*{block title}%
+    {\strut\large\raisebox{-2pt}{\insertblocktitle}}% Block title
+  \end{beamercolorbox}%
+  {\ifbeamercolorempty[bg]{block body}{}{\nointerlineskip\vskip-0.5pt}}%
+  \usebeamerfont{block body}%
+  \begin{beamercolorbox}[colsep*=.75ex,vmode]{block body}%
+    \vspace*{1ex}% Top padding
+    \raggedright % Suppress justification
+    \begin{adjustwidth}{1ex}{1ex} % Set the left and right margins manually because sep=1ex in the optional parameters to beamercolorbox doesn't work
+}
+  \setbeamertemplate{block end}{
+  \end{adjustwidth}
+  \vspace*{1ex}% Bottom padding
+  \end{beamercolorbox}
+  \vspace*{1em} % Vertical whitespace after blocks
+}
+
+%----------------------------------------------------------------------------------------
+%	POSTER HEADER
+%----------------------------------------------------------------------------------------
+
+\setbeamertemplate{headline}{  
+  \leavevmode
+
+  \begin{beamercolorbox}[wd=\paperwidth]{headline}
+    \begin{columns}[T]
+      \begin{column}{0.02\linewidth}\end{column} % Empty column for horizontal whitespace
+      \begin{column}[c]{0.68\linewidth} % Width of the title column (if adjusting, also adjust the width of the logo column)
+        \vskip3ex % Top vertical whitespace
+        \raggedleft % Right align text
+        \usebeamercolor{title in headline}{\color{fg}\bfseries\inserttitle\\[0.75ex]} % Poster title
+        \usebeamercolor{author in headline}{\color{fg}\large{\insertauthor}\\[0.5ex]} % Poster author(s)
+        \usebeamercolor{institute in headline}{\color{fg}\normalsize{\insertinstitute}\\[1ex]} % Poster institute(s)
+      \end{column}
+      \begin{column}{0.02\linewidth}\end{column} % Empty column for horizontal whitespace
+      \begin{column}[c]{0.25\linewidth} % Width of logo column (if adjusting, also adjust the width of the title column)
+          \vskip3ex % Top vertical whitespace
+          \includegraphics[width=\linewidth]{logo}
+      \end{column}
+      \begin{column}{0.02\linewidth}\end{column} % Empty column for horizontal whitespace
+    \end{columns}
+    \vskip4ex % Vertical whitespace below the headline
+  \end{beamercolorbox}
+
+  \begin{beamercolorbox}[wd=\paperwidth]{lower separation line head}
+    \rule{0pt}{3pt}
+  \end{beamercolorbox}
+}
+
+%----------------------------------------------------------------------------------------
+%	POSTER FOOTER
+%----------------------------------------------------------------------------------------
+
+\setbeamertemplate{footline}{
+  \begin{beamercolorbox}[wd=\paperwidth]{upper separation line foot}
+    \rule{0pt}{3pt}
+  \end{beamercolorbox}
+  
+  \leavevmode%
+  \begin{beamercolorbox}[ht=4ex,leftskip=1em,rightskip=1em]{author in head/foot}%
+    \texttt{\leftfoot}
+    \hfill
+    \texttt{\rightfoot}
+    \vskip1ex
+  \end{beamercolorbox}
+  \vskip0pt%
+  \begin{beamercolorbox}[wd=\paperwidth]{lower separation line foot}
+    \rule{0pt}{3pt}
+  \end{beamercolorbox}
+}
+
+%----------------------------------------------------------------------------------------
+%	MISC SETTINGS
+%----------------------------------------------------------------------------------------
+
+\mode<all>
+
+\setbeamertemplate{navigation symbols}{}  % No navigation symbols in a poster
+
+\setbeamertemplate{itemize items}[triangle]
+\setbeamertemplate{itemize item}{\raisebox{0.12ex}{$\blacktriangleright$}}
+\setbeamertemplate{itemize subitem}{\raisebox{0.12ex}{$\triangleright$}\hskip0.2em}
+% or define your own template using \defbeamertemplate{itemize item}, see beameruserguide.pdf
+
+% Equal font sizes for all itemize levels
+\setbeamerfont{itemize/enumerate body}{size=\normalsize}
+\setbeamerfont{itemize/enumerate subbody}{size=\normalsize}
+\setbeamerfont{itemize/enumerate subsubbody}{size=\normalsize}
+
+\usecaptiontemplate{\structure{\insertcaptionname\ \insertcaptionnumber:}\ \insertcaption\par} % A fix for figure and table numbering
