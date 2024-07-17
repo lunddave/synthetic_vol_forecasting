@@ -164,6 +164,8 @@ Herein we systematize and unify a range of conceptual approaches and tools that 
 
 Forecast model adjustment, known most widely perhaps by the term intercept-correction, has received the most attention in several articles and book chapters \citep{hendry1994theory,clements1996intercept,clements1998forecasting}.  Of special importance is the distinction between discretionary and automated intercepts corrections. \cite{hendry1994theory} define scalar intercept corrections to be automated when they follow the simple rule of adding an estimation residual $e_{t}$ to subsequent (possibly but not necessarily all) forecasts $\hat f_{t+1},\hat f_{t+2},...$.  This procedure can colloquially referred to as setting the model back on track \citep{hendry1994theory}.
 
+In \cite{hendry1994theory}, after recounting the bipartite division of interception corrections in discretionary and automated varieties, the authors present a six-way taxonomy of information that a modeler possesses at the time a forecast is made.  The authors also consider structural change in the data-generating process during the forecast period, including as early as the first point in the forecast period (specifically in the autoregressive structure), as well as what is for them the more interesting case: structural change between $T^{*}-1$ and $T^{*}$.  This current work finds both cases interesting.  What if we could guess well the intercept shift?
+
 
 
 Bias-variance tradeoff and MSE decomposition\\
@@ -171,6 +173,8 @@ Bias-variance tradeoff and MSE decomposition\\
 \subsection{Literature Review}
 
 \subsubsection{Motivation for Intercept Correction}
+
+
 
 Mismeasured data is discussed in \cite[p. 166]{hendry1994theory} as a motivator for intercept correction.  Could similarity-based correction help?\\
 
