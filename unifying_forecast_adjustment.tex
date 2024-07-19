@@ -126,7 +126,7 @@
 \maketitle
 
 \begin{abstract} 
-Shocks to time series may give an observer reason to doubt the credibility of the default forecasting function.  This work systematizes and unifies the rich landscape of model adjustment and model correction methods, with a special focus on forecast adjustment under the presence of shocks.
+Structural shocks to time series may give an observer reason to doubt the credibility of the default forecasting function.  This work systematizes and unifies the rich landscape of model adjustment and model correction methods, with a special focus on forecast adjustment under the presence of shocks.  We demonstrate the usefulness of similarity-based methods in forecasting and present several specific models that can benefit, along with formal results for some of those special cases.
 
 
 \end{abstract}
@@ -136,25 +136,25 @@ Shocks to time series may give an observer reason to doubt the credibility of th
 \subsection{What the paper should do}
 
 \begin{itemize}
-  \item Introduce an existing diffuse set of approaches to adjusting forecasts
+  \item Introduce an existing diffuse set of approaches to adjusting forecasts (\ref{Introduction})
   \item Explain when/how similarity can help us forecast.
   \item distinguish the method from various tools that inspired it
-  \item show a few special cases, both examples and formal results
+  \item show a few special cases, both examples and formal results (\ref{special_cases})
   \item discuss limitations of the method
-  \item propose extensions
+  \item propose extensions (\ref{Extensions})
 \end{itemize}
 
 \subsection{What the paper should NOT do}
 
 \begin{itemize}
-  \item Wade too deeply into distance-based weighting details
+  \item Wade too deeply into distance-based weighting details.  We can refer to other work?
   \item wade too deeply into any of the special cases
   \item Tackle non-scalar random quantities (density forecasts, etc)
   \item Forecast combination
 
 \end{itemize}
 
-\section{Introduction}
+\section{Introduction}\label{Introduction}
 
 For various modeling and prediction tasks in time series and panel data, the salient challenge is not predicting when an event will occur but what its key properties will be.  In the familiar case of scalar time series, that can include its post-event direction, moments, sign, magnitude, duration, and correlation structure, all over an arbitrary horizon or perhaps multiple horizons. This is not to say that predicting the arrival of an event is easy. In some cases, it may be difficult or impossible, and therefore preparing for an antipicated shock is the best one can hope for.
 
@@ -162,21 +162,18 @@ This work focuses on model adjustment amid structual shocks that undermine the r
 
 Herein we systematize and unify a range of conceptual approaches and tools that have developed across the broad ecosystem of the econometric and forecasting literatures.  Additionally, we delineate a specific type of forecasting task called post-shock forecasting, which we broadly define as forecasting under a known shock.
 
-Forecast model adjustment, known most widely perhaps by the term intercept-correction, has received the most attention in several articles and book chapters \citep{hendry1994theory,clements1996intercept,clements1998forecasting}.  Of special importance is the distinction between discretionary and automated intercepts corrections. \cite{hendry1994theory} define scalar intercept corrections to be automated when they follow the simple rule of adding an estimation residual $e_{t}$ to subsequent (possibly but not necessarily all) forecasts $\hat f_{t+1},\hat f_{t+2},...$.  This procedure can colloquially referred to as setting the model back on track \citep{hendry1994theory}.
+Forecast model adjustment, known most widely perhaps by the term intercept-correction, has received the most attention in several articles and book chapters \citep{hendry1994theory,clements1996intercept,clements1998forecasting}.  Of special importance is the distinction between discretionary and automated intercepts corrections. \cite{hendry1994theory} define scalar intercept corrections to be automated when they follow the simple rule of adding an estimation residual $e_{t}$ to subsequent (possibly but not necessarily all) forecasts $\hat f_{t+1},\hat f_{t+2},...$.  This procedure can colloquially referred to as setting the model back on track \citep{hendry1994theory}.  In \cite{hendry1994theory}, after recounting the bipartite division of interception corrections in discretionary and automated varieties, the authors present a six-way taxonomy of information that a modeler possesses at the time a forecast is made.  The authors also consider structural change in the data-generating process during the forecast period, including as early as the first point in the forecast period (specifically in the autoregressive structure), as well as what is for them the more interesting case: structural change between $T^{*}-1$ and $T^{*}$.  This current work finds both cases interesting.  What if we could predict well the intercept shift that occurs between $T^{*}$ and $T^{*}+1$?
 
-In \cite{hendry1994theory}, after recounting the bipartite division of interception corrections in discretionary and automated varieties, the authors present a six-way taxonomy of information that a modeler possesses at the time a forecast is made.  The authors also consider structural change in the data-generating process during the forecast period, including as early as the first point in the forecast period (specifically in the autoregressive structure), as well as what is for them the more interesting case: structural change between $T^{*}-1$ and $T^{*}$.  This current work finds both cases interesting.  What if we could guess well the intercept shift?
+Post-shock forecasting procedures have been explored in \cite{lin2021minimizing,lundquist2024volatility}, where the AR(1) and GARCH($m,s$) cases, respectively, are treated.  Both works target additive parameters in scalar time series, predicting those random effects by aggegating information from other time series.  The authors leave several stones unturned, including a more general, dare say comprehensive treatment of how to forecast under any sort of shock.
 
-
-
-Bias-variance tradeoff and MSE decomposition\\
 
 \subsection{Literature Review}
 
 \subsubsection{Motivation for Intercept Correction}
 
-
-
 Mismeasured data is discussed in \cite[p. 166]{hendry1994theory} as a motivator for intercept correction.  Could similarity-based correction help?\\
+
+Here is an idea: if we believe that our most recent measurement of the series is noisy, we can disregard the point itself and instead take a convex combination of that point and the \cite{lin2021minimizing}-style prediction based on aggregation
 
 Quinton-Guerrera and Zhong \cite{guerron2017macroeconomic} - concerned with correcting $\beta$ using similarity\\
 
@@ -253,7 +250,7 @@ This is important because with a parametric specification, we cannot get key sca
 \subsection{We can use the method on latent time series}
 See \cite{lundquist2024volatility}
 
-\section{Model-Specific Considerations}
+\section{Model-Specific Considerations}\label{special_cases}
 
 \subsection{ARIMA}
 \cite{lin2021minimizing}
@@ -291,7 +288,8 @@ The forecast horizon --- does it matter?  If so, how so?  \cite{lin2021minimizin
   \item Quantile Forecasts
 \end{itemize}
 
-\subsection{Extensions}
+\subsection{Extensions}\label{Extensions}
+bias-variance tradeoff and MSE decomposition\\
 
 \subsection{Limitations}
 

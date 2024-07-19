@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.21)  16 JUL 2024 13:30
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.21)  19 JUL 2024 13:09
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1222,34 +1222,22 @@ File: upxmia.fd 2000/12/14 v1.0
 ) (/usr/local/texlive/2023/texmf-dist/tex/latex/pxfonts/upxsyc.fd
 File: upxsyc.fd 2000/12/14 v1.0
 )
-
-pdfTeX warning: pdflatex (file ./Figures//logo.pdf): PDF inclusion: found PDF version <1.6>, but at most version <1.5> allowed
-<Figures//logo.pdf, id=13, 833.50496pt x 170.09146pt>
-File: Figures//logo.pdf Graphic file (type pdf)
-<use Figures//logo.pdf>
-Package pdftex.def Info: Figures//logo.pdf  used on input line 66.
-(pdftex.def)             Requested size: 598.21922pt x 122.07643pt.
-<Figures//Tolmukapea.jpg, id=14, 616.704pt x 448.5558pt>
+<Figures//Tolmukapea.jpg, id=13, 616.704pt x 448.5558pt>
 File: Figures//Tolmukapea.jpg Graphic file (type jpg)
 <use Figures//Tolmukapea.jpg>
 Package pdftex.def Info: Figures//Tolmukapea.jpg  used on input line 286.
 (pdftex.def)             Requested size: 685.57037pt x 498.6557pt.
-(/usr/local/texlive/2023/texmf-dist/tex/latex/pxfonts/t1pxss.fd
+ (/usr/local/texlive/2023/texmf-dist/tex/latex/pxfonts/t1pxss.fd
 File: t1pxss.fd 2000/12/14 v1.0
 )
-<Figures//Fibroblastid.jpg, id=17, 2569.6pt x 1328.965pt>
+<Figures//Fibroblastid.jpg, id=16, 2569.6pt x 1328.965pt>
 File: Figures//Fibroblastid.jpg Graphic file (type jpg)
 <use Figures//Fibroblastid.jpg>
 Package pdftex.def Info: Figures//Fibroblastid.jpg  used on input line 286.
 (pdftex.def)             Requested size: 1054.73357pt x 545.50781pt.
- (./template.bbl)
-File: Figures//logo.pdf Graphic file (type pdf)
-<use Figures//logo.pdf>
-Package pdftex.def Info: Figures//logo.pdf  used on input line 286.
-(pdftex.def)             Requested size: 598.21922pt x 122.07643pt.
- [1{/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/base/8r.enc}
+ (./template.bbl) [1{/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/base/8r.enc}
 
-{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/gfsdidot/gfsudidotmath.enc}{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/gfsdidot/gpdidoti.enc} <./Figures//logo.pdf> <./Figures//Tolmukapea.jpg> <./Figures//Fibroblastid.jpg>]
+{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/gfsdidot/gfsudidotmath.enc}{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/gfsdidot/gpdidoti.enc} <./Figures//Tolmukapea.jpg> <./Figures//Fibroblastid.jpg>]
 \tf@nav=\write6
 \openout6 = `template.nav'.
 
@@ -1264,18 +1252,18 @@ Package rerunfilecheck Info: File `template.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 25425 strings out of 476025
- 486568 string characters out of 5790017
- 1936388 words of memory out of 5000000
- 45246 multiletter control sequences out of 15000+600000
- 602391 words of font info for 241 fonts, out of 8000000 for 9000
+ 25395 strings out of 476025
+ 485755 string characters out of 5790017
+ 1933388 words of memory out of 5000000
+ 45219 multiletter control sequences out of 15000+600000
+ 600334 words of font info for 238 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,20n,122p,564b,1208s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2023/texmf-dist/fonts/type1/public/gfsdidot/GFSDidot-Italic.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/gfsdidot/GFSOlga.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss17.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/pxfonts/pxex.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/pxfonts/pxsy.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/pxfonts/pxsya.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/pxfonts/rpxmi.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/txfonts/txtt.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb>
-Output written on template.pdf (1 page, 1971019 bytes).
+</usr/local/texlive/2023/texmf-dist/fonts/type1/public/gfsdidot/GFSDidot-Italic.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/gfsdidot/GFSOlga.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss17.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/pxfonts/pxex.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/pxfonts/pxsy.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/pxfonts/pxsya.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/pxfonts/rpxmi.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/txfonts/txtt.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb>
+Output written on template.pdf (1 page, 1929858 bytes).
 PDF statistics:
- 110 PDF objects out of 1000 (max. 8388607)
- 68 compressed objects within 1 object stream
+ 92 PDF objects out of 1000 (max. 8388607)
+ 56 compressed objects within 1 object stream
  5 named destinations out of 1000 (max. 500000)
- 58 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 53 words of extra memory for PDF output out of 10000 (max. 10000000)
 
