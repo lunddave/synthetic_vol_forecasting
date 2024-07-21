@@ -172,8 +172,6 @@ A practitioner interested in forecast adjustment can choose between procedures t
 
 The procedure presented herein is a discretionary procedure for intercept correction that integrates data internal or external to the time series under study in a systematic manner.  The correction function uses an optimization step inspired by the causal inference literature.  Outside of \citet{lin2021minimizing,lundquist2024volatility}, we are not aware of prior work that both introduces a parametric specification for nonzero errors and introduces a procedure for weighting appropriately the nonzero errors of similar shocks occurring outside the time series under study.  We are also not familiar with any prior work that attempts to account for anticipated nonzero errors using an a parametric adjustment, i.e., a ``correction function''.  
 
-
-
 \subsection{Literature Review}
 
 \subsubsection{Motivation for Intercept Correction}
@@ -222,6 +220,64 @@ In order to motivate our procedure, we provide a visual illustration.  In Figure
 we show how the aggregation of estimated excess volatilities from donors in the donor pool works when the correction function is a specially-chosen convex combination of fixed effects from the donor pool.  Our method assumes a credible, parsimonious parameterization in which the shock is an affine transformation of several key covariates.  The key intuition behind this shock parameterization is that as the strength of the linear signal increases relative to the idiosyncratic error, the GARCH estimation of these effects increases in accuracy.  From this, it follows that the aggregated shock estimate increases in accuracy.
 
 
+\subsection{Model setup}
+\label{modelsetup}
+Assume a researcher has multivariate time series data $\y_{i,t} = (r_{i,t}$, $\x_{i,t}$), $t = 1,$ $\ldots,  T_i$, $i = 1, \ldots, n+1$, and  $\x_{i,t}$ is a vector of covariates such that $\x_{i,t}|\mathcal{F}_{i,t-1}$ is deterministic.  Suppose that the analyst is interested in forecasting the volatility of $r_{1,t}$, the first time series in the collection, which we will denote the time series under study.  We require that each time series $\y_{i,t}$ is subject to a news event following $T^*_i \leq T_{i} + 1$ and before witnessing $T^*_i+1$.  
+
+\begin{align*}
+&y_{i,t} = F(\mathcal{F}_{t-1}) + \epsilon_{t}\\
+\end{align*}
+Let $I(\cdot)$ be an indicator function.  Let $T_i$ denote the time length of the time series $i$ for $i = 1, \ldots, n+1$, and let $T_i^*$ denote the largest time index prior to the arrival of the news shock, with $T_i^* < T_i$.  Let $\delta, \x_{i,t} \in \mathbb{R}^{p}$.  For $t= 1, \ldots, T_i$ and $i = 1, \ldots, n+1$, the model $\mc{M}_1$ is defined as 
+\begin{align*}
+  \mc{M}_1 \colon \begin{array}{l}
+     \sigma^{2}_{i,t} = \omega_{i} + \omega^{*}_{i,t} + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \text{ }\\[.2cm]
+     a_{i,t} = \sigma_{i,t}((1-D^{return}_{i,t})\epsilon_{i,t} + D^{return}_{i,t}\epsilon^{*}_{i})\\[.2cm]
+    \omega_{i,t}^{*} = D^{vol}_{i,t}[\mu_{\omega^{*}}+\delta'\x_{i,t}+ u_{i,t}],
+  \end{array}
+  \end{align*}
+with error structure
+
+  \begin{align*}
+    \epsilon_{i,t} &\simiid \mc{F}_{\epsilon} \text{ with }  \; \mrm{E}_{\mc{F}_{\epsilon}}(\epsilon) = 0, \mrm{Var}_{\mc{F}_{\epsilon}}(\epsilon)  = 1  \\
+    \epsilon^{*}_{i,t} &\simiid \mc{F}_{\epsilon^{*}} \text{ with }  \; \mrm{E}_{\mc{F}_{\epsilon^{*}}}(\epsilon) = \mu_{\epsilon^{*}}, \mrm{Var}_{\mc{F}_{\epsilon^{*}}}(\epsilon^{*})  = \sigma^2_{\epsilon^{*}}  \\
+    u_{i,t} & \simiid  \mc{F}_{u} \text{ with }  \; \mrm{E}_{\mc{F}_{u}}(u) = 0, \mrm{Var}_{\mc{F}_{u}}(u) = \sigma^2_{u}\\
+    \epsilon_{i,t} & \indep  \epsilon^{*}_{i,t}  \indep u_{i,t}
+    \end{align*}
+ 
+    Note that $\mc{M}_{0}$ assumes that $\omega^{*}_i$ have no dependence on the covariates and are i.i.d. with $\E[ \omega^{*}_i]=\mu_{\omega^{*}}$.  
+
+
+    \subsection{Volatility Profile of a Time Series}
+    \label{Shock Profile of a Time Series}
+    
+    We now introduce prediction via distance-based weighting by constructing a profile of a time series' shocks, the analogue of a covariate matrix in a synthetic control framework.  The shock profile for a given GARCH-X process is nothing more than a vector of observable covariates that parameterize a shock.  A collection of $n$ such vectors yields a matrix of $n$ columns.  What distinguishes a volatility profile, principally, is that the time-varying parameters that correspond to the volatility profile are non-zero at only the shock times.  
+    
+    Suppose that for each of the $n$ donors, we have available $p$ distinct covariates in the functional form of the shock.  The shock profile could take the form of the $p \times n$ matrix 
+
+    \begin{equation*}
+      \textbf{V}_{t} = 
+      \begin{pmatrix}
+
+      RV_{2,t}  & RV_{3,t} &  \cdots & RV_{n+1,t}  \\
+      RV_{2,t-1}  & RV_{3,t-1}  & \cdots & RV_{n+1,t-1}  \\
+      \vdots  & \vdots  & \ddots & \vdots  \\
+      IV_{2,t} & IV_{3,t} & \cdots & IV_{n+1,t} \\
+      IV_{2,t-1}  & IV_{3,t-1}  & \cdots & IV_{n+1,t-1} \\
+      \vdots  & \vdots  & \ddots & \vdots  \\
+      |a_{2,t}| & |a_{3,t}| & \cdots & |a_{n+1,t}| \\
+      |a_{2,t-1}|  & |a_{3,t-1}|  & \cdots & |a_{n+1,t-1}| \\
+      \vdots  & \vdots  & \ddots & \vdots  \\
+      Volume_{2,t}  & Volume_{3,t}  & \cdots & Volume_{n+1,t} \\
+      Volume_{2,t-1}  & Volume_{3,t-1}  & \cdots & Volume_{n+1,t-1}  \\
+      \vdots  & \vdots  & \ddots & \vdots  \\
+      \Delta RV_{2,t} & \Delta RV_{3,t}  & \cdots & \Delta RV_{n+1,t}  \\
+      \Delta RV_{2,t-1}  & \Delta RV_{3,t-1}  & \cdots & \Delta RV_{n+1,t-1}  \\
+      \vdots  & \vdots  & \ddots & \vdots  \\
+      \end{pmatrix},
+      \end{equation*}
+      where RV and IV denote realized volatility and implied volatility, respectively, $\Delta$ denotes the lag operator between consecutive realizations of a variable, and \textit{Volume} denotes the quantity of traded shares or other units of an asset.  Covariates chosen for inclusion in a given volatility profile may be levels, log differences in levels, percentage changes in levels, or absolute values thereof, among many choices.
+
+      As shown, $\textbf{V}_{t}$ displays `balance' in that $p$ covariates exist for each of the $n$ donors.  In practice, missing values, corrupted values, or unacceptably extreme or noisy estimates may necessitate some sort of matrix completion, a problem that we do not tackle in this work.  We now turn to the next section, where $\textbf{V}_{t}$ is employed in a procedure to arrive at a forecast adjustment. 
 
 \section{Model Adjustment Using Similarity-Based Parameter Correction: A Global Overview}
 
@@ -253,6 +309,52 @@ Does it draw on data internal or external to the time series under study, or doe
     \end{enumerate}
   \item a correction function, based on the correction term, that aggregates (i.e. maps) donor correction terms based on some notion of similarity
 \end{enumerate}
+
+\section{Methodology for Similarity-based Parameter Correction}
+
+\subsection{Forecasting}
+
+So far we have presented a setting and a data generating process for which we intend to furnish a statistical method.  Now, we present two forecasts for the time series, the latter of which benefits from the proposed method.  In particular, we present the GARCH forecast, also called the \textit{unadjusted} forecast, as well as the \textit{adjusted} forecast, which differs by an additive term:
+
+\begin{align*}
+  \text{Forecast 1: } & \hat\sigma^{2}_{unadjusted} = \hat\E[\sigma^{2}_{1,T_{1}^{*}+1}|\mathcal{F}_{T^{*}}] && = && \hat\omega_{i} + \sum^{m_{i}}_{k=1}\hat\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\hat\beta_{i,j}\sigma_{i,t-j}^{2} + \hat\gamma_{i}^{T} \x_{i,t}\\
+  \text{Forecast 2: } & \hat\sigma^{2}_{adjusted} = \hat\E[\sigma^{2}_{1,T_{1}^{*}+1}|\mathcal{F}_{T^{*}}] + \hat\omega^{*} && = && \hat\omega_{i} + \sum^{m_{i}}_{k=1}\hat\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\hat\beta_{i,j}\sigma_{i,t-j}^{2} + \hat\gamma_{i}^{T} \x_{i,t} + \hat\omega^{*} \text{ .}
+\end{align*}
+
+\subsection{Shock Estimators}
+    \label{Shock_Estimators}
+   
+    The problem of aggregating estimated donor shocks begins with the data constraints.  Taking the estimated shocks as a given, we essentially observe the pair $(\{\hat\omega^{*}_{i}\}^{n+1}_{i=2},\{\textbf{v}_{i}\}^{n+1}_{i=2})$.  We wish to recover weights $\{\weight_{i}\}^{n+1}_{i=2} \in \Delta^{n}$ leading to favorable forecasting properties.  These weights are used to compute $\hat\omega^{*} \coloneq \sum^{n+1}_{i=2}\weight_{i}\hat\omega^{*}_{i}$, our forecast adjustment term.  Since the weights $\{\weight_{i}\}_{i=2}^{n+1}$ are computed using $\mathcal{F}_{T^{*}_{i}}$, the set $\{\weight_{i}\}_{i=2}^{n+1}$ is deterministic, $\textit{modulo}$ any stochastic ingredient in the numerical methods employed to approximate $\x_{1,T^{*}}$ using a convex combination of donor covariates.  We say more about the properties of $\omega^{*}_{i}$ in section $\ref{SVF_properties}$. 
+
+    Following \citet{abadie2003economic,abadie2010synthetic}, let $\|\cdot\|_{\textbf{S}}$ denote any semi-norm on $\mathbb{R}^{p}$, and define
+
+    \begin{align*}
+    \{\pi\}_{i=2}^{n+1} = \argmin_{\pi}\|\textbf{v}_{1} - \V_{t}\pi \|_{\textbf{S}} \text{ .}
+    \end{align*}
+In the forecast combination literature, it is discussed whether the weights employed to aggregate forecasts strive toward and meet various optimality criteria \citep{timmermann2006forecast,wang2023forecast}.  In this work, there are at least two senses of optimal weights that one might be interested in.  First, we can think of optimal weights as a set $\{\weight_{i}\}_{i=2}^{n+1}$ such that $\omega_{1} = \sum^{n+1}_{i=2}\weight_{i}\hat\omega_{i}$, i.e., $\omega_{1}$ is recovered perfectly, as it belongs to convex hull of the estimated shocks. However, $\omega_{1}$ is never revealed to the practitioner, and hence there is no way of verifying the extent to which this condition is satifised.
+
+A more promising aim is finding weights such that $\textbf{v}_{1} = \sum^{n+1}_{i=2}\weight_{i}\textbf{v}_{i}$, meaning that the volatility profile of the time series under study lies within the convex hull of the donor volatility profile.  This condition underwrites asymptotic results in \citet{abadie2010synthetic}, and the intuition there extends to this work: if the shock is parameterized by an affine function of covariates, then finding a linear combination that recreates the shock should serve us well.  Because the method proposed uses a point in $\Delta^{n}$, it is important to head-off possible confusion.  What we are proposing is not a forecast combination method.  What we are aggregating and weighting (not combining) are subcomponents of forecasts, not forecasts themselves.  Moreover, from a broader perspective, forecast combination is an inapt term for what is being proposed here.  First, the donor time series do not provide forecasts, nor would forecasts be needed for random variables that have already been realized.  Second and more fundamentally, the theoretical underpinnings of forecast combination, while diverse \citep{wang2023forecast}, are distinct from the setting presumed in this work, where the model family is not in doubt but the parameter values and how they prevail must be learned.
+
+Supposing that we can define optimal weights, are they necessarily unique?  \cite{lin2021minimizing} discuss sufficient conditions for uniqueness as well as the implications of non-uniqueness.  \cite{abadie2022synthetic} invoke the Carath\'eodory Theorem to argue for the sparseness of the weight vector.  We make additional comments as well. $(\mathbb{R}^{n}, \|\cdot\|)$ is a Chebyshev space, and hence for any element x and any convex set $C\subset \mathbb{R}^{n}$, there exists a unique element $y\in C$ that minimizes $\|x-y\|$.  However, the pre-image of $y$ with respect to a particular operator and constraint set might not be unique.  Let $p', n'$ denote the number of linearly independent rows of $\V_{t}$ and linearly independent columns of $\V_{t}$, respectively.  Let col($\cdot$) denote the column space of a matrix, and let Conv($\cdot$) denote the convex hull of a set of column vectors.  \\
+
+    \begin{center}
+      \begin{tabular}{ | m{3em} | m{7cm}| m{7cm} | } 
+        \hline
+        & $\textbf{v}_{1}\in \text{Conv}(\text{col}(\V_{t}))$ & $\textbf{v}_{1} \notin \text{Conv}(\text{col}(\V_{t}))$\\ 
+        \hline
+        $p' \geq n'$ & Perfect fit; fit unique & Fit not perfect; fit unique \\
+        \hline
+        $p' < n'$ & Perfect fit, not necessarily unique, Carath\'eodory Theorem applies& Fit not perfect, not necessarily unique, Carath\'eodory Theorem applies \\ 
+        \hline
+      \end{tabular}
+      \end{center} 
+
+Comparison with least-squares estimation is illustrative.  Consider least-squares for the $n$-vector of estimated volatlity shocks $\hat\omega^{*}$:
+
+\begin{align*}
+\vec{w}_{OLS}=\argmin_{{w}} \|\hat{\omega}^{*} - w^{T}\textbf{V}_{t}\|_{2}
+\end{align*} 
+One immediately visible problem is that this optimization problem is an optimization problem over $p$-vectors $\vec{w}$ --- i.e. over linear combinations of the covariates, whereas what we seek is an $n$-vector --- a linear combination of donors.  Additionally, there is no guarantee that $\vec{w}_{OLS}$ would perform poorly as a tool for producing $\hat\omega^{*}$, but given the small number of donors supposed in our setting, it is risky.
 
 \subsection{How is the proposed method distinct from existing tools?}
 
