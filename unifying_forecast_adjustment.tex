@@ -130,10 +130,15 @@ Structural shocks to time series may give an observer reason to doubt the credib
 
 \end{abstract}
 
-\textbf{Plan} \\
 
-What the paper should do\\
 
+
+
+\section{Introduction}\label{Introduction}
+
+\textbf{Plan}
+
+What the paper should do
 \begin{itemize}
   \item Introduce an existing diffuse set of approaches to adjusting forecasts (\ref{Introduction})
   \item Explain when/how similarity can help us forecast. \ref{meaning_use}
@@ -143,7 +148,7 @@ What the paper should do\\
   \item propose extensions (\ref{Extensions})
 \end{itemize}
 
-What the paper should NOT do\\
+What the paper should NOT do
 
 \begin{itemize}
   \item Wade too deeply into distance-based weighting details.  We can refer to other work?
@@ -152,8 +157,6 @@ What the paper should NOT do\\
   \item Forecast combination
 
 \end{itemize}
-
-\section{Introduction}\label{Introduction}
 
 For various modeling and prediction tasks in time series and panel data, the salient challenge is not predicting when an event will occur but what its key properties will be.  In the familiar case of scalar time series, that can include its post-event direction, moments, sign, magnitude, duration, and correlation structure, all over an arbitrary horizon or perhaps multiple horizons. This is not to say that predicting the arrival of an event is easy. In some cases, it may be difficult or impossible, and therefore preparing for an antipicated shock is the best one can hope for.
 
@@ -180,6 +183,9 @@ Mismeasured data is discussed in \cite[p. 166]{hendry1994theory} as a motivator 
 Here is an idea: if we believe that our most recent measurement of the series is noisy, we can disregard the point itself and instead take a convex combination of that point and the \cite{lin2021minimizing}-style prediction based on aggregation
 
 Quinton-Guerrera and Zhong \cite{guerron2017macroeconomic} - concerned with correcting $\beta$ using similarity\\
+
+Part of the reason for correcting a model springs from the way we evaluate model performance.\\
+
 
 Evaluating a Model by Forecast Performance \cite{clements2005evaluating}
 \begin{enumerate}
