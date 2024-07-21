@@ -1,9 +1,14 @@
-\begin{thebibliography}{7}
+\begin{thebibliography}{14}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Abadie et~al.(2010)Abadie, Diamond, and Hainmueller]{abadie2010synthetic}
+Alberto Abadie, Alexis Diamond, and Jens Hainmueller.
+\newblock Synthetic control methods for comparative case studies: Estimating the effect of california’s tobacco control program.
+\newblock \emph{Journal of the American Statistical Association}, 105\penalty0 (490):\penalty0 493--505, 2010.
 
 \bibitem[Clements and Hendry(1998)]{clements1998forecasting}
 Michael Clements and David~F Hendry.
@@ -20,6 +25,21 @@ Michael~P Clements and David~F Hendry.
 \newblock Evaluating a model by forecast performance.
 \newblock \emph{Oxford Bulletin of Economics and Statistics}, 67:\penalty0 931--956, 2005.
 
+\bibitem[Dendramis et~al.(2020)Dendramis, Kapetanios, and Marcellino]{dendramis2020similarity}
+Yiannis Dendramis, George Kapetanios, and Massimiliano Marcellino.
+\newblock A similarity-based approach for macroeconomic forecasting.
+\newblock \emph{Journal of the Royal Statistical Society Series A: Statistics in Society}, 183\penalty0 (3):\penalty0 801--827, 2020.
+
+\bibitem[Engle and Patton(2001)]{engle2001good}
+Robert~F Engle and Andrew~J Patton.
+\newblock What good is a volatility model?
+\newblock \emph{Quantitative finance}, 1\penalty0 (2):\penalty0 237, 2001.
+
+\bibitem[Foroni et~al.(2022)Foroni, Marcellino, and Stevanovic]{foroni2022forecasting}
+Claudia Foroni, Massimiliano Marcellino, and Dalibor Stevanovic.
+\newblock Forecasting the covid-19 recession and recovery: Lessons from the financial crisis.
+\newblock \emph{International Journal of Forecasting}, 38\penalty0 (2):\penalty0 596--612, 2022.
+
 \bibitem[Guerr{\'o}n-Quintana and Zhong(2017)]{guerron2017macroeconomic}
 Pablo Guerr{\'o}n-Quintana and Molin Zhong.
 \newblock Macroeconomic forecasting in times of crises.
@@ -30,6 +50,11 @@ D~Hendry and M~Clements.
 \newblock On a theory of intercept corrections in macroeconometric forecasting.
 \newblock 1994.
 
+\bibitem[Kilian and L{\"u}tkepohl(2017)]{kilian2017structural}
+Lutz Kilian and Helmut L{\"u}tkepohl.
+\newblock \emph{Structural vector autoregressive analysis}.
+\newblock Cambridge University Press, 2017.
+
 \bibitem[Lin and Eck(2021)]{lin2021minimizing}
 Jilei Lin and Daniel~J Eck.
 \newblock Minimizing post-shock forecasting error through aggregation of outside information.
@@ -39,5 +64,15 @@ Jilei Lin and Daniel~J Eck.
 David Lundquist and Daniel Eck.
 \newblock Volatility forecasting using similarity-based parameter correction and aggregated shock information.
 \newblock \emph{arXiv preprint arXiv:2406.08738}, 2024.
+
+\bibitem[Phillips(1996)]{phillips1996forecasting}
+Robert~F Phillips.
+\newblock Forecasting in the presence of large shocks.
+\newblock \emph{Journal of Economic Dynamics and Control}, 20\penalty0 (9-10):\penalty0 1581--1608, 1996.
+
+\bibitem[Romer and Romer(1989)]{romer1989does}
+Christina~D Romer and David~H Romer.
+\newblock Does monetary policy matter? a new test in the spirit of friedman and schwartz.
+\newblock \emph{NBER macroeconomics annual}, 4:\penalty0 121--170, 1989.
 
 \end{thebibliography}
