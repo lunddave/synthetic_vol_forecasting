@@ -176,15 +176,18 @@ The procedure presented herein is a discretionary procedure for intercept correc
 
 \subsubsection{Motivation for Intercept Correction}
 
-Mismeasured data is discussed in \cite[p. 166]{hendry1994theory} as a motivator for intercept correction.  Could similarity-based correction help?\\
+\subsubsection{Setting levels back on track}
 
-Here is an idea: if we believe that our most recent measurement of the series is noisy, we can disregard the point itself and instead take a convex combination of that point and the \cite{lin2021minimizing}-style prediction based on aggregation
+
+\subsubsection{Mismeasured data}
+
+Mismeasured data is discussed in \cite[p. 166]{hendry1994theory} as a motivator for intercept correction.  Could similarity-based correction help?  Here is an idea: if we believe that our most recent measurement of the series is noisy, we can disregard the point itself and instead take a convex combination of that point and the \cite{lin2021minimizing}-style prediction based on aggregation
 
 Quinton-Guerrera and Zhong \cite{guerron2017macroeconomic} - concerned with correcting $\beta$ using similarity\\
 
-Part of the reason for correcting a model springs from the way we evaluate model performance.\\
+\subsubsection{Motivation from model evaluation}
 
-
+Part of the reason for correcting a model springs from the way we evaluate model performance.
 Evaluating a Model by Forecast Performance \cite{clements2005evaluating}
 \begin{enumerate}
 
@@ -247,10 +250,10 @@ with error structure
     Note that $\mc{M}_{0}$ assumes that $\omega^{*}_i$ have no dependence on the covariates and are i.i.d. with $\E[ \omega^{*}_i]=\mu_{\omega^{*}}$.  
 
 
-    \subsection{Volatility Profile of a Time Series}
+    \subsection{Shock Profile of a Time Series}
     \label{Shock Profile of a Time Series}
     
-    We now introduce prediction via distance-based weighting by constructing a profile of a time series' shocks, the analogue of a covariate matrix in a synthetic control framework.  The shock profile for a given GARCH-X process is nothing more than a vector of observable covariates that parameterize a shock.  A collection of $n$ such vectors yields a matrix of $n$ columns.  What distinguishes a volatility profile, principally, is that the time-varying parameters that correspond to the volatility profile are non-zero at only the shock times.  
+    We now introduce prediction via distance-based weighting by constructing a profile of a time series' shocks, the analogue of a covariate matrix in a synthetic control framework.  The shock profile for a given GARCH-X process is nothing more than a vector of observable covariates that parameterize a shock.  A collection of $n$ such vectors yields a matrix of $n$ columns.  What distinguishes a shock profile, principally, is that the time-varying parameters that correspond to the volatility profile are non-zero at only the shock times.  
     
     Suppose that for each of the $n$ donors, we have available $p$ distinct covariates in the functional form of the shock.  The shock profile could take the form of the $p \times n$ matrix 
 
@@ -275,7 +278,7 @@ with error structure
       \vdots  & \vdots  & \ddots & \vdots  \\
       \end{pmatrix},
       \end{equation*}
-      where RV and IV denote realized volatility and implied volatility, respectively, $\Delta$ denotes the lag operator between consecutive realizations of a variable, and \textit{Volume} denotes the quantity of traded shares or other units of an asset.  Covariates chosen for inclusion in a given volatility profile may be levels, log differences in levels, percentage changes in levels, or absolute values thereof, among many choices.
+      Covariates chosen for inclusion in a given shock profile may be levels, log differences in levels, percentage changes in levels, or absolute values thereof, among many choices.
 
       As shown, $\textbf{V}_{t}$ displays `balance' in that $p$ covariates exist for each of the $n$ donors.  In practice, missing values, corrupted values, or unacceptably extreme or noisy estimates may necessitate some sort of matrix completion, a problem that we do not tackle in this work.  We now turn to the next section, where $\textbf{V}_{t}$ is employed in a procedure to arrive at a forecast adjustment. 
 
@@ -333,7 +336,7 @@ So far we have presented a setting and a data generating process for which we in
     \end{align*}
 In the forecast combination literature, it is discussed whether the weights employed to aggregate forecasts strive toward and meet various optimality criteria \citep{timmermann2006forecast,wang2023forecast}.  In this work, there are at least two senses of optimal weights that one might be interested in.  First, we can think of optimal weights as a set $\{\weight_{i}\}_{i=2}^{n+1}$ such that $\omega_{1} = \sum^{n+1}_{i=2}\weight_{i}\hat\omega_{i}$, i.e., $\omega_{1}$ is recovered perfectly, as it belongs to convex hull of the estimated shocks. However, $\omega_{1}$ is never revealed to the practitioner, and hence there is no way of verifying the extent to which this condition is satifised.
 
-A more promising aim is finding weights such that $\textbf{v}_{1} = \sum^{n+1}_{i=2}\weight_{i}\textbf{v}_{i}$, meaning that the volatility profile of the time series under study lies within the convex hull of the donor volatility profile.  This condition underwrites asymptotic results in \citet{abadie2010synthetic}, and the intuition there extends to this work: if the shock is parameterized by an affine function of covariates, then finding a linear combination that recreates the shock should serve us well.  Because the method proposed uses a point in $\Delta^{n}$, it is important to head-off possible confusion.  What we are proposing is not a forecast combination method.  What we are aggregating and weighting (not combining) are subcomponents of forecasts, not forecasts themselves.  Moreover, from a broader perspective, forecast combination is an inapt term for what is being proposed here.  First, the donor time series do not provide forecasts, nor would forecasts be needed for random variables that have already been realized.  Second and more fundamentally, the theoretical underpinnings of forecast combination, while diverse \citep{wang2023forecast}, are distinct from the setting presumed in this work, where the model family is not in doubt but the parameter values and how they prevail must be learned.
+A more promising aim is finding weights such that $\textbf{v}_{1} = \sum^{n+1}_{i=2}\weight_{i}\textbf{v}_{i}$, meaning that the shock profile of the time series under study lies within the convex hull of the donor shock profile.  This condition underwrites asymptotic results in \citet{abadie2010synthetic}, and the intuition there extends to this work: if the shock is parameterized by an affine function of covariates, then finding a linear combination that recreates the shock should serve us well.  Because the method proposed uses a point in $\Delta^{n}$, it is important to head-off possible confusion.  What we are proposing is not a forecast combination method.  What we are aggregating and weighting (not combining) are subcomponents of forecasts, not forecasts themselves.  Moreover, from a broader perspective, forecast combination is an inapt term for what is being proposed here.  First, the donor time series do not provide forecasts, nor would forecasts be needed for random variables that have already been realized.  Second and more fundamentally, the theoretical underpinnings of forecast combination, while diverse \citep{wang2023forecast}, are distinct from the setting presumed in this work, where the model family is not in doubt but the parameter values and how they prevail must be learned.
 
 Supposing that we can define optimal weights, are they necessarily unique?  \cite{lin2021minimizing} discuss sufficient conditions for uniqueness as well as the implications of non-uniqueness.  \cite{abadie2022synthetic} invoke the Carath\'eodory Theorem to argue for the sparseness of the weight vector.  We make additional comments as well. $(\mathbb{R}^{n}, \|\cdot\|)$ is a Chebyshev space, and hence for any element x and any convex set $C\subset \mathbb{R}^{n}$, there exists a unique element $y\in C$ that minimizes $\|x-y\|$.  However, the pre-image of $y$ with respect to a particular operator and constraint set might not be unique.  Let $p', n'$ denote the number of linearly independent rows of $\V_{t}$ and linearly independent columns of $\V_{t}$, respectively.  Let col($\cdot$) denote the column space of a matrix, and let Conv($\cdot$) denote the convex hull of a set of column vectors.  \\
 
@@ -375,6 +378,8 @@ We briefly highlight the findings of \citep{lundquist2024volatility}.
 Many time series, especially macroeconomic time series, naturally arise as constituents of groups of dependent variables that interact across time.
 \subsection{LSTM/GRU}
 
+Here we demonstrate the tremendous capaciousness of our method by applying it to predictions generated by a pair of non-parametric forecasting functions, Long Short Term Memory and GRU.
+
 \begin{itemize}
   \item \href{https://www.r-bloggers.com/2021/04/lstm-network-in-r/#google_vignette}{a}
   \item \href{https://sharmasaravanan.medium.com/an-implementation-guide-for-lstm-in-r-2347e4118a2c}{b}
@@ -391,7 +396,8 @@ Many time series, especially macroeconomic time series, naturally arise as const
   \end{figure}
 
 \section{Real Data Examples}
-\section{Discussion}
+This section might not be necessary.
+g\section{Discussion}
 
 Are there any situations where we would want to intercept-correct using the post-shock term from \cite{lin2021minimizing} rather than the actual residual?
 
