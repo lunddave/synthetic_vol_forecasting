@@ -364,7 +364,18 @@ One immediately visible problem is that this optimization problem is an optimiza
 \subsection{We can use the method on latent time series}
 See \cite{lundquist2024volatility}
 
-\section{Model-Specific Considerations}\label{special_cases}
+\section{Formal Properties and Model-Specific Considerations}\label{special_cases}
+
+\subsection{What are the downsides of aggregating residuals as opposed to aggregating fixed effect estimates?}
+
+Cases:
+\begin{enumerate}
+  \item Fixed effect is estimated with accuracy 
+  \item Fixed effect is estimated with considerable noise.  Hence, the idiosyncratic error is estimated with considerable noise.
+  \item idiosyncratic error large
+  \item idiosyncratic error small
+\end{enumerate}   
+
 
 \subsection{ARIMA}
 \cite{lin2021minimizing}
