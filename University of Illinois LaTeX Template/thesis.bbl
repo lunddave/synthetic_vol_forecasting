@@ -1,0 +1,117 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global}
+    \entry{Trembly98}{article}{}
+      \name{author}{2}{}{%
+        {{hash=72ae20b3306217cf99cfb8afae22bb7e}{%
+           family={Trembly},
+           familyi={T\bibinitperiod},
+           given={Hans},
+           giveni={H\bibinitperiod}}}%
+        {{hash=6157a6990380b2597dfd2d184f9ee6e7}{%
+           family={Muggs},
+           familyi={M\bibinitperiod},
+           given={Joe},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Everyone Refused Us Too}%
+      }
+      \strng{namehash}{e578dd2585ef8781d000df7439e0a865}
+      \strng{fullhash}{e578dd2585ef8781d000df7439e0a865}
+      \strng{bibnamehash}{e578dd2585ef8781d000df7439e0a865}
+      \strng{authorbibnamehash}{e578dd2585ef8781d000df7439e0a865}
+      \strng{authornamehash}{e578dd2585ef8781d000df7439e0a865}
+      \strng{authorfullhash}{e578dd2585ef8781d000df7439e0a865}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{My Subject's Strange Addictions}
+      \field{number}{1}
+      \field{title}{Caffeine Addiction and Other Fun Bedtime Stories}
+      \field{volume}{30}
+      \field{year}{1998}
+      \field{pages}{107\bibrangedash 117}
+      \range{pages}{11}
+    \endentry
+    \entry{Childish07}{article}{}
+      \name{author}{2}{}{%
+        {{hash=2f306deb4c15932b0f1042e6c6c46c60}{%
+           family={Childish},
+           familyi={C\bibinitperiod},
+           given={Harry},
+           giveni={H\bibinitperiod}}}%
+        {{hash=e37cb0f941fd9d451c7b6e3ffbb10198}{%
+           family={Puerile},
+           familyi={P\bibinitperiod},
+           given={George},
+           giveni={G\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Everyone Refused Us}%
+      }
+      \strng{namehash}{197c4ed97103798fdb2fa01c101010b7}
+      \strng{fullhash}{197c4ed97103798fdb2fa01c101010b7}
+      \strng{bibnamehash}{197c4ed97103798fdb2fa01c101010b7}
+      \strng{authorbibnamehash}{197c4ed97103798fdb2fa01c101010b7}
+      \strng{authornamehash}{197c4ed97103798fdb2fa01c101010b7}
+      \strng{authorfullhash}{197c4ed97103798fdb2fa01c101010b7}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Impure Science}
+      \field{number}{2}
+      \field{title}{Coffee Tolerance of Middle Schoolers}
+      \field{volume}{5}
+      \field{year}{2007}
+      \field{pages}{58\bibrangedash 71}
+      \range{pages}{14}
+    \endentry
+    \entry{Presso10}{inproceedings}{}
+      \name{author}{1}{}{%
+        {{hash=43bd7ac5d6c6c3fe125b9a61f20ca4ee}{%
+           family={Presso},
+           familyi={P\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{43bd7ac5d6c6c3fe125b9a61f20ca4ee}
+      \strng{fullhash}{43bd7ac5d6c6c3fe125b9a61f20ca4ee}
+      \strng{bibnamehash}{43bd7ac5d6c6c3fe125b9a61f20ca4ee}
+      \strng{authorbibnamehash}{43bd7ac5d6c6c3fe125b9a61f20ca4ee}
+      \strng{authornamehash}{43bd7ac5d6c6c3fe125b9a61f20ca4ee}
+      \strng{authorfullhash}{43bd7ac5d6c6c3fe125b9a61f20ca4ee}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Unusual but Well-Funded Research}
+      \field{title}{Correlations of Mug Size and Productivity}
+      \field{year}{2010}
+      \field{pages}{346\bibrangedash 358}
+      \range{pages}{13}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
