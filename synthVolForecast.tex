@@ -239,7 +239,7 @@ Let $\mc{M}_{0}$ denote the subclass of $\mc{M}_{1}$ models such that $\delta \e
     \subsection{Volatility Profile of a Time Series}
     \label{Volatility Shock Profile of a Time Series}
     
-    We now introduce prediction via distance-based weighting by constructing a profile of a time series' volatility, the analogue of a covariate matrix in a synthetic control framework.  The volatility profile for a given GARCH-X process is nothing more than a vector of observable covariates that parameterize a shock.  A collection of $n$ such vectors yields a matrix of $n$ columns.  Formally speaking, the shocks are given by the equation
+    We now introduce how a researcher can carry out predictions via distance-based weighting.  The first step is the construction of what we call a profile of a time series' volatility, the analogue of a covariate matrix in a synthetic control framework.  The volatility profile for a given GARCH-X process is nothing more than a vector of observable covariates that parameterize a shock.  A collection of $n$ such vectors yields a matrix of $n$ columns, $\textbf{V}_{t}$.  Formally speaking, the shocks are given by the equation
 
     \begin{align*}
      \vec{\omega} = \vec{\mu}_{\omega^{*}} + \textbf{V}_{t}\delta + \vec{u}_{t}  
