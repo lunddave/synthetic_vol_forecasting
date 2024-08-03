@@ -235,15 +235,15 @@ with time-invariant error structure
     \end{align*}
 Let $\mc{M}_{0}$ denote the subclass of $\mc{M}_{1}$ models such that $\delta \equiv 0$.  Note that $\mc{M}_{0}$ assumes that $\omega^{*}_i$ have no dependence on the covariates and are i.i.d. with $\E[ \omega^{*}_i]=\mu_{\omega^{*}}$, where the lack of an index $i$ on $\mu_{\omega^{*}}$ indicates that it is shared across donors.
     
-    We now introduce how a researcher can carry out predictions via distance-based weighting.  The first step is the construction of what we call a profile of a time series' volatility, the analogue of a covariate matrix in a synthetic control framework.  The set of covariates for our models than a vector of observable covariates that parameterize a shock.  A collection of $n$ such vectors yields a matrix of $n$ columns, $\textbf{V}_{t}$.  Formally speaking, the shocks are given by the equation
+    We now introduce how a researcher can carry out predictions via distance-based weighting.  The first step is the gathering of covariates that will represent the $p$-dimensional space in which weights are generated.  The set of covariates for our models are nothing than a vector of observable covariates that parameterize a shock.  A collection of $n$ such vectors yields a matrix of $n$ columns, $\textbf{V}_{t}$.  Formally speaking, the shocks are given by the equation
 
     \begin{align*}
      \vec{\omega} = \vec{\mu}_{\omega^{*}} + \textbf{V}_{t}\delta + \vec{u}_{t}  
     \end{align*}
     
-    Suppose that for each of the $n$ donors, we have available $p$ distinct covariates in the functional form of the shock.  The volatility profile could take the form of the $p \times n$ matrix including realized volatility and implied volatility, as well the volume of traded assets on any day preceding the shock.  Covariates chosen for inclusion in a given volatility profile may be levels, log differences in levels, percentage changes in levels, or absolute values thereof, among many choices.
+    where were have suppressed the $D^{vol}_{i,t}$ notation for simplicity.  Suppose that for each of the $n$ donors, we have available $p$ distinct covariates in the functional form of the shock.  The covariate set could take the form of a $p \times n$ matrix including realized volatility and implied volatility, as well the volume of traded assets on any day preceding the shock.  Covariates chosen for inclusion in a given volatility profile may be levels, log differences in levels, percentage changes in levels, or absolute values thereof, among many choices.
 
-      As shown, $\textbf{V}_{t}$ displays `balance' in that $p$ covariates exist for each of the $n$ donors.  In practice, missing values, corrupted values, or unacceptably extreme or noisy estimates may necessitate some sort of matrix completion, a problem that we do not tackle in this work.  We now turn to the next section, where $\textbf{V}_{t}$ is employed in a procedure to arrive at a forecast adjustment. 
+      Ideally, $\textbf{V}_{t}$ will display `balance' in that $p$ covariates exist for each of the $n$ donors.  In practice, missing values, corrupted values, or unacceptably extreme or noisy estimates may necessitate some sort of matrix completion, a problem that we do not tackle in this work.  We now turn to the next section, where $\textbf{V}_{t}$ is employed in a procedure to arrive at a forecast adjustment. 
     
 
 \section{Methodology for Similarity-based Parameter Correction}

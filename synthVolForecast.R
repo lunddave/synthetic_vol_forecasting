@@ -1169,11 +1169,11 @@ synth_vol_fit <- function(X,
     arrows( T_star[1] + 2, pred, T_star[1] + 2,  adjusted_pred_list[[1]], col = "blue", length = .03)
     arrows( T_star[1] + 2,  adjusted_pred_list[[1]], T_star[1] + 2, pred, col = "blue", length = .03)
 
-    #Now an arrow between the unadj and the adj predictions
+    #Now an arrow between the ... ?
     # arrows( T_star[1] -1, as.numeric(sigma2_shock_period_only), T_star[1] -1,  adjusted_pred_list[[1]], col = "blue", length = .03)
     # arrows( T_star[1] -1,  adjusted_pred_list[[1]], T_star[1] -1, as.numeric(sigma2_shock_period_only), col = "blue", length = .03)
 
-    abline(v = T_star[1],col="magenta", lty = 2)
+    #abline(v = T_star[1],col="magenta", lty = 2)
 
     legend(x = "topleft",  # Coordinates (x also accepts keywords)
            legend = c(labels_for_legend[2], labels_for_legend[3], labels_for_legend[1]),
@@ -1182,7 +1182,6 @@ synth_vol_fit <- function(X,
            title = 'Prediction Method',      # Legend title,
            cex = .9
     )
-
 
     for (i in 2:length(shock_est_vec))
     {
