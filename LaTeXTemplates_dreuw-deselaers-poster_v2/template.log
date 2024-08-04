@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.21)  19 JUL 2024 13:09
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.21)  4 AUG 2024 16:30
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1222,22 +1222,44 @@ File: upxmia.fd 2000/12/14 v1.0
 ) (/usr/local/texlive/2023/texmf-dist/tex/latex/pxfonts/upxsyc.fd
 File: upxsyc.fd 2000/12/14 v1.0
 )
-<Figures//Tolmukapea.jpg, id=13, 616.704pt x 448.5558pt>
+<Color-Variation-Blue-Block-I-Orange-Background.png, id=13, 171.64125pt x 170.6375pt>
+File: Color-Variation-Blue-Block-I-Orange-Background.png Graphic file (type png)
+<use Color-Variation-Blue-Block-I-Orange-Background.png>
+Package pdftex.def Info: Color-Variation-Blue-Block-I-Orange-Background.png  used on input line 66.
+(pdftex.def)             Requested size: 598.21922pt x 594.77443pt.
+<Figures//Tolmukapea.jpg, id=15, 616.704pt x 448.5558pt>
 File: Figures//Tolmukapea.jpg Graphic file (type jpg)
 <use Figures//Tolmukapea.jpg>
-Package pdftex.def Info: Figures//Tolmukapea.jpg  used on input line 286.
+Package pdftex.def Info: Figures//Tolmukapea.jpg  used on input line 283.
 (pdftex.def)             Requested size: 685.57037pt x 498.6557pt.
  (/usr/local/texlive/2023/texmf-dist/tex/latex/pxfonts/t1pxss.fd
 File: t1pxss.fd 2000/12/14 v1.0
 )
-<Figures//Fibroblastid.jpg, id=16, 2569.6pt x 1328.965pt>
+<Figures//Fibroblastid.jpg, id=18, 2569.6pt x 1328.965pt>
 File: Figures//Fibroblastid.jpg Graphic file (type jpg)
 <use Figures//Fibroblastid.jpg>
-Package pdftex.def Info: Figures//Fibroblastid.jpg  used on input line 286.
+Package pdftex.def Info: Figures//Fibroblastid.jpg  used on input line 283.
 (pdftex.def)             Requested size: 1054.73357pt x 545.50781pt.
- (./template.bbl) [1{/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/base/8r.enc}
+ (./template.bbl
 
-{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/gfsdidot/gfsudidotmath.enc}{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/gfsdidot/gpdidoti.enc} <./Figures//Tolmukapea.jpg> <./Figures//Fibroblastid.jpg>]
+LaTeX Warning: Command \ss invalid in math mode on input line 168.
+
+
+Overfull \hbox (158.80228pt too wide) in paragraph at lines 245--246
+\OT1/pxtt/m/n/25.1 novel-[]coronavirus-[]briefing-[]governor-[]cuomo-[]declares-[]state-[]emergency-[]contain-[]spread-[]virus$[]\OT1/pxss/m/n/25.1 , 
+ []
+
+)
+Overfull \vbox (8034.94075pt too high) detected at line 283
+ []
+
+File: Color-Variation-Blue-Block-I-Orange-Background.png Graphic file (type png)
+<use Color-Variation-Blue-Block-I-Orange-Background.png>
+Package pdftex.def Info: Color-Variation-Blue-Block-I-Orange-Background.png  used on input line 283.
+(pdftex.def)             Requested size: 598.21922pt x 594.77443pt.
+[1{/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/base/8r.enc}
+
+{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/gfsdidot/gfsudidotmath.enc}{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/gfsdidot/gpdidoti.enc} <./Color-Variation-Blue-Block-I-Orange-Background.png> <./Figures//Tolmukapea.jpg> <./Figures//Fibroblastid.jpg>]
 \tf@nav=\write6
 \openout6 = `template.nav'.
 
@@ -1252,18 +1274,18 @@ Package rerunfilecheck Info: File `template.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 25395 strings out of 476025
- 485755 string characters out of 5790017
- 1933388 words of memory out of 5000000
- 45219 multiletter control sequences out of 15000+600000
+ 25631 strings out of 476025
+ 492088 string characters out of 5790017
+ 2037388 words of memory out of 5000000
+ 45380 multiletter control sequences out of 15000+600000
  600334 words of font info for 238 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 128i,20n,122p,564b,1208s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 128i,20n,122p,564b,1351s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2023/texmf-dist/fonts/type1/public/gfsdidot/GFSDidot-Italic.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/gfsdidot/GFSOlga.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss17.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/pxfonts/pxex.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/pxfonts/pxsy.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/pxfonts/pxsya.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/pxfonts/rpxmi.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/txfonts/txtt.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb>
-Output written on template.pdf (1 page, 1929858 bytes).
+Output written on template.pdf (1 page, 1948195 bytes).
 PDF statistics:
- 92 PDF objects out of 1000 (max. 8388607)
- 56 compressed objects within 1 object stream
- 5 named destinations out of 1000 (max. 500000)
- 53 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 189 PDF objects out of 1000 (max. 8388607)
+ 150 compressed objects within 2 object streams
+ 78 named destinations out of 1000 (max. 500000)
+ 58 words of extra memory for PDF output out of 10000 (max. 10000000)
 

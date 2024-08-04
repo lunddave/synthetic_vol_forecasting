@@ -1,13 +1,375 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
-\bibitem{Smith:2023qr}
-J.~M. Smith and A.~B. Jones.
-\newblock {\em {B}ook {T}itle}.
-\newblock Publisher, 7th edition, 2023.
+\bibitem{abadie2010synthetic}
+Alberto Abadie, Alexis Diamond, and Jens Hainmueller.
+\newblock Synthetic control methods for comparative case studies: Estimating the effect of california’s tobacco control program.
+\newblock {\em Journal of the American Statistical Association}, 105(490):493--505, 2010.
 
-\bibitem{Smith:2024jd}
-A.~B. Jones and J.~M. Smith.
-\newblock {A}rticle {T}itle.
-\newblock {\em Journal title}, 13(52):123--456, 3 2024.
+\bibitem{andersen2003modeling}
+Torben~G Andersen, Tim Bollerslev, Francis~X Diebold, and Paul Labys.
+\newblock Modeling and forecasting realized volatility.
+\newblock {\em Econometrica}, 71(2):579--625, 2003.
+
+\bibitem{de2006forecasting}
+Giovanni De~Luca et~al.
+\newblock Forecasting volatility using high-frequency data.
+\newblock {\em Statistica Applicata}, 18, 2006.
+
+\bibitem{andersen2007roughing}
+Torben~G Andersen, Tim Bollerslev, and Francis~X Diebold.
+\newblock Roughing it up: Including jump components in the measurement, modeling, and forecasting of return volatility.
+\newblock {\em The review of economics and statistics}, 89(4):701--720, 2007.
+
+\bibitem{bauwens2006regime}
+Luc Bauwens, Arie Preminger, and Jeroen~VK Rombouts.
+\newblock Regime switching garch models.
+\newblock 2006.
+
+\bibitem{engle2001good}
+Robert~F Engle and Andrew~J Patton.
+\newblock What good is a volatility model?
+\newblock {\em Quantitative finance}, 1(2):237, 2001.
+
+\bibitem{andersen2010stochastic}
+Torben~G Andersen and Luca Benzoni.
+\newblock Stochastic volatility.
+\newblock {\em CREATES Research Paper}, (2010-10), 2010.
+
+\bibitem{Kenton}
+Will Kenton.
+\newblock Event-driven investing strategies and examples, 2022.
+
+\bibitem{andersen2008realized}
+Torben~Gustav Andersen and Luca Benzoni.
+\newblock Realized volatility, working paper 2008-14.
+\newblock 2008.
+
+\bibitem{zivot2009practical}
+Eric Zivot.
+\newblock Practical issues in the analysis of univariate garch models.
+\newblock In {\em Handbook of Financial Time Series}, pages 113--155. Springer, 2009.
+
+\bibitem{box2013box}
+George Box.
+\newblock Box and jenkins: time series analysis, forecasting and control.
+\newblock In {\em A Very British Affair: Six Britons and the Development of Time Series Analysis During the 20th Century}, pages 161--215. Springer, 2013.
+
+\bibitem{clements1998forecasting}
+Michael Clements and David~F Hendry.
+\newblock {\em Forecasting economic time series}.
+\newblock Cambridge University Press, 1998.
+
+\bibitem{bollerslev1986generalized}
+Tim Bollerslev.
+\newblock Generalized autoregressive conditional heteroskedasticity.
+\newblock {\em Journal of econometrics}, 31(3):307--327, 1986.
+
+\bibitem{bose1988edgeworth}
+Arup Bose.
+\newblock Edgeworth correction by bootstrap in autoregressions.
+\newblock {\em The Annals of Statistics}, pages 1709--1722, 1988.
+
+\bibitem{brownlees2011practical}
+Christian~T Brownlees, Robert~F Engle, and Bryan~T Kelly.
+\newblock A practical guide to volatility forecasting through calm and storm.
+\newblock {\em Available at SSRN 1502915}, 2011.
+
+\bibitem{chinco2019sparse}
+Alex Chinco, Adam~D Clark-Joseph, and Mao Ye.
+\newblock Sparse signals in the cross-section of returns.
+\newblock {\em The Journal of Finance}, 74(1):449--492, 2019.
+
+\bibitem{christensen1998relation}
+Bent~J Christensen and Nagpurnanand~R Prabhala.
+\newblock The relation between implied and realized volatility.
+\newblock {\em Journal of Financial Economics}, 50(2):125--150, 1998.
+
+\bibitem{clements1996intercept}
+Michael~P Clements and David~F Hendry.
+\newblock Intercept corrections and structural change.
+\newblock {\em Journal of Applied Econometrics}, 11(5):475--494, 1996.
+
+\bibitem{clements1996multi}
+Michael~P Clements and David~F Hendry.
+\newblock Multi-step estimation for forecasting.
+\newblock {\em Oxford Bulletin of Economics and Statistics}, 58(4):657--684, 1996.
+
+\bibitem{dendramis2020similarity}
+Yiannis Dendramis, George Kapetanios, and Massimiliano Marcellino.
+\newblock A similarity-based approach for macroeconomic forecasting.
+\newblock {\em Journal of the Royal Statistical Society Series A: Statistics in Society}, 183(3):801--827, 2020.
+
+\bibitem{dwyer2009financial}
+Gerald~P Dwyer and Paula Tkac.
+\newblock The financial crisis of 2008 in fixed-income markets.
+\newblock {\em Journal of International Money and Finance}, 28(8):1293--1316, 2009.
+
+\bibitem{engle2002new}
+Robert Engle.
+\newblock New frontiers for arch models.
+\newblock {\em Journal of Applied Econometrics}, 17(5):425--446, 2002.
+
+\bibitem{engle1982autoregressive}
+Robert~F Engle.
+\newblock Autoregressive conditional heteroscedasticity with estimates of the variance of united kingdom inflation.
+\newblock {\em Econometrica: Journal of the econometric society}, pages 987--1007, 1982.
+
+\bibitem{faraway2016extending}
+Julian~J Faraway.
+\newblock {\em Extending the linear model with R: generalized linear, mixed effects and nonparametric regression models}.
+\newblock CRC press, 2016.
+
+\bibitem{foroni2022forecasting}
+Claudia Foroni, Massimiliano Marcellino, and Dalibor Stevanovic.
+\newblock Forecasting the covid-19 recession and recovery: Lessons from the financial crisis.
+\newblock {\em International Journal of Forecasting}, 38(2):596--612, 2022.
+
+\bibitem{fosten2019panel}
+Jack Fosten and Ryan Greenaway-McGrevy.
+\newblock Panel data nowcasting.
+\newblock {\em Available at SSRN 3435691}, 2019.
+
+\bibitem{greenaway2020multistep}
+Ryan Greenaway-McGrevy.
+\newblock Multistep forecast selection for panel data.
+\newblock {\em Econometric Reviews}, 39(4):373--406, 2020.
+
+\bibitem{goodell2013us}
+John~W Goodell and Sami V{\"a}h{\"a}maa.
+\newblock Us presidential elections and implied volatility: The role of political uncertainty.
+\newblock {\em Journal of Banking \& Finance}, 37(3):1108--1117, 2013.
+
+\bibitem{han2014asymptotic}
+Heejoon Han and Dennis Kristensen.
+\newblock Asymptotic theory for the qmle in garch-x models with stationary and nonstationary covariates.
+\newblock {\em Journal of Business \& Economic Statistics}, 32(3):416--429, 2014.
+
+\bibitem{hansen2005forecast}
+Peter~R Hansen and Asger Lunde.
+\newblock A forecast comparison of volatility models: does anything beat a garch (1,1)?
+\newblock {\em Journal of applied econometrics}, 20(7):873--889, 2005.
+
+\bibitem{hansen2008least}
+Bruce~E Hansen.
+\newblock Least-squares forecast averaging.
+\newblock {\em Journal of Econometrics}, 146(2):342--350, 2008.
+
+\bibitem{hansen2012realized}
+Peter~Reinhard Hansen, Zhuo Huang, and Howard~Howan Shek.
+\newblock Realized garch: a joint model for returns and realized measures of volatility.
+\newblock {\em Journal of Applied Econometrics}, 27(6):877--906, 2012.
+
+\bibitem{kane1996p}
+Alex Kane, Alan~J Marcus, and Jaesun Noh.
+\newblock The p/e multiple and market volatility.
+\newblock {\em Financial Analysts Journal}, 52(4):16--24, 1996.
+
+\bibitem{klossner2018outside}
+Stefan Kl{\"o}${\ss}$ner and Gregor Pfeifer.
+\newblock Outside the box: Using synthetic control methods as a forecasting technique.
+\newblock {\em Applied Economics Letters}, 25(9):615--618, 2018.
+
+\bibitem{li2006presidential}
+Jinliang Li and Jeffery~A Born.
+\newblock Presidential election uncertainty and common stock returns in the united states.
+\newblock {\em Journal of Financial Research}, 29(4):609--622, 2006.
+
+\bibitem{lin2021minimizing}
+Jilei Lin and Daniel~J Eck.
+\newblock Minimizing post-shock forecasting error through aggregation of outside information.
+\newblock {\em International Journal of Forecasting}, 2021.
+
+\bibitem{mayhew1995implied}
+Stewart Mayhew.
+\newblock Implied volatility.
+\newblock {\em Financial Analysts Journal}, 51(4):8--20, 1995.
+
+\bibitem{mayhew2008incumbency}
+David~R Mayhew.
+\newblock Incumbency advantage in us presidential elections: The historical record.
+\newblock {\em Political Science Quarterly}, 123(2):201--228, 2008.
+
+\bibitem{pesaran1999pooled}
+M~Hashem Pesaran, Yongcheol Shin, and Ron~P Smith.
+\newblock Pooled mean group estimation of dynamic heterogeneous panels.
+\newblock {\em Journal of the American statistical Association}, 94(446):621--634, 1999.
+
+\bibitem{atkins2018financial}
+Adam Atkins, Mahesan Niranjan, and Enrico Gerding.
+\newblock Financial news predicts stock market volatility better than close price.
+\newblock {\em The Journal of Finance and Data Science}, 4(2):120--137, 2018.
+
+\bibitem{boudoukh2019information}
+Jacob Boudoukh, Ronen Feldman, Shimon Kogan, and Matthew Richardson.
+\newblock Information, trading, and volatility: Evidence from firm-specific news.
+\newblock {\em The Review of Financial Studies}, 32(3):992--1033, 2019.
+
+\bibitem{hendry1994theory}
+D~Hendry and M~Clements.
+\newblock On a theory of intercept corrections in macroeconometric forecasting.
+\newblock 1994.
+
+\bibitem{dominguez2006defines}
+Kathryn~ME Dominguez and Freyan Panthaki.
+\newblock What defines ‘news’ in foreign exchange markets?
+\newblock {\em Journal of International Money and Finance}, 25(1):168--198, 2006.
+
+\bibitem{guerron2017macroeconomic}
+Pablo Guerr{\'o}n-Quintana and Molin Zhong.
+\newblock Macroeconomic forecasting in times of crises.
+\newblock 2017.
+
+\bibitem{timmermann2006forecast}
+Allan Timmermann.
+\newblock Forecast combinations.
+\newblock {\em Handbook of economic forecasting}, 1:135--196, 2006.
+
+\bibitem{wang2023forecast}
+Xiaoqian Wang, Rob~J Hyndman, Feng Li, and Yanfei Kang.
+\newblock Forecast combinations: An over 50-year review.
+\newblock {\em International Journal of Forecasting}, 39(4):1518--1547, 2023.
+
+\bibitem{wolfers2016financial}
+Justin Wolfers and Eric Zitzewitz.
+\newblock What do financial markets think of the 2016 election.
+\newblock {\em Unpublished manuscript. brook. gs/2njI8U3}, 2016.
+
+\bibitem{News_2024}
+Bloomberg News.
+\newblock Election 2024: What will markets do with trump victory over biden?
+\newblock \url{https://www.bloomberg.com/news/articles/2024-01-21/trump-s-2016-win-shook-markets-traders-won-t-get-fooled-again}, Jan 2024.
+
+\bibitem{nygov}
+{New York State Government}.
+\newblock At novel coronavirus briefing, governor cuomo declares state of emergency to contain spread of virus.
+\newblock \url{https://www.governor.ny.gov/news/novel-coronavirus-briefing-governor-cuomo-declares-state-emergency-contain-spread-virus}, 2020.
+\newblock Accessed on 2020-05-24.
+
+\bibitem{abadie2022synthetic}
+Alberto Abadie and Jaume Vives-i Bastida.
+\newblock Synthetic controls in action.
+\newblock {\em arXiv preprint arXiv:2203.06279}, 2022.
+
+\bibitem{eklund2007forecast}
+Jana Eklund and Sune Karlsson.
+\newblock Forecast combination and model averaging using predictive measures.
+\newblock {\em Econometric Reviews}, 26(2-4):329--363, 2007.
+
+\bibitem{liu2020forecasting}
+Laura Liu, Hyungsik~Roger Moon, and Frank Schorfheide.
+\newblock Forecasting with dynamic panel data models.
+\newblock {\em Econometrica}, 88(1):171--201, 2020.
+
+\bibitem{steegen2016increasing}
+Sara Steegen, Francis Tuerlinckx, Andrew Gelman, and Wolf Vanpaemel.
+\newblock Increasing transparency through a multiverse analysis.
+\newblock {\em Perspectives on Psychological Science}, 11(5):702--712, 2016.
+
+\bibitem{hastie2009elements}
+Trevor Hastie, Robert Tibshirani, and Jerome Friedman.
+\newblock {\em The elements of statistical learning: data mining, inference, and prediction}.
+\newblock Springer Science \& Business Media, 2009.
+
+\bibitem{romer1989does}
+Christina~D Romer and David~H Romer.
+\newblock Does monetary policy matter? a new test in the spirit of friedman and schwartz.
+\newblock {\em NBER macroeconomics annual}, 4:121--170, 1989.
+
+\bibitem{kilian2017structural}
+Lutz Kilian and Helmut L{\"u}tkepohl.
+\newblock {\em Structural vector autoregressive analysis}.
+\newblock Cambridge University Press, 2017.
+
+\bibitem{tsay2005analysis}
+Ruey~S Tsay.
+\newblock {\em Analysis of financial time series}, volume 543.
+\newblock John wiley \& sons, 2005.
+
+\bibitem{abadie2003economic}
+Alberto Abadie and Javier Gardeazabal.
+\newblock The economic costs of conflict: A case study of the basque country.
+\newblock {\em American Economic Review}, 93(1):113--132, 2003.
+
+\bibitem{RePEc:pra:mprapa:100301}
+Genaro Sucarrat.
+\newblock {garchx: Flexible and Robust GARCH-X Modelling}.
+\newblock MPRA Paper 100301, University Library of Munich, Germany, May 2020.
+
+\bibitem{sharma2016forecasting}
+Prateek Sharma et~al.
+\newblock Forecasting stock market volatility using realized garch model: International evidence.
+\newblock {\em The Quarterly Review of Economics and Finance}, 59:222--230, 2016.
+
+\bibitem{francq2019garch}
+Christian Francq and Jean-Michel Zakoian.
+\newblock {\em GARCH models: structure, statistical inference and financial applications}.
+\newblock John Wiley \& Sons, 2019.
+
+\bibitem{abadie2021penalized}
+Alberto Abadie and J{\'e}r{\'e}my L’hour.
+\newblock A penalized synthetic control estimator for disaggregated data.
+\newblock {\em Journal of the American Statistical Association}, 116(536):1817--1834, 2021.
+
+\bibitem{Silver_2016}
+Nate Silver.
+\newblock 2016 election forecast, Nov 2016.
+
+\bibitem{phillips1996forecasting}
+Robert~F Phillips.
+\newblock Forecasting in the presence of large shocks.
+\newblock {\em Journal of Economic Dynamics and Control}, 20(9-10):1581--1608, 1996.
+
+\bibitem{wang2020forecasting}
+Lu~Wang, Feng Ma, and Guoshan Liu.
+\newblock Forecasting stock volatility in the presence of extreme shocks: Short-term and long-term effects.
+\newblock {\em Journal of Forecasting}, 39(5):797--810, 2020.
+
+\bibitem{ryan2015package}
+Jeffrey~A Ryan, Joshua~M Ulrich, Wouter Thielen, Paul Teetor, Steve Bronder, and Maintainer Joshua~M Ulrich.
+\newblock Package ‘quantmod’.
+\newblock 2015.
+
+\bibitem{wachowicz2020wharton}
+Erin Wachowicz.
+\newblock Wharton research data services (wrds).
+\newblock {\em Journal of Business \& Finance Librarianship}, 25(3-4):184--187, 2020.
+
+\bibitem{rossi2021forecasting}
+Barbara Rossi.
+\newblock Forecasting in the presence of instabilities: How we know whether models predict well and how to improve them.
+\newblock {\em Journal of Economic Literature}, 59(4):1135--1190, 2021.
+
+\bibitem{rossi2013advances}
+Barbara Rossi.
+\newblock Advances in forecasting under instability.
+\newblock In {\em Handbook of economic forecasting}, volume~2, pages 1203--1324. Elsevier, 2013.
+
+\bibitem{corsi2012har}
+Fulvio Corsi, Francesco Audrino, and Roberto Ren{\'o}.
+\newblock Har modeling for realized volatility forecasting.
+\newblock 2012.
+
+\bibitem{BBC_News_2016}
+None.
+\newblock Leave campaign ahead in uk's eu referendum vote, Jun 2016.
+
+\bibitem{Bailey_2024}
+Ric Bailey.
+\newblock How the bbc reports polling day, May 2024.
+
+\bibitem{clements2005evaluating}
+Michael~P Clements and David~F Hendry.
+\newblock Evaluating a model by forecast performance.
+\newblock {\em Oxford Bulletin of Economics and Statistics}, 67:931--956, 2005.
+
+\bibitem{bowes2018stock}
+David~R Bowes.
+\newblock Stock market volatility and presidential election uncertainty: Evidence from political futures markets.
+\newblock {\em Journal of Applied Business Research}, 34(1), 2018.
+
+\bibitem{lundquist2024volatility}
+David Lundquist and Daniel Eck.
+\newblock Volatility forecasting using similarity-based parameter correction and aggregated shock information.
+\newblock {\em arXiv preprint arXiv:2406.08738}, 2024.
 
 \end{thebibliography}

@@ -2,45 +2,53 @@ This is BibTeX, Version 0.99d (TeX Live 2023)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: template.aux
 The style file: unsrt.bst
-Database file #1: sample.bib
-You've used 2 entries,
+Database file #1: ../synthVolForecast.bib
+Warning--empty journal in bauwens2006regime
+Warning--there's a number but no volume in andersen2010stochastic
+Warning--empty journal in andersen2008realized
+Warning--empty journal in hendry1994theory
+Warning--empty journal in guerron2017macroeconomic
+Warning--empty journal in ryan2015package
+Warning--empty journal in corsi2012har
+You've used 75 entries,
             1791 wiz_defined-function locations,
-            461 strings with 3705 characters,
-and the built_in function-call counts, 424 in all, are:
-= -- 36
-> -- 16
-< -- 0
-+ -- 6
-- -- 4
-* -- 29
-:= -- 72
-add.period$ -- 6
-call.type$ -- 2
-change.case$ -- 2
+            878 strings with 14868 characters,
+and the built_in function-call counts, 16101 in all, are:
+= -- 1521
+> -- 581
+< -- 8
++ -- 227
+- -- 152
+* -- 1059
+:= -- 2524
+add.period$ -- 225
+call.type$ -- 75
+change.case$ -- 69
 chr.to.int$ -- 0
-cite$ -- 2
-duplicate$ -- 19
-empty$ -- 44
-format.name$ -- 4
-if$ -- 94
+cite$ -- 82
+duplicate$ -- 701
+empty$ -- 1634
+format.name$ -- 152
+if$ -- 3558
 int.to.chr$ -- 0
-int.to.str$ -- 2
-missing$ -- 3
-newline$ -- 13
-num.names$ -- 2
-pop$ -- 7
+int.to.str$ -- 75
+missing$ -- 74
+newline$ -- 375
+num.names$ -- 75
+pop$ -- 200
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 7
+skip$ -- 315
 stack$ -- 0
-substring$ -- 21
-swap$ -- 2
-text.length$ -- 0
+substring$ -- 1237
+swap$ -- 120
+text.length$ -- 8
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 0
-while$ -- 3
-width$ -- 3
-write$ -- 24
+warning$ -- 7
+while$ -- 173
+width$ -- 77
+write$ -- 796
+(There were 7 warnings)

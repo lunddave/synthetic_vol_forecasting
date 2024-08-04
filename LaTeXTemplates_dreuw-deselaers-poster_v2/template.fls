@@ -1640,6 +1640,11 @@ INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/txfonts/txss.tfm
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/txfonts/txsssl.tfm
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/txfonts/txsssl.tfm
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/txfonts/txsssl.tfm
+INPUT ./Color-Variation-Blue-Block-I-Orange-Background.png
+INPUT ./Color-Variation-Blue-Block-I-Orange-Background.png
+INPUT Color-Variation-Blue-Block-I-Orange-Background.png
+INPUT ./Color-Variation-Blue-Block-I-Orange-Background.png
+INPUT ./Color-Variation-Blue-Block-I-Orange-Background.png
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/txfonts/txbss.tfm
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/txfonts/txbss.tfm
 INPUT ./Figures//Tolmukapea.jpg
@@ -1700,6 +1705,10 @@ INPUT template.bbl
 INPUT ./template.bbl
 INPUT template.bbl
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/txfonts/txss.tfm
+INPUT ./Color-Variation-Blue-Block-I-Orange-Background.png
+INPUT ./Color-Variation-Blue-Block-I-Orange-Background.png
+INPUT Color-Variation-Blue-Block-I-Orange-Background.png
+INPUT ./Color-Variation-Blue-Block-I-Orange-Background.png
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/vf/public/txfonts/txbss.vf
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/txfonts/rtxphvb.tfm
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/txfonts/rtxbss.tfm
