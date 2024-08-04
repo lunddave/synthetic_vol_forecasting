@@ -180,11 +180,11 @@ In order to motivate our procedure, we provide a visual illustration.  In Figure
       \begin{tikzpicture}
         \node[anchor=south west,inner sep=0] at (0,0) {\includegraphics[width=\textwidth]{simulation_plots/motivating_piece_convex_combination.png}};
         % \draw[red,ultra thick,rounded corners] (7.5,5.3) rectangle (9.4,6.2);
-        \node[draw,text width=4.45cm] at (9.8,3.2) {$\textcolor{blue}{\hat\sigma^{2}_{adjusted} = \hat\sigma^{2}_{unadjusted} + \hat\omega^{*}}$ };
-        \node[draw,text width=2.62cm] at (14.8,2.8) {$\textcolor{blue}{\hat\omega^{*} = \sum^{n+1}_{i=2}\pi_{i}\hat\omega^{*}_{i}}$ };    
+        % \node[draw,text width=4.45cm] at (9.8,3.2) {$\textcolor{blue}{\hat\sigma^{2}_{adjusted} = \hat\sigma^{2}_{unadjusted} + \hat\omega^{*}}$ };
+        % \node[draw,text width=2.62cm] at (14.8,2.8) {$\textcolor{blue}{\hat\omega^{*} = \sum^{n+1}_{i=2}\pi_{i}\hat\omega^{*}_{i}}$ };    
         
     \end{tikzpicture}
-      \caption{The simulated time series experiences a volatility shock between trading days 1223 and 1224.  We have truncated the series after $T^{*}+1 = 1224$.  The GARCH prediction, in red, fails even to approach the volatility spike at $T^{*}+1$, as do some adjusted predictions, which are orange.  In contrast, the GARCH forecast adjusted by $\hat\omega^{*}$, a convex combination of the estimated shocks in the donor pool, achieves directional correctness as well as a smaller absolute loss in its prediction.}    \label{fig:motivating_piece_convex_combination}
+      \caption{The simulated time series experiences a volatility shock between trading days 1223 and 1224.  We have truncated the series after $T^{*}+1 = 1224$.  The GARCH prediction, in red, fails even to approach the volatility spike at $T^{*}+1$, as do some adjusted predictions, which are orange.  In contrast, the GARCH forecast adjusted by $\hat\omega^{*} = \sum^{n+1}_{i=2}\pi_{i}\hat\omega^{*}_{i} $, a convex combination of the estimated shocks in the donor pool, achieves directional correctness as well as a smaller absolute loss in its prediction.}    \label{fig:motivating_piece_convex_combination}
    
       \end{center}
     \end{figure}
