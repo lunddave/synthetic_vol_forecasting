@@ -1696,10 +1696,11 @@ INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/pxfonts/t1pxss.fd
 INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/pxfonts/t1pxss.fd
 INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/pxfonts/t1pxss.fd
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/txfonts/t1xss.tfm
-INPUT ./Figures//Fibroblastid.jpg
-INPUT Figures//Fibroblastid.jpg
-INPUT ./Figures//Fibroblastid.jpg
-INPUT ./Figures//Fibroblastid.jpg
+INPUT ../real_data_output_plots/FriMay311830522024_IYG_None_2016-06-22.png
+INPUT ../real_data_output_plots/FriMay311830522024_IYG_None_2016-06-22.png
+INPUT ../real_data_output_plots/FriMay311830522024_IYG_None_2016-06-22.png
+INPUT ../real_data_output_plots/FriMay311830522024_IYG_None_2016-06-22.png
+INPUT ../real_data_output_plots/FriMay311830522024_IYG_None_2016-06-22.png
 INPUT ./template.bbl
 INPUT template.bbl
 INPUT ./template.bbl

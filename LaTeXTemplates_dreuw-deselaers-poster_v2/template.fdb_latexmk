@@ -1,14 +1,15 @@
 # Fdb version 4
-["bibtex template"] 1722814234 "template.aux" "template.bbl" "template" 1722814235 0
+["bibtex template"] 1722831006 "template.aux" "template.bbl" "template" 1722831070 0
   "../synthVolForecast.bib" 1720569228 21128 c97d6b988e6fb2311c4dfd121c4c43a9 ""
   "/usr/local/texlive/2023/texmf-dist/bibtex/bst/base/unsrt.bst" 1292289607 18030 1376b4b231b50c66211e47e42eda2875 ""
-  "template.aux" 1722814235 6629 fac98cfbbdf2acddad641a8646fe4cbb "pdflatex"
+  "template.aux" 1722831070 6629 fac98cfbbdf2acddad641a8646fe4cbb "pdflatex"
   (generated)
   "template.bbl"
   "template.blg"
   (rewritten before read)
-["pdflatex"] 1722814234 "/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/LaTeXTemplates_dreuw-deselaers-poster_v2/template.tex" "template.pdf" "template" 1722814235 0
-  "/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/LaTeXTemplates_dreuw-deselaers-poster_v2/template.tex" 1722814232 12036 7ef5f1ebe9d1988f3a876bf8bd115629 ""
+["pdflatex"] 1722831069 "/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/LaTeXTemplates_dreuw-deselaers-poster_v2/template.tex" "template.pdf" "template" 1722831070 0
+  "../real_data_output_plots/FriMay311830522024_IYG_None_2016-06-22.png" 1717194652 46348 fd9ed2120e8a12d6732904450910129b ""
+  "/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/LaTeXTemplates_dreuw-deselaers-poster_v2/template.tex" 1722831069 12045 b1ff9c758ed19fa8f0bd530ca59f9149 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/gfsdidot/gfsudidotmath.enc" 1382567697 2332 8c80ad5a087cf0067af5b417304cff67 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/gfsdidot/gpdidoti.enc" 1512424646 9952 04aceae6527d409489e1b72572543f51 ""
@@ -268,15 +269,14 @@
   "/usr/local/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1705898712 7883459 cb6809e0afdf7777ef8c5f2f25f8f275 ""
   "/usr/local/texlive/2023/texmf.cnf" 1678822455 577 1b2b1af17af2508fb20dd85783af4050 ""
   "Color-Variation-Blue-Block-I-Orange-Background.png" 1722812739 1105 2cfeb28920f3ad37ae80b7ca8e338705 ""
-  "Figures//Fibroblastid.jpg" 1675459166 1196031 4586114cceabf6743681870dd8aeb612 ""
   "Figures//Tolmukapea.jpg" 1675447250 653480 1eec97ed292c65b5c5bd54bfe0606110 ""
   "beamerthemeI6pd2.sty" 1722813546 6167 d06de4009c58613db12e470927dd774d ""
   "tangocolors.sty" 1252936164 2141 61df698f50c023c26043862485d39f0e ""
-  "template.aux" 1722814235 6629 fac98cfbbdf2acddad641a8646fe4cbb "pdflatex"
-  "template.bbl" 1722814234 15059 bfd69d9a88bd3526f4bcac3419aaf889 "bibtex template"
-  "template.nav" 1722814235 307 9e520c26371a1250ff9fc1fe87f9c655 "pdflatex"
-  "template.out" 1722814235 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "template.tex" 1722814232 12036 7ef5f1ebe9d1988f3a876bf8bd115629 ""
+  "template.aux" 1722831070 6629 fac98cfbbdf2acddad641a8646fe4cbb "pdflatex"
+  "template.bbl" 1722831006 15059 bfd69d9a88bd3526f4bcac3419aaf889 "bibtex template"
+  "template.nav" 1722831070 307 9e520c26371a1250ff9fc1fe87f9c655 "pdflatex"
+  "template.out" 1722831070 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "template.tex" 1722831069 12045 b1ff9c758ed19fa8f0bd530ca59f9149 ""
   (generated)
   "template.aux"
   "template.log"
