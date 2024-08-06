@@ -1166,8 +1166,8 @@ synth_vol_fit <- function(X,
            col = "blue", cex = 3.9, pch = 10)
 
     #Now an arrow between the unadj and the adj predictions
-    arrows( T_star[1] + 2, pred, T_star[1] + 2,  adjusted_pred_list[[1]], col = "blue", length = .03)
-    arrows( T_star[1] + 2,  adjusted_pred_list[[1]], T_star[1] + 2, pred, col = "blue", length = .03)
+    arrows( T_star[1] + 3, pred, T_star[1] + 3,  adjusted_pred_list[[1]], col = "pink", length = .08)
+    arrows( T_star[1] + 3,  adjusted_pred_list[[1]], T_star[1] + 3, pred, col = "pink", length = .08)
 
     #Now an arrow between the ... ?
     # arrows( T_star[1] -1, as.numeric(sigma2_shock_period_only), T_star[1] -1,  adjusted_pred_list[[1]], col = "blue", length = .03)

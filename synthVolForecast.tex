@@ -184,7 +184,7 @@ In order to motivate our procedure, we provide a visual illustration.  In Figure
         % \node[draw,text width=2.62cm] at (14.8,2.8) {$\textcolor{blue}{\hat\omega^{*} = \sum^{n+1}_{i=2}\pi_{i}\hat\omega^{*}_{i}}$ };    
         
     \end{tikzpicture}
-      \caption{The simulated time series experiences a volatility shock between trading days 1223 and 1224.  We have truncated the series after $T^{*}+1 = 1224$.  The GARCH prediction, in red, fails even to approach the volatility spike at $T^{*}+1$, as do some adjusted predictions, which are orange.  In contrast, the GARCH forecast adjusted by $\hat\omega^{*} = \sum^{n+1}_{i=2}\pi_{i}\hat\omega^{*}_{i} $, a convex combination of the estimated shocks in the donor pool, achieves directional correctness as well as a smaller absolute loss in its prediction.}    \label{fig:motivating_piece_convex_combination}
+      \caption{The simulated time series experiences a volatility shock between trading days 1,656 and 1,657.  The GARCH prediction, in red, fails even to approach the volatility spike at $T^{*}+1$, as do several adjusted predictions, which are orange.  In contrast, the GARCH forecast adjusted by $\hat\omega^{*} = \sum^{n+1}_{i=2}\pi_{i}\hat\omega^{*}_{i} $, a convex combination of the estimated shocks in the donor pool, achieves directional correctness as well as a smaller absolute loss in its prediction.  The pink vertical line serves to indicate the adjustment of size $\hat\omega^{*}$ that allows the blue bullseye to more closely approach the ground truth.}    \label{fig:motivating_piece_convex_combination}
    
       \end{center}
     \end{figure}

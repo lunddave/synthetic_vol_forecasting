@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.21)  4 AUG 2024 21:11
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.21)  5 AUG 2024 19:22
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1095,27 +1095,27 @@ Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 )
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 50.
+(hyperref)                removing `\mathsurround' on input line 53.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 50.
+(hyperref)                removing `\z@' on input line 53.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `superscript' on input line 50.
+(hyperref)                removing `superscript' on input line 53.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 50.
+(hyperref)                removing `\mathsurround' on input line 53.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 50.
+(hyperref)                removing `\z@' on input line 53.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `superscript' on input line 50.
+(hyperref)                removing `superscript' on input line 53.
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/pxfonts/ot1pxss.fd
 File: ot1pxss.fd 2000/12/14 v1.0
@@ -1190,8 +1190,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
  (/usr/local/texlive/2023/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-Package hyperref Info: Link coloring OFF on input line 66.
- (./template.out) (./template.out)
+Package hyperref Info: Link coloring OFF on input line 69.
 \@outlinefile=\write5
 \openout5 = `template.out'.
 
@@ -1225,41 +1224,115 @@ File: upxsyc.fd 2000/12/14 v1.0
 <Color-Variation-Blue-Block-I-Orange-Background.png, id=13, 171.64125pt x 170.6375pt>
 File: Color-Variation-Blue-Block-I-Orange-Background.png Graphic file (type png)
 <use Color-Variation-Blue-Block-I-Orange-Background.png>
-Package pdftex.def Info: Color-Variation-Blue-Block-I-Orange-Background.png  used on input line 66.
+Package pdftex.def Info: Color-Variation-Blue-Block-I-Orange-Background.png  used on input line 69.
 (pdftex.def)             Requested size: 598.21922pt x 594.77443pt.
-<Figures//Tolmukapea.jpg, id=15, 616.704pt x 448.5558pt>
-File: Figures//Tolmukapea.jpg Graphic file (type jpg)
-<use Figures//Tolmukapea.jpg>
-Package pdftex.def Info: Figures//Tolmukapea.jpg  used on input line 283.
-(pdftex.def)             Requested size: 685.57037pt x 498.6557pt.
- (/usr/local/texlive/2023/texmf-dist/tex/latex/pxfonts/t1pxss.fd
+
+/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/LaTeXTemplates_dreuw-deselaers-poster_v2/template.tex:293: Misplaced alignment tab character &.
+\beamer@doifinframe ...par $\text {Forecast 1: } &
+                                                   \hat \sigma ^{2}_{unadjus...
+l.293 \end{frame}
+                  % End of the enclosing frame
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+
+/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/LaTeXTemplates_dreuw-deselaers-poster_v2/template.tex:293: LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.293 \end{frame}
+                  % End of the enclosing frame
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/LaTeXTemplates_dreuw-deselaers-poster_v2/template.tex:293: Missing $ inserted.
+<inserted text> 
+                $
+l.293 \end{frame}
+                  % End of the enclosing frame
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/LaTeXTemplates_dreuw-deselaers-poster_v2/template.tex:293: Missing } inserted.
+<inserted text> 
+                }
+l.293 \end{frame}
+                  % End of the enclosing frame
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/LaTeXTemplates_dreuw-deselaers-poster_v2/template.tex:293: Extra }, or forgotten \endgroup.
+\par ...m \@noitemerr {\@@par }\fi \else {\@@par }
+                                                  \fi 
+l.293 \end{frame}
+                  % End of the enclosing frame
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/LaTeXTemplates_dreuw-deselaers-poster_v2/template.tex:293: Misplaced alignment tab character &.
+\beamer@doifinframe ...t}\\ \text {Forecast 2: } &
+                                                   \hat \sigma ^{2}_{adjuste...
+l.293 \end{frame}
+                  % End of the enclosing frame
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+
+/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/LaTeXTemplates_dreuw-deselaers-poster_v2/template.tex:293: Package amsmath Error: \hat allowed only in math mode.
+
+See the amsmath package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.293 \end{frame}
+                  % End of the enclosing frame
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/LaTeXTemplates_dreuw-deselaers-poster_v2/template.tex:293: Missing $ inserted.
+<inserted text> 
+                $
+l.293 \end{frame}
+                  % End of the enclosing frame
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+(/usr/local/texlive/2023/texmf-dist/tex/latex/pxfonts/t1pxss.fd
 File: t1pxss.fd 2000/12/14 v1.0
 )
-<../real_data_output_plots/FriMay311830522024_IYG_None_2016-06-22.png, id=18, 803.0pt x 602.25pt>
+<../real_data_output_plots/FriMay311830522024_IYG_None_2016-06-22.png, id=15, 803.0pt x 602.25pt>
 File: ../real_data_output_plots/FriMay311830522024_IYG_None_2016-06-22.png Graphic file (type png)
 <use ../real_data_output_plots/FriMay311830522024_IYG_None_2016-06-22.png>
-Package pdftex.def Info: ../real_data_output_plots/FriMay311830522024_IYG_None_2016-06-22.png  used on input line 283.
+Package pdftex.def Info: ../real_data_output_plots/FriMay311830522024_IYG_None_2016-06-22.png  used on input line 293.
 (pdftex.def)             Requested size: 1054.73357pt x 791.16797pt.
- (./template.bbl
-
-LaTeX Warning: Command \ss invalid in math mode on input line 168.
-
-
-Overfull \hbox (158.80228pt too wide) in paragraph at lines 245--246
-\OT1/pxtt/m/n/25.1 novel-[]coronavirus-[]briefing-[]governor-[]cuomo-[]declares-[]state-[]emergency-[]contain-[]spread-[]virus$[]\OT1/pxss/m/n/25.1 , 
- []
-
-)
-Overfull \vbox (8251.43022pt too high) detected at line 283
+ (./template.bbl)
+Overfull \vbox (69.82333pt too high) detected at line 293
  []
 
 File: Color-Variation-Blue-Block-I-Orange-Background.png Graphic file (type png)
 <use Color-Variation-Blue-Block-I-Orange-Background.png>
-Package pdftex.def Info: Color-Variation-Blue-Block-I-Orange-Background.png  used on input line 283.
+Package pdftex.def Info: Color-Variation-Blue-Block-I-Orange-Background.png  used on input line 293.
 (pdftex.def)             Requested size: 598.21922pt x 594.77443pt.
 [1{/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/base/8r.enc}
 
-{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/gfsdidot/gfsudidotmath.enc}{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/gfsdidot/gpdidoti.enc} <./Color-Variation-Blue-Block-I-Orange-Background.png> <./Figures//Tolmukapea.jpg> <../real_data_output_plots/FriMay311830522024_IYG_None_2016-06-22.png>]
+{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/gfsdidot/gfsudidotmath.enc} <./Color-Variation-Blue-Block-I-Orange-Background.png> <../real_data_output_plots/FriMay311830522024_IYG_None_2016-06-22.png>]
 \tf@nav=\write6
 \openout6 = `template.nav'.
 
@@ -1270,22 +1343,31 @@ Package pdftex.def Info: Color-Variation-Blue-Block-I-Orange-Background.png  use
 \openout8 = `template.snm'.
 
  (./template.aux)
-Package rerunfilecheck Info: File `template.out' has not changed.
-(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `template.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `template.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 25630 strings out of 476025
- 492354 string characters out of 5790017
- 2036388 words of memory out of 5000000
- 45378 multiletter control sequences out of 15000+600000
- 600334 words of font info for 238 fonts, out of 8000000 for 9000
+ 25304 strings out of 476025
+ 483865 string characters out of 5790017
+ 1925388 words of memory out of 5000000
+ 45135 multiletter control sequences out of 15000+600000
+ 587944 words of font info for 200 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 128i,20n,122p,564b,1351s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2023/texmf-dist/fonts/type1/public/gfsdidot/GFSDidot-Italic.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/gfsdidot/GFSOlga.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss17.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/pxfonts/pxex.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/pxfonts/pxsy.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/pxfonts/pxsya.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/pxfonts/rpxmi.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/txfonts/txtt.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb>
-Output written on template.pdf (1 page, 785964 bytes).
+ 128i,20n,122p,564b,1152s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2023/texmf-dist/fonts/type1/public/gfsdidot/GFSOlga.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss17.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/pxfonts/pxex.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/pxfonts/pxsy.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/pxfonts/pxsya.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/pxfonts/pxsyb.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/pxfonts/rpxmi.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb>
+Output written on template.pdf (1 page, 103677 bytes).
 PDF statistics:
- 187 PDF objects out of 1000 (max. 8388607)
- 148 compressed objects within 2 object streams
- 78 named destinations out of 1000 (max. 500000)
- 58 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 83 PDF objects out of 1000 (max. 8388607)
+ 49 compressed objects within 1 object stream
+ 4 named destinations out of 1000 (max. 500000)
+ 53 words of extra memory for PDF output out of 10000 (max. 10000000)
 
