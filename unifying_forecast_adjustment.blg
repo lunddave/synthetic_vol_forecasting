@@ -5,45 +5,45 @@ The style file: plainnat.bst
 Database file #1: synthVolForecast.bib
 Warning--empty journal in guerron2017macroeconomic
 Warning--empty journal in hendry1994theory
-You've used 9 entries,
+You've used 10 entries,
             2773 wiz_defined-function locations,
-            649 strings with 6351 characters,
-and the built_in function-call counts, 3709 in all, are:
-= -- 332
-> -- 198
-< -- 8
-+ -- 66
-- -- 57
-* -- 273
-:= -- 578
-add.period$ -- 27
-call.type$ -- 9
-change.case$ -- 45
-chr.to.int$ -- 9
-cite$ -- 20
-duplicate$ -- 177
-empty$ -- 313
-format.name$ -- 82
-if$ -- 769
+            657 strings with 6606 characters,
+and the built_in function-call counts, 4008 in all, are:
+= -- 358
+> -- 208
+< -- 9
++ -- 70
+- -- 60
+* -- 290
+:= -- 623
+add.period$ -- 30
+call.type$ -- 10
+change.case$ -- 49
+chr.to.int$ -- 10
+cite$ -- 22
+duplicate$ -- 192
+empty$ -- 345
+format.name$ -- 86
+if$ -- 833
 int.to.chr$ -- 1
 int.to.str$ -- 1
 missing$ -- 10
-newline$ -- 53
-num.names$ -- 36
-pop$ -- 91
+newline$ -- 58
+num.names$ -- 40
+pop$ -- 103
 preamble$ -- 1
-purify$ -- 37
+purify$ -- 40
 quote$ -- 0
-skip$ -- 143
+skip$ -- 156
 stack$ -- 0
-substring$ -- 118
-swap$ -- 7
+substring$ -- 120
+swap$ -- 9
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 94
+type$ -- 105
 warning$ -- 2
-while$ -- 35
+while$ -- 38
 width$ -- 0
-write$ -- 117
+write$ -- 129
 (There were 2 warnings)
