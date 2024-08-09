@@ -356,13 +356,13 @@ where $(\alpha(\mu^{2}_{\epsilon^{*}} + \sigma^{2}_{\epsilon^{*}}) + \beta)$ may
 
 \subsection{Consistency of the fixed effect estimators}
 
-\textcolor{red}{There needs to be words here. You can't just dump math results without any context.}
+The fixed effects estimated from the donor series are central to our forecast adjustment strategy.  We now show that the $\hat\omega^{*}_{i,t}$ possess an important asymptotic property that bolsters that overall reliability of the method proposed herein.
 
 \begin{prop}\label{omega_consistency}
 Assume
 \begin{enumerate}
   \item For each $i$, $\{a_{i,t}\}_{t=0,...,T_i}$ obeys a GARCH-X($m,s$), as laid out in Equation $\eqref{GARCH-X}$, with volatility shocks found in $\mc{M}_{1}$, where $T_i$ is the length of the $i$th series.
-  \item For each $i, \{\omega_{i,t}^{*}\}_{t=0,...,T_i}$ is potentially non-zero at $\{T^{*}_{i}+1,... ,T^{*}_{i}+k\}$, $\omega_{i,T^{*}+1}^{*}\equiv...\equiv\omega_{i,T^{*}+k}^{*}$, and zero otherwise, where the arrival of $T_{i}^{*}$ is governed by a time-invariant distribution on $\{a_{i,t}\}_{t=0,...,T_i-1}$. \label{stationarity_of_omega_i_t}
+  \item For each $i, \{D^{vol}_{i,t}\omega_{i,t}^{*}\}_{t=0,...,T_i}$ is potentially non-zero at $\{T^{*}_{i}+1,... ,T^{*}_{i}+k\}$, $\omega_{i,T^{*}+1}^{*}\equiv...\equiv\omega_{i,T^{*}+k}^{*}$, and zero otherwise, where the arrival of $T_{i}^{*}$ is governed by a time-invariant distribution on $\{a_{i,t}\}_{t=0,...,T_i-1}$. \label{stationarity_of_omega_i_t}
   \item The conditions in Assumption 0 of \citet{han2014asymptotic} prevail.
 \end{enumerate}
 Then for any $i$, $\hat\omega_{i,t}^{*} \xlongrightarrow{p} \omega_{i,T^{*}+1}^{*}$ as $t\rightarrow\infty$.
@@ -380,9 +380,9 @@ Since the shock is assumed to arrive uniformly at random for each $i$, $1 \leq i
 The result follows from the consistency proof of the QMLE in GARCH-X models, as established by \citet{han2014asymptotic}. 
 \end{proof-of-proposition}
 
-\subsection{Consistency of the Forecast Function}
+\subsection{Consistency of the Conditional Forecast Function}
 
-\textcolor{red}{There needs to be words here. You can't just dump math results without any context.}
+Having established the consistency of the estimators $\hat\omega^{*}_{i,t}$, we extend that result to prove the consistency of the conditional forecast function itself.
 
   \begin{prop}\label{sigma_consistency}
     Assume
