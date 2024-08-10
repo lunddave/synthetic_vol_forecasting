@@ -389,7 +389,7 @@ The result follows from the consistency proof of the QMLE in GARCH-X models, as 
 
 \subsection{Consistency of the Conditional Forecast Function}
 
-Having established the consistency of the estimators $\hat\omega^{*}_{i,t}$, we extend that result to prove the consistency of the conditional forecast function itself.
+Having established the consistency of the estimators $\hat\omega^{*}_{i,T^{*}+1}$, we extend that result to prove the consistency of the conditional forecast function itself.
 
   \begin{prop}\label{sigma_consistency}
     Assume
@@ -404,15 +404,15 @@ Having established the consistency of the estimators $\hat\omega^{*}_{i,t}$, we 
 \begin{proof-of-proposition}
 Recall the conditional expectation of the variance for the GARCH-X($m$,$s$) model:
 \begin{align*}
-\E_{T^{*}}[\sigma^{2}_{i,t+1}|\mathcal{F}_{t}] = \omega_{i} + \omega^{*}_i + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \text{ .}
+\E[\sigma^{2}_{i,t+1}|\mathcal{F}_{t}] = \omega_{i} + \omega^{*}_{i,t+1} + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \text{ .}
 \end{align*}
 By replacing parameters with their estimates, we arrive at the prediction 
 \begin{align*}
-\hat\sigma^{2}_{i,t+1}|\mathcal{F}_{t} = \hat\omega_{i} + \hat\omega^{*}_i + \sum^{m_{i}}_{k=1}\hat\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\hat\beta_{i,j}\hat\sigma_{i,t-j}^{2} + \hat\gamma_{i}^{T} \x_{i,t} \text { ,}
+\hat\sigma^{2}_{i,t+1}|\mathcal{F}_{t} = \hat\omega_{i} + \hat\omega^{*}_{i,t+1} + \sum^{m_{i}}_{k=1}\hat\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\hat\beta_{i,j}\hat\sigma_{i,t-j}^{2} + \hat\gamma_{i}^{T} \x_{i,t} \text { ,}
 \end{align*}
 which converges in probability to 
 \begin{align*}
-  \hat\sigma^{2}_{i,t+1}|\mathcal{F}_{t} = \omega_{i} + \omega^{*}_i + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t}
+  \hat\sigma^{2}_{i,t+1}|\mathcal{F}_{t} = \omega_{i} + \omega^{*}_{i,t+1} + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t}
   \end{align*}
 
 as $t\rightarrow\infty$ by a simple application of Slutsky's Theorem.
