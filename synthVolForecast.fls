@@ -1102,9 +1102,6 @@ INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics/lscape.sty
 INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics/graphics.sty
 INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/geometry/geometry.sty
-INPUT ./synthVolForecast.aux
-INPUT synthVolForecast.aux
-INPUT synthVolForecast.aux
 OUTPUT synthVolForecast.aux
 INPUT /usr/local/texlive/2023/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 INPUT /usr/local/texlive/2023/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
@@ -1128,18 +1125,8 @@ INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics/graphicx.sty
 INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/pdflscape/pdflscape.sty
 INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics/color.sty
-INPUT ./synthVolForecast.out
-INPUT synthVolForecast.out
-INPUT ./synthVolForecast.out
-INPUT synthVolForecast.out
-INPUT ./synthVolForecast.out
-INPUT synthVolForecast.out
-INPUT ./synthVolForecast.out
-INPUT synthVolForecast.out
-OUTPUT synthVolForecast.pdf
-INPUT ./synthVolForecast.out
-INPUT ./synthVolForecast.out
 OUTPUT synthVolForecast.out
+OUTPUT synthVolForecast.pdf
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmti10.tfm
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
@@ -1269,6 +1256,7 @@ INPUT ./synthVolForecast.out
 INPUT ./synthVolForecast.out
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb
