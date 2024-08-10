@@ -361,7 +361,7 @@ In other words, for a GARCH(1,1), once two time points removed from the longest 
 \end{align*}
 where $(\alpha(\mu^{2}_{\epsilon^{*}} + \sigma^{2}_{\epsilon^{*}}) + \beta)$ may be greater than 1, permitting explosive behavior, at least in the short term.  After both shocks have been exhausted, their influence disappears quickly.  This short-memory effect has implications for the method being developed herein.  First, there may be different risks associated with over/underestimating level shock and vol shock lengths.  Estimation of effects in donor pool should err on the side of underestimating, not overestimating, the length of the max shock, since overestimation of the shock length brings with it the risk of underestimating $\omega^{*}$.  Second, a practitioner of the method needs some idea of how long the operator expects the respective shocks in the time series under study to last.  There are couple of obvious strategies: take all the donors, and over all the donor shock lengths, take the minimium.  Alternatively, one could take the maximum.
 
-\subsection{Consistency of the shock estimates}
+\subsection{Consistency of the shock estimators}
 
 The estimators $\hat\omega^{*}_{i,T^{*}+1}$ in \eqref{adjustment} are central to our forecast adjustment strategy.  Here we show that the quantities $\hat\omega^{*}_{i,T^{*}+1}$ possess an important asymptotic property that bolsters that overall reliability of the method proposed herein.
 
@@ -372,7 +372,7 @@ Assume
   \item For each $i, \{D^{vol}_{i,t}\omega_{i,t}^{*}\}_{t=0,...,T_i}$ is potentially non-zero at $\{T^{*}_{i}+1,... ,T^{*}_{i}+k\}$, $\omega_{i,T^{*}+1}^{*}\equiv...\equiv\omega_{i,T^{*}+k}^{*}$, and zero otherwise, where the arrival of $T_{i}^{*}$ is governed by a time-invariant distribution on $\{a_{i,t}\}_{t=0,...,T_i-1}$ and observable by the researcher. \label{stationarity_of_omega_i_t}
   \item The conditions in Assumption 0 of \citet{han2014asymptotic} hold.
 \end{enumerate}
-Then for any $i$, $\hat\omega_{i,T^{*}+1}^{*} \overset{p}{\longrightarrow} \omega_{i,T^{*}+1}^{*}$ as $t\rightarrow\infty$.
+Then for any $i, 1\leq i \leq n+1$, and for any $r, 1\leq r \leq k$, $\hat\omega_{i,T^{*}+r}^{*} \overset{p}{\longrightarrow} \omega_{i,T^{*}+r}^{*}$ as $t\rightarrow\infty$.  In particular, if we let $\hat\omega_{i}^{*}$ denote the shock estimate estimated using time points $T^{*1}+1,...,T^{*}+k$, then $\hat\omega_{i}^{*} \overset{p}{\longrightarrow} \omega_{i,T^{*}+r}^{*}$.
 \end{prop}
 
 \begin{lem}
@@ -397,12 +397,11 @@ Having established the consistency of the estimators $\hat\omega^{*}_{i,T^{*}+1}
       \item All conditions listed in Proposition \ref{omega_consistency}.
       \item There exist weights $\{\pi_{i}\}_{i=2}^{n+1}$ such that $\textbf{v}_{1,T^{*}} = \sum^{n+1}_{i=2}\weight_{i} \textbf{v}_{i,T^{*}}$.
      \end{enumerate}
-  Then $\hat\sigma^{2}_{adjusted}\overset{p}{\longrightarrow}\sigma^{2}_{1,T^{*}+1}$ as $t\rightarrow\infty$. 
+  Then for any $r$, $1\leq r \leq k$, $\hat\sigma^{2}_{adjusted,T^{*}+r}\overset{p}{\longrightarrow}\sigma^{2}_{1,T^{*}+r}$ as $t\rightarrow\infty$. 
   \end{prop}
 
-
 \begin{proof-of-proposition}
-Recall the conditional expectation of the variance for the GARCH-X($m$,$s$) model:
+Without loss of generality, we prove the case for $r = 1$.  The general case follows from iterative one-step-ahead forecasts.  Recall the conditional expectation of the variance for the GARCH-X($m$,$s$) model:
 \begin{align*}
 \E[\sigma^{2}_{i,t+1}|\mathcal{F}_{t}] = \omega_{i} + \omega^{*}_{i,t+1} + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \text{ .}
 \end{align*}
