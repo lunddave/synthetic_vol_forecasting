@@ -219,11 +219,21 @@ We will suppose that a researcher has multivariate time series data $\y_{i,t} = 
 Let $I(\cdot)$ be an indicator function.  Let $T_i$ denote the time length of the time series $i$ for $i = 1, \ldots, n+1$, and let $T_i^*$ denote the largest time index prior to the arrival of the news shock, with $T_i^* < T_i$, to ensure that there is at least one post-shock realization for each series $i$.  Let $\delta, \x_{i,t} \in \mathbb{R}^{p}$.  Let $\mathcal{F}$ with a single-variable subscript denote a univariate, time-invariant $\sigma$-algebra, and $\mathcal{F}_{i,t}$ denote the canonical product filtration for donor $i$ at time $t$.  Let $D^{return}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + L_{i, return}\})$ and $D^{vol}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + L_{i, vol}\})$ and $L_{i,return},L_{i,vol}$ denote the lengths of the log return and volatility shocks, respectively.  For $t= 1, \ldots, T_i$ and $i = 1, \ldots, n+1$, the model $\mc{M}_1$ is defined as 
 \begin{align*}
   \mc{M}_1 \colon \begin{array}{l}
-     \sigma^{2}_{i,t} = \omega_{i} + \omega^{*}_{i,t} + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t}, \text{ }\\[.2cm]
+     \sigma^{2}_{i,t} = \omega_{i} + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} + \omega^{*}_{i,t}, \text{ }\\[.2cm]
      a_{i,t} = \sigma_{i,t}((1-D^{return}_{i,t})\epsilon_{i,t} + D^{return}_{i,t}\epsilon^{*}_{i}),\\[.2cm]
-    \omega_{i,t}^{*} = D^{vol}_{i,t}[\mu_{\omega^{*}}+\delta'\x_{i,t}+ u_{i,t}],
+    \omega_{i,t}^{*} = D^{vol}_{i,t}[\mu_{\omega^{*}}+\delta^{T}\x_{i,t}+ u_{i,t}],
   \end{array}
   \end{align*}
+
+  \textbf{What are we trying to accomplish and accommodate here in specifying the shocks?}
+  \begin{enumerate}
+    \item Parsimony (e.g. if we don't need time-varying shocks, let's get rid of them)
+    \item Realism (i.e. we want something that reasonably captures what happens)
+    \item The specification should be harmonious with the estimation of the shocks.  The estimation should not be too wacky
+    \item Asymptotic results - these specification should, if possible, allow the formal results to go through just fine
+  \end{enumerate}
+
+  \textcolor{red}{There is a potential problem here with the covariates varying with time.  The problem, briefly stated, is that if, during the volatility shock period, the covariates are not equal, then the shocks will not be equal in distribution, and it therefore becomes illegitimate to estimate the shocks with one single indicator variable.  We can nevertheless estimate the shocks with as many indicator variables as the volatility shock length is.  That seems complicated.  Another option is stipulating that for the entire length of the volatility shock, the `signal' of the shock is solely determined by the covariate values at T*.  One simple way to implement that is by simply defining the shock to depend on covariate v.T*.  In the first case, do we need to make any distributional assumptions about the covariates?}\\
 with time-invariant error structure
   \begin{align*}
     \epsilon_{i,t} &\simiid \mc{F}_{\epsilon} \text{ with }  \; \mrm{E}_{\mc{F}_{\epsilon}}(\epsilon) = 0, \mrm{Var}_{\mc{F}_{\epsilon}}(\epsilon)  = 1,  \\
@@ -231,7 +241,7 @@ with time-invariant error structure
     u_{i,t} & \simiid  \mc{F}_{u} \text{ with }  \; \mrm{E}_{\mc{F}_{u}}(u) = 0, \mrm{Var}_{\mc{F}_{u}}(u) = \sigma^2_{u},\\
     \epsilon_{i,t} & \indep  \epsilon^{*}_{i,t}  \indep u_{i,t}.
     \end{align*}
-Let $\mc{M}_{0}$ denote the subclass of $\mc{M}_{1}$ models such that $\delta \equiv 0$.  Note that $\mc{M}_{0}$ assumes that $\omega^{*}_{i,t}$ have no dependence on the covariates and are i.i.d. with $\E[ \omega^{*}_i]=\mu_{\omega^{*}}$, where the lack of an index $i$ on $\mu_{\omega^{*}}$ indicates that it is shared across donors. Models $\mc{M}_{1}$ and $\mc{M}_{0}$ parameterize changing dynamics after a shock is observed (when $t \geq T_i^*+1$ for each series $i$). It is important to note that our modeling setup will additionally suppose that $\x_{i,t}$ will be observed before $\sigma_{i,t}^2$ is observed. 
+Let $\mc{M}_{0}$ denote the subclass of $\mc{M}_{1}$ models such that $\delta \equiv 0$.  Note that $\mc{M}_{0}$ assumes that $\omega^{*}_{i,t}$ have no dependence on the covariates and are i.i.d. with $\E[ \omega^{*}_{i,t}]=\mu_{\omega^{*}}$, where the lack of indices $i$ or $t$ on $\mu_{\omega^{*}}$ indicates that it is shared across donors and time-invariant. Models $\mc{M}_{1}$ and $\mc{M}_{0}$ parameterize changing dynamics after a shock is observed (when $t \geq T_i^*+1$ for each series $i$). It is important to note that our modeling setup will additionally suppose that $\x_{i,t}$ will be observed before $\sigma_{i,t}^2$ is observed. 
 
 The model $\mc{M}_1$ is defined by a volatility equation and mean equation, as is any GARCH model.  The decision to model the volatility shock $\omega^{*}_{i,t}$ as an additive random effect is consistent with our setup.  However, the decision to model the level effect $\epsilon^{*}_{i,t}$ as a temporary rupture in the otherwise i.i.d. sequence of innovations $\epsilon_{i,t}$ may not be intuitive.  One way of arguing for this choice is that, in a discrete time series model, if we assume the arrival of news in the time between $T^{*}$ and $T^{*}+1$, we do not have an easy way to express a conditional distribution of the innovation $\epsilon_{T^{*}+1}$ given the arrival of information.  Using $\epsilon^{*}_{i,t}$ thus breaks this impasse.  This justification also explains why we do not parameterize the level shock at $T^{*}+1$ as a sum of two shocks, $\epsilon_{i,T^{*}+1}$ and $\epsilon^{*}_{i,T^{*}+1}$, which would represent the level shock as generated by two independent sources of stochasticity. While we want to model the shock at $T^{*}+1$ as potentially large in absolute value, we also want to retain the property of a unitary source of noise.
 
@@ -251,6 +261,8 @@ We now turn to the next section, where $\textbf{V}_{t}$ is employed in a procedu
   \text{F2: } & \hat\sigma^{2}_{adjusted,T^{*}+1} = \hat\E[\sigma^{2}_{1,T_{1}^{*}+1}|\mathcal{F}_{T^{*}}] + \hat\omega^{*}_{T^{*}+1} && = && \hat\omega_{i} + \sum^{m_{i}}_{k=1}\hat\alpha_{i,k}a^{2}_{i,T^{*}+1-k} + \sum_{j=1}^{s_{i}}\hat\beta_{i,j}\sigma_{i,T^{*}+1-j}^{2} + \hat\gamma_{i}^{T} \x_{i,t} + \hat\omega^{*}_{T^{*}+1} \text{ .}
 \end{align*}
 
+\textcolor{red}{We may want to suppress the time-indexation on the aggregated shock estimator here.}
+
 Note that GARCH models can be parameterized as ARMA models on the squares of the scalar time series $a^{2}_{t}$ \citep[][p. 18, p. 46]{tsay2005analysis,francq2019garch}, assuming that $a_{t}$ satisfies fourth-order stationarity.  This fact matters for forecasting because the $h$-step-ahead forecasting function for a GARCH model is, just like for an ARMA model, the conditional expectation function, $\mathbb{E}[ \sigma^{2}_{i,T^{*}+h} | \mathcal{F}_{T^{*}}]$, or practically speaking, the estimate thereof, $\hat{\mathbb{E}}[ \sigma^{2}_{i,T^{*}+h} |\mathcal{F}_{T^{*}}]$ \citep{zivot2009practical}.  Here we have presented one-step-ahead forecasts for a GARCH-X(1,1), without loss of generality.  For $h=2,3,4,...$, the conditional expectation is computed recursively, as is standard for iterative autoregressive forecasts. Note that such $h$-step ahead predictions will additionally require $\x_{i,t}$, $t \geq T^*_{i} + 2$ to be known, or at least well-estimated in practice. Thus we will focus on the 1-step forecast unless stated otherwise.
 
 \subsection{Excess Volatility Estimators}
@@ -260,6 +272,8 @@ Note that GARCH models can be parameterized as ARMA models on the squares of the
 \begin{equation} \label{adjustment}
 	  \hat\omega^{*}_{T^{*}+1} = \sum^{n+1}_{i=2}\weight_{i}\hat\omega^{*}_{i,T^{*}+1},
 \end{equation}
+
+\textcolor{red}{Here, we probably need a piecewise definition that basically says `adjust during the shock in the time series under study; otherwise, the adjustment is zero.'}
     which will be taken to be our forecast adjustment term.  Since the weights $\{\weight_{i}\}_{i=2}^{n+1}$ are computed using $\mathcal{F}_{T^{*}_{i}}$, the set $\{\weight_{i}\}_{i=2}^{n+1}$ is deterministic, $\textit{modulo}$ any stochastic ingredient in the numerical methods employed to approximate $\x_{1,T^{*}}$ using a convex combination of donor covariates.  We say more about the properties of the shocks $\omega^{*}_{i,T^{*}+1}$ in section $\ref{SVF_properties}$. 
 
     Following \citet{abadie2003economic,abadie2010synthetic,lin2021minimizing}, let $\|\cdot\|_{\textbf{S}}$ denote any semi-norm on $\mathbb{R}^{p}$, and define
@@ -303,7 +317,7 @@ Supposing that we can define optimal weights, then uniqueness may be a concern. 
 
 We are interested in point forecasts for $\sigma^{2}_{1,T^{*}+h}|\mathcal{F}_{T^{*}}$, $h=1,2,...,$ the $h$-step ahead conditional variance for the time series under study.  Let $L^{h}$ with the subscripted pair $\{$prediction method, ground truth estimator$\}$, denote the loss function for an $h$-step-ahead forecast using a given prediction function and ground truth estimator.  For example, if we suppress the time index, the one-step-ahead MSE using our method and Realized Volatility as the ground truth is
 
-$$ \text{MSE}^{1}_{\text{SVF, RV}} = (\hat\sigma^{2}_{SVF} - \hat\sigma^{2}_{RV})^{2}$$
+$$ \text{MSE}^{1}_{\text{aggregated estimaor, RV}} = (\hat\sigma^{2}_{aggregated estimaor} - \hat\sigma^{2}_{RV})^{2}$$
 Also of interest in absolute percentage error for an $h$-step-ahead forecast, defined as
 
 \[ 
@@ -320,20 +334,20 @@ What distinguishes QL Loss is that it is multiplicative rather than additive.  T
 
 \section{Properties of Volatility Shocks and Shock Estimators}\label{SVF_properties}
 
-In this section we will provide estimation properties for our shock  estimator \eqref{adjustment} and our adjusted forecast. These results will be with $m_i = s_i = 1$, for all $i = 1,\ldots,n+1$ in model $\mc{M}_1$ unless otherwise stated, ie a GARCH(1,1) model with additional parameterizations for shocks. Note that the dual level-volatility shock in $\mc{M}_1$ has a marginal effect on the conditional variance $\sigma^{2}_{i,t}$ that reflects the geometric decay of innovations in autoregressive models.  As usual, assume $\alpha+\beta < 1$.  Furthermore, assume that both the volatility shock and the level shock are of length one only, and consider a circumstance with no exogenous covariate $\x_{i,t}$. Assume also that $r\geq 2$, which is necessary in order to isolate the effects of the level shock $\epsilon^{*}_{i,t}$.  Then
+In this section we will provide estimation properties for our shock  estimator \eqref{adjustment} and our adjusted forecast. These results will be with $m_i = s_i = 1$, for all $i = 1,\ldots,n+1$ in model $\mc{M}_1$ unless otherwise stated, i.e. a GARCH(1,1) model with additional parameterizations for shocks. Note that the dual level-volatility shock in $\mc{M}_1$ has a marginal effect on the conditional variance $\sigma^{2}_{i,t}$ that reflects the geometric decay of innovations in autoregressive models.  As usual, assume $\alpha+\beta < 1$.  Furthermore, assume that both the volatility shock and the level shock are of length one only, and consider a circumstance with no exogenous covariate $\x_{i,t}$. Assume also that $r\geq 2$, which is necessary in order to isolate the effects of the level shock $\epsilon^{*}_{i,t}$.  Then
 \begin{align}
 \sigma^{2}_{i,T^{*}+r+1} | \mathcal{F}_{T^{*}+r} & = \omega_{i} + \alpha_{i} a_{T^{*}+r}^{2} + \beta_{i}\sigma^{2}_{i,T^{*}+r} \label{eq0}\\
 & = \omega_{i} + \alpha_{i}(\sigma_{i,T^{*}+r}\epsilon_{T^{*}+r})^{2} + \beta_{i}\sigma^{2}_{i,T^{*}+r}\notag \\
 & = \omega_{i} + \sigma^{2}_{i,T^{*}+r}(\alpha_{i} (\epsilon_{T^{*}+r})^{2} + \beta_{i}) \text{ .}\notag 
 \end{align}
-In Equation \eqref{eq0}, observe that $\omega_{i,t}^{*}$ and $\epsilon^{*}_{i,t}$ each appear at most once, through the term $\sigma^{2}_{T^{*}+r}$.  This might lead one to suspect  geometric decay of the shocks $\omega_{i,t}^{*}$ and $\epsilon^{*}_{i}$.  Such a suspicion is easier to substantiate by examining the conditional expectation of the variance, $\mathbb{E}[ \sigma^{2}_{i,T^{*}+r+1} |\mathcal{F}_{T^{*}+r}]$, which also happens to be the principal forecasting tool for a GARCH model \citep{zivot2009practical}.  Indeed, if we assume unit variance for all $\epsilon_{i,t}$ except, of course, $\epsilon^{*}_{i,t}$, then we have
+In Equation \eqref{eq0}, observe that $\omega_{i,T^{*}+1}^{*}$ and $\epsilon^{*}_{i,T^{*}+1}$ each appear at most once, through the term $\sigma^{2}_{T^{*}+r}$.  This might lead one to suspect  geometric decay of the shocks $\omega_{i,T^{*}+1}^{*}$ and $\epsilon^{*}_{i,T^{*}+1}$.  Such a suspicion is easier to substantiate by examining the conditional expectation of the variance, $\mathbb{E}[ \sigma^{2}_{i,T^{*}+r+1} |\mathcal{F}_{T^{*}+r}]$, which also happens to be the principal forecasting tool for a GARCH model \citep{zivot2009practical}.  Indeed, if we assume unit variance for all $\epsilon_{i,t}$ except, of course, $\epsilon^{*}_{i,t}$, then we have
 \begin{align*}
 \mathbb{E}[ \sigma^{2}_{i,T^{*}+r+1} |\mathcal{F}_{T^{*}+r}] & = \mathbb{E}[\omega_{i} + \alpha a_{T^{*}+r}^{2} + \beta\sigma^{2}_{i,T^{*}+r} |\mathcal{F}_{T^{*}+r}] \\
 & = \omega_{i} + \mathbb{E}[\alpha(\sigma_{i,T^{*}+r}\epsilon_{T^{*}+r})^{2} |\mathcal{F}_{T^{*}+r}] + \beta\sigma^{2}_{i,T^{*}+r} \\
 & = \omega_{i} + \alpha\sigma_{i,T^{*}+r}^{2} + \beta\sigma^{2}_{i,T^{*}+r} \tag{Due to the unit variance assumption}\\
 & = \omega_{i} + \sigma^{2}_{i,T^{*}+r}(\alpha + \beta) \text{ .} 
 \end{align*}
-By repeated substitution, in conditional expectation, the shock is $\mathcal{O}((\alpha+\beta)^{r})$.  We generalize this observation in the following proposition.
+By repeated substitution, in conditional expectation, the shock belongs to the equivalence class $\mathcal{O}((\alpha+\beta)^{r})$.  We generalize this observation in the following proposition.
 
 \begin{prop}
 Let $a_{t}$ be a mean-zero time series obeying a GARCH(1,1) specification with unit-variance errors, all prior to the arrival of a volatility shock of length $L_{\text{vol}} \geq 1$ and level shock of length $L_{\text{return}}\geq 1$ at some time $T^{*}+1$.  Then for any $r$ such that $r \geq \text{max}\{L_{i, vol},L_{i, level}\} + 1$, 
@@ -359,7 +373,7 @@ In other words, for a GARCH(1,1), once two time points removed from the longest 
 & = \omega_{i} + \alpha\sigma^{2}_{i,T^{*}+1}(\mu^{2}_{\epsilon^{*}} + \sigma^{2}_{\epsilon^{*}}) + \beta\sigma^{2}_{i,T^{*}+1} \\
 & = \omega_{i} + \sigma^{2}_{i,T^{*}+1}(\alpha(\mu^{2}_{\epsilon^{*}} + \sigma^{2}_{\epsilon^{*}}) + \beta)\text{,}
 \end{align*}
-where $(\alpha(\mu^{2}_{\epsilon^{*}} + \sigma^{2}_{\epsilon^{*}}) + \beta)$ may be greater than 1, permitting explosive behavior, at least in the short term.  After both shocks have been exhausted, their influence disappears quickly.  This short-memory effect has implications for the method being developed herein.  First, there may be different risks associated with over/underestimating level shock and vol shock lengths.  Estimation of effects in donor pool should err on the side of underestimating, not overestimating, the length of the max shock, since overestimation of the shock length brings with it the risk of underestimating $\omega^{*}$.  Second, a practitioner of the method needs some idea of how long the operator expects the respective shocks in the time series under study to last.  There are couple of obvious strategies: take all the donors, and over all the donor shock lengths, take the minimium.  Alternatively, one could take the maximum.
+where $(\alpha(\mu^{2}_{\epsilon^{*}} + \sigma^{2}_{\epsilon^{*}}) + \beta)$ may be greater than 1, permitting explosive behavior, at least in the short term.  After both shocks have been exhausted, their influence disappears quickly.  This short-memory effect has implications for the method being developed herein.  First, there may be different risks associated with overestimating and underestimating level shock and volatility shock lengths.  Therefore, estimation of effects among the donors should err on the side of underestimating, not overestimating, the length of the max shock, since overestimation of the shock length brings with it the risk of underestimating $\omega^{*}$.  Second, a practitioner of the method needs some idea of how long the the respective shocks in the time series under study might last.  There are couple of obvious strategies: take all the donors, and over all the donor shock lengths, take the minimium.  Alternatively, one could take the maximum.
 
 \subsection{Consistency of the shock estimators}
 
@@ -369,10 +383,10 @@ The estimators $\hat\omega^{*}_{i,T^{*}+1}$ in \eqref{adjustment} are central to
 Assume
 \begin{enumerate}
   \item For each $i$, $\{a_{i,t}\}_{t=0,...,T_i}$ obeys a GARCH-X($m,s$), as laid out in Equation $\eqref{GARCH-X}$, with volatility shocks found in $\mc{M}_{1}$, where $T_i$ is the length of the $i$th series.
-  \item For each $i, \{D^{vol}_{i,t}\omega_{i,t}^{*}\}_{t=0,...,T_i}$ is potentially non-zero at $\{T^{*}_{i}+1,... ,T^{*}_{i}+k\}$, $\omega_{i,T^{*}+1}^{*}\equiv...\equiv\omega_{i,T^{*}+k}^{*}$, and zero otherwise, where the arrival of $T_{i}^{*}$ is governed by a time-invariant distribution on $\{a_{i,t}\}_{t=0,...,T_i-1}$ and observable by the researcher. \label{stationarity_of_omega_i_t}
+  \item For each $i, \{D^{vol}_{i,t}\omega_{i,t}^{*}\}_{t=0,...,T_i}$ is potentially non-zero at $\{T^{*}_{i}+1,... ,T^{*}_{i}+k\}$, $\omega_{i,T^{*}+1}^{*}\equiv...\equiv\omega_{i,T^{*}+k}^{*}$, and zero otherwise, where the arrival of $T_{i}^{*}$ is governed by a time-invariant distribution on $\{a_{i,t}\}_{t=0,...,T_i-1}$, and both the arrival and conclusion of the shock is observable by the researcher. \label{stationarity_of_omega_i_t}
   \item The conditions in Assumption 0 of \citet{han2014asymptotic} hold.
 \end{enumerate}
-Then for any $i, 1\leq i \leq n+1$, and for any $r, 1\leq r \leq k$, $\hat\omega_{i,T^{*}+r}^{*} \overset{p}{\longrightarrow} \omega_{i,T^{*}+r}^{*}$ as $t\rightarrow\infty$.  In particular, if we let $\hat\omega_{i}^{*}$ denote the shock estimate estimated using time points $T^{*}+1,...,T^{*}+k$, then $\hat\omega_{i}^{*} \overset{p}{\longrightarrow} \omega_{i}^{*}$ as $t\rightarrow\infty$. \textcolorred{this particular point is unnecessary, pending a revision to the time-indexation in the whole paper}
+Then for any $i, 1\leq i \leq n+1$, and for any $r, 1\leq r \leq k$, $\hat\omega_{i,T^{*}+r}^{*} \overset{p}{\longrightarrow} \omega_{i,T^{*}+r}^{*}$ as $t\rightarrow\infty$.  In particular, if we let $\hat\omega_{i}^{*}$ denote the shock estimate estimated using time points $T^{*}+1,...,T^{*}+k$, then $\hat\omega_{i}^{*} \overset{p}{\longrightarrow} \omega_{i}^{*}$ as $t\rightarrow\infty$.
 \end{prop}
 
 \begin{lem}
@@ -403,19 +417,21 @@ Having established the consistency of the estimators $\hat\omega^{*}_{i,T^{*}+1}
 \begin{proof-of-proposition}
 Without loss of generality, we prove the case for $r = 1$.  The general case follows from iterative one-step-ahead forecasts.  Recall the conditional expectation of the variance for the GARCH-X($m$,$s$) model:
 \begin{align*}
-\E[\sigma^{2}_{i,t+1}|\mathcal{F}_{t}] = \omega_{i} + \omega^{*}_{i,t+1} + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \text{ .}
+\E[\sigma^{2}_{i,t+1}|\mathcal{F}_{t}] = \omega_{i} +  \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} + \omega^{*}_{i,t+1} \text{ .}
 \end{align*}
 By replacing parameters with their estimates, we arrive at the prediction 
 \begin{align*}
-\hat\sigma^{2}_{i,t+1}|\mathcal{F}_{t} = \hat\omega_{i} + \hat\omega^{*}_{i,t+1} + \sum^{m_{i}}_{k=1}\hat\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\hat\beta_{i,j}\hat\sigma_{i,t-j}^{2} + \hat\gamma_{i}^{T} \x_{i,t} \text { ,}
+\hat\sigma^{2}_{i,t+1}|\mathcal{F}_{t} = \hat\omega_{i} + \sum^{m_{i}}_{k=1}\hat\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\hat\beta_{i,j}\hat\sigma_{i,t-j}^{2} + \hat\gamma_{i}^{T} \x_{i,t} + \hat\omega^{*}_{i,t+1} \text { ,}
 \end{align*}
 which converges in probability to 
 \begin{align*}
-  \hat\sigma^{2}_{i,t+1}|\mathcal{F}_{t} = \omega_{i} + \omega^{*}_{i,t+1} + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t}
+  \hat\sigma^{2}_{i,t+1}|\mathcal{F}_{t} = \omega_{i} + \omega^{*}_{i,t+1} + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} + \hat\omega^{*}_{i,t+1}
   \end{align*}
 
 as $t\rightarrow\infty$ by a simple application of Slutsky's Theorem.
 \end{proof-of-proposition}
+
+\textcolor{red}{We need to check back with \ref{sigma_consistency} to make sure that the estimated shocks make sense here.}
 
 \subsection{Asymptotic Loss}
 
@@ -450,18 +466,18 @@ In this section, we demonstrate the effectiveness of the proposed method using M
 %For brevity, we refer to this as the signal-to-noise phenomenon.  However, this phenomenon is complicated somewhat by at least two nuances: additional parameters must be in place and properly sized in order to enable to signal-to-noise phenomenon, and second, certain hurdles must be met in the size of those additional parameters before the signal-to-noise story can be seen.  In short, interaction effects abound, with non-linearities as well.
 
   \subsection{Fixed Parameters}
-Each simulation, $i=1,...n+1$ is a GARCH(1,1) process with length $T_{i}$ chosen randomly from the set of integers $\{756,...,2520\}$, corresponding to approximately 3-10 years of daily financial data.  We fixed the intercept of the processes at the $\textit{garchx}$ package default of $\omega = .2$ \citep{RePEc:pra:mprapa:100301}.  We also use the values $\alpha=.1, \beta = .82$, corresponding to a GARCH process with greater influence from past values of $\sigma^{2}_{i,t}$.
+Each simulation, $i=1,...n+1$ is a GARCH(1,1) process of length $T_{i}$ chosen randomly from the set of integers $\{756,...,2520\}$, corresponding to approximately 3-10 years of daily financial data.  We fixed the intercept of the processes at the $\textit{garchx}$ package default of $\omega = .2$ \citep{RePEc:pra:mprapa:100301}.  We also use the values $\alpha=.1, \beta = .82$, corresponding to a GARCH process with greater influence from past values of $\sigma^{2}_{i,t}$ than past values of $a^{2}_{i,t}$.
 
 
   \subsection{Varying Parameters}
   We vary exactly five parameters: $\mu_{V}, \sigma_{V}, \mu_{\delta}, \mu_{\omega^{*}}, \sigma_{u}$, each of which is critical to evaluating the method's responsiveness to changing conditions in the shock distribution. $\mu_{V}, \sigma_{V}$ govern the elements of the covariates. $\mu_{\delta}$ interacts with $\textbf{V}_{t}$ via the dot-product operation, of course.  $\mu_{\omega^{*}}$ is a location parameter for the volatility shock, and $\sigma_{u}$ is the standard deviation of the volatility shock.
   
-  We add an important note about the parameter $\mu_{\delta}$, which governs a vector $\delta$ of length $p$ with elements that increase monotonically in proportion to $1,...,p$, after which they are scaled by the factor $\frac{2\cdot\mu_{\delta}}{p(p+1)}$, so that a randomly selected entry of the vector has mean $\mu_{\delta}$.  The heterogeneity of the entries is critical to simulating the plausible heterogeneity that will exist in the random effects structure.  Absent a heterogeneous vector $\delta$, the shock would not vary systematically with regard to each variable chosen for the volatility profile, which would fail to approximate the realities of financial markets.
+  We add an important note about the parameter $\mu_{\delta}$, which governs a vector $\delta$ of length $p$ with elements that increase monotonically in proportion to $1,...,p$, after which they are scaled by the factor $\frac{2\cdot\mu_{\delta}}{p(p+1)}$, so that a randomly selected entry of the vector has mean $\mu_{\delta}$.  The heterogeneity of the entries in $\delta$ is critical to simulating the plausible heterogeneity that will exist in the random effects structure.  Absent a heterogeneous vector $\delta$, the shock would not vary systematically with regard to each variable in the covariate vector.  Such a setup would fail to approximate the realities of financial markets.
 
 \subsection{Evaluative Framework and Monte Carlo Results}
 Consistent with our evaluative framework declared in \ref{loss_function}, we compare adjusted and unadjusted forecasts using QL Loss, calculating the fraction of the simulations in which the adjusted forecast yields a QL Loss no smaller than that of the unadjusted forecast.  The simulations fall into three broad categories, which we will denote \textbf{Signal and Noise} (displayed in Figure \ref{fig:signoise}), \textbf{Interaction between Signal and Volatility Profile Means} (displayed in Figure \ref{fig:sig_volprof}), and lastly, \textbf{Interaction between Shock Intercept and Shock Noise} (displayed in Figure \ref{fig:intercept_noise}).  
 
-The first category plots two parameters of the shock equation, $\mu_{\delta}$ and $\sigma_{u}$, in grids while increasing the mean of the covariate vectors $\x$ over three plots.  Recall that $\delta$ is a parameter shared between donors, whereas the vectors $\v_{i}$ in the volatility profile are i.i.d. multivariate normal.  In Figure \ref{fig:sim_1}, we see very little variation across the grid.  However, in Figures \ref{fig:sim_2} and \ref{fig:sim_3}, where $\mu_{v}$ is increased, we observe an expected phenomenon: for any fixed column of the plots, the performance of the adjusted forecast improves with increasing $\mu_{\delta}$.  A somewhat subtler phenomenon is also observed: for a fixed row of the grids in Figures \ref{fig:sim_2} and \ref{fig:sim_3}, for $\mu_{\delta} \geq .5$, increasing $\sigma_{u}$ leads to a decline in performance.  However, this is not observed for smaller levels of $\mu_{\delta}$, where the signal is too weak.
+The first category plots two parameters of the shock equation, $\mu_{\delta}$ and $\sigma_{u}$, in grids while increasing the mean of the covariate vectors $\x$ over three plots.  Recall that $\delta$ is a parameter shared between donors, whereas each vector $\x_{i,t}$ in $\V_{i,t}$ is i.i.d. multivariate normal \textcolor{red}{Is stating this in words sufficient?  I am hesitant to use notation or introduce new notation here, when so little rides on the preceding phrase.}.  In Figure \ref{fig:sim_1}, we see very little variation across the grid.  However, in Figures \ref{fig:sim_2} and \ref{fig:sim_3}, where $\mu_{v}$ is increased, we observe an expected phenomenon: for any fixed column of the plots, the performance of the adjusted forecast improves with increasing $\mu_{\delta}$.  A somewhat subtler phenomenon is also observed: for a fixed row of the grids in Figures \ref{fig:sim_2} and \ref{fig:sim_3}, for $\mu_{\delta} \geq .5$, increasing $\sigma_{u}$ leads to a decline in performance.  However, this is not observed for smaller levels of $\mu_{\delta}$, where the signal is too weak.
 
 The second category of simulations examines $\mu_{\delta}$ and $\mu_{v}$, while increasing the noise $\sigma_{u}$.  The row-wise and column-wise increases in performance that we witnessed in the first category largely hold in the second category of simulations, with one similar disclaimer: the relationship is strained under large levels of noise, like $\sigma_{u} = 1$.
 
