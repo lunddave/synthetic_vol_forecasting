@@ -221,7 +221,7 @@ Let $I(\cdot)$ be an indicator function.  Let $T_i$ denote the time length of th
   \mc{M}_1 \colon \begin{array}{l}
      \sigma^{2}_{i,t} = \omega_{i} + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} + \omega^{*}_{i,t}, \text{ }\\[.2cm]
      a_{i,t} = \sigma_{i,t}((1-D^{return}_{i,t})\epsilon_{i,t} + D^{return}_{i,t}\epsilon^{*}_{i}),\\[.2cm]
-    \omega_{i,t}^{*} = D^{vol}_{i,t}[\mu_{\omega^{*}}+\delta^{T}\x_{i,T^{*}}+ u_{i,t}],
+    \omega_{i,t}^{*} = D^{vol}_{i,t}[\mu_{\omega^{*}}+\delta^{T}\x_{i,T^{*}_{i}+1}+ u_{i,t}],
   \end{array}
   \end{align*}
 
@@ -270,7 +270,7 @@ Note that GARCH models can be parameterized as ARMA models on the squares of the
    
     The problem of aggregating estimated donor shocks begins with the data constraints.  Taking the estimated shocks as a given, we observe the pair $(\{\hat\omega^{*}_{i,T^{*}+1}\}^{n+1}_{i=2},\{\textbf{v}_{i}\}^{n+1}_{i=2})$.  Let $\Delta^{n} = \{\pi \in \mathbb{R}^n: \sum_{i=1}^n \pi_i = 1, \pi_i \geq 0 \, i = 1,...,n\}$, then we wish to recover weights $\{\weight_{i}\}^{n+1}_{i=2} \in \Delta^{n}$ leading to favorable forecasting properties.  These weights are used to compute an aggregate shock estimate 
 \begin{equation} \label{adjustment}
-	  \hat\omega^{*}_{T^{*}+1} = \sum^{n+1}_{i=2}\weight_{i}\hat\omega^{*}_{i,T^{*}+1},
+	  \hat\omega^{*}_{T^{*}_{i}+1} = \sum^{n+1}_{i=2}\weight_{i}\hat\omega^{*}_{i,T^{*}_{i}+1},
 \end{equation}
 
 \textcolor{red}{Here, we probably need a piecewise definition that basically says `adjust during the shock in the time series under study; otherwise, the adjustment is zero.'}
