@@ -457,7 +457,7 @@ It is easily verified that as $\hat\omega^{*}_{t+1} \rightarrow 0^{+}$, the diff
 
 \begin{prop}\label{asymptotic_consistency}
 Assume the conditions in Propositions $\ref{omega_consistency}$ and $\ref{sigma_consistency}$.  Let $1\leq i\leq n+1$.  Then as $t\rightarrow \infty$,
-$$QL(\hat\sigma_{t+1, unadjusted}^{2},\sigma^{2}_{t+1})-QL(\hat\sigma^{2}_{t+1, adjusted},\sigma^{2}_{t+1})\xlongrightarrow{p} \frac{\omega_{i,t+1}^{*}}{\sigma^{2}_{t+1}-\omega_{i,t+1}^{*}} + \log{\frac{\sigma_{t+1}^{2}-\omega_{i,t+1}^{*}}{\sigma_{t+1}^{2}} } \geq 0.$$
+$$QL(\hat\sigma_{t+1, unadjusted}^{2},\sigma^{2}_{t+1})-QL(\hat\sigma^{2}_{t+1, adjusted},\sigma^{2}_{t+1}) \overset{p}{\longrightarrow} \frac{\omega_{i,t+1}^{*}}{\sigma^{2}_{t+1}-\omega_{i,t+1}^{*}} + \log{\frac{\sigma_{t+1}^{2}-\omega_{i,t+1}^{*}}{\sigma_{t+1}^{2}} } \geq 0.$$
 Hence, a correctly specified $\mc{M}_1$ model will outperform the unadjusted forecast asymptotically.
 \end{prop}
 
@@ -569,19 +569,11 @@ We demonstrate the applicability of our methodology using a real data set at the
 
     \item \textbf{Covariate Choice} We choose covariates that could plausibly satisfy the model assumptions spelled out earlier, that is, risk-related and macroeconomic covariates that could plausibly be weighted and summed in a shock distribution.  We thus choose the log return Crude Oil (CL.F), the VIX (VIX) and the log return of the VIX, the log returns of the 3-month, 5-year, 10-year, and 30-year US Treasuries, as well as the log return of the most recently available monthly spread between AAA and BAA corporate debt, widely considered a proxy for lending risk \citep{goodell2013us, kane1996p}.  We also include the log return in the trading volume of the ETF IYG itself, which serves as a proxy for panic.  Finally, we include the squares of the demeaned log return of IYG for the 30 trading days preceding the shocks.  For each variable in the volatility profile, we compute the sample mean and sample standard deviation across the $n+1$ events, allowing us to scale the variables to have zero mean and unit variance.  Hence, no single variable can dominate the distance-based weighting procedure.
 
-    \item \textbf{Donor pool construction} We choose the three most recent US presidential elections prior to the 2016 election.  The three US presidential elections are the only presidential elections since the advent of the ETF IYG.  We exclude the midterm congressional elections in the US (i.e. those held in even years not divisible by four), which generate far lower voter turnout and feature no national races. We also include Brexit as a donor. Even though it occurred outside of the United States, the Leave campaign possessed a very similar right-wing populism to that of the Trump campaign \citep{wilson2017brexit}. Furthermore, Brexit preceded the 2016 US presidential election by less than five months and was, according to several news outlets, seen as a harbinger for Trump's victory \citep{kay2016brexit, collins2016trump}. This view was made clear by Pulitzer Prize winning journalist and historian Anne Applebaum who stated: ``I do realize that it's facile to talk about the impact on a U.S. election which is still many months away, that it's too simple to say "first Brexit, then Trump." But there is a way in which this election has to be seen, at the very least, as a possible harbinger of the future. This referendum campaign, as I wrote a few days ago, was not fought on the issues that are normally central to British elections. Identity politics trumped economics; arguments about "independence" and "sovereignty" defeated arguments about British influence and importance. The advice of once-trusted institutions was ignored. Elected leaders were swept aside. If that kind of transformation can take place in the U.K., then it can happen in the United States, too. We have been warned'' \citep{applebaum2016britain}. However, it is important to note that the Leave decision foretelling a Trump victory was not a consensus view \citep{martin2016brexit, barro2016three}. In our forecasting setting Brexit will be an imperfect donor, as will the preceding US presidential elections which do not feature the candidates, or campaigns, of Trump and Clinton.
+    \item \textbf{Donor pool construction} We choose the three most recent US presidential elections prior to the 2016 election.  The three US presidential elections are the only presidential elections since the advent of the ETF IYG.  We exclude the midterm congressional elections in the US (i.e. those held in even years not divisible by four), which generate far lower voter turnout and feature no national races. We also include Brexit as a donor. Even though it occurred outside of the United States, the Leave campaign possessed a very similar right-wing populism to that of the Trump campaign \citep{wilson2017brexit}. Furthermore, Brexit preceded the 2016 US presidential election by less than five months and was, according to several news outlets, seen as a harbinger for Trump's victory \citep{kay2016brexit, collins2016trump}. This view was made clear by %Pulitzer Prize winning journalist and historian 
+    Anne Applebaum who stated: ``I do realize that it's facile to talk about the impact on a U.S. election which is still many months away, that it's too simple to say "first Brexit, then Trump." But there is a way in which this election has to be seen, at the very least, as a possible harbinger of the future. This referendum campaign, as I wrote a few days ago, was not fought on the issues that are normally central to British elections. Identity politics trumped economics; arguments about "independence" and "sovereignty" defeated arguments about British influence and importance. The advice of once-trusted institutions was ignored. Elected leaders were swept aside. If that kind of transformation can take place in the U.K., then it can happen in the United States, too. We have been warned'' \citep{applebaum2016britain}. However, it is important to note that the Leave decision foretelling a Trump victory was not a consensus view \citep{martin2016brexit, barro2016three}. In our forecasting setting Brexit will be an imperfect donor, as will the preceding US presidential elections which feature different candidates and campaigns.
     \item \textbf{Choice of estimator for volatility} We use the sum of squared 5-minute log returns of IYG on November 9th, 2016, otherwise known as the Realized Volatility estimator of volatility \citep{andersen2008realized}, as our proxy.  We exclude the first five minutes of the trading day, resulting in a sum of 77 squared five-minute returns generated between 9:35am and 4pm.
     \item \textbf{Data Sources} All daily market data is provided via the YahooFinance API available in the quantmod package in R \citep{ryan2015package}.  In order to calculate log equity returns, we use Adjusted Close of IYG.  The realized volatility is computed using high-frequency quote data available from Wharton Research Data Services (WRDS) \citep{wachowicz2020wharton}.  The spread between is AAA and BAA yields is provided by Federal Reserve Economic Data (FRED) and accessed via the quantmod package.
 \end{enumerate} 
-
-%\begin{figure}[H]
-%\begin{center}
-%  \textbf{Real Data Example: 2016 Election}\par\medskip
-%  \includegraphics[scale=.5]{real_data_output_plots/FriMay311830522024_IYG_None_2016-06-22.png}
-%  \caption{The volatility induced by the 2016 US election}
-%  \label{fig:SVF_2016}
-%  \end{center}
-%\end{figure}
 
 We now discuss results displayed in the three subplots in Figure \ref{fig:SVF_2016_with_Brexit} in order from left to right. On the left, we see that distanced-based weighting places nearly equal weight on the 2004 and 2012 elections and Brexit, with only negligible weight on the 2008 election, when financial market conditions were extreme across nearly every dimension. Assuming an approximately correct specification of the covariates, this is interpreted to mean that even of the 2016 US election had a general climate of risk and tension less extreme than 2008 and more similar to conditions of the other donors.  In the middle plot, we notice that the fixed effect estimates for the 2008 election is considerable, the 2012 election and Brexit are modest by comparison, with only 2004 registering a near-zero fixed effect estimate. On the right, we observe in black the  $\hat\sigma^{2}$ yielded by the GARCH(1,1) for the time series under study.  We also observe four colored points, each listen in the legend: three predictions and the ground truth.  We include the prediction derived by adjusting the GARCH(1,1) prediction by the arithmetic mean of the fixed effect estimates.  As is evident, our method comes reasonably close the ground truth.  The prediction is not only directionally correct, i.e. we predict a volatility spike where there is one; the prediction unsurprisingly outperforms the unadjusted prediction.  Remarkably, the arithmetic-mean based prediction here demonstrates the inherent risk in failing to weight each donor appropriately.  The 2008 election receives far more weight than is called for, as simple averaging ignores the radically different conditions on the evening of those two events.  %On the left, we see that distanced-based weighting places nearly equal weight on the 2004 and 2012 elections, with only negligible weight on the 2008 election, when financial market conditions were extreme across nearly every dimension.  Assuming an approximately correct specification of the covariates, this is interpreted to mean that even of the 2016 US election had a general climate of risk and tension less extreme than 2008 and more similar to the 2004 and 2012 elections.  In the middle plot, we notice that the fixed effect estimates for 2008 and 2012 are considerable, with only 2004 registering a near-zero fixed effect estimate.  The fixed effect estimates quantify the amount of surprise the US election results delivered (strictly speaking, not only the presidential race but all November elections in the US with the ability to influence financial markets) under the assumption of a GARCH(1,1).  As estimates gleaned from only one data point per time series, they are theoretically high in variance.  On the right, we observe in black the  $\hat\sigma^{2}$ yielded by the GARCH(1,1) for the time series under study.  We also observe four colored points, each listen in the legend: three predictions and the ground truth.  We include the prediction derived by adjusting the GARCH(1,1) prediction by the arithmetic mean of the fixed effect estimates.  As is evident, our method comes reasonably close the ground truth.  The prediction is not only directionally correct, i.e. we predict a volatility spike where there is one; the prediction far outperforms the unadjusted prediction.  Remarkably, the arithmetic-mean based prediction here demonstrates the inherent risk in failing to weight each donor appropriately.  The 2008 election receives far more weight than is called for, as simple averaging ignores the radically different conditions on the evening of those two events.  
 
@@ -591,9 +583,9 @@ Second, we follow \citet{steegen2016increasing} in a executing a multiverse anal
 
 \begin{figure}[H]
   \begin{center}
-    \textbf{Real Data Example: 2016 Election with Brexit as June 22nd, 2016}\par\medskip
+    \textbf{Adjusted volatility forecast following the 2016 US presidential election}\par\medskip
     \includegraphics[scale=.6]{real_data_output_plots/FriMay311830182024_IYG_None_None.png}
-    \caption{When Brexit is taken to be June 22nd, 2016, it is shares equal weight with the 2004 and 2008 elections, while its modest fixed effect estimate is the smallest of the three nonzero estimates.}
+    \caption{Donor pool weights (left panel), individual shock effects (center panel), and forecasts (right panel).}
     \label{fig:SVF_2016_with_Brexit}
     \end{center}
   \end{figure}
@@ -622,7 +614,11 @@ In KNN regression, the hyperparameter K must be learned.  In similarity-based pa
 
 \subsection{Donor Pool Construction}
 
-Should we gather as many donors as possible and pick them quantitatively?  It would be counter to the method proposed to assemble a vast number of donors, lacking careful scrutiny of the qualitative fit, and let the optimization simply pick the donors, via weighting.  What makes a donor good is not merely its quantitative fit but its qualitative fit as well.  \citet{abadie2022synthetic} make a similar point about large donor pools.  What matters is that the donors chosen are properly situated in the $p$-dimensional predictor space, so as to allow proper estimation of the weights.  For more on this question, see the Supplement, where the donors and the volatility profile are treated with a leave-one-out analysis.
+Should we gather as many donors as possible and pick them quantitatively?  It would be counter to the method proposed to assemble a vast number of donors, lacking careful scrutiny of the qualitative fit, and let the optimization simply pick the donors, via weighting.  What makes a donor good is not merely its quantitative fit but its qualitative fit as well.  \citet{abadie2022synthetic} make a similar point about large donor pools.  
+
+What matters is that the donors chosen are properly situated in the $p$-dimensional predictor space, so as to allow proper estimation of the weights.  %For more on this question, see the Supplement, where the donors and the volatility profile are treated with a leave-one-out analysis.
+That being said there may be subjectivity in selecting donors, and care will be needed to make good selections. In this work we included Brexit and the previous three US presidential elections as donors used for forecasting volatility following the 2016 US presidential election. The resulting adjusted forecast with this donor pool performed very well. In our supplement we show that adjusted forecasts perform well under a variety of donor pool choices and covariate choices.
+
 
 \subsection{The Nature and Estimation of Volatility Shocks}
 
@@ -634,15 +630,17 @@ It would be a pyrrhic victory for our method if the volatility profile indeed un
 
 There is an important question about the stability of the GARCH parameters under the presence of a shock, and on parameter instability as it pertains to forecasting, we refer readers to \cite{rossi2013advances, rossi2021forecasting}.  There are at least two reasons that we do not explore parameter instability or methods to adjust for it.  First, the marginal effect of coefficient changes at the shock time would, under the assumptions in this work, be swamped by the random effect.  Second, the estimation of post-shock parameter values would require at least several --- better yet, dozens --- of post-shock data points, whereas this work assumes access to zero post-shock data points.  However, it is possible that similarity-based estimators for the GARCH coefficients could be produced, for example, by adapting the methods of \citet{dendramis2020similarity}.
 
+
+
 \section{Supplement}
 
 \subsection{Leave-one-out: How we analyzed a multiverse of 50 predictions}
 
-Given the option of redoing our analysis, with nine covariates and four donors, a natural question from a place of skepticism is, how stable are the results --- how contingent are they on a particular specification?  To answer these questions, in Table \ref{tab:prediction_table_with Brexit as June 22nd, 2016} we generate all fifty predictions yielded the decision of leave out any one of the donors (or none) and any one of the covariates (or none).  This analysis includes the prediction presented above, which can be viewed as the null model, at least in the sense that it provides and baseline for comparison.
+Given the option of redoing our analysis, with nine covariates and four donors, a natural question from a place of skepticism is, how stable are the results --- how contingent are they on a particular specification?  To answer these questions, in Table \ref{tab:prediction_table_with Brexit as June 22nd, 2016} we generate all fifty predictions yielded the decision of leave out any one of the donors (or none) and any one of the covariates (or none).  This analysis includes the prediction presented above, which can be viewed as the null model, at least in the sense that it provides and baseline for comparison. 
 
 \begin{table}[ht]
   \centering
-  \captionof{table}{Adjusted Forecasts Ranked by QL Loss with Brexit as June 22nd, 2016} \label{tab:prediction_table_with Brexit as June 22nd, 2016} 
+  \captionof{table}{Adjusted volatility forecasts for the 2016 US presidential election ranked by QL loss. This table contains all forecasts made by applying simultaneous leave-one-out approaches made to the covariates and the donors forming the donor pool. The forecast from our analysis in the main text is included in yellow. The mean and median of all forecasts is also included in grey.} \label{tab:prediction_table_with Brexit as June 22nd, 2016} 
   \begingroup\fontsize{7pt}{8pt}\selectfont
   \begin{tabular}{ccc}
     
@@ -709,9 +707,35 @@ Given the option of redoing our analysis, with nine covariates and four donors, 
   \endgroup
   \end{table}
 
+
+\subsection{Sensitivity to Covariates Chosen}
+Any covariate that appears more often closer to the bottom of Table \ref{tab:prediction_table_with Brexit as June 22nd, 2016} is, $\textit{ceteris paribus}$, a more important covariate for this prediction task, since by dropping it, a larger loss results.  The covariates that thus stand out are the demeaned log return of IYG, the VIX, the Debt Risk Spread (spread between between AAA and BAA corporate debt), and last but not least, the choice of dropping none of the covariates.  The demeaned log return of IYG, of which we use the 30 days preceeding the $T_{i}^{*}$, suggests an unusually strong relevance in matching donors to the time series under study.  The Debt Risk Spread is also deserving of additional comment and attention, perhaps alongside the poor performance of the log return of the VIX.  The Debt Risk Spread is available at a monthly frequency via FRED (add citation), whereas the VIX is available daily via Yahoo Finance.  It may be the case that the true conditional shock distribution includes low-frequency data as well as data in levels (like the VIX), while the daily changes in the VIX are absent.
+
+
+\subsection{Sensitivity to Donors Chosen}
+
+The most glaring result visible in Table \ref{tab:prediction_table_with Brexit as June 22nd, 2016} regarding donor selection is the poor performance of the 2008 US Election.  In hindsight, this is unsurprising, given the large estimated fixed effect for November 5th, 2008 as well as the swirl of complex events occurring in financial markets around that time.  It is possible that the GARCH(1,1) used to fit the run-up to that election is underparameterized.  The weight given to the 2008 US election is near-zero, but in our method, unsuitable donors can influence the distance-based weighting by affecting that dispersion of one or more of the $p$ covariates present in the volatility profile.  Recall that for each of the $p$ covariates, we transform the $n+1$-vector of variables to Z-scores.  The lesson here is that more careful pre-quantitative inspection of the donors may be warranted as well as ordinary outlier analysis for the volatility profile.  As an additional note, dropping the 2008 Election vastly improves the performance of the arithmetic mean forecast.  This provides a cautionary tale against using the arithmetic mean estimator for the conditional shock.  
+
+The donors most conducive to good predictions in this task are the 2004 and 2008 US elections.  The estimated fixed effects tell a story of only modest surprise due to these election results: the estimate is nearly zero for 2004, while 2012 is nonzero but small.  Given that the presidential election results of these two did not deliver much surprise, it is possible that the surprise could be due more so to non-presidential races.
+
+We discuss one last remarkable phenomenon.  The prediction that dropped the preceding 30 days of demeaned log returns of IYG as well as the 2012 Election yielded the same QL Loss as the unadjusted forecast.  By inspecting the donor weight and donor fixed effect estimates, we can see that nearly zero adjustment was made because the 2004 Election is given nearly all the weight.
+
+\subsubsection{Brexit}
+
+Defining exactly when Brexit occurred is requires some care because of the time zone differences between the UK and the US make difficult the analysis of after-hour shocks on US markets.  Additionally, like many election results, that the ``Leave'' side of the referendum would prevail was not revealed at any discrete time, of course, but became more certain as observation of voting turnout and informal vote tallies across the UK progressed \citep{BBC_News_2016}.  This is in spite of UK news outlets adhering to various rules and guidelines regarding reportage of polling results \citep{Bailey_2024}.  These facts pose a challenge for any method that uses daily data.  In our analysis we defined Brexit
+%Of prime concern is whether we should consider $T^{*}$ for Brexit 
+to have occurred after market hours on June 22nd, 2016, which implies that $T^{*}+1$ is June 23rd, 2016, and hence the reaction of IYG to Brexit can be estimated and extracted from late-day trading on that date. Alternatively, one could have defined Brexit as occurring on June 23rd, 2016, implying that $T^{*}+1$ is June 23rd, 2016. Such a choice may ignore the steady percolation of information and uncertainty that attend election days. A leave-one-out analysis with Brexit defined as occurring on June 23rd, 2016 is presented in Table~\ref{tab:prediction_table_with Brexit as June 23rd, 2016}. A breakdown of donor weights, fixed effect estimates, and adjusted forecasts with Brexit defined as occurring on June 23rd, 2016 is included in Figure~\ref{fig:SVF_2016_with_Brexit_06-23}. 
+
+%, or alternatively, consider the shock to have occurred after hours on June 22nd, 2016, which implies that $T^{*}+1$ is June 23rd, 2016, and hence the reaction of IYG to Brexit can be estimated and extracted from late-day trading on that date. 
+
+
+%In the pre-quantitative analysis of donors, there was only one competitor to the setup that was ultimately selected and presented in Section \ref{Real Data Example}, and that competitor donor pool used Brexit.  The inclusion of Brexit is based on the fundamental belief that the conditional shock distribution governing IYG's volatility shocks may be shared among US elections and some political events elsewhere, like the Brexit referendum of July 23rd, 2016.  That referendum shared some important qualities with the 2016 US elections, which we have discussed above.
+
+%We now turn, however, to why the inclusion of Brexit failed to perform nearly as well our primary specification.  First, note time zone differences between the UK and the US make difficult the analysis of after-hour shocks on US markets.  Additionally, like many election results, that the ``Leave'' side of the referendum would prevail was not revealed at any discrete time, of course, but became more certain as observation of voting turnout and informal vote tallies across the UK progressed \citep{BBC_News_2016}.  This is in spite of UK news outlets adhering to various rules and guidelines regarding reportage of polling results \citep{Bailey_2024}.  These facts pose a challenge for any method that uses daily data.  Of prime concern is whether we should consider $T^{*}$ for Brexit to have occurred after market hours on June 23rd, 2016, Eastern Standard Time, which ignores the steady percolation of information and uncertainty that attend election days, or alternatively, consider the shock to have occurred after hours on June 22nd, 2016, which implies that $T^{*}+1$ is June 23rd, 2016, and hence the reaction of IYG to Brexit can be estimated and extracted from late-day trading on that date.  Given this dilemma, we opt for dropping Brexit from our predictive model completely.
+
   \begin{table}[ht]
     \centering
-    \captionof{table}{Adjusted Forecasts Ranked by QL Loss with Brexit as June 23rd, 2016} \label{tab:prediction_table_with Brexit as June 23rd, 2016} 
+    \captionof{table}{Adjusted volatility forecasts for the 2016 US presidential election ranked by QL loss. This table contains all forecasts made by applying simultaneous leave-one-out approaches made to the covariates and the donors forming the donor pool. The forecast from our analysis in the main text is included in yellow. The mean and median of all forecasts is also included in grey. Here Brexit is defined as June 23rd, 2016.} \label{tab:prediction_table_with Brexit as June 23rd, 2016} 
     \begingroup\fontsize{7pt}{8pt}\selectfont
     \begin{tabular}{ccc}
       
@@ -777,45 +801,38 @@ Given the option of redoing our analysis, with nine covariates and four donors, 
     \endgroup
     \end{table}
 
-\subsection{Sensitivity to Covariates Chosen}
-Any covariate that appears more often closer to the bottom of Table \ref{tab:prediction_table_with Brexit as June 22nd, 2016} is, $\textit{ceteris paribus}$, a more important covariate for this prediction task, since by dropping it, a larger loss results.  The covariates that thus stand out are the demeaned log return of IYG, the VIX, the Debt Risk Spread (spread between between AAA and BAA corporate debt), and last but not least, the choice of dropping none of the covariates.  The demeaned log return of IYG, of which we use the 30 days preceeding the $T_{i}^{*}$, suggests an unusually strong relevance in matching donors to the time series under study.  The Debt Risk Spread is also deserving of additional comment and attention, perhaps alongside the poor performance of the log return of the VIX.  The Debt Risk Spread is available at a monthly frequency via FRED (add citation), whereas the VIX is available daily via Yahoo Finance.  It may be the case that the true conditional shock distribution includes low-frequency data as well as data in levels (like the VIX), while the daily changes in the VIX are absent.
 
-
-\subsection{Sensitivity to Donors Chosen}
-
-The most glaring result visible in Table \ref{tab:prediction_table_with Brexit as June 22nd, 2016} regarding donor selection is the poor performance of the 2008 US Election.  In hindsight, this is unsurprising, given the large estimated fixed effect for November 5th, 2008 as well as the swirl of complex events occurring in financial markets around that time.  It is possible that the GARCH(1,1) used to fit the run-up to that election is underparameterized.  The weight given to the 2008 US election is near-zero, but in our method, unsuitable donors can influence the distance-based weighting by affecting that dispersion of one or more of the $p$ covariates present in the volatility profile.  Recall that for each of the $p$ covariates, we transform the $n+1$-vector of variables to Z-scores.  The lesson here is that more careful pre-quantitative inspection of the donors may be warranted as well as ordinary outlier analysis for the volatility profile.  As an additional note, dropping the 2008 Election vastly improves the performance of the arithmetic mean forecast.  This provides a cautionary tale against using the arithmetic mean estimator for the conditional shock.  
-
-The donors most conducive to good predictions in this task are the 2004 and 2008 US elections.  The estimated fixed effects tell a story of only modest surprise due to these election results: the estimate is nearly zero for 2004, while 2012 is nonzero but small.  Given that the presidential election results of these two did not deliver much surprise, it is possible that the surprise could be due more so to non-presidential races.
-
-We discuss one last remarkable phenomenon.  The prediction that dropped the preceding 30 days of demeaned log returns of IYG as well as the 2012 Election yielded the same QL Loss as the unadjusted forecast.  By inspecting the donor weight and donor fixed effect estimates, we can see that nearly zero adjustment was made because the 2004 Election is given nearly all the weight.
-
-\subsubsection{Brexit}
-In the pre-quantitative analysis of donors, there was only one competitor to the setup that was ultimately selected and presented in Section \ref{Real Data Example}, and that competitor donor pool used Brexit.  The inclusion of Brexit is based on the fundamental belief that the conditional shock distribution governing IYG's volatility shocks may be shared among US elections and some political events elsewhere, like the Brexit referendum of July 23rd, 2016.  That referendum shared some important qualities with the 2016 US elections, which we have discussed above.
-
-We now turn, however, to why the inclusion of Brexit failed to perform nearly as well our primary specification.  First, note time zone differences between the UK and the US make difficult the analysis of after-hour shocks on US markets.  Additionally, like many election results, that the ``Leave'' side of the referendum would prevail was not revealed at any discrete time, of course, but became more certain as observation of voting turnout and informal vote tallies across the UK progressed \citep{BBC_News_2016}.  This is in spite of UK news outlets adhering to various rules and guidelines regarding reportage of polling results \citep{Bailey_2024}.  These facts pose a challenge for any method that uses daily data.  Of prime concern is whether we should consider $T^{*}$ for Brexit to have occurred after market hours on June 23rd, 2016, Eastern Standard Time, which ignores the steady percolation of information and uncertainty that attend election days, or alternatively, consider the shock to have occurred after hours on June 22nd, 2016, which implies that $T^{*}+1$ is June 23rd, 2016, and hence the reaction of IYG to Brexit can be estimated and extracted from late-day trading on that date.  Given this dilemma, we opt for dropping Brexit from our predictive model completely.
+%\begin{figure}[H]
+%\begin{center}
+%  \textbf{Real Data Example: 2016 Election}\par\medskip
+%  \includegraphics[scale=.5]{real_data_output_plots/FriMay311830522024_IYG_None_2016-06-22.png}
+%  \caption{The volatility induced by the 2016 US election}
+%  \label{fig:SVF_2016}
+%  \end{center}
+%\end{figure}
 
 \subsection{Can we combine forecasts to outperform the individual forecasts?}\label{forecastcomb}
 
-Forecast combination is technique with a vast, sprawling literature that we have referred to above.  While forecast combination can be justified in any number of ways, here we invoke forecast combination as a way to robustify forecasts against misspecification.  We combine in two simply ways, using the mean of all 50 forecasts and the median of all 50 forecasts.  The results are presented in Tables \ref{tab:prediction_table_with Brexit as June 22nd, 2016} and \ref{tab:prediction_table_with Brexit as June 23rd, 2016}.
+Forecast combination is technique with a vast, sprawling literature that we have referred to above.  While forecast combination can be justified in any number of ways, here we invoke forecast combination as a way to robustify forecasts against misspecification.  We combine in two simply ways, using the mean of all 50 forecasts and the median of all 50 forecasts.  The results are presented in Tables \ref{tab:prediction_table_with Brexit as June 22nd, 2016} and \ref{tab:prediction_table_with Brexit as June 23rd, 2016}. 
 
-\begin{figure}[H]
-  \begin{center}
-    \textbf{Real Data Example: 2016 Election with Brexit as June 22nd, 2016}\par\medskip
-    \includegraphics[scale=.6]{real_data_output_plots/FriMay311830182024_IYG_None_None.png}
-    \caption{When Brexit is taken to be June 22nd, 2016, it is shares equal weight with the 2004 and 2008 elections, while its modest fixed effect estimate is the smallest of the three nonzero estimates.}
-    \label{fig:SVF_2016_with_Brexit}
-    \end{center}
-  \end{figure}
+%\begin{figure}[H]
+%  \begin{center}
+%    \textbf{Real Data Example: 2016 Election with Brexit as June 22nd, 2016}\par\medskip
+%    \includegraphics[scale=.6]{real_data_output_plots/FriMay311830182024_IYG_None_None.png}
+%    \caption{When Brexit is taken to be June 22nd, 2016, it is shares equal weight with the 2004 and 2008 elections, while its modest fixed effect estimate is the smallest of the three nonzero estimates.}
+ %   \label{fig:SVF_2016_with_Brexit}
+ %   \end{center}
+ % \end{figure}
 
 
   
 
   \begin{figure}[H]
     \begin{center}
-      \textbf{Real Data Example: 2016 Election with an Brexit as June 23rd, 2016}\par\medskip
+      \textbf{Adjusted volatility forecast following the 2016 US presidential election with Brexit as June 23rd, 2016}\par\medskip
       \includegraphics[scale=.6]{real_data_output_plots/WedJun121222522024_IYG_None_None.png}
-      \caption{When Brexit is taken to be June 23rd, 2016, its own weight is unchanged but others' weights are.  The large fixed effect estimate of Brexit contributes to a substantial overprediction.}
-      \label{fig:SVF_2016_with_Brexit}
+      \caption{When Brexit is taken to be June 23rd, 2016, its own weight is unchanged but others' weights are.  The large fixed effect estimate of Brexit contributes to an overprediction.}
+      \label{fig:SVF_2016_with_Brexit_06-23}
       \end{center}
     \end{figure}
   
