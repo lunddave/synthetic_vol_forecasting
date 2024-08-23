@@ -40,10 +40,22 @@ Torben~Gustav Andersen and Luca Benzoni.
 \newblock Realized volatility, working paper 2008-14.
 \newblock 2008.
 
+\bibitem[Applebaum(2016)]{applebaum2016britain}
+Anne Applebaum.
+\newblock Britain's decision to leave the e.u. is a warning to america, 2016.
+\newblock URL \url{https://www.washingtonpost.com/opinions/global-opinions/after-brexit-what-will-and-wont-happen/2016/06/24/c9f7a2f6-39f1-11e6-8f7c-d4c723a2becb_story.html?postshare=9121466767991000}.
+\newblock Published: 2016-06-24.
+
 \bibitem[Bailey(2024)]{Bailey_2024}
 Ric Bailey.
 \newblock How the bbc reports polling day, May 2024.
 \newblock URL \url{https://www.bbc.com/news/uk-politics-48124106}.
+
+\bibitem[Barro(2016)]{barro2016three}
+Josh Barro.
+\newblock 3 reasons brexit does not portend a trump victory — and one reason to worry, 2016.
+\newblock URL \url{https://www.businessinsider.com/what-does-brexit-mean-for-trump-2016-6?op=1}.
+\newblock Published: 2016-06-24.
 
 \bibitem[Bauwens et~al.(2006)Bauwens, Preminger, and Rombouts]{bauwens2006regime}
 Luc Bauwens, Arie Preminger, and Jeroen~VK Rombouts.
@@ -59,11 +71,6 @@ Tim Bollerslev.
 Jacob Boudoukh, Ronen Feldman, Shimon Kogan, and Matthew Richardson.
 \newblock Information, trading, and volatility: Evidence from firm-specific news.
 \newblock \emph{The Review of Financial Studies}, 32\penalty0 (3):\penalty0 992--1033, 2019.
-
-\bibitem[Bowes(2018)]{bowes2018stock}
-David~R Bowes.
-\newblock Stock market volatility and presidential election uncertainty: Evidence from political futures markets.
-\newblock \emph{Journal of Applied Business Research}, 34\penalty0 (1), 2018.
 
 \bibitem[Box(2013)]{box2013box}
 George Box.
@@ -94,6 +101,12 @@ Michael Clements and David~F Hendry.
 Michael~P Clements and David~F Hendry.
 \newblock Intercept corrections and structural change.
 \newblock \emph{Journal of Applied Econometrics}, 11\penalty0 (5):\penalty0 475--494, 1996.
+
+\bibitem[Collins(2016)]{collins2016trump}
+Stephen Collins.
+\newblock Trump on brexit: America is next, 2016.
+\newblock URL \url{https://www.cnn.com/2016/06/25/politics/donald-trump-brexit-scotland}.
+\newblock Published: 2016-06-25.
 
 \bibitem[Corsi et~al.(2012)Corsi, Audrino, and Ren{\'o}]{corsi2012har}
 Fulvio Corsi, Francesco Audrino, and Roberto Ren{\'o}.
@@ -175,6 +188,12 @@ Alex Kane, Alan~J Marcus, and Jaesun Noh.
 \newblock The p/e multiple and market volatility.
 \newblock \emph{Financial Analysts Journal}, 52\penalty0 (4):\penalty0 16--24, 1996.
 
+\bibitem[Kay(2016)]{kay2016brexit}
+Katty Kay.
+\newblock Five reasons brexit could signal trump winning the white house, 2016.
+\newblock URL \url{https://www.bbc.com/news/election-us-2016-36564808}.
+\newblock Published: 2016-06-20.
+
 \bibitem[Kenton(2022)]{Kenton}
 Will Kenton.
 \newblock Event-driven investing strategies and examples, 2022.
@@ -185,30 +204,21 @@ Lutz Kilian and Helmut L{\"u}tkepohl.
 \newblock \emph{Structural vector autoregressive analysis}.
 \newblock Cambridge University Press, 2017.
 
-\bibitem[Li and Born(2006)]{li2006presidential}
-Jinliang Li and Jeffery~A Born.
-\newblock Presidential election uncertainty and common stock returns in the united states.
-\newblock \emph{Journal of Financial Research}, 29\penalty0 (4):\penalty0 609--622, 2006.
-
 \bibitem[Lin and Eck(2021)]{lin2021minimizing}
 Jilei Lin and Daniel~J Eck.
 \newblock Minimizing post-shock forecasting error through aggregation of outside information.
 \newblock \emph{International Journal of Forecasting}, 2021.
 
-\bibitem[Mayhew(2008)]{mayhew2008incumbency}
-David~R Mayhew.
-\newblock Incumbency advantage in us presidential elections: The historical record.
-\newblock \emph{Political Science Quarterly}, 123\penalty0 (2):\penalty0 201--228, 2008.
+\bibitem[Martin and Burns(2016)]{martin2016brexit}
+Jonathan Martin and Alexander Burns.
+\newblock Is ‘brexit’ the precursor to a donald trump presidency? not so fast, 2016.
+\newblock URL \url{https://www.nytimes.com/2016/06/25/us/politics/is-brexit-the-precursor-to-a-donald-trump-presidency-not-so-fast.html}.
+\newblock Published: 2016-06-24.
 
 \bibitem[Mayhew(1995)]{mayhew1995implied}
 Stewart Mayhew.
 \newblock Implied volatility.
 \newblock \emph{Financial Analysts Journal}, 51\penalty0 (4):\penalty0 8--20, 1995.
-
-\bibitem[News(2024)]{News_2024}
-Bloomberg News.
-\newblock Election 2024: What will markets do with trump victory over biden?
-\newblock \url{https://www.bloomberg.com/news/articles/2024-01-21/trump-s-2016-win-shook-markets-traders-won-t-get-fooled-again}, Jan 2024.
 
 \bibitem[None(2016)]{BBC_News_2016}
 None.
@@ -239,11 +249,6 @@ Barbara Rossi.
 Jeffrey~A Ryan, Joshua~M Ulrich, Wouter Thielen, Paul Teetor, Steve Bronder, and Maintainer Joshua~M Ulrich.
 \newblock Package ‘quantmod’.
 \newblock 2015.
-
-\bibitem[Silver(2016)]{Silver_2016}
-Nate Silver.
-\newblock 2016 election forecast, Nov 2016.
-\newblock URL \url{https://projects.fivethirtyeight.com/2016-election-forecast/}.
 
 \bibitem[Steegen et~al.(2016)Steegen, Tuerlinckx, Gelman, and Vanpaemel]{steegen2016increasing}
 Sara Steegen, Francis Tuerlinckx, Andrew Gelman, and Wolf Vanpaemel.
@@ -281,10 +286,10 @@ Xiaoqian Wang, Rob~J Hyndman, Feng Li, and Yanfei Kang.
 \newblock Forecast combinations: An over 50-year review.
 \newblock \emph{International Journal of Forecasting}, 39\penalty0 (4):\penalty0 1518--1547, 2023.
 
-\bibitem[Wolfers and Zitzewitz(2016)]{wolfers2016financial}
-Justin Wolfers and Eric Zitzewitz.
-\newblock What do financial markets think of the 2016 election.
-\newblock \emph{Unpublished manuscript. brook. gs/2njI8U3}, 2016.
+\bibitem[Wilson(2017)]{wilson2017brexit}
+Graham~K Wilson.
+\newblock Brexit, trump and the special relationship.
+\newblock \emph{The British Journal of Politics and International Relations}, 19\penalty0 (3):\penalty0 543--557, 2017.
 
 \bibitem[Zivot(2009)]{zivot2009practical}
 Eric Zivot.

@@ -3,6 +3,16 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: synthVolForecast.aux
 The style file: plainnat.bst
 Database file #1: synthVolForecast.bib
+Warning--entry type for "kay2016brexit" isn't style-file defined
+--line 731 of file synthVolForecast.bib
+Warning--entry type for "applebaum2016britain" isn't style-file defined
+--line 740 of file synthVolForecast.bib
+Warning--entry type for "barro2016three" isn't style-file defined
+--line 749 of file synthVolForecast.bib
+Warning--entry type for "martin2016brexit" isn't style-file defined
+--line 758 of file synthVolForecast.bib
+Warning--entry type for "collins2016trump" isn't style-file defined
+--line 767 of file synthVolForecast.bib
 Warning--there's a number but no volume in andersen2010stochastic
 Warning--empty journal in andersen2008realized
 Warning--empty journal in bauwens2006regime
@@ -12,43 +22,43 @@ Warning--empty journal in hendry1994theory
 Warning--empty journal in ryan2015package
 You've used 57 entries,
             2773 wiz_defined-function locations,
-            932 strings with 13889 characters,
-and the built_in function-call counts, 24264 in all, are:
-= -- 2208
-> -- 1203
+            929 strings with 14138 characters,
+and the built_in function-call counts, 24138 in all, are:
+= -- 2199
+> -- 1192
 < -- 47
-+ -- 414
-- -- 357
-* -- 1866
-:= -- 3708
-add.period$ -- 175
++ -- 411
+- -- 354
+* -- 1838
+:= -- 3686
+add.period$ -- 180
 call.type$ -- 57
-change.case$ -- 284
+change.case$ -- 283
 chr.to.int$ -- 57
 cite$ -- 121
-duplicate$ -- 1165
-empty$ -- 2119
-format.name$ -- 455
-if$ -- 5092
+duplicate$ -- 1152
+empty$ -- 2114
+format.name$ -- 450
+if$ -- 5072
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 56
-newline$ -- 294
+missing$ -- 53
+newline$ -- 299
 num.names$ -- 228
-pop$ -- 580
+pop$ -- 592
 preamble$ -- 1
-purify$ -- 232
+purify$ -- 231
 quote$ -- 0
-skip$ -- 888
+skip$ -- 885
 stack$ -- 0
-substring$ -- 974
-swap$ -- 96
+substring$ -- 949
+swap$ -- 94
 text.length$ -- 7
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 602
 warning$ -- 7
-while$ -- 240
+while$ -- 238
 width$ -- 0
-write$ -- 729
-(There were 7 warnings)
+write$ -- 737
+(There were 12 warnings)
