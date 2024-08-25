@@ -356,12 +356,12 @@ $\mathbb{E}[ \sigma^{2}_{i,T_{i}^{*}+r+1} |\mathcal{F}_{T_{i}^{*}+r}]$, which al
 \end{align*}
 By repeated substitution, in conditional expectation, the shock belongs to the equivalence class $\mathcal{O}((\alpha+\beta)^{r})$.  We generalize this observation in the following proposition.
 
-\begin{prop}
+\begin{prop}\label{decay_prop}
 Let $a_{t}$ be a mean-zero time series obeying a GARCH(1,1) specification with unit-variance errors, all prior to the arrival of a volatility shock of length $L_{\text{vol}} \geq 1$ and level shock of length $L_{\text{return}}\geq 1$ at some time $T^{*}+1$.  Then for any $r$ such that $r \geq \text{max}\{L_{i, vol},L_{i, level}\} + 1$, 
 \begin{align*}
 \mathbb{E}[ \sigma^{2}_{i,T^{*}+r+1} |\mathcal{F}_{T^{*}+r}] & = \omega_{i} + (\alpha + \beta)\sigma^{2}_{i,T^{*}+r}.
 \end{align*}
-\end{prop}\label{decay_prop}
+\end{prop}
 
 
 In other words, for a GARCH(1,1), once two time points removed from the longest shock length, the volatility shock and level shock can be subsumed into one.  However, prior to being two time points removed, there is no such guarantee.  For example, one can take $r = 1$ and level shock of length at least 1 to see that 
@@ -387,7 +387,7 @@ Assume
 Then for any $i, 1\leq i \leq n+1$, and for any $r, 1\leq r \leq k$, $\hat\omega_{i,T^{*}+r}^{*} \overset{p}{\longrightarrow} \omega_{i,T^{*}+r}^{*}$ as $t\rightarrow\infty$.  Additionally, $\hat\omega_{i,*}^{*} \overset{p}{\longrightarrow} \omega_{i,T^{*}+r}^{*}$ as $t\rightarrow\infty$.  That is, whether estimated  individually or collectively, the nonzero shock estimators are consistent.
 \end{prop}
 
-\begin{lem}
+\begin{lem}\label{lemma_ref}
   Under assumption \ref{stationarity_of_omega_i_t}, for each $i, i=1,...,n+1$,  $\{\omega_{i,t}^{*}\}_{t=0,...,T_i}$ is a strictly stationary series.
 \end{lem}
 
@@ -800,11 +800,9 @@ Forecast combination is technique with a vast, sprawling literature that we have
       \end{center}
     \end{figure}
 
-\subsection{Proofs}
+\subsection{Formal Results}
 
-\subsubsection{Proof of Proposition \ref{decay_prop}}
-
-\begin{proof-of-proposition}
+\begin{proof-of-proposition}[\ref{decay_prop}]
   We claim
   \begin{align}
   \mathbb{E}[ \sigma^{2}_{i,T^{*}+r+1} |\mathcal{F}_{T^{*}+r}] & = \mathbb{E}[\omega_{i} + \alpha a_{T^{*}+r}^{2} + \beta\sigma^{2}_{i,T^{*}+r} |\mathcal{F}_{T^{*}+r}] \label{eq1}\\
@@ -815,39 +813,33 @@ Forecast combination is technique with a vast, sprawling literature that we have
   The volatility equation of a GARCH(1,1) dictates that for any $r$, the one-step-ahead volatility is given by the expression inside the expectation in \eqref{eq1}.  By the mean-model assumption of a GARCH(1,1), we have $a_{i,t} = \sigma_{i,t}\epsilon_{i,t}$, and hence by substituting $\sigma_{i,t}\epsilon_{i,t}$ for $a_{i,t}$, we arrive at equation \eqref{eq2} above.  Using the unit-variance assumption on $\epsilon_{T^{*}+r}$, we can compute explicitly the expectation, yielding (\ref{eq3}).  Finally, by rearranging terms, we arrive at equation \eqref{eq4}.
   \end{proof-of-proposition}
 
-  \subsubsection{Proof of Lemma inside Proposition \ref{omega_consistency}}
-
-  \begin{proof-of-lemma}
+  \begin{proof-of-lemma}[\ref{lemma_ref}]
     Since the shock is assumed to arrive uniformly at random for each $i$, $1 \leq i \leq n + 1$, and last for a discrete number of indices, the sequence $\{\omega_{i,t}^{*}\}_{t=0,...,T_i}$ is governed by a distribution $F_{\{\omega_{i,t}^{*}\}_{t=0,...,T_i}}$ that is invariant to shifts in time.
     \end{proof-of-lemma}
     
-  \subsubsection{Proof of Proposition \ref{adjustment}}
-    \begin{proof-of-proposition}
+    \begin{proof-of-proposition}[\ref{adjustment}]
     The result follows from the consistency proof of the QMLE in GARCH-X models, as established by \citet{han2014asymptotic}. 
     \end{proof-of-proposition}
 
-\subsubsection{Proof of Proposition \ref{sigma_consistency}}
-    \begin{proof-of-proposition}
+    \begin{proof-of-proposition}[\ref{sigma_consistency}]
       Without loss of generality, we prove the case for $r = 1$.  The general case follows from iterative one-step-ahead forecasts.  Recall the conditional expectation of the variance for the GARCH-X($m$,$s$) model:
       \begin{align*}
-      \E[\sigma^{2}_{i,t+1}|\mathcal{F}_{t}] = \omega_{i} +  \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} + \omega^{*}_{i,*} \text{ .}
+      \E[\sigma^{2}_{i,t+1}|\mathcal{F}_{t}] = \omega_{i} +  \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t+1-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t+1-j}^{2} + \gamma_{i}^{T} \x_{i,t+1} + \omega^{*}_{i,*} \text{ .}
       \end{align*}
       By replacing parameters with their estimates, we arrive at the prediction 
       \begin{align*}
-      \hat\sigma^{2}_{i,t+1}|\mathcal{F}_{t} = \hat\omega_{i} + \sum^{m_{i}}_{k=1}\hat\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\hat\beta_{i,j}\hat\sigma_{i,t-j}^{2} + \hat\gamma_{i}^{T} \x_{i,t} + \hat\omega^{*}_{i,*}\text { ,}
+      \hat\sigma^{2}_{i,t+1}|\mathcal{F}_{t} = \hat\omega_{i} + \sum^{m_{i}}_{k=1}\hat\alpha_{i,k}a^{2}_{i,t+1-k} + \sum_{j=1}^{s_{i}}\hat\beta_{i,j}\hat\sigma_{i,t+1-j}^{2} + \hat\gamma_{i}^{T} \x_{i,t+1} + \hat\omega^{*}_{i,*}\text { ,}
       \end{align*}
       which converges in probability to 
       \begin{align*}
-        \hat\sigma^{2}_{i,t+1}|\mathcal{F}_{t} = \omega_{i} + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} + \omega^{*}_{i,*}
+        \hat\sigma^{2}_{i,t+1}|\mathcal{F}_{t} = \omega_{i} + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t+1-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t+1-j}^{2} + \gamma_{i}^{T} \x_{i,t+1} + \omega^{*}_{i,*}
         \end{align*}
       
       as $t\rightarrow\infty$ by a simple application of Slutsky's Theorem.
       \end{proof-of-proposition}
 
-  \subsubsection{Proof of Proposition \ref{asymptotic_consistency}}
-
-  \begin{proof-of-proposition}
-    First, note that the function $g:(-\infty,\omega_{i}^{*})\rightarrow \mathbb{R}$ given by $g(x) = \frac{x}{\sigma^{2}_{t+1}-x} + \log{\frac{\sigma_{t+1}^{2}-x}{\sigma_{t+1}^{2}} }$ is nonnegative, convex, obtains a minimum at $x = 0$, and being continuous, preserves consistency. The conclusion follows from fact that the model is correctly specified and consistency of $sigma^{2}_{adjusted}$ is guaranteed Proposition ($\ref{sigma_consistency}$). 
+  \begin{proof-of-proposition}[\ref{asymptotic_consistency}]
+    First, note that the function $g:(-\infty,\omega_{i}^{*})\rightarrow \mathbb{R}$ given by $g(x) = \frac{x}{\sigma^{2}_{t+1}-x} + \log{\frac{\sigma_{t+1}^{2}-x}{\sigma_{t+1}^{2}} }$ is nonnegative, convex, obtains a minimum at $x = 0$, and being continuous, preserves consistency. The conclusion follows from fact that the model is correctly specified and consistency of $\hat\sigma^{2}_{t+1, adjusted}$ is guaranteed Proposition ($\ref{sigma_consistency}$). 
   \end{proof-of-proposition}
   
 \clearpage
