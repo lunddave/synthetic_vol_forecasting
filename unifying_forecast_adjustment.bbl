@@ -1,4 +1,4 @@
-\begin{thebibliography}{15}
+\begin{thebibliography}{12}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -35,11 +35,6 @@ Michael~P Clements and David~F Hendry.
 \newblock Evaluating a model by forecast performance.
 \newblock \emph{Oxford Bulletin of Economics and Statistics}, 67:\penalty0 931--956, 2005.
 
-\bibitem[Francq and Zakoian(2019)]{francq2019garch}
-Christian Francq and Jean-Michel Zakoian.
-\newblock \emph{GARCH models: structure, statistical inference and financial applications}.
-\newblock John Wiley \& Sons, 2019.
-
 \bibitem[Guerr{\'o}n-Quintana and Zhong(2017)]{guerron2017macroeconomic}
 Pablo Guerr{\'o}n-Quintana and Molin Zhong.
 \newblock Macroeconomic forecasting in times of crises.
@@ -65,19 +60,9 @@ Allan Timmermann.
 \newblock Forecast combinations.
 \newblock \emph{Handbook of economic forecasting}, 1:\penalty0 135--196, 2006.
 
-\bibitem[Tsay(2005)]{tsay2005analysis}
-Ruey~S Tsay.
-\newblock \emph{Analysis of financial time series}, volume 543.
-\newblock John wiley \& sons, 2005.
-
 \bibitem[Wang et~al.(2023)Wang, Hyndman, Li, and Kang]{wang2023forecast}
 Xiaoqian Wang, Rob~J Hyndman, Feng Li, and Yanfei Kang.
 \newblock Forecast combinations: An over 50-year review.
 \newblock \emph{International Journal of Forecasting}, 39\penalty0 (4):\penalty0 1518--1547, 2023.
-
-\bibitem[Zivot(2009)]{zivot2009practical}
-Eric Zivot.
-\newblock Practical issues in the analysis of univariate garch models.
-\newblock In \emph{Handbook of Financial Time Series}, pages 113--155. Springer, 2009.
 
 \end{thebibliography}
