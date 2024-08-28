@@ -40,10 +40,9 @@
 \citation{lundquist2024volatility}
 \@writefile{toc}{\contentsline {subsection}{\numberline {1.3}The Meaning and Use of Similarity}{4}{subsection.1.3}\protected@file@percent }
 \newlabel{meaning_use}{{1.3}{4}{The Meaning and Use of Similarity}{subsection.1.3}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {1.3.1}Means of Judging Similarity}{4}{subsubsection.1.3.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {2}Setting}{4}{section.2}\protected@file@percent }
 \newlabel{Section}{{2}{4}{Setting}{section.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}A shock between discrete time points}{5}{subsection.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}A shock between discrete time points}{4}{subsection.2.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Formal Modeling Setup}{5}{subsection.2.2}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces The simulated time series experiences a volatility shock between trading days 1,656 and 1,657. The GARCH prediction, in red, fails even to approach the volatility spike at $T^{*}+1$, as do several adjusted predictions, which are orange. In contrast, the GARCH forecast adjusted by $\hat  \omega ^{*} = \DOTSB \sum@ \slimits@ ^{n+1}_{i=2}\pi _{i}\hat  \omega ^{*}_{i} $, a convex combination of the estimated shocks in the donor pool, achieves directional correctness as well as a smaller absolute loss in its prediction. The pink vertical line serves to indicate the adjustment of size $\hat  \omega ^{*}$ that allows the blue bullseye to more closely approach the ground truth.\relax }}{5}{figure.caption.1}\protected@file@percent }
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
@@ -55,13 +54,14 @@
 \citation{lundquist2024volatility}
 \@writefile{toc}{\contentsline {section}{\numberline {4}Methodology for Similarity-based Parameter Correction}{7}{section.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Forecasting}{7}{subsection.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Shock Estimators}{7}{subsection.4.2}\protected@file@percent }
+\newlabel{Shock_Estimators}{{4.2}{7}{Shock Estimators}{subsection.4.2}{}}
 \citation{abadie2003economic,abadie2010synthetic,lin2021minimizing}
 \citation{timmermann2006forecast,wang2023forecast}
 \citation{lundquist2024volatility}
 \citation{lin2021minimizing}
 \citation{lundquist2024volatility}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Shock Estimators}{8}{subsection.4.2}\protected@file@percent }
-\newlabel{Shock_Estimators}{{4.2}{8}{Shock Estimators}{subsection.4.2}{}}
+\citation{lin2021minimizing}
 \newlabel{adjustment}{{1}{8}{Shock Estimators}{equation.4.1}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3}How is the proposed method distinct from existing tools?}{8}{subsection.4.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Relaxation of Assumptions}{8}{subsection.4.4}\protected@file@percent }
@@ -71,18 +71,17 @@
 \newlabel{special_cases}{{5}{8}{Formal Properties and Model-Specific Considerations}{section.5}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.1}ARIMA}{8}{subsection.5.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.2}GARCH}{8}{subsection.5.2}\protected@file@percent }
-\citation{lin2021minimizing}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}HAR}{8}{subsection.5.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}VAR}{8}{subsection.5.4}\protected@file@percent }
 \citation{Brownlee_2022}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}HAR}{9}{subsection.5.3}\protected@file@percent }
+\citation{lin2021minimizing}
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Volatility series of six i.i.d. GARCH processes, each of which experiences a volatility shock, indicated with a red vertical line, at a uniformly distributed point in the set $\{756,...,2520\}$ of trading days, corresponding to between 3 and 10 years of daily trading data.\relax }}{9}{figure.caption.2}\protected@file@percent }
 \newlabel{fig:six_plots}{{2}{9}{Volatility series of six i.i.d. GARCH processes, each of which experiences a volatility shock, indicated with a red vertical line, at a uniformly distributed point in the set $\{756,...,2520\}$ of trading days, corresponding to between 3 and 10 years of daily trading data.\relax }{figure.caption.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}VAR}{9}{subsection.5.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.5}LSTM/GRU}{9}{subsection.5.5}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.6}What are the downsides of aggregating residuals as opposed to aggregating fixed effect estimates?}{9}{subsection.5.6}\protected@file@percent }
-\citation{lin2021minimizing}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Real Data Examples}{9}{section.6}\protected@file@percent }
 \citation{lin2021minimizing}
 \citation{clements1998forecasting}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Real Data Examples}{10}{section.6}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {7}Discussion}{10}{section.7}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Extensions}{10}{subsection.7.1}\protected@file@percent }
 \newlabel{Extensions}{{7.1}{10}{Extensions}{subsection.7.1}{}}
