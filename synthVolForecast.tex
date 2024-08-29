@@ -244,7 +244,7 @@ The model $\mc{M}_1$ is defined by a volatility equation and mean equation, as i
 
 \section{Methodology for Similarity-based Parameter Correction}
 
-We now introduce how a researcher can carry out predictions via distance-based weighting.  The first step is to gather the $p$ covariates that will parametrize a change in dynamics to model $\mc{M}_1$ and will represent the $p$-dimensional space in which weights are generated.  This set of covariates parameterizes the shock to $\sigma^2_{i,t}$  of magnitude $\omega^*_{i,t}$ in model $\mc{M}_{1}$ above. Let $\textbf{V}_{t} \in \mathbb{R}^{p \times n}$ be formed with columns $\x_{i,t}$, $i = 2,\ldots,n+1$. Formally, in vector notation, the donor shocks are given by $\vec{\omega}_t = \vec{\mu}_{\omega^{*}} + \delta^{T}\textbf{V}_{t} + \vec{u}_{t}$, 
+We now introduce how a researcher can carry out predictions via distance-based weighting.  The first step is to gather the $p$ covariates that will parametrize a change in dynamics to model $\mc{M}_1$ and will represent the $p$-dimensional space in which weights are generated.  This set of covariates parameterizes the shock to $\sigma^2_{i,t}$  of magnitude $\omega^*_{i,t}$ in model $\mc{M}_{1}$ above.  Let $\textbf{V}_{t} \in \mathbb{R}^{p \times n}$ be formed with columns $\x_{i,t}$, $i = 2,\ldots,n+1$.  Without loss or generality, let the indices of each $\x_{i,t}$ be shifted and arranged such that $\textbf{V}_{T^{*}+1}$ has as columns $\x_{2,T_{2}^{*}+1},...,\x_{n+1,T_{n+1}^{*}+1}$.  Formally, in vector notation, the donor shocks are given by $\vec{\omega}_t = \vec{\mu}_{\omega^{*}} + \delta^{T}\textbf{V}_{t} + \vec{u}_{t}$, 
     where were have suppressed the $D^{vol}_{i,t}$ notation for simplicity.  %The covariate set could take the form of a $p \times n$ matrix including realized volatility and implied volatility, as well the volume of traded assets on any day preceding the shock.  Covariates chosen for inclusion in a given volatility profile may be levels, log differences in levels, percentage changes in levels, or absolute values thereof, among many choices.
     Ideally, $\textbf{V}_{t}$ will display `balance' in that $p$ covariates exist for each of the $n$ donors.  In practice, missing values, corrupted values, or unacceptably extreme or noisy estimates may necessitate some sort of matrix completion, a problem that we do not tackle in this work.  
 
@@ -274,7 +274,7 @@ Note that GARCH models can be parameterized as ARMA models on the squares of the
 
     Following \citet{abadie2003economic,abadie2010synthetic,lin2021minimizing}, let $\|\cdot\|_{\textbf{S}}$ denote any semi-norm on $\mathbb{R}^{p}$, and define
     \begin{align*}
-    \{\pi\}_{i=2}^{n+1} = \argmin_{\pi}\|\x_{1,T_{i}^* + 1} - \V_{T_{i}^* + 1}\pi\|_{\textbf{S}}. 
+    \{\pi\}_{i=2}^{n+1} = \argmin_{\pi}\|\x_{1,T_{1}^* + 1} - \V_{T^* + 1}\pi\|_{\textbf{S}}. 
     \end{align*}
 In the forecast combination literature, it is of interest whether the weights employed to aggregate forecasts strive toward and meet various optimality criteria \citep{timmermann2006forecast,wang2023forecast}.  In our endeavor, there are at least two senses of optimal weights that one might be interested in.  First, we can think of optimal weights as a set $\{\weight_{i}\}_{i=2}^{n+1}$ such that $\omega_{1} = \sum^{n+1}_{i=2}\weight_{i}\hat\omega_{i,*}$, i.e., $\omega_{1}$ is recovered perfectly, as it belongs to convex hull of the estimated shocks. However, $\omega_{1}$ is never revealed to the practitioner, and hence there is no way of verifying the extent to which this condition is satisfied.
 
@@ -401,7 +401,7 @@ Having established the consistency of the estimators $\hat\omega^{*}_{i,T^{*}+1}
     Assume
     \begin{enumerate}
       \item All conditions listed in Proposition \ref{omega_consistency}.
-      \item There exist weights $\{\pi_{i}\}_{i=2}^{n+1}$ such that $\textbf{v}_{1,T^{*}} = \sum^{n+1}_{i=2}\weight_{i} \textbf{v}_{i,T^{*}}$.
+      \item There exist weights $\{\pi_{i}\}_{i=2}^{n+1}$ such that $\textbf{v}_{1,T_{1}^{*}} = \sum^{n+1}_{i=2}\weight_{i} \textbf{v}_{i,T_{i}^{*}}$.
      \end{enumerate}
   Then for any $r$, $1\leq r \leq k$, $\hat\sigma^{2}_{adjusted,T^{*}+r}\overset{p}{\longrightarrow}\sigma^{2}_{1,T^{*}+r}$ as $t\rightarrow\infty$. 
   \end{prop}
@@ -458,18 +458,18 @@ Lastly, the third set of simulations takes a look at the role of the intercept o
       \textbf{Signal and Noise}\par\medskip
     \begin{subfigure}{.44\linewidth} 
       \centering
-        \includegraphics[scale = .42]{simulation_plots/Jul01_192350_2024_mu[delta]_sigma[u].png}
+        \includegraphics[scale = .42]{simulation_plots/Aug28_224311_2024_mu[delta]_sigma[u].png}
         \caption{Fixed values: $\mu_{v} = .125, \sigma_{v} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_1}
     \end{subfigure}\hspace{12mm} %
     \begin{subfigure}{.44\linewidth} 
       \centering
-        \includegraphics[scale=.42]{simulation_plots/Jul01_192510_2024_mu[delta]_sigma[u].png}
+        \includegraphics[scale=.42]{simulation_plots/Aug28_224317_2024_mu[delta]_sigma[u].png}
         \caption{Fixed values: $\mu_{v} = .5, \sigma_{v} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_2}
     \end{subfigure}
 
     \begin{subfigure}{.44\linewidth} 
       \centering
-        \includegraphics[scale=.42]{simulation_plots/Jul01_192518_2024_mu[delta]_sigma[u].png}
+        \includegraphics[scale=.42]{simulation_plots/Aug28_224322_2024_mu[delta]_sigma[u].png}
         \caption{Fixed values: $\mu_{v} = 1, \sigma_{v} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_3}
     \end{subfigure}
     
@@ -482,12 +482,12 @@ Lastly, the third set of simulations takes a look at the role of the intercept o
     \textbf{Interaction between Signal and Volatility Profile Means}\par\medskip
   \begin{subfigure}{.44\linewidth} 
     \centering
-      \includegraphics[scale = .42]{simulation_plots/Jul01_192528_2024_mu[delta]_mu[v].png}
+      \includegraphics[scale = .42]{simulation_plots/Aug28_224330_2024_mu[delta]_mu[v].png}
       \caption{Fixed values: $\sigma_{v} = .125, \mu_{\omega^{*}} = .125, \sigma_{u} = .125$}\label{fig:sim_4}
   \end{subfigure}\hspace{12mm} %
   \begin{subfigure}{.44\linewidth} 
     \centering
-      \includegraphics[scale=.42]{simulation_plots/Jul01_192539_2024_mu[delta]_mu[v].png}
+      \includegraphics[scale=.42]{simulation_plots/Aug28_224337_2024_mu[delta]_mu[v].png}
       \caption{Fixed values: $\sigma_{v} = .125, \mu_{\omega^{*}} = .125, \sigma_{u} = 1$}\label{fig:sim_5}
   \end{subfigure}
   
@@ -500,12 +500,12 @@ Lastly, the third set of simulations takes a look at the role of the intercept o
   \textbf{Interaction between Shock Intercept and Shock Noise}\par\medskip
 \begin{subfigure}{.44\linewidth} 
   \centering
-    \includegraphics[scale = .42]{simulation_plots/Jul01_192548_2024_mu[omega^star]_sigma[u].png}
+    \includegraphics[scale = .42]{simulation_plots/Aug28_224451_2024_mu[omega^*]_sigma[u].png}
     \caption{Fixed values: $\mu_{v} = .125, \sigma_{v} = .125, \delta = .125$}\label{fig:sim_6}
 \end{subfigure}\hspace{12mm} %
 \begin{subfigure}{.44\linewidth} 
   \centering
-    \includegraphics[scale=.42]{simulation_plots/Jul01_192601_2024_mu[omega^star]_sigma[u].png}
+    \includegraphics[scale=.42]{simulation_plots/Aug28_224455_2024_mu[omega^*]_sigma[u].png}
     \caption{Fixed values: $\mu_{v} = .125, \sigma_{v} = .125, \delta = 2$}\label{fig:sim_7}
 \end{subfigure}
 
