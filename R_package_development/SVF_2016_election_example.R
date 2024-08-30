@@ -320,7 +320,7 @@ for (u in c(-1,0,2:number_of_covariates)){
     function_output <- SynthVolForecast(Y
                              ,X
                              ,shock_time_vec = unlist(shock_dates)
-                             ,rep(k, n+1)
+                             ,shock_length_vec = c(1,1,1,1,2) #reflect two-day Brexit shock
                              #,shck_lengths
                              ,dbw_scale = TRUE
                              ,dbw_center = TRUE
