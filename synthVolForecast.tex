@@ -259,7 +259,7 @@ We now turn to the next section, where $\textbf{V}_{t}$ is employed in a procedu
   & \hat\sigma^{2}_{adjusted,T_{1}^{*}+1} = \hat\E[\sigma^{2}_{1,T_{1}^{*}+1}|\mathcal{F}_{T_{1}^{*}}] + \hat\omega^{*} && = && \hat\omega_{1} + \sum^{m_{1}}_{k=1}\hat\alpha_{1,k}a^{2}_{1,T_{1}^{*}+1-k} + \sum_{j=1}^{s_{1}}\hat\beta_{1,j}\sigma_{1,T_{1}^{*}+1-j}^{2} + \hat\gamma_{1}^{T} \x_{1,T_{1}^{*}+1} + \hat\omega^{*} \text{ .}
 \end{align*}
 
-Note that GARCH models can be parameterized as ARMA models on the squares of the scalar time series $a^{2}_{t}$ \citep[][p. 18, p. 46]{tsay2005analysis,francq2019garch}, assuming that $a_{t}$ satisfies fourth-order stationarity.  This fact matters for forecasting because the $h$-step-ahead forecasting function for a GARCH model is, just like for an ARMA model, the conditional expectation function, $\mathbb{E}[ \sigma^{2}_{i,T^{*}+h} | \mathcal{F}_{T^{*}}]$, or practically speaking, the estimate thereof, $\hat{\mathbb{E}}[ \sigma^{2}_{i,T^{*}+h} |\mathcal{F}_{T^{*}}]$ \citep{zivot2009practical}.  Here we have presented one-step-ahead forecasts for a GARCH-X($m,s$), without loss of generality.  For $h=2,3,4,...$, the conditional expectation is computed recursively, as is standard for iterative autoregressive forecasts. Note that such $h$-step ahead predictions will additionally require $\x_{i,t}$, $t \geq T^*_{i} + 2$ to be known, or at least well-estimated in practice. Thus we will focus on the one-step-ahead forecast unless stated otherwise.
+Note that GARCH models can be parameterized as ARMA models on the squares of the scalar time series $a^{2}_{t}$ \citep[][p. 18, p. 46]{tsay2005analysis,francq2019garch}, assuming that $a_{t}$ satisfies fourth-order stationarity.  This fact matters for forecasting because the $h$-step-ahead forecasting function for a GARCH model is, just like for an ARMA model, the conditional expectation function, $\mathbb{E}[ \sigma^{2}_{i,T_{i}^{*}+h} | \mathcal{F}_{T_{i}^{*}}]$, or practically speaking, the estimate thereof, $\hat{\mathbb{E}}[ \sigma^{2}_{i,T_{i}^{*}+h} |\mathcal{F}_{T_{i}^{*}}]$ \citep{zivot2009practical}.  Here we have presented one-step-ahead forecasts for a GARCH-X($m,s$), without loss of generality.  For $h=2,3,4,...$, the conditional expectation is computed recursively, as is standard for iterative autoregressive forecasts. Note that such $h$-step ahead predictions will additionally require $\x_{i,t}$, $t \geq T^*_{i} + 2$ to be known, or at least well-estimated in practice. Thus we will focus on the one-step-ahead forecast unless stated otherwise.
 
 \subsection{Excess Volatility Estimators}
     \label{Excess Volatility Estimators}
@@ -344,58 +344,56 @@ In this section we will provide estimation properties for our shock  estimator \
 
 In Equation \eqref{eq0}, observe that $\omega_{i,T_{i}^{*}+1}^{*}$ and $\epsilon^{*}_{i,T_{i}^{*}+1}$ 
 each appear at most once, through the term $\sigma^{2}_{T_{i}^{*}+r}$.  This might lead one to 
-suspect  geometric decay of the shocks $\omega_{i,T^{*}+1}^{*}$ and $\epsilon^{*}_{i,T_{i}^{*}+1}$.  
-Such a suspicion is easier to substantiate by examining the conditional expectation of the variance, 
+suspect  geometric decay of the shocks $\omega_{i,T_{i}^{*}+1}^{*}$ and $\epsilon^{*}_{i,T_{i}^{*}+1}$.  
+Such a suspicion is easier to justify by examining the conditional expectation of the variance, 
 $\mathbb{E}[ \sigma^{2}_{i,T_{i}^{*}+r+1} |\mathcal{F}_{T_{i}^{*}+r}]$, which also happens to be the principal forecasting tool for a GARCH model \citep{zivot2009practical}.  Indeed, if we assume unit variance for all $\epsilon_{i,t}$ except, of course, $\epsilon^{*}_{i,t}$, then we have
 
 \begin{align*}
-\mathbb{E}[ \sigma^{2}_{i,T^{*}+r+1} |\mathcal{F}_{T^{*}+r}] & = \mathbb{E}[\omega_{i} + \alpha a_{T^{*}+r}^{2} + \beta\sigma^{2}_{i,T^{*}+r} |\mathcal{F}_{T^{*}+r}] \\
-& = \omega_{i} + \mathbb{E}[\alpha(\sigma_{i,T^{*}+r}\epsilon_{T^{*}+r})^{2} |\mathcal{F}_{T^{*}+r}] + \beta\sigma^{2}_{i,T^{*}+r} \\
-& = \omega_{i} + \alpha\sigma_{i,T^{*}+r}^{2} + \beta\sigma^{2}_{i,T^{*}+r} \tag{Due to the unit variance assumption}\\
-& = \omega_{i} + \sigma^{2}_{i,T^{*}+r}(\alpha + \beta) \text{ .} 
+\mathbb{E}[ \sigma^{2}_{i,T_{i}^{*}+r+1} |\mathcal{F}_{T_{i}^{*}+r}] & = \mathbb{E}[\omega_{i} + \alpha a_{T_{i}^{*}+r}^{2} + \beta\sigma^{2}_{i,T_{i}^{*}+r} |\mathcal{F}_{T_{i}^{*}+r}] \\
+& = \omega_{i} + \mathbb{E}[\alpha(\sigma_{i,T_{i}^{*}+r}\epsilon_{T_{i}^{*}+r})^{2} |\mathcal{F}_{T_{i}^{*}+r}] + \beta\sigma^{2}_{i,T_{i}^{*}+r} \\
+& = \omega_{i} + \alpha\sigma_{i,T_{i}^{*}+r}^{2} + \beta\sigma^{2}_{i,T_{i}^{*}+r} \tag{Due to the unit variance assumption}\\
+& = \omega_{i} + \sigma^{2}_{i,T_{i}^{*}+r}(\alpha + \beta) \text{ .} 
 \end{align*}
 By repeated substitution, in conditional expectation, the shock belongs to the equivalence class $\mathcal{O}((\alpha+\beta)^{r})$.  We generalize this observation in the following proposition.
 
 \begin{prop}\label{decay_prop}
 Let $a_{t}$ be a mean-zero time series obeying a GARCH(1,1) specification with unit-variance errors, all prior to the arrival of a volatility shock of length $L_{\text{vol}} \geq 1$ and level shock of length $L_{\text{return}}\geq 1$ at some time $T^{*}+1$.  Then for any $r$ such that $r \geq \text{max}\{L_{i, vol},L_{i, level}\} + 1$, 
 \begin{align*}
-\mathbb{E}[ \sigma^{2}_{i,T^{*}+r+1} |\mathcal{F}_{T^{*}+r}] & = \omega_{i} + (\alpha + \beta)\sigma^{2}_{i,T^{*}+r}.
+\mathbb{E}[ \sigma^{2}_{i,T_{i}^{*}+r+1} |\mathcal{F}_{T_{i}^{*}+r}] & = \omega_{i} + (\alpha + \beta)\sigma^{2}_{i,T_{i}^{*}+r}.
 \end{align*}
 \end{prop}
 
 
 In other words, for a GARCH(1,1), once two time points removed from the longest shock length, the volatility shock and level shock can be subsumed into one.  However, prior to being two time points removed, there is no such guarantee.  For example, one can take $r = 1$ and level shock of length at least 1 to see that 
 \begin{align*}
-\mathbb{E}[ \sigma^{2}_{i,T^{*}+2} |\mathcal{F}_{T^{*}+1}] & = \mathbb{E}[\omega_{i} + \alpha a_{T^{*}+1}^{2} + \beta\sigma^{2}_{i,T^{*}+1} |\mathcal{F}_{T^{*}+1}] \\
-& = \omega_{i} + \mathbb{E}[\alpha(\sigma_{i,T^{*}+r}\epsilon^{*}_{T^{*}+1})^{2} |\mathcal{F}_{T^{*}+1}] + \beta\sigma^{2}_{i,T^{*}+1} \\
-& = \omega_{i} + \alpha\sigma^{2}_{i,T^{*}+1}(\mu^{2}_{\epsilon^{*}} + \sigma^{2}_{\epsilon^{*}}) + \beta\sigma^{2}_{i,T^{*}+1} \\
-& = \omega_{i} + \sigma^{2}_{i,T^{*}+1}(\alpha(\mu^{2}_{\epsilon^{*}} + \sigma^{2}_{\epsilon^{*}}) + \beta)\text{,}
+\mathbb{E}[ \sigma^{2}_{i,T_{i}^{*}+2} |\mathcal{F}_{T_{i}^{*}+1}] & = \mathbb{E}[\omega_{i} + \alpha a_{T_{i}^{*}+1}^{2} + \beta\sigma^{2}_{i,T_{i}^{*}+1} |\mathcal{F}_{T_{i}^{*}+1}] \\
+& = \omega_{i} + \mathbb{E}[\alpha(\sigma_{i,T_{i}^{*}+r}\epsilon^{*}_{T^{*}+1})^{2} |\mathcal{F}_{T_{i}^{*}+1}] + \beta\sigma^{2}_{i,T_{i}^{*}+1} \\
+& = \omega_{i} + \alpha\sigma^{2}_{i,T_{i}^{*}+1}(\mu^{2}_{\epsilon^{*}} + \sigma^{2}_{\epsilon^{*}}) + \beta\sigma^{2}_{i,T_{i}^{*}+1} \\
+& = \omega_{i} + \sigma^{2}_{i,T_{i}^{*}+1}(\alpha(\mu^{2}_{\epsilon^{*}} + \sigma^{2}_{\epsilon^{*}}) + \beta)\text{,}
 \end{align*}
 where $(\alpha(\mu^{2}_{\epsilon^{*}} + \sigma^{2}_{\epsilon^{*}}) + \beta)$ may be greater than 1, permitting explosive behavior, at least in the short term.  After both shocks have been exhausted, their influence disappears quickly.  This short-memory effect has implications for the method being developed herein.  First, there may be different risks associated with overestimating and underestimating level shock and volatility shock lengths.  Therefore, estimation of effects among the donors should err on the side of underestimating, not overestimating, the length of the max shock, since overestimation of the shock length brings with it the risk of underestimating $\omega^{*}$.  Second, a practitioner of the method needs some idea of how long the the respective shocks in the time series under study might last.  There are couple of obvious strategies: take all the donors, and over all the donor shock lengths, take the minimium.  Alternatively, one could take the maximum.
 
 \subsection{Consistency of the shock estimators}
 
-The estimators $\hat\omega^{*}_{i,T^{*}+1}$ in \eqref{adjustment} are central to our forecast adjustment strategy.  Here we show that the quantities $\hat\omega^{*}_{i,T^{*}+1}$ possess an important asymptotic property that bolsters that overall reliability of the method proposed herein.
+The estimators $\hat\omega^{*}_{i,T_{i}^{*}+1}$ in \eqref{adjustment} are central to our forecast adjustment strategy.  Here we show that the quantities $\hat\omega^{*}_{i,T_{i}^{*}+1}$ possess an important asymptotic property that bolsters that overall reliability of the method proposed herein.
 
 \begin{prop}\label{omega_consistency}
 Assume
 \begin{enumerate}
   \item For each $i$, $\{a_{i,t}\}_{t=0,...,T_i}$ obeys a GARCH-X($m,s$), as laid out in Equation $\eqref{GARCH-X}$, with volatility shocks found in $\mc{M}_{1}$, where $T_i$ is the length of the $i$th series.
-  \item For each $i, \{D^{vol}_{i,t}\omega_{i,t}^{*}\}_{t=0,...,T_i}$ is potentially non-zero at $\{T^{*}_{i}+1,... ,T^{*}_{i}+L_{i}^{vol}\}$, $\omega_{i,T^{*}+1}^{*}\equiv...\equiv\omega_{i,T^{*}+L_{i}^{vol}}^{*}$, and zero otherwise, where the arrival of $T_{i}^{*}$ is governed by a time-invariant distribution on $\{a_{i,t}\}_{t=0,...,T_i-1}$, and both the arrival and conclusion of the shock is observable by the researcher. \label{stationarity_of_omega_i_t}
+  \item For each $i, \{D^{vol}_{i,t}\omega_{i,t}^{*}\}_{t=0,...,T_i}$ is potentially non-zero at $\{T^{*}_{i}+1,... ,T^{*}_{i}+L_{i}^{vol}\}$, $\omega_{i,T_{i}^{*}+1}^{*}\equiv...\equiv\omega_{i,T_{i}^{*}+L_{i}^{vol}}^{*}$, and zero otherwise, where the arrival of $T_{i}^{*}$ is governed by a time-invariant distribution on $\{a_{i,t}\}_{t=0,...,T_i-1}$, and both the arrival and conclusion of the shock is observable by the researcher. \label{stationarity_of_omega_i_t}
   \item The conditions in Assumption 0 of \citet{han2014asymptotic} hold.
 \end{enumerate}
-Then for any $i, 1\leq i \leq n+1$, and for any $r, 1\leq r \leq k$, $\hat\omega_{i,T^{*}+r}^{*} \overset{p}{\longrightarrow} \omega_{i,T^{*}+r}^{*}$ as $t\rightarrow\infty$.  Additionally, $\hat\omega_{i,*}^{*} \overset{p}{\longrightarrow} \omega_{i,T^{*}+r}^{*}$ as $t\rightarrow\infty$.  That is, whether estimated  individually or collectively, the nonzero shock estimators are consistent.
+Then for any $i, 1\leq i \leq n+1$, and for any $r, 1\leq r \leq k$, $\hat\omega_{i,T_{i}^{*}+r}^{*} \overset{p}{\longrightarrow} \omega_{i,T_{i}^{*}+r}^{*}$ as $t\rightarrow\infty$.  Additionally, $\hat\omega_{i,*}^{*} \overset{p}{\longrightarrow} \omega_{i,T_{i}^{*}+r}^{*}$ as $t\rightarrow\infty$.  That is, whether estimated  individually or collectively, the nonzero shock estimators are consistent.
 \end{prop}
 
 \begin{lem}\label{lemma_ref}
   Under assumption \ref{stationarity_of_omega_i_t}, for each $i, i=1,...,n+1$,  $\{\omega_{i,t}^{*}\}_{t=0,...,T_i}$ is a strictly stationary series.
 \end{lem}
 
-
-
 \subsection{Consistency of the Conditional Forecast Function}
 
-Having established the consistency of the estimators $\hat\omega^{*}_{i,T^{*}+1}$, we extend that result to prove the consistency of the conditional forecast function itself.
+Having established the consistency of the estimators $\hat\omega^{*}_{i,T_{i}^{*}+1}$, we extend that result to prove the consistency of the conditional forecast function itself.
 
   \begin{prop}\label{sigma_consistency}
     Assume
@@ -403,12 +401,12 @@ Having established the consistency of the estimators $\hat\omega^{*}_{i,T^{*}+1}
       \item All conditions listed in Proposition \ref{omega_consistency}.
       \item There exist weights $\{\pi_{i}\}_{i=2}^{n+1}$ such that $\textbf{v}_{1,T_{1}^{*}} = \sum^{n+1}_{i=2}\weight_{i} \textbf{v}_{i,T_{i}^{*}}$.
      \end{enumerate}
-  Then for any $r$, $1\leq r \leq k$, $\hat\sigma^{2}_{adjusted,T^{*}+r}\overset{p}{\longrightarrow}\sigma^{2}_{1,T^{*}+r}$ as $t\rightarrow\infty$. 
+  Then for any $r$, $1\leq r \leq k$, $\hat\sigma^{2}_{adjusted,T_{i}^{*}+r}\overset{p}{\longrightarrow}\sigma^{2}_{1,T_{i}^{*}+r}$ as $t\rightarrow\infty$. 
   \end{prop}
 
 \subsection{Asymptotic Loss}
 
-We now evaluate the loss and risk of our method under two scenarios: first, under arbitrary distribution of $\sigma^{2}_{t+1}$, and then second, under the assumption that the data-generating process is correctly specified.
+We now evaluate the loss and risk of our method under two scenarios: first, under arbitrary distribution of $\sigma^{2}_{t+1}$, and then second, under the assumption that the data-generating process is correctly specified.  For simplicity, we suppress the index $i$ on all quantities.
 
 For 1-step-ahead forecast of $\sigma^{2}_{t+1}$ where $t=T^{*}$, consider the difference 
 \begin{align}
@@ -688,7 +686,7 @@ We discuss one last remarkable phenomenon.  The prediction that dropped the prec
 
 Defining exactly when Brexit occurred is requires some care because of the time zone differences between the UK and the US make difficult the analysis of after-hour shocks on US markets.  Additionally, like many election results, that the ``Leave'' side of the referendum would prevail was not revealed at any discrete time, of course, but became more certain as observation of voting turnout and informal vote tallies across the UK progressed \citep{BBC_News_2016}.  This is in spite of UK news outlets adhering to various rules and guidelines regarding reportage of polling results \citep{Bailey_2024}.  These facts pose a challenge for any method that uses daily data.  In our analysis we defined Brexit
 %Of prime concern is whether we should consider $T^{*}$ for Brexit 
-to have occurred after market hours on June 22nd, 2016, which implies that $T^{*}+1$ is June 23rd, 2016, and hence the reaction of IYG to Brexit can be estimated and extracted from late-day trading on that date. Alternatively, one could have defined Brexit as occurring on June 23rd, 2016, implying that $T^{*}+1$ is June 23rd, 2016. Such a choice may ignore the steady percolation of information and uncertainty that attend election days. A leave-one-out analysis with Brexit defined as occurring on June 23rd, 2016 is presented in Table~\ref{tab:prediction_table_with Brexit as June 23rd, 2016}. A breakdown of donor weights, fixed effect estimates, and adjusted forecasts with Brexit defined as occurring on June 23rd, 2016 is included in Figure~\ref{fig:SVF_2016_with_Brexit_06-23}. 
+to have occurred after market hours on June 22nd, 2016, which implies that $T_{Brexit}^{*}+1$ is June 23rd, 2016, and hence the reaction of IYG to Brexit can be estimated and extracted from late-day trading on that date. Alternatively, one could have defined Brexit as occurring on June 23rd, 2016, implying that $T_{Brexit}^{*}+1$ is June 23rd, 2016. Such a choice may ignore the steady percolation of information and uncertainty that attend election days. A leave-one-out analysis with Brexit defined as occurring on June 23rd, 2016 is presented in Table~\ref{tab:prediction_table_with Brexit as June 23rd, 2016}. A breakdown of donor weights, fixed effect estimates, and adjusted forecasts with Brexit defined as occurring on June 23rd, 2016 is included in Figure~\ref{fig:SVF_2016_with_Brexit_06-23}. 
 
 %, or alternatively, consider the shock to have occurred after hours on June 22nd, 2016, which implies that $T^{*}+1$ is June 23rd, 2016, and hence the reaction of IYG to Brexit can be estimated and extracted from late-day trading on that date. 
 
@@ -805,12 +803,12 @@ Forecast combination is technique with a vast, sprawling literature that we have
 \begin{proof-of-proposition}[\ref{decay_prop}]
   We claim
   \begin{align}
-  \mathbb{E}[ \sigma^{2}_{i,T^{*}+r+1} |\mathcal{F}_{T^{*}+r}] & = \mathbb{E}[\omega_{i} + \alpha a_{T^{*}+r}^{2} + \beta\sigma^{2}_{i,T^{*}+r} |\mathcal{F}_{T^{*}+r}] \label{eq1}\\
-  & = \omega_{i} + \mathbb{E}[\alpha(\sigma_{i,T^{*}+r}\epsilon_{T^{*}+r})^{2} |\mathcal{F}_{T^{*}+r}] + \beta\sigma^{2}_{i,T^{*}+r} \label{eq2}\\
-  & = \omega_{i} + \alpha\sigma_{i,T^{*}+r}^{2} + \beta\sigma^{2}_{i,T^{*}+r} \label{eq3}\\
-  & = \omega_{i} + (\alpha + \beta) \sigma^{2}_{i,T^{*}+r}\label{eq4} \text{ .}
+  \mathbb{E}[ \sigma^{2}_{i,T_{i}^{*}+r+1} |\mathcal{F}_{T_{i}^{*}+r}] & = \mathbb{E}[\omega_{i} + \alpha a_{T_{i}^{*}+r}^{2} + \beta\sigma^{2}_{i,T_{i}^{*}+r} |\mathcal{F}_{T_{i}^{*}+r}] \label{eq1}\\
+  & = \omega_{i} + \mathbb{E}[\alpha(\sigma_{i,T^{*}+r}\epsilon_{T_{i}^{*}+r})^{2} |\mathcal{F}_{T_{i}^{*}+r}] + \beta\sigma^{2}_{i,T_{i}^{*}+r} \label{eq2}\\
+  & = \omega_{i} + \alpha\sigma_{i,T_{i}^{*}+r}^{2} + \beta\sigma^{2}_{i,T_{i}^{*}+r} \label{eq3}\\
+  & = \omega_{i} + (\alpha + \beta) \sigma^{2}_{i,T_{i}^{*}+r}\label{eq4} \text{ .}
   \end{align}
-  The volatility equation of a GARCH(1,1) dictates that for any $r$, the one-step-ahead volatility is given by the expression inside the expectation in \eqref{eq1}.  By the mean-model assumption of a GARCH(1,1), we have $a_{i,t} = \sigma_{i,t}\epsilon_{i,t}$, and hence by substituting $\sigma_{i,t}\epsilon_{i,t}$ for $a_{i,t}$, we arrive at equation \eqref{eq2} above.  Using the unit-variance assumption on $\epsilon_{T^{*}+r}$, we can compute explicitly the expectation, yielding (\ref{eq3}).  Finally, by rearranging terms, we arrive at equation \eqref{eq4}.
+  The volatility equation of a GARCH(1,1) dictates that for any $r$, the one-step-ahead volatility is given by the expression inside the expectation in \eqref{eq1}.  By the mean-model assumption of a GARCH(1,1), we have $a_{i,t} = \sigma_{i,t}\epsilon_{i,t}$, and hence by substituting $\sigma_{i,t}\epsilon_{i,t}$ for $a_{i,t}$, we arrive at equation \eqref{eq2} above.  Using the unit-variance assumption on $\epsilon_{T_{i}^{*}+r}$, we can compute explicitly the expectation, yielding (\ref{eq3}).  Finally, by rearranging terms, we arrive at equation \eqref{eq4}.
   \end{proof-of-proposition}
 
   \begin{proof-of-lemma}[\ref{lemma_ref}]

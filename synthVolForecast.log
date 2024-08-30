@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.21)  28 AUG 2024 23:10
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.21)  30 AUG 2024 00:37
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -820,39 +820,34 @@ Underfull \hbox (badness 10000) in paragraph at lines 292--292
 []|\OT1/cmr/m/n/10.95 Perfect fit, not nec-es-sar-ily unique,
  []
 
-[10] [11]
-Overfull \hbox (14.9991pt too wide) in paragraph at lines 345--350
-\OT1/cmr/m/n/10.95 cion is eas-ier to sub-stan-ti-ate by ex-am-in-ing the con-di-tional ex-pec-ta-tion of the vari-ance, $\U/msb/m/n/10.95 E\OT1/cmr/m/n/10.95 [\OML/cmm/m/it/10.95 ^^[[]\OMS/cmsy/m/n/10.95 jF[]\OT1/cmr/m/n/10.95 ]$,
- []
-
-[12] [13] [14] [15]
+[10] [11] [12] [13] [14] [15]
 <simulation_plots/Aug28_224311_2024_mu[delta]_sigma[u].png, id=402, 578.16pt x 433.62pt>
 File: simulation_plots/Aug28_224311_2024_mu[delta]_sigma[u].png Graphic file (type png)
 <use simulation_plots/Aug28_224311_2024_mu[delta]_sigma[u].png>
-Package pdftex.def Info: simulation_plots/Aug28_224311_2024_mu[delta]_sigma[u].png  used on input line 461.
+Package pdftex.def Info: simulation_plots/Aug28_224311_2024_mu[delta]_sigma[u].png  used on input line 459.
 (pdftex.def)             Requested size: 242.82555pt x 182.11916pt.
 
-Overfull \hbox (30.79918pt too wide) in paragraph at lines 461--462
+Overfull \hbox (30.79918pt too wide) in paragraph at lines 459--460
  [][] 
  []
 
 <simulation_plots/Aug28_224317_2024_mu[delta]_sigma[u].png, id=403, 578.16pt x 433.62pt>
 File: simulation_plots/Aug28_224317_2024_mu[delta]_sigma[u].png Graphic file (type png)
 <use simulation_plots/Aug28_224317_2024_mu[delta]_sigma[u].png>
-Package pdftex.def Info: simulation_plots/Aug28_224317_2024_mu[delta]_sigma[u].png  used on input line 466.
+Package pdftex.def Info: simulation_plots/Aug28_224317_2024_mu[delta]_sigma[u].png  used on input line 464.
 (pdftex.def)             Requested size: 242.82555pt x 182.11916pt.
 
-Overfull \hbox (30.79918pt too wide) in paragraph at lines 466--467
+Overfull \hbox (30.79918pt too wide) in paragraph at lines 464--465
  [][] 
  []
 
 <simulation_plots/Aug28_224322_2024_mu[delta]_sigma[u].png, id=404, 578.16pt x 433.62pt>
 File: simulation_plots/Aug28_224322_2024_mu[delta]_sigma[u].png Graphic file (type png)
 <use simulation_plots/Aug28_224322_2024_mu[delta]_sigma[u].png>
-Package pdftex.def Info: simulation_plots/Aug28_224322_2024_mu[delta]_sigma[u].png  used on input line 472.
+Package pdftex.def Info: simulation_plots/Aug28_224322_2024_mu[delta]_sigma[u].png  used on input line 470.
 (pdftex.def)             Requested size: 242.82555pt x 182.11916pt.
 
-Overfull \hbox (30.79918pt too wide) in paragraph at lines 472--473
+Overfull \hbox (30.79918pt too wide) in paragraph at lines 470--471
  [][] 
  []
 
@@ -862,20 +857,20 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <simulation_plots/Aug28_224330_2024_mu[delta]_mu[v].png, id=411, 578.16pt x 433.62pt>
 File: simulation_plots/Aug28_224330_2024_mu[delta]_mu[v].png Graphic file (type png)
 <use simulation_plots/Aug28_224330_2024_mu[delta]_mu[v].png>
-Package pdftex.def Info: simulation_plots/Aug28_224330_2024_mu[delta]_mu[v].png  used on input line 485.
+Package pdftex.def Info: simulation_plots/Aug28_224330_2024_mu[delta]_mu[v].png  used on input line 483.
 (pdftex.def)             Requested size: 242.82555pt x 182.11916pt.
 
-Overfull \hbox (30.79918pt too wide) in paragraph at lines 485--486
+Overfull \hbox (30.79918pt too wide) in paragraph at lines 483--484
  [][] 
  []
 
 <simulation_plots/Aug28_224337_2024_mu[delta]_mu[v].png, id=412, 578.16pt x 433.62pt>
 File: simulation_plots/Aug28_224337_2024_mu[delta]_mu[v].png Graphic file (type png)
 <use simulation_plots/Aug28_224337_2024_mu[delta]_mu[v].png>
-Package pdftex.def Info: simulation_plots/Aug28_224337_2024_mu[delta]_mu[v].png  used on input line 490.
+Package pdftex.def Info: simulation_plots/Aug28_224337_2024_mu[delta]_mu[v].png  used on input line 488.
 (pdftex.def)             Requested size: 242.82555pt x 182.11916pt.
 
-Overfull \hbox (30.79918pt too wide) in paragraph at lines 490--491
+Overfull \hbox (30.79918pt too wide) in paragraph at lines 488--489
  [][] 
  []
 
@@ -885,20 +880,20 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <simulation_plots/Aug28_224451_2024_mu[omega^*]_sigma[u].png, id=413, 578.16pt x 433.62pt>
 File: simulation_plots/Aug28_224451_2024_mu[omega^*]_sigma[u].png Graphic file (type png)
 <use simulation_plots/Aug28_224451_2024_mu[omega^*]_sigma[u].png>
-Package pdftex.def Info: simulation_plots/Aug28_224451_2024_mu[omega^*]_sigma[u].png  used on input line 503.
+Package pdftex.def Info: simulation_plots/Aug28_224451_2024_mu[omega^*]_sigma[u].png  used on input line 501.
 (pdftex.def)             Requested size: 242.82555pt x 182.11916pt.
 
-Overfull \hbox (30.79918pt too wide) in paragraph at lines 503--504
+Overfull \hbox (30.79918pt too wide) in paragraph at lines 501--502
  [][] 
  []
 
 <simulation_plots/Aug28_224455_2024_mu[omega^*]_sigma[u].png, id=414, 578.16pt x 433.62pt>
 File: simulation_plots/Aug28_224455_2024_mu[omega^*]_sigma[u].png Graphic file (type png)
 <use simulation_plots/Aug28_224455_2024_mu[omega^*]_sigma[u].png>
-Package pdftex.def Info: simulation_plots/Aug28_224455_2024_mu[omega^*]_sigma[u].png  used on input line 508.
+Package pdftex.def Info: simulation_plots/Aug28_224455_2024_mu[omega^*]_sigma[u].png  used on input line 506.
 (pdftex.def)             Requested size: 242.82555pt x 182.11916pt.
 
-Overfull \hbox (30.79918pt too wide) in paragraph at lines 508--509
+Overfull \hbox (30.79918pt too wide) in paragraph at lines 506--507
  [][] 
  []
 
@@ -911,36 +906,36 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <real_data_output_plots/FriMay311830182024_IYG_None_None.png, id=489, 803.0pt x 602.25pt>
 File: real_data_output_plots/FriMay311830182024_IYG_None_None.png Graphic file (type png)
 <use real_data_output_plots/FriMay311830182024_IYG_None_None.png>
-Package pdftex.def Info: real_data_output_plots/FriMay311830182024_IYG_None_None.png  used on input line 551.
+Package pdftex.def Info: real_data_output_plots/FriMay311830182024_IYG_None_None.png  used on input line 549.
 (pdftex.def)             Requested size: 481.80373pt x 361.35278pt.
  [21 <./real_data_output_plots/FriMay311830182024_IYG_None_None.png>] [22] [23] [24] [25]
 <real_data_output_plots/WedJun121222522024_IYG_None_None.png, id=574, 803.0pt x 602.25pt>
 File: real_data_output_plots/WedJun121222522024_IYG_None_None.png Graphic file (type png)
 <use real_data_output_plots/WedJun121222522024_IYG_None_None.png>
-Package pdftex.def Info: real_data_output_plots/WedJun121222522024_IYG_None_None.png  used on input line 797.
+Package pdftex.def Info: real_data_output_plots/WedJun121222522024_IYG_None_None.png  used on input line 795.
 (pdftex.def)             Requested size: 481.80373pt x 361.35278pt.
  [26]
-Underfull \hbox (badness 10000) in paragraph at lines 812--815
+Underfull \hbox (badness 10000) in paragraph at lines 810--813
 
  []
 
 [27 <./real_data_output_plots/WedJun121222522024_IYG_None_None.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 816--819
+Underfull \hbox (badness 10000) in paragraph at lines 814--817
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 820--823
+Underfull \hbox (badness 10000) in paragraph at lines 818--821
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 838--840
+Underfull \hbox (badness 10000) in paragraph at lines 836--838
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 841--844
+Underfull \hbox (badness 10000) in paragraph at lines 839--842
 
  []
 
@@ -984,7 +979,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  84i,17n,80p,3729b,745s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on synthVolForecast.pdf (33 pages, 1726681 bytes).
+Output written on synthVolForecast.pdf (33 pages, 1726838 bytes).
 PDF statistics:
  785 PDF objects out of 1000 (max. 8388607)
  675 compressed objects within 7 object streams
