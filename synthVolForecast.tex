@@ -763,6 +763,71 @@ to have occurred after market hours on June 22nd, 2016, which implies that $T_{B
     \endgroup
     \end{table}
 
+    \begin{table}[ht]
+      \centering
+      \captionof{table}{Adjusted volatility forecasts for the 2016 US presidential election ranked by QL loss. This table contains all forecasts made by applying simultaneous leave-one-out approaches made to the covariates and the donors forming the donor pool. The forecast from our analysis in the main text is included in yellow. The mean and median of all forecasts is also included in grey. Here Brexit is defined as June 23rd and June 24th, 2016.}
+      \begingroup\fontsize{9pt}{10pt}\selectfont
+      \begin{tabular}{rll}
+        \hline
+      QLLoss.AdjustedForecast. & dropped\_covariate & dropped\_donor \\ 
+        \hline
+      0.0002 & Log Return of VIX & 2016-06-22 \\ 
+        0.0014 & Log Return of TYX & 2016-06-22 \\ 
+        0.0019 & Log Return of TNX & 2016-06-22 \\ 
+        0.0029 & Log Return of CL.F & 2016-06-22 \\ 
+        0.0041 & Debt Risk Spread & 2016-06-22 \\ 
+        0.0047 & Log Return of FVX & 2016-06-22 \\ 
+        0.0053 & VIX & 2016-06-22 \\ 
+        0.0070 & None & 2016-06-22 \\ 
+        0.0078 & Log Return of IRX & 2016-06-22 \\ 
+        0.0263 & IYG & 2016-06-22 \\ 
+        0.0359 & Log Return of FVX & 2012-11-06 \\ 
+        0.0449 & Log Return of TYX & 2012-11-06 \\ 
+        0.0494 & IYG & 2008-11-04 \\ 
+        0.0504 & Log Return of IRX & 2012-11-06 \\ 
+        0.0509 & Log Return of CL.F & 2012-11-06 \\ 
+        0.0543 & None & 2012-11-06 \\ 
+        0.0548 & Debt Risk Spread & 2012-11-06 \\ 
+        0.0556 & VIX & 2012-11-06 \\ 
+        0.0631 & Log Return of VIX & 2012-11-06 \\ 
+        0.0699 & Log Return of IRX & 2008-11-04 \\ 
+        0.0703 & VIX & 2008-11-04 \\ 
+        0.0721 & Log Return of TYX & 2008-11-04 \\ 
+        0.0725 & Log Return of TYX & None \\ 
+        \rowcolor{gray}0.0744 & NA (Median Forecast) & NA (Median Forecast)\\
+        0.0744 & Log Return of CL.F & 2008-11-04 \\ 
+        0.0744 & Log Return of VIX & 2008-11-04 \\ 
+        0.0751 & Log Return of TNX & 2008-11-04 \\ 
+        0.0754 & Log Return of FVX & 2008-11-04 \\ 
+        0.0791 & None & 2008-11-04 \\ 
+        0.0808 & Log Return of TNX & 2012-11-06 \\ 
+        \rowcolor{gray}0.0858& NA (Average Forecast) & NA (Average Forecast)\\ 
+        0.0878 & Log Return of TNX & None \\ 
+        0.0884 & Log Return of FVX & None \\ 
+        0.0893 & Log Return of VIX & None \\ 
+        0.0937 & Log Return of IRX & None \\ 
+        0.0937 & Debt Risk Spread & 2008-11-04 \\ 
+        0.0960 & Log Return of CL.F & None \\ 
+        0.0982 & IYG & None \\ 
+        0.0997 & VIX & None \\ 
+        \rowcolor{yellow} 0.1005 & None & None \\ 
+        0.1039 & Debt Risk Spread & None \\ 
+        0.2646 & Log Return of TYX & 2004-11-02 \\ 
+        0.2649 & Log Return of VIX & 2004-11-02 \\ 
+        0.2649 & Log Return of TNX & 2004-11-02 \\ 
+        0.2655 & Log Return of IRX & 2004-11-02 \\ 
+        0.2656 & None & 2004-11-02 \\ 
+        0.2658 & Log Return of FVX & 2004-11-02 \\ 
+        0.2659 & Debt Risk Spread & 2004-11-02 \\ 
+        0.2660 & Log Return of CL.F & 2004-11-02 \\ 
+        0.2664 & VIX & 2004-11-02 \\ 
+        0.3264 & IYG & 2004-11-02 \\ 
+        2.3984 & IYG & 2012-11-06 \\ 
+         \hline
+      \end{tabular}
+      \endgroup
+      \end{table}
+
 
 %\begin{figure}[H]
 %\begin{center}
@@ -803,7 +868,7 @@ Forecast combination is technique with a vast, sprawling literature that we have
     \begin{figure}[H]
       \begin{center}
         \textbf{Adjusted volatility forecast following the 2016 US presidential election with Brexit as June 23rd and June 24th, 2016}\par\medskip
-        \includegraphics[scale=.6]{real_data_output_plots/FriAug300111162024_IYG_None_None.png}
+        \includegraphics[scale=.6]{real_data_output_plots/WedSep041316522024_IYG_None_None.png}
         \caption{When the Brexit shock is taken to be $T_{Brexit}^{*}$ = June 22nd, 2016 and begin with $T_{Brexit}^{*}+1$ June 23rd, 2016, and last through June 24th, 2016, its own weight is still unchanged.  The fixed effect estimate of the shock is large, but not as large when the shock is taken to be June 23rd, 2016.}
         \label{fig:SVF_2016_with_Brexit_06-23_through_6-24}
         \end{center}

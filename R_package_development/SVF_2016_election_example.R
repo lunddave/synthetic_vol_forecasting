@@ -310,7 +310,7 @@ for (u in c(-1,0,2:number_of_covariates)){
     png(png_save_name,width = 800, height = 600)
 
     if ('Brexit' %in% names(shock_dates)){
-      shck_lengths <- c(rep(k,n),8)
+      shck_lengths <- c(rep(k,n),2)
     }
     else{
       shck_lengths <- rep(k, n+1)
@@ -320,7 +320,7 @@ for (u in c(-1,0,2:number_of_covariates)){
     function_output <- SynthVolForecast(Y
                              ,X
                              ,shock_time_vec = unlist(shock_dates)
-                             ,shock_length_vec = c(1,1,1,1,2) #reflect two-day Brexit shock
+                             ,shock_length_vec = shck_lengths
                              ,dbw_scale = TRUE
                              ,dbw_center = TRUE
                              ,dbw_indices = NULL
