@@ -255,11 +255,14 @@ In this work, we will be focused on shocks that occur strictly between two discr
       \end{center}
     \end{figure}
 
-We will suppose that a researcher has multivariate time series data $\y_{i,t} = (r_{i,t}$, $\x_{i,t}$), $t = 1,$ $\ldots,  T_i$, $i = 1, \ldots, n+1$, where $r_{i,t}$ is scalar and $\x_{i,t}$ is a vector of covariates such that $\x_{i,t}|\mathcal{F}_{i,t-1}$ is deterministic.  Suppose that the analyst is interested in forecasting the volatility of $r_{1,t}$, the first time series in the collection, which we will denote \textit{the time series under study}.  We require that each time series $\y_{i,t}$ is subject to an observed news event following $T^*_i \leq T_{i} + 1$ and before witnessing $T^*_i+1$.  
+We will suppose that a researcher has multivariate time series data $\y_{i,t} = (r_{i,t}$, $\x_{i,t}$), $t = 1,$ $\ldots,  T_i$, $i = 1, \ldots, n+1$, where $r_{i,t}$ is scalar and $\x_{i,t}$ is a vector of covariates such that $\x_{i,t}|\mathcal{F}_{i,t-1}$ is deterministic.  Suppose that the analyst is interested in forecasting $r_{1,t}$, the first time series in the collection, which we will denote \textit{the time series under study}.   We assume the following general data-generating process
 
 \begin{align*}
   &y_{i,t} = F(\mathcal{F}_{t-1}) + \epsilon_{i,t}\\
 \end{align*}
+where $\epsilon_{i,t}$ is mean-zero and uncorrelated across time and donors.
+
+
 
 Note that this specification above is capacious enough to include data-generating processes of the form 
 
@@ -268,17 +271,7 @@ Note that this specification above is capacious enough to include data-generatin
 \end{align*}
 with $k\geq1$ and all variables on the right-hand side supported on $\mathbb{R}^{+}$.
 
-\begin{align*}
-&\sigma_{i,t}^{2} = \omega_{i} + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \text{ }. \\
-\end{align*}
-Let $I(\cdot)$ be an indicator function.  Let $T_i$ denote the time length of the time series $i$ for $i = 1, \ldots, n+1$, and let $T_i^*$ denote the largest time index prior to the arrival of the news shock, with $T_i^* < T_i$, to ensure that there is at least one post-shock realization for each series $i$.  Let $\delta, \x_{i,t} \in \mathbb{R}^{p}$.  Let $\mathcal{F}_{i}$ with a single-variable subscript denote a univariate, time-invariant $\sigma$-algebra, and $\mathcal{F}_{i,t}$ denote the canonical product filtration for donor $i$ at time $t$.  Let $D^{return}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + L_{i, return}\})$ and $D^{vol}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + L_{i, vol}\})$, and let $L_{i,return},L_{i,vol}$ denote the lengths of the level and volatility shocks, respectively.  For $t= 1, \ldots, T_i$ and $i = 1, \ldots, n+1$, the model $\mc{M}_1$ is defined as 
-
-
-    
-Note also the divergences from \cite{lin2021minimizing}.  As already established, the model presented here is intended to account for ARCH effects.  Additionally, here we also diverge by modeling the shocks $\omega^{*}_{i,t}$ as time-varying quantities obeying a mixture distribution.  In particular, prior to and after the shock, the  $\omega^{*}_{i,t}$  are uniformly zero.  During the shock, i.e. from $T^{*}_{i}+1$ through $T^{*}_{i}+L^{vol}_{i}$, the $\omega^{*}_{i,t}$ are distributed i.i.d, with a core signal component that depends solely on the unknown parameter $\delta$ and the observable vector $\x_{i,T_{i}^{*}+1}$.  Wherever necessary, to distinguish the two distributions that make up the shock distribution, we use the term \textit{nonzero shocks} to refer to the shocks that are not uniformly zero.  
-
-The nonzero shocks each include a idiosyncratic noise term that varies across time and donors.  This feature allows the nonzero shocks to exhibit some variation as the shock progresses, even within a single donor.  The noise term could be modeled with additional complexity, including serial correlation or a the noise term that increases or decays throughout the shock, proportional to a deterministic function of time, or peak somewhere in the middle of the shock period.  Each of these ideas might correspond to some particular, realistic feature of the world.
-
+We require that each time series $\y_{i,t}$ is subject to an observed news event following $T^*_i \leq T_{i} + 1$ and before witnessing $T^*_i+1$. 
 
 \section{Model Adjustment Using Similarity-Based Parameter Correction: A Global Overview}
 

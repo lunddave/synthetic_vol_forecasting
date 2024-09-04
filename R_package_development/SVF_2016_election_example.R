@@ -321,7 +321,6 @@ for (u in c(-1,0,2:number_of_covariates)){
                              ,X
                              ,shock_time_vec = unlist(shock_dates)
                              ,shock_length_vec = c(1,1,1,1,2) #reflect two-day Brexit shock
-                             #,shck_lengths
                              ,dbw_scale = TRUE
                              ,dbw_center = TRUE
                              ,dbw_indices = NULL
