@@ -55,7 +55,7 @@ volume_covariates <- c()
 FRED_covariates <- c('AAA', 'BAA')
 
 shock_dates_outside_loop <- list('2016 Election' = "2016-11-08"
-                                 ,'Brexit' = "2016-06-22"
+                                 ,'Brexit' = "2016-06-23"
                                 # ,'Brexit_later' = '2016-06-23'
                                # ,'2014 Midterm' = "2014-11-04"
                                ,'2012 Election' = "2012-11-06"
@@ -310,7 +310,7 @@ for (u in c(-1,0,2:number_of_covariates)){
     png(png_save_name,width = 800, height = 600)
 
     if ('Brexit' %in% names(shock_dates)){
-      shck_lengths <- c(rep(k,n),2)
+      shck_lengths <- c(rep(k,n),1)
     }
     else{
       shck_lengths <- rep(k, n+1)

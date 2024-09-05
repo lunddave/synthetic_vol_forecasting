@@ -233,8 +233,10 @@ What about qualitative ways of determining similarity?  In \cite{lundquist2024vo
 
 \textcolor{red}{It's unclear how much I can show the reader, given that I want this to be general.}
 
-In order to motivate our procedure, we provide a visual illustration.  In Figure [decide on which figure to include] %\ref{fig:motivating_piece_convex_combination}, 
-we show how the aggregation of estimated excess volatilities from donors in the donor pool works when the correction function is a specially-chosen convex combination of fixed effects from the donor pool.  Our method assumes a credible, parsimonious parameterization in which the shock is an affine transformation of several key covariates.  The key intuition behind this shock parameterization is that as the strength of the linear signal increases relative to the idiosyncratic error, the GARCH estimation of these effects increases in accuracy.  From this, it follows that the aggregated shock estimate increases in accuracy.
+In order to introduce the general framework for adjusting forecasts under shocks, we provide an illustration.  In Figure [decide on which figure to include] %\ref{fig:motivating_piece_convex_combination}, 
+we show how the aggregation of estimated excess volatilities from donors in the donor pool works when the correction function is a specially-chosen convex combination of fixed effects from the donor pool.  Our method assumes a credible, parsimonious parameterization in which the shock is an affine transformation of several key covariates.  The key intuition behind this shock parameterization is that as the strength of the linear signal increases relative to the idiosyncratic error, the estimation of these effects increases in accuracy.  From this, it follows that the aggregated shock estimate increases in accuracy.
+
+\textcolor{red}{The preceding information is correct.  However, it comes from the previous paper, so it needs to be changed to suit the style of the current paper.}
 
 \subsection{A shock between discrete time points}
 In this work, we will be focused on shocks that occur strictly between two discrete time points.  This raises an important terminological point.  ``Shocks", in econometric literature, can be structural or idiosyncratic, permanent or transitory, supply-related or demand-related, and so forth.  The taxonomy is vast.
@@ -250,7 +252,7 @@ In this work, we will be focused on shocks that occur strictly between two discr
         % \node[draw,text width=2.62cm] at (14.8,2.8) {$\textcolor{blue}{\hat\omega^{*} = \sum^{n+1}_{i=2}\pi_{i}\hat\omega^{*}_{i}}$ };    
         
     \end{tikzpicture}
-      \caption{The simulated time series experiences a volatility shock between trading days 1,656 and 1,657.  The GARCH prediction, in red, fails even to approach the volatility spike at $T^{*}+1$, as do several adjusted predictions, which are orange.  In contrast, the GARCH forecast adjusted by $\hat\omega^{*} = \sum^{n+1}_{i=2}\pi_{i}\hat\omega^{*}_{i} $, a convex combination of the estimated shocks in the donor pool, achieves directional correctness as well as a smaller absolute loss in its prediction.  The pink vertical line serves to indicate the adjustment of size $\hat\omega^{*}$ that allows the blue bullseye to more closely approach the ground truth.}    \label{fig:motivating_piece_convex_combination}
+      \caption{The simulated time series experiences a volatility shock between trading days 1,656 and 1,657.  The GARCH prediction, in red, fails even to approach the volatility spike at $T^{*}+1$, as do several adjusted predictions, which are orange.  In contrast, the GARCH forecast adjusted by $\hat\omega^{*} = \sum^{n+1}_{i=2}\pi_{i}\hat\omega^{*}_{i} $, a convex combination of the estimated shocks in the donor pool, achieves directional correctness as well as a smaller absolute loss in its prediction.  The pink vertical line serves to indicate the adjustment of size $\hat\omega^{*}$ that allows the blue bullseye to approach more closely the ground truth.}    \label{fig:motivating_piece_convex_combination}
    
       \end{center}
     \end{figure}
@@ -258,7 +260,7 @@ In this work, we will be focused on shocks that occur strictly between two discr
 We will suppose that a researcher has multivariate time series data $\y_{i,t} = (r_{i,t}$, $\x_{i,t}$), $t = 1,$ $\ldots,  T_i$, $i = 1, \ldots, n+1$, where $r_{i,t}$ is scalar and $\x_{i,t}$ is a vector of covariates such that $\x_{i,t}|\mathcal{F}_{i,t-1}$ is deterministic.  Suppose that the analyst is interested in forecasting $r_{1,t}$, the first time series in the collection, which we will denote \textit{the time series under study}.   We assume the following general data-generating process
 
 \begin{align*}
-  &y_{i,t} = F(\mathcal{F}_{t-1}) + \epsilon_{i,t}\\
+  &y_{t} = F(\mathcal{F}_{t-1}) + \epsilon_{i,t}\\
 \end{align*}
 where $\epsilon_{i,t}$ is mean-zero and uncorrelated across time and donors.
 
@@ -267,11 +269,19 @@ where $\epsilon_{i,t}$ is mean-zero and uncorrelated across time and donors.
 Note that this specification above is capacious enough to include data-generating processes of the form 
 
 \begin{align*} 
-  y_{i,t} = \log{Y_{i,t}} = \log{a_{i}Y_{i,t-k}\epsilon_{i,t}} = \log{a_{i}} + \log{Y_{i, t-k}} + \log{\epsilon_{i,t}}
+  y_{t} = \log{Y_{i,t}} = \log{a_{i}Y_{i,t-k}\epsilon_{i,t}} = \log{a_{i}} + \log{Y_{i, t-k}} + \log{\epsilon_{i,t}}
 \end{align*}
 with $k\geq1$ and all variables on the right-hand side supported on $\mathbb{R}^{+}$.
 
-We require that each time series $\y_{i,t}$ is subject to an observed news event following $T^*_i \leq T_{i} + 1$ and before witnessing $T^*_i+1$. 
+We require that each time series $\y_{i,t}$ is subject to an observed news event following $T^*_i \leq T_{i} + 1$ and before witnessing $T^*_i+1$.  Our reasons for this will now become clear.
+
+We will suppose further that $F(\mathcal{F}_{t})$ includes a random effect $\lambda_{t}$, allowing us to write
+
+\begin{align*}
+  &y_{t} = F(\mathcal{F}_{t-1}) + \epsilon_{i,t} = F^{D}(\mathcal{F}_{t-1}) + \x_{t}^{T}\lambda_{t} + \epsilon_{i,t}\\
+\end{align*}
+
+
 
 \section{Model Adjustment Using Similarity-Based Parameter Correction: A Global Overview}
 
@@ -288,7 +298,7 @@ Second, the method requires a model family that is shared across all units.  Thi
 
 Third, the data-generating processes of the units must include a correction term that serves as the basis of the aggregation.  The correction term must have a parametric specification.  The correction term must be estimable in each time series(?).   It may depend on external covariates, as we see in \cite{lin2021minimizing} and \cite{lundquist2024volatility}.
 
-Fourth, there must exist a reliable estimation procedure for the units that obey the common family of data-generating processes.  In this case, reliable means several things.  It means that the estimation procedure must produce a credible description of each data-generating process, so as to aid in estimating the correction term in each unit.  That may mean the estimator has low variance, and it may also mean that the estimation procedure is robust, to some degree, to misspecification bias.
+Fourth, there must exist a reliable estimation procedure for the units that obey the common family of data-generating processes.  In this case, reliable means several things.  It means that the estimation procedure must produce a credible description of each data-generating process, so as to aid in estimating the correction term in each unit.  That may mean the estimators have low variance, and it may also mean that the estimation procedure is robust, to some degree, to misspecification bias.  However, in theory, the lack of these properties is not harmful to the method unless the lack of these properties harms the correction term's estimation.
 
 When we use fixed effect estimation (under ordinary assumptions), we can construct confidence intervals for the fixed effect estimates, and then assuming independence, we can get confidence intervals for convex combinations of fixed effect estimates.
 
