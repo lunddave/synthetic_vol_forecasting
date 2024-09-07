@@ -35,7 +35,7 @@ k <- length(ground_truth)
 TSUS <- 'IYG'
 
 log_ret_covariates <- c(#"GBP=X",
-                         #"6B=F",
+                        #"6B=F"
                         "CL=F"
                         ,"^VIX"
                         ,"^IRX"
@@ -45,7 +45,7 @@ log_ret_covariates <- c(#"GBP=X",
                         #,"DX-Y.NYB"
                       )
 
-level_covariates <- c('^VIX'
+level_covariates <- c(#'^VIX'
                       #,"GBP=X"
                       #,'^IRX'
 )
@@ -54,9 +54,13 @@ volume_covariates <- c()
 
 FRED_covariates <- c('AAA', 'BAA')
 
+#FRED_covariates <- c()
+
 shock_dates_outside_loop <- list('2016 Election' = "2016-11-08"
                                  ,'Brexit' = "2016-06-23"
-                                # ,'Brexit_later' = '2016-06-23'
+                                  ,'Brexit Poll' = "2016-06-13"
+                              #   ,'Boris Johnson' = "2016-02-20"
+                                 ,'Brexit Announced' = "2016-02-19"
                                # ,'2014 Midterm' = "2014-11-04"
                                ,'2012 Election' = "2012-11-06"
                                # , '2010 Midterm' ="2010-11-02"
@@ -185,7 +189,7 @@ for (u in c(-1,0,2:number_of_covariates)){
                     , data_level_covariates
                     , data_volume_covariates
                     , data_absolute_return_covariates
-        )
+                    )
 
         merged_data <- do.call(merge, to_add)
 
@@ -228,32 +232,31 @@ for (u in c(-1,0,2:number_of_covariates)){
           #Merge FRED data
           merged_data <- merge(merged_data, Debt_Risk_Spread)
 
-          print('Number of rows in merged_data')
-          print(ncol(merged_data))
-
-          print('Value of number_of_covariates')
-          print(number_of_covariates)
-
-          if (u > 0){
-            merged_data_uth_covariate_dropped <- merged_data[,-u]
-            covariate_string <- names(merged_data[,u])
-            Y_lookback_indices_u_loop <- list(seq(1,30,1))
-          }
-          else if (u == 0){
-            merged_data_uth_covariate_dropped <- merged_data
-            covariates_col_names <- colnames(merged_data_uth_covariate_dropped)
-            covariate_string <- 'None'
-            Y_lookback_indices_u_loop <- list(seq(1,30,1))
-          }
-          else{ #This case is for the time series under study not being used in the DBW
-            merged_data_uth_covariate_dropped <- merged_data
-            covariates_col_names <- colnames(merged_data_uth_covariate_dropped)[-1]
-            covariate_string <- TSUS
-            Y_lookback_indices_u_loop <- NULL
-
-          }
-
         } #end conditional for FRED_covariates
+
+        print('Number of rows in merged_data')
+        print(ncol(merged_data))
+
+        print('Value of number_of_covariates')
+        print(number_of_covariates)
+
+        if (u > 0){
+          merged_data_uth_covariate_dropped <- merged_data[,-u]
+          covariate_string <- names(merged_data[,u])
+          Y_lookback_indices_u_loop <- list(seq(1,1,1))
+        }
+        else if (u == 0){
+          merged_data_uth_covariate_dropped <- merged_data
+          covariates_col_names <- colnames(merged_data_uth_covariate_dropped)
+          covariate_string <- 'None'
+          Y_lookback_indices_u_loop <- list(seq(1,1,1))
+        }
+        else{ #This case is for the time series under study not being used in the DBW
+          merged_data_uth_covariate_dropped <- merged_data
+          covariates_col_names <- colnames(merged_data_uth_covariate_dropped)[-1]
+          covariate_string <- TSUS
+          Y_lookback_indices_u_loop <- NULL
+        }
 
         market_data_list[[i]] <- merged_data_uth_covariate_dropped
     }
@@ -316,6 +319,16 @@ for (u in c(-1,0,2:number_of_covariates)){
       shck_lengths <- rep(k, n+1)
     }
 
+    garch_order <- NULL
+
+    if ('2008 Election' %in% names(shock_dates)){
+      garch_order <- list(length = n + 1)
+      for (i in 1:(n+1)){
+        garch_order[[i]] <- c(1,1,0)
+        garch_order[[3]] <- c(2,2,0)
+        }
+    }
+
     #Now run the algorithm
     function_output <- SynthVolForecast(Y
                              ,X
@@ -325,7 +338,7 @@ for (u in c(-1,0,2:number_of_covariates)){
                              ,dbw_center = TRUE
                              ,dbw_indices = NULL
                              #,covariate_indices = length(X)
-                             ,garch_order = c(1,1,0)
+                             ,garch_order = NULL
                              ,plots = TRUE
                              ,shock_time_labels = names(shock_dates)
                              ,ground_truth_vec = ground_truth

@@ -858,7 +858,12 @@ SynthVolForecast <- function(Y_series_list
   ### BEGIN Populate defaults
   n <- length(Y_series_list) - 1
 
-  if (is.null(garch_order) == TRUE) {garch_order <- c(1,1,1)}
+  if (is.null(garch_order) == TRUE) {
+
+    garch_order <- list(length = n+1)
+
+    for (i in 1:(n+1)){garch_order[[i]] <- c(1,1,0)}
+}
 
   if (is.null(dbw_indices) == TRUE) {dbw_indices <- 1:ncol(covariates_series_list[[1]])}
 
@@ -956,7 +961,7 @@ SynthVolForecast <- function(Y_series_list
       print(tail(X_i_final))
 
       fitted_garch <- garchx::garchx(Y_series_list[[i]][1:last_shock_point] #tk
-                                     , order = garch_order
+                                     , order = garch_order[[i]]
                                      , xreg = X_i_final
                                      , backcast.values = NULL
                                      , control = list(eval.max = 100000
@@ -989,7 +994,7 @@ SynthVolForecast <- function(Y_series_list
   if (is.null(covariate_indices) == TRUE){
 
     fitted_garch <- garchx::garchx(Y_series_list[[1]][1:(integer_shock_time_vec[1])]
-                                   , order = garch_order
+                                   , order = garch_order[[1]]
                                    , xreg = NULL
                                    , backcast.values = NULL
                                    , control = list(eval.max = 100000
