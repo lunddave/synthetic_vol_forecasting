@@ -918,6 +918,7 @@ SynthVolForecast <- function(Y_series_list
 
   ## BEGIN estimate fixed effects in donors
   omega_star_hat_vec <- c()
+  omega_star_std_err_hat_vec <- c()
 
   #tk
   if (common_series_assumption == TRUE){
@@ -928,8 +929,9 @@ SynthVolForecast <- function(Y_series_list
     # 1 fixed effect estimated at n shocks?
     vec_of_zeros <- rep(0, integer_shock_time_vec[i])
     vec_of_ones <- rep(1, shock_length_vec[i])
+    vec_of_final_zeros <- rep(0, 20) #tk
     post_shock_indicator <- c(vec_of_zeros, vec_of_ones)
-    last_shock_point <- integer_shock_time_vec[i] + shock_length_vec[i]
+    last_shock_point <- integer_shock_time_vec[i] + shock_length_vec[i] + 20 #tk
 
     #step 2: fit model
 
@@ -942,8 +944,9 @@ SynthVolForecast <- function(Y_series_list
       # Make indicator variable w/ a 1 at only T*+1, T*+2,...,T*+shock_length_vec[i]
       vec_of_zeros <- rep(0, integer_shock_time_vec[i])
       vec_of_ones <- rep(1, shock_length_vec[i])
-      post_shock_indicator <- c(vec_of_zeros, vec_of_ones)
-      last_shock_point <- integer_shock_time_vec[i] + shock_length_vec[i]
+      vec_of_final_zeros <- rep(0, 20)
+      post_shock_indicator <- c(vec_of_zeros, vec_of_ones, vec_of_final_zeros)
+      last_shock_point <- integer_shock_time_vec[i] + shock_length_vec[i] + 20 #tk
 
       #subset X_i
       if (is.null(covariate_indices) == TRUE) {
@@ -977,7 +980,10 @@ SynthVolForecast <- function(Y_series_list
 
       coef_test <- lmtest::coeftest(fitted_garch)
       extracted_fixed_effect <- coef_test[dim(lmtest::coeftest(fitted_garch))[1], 1]
+      extracted_fixed_effect_std_err <- coef_test[dim(lmtest::coeftest(fitted_garch))[1], 2]
+
       omega_star_hat_vec <- c(omega_star_hat_vec, extracted_fixed_effect)
+      omega_star_std_err_hat_vec <- c(omega_star_hat_vec, extracted_fixed_effect_std_err)
 
     } ## END loop for computing fixed effects
 

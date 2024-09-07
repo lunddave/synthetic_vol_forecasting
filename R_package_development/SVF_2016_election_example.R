@@ -45,7 +45,7 @@ log_ret_covariates <- c(#"GBP=X",
                         #,"DX-Y.NYB"
                       )
 
-level_covariates <- c(#'^VIX'
+level_covariates <- c('^VIX'
                       #,"GBP=X"
                       #,'^IRX'
 )
@@ -56,19 +56,19 @@ FRED_covariates <- c('AAA', 'BAA')
 
 #FRED_covariates <- c()
 
-shock_dates_outside_loop <- list('2016 Election' = "2016-11-08"
-                                 ,'Brexit' = "2016-06-23"
-                                  ,'Brexit Poll' = "2016-06-13"
-                              #   ,'Boris Johnson' = "2016-02-20"
-                                 ,'Brexit Announced' = "2016-02-19"
-                               # ,'2014 Midterm' = "2014-11-04"
-                               ,'2012 Election' = "2012-11-06"
-                               # , '2010 Midterm' ="2010-11-02"
-                               ,'2008 Election' = "2008-11-04"
-                               # , '2006 Midterm' ="2006-11-07"
-                               ,'2004 Election' = "2004-11-02"
-                               #,'2002 Midterm' =  "2002-11-05"
-                               #,'2000 Election' = "2000-11-07"
+shock_dates_outside_loop <- list('2016 Election' = c("2016-11-08", list(1, c(1,1,0)))
+                                 ,'Brexit' = c("2016-06-23", list(1, c(1,1,0)))
+                                # ,'Poll Released Leaning Brexit' = c("2016-06-13", list(1, c(1,1,0)))
+                                #   ,'Boris Johnson' = "2016-02-20"
+                                #,'Brexit Announced' = c("2016-02-19", list(1, c(1,1,0)))
+                                # ,'2014 Midterm' = "2014-11-04"
+                                ,'2012 Election' = c("2012-11-06", list(1, c(1,1,0)))
+                                # , '2010 Midterm' ="2010-11-02"
+                                ,'2008 Election' = c("2008-11-04", list(1, c(1,1,0)))
+                                # , '2006 Midterm' ="2006-11-07"
+                                ,'2004 Election' = c("2004-11-02", list(1, c(1,1,0)))
+                                #,'2002 Midterm' =  "2002-11-05"
+                                #,'2000 Election' = "2000-11-07"
               )
 
 shock_dates_outside_loop <- c(shock_dates_outside_loop[1]
@@ -102,7 +102,7 @@ for (u in c(-1,0,2:number_of_covariates)){
     nyse <- timeDate::holidayNYSE(2000:year(Sys.Date())+1)
     create.calendar(name='NYSE', holidays=nyse, weekdays=c('saturday', 'sunday'))
 
-    shock_dates_as_dates <- as.Date(as.Date(unlist(shock_dates)))
+    shock_dates_as_dates <- as.Date(sapply(shock_dates,"[[",1))
 
     start_dates <- offset(shock_dates_as_dates, round(-3.5*252), "NYSE")
 
@@ -120,27 +120,27 @@ for (u in c(-1,0,2:number_of_covariates)){
       data_TSUS <- lapply(TSUS, function(sym) {
         dailyReturn(na.omit(getSymbols(sym
                                        ,from=start_dates[i]
-                                       ,to=k_periods_after_shock[i]+20 #tk +10
+                                       ,to=k_periods_after_shock[i]+40 #tk +10
                                        ,auto.assign=FALSE))[,6]
                     ,type='log')})
 
       data_log_ret_covariates <- lapply(log_ret_covariates, function(sym) {
         dailyReturn(na.omit(getSymbols(sym
                                        ,from=start_dates[i]
-                                       ,to=k_periods_after_shock[i]+20 #tk +10
+                                       ,to=k_periods_after_shock[i]+40 #tk +10
                                        ,auto.assign=FALSE))[,6]
                     ,type='log')})
 
       data_level_covariates <- lapply(level_covariates, function(sym) {
         na.omit(getSymbols(sym
                            ,from=start_dates[i]
-                           ,to=k_periods_after_shock[i]+20 #tk +10
+                           ,to=k_periods_after_shock[i]+40 #tk +10
                            ,auto.assign=FALSE))[,6]})
 
       data_volume_covariates <- lapply(volume_covariates, function(sym) {
         dailyReturn(na.omit(getSymbols(sym
                                        ,from=start_dates[i]
-                                       ,to=k_periods_after_shock[i]+20 #tk +10
+                                       ,to=k_periods_after_shock[i]+40 #tk +10
                                        ,auto.assign=FALSE))[,6])})
 
       data_absolute_return_covariates <- lapply(data_log_ret_covariates, abs)
@@ -154,7 +154,7 @@ for (u in c(-1,0,2:number_of_covariates)){
           na.omit(getSymbols(sym
                              ,src = 'FRED'
                              ,from=start_dates[i]
-                             ,to=k_periods_after_shock[i]+20 #tk +10
+                             ,to=k_periods_after_shock[i]+40 #tk +10
                              ,auto.assign=FALSE))[,1]})
 
         # Now we are going manually and carefully add the spread between BAA and AAA credit
@@ -243,13 +243,13 @@ for (u in c(-1,0,2:number_of_covariates)){
         if (u > 0){
           merged_data_uth_covariate_dropped <- merged_data[,-u]
           covariate_string <- names(merged_data[,u])
-          Y_lookback_indices_u_loop <- list(seq(1,1,1))
+          Y_lookback_indices_u_loop <- list(seq(1,30,1))
         }
         else if (u == 0){
           merged_data_uth_covariate_dropped <- merged_data
           covariates_col_names <- colnames(merged_data_uth_covariate_dropped)
           covariate_string <- 'None'
-          Y_lookback_indices_u_loop <- list(seq(1,1,1))
+          Y_lookback_indices_u_loop <- list(seq(1,30,1))
         }
         else{ #This case is for the time series under study not being used in the DBW
           merged_data_uth_covariate_dropped <- merged_data
@@ -272,15 +272,17 @@ for (u in c(-1,0,2:number_of_covariates)){
       print('Here is the shock date')
       print(shock_dates_as_dates[i])
 
-      if (shock_dates[i] %in% index(Y_i_drop_NA)){
+      if (shock_dates_as_dates[i] %in% index(Y_i_drop_NA)){
         print('The shock date is in the series.')
       }
       else{
-        print(paste('Shock date ', i, ' NOT in series ',i,".", sep = ''))
+        print(paste(shock_dates_as_dates[i], ' is NOT in series Y ',i,".", sep = ''))
       }
 
       Y[[i]] <- Y_i_drop_NA
     } #end for loop for building Y
+
+    print('We have now finished building Y.')
 
     #Now build X
     X <- list()
@@ -291,6 +293,8 @@ for (u in c(-1,0,2:number_of_covariates)){
     n <- length(start_dates) - 1
 
     time_date <- gsub(" ", "", gsub(':', '', format(Sys.time(), "%a%b%d%X%Y")), fixed = TRUE)
+
+    print('We have now accessed the system time from the computer.')
 
     #We have two naming conventions:
 
@@ -310,35 +314,24 @@ for (u in c(-1,0,2:number_of_covariates)){
 
     png_save_name <- paste(png_save_name, '.png', sep = "")
 
+    print('We have created a file name for the png to output.')
+
     png(png_save_name,width = 800, height = 600)
 
-    if ('Brexit' %in% names(shock_dates)){
-      shck_lengths <- c(rep(k,n),1)
-    }
-    else{
-      shck_lengths <- rep(k, n+1)
-    }
+    print('We have used the png function in R.')
 
-    garch_order <- NULL
 
-    if ('2008 Election' %in% names(shock_dates)){
-      garch_order <- list(length = n + 1)
-      for (i in 1:(n+1)){
-        garch_order[[i]] <- c(1,1,0)
-        garch_order[[3]] <- c(2,2,0)
-        }
-    }
 
     #Now run the algorithm
     function_output <- SynthVolForecast(Y
                              ,X
-                             ,shock_time_vec = unlist(shock_dates)
-                             ,shock_length_vec = shck_lengths
+                             ,shock_time_vec = sapply(shock_dates,"[[",1)
+                             ,shock_length_vec = sapply(shock_dates,"[[",2)
                              ,dbw_scale = TRUE
                              ,dbw_center = TRUE
                              ,dbw_indices = NULL
                              #,covariate_indices = length(X)
-                             ,garch_order = NULL
+                             ,garch_order = lapply(shock_dates,"[[",3)
                              ,plots = TRUE
                              ,shock_time_labels = names(shock_dates)
                              ,ground_truth_vec = ground_truth
@@ -365,7 +358,7 @@ covs <- gsub("_", " ", covs, fixed = TRUE)
 covs <- gsub(" .", " ", covs, fixed = TRUE)
 covs
 
-dons <- sapply(list_from_looping,"[[",5)
+dons <- sapply(sapply(list_from_looping,"[[",5),'[[',1)
 
 
 
