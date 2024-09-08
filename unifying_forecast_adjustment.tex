@@ -194,6 +194,10 @@ See Clements and Hendry
 
 We discussed this above in Section \ref{intercept_correction}.
 
+\subsection{Incorpation of Outside Information is the Norm, Not the Exception}
+
+ARMA models and other models that model the future as a function of only the past values and past innovations of the series itself are well-known to be unrealistic as a data-generating processes.  They are also well-known to be poor predictors of the future.  What we are doing here is therefore not out of the ordinary but distinct in at least two ways: (1) we are incorporating outside information faster, and (2) we are proposing a principled, systematic way to do it that defies that curse of dimensionality.  If one wanted to forecast using linear models and high-dimensional information set, then some kind of method for reducing model complexity would be required.  We avoid that.
+
 \subsubsection{Mismeasured data}
 
 Mismeasured data is discussed in \cite[p. 166]{hendry1994theory} as a motivator for intercept correction.  Could similarity-based correction help?  Here is an idea: if we believe that our most recent measurement of the series is noisy, we can disregard the point itself and instead take a convex combination of that point and the \cite{lin2021minimizing}-style prediction based on aggregation.
@@ -257,56 +261,28 @@ In this work, we will be focused on shocks that occur strictly between two discr
       \end{center}
     \end{figure}
 
-We will suppose that a researcher has multivariate time series data $\y_{i,t} = (r_{i,t}$, $\x_{i,t}$), $t = 1,$ $\ldots,  T_i$, $i = 1, \ldots, n+1$, where $r_{i,t}$ is scalar and $\x_{i,t}$ is a vector of covariates such that $\x_{i,t}|\mathcal{F}_{i,t-1}$ is deterministic.  Suppose that the analyst is interested in forecasting $r_{1,t}$, the first time series in the collection, which we will denote \textit{the time series under study}.   We assume the following general data-generating process
+We will suppose that a researcher has multivariate time series data $\y_{i,t} = (r_{i,t}$, $\x_{i,t}$), $t = 1,$ $\ldots,  T_i$, $i = 1, \ldots, n+1$, where $r_{i,t}$ is scalar and $\x_{i,t}$ is a vector of covariates such that $\x_{i,t}|\mathcal{F}_{i,t-1}$ is deterministic and observed.  Suppose that the analyst is interested in forecasting $r_{1,t}$, the first time series in the collection, which we will denote \textit{the time series under study}.   We assume the following general data-generating process
 
 \begin{align*}
-  &y_{t} = F(\mathcal{F}_{t-1}) + \epsilon_{i,t}\\
+  &y_{i,t} = F(\mathcal{F}_{i,t-1}) + \x^{T}_{i,t}\lambda_{t} + \epsilon_{i,t}\\
 \end{align*}
-where $\epsilon_{i,t}$ is mean-zero and uncorrelated across time and donors.
-
-
-
-Note that this specification above is capacious enough to include data-generating processes of the form 
+where $\epsilon_{i,t}$ is mean-zero and uncorrelated across time and donors.  Note that this specification above is capacious enough to include data-generating processes of the form 
 
 \begin{align*} 
-  y_{t} = \log{Y_{i,t}} = \log{a_{i}Y_{i,t-k}\epsilon_{i,t}} = \log{a_{i}} + \log{Y_{i, t-k}} + \log{\epsilon_{i,t}}
+  y_{i,t} = \log{Y_{i,t}} = \log{a_{i,t}y_{i,t-k}e^{\x^{T}_{i,t}\lambda_{t}+\epsilon_{i,t}}} = \log{a_{i,t}} + \log{y_{i, t-k}} + \x^{T}_{i,t}\lambda_{t} + \epsilon_{i,t}
 \end{align*}
-with $k\geq1$ and all variables on the right-hand side supported on $\mathbb{R}^{+}$.
-
-We require that each time series $\y_{i,t}$ is subject to an observed news event following $T^*_i \leq T_{i} + 1$ and before witnessing $T^*_i+1$.  Our reasons for this will now become clear.
-
-We will suppose further that $F(\mathcal{F}_{t})$ includes a random effect $\lambda_{t}$, allowing us to write
+with $k\geq1$ and $a_{i,t}, y_{i,t}$ supported on $\mathbb{R}^{+}$.  The term $\x^{T}_{i,t}\lambda_{t}$ will be deemed the $\textit{correction term}$, and the function
 
 \begin{align*}
-  &y_{t} = F(\mathcal{F}_{t-1}) + \epsilon_{i,t} = F^{D}(\mathcal{F}_{t-1}) + \x_{t}^{T}\lambda_{t} + \epsilon_{i,t}\\
+  \xi \colon \mathcal{F}_{t} \times \mathcal{F}_{t} &\to \mathbb{C}\\
 \end{align*}
+will be deemed the \textit{correction function}.  The correction function maps observable, deterministic events and unobservable events into a space so that something might be learned about $\lambda{t}$.  If $\x_{i,t}$ were not observable or not deterministic with respect to $\mathcal{t-1}$, then the correction term would represent an additional error term (not necessarily idiosyncratic.)
+
+We require that each time series $\y_{i,t}$ is subject to an observed news event following $T^*_i \leq T_{i} + 1$ and before witnessing $T^*_i+1$.  The reasons for this represent the heart and soul of the framework proposed.  We are not proposing a method to correct for unanticipated shocks that have been reflected in the observed data.  Instead, we are proposing a method to correct for shocks for which the qualitative kernel of information is known and the observed quantitative instantiation of that is not yet known. 
 
 
 
-\section{Model Adjustment Using Similarity-Based Parameter Correction: A Global Overview}
 
-In this section, we introduce and discuss a particular approach to model adjustment that is motivated by the circumstances laid out in Section \ref{Section}.  It may not yet be clear what is essential and what is not.  Here we make that clear.
-
-\subsection{The six essential elements of similarity-based parameter correction
-}
-
-\textcolor{red}{Should I just use OLS as an example throughout all six?}
-
-Most fundamentally, the method requires a random object (indexed over time, of course) that obeys a specification with additive errors, or, at the very least, a specification that can be transformed to have additive errors.\footnote{Emphasize that there is a non-parametric version of the above: for example, one can use LSTM to predict each of the donor shocks, and then the residuals (or transformations of those residuals, e.g. to percentages) of those n models can be weighted to arrive at a correction term.}  This requirement is suitably weak, so as to include models that are not linear or not linear in each of their parameters.  It also includes objects that multidimensional, hail from non-Euclidean probability spaces, like some function spaces.
-
-Second, the method requires a model family that is shared across all units.  This ensures that in the estimation of structural shocks in the donor pool, the estimators will enjoy similar properties that will produce a good aggregrated shock estimator.
-
-Third, the data-generating processes of the units must include a correction term that serves as the basis of the aggregation.  The correction term must have a parametric specification.  The correction term must be estimable in each time series(?).   It may depend on external covariates, as we see in \cite{lin2021minimizing} and \cite{lundquist2024volatility}.
-
-Fourth, there must exist a reliable estimation procedure for the units that obey the common family of data-generating processes.  In this case, reliable means several things.  It means that the estimation procedure must produce a credible description of each data-generating process, so as to aid in estimating the correction term in each unit.  That may mean the estimators have low variance, and it may also mean that the estimation procedure is robust, to some degree, to misspecification bias.  However, in theory, the lack of these properties is not harmful to the method unless the lack of these properties harms the correction term's estimation.
-
-When we use fixed effect estimation (under ordinary assumptions), we can construct confidence intervals for the fixed effect estimates, and then assuming independence, we can get confidence intervals for convex combinations of fixed effect estimates.
-
-Fifth, there must exist a reliable procedure for the correction term in each unit.  Again, here we care about low variance as well as robustness to misspecification.  The correction term could be as simple as fixed effect estimation.  It could depend upon external covariates.
-
-This might not be straightforward.  Some models like GARCH, for example, might deliver very noisy estimates for indicator variables that occur just once.  When will it be as simple as a fixed effect?  When will it be something besides a fixed effect?
-
-Sixth and finally, there must exist a correction function (presumably based on the correction term) that maps data from the donor pool to the \textit{predicted} correction term in the time series under study based on some notion of similarity.  It could depend upon external covariates.
 
 \section{Methodology for Similarity-based Parameter Correction}
 \subsection{Forecasting}
@@ -350,6 +326,34 @@ Consider \cite{lundquist2024volatility}, in which a real world example shows how
 The assumption of a shared family can be relaxed in certain circumstances.  For example, if a certain donor is not like the time series under study with respect to the covariates, then the lack of a shared family will not matter much.
 \subsection{We can use the method on latent time series}
 See \cite{lundquist2024volatility}
+
+\section{Model Adjustment Using Similarity-Based Parameter Correction: A Global Overview}
+
+In this section, we introduce and discuss a particular approach to model adjustment that is motivated by the circumstances laid out in Section \ref{Section}.  It may not yet be clear what is essential and what is not.  Here we make that clear.
+
+\subsection{The six essential elements of similarity-based parameter correction
+}
+
+\textcolor{red}{Should I just use OLS as an example throughout all six?}
+
+Most fundamentally, the method requires a random object (indexed over time, of course) that obeys a specification with additive errors, or, at the very least, a specification that can be transformed to have additive errors.\footnote{Emphasize that there is a non-parametric version of the above: for example, one can use LSTM to predict each of the donor shocks, and then the residuals (or transformations of those residuals, e.g. to percentages) of those n models can be weighted to arrive at a correction term.}  This requirement is suitably weak, so as to include models that are not linear or not linear in each of their parameters.  It also includes objects that multidimensional, hail from non-Euclidean probability spaces, like some function spaces.
+
+Second, the method requires a model family that is shared across all units.  This ensures that in the estimation of structural shocks in the donor pool, the estimators will enjoy similar properties that will produce a good aggregrated shock estimator.
+
+Third, the data-generating processes of the units must include a correction term that serves as the basis of the aggregation.  The correction term must have a parametric specification.  The correction term must be estimable in each time series(?).   It may depend on external covariates, as we see in \cite{lin2021minimizing} and \cite{lundquist2024volatility}.
+
+Fourth, there must exist a reliable estimation procedure for the units that obey the common family of data-generating processes.  In this case, reliable means several things.  It means that the estimation procedure must produce a credible description of each data-generating process, so as to aid in estimating the correction term in each unit.  That may mean the estimators have low variance, and it may also mean that the estimation procedure is robust, to some degree, to misspecification bias.  However, in theory, the lack of these properties is not harmful to the method unless the lack of these properties harms the correction term's estimation.
+
+When we use fixed effect estimation (under ordinary assumptions), we can construct confidence intervals for the fixed effect estimates, and then assuming independence, we can get confidence intervals for convex combinations of fixed effect estimates.
+
+Fifth, there must exist a reliable procedure for the correction term in each unit.  Again, here we care about low variance as well as robustness to misspecification.  The correction term could be as simple as fixed effect estimation.  It could depend upon external covariates.
+
+\textcolor{red}{Clarify for the reader whether the correction function is something that you estimate or simply is an estimator of the correction term.}
+
+This might not be straightforward.  Some models like GARCH, for example, might deliver very noisy estimates for indicator variables that occur just once.  When will it be as simple as a fixed effect?  When will it be something besides a fixed effect?
+
+Sixth and finally, there must exist a correction function (presumably based on the correction term) that maps data from the donor pool to the \textit{predicted} correction term in the time series under study based on some notion of similarity.  It could depend upon external covariates.
+
 
 \section{Formal Properties and Model-Specific Considerations}\label{special_cases}
 

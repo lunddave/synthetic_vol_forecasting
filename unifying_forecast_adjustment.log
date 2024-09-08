@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.21)  7 SEP 2024 16:10
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.21)  8 SEP 2024 09:29
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -760,46 +760,46 @@ Underfull \hbox (badness 10000) in paragraph at lines 181--182
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 201--202
+Underfull \hbox (badness 10000) in paragraph at lines 205--206
 
  []
 
 [3]
-Underfull \hbox (badness 10000) in paragraph at lines 220--221
+Underfull \hbox (badness 10000) in paragraph at lines 224--225
 
  []
 
 [4]
-<simulation_plots/motivating_piece_convex_combination.png, id=233, 1226.5825pt x 985.6825pt>
+<simulation_plots/motivating_piece_convex_combination.png, id=237, 1226.5825pt x 985.6825pt>
 File: simulation_plots/motivating_piece_convex_combination.png Graphic file (type png)
 <use simulation_plots/motivating_piece_convex_combination.png>
-Package pdftex.def Info: simulation_plots/motivating_piece_convex_combination.png  used on input line 249.
+Package pdftex.def Info: simulation_plots/motivating_piece_convex_combination.png  used on input line 253.
 (pdftex.def)             Requested size: 498.66258pt x 400.71829pt.
- [5 <./simulation_plots/motivating_piece_convex_combination.png>] [6]
-
-LaTeX Warning: Reference `SVF_properties' on page 7 undefined on input line 334.
-
-[7]
-<real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png, id=285, 803.0pt x 602.25pt>
-File: real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png Graphic file (type png)
-<use real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png>
-Package pdftex.def Info: real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png  used on input line 366.
-(pdftex.def)             Requested size: 321.1943pt x 240.89572pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[8]
-Underfull \hbox (badness 10000) in paragraph at lines 407--408
+[5] [6 <./simulation_plots/motivating_piece_convex_combination.png>]
+
+LaTeX Warning: Reference `SVF_properties' on page 7 undefined on input line 310.
+
+[7]
+<real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png, id=290, 803.0pt x 602.25pt>
+File: real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png Graphic file (type png)
+<use real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png>
+Package pdftex.def Info: real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png  used on input line 370.
+(pdftex.def)             Requested size: 321.1943pt x 240.89572pt.
+ [8] [9 <./real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 411--412
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 410--411
+Underfull \hbox (badness 10000) in paragraph at lines 414--415
 
  []
 
-[9 <./real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png>] [10] (./unifying_forecast_adjustment.bbl
+[10] (./unifying_forecast_adjustment.bbl
 Underfull \hbox (badness 10000) in paragraph at lines 19--22
 []\OT1/cmr/m/n/10.95 Jason Brown-lee.  Time se-ries pre-dic-tion with lstm re-cur-rent neu-ral net-works in
  []
@@ -816,20 +816,20 @@ Underfull \hbox (badness 10000) in paragraph at lines 19--22
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `unifying_forecast_adjustment.out' has not changed.
-(rerunfilecheck)             Checksum: 9D2841DA12F2D6C367554EFF58834A1E;7620.
+(rerunfilecheck)             Checksum: 11B450E461B6E239304404E367FE6637;8030.
  ) 
 Here is how much of TeX's memory you used:
- 26121 strings out of 476025
- 482492 string characters out of 5790017
- 1867388 words of memory out of 5000000
- 46036 multiletter control sequences out of 15000+600000
+ 26123 strings out of 476025
+ 482522 string characters out of 5790017
+ 1865388 words of memory out of 5000000
+ 46037 multiletter control sequences out of 15000+600000
  529642 words of font info for 94 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,11n,80p,1509b,751s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,12n,80p,1509b,751s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on unifying_forecast_adjustment.pdf (11 pages, 428252 bytes).
+Output written on unifying_forecast_adjustment.pdf (11 pages, 433673 bytes).
 PDF statistics:
- 437 PDF objects out of 1000 (max. 8388607)
- 74 named destinations out of 1000 (max. 500000)
- 303 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 441 PDF objects out of 1000 (max. 8388607)
+ 75 named destinations out of 1000 (max. 500000)
+ 311 words of extra memory for PDF output out of 10000 (max. 10000000)
 
