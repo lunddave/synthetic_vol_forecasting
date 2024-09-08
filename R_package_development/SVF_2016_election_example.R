@@ -58,9 +58,9 @@ FRED_covariates <- c('AAA', 'BAA')
 
 shock_dates_outside_loop <- list('2016 Election' = c("2016-11-08", list(1, c(1,1,0)))
                                  ,'Brexit' = c("2016-06-23", list(1, c(1,1,0)))
-                                # ,'Poll Released Leaning Brexit' = c("2016-06-13", list(1, c(1,1,0)))
+                                ,'Poll Released Leaning Brexit' = c("2016-06-13", list(1, c(1,1,0)))
                                 #   ,'Boris Johnson' = "2016-02-20"
-                                #,'Brexit Announced' = c("2016-02-19", list(1, c(1,1,0)))
+                                ,'Brexit Announced' = c("2016-02-19", list(1, c(1,1,0)))
                                 # ,'2014 Midterm' = "2014-11-04"
                                 ,'2012 Election' = c("2012-11-06", list(1, c(1,1,0)))
                                 # , '2010 Midterm' ="2010-11-02"
