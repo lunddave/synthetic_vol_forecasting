@@ -249,6 +249,7 @@ plot_maker_garch <- function(fitted_vol
                             ,w_hat
                             ,omega_star_hat
                             ,omega_star_hat_vec
+                            ,omega_star_std_err_hat_vec
                             ,adjusted_pred
                             ,arithmetic_mean_based_pred
                             ,ground_truth_vec){
@@ -276,13 +277,25 @@ print('We plot the weights.')
   #PLOT IN THE MIDDLE
   print('We plot the FE estimates.')
   #Plot FE estimates
-    barplot(omega_star_hat_vec
-          , main = 'Donor-Pool-Supplied\n FE Estimates'
+    bp <- barplot(omega_star_hat_vec
+          , main = 'Donor-Pool-Supplied\n FE Estimates\nand Standard Errors Estimates'
           , names.arg = shock_time_labels[-1]
-          , cex.names=1.3
+          , cex.names=1.4
           , cex.main=1.5
           , las=2
-          , col = barplot_colors)
+          , col = barplot_colors
+          , ylim = c(0, 1.1 * max(omega_star_hat_vec)) )
+
+    # Add the labels with some offset to be above the bar
+    print('We print the std errors')
+    print(omega_star_std_err_hat_vec)
+    #omega_star_std_err_hat_vec <- ifelse(omega_star_std_err_hat_vec, nan)
+
+    #https://stackoverflow.com/questions/65057352/how-to-add-labels-above-the-bar-of-barplot-graphics
+    text(x = bp,
+                ,y = omega_star_hat_vec + 0.00005
+                ,cex = 1.3
+                ,labels = round( omega_star_std_err_hat_vec, 6))
 
   title(ylab = expression(sigma^2), line = 3.05, cex.lab = 1.99) # Add y-axis text
 
@@ -510,6 +523,7 @@ plot_maker_HAR <- function(Y
                            ,w_hat
                            ,omega_star_hat
                            ,omega_star_hat_vec
+                           ,omega_star_hat_vec_std_err
                            ,adjusted_pred
                            ,display_ground_truth = FALSE){
 
@@ -983,7 +997,7 @@ SynthVolForecast <- function(Y_series_list
       extracted_fixed_effect_std_err <- coef_test[dim(lmtest::coeftest(fitted_garch))[1], 2]
 
       omega_star_hat_vec <- c(omega_star_hat_vec, extracted_fixed_effect)
-      omega_star_std_err_hat_vec <- c(omega_star_hat_vec, extracted_fixed_effect_std_err)
+      omega_star_std_err_hat_vec <- c(omega_star_std_err_hat_vec, extracted_fixed_effect_std_err)
 
     } ## END loop for computing fixed effects
 
@@ -1122,6 +1136,7 @@ SynthVolForecast <- function(Y_series_list
                      ,w_hat
                      ,omega_star_hat
                      ,omega_star_hat_vec
+                     ,omega_star_std_err_hat_vec
                      ,adjusted_pred
                      ,arithmetic_mean_based_pred
                      ,ground_truth_vec)
