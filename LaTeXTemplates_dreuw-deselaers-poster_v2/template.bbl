@@ -1,0 +1,23 @@
+\begin{thebibliography}{1}
+
+\bibitem{abadie2003economic}
+Alberto Abadie and Javier Gardeazabal.
+\newblock The economic costs of conflict: A case study of the basque country.
+\newblock {\em American Economic Review}, 93(1):113--132, 2003.
+
+\bibitem{abadie2010synthetic}
+Alberto Abadie, Alexis Diamond, and Jens Hainmueller.
+\newblock Synthetic control methods for comparative case studies: Estimating the effect of california’s tobacco control program.
+\newblock {\em Journal of the American Statistical Association}, 105(490):493--505, 2010.
+
+\bibitem{brownlees2011practical}
+Christian~T Brownlees, Robert~F Engle, and Bryan~T Kelly.
+\newblock A practical guide to volatility forecasting through calm and storm.
+\newblock {\em Available at SSRN 1502915}, 2011.
+
+\bibitem{lundquist2024volatility}
+David Lundquist and Daniel Eck.
+\newblock Volatility forecasting using similarity-based parameter correction and aggregated shock information.
+\newblock {\em arXiv preprint arXiv:2406.08738}, 2024.
+
+\end{thebibliography}

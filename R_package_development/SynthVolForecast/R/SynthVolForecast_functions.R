@@ -284,7 +284,7 @@ print('We plot the weights.')
           , cex.main=1.5
           , las=2
           , col = barplot_colors
-          , ylim = c(0, 1.1 * max(omega_star_hat_vec)) )
+          , ylim = c(0, 1.4 * max(omega_star_hat_vec)) )
 
     # Add the labels with some offset to be above the bar
     print('We print the std errors')
@@ -293,9 +293,10 @@ print('We plot the weights.')
 
     #https://stackoverflow.com/questions/65057352/how-to-add-labels-above-the-bar-of-barplot-graphics
     text(x = bp,
-                ,y = omega_star_hat_vec + 0.00005
+                ,y = omega_star_hat_vec + .00029
                 ,cex = 1.3
-                ,labels = round( omega_star_std_err_hat_vec, 6))
+                ,labels = round(omega_star_std_err_hat_vec, 5)
+                , srt= 90)
 
   title(ylab = expression(sigma^2), line = 3.05, cex.lab = 1.99) # Add y-axis text
 

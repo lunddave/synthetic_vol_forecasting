@@ -1,0 +1,76 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.15)  18 SEP 2024 22:48
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**poster.tex
+(/usr/local/texlive/2024/texmf-dist/tex/generic/poster-mac/poster.tex
+LaTeX2e <2023-11-01> patch level 1
+L3 programming layer <2024-02-20>
+  v1.1  10/05/15  <tvz>
+\@posterbox=\box51
+\poster@savedbox=\box52
+\poster@cropbox=\box53
+)
+*
+(Please type a command or say `\end')
+*
+(Please type a command or say `\end')
+*
+(Please type a command or say `\end')
+*
+! Interruption.
+<*> 
+    
+? 
+(Please type a command or say `\end')
+*
+(Please type a command or say `\end')
+*^^X
+
+! LaTeX Error: Unicode character ^^X (U+0018)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+<*> ^^X
+       
+? 
+
+*
+! Interruption.
+<*> 
+    
+? 
+(Please type a command or say `\end')
+*
+! Interruption.
+<*> 
+    
+? \end
+Type <return> to proceed, S to scroll future error messages,
+R to run without stopping, Q to run quietly,
+I to insert something, 
+H for help, X to quit.
+? ^^X
+Type <return> to proceed, S to scroll future error messages,
+R to run without stopping, Q to run quietly,
+I to insert something, 
+H for help, X to quit.
+? X
+ 
+Here is how much of TeX's memory you used:
+ 77 strings out of 474116
+ 1337 string characters out of 5743682
+ 1925187 words of memory out of 5000000
+ 22536 multiletter control sequences out of 15000+600000
+ 558069 words of font info for 36 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 12i,0n,13p,90b,14s stack positions out of 10000i,1000n,20000p,200000b,200000s
+No pages of output.
+PDF statistics:
+ 0 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+

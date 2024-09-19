@@ -1,3 +1,5 @@
+set.seed(1986)
+
 options(digits = 7, scipen = 7)
 
 sysname <- Sys.info()["sysname"]
@@ -58,7 +60,7 @@ FRED_covariates <- c('AAA', 'BAA')
 
 shock_dates_outside_loop <- list('2016 Election' = c("2016-11-08", list(1, c(1,1,0)))
                                  ,'Brexit' = c("2016-06-23", list(1, c(1,1,0)))
-                                ,'Poll Released Leaning Brexit' = c("2016-06-13", list(1, c(1,1,0)))
+                                ,'Brexit Poll Released' = c("2016-06-13", list(1, c(1,1,0)))
                                 #   ,'Boris Johnson' = "2016-02-20"
                                 ,'Brexit Announced' = c("2016-02-19", list(1, c(1,1,0)))
                                 # ,'2014 Midterm' = "2014-11-04"
