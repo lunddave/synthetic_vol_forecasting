@@ -1,4 +1,4 @@
-\begin{thebibliography}{58}
+\begin{thebibliography}{56}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -45,11 +45,6 @@ Anne Applebaum.
 \newblock Britain's decision to leave the e.u. is a warning to america, 2016.
 \newblock URL \url{https://www.washingtonpost.com/opinions/global-opinions/after-brexit-what-will-and-wont-happen/2016/06/24/c9f7a2f6-39f1-11e6-8f7c-d4c723a2becb_story.html?postshare=9121466767991000}.
 \newblock Published: 2016-06-24.
-
-\bibitem[Bailey(2024)]{Bailey_2024}
-Ric Bailey.
-\newblock How the bbc reports polling day, May 2024.
-\newblock URL \url{https://www.bbc.com/news/uk-politics-48124106}.
 
 \bibitem[Barro(2016)]{barro2016three}
 Josh Barro.
@@ -223,11 +218,6 @@ Jonathan Martin and Alexander Burns.
 Stewart Mayhew.
 \newblock Implied volatility.
 \newblock \emph{Financial Analysts Journal}, 51\penalty0 (4):\penalty0 8--20, 1995.
-
-\bibitem[None(2016)]{BBC_News_2016}
-None.
-\newblock Leave campaign ahead in uk's eu referendum vote, Jun 2016.
-\newblock URL \url{https://www.bbc.com/news/uk-politics-eu-referendum-36612368}.
 
 \bibitem[Phillips(1996)]{phillips1996forecasting}
 Robert~F Phillips.

@@ -88,7 +88,7 @@
 		\begin{figure}
 			\includegraphics[scale = .6]{../NYS_state.png}
 		\end{figure} 
-		\item Matching a current crisis to past events is a problem with unsurprising statistical angles: identification, sample size, weighting, risk, and robustness.
+		\item Matching a crisis to past events is a problem with unsurprising statistical angles: identification, sample size, weighting, risk, robustness.
 		\item Here we employ a method to improve our GARCH-X volatility forecasts under unprecedented conditions.
 	\end{enumerate}
 
@@ -119,7 +119,7 @@ with the ``unprecedented" shocks parameterized by
 \begin{equation}\omega_{i,t}^{*} = D^{vol}_{i,t}[\mu_{\omega^{*}}+\delta^{T}\x_{i,T^{*}_{i}+1}+ u_{i,t}]
 \end{equation}
 
-where $\x_{i,T^{*}_{i}+1}$ is a vector of variables that reflects and encodes prevailing risk conditions, and all other errors are mean-zero and idiosyncratic.
+where $\x_{i,T^{*}_{i}+1}$ is a vector of variables, deterministic with respect to $\mathcal{F}_{T^{*}_{i}+1}$, that reflects and encodes prevailing risk conditions.  All other errors are mean-zero and idiosyncratic.
 
 
 	\end{block}
@@ -133,14 +133,20 @@ where $\x_{i,T^{*}_{i}+1}$ is a vector of variables that reflects and encodes pr
 Provide a one-step-ahead volatility forecast for the \textit{time series under study}, i.e. the first time series in the family above.  We will denote the series $i=2,...,n+1$ the \textit{donor series}, from which we will extract information.
 \end{block}
 
-\begin{block}{Methodology}
-We estimate the "unprecedented" shocks in the donor pool (i.e., $i = 2,3,...n+1$) using fixed-effect estimation during the shock times, yielding shock estimators $\{\hat\omega_{i}\}_{i=2}^{n+1}$.  The aggregated adjustment estimator is given by
+\begin{block}{Forecast Methodology}
+We estimate the "unprecedented" shocks in the donor pool (i.e., $i = 2,3,...n+1$) using fixed-effect estimation during the shock times, yielding shock estimators $\{\hat\omega_{i,*}\}_{i=2}^{n+1}$.  The aggregated shock estimator is given by
 
 \begin{equation}
 	\hat\omega^{*} = \sum^{n+1}_{i=2}\pi_{i}\hat\omega^{*}_{i,*}
 \end{equation}
 
-where the weights $\{\pi{i}\}_{i=2}^{n+1}$ are a convex combination chosen to minimize the distance between $\x_{i,T^{*}_{i}}$ and the convex hull of $\{\x_{i,T^{*}_{i}}\}^{n+1}_{i=2}$, similar to the Synthetic Control approach in causal inference \cite{abadie2003economic,abadie2010synthetic}.  The weights $\{\pi{i}\}_{i=2}^{n+1}$ help us to build a `clone' of the shock that will hit the time series under study.
+where the weights $\{\pi_{i}\}_{i=2}^{n+1}$ are non-negative, sum to one, and chosen to minimize the $L^{2}$-norm of the difference of $\x_{i,T^{*}_{i}}$ and the convex hull of $\{\x_{i,T^{*}_{i}}\}^{n+1}_{i=2}$, similar to the Synthetic Control approach in causal inference \cite{abadie2003economic,abadie2010synthetic}.  We then produce an adjusted one-step-ahead forecast of the time series under study:
+
+%The weights $\{\pi{i}\}_{i=2}^{n+1}$ help us to build a `clone' of the shock that will hit the time series under study.
+
+\begin{equation}
+	\hat\sigma^{2}_{1,t+1} = \hat\omega_{1} + \sum^{m_{1}}_{k=1}\hat\alpha_{1,k}a^{2}_{1,t+1-k} + \sum_{j=1}^{s_{1}}\hat\beta_{1,j}\sigma_{1,t+1-j}^{2} + \hat\gamma_{1}^{T} \x_{1,t+1} + \textcolor{red}{\hat\omega^{*}}
+\end{equation}
 
 \end{block}
 
@@ -151,15 +157,16 @@ where the weights $\{\pi{i}\}_{i=2}^{n+1}$ are a convex combination chosen to mi
 \begin{block}{Evaluating Forecasts with QL Loss}
 	
 \begin{equation}
-\text{QL}^{h}_{method, ground truth} = \frac{\hat\sigma^{2}_{h, ground truth}}{ \hat\sigma^{2}_{h, method}} - \log{\frac{\hat\sigma^{2}_{h, ground truth}}{ \hat\sigma^{2}_{h, method}}} -1 \text{ .}
+\text{QL}^{h}_{method, ground truth} = \frac{\hat\sigma^{2}_{h, ground truth}}{ \hat\sigma^{2}_{h, method}} - \log{\frac{\hat\sigma^{2}_{h, ground truth}}{ \hat\sigma^{2}_{h, method}}} -1 
 \end{equation}
 
 
 
 
 	\begin{itemize}
-		\item What distinguishes Quasi-likelihood Loss is that it is multiplicative rather than additive.  For this reason and others, we proceed to evaluate the method, both in simulations and real data examples, using the QL loss.
-		\item This has benefits, both practical and theoretical.  As \cite{brownlees2011practical} explain, the technical properties of the QL Loss allow researchers to compare forecasts across heterogeneous time series, whereas additive loss functions like MSE unfairly penalize forecasts made under market turbulence.  
+		\item Quasi-likelihood Loss is that it is multiplicative rather than additive.
+		\item The technical properties of the QL Loss allow researchers to compare forecasts across heterogeneous time series, whereas additive loss functions like MSE unfairly penalize forecasts made under market turbulence \cite{brownlees2011practical}.
+
 	\end{itemize}
 \end{block}
 
@@ -250,9 +257,9 @@ where the weights $\{\pi{i}\}_{i=2}^{n+1}$ are a convex combination chosen to mi
 
 \begin{block}{Conclusions}
 	\begin{enumerate}
-		\item When structural shocks undermine the credibility of the default forecasting model, a new method is called for.
+		\item When news shocks undermine the credibility of the default forecasting model, a new method is called for.
 		\item Here we have attempted to model news shocks as parameterized by prevailing risk conditions.
-		\item We have also proposed an aggregation mechanism that allows in the incorporation of past shock information in a principled manner.
+		\item We have also proposed an aggregation mechanism that allows the incorporation of past shock information into current forecasts.
 		\item Future directions may involve applications to HAR forecasts, VAR-based forecasts of multivariate time series, and impulse response functions.
 	\end{enumerate}
 \end{block}

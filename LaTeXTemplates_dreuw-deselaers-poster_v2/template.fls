@@ -621,6 +621,9 @@ INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/txfonts/rtxbss.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/vf/public/txfonts/txss.vf
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/txfonts/rtxphvr.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/txfonts/rtxss.tfm
+INPUT /usr/local/texlive/2024/texmf-dist/fonts/vf/public/txfonts/txss.vf
+INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/txfonts/rtxphvr.tfm
+INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/txfonts/rtxss.tfm
 OUTPUT template.nav
 OUTPUT template.toc
 OUTPUT template.snm

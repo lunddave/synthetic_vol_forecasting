@@ -1,16 +1,16 @@
 # Fdb version 4
-["bibtex template"] 1726724610.66618 "template.aux" "template.bbl" "template" 1726724655.72587 0
+["bibtex template"] 1726748510.68141 "template.aux" "template.bbl" "template" 1726749476.95768 0
   "../synthVolForecast.bib" 1724801083.27961 23636 9b47b35c5e1258a527e3b1cd8bfe1a6b ""
   "/usr/local/texlive/2024/texmf-dist/bibtex/bst/base/unsrt.bst" 1292289607 18030 1376b4b231b50c66211e47e42eda2875 ""
-  "template.aux" 1726724655.49752 1092 2e2504b36ab0a773cc103524fb78199c "pdflatex"
+  "template.aux" 1726749476.72641 1092 2e2504b36ab0a773cc103524fb78199c "pdflatex"
   (generated)
   "template.bbl"
   "template.blg"
   (rewritten before read)
-["pdflatex"] 1726724654.5926 "/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/LaTeXTemplates_dreuw-deselaers-poster_v2/template.tex" "template.pdf" "template" 1726724655.72599 0
+["pdflatex"] 1726749475.78857 "/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/LaTeXTemplates_dreuw-deselaers-poster_v2/template.tex" "template.pdf" "template" 1726749476.95779 0
   "../NYS_state.png" 1711217136.13257 311928 df65aa17dff9b6e6aab779de8a3fce40 ""
   "../real_data_output_plots/WedSep182237432024_IYG_None_None.png" 1726713463.4601 69646 2cf8deed24070fb795817a14ea1d0849 ""
-  "/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/LaTeXTemplates_dreuw-deselaers-poster_v2/template.tex" 1726724654.39393 14430 04d455f4654c7b924669e36e53122d42 ""
+  "/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/LaTeXTemplates_dreuw-deselaers-poster_v2/template.tex" 1726749475.56932 14613 fd8fd8518243f02e2a6cc372759a7a27 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/gfsdidot/gfsudidotmath.enc" 1382567697 2332 8c80ad5a087cf0067af5b417304cff67 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -258,11 +258,11 @@
   "Color-Variation-Blue-Block-I-Orange-Background.png" 1722812739.39583 1105 2cfeb28920f3ad37ae80b7ca8e338705 ""
   "beamerthemeI6pd2.sty" 1726721011.83148 6143 1f27a3e351773feb78cc9d73da2dbed5 ""
   "tangocolors.sty" 1252936164 2141 61df698f50c023c26043862485d39f0e ""
-  "template.aux" 1726724655.49752 1092 2e2504b36ab0a773cc103524fb78199c "pdflatex"
-  "template.bbl" 1726724610.74182 1019 dcb755f1442e87baa018e96c396651de "bibtex template"
-  "template.nav" 1726724655.49803 307 9e520c26371a1250ff9fc1fe87f9c655 "pdflatex"
-  "template.out" 1726724655.14115 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "template.tex" 1726724654.39393 14430 04d455f4654c7b924669e36e53122d42 ""
+  "template.aux" 1726749476.72641 1092 2e2504b36ab0a773cc103524fb78199c "pdflatex"
+  "template.bbl" 1726748510.77444 1019 dcb755f1442e87baa018e96c396651de "bibtex template"
+  "template.nav" 1726749476.72691 307 9e520c26371a1250ff9fc1fe87f9c655 "pdflatex"
+  "template.out" 1726749476.36216 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "template.tex" 1726749475.56932 14613 fd8fd8518243f02e2a6cc372759a7a27 ""
   (generated)
   "template.aux"
   "template.log"

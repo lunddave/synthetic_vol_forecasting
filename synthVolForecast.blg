@@ -1,4 +1,4 @@
-This is BibTeX, Version 0.99d (TeX Live 2023)
+This is BibTeX, Version 0.99d (TeX Live 2024)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: synthVolForecast.aux
 The style file: plainnat.bst
@@ -20,45 +20,45 @@ Warning--empty journal in corsi2012har
 Warning--empty journal in guerron2017macroeconomic
 Warning--empty journal in hendry1994theory
 Warning--empty journal in ryan2015package
-You've used 58 entries,
+You've used 56 entries,
             2773 wiz_defined-function locations,
-            932 strings with 14204 characters,
-and the built_in function-call counts, 24486 in all, are:
-= -- 2228
-> -- 1213
-< -- 48
-+ -- 418
-- -- 360
-* -- 1859
-:= -- 3737
-add.period$ -- 182
-call.type$ -- 58
-change.case$ -- 288
-chr.to.int$ -- 58
-cite$ -- 123
-duplicate$ -- 1167
-empty$ -- 2146
-format.name$ -- 459
-if$ -- 5147
+            919 strings with 13949 characters,
+and the built_in function-call counts, 23888 in all, are:
+= -- 2176
+> -- 1193
+< -- 46
++ -- 410
+- -- 354
+* -- 1825
+:= -- 3647
+add.period$ -- 176
+call.type$ -- 56
+change.case$ -- 280
+chr.to.int$ -- 56
+cite$ -- 119
+duplicate$ -- 1137
+empty$ -- 2082
+format.name$ -- 451
+if$ -- 5019
 int.to.chr$ -- 1
 int.to.str$ -- 1
 missing$ -- 53
-newline$ -- 303
-num.names$ -- 232
-pop$ -- 606
+newline$ -- 293
+num.names$ -- 224
+pop$ -- 582
 preamble$ -- 1
-purify$ -- 235
+purify$ -- 229
 quote$ -- 0
-skip$ -- 902
+skip$ -- 876
 stack$ -- 0
-substring$ -- 951
-swap$ -- 95
+substring$ -- 947
+swap$ -- 91
 text.length$ -- 7
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 613
+type$ -- 591
 warning$ -- 7
-while$ -- 241
+while$ -- 235
 width$ -- 0
-write$ -- 747
+write$ -- 723
 (There were 12 warnings)
