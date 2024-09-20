@@ -553,7 +553,88 @@ Second, we follow \citet{steegen2016increasing} in a executing a multiverse anal
     \end{center}
   \end{figure}
 
-  
+  \begin{table}[ht]
+    \centering
+    \begingroup\fontsize{9pt}{10pt}\selectfont
+    \begin{tabular}{rll}
+      \hline
+    QLLoss.AdjustedForecast. & dropped\_covariate & dropped\_donor \\ 
+      \hline
+    0.0000 & Log Return of IRX & 2004-11-02 \\ 
+      0.0017 & Log Return of CL.F & 2004-11-02 \\ 
+      0.0049 & Raw.VIX & None \\ 
+      0.0056 & Log Return of TNX & 2004-11-02 \\ 
+      0.0058 & Raw.VIX & 2004-11-02 \\ 
+      0.0064 & None & 2004-11-02 \\ 
+      0.0074 & Debt Risk Spread & 2004-11-02 \\ 
+      0.0092 & Raw.VIX & 2016-06-23 \\ 
+      0.0093 & Log Return of VIX & 2004-11-02 \\ 
+      0.0123 & None & 2016-02-19 \\ 
+      0.0125 & Raw.VIX & 2016-02-19 \\ 
+      0.0128 & Log Return of IRX & 2016-06-23 \\ 
+      0.0130 & Log Return of TNX & 2016-06-23 \\ 
+      0.0131 & Log Return of TNX & 2016-02-19 \\ 
+      0.0136 & Debt Risk Spread & 2016-02-19 \\ 
+      0.0140 & Log Return of CL.F & 2016-06-23 \\ 
+      0.0142 & Log Return of CL.F & 2016-02-19 \\ 
+      0.0143 & Log Return of VIX & 2016-02-19 \\ 
+      0.0160 & None & 2016-06-23 \\ 
+      0.0190 & Log Return of IRX & 2016-02-19 \\ 
+      0.0202 & Log Return of VIX & 2016-06-23 \\ 
+      0.0225 & Debt Risk Spread & None \\ 
+      0.0231 & Debt Risk Spread & 2016-06-23 \\ 
+      0.0279 & Log Return of FVX & 2016-02-19 \\ 
+      0.0286 & Log Return of VIX & 2012-11-06 \\ 
+      0.0300 & Log Return of TYX & 2016-02-19 \\ 
+      0.0346 & IYG & 2004-11-02 \\ 
+      0.0358 & Log Return of VIX & 2016-06-13 \\ 
+      0.0363 & Log Return of TYX & 2016-06-23 \\ 
+      0.0363 & Log Return of FVX & 2016-06-23 \\ 
+      0.0397 & Debt Risk Spread & 2008-11-04 \\ 
+      0.0437 & Log Return of TYX & 2004-11-02 \\ 
+      0.0502 & Log Return of FVX & 2004-11-02 \\ 
+      0.0544 & Log Return of CL.F & None \\ 
+      0.0559 & Log Return of FVX & None \\ 
+      0.0596 & IYG & None \\ 
+      0.0598 & Log Return of IRX & None \\ 
+      0.0598 & Log Return of VIX & None \\ 
+      0.0599 & None & None \\ 
+      0.0621 & IYG & 2012-11-06 \\ 
+      0.0644 & Log Return of TYX & None \\ 
+      0.0710 & Log Return of IRX & 2016-06-13 \\ 
+      0.0726 & Log Return of TNX & None \\ 
+      0.0735 & Raw.VIX & 2016-06-13 \\ 
+      0.0776 & Log Return of IRX & 2012-11-06 \\ 
+      0.0836 & Log Return of TNX & 2012-11-06 \\ 
+      0.0858 & None & 2012-11-06 \\ 
+      0.0903 & Raw.VIX & 2012-11-06 \\ 
+      0.0947 & Log Return of CL.F & 2012-11-06 \\ 
+      0.1001 & Log Return of TNX & 2016-06-13 \\ 
+      0.1013 & IYG & 2016-06-23 \\ 
+      0.1038 & Debt Risk Spread & 2012-11-06 \\ 
+      0.1051 & None & 2016-06-13 \\ 
+      0.1081 & Log Return of IRX & 2008-11-04 \\ 
+      0.1145 & Log Return of CL.F & 2016-06-13 \\ 
+      0.1174 & Log Return of TYX & 2012-11-06 \\ 
+      0.1262 & Log Return of FVX & 2016-06-13 \\ 
+      0.1346 & Log Return of FVX & 2012-11-06 \\ 
+      0.1511 & Log Return of TYX & 2016-06-13 \\ 
+      0.1536 & Debt Risk Spread & 2016-06-13 \\ 
+      0.2634 & Log Return of TNX & 2008-11-04 \\ 
+      0.2814 & None & 2008-11-04 \\ 
+      0.2892 & Log Return of CL.F & 2008-11-04 \\ 
+      0.3040 & Log Return of VIX & 2008-11-04 \\ 
+      0.3479 & Raw.VIX & 2008-11-04 \\ 
+      0.3492 & Log Return of FVX & 2008-11-04 \\ 
+      0.3553 & Log Return of TYX & 2008-11-04 \\ 
+      0.4096 & IYG & 2016-02-19 \\ 
+      0.4920 & IYG & 2008-11-04 \\ 
+      0.8302 & IYG & 2016-06-13 \\ 
+       \hline
+    \end{tabular}
+    \endgroup
+    \end{table}
+
 \section{Discussion}
 
 This present work applies and innovates techniques in similarity-based forecasting and information aggregation in order to provide better GARCH forecasts under news shocks.  It extends \citet{lin2021minimizing} principally by substituting the GARCH model for an AR(1), i.e. by modeling both the mean and volatility of a univariate time series.  An interesting connection insight related to \citet{lin2021minimizing} is that the GARCH model, under weak assumptions, can be represented as an ARMA on the squared residuals $a^{2}_{t}$.  Hence, a shock $\omega^{*}_{i,t}$ to the volatility at time $t$ is an identical shock to $a^{2}_{t}$. However, this use-case becomes less attractive in situations where the sign of the time series under study following the shock is uncertain.  Insofar as this work has made advances that accommodate heteroskedastic time series, the benefits may redound most amply to applications like Value-At-Risk (VaR) and Expected Shortfall, where $\sigma^{2}_{t}$ is an input.
