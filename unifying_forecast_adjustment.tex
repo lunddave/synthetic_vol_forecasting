@@ -405,6 +405,13 @@ Cases:
   \item idiosyncratic error small
 \end{enumerate}  
 
+\subsection{The Method of Multiple Shocks}
+
+Sometimes, we might have reason to believe that a forecast requires adjustment due to not one but multiple shocks.  \cite{lin2021minimizing} explored a ``dual'' shock in their analysis of oil company equity price shocks due to the March 2020 COVID lockdowns.  \\
+
+Method 1: for each source of the $k$ shocks, assemble $n_{j}$ donors and $p_{j}$ covariates, with $j=2,...,n_{j}+1$, compute weights $\{\pi_{i,j}\}^{n_{j}+1}_{i=2}$.  With these $k$ weight sets, a set of $k$ aggregated shock estimators can be constructed and averaged (or aggregated in some other way).
+
+Method 2: the $k$ shocks can be represented using one application of distance-based weighting, with the vector $\delta$ and the vector $\x_{i,T^{*}_{i}+1}$ can encode a partition of shocks by using zeros in appropriate entries.
 
 \section{Real Data Examples}
 This section might not be necessary.

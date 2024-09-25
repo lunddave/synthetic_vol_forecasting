@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.15)  21 SEP 2024 09:45
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.15)  24 SEP 2024 11:19
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -902,54 +902,54 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 [16] [17 <./simulation_plots/Aug28_224311_2024_mu[delta]_sigma[u].png> <./simulation_plots/Aug28_224317_2024_mu[delta]_sigma[u].png> <./simulation_plots/Aug28_224322_2024_mu[delta]_sigma[u].png>] [18 <./simulation_plots/Aug28_224330_2024_mu[delta]_mu[v].png> <./simulation_plots/Aug28_224337_2024_mu[delta]_mu[v].png> <./simulation_plots/Aug28_224451_2024_mu[omega^*]_sigma[u].png> <./simulation_plots/Aug28_224455_2024_mu[omega^*]_sigma[u].png>] [19
 
 ] [20]
-<real_data_output_plots/WedSep182237432024_IYG_None_None.png, id=485, 803.0pt x 602.25pt>
-File: real_data_output_plots/WedSep182237432024_IYG_None_None.png Graphic file (type png)
-<use real_data_output_plots/WedSep182237432024_IYG_None_None.png>
-Package pdftex.def Info: real_data_output_plots/WedSep182237432024_IYG_None_None.png  used on input line 550.
+<real_data_output_plots/TueSep241059512024_IYG_None_None.png, id=485, 803.0pt x 602.25pt>
+File: real_data_output_plots/TueSep241059512024_IYG_None_None.png Graphic file (type png)
+<use real_data_output_plots/TueSep241059512024_IYG_None_None.png>
+Package pdftex.def Info: real_data_output_plots/TueSep241059512024_IYG_None_None.png  used on input line 550.
 (pdftex.def)             Requested size: 481.80373pt x 361.35278pt.
  [21]
 
-LaTeX Warning: Float too large for page by 336.78555pt on input line 636.
+LaTeX Warning: Float too large for page by 231.78555pt on input line 629.
 
-[22 <./real_data_output_plots/WedSep182237432024_IYG_None_None.png>] [23] [24]
+[22 <./real_data_output_plots/TueSep241059512024_IYG_None_None.png>] [23] [24]
 
-LaTeX Warning: Reference `tab:prediction_table_with Brexit as June 22nd, 2016' on page 25 undefined on input line 682.
+LaTeX Warning: Reference `tab:prediction_table_with Brexit as June 22nd, 2016' on page 25 undefined on input line 675.
 
 
-LaTeX Warning: Reference `tab:prediction_table_with Brexit as June 22nd, 2016' on page 25 undefined on input line 686.
+LaTeX Warning: Reference `tab:prediction_table_with Brexit as June 22nd, 2016' on page 25 undefined on input line 679.
 
 [25]
 
-LaTeX Warning: Reference `tab:prediction_table_with Brexit as June 22nd, 2016' on page 26 undefined on input line 691.
+LaTeX Warning: Reference `tab:prediction_table_with Brexit as June 22nd, 2016' on page 26 undefined on input line 684.
 
 
-LaTeX Warning: Reference `tab:prediction_table_with Brexit as June 22nd, 2016' on page 26 undefined on input line 721.
+LaTeX Warning: Reference `tab:prediction_table_with Brexit as June 22nd, 2016' on page 26 undefined on input line 714.
 
 
-LaTeX Warning: Reference `tab:prediction_table_with Brexit as June 23rd, 2016' on page 26 undefined on input line 721.
+LaTeX Warning: Reference `tab:prediction_table_with Brexit as June 23rd, 2016' on page 26 undefined on input line 714.
 
 [26]
-Underfull \hbox (badness 10000) in paragraph at lines 764--767
+Underfull \hbox (badness 10000) in paragraph at lines 757--760
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 768--771
+Underfull \hbox (badness 10000) in paragraph at lines 761--764
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 772--775
+Underfull \hbox (badness 10000) in paragraph at lines 765--768
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 790--792
+Underfull \hbox (badness 10000) in paragraph at lines 783--785
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 793--796
+Underfull \hbox (badness 10000) in paragraph at lines 786--789
 
  []
 
@@ -990,13 +990,13 @@ Package rerunfilecheck Info: File `synthVolForecast.out' has not changed.
 Here is how much of TeX's memory you used:
  26686 strings out of 474116
  490861 string characters out of 5743682
- 1955187 words of memory out of 5000000
+ 1954187 words of memory out of 5000000
  48437 multiletter control sequences out of 15000+600000
  572448 words of font info for 87 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,17n,87p,3950b,747s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on synthVolForecast.pdf (32 pages, 1688776 bytes).
+Output written on synthVolForecast.pdf (32 pages, 1688914 bytes).
 PDF statistics:
  751 PDF objects out of 1000 (max. 8388607)
  646 compressed objects within 7 object streams

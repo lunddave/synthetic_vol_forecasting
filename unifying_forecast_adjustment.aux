@@ -1,16 +1,5 @@
 \relax 
 \providecommand\hyper@newdestlabel[2]{}
-\providecommand\HyperFirstAtBeginDocument{\AtBeginDocument}
-\HyperFirstAtBeginDocument{\ifx\hyper@anchor\@undefined
-\global\let\oldnewlabel\newlabel
-\gdef\newlabel#1#2{\newlabelxx{#1}#2}
-\gdef\newlabelxx#1#2#3#4#5#6{\oldnewlabel{#1}{{#2}{#3}}}
-\AtEndDocument{\ifx\hyper@anchor\@undefined
-\let\newlabel\oldnewlabel
-\fi}
-\fi}
-\global\let\hyper@last\relax 
-\gdef\HyperFirstAtBeginDocument#1{#1}
 \providecommand\HyField@AuxAddToFields[1]{}
 \providecommand\HyField@AuxAddToCoFields[2]{}
 \citation{lin2021minimizing,lundquist2024volatility}
@@ -45,9 +34,9 @@
 \newlabel{Setting}{{2}{4}{Setting}{section.2}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.1}A shock between discrete time points}{5}{subsection.2.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Formal Modeling Setup}{5}{subsection.2.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces The simulated time series experiences a volatility shock between trading days 1,656 and 1,657. The GARCH prediction, in red, fails even to approach the volatility spike at $T^{*}+1$, as do several adjusted predictions, which are orange. In contrast, the GARCH forecast adjusted by $\hat  \omega ^{*} = \DOTSB \sum@ \slimits@ ^{n+1}_{i=2}\pi _{i}\hat  \omega ^{*}_{i} $, a convex combination of the estimated shocks in the donor pool, achieves directional correctness as well as a smaller absolute loss in its prediction. The pink vertical line serves to indicate the adjustment of size $\hat  \omega ^{*}$ that allows the blue bullseye to approach more closely the ground truth.\relax }}{6}{figure.caption.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces The simulated time series experiences a volatility shock between trading days 1,656 and 1,657. The GARCH prediction, in red, fails even to approach the volatility spike at $T^{*}+1$, as do several adjusted predictions, which are orange. In contrast, the GARCH forecast adjusted by $\hat  \omega ^{*} = \DOTSB \sum@ \slimits@ ^{n+1}_{i=2}\pi _{i}\hat  \omega ^{*}_{i} $, a convex combination of the estimated shocks in the donor pool, achieves directional correctness as well as a smaller absolute loss in its prediction. The pink vertical line serves to indicate the adjustment of size $\hat  \omega ^{*}$ that allows the blue bullseye to approach more closely the ground truth.}}{6}{figure.caption.1}\protected@file@percent }
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{fig:motivating_piece_convex_combination}{{1}{6}{The simulated time series experiences a volatility shock between trading days 1,656 and 1,657. The GARCH prediction, in red, fails even to approach the volatility spike at $T^{*}+1$, as do several adjusted predictions, which are orange. In contrast, the GARCH forecast adjusted by $\hat \omega ^{*} = \sum ^{n+1}_{i=2}\pi _{i}\hat \omega ^{*}_{i} $, a convex combination of the estimated shocks in the donor pool, achieves directional correctness as well as a smaller absolute loss in its prediction. The pink vertical line serves to indicate the adjustment of size $\hat \omega ^{*}$ that allows the blue bullseye to approach more closely the ground truth.\relax }{figure.caption.1}{}}
+\newlabel{fig:motivating_piece_convex_combination}{{1}{6}{The simulated time series experiences a volatility shock between trading days 1,656 and 1,657. The GARCH prediction, in red, fails even to approach the volatility spike at $T^{*}+1$, as do several adjusted predictions, which are orange. In contrast, the GARCH forecast adjusted by $\hat \omega ^{*} = \sum ^{n+1}_{i=2}\pi _{i}\hat \omega ^{*}_{i} $, a convex combination of the estimated shocks in the donor pool, achieves directional correctness as well as a smaller absolute loss in its prediction. The pink vertical line serves to indicate the adjustment of size $\hat \omega ^{*}$ that allows the blue bullseye to approach more closely the ground truth}{figure.caption.1}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {3}Methodology for Similarity-based Parameter Correction}{6}{section.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Forecasting}{6}{subsection.3.1}\protected@file@percent }
 \citation{abadie2003economic,abadie2010synthetic,lin2021minimizing}
@@ -73,10 +62,11 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.1}ARIMA}{9}{subsection.5.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.2}GARCH}{9}{subsection.5.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.3}HAR}{9}{subsection.5.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Volatility series of six i.i.d. GARCH processes, each of which experiences a volatility shock, indicated with a red vertical line, at a uniformly distributed point in the set $\{756,...,2520\}$ of trading days, corresponding to between 3 and 10 years of daily trading data.\relax }}{9}{figure.caption.2}\protected@file@percent }
-\newlabel{fig:six_plots}{{2}{9}{Volatility series of six i.i.d. GARCH processes, each of which experiences a volatility shock, indicated with a red vertical line, at a uniformly distributed point in the set $\{756,...,2520\}$ of trading days, corresponding to between 3 and 10 years of daily trading data.\relax }{figure.caption.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Volatility series of six i.i.d. GARCH processes, each of which experiences a volatility shock, indicated with a red vertical line, at a uniformly distributed point in the set $\{756,...,2520\}$ of trading days, corresponding to between 3 and 10 years of daily trading data.}}{9}{figure.caption.2}\protected@file@percent }
+\newlabel{fig:six_plots}{{2}{9}{Volatility series of six i.i.d. GARCH processes, each of which experiences a volatility shock, indicated with a red vertical line, at a uniformly distributed point in the set $\{756,...,2520\}$ of trading days, corresponding to between 3 and 10 years of daily trading data}{figure.caption.2}{}}
 \citation{lin2021minimizing}
 \citation{Brownlee_2022}
+\citation{lin2021minimizing}
 \citation{lin2021minimizing}
 \citation{lin2021minimizing}
 \citation{clements1998forecasting}
@@ -84,10 +74,11 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.5}LSTM/GRU}{10}{subsection.5.5}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {5.5.1}Dual-shocks and the method of shock-partitioning}{10}{subsubsection.5.5.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.6}What are the downsides of aggregating residuals as opposed to aggregating fixed effect estimates?}{10}{subsection.5.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.7}The Method of Multiple Shocks}{10}{subsection.5.7}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {6}Real Data Examples}{10}{section.6}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {7}Discussion}{10}{section.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Extensions}{10}{subsection.7.1}\protected@file@percent }
-\newlabel{Extensions}{{7.1}{10}{Extensions}{subsection.7.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Extensions}{11}{subsection.7.1}\protected@file@percent }
+\newlabel{Extensions}{{7.1}{11}{Extensions}{subsection.7.1}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Limitations}{11}{subsection.7.2}\protected@file@percent }
 \newlabel{Limitations}{{7.2}{11}{Limitations}{subsection.7.2}{}}
 \bibstyle{plainnat}

@@ -54,9 +54,9 @@ level_covariates <- c('^VIX'
 
 volume_covariates <- c()
 
-FRED_covariates <- c('AAA', 'BAA')
+#FRED_covariates <- c('AAA', 'BAA')
 
-#FRED_covariates <- c()
+FRED_covariates <- c()
 
 shock_dates_outside_loop <- list('2016 Election' = c("2016-11-08", list(1, c(1,1,0)))
                                  ,'Brexit' = c("2016-06-23", list(1, c(1,1,0)))
@@ -82,7 +82,7 @@ shock_dates_outside_loop <- c(shock_dates_outside_loop[1]
 number_of_covariates <- length(log_ret_covariates) +
                         length(level_covariates) +
                         length(volume_covariates) +
-                        2 #The +2 is for the TSUS and the FRED covariates'
+                        1 #The +2 is for the TSUS and the FRED covariates'
 
 list_from_looping <- list()
 
@@ -245,13 +245,13 @@ for (u in c(-1,0,2:number_of_covariates)){
         if (u > 0){
           merged_data_uth_covariate_dropped <- merged_data[,-u]
           covariate_string <- names(merged_data[,u])
-          Y_lookback_indices_u_loop <- list(seq(1,30,1))
+          Y_lookback_indices_u_loop <- list(seq(1,3,1))
         }
         else if (u == 0){
           merged_data_uth_covariate_dropped <- merged_data
           covariates_col_names <- colnames(merged_data_uth_covariate_dropped)
           covariate_string <- 'None'
-          Y_lookback_indices_u_loop <- list(seq(1,30,1))
+          Y_lookback_indices_u_loop <- list(seq(1,3,1))
         }
         else{ #This case is for the time series under study not being used in the DBW
           merged_data_uth_covariate_dropped <- merged_data
