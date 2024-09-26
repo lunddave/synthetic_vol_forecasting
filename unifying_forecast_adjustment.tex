@@ -274,9 +274,9 @@ where $\epsilon_{i,t}$ is mean-zero and uncorrelated across time and donors.  No
 with $k\geq1$ and $a_{i,t}, y_{i,t}$ supported on $\mathbb{R}^{+}$.  The term $\x^{T}_{i,t}\lambda_{t}$ will be deemed the $\textit{correction term}$, and the function
 
 \begin{align*}
-  \xi \colon \mathcal{F}_{t} \times \mathcal{F}_{t} &\to \mathbb{C}\\
+  \xi \colon \mathcal{F}_{2,t} \times \ldots \mathcal{F}_{n+1, t} &\to \mathbb{C}\\
 \end{align*}
-will be deemed the \textit{correction function}.  The correction function maps observable, deterministic events and unobservable events into a space so that something might be learned about $\lambda{t}$.  If $\x_{i,t}$ were not observable or not deterministic with respect to $\mathcal{t-1}$, then the correction term would represent an additional error term (not necessarily idiosyncratic.)
+will be deemed the \textit{correction function}.  The correction function maps observable, deterministic events and unobservable events into a space so that something might be learned about $\lambda_{t}$.  If $\x_{i,t}$ were not observable or not deterministic with respect to $\mathcal{F}_{t-1}$, then the correction term would represent an additional error term (not necessarily idiosyncratic).
 
 We require that each time series $\y_{i,t}$ is subject to an observed news event following $T^*_i \leq T_{i} + 1$ and before witnessing $T^*_i+1$.  The reasons for this represent the heart and soul of the framework proposed.  We are not proposing a method to correct for unanticipated shocks that have been reflected in the observed data.  Instead, we are proposing a method to correct for shocks for which the qualitative kernel of information is known and the observed quantitative instantiation of that which is not yet known. 
 
@@ -335,24 +335,29 @@ See \cite{lundquist2024volatility}
 
 In this section, we introduce and discuss a particular approach to model adjustment that is motivated by the circumstances laid out in Section \ref{Setting}.  It may not yet be clear what is essential and what is not.  Here we make that clear.
 
-\subsection{The five essential elements of similarity-based parameter correction}
+\subsection{The essential elements of similarity-based parameter correction}
 
-\textcolor{red}{Should I just use OLS as an example throughout all six?}
+\textcolor{red}{Should I use OLS as an example throughout all of these?}
 
-Most fundamentally, the method requires a random object (indexed over time, of course) that obeys a specification with additive errors, or, at the very least, a specification that can be transformed to have additive errors.  This requirement is suitably weak, so as to include models that are not linear or not linear in each of their parameters.  It also includes objects that multidimensional as well as objects from non-Euclidean probability spaces, like some function spaces.  Notice that we did not say \textit{parametric} specification.  The reason for this is that, given any forecast function $f$ from an information set $\mathcal{F}_{t}$, and given any appropriate loss function \textit{L}, we can define a residual $e_{t} = y \odot \hat{y}$. $\odot$ is subtraction in the simple case of MSE.  The residuals (or transformations of those residuals) of those $n$ models can be weighted to arrive at a correction term.  This fact is especially useful when the forecast function $f$ is nonparametric, black-box, or stochastic with respect to $\mathcal{F}_{t}$.
 
-Second, the method requires that residuals be governed by a model that is shared across all units.  This ensures that in the estimation of structural shocks in the donor pool, the estimators will enjoy similar properties that will produce a good aggregrated shock estimator.  This condition is satisfied by the parametric shock distributions found in \cite{lin2021minimizing,lundquist2024volatility}.
+\begin{enumerate}
+  \item \textbf{Object-to-predict}
+Most fundamentally, the method requires a random object (indexed over time, of course) that obeys a specification with additive errors, or, at the very least, a specification that can be transformed to have additive errors.  This requirement is suitably weak, so as to include models that are not linear or not linear in each of their parameters.  It also includes multidimensional objects as well as objects from non-Euclidean probability spaces, like some function spaces.  
 
-Third, there must exist a reliable model-fitting procedure for the $n+1$ units, one that will allow the assumption of a shared family for the residuals to be reflected in the residuals.  Here, reliable means several things.  It means that the estimation procedure must produce a credible description of each data-generating process or a good prediction function, so as to aid in estimating residual in each unit.  
+Notice that we did not say \textit{parametric} specification.  The reason for this is that, given any forecast function $f$ from an information set $\mathcal{F}_{t}$, and given any appropriate loss function \textit{L}, we can define a residual $e_{t} = y \odot \hat{y}$, where $\odot$ is subtraction in the simple case of mean-squared error.  The residuals (or transformations of those residuals) of those $n$ models can be weighted as part of a correction function.  This fact is especially useful when the forecast function $f$ is nonparametric, black-box, or stochastic with respect to $\mathcal{F}_{t}$.
+
+\item \textbf{Common Model on the Shocks} The method requires that residuals be governed by a model that is shared across all units.  This ensures that in the estimation of structural shocks in the donor pool, the estimators will enjoy similar properties that will produce a good aggregrated shock estimator.  This condition is satisfied by the parametric shock distributions found in \cite{lin2021minimizing,lundquist2024volatility}.
+
+\item \textbf{Reliable and Shared Model-Fitting Procedure} There must exist a reliable model-fitting procedure for the $n+1$ units, one that will allow the assumption of a shared family for the residuals to be reflected in the residuals.  Here, reliable means several things.  It means that the estimation procedure must produce a credible description of each data-generating process or a good prediction function, so as to aid in estimating residual in each unit.  
 
 `Reliable' may mean the estimators have low variance, and it may also mean that the estimation procedure is robust, to some degree, to misspecification bias.  However, in theory, the lack of these properties is not harmful to the method unless the lack of these properties harms the correction term's estimation.  When we use fixed effect estimation (under ordinary assumptions), we can construct confidence intervals for the fixed effect estimates, and then assuming independence, we can get confidence intervals for convex combinations of fixed effect estimates.
 
-Fourth, there must exist a reliable procedure for modeling the correction term in each unit.  Again, here we care about low variance as well as robustness to misspecification.  The very simplest correction term is the residual itself.  The correction term could be an inner product that depends upon external covariates, as is found in \cite{lin2021minimizing,lundquist2024volatility}.
+\item \textbf{Common Model on the Shocks} Fourth, there must exist a reliable procedure for modeling and estimating the correction term in each unit.  Again, here we care about low variance as well as robustness to misspecification.  The very simplest correction term is the residual itself.  Alternatively, the correction term could be an inner product that depends upon external covariates, as is found in \cite{lin2021minimizing,lundquist2024volatility}.
 
-This might not be straightforward.  Some models like GARCH, for example, might deliver very noisy estimates for indicator variables that occur just once.  When will it be as simple as a fixed effect?  When will it be something besides a fixed effect?
+This might not always be straightforward.  Some models like GARCH, for example, might deliver very noisy estimates for indicator variables that occur just once.
 
-Fifth and finally, there must exist a correction function (presumably based on the correction term) that maps data from the donor pool to the \textit{predicted} correction term in the time series under study based on some notion of similarity.  It could depend upon external covariates.
-
+\item \textbf{Common Model on the Shocks} There must exist a correction function (presumably based on the correction term) that maps data from the donor pool to the \textit{predicted} correction term in the time series under study based on some notion of similarity.  It could depend upon external covariates.
+\end{enumerate}
 
 \section{Formal Properties and Model-Specific Considerations}\label{special_cases}
 
