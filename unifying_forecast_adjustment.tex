@@ -352,20 +352,25 @@ Notice that we did not say \textit{parametric} specification.  The reason for th
 
 `Reliable' may mean the estimators have low variance, and it may also mean that the estimation procedure is robust, to some degree, to misspecification bias.  However, in theory, the lack of these properties is not harmful to the method unless the lack of these properties harms the correction term's estimation.  When we use fixed effect estimation (under ordinary assumptions), we can construct confidence intervals for the fixed effect estimates, and then assuming independence, we can get confidence intervals for convex combinations of fixed effect estimates.
 
-\item \textbf{Common Model on the Shocks} Fourth, there must exist a reliable procedure for modeling and estimating the correction term in each unit.  Again, here we care about low variance as well as robustness to misspecification.  The very simplest correction term is the residual itself.  Alternatively, the correction term could be an inner product that depends upon external covariates, as is found in \cite{lin2021minimizing,lundquist2024volatility}.
+\item \textbf{Reliable Correction Term Estimation} Fourth, there must exist a reliable procedure for modeling and estimating the correction term in each unit.  Again, here we care about low variance as well as robustness to misspecification.  The very simplest correction term is the residual itself.  Alternatively, the correction term could be an inner product that depends upon external covariates, as is found in \cite{lin2021minimizing,lundquist2024volatility}.
 
 This might not always be straightforward.  Some models like GARCH, for example, might deliver very noisy estimates for indicator variables that occur just once.
 
-\item \textbf{Common Model on the Shocks} There must exist a correction function (presumably based on the correction term) that maps data from the donor pool to the \textit{predicted} correction term in the time series under study based on some notion of similarity.  It could depend upon external covariates.
+\item \textbf{Reliable Correction Function Estimation} There must exist a correction function (presumably based on the correction term) that maps data from the donor pool to the \textit{predicted} correction term in the time series under study based on some notion of similarity.  It could depend upon external covariates.
 \end{enumerate}
 
 \section{Formal Properties and Model-Specific Considerations}\label{special_cases}
 
- 
-
-
 \subsection{ARIMA}
-\cite{lin2021minimizing}
+We begin our recounting of model-specific cases by recalling \cite{lin2021minimizing}, in which it was established that for a family of AR(1)-distributed scalar time series with a common shock distribution, forecast risk can be reduced via a similarity-based adjustment procedure.  \\
+
+AR(p) is nice because it can be estimated via OLS.\\
+
+Problems:
+
+Linear time series models are of limited use.\\
+
+Efficient market hypotheses implies that market prices reflect all publicly-available information, which in turn implies that ARIMA models should be of no predictive value for market returns.  This motivates our next section.
 \subsection{GARCH}
 We briefly highlight the findings of \citep{lundquist2024volatility}.
 \subsection{HAR}
