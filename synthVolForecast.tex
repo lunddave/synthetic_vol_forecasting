@@ -553,14 +553,22 @@ Second, we follow \citet{steegen2016increasing} in a executing a multiverse anal
     \end{center}
   \end{figure}
 
+
+ 
+  \subsection{Leave-one-out: How we analyzed a multiverse of 50 predictions}
+
+  Given the option of redoing our analysis, with nine covariates and four donors, a natural question from a place of skepticism is, how stable are the results --- how contingent are they on a particular specification?  To answer these questions, in Table \ref{tab:prediction_table_with Brexit as June 22nd, 2016} we generate all fifty predictions yielded the decision of leave out any one of the donors (or none) and any one of the covariates (or none).  This analysis includes the prediction presented above, which can be viewed as the null model, at least in the sense that it provides and baseline for comparison. 
+  
   \begin{table}[ht]
     \centering
-    \begingroup\fontsize{9pt}{10pt}\selectfont
-    \begin{tabular}{rll}
-      \hline
-    QLLoss.AdjustedForecast. & dropped\_covariate & dropped\_donor \\ 
+    \captionof{table}{Adjusted volatility forecasts for the 2016 US presidential election ranked by QL loss. This table contains all forecasts made by applying simultaneous leave-one-out approaches made to the covariates and the donors forming the donor pool. The forecast from our analysis in the main text is included in yellow. The mean and median of all forecasts is also included in grey.} \label{tab:multiverse_table} 
+    \begingroup\fontsize{7pt}{7pt}\selectfont
+    \begin{tabular}{ccc}
+      
       \hline
     0.0001 & Log Return of \verb|^|IRX & None \\ 
+
+    \rowcolor{gray} 0.0007 & NA (Average Forecast) & NA (Average Forecast)\\  
       0.0007 & Log Return of CL=F & 2004-11-02 \\ 
       0.0008 & Log Return of \verb|^|IRX & 2004-11-02 \\ 
       0.0034 & Log Return of \verb|^|TNX & None \\ 
@@ -570,6 +578,7 @@ Second, we follow \citet{steegen2016increasing} in a executing a multiverse anal
       0.0079 & None & 2004-11-02 \\ 
       0.0080 & Log Return of CL=F & 2008-11-04 \\ 
       0.0099 & Log Return of \verb|^|VIX & 2004-11-02 \\ 
+      \rowcolor{gray}  0.0099 & NA (Median Forecast) & NA (Median Forecast)\\  
       0.0115 & Log Return of CL=F & 2016-02-19 \\ 
       0.0127 & None & 2016-02-19 \\ 
       0.0137 & Raw\verb|^|VIX & 2016-02-19 \\ 
@@ -578,7 +587,7 @@ Second, we follow \citet{steegen2016increasing} in a executing a multiverse anal
       0.0193 & Raw\verb|^|VIX & 2016-06-23 \\ 
       0.0194 & Log Return of \verb|^|VIX & 2016-06-23 \\ 
       0.0216 & Log Return of \verb|^|IRX & 2016-06-23 \\ 
-      0.0219 & None & None \\ 
+      \rowcolor{yellow} 0.0219 & None & None \\ 
       0.0222 & Log Return of \verb|^|FVX & 2016-02-19 \\ 
       0.0232 & Log Return of \verb|^|VIX & 2008-11-04 \\ 
       0.0237 & Log Return of \verb|^|TNX & 2016-06-23 \\ 
@@ -626,7 +635,7 @@ Second, we follow \citet{steegen2016increasing} in a executing a multiverse anal
        \hline
     \end{tabular}
     \endgroup
-    \end{table}
+    \end{table}\label{multiverse_table}
 
 \section{Discussion}
 

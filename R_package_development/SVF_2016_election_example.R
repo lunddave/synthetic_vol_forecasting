@@ -420,8 +420,7 @@ print(loss_matrix[order(loss_matrix[,2]),], row.names = FALSE)
 
 print(xtable(loss_matrix[order(loss_matrix[,2]),c(2,6,7)],digits=4)
       , include.rownames = FALSE
-      , size="\\fontsize{9pt}{10pt}\\selectfont")
-
+      , size="\\fontsize{8pt}{10pt}\\selectfont")
 
 lm1 <- lm(as.numeric(loss_matrix[,2]) ~ 0 + as.factor(loss_matrix$dropped_covariate) + as.factor(loss_matrix$dropped_donor))
 summary(lm1)
