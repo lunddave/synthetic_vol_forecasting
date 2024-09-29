@@ -361,16 +361,23 @@ This might not always be straightforward.  Some models like GARCH, for example, 
 
 \section{Formal Properties and Model-Specific Considerations}\label{special_cases}
 
+In this section discuss particular models in which our approach has been implemented as well as other in which it has yet to be implemented.  For those for which an implementation exists, we portray the model in a more general light, while also commenting on the model-specific considerations.
+
 \subsection{ARIMA}
-We begin our recounting of model-specific cases by recalling \cite{lin2021minimizing}, in which it was established that for a family of AR(1)-distributed scalar time series with a common shock distribution, forecast risk can be reduced via a similarity-based adjustment procedure.  \\
+We begin our recounting of model-specific cases by recalling \cite{lin2021minimizing}, in which it was established that for a family of AR(1)-distributed scalar time series with a common shock distribution, forecast risk can be reduced via a similarity-based adjustment procedure.  AR(p) is an easy model to work with, in part because it can be consistently estimated via OLS, and an AR(p) can approximate an ARMA(p,q) with arbitrarily-small error through via a truncation of an AR($\infty$) representation.  Setting aside the estimation method, consider a one-step-ahead for an AR(p) at time $t$ with an adjustment estimator, $\hat\alpha_{t}$:
 
-AR(p) is nice because it can be estimated via OLS.\\
+\begin{align}
+\hat{y}_{t} = f(\mathcal{F}_{t-1}) = \hat\mu + \sum^{p}_{i=1}\hat\rho_{i}y_{t-i} + \hat{\alpha}_{t}
+\end{align}
+which can be understood as an AR(p) with time-varying coefficients.  The mean-squared error of the forecast above, i.e.
 
-Problems:
+\begin{align}
+  \E[(y_{t}-\hat{y}_{t})^{2}] = \E[(y_{t} - \hat\mu + \sum^{p}_{i=1}\hat\rho_{i}y_{t-i} + \hat{\alpha}_{t})^{2}]\\
+  \E[(y_{t}-\hat{y}_{t})^{2}] = \E[(\mu + \sum^{p}_{i=1}\rho_{i}y_{t-i} + \alpha_{t} - \hat\mu + \sum^{p}_{i=1}\hat\rho_{i}y_{t-i} + \hat{\alpha}_{t})^{2}] 
+  \end{align}
+admits of the typical bias-variance decomposition, with the special proviso that with more terms in the prediction function, more covariance terms arise.  Similarly, the covariance structure of the random effects in $\alpha = \x_{t}^{T}\lambda_{t}$ will contribute to the variance.  In the real-data examples \cite{lin2021minimizing}, the entries in $\lambda_{t}$ were proxies of general market risk, which one would commonly take to be correlated not only with each other but also with a financial time series $y_{t}$.  All of this is to say that control of the MSE may require tight control of the variance in the prediction function, which in turn will gesture in the direction of a sparse $\hat\alpha_{t}$.
 
-Linear time series models are of limited use.\\
-
-Efficient market hypotheses implies that market prices reflect all publicly-available information, which in turn implies that ARIMA models should be of no predictive value for market returns.  This motivates our next section.
+We now turn to the limitations of linear time series model class like ARIMA.  The first is that linearity is a nontrivial restriction, and for the purpose of modeling financial time series, applications of our method to TAR and SETAR would be welcome.  Additionally, the efficient market hypotheses implies that market prices reflect all publicly-available information, which in turn implies that ARIMA models should be of no predictive value for market returns.  This motivates our next section.
 \subsection{GARCH}
 We briefly highlight the findings of \citep{lundquist2024volatility}.
 \subsection{HAR}
@@ -443,6 +450,6 @@ bias-variance tradeoff and MSE decomposition\\
 \clearpage
 
 \bibliographystyle{plainnat}
-\bibliography{synthVolForecast}
+\bibliography{unifying.bib}
  
 \end{document}
