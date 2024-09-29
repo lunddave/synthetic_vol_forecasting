@@ -5,45 +5,45 @@ The style file: plainnat.bst
 Database file #1: unifying.bib
 Warning--empty journal in guerron2017macroeconomic
 Warning--empty journal in hendry1994theory
-You've used 12 entries,
+You've used 13 entries,
             2773 wiz_defined-function locations,
-            669 strings with 6846 characters,
-and the built_in function-call counts, 4968 in all, are:
-= -- 447
-> -- 257
-< -- 10
-+ -- 87
-- -- 75
-* -- 372
-:= -- 770
-add.period$ -- 36
-call.type$ -- 12
-change.case$ -- 60
-chr.to.int$ -- 12
-cite$ -- 26
-duplicate$ -- 233
-empty$ -- 427
-format.name$ -- 103
-if$ -- 1031
+            674 strings with 6998 characters,
+and the built_in function-call counts, 5325 in all, are:
+= -- 475
+> -- 278
+< -- 11
++ -- 94
+- -- 81
+* -- 395
+:= -- 827
+add.period$ -- 39
+call.type$ -- 13
+change.case$ -- 64
+chr.to.int$ -- 13
+cite$ -- 28
+duplicate$ -- 253
+empty$ -- 459
+format.name$ -- 112
+if$ -- 1106
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 12
-newline$ -- 68
-num.names$ -- 48
-pop$ -- 122
+missing$ -- 14
+newline$ -- 73
+num.names$ -- 52
+pop$ -- 135
 preamble$ -- 1
-purify$ -- 49
+purify$ -- 53
 quote$ -- 0
-skip$ -- 185
+skip$ -- 200
 stack$ -- 0
-substring$ -- 180
-swap$ -- 11
+substring$ -- 182
+swap$ -- 12
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 127
+type$ -- 133
 warning$ -- 2
-while$ -- 48
+while$ -- 51
 width$ -- 0
-write$ -- 155
+write$ -- 167
 (There were 2 warnings)

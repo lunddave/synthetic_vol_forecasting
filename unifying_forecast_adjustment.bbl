@@ -1,4 +1,4 @@
-\begin{thebibliography}{12}
+\begin{thebibliography}{13}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -34,6 +34,11 @@ Michael~P Clements and David~F Hendry.
 Michael~P Clements and David~F Hendry.
 \newblock Evaluating a model by forecast performance.
 \newblock \emph{Oxford Bulletin of Economics and Statistics}, 67:\penalty0 931--956, 2005.
+
+\bibitem[Francq and Zakoian(2019)]{francq2019garch}
+Christian Francq and Jean-Michel Zakoian.
+\newblock \emph{GARCH models: structure, statistical inference and financial applications}.
+\newblock John Wiley \& Sons, 2019.
 
 \bibitem[Guerr{\'o}n-Quintana and Zhong(2017)]{guerron2017macroeconomic}
 Pablo Guerr{\'o}n-Quintana and Molin Zhong.
