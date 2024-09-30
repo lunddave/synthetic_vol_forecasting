@@ -12,25 +12,20 @@
 \citation{hendry1994theory}
 \citation{lin2021minimizing,lundquist2024volatility}
 \citation{lin2021minimizing,lundquist2024volatility}
+\citation{guerron2017macroeconomic}
 \citation{hendry1994theory}
 \citation{lin2021minimizing}
-\citation{guerron2017macroeconomic}
 \citation{clements2005evaluating}
 \newlabel{intercept_correction}{{1.1}{3}{History of and Motivation for Intercept Correction}{subsection.1.1}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {1.1}History of and Motivation for Intercept Correction}{3}{subsection.1.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {1.1.1}Setting levels back on track}{3}{subsubsection.1.1.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {1.1.2}Mismeasured data}{3}{subsubsection.1.1.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {1.1.3}Motivation from model evaluation}{3}{subsubsection.1.1.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {1.1.1}Mismeasured data}{3}{subsubsection.1.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {1.1.2}Motivation from model evaluation}{3}{subsubsection.1.1.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2}Forecasting Using Outside Information}{3}{subsection.1.2}\protected@file@percent }
 \citation{lundquist2024volatility}
 \citation{lundquist2024volatility}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.2}Forecasting Using Outside Information}{4}{subsection.1.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {1.2.1}Incorporation of Outside Information is the Norm, Not the Exception}{4}{subsubsection.1.2.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {1.2.2}The Meaning and Use of Similarity}{4}{subsubsection.1.2.2}\protected@file@percent }
-\newlabel{meaning_use}{{1.2.2}{4}{The Meaning and Use of Similarity}{subsubsection.1.2.2}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {2}Setting}{4}{section.2}\protected@file@percent }
 \newlabel{Setting}{{2}{4}{Setting}{section.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}A shock between discrete time points}{4}{subsection.2.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Formal Modeling Setup}{4}{subsection.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Formal Modeling Setup}{4}{subsection.2.1}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces The simulated time series experiences a volatility shock between trading days 1,656 and 1,657. The GARCH prediction, in red, fails even to approach the volatility spike at $T^{*}+1$, as do several adjusted predictions, which are orange. In contrast, the GARCH forecast adjusted by $\hat  \omega ^{*} = \DOTSB \sum@ \slimits@ ^{n+1}_{i=2}\pi _{i}\hat  \omega ^{*}_{i} $, a convex combination of the estimated shocks in the donor pool, achieves directional correctness as well as a smaller absolute loss in its prediction. The pink vertical line serves to indicate the adjustment of size $\hat  \omega ^{*}$ that allows the blue bullseye to approach more closely the ground truth.}}{5}{figure.caption.1}\protected@file@percent }
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
 \newlabel{fig:motivating_piece_convex_combination}{{1}{5}{The simulated time series experiences a volatility shock between trading days 1,656 and 1,657. The GARCH prediction, in red, fails even to approach the volatility spike at $T^{*}+1$, as do several adjusted predictions, which are orange. In contrast, the GARCH forecast adjusted by $\hat \omega ^{*} = \sum ^{n+1}_{i=2}\pi _{i}\hat \omega ^{*}_{i} $, a convex combination of the estimated shocks in the donor pool, achieves directional correctness as well as a smaller absolute loss in its prediction. The pink vertical line serves to indicate the adjustment of size $\hat \omega ^{*}$ that allows the blue bullseye to approach more closely the ground truth}{figure.caption.1}{}}
@@ -38,36 +33,33 @@
 \@writefile{toc}{\contentsline {section}{\numberline {3}Methodology for Similarity-based Parameter Correction}{6}{section.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Forecasting}{6}{subsection.3.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Correction Functions}{6}{subsection.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}Model Adjustment Using Similarity-Based Parameter Correction: A Global Overview}{6}{section.4}\protected@file@percent }
 \citation{lin2021minimizing,lundquist2024volatility}
 \citation{lin2021minimizing,lundquist2024volatility}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}How is the proposed method distinct from existing tools?}{7}{subsection.3.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4}Model Adjustment Using Similarity-Based Parameter Correction: A Global Overview}{7}{section.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}The essential elements of similarity-based parameter correction}{7}{subsection.4.1}\protected@file@percent }
 \citation{lin2021minimizing}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Formal Properties and Model-Specific Considerations}{7}{section.5}\protected@file@percent }
+\newlabel{special_cases}{{5}{7}{Formal Properties and Model-Specific Considerations}{section.5}{}}
 \citation{lin2021minimizing}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Formal Properties and Model-Specific Considerations}{8}{section.5}\protected@file@percent }
-\newlabel{special_cases}{{5}{8}{Formal Properties and Model-Specific Considerations}{section.5}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}ARIMA}{8}{subsection.5.1}\protected@file@percent }
-\newlabel{adjustment}{{1}{8}{ARIMA}{equation.5.1}{}}
 \citation{lin2021minimizing}
 \citation{lundquist2024volatility}
 \citation{francq2019garch}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}ARIMA}{8}{subsection.5.1}\protected@file@percent }
+\newlabel{adjustment}{{1}{8}{ARIMA}{equation.5.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}GARCH}{8}{subsection.5.2}\protected@file@percent }
 \citation{lundquist2024volatility}
 \citation{corsi2009simple}
-\citation{lin2021minimizing}
-\citation{Brownlee_2022}
-\citation{lin2021minimizing}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}GARCH}{9}{subsection.5.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.3}HAR}{9}{subsection.5.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {5.3.1}A Real Data Application of Shock-Adjusted HAR Forecasting}{9}{subsubsection.5.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}VAR}{9}{subsection.5.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.5}LSTM/GRU}{9}{subsection.5.5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Over the course of the 2010s, the US FOMC began a rake-hiking cycle. Left pane: weights of the donor pool of FOMC meetings; right-pane: fixed effect estimates; right pane: the unadjusted forecast, adjusted forecast, and actual forecast}}{9}{figure.caption.2}\protected@file@percent }
+\newlabel{fig:six_plots}{{2}{9}{Over the course of the 2010s, the US FOMC began a rake-hiking cycle. Left pane: weights of the donor pool of FOMC meetings; right-pane: fixed effect estimates; right pane: the unadjusted forecast, adjusted forecast, and actual forecast}{figure.caption.2}{}}
+\citation{lin2021minimizing}
+\citation{Brownlee_2022}
 \citation{lin2021minimizing}
 \citation{lin2021minimizing}
 \citation{clements1998forecasting}
 \citation{lundquist2024volatility}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Over the course of the 2010s, the US FOMC began a rake-hiking cycle. Left pane: weights of the donor pool of FOMC meetings; right-pane: fixed effect estimates; right pane: the unadjusted forecast, adjusted forecast, and actual forecast}}{10}{figure.caption.2}\protected@file@percent }
-\newlabel{fig:six_plots}{{2}{10}{Over the course of the 2010s, the US FOMC began a rake-hiking cycle. Left pane: weights of the donor pool of FOMC meetings; right-pane: fixed effect estimates; right pane: the unadjusted forecast, adjusted forecast, and actual forecast}{figure.caption.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}VAR}{10}{subsection.5.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5}LSTM/GRU}{10}{subsection.5.5}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.6}The Method of Multiple Shocks, Dual Shocks, and Shock-Partitioning}{10}{subsection.5.6}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {6}Discussion}{10}{section.6}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Shock propagation and estimation accuracy}{10}{subsection.6.1}\protected@file@percent }

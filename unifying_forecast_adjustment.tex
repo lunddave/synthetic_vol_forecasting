@@ -126,8 +126,7 @@
 \maketitle
 
 \begin{abstract} 
-Structural shocks to time series may give an observer reason to doubt the credibility of the default forecasting function.  This work systematizes and unifies the rich landscape of model adjustment and model correction methods, with a special focus on forecast adjustment under the presence of shocks.  We demonstrate the usefulness of similarity-based methods in forecasting and present a general framework dubbed Similarity-based Parameter Correction (SPC).  We highlight several specific time series models that can benefit by SPC, along with formal results for some of those special cases.
-
+  Structural shocks to time series may give an observer reason to doubt the credibility of the default forecasting function.  This work systematizes and unifies the rich landscape of model adjustment and model correction methods, with a special focus on forecast adjustment under the presence of shocks.  We demonstrate the usefulness of similarity-based methods in forecasting and present a general framework dubbed Similarity-based Parameter Correction (SPC).  We highlight several specific time series models that can benefit from SPC, along with formal results for some of those special cases.
 \end{abstract}
 
 
@@ -162,27 +161,24 @@ Forecast model adjustment, known most widely perhaps by the term intercept-corre
 
 Post-shock forecasting procedures have been explored in \cite{lin2021minimizing,lundquist2024volatility}, where the AR(1) and GARCH($m,s$) cases, respectively, are treated.  Both works target additive parameters in scalar time series, predicting those random effects by aggegating information from other time series.  The authors leave several stones unturned, including a more general, dare say comprehensive treatment of how to forecast under any sort of shock.
 
-A practitioner interested in forecast adjustment can choose between procedures that discretionary or automated, a variety of choices for the collection of data assembled to perform the correction, whether the data is internal (i.e. from the time series itself) or external, the term to be corrected (e.g. intercept, coefficients), if any, as well as the correction function (i.e. the mapping from the donor unit data to the correction term), including the weighting applied to the assembled data (e.g. Nearest-Neighbor, arithmetic mean, kernel methods).
+A practitioner interested in forecast adjustment can choose between procedures that discretionary or automated, a variety of choices for the collection of data assembled to perform the correction, whether the data is internal (i.e. from the time series itself) or external, the term to be corrected (e.g. intercept, coefficients), if any, as well as the correction function (i.e. the mapping from the donor unit data to the correction term in the time series under study), including the weighting applied to the assembled data (e.g. Nearest-Neighbor, arithmetic mean, kernel methods).
 
 The procedure presented herein is a discretionary procedure for intercept correction that integrates data internal or external to the time series under study in a systematic manner.  The correction function uses an optimization step inspired by the causal inference literature.  Outside of \citet{lin2021minimizing,lundquist2024volatility}, we are not aware of prior work that both introduces a parametric specification for nonzero errors and introduces a procedure for weighting appropriately the nonzero errors of similar shocks occurring outside the time series under study.  We are also not familiar with any prior work that attempts to account for anticipated nonzero errors using an a parametric adjustment, i.e., a ``correction function''.  
 
 The structure of this manuscript is as follows.  We first provide a  review of several disparate time series literatures, including intercept correction, model-evaluation, and similarity-based forecasting.  We then provide a canonical setting in which we attempt to focus our work.  This setting will be presented at a level of generality that showcases the broad applicability of our method.  We then introduce the method from a global perspective, abstracting away from familiar applications.  We then show several specific applications, including novel applications that cannot be found elsewhere in the literature.  We close with a discussion, including possible extensions.
 
 \subsection{History of and Motivation for Intercept Correction\label{intercept_correction}}
-See Clements and Hendry
+See Clements and Hendry - Setting \textit{levels} back on track
 
 Intercept correction is the correction of a forecast by adding the residual at time $t$ to the forecasts at some subset of $\{t+1,t+2,...\}$.  We are doing something very close to that which is adding the predicted correction function output at time $t$ to the forecasts at some subset of $\{T_{1}^{*}+1,t+2,...\}$, where $T^{*}_{1}$ is the shock time of the time series understudy. 
 
-\subsubsection{Setting levels back on track}
-
-We discussed this above in Section \ref{intercept_correction}.
-
+Quinton-Guerrera and Zhong \cite{guerron2017macroeconomic} - concerned with correcting $\beta$ using similarity\\
 
 \subsubsection{Mismeasured data}
 
 Mismeasured data is discussed in \cite[p. 166]{hendry1994theory} as a motivator for intercept correction.  Could similarity-based correction help?  Here is an idea: if we believe that our most recent measurement of the series is noisy, we can disregard the point itself and instead take a convex combination of that point and the \cite{lin2021minimizing}-style prediction based on aggregation.
 
-Quinton-Guerrera and Zhong \cite{guerron2017macroeconomic} - concerned with correcting $\beta$ using similarity\\
+
 
 \subsubsection{Motivation from model evaluation}
 
@@ -203,15 +199,10 @@ Here is the argument: if we are going to judge a model by forecast performance, 
 
 \subsection{Forecasting Using Outside Information}
 
-\subsubsection{Incorporation of Outside Information is the Norm, Not the Exception}
+Incorporation of Outside Information is the Norm, Not the Exception.  ARMA models and other models that model the future as a function of only the past values and past innovations of the series itself are well-known to be unrealistic as a data-generating processes.  They are also well-known to be poor predictors of the future.  What we are doing here is therefore not out of the ordinary but distinct in at least two ways: (1) we are incorporating outside information faster, and (2) we are proposing a principled, systematic way to do it that defies that curse of dimensionality.  If one wanted to forecast using linear models and high-dimensional information set, then some kind of method for reducing model complexity would be required.  We avoid that.
 
-ARMA models and other models that model the future as a function of only the past values and past innovations of the series itself are well-known to be unrealistic as a data-generating processes.  They are also well-known to be poor predictors of the future.  What we are doing here is therefore not out of the ordinary but distinct in at least two ways: (1) we are incorporating outside information faster, and (2) we are proposing a principled, systematic way to do it that defies that curse of dimensionality.  If one wanted to forecast using linear models and high-dimensional information set, then some kind of method for reducing model complexity would be required.  We avoid that.
-
-\subsubsection{The Meaning and Use of Similarity}\label{meaning_use}
-
-Hume? Cite Israeli authors, if so.\\
-
-The notion of similarity appears in various statistical contexts, including matching, synthetic control, nearest-neighbor methods, not to mention the massive area of approximation theory.  The uses of similarity are too sprawling to recount in detail.  Below we talk about how it could matter in this work.
+Now we discuss The Meaning and Use of Similarity
+Hume? Cite Israeli authors, if so.  The notion of similarity appears in various statistical contexts, including matching, synthetic control, nearest-neighbor methods, not to mention the massive area of approximation theory.  The uses of similarity are too sprawling to recount in detail.  Below we talk about how it could matter in this work.
 
 Similar, in the strong sense, could mean that a shared DGP exists. It could mean similar in the covariates that parameterize the shocks.  It matters where we look for similarity and how we estimate similarity.
 
@@ -226,8 +217,7 @@ What about qualitative ways of determining similarity?  In \cite{lundquist2024vo
 In order to introduce the general framework for adjusting forecasts under shocks, we provide an illustration.  In Figure \ref{fig:motivating_piece_convex_combination}, we borrow from \cite{lundquist2024volatility}
 to show how the aggregation of estimated excess volatilities from donors in the donor pool works when the correction function is a specially-chosen convex combination of fixed effects from the donor pool.  
 
-\subsection{A shock between discrete time points}
-In this work, we will be focused on shocks that occur strictly between two discrete time points.  This raises an important terminological point.  ``Shocks", in econometric literature, can be structural or idiosyncratic, permanent or transitory, supply-related or demand-related, and so forth.  The taxonomy is vast.
+In this work, we will be focused on shocks that occur strictly between two discrete time points.  This raises an important terminological point.  Errors are a staple of stochastic modeling, and certainly no proper inventory of the wide range of uses of ``noise", ``shocks", and so can be accomplished here.  Whereas in the psychometric and social-scientific fields, errors may represent unmeasured or latent capacities of a unit, in other fields like the natural sciences, errors may be used to account for variability in the instruments used to collect data.  ``Innovations" or ``shocks", in econometric literature, are generally understood to represent the arrival of previously unknown (but not necessarily uncontemplated) information.  Shocks are called structural when they are can be linked back to some key feature of an scientific (usually economic) theory; otherwise, they are idiosyncratic.  However, there exist other subcategories of shocks that crosscut the distinction just made.  For example, a news shock is a shock in which the information material to the market is delivered via newsmedia and moves markets no earlier than the news.  Shocks can also be permanent or transitory, supply-related or demand-related, and so forth.  The taxonomy is vast.  What matters for this work is the news shocks we posit occur between two discrete time points, so that a practitioner is faced with the question of what action is most advisable for the following time point, given the news shock.
 
 \subsection{Formal Modeling Setup}
 
@@ -288,17 +278,9 @@ We now present two one-step-ahead forecasts for the time series under study. The
 \end{align*}
 which is just one way among many to build a correction function.
 
-
-\subsection{How is the proposed method distinct from existing tools?}
-
-
 \section{Model Adjustment Using Similarity-Based Parameter Correction: A Global Overview}
 
-In this section, we introduce and discuss a particular approach to model adjustment that is motivated by the circumstances laid out in Section \ref{Setting}.  It may not yet be clear what is essential and what is not.  Here we make that clear.
-
-\subsection{The essential elements of similarity-based parameter correction}
-
-
+In this section, we introduce and discuss a particular approach to model adjustment that is motivated by the circumstances laid out in Section \ref{Setting}.  It may not yet be clear what is essential and what is not.  Here we make that clear.  The  essential elements of similarity-based parameter correction are
 \begin{enumerate}
   \item \textbf{Object-to-predict}
 Most fundamentally, the method requires a random object (indexed over time, of course) that obeys a specification with additive errors, or, at the very least, a specification that can be transformed to have additive errors.  This requirement is suitably weak, so as to include models that are not linear or not linear in each of their parameters.  It also includes multidimensional objects as well as objects from non-Euclidean probability spaces, like some function spaces.  
@@ -385,8 +367,6 @@ Method 1: for each source of the $k$ shocks, assemble $n_{j}$ donors and $p_{j}$
 Method 2: the $k$ shocks can be represented using one application of distance-based weighting, with the vector $\delta$ and the vector $\x_{i,T^{*}_{i}+1}$ can encode a partition of shocks by using zeros in appropriate entries.
 
 \section{Discussion}
-
-Are there any situations where we would want to intercept-correct using the post-shock term from \cite{lin2021minimizing} rather than the actual residual?
 
 The forecast horizon --- does it matter?  If so, how so?  \cite{lin2021minimizing} has a one-period horizon.  \cite{clements1998forecasting}{p. 203} discuss how long to keep the forecast adjustment in place.  For a corrected ``slope parameter'', the effect of $h$ is not so clear.\\
 
