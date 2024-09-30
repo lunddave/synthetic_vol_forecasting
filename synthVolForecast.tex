@@ -265,7 +265,7 @@ Note that GARCH models can be parameterized as ARMA models on the squares of the
 \subsection{Excess Volatility Estimators}
     \label{Excess Volatility Estimators}
    
-    The problem of aggregating estimated donor shocks begins with the data constraints.  Let us first introduce useful notation.  Let $\hat\omega^{*}_{i,*}$ denote the shock estimate for donor $i$ that is obtain via an indicator variable over time points $T_{i}^{*}+1,...,T_{i}^{*}+L_{i,vol}$.  That estimation procedure is justified by the assumption that at each nonzero shock point, the shocks will differ but will be equal in distribution.  
+    The problem of aggregating estimated donor shocks begins with the data constraints.  Let us first introduce useful notation.  Let $\hat\omega^{*}_{i,*}$ denote the shock estimate for donor $i$ that is obtained via fixed effect estimation over time points $T_{i}^{*}+1,...,T_{i}^{*}+L_{i,vol}$.  That estimation procedure is justified by the assumption that at each nonzero shock point, the shocks will differ but will be equal in distribution.  
     
     Taking the estimated shocks as a given, we observe the pair $(\{\hat\omega^{*}_{i,*}\}^{n+1}_{i=2},\{\textbf{v}_{i}\}^{n+1}_{i=2})$.  Let $\Delta^{n} = \{\pi \in \mathbb{R}^n: \sum_{i=1}^n \pi_i = 1, \pi_i \geq 0, i = 1,...,n\}$.  We wish to recover weights $\{\weight_{i}\}^{n+1}_{i=2} \in \Delta^{n}$ leading to favorable forecasting properties.  These weights are used to define and compute an aggregate shock estimate 
 \begin{equation} \label{adjustment}

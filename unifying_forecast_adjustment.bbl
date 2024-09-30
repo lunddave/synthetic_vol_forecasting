@@ -1,19 +1,9 @@
-\begin{thebibliography}{14}
+\begin{thebibliography}{10}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
-
-\bibitem[Abadie and Gardeazabal(2003)]{abadie2003economic}
-Alberto Abadie and Javier Gardeazabal.
-\newblock The economic costs of conflict: A case study of the basque country.
-\newblock \emph{American Economic Review}, 93\penalty0 (1):\penalty0 113--132, 2003.
-
-\bibitem[Abadie et~al.(2010)Abadie, Diamond, and Hainmueller]{abadie2010synthetic}
-Alberto Abadie, Alexis Diamond, and Jens Hainmueller.
-\newblock Synthetic control methods for comparative case studies: Estimating the effect of california’s tobacco control program.
-\newblock \emph{Journal of the American Statistical Association}, 105\penalty0 (490):\penalty0 493--505, 2010.
 
 \bibitem[Brownlee(2022)]{Brownlee_2022}
 Jason Brownlee.
@@ -64,15 +54,5 @@ Jilei Lin and Daniel~J Eck.
 David Lundquist and Daniel Eck.
 \newblock Volatility forecasting using similarity-based parameter correction and aggregated shock information.
 \newblock \emph{arXiv preprint arXiv:2406.08738}, 2024.
-
-\bibitem[Timmermann(2006)]{timmermann2006forecast}
-Allan Timmermann.
-\newblock Forecast combinations.
-\newblock \emph{Handbook of economic forecasting}, 1:\penalty0 135--196, 2006.
-
-\bibitem[Wang et~al.(2023)Wang, Hyndman, Li, and Kang]{wang2023forecast}
-Xiaoqian Wang, Rob~J Hyndman, Feng Li, and Yanfei Kang.
-\newblock Forecast combinations: An over 50-year review.
-\newblock \emph{International Journal of Forecasting}, 39\penalty0 (4):\penalty0 1518--1547, 2023.
 
 \end{thebibliography}

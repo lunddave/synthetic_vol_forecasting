@@ -134,9 +134,7 @@ Structural shocks to time series may give an observer reason to doubt the credib
 
 \section{Introduction}\label{Introduction}
 
-\textbf{Plan}
-
-What the paper should do
+\textbf{In Scope}
 \begin{itemize}
   \item Introduce an existing diffuse set of approaches to adjusting forecasts (\ref{Introduction})
   \item Explain when/how similarity can help us forecast. \ref{meaning_use}
@@ -145,9 +143,7 @@ What the paper should do
   \item discuss limitations of the method (\ref{Limitations})
   \item propose extensions (\ref{Extensions})
 \end{itemize}
-
-What the paper should NOT do (and which might appear only in the extensions)
-
+\textbf{Beyond Scope}
 \begin{itemize}
   \item Wade too deeply into distance-based weighting details.  State that it's simply one way to do it.  Allude to \cite{lin2021minimizing,lundquist2024volatility}.
   \item wade too deeply into any of the special cases
@@ -227,12 +223,8 @@ What about qualitative ways of determining similarity?  In \cite{lundquist2024vo
 
 \section{Setting}\label{Setting}
 
-\textcolor{red}{It's unclear how much I can show the reader, given that I want this to be general.}
-
-In order to introduce the general framework for adjusting forecasts under shocks, we provide an illustration.  In Figure [decide on which figure to include] %\ref{fig:motivating_piece_convex_combination}, 
-we show how the aggregation of estimated excess volatilities from donors in the donor pool works when the correction function is a specially-chosen convex combination of fixed effects from the donor pool.  Our method assumes a credible, parsimonious parameterization in which the shock is an affine transformation of several key covariates.  The key intuition behind this shock parameterization is that as the strength of the linear signal increases relative to the idiosyncratic error, the estimation of these effects increases in accuracy.  From this, it follows that the aggregated shock estimate increases in accuracy.
-
-\textcolor{red}{The preceding information is correct.  However, it comes from the previous paper, so it needs to be changed to suit the style of the current paper.}
+In order to introduce the general framework for adjusting forecasts under shocks, we provide an illustration.  In Figure \ref{fig:motivating_piece_convex_combination}, we borrow from \cite{lundquist2024volatility}
+to show how the aggregation of estimated excess volatilities from donors in the donor pool works when the correction function is a specially-chosen convex combination of fixed effects from the donor pool.  
 
 \subsection{A shock between discrete time points}
 In this work, we will be focused on shocks that occur strictly between two discrete time points.  This raises an important terminological point.  ``Shocks", in econometric literature, can be structural or idiosyncratic, permanent or transitory, supply-related or demand-related, and so forth.  The taxonomy is vast.
@@ -277,9 +269,7 @@ So far we have reviewed a long and rich literature about model adjustment, and w
 \section{Methodology for Similarity-based Parameter Correction}
 \subsection{Forecasting}
 
-We now turn to the next section, where $\textbf{V}_{t}$ is employed in a procedure to arrive at a forecast adjustment. For illustration, we present two one-step-ahead forecasts for the time series under study. The first is the unadjusted GARCH forecast. The second is the adjusted forecast, which differs by the additive term $\hat\omega^{*}$ that is computed via our distance-based weighting procedures.  These forecasts are: 
-
-\textcolor{red}{These should be kept, with appropriate things changed.}
+We now present two one-step-ahead forecasts for the time series under study. The first is the unadjusted forecast. The second is the adjusted forecast, which differs by the predicted correction term.  These forecasts are: 
 
 \begin{align*}
   %\text{Forecast 1: } 
@@ -288,32 +278,17 @@ We now turn to the next section, where $\textbf{V}_{t}$ is employed in a procedu
   & \hat y_{adjusted,T_{1}^{*}+1} = \hat\E[|\mathcal{F}_{T_{1}^{*}}] + \hat\omega^{*} && = && \text{ .}
 \end{align*}
 
-\subsection{Shock Estimators}
-    \label{Shock_Estimators}
+\subsection{Correction Functions}
    
-    The problem of aggregating estimated donor shocks begins with the data constraints.  Let us first introduce useful notation.  Let $\hat\omega^{*}_{i,*}$ denote the shock estimate for donor $i$ that is obtain via an indicator variable over time points $T_{i}^{*}+1,...,T_{i}^{*}+L_{i,vol}$.  That estimation procedure is justified by the assumption that at each nonzero shock point, the shocks will differ but will be equal in distribution.  
+    The problem of aggregating shocks or residuals begins with the data constraints.  Let us first introduce useful notation.  Let $\hat\omega^{*}_{i,*}$ denote predicted correction term for donor $i$.   Taking the prediction correction terms as a given, we observe the tuple of information $(\{\hat\omega^{*}_{i,*}\}^{n+1}_{i=2}, additional information)$ that is the extracted residuals as well as information important to aggregation.  
     
-    Taking the estimated shocks as a given, we observe the pair $(\{\hat\omega^{*}_{i,*}\}^{n+1}_{i=2},\{\textbf{v}_{i}\}^{n+1}_{i=2})$.  Let $\Delta^{n} = \{\pi \in \mathbb{R}^n: \sum_{i=1}^n \pi_i = 1, \pi_i \geq 0 , i = 1,...,n\}$.  We wish to recover weights $\{\weight_{i}\}^{n+1}_{i=2} \in \Delta^{n}$ leading to favorable forecasting properties.  These weights are used to define and compute an aggregate shock estimate 
-\begin{equation} \label{adjustment}
+  One such idea comes from \cite{lin2021minimizing}, which weights belonging to the simplex, $\{\weight_{i}\}^{n+1}_{i=2} \in \Delta^{n}$, are chosen via a distance-based weighting procedure.
+\begin{align*} \label{adjustment}
 	  \hat\omega^{*} = \sum^{n+1}_{i=2}\weight_{i}\hat\omega^{*}_{i,*},
-\end{equation}
-    which will be taken to be our forecast adjustment term.  Since the weights $\{\weight_{i}\}_{i=2}^{n+1}$ are computed using $\mathcal{F}_{T^{*}_{i}}$, the set $\{\weight_{i}\}_{i=2}^{n+1}$ is deterministic and observed, $\textit{modulo}$ any stochastic ingredient in the numerical methods employed to approximate $\x_{1,T^{*}+1}$ using a convex combination of donor covariates.  We say more about the properties of the shocks $\omega^{*}_{i,T_{i}^{*}+1},...,\omega^{*}_{i,T_{i}^{*}+L^{vol}_{i}}$ in section $\ref{SVF_properties}$. 
+\end{align*}
+which is just one way among many to build a correction function.
 
-    Following \citet{abadie2003economic,abadie2010synthetic,lin2021minimizing}, let $\|\cdot\|_{\textbf{S}}$ denote any semi-norm on $\mathbb{R}^{p}$, and define
-    \begin{align*}
-    \{\pi\}_{i=2}^{n+1} = \argmin_{\pi}\|\x_{1,T^* + 1} - \V_{T^* + 1}\pi\|_{\textbf{S}}. 
-    \end{align*}
-In the forecast combination literature, it is of interest whether the weights employed to aggregate forecasts strive toward and meet various optimality criteria \citep{timmermann2006forecast,wang2023forecast}.  In our endeavor, there are at least two senses of optimal weights that one might be interested in.  First, we can think of optimal weights as a set $\{\weight_{i}\}_{i=2}^{n+1}$ such that $\omega_{1} = \sum^{n+1}_{i=2}\weight_{i}\hat\omega_{i,*}$, i.e., $\omega_{1}$ is recovered perfectly, as it belongs to convex hull of the estimated shocks. However, $\omega_{1}$ is never revealed to the practitioner, and hence there is no way of verifying the extent to which this condition is satisfied.
 
-\subsection{Shock propagation and estimation accuracy}
-Consider \cite{lundquist2024volatility}, in which a real world example shows how volatility can be forecasted following surprising election outcomes.  There, the estimation of fixed effects is done around elections in a donor pool.  That means that for each past election or poll, etcetera, the method must accurately estimate the surprise-induced volatility boost.  That means picking a window around such an effect.\\
-
-\textbf{proposals}
-\begin{enumerate}
-  \item For a given data-generating process, simulate the accuracy and variability of shock estimates using post-shock measurement periods of difference lengths.
-  \item Develop formal results to quantify (estimate, bound, etc) the risk of using different post-estimation measurement lengths.  This matters because it might be that a donor has experienced a shock in the last $m$ days, and if $m$ is too small, using that donor may be risky.
-\end{enumerate}
-    
 \subsection{How is the proposed method distinct from existing tools?}
 
 
@@ -322,8 +297,6 @@ Consider \cite{lundquist2024volatility}, in which a real world example shows how
 In this section, we introduce and discuss a particular approach to model adjustment that is motivated by the circumstances laid out in Section \ref{Setting}.  It may not yet be clear what is essential and what is not.  Here we make that clear.
 
 \subsection{The essential elements of similarity-based parameter correction}
-
-\textcolor{red}{Should I use OLS as an example throughout all of these?}
 
 
 \begin{enumerate}
@@ -401,7 +374,31 @@ We borrow code from \cite{Brownlee_2022}
   \item \href{https://machinelearningmastery.com/time-series-prediction-lstm-recurrent-neural-networks-python-keras/}{LSTM in Python}
 \end{itemize}
 
-\subsubsection{Dual-shocks and the method of shock-partitioning}
+
+
+\subsection{The Method of Multiple Shocks, Dual Shocks, and Shock-Partitioning}
+
+Sometimes, we might have reason to believe that a forecast requires adjustment due to not one but multiple shocks.  \cite{lin2021minimizing} explored a ``dual'' shock in their analysis of oil company equity price shocks due to the March 2020 COVID lockdowns.  \\
+
+Method 1: for each source of the $k$ shocks, assemble $n_{j}$ donors and $p_{j}$ covariates, with $j=2,...,n_{j}+1$, compute weights $\{\pi_{i,j}\}^{n_{j}+1}_{i=2}$.  With these $k$ weight sets, a set of $k$ aggregated shock estimators can be constructed and averaged (or aggregated in some other way).
+
+Method 2: the $k$ shocks can be represented using one application of distance-based weighting, with the vector $\delta$ and the vector $\x_{i,T^{*}_{i}+1}$ can encode a partition of shocks by using zeros in appropriate entries.
+
+\section{Discussion}
+
+Are there any situations where we would want to intercept-correct using the post-shock term from \cite{lin2021minimizing} rather than the actual residual?
+
+The forecast horizon --- does it matter?  If so, how so?  \cite{lin2021minimizing} has a one-period horizon.  \cite{clements1998forecasting}{p. 203} discuss how long to keep the forecast adjustment in place.  For a corrected ``slope parameter'', the effect of $h$ is not so clear.\\
+
+\subsection{Shock propagation and estimation accuracy}
+Consider \cite{lundquist2024volatility}, in which a real world example shows how volatility can be forecasted following surprising election outcomes.  There, the estimation of fixed effects is done around elections in a donor pool.  That means that for each past election or poll, etcetera, the method must accurately estimate the surprise-induced volatility boost.  That means picking a window around such an effect.\\
+
+\textbf{proposals}
+\begin{enumerate}
+  \item For a given data-generating process, simulate the accuracy and variability of shock estimates using post-shock measurement periods of difference lengths.
+  \item Develop formal results to quantify (estimate, bound, etc) the risk of using different post-estimation measurement lengths.  This matters because it might be that a donor has experienced a shock in the last $m$ days, and if $m$ is too small, using that donor may be risky.
+\end{enumerate}
+    
 
 \subsection{What are the downsides of aggregating residuals as opposed to aggregating fixed effect estimates?}
 
@@ -412,22 +409,6 @@ Cases:
   \item idiosyncratic error large
   \item idiosyncratic error small
 \end{enumerate}  
-
-\subsection{The Method of Multiple Shocks}
-
-Sometimes, we might have reason to believe that a forecast requires adjustment due to not one but multiple shocks.  \cite{lin2021minimizing} explored a ``dual'' shock in their analysis of oil company equity price shocks due to the March 2020 COVID lockdowns.  \\
-
-Method 1: for each source of the $k$ shocks, assemble $n_{j}$ donors and $p_{j}$ covariates, with $j=2,...,n_{j}+1$, compute weights $\{\pi_{i,j}\}^{n_{j}+1}_{i=2}$.  With these $k$ weight sets, a set of $k$ aggregated shock estimators can be constructed and averaged (or aggregated in some other way).
-
-Method 2: the $k$ shocks can be represented using one application of distance-based weighting, with the vector $\delta$ and the vector $\x_{i,T^{*}_{i}+1}$ can encode a partition of shocks by using zeros in appropriate entries.
-
-\section{Real Data Examples}
-This section might not be necessary.
-\section{Discussion}
-
-Are there any situations where we would want to intercept-correct using the post-shock term from \cite{lin2021minimizing} rather than the actual residual?
-
-The forecast horizon --- does it matter?  If so, how so?  \cite{lin2021minimizing} has a one-period horizon.  \cite{clements1998forecasting}{p. 203} discuss how long to keep the forecast adjustment in place.  For a corrected ``slope parameter'', the effect of $h$ is not so clear.\\
 
 \subsection{Extensions}\label{Extensions}
 bias-variance tradeoff and MSE decomposition\\
