@@ -1,4 +1,4 @@
-\begin{thebibliography}{56}
+\begin{thebibliography}{55}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -71,10 +71,6 @@ Jacob Boudoukh, Ronen Feldman, Shimon Kogan, and Matthew Richardson.
 George Box.
 \newblock Box and jenkins: time series analysis, forecasting and control.
 \newblock In \emph{A Very British Affair: Six Britons and the Development of Time Series Analysis During the 20th Century}, pages 161--215. Springer, 2013.
-
-\bibitem[Boysel and Vaughan(2021)]{boysel2021package}
-Sam Boysel and Davis Vaughan.
-\newblock Package ‘fredr’, 2021.
 
 \bibitem[Brownlees et~al.(2011)Brownlees, Engle, and Kelly]{brownlees2011practical}
 Christian~T Brownlees, Robert~F Engle, and Bryan~T Kelly.
