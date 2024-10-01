@@ -1,4 +1,4 @@
-\begin{thebibliography}{55}
+\begin{thebibliography}{53}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -143,11 +143,6 @@ Christian Francq and Jean-Michel Zakoian.
 \newblock \emph{GARCH models: structure, statistical inference and financial applications}.
 \newblock John Wiley \& Sons, 2019.
 
-\bibitem[Goodell and V{\"a}h{\"a}maa(2013)]{goodell2013us}
-John~W Goodell and Sami V{\"a}h{\"a}maa.
-\newblock Us presidential elections and implied volatility: The role of political uncertainty.
-\newblock \emph{Journal of Banking \& Finance}, 37\penalty0 (3):\penalty0 1108--1117, 2013.
-
 \bibitem[Guerr{\'o}n-Quintana and Zhong(2017)]{guerron2017macroeconomic}
 Pablo Guerr{\'o}n-Quintana and Molin Zhong.
 \newblock Macroeconomic forecasting in times of crises.
@@ -177,11 +172,6 @@ Trevor Hastie, Robert Tibshirani, and Jerome Friedman.
 D~Hendry and M~Clements.
 \newblock On a theory of intercept corrections in macroeconometric forecasting.
 \newblock 1994.
-
-\bibitem[Kane et~al.(1996)Kane, Marcus, and Noh]{kane1996p}
-Alex Kane, Alan~J Marcus, and Jaesun Noh.
-\newblock The p/e multiple and market volatility.
-\newblock \emph{Financial Analysts Journal}, 52\penalty0 (4):\penalty0 16--24, 1996.
 
 \bibitem[Kay(2016)]{kay2016brexit}
 Katty Kay.
