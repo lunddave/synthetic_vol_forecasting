@@ -247,7 +247,7 @@ In this work, we will be focused on shocks that occur strictly between two discr
 We will suppose that a researcher has multivariate time series data $\y_{i,t} = (r_{i,t}$, $\x_{i,t}$), $t = 1,$ $\ldots,  T_i$, $i = 1, \ldots, n+1$, where $r_{i,t}$ is scalar and $\x_{i,t}$ is a vector of covariates such that $\x_{i,t}|\mathcal{F}_{i,t-1}$ is deterministic and observed.  Suppose that the analyst is interested in forecasting $r_{1,t}$, the first time series in the collection, which we will denote \textit{the time series under study}.   We assume the following general data-generating process
 
 \begin{align}
-  &y_{i,t} = F(\mathcal{F}_{i,t-1}) + \x^{T}_{i,t}\lambda_{t} + \epsilon_{i,t}
+  &y_{i,t} = F(\mathcal{F}_{i,t-1}) + \x^{T}_{i,t}\lambda_{t} + \epsilon_{i,t}\label{core_specification}
 \end{align}
 
 where $F$ maps objects from the past into future objects of $y_{i,t}$, and $\epsilon_{i,t}$ is mean-zero and uncorrelated across time and donors.  Note that this specification above is capacious enough to include data-generating processes of the form 
@@ -325,6 +325,12 @@ This might not always be straightforward.  Some models like GARCH, for example, 
 \section{Formal Properties and Model-Specific Considerations}\label{special_cases}
 
 In this section discuss particular models in which our approach has been implemented as well as other in which it has yet to be implemented.  For those for which an implementation exists, we portray the model in a more general light, while also commenting on the model-specific considerations.
+
+Recall the specification \ref{core_specification}, which models a rare shock as an affine function of covariates:
+
+\begin{align*}
+  &y_{i,t} = F(\mathcal{F}_{i,t-1}) + \x^{T}_{i,t}\lambda_{t} + \epsilon_{i,t}
+\end{align*}
 
 \subsection{ARIMA}
 We begin our recounting of model-specific cases by recalling \cite{lin2021minimizing}, in which it was established that for a family of AR(1)-distributed scalar time series with a common shock distribution, forecast risk can be reduced via a similarity-based adjustment procedure.  AR(p) is an easy model to work with, in part because it can be consistently estimated via OLS, and an AR(p) can approximate an ARMA(p,q) with arbitrarily-small error through via a truncation of an AR($\infty$) representation.  Setting aside the estimation method, consider a one-step-ahead for an AR(p) at time $t$ with an adjustment estimator, $\hat\alpha_{t}$:
