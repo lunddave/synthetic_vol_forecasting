@@ -246,9 +246,10 @@ In this work, we will be focused on shocks that occur strictly between two discr
 
 We will suppose that a researcher has multivariate time series data $\y_{i,t} = (r_{i,t}$, $\x_{i,t}$), $t = 1,$ $\ldots,  T_i$, $i = 1, \ldots, n+1$, where $r_{i,t}$ is scalar and $\x_{i,t}$ is a vector of covariates such that $\x_{i,t}|\mathcal{F}_{i,t-1}$ is deterministic and observed.  Suppose that the analyst is interested in forecasting $r_{1,t}$, the first time series in the collection, which we will denote \textit{the time series under study}.   We assume the following general data-generating process
 
-\begin{align*}
-  &y_{i,t} = F(\mathcal{F}_{i,t-1}) + \x^{T}_{i,t}\lambda_{t} + \epsilon_{i,t}\\
-\end{align*}
+\begin{align}
+  &y_{i,t} = F(\mathcal{F}_{i,t-1}) + \x^{T}_{i,t}\lambda_{t} + \epsilon_{i,t}
+\end{align}
+
 where $F$ maps objects from the past into future objects of $y_{i,t}$, and $\epsilon_{i,t}$ is mean-zero and uncorrelated across time and donors.  Note that this specification above is capacious enough to include data-generating processes of the form 
 
 \begin{align*} 
