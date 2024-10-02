@@ -161,7 +161,7 @@ Forecast model adjustment, known most widely perhaps by the term intercept-corre
 
 Post-shock forecasting procedures have been explored in \cite{lin2021minimizing,lundquist2024volatility}, where the AR(1) and GARCH($m,s$) cases, respectively, are treated.  Both works target additive parameters in scalar time series, predicting those random effects by aggegating information from other time series.  The authors leave several stones unturned, including a more general, dare say comprehensive treatment of how to forecast under any sort of shock.
 
-A practitioner interested in forecast adjustment can choose between procedures that discretionary or automated, a variety of choices for the collection of data assembled to perform the correction, whether the data is internal (i.e. from the time series itself) or external, the term to be corrected (e.g. intercept, coefficients), if any, as well as the correction function (i.e. the mapping from the donor unit data to the correction term in the time series under study), including the weighting applied to the assembled data (e.g. Nearest-Neighbor, arithmetic mean, kernel methods).
+A practitioner interested in forecast adjustment can choose between (i) procedures that are discretionary or automated, (ii) a variety of choices for the collection of data assembled to perform the correction, (iii) whether the data is internal (i.e. from the time series itself) or external, (iv) the term to be corrected (e.g. intercept, coefficients), if any, (v) as well as the correction function (i.e. the mapping from the donor unit data to the correction term in the time series under study), including the weighting applied to the assembled data (e.g. Nearest-Neighbor, arithmetic mean, kernel methods).  We discuss this in depth in Section \ref{global_overview}.
 
 The procedure presented herein is a discretionary procedure for intercept correction that integrates data internal or external to the time series under study in a systematic manner.  The correction function uses an optimization step inspired by the causal inference literature.  Outside of \citet{lin2021minimizing,lundquist2024volatility}, we are not aware of prior work that both introduces a parametric specification for nonzero errors and introduces a procedure for weighting appropriately the nonzero errors of similar shocks occurring outside the time series under study.  We are also not familiar with any prior work that attempts to account for anticipated nonzero errors using an a parametric adjustment, i.e., a ``correction function''.  
 
@@ -278,20 +278,32 @@ We now present two one-step-ahead forecasts for the time series under study. The
 \end{align*}
 which is just one way among many to build a correction function.
 
-\section{Model Adjustment Using Similarity-Based Parameter Correction: A Global Overview}
+\section{Model Adjustment Using Similarity-Based Parameter Correction: A Global Overview}\label{global_overview}
 
-In this section, we introduce and discuss a particular approach to model adjustment that is motivated by the circumstances laid out in Section \ref{Setting}.  It may not yet be clear what is essential and what is not.  Here we make that clear.  The  essential elements of similarity-based parameter correction are
+In this section, we introduce and discuss a general framework for model adjustment that is motivated by the circumstances laid out in Section \ref{Setting}.  First we introduce a taxonomy of forecast adjustment.  Then we boil down SPC its essential five elements.
+
+The taxonomy:
+
+\begin{enumerate}
+  \item\textbf{Discretionary or Automated}
+\item\textbf{Internally-informed or externally informed}
+\item\textbf{Discretionary or Automated}
+\item\textbf{The term to be corrected}
+the term to be corrected (e.g. intercept, coefficients), if any,
+\item\textbf{The correction function}
+the correction function (i.e. the mapping from the donor unit data to the correction term in the time series under study), including the weighting applied to the assembled data (e.g. Nearest-Neighbor, arithmetic mean, kernel methods).  We discuss this in depth in Section \ref{global_overview}.
+\end{enumerate}
+
+The  essential elements of similarity-based parameter correction are
 \begin{enumerate}
   \item \textbf{Object-to-predict}
 Most fundamentally, the method requires a random object (indexed over time, of course) that obeys a specification with additive errors, or, at the very least, a specification that can be transformed to have additive errors.  This requirement is suitably weak, so as to include models that are not linear or not linear in each of their parameters.  It also includes multidimensional objects as well as objects from non-Euclidean probability spaces, like some function spaces.  
 
-Notice that we did not say \textit{parametric} specification.  The reason for this is that, given any forecast function $f$ from an information set $\mathcal{F}_{t}$, and given any appropriate loss function \textit{L}, we can define a residual $e_{t} = y \odot \hat{y}$, where $\odot$ is subtraction in the simple case of mean-squared error.  The residuals (or transformations of those residuals) of those $n$ models can be weighted as part of a correction function.  This fact is especially useful when the forecast function $f$ is nonparametric, black-box, or stochastic with respect to $\mathcal{F}_{t}$.
+Notice that we did not say \textit{parametric} specification.  The reason for this is that, given any forecast function $f$ from an information set $\mathcal{F}_{t}$, and given any appropriate loss function \textit{L}, we can define a residual $e_{t} = y_{t} \odot \hat{y_{t}}$, where $\odot$ is subtraction in the simple case of mean-squared error.  The residuals (or transformations of those residuals) of those $n$ models can be weighted as part of a correction function.  This fact is especially useful when the forecast function $f$ is nonparametric, black-box, or stochastic with respect to $\mathcal{F}_{t}$.
 
-\item \textbf{Common Model on the Shocks} The method requires that residuals be governed by a model that is shared across all units.  This ensures that in the estimation of news shocks in the donor pool, the estimators will enjoy similar properties that will produce a good aggregrated shock estimator.  This condition is satisfied by the parametric shock distributions found in \cite{lin2021minimizing,lundquist2024volatility}.
+\item \textbf{Common Model Family on the Shocks} The method requires that residuals be governed by a model that is shared across all units.  This ensures that in the estimation of news shocks in the donor pool, the estimators will enjoy similar properties that will produce a good aggregrated shock estimator.  This condition is satisfied by the parametric shock distributions found in \cite{lin2021minimizing,lundquist2024volatility}.
 
-\item \textbf{Reliable and Shared Model-Fitting Procedure} There must exist a reliable model-fitting procedure for the $n+1$ units, one that will allow the assumption of a shared family for the residuals to be reflected in the residuals.  Here, reliable means several things.  It means that the estimation procedure must produce a credible description of each data-generating process or a good prediction function, so as to aid in estimating residual in each unit.  
-
-`Reliable' may mean the estimators have low variance, and it may also mean that the estimation procedure is robust, to some degree, to misspecification bias.  However, in theory, the lack of these properties is not harmful to the method unless the lack of these properties harms the correction term's estimation.  When we use fixed effect estimation (under ordinary assumptions), we can construct confidence intervals for the fixed effect estimates, and then assuming independence, we can get confidence intervals for convex combinations of fixed effect estimates.
+\item \textbf{Reliable and Shared Model-Fitting Procedure} There must exist a reliable model-fitting procedure for the $n+1$ units, one that will allow the assumption of a shared family for the residuals to be reflected in the residuals.  Here, reliable means several things.  It means that the estimation procedure must produce a credible description of each data-generating process or a good prediction function, so as to aid in estimating residual in each unit.  `Reliable' may mean the estimators have low variance, and it may also mean that the estimation procedure is robust, to some degree, to misspecification bias.  However, in theory, the lack of these properties is not harmful to the method unless the lack of these properties harms the correction term's estimation.  When we use fixed effect estimation (under ordinary assumptions), we can construct confidence intervals for the fixed effect estimates, and then assuming independence, we can get confidence intervals for convex combinations of fixed effect estimates.
 
 \item \textbf{Reliable Correction Term Estimation} Fourth, there must exist a reliable procedure for modeling and estimating the correction term in each unit.  Again, here we care about low variance as well as robustness to misspecification.  The very simplest correction term is the residual itself.  Alternatively, the correction term could be an inner product that depends upon external covariates, as is found in \cite{lin2021minimizing,lundquist2024volatility}.
 
