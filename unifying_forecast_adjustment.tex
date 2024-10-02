@@ -136,13 +136,13 @@
 \textbf{In Scope}
 \begin{itemize}
   \item Introduce an existing diffuse set of approaches to adjusting forecasts (\ref{Introduction})
-  \item Explain when/how similarity can help us forecast. \ref{meaning_use}
+  \item Explain when/how similarity can help us forecast. \ref{outside_info}
   \item distinguish the method from various tools that inspired it (\ref{Introduction})
   \item show a few special cases, both examples and formal results (\ref{special_cases})
   \item discuss limitations of the method (\ref{Limitations})
   \item propose extensions (\ref{Extensions})
 \end{itemize}
-\textbf{Beyond Scope}
+\textbf{Beyond Scope (but mentioned briefly)}
 \begin{itemize}
   \item Wade too deeply into distance-based weighting details.  State that it's simply one way to do it.  Allude to \cite{lin2021minimizing,lundquist2024volatility}.
   \item wade too deeply into any of the special cases
@@ -197,7 +197,7 @@ Evaluating a Model by Forecast Performance \cite{clements2005evaluating}
 Here is the argument: if we are going to judge a model by forecast performance, we need to entertain the possibility that the model may breakdown and that our pre-breakdown-based criteria for model performance will be invalidated.
 
 
-\subsection{Forecasting Using Outside Information}
+\subsection{Forecasting Using Outside Information}\label{outside_info}
 
 Incorporation of Outside Information is the Norm, Not the Exception.  ARMA models and other models that model the future as a function of only the past values and past innovations of the series itself are well-known to be unrealistic as a data-generating processes.  They are also well-known to be poor predictors of the future.  What we are doing here is therefore not out of the ordinary but distinct in at least two ways: (1) we are incorporating outside information faster, and (2) we are proposing a principled, systematic way to do it that defies that curse of dimensionality.  If one wanted to forecast using linear models and high-dimensional information set, then some kind of method for reducing model complexity would be required.  We avoid that.
 
