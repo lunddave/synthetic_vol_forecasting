@@ -159,6 +159,9 @@ Herein we systematize and unify a range of conceptual approaches and tools that 
 
 Forecast model adjustment, known most widely perhaps by the term intercept-correction, has received the most attention in several articles and book chapters \citep{hendry1994theory,clements1996intercept,clements1998forecasting}.  Of special importance is the distinction between discretionary and automated intercepts corrections. \cite{hendry1994theory} define scalar intercept corrections to be automated when they follow the simple rule of adding an estimation residual $e_{t}$ to subsequent (possibly but not necessarily all) forecasts $\hat f_{t+1},\hat f_{t+2},...$.  This procedure can colloquially referred to as setting the model back on track \citep{hendry1994theory}.  In \cite{hendry1994theory}, after recounting the bipartite division of interception corrections in discretionary and automated varieties, the authors present a six-way taxonomy of information that a modeler possesses at the time a forecast is made.  The authors also consider structural change in the data-generating process during the forecast period, including as early as the first point in the forecast period (specifically in the autoregressive structure), as well as what is for them the more interesting case: structural change between $T^{*}-1$ and $T^{*}$.  This current work finds both cases interesting.  What if we could predict well the intercept shift that occurs between $T^{*}$ and $T^{*}+1$?
 
+Quinton-Guerrera and Zhong \cite{guerron2017macroeconomic} - concerned with correcting $\beta$ using similarity\\
+
+
 Post-shock forecasting procedures have been explored in \cite{lin2021minimizing,lundquist2024volatility}, where the AR(1) and GARCH($m,s$) cases, respectively, are treated.  Both works target additive parameters in scalar time series, predicting those random effects by aggegating information from other time series.  The authors leave several stones unturned, including a more general, dare say comprehensive treatment of how to forecast under any sort of shock.
 
 A practitioner interested in forecast adjustment can choose between (i) procedures that are discretionary or automated, (ii) a variety of choices for the collection of data assembled to perform the correction, (iii) whether the data is internal (i.e. from the time series itself) or external, (iv) the term to be corrected (e.g. intercept, coefficients), if any, (v) as well as the correction function (i.e. the mapping from the donor unit data to the correction term in the time series under study), including the weighting applied to the assembled data (e.g. Nearest-Neighbor, arithmetic mean, kernel methods).  We discuss this in depth in Section \ref{global_overview}.
@@ -172,7 +175,14 @@ See Clements and Hendry - Setting \textit{levels} back on track
 
 Intercept correction is the correction of a forecast by adding the residual at time $t$ to the forecasts at some subset of $\{t+1,t+2,...\}$.  We are doing something very close to that which is adding the predicted correction function output at time $t$ to the forecasts at some subset of $\{T_{1}^{*}+1,t+2,...\}$, where $T^{*}_{1}$ is the shock time of the time series understudy. 
 
-Quinton-Guerrera and Zhong \cite{guerron2017macroeconomic} - concerned with correcting $\beta$ using similarity\\
+\subsubsection{Motivation from Model misspecification}
+In \cite[p. 177]{hendry1994theory}, the ``most obvious and best understood rationale'' for intercept correction.\\
+
+\subsubsection{Exploiting the information in unconditional forecasts}
+
+Would we ever want to intercept-correct an unconditional forecast as opposed to the conditional?\\
+
+\cite[p. 170-1]{hendry1994theory} recall how unconditional forecasts can have lower forecast variance than conditional forecasts.
 
 \subsubsection{Mismeasured data}
 
