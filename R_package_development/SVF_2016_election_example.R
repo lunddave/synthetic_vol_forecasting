@@ -93,6 +93,8 @@ for (u in c(-1,0,2:number_of_covariates)){
 
   for (z in c(0,2:length(shock_dates_outside_loop))){
 
+    for (b in 1:50){
+
     if (z > 0){
       shock_dates <- shock_dates_outside_loop[-z]
       dropped_donor <- shock_dates_outside_loop[z]
@@ -347,6 +349,8 @@ for (u in c(-1,0,2:number_of_covariates)){
     list_from_looping <- append(list_from_looping, list(function_output))
 
     dev.off()
+
+  }#end loop to be removed
 
   }#end loop for dropping donors
 

@@ -1,9 +1,14 @@
-\begin{thebibliography}{53}
+\begin{thebibliography}{56}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[BBC(2016)]{BBC_News_2016}
+Leave campaign ahead in uk's eu referendum vote.
+\newblock \emph{BBC News}, Jun 2016.
+\newblock URL \url{https://www.bbc.com/news/uk-politics-eu-referendum-36612368}.
 
 \bibitem[Abadie and Gardeazabal(2003)]{abadie2003economic}
 Alberto Abadie and Javier Gardeazabal.
@@ -200,10 +205,21 @@ Jonathan Martin and Alexander Burns.
 \newblock URL \url{https://www.nytimes.com/2016/06/25/us/politics/is-brexit-the-precursor-to-a-donald-trump-presidency-not-so-fast.html}.
 \newblock Published: 2016-06-24.
 
+\bibitem[Maso et~al.(2016)Maso, Watt, Traynor, and Rankin]{The_Guardian}
+Rowena Maso, Nicholas Watt, Ian Traynor, and Jennifer Rankin.
+\newblock Non-cooperative games.
+\newblock \emph{The Guardian}, Feb 2016.
+\newblock URL \url{https://www.theguardian.com/politics/2016/feb/20/cameron-set-to-name-eu-referendum-date-after-cabinet-meeting}.
+
 \bibitem[Mayhew(1995)]{mayhew1995implied}
 Stewart Mayhew.
 \newblock Implied volatility.
 \newblock \emph{Financial Analysts Journal}, 51\penalty0 (4):\penalty0 8--20, 1995.
+
+\bibitem[Morales et~al.(2016)Morales, Valentini, and Penny]{Morales_Valentini_Penny_2016}
+Alex Morales, Fabio~Benedetti Valentini, and Thomas Penny.
+\newblock Brexit camp is ahead in fifth u.k. opinion poll in 24 hours, Jun 2016.
+\newblock URL \url{https://www.bloomberg.com/news/articles/2016-06-14/latest-brexit-poll-shows-7-point-lead-for-leave}.
 
 \bibitem[Phillips(1996)]{phillips1996forecasting}
 Robert~F Phillips.

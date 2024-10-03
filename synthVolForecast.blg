@@ -4,15 +4,17 @@ The top-level auxiliary file: synthVolForecast.aux
 The style file: plainnat.bst
 Database file #1: synthVolForecast.bib
 Warning--entry type for "kay2016brexit" isn't style-file defined
---line 735 of file synthVolForecast.bib
+--line 754 of file synthVolForecast.bib
 Warning--entry type for "applebaum2016britain" isn't style-file defined
---line 744 of file synthVolForecast.bib
+--line 763 of file synthVolForecast.bib
 Warning--entry type for "barro2016three" isn't style-file defined
---line 753 of file synthVolForecast.bib
+--line 772 of file synthVolForecast.bib
 Warning--entry type for "martin2016brexit" isn't style-file defined
---line 762 of file synthVolForecast.bib
+--line 781 of file synthVolForecast.bib
 Warning--entry type for "collins2016trump" isn't style-file defined
---line 771 of file synthVolForecast.bib
+--line 790 of file synthVolForecast.bib
+Warning--to sort, need author or key in BBC_News_2016
+Warning--empty author in BBC_News_2016
 Warning--there's a number but no volume in andersen2010stochastic
 Warning--empty journal in andersen2008realized
 Warning--empty journal in bauwens2006regime
@@ -20,45 +22,45 @@ Warning--empty journal in corsi2012har
 Warning--empty journal in guerron2017macroeconomic
 Warning--empty journal in hendry1994theory
 Warning--empty journal in ryan2015package
-You've used 53 entries,
+You've used 56 entries,
             2773 wiz_defined-function locations,
-            905 strings with 13605 characters,
-and the built_in function-call counts, 22578 in all, are:
-= -- 2057
-> -- 1121
+            926 strings with 14297 characters,
+and the built_in function-call counts, 23734 in all, are:
+= -- 2158
+> -- 1190
 < -- 44
-+ -- 386
-- -- 333
-* -- 1719
-:= -- 3451
-add.period$ -- 168
-call.type$ -- 53
-change.case$ -- 264
-chr.to.int$ -- 53
-cite$ -- 113
-duplicate$ -- 1081
-empty$ -- 1969
-format.name$ -- 423
-if$ -- 4744
++ -- 410
+- -- 354
+* -- 1822
+:= -- 3620
+add.period$ -- 178
+call.type$ -- 56
+change.case$ -- 280
+chr.to.int$ -- 56
+cite$ -- 122
+duplicate$ -- 1136
+empty$ -- 2066
+format.name$ -- 446
+if$ -- 4987
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 51
-newline$ -- 279
-num.names$ -- 212
-pop$ -- 550
+missing$ -- 53
+newline$ -- 295
+num.names$ -- 220
+pop$ -- 587
 preamble$ -- 1
-purify$ -- 216
+purify$ -- 229
 quote$ -- 0
-skip$ -- 828
+skip$ -- 870
 stack$ -- 0
-substring$ -- 891
-swap$ -- 88
+substring$ -- 898
+swap$ -- 94
 text.length$ -- 7
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 558
-warning$ -- 7
-while$ -- 222
+type$ -- 591
+warning$ -- 9
+while$ -- 228
 width$ -- 0
-write$ -- 687
-(There were 12 warnings)
+write$ -- 725
+(There were 14 warnings)
