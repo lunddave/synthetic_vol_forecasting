@@ -249,9 +249,9 @@ We now introduce how a researcher can carry out predictions via distance-based w
     where were have suppressed the $D^{vol}_{i,t}$ notation for simplicity.  %The covariate set could take the form of a $p \times n$ matrix including realized volatility and implied volatility, as well the volume of traded assets on any day preceding the shock.  Covariates chosen for inclusion in a given volatility profile may be levels, log differences in levels, percentage changes in levels, or absolute values thereof, among many choices.
     Ideally, $\textbf{V}_{t}$ will display `balance' in that $p$ covariates exist for each of the $n$ donors.  In practice, missing values, corrupted values, or unacceptably extreme or noisy estimates may necessitate some sort of matrix completion, a problem that we do not tackle in this work.  
 
-\subsection{Forecasting}
+\subsection{Forecasting}\label{two_forecasts}
 
-We now turn to the next section, where $\textbf{V}_{t}$ is employed in a procedure to arrive at a forecast adjustment. For illustration, we present two one-step-ahead forecasts for the time series under study. The first is the unadjusted GARCH forecast. The second is the adjusted forecast, which differs by the additive term $\hat\omega^{*}$ that is computed via our distance-based weighting procedures.  These forecasts are: 
+We now turn to the next section, where $\textbf{V}_{t}$ is employed in a procedure to arrive at a forecast adjustment. For illustration, we present two one-step-ahead forecasts for the time series under study. The first is the unadjusted GARCH forecast. The second is the adjusted forecast, which differs by the additive term $\hat\omega^{*}$ that is computed via our distance-based weighting procedure.  These forecasts are: 
 
 \begin{align*}
   %\text{Forecast 1: } 
@@ -260,7 +260,7 @@ We now turn to the next section, where $\textbf{V}_{t}$ is employed in a procedu
   & \hat\sigma^{2}_{adjusted, T_{1}^{*}+1} = \hat\E[\sigma^{2}_{1,T_{1}^{*}+1}|\mathcal{F}_{T_{1}^{*}}] + \hat\omega^{*} && = && \hat\omega_{1} + \sum^{m_{1}}_{k=1}\hat\alpha_{1,k}a^{2}_{1,T_{1}^{*}+1-k} + \sum_{j=1}^{s_{1}}\hat\beta_{1,j}\sigma_{1,T_{1}^{*}+1-j}^{2} + \hat\gamma_{1}^{T} \x_{1,T_{1}^{*}+1} + \hat\omega^{*} \text{ .}
 \end{align*}
 
-Note that GARCH models can be parameterized as ARMA models on the squares of the scalar time series $a_{i,t}^{2}$ \citep[][p. 18, p. 46]{tsay2005analysis,francq2019garch}, assuming that $a_{i,t}$ satisfies fourth-order stationarity.  This fact matters for forecasting because the $h$-step-ahead forecasting function for a GARCH model is, just like for an ARMA model, the conditional expectation function, $\mathbb{E}[ \sigma^{2}_{i,T_{i}^{*}+h} | \mathcal{F}_{T_{i}^{*}}]$, or practically speaking, the estimate thereof, $\hat{\mathbb{E}}[ \sigma^{2}_{i,T_{i}^{*}+h} |\mathcal{F}_{T_{i}^{*}}]$ \citep{zivot2009practical}.  Here we have presented one-step-ahead forecasts for a GARCH-X($m,s$).  For $h=2,3,4,...$, the conditional expectation is computed recursively, as is standard for iterative autoregressive forecasts. Note that $h$-step-ahead predictions will require, of course, some reasonable idea about the length of time for which the adjustment quantity $\hat\omega^{*}$ should be included.  Addtionally, if $\x_{1,t}$ is used as an exogenous regressor in order to estimate $\gamma_{1}$, then strictly speaking, $\x_{1,t+h}|\mathcal{F}_{t}$ must be deterministic.   In practice, it may be acceptable that $\x_{1,t+h}|\mathcal{F}_{t}$ is merely well-estimated. Thus for simplicity of exposition, we will focus on the one-step-ahead forecast unless stated otherwise.
+Note that GARCH models can be parameterized as ARMA models on the squares of the scalar time series $a_{i,t}^{2}$ \citep[][p. 18, p. 46]{tsay2005analysis,francq2019garch}, assuming that $a_{i,t}$ satisfies fourth-order stationarity.  This fact matters for forecasting because the $h$-step-ahead forecasting function for a GARCH model is, just like for an ARMA model, the conditional expectation function, $\mathbb{E}[ \sigma^{2}_{i,T_{i}^{*}+h} | \mathcal{F}_{T_{i}^{*}}]$, or practically speaking, the estimate thereof, $\hat{\mathbb{E}}[ \sigma^{2}_{i,T_{i}^{*}+h} |\mathcal{F}_{T_{i}^{*}}]$ \citep{zivot2009practical}.  Here we have presented one-step-ahead forecasts for a GARCH-X($m,s$).  For $h=2,3,4,...$, the conditional expectation is computed recursively, as is standard for iterative autoregressive forecasts. Note that $h$-step-ahead predictions will require, of course, some reasonable idea about the length of time for which the adjustment quantity $\hat\omega^{*}$ should be included.  Additionally, if $\x_{1,t}$ is used as an exogenous regressor in order to estimate $\gamma_{1}$ prior to the shock period, then strictly speaking, $\x_{1,t+h}|\mathcal{F}_{t}$ must be deterministic --- at least for the relevant $(t,h)$ pair for which a forecast is sought.   In practice, it may be acceptable for $\x_{1,t+h}|\mathcal{F}_{t}$ to be merely well-estimated. Thus for simplicity of exposition, we will focus on the one-step-ahead forecast unless stated otherwise.
 
 \subsection{Excess Volatility Estimators}
     \label{Excess Volatility Estimators}
@@ -281,7 +281,7 @@ In the forecast combination literature, it is of interest whether the weights em
 
 A more promising aim is finding weights such that $\textbf{v}_{1} = \sum^{n+1}_{i=2}\weight_{i}\textbf{v}_{i,T_{1}^{*}+1}$, meaning that the covariates of the time series under study lies within the convex hull of the donor covariates.  This condition underwrites asymptotic results in \citet{abadie2010synthetic}, and the intuition there extends to this work: if the shock is parameterized by an affine function of covariates, then finding a linear combination that recreates the shock should serve us well.  Because the method proposed uses a point in $\Delta^{n-1}$, it is important to head-off possible confusion.  What we are proposing is not a forecast combination method.  What we are aggregating and weighting (not combining) are subcomponents of forecasts, not forecasts themselves.  Moreover, from a broader perspective, forecast combination is an inapt term for what is being proposed here.  First, the donor time series do not provide forecasts, nor would forecasts be needed for random variables that have already been realized.  Second and more fundamentally, the theoretical underpinnings of forecast combination, while diverse \citep{wang2023forecast}, are distinct from the setting presumed in this work.
 
-Supposing that we can define optimal weights, then uniqueness may still be a concern. \cite{lin2021minimizing} discuss sufficient conditions for uniqueness as well as the implications of non-uniqueness.  \cite{abadie2022synthetic} invoke the Carath\'eodory Theorem to argue for the sparseness of the weight vector.  We make additional comments as well. $(\mathbb{R}^{n}, \|\cdot\|)$ is a Chebyshev space, and hence for any element x and any convex set $C\subset \mathbb{R}^{n}$, there exists a unique element $y\in C$ that minimizes $\|x-y\|$.  However, the pre-image of $y$ with respect to a particular operator and constraint set might not be unique.  Let $p', n'$ denote the number of linearly independent rows of $\V_{t}$ and linearly independent columns of $\V_{t}$, respectively.  Let col($\cdot$) denote the column space of a matrix, and let Conv($\cdot$) denote the convex hull of a set of column vectors. Then the following table is useful for categorization of when a perfect fit and uniqueness prevail: \\
+Supposing that we can define optimal weights, then uniqueness may still be a concern. \cite{lin2021minimizing} discuss sufficient conditions for uniqueness as well as the implications of non-uniqueness.  \cite{abadie2022synthetic} invoke the Carath\'eodory Theorem to argue for the sparseness of the weight vector.  We make additional comments as well. $(\mathbb{R}^{n}, \|\cdot\|)$ is a Chebyshev space, and hence for any element $x$ and any convex set $C\subset \mathbb{R}^{n}$, there exists a unique element $y\in C$ that minimizes $\|x-y\|$.  However, the pre-image of $y$ with respect to a particular operator and constraint set might not be unique.  Let $p', n'$ denote the number of linearly independent rows of $\V_{t}$ and linearly independent columns of $\V_{t}$, respectively.  Let col($\cdot$) denote the column space of a matrix, and let Conv($\cdot$) denote the convex hull of a set of column vectors. The following table is useful for categorization of when a perfect fit and uniqueness prevail.
 
     \begin{center}
       \begin{tabular}{ | m{3em} | m{7cm}| m{7cm} | } 
@@ -295,14 +295,14 @@ Supposing that we can define optimal weights, then uniqueness may still be a con
       \end{tabular}
       \end{center}
       
-It should be noted, however, that even when the minimizer is unique, finding that unique minimizer will require numerical methods.  In the event that one's preferred numerical optimization routine fails to arrive at a single solution on the simplex in repeated runs of the algorithm, some sort of forecast combination might be advised.  We discuss forecast combination later in this paper in the context of robustifying against misspecification.
+It should be noted, however, that even when the minimizer is unique, finding that unique minimizer may require numerical methods.  In the event that one's preferred numerical optimization routine fails to arrive at a single solution on the simplex in repeated runs of the algorithm, some sort of forecast combination might be advised.  We discuss forecast combination later in this paper in the context of robustifying against misspecification.
 
 On the questions of convex geometry and convex optimization, comparison with least-squares estimation is also illustrative.  Consider least-squares estimation for the $p$-vector $\delta$ in the shocks $\omega^{*}_{i,t}$:
 
 \begin{align*}
  \hat\omega^{*}_{OLS} =\argmin_{\delta}\|\hat{\omega}^{*} - \delta^{T}\textbf{V}_{T^{*}+1}\|^{2}_{2},
 \end{align*}
-where $\textbf{V}_{T^{*}+1}$ could include an adjoined row $\textbf{1}_{n}$, in order to estimate the locator parameter of the shock.  One problem is that this optimization problem is an optimization problem over $p$-vectors $\delta$ --- over linear combinations of the covariates, whereas what we seek is an $n$-vector --- a linear combination of donors.  Additionally, there is no guarantee that $\hat\omega^{*}_{OLS} = \hat{\delta}_{OLS}^{T}\x_{1,T^{*}+1}$ would perform poorly, but given the small number of donors supposed in our setting, it is risky.  Last, and perhaps most challenging for the least-squares estimate, $\hat{\delta}_{OLS}^{T}$ faces the usual requirement of more donors than linearly-independent covariates, and that may not often be easy to satisfy in our setting.
+where $\textbf{V}_{T^{*}+1}$ could include an adjoined row $\textbf{1}_{n}$, in order to estimate the locator parameter of the shock.  One problem is that this optimization problem is an optimization problem over $p$-vectors $\delta$ --- over linear combinations of the covariates, whereas what we seek is an $n$-vector --- a linear combination of donors.  Additionally, there is no guarantee that $\hat\omega^{*}_{OLS} = \hat{\delta}_{OLS}^{T}\x_{1,T^{*}+1}$ would perform poorly, but given the small number of donors supposed in our setting, it is risky.  Last, and perhaps most challenging for the least-squares estimate, $\hat{\delta}_{OLS}^{T}$ faces the usual requirement of more donors than linearly independent covariates, and that may not often be easy to satisfy in our setting.
 
 \subsection{Ground Truth Estimators}
     \label{Ground Truth Estimators}
@@ -321,17 +321,19 @@ where $\textbf{V}_{T^{*}+1}$ could include an adjoined row $\textbf{1}_{n}$, in 
 
 We are interested in point forecasts for $\sigma^{2}_{1,T_{1}^{*}+h}|\mathcal{F}_{T_{1}^{*}}$, $h=1,2,...,$ the $h$-step ahead conditional variance for the time series under study.  Let $L^{h}$ with the subscripted pair $\{$prediction method, ground truth estimator$\}$, denote the loss function for an $h$-step-ahead forecast using a given prediction function and ground truth estimator.  For example, the $h$-step-ahead MSE when forecasting from time $t$ using our method and using Realized Volatility as the ground truth is
 
-$$ \text{MSE}^{h}_{\text{aggregated predictor, RV}} = (\hat\sigma^{2}_{\text{aggregated predictor},t+h} - \hat\sigma^{2}_{RV,t+h})^{2}$$
+\begin{align*} 
+  \text{MSE}^{h}_{\text{adjusted prediction, RV}} = (\hat\sigma^{2}_{\text{adjusted prediction},t+h} - \hat\sigma^{2}_{RV,t+h})^{2}\text{ .}
+\end{align*}
 Also of interest in absolute percentage error for an $h$-step-ahead forecast, defined as
 
-\[ 
-\text{APE}^{h}_{\text{method, ground truth}} = \frac{|\hat\sigma^{2}_{\text{method},t+h} - \hat\sigma^{2}_{\text{ground truth},t+h}|}{\hat\sigma^{2}_{\text{ground truth},t+h}}
-\]
+\begin{align*}
+\text{APE}^{h}_{\text{method, ground truth}} = \frac{|\hat\sigma^{2}_{\text{method},t+h} - \hat\sigma^{2}_{\text{ground truth},t+h}|}{\hat\sigma^{2}_{\text{ground truth},t+h}}\text{ .}
+\end{align*}
 Finally, we introduce the QL (quasi-likelihood) Loss \citep{brownlees2011practical}:
 
-\[ 
+\begin{align*}
 \text{QL}^{h}_{\text{method, ground truth}} = \frac{\hat\sigma^{2}_{\text{ground truth},t+h}}{ \hat\sigma^{2}_{\text{method},t+h}} - \log{\frac{\hat\sigma^{2}_{\text{ground truth},t+h}}{ \hat\sigma^{2}_{\text{method},t+h}}} -1 \text{ .}
-\]
+\end{align*}
 What distinguishes QL Loss is that it is multiplicative rather than additive.  This has benefits, both practical and theoretical.  As \citet{brownlees2011practical} explain, the technical properties of the QL Loss allow researchers to compare forecasts across heterogeneous time series, whereas additive loss functions like MSE unfairly penalize forecasts made under market turbulence.  For this reason and others, we proceed to evaluate the method, both in simulations and real data examples, using the QL loss.
 
 \section{Properties of Volatility Shocks and Shock Estimators}\label{SVF_properties}
@@ -407,7 +409,7 @@ Having established the consistency of the estimators $\hat\omega^{*}_{i,T_{i}^{*
 
 \subsection{Asymptotic Loss}
 
-We now evaluate the loss and risk of our method under two scenarios: first, under arbitrary distribution of $\sigma^{2}_{t+1}$, and then second, under the assumption that the data-generating process is correctly specified.  For simplicity, we suppress the index $i$ on all quantities.
+We now evaluate the loss and risk of our method under two scenarios: first, under arbitrary distribution of $\sigma^{2}_{t+1}$, and then second, under the assumption that the data-generating process is correctly specified.  We proceed with the same notation for adjusted and unadjusted forecasts introduced in Section \ref{two_forecasts}.
 
 For a 1-step-ahead forecast of $\sigma^{2}_{t+1}$ where $t=T^{*}$, consider the difference 
 \begin{align}
@@ -450,7 +452,7 @@ The first category plots two parameters of the shock equation, $\mu_{\delta}$ an
 The second category of simulations examines $\mu_{\delta}$ and $\mu_{v}$, while increasing the noise $\sigma_{u}$.  The row-wise and column-wise increases in performance that we witnessed in the first category largely hold in the second category of simulations, with one similar disclaimer: the relationship is strained under large levels of noise, like $\sigma_{u} = 1$.
 
 
-Lastly, the third set of simulations takes a look at the role of the intercept of the conditional shock distribution, $\mu_{\omega^{*}}$, in particular, its interaction with $\sigma_{u}$.  We can think of $\mu_{\omega^{*}}$ as being the sole component of $\x$ that has no variance, i.e. because it's corresponding entry in the vector $\x$ is the scalar 1.  For larger values of $\mu_{\omega^{*}}$, the outperformance of the adjusted forecast declines with increases in $\sigma_{u}$, but this effect is absent for smaller values of $\mu_{\omega^{*}}$ 
+Lastly, the third set of simulations takes a look at the role of the intercept of the conditional shock distribution, $\mu_{\omega^{*}}$, in particular, its interaction with $\sigma_{u}$.  We can think of $\mu_{\omega^{*}}$ as being the sole component of $\x$ that has no variance, i.e. because its corresponding entry in the vector $\x$ is the scalar 1.  For larger values of $\mu_{\omega^{*}}$, the outperformance of the adjusted forecast declines with increases in $\sigma_{u}$, but this effect is absent for smaller values of $\mu_{\omega^{*}}$ 
 
     \begin{figure}[!h]
       \centering
@@ -663,7 +665,7 @@ That being said there may be subjectivity in selecting donors, and care will be 
 
 Not all of the volatility of an asset return may be related to news \citep{boudoukh2019information}.  This explains our inclusion of an idiosyncratic noise term in the shock specification.  However, this point also gestures in the direction of possible unexplained variation in the shocks.  \citet{chinco2019sparse} find that for predicting 1-minute returns, highly transitory firm-specific news is useful.  The authors conclude that news about fundamentals is predictive.
 
-It would be a pyrrhic victory for our method if the volatility profile indeed underlies real-world shocks but the volatility profile is radically high-dimensional or the signal in the shocks is overwhelmed by the noise term.  Even unbiased predictions can be unhelpful if they are high in variability, and in Section \ref{forecastcomb}, we show how the benefits of forecast combination.  Another possibility is high-frequency data and the use of linear models like HAR \citep{corsi2012har}.  HAR would not only increase the sample size available for discovering the autoregressive structure of a series' realized volatility.  It would also open the door to high-dimensional regression methods, shrinkage estimators, and more.
+It would be a pyrrhic victory for our method if the volatility profile indeed underlies real-world shocks but the volatility profile is radically high-dimensional or the signal in the shocks is overwhelmed by the noise term.  Even unbiased predictions can be unhelpful if they are high in variability.  To that point, in Section \ref{forecastcomb} discuss the potential benefits of forecast combination.  Another possibility is high-frequency data and the use of linear models like HAR \citep{corsi2012har}.  HAR would not only increase the sample size available for discovering the autoregressive structure of a series' realized volatility.  It would also open the door to high-dimensional regression methods, shrinkage estimators, and more.
 
 \subsection{Parameter Stability}
 
@@ -683,7 +685,7 @@ Any covariate that appears near to the bottom of Table \ref{tab:multiverse_table
 
 \subsection{Sensitivity to Donors Chosen}
 
-The most glaring result visible in Table \ref{tab:multiverse_table} regarding donor selection is two-fold: on one hand, omitting the donor that is the Brexit Poll of June 13th, 2016 leads to the worst QL Loss quantities, far worse than having the full set of donors.  It could very well be that the poll concluded that day attenuates the contribution of Brexit itself, and without accounting for the full variety of Brexit-related events in 2016, a poor prediction results.  Hence, the inclusion of all three Brexit donors is justified.  
+The most glaring result visible in Table \ref{tab:multiverse_table} regarding donor selection is two-fold: on one hand, omitting the donor that is the Brexit Poll of June 13th, 2016 leads to the worst QL Loss quantities, far worse than having the full set of donors.  It could very well be that the poll concluded that day attenuates the contribution of the Brexit vote itself, and without accounting for the full variety of Brexit-related events in 2016, a poor prediction results.  Hence, the inclusion of all three Brexit donors is justified.  
 
 On the other hand, the 2004 election appears most often at the top of the table, suggesting that is an unhelpful donor.  This is unsurprising if one considers that the fixed effect estimate for 2004 is nearly zero.  That means that by dropping the 2004 election, other donors must account for the approximately 17\% weight it had in the null model.  The donors that fill that void then have the opportunity to vault the prediction much closer to the ground truth.  This discussion hints at a conjecture one might make: that the removal of an unjustified donor will improve forecast performance in expectation, under certain conditions.  More fundamentally, however, we should ask why it is that 2004 is such a poor donor, beyond the fact that its fixed effect is small.  It could be that the 2004 election delivered such little surprise or is so far distant, temporally, that its inclusion in our donor pool is not fully justified.  The potential lesson to practitioners of the method is that even when there appears to be a default donor pool available, some degree of curation and vetting may be beneficial.
 
