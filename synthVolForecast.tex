@@ -297,10 +297,10 @@ Supposing that we can define optimal weights, then uniqueness may still be a con
       
 It should be noted, however, that even when the minimizer is unique, finding that unique minimizer will require numerical methods.  In the event that one's preferred numerical optimization routine fails to arrive at a single solution on the simplex in repeated runs of the algorithm, some sort of forecast combination might be advised.  We discuss forecast combination later in this paper in the context of robustifying against misspecification.
 
-On the questions of convex geometry and convex optimization, comparison with least-squares estimation is also illustrative.  Consider least-squares for the $p$-vector $\delta$
+On the questions of convex geometry and convex optimization, comparison with least-squares estimation is also illustrative.  Consider least-squares estimation for the $p$-vector $\delta$ in the shocks $\omega^{*}_{i,t}$:
 
 \begin{align*}
- \hat\delta=\argmin_{\delta}\|\hat{\omega}^{*} - \delta^{T}\textbf{V}_{T^{*}+1}\|^{2}_{2},
+ \hat\omega^{*}_{OLS} =\argmin_{\delta}\|\hat{\omega}^{*} - \delta^{T}\textbf{V}_{T^{*}+1}\|^{2}_{2},
 \end{align*}
 where $\textbf{V}_{T^{*}+1}$ could include an adjoined row $\textbf{1}_{n}$, in order to estimate the locator parameter of the shock.  One problem is that this optimization problem is an optimization problem over $p$-vectors $\delta$ --- over linear combinations of the covariates, whereas what we seek is an $n$-vector --- a linear combination of donors.  Additionally, there is no guarantee that $\hat\omega^{*}_{OLS} = \hat{\delta}_{OLS}^{T}\x_{1,T^{*}+1}$ would perform poorly, but given the small number of donors supposed in our setting, it is risky.  Last, and perhaps most challenging for the least-squares estimate, $\hat{\delta}_{OLS}^{T}$ faces the usual requirement of more donors than linearly-independent covariates, and that may not often be easy to satisfy in our setting.
 
@@ -319,18 +319,18 @@ where $\textbf{V}_{T^{*}+1}$ could include an adjoined row $\textbf{1}_{n}$, in 
 
 \subsection{Loss Functions}\label{loss_function}
 
-We are interested in point forecasts for $\sigma^{2}_{1,T_{i}^{*}+h}|\mathcal{F}_{T_{i}^{*}}$, $h=1,2,...,$ the $h$-step ahead conditional variance for the time series under study.  Let $L^{h}$ with the subscripted pair $\{$prediction method, ground truth estimator$\}$, denote the loss function for an $h$-step-ahead forecast using a given prediction function and ground truth estimator.  For example, if we suppress the time index, the one-step-ahead MSE using our method and Realized Volatility as the ground truth is
+We are interested in point forecasts for $\sigma^{2}_{1,T_{i}^{*}+h}|\mathcal{F}_{T_{i}^{*}}$, $h=1,2,...,$ the $h$-step ahead conditional variance for the time series under study.  Let $L^{h}$ with the subscripted pair $\{$prediction method, ground truth estimator$\}$, denote the loss function for an $h$-step-ahead forecast using a given prediction function and ground truth estimator.  For example, the $h$-step-ahead MSE when forecasting from time $t$ using our method and using Realized Volatility as the ground truth is
 
-$$ \text{MSE}^{1}_{\text{aggregated predictor, RV}} = (\hat\sigma^{2}_{\text{aggregated predictor}} - \hat\sigma^{2}_{RV})^{2}$$
+$$ \text{MSE}^{h}_{\text{aggregated predictor, RV}} = (\hat\sigma^{2}_{\text{aggregated predictor},t+h} - \hat\sigma^{2}_{RV,t+h})^{2}$$
 Also of interest in absolute percentage error for an $h$-step-ahead forecast, defined as
 
 \[ 
-\text{APE}^{h}_{\text{method, ground truth}} = \frac{|\hat\sigma^{2}_{h, \text{method}} - \hat\sigma^{2}_{h, \text{ground truth}}|}{\hat\sigma^{2}_{h, \text{ground truth}}}
+\text{APE}^{h}_{\text{method, ground truth}} = \frac{|\hat\sigma^{2}_{\text{method},t+h} - \hat\sigma^{2}_{\text{ground truth},t+h}|}{\hat\sigma^{2}_{\text{ground truth},t+h}}
 \]
 Finally, we introduce the QL (quasi-likelihood) Loss \citep{brownlees2011practical}:
 
 \[ 
-\text{QL}^{h}_{\text{method}, \text{ground truth}} = \frac{\hat\sigma^{2}_{h, \text{ground truth}}}{ \hat\sigma^{2}_{h, \text{method}}} - \log{\frac{\hat\sigma^{2}_{h, \text{ground truth}}}{ \hat\sigma^{2}_{h, \text{method}}}} -1 \text{ .}
+\text{QL}^{h}_{\text{method, ground truth}} = \frac{\hat\sigma^{2}_{\text{ground truth},t+h}}{ \hat\sigma^{2}_{\text{method},t+h}} - \log{\frac{\hat\sigma^{2}_{\text{ground truth},t+h}}{ \hat\sigma^{2}_{\text{method},t+h}}} -1 \text{ .}
 \]
 What distinguishes QL Loss is that it is multiplicative rather than additive.  This has benefits, both practical and theoretical.  As \citet{brownlees2011practical} explain, the technical properties of the QL Loss allow researchers to compare forecasts across heterogeneous time series, whereas additive loss functions like MSE unfairly penalize forecasts made under market turbulence.  For this reason and others, we proceed to evaluate the method, both in simulations and real data examples, using the QL loss.
 
