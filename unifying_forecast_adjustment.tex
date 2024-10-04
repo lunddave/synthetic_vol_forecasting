@@ -126,7 +126,7 @@
 \maketitle
 
 \begin{abstract} 
-  When should one's default forecasting model be adjusted, augmented, or abandoned completely?  Should it be done algorithmically or via human discretion?  Should an adjust be carried out using external information, and what exactly should be adjusted?  This work systematizes and unifies the rich landscape of model adjustment and model correction methods, with a special focus on forecast adjustment under the presence of news shocks, when unanticipated events may give an observer reason to doubt the credibility of the default forecasting function.  We demonstrate the usefulness of similarity-based methods in forecasting and present a general framework dubbed Similarity-based Parameter Correction (SPC).  We highlight several specific time series models that can benefit from SPC, along with formal results for some of those special cases.
+  When should one's default forecasting model be adjusted, augmented, or abandoned completely?  Should it be done algorithmically or via human discretion?  Should an adjustment be carried out using external information, and what exactly should be adjusted?  This work systematizes and unifies the rich landscape of model adjustment and model correction methods, with a special focus on forecast adjustment under the presence of news shocks, when unanticipated events may give an observer reason to doubt the credibility of the default forecasting function.  We demonstrate the usefulness of similarity-based methods in forecasting and present a general framework dubbed Similarity-based Parameter Correction (SPC).  We highlight several specific time series models that can benefit from SPC, along with formal results for some of those special cases.
 \end{abstract}
 
 
@@ -148,14 +148,11 @@
   \item wade too deeply into any of the special cases
   \item Tackle non-scalar random quantities (density forecasts, etc)
   \item Forecast combination
-
 \end{itemize}
 
-For various modeling and prediction tasks in time series and panel data, the salient challenge is not predicting when an event will occur but what its key properties will be.  In the familiar case of scalar time series, those properties can include its post-event direction, magnitude, moments, duration, and correlation structure, all over an arbitrary horizon or perhaps multiple horizons. This is not to say that predicting the arrival of an event is easy. In some cases, it may be difficult or impossible, and therefore preparing for an antipicated shock is the best one can hope for.
+For various modeling and prediction tasks in time series and panel data, the salient challenge is not predicting when an event will occur but what its key properties will be.  In the familiar case of scalar time series, those properties can include its post-event direction, magnitude, moments, duration, and correlation structure, all over an arbitrary horizon or perhaps multiple horizons. This is not to say that predicting the arrival of an event is easy. In some cases, it may be difficult or impossible, or the event might not be conceivable to many before it happens, as was the case with the COVID-19 pandemic.  There reacting sensibly to a shock or structural change is the best one can hope for. 
 
-This work focuses on model adjustment amid structual shocks that undermine the reliability of the  model at hand.  Forecasting under anticipated shocks raises unavoidable questions: should the forecast model be abandoned in favor of a discretionary or ad-hoc or one-off adjustment?  Does the does the discretion of a forecaster rule out a quantitative method for making the adjustment?  What is the ultimate purpose of the adjustment, and how it is to be used?  For how long is the adjustment necessary or reliable?
-
-Herein we systematize and unify a range of conceptual approaches and tools that have developed across the broad ecosystem of the econometric and forecasting literatures.  Additionally, we delineate a specific type of SPC called post-shock forecasting, which will is induced by nuanced and interesting choices that fall under the general SPC framework.
+Herein we systematize and unify a range of conceptual approaches that have developed across the broad ecosystem of the econometric and forecasting literatures.  We attempt to unify these approaches under the umbrella of Similarity-based Parameter Correction.  Additionally, we delineate a specific type of SPC called post-shock forecasting, which will is induced by nuanced and interesting choices that fall under the general SPC framework.  In particular, this work focuses on model adjustment amid structural shocks that undermine the reliability of the  model at hand.  Forecasting under anticipated shocks raises unavoidable questions: should the forecast model be abandoned in favor of a discretionary or ad-hoc or one-off adjustment?  Does the does the discretion of a forecaster rule out a quantitative method for making the adjustment?  What is the ultimate purpose of the adjustment, and how it is to be used?  For how long is the adjustment necessary or reliable?
 
 Forecast model adjustment, known most widely perhaps by the term intercept-correction, has received the most attention in several articles and book chapters \citep{hendry1994theory,clements1996intercept,clements1998forecasting}.  Of special importance is the distinction between discretionary and automated intercepts corrections. \cite{hendry1994theory} define scalar intercept corrections to be automated when they follow the simple rule of adding an estimation or prediction residual $e_{t}$ to subsequent (possibly but not necessarily all) forecasts $\hat f_{t+1},\hat f_{t+2},...$.  This procedure can colloquially referred to as \textit{setting the model back on track} \citep{hendry1994theory}.  In \cite{hendry1994theory}, after recounting the bipartite division of interception corrections in discretionary and automated varieties, the authors present a six-way taxonomy of information that a modeler possesses at the time a forecast is made.  The authors also consider structural change in the data-generating process during the forecast period, including as early as the first point in the forecast period (specifically in the autoregressive structure), as well as what is for them the more interesting case: structural change between $T^{*}-1$ and $T^{*}$.  This current work finds both cases interesting.  What if we could predict well the intercept shift that occurs between $T^{*}$ and $T^{*}+1$?
 
@@ -165,7 +162,7 @@ Post-shock forecasting procedures have been explored in \cite{lin2021minimizing,
 
 A practitioner interested in forecast adjustment can choose between (i) procedures that are discretionary or automated, (ii) whether the data is internal (i.e. from the time series itself) or external, (iii) the term to be corrected (e.g. intercept, coefficients), if any, (iv) as well as the correction function (i.e. the mapping from the donor unit data to the correction term in the time series under study), including the weighting applied to the assembled data (e.g. Nearest-Neighbor, arithmetic mean, kernel methods).  We discuss this in depth in Section \ref{global_overview}.
 
-The procedure presented herein is a discretionary procedure for intercept correction that integrates data internal or external to the time series under study in a systematic manner.  The correction function uses an optimization step inspired by the causal inference literature.  Outside of \citet{lin2021minimizing,lundquist2024volatility}, we are not aware of prior work that both introduces a parametric specification for nonzero errors and introduces a procedure for weighting appropriately the nonzero errors of similar shocks occurring outside the time series under study.  We are also not familiar with any prior work that attempts to account for anticipated nonzero errors using an a parametric adjustment, i.e., a ``correction function''.  
+The procedure presented, post-shock forecasting, is a discretionary procedure for intercept correction that integrates data internal or external to the time series under study in a systematic manner.  The correction function uses an optimization step inspired by the causal inference literature.  Outside of \citet{lin2021minimizing,lundquist2024volatility}, we are not aware of prior work that both introduces a parametric specification for nonzero errors and introduces a procedure for weighting appropriately the nonzero errors of similar shocks occurring outside the time series under study.  We are also not familiar with any prior work that attempts to account for anticipated nonzero errors using an a parametric adjustment, i.e., a ``correction function''.  
 
 The structure of this manuscript is as follows.  We first provide a  review of several disparate time series literatures, including intercept correction, model-evaluation, and similarity-based forecasting.  We then provide a canonical setting in which we attempt to focus our work.  This setting will be presented at a level of generality that showcases the broad applicability of our method.  We then introduce the method from a global perspective, abstracting away from familiar applications.  We then show several specific applications, including novel applications that cannot be found elsewhere in the literature.  We close with a discussion, including possible extensions.
 
@@ -187,8 +184,6 @@ Would we ever want to intercept-correct an unconditional forecast as opposed to 
 
 Mismeasured data is discussed in \cite[p. 166]{hendry1994theory} as a motivator for intercept correction.  Could similarity-based correction help?  Here is an idea: if we believe that our most recent measurement of the series is noisy, we can disregard the point itself and instead take a convex combination of that point and the \cite{lin2021minimizing}-style prediction based on aggregation.
 
-
-
 \subsubsection{Motivation from model evaluation}
 
 Part of the reason for correcting a model springs from the way we evaluate model performance.
@@ -205,10 +200,13 @@ Evaluating a Model by Forecast Performance \cite{clements2005evaluating}
 
 Here is the argument: if we are going to judge a model by forecast performance, we need to entertain the possibility that the model may breakdown and that our pre-breakdown-based criteria for model performance will be invalidated. \textcolor{red}{Here is how that mattters for this paper: if you have a family of models estimated used a Gaussian loss function, and the post-shock residuals are not conditionally Gaussian (e.g. they could be conditionally Cauchy), then why even start with the default forecasting function?  Why not throw it out entirely?}
 
-
 \subsection{Forecasting Using Outside Information}\label{outside_info}
 
-Incorporation of Outside Information is the Norm, Not the Exception.  ARMA models and other models that model the future as a function of only the past values and past innovations of the series itself are well-known to be unrealistic as a data-generating processes.  They are also well-known to be poor predictors of the future.  What we are doing here is therefore not out of the ordinary but distinct in at least two ways: (1) we are incorporating outside information faster, and (2) we are proposing a principled, systematic way to do it that defies that curse of dimensionality.  If one wanted to forecast using linear models and high-dimensional information set, then some kind of method for reducing model complexity would be required.  We avoid that.
+Incorporation of Outside Information is the Norm, Not the Exception. \\
+
+A question to ask is, under a shock, should we avail ourselves of additional internal information or external information?\\
+
+ARMA models and other models that model the future as a function of only the past values and past innovations of the series itself are well-known to be unrealistic as a data-generating processes.  They are also well-known to be poor predictors of the future.  What we are doing here is therefore not out of the ordinary but distinct in at least two ways: (1) we are incorporating outside information faster, and (2) we are proposing a principled, systematic way to do it that defies that curse of dimensionality.  If one wanted to forecast using linear models and high-dimensional information set, then some kind of method for reducing model complexity would be required.  We avoid that.
 
 Now we discuss The Meaning and Use of Similarity
 Hume? Cite Israeli authors, if so.  The notion of similarity appears in various statistical contexts, including matching, synthetic control, nearest-neighbor methods, not to mention the massive area of approximation theory.  The uses of similarity are too sprawling to recount in detail.  Below we talk about how it could matter in this work.
@@ -223,8 +221,7 @@ What about qualitative ways of determining similarity?  In \cite{lundquist2024vo
 
 \section{Setting}\label{Setting}
 
-In order to introduce the general framework for adjusting forecasts under shocks, we provide an illustration.  In Figure \ref{fig:motivating_piece_convex_combination}, we borrow from \cite{lundquist2024volatility}
-to show how the aggregation of estimated excess volatilities from donors in the donor pool works when the correction function is a specially-chosen convex combination of fixed effects from the donor pool.  
+In order to introduce the general framework for adjusting forecasts under shocks, we provide an illustration.  In Figure \ref{fig:motivating_piece_convex_combination}, we borrow from \cite{lundquist2024volatility} to show how the aggregation of estimated excess volatilities from donors in the donor pool works when the correction function is a specially-chosen convex combination of fixed effects from the donor pool.  
 
 In this work, we will be focused on shocks that occur strictly between two discrete time points.  This raises an important terminological point.  Errors are a staple of stochastic modeling, and certainly no proper inventory of the wide range of uses of ``noise", ``shocks", and so can be accomplished here.  Whereas in the psychometric and social-scientific fields, errors may represent unmeasured or latent capacities of a unit, in other fields like the natural sciences, errors may be used to account for variability in the instruments used to collect data.  ``Innovations" or ``shocks", in econometric literature, are generally understood to represent the arrival of previously unknown (but not necessarily uncontemplated) information.  Shocks are called structural when they are can be linked back to some key feature of an scientific (usually economic) theory; otherwise, they are idiosyncratic.  However, there exist other subcategories of shocks that crosscut the distinction just made.  For example, a news shock is a shock in which the information material to the market is delivered via newsmedia and moves markets no earlier than the news.  Shocks can also be permanent or transitory, supply-related or demand-related, and so forth.  The taxonomy is vast.  What matters for this work is the news shocks we posit occur between two discrete time points, so that a practitioner is faced with the question of what action is most advisable for the following time point, given the news shock.
 
@@ -246,10 +243,24 @@ In this work, we will be focused on shocks that occur strictly between two discr
 
 We will suppose that a researcher has multivariate time series data $\y_{i,t} = (r_{i,t}$, $\x_{i,t}$), $t = 1,$ $\ldots,  T_i$, $i = 1, \ldots, n+1$, where $r_{i,t}$ is scalar and $\x_{i,t}$ is a vector of covariates such that $\x_{i,t}|\mathcal{F}_{i,t-1}$ is deterministic and observed.  Suppose that the analyst is interested in forecasting $r_{1,t}$, the first time series in the collection, which we will denote \textit{the time series under study}.   We assume the following general data-generating process
 
-\begin{align}
-  &y_{i,t} = F(\mathcal{F}_{i,t-1}) + \x^{T}_{i,t}\lambda_{t} + \epsilon_{i,t}\label{core_specification}
-\end{align}
+% \begin{align}
+%   &y_{i,t} = F(\mathcal{F}_{i,t-1}) + \x^{T}_{i,t}\lambda_{t} + \epsilon_{i,t}\label{core_specification}\\
+%   &\omega_{i,t}^{*} = D^{vol}_{i,t}[\mu_{\omega^{*}}+\delta^{T}\x_{i,T^{*}_{i}+1}+ u_{i,t}],
+% \end{align} 
+ 
+\begin{align*}
+  \mc{M}_1 \colon \begin{array}{l}
+    y_{i,t} = F(\mathcal{F}_{i,t-1}) + \x^{T}_{i,t}\lambda_{t} + \epsilon_{i,t}\\[.2cm]
+  \end{array}
+  \end{align*}
 
+with time-invariant error structure
+  \begin{align*}
+    \lambda_{t} &\sim \mc{F}_{\lambda}\text{ with }  \E_{\mathcal{F}_{\lambda}}(\lambda) = \mu_{\lambda_{t}}, \mrm{Var}_{\mc{F}_{\lambda}}(\lambda) = \Sigma_{\lambda_{t}}\\
+    \epsilon_{i,t} &\simiid \mc{F}_{\epsilon} \text{ with}  \; \E_{\mc{F}_{\epsilon}}(\epsilon) = 0, \mrm{Var}_{\mc{F}_{\epsilon}}(\epsilon)  = \sigma^{2}_{\epsilon},  \\
+    u_{i,t} & \simiid  \mc{F}_{u} \text{ with}  \; \mrm{Var}_{\mc{F}_{u}}(u) = \sigma^2_{u},\\
+    \epsilon_{i,t} & \indep u_{i,t}.
+    \end{align*}
 where $F$ maps objects from the past into future objects of $y_{i,t}$, and $\epsilon_{i,t}$ is mean-zero and uncorrelated across time and donors.  Note that this specification above is capacious enough to include data-generating processes of the form 
 
 \begin{align*} 
@@ -260,14 +271,14 @@ with $k\geq1$ and $a_{i,t}, y_{i,t}$ supported on $\mathbb{R}^{+}$.  The term $\
 \begin{align*}
   \xi \colon \mathcal{F}_{2,t} \times \ldots \mathcal{F}_{n+1, t} &\to \mathbb{C}\\
 \end{align*}
-will be deemed the \textit{correction function}.  The correction function maps observable, deterministic events and unobservable events into a space so that something might be learned about $\lambda_{t}$.  If $\x_{i,t}$ were not observable or not deterministic with respect to $\mathcal{F}_{t-1}$, then the correction term would represent an additional error term (not necessarily idiosyncratic).
+that estimates or predicts $\x^{T}_{1,t}\lambda_{t}$ will be deemed the \textit{correction function}.  The correction function maps observable, deterministic events and unobservable events into a space so that something might be learned about $\lambda_{t}$.  If $\x_{i,t}$ were not observable or not deterministic with respect to $\mathcal{F}_{t-1}$, then the correction term would represent an additional error term (not necessarily idiosyncratic).
 
 We require that each time series $\y_{i,t}$ is subject to an observed news event following $T^*_i \leq T_{i} + 1$ and before witnessing $T^*_i+1$.  The reasons for this represent the heart and soul of the framework proposed.  We are not proposing a method to correct for unanticipated shocks that have been reflected in the observed data.  Instead, we are proposing a method to correct for shocks for which the qualitative kernel of information is known and the observed quantitative instantiation of that which is not yet known. 
 
 So far we have reviewed a long and rich literature about model adjustment, and we have also introduced a data-generating process upon which the rest of this manuscript will be based.  We now proceed to introduce a particular framework of solutions to the circumstances assumed in Section \ref{Setting}.
 
 \section{Methodology for Similarity-based Parameter Correction}
-\subsection{Forecasting}
+\subsection{Forecasting and Correction Functions}
 
 We now present two one-step-ahead forecasts for the time series under study. The first is the unadjusted forecast. The second is the adjusted forecast, which differs by the predicted correction term.  These forecasts are: 
 
@@ -277,8 +288,6 @@ We now present two one-step-ahead forecasts for the time series under study. The
   %\text{Forecast 2: } 
    \hat y_{adjusted,T_{1}^{*}+1}  &= \hat\E[\mathcal{F}_{T_{1}^{*}}] + \hat\omega^{*} \text{ .}
 \end{align*}
-
-\subsection{Correction Functions}
    
     The problem of aggregating shocks or residuals begins with the data constraints.  Let us first introduce useful notation.  Let $\hat\omega^{*}_{i,*}$ denote predicted correction term for donor $i$.   Taking the prediction correction terms as a given, we observe the tuple of information $(\{\hat\omega^{*}_{i,*}\}^{n+1}_{i=2}, additional information)$ that is the extracted residuals as well as information important to aggregation.  
     
@@ -286,31 +295,19 @@ We now present two one-step-ahead forecasts for the time series under study. The
 \begin{align*} \label{adjustment}
 	  \hat\omega^{*} = \sum^{n+1}_{i=2}\weight_{i}\hat\omega^{*}_{i,*},
 \end{align*}
-which is just one way among many to build a correction function.
+which is just one way among many to build a correction function.  Another interesting correction function can be found in \cite{foroni2022forecasting}.
 
 \section{Model Adjustment Using Similarity-Based Parameter Correction: A Global Overview}\label{global_overview}
 
-In this section, we introduce and discuss a general framework for model adjustment that is motivated by the circumstances laid out in Section \ref{Setting}.  First we introduce a taxonomy of forecast adjustment.  Then we boil down SPC its essential five elements.
+In this section, we introduce and discuss a general framework for model adjustment that generalizes and is motivated by the circumstances laid out in Section \ref{Setting} by boiling down SPC to its essential five elements.  The essential elements of similarity-based parameter correction are
 
-The taxonomy:
-
-\begin{enumerate}
-  \item\textbf{Discretionary or Automated}
-\item\textbf{Internally-informed or externally informed}
-\item\textbf{The term to be corrected}
-the term to be corrected (e.g. intercept, coefficients), if any,
-\item\textbf{The correction function}
-the correction function (i.e. the mapping from the donor unit data to the correction term in the time series under study), including the weighting applied to the assembled data (e.g. Nearest-Neighbor, arithmetic mean, kernel methods).  We discuss this in depth in Section \ref{global_overview}.
-\end{enumerate}
-
-The  essential elements of similarity-based parameter correction are
 \begin{enumerate}
   \item \textbf{Object-to-predict}
-Most fundamentally, the method requires a random object (indexed over time, of course) that obeys a specification with additive errors, or, at the very least, a specification that can be transformed to have additive errors.  This requirement is suitably weak, so as to include models that are not linear or not linear in each of their parameters.  It also includes multidimensional objects as well as objects from non-Euclidean probability spaces, like some function spaces.  
+  Most fundamentally, the method requires a random object (indexed over time, of course) that obeys a specification with additive errors, or, at the very least, a specification that can be transformed to have additive errors.  This requirement is suitably weak, so as to include models that are not linear or not linear in each of their parameters.  It also includes multidimensional objects as well as objects from non-Euclidean probability spaces, like some function spaces.  
 
-Notice that we did not say \textit{parametric} specification.  The reason for this is that, given any forecast function $f$ from an information set $\mathcal{F}_{t}$, and given any appropriate loss function \textit{L}, we can define a residual $e_{t} = y_{t} \odot \hat{y_{t}}$, where $\odot$ is subtraction in the simple case of mean-squared error.  The residuals (or transformations of those residuals) of those $n$ models can be weighted as part of a correction function.  This fact is especially useful when the forecast function $f$ is nonparametric, black-box, or stochastic with respect to $\mathcal{F}_{t}$.
+Notice that we did not say \textit{parametric} specification.  The reason for this is that, given any forecast function $f$ from an information set $\mathcal{F}_{t}$, and given any appropriate loss function \textit{L}, we can define a residual $e_{t} = y_{t} \odot \hat{y_{t}}$, where $\odot$ is subtraction in the simple case of mean squared-error.  The residuals (or transformations of those residuals) of those $n$ models can be weighted as part of a correction function.  This fact is especially useful when the forecast function $f$ is nonparametric, black-box, or stochastic with respect to $\mathcal{F}_{t}$.
 
-\item \textbf{Common Model Family on the Shocks} The method requires that residuals be governed by a model that is shared across all units.  This ensures that in the estimation of news shocks in the donor pool, the estimators will enjoy similar properties that will produce a good aggregrated shock estimator.  This condition is satisfied by the parametric shock distributions found in \cite{lin2021minimizing,lundquist2024volatility}.
+\item \textbf{Common Model Family on the Shocks} The method requires that residuals be governed by a model that is shared across all units.  This ensures that in the estimation of news shocks in the donor pool, the estimators will enjoy similar properties that will produce a good aggregated shock estimator.  This condition is satisfied by the parametric shock distributions found in \cite{lin2021minimizing,lundquist2024volatility}.
 
 \item \textbf{Reliable and Shared Model-Fitting Procedure} There must exist a reliable model-fitting procedure for the $n+1$ units, one that will allow the assumption of a shared family for the residuals to be reflected in the residuals.  Here, reliable means several things.  It means that the estimation procedure must produce a credible description of each data-generating process or a good prediction function, so as to aid in estimating residual in each unit.  `Reliable' may mean the estimators have low variance, and it may also mean that the estimation procedure is robust, to some degree, to misspecification bias.  However, in theory, the lack of these properties is not harmful to the method unless the lack of these properties harms the correction term's estimation.  When we use fixed effect estimation (under ordinary assumptions), we can construct confidence intervals for the fixed effect estimates, and then assuming independence, we can get confidence intervals for convex combinations of fixed effect estimates.
 
@@ -318,8 +315,10 @@ Notice that we did not say \textit{parametric} specification.  The reason for th
 
 This might not always be straightforward.  Some models like GARCH, for example, might deliver very noisy estimates for indicator variables that occur just once.
 
-\item \textbf{Reliable Correction Function Estimation} There must exist a correction function (presumably based on the correction term) that maps data from the donor pool to the \textit{predicted} correction term in the time series under study based on some notion of similarity.  It could depend upon external covariates.
+\item \textbf{Reliable Correction Function Estimation} There must exist a correction function (presumably based on the correction term) that maps data from the donor pool to the $\textit{predicted}$ correction term in the time series under study based on some notion of similarity.  It could depend upon external covariates and/or include the weighting applied to the assembled data (e.g. Nearest-Neighbor, arithmetic mean, kernel methods).
+
 \end{enumerate}
+
 \section{Formal Properties and Model-Specific Considerations}\label{special_cases}
 
 In this section discuss particular models in which our approach has been implemented as well as other in which it has yet to be implemented.  For those for which an implementation exists, we portray the model in a more general light, while also commenting on the model-specific considerations.
@@ -336,11 +335,11 @@ We begin our recounting of model-specific cases by recalling \cite{lin2021minimi
 \begin{align}
 \hat{y}_{t} = f(\mathcal{F}_{t-1}) = \hat\mu + \sum^{p}_{i=1}\hat\rho_{i}y_{t-i} + \hat{\alpha}_{t}
 \end{align}
-which can be understood as an AR(p) with time-varying coefficients.  The mean-squared error of the forecast above, i.e.
+which can be understood as an AR(p) with time-varying coefficients.  The mean squared-error of the forecast above, i.e.
 
 \begin{align}
-  \E[(y_{t}-\hat{y}_{t})^{2}] = \E[(y_{t} - \hat\mu + \sum^{p}_{i=1}\hat\rho_{i}y_{t-i} + \hat{\alpha}_{t})^{2}]\\
-  \E[(y_{t}-\hat{y}_{t})^{2}] = \E[(\mu + \sum^{p}_{i=1}\rho_{i}y_{t-i} + \alpha_{t} - \hat\mu + \sum^{p}_{i=1}\hat\rho_{i}y_{t-i} + \hat{\alpha}_{t})^{2}] 
+  \E[(y_{t}-\hat{y}_{t})^{2}] &= \E[(y_{t} - \hat\mu + \sum^{pui}_{i=1}\hat\rho_{i}y_{t-i} + \hat{\alpha}_{t})^{2}]\\
+  &= \E[(\mu + \sum^{p}_{i=1}\rho_{i}y_{t-i} + \alpha_{t} - \hat\mu + \sum^{p}_{i=1}\hat\rho_{i}y_{t-i} + \hat{\alpha}_{t})^{2}] 
   \end{align}
 admits of the typical bias-variance decomposition, with the special proviso that with more terms in the prediction function, more covariance terms arise.  Similarly, the covariance structure of the random effects in $\alpha = \x_{t}^{T}\lambda_{t}$ will contribute to the variance.  In the real-data examples \cite{lin2021minimizing}, the entries in $\lambda_{t}$ are proxies of general market risk, which one would commonly take to be correlated not only with each other but also with a financial time series $y_{t}$.  All of this is to say that control of the MSE may require tight control of the variance in the prediction function, which in turn will gesture in the direction of a sparse $\hat\alpha_{t}$.
 

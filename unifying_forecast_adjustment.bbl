@@ -1,4 +1,4 @@
-\begin{thebibliography}{10}
+\begin{thebibliography}{11}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -29,6 +29,11 @@ Michael~P Clements and David~F Hendry.
 Fulvio Corsi.
 \newblock A simple approximate long-memory model of realized volatility.
 \newblock \emph{Journal of Financial Econometrics}, 7\penalty0 (2):\penalty0 174--196, 2009.
+
+\bibitem[Foroni et~al.(2022)Foroni, Marcellino, and Stevanovic]{foroni2022forecasting}
+Claudia Foroni, Massimiliano Marcellino, and Dalibor Stevanovic.
+\newblock Forecasting the covid-19 recession and recovery: Lessons from the financial crisis.
+\newblock \emph{International Journal of Forecasting}, 38\penalty0 (2):\penalty0 596--612, 2022.
 
 \bibitem[Francq and Zakoian(2019)]{francq2019garch}
 Christian Francq and Jean-Michel Zakoian.
