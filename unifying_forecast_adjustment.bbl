@@ -1,4 +1,4 @@
-\begin{thebibliography}{11}
+\begin{thebibliography}{12}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -9,6 +9,11 @@
 Jason Brownlee.
 \newblock Time series prediction with lstm recurrent neural networks in python with keras, Aug 2022.
 \newblock URL \url{https://machinelearningmastery.com/time-series-prediction-lstm-recurrent-neural-networks-python-keras/}.
+
+\bibitem[Castle et~al.(2013)Castle, Clements, and Hendry]{castle2013forecasting}
+Jennifer~L Castle, Michael~P Clements, and David~F Hendry.
+\newblock Forecasting by factors, by variables, by both or neither?
+\newblock \emph{Journal of Econometrics}, 177\penalty0 (2):\penalty0 305--319, 2013.
 
 \bibitem[Clements and Hendry(1998)]{clements1998forecasting}
 Michael Clements and David~F Hendry.

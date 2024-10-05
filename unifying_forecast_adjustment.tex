@@ -152,9 +152,9 @@
 
 For various modeling and prediction tasks in time series and panel data, the salient challenge is not predicting when an event will occur but what its key properties will be.  In the familiar case of scalar time series, those properties can include its post-event direction, magnitude, moments, duration, and correlation structure, all over an arbitrary horizon or perhaps multiple horizons. This is not to say that predicting the arrival of an event is easy. In some cases, it may be difficult or impossible, or the event might not be conceivable to many before it happens, as was the case with the COVID-19 pandemic.  There reacting sensibly to a shock or structural change is the best one can hope for. 
 
-Herein we systematize and unify a range of conceptual approaches that have developed across the broad ecosystem of the econometric and forecasting literatures.  We attempt to unify these approaches under the umbrella of Similarity-based Parameter Correction.  Additionally, we delineate a specific type of SPC called post-shock forecasting, which will is induced by nuanced and interesting choices that fall under the general SPC framework.  In particular, this work focuses on model adjustment amid structural shocks that undermine the reliability of the  model at hand.  Forecasting under anticipated shocks raises unavoidable questions: should the forecast model be abandoned in favor of a discretionary or ad-hoc or one-off adjustment?  Does the does the discretion of a forecaster rule out a quantitative method for making the adjustment?  What is the ultimate purpose of the adjustment, and how it is to be used?  For how long is the adjustment necessary or reliable?
+Herein we attempt to unify a range of conceptual approaches that have developed across the broad ecosystem of the econometric and forecasting literatures.  We attempt to bring these approaches under the umbrella of Similarity-based Parameter Correction.  Additionally, we delineate a specific type of SPC called post-shock forecasting, which will is induced by nuanced and interesting choices that fall under the general SPC framework.  In particular, this work focuses on model adjustment amid structural shocks that undermine the reliability of the  model at hand.  Forecasting under shocks raises unavoidable questions: should the forecast model be abandoned in favor of a discretionary or ad-hoc or one-off adjustment?  Does the does the discretion of a forecaster rule out a quantitative method for making the adjustment?  What is the ultimate purpose of the adjustment, and how it is to be used?  For how long is the adjustment necessary or reliable?
 
-Forecast model adjustment, known most widely perhaps by the term intercept-correction, has received the most attention in several articles and book chapters \citep{hendry1994theory,clements1996intercept,clements1998forecasting}.  Of special importance is the distinction between discretionary and automated intercepts corrections. \cite{hendry1994theory} define scalar intercept corrections to be automated when they follow the simple rule of adding an estimation or prediction residual $e_{t}$ to subsequent (possibly but not necessarily all) forecasts $\hat f_{t+1},\hat f_{t+2},...$.  This procedure can colloquially referred to as \textit{setting the model back on track} \citep{hendry1994theory}.  In \cite{hendry1994theory}, after recounting the bipartite division of interception corrections in discretionary and automated varieties, the authors present a six-way taxonomy of information that a modeler possesses at the time a forecast is made.  The authors also consider structural change in the data-generating process during the forecast period, including as early as the first point in the forecast period (specifically in the autoregressive structure), as well as what is for them the more interesting case: structural change between $T^{*}-1$ and $T^{*}$.  This current work finds both cases interesting.  What if we could predict well the intercept shift that occurs between $T^{*}$ and $T^{*}+1$?
+Forecast model adjustment, known most widely perhaps by the term intercept-correction, has received the most attention in several articles and book chapters \citep{hendry1994theory,clements1996intercept,clements1998forecasting}.  Of special importance is the distinction between discretionary and automated intercepts corrections. \cite{hendry1994theory} define scalar intercept corrections to be automated when they follow the simple rule of adding an estimation or prediction residual $e_{t}$ to subsequent (possibly but not necessarily all) forecasts $\hat f_{t+1},\hat f_{t+2},...$.  This procedure can colloquially referred to as ``\textit{setting the model back on track}" \citep{hendry1994theory}.  In \cite{hendry1994theory}, after recounting the bipartite division of interception corrections in discretionary and automated varieties, the authors present a six-way taxonomy of information that a modeler possesses at the time a forecast is made.  The authors also consider structural change in the data-generating process during the forecast period, including as early as the first point in the forecast period (specifically in the autoregressive structure), as well as what is for them the more interesting case: structural change between $T^{*}-1$ and $T^{*}$.  This current work finds both cases interesting.  What if we could predict well the intercept shift that occurs between $T^{*}$ and $T^{*}+1$?
 
 The term intercept correction itself can be both a bit deceptive in limiting, in that it need not pertain to intercepts.  \cite{hendry1994theory} themselves note the possibility of correcting a coefficient in a forecast model specification \textcolor{red}{Find page number.}, and \cite{guerron2017macroeconomic} developed a similarity-based procedure for correcting $\beta$ using past information of the time series itself.
 
@@ -202,7 +202,11 @@ Here is the argument: if we are going to judge a model by forecast performance, 
 
 \subsection{Forecasting Using Outside Information}\label{outside_info}
 
+When is more information better?  That is a central question with regard to forecasting.  In \cite{clements2005guest} (cited in \cite{castle2013forecasting), the authors note that when forecasts fail, it often has to do with location (i.e. intercept shifts), and therefore using additional information is not likely to help unless it can address potential location shifts.
+
 Incorporation of Outside Information is the Norm, Not the Exception. \\
+
+ in the context of factor models, discuss that 
 
 A question to ask is, under a shock, should we avail ourselves of additional internal information or external information?\\
 
@@ -353,20 +357,18 @@ In this way, \cite{lundquist2024volatility} bridged a gap between the descriptiv
 
 \subsection{HAR}
 
-The Heterogeneous Autoregressive (HAR) model for realized volatility \citep{corsi2009simple}  uses ordinary least-squares (OLS), WLS, or even a logarithmic specification to estimate an autoregressive model.  It explores influence of previous volaility on current volatility, of course, but uses a specification motivated by theory: that a heterogeneous collection of market participants interacts at different frequencies.  Therefore, the volatility can be well-modeled as a linear combination of the average volatility over the previous day, previous week, and previous month (usually taken to be 22 days).  Formally, HAR estimates
+The Heterogeneous Autoregressive (HAR) model for realized volatility \citep{corsi2009simple}  uses ordinary least-squares (OLS), WLS, or even a logarithmic specification to estimate an autoregressive model.  It explores influence of previous volatility on current volatility, of course, but uses a specification motivated by theory: that a heterogeneous collection of market participants interacts at different frequencies.  Therefore, the volatility can be well-modeled as a linear combination of the average volatility over the previous day, previous week, and previous month (usually taken to be 22 days).  Formally, HAR assumes that the log price of an asset is a governed by a diffusion process (a model beyond our scope herein), and HAR estimates
 
 \begin{align*}
-RV_{t} = \beta_{0} + \beta_{one day}RV_{t-1} + \beta_{five day}\overline{\{RV_{t-1},...,RV_{t-5}\}}+\beta_{twenty-two day}\overline{\{RV_{t-1},...,RV_{t-22}\}} + \epsilon_{t}
+RV_{t} = \beta_{0} + \beta_{\text{1-day}}RV_{t-1} + \beta_{\text{5-day}}\overline{\{RV_{t-1},...,RV_{t-5}\}}+\beta_{\text{22-day}}\overline{\{RV_{t-1},...,RV_{t-22}\}} + \epsilon_{t}
 \end{align*}
-
-
 
 \subsubsection{A Real Data Application of Shock-Adjusted HAR Forecasting}
 
 \begin{figure}[h!]
   \begin{center}
     \includegraphics[scale=.4]{real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png}
-    \caption{Over the course of the 2010s, the US FOMC began a rake-hiking cycle.  Left pane: weights of the donor pool of FOMC meetings; right-pane: fixed effect estimates; right pane: the unadjusted forecast, adjusted forecast, and actual forecast}
+    \caption{Over the course of the 2010s, the US FOMC began a rate-hiking cycle.  Left pane: weights of the donor pool of FOMC meetings; right-pane: fixed effect estimates; right pane: the unadjusted forecast, adjusted forecast, and actual forecast}
     \label{fig:six_plots}
     \end{center}
   \end{figure}
