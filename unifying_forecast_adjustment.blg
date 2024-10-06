@@ -1,0 +1,53 @@
+This is BibTeX, Version 0.99d (TeX Live 2024)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: unifying_forecast_adjustment.aux
+The style file: plainnat.bst
+Database file #1: unifying.bib
+Repeated entry---line 704 of file unifying.bib
+ : @article{rossi2021forecasting
+ :                              ,
+I'm skipping whatever remains of this entry
+Warning--empty journal in guerron2017macroeconomic
+Warning--empty journal in hendry1994theory
+You've used 16 entries,
+            2773 wiz_defined-function locations,
+            691 strings with 7491 characters,
+and the built_in function-call counts, 6473 in all, are:
+= -- 581
+> -- 319
+< -- 13
++ -- 110
+- -- 93
+* -- 489
+:= -- 1003
+add.period$ -- 48
+call.type$ -- 16
+change.case$ -- 77
+chr.to.int$ -- 15
+cite$ -- 34
+duplicate$ -- 314
+empty$ -- 571
+format.name$ -- 127
+if$ -- 1345
+int.to.chr$ -- 2
+int.to.str$ -- 1
+missing$ -- 17
+newline$ -- 88
+num.names$ -- 64
+pop$ -- 157
+preamble$ -- 1
+purify$ -- 63
+quote$ -- 0
+skip$ -- 237
+stack$ -- 0
+substring$ -- 232
+swap$ -- 17
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 166
+warning$ -- 2
+while$ -- 65
+width$ -- 0
+write$ -- 206
+(There was 1 error message)

@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex unifying_forecast_adjustment"] 1728113769.36562 "unifying_forecast_adjustment.aux" "unifying_forecast_adjustment.bbl" "unifying_forecast_adjustment" 1728113771.53799 0
-  "./unifying.bib" 1728113769.27977 24494 cdbc836786afdc027a2648f2ccdae4fb ""
+["bibtex unifying_forecast_adjustment"] 1728256809.87593 "unifying_forecast_adjustment.aux" "unifying_forecast_adjustment.bbl" "unifying_forecast_adjustment" 1728256809.95435 2
+  "./unifying.bib" 1728256013.42328 25411 a07854f7ce309cd0d0fd4f67f67509a3 ""
   "/usr/local/texlive/2024/texmf-dist/bibtex/bst/natbib/plainnat.bst" 1233624470 26816 ffe5423d2019860bad9f54bc402fac15 ""
-  "unifying_forecast_adjustment.aux" 1728113771.24454 9372 211c4534a6734188db27f07db6ae2333 "pdflatex"
+  "unifying_forecast_adjustment.aux" 1728256809.61743 9864 fa7357e1bd2f57d779e025387a8645cc "pdflatex"
   (generated)
   "unifying_forecast_adjustment.bbl"
   "unifying_forecast_adjustment.blg"
   (rewritten before read)
-["pdflatex"] 1728113770.55309 "/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/unifying_forecast_adjustment.tex" "unifying_forecast_adjustment.pdf" "unifying_forecast_adjustment" 1728113771.53814 2
-  "/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/unifying_forecast_adjustment.tex" 1728113769.16502 42214 25cea34c0b5c3f3758c5b49e33996767 ""
+["pdflatex"] 1728256808.86733 "/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/unifying_forecast_adjustment.tex" "unifying_forecast_adjustment.pdf" "unifying_forecast_adjustment" 1728256809.95446 0
+  "/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/unifying_forecast_adjustment.tex" 1728256806.58757 43409 e779f8fda7c2499c357541baf9a65823 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/jknappen/ec/tcrm0600.tfm" 1136768653 1536 12e8c510d3e158fdd0e9a42e75118bd9 ""
@@ -66,6 +66,7 @@
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb" 1248133631 36299 5f9df58c2139e7edcf37c8fca4bd384d ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb" 1248133631 37166 8ab3487cbe3ab49ebce74c29ea2418db ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb" 1248133631 35469 70d41d2b9ea31d5d813066df7c99281c ""
+  "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb" 1248133631 36912 b448ef9ad9d7228ec3c6e71005136d55 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1248133631 35752 024fb6c41858982481f6968b5fc26508 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb" 1248133631 32722 d7379af29a190c3f453aba36302ff5a9 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb" 1248133631 32362 179c33bbf43f19adbb3825bb4e36e57a ""
@@ -233,10 +234,10 @@
   "/usr/local/texlive/2024/texmf.cnf" 1710266656 577 e590dabc9e28c5b61546e15f63eebcdf ""
   "real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png" 1718484248.08758 52878 5d7d1e5cb0b1ca1f2f4eafef5fc1515a ""
   "simulation_plots/motivating_piece_convex_combination.png" 1722913159.43774 67448 e7028f59e3bbcdb7942c1055f976195a ""
-  "unifying_forecast_adjustment.aux" 1728113771.24454 9372 211c4534a6734188db27f07db6ae2333 "pdflatex"
-  "unifying_forecast_adjustment.bbl" 1728113769.46791 3180 24597d8c0532a9f600a710f1999bee49 "bibtex unifying_forecast_adjustment"
-  "unifying_forecast_adjustment.out" 1728113771.24515 7225 5c7fea8fa9baac9dc058d4acfe406004 "pdflatex"
-  "unifying_forecast_adjustment.tex" 1728113769.16502 42214 25cea34c0b5c3f3758c5b49e33996767 ""
+  "unifying_forecast_adjustment.aux" 1728256809.61743 9864 fa7357e1bd2f57d779e025387a8645cc "pdflatex"
+  "unifying_forecast_adjustment.bbl" 1728256809.95351 4293 110242b4b21a6e8fddccd5920378238f "bibtex unifying_forecast_adjustment"
+  "unifying_forecast_adjustment.out" 1728256809.61827 7225 5c7fea8fa9baac9dc058d4acfe406004 "pdflatex"
+  "unifying_forecast_adjustment.tex" 1728256806.58757 43409 e779f8fda7c2499c357541baf9a65823 ""
   (generated)
   "unifying_forecast_adjustment.aux"
   "unifying_forecast_adjustment.log"

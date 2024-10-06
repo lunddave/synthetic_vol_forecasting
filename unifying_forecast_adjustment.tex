@@ -202,7 +202,11 @@ Here is the argument: if we are going to judge a model by forecast performance, 
 
 \subsection{Forecasting Using Outside Information}\label{outside_info}
 
-When is more information better?  That is a central question with regard to forecasting.  In \cite{clements2005guest} (cited in \cite{castle2013forecasting), the authors note that when forecasts fail, it often has to do with location (i.e. intercept shifts), and therefore using additional information is not likely to help unless it can address potential location shifts.
+When is more information better?  That is a central question with regard to forecasting.
+
+In \cite{clements2005guest} (cited in \cite{castle2013forecasting}), the authors note that when forecasts fail, it often has to do with location (i.e. intercept shifts), and therefore using additional information is not likely to help unless it can address potential location shifts.  \cite{rossi2021forecasting} says that breaks in a model's parameters are not necessary or sufficient to generate time variation in forecasting performance.
+
+In \cite{castle2016overview}
 
 Incorporation of Outside Information is the Norm, Not the Exception. \\
 
@@ -247,10 +251,10 @@ In this work, we will be focused on shocks that occur strictly between two discr
 
 We will suppose that a researcher has multivariate time series data $\y_{i,t} = (r_{i,t}$, $\x_{i,t}$), $t = 1,$ $\ldots,  T_i$, $i = 1, \ldots, n+1$, where $r_{i,t}$ is scalar and $\x_{i,t}$ is a vector of covariates such that $\x_{i,t}|\mathcal{F}_{i,t-1}$ is deterministic and observed.  Suppose that the analyst is interested in forecasting $r_{1,t}$, the first time series in the collection, which we will denote \textit{the time series under study}.   We assume the following general data-generating process
 
-% \begin{align}
-%   &y_{i,t} = F(\mathcal{F}_{i,t-1}) + \x^{T}_{i,t}\lambda_{t} + \epsilon_{i,t}\label{core_specification}\\
-%   &\omega_{i,t}^{*} = D^{vol}_{i,t}[\mu_{\omega^{*}}+\delta^{T}\x_{i,T^{*}_{i}+1}+ u_{i,t}],
-% \end{align} 
+\begin{align}
+  &y_{i,t} = F(\mathcal{F}_{i,t-1}) + \x^{T}_{i,t}\lambda_{t} + \epsilon_{i,t}\label{core_specification}\\
+  &\omega_{i,t}^{*} = D^{vol}_{i,t}[\mu_{\omega^{*}}+\delta^{T}\x_{i,T^{*}_{i}+1}+ u_{i,t}],
+\end{align} 
  
 \begin{align*}
   \mc{M}_1 \colon \begin{array}{l}
@@ -287,19 +291,26 @@ So far we have reviewed a long and rich literature about model adjustment, and w
 We now present two one-step-ahead forecasts for the time series under study. The first is the unadjusted forecast. The second is the adjusted forecast, which differs by the predicted correction term.  These forecasts are: 
 
 \begin{align*}
-  %\text{Forecast 1: } 
+  \text{Forecast 1: } 
    \hat y_{unadjusted, T_{1}^{*}+1} &= \hat\E[\mathcal{F}_{T_{1}^{*}}] \\
-  %\text{Forecast 2: } 
+  \text{Forecast 2: } 
    \hat y_{adjusted,T_{1}^{*}+1}  &= \hat\E[\mathcal{F}_{T_{1}^{*}}] + \hat\omega^{*} \text{ .}
 \end{align*}
    
     The problem of aggregating shocks or residuals begins with the data constraints.  Let us first introduce useful notation.  Let $\hat\omega^{*}_{i,*}$ denote predicted correction term for donor $i$.   Taking the prediction correction terms as a given, we observe the tuple of information $(\{\hat\omega^{*}_{i,*}\}^{n+1}_{i=2}, additional information)$ that is the extracted residuals as well as information important to aggregation.  
     
   One such idea comes from \cite{lin2021minimizing}, which weights belonging to the simplex, $\{\weight_{i}\}^{n+1}_{i=2} \in \Delta^{n}$, are chosen via a distance-based weighting procedure.
+
 \begin{align*} \label{adjustment}
 	  \hat\omega^{*} = \sum^{n+1}_{i=2}\weight_{i}\hat\omega^{*}_{i,*},
 \end{align*}
-which is just one way among many to build a correction function.  Another interesting correction function can be found in \cite{foroni2022forecasting}.
+which is just one way among many to build a correction function.  Another interesting correction function can be found in \cite{foroni2022forecasting}.  For yet another example, consider a correction function that aggregates survey panel of forecasts by the Survey of Professional Forecasts \citep{croushore1993introducing}.  An obvious advantage of human forecasters is that they are able to integrate information revealed arbitrarily close to the scheduled release of the forecast, even if human forecaster's lack of systematicity or closed-form forecasts, for example, leads to non-optimal forecast performance in general.  By calculating forecast differences between the low-frequency information forecast, $\tau_{i,t}= \hat{y}_{unadjusted,t}-\hat{y}_{ i,t}$, we prepare ourselves for late-breaking events -- e.g. shocks -- for which we might want a correction function
+
+\begin{align*}
+\xi \colon \boldsymbol{\tau} &\to \mathbb{C}\\
+\end{align*}
+
+that weights the $i$-th forecaster according to that forecaster's past performance or according to the similarity of the forecaster's stated information set to the information available for the default forecasting model.
 
 \section{Model Adjustment Using Similarity-Based Parameter Correction: A Global Overview}\label{global_overview}
 
@@ -436,9 +447,7 @@ bias-variance tradeoff and MSE decomposition\\
 \subsection{Forecast Combination}
 what we are talking about here is not forecast combination, but there may be, nevertheless, a role for forecast combination: combining the forecasts generated by small differences in covariate and/or donor choice, as is done in \cite{lundquist2024volatility}. \\
 
-Consider the leave-one-out method used on pairs of donors and covariates in \cite{lundquist2024volatility}.  By averaging over $(n+1)\cdot (p+1)$ predictions, we average over $n+1 \cdot p + 1$ convex combinations (where, when a donor is ommitted, its weight can be imputed as zero).  
-
-
+Consider the leave-one-out method used on pairs of donors and covariates in \cite{lundquist2024volatility}.  By averaging over $(n+1)\cdot (p+1)$ predictions, we average over $n+1 \cdot p + 1$ convex combinations (where, when a donor is ommitted, its weight can be imputed as zero).
 
 \subsection{Limitations}\label{Limitations}
 
