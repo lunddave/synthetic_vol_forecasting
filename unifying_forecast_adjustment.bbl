@@ -1,4 +1,4 @@
-\begin{thebibliography}{16}
+\begin{thebibliography}{17}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -69,6 +69,11 @@ Pablo Guerr{\'o}n-Quintana and Molin Zhong.
 D~Hendry and M~Clements.
 \newblock On a theory of intercept corrections in macroeconometric forecasting.
 \newblock 1994.
+
+\bibitem[Hendry and Clements(2004)]{hendry2004pooling}
+David~F Hendry and Michael~P Clements.
+\newblock Pooling of forecasts.
+\newblock \emph{The Econometrics Journal}, 7\penalty0 (1):\penalty0 1--31, 2004.
 
 \bibitem[Lin and Eck(2021)]{lin2021minimizing}
 Jilei Lin and Daniel~J Eck.
