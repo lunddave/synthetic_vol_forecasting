@@ -650,7 +650,7 @@ There is also a broader discussion to be had regarding the degree of model heter
 
 As is pointed out in \citet{hastie2009elements}, KNN regression performs well when $K$ is chosen small enough that one can simply average the points $\{y_{i}\}_{i=1}^{N_{train}}$in the neighborhood around each element in $\{y_{i}\}_{i=1}^{N_{test}}$ to get good predictions.  As we have noted above, the arithmetic mean-based estimator of $\omega_{1}^{*}$, denoted $\overline{\omega^{*}}$, corresponds to KNN when $K = n$, the number of donors.  Fundamentally, the idea that $n$ would be small enough and the donors homogeneous enough that one could simply average the $\hat\omega_{i,*}$ is at odds with the assumed variation in the shocks in our modeling setup, and the real data example attests to what can do wrong when that variation is not accounted for.
 
-Additionally, in KNN regression, the hyperparameter K must be learned.  In similarity-based parameter correction, the number of donors is not learned.  A donor pool is curated, and then careful rules of thumb can be applied to determine whether a given donor should be included or excluded.  This brings us to a deeper point about the distinction between similarity-based methods in the style of \citet{lin2021minimizing} and KNN.  In KNN, the exogenous variables are taken as a given and nearness to the object to be predicted depends on the distance function chosen.  In contrast, in \citet{lin2021minimizing}, the determination of nearness begins with a qualitative step, i.e. curating the donor units between which we will calculate distances and from which we will ultimately derive weights.
+Additionally, in KNN regression, the hyperparameter $K$ must be learned.  In similarity-based parameter correction, the number of donors is not learned.  A donor pool is curated, and then careful rules of thumb can be applied to determine whether a given donor should be included or excluded.  This brings us to a deeper point about the distinction between similarity-based methods in the style of \citet{lin2021minimizing} and KNN.  In KNN, the exogenous variables are taken as a given and nearness to the object to be predicted depends on the distance function chosen.  In contrast, in \citet{lin2021minimizing}, the determination of nearness begins with a qualitative step, i.e. curating the donor units between which we will calculate distances and from which we will ultimately derive weights.
 
 \subsection{Donor Pool Construction}
 
@@ -711,7 +711,7 @@ On the other hand, the 2004 election appears most often at the top of the table,
 
 \subsection{Can we combine forecasts to outperform the individual forecasts?}\label{forecastcomb}
 
-We consider a very simple forecast combination procedure -- in fact, we consider two: the average forecast and the median forecast.  While forecast combination can be justified in any number of ways, here we invoke forecast combination as a way to robustify forecasts against misspecification.  We combine in two simply ways, using the mean of all 63 forecasts and the median of all 63 forecasts.  The forecast losses are all specifications -- including the average and median forecasts -- are presented in Table \ref{tab:multiverse_table}.
+We consider a very simple forecast combination procedure -- in fact, we consider two: the average forecast and the median forecast.  While forecast combination can be justified in any number of ways, here we invoke forecast combination as a way to robustify forecasts against misspecification.  We combine in two simple ways, using the mean of all 63 forecasts and the median of all 63 forecasts.  The forecast losses are all specifications -- including the average and median forecasts -- are presented in Table \ref{tab:multiverse_table}.
 
 %\begin{figure}[H]
 %  \begin{center}
@@ -766,28 +766,27 @@ We consider a very simple forecast combination procedure -- in fact, we consider
     The result for each $\hat\omega^{*}_{i,*}$ follows from the consistency proof of the QMLE in GARCH-X models, as established by \citet{han2014asymptotic}.  As for a convex combination of $\{\hat\omega^{*}_{i,*}\}_{i=2}^{n+1}$, consider the following argument, where we have suppressed the time-indexation:
 
     \begin{align}
-    \x_{1} &= \sum^{n+1}_{i=2}\weight_{i}\x_{i} \tag{By an assumption of the proposition}\\
-    \Longrightarrow
-    \delta^{T}\x_{1} &= \delta^{T}\sum^{n+1}_{i=2}\weight_{i}\x_{i}  = \sum^{n+1}_{i=2}\weight_{i}\delta^{T}\x_{i}\tag{By left-multiplication by $\delta^{T}$}\\
-    \Longrightarrow\delta^{T}\x_{1} &=\sum^{n+1}_{i=2}\pi_{i}(\omega_{i}^{*} - \mu_{\omega^{*}} - u_{i,t})\tag{by substitution}\\
+    \x_{1} &= \sum^{n+1}_{i=2}\weight_{i}\x_{i} \tag{by an assumption of the proposition}\\
+   \Longrightarrow \delta^{T}\x_{1} &= \delta^{T}\sum^{n+1}_{i=2}\weight_{i}\x_{i}  = \sum^{n+1}_{i=2}\weight_{i}\delta^{T}\x_{i}\tag{by left-multiplication by $\delta^{T}$}\\
+    \Longrightarrow\delta^{T}\x_{1} &=\sum^{n+1}_{i=2}\pi_{i}(\omega_{i}^{*} - \mu_{\omega^{*}} - u_{i,t})\tag{by substitution and definition of $\omega^{*}_{i}$}\\
     \Longrightarrow\mu_{\omega^{*}} + \delta^{T}\x_{1} + \sum^{n+1}_{i=2}\pi_{i}u_{i,t} &= \sum^{n+1}_{i=2}\pi_{i}\omega_{i}^{*} \tag{by moving  terms to the left-hand side}
     \end{align}
-Now, since each $\hat\omega^{*}_{i}$ converges in probability to $\omega^{*}_{i}$, by Slutsky, any finite linear combination of $\hat\omega^{*}_{i}$ converges in probability to the corresponding finite linear combination of $\omega^{*}_{i}$.  Hence, $\sum^{n+1}_{i=2}\pi_{i}\hat\omega_{i}^{*}$ converges in probability to the right-hand side of the final line.  By setting $u_{i,t}$ to zero for all shock points and all $i$, we then have $\omega_{1}^{*} = \mu_{\omega^{*}} + \delta^{T}\x_{1} $ on the left-hand side.  Without taking the $u_{i,t}$ to be zero at the shock points, however, we still have convergence in distribution.  The proof is as follows.  For any collection of $n+1$ i.i.d variables, any convex combination of any $n$ of them is equal in distribution to the one left out.  Therefore, the left-hand side of the final line is equal in distribution to $\omega_{1}$, as desired.
 
+Now, since each $\hat\omega^{*}_{i}$ converges in probability to $\omega^{*}_{i}$, by Slutsky, any finite linear combination of $\hat\omega^{*}_{i}$ converges in probability to the corresponding finite linear combination of $\omega^{*}_{i}$.  Hence, $\sum^{n+1}_{i=2}\pi_{i}\hat\omega_{i}^{*}$ converges in probability to the right-hand side of the final line.  By setting $u_{i,t}$ to zero for all shock points and all $i$, we then have $\omega_{1}^{*} = \mu_{\omega^{*}} + \delta^{T}\x_{1} $ on the left-hand side.  Without taking the $u_{i,t}$ to be zero at the shock points, however, we nevertheless have convergence in distribution.  The proof is as follows.  For any collection of $n+1$ i.i.d variables, any convex combination of any $n$ of them is equal in distribution to the one left out.  Therefore, the left-hand side of the final line is equal in distribution to $\omega_{1}$, as desired.
     \end{proof-of-proposition}
 
     \begin{proof-of-proposition}[\ref{sigma_consistency}]
       Without loss of generality, we prove the case for $r = 1$.  The general case follows from iterative one-step-ahead forecasts.  Recall the conditional expectation of the variance for the GARCH-X($m$,$s$) model:
       \begin{align*}
-      \E[\sigma^{2}_{i,t+1}|\mathcal{F}_{t}] = \omega_{i} +  \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t+1-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t+1-j}^{2} + \gamma_{i}^{T} \x_{i,t+1} + \omega^{*}_{i,*} \text{ .}
+      \E[\sigma^{2}_{adjusted,t+1}|\mathcal{F}_{t}] = \omega_{i} +  \sum^{m_{i}}_{k=1}\alpha_{1,k}a^{2}_{1,t+1-k} + \sum_{j=1}^{s_{1}}\beta_{1,j}\sigma_{1,t+1-j}^{2} + \gamma_{1}^{T} \x_{1,t+1} + \omega^{*}_{1,*} \text{ .}
       \end{align*}
       By replacing parameters with their estimates, we arrive at the prediction 
       \begin{align*}
-      \hat\sigma^{2}_{i,t+1}|\mathcal{F}_{t} = \hat\omega_{i} + \sum^{m_{i}}_{k=1}\hat\alpha_{i,k}a^{2}_{i,t+1-k} + \sum_{j=1}^{s_{i}}\hat\beta_{i,j}\hat\sigma_{i,t+1-j}^{2} + \hat\gamma_{i}^{T} \x_{i,t+1} + \hat\omega^{*}_{i,*}\text { ,}
+      \hat\sigma^{2}_{adjusted,t+1}|\mathcal{F}_{t} = \hat\omega_{1} + \sum^{m_{1}}_{k=1}\hat\alpha_{i,k}a^{2}_{i,t+1-k} + \sum_{j=1}^{s_{1}}\hat\beta_{i,j}\hat\sigma_{1,t+1-j}^{2} + \hat\gamma_{1}^{T} \x_{1,t+1} + \hat\omega^{*}_{1,*}\text { ,}
       \end{align*}
       which converges to 
       \begin{align*}
-        \sigma^{2}_{i,t+1}|\mathcal{F}_{t} = \omega_{i} + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t+1-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t+1-j}^{2} + \gamma_{i}^{T} \x_{i,t+1} + \omega^{*}_{i,*}
+        \sigma^{2}_{adjusted,t+1}|\mathcal{F}_{t} = \omega_{i} + \sum^{m_{i}}_{k=1}\alpha_{1,k}a^{2}_{i,t+1-k} + \sum_{j=1}^{s_{1}}\beta_{i,j}\sigma_{1,t+1-j}^{2} + \gamma_{1}^{T} \x_{1,t+1} + \omega^{*}_{1,*}
         \end{align*}
       in distribution or probability (depending upon how $\hat\omega^{*}_{*}$ converges) as $t\rightarrow\infty$ by a simple application of Slutsky's Theorem.
       \end{proof-of-proposition}
