@@ -3,51 +3,52 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: unifying_forecast_adjustment.aux
 The style file: plainnat.bst
 Database file #1: unifying.bib
-Repeated entry---line 715 of file unifying.bib
+Repeated entry---line 720 of file unifying.bib
  : @article{rossi2021forecasting
  :                              ,
 I'm skipping whatever remains of this entry
+Warning--empty journal in castle2011forecasting
 Warning--empty journal in guerron2017macroeconomic
 Warning--empty journal in hendry1994theory
-You've used 17 entries,
+You've used 18 entries,
             2773 wiz_defined-function locations,
-            698 strings with 7634 characters,
-and the built_in function-call counts, 6902 in all, are:
-= -- 622
-> -- 340
+            702 strings with 7770 characters,
+and the built_in function-call counts, 7314 in all, are:
+= -- 655
+> -- 370
 < -- 14
-+ -- 117
-- -- 99
-* -- 523
-:= -- 1068
-add.period$ -- 51
-call.type$ -- 17
-change.case$ -- 82
-chr.to.int$ -- 16
-cite$ -- 36
-duplicate$ -- 334
-empty$ -- 608
-format.name$ -- 136
-if$ -- 1435
++ -- 127
+- -- 108
+* -- 557
+:= -- 1134
+add.period$ -- 54
+call.type$ -- 18
+change.case$ -- 88
+chr.to.int$ -- 17
+cite$ -- 39
+duplicate$ -- 354
+empty$ -- 639
+format.name$ -- 146
+if$ -- 1518
 int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 18
-newline$ -- 93
-num.names$ -- 68
-pop$ -- 165
+missing$ -- 19
+newline$ -- 98
+num.names$ -- 72
+pop$ -- 179
 preamble$ -- 1
-purify$ -- 67
+purify$ -- 72
 quote$ -- 0
-skip$ -- 253
+skip$ -- 268
 stack$ -- 0
-substring$ -- 250
+substring$ -- 252
 swap$ -- 18
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 177
-warning$ -- 2
-while$ -- 70
+type$ -- 188
+warning$ -- 3
+while$ -- 73
 width$ -- 0
-write$ -- 219
+write$ -- 230
 (There was 1 error message)

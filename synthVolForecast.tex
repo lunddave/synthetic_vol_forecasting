@@ -384,10 +384,10 @@ The estimators $\hat\omega^{*}_{i,t}$ in \eqref{adjustment} are central to our f
 Assume
 \begin{enumerate}
   \item For each $i$, $\{a_{i,t}\}_{t=0,...,T_i}$ obeys a GARCH-X($m,s$), as laid out in Equation $\eqref{GARCH-X}$, with volatility shocks found in $\mc{M}_{1}$, where $T_i$ is the length of the $i$th series.
-  \item For each $i, \{D^{vol}_{i,t}\omega_{i,t}^{*}\}_{t=0,...,T_i}$ is potentially non-zero at $\{T^{*}_{i}+1,... ,T^{*}_{i}+L_{i}^{vol}\}$, $\omega_{i,T_{i}^{*}+1}^{*}\equiv...\equiv\omega_{i,T_{i}^{*}+L_{i}^{vol}}^{*}$, and zero otherwise, where the arrival of $T_{i}^{*}$ is governed by a time-invariant distribution on $\{a_{i,t}\}_{t=0,...,T_i-1}$, and both the arrival and conclusion of the shock is observable by the researcher. \label{stationarity_of_omega_i_t}
+  \item For each $i, \{\omega_{i,t}^{*}\}_{t=0,...,T_i}$ is potentially non-zero at $\{T^{*}_{i}+1,... ,T^{*}_{i}+L_{i}^{vol}\}$, $\omega_{i,T_{i}^{*}+1}^{*}\equiv...\equiv\omega_{i,T_{i}^{*}+L_{i}^{vol}}^{*}$, and zero otherwise, where the arrival of $T_{i}^{*}$ is governed by a time-invariant distribution on $\{a_{i,t}\}_{t=0,...,T_i-1}$, and both the arrival and conclusion of the shock is observable by the researcher. \label{stationarity_of_omega_i_t}
   \item The conditions in Assumption 0 of \citet{han2014asymptotic} hold.
 \end{enumerate}
-Then for any $i, 1\leq i \leq n+1$, and for any $r, 1\leq r \leq L_{i}^{vol}$, $\hat\omega_{i,T_{i}^{*}+r}^{*} \overset{p}{\longrightarrow} \omega_{i,T_{i}^{*}+r}^{*}$ as $t\rightarrow\infty$.  Additionally, $\hat\omega_{i,*}^{*} \overset{p}{\longrightarrow} \omega_{i,T_{i}^{*}+r}^{*}$ as $t\rightarrow\infty$.  That is, whether estimated  individually or collectively, the nonzero shock estimators are consistent.
+Then for any $i, 1\leq i \leq n+1$, and for any $r, 1\leq r \leq L_{i}^{vol}$, $\hat\omega_{i,T_{i}^{*}+r}^{*} \overset{p}{\longrightarrow} \omega_{i,T_{i}^{*}+r}^{*}$ as $t\rightarrow\infty$.  Additionally, $\hat\omega_{i,*}^{*} \overset{d}{\longrightarrow} \omega_{i,T_{i}^{*}+r}^{*}$ as $t\rightarrow\infty$, and if for all $i, 1 \leq i \leq n+ 1$, $u_{i,t} \equiv 0$ on $\{T^{*}_{i}+1,... ,T^{*}_{i}+L_{i}^{vol}\}$, then $\hat\omega_{i,T_{i}^{*}+r}^{*} \overset{p}{\longrightarrow} \omega_{i,T_{i}^{*}+r}^{*}$ .
 \end{prop}
 
 \begin{lem}\label{lemma_ref}
@@ -404,7 +404,7 @@ Having established the consistency of the estimators $\hat\omega^{*}_{i,T_{i}^{*
       \item All conditions listed in Proposition \ref{omega_consistency}.
       \item There exist weights $\{\pi_{i}\}_{i=2}^{n+1}$ such that $\textbf{v}_{1,T_{1}^{*}} = \sum^{n+1}_{i=2}\weight_{i} \textbf{v}_{i,T_{i}^{*}}$.
      \end{enumerate}
-  Then for any $r$, $1\leq r \leq L_{i}^{vol}$, $\hat\sigma^{2}_{adjusted,T_{i}^{*}+r}\overset{p}{\longrightarrow}\sigma^{2}_{1,T_{i}^{*}+r}$ as $t\rightarrow\infty$. 
+  Then for any $r$, $1\leq r \leq L_{1}^{vol}$, $\hat\sigma^{2}_{adjusted,T_{1}^{*}+r}\overset{d}{\longrightarrow}\sigma^{2}_{1,T_{1}^{*}+r}$ as $t\rightarrow\infty$, if for all $i, 1 \leq i \leq n+ 1$, $u_{i,t} \equiv 0$ on $\{T^{*}_{i}+1,... ,T^{*}_{i}+L_{i}^{vol}\}$, then $\hat\sigma^{2}_{adjusted,T_{1}^{*}+r}\overset{p}{\longrightarrow}\sigma^{2}_{1,T_{1}^{*}+r}$ 
   \end{prop}
 
 \subsection{Asymptotic Loss}
@@ -425,9 +425,8 @@ For simplicity, we work with a GARCH(1,1) that experiences a volatility shock at
 It is easily verified that as $\hat\omega^{*}_{t+1} \rightarrow 0^{+}$, the difference in the losses goes to zero.  On the other hand, as $\hat\omega^{*}_{t+1}$ becomes large, the difference in the losses turns negative, with the lesson being that $\hat\omega^{*}_{t+1}$ must be in appropriate proportion to $\sigma^{2}_{t+1}$ in order for the adjusted forecast to outperform the unadjusted forecast.  This explains why it is so important to avoid using a naive adjustment estimator, $\overline{\omega^{*}}$, the arithmetic mean of the estimated shocks.  We conclude this section with a broader result. 
 
 \begin{prop}\label{asymptotic_consistency}
-Assume the conditions in Propositions $\ref{omega_consistency}$ and $\ref{sigma_consistency}$.  Let $1\leq i\leq n+1$.  Then as $t\rightarrow \infty$,
-$$QL(\hat\sigma_{unadjusted,t+1}^{2},\sigma^{2}_{t+1})-QL(\hat\sigma^{2}_{adjusted,t+1},\sigma^{2}_{t+1}) \overset{p}{\longrightarrow} \frac{\omega_{i,t+1}^{*}}{\sigma^{2}_{i,t+1}-\omega_{i,t+1}^{*}} + \log{\frac{\sigma_{i,t+1}^{2}-\omega_{i,t+1}^{*}}{\sigma_{i,t+1}^{2}} } \geq 0.$$
-Hence, a correctly specified $\mc{M}_1$ model will outperform the unadjusted forecast asymptotically.
+Assume the conditions in Propositions $\ref{omega_consistency}$ and $\ref{sigma_consistency}$.  Then as $t\rightarrow \infty$,
+$$QL(\hat\sigma_{unadjusted,t+1}^{2},\sigma^{2}_{t+1})-QL(\hat\sigma^{2}_{adjusted,t+1},\sigma^{2}_{t+1}) \overset{d}{\longrightarrow} \frac{\omega_{1,t+1}^{*}}{\sigma^{2}_{1,t+1}-\omega_{1,t+1}^{*}} + \log{\frac{\sigma_{1,t+1}^{2}-\omega_{1,t+1}^{*}}{\sigma_{1,t+1}^{2}} } \geq 0,$$ and if for all $i, 1 \leq i \leq n+ 1$, $u_{i,t} \equiv 0$ on $\{T^{*}_{i}+1,... ,T^{*}_{i}+L_{i}^{vol}\}$, the convergence is in probability.  Hence, a correctly specified $\mc{M}_1$ model will outperform the unadjusted forecast asymptotically.
 \end{prop}
 
 \section{Numerical Examples}
@@ -764,7 +763,17 @@ We consider a very simple forecast combination procedure -- in fact, we consider
     \end{proof-of-lemma}
     
     \begin{proof-of-proposition}[\ref{adjustment}]
-    The result follows from the consistency proof of the QMLE in GARCH-X models, as established by \citet{han2014asymptotic}. 
+    The result for each $\hat\omega^{*}_{i,*}$ follows from the consistency proof of the QMLE in GARCH-X models, as established by \citet{han2014asymptotic}.  As for a convex combination of $\{\hat\omega^{*}_{i,*}\}$, consider the following argument, we have suppressed the time-indexation:
+
+    \begin{align}
+    \x_{1} &= \sum^{n+1}_{i=2}\weight_{i}\x_{i}\\
+    \delta^{T}\x_{1} &= \delta^{T}\sum^{n+1}_{i=2}\weight_{i}\x_{i}\\
+    &=\sum^{n+1}_{i=2}\pi_{i}(\omega_{i}^{*} - \mu_{\omega^{*}} - u_{i,t})\\
+    \mu_{\omega^{*}} + \delta^{T}\x_{1} + \sum^{n+1}_{i=2}\pi_{i}u_{i,t} &= \sum^{n+1}_{i=2}\pi_{i}\omega_{i}^{*} \label{convex_comb_of_omega}
+    \end{align}
+
+    Now, since each $\hat\omega^{*}_{i}$ converges in probability to $\omega^{*}_{i}$, by Slutsky, any finite linear combination of $\hat\omega^{*}_{i}$ converges in probability to $\omega^{*}_{i}$.  Hence, $\sum^{n+1}_{i=2}\pi_{i}\hat\omega_{i}^{*}$ converges in probability to the right-hand side of (\ref{convex_comb_of_omega}).  By setting $u_{i,t}$ to zero for all shock points and all $i$, we then have $\omega_{1}^{*} = \mu_{\omega^{*}} + \delta^{T}\x_{1} $ on the LHS.  Without taking the $u_{i,t}$ to be zero at the shock points, however, we still have convergence in distribution.  For any collection of $n+1$ i.i.d variables, any convex combination of $n$ of them is equal in distribution to the one left out.  Therefore, the left-hand side of \ref{convex_comb_of_omega} is equal in distribution to $\omega_{1}$, as desired.
+
     \end{proof-of-proposition}
 
     \begin{proof-of-proposition}[\ref{sigma_consistency}]
@@ -776,7 +785,7 @@ We consider a very simple forecast combination procedure -- in fact, we consider
       \begin{align*}
       \hat\sigma^{2}_{i,t+1}|\mathcal{F}_{t} = \hat\omega_{i} + \sum^{m_{i}}_{k=1}\hat\alpha_{i,k}a^{2}_{i,t+1-k} + \sum_{j=1}^{s_{i}}\hat\beta_{i,j}\hat\sigma_{i,t+1-j}^{2} + \hat\gamma_{i}^{T} \x_{i,t+1} + \hat\omega^{*}_{i,*}\text { ,}
       \end{align*}
-      which converges in probability to 
+      which converges to 
       \begin{align*}
         \sigma^{2}_{i,t+1}|\mathcal{F}_{t} = \omega_{i} + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t+1-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t+1-j}^{2} + \gamma_{i}^{T} \x_{i,t+1} + \omega^{*}_{i,*}
         \end{align*}
@@ -785,7 +794,7 @@ We consider a very simple forecast combination procedure -- in fact, we consider
       \end{proof-of-proposition}
 
   \begin{proof-of-proposition}[\ref{asymptotic_consistency}]
-    First, note that the function $g:(-\infty,\omega_{i}^{*})\rightarrow \mathbb{R}$ given by $g(x) = \frac{x}{\sigma^{2}_{t+1}-x} + \log{\frac{\sigma_{t+1}^{2}-x}{\sigma_{t+1}^{2}} }$ is nonnegative, convex, obtains a minimum at $x = 0$, and being continuous, preserves consistency. The conclusion follows from facts that the model is correctly specified and the consistency of $\hat\sigma^{2}_{t+1, adjusted}$ is guaranteed by Proposition ($\ref{sigma_consistency}$). 
+    First, note that the function $g:(-\infty,\omega_{i}^{*})\rightarrow \mathbb{R}$ given by $g(x) = \frac{x}{\sigma^{2}_{t+1}-x} + \log{\frac{\sigma_{t+1}^{2}-x}{\sigma_{t+1}^{2}} }$ is nonnegative, convex, obtains a minimum at $x = 0$, and being continuous, preserves consistency. The conclusion follows from facts that the model is correctly specified and the convergence of $\hat\sigma^{2}_{t+1, adjusted}$ is guaranteed by Proposition ($\ref{sigma_consistency}$). 
   \end{proof-of-proposition}
   
 \clearpage
