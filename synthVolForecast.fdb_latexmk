@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex synthVolForecast"] 1728447374.11349 "synthVolForecast.aux" "synthVolForecast.bbl" "synthVolForecast" 1728448072.74868 0
+["bibtex synthVolForecast"] 1728455946.49619 "synthVolForecast.aux" "synthVolForecast.bbl" "synthVolForecast" 1728456091.70854 0
   "./synthVolForecast.bib" 1727979781.08959 23500 3e0702168f01f32614ac431b31dd84e5 ""
   "/usr/local/texlive/2024/texmf-dist/bibtex/bst/natbib/plainnat.bst" 1233624470 26816 ffe5423d2019860bad9f54bc402fac15 ""
-  "synthVolForecast.aux" 1728448072.50197 20070 c283e9e7fa9f2f53fb379e3aa415ac05 "pdflatex"
+  "synthVolForecast.aux" 1728456091.47424 19995 b340c3639546186b4563e164bf4a7e0a "pdflatex"
   (generated)
   "synthVolForecast.bbl"
   "synthVolForecast.blg"
   (rewritten before read)
-["pdflatex"] 1728448070.2859 "/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/synthVolForecast.tex" "synthVolForecast.pdf" "synthVolForecast" 1728448072.74882 0
-  "/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/synthVolForecast.tex" 1728448070.10197 107256 4dc8ec5c8f86cf7bc4e13ffe6602d01e ""
+["pdflatex"] 1728456089.25219 "/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/synthVolForecast.tex" "synthVolForecast.pdf" "synthVolForecast" 1728456091.70868 0
+  "/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/synthVolForecast.tex" 1728456089.06825 107694 32507a052dd07bc74ccf81a65e1bb8e1 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy5.tfm" 1246382020 1120 1e8878807317373affa7f7bba4cf2f6a ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy6.tfm" 1246382020 1124 14ccf5552bc7f77ca02a8a402bea8bfb ""
@@ -77,7 +77,6 @@
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb" 1248133631 32587 1788b0c1c5b39540c96f5e42ccd6dae8 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb" 1248133631 32626 4f5c1b83753b1dd3a97d1b399a005b4b ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb" 1248133631 37944 359e864bd06cde3b1cf57bb20757fb06 ""
-  "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb" 1248133631 35660 fb24af7afbadb71801619f1415838111 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb" 1248133631 36310 f5ddc6715cc60deb16d9db5ded6a9391 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb" 1248133631 24287 6b803fa9eb1ddff9112e00519b09dd9e ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb" 1248133631 29078 718ea4567ceff944262b0f5b0800e1d9 ""
@@ -245,11 +244,11 @@
   "simulation_plots/Aug28_224451_2024_mu[omega^*]_sigma[u].png" 1724899492.00361 179950 b0de2756e09697f3d63fa56467aecdf9 ""
   "simulation_plots/Aug28_224455_2024_mu[omega^*]_sigma[u].png" 1724899495.14918 181822 f35a830631c2bb917c81d6587e333d57 ""
   "simulation_plots/motivating_piece_convex_combination.png" 1722913159.43774 67448 e7028f59e3bbcdb7942c1055f976195a ""
-  "synthVolForecast.aux" 1728448072.50197 20070 c283e9e7fa9f2f53fb379e3aa415ac05 "pdflatex"
-  "synthVolForecast.bbl" 1728447374.18847 14577 d3fa111535b0c2aeff6935737854e432 "bibtex synthVolForecast"
-  "synthVolForecast.out" 1728448072.50308 5871 576c0c9ee735e73d2db1af5e890cbee8 "pdflatex"
-  "synthVolForecast.spl" 1728448072.50328 44 f890db90dc9bb371be25b5df78fd112c "pdflatex"
-  "synthVolForecast.tex" 1728448070.10197 107256 4dc8ec5c8f86cf7bc4e13ffe6602d01e ""
+  "synthVolForecast.aux" 1728456091.47424 19995 b340c3639546186b4563e164bf4a7e0a "pdflatex"
+  "synthVolForecast.bbl" 1728455946.57602 14577 d3fa111535b0c2aeff6935737854e432 "bibtex synthVolForecast"
+  "synthVolForecast.out" 1728456091.47531 5871 576c0c9ee735e73d2db1af5e890cbee8 "pdflatex"
+  "synthVolForecast.spl" 1728456091.47549 44 f890db90dc9bb371be25b5df78fd112c "pdflatex"
+  "synthVolForecast.tex" 1728456089.06825 107694 32507a052dd07bc74ccf81a65e1bb8e1 ""
   (generated)
   "synthVolForecast.aux"
   "synthVolForecast.log"

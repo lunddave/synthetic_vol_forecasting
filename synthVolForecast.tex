@@ -360,7 +360,7 @@ $\mathbb{E}[ \sigma^{2}_{i,T_{i}^{*}+r+1} |\mathcal{F}_{T_{i}^{*}+r}]$, which al
 By repeated substitution, in conditional expectation, the shock belongs to the equivalence class $\mathcal{O}((\alpha+\beta)^{r})$.  We generalize this observation in the following proposition.
 
 \begin{prop}\label{decay_prop}
-Let $a_{t}$ be a mean-zero time series obeying a GARCH(1,1) specification with unit-variance errors, all prior to the arrival of a volatility shock of length $L_{\text{vol}} \geq 1$ and level shock of length $L_{\text{return}}\geq 1$ at some time $T^{*}+1$.  Then for any $r$ such that $r \geq \text{max}\{L_{i, vol},L_{i, level}\} + 1$, 
+Let $a_{i,t}$ be a mean-zero time series obeying a GARCH(1,1) specification with unit-variance errors, all prior to the arrival of a volatility shock of length $L_{i}^{vol} \geq 1$ and level shock of length $L_{i}^{return}\geq 1$ at some time $T_{i}^{*}+1$.  Then for any $i$, $1\leq i \leq n+1$, and $r$ such that $r \geq \text{max}\{L_{i}^{return},L_{i}^{return}\} + 1$, 
 \begin{align*}
 \mathbb{E}[ \sigma^{2}_{i,T_{i}^{*}+r+1} |\mathcal{F}_{T_{i}^{*}+r}] & = \omega_{i} + (\alpha + \beta)\sigma^{2}_{i,T_{i}^{*}+r}.
 \end{align*}
@@ -383,7 +383,7 @@ The estimators $\hat\omega^{*}_{i,t}$ in \eqref{adjustment} are central to our f
 \begin{prop}\label{omega_consistency}
 Assume
 \begin{enumerate}
-  \item For each $i$, $\{a_{i,t}\}_{t=0,...,T_i}$ obeys a GARCH-X($m,s$), as laid out in Equation $\eqref{GARCH-X}$, with volatility shocks found in $\mc{M}_{1}$, where $T_i$ is the length of the $i$th series.
+  \item For each $i$, $1\leq i \leq n$, $\{a_{i,t}\}_{t=0,...,T_i}$ obeys a GARCH-X($m,s$), as laid out in Equation $\eqref{GARCH-X}$, with volatility shocks found in $\mc{M}_{1}$, where $T_i$ is the length of the $i$th series.
   \item For each $i, \{\omega_{i,t}^{*}\}_{t=0,...,T_i}$ is potentially non-zero at $\{T^{*}_{i}+1,... ,T^{*}_{i}+L_{i}^{vol}\}$, $\omega_{i,T_{i}^{*}+1}^{*}\equiv...\equiv\omega_{i,T_{i}^{*}+L_{i}^{vol}}^{*}$, and zero otherwise, where the arrival of $T_{i}^{*}$ is governed by a time-invariant distribution on $\{a_{i,t}\}_{t=0,...,T_i-1}$, and both the arrival and conclusion of the shock is observable by the researcher. \label{stationarity_of_omega_i_t}
   \item The conditions in Assumption 0 of \citet{han2014asymptotic} hold.
 \end{enumerate}
@@ -396,7 +396,7 @@ Then for any $i, 1\leq i \leq n+1$, and for any $r, 1\leq r \leq L_{i}^{vol}$, $
 
 \subsection{Consistency of the Conditional Forecast Function}
 
-Having established the consistency of the estimators $\hat\omega^{*}_{i,T_{i}^{*}+1}$, we extend that result to prove the consistency of the conditional forecast function itself.
+Having established the consistency of the estimators $\hat\omega^{*}_{i,T_{i}^{*}+r}$, we extend that result to prove asymptotic properties of the conditional forecast function itself.
 
   \begin{prop}\label{sigma_consistency}
     Assume
@@ -766,13 +766,13 @@ We consider a very simple forecast combination procedure -- in fact, we consider
     The result for each $\hat\omega^{*}_{i,*}$ follows from the consistency proof of the QMLE in GARCH-X models, as established by \citet{han2014asymptotic}.  As for a convex combination of $\{\hat\omega^{*}_{i,*}\}$, consider the following argument, we have suppressed the time-indexation:
 
     \begin{align}
-    \x_{1} &= \sum^{n+1}_{i=2}\weight_{i}\x_{i}\\
-    \delta^{T}\x_{1} &= \delta^{T}\sum^{n+1}_{i=2}\weight_{i}\x_{i}\\
-    &=\sum^{n+1}_{i=2}\pi_{i}(\omega_{i}^{*} - \mu_{\omega^{*}} - u_{i,t})\\
-    \mu_{\omega^{*}} + \delta^{T}\x_{1} + \sum^{n+1}_{i=2}\pi_{i}u_{i,t} &= \sum^{n+1}_{i=2}\pi_{i}\omega_{i}^{*} \label{convex_comb_of_omega}
+    \x_{1} &= \sum^{n+1}_{i=2}\weight_{i}\x_{i} \tag{By an assumption of the proposition}\\
+    \Longrightarrow
+    \delta^{T}\x_{1} &= \delta^{T}\sum^{n+1}_{i=2}\weight_{i}\x_{i}  = \sum^{n+1}_{i=2}\weight_{i}\delta^{T}\x_{i}\tag{By left-multiplication by $\delta^{T}$}\\
+    \Longrightarrow\delta^{T}\x_{1} &=\sum^{n+1}_{i=2}\pi_{i}(\omega_{i}^{*} - \mu_{\omega^{*}} - u_{i,t})\tag{by substitution}\\
+    \Longrightarrow\mu_{\omega^{*}} + \delta^{T}\x_{1} + \sum^{n+1}_{i=2}\pi_{i}u_{i,t} &= \sum^{n+1}_{i=2}\pi_{i}\omega_{i}^{*} \tag{by moving  terms to the left-hand side}
     \end{align}
-
-    Now, since each $\hat\omega^{*}_{i}$ converges in probability to $\omega^{*}_{i}$, by Slutsky, any finite linear combination of $\hat\omega^{*}_{i}$ converges in probability to $\omega^{*}_{i}$.  Hence, $\sum^{n+1}_{i=2}\pi_{i}\hat\omega_{i}^{*}$ converges in probability to the right-hand side of (\ref{convex_comb_of_omega}).  By setting $u_{i,t}$ to zero for all shock points and all $i$, we then have $\omega_{1}^{*} = \mu_{\omega^{*}} + \delta^{T}\x_{1} $ on the LHS.  Without taking the $u_{i,t}$ to be zero at the shock points, however, we still have convergence in distribution.  For any collection of $n+1$ i.i.d variables, any convex combination of $n$ of them is equal in distribution to the one left out.  Therefore, the left-hand side of \ref{convex_comb_of_omega} is equal in distribution to $\omega_{1}$, as desired.
+Now, since each $\hat\omega^{*}_{i}$ converges in probability to $\omega^{*}_{i}$, by Slutsky, any finite linear combination of $\hat\omega^{*}_{i}$ converges in probability to the corresponding finite linear combination of $\omega^{*}_{i}$.  Hence, $\sum^{n+1}_{i=2}\pi_{i}\hat\omega_{i}^{*}$ converges in probability to the right-hand side of the final line.  By setting $u_{i,t}$ to zero for all shock points and all $i$, we then have $\omega_{1}^{*} = \mu_{\omega^{*}} + \delta^{T}\x_{1} $ on the left-hand side.  Without taking the $u_{i,t}$ to be zero at the shock points, however, we still have convergence in distribution.  The proof is as follows.  For any collection of $n+1$ i.i.d variables, any convex combination of any $n$ of them is equal in distribution to the one left out.  Therefore, the left-hand side of the final line is equal in distribution to $\omega_{1}$, as desired.
 
     \end{proof-of-proposition}
 
@@ -790,7 +790,7 @@ We consider a very simple forecast combination procedure -- in fact, we consider
         \sigma^{2}_{i,t+1}|\mathcal{F}_{t} = \omega_{i} + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t+1-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t+1-j}^{2} + \gamma_{i}^{T} \x_{i,t+1} + \omega^{*}_{i,*}
         \end{align*}
       
-      as $t\rightarrow\infty$ by a simple application of Slutsky's Theorem.
+      in distribution or probability (depending upon how $\hat\omega^{*}_{i,*}$ converges) as $t\rightarrow\infty$ by a simple application of Slutsky's Theorem.
       \end{proof-of-proposition}
 
   \begin{proof-of-proposition}[\ref{asymptotic_consistency}]
