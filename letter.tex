@@ -1,0 +1,72 @@
+\documentclass[11pt]{article}
+
+
+\usepackage{tikz}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage[export]{adjustbox}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdfpagemode=FullScreen,
+    }
+
+\setlength{\parindent}{0em}
+\setlength{\parskip}{1em}
+
+
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\renewcommand*\arraystretch{1.05}
+
+\begin{document}
+
+\footnotesize
+%\color{lightblue}
+\begin{tikzpicture}
+  \node at (0,0) {\includegraphics[height=1.1in, keepaspectratio = true]{BlockI.png}};
+  \node at (13.4, -0.05) {\vspace{1cm}\begin{tabular}{l}
+      \\ \sc Daniel J. Eck \\
+       \it Assistant Professor \\
+       \it Department of Statistics \\
+       University of Illinois \\
+       Computing Applications Building, Room 156 \\
+	   605 E. Springfield Ave \\
+	   Champaign, IL 61820 \\
+       \texttt{dje13@illinois.edu} \\ 
+       \end{tabular} };
+\end{tikzpicture}
+
+\normalsize 
+
+
+Dear Editor,
+
+We are excited to submit our manuscript titled ``Post-Shock Volatility Forecasting Using Similarity-based Shock Aggregation" for consideration in the International Journal of Forecasting. %Our study builds upon  Lin and Eck (2021), extending their similarity-based framework to develop a novel approach for forecasting the volatility of time series following shocks. 
+In this manuscript we present methodology for volatility forecasts for time series that are known to have undergone a recent shock for which no post-shock data is observed. 
+
+We construct forecasts by borrowing knowledge from other time series that have undergone similar shocks for which post-shock volatilities are observed. We aggregate their shock-induced excess volatilities by positing the shocks to be affine functions of exogenous covariates. The estimates are then aggregated into a scalar quantity and used to adjust the GARCH volatility forecast of the time series under study by additive terms, an adaptation of the framework presented in \href{https://doi.org/10.1016/j.ijforecast.2021.03.010}{Lin and Eck (2021)}.
+
+%In line with the journal's objective of bridging theory and practice, our work emphasizes both theoretical contributions and practical implications. 
+%We have refined the methodology by aggregating shock-induced excess volatilities using affine transformations of exogenous covariates. This approach enhances the precision of volatility forecasts, particularly under conditions that traditional models struggle to address. By integrating both fixed and random effects into our model, we provide a framework that is empirically grounded and robust in diverse market conditions.
+
+Our methodology is further validated through an extensive real-world data analysis in which we forecast the volatility following the results of the 2016 United States presidential election using our method. A multiverse analysis is also provided. This empirical study demonstrates the robustness of our approach across multiple data-analysis pathways, underscoring its relevance and applicability for decision-makers in financial forecasting. We also include comprehensive simulations that not only highlight scenarios where our method excels but also reveal its limitations, offering insights into both the strengths and boundaries of its application.
+
+We believe that our manuscript aligns well with the journal's mission to unify the field of forecasting by linking theoretical advancements with practical implementations. Our findings contribute to the broader discussion on improving the practice of forecasting, aiming to provide practitioners with tools that are both innovative and empirically tested. We hope that our work will stimulate further debate and inquiry into solutions for the challenges facing the field.
+
+Thank you for considering our submission. We confirm that this manuscript is only under consideration at the International Journal of Forecasting. 
+
+Sincerely,
+
+David P. Lundquist \\
+Daniel J. Eck 
+
+
+
+
+\end{document}
