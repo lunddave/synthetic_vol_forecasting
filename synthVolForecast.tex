@@ -763,7 +763,7 @@ We consider a very simple forecast combination procedure -- in fact, we consider
     \end{proof-of-lemma}
     
     \begin{proof-of-proposition}[\ref{adjustment}]
-    The result for each $\hat\omega^{*}_{i,*}$ follows from the consistency proof of the QMLE in GARCH-X models, as established by \citet{han2014asymptotic}.  As for a convex combination of $\{\hat\omega^{*}_{i,*}\}$, consider the following argument, we have suppressed the time-indexation:
+    The result for each $\hat\omega^{*}_{i,*}$ follows from the consistency proof of the QMLE in GARCH-X models, as established by \citet{han2014asymptotic}.  As for a convex combination of $\{\hat\omega^{*}_{i,*}\}_{i=2}^{n+1}$, consider the following argument, where we have suppressed the time-indexation:
 
     \begin{align}
     \x_{1} &= \sum^{n+1}_{i=2}\weight_{i}\x_{i} \tag{By an assumption of the proposition}\\
@@ -789,12 +789,11 @@ Now, since each $\hat\omega^{*}_{i}$ converges in probability to $\omega^{*}_{i}
       \begin{align*}
         \sigma^{2}_{i,t+1}|\mathcal{F}_{t} = \omega_{i} + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t+1-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t+1-j}^{2} + \gamma_{i}^{T} \x_{i,t+1} + \omega^{*}_{i,*}
         \end{align*}
-      
-      in distribution or probability (depending upon how $\hat\omega^{*}_{i,*}$ converges) as $t\rightarrow\infty$ by a simple application of Slutsky's Theorem.
+      in distribution or probability (depending upon how $\hat\omega^{*}_{*}$ converges) as $t\rightarrow\infty$ by a simple application of Slutsky's Theorem.
       \end{proof-of-proposition}
 
   \begin{proof-of-proposition}[\ref{asymptotic_consistency}]
-    First, note that the function $g:(-\infty,\omega_{i}^{*})\rightarrow \mathbb{R}$ given by $g(x) = \frac{x}{\sigma^{2}_{t+1}-x} + \log{\frac{\sigma_{t+1}^{2}-x}{\sigma_{t+1}^{2}} }$ is nonnegative, convex, obtains a minimum at $x = 0$, and being continuous, preserves consistency. The conclusion follows from facts that the model is correctly specified and the convergence of $\hat\sigma^{2}_{t+1, adjusted}$ is guaranteed by Proposition ($\ref{sigma_consistency}$). 
+    First, note that the function $g:(-\infty,\omega_{i}^{*})\rightarrow \mathbb{R}$ given by $g(x) = \frac{x}{\sigma^{2}_{t+1}-x} + \log{\frac{\sigma_{t+1}^{2}-x}{\sigma_{t+1}^{2}} }$ is nonnegative, convex, obtains a minimum at $x = 0$, and being continuous, preserves consistency. The conclusion follows from facts that the model is correctly specified and the convergence of $\hat\sigma^{2}_{adjusted,t+1}$ is guaranteed by Proposition ($\ref{sigma_consistency}$). 
   \end{proof-of-proposition}
   
 \clearpage
