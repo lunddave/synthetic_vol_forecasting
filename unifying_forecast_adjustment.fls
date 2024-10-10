@@ -266,9 +266,6 @@ INPUT /usr/local/texlive/2024/texmf-dist/tex/generic/iftex/ifvtex.sty
 INPUT /usr/local/texlive/2024/texmf-dist/tex/generic/iftex/ifvtex.sty
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
-INPUT ./unifying_forecast_adjustment.aux
-INPUT ./unifying_forecast_adjustment.aux
-INPUT unifying_forecast_adjustment.aux
 OUTPUT unifying_forecast_adjustment.aux
 INPUT /usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 INPUT /usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
@@ -278,14 +275,8 @@ INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.st
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
-INPUT ./unifying_forecast_adjustment.out
-INPUT ./unifying_forecast_adjustment.out
-INPUT unifying_forecast_adjustment.out
-INPUT unifying_forecast_adjustment.out
-OUTPUT unifying_forecast_adjustment.pdf
-INPUT ./unifying_forecast_adjustment.out
-INPUT ./unifying_forecast_adjustment.out
 OUTPUT unifying_forecast_adjustment.out
+OUTPUT unifying_forecast_adjustment.pdf
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmr17.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmr8.tfm

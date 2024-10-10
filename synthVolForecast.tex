@@ -129,7 +129,7 @@ Proof of Lemma {#1}}
 \title{Post-Shock Volatility Forecasting Using Similarity-based Shock Aggregation}
 
 \begin{abstract}
-  We develop a procedure for forecasting the volatility of a time series immediately following a news shock.  Adapting the similarity-based framework of \citet{lin2021minimizing}, we exploit series that have experienced similar shocks.  We aggregate their shock-induced excess volatilities by positing the shocks to be affine functions of exogenous covariates.  The volatility shocks are modeled as random effects and estimated as fixed effects.  The estimates are then aggregated into a scalar quantity and used to adjust the GARCH volatility forecast of the time series under study by an additive term.  The adjusted and unadjusted forecasts are evaluated using the unobservable but easily-estimated realized volatility (RV). Numerical simulations are provided to illustrate conditions and hyperparameters under which our method thrives. A detailed real data application for forecasting volatility after the outcome of the 2016 United States presidential election demonstrates the applicability of the method.
+  We develop a procedure for forecasting the volatility of a time series immediately following a news shock by exploiting  series that have experienced similar shocks.  By positing news shocks to be affine functions of exogenous risk proxies, we are able to express particular news shocks as random realizations of a common data-generating process.  In our model, random effects induce excess volatility.  Those excess volatilities are then estimated as fixed effects and aggregated to adjust the GARCH volatility forecast of the time series under study by an additive term.  The adjusted and unadjusted forecasts are evaluated using the unobservable but easily-estimated realized volatility (RV).  Asymptotic results are established for our excess volatility estimators as well as our adjustment estimator.  Numerical simulations are provided to illustrate conditions and hyperparameters under which our method thrives. A detailed real data application for forecasting volatility after the outcome of the 2016 United States presidential election demonstrates the applicability of the method.
 \end{abstract}
 
 \begin{keyword}
@@ -404,14 +404,12 @@ Having established the consistency of the estimators $\hat\omega^{*}_{i,T_{i}^{*
       \item All conditions listed in Proposition \ref{omega_consistency}.
       \item There exist weights $\{\pi_{i}\}_{i=2}^{n+1}$ such that $\textbf{v}_{1,T_{1}^{*}} = \sum^{n+1}_{i=2}\weight_{i} \textbf{v}_{i,T_{i}^{*}}$.
      \end{enumerate}
-  Then for any $r$, $1\leq r \leq L_{1}^{vol}$, $\hat\sigma^{2}_{adjusted,T_{1}^{*}+r}\overset{d}{\longrightarrow}\sigma^{2}_{1,T_{1}^{*}+r}$ as $t\rightarrow\infty$, if for all $i, 1 \leq i \leq n+ 1$, $u_{i,t} \equiv 0$ on $\{T^{*}_{i}+1,... ,T^{*}_{i}+L_{i}^{vol}\}$, then $\hat\sigma^{2}_{adjusted,T_{1}^{*}+r}\overset{p}{\longrightarrow}\sigma^{2}_{1,T_{1}^{*}+r}$ 
+  Then for any $r$, $1\leq r \leq L_{1}^{vol}$, $\hat\sigma^{2}_{adjusted,T_{1}^{*}+r}\overset{d}{\longrightarrow}\sigma^{2}_{1,T_{1}^{*}+r}$ as $t\rightarrow\infty$ in the donor pool, and if for all $i, 1 \leq i \leq n+ 1$, $u_{i,t} \equiv 0$ on $\{T^{*}_{i}+1,... ,T^{*}_{i}+L_{i}^{vol}\}$, then $\hat\sigma^{2}_{adjusted,T_{1}^{*}+r}\overset{p}{\longrightarrow}\sigma^{2}_{1,T_{1}^{*}+r}$.
   \end{prop}
 
 \subsection{Asymptotic Loss}
 
-We now evaluate the loss and risk of our method under two scenarios: first, under arbitrary distribution of $\sigma^{2}_{t+1}$, and then second, under the assumption that the data-generating process is correctly specified.  We proceed with the same notation for adjusted and unadjusted forecasts introduced in Section \ref{two_forecasts}.
-
-For a 1-step-ahead forecast of $\sigma^{2}_{t+1}$ where $t=T^{*}$, consider the difference 
+We now evaluate the loss and risk of our method under two scenarios: first, under arbitrary distribution of $\sigma^{2}_{t+1}$, and then second, under the assumption that the data-generating process is correctly specified.  We proceed with the same notation for adjusted and unadjusted forecasts introduced in Section \ref{two_forecasts}.  For a 1-step-ahead forecast of $\sigma^{2}_{t+1}$ where $t=T^{*}$, consider the difference 
 \begin{align}
   & QL(\hat\sigma_{unadjusted,t+1}^{2},\sigma^{2}_{t+1})-QL(\hat\sigma^{2}_{adjusted,t+1},\sigma^{2}_{t+1})\notag \\
    & =(\frac{\sigma_{t+1}^{2}}{\hat\sigma^{2}_{unadjusted,t+1}} - \log{\frac{\sigma_{t+1}^{2}}{\hat\sigma^{2}_{unadjusted,t+1}} } - 1) - (\frac{\sigma_{t+1}^{2}}{\hat\sigma^{2}_{adjusted,t+1}} - \log{\frac{\sigma_{t+1}^{2}}{\hat\sigma^{2}_{adjusted,t+1}}} - 1)\notag\\
@@ -425,8 +423,8 @@ For simplicity, we work with a GARCH(1,1) that experiences a volatility shock at
 It is easily verified that as $\hat\omega^{*}_{t+1} \rightarrow 0^{+}$, the difference in the losses goes to zero.  On the other hand, as $\hat\omega^{*}_{t+1}$ becomes large, the difference in the losses turns negative, with the lesson being that $\hat\omega^{*}_{t+1}$ must be in appropriate proportion to $\sigma^{2}_{t+1}$ in order for the adjusted forecast to outperform the unadjusted forecast.  This explains why it is so important to avoid using a naive adjustment estimator, $\overline{\omega^{*}}$, the arithmetic mean of the estimated shocks.  We conclude this section with a broader result. 
 
 \begin{prop}\label{asymptotic_consistency}
-Assume the conditions in Propositions $\ref{omega_consistency}$ and $\ref{sigma_consistency}$.  Then as $t\rightarrow \infty$,
-$$QL(\hat\sigma_{unadjusted,t+1}^{2},\sigma^{2}_{t+1})-QL(\hat\sigma^{2}_{adjusted,t+1},\sigma^{2}_{t+1}) \overset{d}{\longrightarrow} \frac{\omega_{1,t+1}^{*}}{\sigma^{2}_{1,t+1}-\omega_{1,t+1}^{*}} + \log{\frac{\sigma_{1,t+1}^{2}-\omega_{1,t+1}^{*}}{\sigma_{1,t+1}^{2}} } \geq 0,$$ and if for all $i, 1 \leq i \leq n+ 1$, $u_{i,t} \equiv 0$ on $\{T^{*}_{i}+1,... ,T^{*}_{i}+L_{i}^{vol}\}$, the convergence is in probability.  Hence, a correctly specified $\mc{M}_1$ model will outperform the unadjusted forecast asymptotically.
+Assume the conditions in Propositions $\ref{omega_consistency}$ and $\ref{sigma_consistency}$.  Then as $t\rightarrow \infty$ in the donor pool,
+$$QL(\hat\sigma_{unadjusted,T^{*}+1}^{2},\sigma^{2}_{T^{*}+1})-QL(\hat\sigma^{2}_{adjusted,T^{*}+1},\sigma^{2}_{T^{*}+1}) \overset{d}{\longrightarrow} \frac{\omega_{1,T^{*}+1}^{*}}{\sigma^{2}_{1,T^{*}+1}-\omega_{1,T^{*}+1}^{*}} + \log{\frac{\sigma_{1,T^{*}+1}^{2}-\omega_{1,T^{*}+1}^{*}}{\sigma_{1,T^{*}+1}^{2}} } \geq 0,$$ and if for all $i, 1 \leq i \leq n+ 1$, $u_{i,t} \equiv 0$ on $\{T^{*}_{i}+1,... ,T^{*}_{i}+L_{i}^{vol}\}$, the convergence is in probability.  Hence, a correctly specified $\mc{M}_1$ model will outperform the unadjusted forecast asymptotically.
 \end{prop}
 
 \section{Numerical Examples}
@@ -636,7 +634,7 @@ Second, we follow \citet{steegen2016increasing} in a executing a multiverse anal
 
 \section{Discussion}
 
-This present work applies and innovates techniques in similarity-based forecasting and information aggregation in order to provide better GARCH forecasts under news shocks.  It extends \citet{lin2021minimizing} principally by substituting a GARCH model for an AR(1), i.e. by modeling both the mean and volatility of a univariate time series.  An interesting connection insight related to \citet{lin2021minimizing} is that the GARCH model, under weak assumptions, can be represented as an ARMA on the squared residuals $a^{2}_{t}$.  Hence, a shock $\omega^{*}_{i,t}$ to the volatility at time $t$ is an identical shock to $a^{2}_{t}$. However, this use-case becomes less attractive in situations where the sign of the time series under study following the shock is uncertain.  Insofar as this work has made advances that accommodate heteroskedastic time series, the benefits may redound most amply to applications like Value-At-Risk (VaR) and Expected Shortfall, where $\hat\sigma^{2}_{t}$ is an input.
+This present work applies and innovates techniques in similarity-based forecasting and information aggregation in order to provide better GARCH forecasts under news shocks.  It extends \citet{lin2021minimizing} principally by substituting a GARCH model for an AR(1), i.e. by modeling both the mean and volatility of a univariate time series.  An interesting insight related to \citet{lin2021minimizing} is that the GARCH model, under weak assumptions, can be represented as an ARMA on the squared residuals $a^{2}_{t}$.  Hence, a shock $\omega^{*}_{i,t}$ to the volatility at time $t$ is an identical shock to $a^{2}_{t}$. However, this use-case becomes less attractive in situations where the sign of the time series under study following the shock is uncertain.  Insofar as this work has made advances that accommodate heteroskedastic time series, the benefits may redound most amply to applications like Value-At-Risk (VaR) and Expected Shortfall, where $\hat\sigma^{2}_{t}$ is an input.
 
 This work as well as \citet{lin2021minimizing} itself can be viewed as a generalization of \cite{phillips1996forecasting} where the rare event probability $\lambda$ is assumed to be 1 and the error associated with the rare event is estimated using external series.  In our setting, if the shock to the time series under study were known and yet so underdescribed, i.e. so lacking in qualitative context, then \cite{phillips1996forecasting} would be recommended.  However, in our setting the rare event is not only rare but also contains specific qualitative features that are best accounted for via data aggregation.
 
@@ -788,11 +786,11 @@ Now, since each $\hat\omega^{*}_{i}$ converges in probability to $\omega^{*}_{i}
       \begin{align*}
         \sigma^{2}_{adjusted,t+1}|\mathcal{F}_{t} = \omega_{i} + \sum^{m_{i}}_{k=1}\alpha_{1,k}a^{2}_{i,t+1-k} + \sum_{j=1}^{s_{1}}\beta_{i,j}\sigma_{1,t+1-j}^{2} + \gamma_{1}^{T} \x_{1,t+1} + \omega^{*}_{1,*}
         \end{align*}
-      in distribution or probability (depending upon how $\hat\omega^{*}_{*}$ converges) as $t\rightarrow\infty$ by a simple application of Slutsky's Theorem.
+      in distribution or probability (depending upon how $\hat\omega^{*}_{*}$ converges) as $t\rightarrow\infty$ in the donor pool by a simple application of Slutsky's Theorem.
       \end{proof-of-proposition}
 
   \begin{proof-of-proposition}[\ref{asymptotic_consistency}]
-    First, note that the function $g:(-\infty,\omega_{i}^{*})\rightarrow \mathbb{R}$ given by $g(x) = \frac{x}{\sigma^{2}_{t+1}-x} + \log{\frac{\sigma_{t+1}^{2}-x}{\sigma_{t+1}^{2}} }$ is nonnegative, convex, obtains a minimum at $x = 0$, and being continuous, preserves consistency. The conclusion follows from facts that the model is correctly specified and the convergence of $\hat\sigma^{2}_{adjusted,t+1}$ is guaranteed by Proposition ($\ref{sigma_consistency}$). 
+    First, note that the function $g:(-\infty,\omega_{i}^{*})\rightarrow \mathbb{R}$ given by $g(x) = \frac{x}{\sigma^{2}_{T^{*}+1}-x} + \log{\frac{\sigma_{T^{*}+1}^{2}-x}{\sigma_{T^{*}+1}^{2}} }$ is nonnegative, convex, obtains a minimum at $x = 0$, and being continuous, preserves both convergence in distribution and consistency. The conclusion follows from facts that the model is correctly specified and the convergence of $\hat\sigma^{2}_{adjusted,T^{*}+1}$ is guaranteed by Proposition ($\ref{sigma_consistency}$). 
   \end{proof-of-proposition}
   
 \clearpage

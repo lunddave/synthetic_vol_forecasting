@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.15)  8 OCT 2024 00:36
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.15)  10 OCT 2024 00:48
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -657,7 +657,8 @@ Package hyperref Info: Option `colorlinks' set `true' on input line 102.
 File: l3backend-pdftex.def 2024-02-20 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count342
 \l__pdf_internal_box=\box80
-) (./unifying_forecast_adjustment.aux)
+)
+No file unifying_forecast_adjustment.aux.
 \openout1 = `unifying_forecast_adjustment.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 124.
@@ -678,7 +679,7 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 124.
 LaTeX Font Info:    ... okay on input line 124.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 124.
 LaTeX Font Info:    ... okay on input line 124.
- (/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+(/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count343
 \scratchdimen=\dimen306
@@ -702,13 +703,11 @@ Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
 Package hyperref Info: Link coloring ON on input line 124.
- (./unifying_forecast_adjustment.out) (./unifying_forecast_adjustment.out
-pdfTeX warning (Object streams): \pdfobjcompresslevel > 0 requires PDF-1.5 or greater. Object streams disabled now.
-)
 \@outlinefile=\write5
 \openout5 = `unifying_forecast_adjustment.out'.
 
 
+pdfTeX warning (Object streams): \pdfobjcompresslevel > 0 requires PDF-1.5 or greater. Object streams disabled now.
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -750,9 +749,81 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 LaTeX Font Info:    Trying to load font information for U+msb on input line 127.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1
+)
 
-{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] [2]
+LaTeX Warning: Reference `Introduction' on page 1 undefined on input line 137.
+
+
+LaTeX Warning: Reference `outside_info' on page 1 undefined on input line 138.
+
+
+LaTeX Warning: Reference `Introduction' on page 1 undefined on input line 139.
+
+
+LaTeX Warning: Reference `special_cases' on page 1 undefined on input line 140.
+
+
+LaTeX Warning: Reference `Limitations' on page 1 undefined on input line 141.
+
+
+LaTeX Warning: Reference `Extensions' on page 1 undefined on input line 142.
+
+
+Package natbib Warning: Citation `lin2021minimizing' on page 1 undefined on input line 146.
+
+
+Package natbib Warning: Citation `lundquist2024volatility' on page 1 undefined on input line 146.
+
+[1
+
+{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
+
+Package natbib Warning: Citation `hendry1994theory' on page 2 undefined on input line 158.
+
+
+Package natbib Warning: Citation `clements1996intercept' on page 2 undefined on input line 158.
+
+
+Package natbib Warning: Citation `clements1998forecasting' on page 2 undefined on input line 158.
+
+
+Package natbib Warning: Citation `hendry1994theory' on page 2 undefined on input line 158.
+
+
+Package natbib Warning: Citation `hendry1994theory' on page 2 undefined on input line 158.
+
+
+Package natbib Warning: Citation `hendry1994theory' on page 2 undefined on input line 158.
+
+
+Package natbib Warning: Citation `castle2016overview' on page 2 undefined on input line 158.
+
+
+Package natbib Warning: Citation `hendry1994theory' on page 2 undefined on input line 162.
+
+
+Package natbib Warning: Citation `guerron2017macroeconomic' on page 2 undefined on input line 162.
+
+
+Package natbib Warning: Citation `lin2021minimizing' on page 2 undefined on input line 164.
+
+
+Package natbib Warning: Citation `lundquist2024volatility' on page 2 undefined on input line 164.
+
+
+LaTeX Warning: Reference `global_overview' on page 2 undefined on input line 166.
+
+
+Package natbib Warning: Citation `lin2021minimizing' on page 2 undefined on input line 168.
+
+
+Package natbib Warning: Citation `lundquist2024volatility' on page 2 undefined on input line 168.
+
+[2]
+
+Package natbib Warning: Citation `hendry1994theory' on page 3 undefined on input line 178.
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 178--179
 
  []
@@ -762,10 +833,37 @@ Underfull \hbox (badness 10000) in paragraph at lines 182--183
 
  []
 
+
+Package natbib Warning: Citation `hendry1994theory' on page 3 undefined on input line 184.
+
+
+Package natbib Warning: Citation `hendry1994theory' on page 3 undefined on input line 188.
+
+
+Package natbib Warning: Citation `lin2021minimizing' on page 3 undefined on input line 188.
+
+
+Package natbib Warning: Citation `clements2005evaluating' on page 3 undefined on input line 193.
+
 [3]
 Underfull \hbox (badness 10000) in paragraph at lines 208--209
 
  []
+
+
+Package natbib Warning: Citation `clements2005guest' on page 4 undefined on input line 210.
+
+
+Package natbib Warning: Citation `castle2013forecasting' on page 4 undefined on input line 210.
+
+
+Package natbib Warning: Citation `rossi2021forecasting' on page 4 undefined on input line 210.
+
+
+Package natbib Warning: Citation `castle2016overview' on page 4 undefined on input line 213.
+
+
+Package natbib Warning: Citation `hendry2004pooling' on page 4 undefined on input line 215.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 217--218
@@ -778,45 +876,138 @@ Underfull \hbox (badness 10000) in paragraph at lines 219--220
  []
 
 [4]
-<simulation_plots/motivating_piece_convex_combination.png, id=232, 1226.5825pt x 985.6825pt>
+
+Package natbib Warning: Citation `lundquist2024volatility' on page 5 undefined on input line 232.
+
+
+LaTeX Warning: Reference `fig:motivating_piece_convex_combination' on page 5 undefined on input line 236.
+
+
+Package natbib Warning: Citation `lundquist2024volatility' on page 5 undefined on input line 236.
+
+
+Package natbib Warning: Citation `castle2011forecasting' on page 5 undefined on input line 238.
+
+<simulation_plots/motivating_piece_convex_combination.png, id=51, 1226.5825pt x 985.6825pt>
 File: simulation_plots/motivating_piece_convex_combination.png Graphic file (type png)
 <use simulation_plots/motivating_piece_convex_combination.png>
 Package pdftex.def Info: simulation_plots/motivating_piece_convex_combination.png  used on input line 245.
 (pdftex.def)             Requested size: 498.66258pt x 400.71829pt.
 
-
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[5] [6 <./simulation_plots/motivating_piece_convex_combination.png>] [7] [8] [9] [10]
-<real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png, id=314, 803.0pt x 602.25pt>
+[5] [6 <./simulation_plots/motivating_piece_convex_combination.png>]
+
+LaTeX Warning: Reference `Setting' on page 7 undefined on input line 290.
+
+
+Package natbib Warning: Citation `lin2021minimizing' on page 7 undefined on input line 306.
+
+
+Package natbib Warning: Citation `foroni2022forecasting' on page 7 undefined on input line 311.
+
+
+Package natbib Warning: Citation `croushore1993introducing' on page 7 undefined on input line 311.
+
+[7]
+
+LaTeX Warning: Reference `Setting' on page 8 undefined on input line 321.
+
+
+Package natbib Warning: Citation `lin2021minimizing' on page 8 undefined on input line 329.
+
+
+Package natbib Warning: Citation `lundquist2024volatility' on page 8 undefined on input line 329.
+
+
+Package natbib Warning: Citation `lin2021minimizing' on page 8 undefined on input line 333.
+
+
+Package natbib Warning: Citation `lundquist2024volatility' on page 8 undefined on input line 333.
+
+[8]
+
+LaTeX Warning: Reference `core_specification' on page 9 undefined on input line 345.
+
+
+Package natbib Warning: Citation `lin2021minimizing' on page 9 undefined on input line 352.
+
+
+Package natbib Warning: Citation `lin2021minimizing' on page 9 undefined on input line 363.
+
+[9]
+
+Package natbib Warning: Citation `lin2021minimizing' on page 10 undefined on input line 369.
+
+
+Package natbib Warning: Citation `lundquist2024volatility' on page 10 undefined on input line 369.
+
+
+Package natbib Warning: Citation `francq2019garch' on page 10 undefined on input line 369.
+
+
+Package natbib Warning: Citation `lundquist2024volatility' on page 10 undefined on input line 371.
+
+
+Package natbib Warning: Citation `corsi2009simple' on page 10 undefined on input line 375.
+
+<real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png, id=100, 803.0pt x 602.25pt>
 File: real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png Graphic file (type png)
 <use real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png>
 Package pdftex.def Info: real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png  used on input line 385.
 (pdftex.def)             Requested size: 321.1943pt x 240.89572pt.
 
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Package natbib Warning: Citation `lin2021minimizing' on page 10 undefined on input line 395.
+
+[10]
+
+Package natbib Warning: Citation `Brownlee_2022' on page 11 undefined on input line 397.
+
+
+Package natbib Warning: Citation `lin2021minimizing' on page 11 undefined on input line 411.
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 411--412
 
  []
 
-[11 <./real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png>]
+
+Package natbib Warning: Citation `lin2021minimizing' on page 11 undefined on input line 419.
+
+
+Package natbib Warning: Citation `clements1998forecasting' on page 11 undefined on input line 419.
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 419--420
 
  []
+
+
+Package natbib Warning: Citation `lundquist2024volatility' on page 11 undefined on input line 422.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 422--423
 
  []
 
-
+[11 <./real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 442--443
 
  []
 
 
+Package natbib Warning: Citation `lundquist2024volatility' on page 12 undefined on input line 452.
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 452--453
 
  []
+
+
+Package natbib Warning: Citation `lundquist2024volatility' on page 12 undefined on input line 454.
 
 [12] [13] (./unifying_forecast_adjustment.bbl
 Underfull \hbox (badness 10000) in paragraph at lines 9--12
@@ -828,28 +1019,50 @@ Underfull \hbox (badness 10000) in paragraph at lines 9--12
 \OT1/cmr/m/n/10.95 python with keras, Aug 2022.  URL [][]$\OT1/cmtt/m/n/10.95 https : / / machinelearningmastery . com /
  []
 
-) [14
+)
 
-] (./unifying_forecast_adjustment.aux)
+Package natbib Warning: There were undefined citations.
+
+[14
+
+] (./unifying_forecast_adjustment.aux
+
+Package natbib Warning: Citation(s) may have changed.
+(natbib)                Rerun to get citations correct.
+
+)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
-Package rerunfilecheck Info: File `unifying_forecast_adjustment.out' has not changed.
-(rerunfilecheck)             Checksum: 5C7FEA8FA9BAAC9DC058D4ACFE406004;7225.
+
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `unifying_forecast_adjustment.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `unifying_forecast_adjustment.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  5C7FEA8FA9BAAC9DC058D4ACFE406004;7225.
  ) 
 Here is how much of TeX's memory you used:
- 25963 strings out of 474116
- 475354 string characters out of 5743682
+ 25926 strings out of 474116
+ 474616 string characters out of 5743682
  1942187 words of memory out of 5000000
- 47787 multiletter control sequences out of 15000+600000
+ 47756 multiletter control sequences out of 15000+600000
  575424 words of font info for 98 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,16n,87p,1753b,753s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,16n,87p,1755b,753s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on unifying_forecast_adjustment.pdf (14 pages, 465172 bytes).
+Output written on unifying_forecast_adjustment.pdf (14 pages, 430475 bytes).
 PDF statistics:
- 478 PDF objects out of 1000 (max. 8388607)
+ 282 PDF objects out of 1000 (max. 8388607)
  86 named destinations out of 1000 (max. 500000)
- 247 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 23 words of extra memory for PDF output out of 10000 (max. 10000000)
 
