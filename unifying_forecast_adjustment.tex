@@ -151,9 +151,7 @@
 
 For various modeling and prediction tasks in time series and panel data, the salient challenge is not predicting when an event will occur but what its key properties will be.  In the familiar case of scalar time series, those properties can include the time series' post-event direction, magnitude of change, moments, duration of the event, and correlation structure, all over an arbitrary horizon or perhaps multiple horizons. This is not to say that predicting the arrival of an event is easy. In some cases, it may be difficult or impossible, or the event might not be conceivable to many before it happens, as was the case with the COVID-19 pandemic.  There, reacting sensibly to a shock or structural change may best one can hope for. 
 
-Herein we attempt to unify a range of conceptual approaches that have developed across the broad ecosystem of the econometric and forecasting literatures.  We attempt to bring these approaches under the umbrella of Similarity-based Parameter Correction.  Additionally, we delineate a specific type of SPC called post-shock forecasting, which is induced by nuanced and interesting choices that fall under the general SPC framework.  In particular, this work focuses on model adjustment amid structural shocks that undermine the reliability of the  model at hand.  
-
-Forecasting under shocks raises unavoidable questions: should the forecast model be abandoned in favor of a discretionary or ad-hoc or one-off adjustment?  Does the does the discretion of a forecaster rule out a quantitative method for making the adjustment?  What is the ultimate purpose of the adjustment, and how it is to be used?  For how long is the adjustment necessary or reliable?
+Herein we attempt to unify a range of conceptual approaches that have developed across the broad ecosystem of the econometric and forecasting literatures.  We attempt to bring these approaches under the umbrella of Similarity-based Parameter Correction.  Additionally, we delineate a specific type of SPC called post-shock forecasting, which is induced by nuanced and interesting choices that fall under the general SPC framework.  In particular, this work focuses on model adjustment amid news shocks that undermine the reliability of the  model at hand.  Forecasting under shocks raises unavoidable questions: should the forecast model be abandoned in favor of a discretionary or ad-hoc or one-off adjustment?  Does the does the discretion of a forecaster rule out a quantitative method for making the adjustment?  What is the ultimate purpose of the adjustment, and how it is to be used?  For how long is the adjustment necessary or reliable?
 
 Forecast model adjustment, known most widely perhaps by the term intercept-correction, has received the most attention in several articles and book chapters \citep{hendry1994theory,clements1996intercept,clements1998forecasting}.  Of special importance is the distinction between discretionary and automated intercepts corrections. \cite{hendry1994theory} define scalar intercept corrections to be automated when they follow the simple rule of adding an estimation or prediction residual $e_{t}$ to subsequent (possibly but not necessarily all) forecasts $\hat f_{t+1},\hat f_{t+2},...$.  This procedure can colloquially referred to as ``\textit{setting the model back on track}" \citep{hendry1994theory}.  In \cite{hendry1994theory}, after recounting the bipartite division of interception corrections in discretionary and automated varieties, the authors present a six-way taxonomy of information that a modeler possesses at the time a forecast is made.  The authors also consider structural change in the data-generating process during the forecast period, including as early as the first point in the forecast period (specifically in the autoregressive structure), as well as what is for them the more interesting case: structural change between $T^{*}-1$ and $T^{*}$.  This current work finds both cases interesting.  What if we could predict well the intercept shift that occurs between $T^{*}$ and $T^{*}+1$?  In \cite{castle2016overview}, the authors list six necessary conditions for reacting to what we in this current paper call a news shock.  Of greatest interest to us are two of the six: ``the forecasting model already
 embodies that source of information" and ``there is an operational method for selecting
@@ -181,7 +179,7 @@ In \cite[p. 177]{hendry1994theory}, the ``most obvious and best understood ratio
 
 Would we ever want to intercept-correct an unconditional forecast as opposed to the conditional?\\
 
-\cite[p. 170-1]{hendry1994theory} recall how unconditional forecasts can have lower forecast variance than conditional forecasts.
+\cite[p. 170-1]{hendry1994theory} recall how unconditional forecasts can have lower forecast variance than conditional forecasts.  There seems to be two different questions that we should distinguish: we forecast would minimize the conditional expectation of MSE, and what forecast would have the lowest variance.
 
 \subsubsection{Mismeasured data}
 
@@ -200,8 +198,7 @@ Evaluating a Model by Forecast Performance \cite{clements2005evaluating}
   \item in-sample fixed coefficients versus continuous updating
 \end{enumerate}
 
-Here is the argument: if we are going to judge a model by forecast performance, we need to entertain the possibility that the model may breakdown and that our pre-breakdown-based criteria for model performance will be invalidated. \textcolor{red}{Here is how that matters for this paper: if you have a family of models estimated used a Gaussian loss function, and the post-shock residuals are not conditionally Gaussian (e.g. they could be conditionally Cauchy), then why even start with the default forecasting function?  Why not throw it out entirely?}
-
+Here is the argument: if we are going to judge a model by forecast performance, we need to entertain the possibility that the model may breakdown and that our pre-breakdown-based criteria for model performance will be invalidated. \textcolor{red}{Here is how that matters for this paper: if you have a family of models estimated used a Gaussian loss function, and the post-shock residuals are not conditionally Gaussian (e.g. they could be conditionally Cauchy), then why even start with the default forecasting function?  Why not throw it out entirely?  If only the distribution of the innovations changes, then would that even matter for a forecast that is purely concerned with the conditional mean?}
 
 \subsection{Forecasting Under Shocks}
 
@@ -209,10 +206,9 @@ This section will absolutely need to draw on \cite{castle2011forecasting} for th
 \begin{enumerate}
   \item Necessary conditions for forecasting a break - do I agree with them?
   \item Five kinds of available information - section 4 Available information
-  \item Distinction between normal forces and unusual forces 
+  \item Distinction between regular forces J and its complement, K 
   \item ``forecasting facing a shift in the intercept of a model of a variable y induced by another observable variable z;'' --- essentially, this is what we do in \cite{lundquist2024volatility} except z is not quantitative.
 \end{enumerate}
-
 
 In \cite{clements2005guest} (cited in \cite{castle2013forecasting}), the authors note that when forecasts fail, it often has to do with location (i.e. intercept shifts), and therefore using additional information is not likely to help unless it can address potential location shifts.  \cite{rossi2021forecasting} says that breaks in a model's parameters are not necessary or sufficient to generate time variation in forecasting performance.  
 
@@ -289,9 +285,9 @@ where $F$ maps objects from the past into future objects of $y_{i,t}$, and $\eps
 with $k\geq1$ and $a_{i,t}, y_{i,t}$ supported on $\mathbb{R}^{+}$.  The term $\x^{T}_{i,t}\lambda_{t}$ will be deemed the $\textit{correction term}$, and the function
 
 \begin{align*}
-  \xi \colon \mathcal{F}_{2,t} \times \ldots \mathcal{F}_{n+1, t} &\to \mathbb{C}\\
+  \xi \colon \mathcal{F}_{2,T^{*}_{2}} \times \ldots \times \mathcal{F}_{n+1, T^{*}_{n+1}} &\to \mathcal{F}_{1,T^{*}_{1}+h}\\
 \end{align*}
-that estimates or predicts $\x^{T}_{1,t}\lambda_{t}$ will be deemed the \textit{correction function}.  The correction function maps observable, deterministic events and unobservable events into a space so that something might be learned about $\lambda_{t}$.  If $\x_{i,t}$ were not observable or not deterministic with respect to $\mathcal{F}_{t-1}$, then the correction term would represent an additional error term (not necessarily idiosyncratic).
+that estimates or predicts $\x^{T}_{1,T^{*}+h}\lambda_{T^{*}+h}$ will be deemed the \textit{correction function}.  The correction function maps observable, deterministic events and unobservable events into a space so that something might be learned about $\lambda_{t}$.  If $\x_{i,t}$ were not observable or not deterministic with respect to $\mathcal{F}_{t-1}$, then the correction term would represent an additional error term (not necessarily idiosyncratic).
 
 We require that each time series $\y_{i,t}$ is subject to an observed news event following $T^*_i \leq T_{i} + 1$ and before witnessing $T^*_i+1$.  The reasons for this represent the heart and soul of the framework proposed.  We are not proposing a method to correct for unanticipated shocks that have been reflected in the observed data.  Instead, we are proposing a method to correct for shocks for which the qualitative kernel of information is known and the observed quantitative instantiation of that which is not yet known. 
 
@@ -303,15 +299,15 @@ So far we have reviewed a long and rich literature about model adjustment, and w
 We now present two one-step-ahead forecasts for the time series under study. The first is the unadjusted forecast. The second is the adjusted forecast, which differs by the predicted correction term.  These forecasts are: 
 
 \begin{align*}
-  \text{Forecast 1: } 
-   \hat y_{unadjusted, T_{1}^{*}+1} &= \hat\E[\mathcal{F}_{T_{1}^{*}}] \\
-  \text{Forecast 2: } 
-   \hat y_{adjusted,T_{1}^{*}+1}  &= \hat\E[\mathcal{F}_{T_{1}^{*}}] + \hat\omega^{*} \text{ .}
+  \text{Forecast 1: }& 
+   \hat y_{unadjusted, T_{1}^{*}+1} = \hat\E[\mathcal{F}_{T_{1}^{*}}] \\
+  \text{Forecast 2: }&
+   \hat y_{adjusted,T_{1}^{*}+1} = \hat\E[\mathcal{F}_{T_{1}^{*}}] + \hat\omega^{*} \text{ .}
 \end{align*}
    
-    The problem of aggregating shocks or residuals begins with the data constraints.  Let us first introduce useful notation.  Let $\hat\omega^{*}_{i,*}$ denote predicted correction term for donor $i$.   Taking the prediction correction terms as a given, we observe the tuple of information $(\{\hat\omega^{*}_{i,*}\}^{n+1}_{i=2}, additional information)$ that is the extracted residuals as well as information important to aggregation.  
+    The problem of aggregating shocks or residuals begins with the data constraints.  Let us first introduce useful notation.  Let $\hat\omega^{*}_{i,*}$ denote estimated correction term for donor $i$.   Taking the estimated correction terms as a given, we observe the tuple of information $(\{\hat\omega^{*}_{i,*}\}^{n+1}_{i=2}, \mathcal{F}_{2,T^{*}_{2}}\times \ldots \times \mathcal{F}_{n+1,T^{*}_{n+1}}\})$ that is the extracted residuals as well as information important to aggregation.  
     
-  One such idea comes from \cite{lin2021minimizing}, which weights belonging to the simplex, $\{\weight_{i}\}^{n+1}_{i=2} \in \Delta^{n}$, are chosen via a distance-based weighting procedure.
+  One such idea comes from \cite{lin2021minimizing}, where weights belonging to the simplex, $\{\weight_{i}\}^{n+1}_{i=2} \in \Delta^{n-1}$, are chosen via a distance-based weighting procedure, resulting in the correction function 
 
 \begin{align*} \label{adjustment}
 	  \hat\omega^{*} = \sum^{n+1}_{i=2}\weight_{i}\hat\omega^{*}_{i,*},
@@ -319,9 +315,8 @@ We now present two one-step-ahead forecasts for the time series under study. The
 which is just one way among many to build a correction function.  Another interesting correction function can be found in \cite{foroni2022forecasting}.  For yet another example, consider a correction function that aggregates survey panel of forecasts by the Survey of Professional Forecasts \citep{croushore1993introducing}.  An obvious advantage of human forecasters is that they are able to integrate information revealed arbitrarily close to the scheduled release of the forecast, even if human forecaster's lack of systematicity or closed-form forecasts, for example, leads to non-optimal forecast performance in general.  By calculating forecast differences between the low-frequency information forecast, $\tau_{i,t}= \hat{y}_{unadjusted,t}-\hat{y}_{ i,t}$, we prepare ourselves for late-breaking events -- e.g. shocks -- for which we might want a correction function
 
 \begin{align*}
-\xi \colon \boldsymbol{\tau} &\to \mathbb{C}\\
+\xi \colon \boldsymbol{\tau} &\to \mathcal{F}_{1, T^{*}_{1}} \\
 \end{align*}
-
 that weights the $i$-th forecaster according to that forecaster's past performance or according to the similarity of the forecaster's stated information set to the information available for the default forecasting model.
 
 \section{Model Adjustment Using Similarity-Based Parameter Correction: A Global Overview}\label{global_overview}
@@ -365,7 +360,7 @@ We begin our recounting of model-specific cases by recalling \cite{lin2021minimi
 which can be understood as an AR(p) with time-varying coefficients.  The mean squared-error of the forecast above, i.e.
 
 \begin{align}
-  \E[(y_{t}-\hat{y}_{t})^{2}] &= \E[(y_{t} - \hat\mu + \sum^{pui}_{i=1}\hat\rho_{i}y_{t-i} + \hat{\alpha}_{t})^{2}]\\
+  \E[(y_{t}-\hat{y}_{t})^{2}] &= \E[(y_{t} - \hat\mu + \sum^{p}_{i=1}\hat\rho_{i}y_{t-i} + \hat{\alpha}_{t})^{2}]\\
   &= \E[(\mu + \sum^{p}_{i=1}\rho_{i}y_{t-i} + \alpha_{t} - \hat\mu + \sum^{p}_{i=1}\hat\rho_{i}y_{t-i} + \hat{\alpha}_{t})^{2}] 
   \end{align}
 admits of the typical bias-variance decomposition, with the special proviso that with more terms in the prediction function, more covariance terms arise.  Similarly, the covariance structure of the random effects in $\alpha = \x_{t}^{T}\lambda_{t}$ will contribute to the variance.  In the real-data examples \cite{lin2021minimizing}, the entries in $\lambda_{t}$ are proxies of general market risk, which one would commonly take to be correlated not only with each other but also with a financial time series $y_{t}$.  All of this is to say that control of the MSE may require tight control of the variance in the prediction function, which in turn will gesture in the direction of a sparse $\hat\alpha_{t}$.
@@ -450,6 +445,7 @@ Cases:
 bias-variance tradeoff and MSE decomposition\\
 
 \begin{itemize}
+  \item Forecast for series besides the mean or conditional mean \textcolor{red}{If you have a family of models estimated used a Gaussian loss function, and the post-shock residuals are not conditionally Gaussian (e.g. they could be conditionally Cauchy), then why even start with the default forecasting function?  Why not throw it out entirely?  If only the distribution of the innovations changes, then would that even matter for a forecast that is purely concerned with the conditional mean?}
   \item Function forecasts
   \item Binary Outcome Forecasts
   \item Density Forecasts
