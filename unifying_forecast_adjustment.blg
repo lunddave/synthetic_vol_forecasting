@@ -3,10 +3,6 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: unifying_forecast_adjustment.aux
 The style file: plainnat.bst
 Database file #1: unifying.bib
-Repeated entry---line 720 of file unifying.bib
- : @article{rossi2021forecasting
- :                              ,
-I'm skipping whatever remains of this entry
 Warning--empty journal in castle2011forecasting
 Warning--empty journal in guerron2017macroeconomic
 Warning--empty journal in hendry1994theory
@@ -51,4 +47,4 @@ warning$ -- 3
 while$ -- 73
 width$ -- 0
 write$ -- 230
-(There was 1 error message)
+(There were 3 warnings)

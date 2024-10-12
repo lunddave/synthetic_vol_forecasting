@@ -192,7 +192,6 @@ Mismeasured data is discussed in \cite[p. 166]{hendry1994theory} as a motivator 
 Part of the reason for correcting a model springs from the way we evaluate model performance.
 Evaluating a Model by Forecast Performance \cite{clements2005evaluating}
 \begin{enumerate}
-
   \item   unconditional versus conditional, models;
   \item internal versus external standards;
   \item checking constancy versus adventitious significance;
@@ -201,22 +200,30 @@ Evaluating a Model by Forecast Performance \cite{clements2005evaluating}
   \item in-sample fixed coefficients versus continuous updating
 \end{enumerate}
 
-Here is the argument: if we are going to judge a model by forecast performance, we need to entertain the possibility that the model may breakdown and that our pre-breakdown-based criteria for model performance will be invalidated. \textcolor{red}{Here is how that mattters for this paper: if you have a family of models estimated used a Gaussian loss function, and the post-shock residuals are not conditionally Gaussian (e.g. they could be conditionally Cauchy), then why even start with the default forecasting function?  Why not throw it out entirely?}
+Here is the argument: if we are going to judge a model by forecast performance, we need to entertain the possibility that the model may breakdown and that our pre-breakdown-based criteria for model performance will be invalidated. \textcolor{red}{Here is how that matters for this paper: if you have a family of models estimated used a Gaussian loss function, and the post-shock residuals are not conditionally Gaussian (e.g. they could be conditionally Cauchy), then why even start with the default forecasting function?  Why not throw it out entirely?}
 
-\subsection{Forecasting Using Outside Information}\label{outside_info}
+
+\subsection{Forecasting Under Shocks}
+
+This section will absolutely need to draw on \cite{castle2011forecasting} for the following reasons:
+\begin{enumerate}
+  \item Necessary conditions for forecasting a break - do I agree with them?
+  \item Five kinds of available information - section 4 Available information
+  \item Distinction between normal forces and unusual forces 
+  \item ``forecasting facing a shift in the intercept of a model of a variable y induced by another observable variable z;'' --- essentially, this is what we do in \cite{lundquist2024volatility} except z is not quantitative.
+\end{enumerate}
 
 When is more information better?  That is a central question with regard to forecasting.\\
 
-In \cite{clements2005guest} (cited in \cite{castle2013forecasting}), the authors note that when forecasts fail, it often has to do with location (i.e. intercept shifts), and therefore using additional information is not likely to help unless it can address potential location shifts.  \cite{rossi2021forecasting} says that breaks in a model's parameters are not necessary or sufficient to generate time variation in forecasting performance.  They also note
-
+In \cite{clements2005guest} (cited in \cite{castle2013forecasting}), the authors note that when forecasts fail, it often has to do with location (i.e. intercept shifts), and therefore using additional information is not likely to help unless it can address potential location shifts.  \cite{rossi2021forecasting} says that breaks in a model's parameters are not necessary or sufficient to generate time variation in forecasting performance.  
 
 In \cite{castle2016overview}
 
 \cite{hendry2004pooling} discuss that intercept correction can improve forecasts under structural breaks as well as under ``deterministic misspecification'', by which they mean misspecification not caused by stochastic events like location shifts.  The same two justifications exist for SPC: we can use SPC when we know there to be a structural break, and we can also use it when we know our model is wrong and want to correct a parameter for some critical forecasting task.
 
-Incorporation of Outside Information is the Norm, Not the Exception. \\ 
-
+\subsection{Forecasting Using Outside Information}\label{outside_info}
 A question to ask is, under a shock, should we avail ourselves of additional internal information or external information?\\
+Incorporation of Outside Information is the Norm, Not the Exception. \\ 
 
 ARMA models and other models that model the future as a function of only the past values and past innovations of the series itself are well-known to be unrealistic as a data-generating processes.  They are also well-known to be poor predictors of the future.  What we are doing here is therefore not out of the ordinary but distinct in at least two ways: (1) we are incorporating outside information faster, and (2) we are proposing a principled, systematic way to do it that defies that curse of dimensionality.  If one wanted to forecast using linear models and high-dimensional information set, then some kind of method for reducing model complexity would be required.  We avoid that.
 
