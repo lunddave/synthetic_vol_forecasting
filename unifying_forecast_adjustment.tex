@@ -233,7 +233,8 @@ Quantitative ways of determining similarity include matching a target object to 
 
 Asymmetric distance functions (which are of course not metrics) are useful when we want to explore differences between donors and weight different contributors to that function differently.
 
-What about qualitative ways of determining similarity?  In \cite{lundquist2024volatility}, donors are identified by matching the qualitative aspects of the shock in the time series under study to shocks previously witnessed in other series.  Only after the donor pool has been identified based on qualitative facts about the shocks is there a role for quantative tools.
+What about qualitative ways of determining similarity?  In \cite{lundquist2024volatility}, donors are identified by matching the qualitative aspects of the shock in the time series under study to shocks previously witnessed in other series.  Only after the donor pool has been identified based on qualitative facts about the shocks is there a role for quantative tools.  For a review of more recent work in similarity-based forecasting, we refer the reader to \cite{lundquist2024volatility}.
+
 
 \section{Setting}\label{Setting}
 
@@ -337,7 +338,7 @@ Notice that we did not say \textit{parametric} specification.  The reason for th
 
 This might not always be straightforward.  Some models like GARCH, for example, might deliver very noisy estimates for indicator variables that occur just once.
 
-\item \textbf{Reliable Correction Function Estimation} There must exist a correction function (presumably based on the correction term) that maps data from the donor pool to the $\textit{predicted}$ correction term in the time series under study based on some notion of similarity.  It could depend upon external covariates and/or include the weighting applied to the assembled data (e.g. Nearest-Neighbor, arithmetic mean, kernel methods).
+\item \textbf{Reliable Correction Function Estimation} There must exist a correction function (presumably based on the correction term) that maps data from the donor pool to the $\textit{predicted}$ correction term in the time series under study based on some notion of similarity.  In some cases, there may exist a posited DGP that the correction term estimates.  In other cases, there may be no posited GDP.  Similarly, if there exists a posited DGP for the correction term, it may depend upon data internal to the time series under study, or it may depend on external data, e.g. outside data could be aggregated (e.g. Nearest-Neighbor, arithmetic mean, kernel methods) to estimate the correction function.
 
 \end{enumerate}
 
