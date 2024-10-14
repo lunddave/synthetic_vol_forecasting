@@ -1,4 +1,4 @@
-\begin{thebibliography}{18}
+\begin{thebibliography}{19}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -64,6 +64,11 @@ Claudia Foroni, Massimiliano Marcellino, and Dalibor Stevanovic.
 Christian Francq and Jean-Michel Zakoian.
 \newblock \emph{GARCH models: structure, statistical inference and financial applications}.
 \newblock John Wiley \& Sons, 2019.
+
+\bibitem[Garg et~al.(2015)Garg, Enright, and Madden]{garg2015asymmetric}
+Ankita Garg, Catherine~G Enright, and Michael~G Madden.
+\newblock On asymmetric similarity search.
+\newblock In \emph{2015 IEEE 14th international conference on machine learning and applications (ICMLA)}, pages 649--654. IEEE, 2015.
 
 \bibitem[Guerr{\'o}n-Quintana and Zhong(2017)]{guerron2017macroeconomic}
 Pablo Guerr{\'o}n-Quintana and Molin Zhong.
