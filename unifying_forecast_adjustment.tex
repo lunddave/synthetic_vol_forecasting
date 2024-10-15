@@ -362,18 +362,26 @@ What about qualitative ways of determining similarity?  In \cite{lundquist2024vo
 % \end{forest}
 
 %https://tex.stackexchange.com/questions/226435/reducing-forest-tree-width-without-squashing
+\begin{figure} 
+  \centering  
 \resizebox{\textwidth}{!}{%
 \begin{forest}
+  /tikz/every node/.append style={font=\Large},
   for tree={
-    l sep=.4cm,
-    s sep=5.2cm,
-    minimum height=2.8cm,
-    minimum width=2cm,
+    rounded corners, 
+    top color=gray!5, bottom color=gray!30, 
+    edge+={darkgray, line width=5pt}, 
+    draw=darkgray, 
+    %align=center, 
+    l sep=1.9cm,
+    s sep=1.2cm,
+    minimum height=6.8cm,
+    minimum width=4cm,
     child anchor=west,
     parent anchor=east,
     grow'=east,
   %minimum size=1cm,%new possibility
-  text width=3cm,%
+  text width=5cm,%
     draw,
     anchor=west,
     edge path={
@@ -382,26 +390,25 @@ What about qualitative ways of determining similarity?  In \cite{lundquist2024vo
         (!u.parent anchor)\forestoption{edge label};
     },
   }
-    [Is there a break in the DGP between T* and T*+1?
-        [Do you have information outside of the “regular forces” \citep{castle2011forecasting}, %breaking news or high-frequency data, e.g. Google Trends data?
-            [Can we use the info outside “regular forces” to forecast (as opposed to merely spotting the break)?
-                [Do you have a parametric model for how info outside of ``regular forces” will figure at T* + h?
-                  % [What other time series have been governed by that parametric model, and how can we extract information from them?  Which other series are most relevant or most similar?  How do we determine similarity – quant or qual?  Once you know what’s similar, how do you use that?
-                  % ]
-                  % [The info that helped you spot the break can be used to assemble series that have experienced breaks under similar circumstances.  The forecast residuals or losses from those then provide a basement for model adjustment for the time series under study.  Without a parametric model, your options are limited but not empty.  With appropriate assumptions on the DGP pre-break and post-break, assumptions on the forecast functions and misses, we can still do things like aggregate residuals and bound forecast loss.]
-                  [some extra]
-                  [some extra again]
+    [Break in the DGP between $T^{*}$ and $T^{*}+1$?, 
+        [Information outside of “regular forces” \citep{castle2011forecasting},edge=green %,draw=green
+            [Can we use the information outside “regular forces” to forecast (as opposed to merely spotting the break)?,edge=green
+                [Do you have a parametric model for how info outside of ``regular forces” will figure at T* + h?,edge=green
+                  [What other time series have been governed by that parametric model,edge=green]
+                  [The info that helped you spot the break can be used to assemble series that have experienced breaks under similar circumstances.,edge=red]
+                  ]
+                [No problem. Use “regular forces” to do the model adjustment for the post-break period.  Examples of this would include refitting one’s data to use Markov-switching models – i.e. using only the series itself.,edge=red
                 ]
-                [No problem. Use “regular forces” to do the model adjustment for the post-break period.  Examples of this would include refitting one’s data to use Markov-switching models – i.e. using only the series itself.
                 ]
+                [Then at least one post-break data point must be observed.,edge=red]
             ]
-            [Then at least one post-break data point must be observed.
+            [\cite{clements1998forecasting} talk about this a lot,edge=red]
             ]
         ]
-        [\cite{clements1998forecasting} talk about this a lot]
     ]
 \end{forest}
-}%
+}\caption{Forecast Model Adjustment: A Decision Tree}\label{fig:tree}
+\end{figure}
 
 
 \section{Setting}\label{Setting}

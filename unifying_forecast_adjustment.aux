@@ -38,46 +38,48 @@
 \newlabel{outside_info}{{1.3}{4}{Forecasting Using Outside Information}{subsection.1.3}{}}
 \citation{lundquist2024volatility}
 \citation{castle2011forecasting}
-\@writefile{toc}{\contentsline {section}{\numberline {2}Setting}{6}{section.2}\protected@file@percent }
-\newlabel{Setting}{{2}{6}{Setting}{section.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Formal Modeling Setup}{6}{subsection.2.1}\protected@file@percent }
-\newlabel{core_specification}{{1}{6}{Formal Modeling Setup}{equation.2.1}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces The simulated time series experiences a volatility shock between trading days 1,656 and 1,657. The GARCH prediction, in red, fails even to approach the volatility spike at $T^{*}+1$, as do several adjusted predictions, which are orange. In contrast, the GARCH forecast adjusted by $\hat  \omega ^{*} = \DOTSB \sum@ \slimits@ ^{n+1}_{i=2}\pi _{i}\hat  \omega ^{*}_{i} $, a convex combination of the estimated shocks in the donor pool, achieves directional correctness as well as a smaller absolute loss in its prediction. The pink vertical line serves to indicate the adjustment of size $\hat  \omega ^{*}$ that allows the blue bullseye to approach more closely the ground truth.}}{7}{figure.caption.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Forecast Model Adjustment: A Decision Tree}}{5}{figure.caption.1}\protected@file@percent }
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{fig:motivating_piece_convex_combination}{{1}{7}{The simulated time series experiences a volatility shock between trading days 1,656 and 1,657. The GARCH prediction, in red, fails even to approach the volatility spike at $T^{*}+1$, as do several adjusted predictions, which are orange. In contrast, the GARCH forecast adjusted by $\hat \omega ^{*} = \sum ^{n+1}_{i=2}\pi _{i}\hat \omega ^{*}_{i} $, a convex combination of the estimated shocks in the donor pool, achieves directional correctness as well as a smaller absolute loss in its prediction. The pink vertical line serves to indicate the adjustment of size $\hat \omega ^{*}$ that allows the blue bullseye to approach more closely the ground truth}{figure.caption.1}{}}
+\newlabel{fig:tree}{{1}{5}{Forecast Model Adjustment: A Decision Tree}{figure.caption.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Setting}{5}{section.2}\protected@file@percent }
+\newlabel{Setting}{{2}{5}{Setting}{section.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Formal Modeling Setup}{6}{subsection.2.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces The simulated time series experiences a volatility shock between trading days 1,656 and 1,657. The GARCH prediction, in red, fails even to approach the volatility spike at $T^{*}+1$, as do several adjusted predictions, which are orange. In contrast, the GARCH forecast adjusted by $\hat  \omega ^{*} = \DOTSB \sum@ \slimits@ ^{n+1}_{i=2}\pi _{i}\hat  \omega ^{*}_{i} $, a convex combination of the estimated shocks in the donor pool, achieves directional correctness as well as a smaller absolute loss in its prediction. The pink vertical line serves to indicate the adjustment of size $\hat  \omega ^{*}$ that allows the blue bullseye to approach more closely the ground truth.}}{6}{figure.caption.2}\protected@file@percent }
+\newlabel{fig:motivating_piece_convex_combination}{{2}{6}{The simulated time series experiences a volatility shock between trading days 1,656 and 1,657. The GARCH prediction, in red, fails even to approach the volatility spike at $T^{*}+1$, as do several adjusted predictions, which are orange. In contrast, the GARCH forecast adjusted by $\hat \omega ^{*} = \sum ^{n+1}_{i=2}\pi _{i}\hat \omega ^{*}_{i} $, a convex combination of the estimated shocks in the donor pool, achieves directional correctness as well as a smaller absolute loss in its prediction. The pink vertical line serves to indicate the adjustment of size $\hat \omega ^{*}$ that allows the blue bullseye to approach more closely the ground truth}{figure.caption.2}{}}
+\newlabel{core_specification}{{1}{7}{Formal Modeling Setup}{equation.2.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Methodology for Similarity-based Parameter Correction}{7}{section.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Forecasting and Correction Functions}{7}{subsection.3.1}\protected@file@percent }
 \citation{lin2021minimizing}
 \citation{foroni2022forecasting}
 \citation{croushore1993introducing}
-\@writefile{toc}{\contentsline {section}{\numberline {3}Methodology for Similarity-based Parameter Correction}{8}{section.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Forecasting and Correction Functions}{8}{subsection.3.1}\protected@file@percent }
 \citation{lin2021minimizing,lundquist2024volatility}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Model Adjustment Using Similarity-Based Parameter Correction: A Global Overview}{8}{section.4}\protected@file@percent }
+\newlabel{global_overview}{{4}{8}{Model Adjustment Using Similarity-Based Parameter Correction: A Global Overview}{section.4}{}}
 \citation{lin2021minimizing,lundquist2024volatility}
-\@writefile{toc}{\contentsline {section}{\numberline {4}Model Adjustment Using Similarity-Based Parameter Correction: A Global Overview}{9}{section.4}\protected@file@percent }
-\newlabel{global_overview}{{4}{9}{Model Adjustment Using Similarity-Based Parameter Correction: A Global Overview}{section.4}{}}
 \citation{lin2021minimizing}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Formal Properties and Model-Specific Considerations}{9}{section.5}\protected@file@percent }
+\newlabel{special_cases}{{5}{9}{Formal Properties and Model-Specific Considerations}{section.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}ARIMA}{9}{subsection.5.1}\protected@file@percent }
 \citation{lin2021minimizing}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Formal Properties and Model-Specific Considerations}{10}{section.5}\protected@file@percent }
-\newlabel{special_cases}{{5}{10}{Formal Properties and Model-Specific Considerations}{section.5}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}ARIMA}{10}{subsection.5.1}\protected@file@percent }
-\newlabel{adjustment}{{3}{10}{ARIMA}{equation.5.3}{}}
 \citation{lin2021minimizing}
 \citation{lundquist2024volatility}
 \citation{francq2019garch}
+\newlabel{adjustment}{{3}{10}{ARIMA}{equation.5.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}GARCH}{10}{subsection.5.2}\protected@file@percent }
 \citation{lundquist2024volatility}
 \citation{corsi2009simple}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}HAR}{11}{subsection.5.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.3.1}A Real Data Application of Shock-Adjusted HAR Forecasting}{11}{subsubsection.5.3.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Over the course of the 2010s, the US FOMC began a rate-hiking cycle. Left pane: weights of the donor pool of FOMC meetings; right-pane: fixed effect estimates; right pane: the unadjusted forecast, adjusted forecast, and actual forecast}}{11}{figure.caption.3}\protected@file@percent }
+\newlabel{fig:six_plots}{{3}{11}{Over the course of the 2010s, the US FOMC began a rate-hiking cycle. Left pane: weights of the donor pool of FOMC meetings; right-pane: fixed effect estimates; right pane: the unadjusted forecast, adjusted forecast, and actual forecast}{figure.caption.3}{}}
 \citation{lin2021minimizing}
 \citation{Brownlee_2022}
 \citation{lin2021minimizing}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}GARCH}{11}{subsection.5.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}HAR}{11}{subsection.5.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.3.1}A Real Data Application of Shock-Adjusted HAR Forecasting}{11}{subsubsection.5.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}VAR}{11}{subsection.5.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.5}LSTM/GRU}{11}{subsection.5.5}\protected@file@percent }
 \citation{lin2021minimizing}
 \citation{clements1998forecasting}
 \citation{lundquist2024volatility}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Over the course of the 2010s, the US FOMC began a rate-hiking cycle. Left pane: weights of the donor pool of FOMC meetings; right-pane: fixed effect estimates; right pane: the unadjusted forecast, adjusted forecast, and actual forecast}}{12}{figure.caption.2}\protected@file@percent }
-\newlabel{fig:six_plots}{{2}{12}{Over the course of the 2010s, the US FOMC began a rate-hiking cycle. Left pane: weights of the donor pool of FOMC meetings; right-pane: fixed effect estimates; right pane: the unadjusted forecast, adjusted forecast, and actual forecast}{figure.caption.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}VAR}{12}{subsection.5.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5}LSTM/GRU}{12}{subsection.5.5}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.6}The Method of Multiple Shocks, Dual Shocks, and Shock-Partitioning}{12}{subsection.5.6}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {6}Discussion}{12}{section.6}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Shock propagation and estimation accuracy}{12}{subsection.6.1}\protected@file@percent }
@@ -87,11 +89,30 @@
 \@writefile{toc}{\contentsline {section}{\numberline {7}Extensions}{13}{section.7}\protected@file@percent }
 \newlabel{Extensions}{{7}{13}{Extensions}{section.7}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Forecast Combination}{13}{subsection.7.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Limitations}{13}{subsection.7.2}\protected@file@percent }
+\newlabel{Limitations}{{7.2}{13}{Limitations}{subsection.7.2}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {7.2.1}How important is a shared DGP?}{13}{subsubsection.7.2.1}\protected@file@percent }
 \citation{lin2021minimizing,lundquist2024volatility}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Limitations}{14}{subsection.7.2}\protected@file@percent }
-\newlabel{Limitations}{{7.2}{14}{Limitations}{subsection.7.2}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {7.2.1}How important is a shared DGP?}{14}{subsubsection.7.2.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {7.2.2}The assumption of a shared family can be relaxed in certain circumstances. For example, if a certain donor is not like the time series under study with respect to the covariates, then the lack of a shared family will not matter much.}{14}{subsubsection.7.2.2}\protected@file@percent }
 \bibstyle{plainnat}
 \bibdata{unifying.bib}
-\gdef \@abspage@last{14}
+\bibcite{Brownlee_2022}{{1}{2022}{{Brownlee}}{{}}}
+\bibcite{castle2011forecasting}{{2}{2011}{{Castle et~al.}}{{Castle, Fawcett, and Hendry}}}
+\bibcite{castle2013forecasting}{{3}{2013}{{Castle et~al.}}{{Castle, Clements, and Hendry}}}
+\bibcite{castle2016overview}{{4}{2016}{{Castle et~al.}}{{Castle, Clements, and Hendry}}}
+\bibcite{clements1998forecasting}{{5}{1998}{{Clements and Hendry}}{{}}}
+\bibcite{clements1996intercept}{{6}{1996}{{Clements and Hendry}}{{}}}
+\bibcite{clements2005evaluating}{{7}{2005{a}}{{Clements and Hendry}}{{}}}
+\bibcite{clements2005guest}{{8}{2005{b}}{{Clements and Hendry}}{{}}}
+\bibcite{corsi2009simple}{{9}{2009}{{Corsi}}{{}}}
+\bibcite{croushore1993introducing}{{10}{1993}{{Croushore}}{{}}}
+\bibcite{foroni2022forecasting}{{11}{2022}{{Foroni et~al.}}{{Foroni, Marcellino, and Stevanovic}}}
+\bibcite{francq2019garch}{{12}{2019}{{Francq and Zakoian}}{{}}}
+\bibcite{garg2015asymmetric}{{13}{2015}{{Garg et~al.}}{{Garg, Enright, and Madden}}}
+\bibcite{guerron2017macroeconomic}{{14}{2017}{{Guerr{\'o}n-Quintana and Zhong}}{{}}}
+\bibcite{hendry1994theory}{{15}{1994}{{Hendry and Clements}}{{}}}
+\bibcite{hendry2004pooling}{{16}{2004}{{Hendry and Clements}}{{}}}
+\bibcite{lin2021minimizing}{{17}{2021}{{Lin and Eck}}{{}}}
+\bibcite{lundquist2024volatility}{{18}{2024}{{Lundquist and Eck}}{{}}}
+\bibcite{rossi2021forecasting}{{19}{2021}{{Rossi}}{{}}}
+\gdef \@abspage@last{15}
