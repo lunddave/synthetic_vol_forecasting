@@ -14,6 +14,21 @@
 \usepackage[table,xcdraw,usenames]{xcolor}
 %\usepackage[usenames]{color}
 
+% \usepackage[pdftex,active,tightpage]{preview}
+% \setlength\PreviewBorder{2mm}
+
+\usepackage{tikz}
+
+% \usetikzlibrary{arrows,positioning, calc}
+% \tikzstyle{vertex}=[draw,fill=black!15,circle,minimum size=20pt,inner sep=0pt]
+
+\usetikzlibrary{trees}
+
+% \usepackage{tikz-qtree,showframe}
+
+\usepackage{forest}
+
+
 \usepackage{graphicx}
 \usepackage{subcaption}
 \usepackage{mathtools}
@@ -136,15 +151,14 @@ For various modeling and prediction tasks in time series and panel data, the sal
 
 Herein we attempt to unify a range of conceptual approaches to forecasting amid shocks that have developed across the broad ecosystem of the econometric and forecasting literatures.  We attempt to locate our main contribution, Similarity-based Parameter Correction, at the intersection of several important strands of thought.  Additionally, we delineate a specific type of SPC called post-shock forecasting, which is induced by nuanced and interesting choices that fall under the general SPC framework.  In particular, this work focuses on model adjustment amid news shocks that undermine the reliability of the  model at hand.  Forecasting under shocks raises unavoidable questions: should the forecast model be abandoned in favor of a discretionary or ad-hoc or one-off adjustment?  Does the does the discretion of a forecaster rule out a quantitative method for making the adjustment?  What is the ultimate purpose of the adjustment, and how it is to be used?  For how long is the adjustment necessary or reliable?
 
-Forecast model adjustment, known most widely perhaps by the term intercept-correction, has received the most attention in several articles and book chapters \citep{hendry1994theory,clements1996intercept,clements1998forecasting}.  Of special importance is the distinction between discretionary and automated intercepts corrections. \cite{hendry1994theory} define scalar intercept corrections to be automated when they follow the simple rule of adding an estimation or prediction residual $e_{t}$ to subsequent (possibly but not necessarily all) forecasts $\hat f_{t+1},\hat f_{t+2},[...].$.  ``\textit{[S]etting the model back on track}" is the informal label they provide for that procedure.  In \cite{hendry1994theory}, after recounting the bipartite division of interception corrections in discretionary and automated varieties, the authors present a six-way taxonomy of information that a modeler possesses at the time a forecast is made.  The authors also consider structural change in the data-generating process during the forecast period, including as early as the first point in the forecast period (specifically in the autoregressive structure), as well as what is for them the more interesting case: structural change between $T^{*}-1$ and $T^{*}$.  This current work finds both cases interesting.  What if we could predict well the intercept shift that occurs between $T^{*}$ and $T^{*}+1$?  In \cite{castle2016overview}, the authors list six necessary conditions for reacting to what we in this current paper call a news shock.  Of greatest interest to us are two of the six: ``the forecasting model already
-embodies that source of information" and ``there is an operational method for selecting
-an appropriate model".  The term intercept correction itself can be both a bit deceptive in limiting, in that it need not pertain to intercepts.  \cite{hendry1994theory} themselves note the possibility of correcting a coefficient in a forecast model specification \textcolor{red}{Find page number.}, and \cite{guerron2017macroeconomic} developed a similarity-based procedure for correcting $\beta$ using past information of the time series itself.   For a review of more recent work in similarity-based forecasting, we refer the reader to \cite{lundquist2024volatility}.
+Forecast model adjustment, known most widely perhaps by the term intercept-correction, has received the most attention in several articles and book chapters \citep{hendry1994theory,clements1996intercept,clements1998forecasting}.  Of special importance is the distinction between discretionary and automated intercepts corrections. \cite{hendry1994theory} define scalar intercept corrections to be automated when they follow the simple rule of adding an estimation or prediction residual $e_{t}$ to subsequent (possibly but not necessarily all) forecasts $\hat f_{t+1},\hat f_{t+2},[...].$.  ``\textit{[S]etting the model back on track}" is the informal label they provide for that procedure.  In \cite{hendry1994theory}, after recounting the bipartite division of interception corrections in discretionary and automated varieties, the authors present a six-way taxonomy of information that a modeler possesses at the time a forecast is made.  The authors also consider structural change in the data-generating process during the forecast period, including as early as the first point in the forecast period (specifically in the autoregressive structure), as well as what is for them the more interesting case: structural change between $T^{*}-1$ and $T^{*}$.  This current work finds both cases interesting.  The term intercept correction itself can be both a bit deceptive in limiting, in that it need not pertain to intercepts.  \cite{hendry1994theory} themselves note the possibility of correcting a coefficient in a forecast model specification, and \cite{guerron2017macroeconomic} developed a similarity-based procedure for correcting $\beta$ using past information of the time series itself.   For a review of more recent work in similarity-based forecasting, we refer the reader to \cite{lundquist2024volatility}.
 
-What if the break in the DGP is brought about by a very particular kind of event, a news shock?  For such cases, forecasting procedures have been explored in \cite{lin2021minimizing,lundquist2024volatility}, where the AR(1) and GARCH($m,s$) cases, respectively, are treated.  Both works target additive parameters in scalar time series, predicting those random effects by aggegating information from other time series.  The authors leave several stones unturned, including a more general, dare say comprehensive treatment of how to forecast under any sort of shock.
+What if the break in the DGP is brought about by a very particular kind of event, a news shock?   What if we could predict well the intercept shift that occurs between $T^{*}$ and $T^{*}+1$?  In \cite{castle2016overview}, the authors list six necessary conditions for reacting to what we in this current paper call a news shock.  Of greatest interest to us are two of the six: ``the forecasting model already embodies that source of information" and ``there is an operational method for selecting
+an appropriate model".   For such cases, forecasting procedures have been explored in \cite{lin2021minimizing,lundquist2024volatility}, where the AR(1) and GARCH($m,s$) cases, respectively, are treated.  Both works target additive parameters in scalar time series, predicting those random effects by aggegating information from other time series.  The authors leave several stones unturned, including a more general, dare say comprehensive treatment of how to forecast under any sort of shock.
 
 As the literature has developed, a current practitioner of forecast adjustment can choose between (i) procedures that are discretionary or automated, (ii) whether the data is internal (i.e. from the time series itself) or external, (iii) the term to be corrected (e.g. intercept, coefficients), if any, (iv) as well as the correction function (i.e. the mapping from the donor unit data to the correction term in the time series under study), including the weighting applied to the assembled data (e.g. Nearest-Neighbor, arithmetic mean, kernel methods).  We discuss this in depth in Section \ref{global_overview}.
 
-The procedure presented, post-shock forecasting, is a discretionary procedure for intercept correction that integrates data internal or external to the time series under study in a systematic manner.  The correction function uses an optimization step inspired by the causal inference literature.  Outside of \citet{lin2021minimizing,lundquist2024volatility}, we are not aware of prior work that both introduces a parametric specification for nonzero errors and introduces a procedure for weighting appropriately the nonzero errors of similar shocks occurring outside the time series under study.  We are also not familiar with any prior work that attempts to account for anticipated nonzero errors using an a parametric adjustment, i.e., a ``correction function''.  
+The procedure presented, post-shock forecasting, is a discretionary procedure for intercept correction that integrates data internal or external to the time series under study in a systematic manner.  The correction function uses the notion of similarity between breaks in different time series, it and borrows from the causal inference literature to aggregate information from those similar circumstances.  Beyond of \citet{lin2021minimizing,lundquist2024volatility}, we are not aware of prior work uses a parametric specification for nonzero errors as well as a method for aggregating similar shocks occurring outside the time series under study.
 
 The structure of this manuscript is as follows.  We first provide a review of several disparate time series literatures, including intercept correction, model-evaluation, and similarity-based forecasting.  We then provide a canonical setting in which we attempt to focus our work.  This setting will be presented at a level of generality that showcases the broad applicability of our method.  We then introduce the method from a global perspective, abstracting away from familiar applications.  We then show several specific applications, including novel applications that cannot be found elsewhere in the literature.  We close with a discussion, including possible extensions.
 
@@ -181,8 +195,6 @@ This section will absolutely need to draw on \cite{castle2011forecasting} for th
 
 In \cite{clements2005guest} (cited in \cite{castle2013forecasting}), the authors note that when forecasts fail, it often has to do with location (i.e. intercept shifts), and therefore using additional information is not likely to help unless it can address potential location shifts.  \cite{rossi2021forecasting} says that breaks in a model's parameters are not necessary or sufficient to generate time variation in forecasting performance.  
 
-In \cite{castle2016overview}
-
 \cite{hendry2004pooling} discuss that intercept correction can improve forecasts under structural breaks as well as under ``deterministic misspecification'', by which they mean misspecification not caused by stochastic events like location shifts.  The same two justifications exist for SPC: we can use SPC when we know there to be a structural break, and we can also use it when we know our model is wrong and want to correct a parameter for some critical forecasting task.
 
 \subsection{Forecasting Using Outside Information}\label{outside_info}
@@ -206,6 +218,190 @@ Quantitative ways of determining similarity include matching a target object to 
 Asymmetric distance functions (which are of course not metrics) are useful when we want to explore differences between donors and weight different contributors to that function differently.  Consider an asymmetric Jaccard Index $\delta_{\mathcal{J}}(\cdot,\cdot)$ that is maps from any two finite-cardinality sets to the interval $[0,1]$ \citep{garg2015asymmetric}.  So far, we have discussed only binary measures of similarity.  The distance-based weighting scheme found in \cite{lin2021minimizing} and repurposed in \cite{lundquist2024volatility} can be thought of as an $n$-ary similarity measure, where the $n$ weights means little in isolation but can tell a greater story when viewed alongside the approximation they produce.
 
 What about qualitative ways of determining similarity?  In \cite{lundquist2024volatility}, donors are identified by matching the qualitative aspects of the shock in the time series under study to shocks previously witnessed in other series.  Only after the donor pool has been identified based on qualitative facts about the shocks is there a role for quantative tools. 
+
+
+
+
+% \begin{preview}
+% \begin{tikzpicture}[very thick,level/.style={sibling distance=180 mm/#1}]
+% \node [vertex] (r){Forecast Model Adjustment}
+%   child {
+%     node [vertex] (a) {Break in the GDP at $T^{*}$}
+%     child {
+%       node [vertex] {$20$}
+%       child {
+%         node [vertex] {$-3$}
+%         child {node [vertex] {$17$}}
+%         child {node [vertex] {$5$}}
+%       }
+%       child {node [vertex] {$6$}}
+%     }
+%     child {
+%       node [vertex] {$3$}
+%       child {node [vertex] {$7$}}
+%       child {node [vertex] {$2$}}
+%     }
+%   }
+%   child {
+%     node [vertex] {Break in the GDP at $T^{*}$}
+%     child {
+%       node [vertex] {$8$}
+%       child {node [vertex] {$2$}}
+%     }
+%     child {
+%       node [vertex] {$11$}
+%       child {node [vertex] {$17$}}
+%       child {node [vertex] {$-4$}}
+%     }
+%   };
+% \end{tikzpicture}
+% \end{preview}
+
+
+% https://tex.stackexchange.com/questions/64148/tikz-label-on-tree-edge
+
+% \begin{forest}
+% for tree={circle,draw, l sep=20pt}
+% [3,red 
+%     [1  
+%       [4,edge label={node[midway,left] {Help!}} ] 
+%       [1] 
+%       [3]
+%     ]
+%     [2
+%       [3] 
+%       [2] 
+%       [5]
+%   ] 
+% ]
+% \end{forest}
+
+
+%https://tex.stackexchange.com/questions/64148/tikz-label-on-tree-edge
+
+%  \begin{tikzpicture}[level distance=1.5cm,
+%   level 1/.style={sibling distance=3.5cm},
+%   level 2/.style={sibling distance=2.5cm}]
+%   \tikzstyle{every node}=[circle,draw]
+  
+% \node (Root) [red] {Is there a break in the DGP between T* and T*+1?} 
+%     child {  edge from parent node[left,draw=none] {Do you have information outside of the “regular forces”
+%     } 
+%     node {Yes} 
+%     child { node {Yes} 
+%             child { node{Yes} edge from parent node[left,draw=none] {lab} }
+%             child { node{No}}}
+%     child { node {No} }
+% }
+% child { 
+%     node {No}
+%     child { node {Yes} }
+%     child { node {No} }
+% };
+% \end{tikzpicture}
+
+% \noindent\begin{forest}
+%   for tree={
+%     parent anchor=south,
+%     child anchor=north,
+%     edge path={
+%       \noexpand\path [\forestoption{edge}] (!u.parent anchor) -- +(0,-5pt) -| (.child anchor)\forestoption{edge label};
+%     }
+%   }
+%   [Is there a break in the DGP between T* and T*+1?
+%     [Extractive Summarization
+%       [Similarity
+%         [Topic]
+%         [Cluster]
+%       ]
+%       [Classification
+%         [test2]
+%         [test1]
+%       ]
+%       [Feature Selection
+%         [test1]
+%         [test2]
+%         [test3]
+%       ]
+%       [Feature Extraction
+%         [test2]
+%         [test3]
+%       ]
+%     ]
+%     [Abstractive Summarization]
+%   ]
+% \end{forest}
+% \bigskip
+
+% https://tex.stackexchange.com/questions/539600/tikz-forest-coloring-and-edge-label-positions
+
+% \tikzset{eln/.style={midway, font = \scriptsize,circle,inner sep=2pt}}
+% \begin{forest}
+% for tree = {circle, 
+%     draw=red, %<-added =red
+%     minimum width = 2.25em,
+%     l sep+=2em
+% }
+%     [\textcolor{blue}{Is there a break in the DGP between T* and T*+1?
+% }
+%         [Dog, edge label = {node [above left,eln] {\textcolor{green}{Yes}}}
+%             [$B$, edge label = {node [above left,eln] {$4$}}
+%                 [$D_1$, edge label = {node [left,eln] {$7$}}
+%                     [$G_1$, edge label = {node [left,eln] {$10$}}]
+%                 ]
+%             ]
+%             [$C$, edge label = {node [above right,eln] {$2$}},edge=blue%<-blue edge
+%                 [$D_2$, edge label = {node [above left,eln] {$3$}}
+%                     [$G_2$, edge label = {node [left,eln] {$6$}}]
+%                 ]
+%                 [$G_3$, edge label = {node [above right,eln] {$4$}}]
+%             ]
+%         ]
+%         [$G_4$, edge label = {node [above right,eln] {\textcolor{red}{No}}}]
+%    ]
+% \end{forest}
+
+%https://tex.stackexchange.com/questions/226435/reducing-forest-tree-width-without-squashing
+\resizebox{\textwidth}{!}{%
+\begin{forest}
+  for tree={
+    l sep=.4cm,
+    s sep=5.2cm,
+    minimum height=2.8cm,
+    minimum width=2cm,
+    child anchor=west,
+    parent anchor=east,
+    grow'=east,
+  %minimum size=1cm,%new possibility
+  text width=3cm,%
+    draw,
+    anchor=west,
+    edge path={
+      \noexpand\path[\forestoption{edge}]
+        (.child anchor) -| +(-5pt,0) -- +(-5pt,0) |-
+        (!u.parent anchor)\forestoption{edge label};
+    },
+  }
+    [Is there a break in the DGP between T* and T*+1?
+        [Do you have information outside of the “regular forces” \citep{castle2011forecasting}, %breaking news or high-frequency data, e.g. Google Trends data?
+            [Can we use the info outside “regular forces” to forecast (as opposed to merely spotting the break)?
+                [Do you have a parametric model for how info outside of ``regular forces” will figure at T* + h?
+                  % [What other time series have been governed by that parametric model, and how can we extract information from them?  Which other series are most relevant or most similar?  How do we determine similarity – quant or qual?  Once you know what’s similar, how do you use that?
+                  % ]
+                  % [The info that helped you spot the break can be used to assemble series that have experienced breaks under similar circumstances.  The forecast residuals or losses from those then provide a basement for model adjustment for the time series under study.  Without a parametric model, your options are limited but not empty.  With appropriate assumptions on the DGP pre-break and post-break, assumptions on the forecast functions and misses, we can still do things like aggregate residuals and bound forecast loss.]
+                  [some extra]
+                  [some extra again]
+                ]
+                [No problem. Use “regular forces” to do the model adjustment for the post-break period.  Examples of this would include refitting one’s data to use Markov-switching models – i.e. using only the series itself.
+                ]
+            ]
+            [Then at least one post-break data point must be observed.
+            ]
+        ]
+        [\cite{clements1998forecasting} talk about this a lot]
+    ]
+\end{forest}
+}%
 
 
 \section{Setting}\label{Setting}
@@ -433,6 +629,7 @@ Consider the leave-one-out method used on pairs of donors and covariates in \cit
 \subsection{Limitations}\label{Limitations}
 
 \subsubsection{How important is a shared DGP?}
+In particular, can we relax this assumption and proceed with weaker assumptions on the donors and time series under study?
 
 \subsubsection{The assumption of a shared family can be relaxed in certain circumstances.  For example, if a certain donor is not like the time series under study with respect to the covariates, then the lack of a shared family will not matter much.}
 
