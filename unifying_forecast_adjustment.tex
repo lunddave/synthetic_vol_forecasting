@@ -147,23 +147,24 @@
 
 \section{Introduction}\label{Introduction}
 
-For various modeling and prediction tasks in time series and panel data, the salient challenge is not predicting when an event will occur but what its key properties will be.  In the familiar case of scalar time series, those properties can include the time series' post-event direction, magnitude of change, moments, duration of the event, and correlation structure, all over an arbitrary horizon or perhaps multiple horizons. This is not to say that predicting the arrival of an event is easy. In some cases, it may be difficult or impossible, or the event might not be conceivable to many before it happens, as was the case with the COVID-19 pandemic.  There, reacting sensibly to a shock or structural change may best one can hope for. 
+For various modeling and prediction tasks in time series and panel data, the salient challenge is not predicting when an event will occur but what its key properties will be.  In the familiar case of scalar time series, those properties can include the time series' post-event direction, magnitude of change, moments, duration of the event, and correlation structure, all over an arbitrary horizon or perhaps multiple horizons. This is not to say that predicting the arrival of an event is easy. In some cases, it may be difficult or impossible, and the event might not even be conceivable to many before it happens, as was the case with the COVID-19 pandemic.  There, reacting sensibly to a shock or structural change may best one can hope for. 
 
 Herein we attempt to unify a range of conceptual approaches to forecasting amid shocks that have developed across the broad ecosystem of the econometric and forecasting literatures.  We attempt to locate our main contribution, Similarity-based Parameter Correction, at the intersection of several important strands of thought.  Additionally, we delineate a specific type of SPC called post-shock forecasting, which is induced by nuanced and interesting choices that fall under the general SPC framework.  In particular, this work focuses on model adjustment amid news shocks that undermine the reliability of the  model at hand.  Forecasting under shocks raises unavoidable questions: should the forecast model be abandoned in favor of a discretionary or ad-hoc or one-off adjustment?  Does the does the discretion of a forecaster rule out a quantitative method for making the adjustment?  What is the ultimate purpose of the adjustment, and how it is to be used?  For how long is the adjustment necessary or reliable?
 
-Forecast model adjustment, known most widely perhaps by the term intercept-correction, has received the most attention in several articles and book chapters \citep{hendry1994theory,clements1996intercept,clements1998forecasting}.  Of special importance is the distinction between discretionary and automated intercepts corrections. \cite{hendry1994theory} define scalar intercept corrections to be automated when they follow the simple rule of adding an estimation or prediction residual $e_{t}$ to subsequent (possibly but not necessarily all) forecasts $\hat f_{t+1},\hat f_{t+2},[...].$.  ``\textit{[S]etting the model back on track}" is the informal label they provide for that procedure.  In \cite{hendry1994theory}, after recounting the bipartite division of interception corrections in discretionary and automated varieties, the authors present a six-way taxonomy of information that a modeler possesses at the time a forecast is made.  The authors also consider structural change in the data-generating process during the forecast period, including as early as the first point in the forecast period (specifically in the autoregressive structure), as well as what is for them the more interesting case: structural change between $T^{*}-1$ and $T^{*}$.  This current work finds both cases interesting.  The term intercept correction itself can be both a bit deceptive in limiting, in that it need not pertain to intercepts.  \cite{hendry1994theory} themselves note the possibility of correcting a coefficient in a forecast model specification, and \cite{guerron2017macroeconomic} developed a similarity-based procedure for correcting $\beta$ using past information of the time series itself.   For a review of more recent work in similarity-based forecasting, we refer the reader to \cite{lundquist2024volatility}.
+Forecast model adjustment, known most widely perhaps by the term intercept-correction, has received the most attention in several articles and book chapters \citep{hendry1994theory,clements1996intercept,clements1998forecasting}.  Of special importance is the distinction between discretionary and automated intercepts corrections. \cite{hendry1994theory} define scalar intercept corrections to be automated when they follow the simple rule of adding an estimation or prediction residual $e_{t}$ to subsequent (possibly but not necessarily all) forecasts $\hat f_{t+1},\hat f_{t+2},[...].$.  ``\textit{[S]etting the model back on track}" is the informal label they provide for that procedure.  It must be noted here that adding a past residual to future forecasts assumes implicitly that whatever caused the residual is persistent, and hence intercept correction makes more sense for levels.  That is, of course, unless one has a sense of how long the intercept correction will be needed for.
+ 
+In \cite{hendry1994theory}, after recounting the bipartite division of interception corrections in discretionary and automated varieties, the authors present a six-way taxonomy of information that a modeler possesses at the time a forecast is made.  The authors also consider structural change in the data-generating process during the forecast period, including as early as the first point in the forecast period (specifically in the autoregressive structure), as well as what is for them the more interesting case: structural change between $T^{*}-1$ and $T^{*}$.  This current work finds both cases interesting.  The term intercept correction itself can be both a bit deceptive in limiting, in that it need not pertain to intercepts.  \cite{hendry1994theory} themselves note the possibility of correcting a coefficient in a forecast model specification, and \cite{guerron2017macroeconomic} developed a similarity-based procedure for correcting $\beta$ using past information of the time series itself.   For a review of more recent work in similarity-based forecasting, we refer the reader to \cite{lundquist2024volatility}.
 
 What if the break in the DGP is brought about by a very particular kind of event, a news shock?   What if we could predict well the intercept shift that occurs between $T^{*}$ and $T^{*}+1$?  In \cite{castle2016overview}, the authors list six necessary conditions for reacting to what we in this current paper call a news shock.  Of greatest interest to us are two of the six: ``the forecasting model already embodies that source of information" and ``there is an operational method for selecting
 an appropriate model".   For such cases, forecasting procedures have been explored in \cite{lin2021minimizing,lundquist2024volatility}, where the AR(1) and GARCH($m,s$) cases, respectively, are treated.  Both works target additive parameters in scalar time series, predicting those random effects by aggegating information from other time series.  The authors leave several stones unturned, including a more general, dare say comprehensive treatment of how to forecast under any sort of shock.
 
-As the literature has developed, a current practitioner of forecast adjustment can choose between (i) procedures that are discretionary or automated, (ii) whether the data is internal (i.e. from the time series itself) or external, (iii) the term to be corrected (e.g. intercept, coefficients), if any, (iv) as well as the correction function (i.e. the mapping from the donor unit data to the correction term in the time series under study), including the weighting applied to the assembled data (e.g. Nearest-Neighbor, arithmetic mean, kernel methods).  We discuss this in depth in Section \ref{global_overview}.
+As the literature has developed, a current practitioner of forecast adjustment can now choose between (i) procedures that are discretionary or automated, (ii) whether the data is internal (i.e. from the time series itself) or external, (iii) the term to be corrected (e.g. intercept, coefficients), if any, (iv) as well as the correction function (i.e. the mapping from the donor unit data to the correction term in the time series under study), including the weighting applied to the assembled data (e.g. Nearest-Neighbor, arithmetic mean, kernel methods).  We discuss this in depth in Section \ref{global_overview}.
 
 The procedure presented, post-shock forecasting, is a discretionary procedure for intercept correction that integrates data internal or external to the time series under study in a systematic manner.  The correction function uses the notion of similarity between breaks in different time series, it and borrows from the causal inference literature to aggregate information from those similar circumstances.  Beyond of \citet{lin2021minimizing,lundquist2024volatility}, we are not aware of prior work uses a parametric specification for nonzero errors as well as a method for aggregating similar shocks occurring outside the time series under study.
 
 The structure of this manuscript is as follows.  We first provide a review of several disparate time series literatures, including intercept correction, model-evaluation, and similarity-based forecasting.  We then provide a canonical setting in which we attempt to focus our work.  This setting will be presented at a level of generality that showcases the broad applicability of our method.  We then introduce the method from a global perspective, abstracting away from familiar applications.  We then show several specific applications, including novel applications that cannot be found elsewhere in the literature.  We close with a discussion, including possible extensions.
 
 \subsection{History of and Motivation for Intercept Correction\label{intercept_correction}}
-See Clements and Hendry - Setting \textit{levels} back on track.  It may make less sense for flows.
 
 Intercept correction is the correction of a forecast by adding the residual at time $t$ to the forecasts at some subset of $\{t+1,t+2,...\}$.  We are doing something very close to that which is adding the predicted correction function output at time $t$ to the forecasts at some subset of $\{T_{1}^{*}+1,T_{1}^{*}+2,...\}$, where $T^{*}_{1}$ is the shock time of the time series under study. 
   \cite[p. 177]{hendry1994theory} note that a break in the DGP (and hence the misspecification of the default forecasting method) is the ``most obvious and best understood rationale'' for intercept correction.  To be sure, this manuscript will make its contributions largely in this area.  However, before we get there, let's follow Clements, Hendry and other authors in asking whether we would ever want to intercept-correct an unconditional forecast as opposed to the conditional.  This is what Clements and Hendry call ``Exploiting the information in unconditional forecasts''.  \cite[p. 170-1]{hendry1994theory} recall how unconditional forecasts can have lower forecast variance than conditional forecasts.  There seems to be two different questions that we should distinguish: we forecast would minimize the conditional expectation of MSE, and what forecast would have the lowest variance.
@@ -218,9 +219,6 @@ Quantitative ways of determining similarity include matching a target object to 
 Asymmetric distance functions (which are of course not metrics) are useful when we want to explore differences between donors and weight different contributors to that function differently.  Consider an asymmetric Jaccard Index $\delta_{\mathcal{J}}(\cdot,\cdot)$ that is maps from any two finite-cardinality sets to the interval $[0,1]$ \citep{garg2015asymmetric}.  So far, we have discussed only binary measures of similarity.  The distance-based weighting scheme found in \cite{lin2021minimizing} and repurposed in \cite{lundquist2024volatility} can be thought of as an $n$-ary similarity measure, where the $n$ weights means little in isolation but can tell a greater story when viewed alongside the approximation they produce.
 
 What about qualitative ways of determining similarity?  In \cite{lundquist2024volatility}, donors are identified by matching the qualitative aspects of the shock in the time series under study to shocks previously witnessed in other series.  Only after the donor pool has been identified based on qualitative facts about the shocks is there a role for quantative tools. 
-
-
-
 
 % \begin{preview}
 % \begin{tikzpicture}[very thick,level/.style={sibling distance=180 mm/#1}]
@@ -362,26 +360,28 @@ What about qualitative ways of determining similarity?  In \cite{lundquist2024vo
 % \end{forest}
 
 %https://tex.stackexchange.com/questions/226435/reducing-forest-tree-width-without-squashing
+
+
+%https://tex.stackexchange.com/questions/244006/making-forest-tree-with-lots-of-text-much-narrower
 \begin{figure} 
   \centering  
 \resizebox{\textwidth}{!}{%
 \begin{forest}
-  /tikz/every node/.append style={font=\Large},
+  /tikz/every node/.append style={font=\small},
   for tree={
     rounded corners, 
-    top color=gray!5, bottom color=gray!30, 
-    edge+={darkgray, line width=5pt}, 
+    % top color=gray!5, bottom color=gray!30, 
+    edge+={darkgray, line width=4pt}, 
     draw=darkgray, 
-    %align=center, 
-    l sep=1.9cm,
-    s sep=1.2cm,
-    minimum height=6.8cm,
-    minimum width=4cm,
+    l sep=.8cm,
+    s sep=.5cm,
+    minimum height=8.8cm,
+    minimum width=1cm,
     child anchor=west,
     parent anchor=east,
     grow'=east,
-  %minimum size=1cm,%new possibility
-  text width=5cm,%
+  minimum size=1cm,%new possibility
+  text width=4cm,%
     draw,
     anchor=west,
     edge path={
@@ -390,19 +390,23 @@ What about qualitative ways of determining similarity?  In \cite{lundquist2024vo
         (!u.parent anchor)\forestoption{edge label};
     },
   }
-    [Break in the DGP between $T^{*}$ and $T^{*}+1$?, 
-        [Information outside of “regular forces” \citep{castle2011forecasting},edge=green %,draw=green
-            [Can we use the information outside “regular forces” to forecast (as opposed to merely spotting the break)?,edge=green
-                [Do you have a parametric model for how info outside of ``regular forces” will figure at T* + h?,edge=green
-                  [What other time series have been governed by that parametric model,edge=green]
-                  [The info that helped you spot the break can be used to assemble series that have experienced breaks under similar circumstances.,edge=red]
+    [Break in the DGP between $T^{*}$ and $T^{*}+1$?,fill=blue!30 
+        [Is there information outside of “regular forces” \citep{castle2011forecasting},edge=green, fill=blue!30%,draw=green
+            [Can we use the information outside “regular forces” to forecast (as opposed to merely spotting the break)?,edge=green,,fill=blue!30 
+                [Do you have a parametric model for how info outside of ``regular forces” will figure at $T^{*}+h$?,edge=green,fill=blue!30 
+                  [What other time series are governed by the parametric model?  How can we extract information from them?  Which are most relevant, %most similar?  How do we determine similarity, quant or qual?  Once we know what is similar, how do we use it?
+                  ,edge=green,fill=blue!30 
                   ]
-                [No problem. Use “regular forces” to do the model adjustment for the post-break period.  Examples of this would include refitting one’s data to use Markov-switching models – i.e. using only the series itself.,edge=red
+                  [The information that helped spot the break can be used to assemble series that have experienced breaks under similar circumstances.  The forecast residuals or losses from those then provide a %basement for model adjustment for the time series under study.  Without a parametric model, your options are limited but not empty.  With appropriate assumptions on the DGP pre-break and post-break, assumptions on the forecast functions and misses, we can still do things like aggregate residuals and bound forecast loss.
+                  ,edge=red,fill=gray!30
+                  ]
+                  ]
+                [Use “regular forces” to do the model adjustment for the post-break period.  Examples of this would include refitting one’s data to use Markov-switching models – i.e. using only the series itself.,edge=red,fill=gray!30
                 ]
                 ]
-                [Then at least one post-break data point must be observed.,edge=red]
+                [Then forecasting will require at least one post-break data point to be observed.,edge=red,fill=gray!30]
             ]
-            [\cite{clements1998forecasting} talk about this a lot,edge=red]
+            [\cite{clements1998forecasting} discuss this.,edge=red,fill=gray!30]
             ]
         ]
     ]
