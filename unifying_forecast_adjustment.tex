@@ -531,19 +531,19 @@ Recall the specification \ref{core_specification}, which models a rare shock as 
   &y_{i,t} = F(\mathcal{F}_{i,t-1}) + \x^{T}_{i,t}\lambda_{t} + \epsilon_{i,t}
 \end{align*}
 
-\subsection{ARIMA}
+\subsection{ARIMA}\label{ARIMA}
 We begin our recounting of model-specific cases by recalling \cite{lin2021minimizing}, in which it was established that for a family of AR(1)-distributed scalar time series with a common shock distribution, forecast risk can be reduced via a similarity-based adjustment procedure.  AR(p) is an easy model to work with, in part because it can be consistently estimated via OLS, and an AR(p) can approximate an ARMA(p,q) with arbitrarily-small error through via a truncation of an AR($\infty$) representation.  Setting aside the estimation method, consider a one-step-ahead for an AR(p) at time $t$ with an adjustment estimator, $\hat\alpha_{t}$:
 
 \begin{align}
 \hat{y}_{t} = f(\mathcal{F}_{t-1}) = \hat\mu + \sum^{p}_{i=1}\hat\rho_{i}y_{t-i} + \hat{\alpha}_{t}
 \end{align}
-which can be understood as an AR(p) with time-varying coefficients.  The mean squared-error of the forecast above, i.e.
+which can be understood as an AR($p$) with time-varying coefficients.  The mean squared-error of the forecast above, i.e.
 
 \begin{align}
   \E[(y_{t}-\hat{y}_{t})^{2}] &= \E[(y_{t} - \hat\mu + \sum^{p}_{i=1}\hat\rho_{i}y_{t-i} + \hat{\alpha}_{t})^{2}]\\
-  &= \E[(\mu + \sum^{p}_{i=1}\rho_{i}y_{t-i} + \alpha_{t} - \hat\mu + \sum^{p}_{i=1}\hat\rho_{i}y_{t-i} + \hat{\alpha}_{t})^{2}] 
+  &= \E[(\mu + \sum^{p}_{i=1}\rho_{i}y_{t-i} + \epsilon_{t} + \alpha_{t} - \hat\mu + \sum^{p}_{i=1}\hat\rho_{i}y_{t-i} + \hat{\alpha}_{t})^{2}] 
   \end{align}
-admits of the typical bias-variance decomposition, with the special proviso that with more terms in the prediction function, more covariance terms arise.  Similarly, the covariance structure of the random effects in $\alpha = \x_{t}^{T}\lambda_{t}$ will contribute to the variance.  In the real-data examples \cite{lin2021minimizing}, the entries in $\lambda_{t}$ are proxies of general market risk, which one would commonly take to be correlated not only with each other but also with a financial time series $y_{t}$.  All of this is to say that control of the MSE may require tight control of the variance in the prediction function, which in turn will gesture in the direction of a sparse $\hat\alpha_{t}$.
+admits of the typical bias-variance decomposition, with the special proviso that with more terms in the prediction function, more covariance terms arise.  Similarly, the covariance structure of the random effects in $\alpha = \x_{t}^{T}\lambda_{t}$ will contribute to the variance.  In the real-data examples \cite{lin2021minimizing}, the entries in $\lambda_{t}$ are proxies of general market risk, which one would commonly take to be correlated not only with each other but also with a financial time series $y_{t}$.  All of this is to say that control of the MSE may require tight control of the variance in the prediction function, which in turn will gesture in the direction of a sparse $\hat\alpha_{t}$ and sparse estimation of the autoregressive structure.
 
 When forecasting financial time series using the method above, the question of prices versus returns (or in the language of economics or engineering, levels versus flows) is relevant.  Consider, for example, the persistence of a shock.  A shock to an asset's return series at time $t$ implies a persistent shock to the asset's price series at time $t$ and beyond, as one can verify by inverting the discrete-differencing operation on a time series.  However, if one forecasts the price series of the asset directly, that persistence beyond the first instantiation of the shock must be modeled explicitly.  This suggests interesting opportunities in the analysis and forecasting of shock persistence for situations in which level-forecasting is appropriate, e.g. for stationary time series.
 
@@ -622,7 +622,12 @@ Cases:
 \end{enumerate}  
 
 \section{Extensions}\label{Extensions}
-bias-variance tradeoff and MSE decomposition\\
+
+
+Bias-variance decomposition for ARIMA, as introduced in \ref{ARIMA} \\
+
+Shrinkage estimation of autoregressive structure on all donors, then use our method
+
 
 \begin{itemize}
   \item Forecast for series besides the mean or conditional mean \textcolor{red}{If you have a family of models estimated used a Gaussian loss function, and the post-shock residuals are not conditionally Gaussian (e.g. they could be conditionally Cauchy), then why even start with the default forecasting function?  Why not throw it out entirely?  If only the distribution of the innovations changes, then would that even matter for a forecast that is purely concerned with the conditional mean?}
