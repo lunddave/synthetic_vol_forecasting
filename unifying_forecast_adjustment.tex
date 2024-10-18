@@ -184,15 +184,9 @@ Evaluating a Model by Forecast Performance \cite{clements2005evaluating}
 
 Here is one argument: if we are going to judge a model by forecast performance, we need to entertain the possibility that the model may breakdown and that our pre-breakdown-based criteria for model performance will be invalidated. \textcolor{red}{Here is how that matters for this paper: if you have a family of models estimated used a Gaussian loss function, and the post-shock residuals are not conditionally Gaussian (e.g. they could be conditionally Cauchy), then why even start with the default forecasting function?  Why not throw it out entirely?  If only the distribution of the innovations changes, then would that even matter for a forecast that is purely concerned with the conditional mean?}
 
-\subsection{Forecasting Under Shocks}
+\subsection{Forecasting Amid Shocks}
 
-This section will absolutely need to draw on \cite{castle2011forecasting} for the following reasons:
-\begin{enumerate}
-  \item Necessary conditions for forecasting a break - do I agree with them?
-  \item Five kinds of available information - section 4 Available information
-  \item Distinction between regular forces J and its complement, K 
-  \item ``forecasting facing a shift in the intercept of a model of a variable y induced by another observable variable z;'' --- essentially, this is what we do in \cite{lundquist2024volatility} except z is not quantitative.
-\end{enumerate}
+In this section, we wish to locate the task of forecasting amid shocks within the broader literature on forecasting under breaks in the GDP.  \cite{castle2011forecasting} discusses necessary conditions for forecasting under breaks as well as a taxonomy of information available for doing so.  They also make a fundamental distinction between ``regular forces'' and alternative sources of information for making forecasts.  Most interesting, their discussion of ``forecasting facing a shift in the intercept of a model of a variable y induced by another observable variable z" represents the most similar idea to  \cite{lin2021minimizing,lundquist2024volatility} --- with one important disclaimer.  In those later two works, the variable $z$ is observable and yet not quantitative.
 
 In \cite{clements2005guest} (cited in \cite{castle2013forecasting}), the authors note that when forecasts fail, it often has to do with location (i.e. intercept shifts), and therefore using additional information is not likely to help unless it can address potential location shifts.  \cite{rossi2021forecasting} says that breaks in a model's parameters are not necessary or sufficient to generate time variation in forecasting performance.  
 
@@ -393,11 +387,11 @@ What about qualitative ways of determining similarity?  In \cite{lundquist2024vo
     [Break in the DGP between $T^{*}$ and $T^{*}+1$?,fill=blue!30 
         [Is there information outside of “regular forces” \citep{castle2011forecasting},edge=green, fill=blue!30%,draw=green
             [Can we use the information outside “regular forces” to forecast (as opposed to merely spotting the break)?,edge=green,,fill=blue!30 
-                [Do you have a parametric model for how info outside of ``regular forces” will figure at $T^{*}+h$?,edge=green,fill=blue!30 
+                [Do you have a parametric model (with estimable parameters) for how information outside of ``regular forces” will figure at $T^{*}+h$?,edge=green,fill=blue!30 
                   [What other time series are governed by the parametric model?  How can we extract information from them?  Which are most relevant, %most similar?  How do we determine similarity, quant or qual?  Once we know what is similar, how do we use it?
                   ,edge=green,fill=blue!30 
                   ]
-                  [The information that helped spot the break can be used to assemble series that have experienced breaks under similar circumstances.  The forecast residuals or losses from those then provide a %basement for model adjustment for the time series under study.  Without a parametric model, your options are limited but not empty.  With appropriate assumptions on the DGP pre-break and post-break, assumptions on the forecast functions and misses, we can still do things like aggregate residuals and bound forecast loss.
+                  [The information that helped spot the break can be used to assemble series that have experienced breaks under similar circumstances. Forecast residuals/losses can be aggregated. %basement for model adjustment for the time series under study.  Without a parametric model, your options are limited but not empty.  With appropriate assumptions on the DGP pre-break and post-break, assumptions on the forecast functions and misses, we can still do things like aggregate residuals and bound forecast loss.
                   ,edge=red,fill=gray!30
                   ]
                   ]
@@ -587,7 +581,19 @@ We borrow code from \cite{Brownlee_2022}
   \item \href{https://machinelearningmastery.com/time-series-prediction-lstm-recurrent-neural-networks-python-keras/}{LSTM in Python}
 \end{itemize}
 
+\subsection{``Exponential Breaks"}
+In \cite{castle2011forecasting}, the authors discuss intercept shifts that decay deterministically.  Those shifts are parameterizes by a scalar $\lambda$ and a decay rate $\psi$, which we adapt for our own purposes:
 
+\begin{align}
+y_{i,t} = \alpha_{i} + \lambda[1 - e^{-\psi[t-T_{i}^{*}+1]}]\textbf{1}_{t\geq T_{i}^{*}+1} + \epsilon_{i,t}, \epsilon_{i,t} \simiid [0,\sigma^{2}]\label{decay_model}
+\end{align}
+
+This poses a novel case for our method, in that the model is parametric and yet without estimability of its parameters, aggregation may not be so easy.  Consider, for any $i$ s.t. $2 \leq i \leq n+1$, estimates $\hat\alpha_{i,OLS}$ as well as $\hat\lambda_{OLS}$ obtained by estimating a fixed effect at $t=T_{i}^{*}+1$, and 
+
+\begin{align}
+\hat\psi_{i,plugin} = \frac{1}{T_{i}-(T_{i}^{*}+2)}\sum^{T_{i}}_{t\geq T_{i}^{*}+2}-log{\big[-\big(\frac{y_{i,t}-\hat\alpha_{i}}{\hat\lambda} -1\big)\big]} / [t-T_{i}^{*}+1]\label{plugin}
+\end{align}
+(\ref{plugin}) is, to put it lightly, a complicated estimator with potentially dubious properties.  Could it be, then, that aggregating the model residuals from the donors could provide us better predictions?
 
 \subsection{The Method of Multiple Shocks, Dual Shocks, and Shock-Partitioning}
 
