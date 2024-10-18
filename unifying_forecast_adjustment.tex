@@ -587,7 +587,7 @@ In \cite{castle2011forecasting}, the authors discuss intercept shifts that decay
 \begin{align}
 y_{i,t} = \alpha_{i} + \lambda[1 - e^{-\psi[t-T_{i}^{*}+1]}]\textbf{1}_{t\geq T_{i}^{*}+1} + \epsilon_{i,t}, \epsilon_{i,t} \simiid [0,\sigma^{2}] \text{ .}\label{decay_model}
 \end{align}
-This poses a novel case for our method, in that the model is parametric and yet without estimability of all shock parameters, aggregation may not be straightforward or easy.  Consider, for any $i$, $2 \leq i \leq n+1$, the estimates $\hat\alpha_{i,OLS}$  obtained via regression on the first $T_{i}^{*}+1$ points as well as $\hat\lambda_{OLS}$ obtained by estimating a fixed effect at $t=T_{i}^{*}+1$.  Consider also the subsequent estimator, an estimator for $\psi$ that is derivable from inverting the model specification and plugging-in the estimates  $\hat\alpha_{i,OLS},\hat\lambda_{OLS}$:
+This poses a novel case for our method, in that the model is parametric and yet without estimability of all shock parameters, aggregation may not be straightforward or easy.  Consider, for any $i$, $2 \leq i \leq n+1$, the estimates $\hat\alpha_{i,OLS}$  obtained via regression on the first $T_{i}^{*}+1$ points as well as $\hat\lambda_{OLS}$ obtained by estimating a fixed effect at $t=T_{i}^{*}+1$.  Consider also a subsequent estimator, an estimator for $\psi$, that is derivable from inverting the model specification and plugging-in the estimates  $\hat\alpha_{i,OLS},\hat\lambda_{OLS}$:
 
 \begin{align}
 \hat\psi_{i,plugin} = \frac{1}{T_{i}-(T_{i}^{*}+2)}\sum^{T_{i}}_{t\geq T_{i}^{*}+2}-log{\big[-\big(\frac{y_{i,t}-\hat\alpha_{i}}{\hat\lambda} -1\big)\big]} / [t-T_{i}^{*}+1]\text{ .}\label{plugin}
