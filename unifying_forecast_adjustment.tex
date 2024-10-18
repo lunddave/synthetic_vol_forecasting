@@ -587,13 +587,20 @@ In \cite{castle2011forecasting}, the authors discuss intercept shifts that decay
 \begin{align}
 y_{i,t} = \alpha_{i} + \lambda[1 - e^{-\psi[t-T_{i}^{*}+1]}]\textbf{1}_{t\geq T_{i}^{*}+1} + \epsilon_{i,t}, \epsilon_{i,t} \simiid [0,\sigma^{2}]\label{decay_model}
 \end{align}
-
-This poses a novel case for our method, in that the model is parametric and yet without estimability of its parameters, aggregation may not be so easy.  Consider, for any $i$ s.t. $2 \leq i \leq n+1$, estimates $\hat\alpha_{i,OLS}$ as well as $\hat\lambda_{OLS}$ obtained by estimating a fixed effect at $t=T_{i}^{*}+1$, and 
+This poses a novel case for our method, in that the model is parametric and yet without estimability of its parameters, aggregation may not be so easy.  Consider, for any $i$ s.t. $2 \leq i \leq n+1$, estimates $\hat\alpha_{i,OLS}$  obtained via regression on the first $T_{i}^{*}+1$ points as well as $\hat\lambda_{OLS}$ obtained by estimating a fixed effect at $t=T_{i}^{*}+1$, and 
 
 \begin{align}
 \hat\psi_{i,plugin} = \frac{1}{T_{i}-(T_{i}^{*}+2)}\sum^{T_{i}}_{t\geq T_{i}^{*}+2}-log{\big[-\big(\frac{y_{i,t}-\hat\alpha_{i}}{\hat\lambda} -1\big)\big]} / [t-T_{i}^{*}+1]\label{plugin}
 \end{align}
-(\ref{plugin}) is, to put it lightly, a complicated estimator with potentially dubious properties.  Could it be, then, that aggregating the model residuals from the donors could provide us better predictions?
+(\ref{plugin}) is, to put it lightly, a complicated estimator with potentially dubious properties.  To begin, (\ref{plugin}) is defined only when the term inside the logarithm is positive for each $t\geq T^{*}_{i}+2$.  We could drop any summands for which that term is nonpositive and then calculate the average over that subset.
+
+Could it be, then, that aggregating the prediction residuals from the donors could provide us better predictions in the time series under study?\\
+
+\textbf{Consider also these complicating scenarios}
+\begin{enumerate}
+  \item We can estimate $\lambda$ using a cross-sectional regression, and that may be better estimator than doing it one-by-one in each donor.
+  \item Here we have taken $\lambda$ to be fixed and shared across donors.  If $\lambda$ is a function of a random effect, however, then estimating it becomes harder.
+\end{enumerate}
 
 \subsection{The Method of Multiple Shocks, Dual Shocks, and Shock-Partitioning}
 
