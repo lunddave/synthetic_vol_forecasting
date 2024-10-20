@@ -171,18 +171,7 @@ Intercept correction is the correction of a forecast by adding the residual at t
 
   Mismeasured data is discussed in \cite[p. 166]{hendry1994theory} as a motivator for intercept correction.  Could similarity-based correction help?  Here is an idea: if we believe that our most recent measurement of the series is noisy, we can disregard the point itself and instead take a convex combination of that point and the \cite{lin2021minimizing}-style prediction based on aggregation.
 
- Yet another potential motivation springs from the way we evaluate model performance.
-Evaluating a Model by Forecast Performance \cite{clements2005evaluating}
-\begin{enumerate}
-  \item   unconditional versus conditional, models;
-  \item internal versus external standards;
-  \item checking constancy versus adventitious significance;
-  \item ex ante versus ex post evaluation (skip this one?);
-  \item 1-step versus multi-horizon forecasts -- this is a relevant question to ask in the context of post-shocking forecasting: should we correct the earliest forecast and then allow the shock to propagate, or should we just correct each term in the horizon, h=1, 2,..., H?
-  \item in-sample fixed coefficients versus continuous updating
-\end{enumerate}
-
-Here is one argument: if we are going to judge a model by forecast performance, we need to entertain the possibility that the model may breakdown and that our pre-breakdown-based criteria for model performance will be invalidated. \textcolor{red}{Here is how that matters for this paper: if you have a family of models estimated used a Gaussian loss function, and the post-shock residuals are not conditionally Gaussian (e.g. they could be conditionally Cauchy), then why even start with the default forecasting function?  Why not throw it out entirely?  If only the distribution of the innovations changes, then would that even matter for a forecast that is purely concerned with the conditional mean?}
+ Yet another potential motivation springs from the way we evaluate model performance.  In \cite{clements2005evaluating}, the authors discuss six dichotomies regarding forecast evaluation as a way of advising caution about simplistic notions of performance evaluation.  These ideas matter for the current manuscript for at least one reason.  We must entertain the possibility that breaks in the DGP will invalidate the standard forecast evaluation framework under which we had been working.  If, for example, we have a family of models estimated used a Gaussian loss function, and the post-shock residuals are not conditionally Gaussian (e.g. they could be conditionally Cauchy), then why even start with the default forecasting function?  Why not throw it out entirely?  If only the distribution of the innovations changes, then would that even matter for a forecast that is purely concerned with the conditional mean?
 
 \subsection{Forecasting Amid Shocks}
 
