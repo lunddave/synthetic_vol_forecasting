@@ -6,45 +6,45 @@ Database file #1: unifying.bib
 Warning--empty journal in castle2011forecasting
 Warning--empty journal in guerron2017macroeconomic
 Warning--empty journal in hendry1994theory
-You've used 20 entries,
+You've used 19 entries,
             2773 wiz_defined-function locations,
-            713 strings with 8061 characters,
-and the built_in function-call counts, 8307 in all, are:
-= -- 746
-> -- 421
-< -- 16
-+ -- 144
-- -- 123
-* -- 627
-:= -- 1277
-add.period$ -- 61
-call.type$ -- 20
-change.case$ -- 98
-chr.to.int$ -- 19
-cite$ -- 43
-duplicate$ -- 407
-empty$ -- 725
-format.name$ -- 165
-if$ -- 1739
+            706 strings with 7796 characters,
+and the built_in function-call counts, 7898 in all, are:
+= -- 706
+> -- 411
+< -- 15
++ -- 140
+- -- 120
+* -- 596
+:= -- 1216
+add.period$ -- 58
+call.type$ -- 19
+change.case$ -- 94
+chr.to.int$ -- 18
+cite$ -- 41
+duplicate$ -- 387
+empty$ -- 683
+format.name$ -- 161
+if$ -- 1653
 int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 22
-newline$ -- 108
-num.names$ -- 80
-pop$ -- 207
+missing$ -- 21
+newline$ -- 103
+num.names$ -- 76
+pop$ -- 200
 preamble$ -- 1
-purify$ -- 81
+purify$ -- 78
 quote$ -- 0
-skip$ -- 309
+skip$ -- 296
 stack$ -- 0
-substring$ -- 288
-swap$ -- 30
+substring$ -- 255
+swap$ -- 29
 text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 205
+type$ -- 194
 warning$ -- 3
-while$ -- 82
+while$ -- 77
 width$ -- 0
-write$ -- 256
+write$ -- 243
 (There were 3 warnings)
