@@ -1,4 +1,4 @@
-\begin{thebibliography}{19}
+\begin{thebibliography}{20}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -99,5 +99,11 @@ Jilei Lin and Daniel~J Eck.
 David Lundquist and Daniel Eck.
 \newblock Volatility forecasting using similarity-based parameter correction and aggregated shock information.
 \newblock \emph{arXiv preprint arXiv:2406.08738}, 2024.
+
+\bibitem[Wilson(2024)]{thoughts_on_market}
+Mike Wilson.
+\newblock What’s boosting cyclical stocks?, 2024.
+\newblock URL \url{https://www.morganstanley.com/ideas/thoughts-on-the-market-wilson}.
+\newblock Published: 2024-10-21.
 
 \end{thebibliography}

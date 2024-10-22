@@ -3,48 +3,50 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: unifying_forecast_adjustment.aux
 The style file: plainnat.bst
 Database file #1: unifying.bib
+Warning--entry type for "thoughts_on_market" isn't style-file defined
+--line 869 of file unifying.bib
 Warning--empty journal in castle2011forecasting
 Warning--empty journal in guerron2017macroeconomic
 Warning--empty journal in hendry1994theory
-You've used 19 entries,
+You've used 20 entries,
             2773 wiz_defined-function locations,
-            706 strings with 7796 characters,
-and the built_in function-call counts, 7898 in all, are:
-= -- 706
-> -- 411
-< -- 15
-+ -- 140
-- -- 120
-* -- 596
-:= -- 1216
-add.period$ -- 58
-call.type$ -- 19
-change.case$ -- 94
-chr.to.int$ -- 18
-cite$ -- 41
-duplicate$ -- 387
-empty$ -- 683
-format.name$ -- 161
-if$ -- 1653
+            712 strings with 7975 characters,
+and the built_in function-call counts, 8204 in all, are:
+= -- 734
+> -- 421
+< -- 16
++ -- 144
+- -- 123
+* -- 611
+:= -- 1263
+add.period$ -- 62
+call.type$ -- 20
+change.case$ -- 98
+chr.to.int$ -- 19
+cite$ -- 43
+duplicate$ -- 402
+empty$ -- 715
+format.name$ -- 165
+if$ -- 1719
 int.to.chr$ -- 2
 int.to.str$ -- 1
 missing$ -- 21
-newline$ -- 103
-num.names$ -- 76
-pop$ -- 200
+newline$ -- 109
+num.names$ -- 80
+pop$ -- 212
 preamble$ -- 1
-purify$ -- 78
+purify$ -- 81
 quote$ -- 0
-skip$ -- 296
+skip$ -- 309
 stack$ -- 0
-substring$ -- 255
-swap$ -- 29
+substring$ -- 257
+swap$ -- 30
 text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 194
+type$ -- 205
 warning$ -- 3
-while$ -- 77
+while$ -- 80
 width$ -- 0
-write$ -- 243
-(There were 3 warnings)
+write$ -- 257
+(There were 4 warnings)
