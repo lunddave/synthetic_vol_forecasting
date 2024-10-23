@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.15)  23 OCT 2024 00:24
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.15)  23 OCT 2024 00:51
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -876,43 +876,44 @@ Missing character: There is no ] in font nullfont!
 <simulation_plots/motivating_piece_convex_combination.png, id=233, 1226.5825pt x 985.6825pt>
 File: simulation_plots/motivating_piece_convex_combination.png Graphic file (type png)
 <use simulation_plots/motivating_piece_convex_combination.png>
-Package pdftex.def Info: simulation_plots/motivating_piece_convex_combination.png  used on input line 420.
+Package pdftex.def Info: simulation_plots/motivating_piece_convex_combination.png  used on input line 424.
 (pdftex.def)             Requested size: 498.66258pt x 400.71829pt.
+[5]
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[5] [6] [7 <./simulation_plots/motivating_piece_convex_combination.png>] [8] [9] [10]
+[6] [7 <./simulation_plots/motivating_piece_convex_combination.png>] [8] [9] [10]
 <real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png, id=317, 803.0pt x 602.25pt>
 File: real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png Graphic file (type png)
 <use real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png>
-Package pdftex.def Info: real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png  used on input line 567.
+Package pdftex.def Info: real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png  used on input line 571.
 (pdftex.def)             Requested size: 321.1943pt x 240.89572pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [11] [12 <./real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 604--605
+Underfull \hbox (badness 10000) in paragraph at lines 608--609
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 614--615
+Underfull \hbox (badness 10000) in paragraph at lines 618--619
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 622--623
+Underfull \hbox (badness 10000) in paragraph at lines 626--627
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 625--626
+Underfull \hbox (badness 10000) in paragraph at lines 629--630
 
  []
 
 [13]
-Underfull \hbox (badness 10000) in paragraph at lines 659--660
+Underfull \hbox (badness 10000) in paragraph at lines 663--664
 
  []
 
@@ -945,7 +946,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  142i,16n,144p,1711b,1697s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on unifying_forecast_adjustment.pdf (17 pages, 499578 bytes).
+Output written on unifying_forecast_adjustment.pdf (17 pages, 500182 bytes).
 PDF statistics:
  525 PDF objects out of 1000 (max. 8388607)
  92 named destinations out of 1000 (max. 500000)

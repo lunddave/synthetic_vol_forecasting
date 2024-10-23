@@ -42,10 +42,10 @@
 \citation{lundquist2024volatility}
 \@writefile{toc}{\contentsline {section}{\numberline {3}Setting}{5}{section.3}\protected@file@percent }
 \newlabel{Setting}{{3}{5}{Setting}{section.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Formal Modeling Setup}{5}{subsection.3.1}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Forecast Model Adjustment: A Decision Tree}}{6}{figure.caption.1}\protected@file@percent }
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
 \newlabel{fig:tree}{{1}{6}{Forecast Model Adjustment: A Decision Tree}{figure.caption.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Formal Modeling Setup}{6}{subsection.3.1}\protected@file@percent }
 \newlabel{core_specification}{{1}{6}{Formal Modeling Setup}{equation.3.1}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces The simulated time series experiences a volatility shock between trading days 1,656 and 1,657. The GARCH prediction, in red, fails even to approach the volatility spike at $T^{*}+1$, as do several adjusted predictions, which are orange. In contrast, the GARCH forecast adjusted by $\hat  \omega ^{*} = \DOTSB \sum@ \slimits@ ^{n+1}_{i=2}\pi _{i}\hat  \omega ^{*}_{i} $, a convex combination of the estimated shocks in the donor pool, achieves directional correctness as well as a smaller absolute loss in its prediction. The pink vertical line serves to indicate the adjustment of size $\hat  \omega ^{*}$ that allows the blue bullseye to approach more closely the ground truth.}}{7}{figure.caption.2}\protected@file@percent }
 \newlabel{fig:motivating_piece_convex_combination}{{2}{7}{The simulated time series experiences a volatility shock between trading days 1,656 and 1,657. The GARCH prediction, in red, fails even to approach the volatility spike at $T^{*}+1$, as do several adjusted predictions, which are orange. In contrast, the GARCH forecast adjusted by $\hat \omega ^{*} = \sum ^{n+1}_{i=2}\pi _{i}\hat \omega ^{*}_{i} $, a convex combination of the estimated shocks in the donor pool, achieves directional correctness as well as a smaller absolute loss in its prediction. The pink vertical line serves to indicate the adjustment of size $\hat \omega ^{*}$ that allows the blue bullseye to approach more closely the ground truth}{figure.caption.2}{}}
@@ -83,11 +83,11 @@
 \newlabel{fig:six_plots}{{3}{12}{Over the course of the 2010s, the US FOMC began a rate-hiking cycle. Left pane: weights of the donor pool of FOMC meetings; right-pane: fixed effect estimates; right pane: the unadjusted forecast, adjusted forecast, and actual forecast}{figure.caption.3}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {6.6}``Exponential Breaks"}{12}{subsection.6.6}\protected@file@percent }
 \newlabel{decay_model}{{6}{12}{``Exponential Breaks"}{equation.6.6}{}}
-\newlabel{plugin}{{7}{12}{``Exponential Breaks"}{equation.6.7}{}}
 \citation{lin2021minimizing}
 \citation{lin2021minimizing}
 \citation{clements1998forecasting}
 \citation{lundquist2024volatility}
+\newlabel{plugin}{{7}{13}{``Exponential Breaks"}{equation.6.7}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {6.7}The Method of Multiple Shocks, Dual Shocks, and Shock-Partitioning}{13}{subsection.6.7}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {7}Discussion}{13}{section.7}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Shock propagation and estimation accuracy}{13}{subsection.7.1}\protected@file@percent }
@@ -97,10 +97,10 @@
 \@writefile{toc}{\contentsline {section}{\numberline {8}Extensions}{14}{section.8}\protected@file@percent }
 \newlabel{Extensions}{{8}{14}{Extensions}{section.8}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {8.1}Forecast Combination}{14}{subsection.8.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.2}Limitations}{14}{subsection.8.2}\protected@file@percent }
-\newlabel{Limitations}{{8.2}{14}{Limitations}{subsection.8.2}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {8.2.1}How important is a shared DGP?}{14}{subsubsection.8.2.1}\protected@file@percent }
 \citation{lin2021minimizing,lundquist2024volatility}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.2}Limitations}{15}{subsection.8.2}\protected@file@percent }
+\newlabel{Limitations}{{8.2}{15}{Limitations}{subsection.8.2}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {8.2.1}How important is a shared DGP?}{15}{subsubsection.8.2.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {8.2.2}The assumption of a shared family can be relaxed in certain circumstances. For example, if a certain donor is not like the time series under study with respect to the covariates, then the lack of a shared family will not matter much.}{15}{subsubsection.8.2.2}\protected@file@percent }
 \bibstyle{plainnat}
 \bibdata{unifying.bib}
