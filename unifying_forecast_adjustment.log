@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.15)  27 OCT 2024 00:32
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.15)  27 OCT 2024 16:17
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -887,28 +887,14 @@ Overfull \hbox (30.446pt too wide) in paragraph at lines 538--539
 [][]\OT1/cmr/bx/n/10.95 Proposition 2. []\OT1/cmr/m/it/10.95 Let $\OMS/cmsy/m/n/10.95 f[]g[]$ \OT1/cmr/m/it/10.95 de-note the vec-tor of pre-dic-tions in the time se-ries un-der study. $\OMS/cmsy/m/n/10.95 f[]g[] []
  []
 
-[10]
-<real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png, id=324, 803.0pt x 602.25pt>
+[10] [11]
+<real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png, id=338, 803.0pt x 602.25pt>
 File: real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png Graphic file (type png)
 <use real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png>
-Package pdftex.def Info: real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png  used on input line 563.
+Package pdftex.def Info: real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png  used on input line 574.
 (pdftex.def)             Requested size: 321.1943pt x 240.89572pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[11] [12 <./real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 600--601
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 610--611
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 618--619
+ [12 <./real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 611--612
 
  []
 
@@ -917,22 +903,32 @@ Underfull \hbox (badness 10000) in paragraph at lines 621--622
 
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 629--630
+
+ []
+
 [13]
-Underfull \hbox (badness 10000) in paragraph at lines 655--656
+Underfull \hbox (badness 10000) in paragraph at lines 632--633
 
  []
 
 [14]
-Underfull \hbox (badness 10000) in paragraph at lines 695--696
+Underfull \hbox (badness 10000) in paragraph at lines 666--667
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 703--704
+Underfull \hbox (badness 10000) in paragraph at lines 706--707
 
  []
 
-[15] (./unifying_forecast_adjustment.bbl
+[15]
+Underfull \hbox (badness 10000) in paragraph at lines 714--715
+
+ []
+
+[16] (./unifying_forecast_adjustment.bbl
 Underfull \hbox (badness 10000) in paragraph at lines 19--22
 []\OT1/cmr/m/n/10.95 Jason Brown-lee.  Time se-ries pre-dic-tion with lstm re-cur-rent neu-ral net-works in
  []
@@ -942,9 +938,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 19--22
 \OT1/cmr/m/n/10.95 python with keras, Aug 2022.  URL [][]$\OT1/cmtt/m/n/10.95 https : / / machinelearningmastery . com /
  []
 
-[16
+[17
 
-]) [17] (./unifying_forecast_adjustment.aux)
+]) [18] (./unifying_forecast_adjustment.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
@@ -953,17 +949,17 @@ Package rerunfilecheck Info: File `unifying_forecast_adjustment.out' has not cha
 (rerunfilecheck)             Checksum: A8836F8D142C94AF726520FD116BD74E;6678.
  ) 
 Here is how much of TeX's memory you used:
- 37252 strings out of 474116
- 791135 string characters out of 5743682
+ 37259 strings out of 474116
+ 791184 string characters out of 5743682
  1951187 words of memory out of 5000000
  58980 multiletter control sequences out of 15000+600000
  578011 words of font info for 108 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  142i,16n,144p,1711b,1697s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on unifying_forecast_adjustment.pdf (17 pages, 493939 bytes).
+Output written on unifying_forecast_adjustment.pdf (18 pages, 497070 bytes).
 PDF statistics:
- 532 PDF objects out of 1000 (max. 8388607)
- 94 named destinations out of 1000 (max. 500000)
+ 549 PDF objects out of 1000 (max. 8388607)
+ 101 named destinations out of 1000 (max. 500000)
  239 words of extra memory for PDF output out of 10000 (max. 10000000)
 

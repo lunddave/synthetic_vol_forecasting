@@ -554,7 +554,18 @@ The Heterogeneous Autoregressive (HAR) model for realized volatility \citep{cors
 RV_{t} = \beta_{0} + \beta_{\text{1-day}}RV_{t-1} + \beta_{\text{5-day}}\overline{\{RV_{t-1},...,RV_{t-5}\}}+\beta_{\text{22-day}}\overline{\{RV_{t-1},...,RV_{t-22}\}} + \epsilon_{t}
 \end{align*}
 
-Recently, \cite{bodilsen2023exploiting} find that overnight news improves the predictive ability of HAR regressions.  The authors distinguish between earnings-related and non-earnings-related news occurring after hours, finding that predictive performance is improved for one-day-ahead forecasts but no more.
+Recently, \cite{bodilsen2023exploiting} find that overnight news improves the predictive ability of HAR regressions with a logarithmic transformation on the realized volatility estimate.  The authors distinguish between earnings-related and non-earnings-related news occurring after hours, finding that predictive performance is improved for one-day-ahead forecasts but no more.
+
+We should note that the regressions under discussion here are predictive regressions, with no suggestion that the model is fundamentally driven by the linear specification that is estimated.  However, if it were, we would especially desire answers to the following
+
+\begin{enumerate}
+  \item Are the relevance and novelty filters used by \cite{bodilsen2023exploiting} appropriate, and does it represent a qualitative decision?  Does it represent an instance of similarity-based matching?
+  \item Bias-variance tradeoff: are we able to reduce the bias or the variance or both via the method of \cite{bodilsen2023exploiting}?
+  \item  What DGP on overnight firm-specific news would most justify the approach in \cite{bodilsen2023exploiting}?
+  \item Is earning-related and non-earnings-related the appropriate disaggregation to use?
+  \item Is it appropriate to use counts at each time point, or would indicator variables be superior, or rather, under what conditions would indicator variables be superior?
+  \item 
+\end{enumerate}
 
 \subsubsection{A Real Data Application of Shock-Adjusted HAR Forecasting}
 
