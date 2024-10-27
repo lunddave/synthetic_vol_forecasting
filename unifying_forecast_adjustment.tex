@@ -429,12 +429,12 @@ In order to introduce the general framework for adjusting forecasts under shocks
 
 We will suppose that a researcher has a multivariate time series data $\y_{i,t} = (y_{i,t}, \x_{i,t}$), $t = 1,$ $\ldots,  T_i$, $i = 1, \ldots, n+1$, where $r_{i,t}$ is scalar and $\x_{i,t}$ is a vector of covariates such that $\x_{i,t}|\mathcal{F}_{i,t-1}$ is deterministic and observed.  Suppose that the analyst is interested in forecasting $y_{1,t}$, the first time series in the collection, which we will denote \textit{the time series under study}.   We assume the following general data-generating process
 
-  \begin{align*}
+  \begin{align}
     \mc{M}_1 \colon \begin{array}{l}
-      y_{i,t} = F(\mathcal{F}_{i,t-1}) + \alpha_{i,t} + \epsilon_{i,t}\\[.2cm]
+      y_{i,t} = F(\mathcal{F}_{i,t-1}) + \alpha_{i,t} + \epsilon_{i,t}\\[.2cm]\label{core_specification}
       \alpha_{i,t} = \x^{T}_{i,t}\lambda_{t} + u_{i,t},\\
     \end{array}
-    \end{align*}
+    \end{align}
    
 with time-invariant error structure
   \begin{align*}
@@ -508,16 +508,16 @@ This might not always be straightforward.  Some models like GARCH, for example, 
 
 \section{Formal Properties and Model-Specific Considerations}\label{special_cases}
 
-In this section discuss particular models in which our approach has been implemented as well as other in which it has yet to be implemented.  For those for which an implementation exists, we portray the model in a more general light, while also commenting on the model-specific considerations.
+In this section, we discuss particular models for which our approach has been implemented as well as others for which it has yet to be implemented.  For those for which an implementation exists, we introduce the model in a more general light, while also commenting on the model-specific considerations.
 
 Recall the specification \ref{core_specification}, which models a rare shock as an affine function of covariates:
 
 \begin{align*}
-  &y_{i,t} = F(\mathcal{F}_{i,t-1}) + \x^{T}_{i,t}\lambda_{t} + \epsilon_{i,t}
+  &y_{i,t} = F(\mathcal{F}_{i,t-1}) + \alpha_{i,t} + \epsilon_{i,t}
 \end{align*}
 
 \subsection{ARIMA}\label{ARIMA}
-We begin our recounting of model-specific cases by recalling \cite{lin2021minimizing}, in which it was established that for a family of AR(1)-distributed scalar time series with a common shock distribution, forecast risk can be reduced via a similarity-based adjustment procedure.  AR(p) is an easy model to work with, in part because it can be consistently estimated via OLS, and an AR(p) can approximate an ARMA(p,q) with arbitrarily-small error through via a truncation of an AR($\infty$) representation.  Setting aside the estimation method, consider a one-step-ahead for an AR(p) at time $t$ with an adjustment estimator, $\hat\alpha_{t}$:
+We begin our recounting of model-specific cases by recalling \cite{lin2021minimizing}, in which it was established that for a family of AR(1)-distributed scalar time series with a common shock distribution, forecast risk can be reduced via a similarity-based adjustment procedure.  An AR(p) is an easy model to work with, in part because it can be consistently estimated via OLS, and an AR(p) can approximate an ARMA(p,q) with arbitrarily-small error through via a truncation of an AR($\infty$) representation.  Setting aside the estimation method, consider a one-step-ahead for an AR(p) at time $t$ with an adjustment estimator, $\hat\alpha_{t}$:
 
 \begin{align}
 \hat{y}_{t} = f(\mathcal{F}_{t-1}) = \hat\mu + \sum^{p}_{i=1}\hat\rho_{i}y_{t-k} + \hat{\alpha}_{t}
@@ -528,14 +528,14 @@ which can be understood as an AR($p$) with time-varying coefficients.  The mean 
   \E[(y_{t}-\hat{y}_{t})^{2}] &= \E[(y_{t} - \hat\mu + \sum^{p}_{k=1}\hat\rho_{k}y_{t-k} + \hat{\alpha}_{t})^{2}]\\
   &= \E[(\mu + \sum^{p}_{k=1}\rho_{i}y_{t-i} + \epsilon_{t} + \alpha_{t} - \hat\mu + \sum^{p}_{k=1}\hat\rho_{k}y_{t-i} + \hat{\alpha}_{t})^{2}] 
   \end{align}
-admits of the typical bias-variance decomposition, with the special proviso that with more terms in the prediction function, more covariance terms arise.  Similarly, the covariance structure of the random effects in $\alpha_{t} = \x_{t}^{T}\lambda_{t}$ will contribute to the variance.  In the real-data examples \cite{lin2021minimizing}, the entries in $\lambda_{t}$ are proxies of general market risk, which one would commonly take to be correlated not only with each other but also with a financial time series $y_{t}$.  All of this is to say that control of the MSE may require tight control of the variance in the prediction function, which in turn will gesture in the direction of a sparse $\hat\alpha_{t}$ and sparse estimation of the autoregressive structure.
+admits of the typical bias-variance decomposition, with the special proviso that with more terms in the prediction function, more covariance terms arise.  Similarly, the covariance structure of the random effects in $\alpha_{t} = \x_{t}^{T}\lambda_{t}$ will contribute to the variance.  In the real-data examples \cite{lin2021minimizing}, the entries in $\x_{t}$ are proxies of general market risk, which one would commonly take to be correlated not only with each other but also with a financial time series $y_{t}$.  All of this is to say that control of the MSE may require tight control of the variance in the prediction function, which in turn will gesture in the direction of a sparse $\hat\alpha_{t}$ and sparse estimation of the autoregressive structure.
 
 \begin{prop}\label{ARIMA_param_consistency}
 Let $2\leq i \leq n+1$.  The tuple of estimators ($\hat\rho_{1},...,\hat\rho_{p}, \hat\alpha_{i,t}$) is consistent at $t \rightarrow \infty$.
 \end{prop}
 
 \begin{prop}\label{ARIMA_conv_distribution}
-  Let $\{\hat y_{1,T_{1}^{*}+r}\}^{T_{1}^{*}+h}_{r=1}$ denote the vector of predictions in the time series under study.  $\{\hat y_{1,T_{1}^{*}+r}\}^{T_{1}^{*}+h}_{r=1} \xrightarrow{d} \{ y_{1,T_{1}^{*}+r}\}^{T_{1}^{*}+h}_{r=1}$.
+  Let $\{\hat y_{1,T_{1}^{*}+r}\}^{h}_{r=1}$ denote the vector of predictions in the time series under study.  $\{\hat y_{1,T_{1}^{*}+r}\}^{h}_{r=1} \xrightarrow{d} \{ y_{1,T_{1}^{*}+r}\}^{T_{1}^{*}+h}_{r=1}$.
   \end{prop}
 
 When forecasting financial time series using the method above, the question of prices versus returns (or in the language of economics or engineering, levels versus flows) is relevant.  Consider, for example, the persistence of a shock.  A shock to an asset's return series at time $t$ implies a persistent shock to the asset's price series at time $t$ and beyond, as one can verify by inverting the discrete-differencing operation on a time series.  However, if one forecasts the price series of the asset directly, that persistence beyond the first instantiation of the shock must be modeled explicitly.  This suggests interesting opportunities in the analysis and forecasting of shock persistence for situations in which level-forecasting is appropriate, e.g. for stationary time series.
