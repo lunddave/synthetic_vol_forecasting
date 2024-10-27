@@ -554,6 +554,8 @@ The Heterogeneous Autoregressive (HAR) model for realized volatility \citep{cors
 RV_{t} = \beta_{0} + \beta_{\text{1-day}}RV_{t-1} + \beta_{\text{5-day}}\overline{\{RV_{t-1},...,RV_{t-5}\}}+\beta_{\text{22-day}}\overline{\{RV_{t-1},...,RV_{t-22}\}} + \epsilon_{t}
 \end{align*}
 
+Recently, \cite{bodilsen2023exploiting} find that overnight news improves the predictive ability of HAR regressions.  The authors distinguish between earnings-related and non-earnings-related news occurring after hours, finding that predictive performance is improved for one-day-ahead forecasts but no more.
+
 \subsubsection{A Real Data Application of Shock-Adjusted HAR Forecasting}
 
 \begin{figure}[h!]

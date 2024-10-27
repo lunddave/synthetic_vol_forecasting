@@ -1,4 +1,4 @@
-\begin{thebibliography}{21}
+\begin{thebibliography}{22}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -9,6 +9,11 @@
 Christopher~M Bishop and Hugh Bishop.
 \newblock \emph{Deep learning: Foundations and concepts}.
 \newblock Springer Nature, 2023.
+
+\bibitem[Bodilsen and Lunde(2023)]{bodilsen2023exploiting}
+Simon~Tranberg Bodilsen and Asger Lunde.
+\newblock Exploiting news analytics for volatility forecasting.
+\newblock \emph{Available at SSRN 4401032}, 2023.
 
 \bibitem[Brownlee(2022)]{Brownlee_2022}
 Jason Brownlee.
