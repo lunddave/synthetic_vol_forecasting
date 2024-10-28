@@ -459,7 +459,7 @@ and time-invariant error structure
     u_{i,t} & \simiid  \mc{F}_{u} \text{ with}  \; \mrm{Var}_{\mc{F}_{u}}(u) = \sigma^2_{u},\\
     &\epsilon_{i,t}  \indep u_{i,t},
     \end{align*}
-where $F$ maps objects from the past into future objects of $y_{i,t}$, and $\epsilon_{i,t}$ is mean-zero and uncorrelated across time and donors.  Note that the dot product $\alpha_{i,t} = \x^{T}_{i,t}\lambda_{i,t}$ includes the term $u_{i,t}$ that is not shared among donors.  It encodes the known possibility that the shocks will vary across donors both in ways that can predicted based on pre-shock covariates as well as in ways that cannot be predicted.
+where $F$ maps objects from the past into future objects of $y_{i,t}$, and $\epsilon_{i,t}$ is mean-zero and uncorrelated across time and donors.  Note that the dot product $\alpha_{i,t} = \x^{T}_{i,t}\lambda_{i,t}$ includes the term $u_{i,t}$ that is not shared among donors.  It encodes the known possibility that the shocks will vary across donors both in ways that can predicted based on pre-shock covariates as well as in ways that cannot be predicted.  That the parameter vector is time-varying allows us to capture that most time points are without news shocks, but conditional upon information arriving between $T_{i}^{*}$ and $T_{i}^{*}+1$, we may know with near certainty that $\lambda_{1,T_{1}^{*}+h}$ will be nonzero in norm for some $h>0$.
 
 The specification above is capacious enough to include data-generating processes of the form 
 
