@@ -174,7 +174,7 @@ For intercept shifts that occurs between $T^{*}$ and $T^{*}+1$, forecasting proc
 As the literature has developed, a current practitioner of forecast adjustment can now choose between (i) procedures that are discretionary or automated, (ii) adjusting using internal data (i.e. from the time series itself) or external, (iii) the term to be corrected (e.g. intercept, coefficients), if any, (iv) as well as the specification of the correction function (i.e. the mapping from the donor unit data to the correction term in the time series under study), including the aggregation mechanism applied to the assembled data (e.g. Nearest-Neighbor, arithmetic mean, kernel methods).  We discuss this in depth in Section \ref{global_overview}.
 
 If intercept correction is the correction of a forecast by adding the residual at time $T^{*}+1$ to the forecasts at some subset of $\{T^{*}+2,T^{*}+3,...\}$, in this manuscript, we are doing something rather close to that by adding the predicted correction term to each forecast in some some subset of $\{T_{1}^{*}+1,T_{1}^{*}+2,...\}$, where $T^{*}_{1}+1$ is first integer index for the time series under study following the shock. 
-The general procedure presented, post-shock forecasting, is a discretionary procedure for intercept correction that integrates data internal or external to the time series under study in a systematic manner.  The correction function uses the notion of similarity between breaks in different time series, and it borrows from the causal inference literature to aggregate information from those similar circumstances.  Beyond \cite{lin2021minimizing,lundquist2024volatility}, we are not aware of prior work uses a parametric specification for nonzero errors as well as a method for aggregating similar shocks occurring outside the time series under study.
+The general procedure presented, post-shock forecasting, is a discretionary procedure for intercept correction that integrates data internal or external to the time series under study in a systematic manner.  It is a discretionary in the sense that substantive choices must be made in order to use at each instance.  The correction function uses the notion of similarity between breaks in different time series, and the procedure presented borrows from the causal inference literature to aggregate information from those similar circumstances.  Beyond \cite{lin2021minimizing,lundquist2024volatility}, we are not aware of prior work uses a parametric specification for nonzero errors as well as a method for aggregating similar shocks occurring outside the time series under study.
 
 The structure of this manuscript is as follows.  We provide a deeper and more critical review of several literatures, including intercept correction, model-evaluation, and similarity-based forecasting.  We then provide a canonical setting in which we attempt to focus our work.  This setting will be presented at a level of generality that showcases the broad applicability of our method.  We then introduce the method from a global perspective, abstracting away from familiar applications.  We then show several specific applications, including novel applications that cannot be found elsewhere in the literature.  We close with a discussion, including possible extensions.
 
@@ -186,10 +186,10 @@ The structure of this manuscript is as follows.  We provide a deeper and more cr
 
 % Yet another potential motivation springs from the way we evaluate model performance.  In \cite{clements2005evaluating}, the authors discuss six dichotomies regarding forecast evaluation as a way of advising caution about simplistic notions of performance evaluation.  These ideas matter for the current manuscript for at least one reason.  We must entertain the possibility that breaks in the DGP will invalidate the standard forecast evaluation framework under which we had been working.  If, for example, we have a family of models estimated used a Gaussian loss function, and the post-shock residuals are not conditionally Gaussian (e.g. they could be conditionally Cauchy), then why even start with the default forecasting function?  Why not throw it out entirely?  If only the distribution of the innovations changes, then would that even matter for a forecast that is purely concerned with the conditional mean?
 
- \cite[p. 177]{hendry1994theory} characterize breaks in the DGP (and hence the misspecification of the default forecasting method) is the ``most obvious and best understood rationale'' for intercept correction.  In this section, we wish to locate the task of forecasting amid shocks within the broader literature on forecasting under breaks in the GDP. 
+ \cite[p. 177]{hendry1994theory} characterize breaks in the DGP (and hence the misspecification of the default forecasting method) is the ``most obvious and best understood rationale'' for intercept correction.  In this section, we wish to locate the task of forecasting amid shocks within the broader literature on forecasting under breaks in the DGP. 
 
 
- A terminological note is in order before we proceed.  We use the term ``shock'' as a special case of a break in the DGP, even though, strictly speaking, some shocks will neither result from a break in the DGP nor herald the emergence of a new regime.  The news shocks examined in this manuscript, however, should be considered breaks in the GDP, no matter whether they are transient or permanent.  Additionally, in this work, we will be focused on shocks that occur strictly between two discrete time points, or information available at a ``fractional lag" \citep{castle2011forecasting}.  This raises an important terminological point.  Errors are a staple of stochastic modeling, and certainly no proper inventory of the wide range of uses of ``noise", ``shocks", and so can be accomplished here.  Whereas in the psychometric and social-scientific fields, errors may represent unmeasured or latent capacities of a unit, in other fields like the natural sciences, errors may be used to account for variability in the instruments used to collect data.  ``Innovations" or ``shocks", in econometric literature, are generally understood to represent the arrival of previously unknown (but not necessarily uncontemplated) information.  Shocks are called structural when they are can be linked back to some key feature of an scientific (usually economic) theory; otherwise, they are idiosyncratic.  However, there exist other subcategories of shocks that crosscut the distinction just made.  For example, a news shock is a shock in which the information material to the market is delivered via newsmedia and moves markets no earlier than the news.  Shocks can also be permanent or transitory, supply-related or demand-related, and so forth.  The taxonomy is vast.  What matters for this work is the news shocks we posit occur between two discrete time points, so that a practitioner is faced with the question of what action is most advisable for the following time point, given the news shock.
+ A terminological note is in order before we proceed.  We use the term ``shock'' as a special case of a break in the DGP, even though, strictly speaking, some shocks will neither result from a break in the DGP nor herald the emergence of a new regime.  The news shocks examined in this manuscript, however, should be considered breaks in the DGP, no matter whether they are transient or permanent.  Additionally, in this work, we will be focused on news shocks that occur strictly between two discrete time points, or information available at a ``fractional lag" \citep{castle2011forecasting}.  This leads to a further terminological point.  Errors are a staple of stochastic modeling and also go by the synonyms ``noise", ``shocks", or ``innovations''.  The meaning of these terms may not differ as much in their mathematical representations in symbol but in how they're interpreted.  Whereas in the psychometric and social-scientific fields, errors may represent unmeasured or latent capacities of a unit, in other fields like the natural sciences, errors may be used to account for variability in the instruments used to collect data.  ``Innovations" or ``shocks", in econometric literature, are generally understood to represent the arrival of previously unknown (but not necessarily uncontemplated) information.  Shocks are called structural when they are can be linked back to some key feature of an scientific (usually economic) theory; otherwise, they are idiosyncratic.  However, there exist other subcategories of shocks that crosscut the distinction just made.  For example, a news shock is a shock in which the information material to the market is delivered via newsmedia and moves markets no earlier than the news release itself.  Shocks can also be permanent or transitory, supply-related or demand-related, and so forth.  The taxonomy is vast.  What matters for this work is the news shocks we posit occur between two discrete time points, so that a practitioner is faced with the question of what action is most advisable for the following time point, given the news shock.
 
 \subsection{The Role of Outside Information}\label{outside_info}
 
@@ -441,23 +441,32 @@ We will suppose that a researcher has a multivariate time series data $\y_{i,t} 
   \begin{align}
     \mc{M}_1 \colon \begin{array}{l}
       y_{i,t} = F(\mathcal{F}_{i,t-1}) + \alpha_{i,t} + \epsilon_{i,t}\\[.2cm]\label{core_specification}
-      \alpha_{i,t} = \x^{T}_{i,t}\lambda_{t} + u_{i,t},\\
+      \alpha_{i,t} = \x^{T}_{i,t}\lambda_{i,t} \\[.2cm]
+     \x_{i,t}^{T} = (x^{1}_{i,t},...,x^{p}_{i,t},1)\\[.2cm] 
+     \lambda_{i,t}^{T} = (\lambda^{1}_{t},...,\lambda^{p}_{t},u_{i,t}),\\[.2cm]
     \end{array}
     \end{align}
+
+  with time-varying and observable covariate vector $\x_{i,t}^{T}$, time-varying unobservable  
+
+\begin{align*}
+\lambda_{i,t} &\sim \mc{F}_{\lambda}\text{ with }  \E_{\mathcal{F}_{\lambda}}(\lambda) = \mu_{\lambda_{t}}, \mrm{Var}_{\mc{F}_{\lambda}}(\lambda) = \Sigma_{\lambda_{t}},\\
+\end{align*}
    
-with time-invariant error structure
+and time-invariant error structure
   \begin{align*}
-    \lambda_{t} &\sim \mc{F}_{\lambda}\text{ with }  \E_{\mathcal{F}_{\lambda}}(\lambda) = \mu_{\lambda_{t}}, \mrm{Var}_{\mc{F}_{\lambda}}(\lambda) = \Sigma_{\lambda_{t}}\\
     \epsilon_{i,t} &\simiid \mc{F}_{\epsilon} \text{ with}  \; \E_{\mc{F}_{\epsilon}}(\epsilon) = 0, \mrm{Var}_{\mc{F}_{\epsilon}}(\epsilon)  = \sigma^{2}_{\epsilon},  \\
     u_{i,t} & \simiid  \mc{F}_{u} \text{ with}  \; \mrm{Var}_{\mc{F}_{u}}(u) = \sigma^2_{u},\\
-    \lambda_{i,t} & \indep \epsilon_{i,t}  \indep u_{i,t},
+    &\epsilon_{i,t}  \indep u_{i,t},
     \end{align*}
-where $F$ maps objects from the past into future objects of $y_{i,t}$, and $\epsilon_{i,t}$ is mean-zero and uncorrelated across time and donors.  Note that this specification above is capacious enough to include data-generating processes of the form 
+where $F$ maps objects from the past into future objects of $y_{i,t}$, and both $\epsilon_{i,t}$ and $u_{i,t}$ are mean-zero and uncorrelated across time and donors.  Note that the dot product $\alpha_{i,t} = \x^{T}_{i,t}\lambda_{i,t}$ includes an idiosyncratic noise term $u_{i,t}$ (not necessarily a non-trivial random variable) to encode the possibility --- which is known --- that the shock may be a noisy function of the covariates. 
+
+The specification above is capacious enough to include data-generating processes of the form 
 
 \begin{align*} 
   y_{i,t} = \log{Y_{i,t}} = \log{a_{i,t}y_{i,t-k}e^{\alpha_{i,t}+\epsilon_{i,t}}} = \log{a_{i,t}} + \log{y_{i, t-k}} + \alpha_{i,t} + \epsilon_{i,t}
 \end{align*}
-with $k\geq1$ and $a_{i,t}, y_{i,t}$ supported on $\mathbb{R}^{+}$.  The term $\x^{T}_{i,t}\lambda_{t}$ will be deemed the $\textit{correction term}$, and the function
+with $k\geq1$ and $a_{i,t}, y_{i,t}$ supported on $\mathbb{R}^{+}$.  The term $\x^{T}_{i,t}\lambda_{i,t}$ will be deemed the $\textit{correction term}$, and the function
 
 \begin{align*}
   \xi \colon \mathcal{F}_{2,T^{*}_{2}+h} \times \ldots \times \mathcal{F}_{n+1, T^{*}_{n+1}+h} &\to \mathcal{F}_{1,T^{*}_{1}+h}\\
@@ -511,7 +520,7 @@ Notice that we did not say \textit{parametric} specification.  The reason for th
 
 This might not always be straightforward.  Some models like GARCH, for example, might deliver very noisy estimates for indicator variables that occur just once.
 
-\item \textbf{Reliable Correction Function Estimation} There must exist a correction function (presumably based on the correction term) that maps data from the donor pool to the $\textit{predicted}$ correction term in the time series under study based on some notion of similarity.  In some cases, there may exist a posited DGP that the correction term estimates.  In other cases, there may be no posited GDP.  Similarly, if there exists a posited DGP for the correction term, it may depend upon data internal to the time series under study, or it may depend on external data, e.g. outside data could be aggregated (e.g. Nearest-Neighbor, arithmetic mean, kernel methods) to estimate the correction function.
+\item \textbf{Reliable Correction Function Estimation} There must exist a correction function (presumably based on the correction term) that maps data from the donor pool to the $\textit{predicted}$ correction term in the time series under study based on some notion of similarity.  In some cases, there may exist a posited DGP that the correction term estimates.  In other cases, there may be no posited DGP.  Similarly, if there exists a posited DGP for the correction term, it may depend upon data internal to the time series under study, or it may depend on external data, e.g. outside data could be aggregated (e.g. Nearest-Neighbor, arithmetic mean, kernel methods) to estimate the correction function.
 
 \end{enumerate}
 
@@ -519,12 +528,11 @@ This might not always be straightforward.  Some models like GARCH, for example, 
 
 In this section, we discuss particular models for which our approach has been implemented as well as others for which it has yet to be implemented.  For those for which an implementation exists, we introduce the model in a more general light, while also commenting on the model-specific considerations.
 
-Recall the specification (\ref{core_specification}), which models a rare shock as an affine function of covariates:
+Recall the specification (\ref{core_specification}), which models a news shock as an affine function of covariates:
 
 \begin{align*}
   &y_{i,t} = F(\mathcal{F}_{i,t-1}) + \alpha_{i,t} + \epsilon_{i,t}
 \end{align*}
-
 \subsection{ARIMA}\label{ARIMA}
 We begin our recounting of model-specific cases by recalling \cite{lin2021minimizing}, in which it was established that for a family of AR(1)-distributed scalar time series with a common shock distribution, forecast risk can be reduced via a similarity-based adjustment procedure.  An AR(p) is an easy model to work with, in part because it can be consistently estimated via OLS, and an AR(p) can approximate an ARMA(p,q) with arbitrarily-small error through via a truncation of an AR($\infty$) representation.  Setting aside the estimation method, consider a one-step-ahead for an AR(p) at time $t$ with an adjustment estimator, $\hat\alpha_{t}$:
 
@@ -557,23 +565,28 @@ In this way, \cite{lundquist2024volatility} bridged a gap between the descriptiv
 
 \subsection{HAR}
 
-The Heterogeneous Autoregressive (HAR) model for realized volatility \citep{corsi2009simple}  uses ordinary least-squares (OLS), WLS, or even a logarithmic specification to estimate an autoregressive model.  It explores influence of previous volatility on current volatility, of course, but uses a specification motivated by theory: that a heterogeneous collection of market participants interacts at different frequencies.  Therefore, the volatility can be well-modeled as a linear combination of the average volatility over the previous day, previous week, and previous month (usually taken to be 22 days).  Formally, HAR assumes that the log price of an asset is a governed by a diffusion process (a model beyond our scope herein), and HAR estimates
+The Heterogeneous Autoregressive (HAR) model for realized volatility \citep{corsi2009simple}  uses ordinary least-squares (OLS), WLS, or some other appropriate linear model to fit a predictive regression model.  It explores the influence of previous volatility on current volatility, of course, but uses a specification motivated by theory: that a heterogeneous collection of market participants interacts at different frequencies.  Therefore, the volatility can be well-modeled as a linear combination of the average volatility over the previous day, previous week, and previous month (usually taken to be 22 days).  Formally, HAR assumes that the log price of an asset is a governed by a diffusion process (a model beyond our scope herein), and HAR estimates
 
 \begin{align*}
 RV_{t} = \beta_{0} + \beta_{\text{1-day}}RV_{t-1} + \beta_{\text{5-day}}\overline{\{RV_{t-1},...,RV_{t-5}\}}+\beta_{\text{22-day}}\overline{\{RV_{t-1},...,RV_{t-22}\}} + \epsilon_{t}
 \end{align*}
-
 Recently, \cite{bodilsen2023exploiting} find that overnight news improves the predictive ability of HAR regressions with a logarithmic transformation on the realized volatility estimate.  The authors distinguish between earnings-related and non-earnings-related news occurring after hours, finding that predictive performance is improved for one-day-ahead forecasts but no more.
 
 We should note that the regressions under discussion here are predictive regressions, with no suggestion that the model is fundamentally driven by the linear specification that is estimated.  However, if it were, we would especially desire answers to the following
 
 \begin{enumerate}
   \item Are the relevance and novelty filters used by \cite{bodilsen2023exploiting} appropriate, and does it represent a qualitative decision?  Does it represent an instance of similarity-based matching?
+  \item Could we relax the requirement on the relevance score and instead let a numerical algorithm determine which stories and relevant and how relevant?
+  \item Could we relax the requirement on the novelty score?
   \item Bias-variance tradeoff: are we able to reduce the bias or the variance or both via the method of \cite{bodilsen2023exploiting}?
+  \item What is the `frontier' that separates using a similarity-based approach like SPC as opposed to an approach using count variables?
+  \item Can we confirm the theory that count variable approaches reduce variance while, as is well-established, SPC reduces bias?
+  \item Does SPC do better when the shock is a nonlinear function of the covariates compared to a method that uses regression terms for each covariate?  Does SPC do better under those circumstances compared to count variable-based approaches?
+  \item What are advantages and disadvantages of using counts versus indicator variables versus alternatives?
   \item  What DGP on overnight firm-specific news would most justify the approach in \cite{bodilsen2023exploiting}?
   \item Is earning-related and non-earnings-related the appropriate disaggregation to use?
   \item Is it appropriate to use counts at each time point, or would indicator variables be superior, or rather, under what conditions would indicator variables be superior?
-  \item 
+
 \end{enumerate}
 
 \subsubsection{A Real Data Application of Shock-Adjusted HAR Forecasting}
@@ -674,7 +687,7 @@ Cases:
 \subsection{Forecast Combination}
 what we are talking about here is not forecast combination, but there may be, nevertheless, a role for forecast combination: combining the forecasts generated by small differences in covariate and/or donor choice, as is done in \cite{lundquist2024volatility}. \\
 
-Consider the leave-one-out method used on pairs of donors and covariates in \cite{lundquist2024volatility}.  By averaging over $(n+1)\cdot (p+1)$ predictions, we average over $n+1 \cdot p + 1$ convex combinations (where, when a donor is ommitted, its weight can be imputed as zero).
+Consider the leave-one-out method used on pairs of donors and covariates in \cite{lundquist2024volatility}.  By averaging over $(n+1)\cdot (p+1)$ predictions, we average over $(n+1) \cdot (p + 1)$ convex combinations (where, when a donor is ommitted, its weight can be imputed as zero).
 
 \subsection{Limitations}\label{Limitations}
 
