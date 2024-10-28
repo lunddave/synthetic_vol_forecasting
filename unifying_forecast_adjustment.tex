@@ -195,20 +195,22 @@ The structure of this manuscript is as follows.  We provide a deeper and more cr
 
 When is more information better?  That is a central question with regard to forecasting.   In \cite{clements2005guest} (cited in \cite{castle2013forecasting}), the authors note that when forecasts fail, it often has to do with location (i.e. intercept shifts), and therefore using additional information is not likely to help unless it can address potential location shifts.  We should clarify what we mean by ``additional information".  By ``additional information", do we mean all information not included in the default forecast function?  Could that include something as straightforward as additional lags of the time series being forecast?  Perhaps a more useful distinction to make is that between information internal to the time series being forecast and information external to the time series being forecast.  Of course, the usefulness of this distinction will hinge, in part, on whether we can cleanly partition information into internal and external buckets.  A cross-cutting distinction originates in \cite{castle2011forecasting}, which discusses necessary conditions for forecasting under breaks as well as a taxonomy of information available for doing so.  The authors make a fundamental distinction between ``regular forces'', which includes the typical standbys of economic theory, and information potentially relevant to location shifts.  
 
-We wish now to sharply distinguish between essential and inessential concepts.  For example, whether information is relevant to location shifts or not is a complex question that depends upon numerous factors, including but not necessarily limited to the DGP.  More importantly, whether a given class of information is relevant to location shifts or not should not be conflated with internality or externality, though certain tendencies and general patterns may emerge.  We make clear what is essential in the table below.
+We wish now to sharply distinguish between essential and inessential concepts.  For example, whether information is relevant to location shifts or not is a complex question that depends upon numerous factors, including but not necessarily limited to the DGP.  More importantly, whether a given class of information is relevant to location shifts or not should not be conflated with internality or externality, or whether it belongs to the traditional sort of information used in econometric modeling, though certain tendencies and general patterns may emerge.  We make clear what is essential in the table below.
 
-\begin{center}
+\begin{table}[htb]
+  \centering % instead of \begin{center}
+  \caption{Forecast Information: a 2x2 Schema With Examples}
   \begin{tabular}{ | m{3em} | m{6cm}| m{8cm} | } 
     \hline
     & Conventional Econometric Models & Outside Conventional Econometric Models\\ 
     \hline
-    internal & Lags of series & None \\
+    internal & Lags of the series itself & None \\
     \hline
-    external & Interest rates& Google Trends, high-frequency data \\ 
+    external & Macro variables like interest rates, commodity price; weather-related variables& Google Trends, high-frequency data like prediction markets \\ 
     \hline
   \end{tabular}
-  \end{center}
-
+\end{table}
+ 
   \subsection{The Meaning and Use of Similarity}
 This manuscript aims to contribute at the intersection of post-break forecasting and similarity-based forecasting.  In particular, we use the former to motivate the latter.  The notion of similarity appears in various statistical contexts, including matching, synthetic control, nearest-neighbor methods, not to mention the massive area of approximation theory.  The uses of similarity are too sprawling to recount here.  Our objective is to make forecast corrections by exploiting information from previous time series that have undergone shocks under similar circumstances.  The first use of the term ``similar'' is an appropriate point to attempt a definition.  As a provisional definition, we say that a break in the DGP of a time series is similar to a break in another if the causes of the breaks share key, material qualities.  Note here that we have not said anything about the time series themselves (their DGPs or moments) being similar, nor the entities that they represent (e.g. the firms, the financial instruments, the governments, etcetera) being similar.  Why that is so will become clear shortly.
 
