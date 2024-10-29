@@ -172,7 +172,9 @@ For intercept shifts that occurs between $T^{*}$ and $T^{*}+1$, forecasting proc
 As the literature has developed, a current practitioner of forecast adjustment can now choose between (i) procedures that are discretionary or automated, (ii) adjusting using internal data (i.e. from the time series itself) or external, (iii) the term to be corrected (e.g. intercept, coefficients), if any, (iv) as well as the specification of the correction function (i.e. the mapping from the donor unit data to the correction term in the time series under study), including the aggregation mechanism applied to the assembled data (e.g. Nearest-Neighbor, arithmetic mean, kernel methods).  We discuss this in depth in Section \ref{global_overview}.
 
 If intercept correction is the correction of a forecast by adding the residual at time $T^{*}+1$ to the forecasts at some subset of $\{T^{*}+2,T^{*}+3,...\}$, in this manuscript, we are doing something rather close to that by adding the predicted correction term to each forecast in some some subset of $\{T_{1}^{*}+1,T_{1}^{*}+2,...\}$, where $T^{*}_{1}+1$ is first integer index for the time series under study following the shock. 
-The general procedure presented, post-shock forecasting, is a discretionary procedure for intercept correction that integrates data internal or external to the time series under study in a systematic manner.  It is a discretionary in the sense that substantive choices must be made in order to use at each instance.  The correction function uses the notion of similarity between breaks in different time series, and the procedure presented borrows from the causal inference literature to aggregate information from those similar circumstances.  Beyond \cite{lin2021minimizing,lundquist2024volatility}, we are not aware of prior work uses a parametric specification for nonzero errors as well as a method for aggregating similar shocks occurring outside the time series under study.
+The general procedure presented, post-shock forecasting, is a discretionary procedure for intercept correction that integrates data internal or external to the time series under study in a systematic manner.  It is a discretionary procedure in the sense that substantive choices must be made in order to use at each instance.  The correction function uses the notion of similarity between breaks in different time series, and the procedure presented borrows from the causal inference literature to aggregate information from those similar circumstances.  Parametric specifications for location shifts in the DGP can be found in \cite{castle2011forecasting}, where locations shifts are modeled as induced by additional observable variables, as well as in \cite{lundquist2024volatility}, where the arrival of the news shock is observable, even if its quantitative instantiation is not.  Beyond \cite{lin2021minimizing,lundquist2024volatility}, we are not aware of prior work that proposes a method for aggregating similar shocks occurring outside the time series under study in order to correct the time series under study.
+
+
 
 The structure of this manuscript is as follows.  We provide a deeper and more critical review of several literatures, including intercept correction, model-evaluation, and similarity-based forecasting.  We then provide a canonical setting in which we attempt to focus our work.  This setting will be presented at a level of generality that showcases the broad applicability of our method.  We then introduce the method from a global perspective, abstracting away from familiar applications.  We then show several specific applications, including novel applications that cannot be found elsewhere in the literature.  We close with a discussion, including possible extensions.
 
@@ -418,7 +420,7 @@ What about qualitative ways of determining similarity?  In \cite{lin2021minimizi
 
 In order to introduce our general framework for adjusting forecasts under shocks, we provide an illustration.  In Figure \ref{fig:motivating_piece_convex_combination}, we borrow from \cite{lundquist2024volatility} to show how the aggregation of estimated excess volatilities from donors in the donor pool works when the correction function is a specially-chosen convex combination of fixed effect estimates from the donor pool.
 
-\cite{castle2011forecasting} discusses ``forecasting facing a shift in the intercept of a model of a variable y induced by another observable variable z", which represents the most similar idea to  \cite{lin2021minimizing,lundquist2024volatility} --- with one important disclaimer.  In those later two works, the variable $z$ is observable and yet not quantitative.  As the reader will soon learn, the variable that induces the shock in our model is based on observables as well as an unobservable parameter.
+
 
 \subsection{Formal Modeling Setup}
 
@@ -446,22 +448,19 @@ We will suppose that a researcher has a multivariate time series data $\y_{i,t} 
      \lambda_{i,t}^{T} = (\lambda^{1}_{t},...,\lambda^{p}_{t},u_{i,t}),\\[.2cm]
     \end{array}
     \end{align}
-
-  with time-varying and observable covariate vector $\x_{i,t}^{T}$, time-varying and unknown parameter vector
-
+with time-varying and observable covariate vector $\x_{i,t}^{T}$, time-varying and unknown parameter vector
 \begin{align*}
 \lambda_{i,t} &\sim \mc{F}_{\lambda}\text{ with }  \E_{\mathcal{F}_{\lambda}}(\lambda) = \mu_{\lambda_{t}}, \mrm{Var}_{\mc{F}_{\lambda}}(\lambda) = \Sigma_{\lambda_{t}},\\
 \end{align*}
-   
 and time-invariant error structure
   \begin{align*}
     \epsilon_{i,t} &\simiid \mc{F}_{\epsilon} \text{ with}  \; \E_{\mc{F}_{\epsilon}}(\epsilon) = 0, \mrm{Var}_{\mc{F}_{\epsilon}}(\epsilon)  = \sigma^{2}_{\epsilon},  \\
-    u_{i,t} & \simiid  \mc{F}_{u} \text{ with}  \; \mrm{Var}_{\mc{F}_{u}}(u) = \sigma^2_{u},\\
-    &\epsilon_{i,t}  \indep u_{i,t},
+    %u_{i,t} & \simiid  \mc{F}_{u} \text{ with}  \; \mrm{Var}_{\mc{F}_{u}}(u) = \sigma^2_{u},\\
+    % &\epsilon_{i,t} \indep u_{i,t},
     \end{align*}
-where $F$ maps objects from the past into future objects of $y_{i,t}$, and $\epsilon_{i,t}$ is mean-zero and uncorrelated across time and donors.  Note that the dot product $\alpha_{i,t} = \x^{T}_{i,t}\lambda_{i,t}$ includes the term $u_{i,t}$ that is not shared among donors.  It encodes the known possibility that the shocks will vary across donors both in ways that can predicted based on pre-shock covariates as well as in ways that cannot be predicted.  That the parameter vector is time-varying allows us to capture that most time points are without news shocks, but conditional upon information arriving between $T_{i}^{*}$ and $T_{i}^{*}+1$, we may know with near certainty that $\lambda_{1,T_{1}^{*}+h}$ will be nonzero in norm for some $h>0$.
+where $F$ maps objects from the past into future objects of $y_{i,t}$, and $\epsilon_{i,t}$ uncorrelated across time and donors.  Note that the dot product $\alpha_{i,t} = \x^{T}_{i,t}\lambda_{i,t}$ includes the term $u_{i,t}$ that is not shared among donors.  It encodes the known possibility that the shocks will vary across donors both in ways that can predicted based on pre-shock covariates as well as in ways that cannot be predicted.  That the parameter vector is time-varying allows us to capture that most time points are without news shocks, but conditional upon information arriving between $T_{1}^{*}$ and $T_{1}^{*}+1$, we may know with near certainty that $\lambda_{1,T_{1}^{*}+h}$ will be nonzero in norm for some $h>0$.
 
-The specification above is capacious enough to include data-generating processes of the form 
+The specification (\ref{core_specification}) above is sufficiently capacious as to include data-generating processes of the form 
 
 \begin{align*} 
   y_{i,t} = \log{Y_{i,t}} = \log{a_{i,t}y_{i,t-k}e^{\alpha_{i,t}+\epsilon_{i,t}}} = \log{a_{i,t}} + \log{y_{i, t-k}} + \alpha_{i,t} + \epsilon_{i,t}
@@ -473,7 +472,7 @@ with $k\geq1$ and $a_{i,t}, y_{i,t}$ supported on $\mathbb{R}^{+}$.  The term $\
 \end{align*}
 that estimates or predicts $\alpha_{1,T^{*}_{1}+h}$ will be deemed the \textit{correction function}.  The correction function maps observable, deterministic events and unobservable events into a space so that something might be learned about $\lambda_{t}$.  If $\x_{i,t}$ were not observable or not deterministic with respect to $\mathcal{F}_{t-1}$, then the correction term would represent an additional error term (not necessarily idiosyncratic).
 
-We require that each time series $\y_{i,t}$ is subject to an observed news event following $T^*_i \leq T_{i} + 1$ and before witnessing $T^*_i+1$.  The reasons for this represent the heart and soul of the framework proposed.  We are not proposing a method to correct for unanticipated shocks that have been reflected in the observed data.  Instead, we are proposing a method to correct for shocks for which the qualitative kernel of information is known and the observed quantitative instantiation of that which is not yet known. 
+We require that each time series $\y_{i,t}$ is subject to an observed news event following $T^*_i \leq T_{i} + 1$ and before witnessing $T^*_i+1$.  The reasons for this represent the heart and soul of the framework proposed.  We are not proposing a method to correct for unanticipated shocks that have been reflected in the observed data.  Instead, we are proposing a method to correct for shocks for which the qualitative kernel of information is known and the observed quantitative instantiation which is not yet known. 
 
 So far we have reviewed a long and rich literature about model adjustment, and we have also introduced a data-generating process upon which the rest of this manuscript will be based.  We now proceed to introduce a particular framework of solutions to the circumstances assumed in Section \ref{Setting}.  What we are doing here is therefore not out of the ordinary but distinct in at least two ways: (1) we are incorporating outside information faster, and (2) we are proposing a principled, systematic way to do it that defies that curse of dimensionality.  If one wanted to forecast using linear models and high-dimensional information set, then some kind of method for reducing model complexity would be required.  We avoid that.
 
@@ -638,6 +637,8 @@ This poses a novel case for our method, in that the model is parametric and yet 
 \hat\psi_{i,plugin} = \frac{1}{T_{i}-(T_{i}^{*}+2)}\sum^{T_{i}}_{t\geq T_{i}^{*}+2}-log{\big[-\big(\frac{y_{i,t}-\hat\alpha_{i}}{\hat\lambda} -1\big)\big]} / [t-T_{i}^{*}+1]\text{ .}\label{plugin}
 \end{align}
 (\ref{plugin}) is, to put it lightly, a complicated estimator with potentially dubious properties.  To begin, (\ref{plugin}) is defined only when the term inside the logarithm is positive for each $t\geq T^{*}_{i}+2$.  We could get around this by dropping any summands for which that term is nonpositive and instead calculate an average over only the remaining subset of summands.  Additionally, variance estimates for $\hat\psi_{i,plugin}$ may require resampling methods or the delta method.  Estimation error from $\hat\alpha$ and $\hat\lambda$ would naturally propagate to $\hat\psi_{i,plugin}$, and the expected estimation error would depend upon the size of the pre-shock sample.
+
+\cite{castle2011forecasting} report that MSFE is lower by using intercept correction instead of non-linear methods to estimate $\psi$.
 
 Now consider a practitioner in need of a conditional forecast for $T_{1}^{*}+h, h\geq 1$.  Could aggregating the prediction residuals $r_{i,T_{i}^{*}+h} = y_{T_{i}^{*}+h}-\hat y_{i, T_{i}^{*}+h}, h\geq 1$ lead us to a superior predictions in the time series under study?\\
 

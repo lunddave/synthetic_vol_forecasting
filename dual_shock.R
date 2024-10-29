@@ -59,7 +59,7 @@ getSymbols("CPIAUCSL", src = 'FRED')
 avg.cpi <- apply.yearly(CPIAUCSL, mean)
 
 
-inflation_adj <- as.numeric(CPIAUCSL['2024-03-01'])
+inflation_adj <- as.numeric(avg.cpi['2020'])/avg.cpi
 
 inflation_adj <- as.data.frame(inflation_adj)
 colnames(inflation_adj) <- c("dollars_2020")
@@ -70,14 +70,13 @@ inflation_adj <- inflation_adj %>% mutate(year = 1947:2020)
 COP_close <- COP %>% dplyr::select(COP.Close, Date) %>% rename(COP_Close = COP.Close)
 GSPC_close <- GSPC %>% dplyr::select(GSPC.Close, Date) %>% rename(GSPC_Close = GSPC.Close)
 USD_close <- USD %>% dplyr::select(`DX-Y.NYB.Close`, Date) %>% rename(USD_Close = `DX-Y.NYB.Close`)
-TB_close <- TB %>% dplyr::select(Close, Date) %>% rename(TB_Close = Close)
+TB_close <- TB %>% dplyr::select(IRX.Close, Date) %>% rename(TB_Close = IRX.Close)
 VIX_close <- VIX %>% dplyr::select(VIX.Close, Date) %>% rename(VIX_Close = VIX.Close)
 
 tom <- list(GSPC_close, WTI_Crude, USD_close, TB_close, VIX_close)
 for (i in 1:length(tom)) {
   COP_close <- merge(COP_close, tom[[i]])
 }
-
 
 # response
 Y <- COP_close$COP_Close[-1]
