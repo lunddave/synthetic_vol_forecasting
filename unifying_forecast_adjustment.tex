@@ -166,8 +166,7 @@ What if the break in the DGP is brought about by a very particular kind of event
 \item ``there is an operational method for selecting an appropriate model".
 \end{itemize}   
 
-
-For intercept shifts that occurs between $T^{*}$ and $T^{*}+1$, forecasting procedures have been explored in \cite{lin2021minimizing,lundquist2024volatility}, where the AR(1) and GARCH($m,s$) cases, respectively, are treated.  Both works target additive parameters in scalar time series, predicting those random effects by aggegating information from other time series.  The authors leave several stones unturned, including a more general, dare say comprehensive treatment of how to forecast under any sort of shock.
+For intercept shifts that occurs between $T^{*}$ and $T^{*}+1$, forecasting procedures have been explored in \cite{lin2021minimizing,lundquist2024volatility}, where the AR(1) and GARCH($m,s$) cases, respectively, are treated.  Both works target additive parameters in scalar time series, predicting the additive parameter in the time series under study by aggregating information from other time series.  The authors leave several stones unturned, including a more general, dare say comprehensive treatment of how to forecast under any sort of shock.
 
 As the literature has developed, a current practitioner of forecast adjustment can now choose between (i) procedures that are discretionary or automated, (ii) adjusting using internal data (i.e. from the time series itself) or external, (iii) the term to be corrected (e.g. intercept, coefficients), if any, (iv) as well as the specification of the correction function (i.e. the mapping from the donor unit data to the correction term in the time series under study), including the aggregation mechanism applied to the assembled data (e.g. Nearest-Neighbor, arithmetic mean, kernel methods).  We discuss this in depth in Section \ref{global_overview}.
 
@@ -192,20 +191,20 @@ The structure of this manuscript is as follows.  We provide a deeper and more cr
 
 \subsection{The Role of Outside Information}\label{outside_info}
 
-When is more information better?  That is a central question with regard to forecasting.   In \cite{clements2005guest} (cited in \cite{castle2013forecasting}), the authors note that when forecasts fail, it often has to do with location (i.e. intercept shifts), and therefore using additional information is not likely to help unless it can address potential location shifts.  We should clarify what we mean by ``additional information".  By ``additional information", do we mean all information not included in the default forecast function?  Could that include something as straightforward as additional lags of the time series being forecast?  Perhaps a more useful distinction to make is that between information internal to the time series being forecast and information external to the time series being forecast.  Of course, the usefulness of this distinction will hinge, in part, on whether we can cleanly partition information into internal and external buckets.  A cross-cutting distinction originates in \cite{castle2011forecasting}, which discusses necessary conditions for forecasting under breaks as well as a taxonomy of information available for doing so.  The authors make a fundamental distinction between ``regular forces'', which includes the typical standbys of economic theory, and information potentially relevant to location shifts.  
+When is more information better?  That is a central question with regard to forecasting.   In \cite{clements2005guest} (cited in \cite{castle2013forecasting}), the authors note that when forecasts fail, it often has to do with location (i.e. intercept shifts).  Therefore, using additional information is not likely to help unless it can address potential location shifts.  We should clarify what we mean by ``additional information".  Do we mean any information not included in the default forecast function?  Could that include something as straightforward as additional lags of the time series being forecast?  Perhaps a more useful distinction to make is that between information internal to the time series being forecast and information external to the time series being forecast.  Of course, the usefulness of this distinction will hinge, in part, on whether we can cleanly partition information into internal and external buckets.  A cross-cutting distinction originates in \cite{castle2011forecasting}, which discusses necessary conditions for forecasting under breaks as well as a taxonomy of information available for doing so.  The authors make a fundamental distinction between ``regular forces'', which includes the typical standbys of economic theory, and information potentially relevant to location shifts.  
 
-We wish now to sharply distinguish between essential and inessential concepts.  For example, whether information is relevant to location shifts or not is a complex question that depends upon numerous factors, including but not necessarily limited to the DGP.  More importantly, whether a given class of information is relevant to location shifts or not should not be conflated with internality or externality, or whether it belongs to the traditional sort of information used in econometric modeling, though certain tendencies and general patterns may emerge.  We make clear what is essential in the table below.
+We wish now to sharply distinguish between essential and inessential concepts.  For example, whether information is relevant to location shifts or not is a worthy and complex question that depends upon numerous factors, including but not necessarily limited to the DGP.  However, we would prefer to elide that distinction with internality or externality, or whether the information belongs to the traditional sort of information used in econometric modeling, though certain tendencies and general patterns may emerge.  We make clear what is essential in the table below.
 
 \begin{table}[htb]
   \centering % instead of \begin{center}
-  \caption{Forecast Information: a 2x2 Schema With Examples}
+  \caption{A 2x2 Schema for Forecast Information, With Examples}
   \begin{tabular}{ | m{3em} | m{6cm}| m{8cm} | } 
     \hline
     & Conventional Econometric Models & Outside Conventional Econometric Models\\ 
     \hline
-    internal & Lags of the series itself & None \\
+    internal & Lags of the series itself; past shocks & \\
     \hline
-    external & Macro variables like interest rates, commodity price; weather-related variables& Google Trends, high-frequency data like prediction markets \\ 
+    external & Macro variables like interest rates, commodity prices; weather-related variables & Google Trends, high-frequency data like prediction markets; past shocks under similar conditions \\ 
     \hline
   \end{tabular}
 \end{table}
@@ -219,7 +218,11 @@ The notion of approximating a target does not necessarily mean that the target n
 
 So far, we have discussed only binary measures of similarity.  The distance-based weighting scheme found in \cite{lin2021minimizing} and repurposed in \cite{lundquist2024volatility} can be thought of as an $n$-ary similarity measure, where the $n$ weights means little in isolation but can tell a greater story when viewed alongside the approximation they produce.  However, an $n$-ary similarity measure will not always reduce to the task of constructing an approximator to the target using $n$ original objects.  We might instead insist on a notion of similarity such that $n$ objects are said to be similar, as a collection, to the target if and only if each of the $n$ matches the target perfectly.
 
-What about qualitative ways of determining similarity?  In \cite{lin2021minimizing, lundquist2024volatility}, donors are identified by matching the qualitative aspects of the shock in the time series under study to shocks previously witnessed in other series.  Only after the donor pool has been identified based on qualitative facts about the shocks is there a role for quantitative tools.  The role of the covariate vector in their model is two-fold: the covariates appear in the shock distribution, and the covariates also help determine which donors are most important.  We pose a question.  What if a given entry of the covariate vector was helpful at only one of those?  For example, what if an entry was particularly useful in yielding good weights but was not important for the shock distribution --- perhaps because the corresponding random effect was deterministically zero.  Conversely, suppose a given entry was known to be part of the shock distribution, but the inclusion of that covariate in distance-based weighting was often not worth it, perhaps because it was hard to approximate with using donors, and the corresponding random effect was small in magnitude with high probability.
+What about qualitative ways of determining similarity?  In \cite{lin2021minimizing, lundquist2024volatility}, donors are identified by matching the qualitative aspects of the shock in the time series under study to shocks previously witnessed in other series.  Only after the donor pool has been identified based on qualitative facts about the shocks is there a role for quantitative methods.  The role of the covariate vector in their models is two-fold: the covariates appear in the shock distribution, and the covariates also help determine which donors are most important.  
+
+We pose two questions.  What if a given entry of the covariate vector was helpful at only one of those roles?  For example, what if an entry was particularly useful in yielding good weights but was not important for the shock distribution --- perhaps because the corresponding shock parameter was zero.  
+
+Conversely, suppose a given entry was known to be part of the shock distribution, but the inclusion of that covariate in distance-based weighting was often not worth it, perhaps because it was hard to approximate with using donors, and the corresponding shock parameter was small in magnitude with high probability.
 
 % \begin{preview}
 % \begin{tikzpicture}[very thick,level/.style={sibling distance=180 mm/#1}]
@@ -469,7 +472,7 @@ with $k\geq1$ and $a_{i,t}, y_{i,t}$ supported on $\mathbb{R}^{+}$.  The term $\
 \begin{align*}
   \xi \colon \mathcal{F}_{2,T^{*}_{2}+h} \times \ldots \times \mathcal{F}_{n+1, T^{*}_{n+1}+h} &\to \mathcal{F}_{1,T^{*}_{1}+h}\\
 \end{align*}
-that estimates or predicts $\alpha_{1,T^{*}_{1}+h}$ will be deemed the \textit{correction function}.  The correction function maps observable, deterministic events and unobservable events into a space so that something might be learned about $\lambda_{t}$.  If $\x_{i,t}$ were not observable or not deterministic with respect to $\mathcal{F}_{t-1}$, then the correction term would represent an additional error term (not necessarily idiosyncratic).
+that estimates or predicts $\alpha_{1,T^{*}_{1}+h}$ will be deemed the \textit{correction function}.  The correction function maps observable, deterministic events and unobservable events into a space so that something might be learned about $\lambda_{i,t}$.  If $\x_{i,t}$ were not observable or not deterministic with respect to $\mathcal{F}_{t-1}$, then the correction term would represent an additional error term (not necessarily idiosyncratic).
 
 We require that each time series $\y_{i,t}$ is subject to an observed news event following $T^*_i \leq T_{i} + 1$ and before witnessing $T^*_i+1$.  The reasons for this represent the heart and soul of the framework proposed.  We are not proposing a method to correct for unanticipated shocks that have been reflected in the observed data.  Instead, we are proposing a method to correct for shocks for which the qualitative kernel of information is known and the observed quantitative instantiation which is not yet known. 
 
@@ -648,7 +651,7 @@ Now consider a practitioner in need of a conditional forecast for $T_{1}^{*}+h, 
 \textbf{Consider also these complicating scenarios}
 \begin{enumerate}
   \item We can estimate $\lambda$ using a cross-sectional regression, and that may be better estimator than doing it one-by-one in each donor.
-  \item Here we have taken $\lambda$ to be fixed and shared across donors.  If $\lambda$ is a function of a random effect, however, then estimating it becomes harder.
+  \item Here we have taken $\lambda$ to be fixed and shared across donors.  If $\lambda$ is a random, however, then estimating it becomes harder.
 \end{enumerate}
 
 \subsection{The Method of Multiple Shocks, Dual Shocks, and Shock-Partitioning}
