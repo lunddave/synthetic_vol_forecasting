@@ -175,7 +175,6 @@ If intercept correction is the correction of a forecast by adding the residual a
 The general procedure presented, post-shock forecasting, is a discretionary procedure for intercept correction that integrates data internal or external to the time series under study in a systematic manner.  It is a discretionary procedure in the sense that substantive choices must be made in order to use at each instance.  The correction function uses the notion of similarity between breaks in different time series, and the procedure presented borrows from the causal inference literature to aggregate information from those similar circumstances.  Parametric specifications for location shifts in the DGP can be found in \cite{castle2011forecasting}, where locations shifts are modeled as induced by additional observable variables, as well as in \cite{lundquist2024volatility}, where the arrival of the news shock is observable, even if its quantitative instantiation is not.  Beyond \cite{lin2021minimizing,lundquist2024volatility}, we are not aware of prior work that proposes a method for aggregating similar shocks occurring outside the time series under study in order to correct the time series under study.
 
 
-
 The structure of this manuscript is as follows.  We provide a deeper and more critical review of several literatures, including intercept correction, model-evaluation, and similarity-based forecasting.  We then provide a canonical setting in which we attempt to focus our work.  This setting will be presented at a level of generality that showcases the broad applicability of our method.  We then introduce the method from a global perspective, abstracting away from familiar applications.  We then show several specific applications, including novel applications that cannot be found elsewhere in the literature.  We close with a discussion, including possible extensions.
 
  \section{Forecasting Amid Shocks}
@@ -549,11 +548,15 @@ admits of the typical bias-variance decomposition.  Taking $\mu = 0$, for simpli
 
 \begin{align}
   &\E[(\sum^{p}_{k=1}(\rho_{k}-\hat\rho_{k})y_{t-k} + (\alpha_{t} - \hat{\alpha}_{t}) + \epsilon_{t} )^{2}]\\
-  &= \text{Bias}^{2}[\sum^{p}_{k=1}(\rho_{k}-\hat\rho_{k})y_{t-k} + (\alpha_{t} - \hat{\alpha}_{t}) ] + \text{Var}[\sum^{p}_{k=1}(\rho_{k}-\hat\rho_{k})y_{t-k} + (\alpha_{t} - \hat{\alpha}_{t}) ] + \sigma^{2}_{\epsilon}\\
-  &= [\sum^{p}_{k=1}(\rho_{k}-\hat\rho_{k})y_{t-k} + (\alpha_{t} - \hat{\alpha}_{t}) ]^{2} + \text{Var}[\sum^{p}_{k=1}(\rho_{k}-\hat\rho_{k})y_{t-k} + (\alpha_{t} - \hat{\alpha}_{t}) ] + \sigma^{2}_{\epsilon}
+  = &\text{Bias}^{2}[\sum^{p}_{k=1}(\rho_{k}-\hat\rho_{k})y_{t-k} + (\alpha_{t} - \hat{\alpha}_{t}) ] + \text{Var}[\sum^{p}_{k=1}(\rho_{k}-\hat\rho_{k})y_{t-k} + (\alpha_{t} - \hat{\alpha}_{t}) ] + \sigma^{2}_{\epsilon}\\
+  = &\big[\E[\sum^{p}_{k=1}(\rho_{k}-\hat\rho_{k})y_{t-k} + (\alpha_{t} - \hat{\alpha}_{t}) ]\big]^{2} + \text{Var}[\sum^{p}_{k=1}(\rho_{k}-\hat\rho_{k})y_{t-k} + (\alpha_{t} - \hat{\alpha}_{t})]  + \sigma^{2}_{\epsilon}\\
+  = &\big[\sum^{p}_{k=1}(\rho_{k}-\E[\hat\rho_{k}])y_{t-k} + (\alpha_{t} - \E[\hat{\alpha}_{t}]) ]\big]^{2} + \text{Var}[\sum^{p}_{k=1}(\rho_{k}-\hat\rho_{k})y_{t-k} + (\alpha_{t} - \hat{\alpha}_{t})]  + \sigma^{2}_{\epsilon}\\
+  = &\big[\sum^{p}_{k=1}(\rho_{k}-\E[\hat\rho_{k}])y_{t-k} + (\alpha_{t} - \E[\hat{\alpha}_{t}]) ]\big]^{2} + \text{Var}[\sum^{p}_{k=1}\hat\rho_{k}y_{t-k} + \hat{\alpha}_{t}]  + \sigma^{2}_{\epsilon}
 \end{align}
 
-with the special proviso that with more terms in the prediction function, more covariance terms arise.  In the real-data examples \cite{lin2021minimizing}, the entries in $\x_{t}$ are proxies of general market risk.  All of this is to say that control of the MSE may require tight control of the variance in the prediction function, which in turn will gesture in the direction of a sparse $\hat\alpha_{t}$ and sparse estimation of the autoregressive structure.
+Assume we have no control over the accuracy of the estimates $\hat\rho_{k}$.  Then our only control over the MSE comes from our choice of $\hat\alpha_{t}$.
+
+In the real-data examples \cite{lin2021minimizing}, the entries in $\x_{t}$ are proxies of general market risk.  All of this is to say that control of the MSE may require tight control of the variance in the prediction function, which in turn will gesture in the direction of a sparse $\hat\alpha_{t}$ and sparse estimation of the autoregressive structure.
 
 \begin{prop}\label{ARIMA_param_consistency}
 Let $2\leq i \leq n+1$.  The tuple of estimators ($\hat\rho_{1},...,\hat\rho_{p}, \hat\alpha_{i,t}$) is consistent as $t \rightarrow \infty$.
