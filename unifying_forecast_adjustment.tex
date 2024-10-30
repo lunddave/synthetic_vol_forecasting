@@ -147,7 +147,7 @@
 
 \section{Introduction}\label{Introduction}
 
-For various modeling and prediction tasks in time series and panel data, the salient challenge is not predicting when an event will occur or begin but what its key properties will be.  In the familiar case of scalar time series, those properties can include the time series' post-event direction, magnitude of change, moments, duration of the event, and correlation structure, all over an arbitrary horizon or perhaps multiple horizons. This is not to say that predicting the arrival of an event is easy. In some cases, it may be difficult or impossible, and the event might not even be conceivable to many before it happens, as was the case with the COVID-19 pandemic.  There, reacting sensibly to a shock or structural change may best one can hope for.  On the other end of the spectrum are events whose arrival need not be predicted because they are scheduled in advance, e.g. scheduled news, like releases of economic data or election results.  Consider the analysis of Mike Wilson, Morgan Stanley’s CIO and Chief US Equity  Strategist, in October 2024 regarding the upcoming 2024 US Presidential US \citep{thoughts_on_market}:
+In time series and panel data, sometimes the salient challenge is not predicting when an event will occur or begin but what its key properties will be.  In the familiar case of scalar time series, those properties can include the time series' post-event direction, magnitude of change, moments, duration of the event, or correlation structure, all over an arbitrary horizon or perhaps multiple horizons. This is not to say that predicting the arrival of an event is easy. In some cases, it may be difficult or impossible, and the event might not even be conceivable to many before it happens, as was the case with the COVID-19 pandemic.  There, reacting sensibly to a shock or structural change may best one can hope for.  On the other end of the spectrum are events whose arrival need not be predicted because they are scheduled in advance, e.g. scheduled news, like releases of economic data or election results.  Consider the analysis of Mike Wilson, Morgan Stanley’s CIO and Chief US Equity  Strategist, in October 2024 regarding the upcoming 2024 US Presidential US \citep{thoughts_on_market}:
 
 \begin{quote}While some argue a Trump win would be a headwind for growth and equity markets, due to tariff  risks and slowing immigration, we think there's an additional element from the 2016 experience that  is worth considering—rising animal spirits. More specifically, in 2016 Trump's pro-business approach  led to the largest 3-month positive impact on small business confidence in the past 40 years. It also translated into a spike in individual investor sentiment. It appears to me that markets may be trying  to front-run a repeat of this outcome as Trump's win in 2016 came as a surprise to pundits and  markets alike.
 \end{quote}
@@ -171,7 +171,7 @@ For intercept shifts that occurs between $T^{*}$ and $T^{*}+1$, forecasting proc
 As the literature has developed, a current practitioner of forecast adjustment can now choose between (i) procedures that are discretionary or automated, (ii) adjusting using internal data (i.e. from the time series itself) or external, (iii) the term to be corrected (e.g. intercept, coefficients), if any, (iv) as well as the specification of the correction function (i.e. the mapping from the donor unit data to the correction term in the time series under study), including the aggregation mechanism applied to the assembled data (e.g. Nearest-Neighbor, arithmetic mean, kernel methods).  We discuss this in depth in Section \ref{global_overview}.
 
 If intercept correction is the correction of a forecast by adding the residual at time $T^{*}+1$ to the forecasts at some subset of $\{T^{*}+2,T^{*}+3,...\}$, in this manuscript, we are doing something rather close to that by adding the predicted correction term to each forecast in some some subset of $\{T_{1}^{*}+1,T_{1}^{*}+2,...\}$, where $T^{*}_{1}+1$ is first integer index for the time series under study following the shock. 
-The general procedure presented, post-shock forecasting, is a discretionary procedure for intercept correction that integrates data internal or external to the time series under study in a systematic manner.  It is a discretionary procedure in the sense that substantive choices must be made in order to use at each instance.  The correction function uses the notion of similarity between breaks in different time series, and the procedure presented borrows from the causal inference literature to aggregate information from those similar circumstances.  Parametric specifications for location shifts in the DGP can be found in \cite{castle2011forecasting}, where locations shifts are modeled as induced by additional observable variables, as well as in \cite{lundquist2024volatility}, where the arrival of the news shock is observable, even if its quantitative instantiation is not.  Beyond \cite{lin2021minimizing,lundquist2024volatility}, we are not aware of prior work that proposes a method for aggregating similar shocks occurring outside the time series under study in order to correct the time series under study.
+The general procedure presented, post-shock forecasting, is a discretionary procedure for intercept correction that integrates data internal or external to the time series under study in a systematic manner.  It is a discretionary procedure in the sense that substantive choices must be made at each instance of use.  The correction function uses the notion of similarity at multiple levels: first, to identify similarity between breaks in different time series, and second, in borrowing from the causal inference literature to aggregate information from those similar circumstances.  Parametric specifications for location shifts in the DGP can be found in \cite{castle2011forecasting}, where locations shifts are modeled as induced by additional observable variables, as well as in \cite{lundquist2024volatility}, where the arrival of the news shock is observable, even if its quantitative instantiation is not.  Beyond \cite{lin2021minimizing,lundquist2024volatility}, we are not aware of prior work that proposes a method for aggregating similar shocks occurring outside the time series under study in order to correct the time series under study.
 
 
 The structure of this manuscript is as follows.  We provide a deeper and more critical review of several literatures, including intercept correction, model-evaluation, and similarity-based forecasting.  We then provide a canonical setting in which we attempt to focus our work.  This setting will be presented at a level of generality that showcases the broad applicability of our method.  We then introduce the method from a global perspective, abstracting away from familiar applications.  We then show several specific applications, including novel applications that cannot be found elsewhere in the literature.  We close with a discussion, including possible extensions.
@@ -481,13 +481,13 @@ So far we have reviewed a long and rich literature about model adjustment, and w
 \section{Methodology for Similarity-based Parameter Correction}
 \subsection{Forecasting and Correction Functions}
 
-We now present two one-step-ahead forecasts for the time series under study. The first is the unadjusted forecast. The second is the adjusted forecast, which differs by the predicted correction term.  These forecasts are: 
+We now present two one-step-ahead forecasts for the time series unecder study. The first is the unadjusted forecast. The second is the adjusted forecast, which differs by the predicted correction term.  The forecasts are: 
 
 \begin{align*}
   \text{Forecast 1: }& 
    \hat y_{unadjusted, T_{1}^{*}+1} = \hat\E[\mathcal{F}_{T_{1}^{*}}] \\
   \text{Forecast 2: }&
-   \hat y_{adjusted,T_{1}^{*}+1} = \hat\E[\mathcal{F}_{T_{1}^{*}}] + \hat\alpha^ \text{ .}
+   \hat y_{adjusted,T_{1}^{*}+1} = \hat\E[\mathcal{F}_{T_{1}^{*}}] + \hat\alpha_{t} \text{ .}
 \end{align*}
 The problem of aggregating shocks or residuals begins with the data constraints.  Let us first introduce useful notation.  Let $\hat\alpha^{*}_{i,*}$ denote estimated correction term for donor $i$.   Taking the weights estimated correction terms as a given, we observe the tuple of information $(\{\hat\alpha_{i,*}\}^{n+1}_{i=2}, \mathcal{F}_{2,T^{*}_{2}}\times \ldots \times \mathcal{F}_{n+1,T^{*}_{n+1}}\})$ that is the extracted residuals as well as pre-shock information that may be important to aggregation.  
     
@@ -529,12 +529,13 @@ This might not always be straightforward.  Some models like GARCH, for example, 
 
 In this section, we discuss particular models for which our approach has been implemented as well as others for which it has yet to be implemented.  For those for which an implementation exists, we introduce the model in a more general light, while also commenting on the model-specific considerations.
 
+
+\subsection{ARIMA}\label{ARIMA}
 Recall the specification (\ref{core_specification}), which models a news shock as an affine function of covariates:
 
 \begin{align*}
   &y_{i,t} = F(\mathcal{F}_{i,t-1}) + \alpha_{i,t} + \epsilon_{i,t}
 \end{align*}
-\subsection{ARIMA}\label{ARIMA}
 We begin our recounting of model-specific cases by recalling \cite{lin2021minimizing}, in which it was established that for a family of AR(1)-distributed scalar time series with a common shock distribution, forecast risk can be reduced via a similarity-based adjustment procedure.  An AR(p) is an easy model to work with, in part because it can be consistently estimated via OLS, and an AR(p) can approximate an ARMA(p,q) with arbitrarily-small error through via a truncation of an AR($\infty$) representation.  Setting aside the estimation method, consider a one-step-ahead for an AR(p) at time $t$ with an adjustment estimator, $\hat\alpha_{t}$:
 
 \begin{align}
@@ -553,13 +554,39 @@ admits of the typical bias-variance decomposition.  Taking $\mu = 0$, for simpli
   &\E[(\sum^{p}_{k=1}(\rho_{k}-\hat\rho_{k})y_{t-k} + (\alpha_{t} - \hat{\alpha}_{t}) + \epsilon_{t} )^{2}]\\
   = &\text{Bias}^{2}[\sum^{p}_{k=1}(\rho_{k}-\hat\rho_{k})y_{t-k} + (\alpha_{t} - \hat{\alpha}_{t}) ] + \text{Var}[\sum^{p}_{k=1}(\rho_{k}-\hat\rho_{k})y_{t-k} + (\alpha_{t} - \hat{\alpha}_{t}) ] + \sigma^{2}_{\epsilon}\\
   = &\big[\E[\sum^{p}_{k=1}(\rho_{k}-\hat\rho_{k})y_{t-k} + (\alpha_{t} - \hat{\alpha}_{t}) ]\big]^{2} + \text{Var}[\sum^{p}_{k=1}(\rho_{k}-\hat\rho_{k})y_{t-k} + (\alpha_{t} - \hat{\alpha}_{t})]  + \sigma^{2}_{\epsilon}\\
-  = &\big[\sum^{p}_{k=1}(\rho_{k}-\E[\hat\rho_{k}])y_{t-k} + (\alpha_{t} - \E[\hat{\alpha}_{t}]) ]\big]^{2} + \text{Var}[\sum^{p}_{k=1}(\rho_{k}-\hat\rho_{k})y_{t-k} + (\alpha_{t} - \hat{\alpha}_{t})]  + \sigma^{2}_{\epsilon}\\
-  = &\big[\sum^{p}_{k=1}(\rho_{k}-\E[\hat\rho_{k}])y_{t-k} + (\alpha_{t} - \E[\hat{\alpha}_{t}]) ]\big]^{2} + \text{Var}[\sum^{p}_{k=1}\hat\rho_{k}y_{t-k} + \hat{\alpha}_{t}]  + \sigma^{2}_{\epsilon}
+  = &\big[\sum^{p}_{k=1}(\rho_{k}-\E[\hat\rho_{k}])y_{t-k} + (\alpha_{t} - \E[\hat{\alpha}_{t}]) \big]^{2} + \text{Var}[\sum^{p}_{k=1}(\rho_{k}-\hat\rho_{k})y_{t-k} + (\alpha_{t} - \hat{\alpha}_{t})]  + \sigma^{2}_{\epsilon}\\
+  = &\big[\sum^{p}_{k=1}(\rho_{k}-\E[\hat\rho_{k}])y_{t-k} + (\alpha_{t} - \E[\hat{\alpha}_{t}]) \big]^{2} + \text{Var}[\sum^{p}_{k=1}\hat\rho_{k}y_{t-k} + \hat{\alpha}_{t}]  + \sigma^{2}_{\epsilon}\\
+  = &\big[\sum^{p}_{k=1}(\rho_{k}-\E[\hat\rho_{k}])y_{t-k} + (\alpha_{t} - \E[\hat{\alpha}_{t}]) \big]^{2} + \text{Var}[\sum^{p}_{k=1}\hat\rho_{k}y_{t-k}] + \text{Var}[\hat{\alpha}_{t}]  + \sigma^{2}_{\epsilon}\tag{if shocks are uncorrelated with time series under study}\\
+  = &\big[\sum^{p}_{k=1}(\rho_{k}-\E[\hat\rho_{k}])y_{t-k} + (\alpha_{t} - \E[\hat{\alpha}_{t}]) \big]^{2} + \text{Var}[\sum^{p}_{k=1}\hat\rho_{k}y_{t-k}] + \sum_{i=2}^{n+1}\pi_{i}^{2}\text{Var}[\hat\alpha_{i,t}] + 2\sum_{i\neq j}\pi_{i}\pi_{j}\text{Cov}[\hat\alpha_{i,t},\hat\alpha_{j,t}]  + \sigma^{2}_{\epsilon}
 \end{align}
 
-Assume we have no control over the accuracy of the estimates $\hat\rho_{k}$.  Then our only control over the MSE comes from our choice of $\hat\alpha_{t}$.
+Assume we have no control over the accuracy of the estimates $\hat\rho_{k}$ nor any control over the estimates $\{\hat\alpha_{i,t}\}_{i=2}^{n=1}$.  Then our only control over the MSE comes from our choice of the $\hat\alpha_{t}$, over which our only control comes from the weight vector $\vec{\pi}$, so long as it is not unique.  If we insist that $\hat\alpha$ be an unbiased predictor, then the MSE is minimized by vector $\vec{\pi}$ --- again, not necessarily unique --- that will generally be sparse, so as to zero-out the covariance terms.  All of this is to say that control of the MSE may require tight control of the variance in the prediction function, which in turn will gesture in the direction of a sparse $\hat\alpha_{t}$ and sparse estimation of the autoregressive structure.
 
-In the real-data examples \cite{lin2021minimizing}, the entries in $\x_{t}$ are proxies of general market risk.  All of this is to say that control of the MSE may require tight control of the variance in the prediction function, which in turn will gesture in the direction of a sparse $\hat\alpha_{t}$ and sparse estimation of the autoregressive structure.
+
+%https://tex.stackexchange.com/questions/174317/creating-a-labeled-tetrahedron-with-tikzpicture
+\begin{figure}
+\centering
+\begin{tikzpicture}[line join = round, line cap = round]
+\pgfmathsetmacro{\factor}{1/sqrt(2)};
+\coordinate [label=right:Donor 1] (1) at (2,0,-2*\factor);
+\coordinate [label=left:Donor 2] (2) at (-2,0,-2*\factor);
+\coordinate [label=above:Donor 3] (3) at (0,2,2*\factor);
+\coordinate [label=below:Donor 4] (4) at (0,-2,2*\factor);
+\coordinate [label=below:$\vec{\pi}_{MSE minimizer}$] (5) at (2.1,-.8,-.3*\factor);
+
+
+% \draw[->] (0,0) -- (3,0,0) node[right] {$x$};
+% \draw[->] (0,0) -- (0,3,0) node[above] {$y$};
+% \draw[->] (0,0) -- (0,0,3) node[below left] {$z$};
+\foreach \i in {1,2,3,4}
+    \draw[dashed] (0,0)--(\i);
+\draw[-, fill=red!30, opacity=.3] (1)--(4)--(2)--cycle;
+\draw[-, fill=green!30, opacity=.3] (1) --(4)--(3)--cycle;
+\draw[-, fill=purple!30, opacity=.3] (2)--(4)--(3)--cycle;
+\end{tikzpicture}
+\caption{The 3-Simplex, $\Delta^{3}$, where hypothetical optimum is a convex combination of Donors 1 and 4}
+\end{figure}
+
 
 \begin{prop}\label{ARIMA_param_consistency}
 Let $2\leq i \leq n+1$.  The tuple of estimators ($\hat\rho_{1},...,\hat\rho_{p}, \hat\alpha_{i,t}$) is consistent as $t \rightarrow \infty$.
