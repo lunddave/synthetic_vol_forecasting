@@ -166,7 +166,7 @@ What if the break in the DGP is brought about by a very particular kind of event
 \item ``there is an operational method for selecting an appropriate model".
 \end{itemize}   
 
-For intercept shifts that occurs between $T^{*}$ and $T^{*}+1$, forecasting procedures have been explored in \cite{lin2021minimizing,lundquist2024volatility}, where the AR(1) and GARCH($m,s$) cases, respectively, are treated.  Both works target additive parameters in scalar time series, predicting the additive parameter in the time series under study by aggregating information from other time series.  The authors leave several stones unturned, including a more general, dare say comprehensive treatment of how to forecast under any sort of shock.
+For intercept shifts that occurs between $T^{*}$ and $T^{*}+1$, forecasting procedures have been explored in \cite{lin2021minimizing,lundquist2024volatility}, where the AR(1)-X and GARCH($m,s$) cases, respectively, are treated.  Both works target additive parameters in scalar time series, predicting the additive parameter in the time series under study by aggregating information from other time series.  The authors leave several stones unturned, including a more general, dare say comprehensive treatment of how to forecast under any sort of shock.
 
 As the literature has developed, a current practitioner of forecast adjustment can now choose between (i) procedures that are discretionary or automated, (ii) adjusting using internal data (i.e. from the time series itself) or external, (iii) the term to be corrected (e.g. intercept, coefficients), if any, (iv) as well as the specification of the correction function (i.e. the mapping from the donor unit data to the correction term in the time series under study), including the aggregation mechanism applied to the assembled data (e.g. Nearest-Neighbor, arithmetic mean, kernel methods).  We discuss this in depth in Section \ref{global_overview}.
 
@@ -430,7 +430,9 @@ What about qualitative ways of determining similarity?  In \cite{lin2021minimizi
       \end{center}
     \end{figure}
 
-We will suppose that a researcher has a multivariate time series data $\y_{i,t} = (y_{i,t}, \x_{i,t}$), $t = 1,$ $\ldots,  T_i$, $i = 1, \ldots, n+1$, where $r_{i,t}$ is scalar and $\x_{i,t}$ is a vector of covariates such that $\x_{i,t}|\mathcal{F}_{i,t-1}$ is deterministic and observed.  Suppose that the analyst is interested in forecasting $y_{1,t}$, the first time series in the collection, which we will denote \textit{the time series under study}.   We assume the following general data-generating process
+We will suppose that a researcher has a multivariate time series data $\y_{i,t} = (y_{i,t}, \x_{i,t}$), $t = 1,$ $\ldots,  T_i$, $i = 1, \ldots, n+1$, where $r_{i,t}$ is scalar and $\x_{i,t}$ is a vector of covariates such that $\x_{i,t}|\mathcal{F}_{i,t-1}$ is deterministic and observed.  Suppose that the analyst is interested in forecasting $y_{1,t}$, the first time series in the collection, which we will denote \textit{the time series under study}.   We require that each time series $\y_{i,t}$ is subject to an observed news event following $T^*_i \leq T_{i} + 1$ and before witnessing $T^*_i+1$.  The reasons for this represent the heart and soul of the framework proposed.  We are not proposing a method to correct for unanticipated shocks that have been reflected in the observed data.  Instead, we are proposing a method to correct for shocks for which the qualitative kernel of information is known and the observed quantitative instantiation of which is not yet known. 
+
+We assume the following general data-generating process
 
   \begin{align}
     \mc{M}_1 \colon \begin{array}{l}
@@ -450,23 +452,21 @@ and time-invariant error structure
     %u_{i,t} & \simiid  \mc{F}_{u} \text{ with}  \; \mrm{Var}_{\mc{F}_{u}}(u) = \sigma^2_{u},\\
     % &\epsilon_{i,t} \indep u_{i,t},
     \end{align*}
-where $F$ maps objects from the past into future objects of $y_{i,t}$, and $\epsilon_{i,t}$ uncorrelated across time and donors.  Note that the dot product $\alpha_{i,t} = \x^{T}_{i,t}\lambda_{i,t}$ includes the term $u_{i,t}$ that is not shared among donors.  It encodes the known possibility that the shocks will vary across donors both in ways that can predicted based on pre-shock covariates as well as in ways that cannot be predicted.  That the parameter vector is time-varying allows us to capture that most time points are without news shocks, but conditional upon information arriving between $T_{1}^{*}$ and $T_{1}^{*}+1$, we may know with near certainty that $\lambda_{1,T_{1}^{*}+h}$ will be nonzero in norm for some $h>0$.
-
-The specification (\ref{core_specification}) above is sufficiently capacious as to include data-generating processes of the form 
+where $F$ maps objects from the past into future objects of $y_{i,t}$, and $\epsilon_{i,t}$ uncorrelated across time and donors.  Note that the dot product $\alpha_{i,t} = \x^{T}_{i,t}\lambda_{i,t}$ includes the term $u_{i,t}$ that is not shared among donors.  It encodes the known possibility that the shocks will vary across donors both in ways that can predicted based on pre-shock covariates as well as in ways that cannot be predicted.  That the parameter vector is time-varying allows us to capture that most time points are without news shocks, but conditional upon information arriving between $T_{1}^{*}$ and $T_{1}^{*}+1$, we may know with near certainty that $\lambda_{1,T_{1}^{*}+h}$ will be nonzero in norm for some $h>0$.  Note that the specification (\ref{core_specification}) above is sufficiently capacious as to include data-generating processes of the form 
 
 \begin{align*} 
   y_{i,t} = \log{Y_{i,t}} = \log{a_{i,t}y_{i,t-k}e^{\alpha_{i,t}+\epsilon_{i,t}}} = \log{a_{i,t}} + \log{y_{i, t-k}} + \alpha_{i,t} + \epsilon_{i,t}
 \end{align*}
-with $k\geq1$ and $a_{i,t}, y_{i,t}$ supported on $\mathbb{R}^{+}$.  The term $\x^{T}_{i,t}\lambda_{i,t}$ will be deemed the $\textit{correction term}$, and the function
+with $k\geq1$ and $a_{i,t}, y_{i,t}$ supported on $\mathbb{R}^{+}$.  
+
+The term $\x^{T}_{i,t}\lambda_{i,t}$ will be deemed the $\textit{correction term}$ for donor $i$, and the function
 
 \begin{align*}
   \xi \colon \mathcal{F}_{2,T^{*}_{2}+h} \times \ldots \times \mathcal{F}_{n+1, T^{*}_{n+1}+h} &\to \mathcal{F}_{1,T^{*}_{1}+h}\\
 \end{align*}
-that estimates or predicts $\alpha_{1,T^{*}_{1}+h}$ will be deemed the \textit{correction function}.  The correction function maps observable, deterministic events and unobservable events into a space so that something might be learned about $\lambda_{i,t}$.  If $\x_{i,t}$ were not observable or not deterministic with respect to $\mathcal{F}_{t-1}$, then the correction term would represent an additional error term (not necessarily idiosyncratic).
+that estimates or predicts $\alpha_{1,T^{*}_{1}+h}$ will be deemed the \textit{correction function}.  The correction function maps donor information --- be it observables or inferences --- to the prediction function for the time series under study.  
 
-We require that each time series $\y_{i,t}$ is subject to an observed news event following $T^*_i \leq T_{i} + 1$ and before witnessing $T^*_i+1$.  The reasons for this represent the heart and soul of the framework proposed.  We are not proposing a method to correct for unanticipated shocks that have been reflected in the observed data.  Instead, we are proposing a method to correct for shocks for which the qualitative kernel of information is known and the observed quantitative instantiation which is not yet known. 
-
-So far we have reviewed a long and rich literature about model adjustment, and we have also introduced a data-generating process upon which the rest of this manuscript will be based.  We now proceed to introduce a particular framework of solutions to the circumstances assumed in Section \ref{Setting}.  What we are doing here is therefore not out of the ordinary but distinct in at least two ways: (1) we are incorporating outside information faster, and (2) we are proposing a principled, systematic way to do it that defies that curse of dimensionality.  If one wanted to forecast using linear models and high-dimensional information set, then some kind of method for reducing model complexity would be required.  We avoid that.
+So far we have reviewed a long and rich literature about model adjustment, and we have also introduced a data-generating process upon which the rest of this manuscript will be based.  We now proceed to introduce a particular framework of solutions to the circumstances assumed in Section \ref{Setting}.  What we are doing is distinct in at least two ways.  First, we are incorporating outside information faster, and second, we are proposing a principled, systematic way to do it that defies that curse of dimensionality.  If one wanted to forecast using linear models and high-dimensional information set, then some kind of method for reducing model complexity would be required.  We avoid that.
 
 \section{SPC Forecasting Methodology and Correction Functions}
 
@@ -491,6 +491,9 @@ which is just one way among many to build a correction function.  Another intere
 \xi \colon \boldsymbol{\tau} &\to \mathcal{F}_{1, T^{*}_{1}} \\
 \end{align*}
 that weights the $i$-th forecaster according to that forecaster's past performance or according to the similarity of the forecaster's stated information set to the information available for the default forecasting model.
+
+\subsection{Diagnostics for Similarity-Based Parameter Correction}
+The assumptions we make on the DGP for shocks to both donors and the time series under study allow us to evaluate our prediction tool even before we predict.  In this subsection, we will elaborate on a permutation method proposed in \cite{lin2021minimizing}.  The idea is simply to use each of the $n$ donors as an object to predict, while the remaining $n-1$ serve as actual donors.  Permutation tests for inference were proposed as early as \cite{abadie2010synthetic} in the context of synthetic control.  Although we will not embark upon a formal exploration of the permutation method for predictive model evaluation, we will note briefly its motivation, chiefly that the donors share a DGP and the model particulars are invariant to permutation.  To the extent that those assumptions hold in practice, model performance can be gauged by methods as simple as evaluating the losses of the `pseudo-time-series-under-study' to the more sophisticated, like assessing the correlation between the goodness of approximation and the losses.  One can also assess the plausibility of the $\{\hat\alpha_{i}\}$ being uncorrelated, which is central to MSE-minimization, as we will see in Section \ref{ARIMA}.
 
 \section{Model Adjustment Using Similarity-Based Parameter Correction: A Global Overview}\label{global_overview}
 
@@ -525,7 +528,7 @@ Recall the specification (\ref{core_specification}), which models a news shock a
 \begin{align*}
   &y_{i,t} = F(\mathcal{F}_{i,t-1}) + \alpha_{i,t} + \epsilon_{i,t}
 \end{align*}
-We begin our recounting of model-specific cases by recalling \cite{lin2021minimizing}, in which it was established that for a family of AR(1)-distributed scalar time series with a common shock distribution, forecast risk can be reduced via a similarity-based adjustment procedure.  An AR(p) is an easy model to work with, in part because it can be consistently estimated via OLS, and an AR(p) can approximate an ARMA(p,q) with arbitrarily-small error through via a truncation of an AR($\infty$) representation.  Setting aside the estimation method, consider a one-step-ahead for an AR(p) at time $t$ with an adjustment estimator, $\hat\alpha_{t}$:
+We begin our recounting of model-specific cases by recalling \cite{lin2021minimizing}, in which it was established that for a family of AR(1)-X-distributed scalar time series with a common shock distribution, forecast risk can be reduced via a similarity-based adjustment procedure.  An AR(p) is an easy model to work with, in part because it can be consistently estimated via OLS, and an AR(p) can approximate an ARMA(p,q) with arbitrarily-small error through via a truncation of an AR($\infty$) representation.  Setting aside the estimation method, consider a one-step-ahead for an AR(p) at time $t$ with an adjustment estimator, $\hat\alpha_{t}$:
 
 \begin{align}
 \hat{y}_{t} = f(\mathcal{F}_{t-1}) = \hat\mu + \sum^{p}_{i=1}\hat\rho_{i}y_{t-k} + \hat{\alpha}_{t}
@@ -537,19 +540,19 @@ which can be understood as an AR($p$) with time-varying coefficients.  The mean 
   &= \E[(\mu + \sum^{p}_{k=1}\rho_{k}y_{t-k} + \alpha_{t} + \epsilon_{t}  - (\hat\mu + \sum^{p}_{k=1}\hat\rho_{k}y_{t-k} + \hat{\alpha}_{t}))^{2}] \\
   &= \E[((\mu - \hat\mu) + \sum^{p}_{k=1}(\rho_{i}-\hat\rho_{k})y_{t-k} + (\alpha_{t} - \hat{\alpha}_{t}) + \epsilon_{t} )^{2}]\label{ARIMA_MSE_breakdown}
   \end{align}
-admits of the typical bias-variance decomposition.  Taking $\mu = 0$, for simplicity, (\ref{ARIMA_MSE_breakdown}) becomes
+admits of the typical bias-variance decomposition.  If it is known that $\mu = 0$, (\ref{ARIMA_MSE_breakdown}) becomes
 
 \begin{align}
   &\E[(\sum^{p}_{k=1}(\rho_{k}-\hat\rho_{k})y_{t-k} + (\alpha_{t} - \hat{\alpha}_{t}) + \epsilon_{t} )^{2}]\\
   = &\text{Bias}^{2}[\sum^{p}_{k=1}(\rho_{k}-\hat\rho_{k})y_{t-k} + (\alpha_{t} - \hat{\alpha}_{t}) ] + \text{Var}[\sum^{p}_{k=1}(\rho_{k}-\hat\rho_{k})y_{t-k} + (\alpha_{t} - \hat{\alpha}_{t}) ] + \sigma^{2}_{\epsilon}\\
   = &\big[\E[\sum^{p}_{k=1}(\rho_{k}-\hat\rho_{k})y_{t-k} + (\alpha_{t} - \hat{\alpha}_{t}) ]\big]^{2} + \text{Var}[\sum^{p}_{k=1}(\rho_{k}-\hat\rho_{k})y_{t-k} + (\alpha_{t} - \hat{\alpha}_{t})]  + \sigma^{2}_{\epsilon}\\
   = &\big[\sum^{p}_{k=1}(\rho_{k}-\E[\hat\rho_{k}])y_{t-k} + (\alpha_{t} - \E[\hat{\alpha}_{t}]) \big]^{2} + \text{Var}[\sum^{p}_{k=1}(\rho_{k}-\hat\rho_{k})y_{t-k} + (\alpha_{t} - \hat{\alpha}_{t})]  + \sigma^{2}_{\epsilon}\\
-  = &\big[\sum^{p}_{k=1}(\rho_{k}-\E[\hat\rho_{k}])y_{t-k} + (\alpha_{t} - \E[\hat{\alpha}_{t}]) \big]^{2} + \text{Var}[\sum^{p}_{k=1}\hat\rho_{k}y_{t-k} + \hat{\alpha}_{t}]  + \sigma^{2}_{\epsilon}\\
+  = &\big[\sum^{p}_{k=1}(\rho_{k}-\E[\hat\rho_{k}])y_{t-k} + (\alpha_{t} - \E[\hat{\alpha}_{t}]) \big]^{2} + \text{Var}[\sum^{p}_{k=1}\hat\rho_{k}y_{t-k} + \hat{\alpha}_{t}]  + \sigma^{2}_{\epsilon}\tag{Since $\rho_{k}$ is not random}\\
   = &\big[\sum^{p}_{k=1}(\rho_{k}-\E[\hat\rho_{k}])y_{t-k} + (\alpha_{t} - \E[\hat{\alpha}_{t}]) \big]^{2} + \text{Var}[\sum^{p}_{k=1}\hat\rho_{k}y_{t-k}] + \text{Var}[\hat{\alpha}_{t}]  + \sigma^{2}_{\epsilon}\tag{if shocks are uncorrelated with time series under study}\\
   = &\big[\sum^{p}_{k=1}(\rho_{k}-\E[\hat\rho_{k}])y_{t-k} + (\alpha_{t} - \E[\hat{\alpha}_{t}]) \big]^{2} + \text{Var}[\sum^{p}_{k=1}\hat\rho_{k}y_{t-k}] + \sum_{i=2}^{n+1}\pi_{i}^{2}\text{Var}[\hat\alpha_{i,t}] + 2\sum_{i\neq j}\pi_{i}\pi_{j}\text{Cov}[\hat\alpha_{i,t},\hat\alpha_{j,t}]  + \sigma^{2}_{\epsilon}
 \end{align}
 
-Assume we have no control over the accuracy of the estimates $\hat\rho_{k}$ nor any control over the estimates $\{\hat\alpha_{i,t}\}_{i=2}^{n=1}$.  Then our only control over the MSE comes from our choice of the $\hat\alpha_{t}$, over which our only control comes from the weight vector $\vec{\pi}$, so long as it is not unique.  If we insist that $\hat\alpha$ be an unbiased predictor, then the MSE is minimized by vector $\vec{\pi}$ --- again, not necessarily unique --- that will generally be sparse, so as to zero-out the covariance terms.  All of this is to say that control of the MSE may require tight control of the variance in the prediction function, which in turn will gesture in the direction of a sparse $\hat\alpha_{t}$ and sparse estimation of the autoregressive structure.
+Assume we have no control over the accuracy of the estimates $\{\hat\rho\}^{p}_{k=1}$ nor any control over the estimates $\{\hat\alpha_{i,t}\}_{i=2}^{n+11}$.  Then our only control over the MSE comes comes from the weight vector $\vec{\pi}$, so long as it is not unique.  If we insist that $\hat\alpha$ be an unbiased predictor, then the MSE will tend to have a sparse vector $\vec{\pi}$ as its minimizer, so as to zero-out the covariance terms.  All of this is to say that control of the MSE may require tight control of the variance in the prediction function, which in turn will gesture in the direction of a sparse $\hat\alpha_{t}$ and sparse estimation of the autoregressive structure.
 
 
 %https://tex.stackexchange.com/questions/174317/creating-a-labeled-tetrahedron-with-tikzpicture
@@ -604,7 +607,7 @@ Recently, \cite{bodilsen2023exploiting} find that overnight news improves the pr
 
 \begin{align}
   \mc{M}_1 \colon \begin{array}{l}
-    RV_{i,t} = \beta_{0} + \beta_{\text{1-day}}RV_{i,t-1} + \beta_{\text{5-day}}\overline{\{RV_{i,t-1},...,RV_{i,t-5}\}}+\beta_{\text{22-day}}\overline{\{RV_{i,t-1},...,RV_{i,t-22}\}} + \alpha_{i,t} + \epsilon_{t}\\[.2cm]\label{core_specification}
+    RV_{i,t} = \beta_{0} + \beta_{\text{1-day}}RV_{i,t-1} + \beta_{\text{5-day}}\overline{\{RV_{i,t-1},...,RV_{i,t-5}\}}+\beta_{\text{22-day}}\overline{\{RV_{i,t-1},...,RV_{i,t-22}\}} + \alpha_{i,t} + \epsilon_{t}\\[.2cm]
     \alpha_{i,t} = \x^{T}_{i,t}\lambda_{i,t} \\[.2cm]
    \x_{i,t}^{T} = (x^{1}_{i,t},...,x^{p}_{i,t},1)\\[.2cm] 
    \lambda_{i,t}^{T} = (\lambda^{1}_{t},...,\lambda^{p}_{t},u_{i,t}),\\[.2cm]
@@ -657,17 +660,17 @@ We borrow code from \cite{Brownlee_2022}
 \end{itemize}
 
 \subsection{``Exponential Breaks"}
-In \cite{castle2011forecasting}, the authors discuss intercept shifts that decay deterministically.  Those shifts are parameterized by a scalar $\lambda$ and a decay rate $\psi$.  We adapt their model for our own purposes:
+In \cite{castle2011forecasting}, the authors discuss intercept shifts that decay deterministically.  Those shifts are parameterized by a scalar $\eta$ and a decay rate $\psi$.  We adapt their model for our own purposes:
 
 \begin{align}
-y_{i,t} = \alpha_{i} + \lambda[1 - e^{-\psi[t-T_{i}^{*}+1]}]\textbf{1}_{t\geq T_{i}^{*}+1} + \epsilon_{i,t}, \epsilon_{i,t} \simiid [0,\sigma^{2}] \text{ .}\label{decay_model}
+y_{i,t} = \alpha_{i} + \eta[1 - e^{-\psi[t-T_{i}^{*}+1]}]\textbf{1}_{t\geq T_{i}^{*}+1} + \epsilon_{i,t}, \epsilon_{i,t} \simiid [0,\sigma^{2}] \text{ .}\label{decay_model}
 \end{align}
-This poses a novel case for our method, in that the model is parametric and yet without estimability of all shock parameters, aggregation may not be straightforward or easy.  Consider, for any $i$, $2 \leq i \leq n+1$, the estimates $\hat\alpha_{i,OLS}$  obtained via regression on the first $T_{i}^{*}+1$ points as well as $\hat\lambda_{OLS}$ obtained by estimating a fixed effect at $t=T_{i}^{*}+1$.  Consider also a subsequent estimator, an estimator for $\psi$, that is derivable from inverting the model specification and plugging-in the estimates  $\hat\alpha_{i,OLS},\hat\lambda_{OLS}$:
+This poses a novel case for our method, in that the model is parametric and yet without estimability of all shock parameters, aggregation may not be straightforward or easy.  Consider, for any $i$, $2 \leq i \leq n+1$, the estimates $\hat\alpha_{i,OLS}$  obtained via regression on the first $T_{i}^{*}+1$ points as well as $\hat\eta{OLS}$ obtained by estimating a fixed effect at $t=T_{i}^{*}+1$.  Consider also a subsequent estimator, an estimator for $\psi$, that is derivable from inverting the model specification and plugging-in the estimates  $\hat\alpha_{i,OLS},\hat\lambda_{OLS}$:
 
 \begin{align}
-\hat\psi_{i,plugin} = \frac{1}{T_{i}-(T_{i}^{*}+2)}\sum^{T_{i}}_{t\geq T_{i}^{*}+2}-log{\big[-\big(\frac{y_{i,t}-\hat\alpha_{i}}{\hat\lambda} -1\big)\big]} / [t-T_{i}^{*}+1]\text{ .}\label{plugin}
+\hat\psi_{i,plugin} = \frac{1}{T_{i}-(T_{i}^{*}+2)}\sum^{T_{i}}_{t\geq T_{i}^{*}+2}-log{\big[-\big(\frac{y_{i,t}-\hat\alpha_{i}}{\hat\eta} -1\big)\big]} / [t-T_{i}^{*}+1]\text{ .}\label{plugin}
 \end{align}
-(\ref{plugin}) is, to put it lightly, a complicated estimator with potentially dubious properties.  To begin, (\ref{plugin}) is defined only when the term inside the logarithm is positive for each $t\geq T^{*}_{i}+2$.  We could get around this by dropping any summands for which that term is nonpositive and instead calculate an average over only the remaining subset of summands.  Additionally, variance estimates for $\hat\psi_{i,plugin}$ may require resampling methods or the delta method.  Estimation error from $\hat\alpha$ and $\hat\lambda$ would naturally propagate to $\hat\psi_{i,plugin}$, and the expected estimation error would depend upon the size of the pre-shock sample.
+(\ref{plugin}) is, to put it lightly, a complicated estimator with potentially dubious properties.  To begin, (\ref{plugin}) is defined only when the term inside the logarithm is positive for each $t\geq T^{*}_{i}+2$.  We could get around this by dropping any summands for which that term is nonpositive and instead calculate an average over only the remaining subset of summands.  Additionally, variance estimates for $\hat\psi_{i,plugin}$ may require resampling methods or the delta method.  Estimation error from $\hat\alpha$ and $\hat\eta$ would naturally propagate to $\hat\psi_{i,plugin}$, and the expected estimation error would depend upon the size of the pre-shock sample.
 
 \cite{castle2011forecasting} report that MSFE is lower by using intercept correction instead of non-linear methods to estimate $\psi$.
 
