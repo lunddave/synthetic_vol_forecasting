@@ -147,7 +147,7 @@
 \textbf{Things To Read For}
 \begin{enumerate}
   \item Literature review – (Sections 1 + 2) – does it tell a coherent story, one that motivates the general framework?
-  Is section 4 useful and correctly-placed?
+  \item Is section 4 useful and correctly-placed?
   \item Are the questions in the HAR subsection (6.3) worth pursuing, the ones linked to Bodilsen and Lunde’s paper?
   \item There are “loose-ends”, i.e. ideas that haven’t been finished yet.  Which to complete, which to leave for another paper?
   \begin{enumerate}
@@ -494,14 +494,12 @@ We now present two one-step-ahead forecasts for the time series under study. The
   \text{Forecast 2: }&
    \hat y_{adjusted,T_{1}^{*}+1} = \hat\E[\mathcal{F}_{T_{1}^{*}}] + \hat\alpha_{T^{*}_{1}+1} \text{ .}
 \end{align*}
-The problem of aggregating estimated shocks or residuals begins with the data constraints.  Let us first introduce useful notation.  Let $\hat\alpha^{*}_{i,*}$ denote estimated correction term for donor $i$.   Taking the estimated shocks or residuals as a given, we essentially observe the tuple of information $(\{\hat\alpha_{i,*}\}^{n+1}_{i=2}, \mathcal{F}_{2,T^{*}_{2}}\times \ldots \times \mathcal{F}_{n+1,T^{*}_{n+1}}\})$. 
-    
-  One approach to aggregation comes from \cite{lin2021minimizing}, where weights belonging to the simplex, $\{\weight_{i}\}^{n+1}_{i=2} \in \Delta^{n-1}$, are chosen via a distance-based weighting procedure, resulting in the correction function 
+The problem of aggregating estimated shocks or residuals begins with the data constraints.  Let us first introduce useful notation.  Let $\hat\alpha^{*}_{i,*}$ denote estimated correction term for donor $i$.   Taking the estimated shocks or residuals as a given, we essentially observe the tuple of information $(\{\hat\alpha_{i,*}\}^{n+1}_{i=2}, \mathcal{F}_{2,T^{*}_{2}}\times \ldots \times \mathcal{F}_{n+1,T^{*}_{n+1}}\})$.  One approach to aggregation comes from \cite{lin2021minimizing}, where weights belonging to the simplex, $\{\weight_{i}\}^{n+1}_{i=2} \in \Delta^{n-1}$, are chosen via a distance-based weighting procedure, resulting in the correction function 
 
 \begin{align*} \label{adjustment}
 	  \hat\alpha = \sum^{n+1}_{i=2}\weight_{i}\hat\alpha_{i,*},
 \end{align*}
-which is just one way among many to build a correction function.  Another interesting correction function can be found in \cite{foroni2022forecasting}.  For yet another example, consider a correction function that aggregates survey panel of forecasts by the Survey of Professional Forecasts \citep{croushore1993introducing}.  An obvious advantage of human forecasters is that they are able to integrate information revealed arbitrarily close to the scheduled release of the forecast, even if human forecaster's lack of systematicity or closed-form forecasts, for example, leads to non-optimal forecast performance in general.  By calculating forecast differences between the low-frequency information forecast, $\tau_{i,t}= \hat{y}_{unadjusted,t}-\hat{y}_{ i,t}$, we prepare ourselves for late-breaking events -- e.g. shocks -- for which we might want a correction function
+which is just one way among many to build a correction function.  Another interesting correction function can be found in \cite{foroni2022forecasting}, where percentage residuals of past forecasts are used.  For yet another example, consider a correction function that aggregates the survey panel of forecasts by the Survey of Professional Forecasts \citep{croushore1993introducing}.  An obvious advantage of human forecasters is that they are able to integrate information revealed arbitrarily close to the scheduled release of the forecast, even if human forecaster's lack of systematicity or closed-form forecasts, for example, leads to non-optimal forecast performance in general.  By calculating forecast differences between the low-frequency information forecast, $\tau_{i,t}= \hat{y}_{unadjusted,t}-\hat{y}_{ i,t}$, we prepare ourselves for late-breaking events -- e.g. shocks -- for which we might want a correction function
 
 \begin{align*}
 \xi \colon \boldsymbol{\tau} &\to \mathcal{F}_{1, T^{*}_{1}} \\
@@ -563,7 +561,7 @@ admits of the typical bias-variance decomposition.  If it is known that $\mu = 0
   = &\text{Bias}^{2}[\sum^{p}_{k=1}(\rho_{k}-\hat\rho_{k})y_{t-k} + (\alpha_{t} - \hat{\alpha}_{t}) ] + \text{Var}[\sum^{p}_{k=1}(\rho_{k}-\hat\rho_{k})y_{t-k} + (\alpha_{t} - \hat{\alpha}_{t}) ] + \sigma^{2}_{\epsilon}\tag{$\epsilon_{t}$ idiosyncratic}\\
   = &\big[\E[\sum^{p}_{k=1}(\rho_{k}-\hat\rho_{k})y_{t-k} + (\alpha_{t} - \hat{\alpha}_{t}) ]\big]^{2} + \text{Var}[\sum^{p}_{k=1}(\rho_{k}-\hat\rho_{k})y_{t-k} + (\alpha_{t} - \hat{\alpha}_{t})]  + \sigma^{2}_{\epsilon}\tag{Definition of Bias}\\
   % = &\big[\sum^{p}_{k=1}(\rho_{k}-\E[\hat\rho_{k}])y_{t-k} + (\alpha_{t} - \E[\hat{\alpha}_{t}]) \big]^{2} + \text{Var}[\sum^{p}_{k=1}(\rho_{k}-\hat\rho_{k})y_{t-k} + (\alpha_{t} - \hat{\alpha}_{t})]  + \sigma^{2}_{\epsilon}\\
-  = &\big[\sum^{p}_{k=1}(\rho_{k}-\E[\hat\rho_{k}])y_{t-k} + (\alpha_{t} - \E[\hat{\alpha}_{t}]) \big]^{2} + \text{Var}[\sum^{p}_{k=1}(\rho_{k}-\hat\rho_{k})y_{t-k}] + \text{Var}[\hat{\alpha}_{t}]  + \sigma^{2}_{\epsilon}\tag{if shocks are uncorrelated with time series under study}\\
+  = &\big[\sum^{p}_{k=1}(\rho_{k}-\E[\hat\rho_{k}])y_{t-k} + (\alpha_{t} - \E[\hat{\alpha}_{t}]) \big]^{2} + \text{Var}[\sum^{p}_{k=1}(\rho_{k}-\hat\rho_{k})y_{t-k}] + \text{Var}[\hat{\alpha}_{t}]  + \sigma^{2}_{\epsilon}\tag{if donor shocks are uncorrelated with time series under study}\\
   = &\big[\sum^{p}_{k=1}(\rho_{k}-\E[\hat\rho_{k}])y_{t-k} + (\alpha_{t} - \E[\hat{\alpha}_{t}]) \big]^{2} + \text{Var}[\sum^{p}_{k=1}(\rho_{k}-\hat\rho_{k})y_{t-k}] + \sum_{i=2}^{n+1}\pi_{i}^{2}\text{Var}[\hat\alpha_{i,t}] + 2\sum_{i\neq j}\pi_{i}\pi_{j}\text{Cov}[\hat\alpha_{i,t},\hat\alpha_{j,t}]  + \sigma^{2}_{\epsilon}\label{ARIMA_adjusted_MSE}
 \end{align}
 
