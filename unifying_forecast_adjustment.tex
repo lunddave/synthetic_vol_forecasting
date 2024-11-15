@@ -143,18 +143,6 @@
 \begin{abstract} 
   When should one's default forecasting model be adjusted, augmented, or abandoned completely?  Should it be done algorithmically or via human discretion, and if the latter, where and how should discretion play a role?  Should an adjustment be carried out using external information, and what exactly should be adjusted?  This work further systematizes and unifies the rich landscape of model adjustment and model correction methods, with a special focus on forecast adjustment under the presence of news shocks, when unanticipated events may give an observer reason to doubt the credibility of the default forecasting function.  We demonstrate the usefulness of similarity-based methods in forecasting and present a general framework dubbed Similarity-based Parameter Correction (SPC).  We highlight several specific time series models that can benefit from SPC, along with formal results for some of those special cases.
 \end{abstract}
-
-\textbf{Things To Read For}
-\begin{enumerate}
-  \item Literature review – (Sections 1 + 2) – does it tell a coherent story, one that motivates the general framework?
-  \item Is section 4 useful and correctly-placed --- including 4.1?
-  \item Are the questions in the HAR subsection (6.3) worth pursuing, the ones linked to Bodilsen and Lunde’s paper?
-  \item There are “loose-ends”, i.e. ideas that haven’t been finished yet.  Which to complete, which to leave for another paper?
-  \begin{enumerate}
-    \item  E.g. The Method of Multiple Shocks, Dual Shocks, and Shock-Partitioning
-    \item  Are “exponential breaks” worth doing formal work for, i.e. section 6.5
-    \item  Leave the LSTM (non-parametric predictions and aggregation of their residuals) and dual shock idea for another paper?
-  \end{enumerate}
   
 \end{enumerate}
 \section{Introduction}\label{Introduction}
@@ -531,6 +519,14 @@ This might not always be straightforward.  Some models like GARCH, for example, 
 
 \end{enumerate}
 
+\subsection{The Method of Multiple Shocks, Dual Shocks, and Shock-Partitioning}
+
+Sometimes, we might have reason to believe that a forecast requires adjustment due to not one but multiple shocks.  \cite{lin2021minimizing} explored a ``dual'' shock in their analysis of oil company equity price shocks due to the March 2020 COVID lockdowns.  \\
+
+Method 1: for each source of the $k$ shocks, assemble $n_{j}$ donors and $p_{j}$ covariates, with $j=2,...,n_{j}+1$, compute weights $\{\pi_{i,j}\}^{n_{j}+1}_{i=2}$.  With these $k$ weight sets, a set of $k$ aggregated shock estimators can be constructed and averaged (or aggregated in some other way).
+
+Method 2: the $k$ shocks can be represented using one application of distance-based weighting, with the vector $\delta$ and the vector $\x_{i,T^{*}_{i}+1}$ can encode a partition of shocks by using zeros in appropriate entries.
+
 \section{Formal Properties and Model-Specific Considerations}\label{special_cases}
 
 In this section, we discuss particular models for which our approach has been implemented as well as others for which it has yet to be implemented.  For those for which an implementation exists, we introduce the model in a more general light, while also commenting on the model-specific considerations.
@@ -698,13 +694,7 @@ Now consider a practitioner in need of a conditional forecast for $T_{1}^{*}+h, 
   \item Here we have taken $\lambda$ to be fixed and shared across donors.  If $\lambda$ is a random, however, then estimating it becomes harder.
 \end{enumerate}
 
-\subsection{The Method of Multiple Shocks, Dual Shocks, and Shock-Partitioning}
 
-Sometimes, we might have reason to believe that a forecast requires adjustment due to not one but multiple shocks.  \cite{lin2021minimizing} explored a ``dual'' shock in their analysis of oil company equity price shocks due to the March 2020 COVID lockdowns.  \\
-
-Method 1: for each source of the $k$ shocks, assemble $n_{j}$ donors and $p_{j}$ covariates, with $j=2,...,n_{j}+1$, compute weights $\{\pi_{i,j}\}^{n_{j}+1}_{i=2}$.  With these $k$ weight sets, a set of $k$ aggregated shock estimators can be constructed and averaged (or aggregated in some other way).
-
-Method 2: the $k$ shocks can be represented using one application of distance-based weighting, with the vector $\delta$ and the vector $\x_{i,T^{*}_{i}+1}$ can encode a partition of shocks by using zeros in appropriate entries.
 
 \section{Discussion}
 
