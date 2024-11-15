@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.15)  15 NOV 2024 16:32
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.15)  15 NOV 2024 17:39
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -775,8 +775,7 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 \c@prop=\count369
 \c@remark=\count370
 Package hyperref Info: Option `colorlinks' set `true' on input line 117.
-
-No file unifying_forecast_adjustment.aux.
+ (./unifying_forecast_adjustment.aux)
 \openout1 = `unifying_forecast_adjustment.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 139.
@@ -797,7 +796,7 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 139.
 LaTeX Font Info:    ... okay on input line 139.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 139.
 LaTeX Font Info:    ... okay on input line 139.
-(/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+ (/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count371
 \scratchdimen=\dimen312
@@ -821,11 +820,13 @@ Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
 Package hyperref Info: Link coloring ON on input line 139.
+ (./unifying_forecast_adjustment.out) (./unifying_forecast_adjustment.out
+pdfTeX warning (Object streams): \pdfobjcompresslevel > 0 requires PDF-1.5 or greater. Object streams disabled now.
+)
 \@outlinefile=\write6
 \openout6 = `unifying_forecast_adjustment.out'.
 
 
-pdfTeX warning (Object streams): \pdfobjcompresslevel > 0 requires PDF-1.5 or greater. Object streams disabled now.
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -867,556 +868,75 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 LaTeX Font Info:    Trying to load font information for U+msb on input line 142.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/unifying_forecast_adjustment.tex:147: Undefined control sequence.
-\enit@endenumerate ->\enit@after 
-                                 \endlist \ifx \enit@series \relax \else \if...
-l.147 \end{enumerate}
-                     
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
+) [1
 
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/unifying_forecast_adjustment.tex:147: Undefined control sequence.
-\enit@endenumerate ...\else \ifnum \enit@resuming 
-                                                  =\@ne \enit@setresumekeys ...
-l.147 \end{enumerate}
-                     
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/unifying_forecast_adjustment.tex:147: Missing number, treated as zero.
-<to be read again> 
-                   =
-l.147 \end{enumerate}
-                     
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/unifying_forecast_adjustment.tex:147: Undefined control sequence.
-\enit@setresumekeys ...xpandafter {\enit@savekeys 
-                                                  }\xdef \enit@afterlist {#2...
-l.147 \end{enumerate}
-                     
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/unifying_forecast_adjustment.tex:147: Undefined control sequence.
-\enit@setresumekeys ...it@toks }\ifnum \enit@type 
-                                                  =\z@ #3\def \enit@noexcs {...
-l.147 \end{enumerate}
-                     
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/unifying_forecast_adjustment.tex:147: Missing number, treated as zero.
-<to be read again> 
-                   =
-l.147 \end{enumerate}
-                     
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/unifying_forecast_adjustment.tex:147: Undefined control sequence.
-<argument> enit@resume@series@\enit@series 
-                                           
-l.147 \end{enumerate}
-                     
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/unifying_forecast_adjustment.tex:147: Undefined control sequence.
-\enit@setresumekeys ...me@#1}{\csname c@\@listctr 
-                                                  \endcsname \the \csname c@...
-l.147 \end{enumerate}
-                     
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/unifying_forecast_adjustment.tex:147: Undefined control sequence.
-\enit@setresumekeys ...e \the \csname c@\@listctr 
-                                                  \endcsname }\fi }
-l.147 \end{enumerate}
-                     
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/unifying_forecast_adjustment.tex:147: You can't use `\relax' after \the.
-<recently read> \c@ 
-                    
-l.147 \end{enumerate}
-                     
-I'm forgetting what you said and using zero instead.
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/unifying_forecast_adjustment.tex:147: Undefined control sequence.
-\enit@endenumerate ...t \fi \ifnum \enit@resuming 
-                                                  =\thr@@ \enit@setresumekey...
-l.147 \end{enumerate}
-                     
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/unifying_forecast_adjustment.tex:147: Missing number, treated as zero.
-<to be read again> 
-                   =
-l.147 \end{enumerate}
-                     
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/unifying_forecast_adjustment.tex:147: Undefined control sequence.
-\enit@setresumekeys ...xpandafter {\enit@savekeys 
-                                                  }\xdef \enit@afterlist {#2...
-l.147 \end{enumerate}
-                     
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/unifying_forecast_adjustment.tex:147: Undefined control sequence.
-\enit@setresumekeys ...it@toks }\ifnum \enit@type 
-                                                  =\z@ #3\def \enit@noexcs {...
-l.147 \end{enumerate}
-                     
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/unifying_forecast_adjustment.tex:147: Missing number, treated as zero.
-<to be read again> 
-                   =
-l.147 \end{enumerate}
-                     
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/unifying_forecast_adjustment.tex:147: Undefined control sequence.
-\enit@setresumekeys ...me@#1}{\csname c@\@listctr 
-                                                  \endcsname \the \csname c@...
-l.147 \end{enumerate}
-                     
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/unifying_forecast_adjustment.tex:147: Undefined control sequence.
-\enit@setresumekeys ...e \the \csname c@\@listctr 
-                                                  \endcsname }\fi }
-l.147 \end{enumerate}
-                     
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/unifying_forecast_adjustment.tex:147: You can't use `\relax' after \the.
-<recently read> \c@ 
-                    
-l.147 \end{enumerate}
-                     
-I'm forgetting what you said and using zero instead.
-
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/unifying_forecast_adjustment.tex:147: LaTeX Error: \begin{document} ended by \end{enumerate}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.147 \end{enumerate}
-                     
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/unifying_forecast_adjustment.tex:147: Extra \endgroup.
-<recently read> \endgroup 
-                          
-l.147 \end{enumerate}
-                     
-Things are pretty mixed up, but I think the worst is over.
-
-
-Package natbib Warning: Citation `thoughts_on_market' on page 1 undefined on input line 150.
-
-
-Package natbib Warning: Citation `lundquist2024volatility' on page 1 undefined on input line 154.
-
-[1
-
-{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
-
-Package natbib Warning: Citation `hendry1994theory' on page 2 undefined on input line 158.
-
-
-Package natbib Warning: Citation `clements1996intercept' on page 2 undefined on input line 158.
-
-
-Package natbib Warning: Citation `clements1998forecasting' on page 2 undefined on input line 158.
-
-
-Package natbib Warning: Citation `clements1999forecasting' on page 2 undefined on input line 158.
-
-
-Package natbib Warning: Citation `hendry1994theory' on page 2 undefined on input line 158.
-
-
-Package natbib Warning: Citation `clements1999forecasting' on page 2 undefined on input line 160.
-
-
-Package natbib Warning: Citation `hendry1994theory' on page 2 undefined on input line 160.
-
-
-Package natbib Warning: Citation `clements1999forecasting' on page 2 undefined on input line 160.
-
-
-Package natbib Warning: Citation `guerron2017macroeconomic' on page 2 undefined on input line 160.
-
-
-Package natbib Warning: Citation `lundquist2024volatility' on page 2 undefined on input line 160.
-
-
-Package natbib Warning: Citation `castle2016overview' on page 2 undefined on input line 162.
-
-
-Package natbib Warning: Citation `lin2021minimizing' on page 2 undefined on input line 169.
-
-
-Package natbib Warning: Citation `lundquist2024volatility' on page 2 undefined on input line 169.
-
-
-LaTeX Warning: Reference `global_overview' on page 2 undefined on input line 171.
-
-
-Package natbib Warning: Citation `castle2011forecasting' on page 2 undefined on input line 174.
-
-
-Package natbib Warning: Citation `lundquist2024volatility' on page 2 undefined on input line 174.
-
-
-Package natbib Warning: Citation `lin2021minimizing' on page 2 undefined on input line 174.
-
-
-Package natbib Warning: Citation `lundquist2024volatility' on page 2 undefined on input line 174.
-
-[2]
-
-Package natbib Warning: Citation `castle2011forecasting' on page 3 undefined on input line 372.
-
-
-Package natbib Warning: Citation `clements1998forecasting' on page 3 undefined on input line 372.
-
+{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] [2]
 Missing character: There is no ] in font nullfont!
 Missing character: There is no ] in font nullfont!
-
-Package natbib Warning: Citation `hendry1994theory' on page 3 undefined on input line 381.
-
-
-Package natbib Warning: Citation `castle2011forecasting' on page 3 undefined on input line 384.
-
 [3]
-
-Package natbib Warning: Citation `clements2005guest' on page 4 undefined on input line 390.
-
-
-Package natbib Warning: Citation `castle2013forecasting' on page 4 undefined on input line 390.
-
-
-Package natbib Warning: Citation `castle2011forecasting' on page 4 undefined on input line 390.
-
-
-LaTeX Warning: Reference `tab:information_table' on page 4 undefined on input line 392.
-
-
-Overfull \hbox (3.98454pt too wide) in paragraph at lines 401--401
+Overfull \hbox (3.98454pt too wide) in paragraph at lines 400--400
 []|\OT1/cmr/m/n/10.95 internal| 
  []
 
 
-Overfull \hbox (5.80957pt too wide) in paragraph at lines 403--403
+Overfull \hbox (5.80957pt too wide) in paragraph at lines 402--402
 []|\OT1/cmr/m/n/10.95 external| 
  []
 
-
-Package natbib Warning: Citation `bartha2013analogy' on page 4 undefined on input line 409.
-
 [4]
-
-LaTeX Warning: Reference `Setting' on page 5 undefined on input line 411.
-
-
-Package natbib Warning: Citation `garg2015asymmetric' on page 5 undefined on input line 415.
-
-
-Package natbib Warning: Citation `bishop2023deep' on page 5 undefined on input line 415.
-
-
-Package natbib Warning: Citation `lin2021minimizing' on page 5 undefined on input line 417.
-
-
-Package natbib Warning: Citation `lundquist2024volatility' on page 5 undefined on input line 417.
-
-
-Package natbib Warning: Citation `lin2021minimizing' on page 5 undefined on input line 419.
-
-
-Package natbib Warning: Citation `lundquist2024volatility' on page 5 undefined on input line 419.
-
-<simulation_plots/motivating_piece_convex_combination.png, id=45, 1226.5825pt x 985.6825pt>
+<simulation_plots/motivating_piece_convex_combination.png, id=231, 1226.5825pt x 985.6825pt>
 File: simulation_plots/motivating_piece_convex_combination.png Graphic file (type png)
 <use simulation_plots/motivating_piece_convex_combination.png>
-Package pdftex.def Info: simulation_plots/motivating_piece_convex_combination.png  used on input line 426.
+Package pdftex.def Info: simulation_plots/motivating_piece_convex_combination.png  used on input line 425.
 (pdftex.def)             Requested size: 498.66258pt x 400.71829pt.
+ [5] [6 <./simulation_plots/motivating_piece_convex_combination.png>] [7] [8] [9]
+Underfull \hbox (badness 10000) in paragraph at lines 523--524
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[5] [6 <./simulation_plots/motivating_piece_convex_combination.png>]
-
-LaTeX Warning: Reference `core_specification' on page 7 undefined on input line 459.
-
-
-LaTeX Warning: Reference `Setting' on page 7 undefined on input line 473.
-
-[7]
-
-Package natbib Warning: Citation `lin2021minimizing' on page 8 undefined on input line 485.
-
-
-Package natbib Warning: Citation `foroni2022forecasting' on page 8 undefined on input line 490.
-
-
-Package natbib Warning: Citation `croushore1993introducing' on page 8 undefined on input line 490.
-
-
-Package natbib Warning: Citation `lin2021minimizing' on page 8 undefined on input line 498.
-
-
-Package natbib Warning: Citation `abadie2010synthetic' on page 8 undefined on input line 498.
-
-
-LaTeX Warning: Reference `ARIMA' on page 8 undefined on input line 498.
-
-
-LaTeX Warning: Reference `Setting' on page 8 undefined on input line 502.
-
-[8]
-
-Package natbib Warning: Citation `lin2021minimizing' on page 9 undefined on input line 510.
-
-
-Package natbib Warning: Citation `lundquist2024volatility' on page 9 undefined on input line 510.
-
-
-Package natbib Warning: Citation `lin2021minimizing' on page 9 undefined on input line 514.
-
-
-Package natbib Warning: Citation `lundquist2024volatility' on page 9 undefined on input line 514.
-
-[9]
-
-Package natbib Warning: Citation `lin2021minimizing' on page 10 undefined on input line 524.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 524--525
-
- []
-
-
-LaTeX Warning: Reference `core_specification' on page 10 undefined on input line 536.
-
-
-Package natbib Warning: Citation `lin2021minimizing' on page 10 undefined on input line 541.
-
-
-LaTeX Warning: Reference `ARIMA_MSE_breakdown' on page 10 undefined on input line 553.
-
-
-Overfull \hbox (31.26541pt too wide) detected at line 562
-[]
  []
 
 [10]
-
-LaTeX Warning: Reference `ARIMA_adjusted_MSE' on page 11 undefined on input line 566.
+Overfull \hbox (31.26541pt too wide) detected at line 563
+[]
+ []
 
 Missing character: There is no ; in font nullfont!
-[11]
-
-Package natbib Warning: Citation `lin2021minimizing' on page 12 undefined on input line 608.
-
-
-Package natbib Warning: Citation `lundquist2024volatility' on page 12 undefined on input line 608.
-
-
-Package natbib Warning: Citation `francq2019garch' on page 12 undefined on input line 608.
-
-
-Package natbib Warning: Citation `lundquist2024volatility' on page 12 undefined on input line 610.
-
-
-Package natbib Warning: Citation `corsi2009simple' on page 12 undefined on input line 614.
-
-[12]
-
-Package natbib Warning: Citation `bodilsen2023exploiting' on page 13 undefined on input line 619.
-
-
-LaTeX Warning: Reference `core_specification' on page 13 undefined on input line 619.
-
-
-Package natbib Warning: Citation `bodilsen2023exploiting' on page 13 undefined on input line 633.
-
-
-Package natbib Warning: Citation `bodilsen2023exploiting' on page 13 undefined on input line 636.
-
-
-Package natbib Warning: Citation `bodilsen2023exploiting' on page 13 undefined on input line 640.
-
-<real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png, id=114, 803.0pt x 602.25pt>
+[11] [12]
+<real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png, id=348, 803.0pt x 602.25pt>
 File: real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png Graphic file (type png)
 <use real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png>
-Package pdftex.def Info: real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png  used on input line 650.
+Package pdftex.def Info: real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png  used on input line 651.
 (pdftex.def)             Requested size: 321.1943pt x 240.89572pt.
+
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-
-Package natbib Warning: Citation `hendry2004pooling' on page 13 undefined on input line 660.
-
-[13]
-
-Package natbib Warning: Citation `lin2021minimizing' on page 14 undefined on input line 662.
-
-
-Package natbib Warning: Citation `Brownlee_2022' on page 14 undefined on input line 664.
-
-
-Package natbib Warning: Citation `castle2011forecasting' on page 14 undefined on input line 675.
-
-[14 <./real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png>]
-
-LaTeX Warning: Reference `plugin' on page 15 undefined on input line 685.
-
-
-LaTeX Warning: Reference `plugin' on page 15 undefined on input line 685.
-
-
-Package natbib Warning: Citation `castle2011forecasting' on page 15 undefined on input line 687.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 689--690
+[13] [14 <./real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 690--691
 
  []
 
 
-Package natbib Warning: Citation `lin2021minimizing' on page 15 undefined on input line 701.
-
-
-Package natbib Warning: Citation `clements1998forecasting' on page 15 undefined on input line 701.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 701--702
+Underfull \hbox (badness 10000) in paragraph at lines 702--703
 
  []
 
 
-Package natbib Warning: Citation `lundquist2024volatility' on page 15 undefined on input line 711.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 711--712
+Underfull \hbox (badness 10000) in paragraph at lines 712--713
 
  []
 
 [15]
-
-Package natbib Warning: Citation `clements2005evaluating' on page 16 undefined on input line 733.
-
-
-LaTeX Warning: Reference `ARIMA' on page 16 undefined on input line 734.
-
-
-Package natbib Warning: Citation `lundquist2024volatility' on page 16 undefined on input line 745.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 745--746
+Underfull \hbox (badness 10000) in paragraph at lines 746--747
 
  []
 
 [16]
-
-Package natbib Warning: Citation `lundquist2024volatility' on page 17 undefined on input line 747.
-
-
-LaTeX Warning: Reference `Introduction' on page 17 undefined on input line 759.
-
-
-LaTeX Warning: Reference `outside_info' on page 17 undefined on input line 760.
-
-
-LaTeX Warning: Reference `Introduction' on page 17 undefined on input line 761.
-
-
-LaTeX Warning: Reference `special_cases' on page 17 undefined on input line 762.
-
-
-LaTeX Warning: Reference `Limitations' on page 17 undefined on input line 763.
-
-
-LaTeX Warning: Reference `Extensions' on page 17 undefined on input line 764.
-
-
-Package natbib Warning: Citation `lin2021minimizing' on page 17 undefined on input line 768.
-
-
-Package natbib Warning: Citation `lundquist2024volatility' on page 17 undefined on input line 768.
-
-
-LaTeX Warning: Reference `ARIMA_param_consistency' on page 17 undefined on input line 779.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 785--786
+Underfull \hbox (badness 10000) in paragraph at lines 786--787
 
  []
 
 
-LaTeX Warning: Reference `ARIMA_conv_distribution' on page 17 undefined on input line 787.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 793--794
+Underfull \hbox (badness 10000) in paragraph at lines 794--795
 
  []
 
@@ -1432,48 +952,26 @@ Underfull \hbox (badness 10000) in paragraph at lines 29--32
 
 [19
 
-])
-
-Package natbib Warning: There were undefined citations.
-
-[20] (./unifying_forecast_adjustment.aux
-
-Package natbib Warning: Citation(s) may have changed.
-(natbib)                Rerun to get citations correct.
-
-)
+]) [20] (./unifying_forecast_adjustment.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
-
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-
-Package rerunfilecheck Warning: File `unifying_forecast_adjustment.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `unifying_forecast_adjustment.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  D96DA4B8C974C0F9A4D158F627642738;6982.
+Package rerunfilecheck Info: File `unifying_forecast_adjustment.out' has not changed.
+(rerunfilecheck)             Checksum: D96DA4B8C974C0F9A4D158F627642738;6982.
  ) 
 Here is how much of TeX's memory you used:
- 37339 strings out of 474116
- 792418 string characters out of 5743682
- 1947187 words of memory out of 5000000
- 59050 multiletter control sequences out of 15000+600000
+ 37371 strings out of 474116
+ 793045 string characters out of 5743682
+ 1949187 words of memory out of 5000000
+ 59076 multiletter control sequences out of 15000+600000
  578011 words of font info for 108 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 142i,17n,144p,2089b,1699s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 142i,17n,144p,2085b,1699s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on unifying_forecast_adjustment.pdf (20 pages, 468032 bytes).
+Output written on unifying_forecast_adjustment.pdf (20 pages, 511207 bytes).
 PDF statistics:
- 340 PDF objects out of 1000 (max. 8388607)
+ 578 PDF objects out of 1000 (max. 8388607)
  117 named destinations out of 1000 (max. 500000)
- 23 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 239 words of extra memory for PDF output out of 10000 (max. 10000000)
 
