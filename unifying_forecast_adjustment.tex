@@ -441,8 +441,8 @@ We assume the following general data-generating process
     \mc{M}_1 \colon \begin{array}{l}
       y_{i,t} = F(\mathcal{F}_{i,t-1}) + \alpha_{i,t} + \epsilon_{i,t}\\[.2cm]\label{core_specification}
       \alpha_{i,t} = \x^{T}_{i,t}\lambda_{i,t} \\[.2cm]
-     \x_{i,t}^{T} = (x^{1}_{i,t},...,x^{p}_{i,t},1)\\[.2cm] 
-     \lambda_{i,t}^{T} = (\lambda^{1}_{t},...,\lambda^{p}_{t},u_{i,t}),\\[.2cm]
+     \x_{i,t}^{T} = (1,x^{1}_{i,t},...,x^{p}_{i,t})\\[.2cm] 
+     \lambda_{i,t}^{T} = (u_{i,t},\lambda^{1}_{t},...,\lambda^{p}_{t}),\\[.2cm]
     \end{array}
     \end{align}
 with time-varying and observable covariate vector $\x_{i,t}^{T}$, time-varying and unknown parameter vector
@@ -518,7 +518,7 @@ This might not always be straightforward.  Some models like GARCH, for example, 
 
 \end{enumerate}
 
-\subsection{The Method of Multiple Shocks, Dual Shocks, and Shock-Partitioning}
+\subsection{The Method of Multiple Shocks}
 
 Sometimes, we might have reason to believe that a forecast requires adjustment due to not one but multiple shocks.  \cite{lin2021minimizing} explored a ``dual'' shock in their analysis of oil company equity price shocks due to the March 2020 COVID lockdowns.  \\
 
@@ -623,8 +623,8 @@ Recently, \cite{bodilsen2023exploiting} find that overnight news improves the pr
   \mc{M}_1 \colon \begin{array}{l}
     RV_{i,t} = \beta_{0} + \beta_{\text{1-day}}RV_{i,t-1} + \beta_{\text{5-day}}\overline{\{RV_{i,t-1},...,RV_{i,t-5}\}}+\beta_{\text{22-day}}\overline{\{RV_{i,t-1},...,RV_{i,t-22}\}} + \alpha_{i,t} + \epsilon_{t}\\[.2cm]
     \alpha_{i,t} = \x^{T}_{i,t}\lambda_{i,t} \\[.2cm]
-   \x_{i,t}^{T} = (x^{1}_{i,t},...,x^{p}_{i,t},1)\\[.2cm] 
-   \lambda_{i,t}^{T} = (\lambda^{1}_{t},...,\lambda^{p}_{t},u_{i,t}),\\[.2cm]
+    \x_{i,t}^{T} = (1,x^{1}_{i,t},...,x^{p}_{i,t})\\[.2cm] 
+    \lambda_{i,t}^{T} = (u_{i,t},\lambda^{1}_{t},...,\lambda^{p}_{t}),\\[.2cm]
   \end{array}
   \end{align}
 
