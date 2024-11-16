@@ -141,7 +141,7 @@
 \maketitle
 
 \begin{abstract} 
-  When should one's default forecasting model be adjusted, augmented, or abandoned completely?  Should it be done algorithmically or via human discretion, and if the latter, where and how should discretion play a role?  Should an adjustment be carried out using external information, and what exactly should be adjusted?  This work further systematizes and unifies the rich landscape of model adjustment and model correction methods, with a special focus on forecast adjustment under the presence of news shocks, when unanticipated events may give an observer reason to doubt the credibility of the default forecasting function.  We demonstrate the usefulness of similarity-based methods in forecasting and present a general framework dubbed Similarity-based Parameter Correction (SPC).  We highlight several specific time series models that can benefit from SPC, along with formal results for some of those special cases.
+ Situations arise in which one's default times series forecasting model must be adjusted, augmented, or abandoned completely, generating second-order questions about algorithmic design and the role of human judgment, as well as the information leveraged for forecast adjustment.  This work further systematizes and unifies the rich landscape of model adjustment and model correction methods, with a special focus on forecast adjustment under the presence of news shocks, when unanticipated events may give an observer reason to doubt the credibility of the default forecasting function.  We demonstrate the usefulness of similarity-based methods in forecasting and present a general framework dubbed Similarity-based Parameter Correction (SPC).  We highlight several specific time series models that can benefit from SPC, along with formal results for some of those special cases.
 \end{abstract}
   
 \section{Introduction}\label{Introduction}
@@ -609,6 +609,15 @@ We now turn to the limitations of linear time series model class like ARIMA.  Th
 The methods of \cite{lin2021minimizing} are adapted in \cite{lundquist2024volatility} to forecast volatility.  This is in response to concerns we raised above about the usefulness of ARIMA models for forecasting financial returns as well as concerns about heteroskedasticity.  Financial time series are known to have both time-varying volatility as well as  volatility that \textit{clusters}, i.e. with volatile trading periods that bunch together.  A GARCH model, under weak conditions, is an ARMA model on the squared residuals of a time series, and empirical evidence strongly suggests that those ARMA (i.e. GARCH) coefficients are not zero, in general.  The predictability of either those squared returns or the predictability of $\sigma_{t}^{2}$ (in this context, the two tasks reduce to one) is bounded, however, by a function of the kurtosis of a GARCH process \citep{francq2019garch}.  That the GARCH model accommodates excess kurtosis in both the unconditional and conditional returns of a financial asset is a feature of the model, and perhaps for that reason, it has been noted that GARCH models do a much better job at modeling the evolution of volatility (a descriptive or inferential objective) as opposed to forecasting volatility.
 
 In this way, \cite{lundquist2024volatility} bridged a gap between the descriptive and predictive roles of GARCH.  Fixed effects (correction terms) are estimated in the donor pool, and those fixed effects are aggregated via corrected function.  A forecast adjustment is then made in the time series under study.
+
+\begin{align}
+  \mc{M}_1 \colon \begin{array}{l}
+    y_{i,t} = F(\mathcal{F}_{i,t-1}) + \alpha_{i,t} + \epsilon_{i,t}\\[.2cm]\label{core_specification}
+    \alpha_{i,t} = \x^{T}_{i,t}\lambda_{i,t} \\[.2cm]
+   \x_{i,t}^{T} = (1,x^{1}_{i,t},...,x^{p}_{i,t})\\[.2cm] 
+   \lambda_{i,t}^{T} = (u_{i,t},\lambda^{1}_{t},...,\lambda^{p}_{t}),\\[.2cm]
+  \end{array}
+  \end{align}
 
 \subsection{HAR}
 
