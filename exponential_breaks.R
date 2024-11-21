@@ -1,306 +1,350 @@
-
-########### Items to investigate ########
-# 1) using foreach just once to smash through grid+nsim
-# https://cran.r-project.org/web/packages/foreach/vignettes/foreach.html
-# 2) benchmarking the runtime https://www.alexejgossmann.com/benchmarking_r/
-# 3) this has a grid: https://www.blasbenito.com/post/02_parallelizing_loops_with_r/
-# 4 observe here the nested foreach structure https://www.r-bloggers.com/2013/06/grid-search-for-free-parameters-with-parallel-computing/
-# Discuss this with AM.  There is a decision to be made between a nested for each setup AND a replication column
-# 6 Use chunking in this explanatory page, as well as nested for each discussion
-# https://cran.r-project.org/web/packages/foreach/vignettes/nested.html
-
-# Links only:
-#   https://cran.r-project.org/web/packages/foreach/vignettes/foreach.html
-#   https://www.alexejgossmann.com/benchmarking_r/
-#   https://www.blasbenito.com/post/02_parallelizing_loops_with_r/
-#   https://www.r-bloggers.com/2013/06/grid-search-for-free-parameters-with-parallel-computing/
-#   https://cran.r-project.org/web/packages/foreach/vignettes/nested.html
-
-# MC
-library(parallel)
-library(doParallel)
-library(foreach)
-library(doRNG)
-source("/home/davidl11/synthetic_vol_forecasting/synthVolForecast_wrapper.R",
-       echo = FALSE,
-       verbose = FALSE)
-
-command_args <- commandArgs(trailingOnly = TRUE)
-
-registerDoParallel(25)
-#set.seed(13) #tk do we want to vary this?
-#RNGkind("L'Ecuyer-CMRG")
-
-start_time <- Sys.time()
-nsim <- as.numeric(command_args[1])
-permutation_shift <- 0
-
-############ We build our parameter grid ############
-donor_pool_size <- c(10)
-p <- c(5)
-alpha <- c(.1)
-beta <- c(.82)
-vol_model <- c('M1','M21','M22')[2]
-level_model <- c('M1','M21','M22','none')[1]
-vol_shock_length <- c(1)
-level_shock_length <- c(1)
-extra_measurement_days <- c(0,1,2,3,4)
-a <- 3*252
-b <- 10*252
-replication_number <- seq(1, nsim, 1)
-optimization_norm <- c('l1','l2')[2]
-mu_eps_star <- seq(0,-1,-.1)
-#level_GED_alpha <- c(sqrt(2), sqrt(5)) # note: beta = 2, alpha = sqrt(2) is N(0,1)
-#level_GED_beta <- c(.7, 2) # note: beta = 2, alpha = sqrt(2) is N(0,1))
-M21_M22_level_mu_delta <- 0 # seq(0,-1,.-1)
-M21_M22_level_sd_delta <- 0 # seq(0,.25,.025)
-mu_omega_star <- c(.05)
-vol_shock_sd <- 1
-M21_M22_vol_mu_delta <- seq(0, .5, .05)
-M21_M22_vol_sd_delta <- 0
-
-list_of_vars <- list(donor_pool_size
-                     , p
-                     , alpha
-                     , beta
-                     , vol_model
-                     , level_model
-                     , vol_shock_length
-                     , level_shock_length
-                     , extra_measurement_days
-                     , a
-                     , b
-                     , optimization_norm
-                     , mu_eps_star
-                     # #, level_GED_alpha
-                     # #, level_GED_beta
-                     , M21_M22_level_mu_delta
-                     , M21_M22_level_sd_delta
-                     , mu_omega_star
-                     , vol_shock_sd
-                     , M21_M22_vol_mu_delta
-                     , M21_M22_vol_sd_delta
-)
-
-names(list_of_vars) <- list('donor_pool_size'
-                            , 'p'
-                            , 'alpha'
-                            , 'beta'
-                            , 'vol_model'
-                            , 'level_model'
-                            , 'vol_shock_length'
-                            , 'level_shock_length'
-                            , 'extra_measurement_days'
-                            , 'a'
-                            , 'b'
-                            , 'optimization_norm'
-                            , 'mu_eps_star'
-                            # #, 'level_GED_alpha'
-                            # #, 'level_GED_beta'
-                            , 'M21_M22_level_mu_delta'
-                            , 'M21_M22_level_sd_delta'
-                            , 'mu_omega_star'
-                            , 'vol_shock_sd'
-                            , 'M21_M22_vol_mu_delta'
-                            , 'M21_M22_vol_sd_delta'
-)
-
-# Because of the many many combinations, we have to subset even at the time of creation
-gridd <- expand.grid(list_of_vars)
-
-## Now we cull the expansion by removing combinations that do not make sense
-## or will lead to failures.
-
-# Now we get rid of arrangements where alpha + beta >= 1
-gridd_subset <- gridd[gridd$alpha + gridd$beta < 1,]
-
-# Get rid of models where level shock is long than vol shock
-gridd_subset <- gridd_subset[gridd_subset$level_shock_length <= gridd_subset$vol_shock_length,]
-
-# Get rid of M1 level models where
-
-# level_shock_length
-# , 'M21_M22_level_mu_delta'
-# , 'M21_M22_level_sd_delta'
-
-# is not zero:
-
-gridd_subset <- gridd_subset[ (gridd_subset$level_model == 'M1' &
-                                 gridd_subset$level_shock_length != 0 &
-                                 gridd_subset$mu_eps_star != 0 &
-                                 gridd_subset$M21_M22_level_mu_delta == 0 &
-                                 gridd_subset$M21_M22_level_sd_delta == 0
-) |
-
-  (gridd_subset$level_model %in% c('M21','M22') &
-     gridd_subset$level_shock_length != 0 &
-     gridd_subset$mu_eps_star != 0 &
-     gridd_subset$M21_M22_level_mu_delta != 0 &
-     gridd_subset$M21_M22_level_sd_delta != 0) |
-
-  (gridd_subset$level_model == 'none' &
-     gridd_subset$level_shock_length == 0 &
-     gridd_subset$mu_eps_star == 0 &
-     gridd_subset$M21_M22_level_mu_delta == 0 &
-     gridd_subset$M21_M22_level_sd_delta == 0),]
-
-print('After culling grid rows based on level models, we print dimensions:')
-dim(gridd_subset)
-
-# Get rid of M1 vol models where
-
-# , 'M21_M22_vol_mu_delta'
-# , 'M21_M22_vol_sd_delta'
-
-# is not zero:
-
-gridd_subset <- gridd_subset[ (gridd_subset$vol_model == 'M1' &
-                                 gridd_subset$M21_M22_vol_mu_delta == 0 &
-                                 gridd_subset$M21_M22_vol_sd_delta == 0) |
-
-                                (gridd_subset$vol_model != 'M1')
-                              #     gridd_subset$M21_M22_vol_mu_delta != 0)
-                              ,]
-
-print('Grid has been created.  We print its dimensions:')
-dim(gridd_subset)
-
-## tk TO DO
-
-# a) fix the 1-14 names for geometric sets
-# b) fix parameter combinations that don't make sense
-# c) look into why some combinations often lead to GARCH estimation failure
-# d)
-#
-
-
-# Take stock of what we have
-
-sim_params <- gridd_subset
-
-
-# This last bit of code will help us see how the parameter combos vary
-length_unique <- function(x) { return(length(unique(x)))}
-
-# sim_params_check <- sim_params %>% group_by(vol_model) %>% summarise(across(everything(), length_unique),.groups = 'drop')  %>% as.data.frame()
-
-# Take stock of what we have
-
-sim_params <- gridd_subset
-
-grid_row_count <- nrow(sim_params)
-
-global_seed <- 1986
-rng <- RNGseq(nsim * grid_row_count, global_seed)
-
-############ end of parameter grid construction ############
-
-
-########################### Begin parallel architecture ###############################
-
-# simulation time
-system.time(
-
-  output <- foreach(
-    n = sim_params$donor_pool_size
-    , p = sim_params$p
-    #,model = c(1,1,1),
-    ,arch_param = sim_params$alpha
-    ,garch_param = sim_params$beta
-    #,asymmetry_param = c(.15)
-
-    ,level_model = sim_params$level_model
-    ,vol_model = sim_params$vol_model
-
-    ,level_shock_length = sim_params$level_shock_length
-    ,vol_shock_length = sim_params$vol_shock_length
-    ,extra_measurement_days = sim_params$extra_measurement_days
-
-    ,a = sim_params$a
-    ,b = sim_params$b
-
-    ,optimization_norm = sim_params$optimization_norm
-    ,mu_eps_star = sim_params$mu_eps_star
-
-    ,M21_M22_level_mu_delta = sim_params$M21_M22_level_mu_delta
-    ,M21_M22_level_sd_delta = sim_params$M21_M22_level_sd_delta
-
-    ,mu_omega_star = sim_params$mu_omega_star
-    ,vol_shock_sd = sim_params$vol_shock_sd
-    ,M21_M22_vol_mu_delta = sim_params$M21_M22_vol_mu_delta
-    ,M21_M22_vol_sd_delta = sim_params$M21_M22_vol_sd_delta
-
-    ,outer_loop_counter = icount()
-
-    #Now we choose how we want foreach to combine the output of each sim
-    ,.combine = 'rbind'
-    ,.errorhandling = "remove" #pass is another option
-
-  ) %dopar% {
-
-    foreach(1:nsim
-            , inner_loop_counter = icount()
-            , selected_seed = rng[(outer_loop_counter-1)*nsim + 1:nsim]
-            #Now we choose how we want foreach to combine the output of each sim
-            ,.combine = 'rbind'
-            ,
-            .errorhandling = "remove" #pass is another option
-    ) %do% { #begin inner loop
-
-      setRNG(selected_seed)
-
-      to_return <- simulate_and_analyze(n = n
-                                        ,p = p
-                                        #,model = c(1,1,1)
-                                        ,arch_param = arch_param
-                                        ,garch_param = garch_param
-
-                                        #asymmetry_param = c(.15),
-
-                                        ,level_model = level_model
-                                        ,vol_model = vol_model
-
-                                        ,level_shock_length = level_shock_length
-                                        ,vol_shock_length = vol_shock_length
-                                        ,extra_measurement_days = extra_measurement_days
-                                        ,normchoice = optimization_norm
-                                        ,mu_eps_star = mu_eps_star
-                                        ,M21_M22_level_mu_delta = M21_M22_level_mu_delta
-                                        ,M21_M22_level_sd_delta = M21_M22_level_sd_delta
-                                        ,mu_omega_star = mu_omega_star
-                                        ,vol_shock_sd = vol_shock_sd
-                                        ,M21_M22_vol_mu_delta = M21_M22_vol_mu_delta
-                                        ,M21_M22_vol_sd_delta = M21_M22_vol_sd_delta
-                                        ,permutation_shift = permutation_shift
-      )
-
-      return(to_return)
-
-    } # end inner loop
-
-  } # end outer loop
-) #end system.time
-
-########################### End parallel architecture ###############################
-
-# Save output
-
-recovery_rate <- round( nrow(output) / (grid_row_count * nsim),3)
-
-end_time <- Sys.time()
-
-running_hours <- round(difftime(end_time, start_time, units="hours"),3)
-
-# Save output
-save(output, file = paste("~/synthetic_vol_forecasting/simulation_results/simcount_",
-                          nsim,
-                          "_savetime_", format(Sys.time(), "%a%b%d%X%Y"),"_runtime_",running_hours,"_hr_",
-                          "_grid_size",grid_row_count,
-                          "_recovery_",recovery_rate,
-                          "_permute_",permutation_shift,
-                          "_seed_", global_seed,
-                          ".Rdata",sep="") )
-
-
-stopImplicitCluster()
-
+library(quantmod)
+library(garchx)
+library(lmtest)
+library(extraDistr)
+library(gnorm)
+library(Rsolnp)
+library(RColorBrewer)
+library(DescTools)
+library(LaplacesDemon)
+library(mvtnorm)
+library(latex2exp)
+library(MASS)
+library(tikzDevice)
+
+options(scipen = 7)
+
+####################### BEGIN Auxiliary functions #######################
+
+#Decay maker
+decay_maker <- function(t
+                        ,eta = 4
+                        ,psi = .1
+                        ,T_i_star = 38 ){
+  # DOC STRING HERE
+
+
+  return(eta*(1 - exp(-psi*(t-(T_i_star )))))
+}
+
+#series maker
+series_maker <- function(length
+                         ,sd
+                         ,alpha
+                         ,eta = 5
+                         ,psi = .02
+                         ,T_i_star = 38
+                         ){
+
+  # DOC STRING HERE
+
+  preshock <- alpha + rnorm(T_i_star, sd = sd)
+
+  shock_and_onward <- alpha + mapply(decay_maker, seq(T_i_star+1,length,1),
+                                     MoreArgs = list(
+                                       eta
+                                       , psi
+                                       , T_i_star)) +
+    rnorm(length-T_i_star, sd = sd)
+
+  return(c(preshock,shock_and_onward))
+
+}
+
+#A distance-based weighting method function adapted from code by Jilei Lin (PhD Student at GWU).
+# It returns a vector determined by the user's choice of distance-based-weighting method.
+
+dbw <- function(X,
+                Tstar,
+                scale = FALSE,
+                sum_to_1 = 1,
+                bounded_below_by = 0,
+                bounded_above_by = 1,
+                princ_comp_count = 2,
+                normchoice = c('l1', 'l2')[2],
+                penalty_normchoice = c('l1', 'l2')[1],
+                penalty_lambda = 0
+                ) { # https://github.com/DEck13/synthetic_prediction/blob/master/prevalence_testing/numerical_studies/COP.R
+  # X is a list of covariates for the time series
+  # X[[1]] should be the covariate of the time series to predict
+  # X[[p]] for p = 2,...,n+1 are covariates for donors
+
+  # T^* is a vector of shock-effects time points
+  # shock effect point must be > 2
+
+  # number of time series for pool
+  n <- length(X) - 1
+
+  # COVARIATE FOR TIME SERIES UNDER STUDY AT TSTAR
+  X1 <- X[[1]][Tstar[1], , drop = FALSE] # we get only 1 row
+
+  # LOOP for grab TSTAR covariate vector for each donor
+  X0 <- c()
+  for (i in 1:n) {
+    X0[[i]] <- X[[i + 1]][Tstar[i + 1], , drop = FALSE] #get 1 row from each donor
+  }
+
+        if (scale == TRUE) { #begin if statement
+          dat <- rbind(X1, do.call('rbind', X0)) # do.call is for cluster computing?
+          dat <- apply(dat, 2, function(x) scale(x, center = TRUE, scale = TRUE))
+          X1 <- dat[1, , drop = FALSE]
+          X0 <- c()
+          for (i in 1:n) {
+            X0[[i]] <- dat[i + 1, , drop = FALSE] #we are repopulating X0[[i]] with scaled+centered data
+          } #end loop
+        } #end if statement
+
+  # objective function
+  weightedX0 <- function(W) {
+    # W is a vector of weight of the same length of X0
+    n <- length(W)
+    p <- ncol(X1)
+    XW <- matrix(0, nrow = 1, ncol = p)
+    for (i in 1:n) {
+      XW <- XW + W[i] * X0[[i]]
+    } #end of loop
+
+    if (normchoice == 'l1') {
+      norm_output <- as.numeric(norm(matrix(X1 - XW), type = "1"))
+    }
+    else {
+      norm_output <- as.numeric(crossprod(matrix(X1 - XW)))
+    }
+
+    #now add penalty
+    if (penalty_normchoice == 'l1' & penalty_lambda > 0) {
+      norm_output <- norm_output + penalty_lambda * norm(as.matrix(W), type = "1")
+    }
+    else if (penalty_normchoice == 'l2' & penalty_lambda > 0) {
+      norm_output <- norm_output + penalty_lambda * as.numeric(crossprod(matrix(W)))
+    }
+    else {norm_output <- norm_output}
+
+    return(norm_output)
+  } #end objective function
+
+  # optimization and return statement
+
+  # I have added features
+  # 1) The option to remove the sum-to-1 constraint
+  # 2) The option to change the lower bound to -1 or NA
+  # 3) option to change the upper bound to NA'
+  # 4) option to choose l1 or l2 norm as distance function
+
+  #Thus I need if statements to implement these...
+
+  # conditional for sum to 1
+  if (is.na(sum_to_1) == FALSE) {eq_constraint <- function(W) sum(W) - 1 }
+  else{eq_constraint = NULL}
+
+  # conditional for bounding below
+  if (is.na(bounded_below_by) == FALSE)
+          {
+            lower_bound = rep(bounded_below_by, n)
+          }
+          else if (is.na(bounded_below_by) == TRUE)  {
+            lower_bound = NULL
+          }
+
+  #conditional for bounding above
+  if (is.na(bounded_above_by) == FALSE)
+          {
+            upper_bound = rep(bounded_above_by, n)
+          }
+          else if (is.na(bounded_above_by) == TRUE)  {
+            upper_bound = NULL
+          }
+
+  object_to_return <- solnp(par = rep(1/n, n),
+                            fun = weightedX0,
+                            eqfun = eq_constraint,
+                            eqB = 0,
+                            LB = lower_bound, UB = upper_bound,
+                            control = list(trace = 0
+                                           , 1.0e-8
+                                           , tol = 1e-9
+                                           , outer.iter = 10000
+                                           , inner.iter = 10000))
+
+  #We calculate the loss from the optimization
+  if (normchoice == 'l1') {
+    loss <- round(norm(X1 - object_to_return$pars %*% dat[-1,], type = '1'),3)
+  }
+  else {
+    loss <- round(norm(X1 - object_to_return$pars %*% dat[-1,], type = '2'),3)
+  }
+
+  #And finally, get norm of X1
+  if (normchoice == 'l1') {
+    X1_norm <- as.numeric(norm(X1, type = "1"))
+  }
+  else {
+    X1_norm <- round(norm(X1, type = '2'),3)
+  }
+
+  output <- list()
+
+  output[[1]] <- object_to_return$pars
+
+  output[[2]] <- loss
+
+  output[[3]] <- X1_norm
+
+
+  return(output)
+
+} #END dbw function
+
+####################### END Auxiliary functions #######################
+
+#####################################################################
+########### A function that produces exactly one simulation case for synthetic volatility
+#####################################################################
+
+exp_break_maker <- function(donor_pool_size
+                            ,p
+                            ,H
+                            ,eta
+                            ,a
+                            ,b
+                            ,replication_number
+                            ,optimization_norm
+                            ,shock_sd
+                            ,mu_delta
+){
+
+  ## Doc String
+  # donor_pool_size
+  # ,p
+  # ,H
+  # ,eta
+  # ,a
+  # ,b
+  # ,replication_number
+  # ,optimization_norm
+  # ,mu_eps_star
+  # ,vol_shock_sd
+  # ,M21_M22_vol_mu_delta
+
+  #Simulate series lengths
+  Tee <- rdunif(n+1, a, b)
+
+  ############ Simulate all n+1 series   ############
+
+  #Create null lists for dependent variable and independent variable output
+  Y <- vector(mode = "list", length = n+1)
+  X <- vector(mode = "list", length = n+1)
+
+  # This vector will be used to store psi estimates
+  psi_estimate <- c()
+
+  #Create covariate MVN mean and sigma parameters
+  vector_M21_M22_vol_mu_delta <- rep(mu_x, p)
+  matrix_M21_M22_vol_sd_delta <- matrix(diag(sigma_x**2,p), ncol=p)
+
+  #Create M21 level and M21 vol cross donor random effects vectors
+  M21_vol_cross_donor_random_effect <- mu_delta * seq(1,p,1) / (p*(p+1)/2)
+
+  # For each of n+1 series...
+  for (i in 1:(n+1)){
+
+    # #Epsilon vector for the VAR
+    # innovations_matrix_entries <- rnorm( (shock_time_vec[i]) * p, sd = sigma_x)
+    # sim_VAR_innovations <- matrix(innovations_matrix_entries, ncol = p, byrow = T)
+    #
+    # #Note: we need only covariate information up through (shock_time_vec[i] ), since
+    # #(a) we assume the covariate to be a lag1 r.v. and (b) we model the shock as a function of
+    # #what occurred at (shock_time_vec[i])
+    #
+    # VAR_process <- VAR.sim(B = simVAR_params,
+    #                        lag = 1,
+    #                        include = "none",
+    #                        n = shock_time_vec[i], # we do not need more data points than this
+    #                        innov = sim_VAR_innovations) + 1
+
+    #   #As of March 22nd, 2023, a VAR(p) for the covariates has been deprecated.  Using MVN now.
+
+    #Now add the design matrix (covariates) to the list X
+    covariates <- matrix(NA, nrow = shock_time_vec[i], ncol = p)
+    covariate_vec <- rmvnorm(n=1, mean=vector_M21_M22_vol_mu_delta, sigma=matrix_M21_M22_vol_sd_delta)
+    covariates[shock_time_vec[i], ] <- covariate_vec
+    X[[i]] <- covariates
+
+
+    simulated_series <- series_maker(Tee[i]
+                                        ,shock_sd
+                                        ,100
+                                        ,eta = -15
+                                        ,psi = M21_vol_cross_donor_random_effect %*% covariates
+                                        ,58)
+    
+    alpha_hat <- mean(simulated_series[1:shock_time_vec[i]])
+    
+    eta_hat <- simulated_series[Tee[i]]
+    
+    epsilon_hat <- simulated_series - alpha_hat
+    epsilon_hat_post_shock <- epsilon_hat[shock_time_vec[i]+1:Tee[i]]
+    
+    divisor_vec <- seq(1, Tee[i])
+    
+    psi_hat <- (1/(Tee[i]-shock_time_vec[i]))*sum(-log(1 - epsilon_hat_post_shock/eta_hat))/divisor_vec
+    
+    psi_estimate <- c(psi_estimate,psi_hat)
+
+  } #end loop for n+1 series
+
+  #Now make xreg into a dataframe
+  psi_estimate <- data.frame(matrix(psi_estimate, nrow = n+1, byrow = TRUE))
+  
+  # fit the model 
+  start_values <- c(a=4, b=2)
+  fit <- nls(y ~ a * exp(1 - b * x),
+             start = start_values,
+             algorithm = "port",
+             control = nls.control(maxiter = 1000))
+  summary(fit)
+
+  #NEXT, we get the vectors w for all sensible methods
+  w <- list() #initialize
+  dbw_loss <- c()
+  X1_norm <- c()
+
+  matrix_of_specs <- matrix(c(rep(1,6),
+                              rep(NA,6),
+
+                              rep(c(0,-1,NA),4),
+
+                              rep(c(1,NA), 6)),
+                              byrow = FALSE, nrow = 12)
+
+  #We drop the 4th row because it's functionally no different from the first OR have lower bound > upper bound
+  matrix_of_specs <- matrix_of_specs[-4,]
+
+  for (i in 1:nrow(matrix_of_specs)){
+
+  dbw_output <- dbw(X,
+                 T_star,
+                 scale = TRUE,
+                 sum_to_1 = matrix_of_specs[i,1],
+                 bounded_below_by = matrix_of_specs[i,2],
+                 bounded_above_by = matrix_of_specs[i,3],
+                 normchoice = normchoice,
+                 penalty_normchoice = penalty_normchoice,
+                 penalty_lambda = penalty_lambda)
+
+  w[[i]] <- dbw_output[[1]]
+  dbw_loss[i] <- dbw_output[[2]]
+  X1_norm[i] <- dbw_output[[3]]
+
+  }
+
+  # Now we place these linear combinations into a matrix
+  w_mat <- matrix(unlist(w), nrow = nrow(matrix_of_specs), byrow = TRUE)
+
+  #Second, we calculate omega_star_hat, which is the dot product of w and the estimated shock effects
+  omega_star_hat_vec <- as.numeric(w_mat %*% psi_estimate)
+
+  #Third, we add the lin_reg_pred to omega_star_hat_vec
+  omega_star_hat_vec <- c(omega_star_hat_vec, lin_reg_pred)
+
+}

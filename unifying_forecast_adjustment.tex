@@ -522,9 +522,9 @@ This might not always be straightforward.  Some models like GARCH, for example, 
 
 Sometimes, we might have reason to believe that a forecast requires adjustment due to not one but multiple shocks.  \cite{lin2021minimizing} explored a ``dual'' shock in their analysis of oil company equity price shocks due to the March 2020 COVID lockdowns.  \\
 
-Method 1: for each source of the $k$ shocks, assemble $n_{j}$ donors and $p_{j}$ covariates, with $j=2,...,n_{j}+1$, compute weights $\{\pi_{i,j}\}^{n_{j}+1}_{i=2}$.  With these $k$ weight sets, a set of $k$ aggregated shock estimators can be constructed and averaged (or aggregated in some other way).
+\textbf{Method 1}: For each source of the $k$ shocks, assemble $n_{j}$ donors and $p_{j}$ covariates, with $j=2,...,n_{j}+1$, and compute weights $\{\pi_{i,j}\}^{n_{j}+1}_{i=2}$.  With these $k$ weight sets, a set of $k$ aggregated shock estimators can be constructed and averaged (or aggregated in some other way).
 
-Method 2: the $k$ shocks can be represented using one application of distance-based weighting, with the vector $\delta$ and the vector $\x_{i,T^{*}_{i}+1}$ can encode a partition of shocks by using zeros in appropriate entries.
+\textbf{Method 2}: Each of the $k$ shocks can be represented using an application of distance-based weighting, with the vector $\delta$ and the vector $\x_{i,T^{*}_{i}+1}$ can encode a partition of shocks by using zeros in appropriate entries.
 
 An assumption of independence or at least uncorrelatedness among the $k$ donor pools is helpful here.
 
@@ -610,6 +610,8 @@ The methods of \cite{lin2021minimizing} are adapted in \cite{lundquist2024volati
 
 In this way, \cite{lundquist2024volatility} bridged a gap between the descriptive and predictive roles of GARCH.  Fixed effects (correction terms) are estimated in the donor pool, and those fixed effects are aggregated via corrected function.  A forecast adjustment is then made in the time series under study.
 
+Consider how GARCH fits into our Specification (\ref{core_specification}):
+
 
 \begin{align*}
   &\sigma_{i,t}^{2} = \omega_{i} + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \text{ }. \\
@@ -646,7 +648,7 @@ The Heterogeneous Autoregressive (HAR) model for realized volatility \citep{cors
 \begin{align*}
 RV_{t} = \beta_{0} + \beta_{\text{1-day}}RV_{t-1} + \beta_{\text{5-day}}\overline{\{RV_{t-1},...,RV_{t-5}\}}+\beta_{\text{22-day}}\overline{\{RV_{t-1},...,RV_{t-22}\}} + \epsilon_{t}
 \end{align*}
-Recently, \cite{bodilsen2023exploiting} find that overnight news improves the predictive ability of HAR regressions with a logarithmic transformation on the realized volatility estimate.  The authors distinguish between earnings-related and non-earnings-related news occurring after hours, finding that predictive performance is improved for one-day-ahead forecasts but no more.  Consider now how HAR fits in the our model \ref{core_specification}:
+Recently, \cite{bodilsen2023exploiting} find that overnight news improves the predictive ability of HAR regressions with a logarithmic transformation on the realized volatility estimate.  The authors distinguish between earnings-related and non-earnings-related news occurring after hours, finding that predictive performance is improved for one-day-ahead forecasts but no more.  Consider now how HAR fits into Specification (\ref{core_specification}):
 
 \begin{align}
   \mc{M}_1 \colon \begin{array}{l}
@@ -706,12 +708,12 @@ We should note that the regressions under discussion here are predictive regress
 In \cite{castle2011forecasting}, the authors discuss intercept shifts that decay deterministically.  Those shifts are parameterized by a scalar $\eta$ and a decay rate $\psi$.  We adapt their model for our own purposes:
 
 \begin{align}
-y_{i,t} = \alpha_{i} + \eta[1 - e^{-\psi[t-T_{i}^{*}+1]}]\textbf{1}_{t\geq T_{i}^{*}+1} + \epsilon_{i,t}, \epsilon_{i,t} \simiid [0,\sigma^{2}] \text{ .}\label{decay_model}
+y_{i,t} = \alpha_{i} + \eta[1 - e^{-\psi[t-T_{i}^{*}]}]\textbf{1}_{t\geq T_{i}^{*}+1} + \epsilon_{i,t}, \epsilon_{i,t} \simiid [0,\sigma^{2}] \text{ .}\label{decay_model}
 \end{align}
-This poses a novel case for our method, in that the model is parametric and yet without estimability of all shock parameters, aggregation may not be straightforward or easy.  Consider, for any $i$, $2 \leq i \leq n+1$, the estimates $\hat\alpha_{i,OLS}$  obtained via regression on the first $T_{i}^{*}+1$ points as well as $\hat\eta_{OLS}$ obtained by estimating a fixed effect at $t=T_{i}^{*}+1$.  Consider also a subsequent estimator, an estimator for $\psi$, that is derivable from inverting the model specification and plugging-in the estimates  $\hat\alpha_{i,OLS},\hat\lambda_{OLS}$:
+This poses a novel case for our method, in that the model is parametric and yet without estimability of all shock parameters, aggregation may not be straightforward or easy.  Consider, for any $i$, $2 \leq i \leq n+1$, the estimates $\hat\alpha_{i,OLS}$  obtained via regression on the first $T_{i}^{*}+1$ points as well as $\hat\eta_{OLS}$ obtained by estimating a fixed effect at $t=T_{i}$.  Consider also a subsequent estimator, an estimator for $\psi$, that is derivable from inverting the model specification and plugging in the estimates  $\hat\alpha_{i,OLS},\hat\eta_{OLS}$:
 
 \begin{align}
-\hat\psi_{i,plugin} = \frac{1}{T_{i}-(T_{i}^{*}+2)}\sum^{T_{i}}_{t\geq T_{i}^{*}+2}-log{\big[\big(1-\frac{y_{i,t}-\hat\alpha_{i}}{\hat\eta}\big)\big]} / [t-T_{i}^{*}+1]\text{ .}\label{plugin}
+\hat\psi_{i,plugin} = \frac{1}{T_{i}-T_{i}^{*}}\sum^{T_{i}}_{t\geq T_{i}^{*}+1}-log{\big[\big(1-\frac{y_{i,t}-\hat\alpha_{i}}{\hat\eta}\big)\big]} / [t-T_{i}^{*}]\text{ .}\label{plugin}
 \end{align}
 (\ref{plugin}) is, to put it lightly, a complicated estimator with potentially dubious properties.  To begin, (\ref{plugin}) is defined only when the term inside the logarithm is positive for each $t\geq T^{*}_{i}+2$.  We could get around this by dropping any summands for which that term is nonpositive and instead calculate an average over only the remaining subset of summands.  Additionally, variance estimates for $\hat\psi_{i,plugin}$ may require resampling methods or the delta method.  Estimation error from $\hat\alpha$ and $\hat\eta$ would naturally propagate to $\hat\psi_{i,plugin}$, and the expected estimation error would depend upon the size of the pre-shock sample.
 

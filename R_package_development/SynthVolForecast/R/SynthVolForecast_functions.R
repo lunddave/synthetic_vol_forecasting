@@ -524,7 +524,7 @@ plot_maker_HAR <- function(Y
                            ,w_hat
                            ,omega_star_hat
                            ,omega_star_hat_vec
-                           ,omega_star_hat_vec_std_err
+                           #,omega_star_hat_vec_std_err
                            ,adjusted_pred
                            ,display_ground_truth = FALSE){
 
@@ -1137,7 +1137,7 @@ SynthVolForecast <- function(Y_series_list
                      ,w_hat
                      ,omega_star_hat
                      ,omega_star_hat_vec
-                     ,omega_star_std_err_hat_vec
+                     #,omega_star_std_err_hat_vec
                      ,adjusted_pred
                      ,arithmetic_mean_based_pred
                      ,ground_truth_vec)
@@ -1422,9 +1422,12 @@ HAR <- function(Y
                    ,w_hat
                    ,omega_star_hat
                    ,omega_star_hat_vec
+                   #,omega_star_hat_vec_std_err
                    ,adjusted_pred
                    ,display_ground_truth = TRUE) #tk what is this set to true?
   }
+
+
 
   return(output_list)
 
