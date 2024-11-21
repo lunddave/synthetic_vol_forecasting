@@ -37,16 +37,16 @@ start_time <- Sys.time()
 nsim <- as.numeric(command_args[1])
 
 ############ We build our parameter grid ############
-donor_pool_size <- c(5,10,20)
+donor_pool_size <- c(10,20)
 p <- c(5,15)
-H <- c(1,5,10,50)
+H <- c(5,10,50)
 eta <- c(5)
 a <- 3*252
 b <- 10*252
 replication_number <- seq(1, nsim, 1)
 optimization_norm <- c('l1','l2')[2]
 vol_shock_sd <- 1
-M21_M22_vol_mu_delta <- seq(0, .5, .05)
+M21_M22_vol_mu_delta <- c(.01, 1)
 
 list_of_vars <- list(donor_pool_size
                      ,p
