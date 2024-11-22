@@ -306,9 +306,9 @@ exp_break_maker <- function(n
                control = nls.control(maxiter = 1000000, tol = 1e-09, minFactor = 1/(2**24),
                                      printEval = FALSE, warnOnly = FALSE, scaleOffset = 0,
                                      nDcentral = FALSE))
-    
+
     coefficients <- coeftest(fit)
-    
+
     eta_hat <- coefficients[nrow(coefficients)-1,1]
     psi_hat <- coefficients[nrow(coefficients),1]
     
@@ -317,9 +317,9 @@ exp_break_maker <- function(n
     # epsilon_hat <- simulated_series - alpha_hat
     # epsilon_hat_post_shock <- epsilon_hat[shock_time_vec[i]+1:Tee[i]]
     # divisor_vec <- seq(1, Tee[i])
-    # psi_hat <- (1/(Tee[i]-shock_time_vec[i]))*sum(-log(1 - epsilon_hat_post_shock/eta_hat))/divisor_vec
+    # psi_hat <- (1/length(epsilon_hat_post_shock))*sum(-log(1 - epsilon_hat_post_shock/eta_hat)/divisor_vec)
 
-    eta_estimate <- c(eta_estimate,psi_hat)
+    eta_estimate <- c(eta_estimate,eta_hat)
     psi_estimate <- c(psi_estimate,psi_hat)
 
   } #end loop for n+1 series
@@ -348,7 +348,7 @@ exp_break_maker <- function(n
   for (i in 1:nrow(matrix_of_specs)){
 
   dbw_output <- dbw(X,
-                    shock_time_vec[i], #tk
+                 shock_time_vec, #tk
                  scale = TRUE,
                  sum_to_1 = matrix_of_specs[i,1],
                  bounded_below_by = matrix_of_specs[i,2],
@@ -368,16 +368,19 @@ exp_break_maker <- function(n
   w_mat <- matrix(unlist(w), nrow = nrow(matrix_of_specs), byrow = TRUE)
   
   #add a row to the matrix corresponding to the arithmetic mean
-  col_count <- dim(w_mat)[,1]
+  col_count <- dim(w_mat)[2]
   w_mat <- rbind(w_mat, rep(1/col_count, col_count))
   
   #add a row corresponding to the unadjusted forecast
   w_mat <- rbind(w_mat, rep(0, col_count))
 
   #Second, we calculate omega_star_hat, which is the dot product of w and the estimated shock effects
-  weighted_estimates <- as.numeric(w_mat %*% eta_psi_matrix)
   
-  TSUS_prediction <- mean(simulated_series[1:shock_time_vec[1]]) + 
+  weighted_estimates <- w_mat %*% eta_psi_matrix[-c(1),]
+  
+  TSUS_prediction <- mean(simulated_series[1:shock_time_vec[1]]) 
+  
+  thing_to_predict <- simulated_series[shock_time_vec[1]+1:length(simulated_series)]
     
   decay_preds <- decay_maker(seq(1, Tee[1] - shock_time_vec[1])
                           ,eta = weighted_estimates[1,1]
@@ -387,22 +390,31 @@ exp_break_maker <- function(n
   pred_matrix <- rbind(TSUS_prediction + decay_preds
                        , rep(TSUS_prediction,length(decay_preds)))
   
-  loss_matrix <- cbind(sum((pred_matrix[1,1:5]-pred_matrix[2,1:5])**2)
-                       ,sum((pred_matrix[1,1:10]-pred_matrix[2,1:10])**2)
-                       ,sum((pred_matrix[1,1:50]-pred_matrix[2,1:50])**2))
-  
+  loss_matrix <- cbind(mean((pred_matrix[1,1:5]-thing_to_predict[1:5])**2)
+                       ,mean((pred_matrix[1,1:10]-thing_to_predict[1:10])**2)
+                       ,mean((pred_matrix[1,1:50]-thing_to_predict[1:50])**2)
+                       ,mean((pred_matrix[2,1:5]-thing_to_predict[1:5])**2)
+                       ,mean((pred_matrix[2,1:10]-thing_to_predict[1:10])**2)
+                       ,mean((pred_matrix[2,1:50]-thing_to_predict[1:50])**2)  )
+
+plot.ts(simulated_series
+        , main = 'Predicting Exponential Shocks \nUsing Distance-Based Weighting'
+        ,ylab = '')
+lines(x = (shock_time_vec[1]+1):Tee[1], y = TSUS_prediction + decay_preds,col = 'green')
+abline(v = shock_time_vec[1], col = 'red')  
+
   return(list(pred_matrix,loss_matrix))
 }
 
-
-exp_break_maker(n = 10
-              ,p = 3
+exp_break_maker(n = 8
+              ,p = 12
               ,H = 1
               ,alpha = 100
-              ,eta = -2
-              ,a = 200
-              ,b = 800
+              ,eta = -20
+              ,a = 100
+              ,b = 600
               #,optimization_norm
-              ,shock_sd = .001
-              ,mu_delta = .01
+              ,shock_sd = 1.9
+              ,mu_delta = .05
             )
+
