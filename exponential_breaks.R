@@ -367,48 +367,72 @@ exp_break_maker <- function(n
   w_mat <- rbind(w_mat, rep(1/col_count, col_count))
   
   #add a row corresponding to the unadjusted forecast
-  w_mat <- rbind(w_mat, rep(0, col_count))
+  #w_mat <- rbind(w_mat, rep(0, col_count))
 
   #Second, we calculate omega_star_hat, which is the dot product of w and the estimated shock effects
   
   weighted_estimates <- w_mat %*% eta_psi_matrix[-c(1),]
   
   TSUS_prediction <- mean(simulated_series[1:shock_time_vec[1]]) 
-  
-  thing_to_predict <- simulated_series[(shock_time_vec[1]+1):Tee[1]]
     
   decay_preds <- decay_maker(seq(1, Tee[1] - shock_time_vec[1])
                           ,eta = weighted_estimates[1,1]
                           ,psi = weighted_estimates[1,2]
                           ,T_i_star = 0 )
   
+  average_donor_decay_preds <- decay_maker(seq(1, Tee[1] - shock_time_vec[1])
+                                           ,eta = weighted_estimates[nrow(weighted_estimates),1]
+                                           ,psi = weighted_estimates[nrow(weighted_estimates),2]
+                                           ,T_i_star = 0 )
+  
   pred_matrix <- rbind(TSUS_prediction + decay_preds
+                       ,TSUS_prediction + average_donor_decay_preds
                        , rep(TSUS_prediction,length(decay_preds)))
   
-  loss_matrix <- cbind(mean((pred_matrix[1,1:5]-thing_to_predict[1:5])**2)
-                       ,mean((pred_matrix[1,1:10]-thing_to_predict[1:10])**2)
-                       ,mean((pred_matrix[1,1:50]-thing_to_predict[1:50])**2)
-                       ,mean((pred_matrix[2,1:5]-thing_to_predict[1:5])**2)
-                       ,mean((pred_matrix[2,1:10]-thing_to_predict[1:10])**2)
-                       ,mean((pred_matrix[2,1:50]-thing_to_predict[1:50])**2)  )
+  # Count NA values in each column using base R
+  # na_counts_base <- colSums(is.na(pred_matrix))
+  # print(na_counts_base)
   
+  thing_to_predict <- simulated_series[(shock_time_vec[1]+1):Tee[1]]
   
-  loss_mat_mcs <- t(pred_matrix) - cbind(thing_to_predict
-                                         ,thing_to_predict)
+  print('We print the thing to predict:')
+  print(thing_to_predict)
+  
+  # loss_matrix <- cbind(mean((pred_matrix[1,1:5]-thing_to_predict[1:5])**2)
+  #                      ,mean((pred_matrix[1,1:10]-thing_to_predict[1:10])**2)
+  #                      ,mean((pred_matrix[1,1:20]-thing_to_predict[1:20])**2)
+  #                      ,mean((pred_matrix[3,1:5]-thing_to_predict[1:5])**2)
+  #                      ,mean((pred_matrix[3,1:10]-thing_to_predict[1:10])**2)
+  #                      ,mean((pred_matrix[3,1:20]-thing_to_predict[1:20])**2)  )
+  
+  loss_mat_mcs <- cbind(TSUS_prediction + decay_preds - thing_to_predict
+                         ,TSUS_prediction + average_donor_decay_preds - thing_to_predict
+                         , rep(TSUS_prediction,length(decay_preds)) - thing_to_predict)
+  
+  print(loss_mat_mcs)
+  
+  loss_mat_mcs <- loss_mat_mcs**2
+  
+  colnames(loss_mat_mcs) <- c('simplex','avg','unadj')
+  
+  print('The loss matrix for mcs.')
+  print(loss_mat_mcs)
 
   MCS <- MCSprocedure(Loss=loss_mat_mcs,alpha=0.2
-                      ,B=5000
+                      ,B=8000
                       ,statistic='Tmax'
                       ,cl=NULL)
   print(MCS)
+  
+  plot.ts(simulated_series
+          , main = 'Predicting Exponential Shocks\nUsing Distance-Based Weighting'
+          ,ylab = '')
+  lines(x = (shock_time_vec[1]+1):Tee[1], y = TSUS_prediction + decay_preds,col = 'green')
+  lines(x = (shock_time_vec[1]+1):Tee[1], y = TSUS_prediction + average_donor_decay_preds,col = 'blue')
+  
+  abline(v = shock_time_vec[1], col = 'red')  
 
-plot.ts(simulated_series
-        , main = 'Predicting Exponential Shocks \nUsing Distance-Based Weighting'
-        ,ylab = '')
-lines(x = (shock_time_vec[1]+1):Tee[1], y = TSUS_prediction + decay_preds,col = 'green')
-abline(v = shock_time_vec[1], col = 'red')  
-
-  return(list(pred_matrix,loss_matrix))
+  #return(list(pred_matrix,loss_matrix))
 }
 
 temp <- exp_break_maker(n = 9
@@ -416,9 +440,9 @@ temp <- exp_break_maker(n = 9
               ,H = 1
               ,alpha = 100
               ,eta = -10
-              ,a = 300
-              ,b = 600
+              ,a = 200
+              ,b = 500
               #,optimization_norm
-              ,shock_sd = 1.9
+              ,shock_sd = 1.2
               ,mu_delta = .03
             )
