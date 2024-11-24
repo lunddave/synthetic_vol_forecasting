@@ -12,6 +12,7 @@ library(latex2exp)
 library(MASS)
 library(tikzDevice)
 library(lmtest)
+library(MCS)
 
 options(scipen = 7)
 
@@ -166,7 +167,8 @@ dbw <- function(X,
                                            , 1.0e-8
                                            , tol = 1e-9
                                            , outer.iter = 10000
-                                           , inner.iter = 10000))
+                                           , inner.iter = 10000
+                                           ,scaleOffset = 1))
 
   #We calculate the loss from the optimization
   if (normchoice == 'l1') {
@@ -227,13 +229,10 @@ exp_break_maker <- function(n
   # ,M21_M22_vol_mu_delta
 
   #Simulate series lengths
-  Tee <- rdunif(n+1, a, b)
+  Tee <- rdunif(n+1, b-100, b) #tk
   
-  shock_time_vec <- a + rep(5, n+1)
+  shock_time_vec <- a + rep(5, n+1) #tk
   
-  print('Here is the shock time vec:')
-  print(shock_time_vec)
-    
   ############ Simulate all n+1 series   ############
 
   #Create null lists for dependent variable and independent variable output
@@ -246,7 +245,7 @@ exp_break_maker <- function(n
 
   #Create covariate MVN mean and sigma parameters
   vector_M21_M22_vol_mu_delta <- rep(1, p)
-  matrix_M21_M22_vol_sd_delta <- matrix(diag(1**2,p), ncol=p)
+  matrix_M21_M22_vol_sd_delta <- matrix(diag(2**2,p), ncol=p) #tk
 
   #Create M21 level and M21 vol cross donor random effects vectors
   M21_vol_cross_donor_random_effect <- mu_delta * seq(1,p,1) / (p*(p+1)/2)
@@ -256,26 +255,12 @@ exp_break_maker <- function(n
 
     #Now add the design matrix (covariates) to the list X
     covariates <- matrix(NA, nrow = shock_time_vec[i], ncol = p)
-    # print('Here is the NA matrix we just generated:')
-    # print(covariates)
     covariate_vec <- rmvnorm(n=1, mean=vector_M21_M22_vol_mu_delta, sigma=matrix_M21_M22_vol_sd_delta)
 
     covariates[shock_time_vec[i], ] <- covariate_vec
     X[[i]] <- covariates
-
-    print(paste('now we simulate a series of length', Tee[i]))
     
-    print('Here is our generated psi value:')
-    
-    # print(M21_vol_cross_donor_random_effect)
-    # 
-    # print(as.matrix(covariate_vec))
-    # 
-    # print(dim(t(as.matrix(M21_vol_cross_donor_random_effect))))
-    # 
-    # print(dim(as.matrix(covariate_vec)))
-    
-    psi_generated <- as.numeric(t(as.matrix(M21_vol_cross_donor_random_effect)) %*% t(as.matrix(covariate_vec)))
+    psi_generated <- as.numeric(t(as.matrix(M21_vol_cross_donor_random_effect)) %*% t(as.matrix(covariate_vec))) 
     
     simulated_series <- series_maker(ser_len = Tee[i]
                                       ,sd = shock_sd
@@ -284,8 +269,6 @@ exp_break_maker <- function(n
                                       ,psi = psi_generated
                                       ,T_i_star = shock_time_vec[i]
                                      )
-    
-    print('We generated the series.')
     
     plot.ts(simulated_series)
     
@@ -296,15 +279,29 @@ exp_break_maker <- function(n
     
     decay_indices <- seq(1, length(simulated_series) - shock_time_vec[i])
     
-    post_shock_indices <- seq(shock_time_vec[i] + 1, length(simulated_series))
+    post_shock_indices <- shock_time_vec[i] + decay_indices
     
     pre_shock_alpha <- mean(simulated_series[1:shock_time_vec[i]] )
     
-    fit <- nls(simulated_series[post_shock_indices] - pre_shock_alpha ~ eta *(1 - exp(-psi * decay_indices)),
+    residuals_to_fit <- simulated_series[post_shock_indices] - pre_shock_alpha
+    
+    if (length(residuals_to_fit) != length(decay_indices))
+    {
+      print(residuals_to_fit)
+      
+      print(decay_indices)
+    }
+    
+    fit <- nls(residuals_to_fit ~ eta *(1 - exp(-psi * decay_indices)),
                start = start_values,
                algorithm = "port",
-               control = nls.control(maxiter = 1000000, tol = 1e-09, minFactor = 1/(2**24),
-                                     printEval = FALSE, warnOnly = FALSE, scaleOffset = 0,
+               control = nls.control(maxiter = 1000000, tol = 1e-09
+                                     , minFactor = 1/(2**24)
+                                     ,
+                                     printEval = FALSE
+                                     , warnOnly = FALSE
+                                     , scaleOffset = 1
+                                     ,
                                      nDcentral = FALSE))
 
     coefficients <- coeftest(fit)
@@ -324,8 +321,6 @@ exp_break_maker <- function(n
 
   } #end loop for n+1 series
   
-  print('We are all done generating data.')
-
   #Now make xreg into a dataframe
   eta_psi_matrix <- cbind(eta_estimate, psi_estimate)
   
@@ -380,7 +375,7 @@ exp_break_maker <- function(n
   
   TSUS_prediction <- mean(simulated_series[1:shock_time_vec[1]]) 
   
-  thing_to_predict <- simulated_series[shock_time_vec[1]+1:length(simulated_series)]
+  thing_to_predict <- simulated_series[(shock_time_vec[1]+1):Tee[1]]
     
   decay_preds <- decay_maker(seq(1, Tee[1] - shock_time_vec[1])
                           ,eta = weighted_estimates[1,1]
@@ -396,6 +391,16 @@ exp_break_maker <- function(n
                        ,mean((pred_matrix[2,1:5]-thing_to_predict[1:5])**2)
                        ,mean((pred_matrix[2,1:10]-thing_to_predict[1:10])**2)
                        ,mean((pred_matrix[2,1:50]-thing_to_predict[1:50])**2)  )
+  
+  
+  loss_mat_mcs <- t(pred_matrix) - cbind(thing_to_predict
+                                         ,thing_to_predict)
+
+  MCS <- MCSprocedure(Loss=loss_mat_mcs,alpha=0.2
+                      ,B=5000
+                      ,statistic='Tmax'
+                      ,cl=NULL)
+  print(MCS)
 
 plot.ts(simulated_series
         , main = 'Predicting Exponential Shocks \nUsing Distance-Based Weighting'
@@ -406,15 +411,14 @@ abline(v = shock_time_vec[1], col = 'red')
   return(list(pred_matrix,loss_matrix))
 }
 
-exp_break_maker(n = 8
-              ,p = 12
+temp <- exp_break_maker(n = 9
+              ,p = 19
               ,H = 1
               ,alpha = 100
-              ,eta = -20
-              ,a = 100
+              ,eta = -10
+              ,a = 300
               ,b = 600
               #,optimization_norm
               ,shock_sd = 1.9
-              ,mu_delta = .05
+              ,mu_delta = .03
             )
-
