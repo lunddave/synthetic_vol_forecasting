@@ -206,7 +206,7 @@ dbw <- function(X,
 
 exp_break_maker <- function(n
                             ,p
-                            ,H
+                            ,covariate_sigma
                             ,alpha
                             ,eta
                             ,a
@@ -229,9 +229,20 @@ exp_break_maker <- function(n
   # ,M21_M22_vol_mu_delta
 
   #Simulate series lengths
-  Tee <- rdunif(n+1, b-100, b) #tk
+  Tee <- rdunif(n+1, a, b) #tk
   
-  shock_time_vec <- a + rep(5, n+1) #tk
+  shock_time_vec <- c()
+  
+  for (i in 1:(n+1)){
+    shock_time_vec[i] <- rdunif(1, floor(.25 * Tee[i]), floor(.75 * Tee[i])) #tk
+  }
+  
+  
+  print('Here are our series times:')
+  print(Tee)
+  
+  print('Here are our shock times:')
+  print(shock_time_vec)
   
   ############ Simulate all n+1 series   ############
 
@@ -245,7 +256,7 @@ exp_break_maker <- function(n
 
   #Create covariate MVN mean and sigma parameters
   vector_M21_M22_vol_mu_delta <- rep(1, p)
-  matrix_M21_M22_vol_sd_delta <- matrix(diag(2**2,p), ncol=p) #tk
+  matrix_M21_M22_vol_sd_delta <- matrix(diag(covariate_sigma**2,p), ncol=p) #tk
 
   #Create M21 level and M21 vol cross donor random effects vectors
   M21_vol_cross_donor_random_effect <- mu_delta * seq(1,p,1) / (p*(p+1)/2)
@@ -256,68 +267,63 @@ exp_break_maker <- function(n
     #Now add the design matrix (covariates) to the list X
     covariates <- matrix(NA, nrow = shock_time_vec[i], ncol = p)
     covariate_vec <- rmvnorm(n=1, mean=vector_M21_M22_vol_mu_delta, sigma=matrix_M21_M22_vol_sd_delta)
-
+    
     covariates[shock_time_vec[i], ] <- covariate_vec
     X[[i]] <- covariates
     
     psi_generated <- as.numeric(t(as.matrix(M21_vol_cross_donor_random_effect)) %*% t(as.matrix(covariate_vec))) 
     
-    simulated_series <- series_maker(ser_len = Tee[i]
-                                      ,sd = shock_sd
-                                      ,alpha = alpha
-                                      ,eta = eta
-                                      ,psi = psi_generated
-                                      ,T_i_star = shock_time_vec[i]
-                                     )
+    random_alpha <- rnorm(1, mean = alpha, sd = 1)
     
-    plot.ts(simulated_series)
+    Y[[i]] <- series_maker(ser_len = Tee[i]
+                          ,sd = shock_sd
+                          ,alpha = random_alpha #tk
+                          ,eta = eta
+                          ,psi = psi_generated
+                          ,T_i_star = shock_time_vec[i]
+                               )
     
     # fit the model 
     start_values <- c(eta = eta
                       , psi = psi_generated
                       ) 
     
-    decay_indices <- seq(1, length(simulated_series) - shock_time_vec[i])
+    decay_indices <- seq(1, length(Y[[i]] ) - shock_time_vec[i])
     
     post_shock_indices <- shock_time_vec[i] + decay_indices
     
-    pre_shock_alpha <- mean(simulated_series[1:shock_time_vec[i]] )
+    pre_shock_alpha <- mean(Y[[i]][1:shock_time_vec[i]])
     
-    residuals_to_fit <- simulated_series[post_shock_indices] - pre_shock_alpha
+    residuals_to_fit <- Y[[i]][post_shock_indices] - pre_shock_alpha
     
-    if (length(residuals_to_fit) != length(decay_indices))
-    {
-      print(residuals_to_fit)
+    if (i > 1){
+      fit <- nls(residuals_to_fit ~ eta *(1 - exp(-psi * decay_indices)),
+                 start = start_values,
+                 algorithm = "port",
+                 control = nls.control(maxiter = 1000000, tol = 1e-09
+                                       , minFactor = 1/(2**24)
+                                       ,
+                                       printEval = FALSE
+                                       , warnOnly = FALSE
+                                       , scaleOffset = 1
+                                       ,
+                                       nDcentral = FALSE))
       
-      print(decay_indices)
+      coefficients <- coeftest(fit)
+      
+      eta_hat <- coefficients[nrow(coefficients)-1,1]
+      psi_hat <- coefficients[nrow(coefficients),1]
+      
+      # alpha_hat <- mean(simulated_series[1:shock_time_vec[i]])
+      # eta_hat <- simulated_series[Tee[i]]
+      # epsilon_hat <- simulated_series - alpha_hat
+      # epsilon_hat_post_shock <- epsilon_hat[shock_time_vec[i]+1:Tee[i]]
+      # divisor_vec <- seq(1, Tee[i])
+      # psi_hat <- (1/length(epsilon_hat_post_shock))*sum(-log(1 - epsilon_hat_post_shock/eta_hat)/divisor_vec)
+      
+      eta_estimate <- c(eta_estimate,eta_hat)
+      psi_estimate <- c(psi_estimate,psi_hat)
     }
-    
-    fit <- nls(residuals_to_fit ~ eta *(1 - exp(-psi * decay_indices)),
-               start = start_values,
-               algorithm = "port",
-               control = nls.control(maxiter = 1000000, tol = 1e-09
-                                     , minFactor = 1/(2**24)
-                                     ,
-                                     printEval = FALSE
-                                     , warnOnly = FALSE
-                                     , scaleOffset = 1
-                                     ,
-                                     nDcentral = FALSE))
-
-    coefficients <- coeftest(fit)
-
-    eta_hat <- coefficients[nrow(coefficients)-1,1]
-    psi_hat <- coefficients[nrow(coefficients),1]
-    
-    # alpha_hat <- mean(simulated_series[1:shock_time_vec[i]])
-    # eta_hat <- simulated_series[Tee[i]]
-    # epsilon_hat <- simulated_series - alpha_hat
-    # epsilon_hat_post_shock <- epsilon_hat[shock_time_vec[i]+1:Tee[i]]
-    # divisor_vec <- seq(1, Tee[i])
-    # psi_hat <- (1/length(epsilon_hat_post_shock))*sum(-log(1 - epsilon_hat_post_shock/eta_hat)/divisor_vec)
-
-    eta_estimate <- c(eta_estimate,eta_hat)
-    psi_estimate <- c(psi_estimate,psi_hat)
 
   } #end loop for n+1 series
   
@@ -343,7 +349,7 @@ exp_break_maker <- function(n
   for (i in 1:nrow(matrix_of_specs)){
 
   dbw_output <- dbw(X,
-                 shock_time_vec, #tk
+                 shock_time_vec, 
                  scale = TRUE,
                  sum_to_1 = matrix_of_specs[i,1],
                  bounded_below_by = matrix_of_specs[i,2],
@@ -371,9 +377,9 @@ exp_break_maker <- function(n
 
   #Second, we calculate omega_star_hat, which is the dot product of w and the estimated shock effects
   
-  weighted_estimates <- w_mat %*% eta_psi_matrix[-c(1),]
+  weighted_estimates <- w_mat %*% eta_psi_matrix
   
-  TSUS_prediction <- mean(simulated_series[1:shock_time_vec[1]]) 
+  TSUS_prediction <- mean(Y[[1]][1:shock_time_vec[1]]) 
     
   decay_preds <- decay_maker(seq(1, Tee[1] - shock_time_vec[1])
                           ,eta = weighted_estimates[1,1]
@@ -389,14 +395,7 @@ exp_break_maker <- function(n
                        ,TSUS_prediction + average_donor_decay_preds
                        , rep(TSUS_prediction,length(decay_preds)))
   
-  # Count NA values in each column using base R
-  # na_counts_base <- colSums(is.na(pred_matrix))
-  # print(na_counts_base)
-  
-  thing_to_predict <- simulated_series[(shock_time_vec[1]+1):Tee[1]]
-  
-  print('We print the thing to predict:')
-  print(thing_to_predict)
+  thing_to_predict <- Y[[1]][(shock_time_vec[1]+1):Tee[1]]
   
   # loss_matrix <- cbind(mean((pred_matrix[1,1:5]-thing_to_predict[1:5])**2)
   #                      ,mean((pred_matrix[1,1:10]-thing_to_predict[1:10])**2)
@@ -409,40 +408,57 @@ exp_break_maker <- function(n
                          ,TSUS_prediction + average_donor_decay_preds - thing_to_predict
                          , rep(TSUS_prediction,length(decay_preds)) - thing_to_predict)
   
-  print(loss_mat_mcs)
-  
   loss_mat_mcs <- loss_mat_mcs**2
   
   colnames(loss_mat_mcs) <- c('simplex','avg','unadj')
   
-  print('The loss matrix for mcs.')
-  print(loss_mat_mcs)
-
-  MCS <- MCSprocedure(Loss=loss_mat_mcs,alpha=0.2
+  MCS <- MCSprocedure(Loss=loss_mat_mcs,alpha=0.1
                       ,B=8000
                       ,statistic='Tmax'
                       ,cl=NULL)
   print(MCS)
   
-  plot.ts(simulated_series
+  plot.ts(Y[[1]] 
           , main = 'Predicting Exponential Shocks\nUsing Distance-Based Weighting'
           ,ylab = '')
-  lines(x = (shock_time_vec[1]+1):Tee[1], y = TSUS_prediction + decay_preds,col = 'green')
-  lines(x = (shock_time_vec[1]+1):Tee[1], y = TSUS_prediction + average_donor_decay_preds,col = 'blue')
+  lines(x = (shock_time_vec[1]+1):Tee[1]
+        , y = TSUS_prediction + decay_preds,col = 'green'
+        ,lwd = 3)
+  lines(x = (shock_time_vec[1]+1):Tee[1]
+        , y = TSUS_prediction + average_donor_decay_preds,col = 'orange'
+        ,lwd = 3)
   
   abline(v = shock_time_vec[1], col = 'red')  
+  
+  # defining the lines  
+  legend(x = "topleft", legend=c("Series"
+                                , "DBW-based Prediction"
+                                ,"Arithmetic Mean-based Prediction"),  
+         fill = c("black","green","orange") 
+  )
+  
+  to_return <- list(pred_matrix
+                    ,loss_mat_mcs
+                    ,MCS)
+  
+  names(to_return) <- c('prediction_matrix'
+                        ,'loss_matrix'
+                        ,'MCS')
 
-  #return(list(pred_matrix,loss_matrix))
+  return(to_return)
 }
 
-temp <- exp_break_maker(n = 9
-              ,p = 19
-              ,H = 1
+temp <- exp_break_maker(n = 12
+              ,p = 7
+              ,covariate_sigma = 2.2
               ,alpha = 100
-              ,eta = -10
-              ,a = 200
-              ,b = 500
+              ,eta = -4
+              ,a = 3*252
+              ,b = 10*252
               #,optimization_norm
-              ,shock_sd = 1.2
-              ,mu_delta = .03
+              ,shock_sd = 1
+              ,mu_delta = .01
             )
+
+temp$MCS@show
+temp$MCS@Info$model.names
