@@ -38,16 +38,15 @@ start_time <- Sys.time()
 nsim <- 1
 
 ############ We build our parameter grid ############
-n <- c(10,20)
-p <- c(5,15)
-covariate_sigma <- c(1,2)
+n <- c(10)
+p <- c(15)
+covariate_sigma <- c(1)
 alpha <- c(5)
 eta <- c(-5)
 a <- 3*252
 b <- 10*252
-replication_number <- seq(1, nsim, 1)
-vol_shock_sd <- 1
-M21_M22_vol_mu_delta <- c(.01, .05)
+shock_sd <- 1
+mu_delta <- c(.05)
 
 list_of_vars <- list(n
                      ,p
@@ -56,21 +55,19 @@ list_of_vars <- list(n
                      ,eta
                      ,a
                      ,b
-                     ,replication_number
-                     ,vol_shock_sd
-                     ,M21_M22_vol_mu_delta
+                     ,shock_sd
+                     ,mu_delta
 )
 
-names(list_of_vars) <- list('donor_pool_size'
+names(list_of_vars) <- list('n'
                             ,'p'
                             ,'covariate_sigma'
                             ,'alpha'
                             ,'eta'
                             ,'a'
                             ,'b'
-                            ,'replication_number'
-                            ,'vol_shock_sd'
-                            ,'M21_M22_vol_mu_delta'
+                            ,'shock_sd'
+                            ,'mu_delta'
 )
 
 # Because of the many many combinations, we have to subset even at the time of creation
@@ -106,9 +103,8 @@ system.time(
     ,eta = sim_params$eta
     ,a = sim_params$a
     ,b = sim_params$b
-    ,replication_number = sim_params$replication_number
-    ,vol_shock_sd = sim_params$vol_shock_sd
-    ,M21_M22_vol_mu_delta = sim_params$M21_M22_vol_mu_delta
+    ,shock_sd = sim_params$shock_sd
+    ,mu_delta = sim_params$mu_delta
 
     ,outer_loop_counter = icount()
 

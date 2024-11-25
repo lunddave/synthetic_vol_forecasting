@@ -412,12 +412,12 @@ exp_break_maker <- function(n
   
   colnames(loss_mat_mcs) <- c('simplex','avg','unadj')
   
+  MSE_vec <- apply(loss_mat_mcs, 2, mean)
+  
   MCS <- MCSprocedure(Loss=loss_mat_mcs,alpha=0.05
                       ,B=8000
                       ,statistic='Tmax'
                       ,cl=NULL)
-  print(MCS)
-  
   plot.ts(Y[[1]] 
           , main = 'Predicting Exponential Shocks\nUsing Distance-Based Weighting'
           ,ylab = '')
@@ -437,21 +437,26 @@ exp_break_maker <- function(n
          fill = c("black","green","orange") 
   )
   
-  to_return <- list(n 
-                    ,p 
-                    ,covariate_sigma 
-                    ,alpha 
-                    ,eta 
-                    ,a 
-                    ,b 
-                    ,shock_sd 
-                    ,mu_delta 
-                    ,MCS@Info$model.names
-                    #,loss_mat_mcs
-                    #,MCS
-                    )
+  df_to_return <- data.frame(n 
+                             ,p 
+                             ,covariate_sigma 
+                             ,alpha 
+                             ,eta 
+                             ,a 
+                             ,b 
+                             ,shock_sd 
+                             ,mu_delta 
+                             #,list(MCS@Info$model.names)
+                            )
   
-  names(to_return) <- c('n' 
+  MSE_mat <-  t(as.data.frame(MSE_vec))
+  colnames(MSE_mat) <- c('simplex','avg','unadj')
+  
+  print(MSE_mat)
+  
+  df_to_return <- cbind(df_to_return, MSE_mat)
+  
+  names(df_to_return) <- c('n' 
                         ,'p' 
                         ,'covariate_sigma' 
                         ,'alpha' 
@@ -460,19 +465,20 @@ exp_break_maker <- function(n
                         ,'b' 
                         ,'shock_sd' 
                         ,'mu_delta' 
-                        ,'mcs'
+                        #,'mcs'
                         )
 
-  return(to_return)
+  return(df_to_return)
 }
 
-# temp <- exp_break_maker(n = 12
-#               ,p = 7
-#               ,covariate_sigma = 2.2
-#               ,alpha = 100
-#               ,eta = -4
-#               ,a = 3*252
-#               ,b = 10*252
-#               ,shock_sd = 1
-#               ,mu_delta = .01
-#             )
+temp <- exp_break_maker(n = 5
+              ,p = 7
+              ,covariate_sigma = 1.1
+              ,alpha = 100
+              ,eta = -4
+              ,a = 3*252
+              ,b = 10*252
+              ,shock_sd = 1
+              ,mu_delta = .01
+            )
+temp
