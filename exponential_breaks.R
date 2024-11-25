@@ -412,7 +412,7 @@ exp_break_maker <- function(n
   
   colnames(loss_mat_mcs) <- c('simplex','avg','unadj')
   
-  MCS <- MCSprocedure(Loss=loss_mat_mcs,alpha=0.1
+  MCS <- MCSprocedure(Loss=loss_mat_mcs,alpha=0.05
                       ,B=8000
                       ,statistic='Tmax'
                       ,cl=NULL)
@@ -437,28 +437,42 @@ exp_break_maker <- function(n
          fill = c("black","green","orange") 
   )
   
-  to_return <- list(pred_matrix
-                    ,loss_mat_mcs
-                    ,MCS)
+  to_return <- list(n 
+                    ,p 
+                    ,covariate_sigma 
+                    ,alpha 
+                    ,eta 
+                    ,a 
+                    ,b 
+                    ,shock_sd 
+                    ,mu_delta 
+                    ,MCS@Info$model.names
+                    #,loss_mat_mcs
+                    #,MCS
+                    )
   
-  names(to_return) <- c('prediction_matrix'
-                        ,'loss_matrix'
-                        ,'MCS')
+  names(to_return) <- c('n' 
+                        ,'p' 
+                        ,'covariate_sigma' 
+                        ,'alpha' 
+                        ,'eta' 
+                        ,'a' 
+                        ,'b' 
+                        ,'shock_sd' 
+                        ,'mu_delta' 
+                        ,'mcs'
+                        )
 
   return(to_return)
 }
 
-temp <- exp_break_maker(n = 12
-              ,p = 7
-              ,covariate_sigma = 2.2
-              ,alpha = 100
-              ,eta = -4
-              ,a = 3*252
-              ,b = 10*252
-              #,optimization_norm
-              ,shock_sd = 1
-              ,mu_delta = .01
-            )
-
-temp$MCS@show
-temp$MCS@Info$model.names
+# temp <- exp_break_maker(n = 12
+#               ,p = 7
+#               ,covariate_sigma = 2.2
+#               ,alpha = 100
+#               ,eta = -4
+#               ,a = 3*252
+#               ,b = 10*252
+#               ,shock_sd = 1
+#               ,mu_delta = .01
+#             )

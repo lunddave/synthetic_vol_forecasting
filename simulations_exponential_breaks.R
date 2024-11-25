@@ -29,28 +29,30 @@ source("/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/exponential_
 
 command_args <- commandArgs(trailingOnly = TRUE)
 
-registerDoParallel(25)
+registerDoParallel(6)
 #set.seed(13) #tk do we want to vary this?
 #RNGkind("L'Ecuyer-CMRG")
 
 start_time <- Sys.time()
-nsim <- as.numeric(command_args[1])
+#nsim <- as.numeric(command_args[1])
+nsim <- 1
 
 ############ We build our parameter grid ############
-donor_pool_size <- c(10,20)
+n <- c(10,20)
 p <- c(5,15)
-H <- c(5,10,50)
-eta <- c(5)
+covariate_sigma <- c(1,2)
+alpha <- c(5)
+eta <- c(-5)
 a <- 3*252
 b <- 10*252
 replication_number <- seq(1, nsim, 1)
-optimization_norm <- c('l1','l2')[2]
 vol_shock_sd <- 1
-M21_M22_vol_mu_delta <- c(.01, 1)
+M21_M22_vol_mu_delta <- c(.01, .05)
 
-list_of_vars <- list(donor_pool_size
+list_of_vars <- list(n
                      ,p
-                     ,H
+                     ,covariate_sigma
+                     ,alpha
                      ,eta
                      ,a
                      ,b
@@ -61,13 +63,12 @@ list_of_vars <- list(donor_pool_size
 
 names(list_of_vars) <- list('donor_pool_size'
                             ,'p'
-                            ,'H'
+                            ,'covariate_sigma'
+                            ,'alpha'
                             ,'eta'
                             ,'a'
                             ,'b'
                             ,'replication_number'
-                            ,'optimization_norm'
-                            ,'mu_eps_star'
                             ,'vol_shock_sd'
                             ,'M21_M22_vol_mu_delta'
 )
@@ -98,33 +99,16 @@ rng <- RNGseq(nsim * grid_row_count, global_seed)
 system.time(
 
   output <- foreach(
-    n = sim_params$donor_pool_size
+    n = sim_params$n
     , p = sim_params$p
-    #,model = c(1,1,1),
-    ,arch_param = sim_params$alpha
-    ,garch_param = sim_params$beta
-    #,asymmetry_param = c(.15)
-
-    ,level_model = sim_params$level_model
-    ,vol_model = sim_params$vol_model
-
-    ,level_shock_length = sim_params$level_shock_length
-    ,vol_shock_length = sim_params$vol_shock_length
-    ,extra_measurement_days = sim_params$extra_measurement_days
-
+    ,covariate_sigma = sim_params$covariate_sigma
+    ,alpha = sim_params$alpha
+    ,eta = sim_params$eta
     ,a = sim_params$a
     ,b = sim_params$b
-
-    ,optimization_norm = sim_params$optimization_norm
-    ,mu_eps_star = sim_params$mu_eps_star
-
-    ,M21_M22_level_mu_delta = sim_params$M21_M22_level_mu_delta
-    ,M21_M22_level_sd_delta = sim_params$M21_M22_level_sd_delta
-
-    ,mu_omega_star = sim_params$mu_omega_star
+    ,replication_number = sim_params$replication_number
     ,vol_shock_sd = sim_params$vol_shock_sd
     ,M21_M22_vol_mu_delta = sim_params$M21_M22_vol_mu_delta
-    ,M21_M22_vol_sd_delta = sim_params$M21_M22_vol_sd_delta
 
     ,outer_loop_counter = icount()
 
@@ -145,7 +129,16 @@ system.time(
 
       setRNG(selected_seed)
 
-      to_return <- #Put function here
+      to_return <- exp_break_maker(n 
+                                 ,p 
+                                 ,covariate_sigma 
+                                 ,alpha 
+                                 ,eta 
+                                 ,a 
+                                 ,b 
+                                 ,shock_sd 
+                                 ,mu_delta 
+                                )
 
       return(to_return)
 
@@ -165,14 +158,12 @@ end_time <- Sys.time()
 running_hours <- round(difftime(end_time, start_time, units="hours"),3)
 
 # Save output
-save(output, file = paste("~/synthetic_vol_forecasting/simulation_results/simcount_",
+save(output, file = paste("~/Desktop/PhD/synthetic_vol_forecasting/exponential_sims/simcount_",
                           nsim,
                           "_savetime_", format(Sys.time(), "%a%b%d%X%Y"),"_runtime_",running_hours,"_hr_",
                           "_grid_size",grid_row_count,
                           "_recovery_",recovery_rate,
-                          "_permute_",permutation_shift,
                           "_seed_", global_seed,
                           ".Rdata",sep="") )
-
 
 stopImplicitCluster()
