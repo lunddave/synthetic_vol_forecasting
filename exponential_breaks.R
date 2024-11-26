@@ -414,6 +414,8 @@ exp_break_maker <- function(n
   
   MSE_vec <- apply(loss_mat_mcs, 2, mean)
   
+  mod_with_smallest_MSE <- colnames(loss_mat_mcs)[which.min(MSE_vec)]
+  
   MCS <- MCSprocedure(Loss=loss_mat_mcs,alpha=0.05
                       ,B=8000
                       ,statistic='Tmax'
@@ -448,37 +450,38 @@ exp_break_maker <- function(n
                              ,mu_delta 
                              #,list(MCS@Info$model.names)
                             )
-  
-  MSE_mat <-  t(as.data.frame(MSE_vec))
-  colnames(MSE_mat) <- c('simplex','avg','unadj')
-  
-  print(MSE_mat)
-  
-  df_to_return <- cbind(df_to_return, MSE_mat)
-  
+
   names(df_to_return) <- c('n' 
-                        ,'p' 
-                        ,'covariate_sigma' 
-                        ,'alpha' 
-                        ,'eta' 
-                        ,'a' 
-                        ,'b' 
-                        ,'shock_sd' 
-                        ,'mu_delta' 
-                        #,'mcs'
-                        )
+                           ,'p' 
+                           ,'covariate_sigma' 
+                           ,'alpha' 
+                           ,'eta' 
+                           ,'a' 
+                           ,'b' 
+                           ,'shock_sd' 
+                           ,'mu_delta' 
+                           
+  )
+  
+  df_to_return$smallest_MSE_mod <- mod_with_smallest_MSE
+  
+  df_to_return$simplex_dominates <- df_to_return$smallest_MSE_mod == 'simplex'
+  
+  df_to_return$simplex_MSE <- MSE_vec[1]
+  df_to_return$avg_MSE <- MSE_vec[2]
+  df_to_return$unadjusted_MSE <- MSE_vec[3]
 
   return(df_to_return)
 }
-
-temp <- exp_break_maker(n = 5
-              ,p = 7
-              ,covariate_sigma = 1.1
-              ,alpha = 100
-              ,eta = -4
-              ,a = 3*252
-              ,b = 10*252
-              ,shock_sd = 1
-              ,mu_delta = .01
-            )
-temp
+# 
+# temp <- exp_break_maker(n = 5
+#               ,p = 7
+#               ,covariate_sigma = .5
+#               ,alpha = 100
+#               ,eta = -4
+#               ,a = 3*252
+#               ,b = 10*252
+#               ,shock_sd = .1
+#               ,mu_delta = .02
+#             )
+# temp

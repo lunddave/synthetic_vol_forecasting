@@ -593,11 +593,15 @@ How does the MSE of the adjusted forecast compare with the unadjusted forecast? 
 
 
 \begin{prop}\label{ARIMA_param_consistency}
-Let $2\leq i \leq n+1$.  The tuple of estimators ($\hat\rho_{1},...,\hat\rho_{p}, \hat\alpha_{i,t}$) is consistent as $t \rightarrow \infty$.
+Let $2\leq i \leq n+1$.  The tuple of estimators ($\hat\rho_{i,1},...,\hat\rho_{i, p}, \hat\alpha_{i,T^{*}+1}$) is consistent as $t \rightarrow \infty$.
 \end{prop}
 
+\begin{prop}\label{ARIMA_aggregated_alpha}
+  The tuple of estimators ($\hat\rho_{1,1},...,\hat\rho_{1,p}, \hat\alpha_{T^{*}+1}$) is consistent as $t \rightarrow \infty$.
+  \end{prop}
+
 \begin{prop}\label{ARIMA_conv_distribution}
-  Let $\{\hat y_{1,T_{1}^{*}+r}\}^{h}_{r=1}$ denote the vector of adjusted predictions (adjusted through $h$ steps ahead) in the time series under study.  $\{\hat y_{1,T_{1}^{*}+r}\}^{h}_{r=1} \xrightarrow{d} \{ y_{1,T_{1}^{*}+r}\}^{h}_{r=1}$.
+  Let $\{\hat y_{1,T_{1}^{*}+r}\}^{h}_{r=1}$ denote the vector of adjusted predictions (adjusted through $h$ steps ahead) in the time series under study.  Assume that there exist weights $\{\pi_{i=2}\}_{i=2}^{n+1}$ such that $\x_{1} = \sum^{n+1}_{i=2}\weight_{i}\x_{i}$.  Then $\{\hat y_{1,T_{1}^{*}+r}\}^{h}_{r=1} \xrightarrow{d} \{ y_{1,T_{1}^{*}+r}\}^{h}_{r=1}$.
   \end{prop}
 
 When forecasting financial time series using the method above, the question of prices versus returns (or in the language of economics or engineering, levels versus flows) is relevant.  Consider, for example, the persistence of a shock.  A shock to an asset's return series at time $t$ implies a persistent shock to the asset's price series at time $t$ and beyond, as one can verify by inverting the discrete-differencing operation on a time series.  However, if one forecasts the price series of the asset directly, that persistence beyond the first instantiation of the shock must be modeled explicitly.  This suggests interesting opportunities in the analysis and forecasting of shock persistence for situations in which level-forecasting is appropriate, e.g. for stationary time series.
@@ -831,20 +835,40 @@ In particular, can we relax this assumption and proceed with weaker assumptions 
 \begin{proof-of-proposition}[\ref{ARIMA_param_consistency}]
   We claim
 
-  The result for each $\hat\omega^{*}_{i,*}$ follows from the consistency proof of the QMLE in GARCH-X models, as established by \citet{han2014asymptotic}.  As for a convex combination of $\{\hat\omega^{*}_{i,*}\}_{i=2}^{n+1}$, consider the following argument, where we have suppressed the time-indexation:
-    
-  \begin{align}
-  \x_{1} &= \sum^{n+1}_{i=2}\weight_{i}\x_{i} \tag{by an assumption of the proposition}\\
- \Longrightarrow \delta^{T}\x_{1} &= \delta^{T}\sum^{n+1}_{i=2}\weight_{i}\x_{i}  = \sum^{n+1}_{i=2}\weight_{i}\delta^{T}\x_{i}\tag{by left-multiplication by $\delta^{T}$}\\
-  \Longrightarrow\delta^{T}\x_{1} &=\sum^{n+1}_{i=2}\pi_{i}(\omega_{i}^{*} - \mu_{\omega^{*}} - u_{i,t})\tag{by substitution and definition of $\omega^{*}_{i}$}\\
-  \Longrightarrow\mu_{\omega^{*}} + \delta^{T}\x_{1} + \sum^{n+1}_{i=2}\pi_{i}u_{i,t} &= \sum^{n+1}_{i=2}\pi_{i}\omega_{i}^{*} \tag{by moving  terms to the left-hand side}
-  \end{align}
-
-Now, since each $\hat\omega^{*}_{i}$ converges in probability to $\omega^{*}_{i}$, by Slutsky, any finite linear combination of $\hat\omega^{*}_{i}$ converges in probability to the corresponding finite linear combination of $\omega^{*}_{i}$.  Hence, $\sum^{n+1}_{i=2}\pi_{i}\hat\omega_{i}^{*}$ converges in probability to the right-hand side of the final line.  By setting $u_{i,t}$ to zero for all shock points and all $i$, we then have $\omega_{1}^{*} = \mu_{\omega^{*}} + \delta^{T}\x_{1} $ on the left-hand side.  Without taking the $u_{i,t}$ to be zero at the shock points, however, we nevertheless have convergence in distribution.  The proof is as follows.  For any collection of $n+1$ i.i.d variables, any convex combination of any $n$ of them is equal in distribution to the one left out.  Therefore, the left-hand side of the final line is equal in distribution to $\omega_{1}$, as desired.
+  The result for each $\hat\alpha$ follows from the consistency proof of the MLE in AR-X models, as established by .
   
   \end{proof-of-proposition}
 
+  \begin{proof-of-proposition}[\ref{ARIMA_aggregated_alpha}]
+    \begin{align}
+      \x_{1} &= \sum^{n+1}_{i=2}\weight_{i}\x_{i} \tag{by an assumption of the proposition}\\
+     \Longrightarrow \lambda^{T}\x_{1} &= \lambda^{T}\sum^{n+1}_{i=2}\weight_{i}\x_{i}  = \sum^{n+1}_{i=2}\weight_{i}\lambda^{T}\x_{i}\tag{by left-multiplication by $\lambda^{T}$}\\
+      \Longrightarrow\lambda^{T}\x_{1} &=\sum^{n+1}_{i=2}\pi_{i}(\omega_{i}^{*} - \mu_{\omega^{*}} - u_{i,t})\tag{by substitution and definition of $\omega^{*}_{i}$}\\
+      \Longrightarrow\mu_{\omega^{*}} + \lambda^{T}\x_{1} + \sum^{n+1}_{i=2}\pi_{i}u_{i,t} &= \sum^{n+1}_{i=2}\pi_{i}\omega_{i}^{*} \tag{by moving  terms to the left-hand side}
+      \end{align} 
+  \end{proof-of-proposition}
+
   \begin{proof-of-proposition}[\ref{ARIMA_conv_distribution}]
+
+
+    Recall from Proposition \ref{ARIMA_param_consistency} that for any $i$, $2\leq i \leq n+1$, the tuple 
+    ($\hat\rho_{1},...,\hat\rho_{p}, \hat\alpha_{i,T^{*}+1}$) is consistent at $t\rightarrow \infty$.
+
+    Next consider the prediction function for an AR($p$)-X,
+
+    \begin{align*}
+      \hat{y}_{t} = \hat{f}(\mathcal{F}_{t-1}) = \hat\mu + \sum^{p}_{k=1}\hat\rho_{k}y_{t-k} + \hat{\alpha}_{t}
+      \end{align*}
+
+    It is enough to show that the 
+
+    \begin{align}
+      \x_{1} &= \sum^{n+1}_{i=2}\weight_{i}\x_{i} \tag{by an assumption of the proposition}\\
+     \Longrightarrow \lambda^{T}\x_{1} &= \lambda^{T}\sum^{n+1}_{i=2}\weight_{i}\x_{i}  = \sum^{n+1}_{i=2}\weight_{i}\lambda^{T}\x_{i}\tag{by left-multiplication by $\lambda^{T}$}\\
+      \Longrightarrow\lambda^{T}\x_{1} &=\sum^{n+1}_{i=2}\pi_{i}(\omega_{i}^{*} - \mu_{\omega^{*}} - u_{i,t})\tag{by substitution and definition of $\omega^{*}_{i}$}\\
+      \Longrightarrow\mu_{\omega^{*}} + \lambda^{T}\x_{1} + \sum^{n+1}_{i=2}\pi_{i}u_{i,t} &= \sum^{n+1}_{i=2}\pi_{i}\omega_{i}^{*} \tag{by moving  terms to the left-hand side}
+      \end{align}
+
     We claim
 
     Without loss of generality, we prove the case for $r = 1$.  The general case follows from iterative one-step-ahead forecasts.  Recall the conditional expectation of the variance for the GARCH-X($m$,$s$) model:

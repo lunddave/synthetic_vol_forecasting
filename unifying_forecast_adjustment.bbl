@@ -1,4 +1,4 @@
-\begin{thebibliography}{23}
+\begin{thebibliography}{22}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -94,11 +94,6 @@ Ankita Garg, Catherine~G Enright, and Michael~G Madden.
 Pablo Guerr{\'o}n-Quintana and Molin Zhong.
 \newblock Macroeconomic forecasting in times of crises.
 \newblock 2017.
-
-\bibitem[Han and Kristensen(2014)]{han2014asymptotic}
-Heejoon Han and Dennis Kristensen.
-\newblock Asymptotic theory for the qmle in garch-x models with stationary and nonstationary covariates.
-\newblock \emph{Journal of Business \& Economic Statistics}, 32\penalty0 (3):\penalty0 416--429, 2014.
 
 \bibitem[Hendry and Clements(1994)]{hendry1994theory}
 D~Hendry and M~Clements.

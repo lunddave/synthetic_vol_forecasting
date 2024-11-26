@@ -35,18 +35,18 @@ registerDoParallel(6)
 
 start_time <- Sys.time()
 #nsim <- as.numeric(command_args[1])
-nsim <- 1
+nsim <- 40
 
 ############ We build our parameter grid ############
 n <- c(10)
 p <- c(15)
-covariate_sigma <- c(1)
+covariate_sigma <- c(.01,1,2)
 alpha <- c(5)
 eta <- c(-5)
 a <- 3*252
 b <- 10*252
-shock_sd <- 1
-mu_delta <- c(.05)
+shock_sd <- c(1,2,3)
+mu_delta <- c(.001,.01,.05,1)
 
 list_of_vars <- list(n
                      ,p
