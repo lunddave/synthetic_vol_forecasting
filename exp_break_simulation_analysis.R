@@ -1,11 +1,7 @@
 options(digits = 6)
 
 library(dplyr)
-library("reshape")
 library(ggplot2)
-library(Amelia)
-library(gridExtra)
-library("scatterplot3d")
 
 sysname <- Sys.info()["sysname"]
 
@@ -15,16 +11,23 @@ if(sysname == "Darwin") {
   setwd('~/Desktop/synthetic_vol_forecasting/simulation_results') # example on linux machine
 }
 
-load("simcount_10_savetime_TueNov2613_20_022024_runtime_0.176_hr__grid_size27_recovery_0.722_seed_1986.Rdata")
+load("simcount_40_savetime_TueNov2614_14_562024_runtime_0.381_hr__grid_size36_recovery_0.614_seed_1986.Rdata")
 
 df <- as.matrix(output)
 df <- data.frame(df)
-names(df)
+df$simplex_dominates <- as.integer(as.logical(df$simplex_dominates))
+
+head(df)
+
+apply(df,2,class)
+
+df <- df[,-c(10)]
+
+df <- data.frame(apply(df, 2, function(x) as.numeric(as.character(x))))
 
 count_unique <- function(input) length(unique(input))
-apply(df,2,count_unique)
 
-df$simplex_dominates <- as.integer(as.logical(df$simplex_dominates))
+
 
 # Group by mean of multiple columns
 # df2 <- df %>% group_by(n
@@ -81,16 +84,15 @@ hm_generator <- function(input_df
                      ,'.png'
                      ,sep = '')
   
-  ggsave(filename=file_name, plot = ggp1, width = 8, height = 6, dpi = 300)
+  file_name <- gsub('\\[|\\]','',file_name)
   
-  dev.off()
+  ggsave(filename=file_name, plot = ggp1, width = 8, height = 6, dpi = 300)
 }
 
 ## Subsets to include in paper:
 
 ## Subset 1:
 temp <- df[df$shock_sd == 1,]
-
 hm_generator(temp
               ,y_input = mu_delta
              ,x_input = covariate_sigma
@@ -98,64 +100,84 @@ hm_generator(temp
              ,expression(mu[delta])
              ,expression(sigma[x]))
 
-#Comment: 
+#Comment: we can see that as the variation in the covariates increases, 
+#we get better performance from the simplex.
+
+temp <- df[df$shock_sd == 2,]
+hm_generator(temp
+             ,y_input = mu_delta
+             ,x_input = covariate_sigma
+             , simplex_dominates
+             ,expression(mu[delta])
+             ,expression(sigma[x]))
+
+#Comment: performance drops as noise increases
+
+temp <- df[df$shock_sd == 3,]
+hm_generator(temp
+             ,y_input = mu_delta
+             ,x_input = covariate_sigma
+             , simplex_dominates
+             ,expression(mu[delta])
+             ,expression(sigma[x]))
+
+#Comment: performance drops as noise increases
+
 
 ## Subset 2:
+temp <- df[df$mu_delta == .001,]
+
+hm_generator(temp
+             ,y_input = covariate_sigma
+             ,x_input = shock_sd
+             , simplex_dominates
+             ,expression(sigma[x])
+             ,expression(sigma[epsilon]))
+
+temp <- df[df$mu_delta == 0.01,]
+
+hm_generator(temp
+             ,y_input = covariate_sigma
+             ,x_input = shock_sd
+             , simplex_dominates
+             ,expression(sigma[x])
+             ,expression(sigma[epsilon]))
+
 temp <- df[df$mu_delta == .05,]
 
 hm_generator(temp
              ,y_input = covariate_sigma
              ,x_input = shock_sd
              , simplex_dominates
+             ,expression(sigma[x])
+             ,expression(sigma[epsilon]))
+
+#Comment: small mu_delta is bad because that means psi could be negative
+
+## Subset 3:
+temp <- df[df$covariate_sigma == .01,]
+
+hm_generator(temp
+             ,y_input = mu_delta
+             ,x_input = shock_sd
+             , simplex_dominates
              ,expression(mu[delta])
              ,expression(sigma[epsilon]))
 
-#Comment: 
-
-## Subset 3:
-temp <- df[df$shock_sd == 1,]
+temp <- df[df$covariate_sigma == 1,]
 
 hm_generator(temp
              ,y_input = mu_delta
-             ,x_input = covariate_sigma
+             ,x_input = shock_sd
              , simplex_dominates
              ,expression(mu[delta])
-             ,expression(sigma[x]))
+             ,expression(sigma[epsilon]))
 
-#Comment: 
-
-## Subset 4:
-temp <- df[df$shock_sd == 1,]
+temp <- df[df$covariate_sigma == 2,]
 
 hm_generator(temp
              ,y_input = mu_delta
-             ,x_input = covariate_sigma
+             ,x_input = shock_sd
              , simplex_dominates
              ,expression(mu[delta])
-             ,expression(sigma[x]))
-
-#Comment: mu_x is on display
-
-## Subset 5:
-temp <- df[df$shock_sd == 1,]
-
-hm_generator(temp
-             ,y_input = mu_delta
-             ,x_input = covariate_sigma
-             , simplex_dominates
-             ,expression(mu[delta])
-             ,expression(sigma[x]))
-
-#Comment: 
-
-## Subset 6:
-temp <- df[df$shock_sd == 1,]
-
-hm_generator(temp
-             ,y_input = mu_delta
-             ,x_input = covariate_sigma
-             , simplex_dominates
-             ,expression(mu[delta])
-             ,expression(sigma[x]))
-
-#Comment: 
+             ,expression(sigma[epsilon]))
