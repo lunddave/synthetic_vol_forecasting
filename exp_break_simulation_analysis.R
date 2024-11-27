@@ -101,14 +101,14 @@ hm_generator(temp
 #Comment: 
 
 ## Subset 2:
-temp <- df[df$shock_sd == 1,]
+temp <- df[df$mu_delta == .05,]
 
 hm_generator(temp
-             ,y_input = mu_delta
-             ,x_input = covariate_sigma
+             ,y_input = covariate_sigma
+             ,x_input = shock_sd
              , simplex_dominates
              ,expression(mu[delta])
-             ,expression(sigma[x]))
+             ,expression(sigma[epsilon]))
 
 #Comment: 
 

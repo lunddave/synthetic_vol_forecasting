@@ -732,6 +732,67 @@ Now consider a practitioner in need of a conditional forecast for $T_{1}^{*}+h, 
   \item Here we have taken $\lambda$ to be fixed and shared across donors.  If $\lambda$ is a random, however, then estimating it becomes harder.
 \end{enumerate}
 
+\begin{figure}[!h]
+  \centering
+  \textbf{Signal and Noise}\par\medskip
+\begin{subfigure}{.44\linewidth} 
+  \centering
+    \includegraphics[scale = .42]{simulation_plots/Aug28_224311_2024_mu[delta]_sigma[u].png}
+    \caption{Fixed values: $\mu_{v} = .125, \sigma_{v} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_1}
+\end{subfigure}\hspace{12mm} %
+\begin{subfigure}{.44\linewidth} 
+  \centering
+    \includegraphics[scale=.42]{simulation_plots/Aug28_224317_2024_mu[delta]_sigma[u].png}
+    \caption{Fixed values: $\mu_{v} = .5, \sigma_{v} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_2}
+\end{subfigure}
+
+\begin{subfigure}{.44\linewidth} 
+  \centering
+    \includegraphics[scale=.42]{simulation_plots/Aug28_224322_2024_mu[delta]_sigma[u].png}
+    \caption{Fixed values: $\mu_{v} = 1, \sigma_{v} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_3}
+\end{subfigure}
+
+    \caption{In the progression from \ref{fig:sim_1} to \ref{fig:sim_2} to \ref{fig:sim_3}, we see that increasing $\mu_{\delta}$ leads to improved performance of the adjusted forecast, and this effect is intensified as $\mu_{v}$ increases.  However, it is not consistently true that an increasing noise undermines the performance of the adjusted forecast.  Rather, that phenomenon requires both large quantites of $\mu_{\delta}$ and $\mu_{v}$.}
+    \label{fig:signoise}
+  \end{figure}
+
+\begin{figure}[!h]
+\centering
+\textbf{Interaction between Signal and Volatility Profile Means}\par\medskip
+\begin{subfigure}{.44\linewidth} 
+\centering
+  \includegraphics[scale = .42]{simulation_plots/Aug28_224330_2024_mu[delta]_mu[v].png}
+  \caption{Fixed values: $\sigma_{v} = .125, \mu_{\omega^{*}} = .125, \sigma_{u} = .125$}\label{fig:sim_4}
+\end{subfigure}\hspace{12mm} %
+\begin{subfigure}{.44\linewidth} 
+\centering
+  \includegraphics[scale=.42]{simulation_plots/Aug28_224337_2024_mu[delta]_mu[v].png}
+  \caption{Fixed values: $\sigma_{v} = .125, \mu_{\omega^{*}} = .125, \sigma_{u} = 1$}\label{fig:sim_5}
+\end{subfigure}
+
+  \caption{We compare the interaction of $\mu_{\delta}$ and $\mu_{v}$ at two different levels of shock noise.  In the low-noise regime, the peak performance of the adjusted forecast is higher, and the ascent is faster along both dimensions.   However, in the high-noise regime, the adjusted forecast performs well even at low levels of $\mu_{\delta}$ and $\mu_{v}$.}
+  \label{fig:sig_volprof}
+\end{figure}
+
+\begin{figure}[!h]
+\centering
+\textbf{Interaction between Shock Intercept and Shock Noise}\par\medskip
+\begin{subfigure}{.44\linewidth} 
+\centering
+\includegraphics[scale = .42]{simulation_plots/Aug28_224451_2024_mu[omega^*]_sigma[u].png}
+\caption{Fixed values: $\mu_{v} = .125, \sigma_{v} = .125, \delta = .125$}\label{fig:sim_6}
+\end{subfigure}\hspace{12mm} %
+\begin{subfigure}{.44\linewidth} 
+\centering
+\includegraphics[scale=.42]{simulation_plots/Aug28_224455_2024_mu[omega^*]_sigma[u].png}
+\caption{Fixed values: $\mu_{v} = .125, \sigma_{v} = .125, \delta = 2$}\label{fig:sim_7}
+\end{subfigure}
+
+\caption{The interaction between the intercept $\mu_{\omega^{*}}$ and $\sigma_{u}$ suggests that the parameters behave as expected.  However, a larger value of $\delta$ in \ref{fig:sim_7} attenuates the effect of increasing noise.}
+\label{fig:intercept_noise}
+\end{figure}
+
+\clearpage 
 \subsubsection{Simulation Study}
 
 

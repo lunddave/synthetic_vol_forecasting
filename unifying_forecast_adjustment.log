@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.15)  25 NOV 2024 17:29
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.15)  26 NOV 2024 20:54
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -911,47 +911,126 @@ Underfull \hbox (badness 10000) in paragraph at lines 727--728
 
  []
 
-<exponential_sim_plot.png, id=388, 1767.60374pt x 1242.6425pt>
-File: exponential_sim_plot.png Graphic file (type png)
-<use exponential_sim_plot.png>
-Package pdftex.def Info: exponential_sim_plot.png  used on input line 742.
-(pdftex.def)             Requested size: 498.66258pt x 350.55417pt.
+<simulation_plots/Aug28_224311_2024_mu[delta]_sigma[u].png, id=388, 578.16pt x 433.62pt>
+File: simulation_plots/Aug28_224311_2024_mu[delta]_sigma[u].png Graphic file (type png)
+<use simulation_plots/Aug28_224311_2024_mu[delta]_sigma[u].png>
+Package pdftex.def Info: simulation_plots/Aug28_224311_2024_mu[delta]_sigma[u].png  used on input line 740.
+(pdftex.def)             Requested size: 242.82555pt x 182.11916pt.
+
+Overfull \hbox (23.4128pt too wide) in paragraph at lines 740--741
+ [][] 
+ []
+
+<simulation_plots/Aug28_224317_2024_mu[delta]_sigma[u].png, id=389, 578.16pt x 433.62pt>
+File: simulation_plots/Aug28_224317_2024_mu[delta]_sigma[u].png Graphic file (type png)
+<use simulation_plots/Aug28_224317_2024_mu[delta]_sigma[u].png>
+Package pdftex.def Info: simulation_plots/Aug28_224317_2024_mu[delta]_sigma[u].png  used on input line 745.
+(pdftex.def)             Requested size: 242.82555pt x 182.11916pt.
+
+Overfull \hbox (23.4128pt too wide) in paragraph at lines 745--746
+ [][] 
+ []
+
+<simulation_plots/Aug28_224322_2024_mu[delta]_sigma[u].png, id=390, 578.16pt x 433.62pt>
+File: simulation_plots/Aug28_224322_2024_mu[delta]_sigma[u].png Graphic file (type png)
+<use simulation_plots/Aug28_224322_2024_mu[delta]_sigma[u].png>
+Package pdftex.def Info: simulation_plots/Aug28_224322_2024_mu[delta]_sigma[u].png  used on input line 751.
+(pdftex.def)             Requested size: 242.82555pt x 182.11916pt.
+
+Overfull \hbox (23.4128pt too wide) in paragraph at lines 751--752
+ [][] 
+ []
+
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
+<simulation_plots/Aug28_224330_2024_mu[delta]_mu[v].png, id=397, 578.16pt x 433.62pt>
+File: simulation_plots/Aug28_224330_2024_mu[delta]_mu[v].png Graphic file (type png)
+<use simulation_plots/Aug28_224330_2024_mu[delta]_mu[v].png>
+Package pdftex.def Info: simulation_plots/Aug28_224330_2024_mu[delta]_mu[v].png  used on input line 764.
+(pdftex.def)             Requested size: 242.82555pt x 182.11916pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 757--758
+Overfull \hbox (23.4128pt too wide) in paragraph at lines 764--765
+ [][] 
+ []
+
+<simulation_plots/Aug28_224337_2024_mu[delta]_mu[v].png, id=398, 578.16pt x 433.62pt>
+File: simulation_plots/Aug28_224337_2024_mu[delta]_mu[v].png Graphic file (type png)
+<use simulation_plots/Aug28_224337_2024_mu[delta]_mu[v].png>
+Package pdftex.def Info: simulation_plots/Aug28_224337_2024_mu[delta]_mu[v].png  used on input line 769.
+(pdftex.def)             Requested size: 242.82555pt x 182.11916pt.
+
+Overfull \hbox (23.4128pt too wide) in paragraph at lines 769--770
+ [][] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<simulation_plots/Aug28_224451_2024_mu[omega^*]_sigma[u].png, id=399, 578.16pt x 433.62pt>
+File: simulation_plots/Aug28_224451_2024_mu[omega^*]_sigma[u].png Graphic file (type png)
+<use simulation_plots/Aug28_224451_2024_mu[omega^*]_sigma[u].png>
+Package pdftex.def Info: simulation_plots/Aug28_224451_2024_mu[omega^*]_sigma[u].png  used on input line 782.
+(pdftex.def)             Requested size: 242.82555pt x 182.11916pt.
+
+Overfull \hbox (23.4128pt too wide) in paragraph at lines 782--783
+ [][] 
+ []
+
+<simulation_plots/Aug28_224455_2024_mu[omega^*]_sigma[u].png, id=400, 578.16pt x 433.62pt>
+File: simulation_plots/Aug28_224455_2024_mu[omega^*]_sigma[u].png Graphic file (type png)
+<use simulation_plots/Aug28_224455_2024_mu[omega^*]_sigma[u].png>
+Package pdftex.def Info: simulation_plots/Aug28_224455_2024_mu[omega^*]_sigma[u].png  used on input line 787.
+(pdftex.def)             Requested size: 242.82555pt x 182.11916pt.
+
+Overfull \hbox (23.4128pt too wide) in paragraph at lines 787--788
+ [][] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[16] [17 <./simulation_plots/Aug28_224311_2024_mu[delta]_sigma[u].png> <./simulation_plots/Aug28_224317_2024_mu[delta]_sigma[u].png> <./simulation_plots/Aug28_224322_2024_mu[delta]_sigma[u].png>] [18 <./simulation_plots/Aug28_224330_2024_mu[delta]_mu[v].png> <./simulation_plots/Aug28_224337_2024_mu[delta]_mu[v].png> <./simulation_plots/Aug28_224451_2024_mu[omega^*]_sigma[u].png> <./simulation_plots/Aug28_224455_2024_mu[omega^*]_sigma[u].png>]
+<exponential_sim_plot.png, id=423, 1767.60374pt x 1242.6425pt>
+File: exponential_sim_plot.png Graphic file (type png)
+<use exponential_sim_plot.png>
+Package pdftex.def Info: exponential_sim_plot.png  used on input line 803.
+(pdftex.def)             Requested size: 498.66258pt x 350.55417pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 818--819
+
+ []
+
+[19
+
+ <./exponential_sim_plot.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 828--829
+
+ []
+
+[20]
+Underfull \hbox (badness 10000) in paragraph at lines 862--863
+
+ []
+
+[21]
+Underfull \hbox (badness 10000) in paragraph at lines 901--902
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 767--768
+Underfull \hbox (badness 10000) in paragraph at lines 909--911
 
  []
 
-[16] [17 <./exponential_sim_plot.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 801--802
+[22]
+Underfull \hbox (badness 10000) in paragraph at lines 949--950
 
  []
 
-[18]
-Underfull \hbox (badness 10000) in paragraph at lines 840--841
+[23] (./unifying_forecast_adjustment.bbl [24
 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 848--850
-
- []
-
-[19]
-Underfull \hbox (badness 10000) in paragraph at lines 888--889
-
- []
-
-[20] (./unifying_forecast_adjustment.bbl [21
-
-]) [22] (./unifying_forecast_adjustment.aux)
+]) [25] (./unifying_forecast_adjustment.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
@@ -960,17 +1039,17 @@ Package rerunfilecheck Info: File `unifying_forecast_adjustment.out' has not cha
 (rerunfilecheck)             Checksum: 190C3DE02A6199175A13EE5C48EEC9D4;6838.
  ) 
 Here is how much of TeX's memory you used:
- 37387 strings out of 474116
- 793290 string characters out of 5743682
+ 37468 strings out of 474116
+ 796916 string characters out of 5743682
  1948187 words of memory out of 5000000
- 59083 multiletter control sequences out of 15000+600000
+ 59158 multiletter control sequences out of 15000+600000
  579088 words of font info for 111 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  142i,17n,144p,2085b,1699s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on unifying_forecast_adjustment.pdf (22 pages, 866799 bytes).
+</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
+Output written on unifying_forecast_adjustment.pdf (25 pages, 2070140 bytes).
 PDF statistics:
- 596 PDF objects out of 1000 (max. 8388607)
- 125 named destinations out of 1000 (max. 500000)
- 244 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 638 PDF objects out of 1000 (max. 8388607)
+ 131 named destinations out of 1000 (max. 500000)
+ 279 words of extra memory for PDF output out of 10000 (max. 10000000)
 
