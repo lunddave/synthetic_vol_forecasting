@@ -593,15 +593,38 @@ How does the MSE of the adjusted forecast compare with the unadjusted forecast? 
 
 
 \begin{prop}\label{ARIMA_param_consistency}
-Let $2\leq i \leq n+1$.  The tuple of estimators ($\hat\rho_{i,1},...,\hat\rho_{i, p}, \hat\alpha_{i,T^{*}+1}$) is consistent as $t \rightarrow \infty$.
+
+  \begin{enumerate}
+    \item All conditions listed in Proposition .
+    \item There exist weights $\{\pi_{i}\}_{i=2}^{n+1}$ such that $\textbf{v}_{1,T_{1}^{*}} = \sum^{n+1}_{i=2}\weight_{i} \textbf{v}_{i,T_{i}^{*}}$.
+   \end{enumerate}
+
+Let $2\leq i \leq n+1$.  
+
+Then tuple of estimators ($\hat\rho_{i,1},...,\hat\rho_{i, p}, \hat\alpha_{i,T^{*}+1}$) is consistent as $t \rightarrow \infty$.
 \end{prop}
 
 \begin{prop}\label{ARIMA_aggregated_alpha}
+
+  \begin{enumerate}
+    \item All conditions listed in Proposition .
+    \item There exist weights $\{\pi_{i}\}_{i=2}^{n+1}$ such that $\textbf{v}_{1,T_{1}^{*}} = \sum^{n+1}_{i=2}\weight_{i} \textbf{v}_{i,T_{i}^{*}}$.
+   \end{enumerate}
+
+   Then
+
   The tuple of estimators ($\hat\rho_{1,1},...,\hat\rho_{1,p}, \hat\alpha_{T^{*}+1}$) is consistent as $t \rightarrow \infty$.
   \end{prop}
 
 \begin{prop}\label{ARIMA_conv_distribution}
-  Let $\{\hat y_{1,T_{1}^{*}+r}\}^{h}_{r=1}$ denote the vector of adjusted predictions (adjusted through $h$ steps ahead) in the time series under study.  Assume that there exist weights $\{\pi_{i=2}\}_{i=2}^{n+1}$ such that $\x_{1} = \sum^{n+1}_{i=2}\weight_{i}\x_{i}$.  Then $\{\hat y_{1,T_{1}^{*}+r}\}^{h}_{r=1} \xrightarrow{d} \{ y_{1,T_{1}^{*}+r}\}^{h}_{r=1}$.
+  Let $\{\hat y_{1,T_{1}^{*}+r}\}^{h}_{r=1}$ denote the vector of adjusted predictions (adjusted through $h$ steps ahead) in the time series under study.  
+  
+  \begin{enumerate}
+    \item All conditions listed in Proposition.
+    \item There exist weights $\{\pi_{i}\}_{i=2}^{n+1}$ such that $\textbf{v}_{1,T_{1}^{*}} = \sum^{n+1}_{i=2}\weight_{i} \textbf{v}_{i,T_{i}^{*}}$.
+   \end{enumerate}
+   
+   Assume that there exist weights $\{\pi_{i=2}\}_{i=2}^{n+1}$ such that $\x_{1} = \sum^{n+1}_{i=2}\weight_{i}\x_{i}$.  Then $\{\hat y_{1,T_{1}^{*}+r}\}^{h}_{r=1} \xrightarrow{d} \{ y_{1,T_{1}^{*}+r}\}^{h}_{r=1}$.
   \end{prop}
 
 When forecasting financial time series using the method above, the question of prices versus returns (or in the language of economics or engineering, levels versus flows) is relevant.  Consider, for example, the persistence of a shock.  A shock to an asset's return series at time $t$ implies a persistent shock to the asset's price series at time $t$ and beyond, as one can verify by inverting the discrete-differencing operation on a time series.  However, if one forecasts the price series of the asset directly, that persistence beyond the first instantiation of the shock must be modeled explicitly.  This suggests interesting opportunities in the analysis and forecasting of shock persistence for situations in which level-forecasting is appropriate, e.g. for stationary time series.
@@ -755,18 +778,18 @@ Now consider a practitioner in need of a conditional forecast for $T_{1}^{*}+h, 
 \begin{subfigure}{.44\linewidth} 
   \centering
     \includegraphics[scale = .42]{simulation_plots/Nov27_160341_2024_mudelta_sigmax.png}
-    \caption{Fixed values: $\sigma_{\epsilon}$}\label{fig:sim_1}
+    \caption{Fixed values: $\sigma_{\epsilon} = 1$}\label{fig:sim_1}
 \end{subfigure}\hspace{12mm} %
 \begin{subfigure}{.44\linewidth} 
   \centering
     \includegraphics[scale=.42]{simulation_plots/Nov27_160342_2024_mudelta_sigmax.png}
-    \caption{Fixed values: $\sigma{\epsilon}$}\label{fig:sim_2}
+    \caption{Fixed values: $\sigma{\epsilon}=2$}\label{fig:sim_2}
 \end{subfigure}
 
 \begin{subfigure}{.44\linewidth} 
   \centering
     \includegraphics[scale=.42]{simulation_plots/Nov27_160343_2024_mudelta_sigmax.png}
-    \caption{Fixed values: $\sigma_{\epsilon}$}\label{fig:sim_3}
+    \caption{Fixed values: $\sigma_{\epsilon}=3$}\label{fig:sim_3}
 \end{subfigure}
 
     \caption{In the progression from \ref{fig:sim_1} to \ref{fig:sim_2} to \ref{fig:sim_3}, we see that increasing $\mu_{\delta}$ leads to improved performance of the adjusted forecast, and this effect is intensified as $\mu_{v}$ increases.  However, it is not consistently true that an increasing noise undermines the performance of the adjusted forecast.  Rather, that phenomenon requires both large quantites of $\mu_{\delta}$ and $\mu_{v}$.}
@@ -779,18 +802,18 @@ Now consider a practitioner in need of a conditional forecast for $T_{1}^{*}+h, 
   \begin{subfigure}{.44\linewidth} 
     \centering
       \includegraphics[scale = .42]{simulation_plots/Nov27_160344_2024_sigmax_sigmaepsilon.png}
-      \caption{Fixed values: $\mu_{\delta}$}\label{fig:sim_4}
+      \caption{Fixed values: $\mu_{\delta}=.001$}\label{fig:sim_4}
   \end{subfigure}\hspace{12mm} %
   \begin{subfigure}{.44\linewidth} 
     \centering
       \includegraphics[scale=.42]{simulation_plots/Nov27_160345_2024_sigmax_sigmaepsilon.png}
-      \caption{Fixed values: $\mu_{\delta}$}\label{fig:sim_5}
+      \caption{Fixed values: $\mu_{\delta}=.01$}\label{fig:sim_5}
   \end{subfigure}
   
   \begin{subfigure}{.44\linewidth} 
     \centering
       \includegraphics[scale=.42]{simulation_plots/Nov27_160346_2024_sigmax_sigmaepsilon.png}
-      \caption{Fixed values: $\mu_{\delta}$}\label{fig:sim_6}
+      \caption{Fixed values: $\mu_{\delta}=.05$}\label{fig:sim_6}
   \end{subfigure}
   
       \caption{In the progression from \ref{fig:sim_4} to \ref{fig:sim_5} to \ref{fig:sim_6}, we see that increasing $\mu_{\delta}$ leads to improved performance of the adjusted forecast, and this effect is intensified as $\mu_{v}$ increases.  However, it is not consistently true that an increasing noise undermines the performance of the adjusted forecast.  Rather, that phenomenon requires both large quantites of $\mu_{\delta}$ and $\mu_{v}$.}
@@ -803,18 +826,18 @@ Now consider a practitioner in need of a conditional forecast for $T_{1}^{*}+h, 
     \begin{subfigure}{.44\linewidth} 
       \centering
         \includegraphics[scale = .42]{simulation_plots/Nov27_160346_2024_mudelta_sigmaepsilon.png}
-        \caption{Fixed values: $\sigma_{X}$}\label{fig:sim_7}
+        \caption{Fixed values: $\sigma_{X} =.01$}\label{fig:sim_7}
     \end{subfigure}\hspace{12mm} %
     \begin{subfigure}{.44\linewidth} 
       \centering
         \includegraphics[scale=.42]{simulation_plots/Nov27_160347_2024_mudelta_sigmaepsilon.png}
-        \caption{Fixed values: $\mu_{v} = .5, \sigma_{v} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_8}
+        \caption{Fixed values: $\mu_{v} = 1, \sigma_{v} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_8}
     \end{subfigure}
     
     \begin{subfigure}{.44\linewidth} 
       \centering
         \includegraphics[scale=.42]{simulation_plots/Nov27_160348_2024_mudelta_sigmaepsilon.png}
-        \caption{Fixed values: $\mu_{v} = 1, \sigma_{v} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_9}
+        \caption{Fixed values: $\mu_{v} = 2, \sigma_{v} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_9}
     \end{subfigure}
     
         \caption{In the progression from \ref{fig:sim_7} to \ref{fig:sim_8} to \ref{fig:sim_9}, we see that increasing $\mu_{\delta}$ leads to improved performance of the adjusted forecast, and this effect is intensified as $\mu_{v}$ increases.  However, it is not consistently true that an increasing noise undermines the performance of the adjusted forecast.  Rather, that phenomenon requires both large quantities of $\mu_{\delta}$ and $\mu_{v}$.}
