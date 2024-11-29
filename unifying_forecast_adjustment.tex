@@ -543,7 +543,7 @@ We begin our recounting of model-specific cases by recalling \cite{lin2021minimi
 
 \begin{align}
 \hat{y}_{t} = f(\mathcal{F}_{t-1}) = \hat\mu + \sum^{p}_{k=1}\hat\rho_{k}y_{t-k} + \hat{\alpha}_{t}
-\end{align}
+\end{align}\label{AR-X(p)}
 which can be understood as an AR($p$) with time-varying coefficients.  The mean squared-error of the forecast above, i.e.
 
 \begin{align}
@@ -593,38 +593,35 @@ How does the MSE of the adjusted forecast compare with the unadjusted forecast? 
 
 
 \begin{prop}\label{ARIMA_param_consistency}
-
+Assume
   \begin{enumerate}
-    \item All conditions listed in Proposition .
-    \item There exist weights $\{\pi_{i}\}_{i=2}^{n+1}$ such that $\textbf{v}_{1,T_{1}^{*}} = \sum^{n+1}_{i=2}\weight_{i} \textbf{v}_{i,T_{i}^{*}}$.
+    \item For each $i$, $1\leq i \leq n + 1$, let $\{y_{t}\}^{T_{i}}_{i=1}$ follow an AR-X($p$) as laid out in \eqref{AR-X(p)}.
+    \item Assume for each $i$, $1\leq i \leq n + 1$, the shocks $\alpha_{i,t}$ are uncorrelated across donors.
+    \item Assume for each $i$, $1\leq i \leq n + 1$, the shocks $\alpha_{i,t}$ are uncorrelated with $\alpha_{i,T_{i}^{*}+1}$ 
    \end{enumerate}
 
-Let $2\leq i \leq n+1$.  
-
-Then tuple of estimators ($\hat\rho_{i,1},...,\hat\rho_{i, p}, \hat\alpha_{i,T^{*}+1}$) is consistent as $t \rightarrow \infty$.
+Then the tuple of estimators ($\hat\rho_{i,1},...,\hat\rho_{i, p}, \hat\alpha_{i,T^{*}+1}$) is consistent as $t \rightarrow \infty$.
 \end{prop}
 
 \begin{prop}\label{ARIMA_aggregated_alpha}
-
+Assume
   \begin{enumerate}
-    \item All conditions listed in Proposition .
-    \item There exist weights $\{\pi_{i}\}_{i=2}^{n+1}$ such that $\textbf{v}_{1,T_{1}^{*}} = \sum^{n+1}_{i=2}\weight_{i} \textbf{v}_{i,T_{i}^{*}}$.
+    \item All conditions listed in Proposition \ref{ARIMA_param_consistency}.
+    \item There exist weights $\{\pi_{i}\}_{i=2}^{n+1} \in \Delta^{n-1}$  such that $\textbf{v}_{1,T_{1}^{*}} = \sum^{n+1}_{i=2}\weight_{i} \textbf{v}_{i,T_{i}^{*}}$.
    \end{enumerate}
 
-   Then
+   Then the aggregated estimator $\hat{\alpha_{T^{*}_{1}}}$ is consistent as $t \rightarrow \infty$. 
 
-  The tuple of estimators ($\hat\rho_{1,1},...,\hat\rho_{1,p}, \hat\alpha_{T^{*}+1}$) is consistent as $t \rightarrow \infty$.
   \end{prop}
 
 \begin{prop}\label{ARIMA_conv_distribution}
   Let $\{\hat y_{1,T_{1}^{*}+r}\}^{h}_{r=1}$ denote the vector of adjusted predictions (adjusted through $h$ steps ahead) in the time series under study.  
   
   \begin{enumerate}
-    \item All conditions listed in Proposition.
-    \item There exist weights $\{\pi_{i}\}_{i=2}^{n+1}$ such that $\textbf{v}_{1,T_{1}^{*}} = \sum^{n+1}_{i=2}\weight_{i} \textbf{v}_{i,T_{i}^{*}}$.
+    \item All conditions listed in Propositions \ref{ARIMA_param_consistency} and \ref{ARIMA_aggregated_alpha}.
    \end{enumerate}
    
-   Assume that there exist weights $\{\pi_{i=2}\}_{i=2}^{n+1}$ such that $\x_{1} = \sum^{n+1}_{i=2}\weight_{i}\x_{i}$.  Then $\{\hat y_{1,T_{1}^{*}+r}\}^{h}_{r=1} \xrightarrow{d} \{ y_{1,T_{1}^{*}+r}\}^{h}_{r=1}$.
+Then $\{\hat y_{1,T_{1}^{*}+r}\}^{h}_{r=1} \xrightarrow{d} \{ y_{1,T_{1}^{*}+r}\}^{h}_{r=1}$.
   \end{prop}
 
 When forecasting financial time series using the method above, the question of prices versus returns (or in the language of economics or engineering, levels versus flows) is relevant.  Consider, for example, the persistence of a shock.  A shock to an asset's return series at time $t$ implies a persistent shock to the asset's price series at time $t$ and beyond, as one can verify by inverting the discrete-differencing operation on a time series.  However, if one forecasts the price series of the asset directly, that persistence beyond the first instantiation of the shock must be modeled explicitly.  This suggests interesting opportunities in the analysis and forecasting of shock persistence for situations in which level-forecasting is appropriate, e.g. for stationary time series.
@@ -638,7 +635,6 @@ The methods of \cite{lin2021minimizing} are adapted in \cite{lundquist2024volati
 In this way, \cite{lundquist2024volatility} bridged a gap between the descriptive and predictive roles of GARCH.  Fixed effects (correction terms) are estimated in the donor pool, and those fixed effects are aggregated via corrected function.  A forecast adjustment is then made in the time series under study.
 
 Consider how GARCH fits into our Specification (\ref{core_specification}):
-
 
 \begin{align*}
   &\sigma_{i,t}^{2} = \omega_{i} + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \text{ }. \\
@@ -940,7 +936,6 @@ In particular, can we relax this assumption and proceed with weaker assumptions 
 \end{itemize}
 
 \section{Supplement}
-
 
 \subsection{Formal Results}
 
