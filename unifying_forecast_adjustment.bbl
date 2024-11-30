@@ -1,4 +1,4 @@
-\begin{thebibliography}{34}
+\begin{thebibliography}{33}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -117,11 +117,6 @@ Ankita Garg, Catherine~G Enright, and Michael~G Madden.
 Pablo Guerr{\'o}n-Quintana and Molin Zhong.
 \newblock Macroeconomic forecasting in times of crises.
 \newblock 2017.
-
-\bibitem[Hansen and Lunde(2005)]{hansen2005forecast}
-Peter~R Hansen and Asger Lunde.
-\newblock A forecast comparison of volatility models: does anything beat a garch (1,1)?
-\newblock \emph{Journal of applied econometrics}, 20\penalty0 (7):\penalty0 873--889, 2005.
 
 \bibitem[Hendry and Clements(1994)]{hendry1994theory}
 D~Hendry and M~Clements.

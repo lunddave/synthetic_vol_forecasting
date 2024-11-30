@@ -181,3 +181,4 @@ hm_generator(temp
              , simplex_dominates
              ,expression(mu[delta])
              ,expression(sigma[epsilon]))
+
