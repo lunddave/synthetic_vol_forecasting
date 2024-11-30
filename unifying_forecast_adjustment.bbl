@@ -1,4 +1,4 @@
-\begin{thebibliography}{33}
+\begin{thebibliography}{26}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -15,18 +15,6 @@ Torben~Gustav Andersen and Luca Benzoni.
 \newblock Realized volatility, working paper 2008-14.
 \newblock 2008.
 
-\bibitem[Applebaum(2016)]{applebaum2016britain}
-Anne Applebaum.
-\newblock Britain's decision to leave the e.u. is a warning to america, 2016.
-\newblock URL \url{https://www.washingtonpost.com/opinions/global-opinions/after-brexit-what-will-and-wont-happen/2016/06/24/c9f7a2f6-39f1-11e6-8f7c-d4c723a2becb_story.html?postshare=9121466767991000}.
-\newblock Published: 2016-06-24.
-
-\bibitem[Barro(2016)]{barro2016three}
-Josh Barro.
-\newblock 3 reasons brexit does not portend a trump victory — and one reason to worry, 2016.
-\newblock URL \url{https://www.businessinsider.com/what-does-brexit-mean-for-trump-2016-6?op=1}.
-\newblock Published: 2016-06-24.
-
 \bibitem[Bartha(2013)]{bartha2013analogy}
 Paul Bartha.
 \newblock Analogy and analogical reasoning.
@@ -41,6 +29,12 @@ Christopher~M Bishop and Hugh Bishop.
 Simon~Tranberg Bodilsen and Asger Lunde.
 \newblock Exploiting news analytics for volatility forecasting.
 \newblock \emph{Available at SSRN 4401032}, 2023.
+
+\bibitem[Boudt et~al.(2022)Boudt, Kleen, and Sj{\o}rup]{highfrequency}
+Kris Boudt, Onno Kleen, and Emil Sj{\o}rup.
+\newblock Analyzing intraday financial data in r: The highfrequency package.
+\newblock \emph{Journal of Statistical Software}, 104\penalty0 (8):\penalty0 1--36, 2022.
+\newblock \doi{10.18637/jss.v104.i08}.
 
 \bibitem[Castle et~al.(2011)Castle, Fawcett, and Hendry]{castle2011forecasting}
 Jennifer~L Castle, Nicholas~WP Fawcett, and David~F Hendry.
@@ -82,12 +76,6 @@ Michael~P Clements and David~F Hendry.
 \newblock Guest editors' introduction: Information in economic forecasting.
 \newblock \emph{Oxford Bulletin of Economics \& Statistics}, 67\penalty0 (S1):\penalty0 713--753, 2005{\natexlab{b}}.
 
-\bibitem[Collins(2016)]{collins2016trump}
-Stephen Collins.
-\newblock Trump on brexit: America is next, 2016.
-\newblock URL \url{https://www.cnn.com/2016/06/25/politics/donald-trump-brexit-scotland}.
-\newblock Published: 2016-06-25.
-
 \bibitem[Corsi(2009)]{corsi2009simple}
 Fulvio Corsi.
 \newblock A simple approximate long-memory model of realized volatility.
@@ -123,12 +111,6 @@ D~Hendry and M~Clements.
 \newblock On a theory of intercept corrections in macroeconometric forecasting.
 \newblock 1994.
 
-\bibitem[Kay(2016)]{kay2016brexit}
-Katty Kay.
-\newblock Five reasons brexit could signal trump winning the white house, 2016.
-\newblock URL \url{https://www.bbc.com/news/election-us-2016-36564808}.
-\newblock Published: 2016-06-20.
-
 \bibitem[Lin and Eck(2021)]{lin2021minimizing}
 Jilei Lin and Daniel~J Eck.
 \newblock Minimizing post-shock forecasting error through aggregation of outside information.
@@ -139,36 +121,15 @@ David Lundquist and Daniel Eck.
 \newblock Volatility forecasting using similarity-based parameter correction and aggregated shock information.
 \newblock \emph{arXiv preprint arXiv:2406.08738}, 2024.
 
-\bibitem[Martin and Burns(2016)]{martin2016brexit}
-Jonathan Martin and Alexander Burns.
-\newblock Is ‘brexit’ the precursor to a donald trump presidency? not so fast, 2016.
-\newblock URL \url{https://www.nytimes.com/2016/06/25/us/politics/is-brexit-the-precursor-to-a-donald-trump-presidency-not-so-fast.html}.
-\newblock Published: 2016-06-24.
-
-\bibitem[None(2016)]{BBC_News_2016}
-None.
-\newblock Leave campaign ahead in uk's eu referendum vote, Jun 2016.
-\newblock URL \url{https://www.bbc.com/news/uk-politics-eu-referendum-36612368}.
-
 \bibitem[Ryan et~al.(2015)Ryan, Ulrich, Thielen, Teetor, Bronder, and Ulrich]{ryan2015package}
 Jeffrey~A Ryan, Joshua~M Ulrich, Wouter Thielen, Paul Teetor, Steve Bronder, and Maintainer Joshua~M Ulrich.
 \newblock Package ‘quantmod’.
 \newblock 2015.
 
-\bibitem[Wachowicz(2020)]{wachowicz2020wharton}
-Erin Wachowicz.
-\newblock Wharton research data services (wrds).
-\newblock \emph{Journal of Business \& Finance Librarianship}, 25\penalty0 (3-4):\penalty0 184--187, 2020.
-
 \bibitem[Weinberg(2013)]{GFC}
 John Weinberg.
 \newblock The great recession and its aftermath.
 \newblock \url{https://www.federalreservehistory.org/essays/great-recession-and-its-aftermath }, Nov 2013.
-
-\bibitem[Wilson(2017)]{wilson2017brexit}
-Graham~K Wilson.
-\newblock Brexit, trump and the special relationship.
-\newblock \emph{The British Journal of Politics and International Relations}, 19\penalty0 (3):\penalty0 543--557, 2017.
 
 \bibitem[Wilson(2024)]{thoughts_on_market}
 Mike Wilson.

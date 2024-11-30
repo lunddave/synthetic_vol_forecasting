@@ -3,65 +3,53 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: unifying_forecast_adjustment.aux
 The style file: plainnat.bst
 Database file #1: unifying.bib
-Warning--entry type for "kay2016brexit" isn't style-file defined
---line 821 of file unifying.bib
-Warning--entry type for "applebaum2016britain" isn't style-file defined
---line 830 of file unifying.bib
-Warning--entry type for "barro2016three" isn't style-file defined
---line 839 of file unifying.bib
-Warning--entry type for "martin2016brexit" isn't style-file defined
---line 848 of file unifying.bib
-Warning--entry type for "collins2016trump" isn't style-file defined
---line 857 of file unifying.bib
 Warning--entry type for "thoughts_on_market" isn't style-file defined
---line 899 of file unifying.bib
-Warning--I didn't find a database entry for "The_Guardian"
-Warning--I didn't find a database entry for "Morales_Valentini_Penny_2016"
+--line 911 of file unifying.bib
 Warning--empty journal in andersen2008realized
 Warning--empty journal in bartha2013analogy
 Warning--empty journal in castle2011forecasting
 Warning--empty journal in guerron2017macroeconomic
 Warning--empty journal in hendry1994theory
 Warning--empty journal in ryan2015package
-You've used 33 entries,
+You've used 26 entries,
             2773 wiz_defined-function locations,
-            787 strings with 10235 characters,
-and the built_in function-call counts, 12895 in all, are:
-= -- 1145
-> -- 651
-< -- 27
-+ -- 226
-- -- 192
-* -- 917
-:= -- 1995
-add.period$ -- 106
-call.type$ -- 33
-change.case$ -- 159
-chr.to.int$ -- 32
-cite$ -- 72
-duplicate$ -- 630
-empty$ -- 1144
-format.name$ -- 253
-if$ -- 2702
+            741 strings with 8797 characters,
+and the built_in function-call counts, 10712 in all, are:
+= -- 943
+> -- 590
+< -- 19
++ -- 201
+- -- 174
+* -- 806
+:= -- 1665
+add.period$ -- 81
+call.type$ -- 26
+change.case$ -- 132
+chr.to.int$ -- 25
+cite$ -- 58
+duplicate$ -- 521
+empty$ -- 910
+format.name$ -- 226
+if$ -- 2231
 int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 29
-newline$ -- 179
-num.names$ -- 132
-pop$ -- 367
+missing$ -- 28
+newline$ -- 140
+num.names$ -- 104
+pop$ -- 289
 preamble$ -- 1
-purify$ -- 130
+purify$ -- 110
 quote$ -- 0
-skip$ -- 492
+skip$ -- 400
 stack$ -- 0
-substring$ -- 342
-swap$ -- 41
+substring$ -- 294
+swap$ -- 33
 text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 343
+type$ -- 266
 warning$ -- 6
-while$ -- 123
+while$ -- 100
 width$ -- 0
-write$ -- 422
-(There were 14 warnings)
+write$ -- 329
+(There were 7 warnings)
