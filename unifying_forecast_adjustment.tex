@@ -704,12 +704,12 @@ In the autumn of 2008, as Great Financial Crisis (GFC) gathered steam, the US Fe
 
   \item \textbf{Covariate Choice} We choose covariates that could plausibly satisfy the model assumptions spelled out earlier, that is, risk-related and macroeconomic covariates that could plausibly be weighted and summed in a shock distribution.  We thus choose from four sets of covariates:
   
-  daily changes
-  VIX,IRX,XAU
-
-  levels - VIX
-  volume - SPY
-  a credit related variable available monthly BAA AAA
+  \begin{itemize}
+  \item The most recent daily changes in VIX, IRX (the 13-week Treasury Bill rate), XAU (the spot price of an ounce of gold bullion)
+  \item The most recent closing level of the VIX
+  \item The change in the volume SPY on the most recent trading day
+  \item The credit spread between AAA-debt bonds and BAA-rated debt
+  \end{itemize}
 
   \item \textbf{Donor pool construction} We choose the rates hikes 
   \item \textbf{Choice of estimator for volatility} We use the sum of squared five-minute log returns of SPY on December 18th, 2018, otherwise known as the Realized Volatility (RV) estimator of volatility \citep{andersen2008realized}, as our proxy.
@@ -767,78 +767,7 @@ Now consider a practitioner in need of a conditional forecast for $T_{1}^{*}+h, 
   \item Here we have taken $\lambda$ to be fixed and shared across donors.  If $\lambda$ is a random, however, then estimating it becomes harder.
 \end{enumerate}
 
-\begin{figure}[!h]
-  \centering
-  \textbf{Covariate Diversity and Mean}\par\medskip
-\begin{subfigure}{.44\linewidth} 
-  \centering
-    \includegraphics[scale = .42]{simulation_plots/Nov27_160341_2024_mudelta_sigmax.png}
-    \caption{Fixed values: $\sigma_{\epsilon} = 1$}\label{fig:sim_1}
-\end{subfigure}\hspace{12mm} %
-\begin{subfigure}{.44\linewidth} 
-  \centering
-    \includegraphics[scale=.42]{simulation_plots/Nov27_160342_2024_mudelta_sigmax.png}
-    \caption{Fixed values: $\sigma{\epsilon}=2$}\label{fig:sim_2}
-\end{subfigure}
 
-\begin{subfigure}{.44\linewidth} 
-  \centering
-    \includegraphics[scale=.42]{simulation_plots/Nov27_160343_2024_mudelta_sigmax.png}
-    \caption{Fixed values: $\sigma_{\epsilon}=3$}\label{fig:sim_3}
-\end{subfigure}
-
-    \caption{In the progression from \ref{fig:sim_1} to \ref{fig:sim_2} to \ref{fig:sim_3}, we see that increasing $\mu_{\delta}$ leads to improved performance of the adjusted forecast, and this effect is intensified as $\mu_{v}$ increases.  However, it is not consistently true that an increasing noise undermines the performance of the adjusted forecast.  Rather, that phenomenon requires both large quantites of $\mu_{\delta}$ and $\mu_{v}$.}
-    \label{fig:set_of_three_one}
-  \end{figure}
-
-  \begin{figure}[!h]
-    \centering
-    \textbf{Idiosyncratic Noise and Covariate Diversity}\par\medskip
-  \begin{subfigure}{.44\linewidth} 
-    \centering
-      \includegraphics[scale = .42]{simulation_plots/Nov27_160344_2024_sigmax_sigmaepsilon.png}
-      \caption{Fixed values: $\mu_{\delta}=.001$}\label{fig:sim_4}
-  \end{subfigure}\hspace{12mm} %
-  \begin{subfigure}{.44\linewidth} 
-    \centering
-      \includegraphics[scale=.42]{simulation_plots/Nov27_160345_2024_sigmax_sigmaepsilon.png}
-      \caption{Fixed values: $\mu_{\delta}=.01$}\label{fig:sim_5}
-  \end{subfigure}
-  
-  \begin{subfigure}{.44\linewidth} 
-    \centering
-      \includegraphics[scale=.42]{simulation_plots/Nov27_160346_2024_sigmax_sigmaepsilon.png}
-      \caption{Fixed values: $\mu_{\delta}=.05$}\label{fig:sim_6}
-  \end{subfigure}
-  
-      \caption{In the progression from \ref{fig:sim_4} to \ref{fig:sim_5} to \ref{fig:sim_6}, we see that increasing $\mu_{\delta}$ leads to improved performance of the adjusted forecast, and this effect is intensified as $\mu_{v}$ increases.  However, it is not consistently true that an increasing noise undermines the performance of the adjusted forecast.  Rather, that phenomenon requires both large quantites of $\mu_{\delta}$ and $\mu_{v}$.}
-      \label{fig:set_of_three_two}
-    \end{figure}
-
-    \begin{figure}[!h]
-      \centering
-      \textbf{idiosyncratic Noise and Covariate Mean}\par\medskip
-    \begin{subfigure}{.44\linewidth} 
-      \centering
-        \includegraphics[scale = .42]{simulation_plots/Nov27_160346_2024_mudelta_sigmaepsilon.png}
-        \caption{Fixed values: $\sigma_{X} =.01$}\label{fig:sim_7}
-    \end{subfigure}\hspace{12mm} %
-    \begin{subfigure}{.44\linewidth} 
-      \centering
-        \includegraphics[scale=.42]{simulation_plots/Nov27_160347_2024_mudelta_sigmaepsilon.png}
-        \caption{Fixed values: $\mu_{v} = 1, \sigma_{v} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_8}
-    \end{subfigure}
-    
-    \begin{subfigure}{.44\linewidth} 
-      \centering
-        \includegraphics[scale=.42]{simulation_plots/Nov27_160348_2024_mudelta_sigmaepsilon.png}
-        \caption{Fixed values: $\mu_{v} = 2, \sigma_{v} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_9}
-    \end{subfigure}
-    
-        \caption{In the progression from \ref{fig:sim_7} to \ref{fig:sim_8} to \ref{fig:sim_9}, we see that increasing $\mu_{\delta}$ leads to improved performance of the adjusted forecast, and this effect is intensified as $\mu_{v}$ increases.  However, it is not consistently true that an increasing noise undermines the performance of the adjusted forecast.  Rather, that phenomenon requires both large quantities of $\mu_{\delta}$ and $\mu_{v}$.}
-        \label{fig:set_of_three_three}
-      \end{figure}
-\clearpage 
 \subsubsection{Simulation Study}
 
 
@@ -857,7 +786,78 @@ Now consider a practitioner in need of a conditional forecast for $T_{1}^{*}+h, 
     \end{center}
   \end{figure}
 
-\textbf{What is the Model Confidence Set (MCS)?}
+  \begin{figure}[!h]
+    \centering
+    \textbf{Covariate Diversity and Mean}\par\medskip
+  \begin{subfigure}{.44\linewidth} 
+    \centering
+      \includegraphics[scale = .42]{simulation_plots/Nov27_160341_2024_mudelta_sigmax.png}
+      \caption{Fixed values: $\sigma_{\epsilon} = 1$}\label{fig:sim_1}
+  \end{subfigure}\hspace{12mm} %
+  \begin{subfigure}{.44\linewidth} 
+    \centering
+      \includegraphics[scale=.42]{simulation_plots/Nov27_160342_2024_mudelta_sigmax.png}
+      \caption{Fixed values: $\sigma{\epsilon}=2$}\label{fig:sim_2}
+  \end{subfigure}
+  
+  \begin{subfigure}{.44\linewidth} 
+    \centering
+      \includegraphics[scale=.42]{simulation_plots/Nov27_160343_2024_mudelta_sigmax.png}
+      \caption{Fixed values: $\sigma_{\epsilon}=3$}\label{fig:sim_3}
+  \end{subfigure}
+  
+      \caption{In the progression from \ref{fig:sim_1} to \ref{fig:sim_2} to \ref{fig:sim_3}, we see that increasing $\mu_{\delta}$ leads to improved performance of the adjusted forecast, and this effect is intensified as $\mu_{v}$ increases.  However, it is not consistently true that an increasing noise undermines the performance of the adjusted forecast.  Rather, that phenomenon requires both large quantites of $\mu_{\delta}$ and $\mu_{v}$.}
+      \label{fig:set_of_three_one}
+    \end{figure}
+  
+    \begin{figure}[!h]
+      \centering
+      \textbf{Idiosyncratic Noise and Covariate Diversity}\par\medskip
+    \begin{subfigure}{.44\linewidth} 
+      \centering
+        \includegraphics[scale = .42]{simulation_plots/Nov27_160344_2024_sigmax_sigmaepsilon.png}
+        \caption{Fixed values: $\mu_{\delta}=.001$}\label{fig:sim_4}
+    \end{subfigure}\hspace{12mm} %
+    \begin{subfigure}{.44\linewidth} 
+      \centering
+        \includegraphics[scale=.42]{simulation_plots/Nov27_160345_2024_sigmax_sigmaepsilon.png}
+        \caption{Fixed values: $\mu_{\delta}=.01$}\label{fig:sim_5}
+    \end{subfigure}
+    
+    \begin{subfigure}{.44\linewidth} 
+      \centering
+        \includegraphics[scale=.42]{simulation_plots/Nov27_160346_2024_sigmax_sigmaepsilon.png}
+        \caption{Fixed values: $\mu_{\delta}=.05$}\label{fig:sim_6}
+    \end{subfigure}
+    
+        \caption{In the progression from \ref{fig:sim_4} to \ref{fig:sim_5} to \ref{fig:sim_6}, we see that increasing $\mu_{\delta}$ leads to improved performance of the adjusted forecast, and this effect is intensified as $\mu_{v}$ increases.  However, it is not consistently true that an increasing noise undermines the performance of the adjusted forecast.  Rather, that phenomenon requires both large quantites of $\mu_{\delta}$ and $\mu_{v}$.}
+        \label{fig:set_of_three_two}
+      \end{figure}
+  
+      \begin{figure}[!h]
+        \centering
+        \textbf{idiosyncratic Noise and Covariate Mean}\par\medskip
+      \begin{subfigure}{.44\linewidth} 
+        \centering
+          \includegraphics[scale = .42]{simulation_plots/Nov27_160346_2024_mudelta_sigmaepsilon.png}
+          \caption{Fixed values: $\sigma_{X} =.01$}\label{fig:sim_7}
+      \end{subfigure}\hspace{12mm} %
+      \begin{subfigure}{.44\linewidth} 
+        \centering
+          \includegraphics[scale=.42]{simulation_plots/Nov27_160347_2024_mudelta_sigmaepsilon.png}
+          \caption{Fixed values: $\mu_{v} = 1, \sigma_{v} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_8}
+      \end{subfigure}
+      
+      \begin{subfigure}{.44\linewidth} 
+        \centering
+          \includegraphics[scale=.42]{simulation_plots/Nov27_160348_2024_mudelta_sigmaepsilon.png}
+          \caption{Fixed values: $\mu_{v} = 2, \sigma_{v} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_9}
+      \end{subfigure}
+      
+          \caption{In the progression from \ref{fig:sim_7} to \ref{fig:sim_8} to \ref{fig:sim_9}, we see that increasing $\mu_{\delta}$ leads to improved performance of the adjusted forecast, and this effect is intensified as $\mu_{v}$ increases.  However, it is not consistently true that an increasing noise undermines the performance of the adjusted forecast.  Rather, that phenomenon requires both large quantities of $\mu_{\delta}$ and $\mu_{v}$.}
+          \label{fig:set_of_three_three}
+        \end{figure}
+  \clearpage 
 
 \section{Discussion}
 
