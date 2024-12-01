@@ -711,9 +711,10 @@ In the autumn of 2008, as Great Financial Crisis (GFC) gathered steam, the US Fe
   \item The credit spread between AAA-debt bonds and BAA-rated debt
   \end{itemize}
 
-  \item \textbf{Donor pool construction} We choose the rates hikes 
+  \item \textbf{Donor pool construction} We choose as donors the eight rates hikes occurring in the span 2015 to 2018 (inclusive), excepting our time series under study.
+
   \item \textbf{Choice of estimator for volatility} We use the sum of squared five-minute log returns of SPY on December 18th, 2018, otherwise known as the Realized Volatility (RV) estimator of volatility \citep{andersen2008realized}, as our proxy.
-  \item \textbf{Data Sources} All daily market data is provided via the YahooFinance API available in the quantmod package in R \citep{ryan2015package} and the R package highfrequency \cite{highfrequency}.  The realized volatility estimates of SPY is provided exclusively by the highfrequency R package. 
+  \item \textbf{Data Sources} All daily market data is provided via the YahooFinance API available in the quantmod package in R \citep{ryan2015package} and the R package highfrequency \cite{highfrequency}.  The realized volatility estimates of SPY is provided exclusively by the highfrequency R package.  The credit spread is calculated using data Federal Reserve Economic Data (FRED) \citep{boysel2021package}.
 \end{enumerate} 
 
 \begin{figure}[h!]

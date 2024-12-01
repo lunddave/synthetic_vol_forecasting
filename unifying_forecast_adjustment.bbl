@@ -1,4 +1,4 @@
-\begin{thebibliography}{26}
+\begin{thebibliography}{27}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -35,6 +35,10 @@ Kris Boudt, Onno Kleen, and Emil Sj{\o}rup.
 \newblock Analyzing intraday financial data in r: The highfrequency package.
 \newblock \emph{Journal of Statistical Software}, 104\penalty0 (8):\penalty0 1--36, 2022.
 \newblock \doi{10.18637/jss.v104.i08}.
+
+\bibitem[Boysel and Vaughan(2021)]{boysel2021package}
+Sam Boysel and Davis Vaughan.
+\newblock Package ‘fredr’, 2021.
 
 \bibitem[Castle et~al.(2011)Castle, Fawcett, and Hendry]{castle2011forecasting}
 Jennifer~L Castle, Nicholas~WP Fawcett, and David~F Hendry.
