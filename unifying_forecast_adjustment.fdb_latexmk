@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex unifying_forecast_adjustment"] 1733057928.52328 "unifying_forecast_adjustment.aux" "unifying_forecast_adjustment.bbl" "unifying_forecast_adjustment" 1733057931.6251 0
+["bibtex unifying_forecast_adjustment"] 1733058063.39728 "unifying_forecast_adjustment.aux" "unifying_forecast_adjustment.bbl" "unifying_forecast_adjustment" 1733112685.84008 0
   "./unifying.bib" 1733057897.1868 27365 b48addb5d5a4213a712126165a171785 ""
   "/usr/local/texlive/2024/texmf-dist/bibtex/bst/natbib/plainnat.bst" 1233624470 26816 ffe5423d2019860bad9f54bc402fac15 ""
-  "unifying_forecast_adjustment.aux" 1733057931.37993 17637 b95ee61b2676dbadd45a68d2c4474716 "pdflatex"
+  "unifying_forecast_adjustment.aux" 1733112685.59117 17637 e3617e0f56f584eeb4c5bfc8375c5419 "pdflatex"
   (generated)
   "unifying_forecast_adjustment.bbl"
   "unifying_forecast_adjustment.blg"
   (rewritten before read)
-["pdflatex"] 1733057928.60775 "/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/unifying_forecast_adjustment.tex" "unifying_forecast_adjustment.pdf" "unifying_forecast_adjustment" 1733057931.62523 0
-  "/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/unifying_forecast_adjustment.tex" 1733057925.10016 90698 09a982cb39dc4381c2176d7285a53f08 ""
+["pdflatex"] 1733112682.72007 "/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/unifying_forecast_adjustment.tex" "unifying_forecast_adjustment.pdf" "unifying_forecast_adjustment" 1733112685.84021 0
+  "/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/unifying_forecast_adjustment.tex" 1733112682.45976 91309 7b72c443d2557d6437d6a7c15702cdcb ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/jknappen/ec/tcrm0600.tfm" 1136768653 1536 12e8c510d3e158fdd0e9a42e75118bd9 ""
@@ -277,10 +277,10 @@
   "simulation_plots/Nov27_160347_2024_mudelta_sigmaepsilon.png" 1732741427.99194 138080 a3d9ddd89db8627157a480e5fd82ea18 ""
   "simulation_plots/Nov27_160348_2024_mudelta_sigmaepsilon.png" 1732741429.06484 129778 7967c1074757171434ddbdd158f4bf29 ""
   "simulation_plots/motivating_piece_convex_combination.png" 1722913159.43774 67448 e7028f59e3bbcdb7942c1055f976195a ""
-  "unifying_forecast_adjustment.aux" 1733057931.37993 17637 b95ee61b2676dbadd45a68d2c4474716 "pdflatex"
-  "unifying_forecast_adjustment.bbl" 1733057928.60501 6647 bc884164955a65ada432e359b591b7e8 "bibtex unifying_forecast_adjustment"
-  "unifying_forecast_adjustment.out" 1733057931.38095 6838 190c3de02a6199175a13ee5c48eec9d4 "pdflatex"
-  "unifying_forecast_adjustment.tex" 1733057925.10016 90698 09a982cb39dc4381c2176d7285a53f08 ""
+  "unifying_forecast_adjustment.aux" 1733112685.59117 17637 e3617e0f56f584eeb4c5bfc8375c5419 "pdflatex"
+  "unifying_forecast_adjustment.bbl" 1733058063.47573 6647 bc884164955a65ada432e359b591b7e8 "bibtex unifying_forecast_adjustment"
+  "unifying_forecast_adjustment.out" 1733112685.59207 6838 190c3de02a6199175a13ee5c48eec9d4 "pdflatex"
+  "unifying_forecast_adjustment.tex" 1733112682.45976 91309 7b72c443d2557d6437d6a7c15702cdcb ""
   (generated)
   "unifying_forecast_adjustment.aux"
   "unifying_forecast_adjustment.log"

@@ -711,7 +711,7 @@ In the autumn of 2008, as Great Financial Crisis (GFC) gathered steam, the US Fe
   \item The credit spread between AAA-debt bonds and BAA-rated debt
   \end{itemize}
 
-  \item \textbf{Donor pool construction} We choose as donors the eight rates hikes occurring in the span 2015 to 2018 (inclusive), excepting our time series under study.
+  \item \textbf{Donor pool construction} We choose as donors the eight rates hikes occurring in the span 2015 to 2018 (inclusive), excepting our time series under study.  We should note here that in each of these eight donors, the rate hike was a fully observed event, whereas in the time series under study, we proceed under the assumption that a rate hike will occur.  This represents a more refined and realistic application of the method presented herein, where the shock in the time series under study has not yet occurred, but we nevertheless proceed under the assumption that it will.
 
   \item \textbf{Choice of estimator for volatility} We use the sum of squared five-minute log returns of SPY on December 18th, 2018, otherwise known as the Realized Volatility (RV) estimator of volatility \citep{andersen2008realized}, as our proxy.
   \item \textbf{Data Sources} All daily market data is provided via the YahooFinance API available in the quantmod package in R \citep{ryan2015package} and the R package highfrequency \cite{highfrequency}.  The realized volatility estimates of SPY is provided exclusively by the highfrequency R package.  The credit spread is calculated using data Federal Reserve Economic Data (FRED) \citep{boysel2021package}.
@@ -758,7 +758,7 @@ Such a specification captures the dynamics of a shock that is realized over an i
 \end{align}
 (\ref{plugin}) is, to put it lightly, a complicated estimator with potentially dubious properties.  To begin, (\ref{plugin}) is defined only when the term inside the logarithm is positive for each $t\geq T^{*}_{i}+2$.  We could get around this by dropping any summands for which that term is nonpositive and instead calculate an average over only the remaining subset of summands.  Additionally, variance estimates for $\hat\psi_{i,plugin}$ may require resampling methods or the delta method.  Estimation error from $\hat\alpha$ and $\hat\eta$ would naturally propagate to $\hat\psi_{i,plugin}$, and the expected estimation error would depend upon the size of the pre-shock sample.
 
-\cite{castle2011forecasting} report that MSFE is lower by using intercept correction instead of non-linear methods to estimate $\psi$.
+\cite{castle2011forecasting} report that MSFE is lower by using intercept correction instead of non-linear methods to estimate $\psi$.  In our simulations in the next section, we are going to employ non-linear estimation.
 
 Now consider a practitioner in need of a conditional forecast for $T_{1}^{*}+h, h\geq 1$.  Could aggregating the prediction residuals $r_{i,T_{i}^{*}+h} = y_{T_{i}^{*}+h}-\hat y_{i, T_{i}^{*}+h}, h\geq 1$ lead us to a superior predictions in the time series under study?\\
 
