@@ -781,7 +781,6 @@ Now consider a practitioner in need of a conditional forecast for $T_{1}^{*}+h, 
 
 \subsubsection{Simulation Study}
 
-
 \begin{figure}[h!]
   \begin{center}
     \begin{tikzpicture}
@@ -957,12 +956,14 @@ In particular, can we relax this assumption and proceed with weaker assumptions 
   \end{proof-of-proposition}
 
   \begin{proof-of-proposition}[\ref{ARIMA_aggregated_alpha}]
+    Here we suppress time-indexation for each of exposition.
     \begin{align}
       \x_{1} &= \sum^{n+1}_{i=2}\weight_{i}\x_{i} \tag{by an assumption of the proposition}\\
      \Longrightarrow \lambda^{T}\x_{1} &= \lambda^{T}\sum^{n+1}_{i=2}\weight_{i}\x_{i}  = \sum^{n+1}_{i=2}\weight_{i}\lambda^{T}\x_{i}\tag{by left-multiplication by $\lambda^{T}$}\\
-      \Longrightarrow\lambda^{T}\x_{1} &=\sum^{n+1}_{i=2}\pi_{i}(\omega_{i}^{*} - \mu_{\omega^{*}} - u_{i,t})\tag{by substitution and definition of $\omega^{*}_{i}$}\\
-      \Longrightarrow\mu_{\omega^{*}} + \lambda^{T}\x_{1} + \sum^{n+1}_{i=2}\pi_{i}u_{i,t} &= \sum^{n+1}_{i=2}\pi_{i}\omega_{i}^{*} \tag{by moving  terms to the left-hand side}
+      \Longrightarrow\lambda^{T}\x_{1} &=\sum^{n+1}_{i=2}\pi_{i}\alpha_{i}\tag{by substitution and definition of $\alpha_{i}$}\\
+      \Longrightarrow\alpha_{1} &=\sum^{n+1}_{i=2}\pi_{i}\alpha_{i} \tag{by the definition of $\alpha_{1}$}
       \end{align} 
+      If, on the right-hand side, we replace the $\alpha_{i}$ with $\hat\alpha_{i}$, then it will converge in probability to the expression on the right-hand side, by a simple application of Slutsky.  Hence, $\hat\alpha_{1}$ is a consistent estimator.
   \end{proof-of-proposition}
 
   \begin{proof-of-proposition}[\ref{ARIMA_conv_distribution}]
