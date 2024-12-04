@@ -666,7 +666,6 @@ The Heterogeneous Autoregressive (HAR) model for realized volatility \citep{cors
 \begin{align*}
 RV_{t} = \beta_{0} + \beta_{\text{1-day}}RV_{t-1} + \beta_{\text{5-day}}\overline{\{RV_{t-1},...,RV_{t-5}\}}+\beta_{\text{22-day}}\overline{\{RV_{t-1},...,RV_{t-22}\}} + \epsilon_{t}
 \end{align*}
-
 Recently, \cite{bodilsen2023exploiting} find that overnight news improves the predictive ability of HAR regressions with a logarithmic transformation on the realized volatility estimate.  The authors distinguish between earnings-related and non-earnings-related news occurring after hours, finding that predictive performance is improved for one-day-ahead forecasts but no more.  Consider now how HAR fits into Specification (\ref{core_specification}):
 
 \begin{align}
@@ -725,7 +724,7 @@ In the autumn of 2008, as Great Financial Crisis (GFC) gathered steam, the US Fe
   \item \textbf{Data Sources} All daily market data is provided via the YahooFinance API available in the quantmod package in R \citep{ryan2015package} and the R package highfrequency \cite{highfrequency}.  The realized volatility estimates of SPY is provided exclusively by the highfrequency R package.  The credit spread is calculated using data Federal Reserve Economic Data (FRED) \citep{boysel2021package}.
 \end{enumerate} 
 
-In Figure \ref{fig:HAR_plot}, we observe that our distance-based weighting procedure identifies the December 2015 and March 2018 hikes as the only two relevant donors with respect to the December 2018 meeting.  The fixed effect estimates in the middle panel range from large and positive to modestly negative, in contrast to the estimates in \ref{fig:motivating_piece_convex_combination}.  The GARCH model, under the implementation in the garchx package \text{check this} bounds estimates below by zero.  In the panel on the right, we observe the unadjusted and adjusted predictions, as well as our estimate of the ground truth.  Although the adjusted prediction does miss the volatility spike by a large margin, it appears that this is nearly the best the assembled donors could do, given the donor pool we have to work with.  In that sense, this is a prediction task where the thing-to-predict is far outside the support of the data.
+In Figure \ref{fig:HAR_plot}, we observe that our distance-based weighting procedure identifies the December 2015 and March 2018 hikes as the only two relevant donors with respect to the December 2018 meeting.  The fixed effect estimates in the middle panel range from large and positive to modestly negative, in contrast to the estimates in \ref{fig:motivating_piece_convex_combination}.  The GARCH model, under the implementation in the garchx package \text{check this} bounds estimates below by zero.  In the panel on the right, we observe the unadjusted and adjusted predictions, as well as our estimate of the ground truth.  Although the adjusted prediction does miss the volatility spike by a large margin, it appears that this is nearly the best the assembled donors could do, given the donor pool we have to work with.  In that sense, this is a prediction task where the time series under study has covariates far outside the support of the donor data, which poses a serious and relevant challenge for our method, which cannot extrapolate.
 
 \begin{figure}[h!]
   \begin{center}
@@ -763,7 +762,7 @@ In \cite{castle2011forecasting}, the authors discuss intercept shifts that decay
 y_{i,t} = \alpha_{i} + \eta[1 - e^{-\psi[t-T_{i}^{*}]}]\textbf{1}_{t\geq T_{i}^{*}+1} + \epsilon_{i,t}, \epsilon_{i,t} \simiid [0,\sigma^{2}] \text{ .}\label{decay_model}
 \end{align}
 
-Such a specification captures the dynamics of a shock that is realized over an infinite horizon but which can be practically approached as a permanent shock.  This poses a novel case for our method, in that the model is parametric and yet without estimability of all shock parameters, aggregation may not be straightforward or easy.  Consider, for any $i$, $2 \leq i \leq n+1$, the estimates $\hat\alpha_{i,OLS}$  obtained via regression on the first $T_{i}^{*}+1$ points as well as $\hat\eta_{OLS}$ obtained by estimating a fixed effect at $t=T_{i}$.  Consider also a subsequent estimator, an estimator for $\psi$, that is derivable from inverting the model specification and plugging in the estimates  $\hat\alpha_{i,OLS},\hat\eta_{OLS}$:
+Such a specification captures the dynamics of a shock that is realized over an infinite horizon but which can be practically approached as a permanent shock.  This poses a novel case for our method, in that the model is parametric, and yet without estimability of all shock parameters, aggregation may not be straightforward or easy.  Consider, for any $i$, $2 \leq i \leq n+1$, the estimates $\hat\alpha_{i,OLS}$  obtained via regression on the first $T_{i}^{*}+1$ points as well as $\hat\eta_{OLS}$ obtained by estimating a fixed effect at $t=T_{i}$.  Consider also a subsequent estimator, an estimator for $\psi$, that is derivable from inverting the model specification and plugging in the estimates  $\hat\alpha_{i,OLS},\hat\eta_{OLS}$:
 
 \begin{align}
 \hat\psi_{i,plugin} = \frac{1}{T_{i}-T_{i}^{*}}\sum^{T_{i}}_{t\geq T_{i}^{*}+1}-log{\big[\big(1-\frac{y_{i,t}-\hat\alpha_{i}}{\hat\eta}\big)\big]} / [t-T_{i}^{*}]\text{ .}\label{plugin}
@@ -779,7 +778,6 @@ Now consider a practitioner in need of a conditional forecast for $T_{1}^{*}+h, 
   \item We can estimate $\lambda$ using a cross-sectional regression, and that may be better estimator than doing it one-by-one in each donor.
   \item Here we have taken $\lambda$ to be fixed and shared across donors.  If $\lambda$ is a random, however, then estimating it becomes harder.
 \end{enumerate}
-
 
 \subsubsection{Simulation Study}
 
