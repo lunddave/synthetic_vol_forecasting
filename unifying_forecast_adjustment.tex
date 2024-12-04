@@ -677,6 +677,14 @@ Recently, \cite{bodilsen2023exploiting} find that overnight news improves the pr
   \end{array}
   \end{align}
 
+  with time-invariant error structure
+  \begin{align*}
+    \epsilon_{i,t} &\simiid \mc{F}_{\epsilon} \text{ with}  \; \mrm{E}_{\mc{F}_{\epsilon}}(\epsilon) = 0, \mrm{Var}_{\mc{F}_{\epsilon}}(\epsilon)  = 1,  \\
+    \epsilon^{*}_{i,t} &\simiid \mc{F}_{\epsilon^{*}} \text{ with}  \; \mrm{E}_{\mc{F}_{\epsilon^{*}}}(\epsilon) = \mu_{\epsilon^{*}}, \mrm{Var}_{\mc{F}_{\epsilon^{*}}}(\epsilon^{*})  = \sigma^2_{\epsilon^{*}},  \\
+    u_{i,t} & \simiid  \mc{F}_{u} \text{ with}  \; \mrm{Var}_{\mc{F}_{u}}(u) = \sigma^2_{u},\\
+    \epsilon_{i,t} & \indep  \epsilon^{*}_{i,t}  \indep u_{i,t}.
+    \end{align*}
+
 We should emphasize that the regressions under discussion here are predictive regressions, with no suggestion that the model is fundamentally driven by the linear specification that is estimated.  However, if it were, we would especially desire answers to the following
 
 \begin{enumerate}
@@ -695,8 +703,9 @@ We should emphasize that the regressions under discussion here are predictive re
 
 \subsubsection{A Real Data Application of Shock-Adjusted HAR Forecasting}
 
-In the autumn of 2008, as Great Financial Crisis (GFC) gathered steam, the US Federal Reserve reduced its overnight lending rate to banks to between 0 and 25 basis \citep{GFC}.  Though the US economy (and the globe as a whole) returned to growth by 2009, the US Fed kept interests rates there for more than half a decade.  Only in 2015 did rates begin their gradual and well-telegraphed ascent.  Between 2015 and 2018, the Fed would raise rates at nine meetings, culminating in the December 2018 hike.  In this real data example, we use the eight hikes preceeding the last as donors in order to predict the volatility induced December 2018 rate hike.
+In the autumn of 2008, as Great Financial Crisis (GFC) gathered steam, the US Federal Reserve reduced its overnight lending rate to banks to between 0 and 25 basis points \citep{GFC}.  Though the US economy (and the globe as a whole) returned to growth by 2009, the US Fed kept interest rates there for more than half a decade.  Only in 2015 did rates begin their gradual and well-telegraphed ascent.  Between 2015 and 2018, the Fed would raise rates at nine meetings, culminating in the December 2018 hike.  In this real data example, we use the eight hikes preceeding the last as donors in order to predict the volatility induced December 2018 rate hike.
 
+https://www.bankrate.com/banking/federal-reserve/history-of-federal-funds-rate/#2011
 
 \begin{enumerate}
   \item \textbf{Model choice}  We proceed with a log-HAR model, that is, a HAR model with the realized volatility under the natural log transformation.  The logarithmic transformation for RV was suggested as early as \cite{corsi2009simple} and is justified by the variance-stablizing effect of the log.
@@ -862,7 +871,7 @@ Now consider a practitioner in need of a conditional forecast for $T_{1}^{*}+h, 
 
 \section{Discussion}
 
-The forecast horizon --- does it matter?  If so, how so?  \cite{lin2021minimizing} has a one-period horizon.  \cite{clements1998forecasting}{p. 203} discuss how long to keep the forecast adjustment in place.  For a corrected ``slope parameter'', the effect of $h$ is not so clear.\\
+The forecast horizon --- does it matter?  If so, how so?  \cite{lin2021minimizing} has a one-period horizon.  \cite[p. 203]{clements1998forecasting} discuss how long to keep the forecast adjustment in place.  For a corrected ``slope parameter'', the effect of $h$ is not so clear.\\
 
 \subsection{Asking questions about the covariate vector and conditional shock distribution}
 We pose two questions.  
