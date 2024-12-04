@@ -1,4 +1,4 @@
-\begin{thebibliography}{27}
+\begin{thebibliography}{28}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -94,6 +94,12 @@ Dean~D Croushore.
 Claudia Foroni, Massimiliano Marcellino, and Dalibor Stevanovic.
 \newblock Forecasting the covid-19 recession and recovery: Lessons from the financial crisis.
 \newblock \emph{International Journal of Forecasting}, 38\penalty0 (2):\penalty0 596--612, 2022.
+
+\bibitem[Foster(2024)]{fedfunds}
+Sarah Foster.
+\newblock Fed’s interest rate history: The federal funds rate from 1981 to the present, 2024.
+\newblock URL \url{https://www.bankrate.com/banking/federal-reserve/history-of-federal-funds-rate/}.
+\newblock Published: 11-07-2024.
 
 \bibitem[Francq and Zakoian(2019)]{francq2019garch}
 Christian Francq and Jean-Michel Zakoian.

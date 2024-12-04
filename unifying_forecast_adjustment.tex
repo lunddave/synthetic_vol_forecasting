@@ -701,11 +701,9 @@ We should emphasize that the regressions under discussion here are predictive re
 
 \end{enumerate}
 
-\subsubsection{A Real Data Application of Shock-Adjusted HAR Forecasting}
+\subsubsection{Real Data Application of Shock-Adjusted HAR Forecasting}
 
-In the autumn of 2008, as Great Financial Crisis (GFC) gathered steam, the US Federal Reserve reduced its overnight lending rate to banks to between 0 and 25 basis points \citep{GFC}.  Though the US economy (and the globe as a whole) returned to growth by 2009, the US Fed kept interest rates there for more than half a decade.  Only in 2015 did rates begin their gradual and well-telegraphed ascent.  Between 2015 and 2018, the Fed would raise rates at nine meetings, culminating in the December 2018 hike.  In this real data example, we use the eight hikes preceeding the last as donors in order to predict the volatility induced December 2018 rate hike.
-
-https://www.bankrate.com/banking/federal-reserve/history-of-federal-funds-rate/#2011
+In the autumn of 2008, as Great Financial Crisis (GFC) gathered steam, the US Federal Reserve reduced its overnight lending rate to banks to between 0 and 25 basis points \citep{GFC}.  Though the US economy (and the globe as a whole) returned to growth by 2009, the US Fed kept interest rates there for more than half a decade.  Only in 2015 did rates begin their gradual and well-telegraphed ascent.  Between 2015 and 2018, the Fed would raise rates at nine meetings, culminating in the December 2018 hike \citep{fedfunds}.  In this real data example, we use the eight hikes preceding December 2018 as donors in order to predict the volatility induced December 2018 rate hike.
 
 \begin{enumerate}
   \item \textbf{Model choice}  We proceed with a log-HAR model, that is, a HAR model with the realized volatility under the natural log transformation.  The logarithmic transformation for RV was suggested as early as \cite{corsi2009simple} and is justified by the variance-stablizing effect of the log.
@@ -726,13 +724,17 @@ https://www.bankrate.com/banking/federal-reserve/history-of-federal-funds-rate/#
   \item \textbf{Data Sources} All daily market data is provided via the YahooFinance API available in the quantmod package in R \citep{ryan2015package} and the R package highfrequency \cite{highfrequency}.  The realized volatility estimates of SPY is provided exclusively by the highfrequency R package.  The credit spread is calculated using data Federal Reserve Economic Data (FRED) \citep{boysel2021package}.
 \end{enumerate} 
 
+In Figure \ref{fig:HAR_plot}, we observe that our distance-based weighting procedure identifies the December 2015 and March 2018 hikes as the only two relevant donors with respect to the December 2018 meeting.  The fixed effect estimates in the middle panel range from large and positive to modestly negative, in contrast to the estimates in \ref{fig:motivating_piece_convex_combination}.  The GARCH model, under the implementation in the garchx package \text{check this} bounds estimates below by zero.  In the panel on the right, we observe the unadjusted and adjusted predictions, as well as our estimate of the ground truth.  Although the adjusted prediction does miss the volatility spike by a large margin, it appears that this is nearly the best the assembled donors could do, given the donor pool we have to work with.  In that sense, this is a prediction task where the thing-to-predict is far outside the support of the data.
+
 \begin{figure}[h!]
   \begin{center}
     \includegraphics[scale=.62]{real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png}
-    \caption{Over the course of the 2010s, the US FOMC began a rate-hiking cycle.  Left pane: weights of the donor pool of FOMC meetings; right-pane: fixed effect estimates; right pane: the unadjusted forecast, adjusted forecast, and actual forecast}
-    \label{fig:six_plots}
+    \caption{Over the course of the 2010s, the US FOMC began a rate-hiking cycle.  Left pane: weights of the donor pool of FOMC meetings; right-pane: fixed effect estimates; right pane: the unadjusted forecast, adjusted forecast, and the estimate of the volatility provided to us by realized volatility.}
+    \label{fig:HAR_plot}
     \end{center}
   \end{figure}
+
+
 
 % \subsection{VAR}
 % Many time series, especially macroeconomic time series, naturally arise as constituents of groups of dependent variables that interact across time.
