@@ -508,7 +508,7 @@ Notice that we did not say \textit{parametric} specification.  The reason for th
 
 \item \textbf{Common Model Family on the Shocks} The method requires that residuals be governed by a model that is shared across all units.  This ensures that in the estimation of news shocks in the donor pool, the estimators will enjoy similar properties that will produce a good aggregated shock estimator.  This condition is satisfied by the parametric shock distributions found in \cite{lin2021minimizing,lundquist2024volatility}.
 
-\item \textbf{Reliable and Shared Model-Fitting Procedure} There must exist a reliable model-fitting procedure for the $n+1$ units, one that will allow the assumption of a shared family for the residuals to be reflected in the residuals.  Here, reliable could mean any number of several things.  It means that the estimation procedure must produce a credible description of each data-generating process or a good prediction function, so as to aid in estimating residual in each unit.  Reliable may mean the estimators have low variance, and it may also mean that the estimation procedure is robust, to some degree, to misspecification bias.  However, in theory, the lack of these properties is not harmful to the method unless the lack of these properties harms the correction term's estimation.  When we use fixed effect estimation (under ordinary assumptions), we can construct confidence intervals for the fixed effect estimates, and then assuming independence, we can get confidence intervals for convex combinations of fixed effect estimates.
+\item \textbf{Reliable and Shared Model-Fitting Procedure} There must exist a reliable model-fitting procedure for the $n+1$ units, one that will allow the assumption of a shared family for the residuals to be reflected in the residuals.  Here, reliable could mean any number of several things.  It means that the estimation procedure must produce a credible description of each data-generating process or a good prediction function, so as to aid in estimating residual(s) in each unit.  Reliable may mean the estimators have low variance, and it may also mean that the estimation procedure is robust, to some degree, to misspecification bias.  However, in theory, the lack of these properties is not harmful to the method unless the lack of these properties harms the correction term's estimation.  When we use fixed effect estimation (under ordinary assumptions), we can construct confidence intervals for the fixed effect estimates, and then assuming independence, we can get confidence intervals for convex combinations of fixed effect estimates.
 
 \item \textbf{Reliable Correction Term Estimation} Fourth, there must exist a reliable procedure for modeling and estimating the correction term in each unit.  Again, here we care about low variance as well as robustness to misspecification.  The very simplest correction term is the residual itself.  Alternatively, the correction term could be an inner product that depends upon external covariates, as is found in \cite{lin2021minimizing,lundquist2024volatility}.
 
@@ -520,13 +520,14 @@ This might not always be straightforward.  Some models like GARCH, for example, 
 
 \subsection{The Method of Multiple Shocks}
 
-Sometimes, we might have reason to believe that a forecast requires adjustment due to not one but multiple shocks.  \cite{lin2021minimizing} explored a ``dual'' shock in their analysis of oil company equity price shocks due to the March 2020 COVID lockdowns.  \\
+Sometimes, we might have reason to believe that a forecast requires adjustment due to not one but multiple shocks.  \cite{lin2021minimizing} explored a ``dual'' shock in their analysis of oil company equity price shocks due to the March 2020 COVID lockdowns.  Here we discuss two ways of navigating that interesting challenge.
 
-\textbf{Method 1}: For each source of the $k$ shocks, assemble $n_{j}$ donors and $p_{j}$ covariates, with $j=2,...,n_{j}+1$, and compute weights $\{\pi_{i,j}\}^{n_{j}+1}_{i=2}$.  With these $k$ weight sets, a set of $k$ aggregated shock estimators can be constructed and averaged (or aggregated in some other way).
+\textbf{Method 1}: For each source of the $k$ shocks, assemble $n_{j}$ donors and $p_{j}$ covariates, with $j=2,...,n_{j}+1$, and compute weights $\{\pi_{i,j}\}^{n_{j}+1}_{i=2}$.  With these $k$ weight sets, a set of $k$ aggregated shock estimators can be constructed and averaged (or aggregated in some other way).  Ultimately, each weight set results in a shock adjustment terms, and the sum of those estimated terms becomes the final adjustment term, as is done in \cite{lin2021minimizing}.  One potential downside of this approach is that is has no in-built way to control the size of the final adjustment term, which is somewhat in tension with original idea of taking convex combinations of estimated shocks, and therefore it can be seen as a relaxation of the weight constraint.
 
-\textbf{Method 2}: Each of the $k$ shocks can be represented using an application of distance-based weighting, with the vector $\delta$ and the vector $\x_{i,T^{*}_{i}+1}$ can encode a partition of shocks by using zeros in appropriate entries.
+\textbf{Method 2}: Each of the $k$ shocks can be represented using an application of distance-based weighting, where the vector $\delta$ and the vector $\x_{i,T^{*}_{i}+1}$ can encode a partition of shocks by using zeros in appropriate entries.  Under this method, the sum of the weights remains 1, the estimation space for the weights is increased to $kp$.  Unlike \textbf{Method 1}, this approach remains committed to a weight constraint. An obvious concern is that a space of dimension $kp$ may be too large for weight estimation.
 
-An assumption of independence or at least uncorrelatedness among the $k$ donor pools is helpful here.
+In practice, the best approach may depend on $k,p$ as well as the task at hand.  Additionally, an assumption of independence or at least uncorrelatedness among the $k$ donor pools may helpful here.  The foregoing, we hope, provides a basis upon which future work can build.
+
 
 \section{Formal Properties and Model-Specific Considerations}\label{special_cases}
 
@@ -534,16 +535,16 @@ In this section, we discuss particular models for which our approach has been im
 
 
 \subsection{ARIMA}\label{ARIMA}
-Recall the specification (\ref{core_specification}), which models a news shock as an affine function of covariates:
+Recall Specification (\ref{core_specification}), which models a news shock as an affine function of covariates:
 
 \begin{align*}
   &y_{i,t} = F(\mathcal{F}_{i,t-1}) + \alpha_{i,t} + \epsilon_{i,t}
 \end{align*}
-We begin our recounting of model-specific cases by recalling \cite{lin2021minimizing}, in which it was established that for a family of AR(1)-X-distributed scalar time series with a common shock distribution, forecast risk can be reduced via a similarity-based adjustment procedure.  An AR(p) is an easy model to work with, in part because it can be consistently estimated via OLS, and an AR(p) can approximate an ARMA(p,q) with arbitrarily-small error through via a truncation of an AR($\infty$) representation.  Setting aside the estimation method, consider a one-step-ahead for an AR(p) at time $t$ with an adjustment estimator, $\hat\alpha_{t}$.  For ease of exposition, we suppress subscripts for donors:
+We begin our recounting of model-specific cases by recalling \cite{lin2021minimizing}, in which it was established that for a family of AR(1)-X-distributed scalar time series with a common shock distribution, forecast risk can be reduced via a similarity-based adjustment procedure.  An AR(p) is an easy model to work with, in part because it can be consistently estimated via OLS, and an AR(p) can approximate an ARMA(p,q) with arbitrarily-small error through via a truncation of an AR($\infty$) representation.  Setting aside the estimation method, consider a one-step-ahead forecast for an AR(p) at time $t$ with an adjustment estimator, $\hat\alpha_{t}$.  For ease of exposition, we suppress subscripts for donors:
 
 \begin{align}
 \hat{y}_{t} = f(\mathcal{F}_{t-1}) = \hat\mu + \sum^{p}_{k=1}\hat\rho_{k}y_{t-k} + \hat{\alpha}_{t}
-\end{align}\label{AR(p)-X}
+\end{align}
 which can be understood as an AR($p$) with time-varying coefficients.  The mean squared-error of the forecast above, i.e.
 
 \begin{align}
@@ -561,11 +562,11 @@ admits of the typical bias-variance decomposition.  If it is known that $\mu = 0
   = &\big[\sum^{p}_{k=1}(\rho_{k}-\E[\hat\rho_{k}])y_{t-k} + (\alpha_{t} - \E[\hat{\alpha}_{t}]) \big]^{2} + \text{Var}[\sum^{p}_{k=1}(\rho_{k}-\hat\rho_{k})y_{t-k}] + \text{Var}[\hat{\alpha}_{t}]  + \sigma^{2}_{\epsilon}\tag{if donor shocks are uncorrelated with time series under study}\\
   = &\big[\sum^{p}_{k=1}(\rho_{k}-\E[\hat\rho_{k}])y_{t-k} + (\alpha_{t} - \E[\hat{\alpha}_{t}]) \big]^{2} + \text{Var}[\sum^{p}_{k=1}(\rho_{k}-\hat\rho_{k})y_{t-k}] + \sum_{i=2}^{n+1}\pi_{i}^{2}\text{Var}[\hat\alpha_{i,t}] + 2\sum_{i\neq j}\pi_{i}\pi_{j}\text{Cov}[\hat\alpha_{i,t},\hat\alpha_{j,t}]  + \sigma^{2}_{\epsilon}\label{ARIMA_adjusted_MSE}
 \end{align}
-
-Assume we have no control over the accuracy of the estimates $\{\hat\rho\}^{p}_{k=1}$ nor any control over the estimates $\{\hat\alpha_{i,t}\}_{i=2}^{n+1}$.  Then our only control over the MSE comes comes from the weight vector $\vec{\pi}$, so long as it is not unique.  If we insist that $\hat\alpha_{t}$ be an unbiased predictor, then the MSE will tend to have a sparse vector $\vec{\pi}$ as its minimizer, so as to zero-out the covariance terms.  All of this is to say that control of the MSE may require tight control of the variance in the prediction function, which in turn will gesture in the direction of a sparse $\hat\alpha_{t}$ and sparse estimation of the autoregressive structure.
+Assume we have no control over the accuracy of the estimates $\{\hat\rho\}^{p}_{k=1}$ nor any control over the estimates $\{\hat\alpha_{i,t}\}_{i=2}^{n+1}$.  Then our only control over the MSE comes comes from the weight vector $\vec{\pi}$.  \cite{lundquist2024volatility} conditions under which $\vec{\pi}$ is unique, but when uniqueness fails, then a practitioner has meaningful choices to make regarding forecast risk.  If we insist that $\hat\alpha_{t}$ be an unbiased predictor, then $\vec{\pi}$ may not be sparse, and hence the covariance terms in \ref{ARIMA_adjusted_MSE} may be large.  However, if some bias can be tolerated, the variance and covariance terms may be small.  All of this is to say that control of the MSE may require tight control of the variance in the prediction function, which in turn will gesture in the direction of a sparse $\hat\alpha_{t}$ and sparse estimation of the autoregressive structure.
 
 How does the MSE of the adjusted forecast compare with the unadjusted forecast?  Since the unadjusted forecast MSE would lack the final two sums in expression \ref{ARIMA_adjusted_MSE}, the adjusted model therefore has lower MSE if and only if the reduction in the squared bias is greater than $\sum_{i=2}^{n+1}\pi_{i}^{2}\text{Var}[\hat\alpha_{i,t}] + 2\sum_{i\neq j}\pi_{i}\pi_{j}\text{Cov}[\hat\alpha_{i,t},\hat\alpha_{j,t}]$.
 
+The finite-sample prediction performance of our method, as discussed above, will hinge at least partly on questions of donor independence and uncorrelatedness, as well as the extent to which bias can be minimized through a suitable convex combination of the donors.  As for asymptotic performance, those things still matter.  We will now offer three theorems that, in their totality, bolster the credibility of the forecast adjustment method on offer here.
 
 %https://tex.stackexchange.com/questions/174317/creating-a-labeled-tetrahedron-with-tikzpicture
 \begin{figure}
@@ -595,7 +596,7 @@ How does the MSE of the adjusted forecast compare with the unadjusted forecast? 
 \begin{prop}\label{ARIMA_param_consistency}
 Assume
   \begin{enumerate}
-    \item For each $i$, $1\leq i \leq n + 1$, let $\{y_{t}\}^{T_{i}}_{i=1}$ follow an AR($p$)-X as laid out in \eqref{AR(p)-X}.
+    \item For each $i$, $1\leq i \leq n + 1$, let $\{y_{t}\}^{T_{i}}_{i=1}$ follow an AR($p$)-X as laid out in Section \ref{ARIMA}.
     \item Assume for each $i$, $1\leq i \leq n + 1$, the shocks $\alpha_{i,t}$ are uncorrelated across donors.
     \item Assume for each $i$, $1\leq i \leq n + 1$, the shocks $\alpha_{i,t}$ are uncorrelated with $\alpha_{i,T_{i}^{*}+1}$ 
    \end{enumerate}
