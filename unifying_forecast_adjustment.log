@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.15)  5 DEC 2024 14:32
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.15)  5 DEC 2024 14:54
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -909,7 +909,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 775--776
 <exponential_sim_plot.png, id=436, 1767.60374pt x 1242.6425pt>
 File: exponential_sim_plot.png Graphic file (type png)
 <use exponential_sim_plot.png>
-Package pdftex.def Info: exponential_sim_plot.png  used on input line 789.
+Package pdftex.def Info: exponential_sim_plot.png  used on input line 790.
 (pdftex.def)             Requested size: 498.66258pt x 350.55417pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -917,30 +917,30 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <simulation_plots/Nov27_160341_2024_mudelta_sigmax.png, id=437, 578.16pt x 433.62pt>
 File: simulation_plots/Nov27_160341_2024_mudelta_sigmax.png Graphic file (type png)
 <use simulation_plots/Nov27_160341_2024_mudelta_sigmax.png>
-Package pdftex.def Info: simulation_plots/Nov27_160341_2024_mudelta_sigmax.png  used on input line 805.
+Package pdftex.def Info: simulation_plots/Nov27_160341_2024_mudelta_sigmax.png  used on input line 806.
 (pdftex.def)             Requested size: 242.82555pt x 182.11916pt.
 
-Overfull \hbox (23.4128pt too wide) in paragraph at lines 805--806
+Overfull \hbox (23.4128pt too wide) in paragraph at lines 806--807
  [][] 
  []
 
 <simulation_plots/Nov27_160342_2024_mudelta_sigmax.png, id=438, 578.16pt x 433.62pt>
 File: simulation_plots/Nov27_160342_2024_mudelta_sigmax.png Graphic file (type png)
 <use simulation_plots/Nov27_160342_2024_mudelta_sigmax.png>
-Package pdftex.def Info: simulation_plots/Nov27_160342_2024_mudelta_sigmax.png  used on input line 810.
+Package pdftex.def Info: simulation_plots/Nov27_160342_2024_mudelta_sigmax.png  used on input line 811.
 (pdftex.def)             Requested size: 242.82555pt x 182.11916pt.
 
-Overfull \hbox (23.4128pt too wide) in paragraph at lines 810--811
+Overfull \hbox (23.4128pt too wide) in paragraph at lines 811--812
  [][] 
  []
 
 <simulation_plots/Nov27_160343_2024_mudelta_sigmax.png, id=439, 578.16pt x 433.62pt>
 File: simulation_plots/Nov27_160343_2024_mudelta_sigmax.png Graphic file (type png)
 <use simulation_plots/Nov27_160343_2024_mudelta_sigmax.png>
-Package pdftex.def Info: simulation_plots/Nov27_160343_2024_mudelta_sigmax.png  used on input line 816.
+Package pdftex.def Info: simulation_plots/Nov27_160343_2024_mudelta_sigmax.png  used on input line 817.
 (pdftex.def)             Requested size: 242.82555pt x 182.11916pt.
 
-Overfull \hbox (23.4128pt too wide) in paragraph at lines 816--817
+Overfull \hbox (23.4128pt too wide) in paragraph at lines 817--818
  [][] 
  []
 
@@ -950,30 +950,30 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <simulation_plots/Nov27_160344_2024_sigmax_sigmaepsilon.png, id=446, 578.16pt x 433.62pt>
 File: simulation_plots/Nov27_160344_2024_sigmax_sigmaepsilon.png Graphic file (type png)
 <use simulation_plots/Nov27_160344_2024_sigmax_sigmaepsilon.png>
-Package pdftex.def Info: simulation_plots/Nov27_160344_2024_sigmax_sigmaepsilon.png  used on input line 829.
+Package pdftex.def Info: simulation_plots/Nov27_160344_2024_sigmax_sigmaepsilon.png  used on input line 830.
 (pdftex.def)             Requested size: 242.82555pt x 182.11916pt.
 
-Overfull \hbox (23.4128pt too wide) in paragraph at lines 829--830
+Overfull \hbox (23.4128pt too wide) in paragraph at lines 830--831
  [][] 
  []
 
 <simulation_plots/Nov27_160345_2024_sigmax_sigmaepsilon.png, id=447, 578.16pt x 433.62pt>
 File: simulation_plots/Nov27_160345_2024_sigmax_sigmaepsilon.png Graphic file (type png)
 <use simulation_plots/Nov27_160345_2024_sigmax_sigmaepsilon.png>
-Package pdftex.def Info: simulation_plots/Nov27_160345_2024_sigmax_sigmaepsilon.png  used on input line 834.
+Package pdftex.def Info: simulation_plots/Nov27_160345_2024_sigmax_sigmaepsilon.png  used on input line 835.
 (pdftex.def)             Requested size: 242.82555pt x 182.11916pt.
 
-Overfull \hbox (23.4128pt too wide) in paragraph at lines 834--835
+Overfull \hbox (23.4128pt too wide) in paragraph at lines 835--836
  [][] 
  []
 
 <simulation_plots/Nov27_160346_2024_sigmax_sigmaepsilon.png, id=448, 578.16pt x 433.62pt>
 File: simulation_plots/Nov27_160346_2024_sigmax_sigmaepsilon.png Graphic file (type png)
 <use simulation_plots/Nov27_160346_2024_sigmax_sigmaepsilon.png>
-Package pdftex.def Info: simulation_plots/Nov27_160346_2024_sigmax_sigmaepsilon.png  used on input line 840.
+Package pdftex.def Info: simulation_plots/Nov27_160346_2024_sigmax_sigmaepsilon.png  used on input line 841.
 (pdftex.def)             Requested size: 242.82555pt x 182.11916pt.
 
-Overfull \hbox (23.4128pt too wide) in paragraph at lines 840--841
+Overfull \hbox (23.4128pt too wide) in paragraph at lines 841--842
  [][] 
  []
 
@@ -983,30 +983,30 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <simulation_plots/Nov27_160346_2024_mudelta_sigmaepsilon.png, id=455, 578.16pt x 433.62pt>
 File: simulation_plots/Nov27_160346_2024_mudelta_sigmaepsilon.png Graphic file (type png)
 <use simulation_plots/Nov27_160346_2024_mudelta_sigmaepsilon.png>
-Package pdftex.def Info: simulation_plots/Nov27_160346_2024_mudelta_sigmaepsilon.png  used on input line 853.
+Package pdftex.def Info: simulation_plots/Nov27_160346_2024_mudelta_sigmaepsilon.png  used on input line 854.
 (pdftex.def)             Requested size: 242.82555pt x 182.11916pt.
 
-Overfull \hbox (23.4128pt too wide) in paragraph at lines 853--854
+Overfull \hbox (23.4128pt too wide) in paragraph at lines 854--855
  [][] 
  []
 
 <simulation_plots/Nov27_160347_2024_mudelta_sigmaepsilon.png, id=456, 578.16pt x 433.62pt>
 File: simulation_plots/Nov27_160347_2024_mudelta_sigmaepsilon.png Graphic file (type png)
 <use simulation_plots/Nov27_160347_2024_mudelta_sigmaepsilon.png>
-Package pdftex.def Info: simulation_plots/Nov27_160347_2024_mudelta_sigmaepsilon.png  used on input line 858.
+Package pdftex.def Info: simulation_plots/Nov27_160347_2024_mudelta_sigmaepsilon.png  used on input line 859.
 (pdftex.def)             Requested size: 242.82555pt x 182.11916pt.
 
-Overfull \hbox (23.4128pt too wide) in paragraph at lines 858--859
+Overfull \hbox (23.4128pt too wide) in paragraph at lines 859--860
  [][] 
  []
 
 <simulation_plots/Nov27_160348_2024_mudelta_sigmaepsilon.png, id=457, 578.16pt x 433.62pt>
 File: simulation_plots/Nov27_160348_2024_mudelta_sigmaepsilon.png Graphic file (type png)
 <use simulation_plots/Nov27_160348_2024_mudelta_sigmaepsilon.png>
-Package pdftex.def Info: simulation_plots/Nov27_160348_2024_mudelta_sigmaepsilon.png  used on input line 864.
+Package pdftex.def Info: simulation_plots/Nov27_160348_2024_mudelta_sigmaepsilon.png  used on input line 865.
 (pdftex.def)             Requested size: 242.82555pt x 182.11916pt.
 
-Overfull \hbox (23.4128pt too wide) in paragraph at lines 864--865
+Overfull \hbox (23.4128pt too wide) in paragraph at lines 865--866
  [][] 
  []
 
@@ -1014,34 +1014,34 @@ Overfull \hbox (23.4128pt too wide) in paragraph at lines 864--865
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [17] [18 <./exponential_sim_plot.png>] [19 <./simulation_plots/Nov27_160341_2024_mudelta_sigmax.png> <./simulation_plots/Nov27_160342_2024_mudelta_sigmax.png> <./simulation_plots/Nov27_160343_2024_mudelta_sigmax.png>] [20 <./simulation_plots/Nov27_160344_2024_sigmax_sigmaepsilon.png> <./simulation_plots/Nov27_160345_2024_sigmax_sigmaepsilon.png> <./simulation_plots/Nov27_160346_2024_sigmax_sigmaepsilon.png>] [21 <./simulation_plots/Nov27_160346_2024_mudelta_sigmaepsilon.png> <./simulation_plots/Nov27_160347_2024_mudelta_sigmaepsilon.png> <./simulation_plots/Nov27_160348_2024_mudelta_sigmaepsilon.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 875--876
+Underfull \hbox (badness 10000) in paragraph at lines 876--877
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 885--886
+Underfull \hbox (badness 10000) in paragraph at lines 886--887
 
  []
 
 [22
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 919--920
+Underfull \hbox (badness 10000) in paragraph at lines 920--921
 
  []
 
 [23]
-Underfull \hbox (badness 10000) in paragraph at lines 957--958
+Underfull \hbox (badness 10000) in paragraph at lines 958--959
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 966--969
+Underfull \hbox (badness 10000) in paragraph at lines 967--970
 
  []
 
 [24]
-Underfull \hbox (badness 10000) in paragraph at lines 1007--1008
+Underfull \hbox (badness 10000) in paragraph at lines 1008--1009
 
  []
 
@@ -1064,7 +1064,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  142i,17n,144p,2167b,1699s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on unifying_forecast_adjustment.pdf (27 pages, 1943769 bytes).
+Output written on unifying_forecast_adjustment.pdf (27 pages, 1943935 bytes).
 PDF statistics:
  709 PDF objects out of 1000 (max. 8388607)
  150 named destinations out of 1000 (max. 500000)
