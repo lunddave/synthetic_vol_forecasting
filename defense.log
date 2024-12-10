@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.15)  10 DEC 2024 09:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.15)  10 DEC 2024 09:30
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1788,9 +1788,20 @@ Overfull \hbox (95.86812pt too wide) has occurred while \output is active
 [43
 
 ]
-Overfull \hbox (95.86812pt too wide) in paragraph at lines 729--729
+Overfull \hbox (95.86812pt too wide) in paragraph at lines 730--730
  [][][][][][]  
  []
+
+/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/defense.tex:730: Undefined control sequence.
+\beamer@doifinframe ...tend the results of \citep 
+                                                  {bodilsen2023exploiting} \...
+l.730 \end{frame}
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
 
 Overfull \hbox (95.86812pt too wide) has occurred while \output is active
@@ -1800,17 +1811,17 @@ Overfull \hbox (95.86812pt too wide) has occurred while \output is active
 [44
 
 ]
-Overfull \hbox (95.86812pt too wide) in paragraph at lines 742--742
+Overfull \hbox (95.86812pt too wide) in paragraph at lines 743--743
  [][][][][][]  
  []
 
 <iphone.png, id=1448, 958.58125pt x 1268.74pt>
 File: iphone.png Graphic file (type png)
 <use iphone.png>
-Package pdftex.def Info: iphone.png  used on input line 742.
+Package pdftex.def Info: iphone.png  used on input line 743.
 (pdftex.def)             Requested size: 172.53717pt x 228.36334pt.
 
-Overfull \vbox (21.91208pt too high) detected at line 742
+Overfull \vbox (21.91208pt too high) detected at line 743
  []
 
 
@@ -1821,7 +1832,7 @@ Overfull \hbox (95.86812pt too wide) has occurred while \output is active
 [45
 
  <./iphone.png>]
-Overfull \hbox (95.86812pt too wide) in paragraph at lines 754--754
+Overfull \hbox (95.86812pt too wide) in paragraph at lines 755--755
  [][][][][][]  
  []
 
@@ -1833,7 +1844,7 @@ Overfull \hbox (95.86812pt too wide) has occurred while \output is active
 [46
 
 ]
-Overfull \hbox (95.86812pt too wide) in paragraph at lines 766--766
+Overfull \hbox (95.86812pt too wide) in paragraph at lines 767--767
  [][][][][][]  
  []
 
@@ -1845,7 +1856,7 @@ Overfull \hbox (95.86812pt too wide) has occurred while \output is active
 [47
 
 ]
-Overfull \hbox (95.86812pt too wide) in paragraph at lines 781--781
+Overfull \hbox (95.86812pt too wide) in paragraph at lines 782--782
  [][][][][][]  
  []
 
@@ -1857,7 +1868,7 @@ Overfull \hbox (95.86812pt too wide) has occurred while \output is active
 [48
 
 ]
-Overfull \hbox (95.86812pt too wide) in paragraph at lines 788--788
+Overfull \hbox (95.86812pt too wide) in paragraph at lines 789--789
  [][][][][][]  
  []
 
@@ -1869,7 +1880,7 @@ Overfull \hbox (95.86812pt too wide) has occurred while \output is active
 [49
 
 ]
-Overfull \hbox (95.86812pt too wide) in paragraph at lines 796--796
+Overfull \hbox (95.86812pt too wide) in paragraph at lines 797--797
  [][][][][][]  
  []
 
@@ -1881,7 +1892,7 @@ Overfull \hbox (95.86812pt too wide) has occurred while \output is active
 [50
 
 ]
-Overfull \hbox (95.86812pt too wide) in paragraph at lines 818--818
+Overfull \hbox (95.86812pt too wide) in paragraph at lines 819--819
  [][][][][][]  
  []
 
@@ -1896,10 +1907,10 @@ Overfull \hbox (95.86812pt too wide) has occurred while \output is active
 <real_data_output_plots/savetime_SunMar172251232024_IYG_6B=F-CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-22.png, id=1658, 803.0pt x 602.25pt>
 File: real_data_output_plots/savetime_SunMar172251232024_IYG_6B=F-CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-22.png Graphic file (type png)
 <use real_data_output_plots/savetime_SunMar172251232024_IYG_6B=F-CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-22.png>
-Package pdftex.def Info: real_data_output_plots/savetime_SunMar172251232024_IYG_6B=F-CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-22.png  used on input line 824.
+Package pdftex.def Info: real_data_output_plots/savetime_SunMar172251232024_IYG_6B=F-CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-22.png  used on input line 825.
 (pdftex.def)             Requested size: 256.96526pt x 192.72392pt.
 
-Overfull \hbox (95.86812pt too wide) in paragraph at lines 836--836
+Overfull \hbox (95.86812pt too wide) in paragraph at lines 837--837
  [][][][][][]  
  []
 
@@ -1981,7 +1992,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  128i,18n,131p,740b,1842s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfso0800.pfb>
-Output written on defense.pdf (54 pages, 957786 bytes).
+Output written on defense.pdf (54 pages, 957847 bytes).
 PDF statistics:
  1885 PDF objects out of 2073 (max. 8388607)
  1619 compressed objects within 17 object streams
