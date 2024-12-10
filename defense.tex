@@ -125,10 +125,10 @@
 % %     }
 % %     \makeatother
 
-\title{Synthetic Volatility Forecasting and Other Aggregation Techniques for Time Series Forecasting}
+\title{Forecast Adjustment Under Shocks and other Similarity-based Solutions to Unprecedented Events}
 \subtitle{Doctoral Defense}
 \author{David Lundquist\thanks{davidl11@ilinois.edu}, Daniel Eck\thanks{dje13@illinois.edu} (advisor)}
-\date{December 23rd, 2024}
+\date{December 19th, 2024}
 
 \begin{document}
 
@@ -162,30 +162,31 @@
 study you have done. You have to sum up your entire study in a few sentences
 and remember the technical terms you have mentioned n your research
 because that is what your examiner wants to hear from you.
-2. The next question to follow by default is why you chose this particular topic or
+\item The next question to follow by default is why you chose this particular topic or
 what your inspiration behind this study was. This is one of the trickiest
 questions as you have to prove your convincing power to the panel of the
 teachers that what you did is valuable for the society and was worth their time.
 Tell about how zealous you were about this particular problem.
-3. What is the importance of your study or how will it contribute or add up to the
+\item  What is the importance of your study or how will it contribute or add up to the
 existing body of knowledge?
-4. 5. 6. 7. 8. 9. You may be asked to summarize your key findings of the research.
-What type of background research have you done for the study?
-What are the limitations you have faced while writing?
-Why did you choose this particular method or sample for the study?
-What will you include if you are told to add something extra to the study?
-What are the recommendations of your study?
-10. Who formed your sample and why you selected this particular age group?
-11. What was your hypothesis and how you framed it?
-12. If given a chance, would like to do something different with your work?
-13. What are the limitations you faced while dealing with your samples?
-14. How did you relate your study to the existing theories?
-15. What is the future scope of this study?
-16. What do you plan to do with your work after you have completed your
+\item You may be asked to summarize your key findings of the research.
+
+\item What type of background research have you done for the study?
+\item What are the limitations you have faced while writing?
+\item Why did you choose this particular method or sample for the study?
+\item What will you include if you are told to add something extra to the study?
+\item What are the recommendations of your study?
+\item 10. Who formed your sample and why you selected this particular age group?
+\item 11. What was your hypothesis and how you framed it?
+\item 12. If given a chance, would like to do something different with your work?
+\item 13. What are the limitations you faced while dealing with your samples?
+\item 14. How did you relate your study to the existing theories?
+\item 15. What is the future scope of this study?
+\item 16. What do you plan to do with your work after you have completed your
 degree?
-17. What are the research variables you used?
-18. Do you have any questions to be asked?
-19. Did you evaluate your work?
+\item 17. What are the research variables you used?
+\item 18. Do you have any questions to be asked?
+\item 19. Did you evaluate your work?
 \item How would you improve your work?  Answer: by design, synthetic control cannot extrapolate.  In the causal inference context, that may very well be a virtue.  However, in the prediction context, it may hinder us.  Note that random forest has the same problem.
         
  
@@ -202,7 +203,7 @@ degree?
 \end{frame}
 
 \begin{frame}
-    \frametitle{When would we ever have to do this?}
+    \frametitle{My Prelim: An Incredibly Brief Recap}
 
     \begin{itemize}
         \item <1-> Event-driven investing strategies (unscheduled news shock)
@@ -226,13 +227,24 @@ degree?
 \end{frame}
 
 \begin{frame}
+    \frametitle{The Post-prelim Direction of my research}
+    Volatility Modeling
+
+    \begin{itemize}
+        \item Extending forecast adjustment to the state-of-the-art HAR model 
+        \item Extending forecast adjustment to non-linear shock models
+        \item Building out a general framework for parameter correction 
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
 \frametitle{Punchline of the paper}
 
 \begin{itemize}
     \item[] <1-> Credible forecasting is possible under news shocks, so long as we incorporate external information to account for the \textcolor{red}{nonzero errors}.
     \item[] <2-> \begin{figure}[H]
         \begin{center}
-          \includegraphics[scale=.3]{simulation_plots/motivating_piece_convex_combination.png}
+          \includegraphics[scale=.1]{simulation_plots/motivating_piece_convex_combination.png}
           \caption{Adjusting our One-Step-Ahead Forecast Using Only Arithmetic Mean of Donors}
           \end{center}
         \end{figure}
