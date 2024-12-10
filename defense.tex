@@ -6,7 +6,7 @@
 %Packages
 \usepackage[backend=biber,hyperref=true,doi=false,url=false,isbn=false, uniquename=false, uniquelist=false, style = authoryear-comp]{biblatex}
 %https://www.overleaf.com/learn/latex/Biblatex_citation_styles
-\addbibresource{prelim.bib}
+\addbibresource{defense.bib}
 
 %\usepackage{bibentry}
 
@@ -144,15 +144,14 @@
     \frametitle{Twenty questions}
     \begin{enumerate}
         \item What have you learned?
-        Forecasting is difficult
-        Heterogeneity of DGP
+        \textcolor{red}{Forecasting is difficult; Heterogeneity of DGP}
         \item Why did you choose this topic?
         \textcolor{red}{Although it seems narrow, the question of “what if you had a new unit and had very little past information to go on” is a common phenomenon in statistics.}
         Examples:
         Shock to a time series
         Unscheduled
         scheduled
-        A new seller joins amazon’s platform
+        A new seller joins amazon’s platform, i.e. cold starts \citep{fatemi2023mitigating}
         \item What does this contribute to the literature and econometrics more broadly?
         \item  How would you improve your work?  
         \item The most common question you may be asked is what you learned from the
@@ -502,7 +501,6 @@ We present two forecasts:
 
 \end{itemize}
 
-
 \end{frame}
 
 \begin{frame}
@@ -549,7 +547,7 @@ Let $L^{h}$ with the subscripted pair $\{$prediction method, ground truth estima
 
 \begin{frame}
     \frametitle{Loss Function Examples}
-For example, one loss possible function of interest in this study is the 1-step-ahead MSE using Synthetic \textcolor{red}{Volatility Forecasting} and \textcolor{red}{Realized Volatility}:
+For example, one loss possible function of interest in this study is the 1-step-ahead MSE using our distance-based-weighting method and \textcolor{red}{Realized Volatility}:
 
 $$\text{MSE}^{1}_{\text{SVF, RV}} = (\hat\sigma^{2}_{SVF} - \hat\sigma^{2}_{RV})^{2}$$
 Also of interest in mean absolute percentage error for an $h$-step-ahead forecast, defined as
@@ -793,11 +791,11 @@ High-frequency data?
     \frametitle{New Frontiers in Distance-based Weighting}
     \begin{itemize}
         \item Integrate lessons from literature on under/over reactions to information shocks \parencite[][]{jiang2017information}
-        \item{Synthetic Impulse Response Functions}
+        \item{Distance-based Weighting of Impulse Response Functions}
         \end{itemize}
 \end{frame}
 
-\begin{frame}{Synthetic Impulse Response Functions: A Proposal}
+\begin{frame}{Distance-based Weighting of Impulse Response Functions}
     Suppose 
     \begin{itemize}
         \item We have a collection of $p$-variate time series of lengths $T_{i}, i=1,2,...n+1)$.
