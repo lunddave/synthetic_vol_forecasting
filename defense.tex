@@ -252,30 +252,41 @@ degree?
 \end{frame}
 
 \begin{frame}
-    \frametitle{Background and related methods}
-    Volatility Modeling
-
-    \begin{itemize}
-        \item GARCH is slow to react to shocks \parencite[][]{andersen2003modeling}
-        \item Asymmetric GARCH models catch up faster but need post-shock data
-        \item Realized GARCH \parencite[][]{hansen2012realized}, in our setting, would require post-shock information and/or high-frequency data in order to outperform, and Realized GARCH is highly parameterized
-    \end{itemize}
+    \frametitle{Literature Review: if we want it, it goes here}
+uncomment the blocks below
 \end{frame}
 
-\begin{frame}
-    \frametitle{Background and related methods}
+% \begin{frame}
+%     \frametitle{Background and related methods}
+%     Volatility Modeling
 
-    Forecast Adjustment
-    \begin{itemize}
-        \item \cite[][]{clements1996intercept,clements1998forecasting} laid the groundwork for modeling nonzero errors in time series forecasting
-        \item \cite[][]{guerron2017macroeconomic} use a series' own errors to correct the forecast for that series
-        \item \cite[][]{dendramis2020similarity} use a similarity-based procedure to correct $\hat\beta$ in time series forecasts
-        \item \cite[][]{foroni2022forecasting} adjust pandemic-era forecasts using intercept correction techniques and data from Great Financial Crisis
-        \item \cite[][]{lin2021minimizing} use distanced-based weighting (a similarity approach) to aggregate and weight fixed effects from a donor pool
-    \end{itemize}
-\end{frame}
+%     \begin{itemize}
+%         \item GARCH is slow to react to shocks \parencite[][]{andersen2003modeling}
+%         \item Asymmetric GARCH models catch up faster but need post-shock data
+%         \item Realized GARCH \parencite[][]{hansen2012realized}, in our setting, would require post-shock information and/or high-frequency data in order to outperform, and Realized GARCH is highly parameterized
+%     \end{itemize}
+% \end{frame}
+
+% \begin{frame}
+%     \frametitle{Background and related methods}
+
+%     Forecast Adjustment
+%     \begin{itemize}
+%         \item \cite[][]{clements1996intercept,clements1998forecasting} laid the groundwork for modeling nonzero errors in time series forecasting
+%         \item \cite[][]{guerron2017macroeconomic} use a series' own errors to correct the forecast for that series
+%         \item \cite[][]{dendramis2020similarity} use a similarity-based procedure to correct $\hat\beta$ in time series forecasts
+%         \item \cite[][]{foroni2022forecasting} adjust pandemic-era forecasts using intercept correction techniques and data from Great Financial Crisis
+%         \item \cite[][]{lin2021minimizing} use distanced-based weighting (a similarity approach) to aggregate and weight fixed effects from a donor pool
+%     \end{itemize}
+% \end{frame}
 
 \part{two}
+\section{Forecasting Amid Shocks}
+% Outline frame
+\begin{frame}{Fill in}
+    item
+\end{frame}
+
 \section{Setting}
 % Outline frame
 \begin{frame}{Outline} % https://tex.stackexchange.com/questions/73196/beamer-table-of-contents-shade-all-previous-sections
@@ -447,7 +458,7 @@ Consider the $p \times n$ matrix that stores donor and covariate information at 
     Key criterion for inclusion: how plausible is the covariate as a \textcolor{red}{proxy for risk conditions} for the volatility series to be forecasted?
 \end{frame}
 
-\section{Post-shock Synthetic Volatility Forecasting Methodology}
+\section{SPC Forecasting Methodology and Correction Functions}
 
 \begin{frame}
 \frametitle{Forecasting}
@@ -558,7 +569,8 @@ losses will be a consequence of high volatility without necessarily correspondin
 
 \end{frame}
 
-\section{Properties of Volatility Shock and Shock Estimators}\label{SVF_properties}
+\section{Model Adjustment Using Similarity-Based Parameter Correction:
+A Global Overview}\label{SVF_properties}
 
 \begin{frame}\frametitle{Two Consistency Results}
     
@@ -583,7 +595,7 @@ losses will be a consequence of high volatility without necessarily correspondin
 
 \end{frame}
 
-\section{Real Data Example}
+\section{Formal Properties and Model-Specific Considerations}
 
 \begin{frame}{Why apply our method to the 2016 US Election?}
 
