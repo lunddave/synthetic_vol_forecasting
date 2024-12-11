@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.15)  11 DEC 2024 12:54
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.15)  11 DEC 2024 13:32
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1016,8 +1016,7 @@ Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 Package hyperref Info: Option `colorlinks' set `true' on input line 107.
 \@quotelevel=\count496
 \@quotereset=\count497
-
-No file defense.aux.
+ (./defense.aux)
 \openout1 = `defense.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 133.
@@ -1038,6 +1037,7 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 133.
 LaTeX Font Info:    ... okay on input line 133.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 133.
 LaTeX Font Info:    ... okay on input line 133.
+
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -1092,6 +1092,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
 Package hyperref Info: Link coloring ON on input line 133.
+ (./defense.out) (./defense.out)
 \@outlinefile=\write6
 \openout6 = `defense.out'.
 
@@ -1168,15 +1169,14 @@ Package biblatex Info: Automatic encoding selection.
 \openout5 = `defense.bcf'.
 
 Package biblatex Info: Trying to load bibliographic data...
-Package biblatex Info: ... file 'defense.bbl' not found.
-
-No file defense.bbl.
+Package biblatex Info: ... file 'defense.bbl' found.
+ (./defense.bbl)
 Package biblatex Info: Reference section=0 on input line 133.
 Package biblatex Info: Reference segment=0 on input line 133.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
 Package caption Info: End \AtBeginDocument code.
-(./defense.nav)
+ (./defense.nav)
 Overfull \hbox (95.86812pt too wide) in paragraph at lines 133--133
  [][][][][][]  
  []
@@ -1221,113 +1221,9 @@ Overfull \hbox (95.86812pt too wide) has occurred while \output is active
 [2
 
 ]
-Overfull \hbox (95.86812pt too wide) in paragraph at lines 185--185
+Overfull \hbox (95.86812pt too wide) in paragraph at lines 180--180
  [][][][][][]  
  []
-
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/defense.tex:185: LaTeX Error: Environment venndiagram3sets undefined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.185         \end{frame}
-                         
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/defense.tex:185: Package xkeyval Error: `shade' undefined in families `venn'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.185         \end{frame}
-                         
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/defense.tex:185: Undefined control sequence.
-\beamer@doifinframe ...iveDrab!40} \fillACapBCapC 
-                                                  \setpostvennhook {\draw (l...
-l.185         \end{frame}
-                         
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/defense.tex:185: Undefined control sequence.
-\beamer@doifinframe ...ACapBCapC \setpostvennhook 
-                                                  {\draw (labelA) ++(-120:1....
-l.185         \end{frame}
-                         
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/defense.tex:185: Undefined control sequence.
-\beamer@doifinframe ...pC \setpostvennhook {\draw 
-                                                  (labelA) ++(-120:1.8cm) no...
-l.185         \end{frame}
-                         
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/defense.tex:185: Undefined control sequence.
-\beamer@doifinframe ...0:1.8cm) node{$ A$}; \draw 
-                                                  (labelB) ++(-60:1.8cm) nod...
-l.185         \end{frame}
-                         
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/defense.tex:185: Undefined control sequence.
-\beamer@doifinframe ...60:1.8cm) node{$B$}; \draw 
-                                                  (labelC) ++(90:1.2cm) node...
-l.185         \end{frame}
-                         
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/defense.tex:185: Undefined control sequence.
-\beamer@doifinframe ...90:1.2cm) node{$C$}; \draw 
-                                                  (labelABC) ++(90:0.2cm) no...
-l.185         \end{frame}
-                         
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/defense.tex:185: LaTeX Error: \begin{beamer@framepauses} on input line 185 ended by \end{venndiagram3sets}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.185         \end{frame}
-                         
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
 
 
 Overfull \hbox (95.86812pt too wide) has occurred while \output is active
@@ -1337,12 +1233,9 @@ Overfull \hbox (95.86812pt too wide) has occurred while \output is active
 [3
 
 ]
-Overfull \hbox (95.86812pt too wide) in paragraph at lines 208--208
+Overfull \hbox (95.86812pt too wide) in paragraph at lines 203--203
  [][][][][][]  
  []
-
-
-LaTeX Warning: Citation 'fatemi2023mitigating' on page 4 undefined on input line 208.
 
 
 Overfull \hbox (95.86812pt too wide) has occurred while \output is active
@@ -1352,7 +1245,7 @@ Overfull \hbox (95.86812pt too wide) has occurred while \output is active
 [4
 
 ]
-Overfull \hbox (95.86812pt too wide) in paragraph at lines 221--221
+Overfull \hbox (95.86812pt too wide) in paragraph at lines 216--216
  [][][][][][]  
  []
 
@@ -1364,7 +1257,7 @@ Overfull \hbox (95.86812pt too wide) has occurred while \output is active
 [5
 
 ]
-Overfull \hbox (95.86812pt too wide) in paragraph at lines 235--235
+Overfull \hbox (95.86812pt too wide) in paragraph at lines 230--230
  [][][][][][]  
  []
 
@@ -1376,7 +1269,7 @@ Overfull \hbox (95.86812pt too wide) has occurred while \output is active
 [6
 
 ]
-Overfull \hbox (95.86812pt too wide) in paragraph at lines 244--244
+Overfull \hbox (95.86812pt too wide) in paragraph at lines 239--239
  [][][][][][]  
  []
 
@@ -1402,14 +1295,14 @@ Overfull \hbox (95.86812pt too wide) has occurred while \output is active
 [9
 
 ]
-Overfull \hbox (95.86812pt too wide) in paragraph at lines 256--256
+Overfull \hbox (95.86812pt too wide) in paragraph at lines 252--252
  [][][][][][]  
  []
 
-<WSJ_rate_hike_2022.png, id=303, 643.40375pt x 249.93375pt>
+<WSJ_rate_hike_2022.png, id=345, 643.40375pt x 249.93375pt>
 File: WSJ_rate_hike_2022.png Graphic file (type png)
 <use WSJ_rate_hike_2022.png>
-Package pdftex.def Info: WSJ_rate_hike_2022.png  used on input line 256.
+Package pdftex.def Info: WSJ_rate_hike_2022.png  used on input line 252.
 (pdftex.def)             Requested size: 193.02261pt x 74.9807pt.
 
 Overfull \hbox (95.86812pt too wide) has occurred while \output is active
@@ -1421,7 +1314,7 @@ Overfull \hbox (95.86812pt too wide) has occurred while \output is active
  <./WSJ_rate_hike_2022.png>]
 File: WSJ_rate_hike_2022.png Graphic file (type png)
 <use WSJ_rate_hike_2022.png>
-Package pdftex.def Info: WSJ_rate_hike_2022.png  used on input line 256.
+Package pdftex.def Info: WSJ_rate_hike_2022.png  used on input line 252.
 (pdftex.def)             Requested size: 193.02261pt x 74.9807pt.
 
 Overfull \hbox (95.86812pt too wide) has occurred while \output is active
@@ -1431,25 +1324,10 @@ Overfull \hbox (95.86812pt too wide) has occurred while \output is active
 [11
 
 ]
-Overfull \hbox (95.86812pt too wide) in paragraph at lines 268--268
- [][][][][][]  
- []
-
-<NYS_state.png, id=366, 558.085pt x 337.26pt>
-File: NYS_state.png Graphic file (type png)
-<use NYS_state.png>
-Package pdftex.def Info: NYS_state.png  used on input line 268.
-(pdftex.def)             Requested size: 167.42679pt x 101.17877pt.
-<cnn.png, id=368, 898.35625pt x 204.765pt>
-File: cnn.png Graphic file (type png)
-<use cnn.png>
-Package pdftex.def Info: cnn.png  used on input line 268.
-(pdftex.def)             Requested size: 269.50894pt x 61.42996pt.
-<cnbc.png, id=370, 997.7275pt x 174.6525pt>
-File: cnbc.png Graphic file (type png)
-<use cnbc.png>
-Package pdftex.def Info: cnbc.png  used on input line 268.
-(pdftex.def)             Requested size: 299.32056pt x 52.39615pt.
+File: WSJ_rate_hike_2022.png Graphic file (type png)
+<use WSJ_rate_hike_2022.png>
+Package pdftex.def Info: WSJ_rate_hike_2022.png  used on input line 252.
+(pdftex.def)             Requested size: 193.02261pt x 74.9807pt.
 
 Overfull \hbox (95.86812pt too wide) has occurred while \output is active
  [][][][][][]  
@@ -1457,11 +1335,26 @@ Overfull \hbox (95.86812pt too wide) has occurred while \output is active
 
 [12
 
- <./NYS_state.png> <./cnn.png> <./cnbc.png>]
-Overfull \hbox (95.86812pt too wide) in paragraph at lines 278--278
+]
+Overfull \hbox (95.86812pt too wide) in paragraph at lines 264--264
  [][][][][][]  
  []
 
+<NYS_state.png, id=437, 558.085pt x 337.26pt>
+File: NYS_state.png Graphic file (type png)
+<use NYS_state.png>
+Package pdftex.def Info: NYS_state.png  used on input line 264.
+(pdftex.def)             Requested size: 167.42679pt x 101.17877pt.
+<cnn.png, id=439, 898.35625pt x 204.765pt>
+File: cnn.png Graphic file (type png)
+<use cnn.png>
+Package pdftex.def Info: cnn.png  used on input line 264.
+(pdftex.def)             Requested size: 269.50894pt x 61.42996pt.
+<cnbc.png, id=441, 997.7275pt x 174.6525pt>
+File: cnbc.png Graphic file (type png)
+<use cnbc.png>
+Package pdftex.def Info: cnbc.png  used on input line 264.
+(pdftex.def)             Requested size: 299.32056pt x 52.39615pt.
 
 Overfull \hbox (95.86812pt too wide) has occurred while \output is active
  [][][][][][]  
@@ -1469,24 +1362,9 @@ Overfull \hbox (95.86812pt too wide) has occurred while \output is active
 
 [13
 
-]
-Overfull \hbox (95.86812pt too wide) in paragraph at lines 292--292
+ <./NYS_state.png> <./cnn.png> <./cnbc.png>]
+Overfull \hbox (95.86812pt too wide) in paragraph at lines 277--277
  [][][][][][]  
- []
-
-<simulation_plots/motivating_piece_convex_combination.png, id=446, 1226.5825pt x 985.6825pt>
-File: simulation_plots/motivating_piece_convex_combination.png Graphic file (type png)
-<use simulation_plots/motivating_piece_convex_combination.png>
-Package pdftex.def Info: simulation_plots/motivating_piece_convex_combination.png  used on input line 292.
-(pdftex.def)             Requested size: 122.66544pt x 98.57402pt.
-
-Overfull \hbox (18.49988pt too wide) in paragraph at lines 292--292
-[][]
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 292--292
-
  []
 
 
@@ -1496,18 +1374,23 @@ Overfull \hbox (95.86812pt too wide) has occurred while \output is active
 
 [14
 
- <./simulation_plots/motivating_piece_convex_combination.png>]
+]
+Overfull \hbox (95.86812pt too wide) in paragraph at lines 291--291
+ [][][][][][]  
+ []
+
+<simulation_plots/motivating_piece_convex_combination.png, id=517, 1226.5825pt x 985.6825pt>
 File: simulation_plots/motivating_piece_convex_combination.png Graphic file (type png)
 <use simulation_plots/motivating_piece_convex_combination.png>
-Package pdftex.def Info: simulation_plots/motivating_piece_convex_combination.png  used on input line 292.
+Package pdftex.def Info: simulation_plots/motivating_piece_convex_combination.png  used on input line 291.
 (pdftex.def)             Requested size: 122.66544pt x 98.57402pt.
 
-Overfull \hbox (18.49988pt too wide) in paragraph at lines 292--292
+Overfull \hbox (18.49988pt too wide) in paragraph at lines 291--291
 [][]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 292--292
+Underfull \hbox (badness 10000) in paragraph at lines 291--291
 
  []
 
@@ -1518,9 +1401,19 @@ Overfull \hbox (95.86812pt too wide) has occurred while \output is active
 
 [15
 
-]
-Overfull \hbox (95.86812pt too wide) in paragraph at lines 297--297
- [][][][][][]  
+ <./simulation_plots/motivating_piece_convex_combination.png>]
+File: simulation_plots/motivating_piece_convex_combination.png Graphic file (type png)
+<use simulation_plots/motivating_piece_convex_combination.png>
+Package pdftex.def Info: simulation_plots/motivating_piece_convex_combination.png  used on input line 291.
+(pdftex.def)             Requested size: 122.66544pt x 98.57402pt.
+
+Overfull \hbox (18.49988pt too wide) in paragraph at lines 291--291
+[][]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 291--291
+
  []
 
 
@@ -1531,7 +1424,7 @@ Overfull \hbox (95.86812pt too wide) has occurred while \output is active
 [16
 
 ]
-Overfull \hbox (95.86812pt too wide) in paragraph at lines 331--331
+Overfull \hbox (95.86812pt too wide) in paragraph at lines 296--296
  [][][][][][]  
  []
 
@@ -1543,12 +1436,10 @@ Overfull \hbox (95.86812pt too wide) has occurred while \output is active
 [17
 
 ]
-Overfull \hbox (95.86812pt too wide) in paragraph at lines 337--337
+Overfull \hbox (95.86812pt too wide) in paragraph at lines 330--330
  [][][][][][]  
  []
 
-No file defense.toc.
-No file defense.toc.
 
 Overfull \hbox (95.86812pt too wide) has occurred while \output is active
  [][][][][][]  
@@ -1557,11 +1448,11 @@ Overfull \hbox (95.86812pt too wide) has occurred while \output is active
 [18
 
 ]
-Overfull \hbox (95.86812pt too wide) in paragraph at lines 354--354
+Overfull \hbox (95.86812pt too wide) in paragraph at lines 336--336
  [][][][][][]  
  []
 
-
+(./defense.toc) (./defense.toc)
 Overfull \hbox (95.86812pt too wide) has occurred while \output is active
  [][][][][][]  
  []
@@ -1569,12 +1460,9 @@ Overfull \hbox (95.86812pt too wide) has occurred while \output is active
 [19
 
 ]
-Overfull \hbox (95.86812pt too wide) in paragraph at lines 376--376
+Overfull \hbox (95.86812pt too wide) in paragraph at lines 353--353
  [][][][][][]  
  []
-
-
-LaTeX Warning: Citation 'francq2019garch' on page 20 undefined on input line 376.
 
 
 Overfull \hbox (95.86812pt too wide) has occurred while \output is active
@@ -1584,7 +1472,7 @@ Overfull \hbox (95.86812pt too wide) has occurred while \output is active
 [20
 
 ]
-Overfull \hbox (95.86812pt too wide) in paragraph at lines 387--387
+Overfull \hbox (95.86812pt too wide) in paragraph at lines 375--375
  [][][][][][]  
  []
 
@@ -1596,7 +1484,7 @@ Overfull \hbox (95.86812pt too wide) has occurred while \output is active
 [21
 
 ]
-Overfull \hbox (95.86812pt too wide) in paragraph at lines 401--401
+Overfull \hbox (95.86812pt too wide) in paragraph at lines 386--386
  [][][][][][]  
  []
 
@@ -1608,7 +1496,7 @@ Overfull \hbox (95.86812pt too wide) has occurred while \output is active
 [22
 
 ]
-Overfull \hbox (95.86812pt too wide) in paragraph at lines 429--429
+Overfull \hbox (95.86812pt too wide) in paragraph at lines 400--400
  [][][][][][]  
  []
 
@@ -1620,17 +1508,10 @@ Overfull \hbox (95.86812pt too wide) has occurred while \output is active
 [23
 
 ]
-Overfull \hbox (95.86812pt too wide) in paragraph at lines 459--459
+Overfull \hbox (95.86812pt too wide) in paragraph at lines 428--428
  [][][][][][]  
  []
 
-
-LaTeX Warning: Citation 'abadie2010synthetic' on page 24 undefined on input line 459.
-
-LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <6> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 459.
-LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <5> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 459.
 
 Overfull \hbox (95.86812pt too wide) has occurred while \output is active
  [][][][][][]  
@@ -1638,24 +1519,15 @@ Overfull \hbox (95.86812pt too wide) has occurred while \output is active
 
 [24
 
-{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}]
-Overfull \hbox (95.86812pt too wide) in paragraph at lines 486--486
+]
+Overfull \hbox (95.86812pt too wide) in paragraph at lines 458--458
  [][][][][][]  
  []
 
-LaTeX Font Info:    Calculating math sizes for size <6.6> on input line 486.
-
-LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <3.3> not available
-(Font)              size <5> substituted on input line 486.
-
-
-LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <3.3> not available
-(Font)              size <5> substituted on input line 486.
-
-
-LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <3.3> not available
-(Font)              size <5> substituted on input line 486.
-
+LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <6> not available
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 458.
+LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <5> not available
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 458.
 
 Overfull \hbox (95.86812pt too wide) has occurred while \output is active
  [][][][][][]  
@@ -1663,10 +1535,23 @@ Overfull \hbox (95.86812pt too wide) has occurred while \output is active
 
 [25
 
-]
-Overfull \hbox (95.86812pt too wide) in paragraph at lines 502--502
+{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}]
+Overfull \hbox (95.86812pt too wide) in paragraph at lines 485--485
  [][][][][][]  
  []
+
+LaTeX Font Info:    Calculating math sizes for size <6.6> on input line 485.
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <3.3> not available
+(Font)              size <5> substituted on input line 485.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <3.3> not available
+(Font)              size <5> substituted on input line 485.
+
+
+LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <3.3> not available
+(Font)              size <5> substituted on input line 485.
 
 
 Overfull \hbox (95.86812pt too wide) has occurred while \output is active
@@ -1676,12 +1561,9 @@ Overfull \hbox (95.86812pt too wide) has occurred while \output is active
 [26
 
 ]
-Overfull \hbox (95.86812pt too wide) in paragraph at lines 522--522
+Overfull \hbox (95.86812pt too wide) in paragraph at lines 501--501
  [][][][][][]  
  []
-
-
-LaTeX Warning: Citation 'andersen2008realized' on page 27 undefined on input line 522.
 
 
 Overfull \hbox (95.86812pt too wide) has occurred while \output is active
@@ -1691,22 +1573,9 @@ Overfull \hbox (95.86812pt too wide) has occurred while \output is active
 [27
 
 ]
-Overfull \hbox (95.86812pt too wide) in paragraph at lines 537--537
+Overfull \hbox (95.86812pt too wide) in paragraph at lines 521--521
  [][][][][][]  
  []
-
-LaTeX Font Info:    Calculating math sizes for size <7.6> on input line 537.
-
-LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <3.8> not available
-(Font)              size <5> substituted on input line 537.
-
-
-LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <3.8> not available
-(Font)              size <5> substituted on input line 537.
-
-
-LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <3.8> not available
-(Font)              size <5> substituted on input line 537.
 
 
 Overfull \hbox (95.86812pt too wide) has occurred while \output is active
@@ -1716,15 +1585,22 @@ Overfull \hbox (95.86812pt too wide) has occurred while \output is active
 [28
 
 ]
-Overfull \hbox (95.86812pt too wide) in paragraph at lines 558--558
+Overfull \hbox (95.86812pt too wide) in paragraph at lines 536--536
  [][][][][][]  
  []
 
+LaTeX Font Info:    Calculating math sizes for size <7.6> on input line 536.
 
-LaTeX Warning: Citation 'abadie2003economic' on page 29 undefined on input line 558.
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <3.8> not available
+(Font)              size <5> substituted on input line 536.
 
 
-LaTeX Warning: Citation 'abadie2010synthetic' on page 29 undefined on input line 558.
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <3.8> not available
+(Font)              size <5> substituted on input line 536.
+
+
+LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <3.8> not available
+(Font)              size <5> substituted on input line 536.
 
 
 Overfull \hbox (95.86812pt too wide) has occurred while \output is active
@@ -1734,11 +1610,9 @@ Overfull \hbox (95.86812pt too wide) has occurred while \output is active
 [29
 
 ]
-
-LaTeX Warning: Citation 'abadie2003economic' on page 30 undefined on input line 558.
-
-
-LaTeX Warning: Citation 'abadie2010synthetic' on page 30 undefined on input line 558.
+Overfull \hbox (95.86812pt too wide) in paragraph at lines 557--557
+ [][][][][][]  
+ []
 
 
 Overfull \hbox (95.86812pt too wide) has occurred while \output is active
@@ -1748,13 +1622,6 @@ Overfull \hbox (95.86812pt too wide) has occurred while \output is active
 [30
 
 ]
-
-LaTeX Warning: Citation 'abadie2003economic' on page 31 undefined on input line 558.
-
-
-LaTeX Warning: Citation 'abadie2010synthetic' on page 31 undefined on input line 558.
-
-
 Overfull \hbox (95.86812pt too wide) has occurred while \output is active
  [][][][][][]  
  []
@@ -1762,11 +1629,6 @@ Overfull \hbox (95.86812pt too wide) has occurred while \output is active
 [31
 
 ]
-Overfull \hbox (95.86812pt too wide) in paragraph at lines 571--571
- [][][][][][]  
- []
-
-
 Overfull \hbox (95.86812pt too wide) has occurred while \output is active
  [][][][][][]  
  []
@@ -1774,15 +1636,10 @@ Overfull \hbox (95.86812pt too wide) has occurred while \output is active
 [32
 
 ]
-Overfull \hbox (95.86812pt too wide) in paragraph at lines 598--598
+Overfull \hbox (95.86812pt too wide) in paragraph at lines 570--570
  [][][][][][]  
  []
 
-<iyg.png, id=1040, 774.895pt x 108.405pt>
-File: iyg.png Graphic file (type png)
-<use iyg.png>
-Package pdftex.def Info: iyg.png  used on input line 598.
-(pdftex.def)             Requested size: 154.97626pt x 21.6806pt.
 
 Overfull \hbox (95.86812pt too wide) has occurred while \output is active
  [][][][][][]  
@@ -1790,20 +1647,16 @@ Overfull \hbox (95.86812pt too wide) has occurred while \output is active
 
 [33
 
- <./iyg.png>]
-Overfull \hbox (95.86812pt too wide) in paragraph at lines 608--608
+]
+Overfull \hbox (95.86812pt too wide) in paragraph at lines 597--597
  [][][][][][]  
  []
 
-<real_data_output_plots/TueSep241059512024_IYG_None_None.png, id=1070, 803.0pt x 602.25pt>
-File: real_data_output_plots/TueSep241059512024_IYG_None_None.png Graphic file (type png)
-<use real_data_output_plots/TueSep241059512024_IYG_None_None.png>
-Package pdftex.def Info: real_data_output_plots/TueSep241059512024_IYG_None_None.png  used on input line 608.
-(pdftex.def)             Requested size: 273.01639pt x 204.76228pt.
-
-Overfull \vbox (8.61102pt too high) detected at line 608
- []
-
+<iyg.png, id=1138, 774.895pt x 108.405pt>
+File: iyg.png Graphic file (type png)
+<use iyg.png>
+Package pdftex.def Info: iyg.png  used on input line 597.
+(pdftex.def)             Requested size: 154.97626pt x 21.6806pt.
 
 Overfull \hbox (95.86812pt too wide) has occurred while \output is active
  [][][][][][]  
@@ -1811,27 +1664,19 @@ Overfull \hbox (95.86812pt too wide) has occurred while \output is active
 
 [34
 
- <./real_data_output_plots/TueSep241059512024_IYG_None_None.png>]
-Overfull \hbox (95.86812pt too wide) in paragraph at lines 634--634
+ <./iyg.png>]
+Overfull \hbox (95.86812pt too wide) in paragraph at lines 607--607
  [][][][][][]  
  []
 
+<real_data_output_plots/TueSep241059512024_IYG_None_None.png, id=1168, 803.0pt x 602.25pt>
+File: real_data_output_plots/TueSep241059512024_IYG_None_None.png Graphic file (type png)
+<use real_data_output_plots/TueSep241059512024_IYG_None_None.png>
+Package pdftex.def Info: real_data_output_plots/TueSep241059512024_IYG_None_None.png  used on input line 607.
+(pdftex.def)             Requested size: 273.01639pt x 204.76228pt.
 
-LaTeX Warning: Citation 'han2014asymptotic' on page 35 undefined on input line 634.
-
-
-LaTeX Font Warning: Font shape `OT1/cmss/bx/it' undefined
-(Font)              using `OT1/cmss/b/it' instead on input line 634.
-
-
-LaTeX Font Warning: Font shape `OT1/cmss/b/it' undefined
-(Font)              using `OT1/cmss/b/n' instead on input line 634.
-
-LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <9> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 634.
-
-LaTeX Font Warning: Font shape `OT1/cmss/bx/it' undefined
-(Font)              using `OT1/cmss/b/it' instead on input line 634.
+Overfull \vbox (8.61102pt too high) detected at line 607
+ []
 
 
 Overfull \hbox (95.86812pt too wide) has occurred while \output is active
@@ -1840,10 +1685,24 @@ Overfull \hbox (95.86812pt too wide) has occurred while \output is active
 
 [35
 
-]
-Overfull \hbox (95.86812pt too wide) in paragraph at lines 673--673
+ <./real_data_output_plots/TueSep241059512024_IYG_None_None.png>]
+Overfull \hbox (95.86812pt too wide) in paragraph at lines 633--633
  [][][][][][]  
  []
+
+
+LaTeX Font Warning: Font shape `OT1/cmss/bx/it' undefined
+(Font)              using `OT1/cmss/b/it' instead on input line 633.
+
+
+LaTeX Font Warning: Font shape `OT1/cmss/b/it' undefined
+(Font)              using `OT1/cmss/b/n' instead on input line 633.
+
+LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <9> not available
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 633.
+
+LaTeX Font Warning: Font shape `OT1/cmss/bx/it' undefined
+(Font)              using `OT1/cmss/b/it' instead on input line 633.
 
 
 Overfull \hbox (95.86812pt too wide) has occurred while \output is active
@@ -1853,12 +1712,9 @@ Overfull \hbox (95.86812pt too wide) has occurred while \output is active
 [36
 
 ]
-Overfull \hbox (95.86812pt too wide) in paragraph at lines 714--714
+Overfull \hbox (95.86812pt too wide) in paragraph at lines 672--672
  [][][][][][]  
  []
-
-
-LaTeX Warning: Citation 'bodilsen2023exploiting' on page 37 undefined on input line 714.
 
 
 Overfull \hbox (95.86812pt too wide) has occurred while \output is active
@@ -1868,17 +1724,8 @@ Overfull \hbox (95.86812pt too wide) has occurred while \output is active
 [37
 
 ]
-Overfull \hbox (95.86812pt too wide) in paragraph at lines 727--727
+Overfull \hbox (95.86812pt too wide) in paragraph at lines 713--713
  [][][][][][]  
- []
-
-<iphone.png, id=1227, 958.58125pt x 1268.74pt>
-File: iphone.png Graphic file (type png)
-<use iphone.png>
-Package pdftex.def Info: iphone.png  used on input line 727.
-(pdftex.def)             Requested size: 172.53717pt x 228.36334pt.
-
-Overfull \vbox (21.91208pt too high) detected at line 727
  []
 
 
@@ -1888,13 +1735,19 @@ Overfull \hbox (95.86812pt too wide) has occurred while \output is active
 
 [38
 
- <./iphone.png>]
-Overfull \hbox (95.86812pt too wide) in paragraph at lines 739--739
+]
+Overfull \hbox (95.86812pt too wide) in paragraph at lines 726--726
  [][][][][][]  
  []
 
+<iphone.png, id=1321, 958.58125pt x 1268.74pt>
+File: iphone.png Graphic file (type png)
+<use iphone.png>
+Package pdftex.def Info: iphone.png  used on input line 726.
+(pdftex.def)             Requested size: 172.53717pt x 228.36334pt.
 
-LaTeX Warning: Citation 'chinco2019sparse' on page 39 undefined on input line 739.
+Overfull \vbox (21.91208pt too high) detected at line 726
+ []
 
 
 Overfull \hbox (95.86812pt too wide) has occurred while \output is active
@@ -1903,8 +1756,8 @@ Overfull \hbox (95.86812pt too wide) has occurred while \output is active
 
 [39
 
-]
-Overfull \hbox (95.86812pt too wide) in paragraph at lines 751--751
+ <./iphone.png>]
+Overfull \hbox (95.86812pt too wide) in paragraph at lines 738--738
  [][][][][][]  
  []
 
@@ -1916,12 +1769,9 @@ Overfull \hbox (95.86812pt too wide) has occurred while \output is active
 [40
 
 ]
-Overfull \hbox (95.86812pt too wide) in paragraph at lines 766--766
+Overfull \hbox (95.86812pt too wide) in paragraph at lines 750--750
  [][][][][][]  
  []
-
-
-LaTeX Warning: Citation 'ferwana2022optimal' on page 41 undefined on input line 766.
 
 
 Overfull \hbox (95.86812pt too wide) has occurred while \output is active
@@ -1931,7 +1781,7 @@ Overfull \hbox (95.86812pt too wide) has occurred while \output is active
 [41
 
 ]
-Overfull \hbox (95.86812pt too wide) in paragraph at lines 773--773
+Overfull \hbox (95.86812pt too wide) in paragraph at lines 765--765
  [][][][][][]  
  []
 
@@ -1943,12 +1793,9 @@ Overfull \hbox (95.86812pt too wide) has occurred while \output is active
 [42
 
 ]
-Overfull \hbox (95.86812pt too wide) in paragraph at lines 781--781
+Overfull \hbox (95.86812pt too wide) in paragraph at lines 772--772
  [][][][][][]  
  []
-
-
-LaTeX Warning: Citation 'jiang2017information' on page 43 undefined on input line 781.
 
 
 Overfull \hbox (95.86812pt too wide) has occurred while \output is active
@@ -1958,7 +1805,7 @@ Overfull \hbox (95.86812pt too wide) has occurred while \output is active
 [43
 
 ]
-Overfull \hbox (95.86812pt too wide) in paragraph at lines 803--803
+Overfull \hbox (95.86812pt too wide) in paragraph at lines 780--780
  [][][][][][]  
  []
 
@@ -1970,18 +1817,27 @@ Overfull \hbox (95.86812pt too wide) has occurred while \output is active
 [44
 
 ]
-<real_data_output_plots/savetime_SunMar172251232024_IYG_6B=F-CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-22.png, id=1431, 803.0pt x 602.25pt>
-File: real_data_output_plots/savetime_SunMar172251232024_IYG_6B=F-CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-22.png Graphic file (type png)
-<use real_data_output_plots/savetime_SunMar172251232024_IYG_6B=F-CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-22.png>
-Package pdftex.def Info: real_data_output_plots/savetime_SunMar172251232024_IYG_6B=F-CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-22.png  used on input line 809.
-(pdftex.def)             Requested size: 256.96526pt x 192.72392pt.
-
-Overfull \hbox (95.86812pt too wide) in paragraph at lines 821--821
+Overfull \hbox (95.86812pt too wide) in paragraph at lines 802--802
  [][][][][][]  
  []
 
 
-LaTeX Warning: Empty bibliography on input line 821.
+Overfull \hbox (95.86812pt too wide) has occurred while \output is active
+ [][][][][][]  
+ []
+
+[45
+
+]
+<real_data_output_plots/savetime_SunMar172251232024_IYG_6B=F-CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-22.png, id=1531, 803.0pt x 602.25pt>
+File: real_data_output_plots/savetime_SunMar172251232024_IYG_6B=F-CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-22.png Graphic file (type png)
+<use real_data_output_plots/savetime_SunMar172251232024_IYG_6B=F-CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-22.png>
+Package pdftex.def Info: real_data_output_plots/savetime_SunMar172251232024_IYG_6B=F-CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-22.png  used on input line 808.
+(pdftex.def)             Requested size: 256.96526pt x 192.72392pt.
+
+Overfull \hbox (95.86812pt too wide) in paragraph at lines 820--820
+ [][][][][][]  
+ []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -1991,14 +1847,22 @@ Overfull \hbox (95.86812pt too wide) has occurred while \output is active
  [][][][][][]  
  []
 
-[45
+[46
 
  <./real_data_output_plots/savetime_SunMar172251232024_IYG_6B=F-CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-22.png>]
 Overfull \hbox (95.86812pt too wide) has occurred while \output is active
  [][][][][][]  
  []
 
-[46]
+[47 </usr/local/texlive/2024/texmf-dist/tex/latex/beamer/beamericonarticle.pdf>]
+Overfull \hbox (95.86812pt too wide) has occurred while \output is active
+ [][][][][][]  
+ []
+
+[48
+
+
+]
 \tf@nav=\write7
 \openout7 = `defense.nav'.
 
@@ -2021,42 +1885,25 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-
-Package rerunfilecheck Warning: File `defense.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `defense.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  26C00A7D36A8659E16BEC759FBC6A3DA;2090.
-
-Package biblatex Warning: Please (re)run Biber on the file:
-(biblatex)                defense
-(biblatex)                and rerun LaTeX afterwards.
-
+Package rerunfilecheck Info: File `defense.out' has not changed.
+(rerunfilecheck)             Checksum: 26C00A7D36A8659E16BEC759FBC6A3DA;2090.
 Package logreq Info: Writing requests to 'defense.run.xml'.
 \openout1 = `defense.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 39320 strings out of 474116
- 791898 string characters out of 5743682
- 1951187 words of memory out of 5000000
- 60896 multiletter control sequences out of 15000+600000
+ 39520 strings out of 474116
+ 797534 string characters out of 5743682
+ 1952187 words of memory out of 5000000
+ 61070 multiletter control sequences out of 15000+600000
  584452 words of font info for 128 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 128i,18n,131p,740b,1549s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 128i,18n,131p,740b,1843s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfso0800.pfb>
-Output written on defense.pdf (46 pages, 938603 bytes).
+Output written on defense.pdf (48 pages, 950121 bytes).
 PDF statistics:
- 1622 PDF objects out of 1728 (max. 8388607)
- 1374 compressed objects within 14 object streams
- 111 named destinations out of 1000 (max. 500000)
- 286 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1760 PDF objects out of 2073 (max. 8388607)
+ 1503 compressed objects within 16 object streams
+ 125 named destinations out of 1000 (max. 500000)
+ 386 words of extra memory for PDF output out of 10000 (max. 10000000)
 
