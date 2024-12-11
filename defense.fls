@@ -423,9 +423,6 @@ INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/pdflscape/pdflscape-nometadat
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/pdflscape/pdflscape-nometadata.sty
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/graphics/lscape.sty
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/graphics/lscape.sty
-INPUT ./defense.aux
-INPUT ./defense.aux
-INPUT defense.aux
 OUTPUT defense.aux
 INPUT /usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 INPUT /usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
@@ -436,12 +433,6 @@ INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/graphics/color.sty
-INPUT ./defense.out
-INPUT ./defense.out
-INPUT defense.out
-INPUT defense.out
-INPUT ./defense.out
-INPUT ./defense.out
 OUTPUT defense.out
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/translator/translator-basic-dictionary-English.dict
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/translator/translator-basic-dictionary-English.dict
@@ -465,11 +456,6 @@ INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/biblatex/lbx/english.lbx
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/biblatex/lbx/english.lbx
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/biblatex/lbx/english.lbx
 OUTPUT defense.bcf
-INPUT defense.bbl
-INPUT ./defense.bbl
-INPUT ./defense.bbl
-INPUT ./defense.bbl
-INPUT defense.bbl
 INPUT ./defense.nav
 INPUT ./defense.nav
 INPUT defense.nav
@@ -515,6 +501,8 @@ INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/rsfs/rsfs7.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/sansmathaccent/mathkerncmssi8.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmss8.tfm
 INPUT /usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map
+INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmssi9.tfm
+INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmssbx10.tfm
 INPUT ./WSJ_rate_hike_2022.png
 INPUT ./WSJ_rate_hike_2022.png
 INPUT ./WSJ_rate_hike_2022.png
@@ -549,12 +537,6 @@ INPUT ./simulation_plots/motivating_piece_convex_combination.png
 INPUT ./simulation_plots/motivating_piece_convex_combination.png
 INPUT ./simulation_plots/motivating_piece_convex_combination.png
 INPUT ./simulation_plots/motivating_piece_convex_combination.png
-INPUT ./defense.toc
-INPUT ./defense.toc
-INPUT defense.toc
-INPUT ./defense.toc
-INPUT ./defense.toc
-INPUT defense.toc
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmmi8.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmsy8.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm
@@ -569,7 +551,6 @@ INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam1
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/rsfs/rsfs10.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/sansmathaccent/mathkerncmssi10.tfm
-INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmssbx10.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmssbx10.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmssbx10.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmssbx10.tfm
@@ -624,7 +605,6 @@ INPUT ./real_data_output_plots/TueSep241059512024_IYG_None_None.png
 INPUT ./real_data_output_plots/TueSep241059512024_IYG_None_None.png
 INPUT ./real_data_output_plots/TueSep241059512024_IYG_None_None.png
 INPUT ./real_data_output_plots/TueSep241059512024_IYG_None_None.png
-INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmssi9.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmssi8.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmssi8.tfm
 INPUT ./iphone.png
@@ -643,7 +623,6 @@ OUTPUT defense.snm
 INPUT defense.aux
 INPUT ./defense.out
 INPUT ./defense.out
-INPUT defense.run.xml
 OUTPUT defense.run.xml
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb

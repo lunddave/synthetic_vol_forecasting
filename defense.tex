@@ -141,9 +141,54 @@
 \section{Introduction}
 
 \begin{frame}
+    \frametitle{A High-level Summary Uniting All My Projects}
+    
+        Forecasting under non-ideal conditions like a change in the DGP or a lack of past information for units we wish to forecast: what do we do?
+
+        \bigskip
+
+        The unifying technique we explored was \textit{correction} of model parameters using an aggregation strategy, where aggregation means that we make use of external data.\\
+
+        \bigskip
+
+
+        We began with particular models and then built upwards, establishing an abstract, general framework for correcting forecasts using external data that is widely applicable for forecasting and beyond.
+
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Why is this valuable?}
+        
+            Canonical problem: forecasting when there's a location shift - here we quote clements and Hendry about the devastating impact of location shifts on forecasts
+    
+            \bigskip
+    
+            Common problem: predicting based on a limited feature space and/or small $n$
+    
+            \bigskip
+
+            The framework we've offered is something others can `plug-in' to easily and add to.
+
+            \begin{venndiagram3sets}[labelA= ,labelB= , labelC= ,radius=2cm, overlap=2cm]%
+                \setkeys{venn}{shade=OliveDrab!40}
+                \fillACapBCapC
+                \setpostvennhook
+                {%
+                \draw (labelA) ++(-120:1.8cm) node{$ A$};
+                 \draw (labelB) ++(-60:1.8cm) node{$B$};
+                 \draw (labelC) ++(90:1.2cm) node{$C$};
+                \draw (labelABC) ++(90:0.2cm) node{$A\cap B\cap C$}; 
+                }%
+            
+                \end{venndiagram3sets}
+
+        \end{frame}
+
+\begin{frame}
     \frametitle{Questions guiding these slides (remove later)}
     \begin{enumerate}
-        \item What have you learned?
+        \item Most common question asked is what you learned from the
+        study you have done. You have to sum up your entire study in a few sentences and remember the technical terms you have mentioned in your research because that is what your examiner wants to hear from you.
         \textcolor{red}{Forecasting is difficult; Heterogeneity of DGP}
         \item Why did you choose this topic?
         \textcolor{red}{Although it seems narrow, the question of “what if you had a new unit and had very little past information to go on” is a common phenomenon in statistics.}
@@ -153,9 +198,7 @@
         scheduled
         A new seller joins amazon’s platform, i.e. cold starts \parencite[][]{fatemi2023mitigating}
         \item What does this contribute to the literature and econometrics more broadly? \textcolor{red}{}
-        \item  How would you improve your work? \textcolor{red}{Many ideas here.  There were more directions than I could pursue.} 
-        \item Most common question asked is what you learned from the
-study you have done. You have to sum up your entire study in a few sentences and remember the technical terms you have mentioned in your research because that is what your examiner wants to hear from you.
+        \item  How would you improve your work? \textcolor{red}{Many ideas here.  There were more directions than I could pursue.}  
 \item Why did you choose this particular topic or what your inspiration behind this study was. This is one of the trickiest
 questions as you have to prove your convincing power to the panel of the
 teachers that what you did is valuable for the society and was worth their time.
@@ -168,7 +211,7 @@ teachers that what you did is valuable for the society and was worth their time.
         \frametitle{Questions guiding these slides (remove later)}
         \begin{enumerate}
             \item  What is the importance of your study or how will it contribute or add up to the existing body of knowledge? \textcolor{red}{Two entirely separate perspectives: (1) Post-shock forecasting is a novel research framework. (2) Post-shock forecasting builds on intercept corrections and other canonical questions.}
-            \item What type of background research have you done for the study?
+            \item What type of background research have you done for the study? \textcolor{red}{In no particular order: synthetic control; convex geometry; convex optimization; p-value combination; FWER/FDR; fixed/mixed/random effects; panel data; linear time series models; RNN; econometrics}
             \item What are the limitations you have faced while writing?
             \textcolor{red}{A ton of hyperparameters}
             \item What will you include if you are told to add something extra to the study? \textcolor{red}{LLM-generated donors and covariates}
@@ -595,16 +638,16 @@ A Global Overview}\label{SVF_properties}
 
 \section{Discussion}
 
-\begin{frame}{Hypotheses to Test Via Simulations}
-    Ceteris paribus...
-    \begin{enumerate}
-        \item <1-> Distance-based weighting should \textcolor{red}{outperform} the unadjusted forecast as $\textcolor{blue}{\delta}$ increases (signal-to-noise)
-        \item <2-> Distance-based weighting should \textcolor{red}{underperform} as the variability in $\textcolor{blue}{u_{i,t}}$ increases (signal-to-noise)
-        \item <3-> Distance-based weighting should \textcolor{red}{outperform} the arithmetic mean as the variability of $\textcolor{blue}{\textbf{v}_{i,T^{*}}}$ increases between donors (importance of linear signal)
-        \item <4-> Distance-based weighting should \textcolor{red}{underperform} the arithmetic mean as $\textcolor{blue}{\mu_{\omega^{*}}}$ increases (importance of linear signal)
-        \item <5-> When $D^{return}_{i,T^{*}+1} = 1 = D^{vol}_{i,T^{*}+1}$, i.e. when there is both a \textcolor{red}{return shock} and \textcolor{red}{volatility shock}, our adjustment methods should \textcolor{red}{underperform} due to failed identification in $a_{T^{*}+1} = \sigma_{T^{*}+1}\epsilon_{T^{*}+1}$
-    \end{enumerate}
-\end{frame}
+% \begin{frame}{Hypotheses to Test Via Simulations}
+%     Ceteris paribus...
+%     \begin{enumerate}
+%         \item <1-> Distance-based weighting should \textcolor{red}{outperform} the unadjusted forecast as $\textcolor{blue}{\delta}$ increases (signal-to-noise)
+%         \item <2-> Distance-based weighting should \textcolor{red}{underperform} as the variability in $\textcolor{blue}{u_{i,t}}$ increases (signal-to-noise)
+%         \item <3-> Distance-based weighting should \textcolor{red}{outperform} the arithmetic mean as the variability of $\textcolor{blue}{\textbf{v}_{i,T^{*}}}$ increases between donors (importance of linear signal)
+%         \item <4-> Distance-based weighting should \textcolor{red}{underperform} the arithmetic mean as $\textcolor{blue}{\mu_{\omega^{*}}}$ increases (importance of linear signal)
+%         \item <5-> When $D^{return}_{i,T^{*}+1} = 1 = D^{vol}_{i,T^{*}+1}$, i.e. when there is both a \textcolor{red}{return shock} and \textcolor{red}{volatility shock}, our adjustment methods should \textcolor{red}{underperform} due to failed identification in $a_{T^{*}+1} = \sigma_{T^{*}+1}\epsilon_{T^{*}+1}$
+%     \end{enumerate}
+% \end{frame}
 
 \begin{frame}
 \fontsize{8pt}{9pt}
