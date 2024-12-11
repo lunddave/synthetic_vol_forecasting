@@ -141,7 +141,7 @@
 \section{Introduction}
 
 \begin{frame}
-    \frametitle{Twenty questions}
+    \frametitle{Twenty questions I}
     \begin{enumerate}
         \item What have you learned?
         \textcolor{red}{Forecasting is difficult; Heterogeneity of DGP}
@@ -152,7 +152,7 @@
         Unscheduled
         scheduled
         A new seller joins amazon’s platform, i.e. cold starts \parencite[][]{fatemi2023mitigating}
-        \item What does this contribute to the literature and econometrics more broadly?
+        \item What does this contribute to the literature and econometrics more broadly? \textcolor{red}{}
         \item  How would you improve your work? \textcolor{red}{Many ideas here.  There were more directions than I could pursue.} 
         \item The most common question you may be asked is what you learned from the
 study you have done. You have to sum up your entire study in a few sentences
@@ -163,23 +163,21 @@ what your inspiration behind this study was. This is one of the trickiest
 questions as you have to prove your convincing power to the panel of the
 teachers that what you did is valuable for the society and was worth their time.
 Tell about how zealous you were about this particular problem.
-\item  What is the importance of your study or how will it contribute or add up to the existing body of knowledge? \textcolor{red}{Two entirely separate perspectives: (1) Post-shock forecasting is a novel research framework. (2) Post-shock forecasting builds on intercept corrections and other canonical questions.  }
 
     \end{enumerate}
     \end{frame}
 
     \begin{frame}
-        \frametitle{Twenty questions}
+        \frametitle{Twenty questions 2}
         \begin{enumerate}
+            \item  What is the importance of your study or how will it contribute or add up to the existing body of knowledge? \textcolor{red}{Two entirely separate perspectives: (1) Post-shock forecasting is a novel research framework. (2) Post-shock forecasting builds on intercept corrections and other canonical questions.}
             \item You may be asked to summarize your key findings of the research.
             \item What type of background research have you done for the study?
             \item What are the limitations you have faced while writing?
             \textcolor{red}{A ton of hyperparameters}
-            \item Why did you choose this particular method or sample for the study?
-            \item What will you include if you are told to add something extra to the study?
+            \item What will you include if you are told to add something extra to the study? \textcolor{red}{LLM-generated donors and covariates}
             \item What are the recommendations of your study? \textcolor{red}{Relatively easy to answer: for an unprecedented event, locate it in the space of previous events.}
-            \item 10. Who formed your sample and why you selected this particular age group?
-            \item 11. What was your hypothesis and how did you framed it? \textcolor{red}{Signal to noise}
+            \item 10. What was your hypothesis and how did you framed it? \textcolor{red}{Signal to noise}
         \end{enumerate}
         \end{frame}
 
@@ -234,11 +232,10 @@ Tell about how zealous you were about this particular problem.
 
 \begin{frame}
     \frametitle{The Post-prelim Direction of my research}
-    Volatility Modeling
-
+    
     \begin{itemize}
-        \item Extending forecast adjustment to the state-of-the-art HAR model 
-        \item Extending forecast adjustment to non-linear shock models
+        \item Extending similarity-based parameter correction to the state-of-the-art HAR model 
+        \item Extending similarity-based parameter correction to non-linear shock models
         \item Building out a general framework for parameter correction 
     \end{itemize}
 \end{frame}
@@ -292,8 +289,7 @@ uncomment the blocks below
 \begin{frame}{What we will discuss in this section}
     \begin{enumerate}
     \item Role of outside information
-    \item The Meaning and Use of Similarity
-    \item 
+    \item The Meaning and Use of Similarity 
     \end{enumerate}
 \end{frame}
 
@@ -307,7 +303,7 @@ uncomment the blocks below
 
 % Setting for the problem
 \begin{frame}
-\frametitle{Premise: News has broken but markets are closed}
+\frametitle{Premise: There is a breaking news at some fractional lag T-$\epsilon$}
 
 \begin{itemize}
 \item After-hours trading provides a poor forum in which to digest news
@@ -468,6 +464,26 @@ Consider the $p \times n$ matrix that stores donor and covariate information at 
     Key criterion for inclusion: how plausible is the covariate as a \textcolor{red}{proxy for risk conditions} for the volatility series to be forecasted?
 \end{frame}
 
+\begin{frame}
+\frametitle{Realized Volatility Estimation}
+
+Examine $K$ units of of time; each unit is divided into $m$ intervals of length $\frac{1}{m}$.  Let $p_{t} = \log{P_{t}}$, and let $\tilde{r}(t,\frac{1}{m}) = p_{t} - p_{t-\frac{1}{m}}$  \parencite[][]{andersen2008realized}. 
+
+\bigbreak
+
+Estimate variance of $i$th log return series using Realized Volatility of the $K$ consecutive trading days that conclude with day $t$, denoted $RV_{i,t}^{K,m}$, using
+
+$$RV_{i,t}^{K,m} = \frac{1}{K}\sum^{Km}_{v=1}\tilde{r}^{2}(v/m,1/m),$$
+
+where the $K$ trading days have been chopped into $Km$ equally-sized blocks.
+
+Assuming the $K$ units $\tilde{r}(t, 1) = p_{t} - p_{t-1}$ are s.t. $\tilde{r}(t, 1) \simiid N(\mu, \delta^{2})$, it is easily verified that 
+
+$$\E[RV^{K,m}] = \frac{\mu^{2}}{m} + \delta^{2},$$
+which is a biased but consistent estimator of the variance.  We pick $m = 77$, corresponding to the 6.5-hour trading day chopped into 5-minute blocks, omitting first five-minutes of the day.
+
+\end{frame}
+
 \section{SPC Forecasting Methodology and Correction Functions}
 
 \begin{frame}
@@ -492,7 +508,7 @@ We present two forecasts:
 
 \item <2-> Goal: recover weights $\{\weight_{i}\}^{n+1}_{i=2} \in \Delta^{n}$ and compute $\hat\omega^{*} \coloneq \sum^{n+1}_{i=2}\weight_{i}\hat\omega^{*}_{i}$, our forecast adjustment term.
 
-\item <3-> Following \cite[][]{abadie2003economic,abadie2010synthetic}, let $\|\cdot\|_{\textbf{S}}$ denote any semi-norm on $\mathbb{R}^{p}$, and define
+\item <3-> Following \cite[][]{abadie2003economic},\cite[][]{abadie2010synthetic}, let $\|\cdot\|_{\textbf{S}}$ denote any semi-norm on $\mathbb{R}^{p}$, and define
 
 
 \begin{align*}
@@ -501,110 +517,9 @@ We present two forecasts:
 
 % Nota bene: the weights $\{\weight_{i}\}_{i=2}^{n+1}$ are deterministic with respect to $\mathcal{F}_{T^{*}}$.
 
-
 \end{itemize}
-
 \end{frame}
 
-\begin{frame}
-\frametitle{Ground Truth Estimators}
-
-We use realized volatility (RV)
-\begin{itemize}
-\item ``model-free'' in the sense that it requires no modeling assumptions \parencite[][]{andersen2010stochastic}.  
-\item RV can be decomposed into the sum of a \textcolor{red}{continuous component} and a \textcolor{red}{jump component}, with the latter being less predictable and less persistent \parencite[][]{andersen2007roughing}, cited in \cite[][]{de2006forecasting}, two facts that further motivate our method.
-\end{itemize}
-
-\end{frame}
-
-\begin{frame}
-    \frametitle{Realized Volatility Estimation}
-
-Examine $K$ units of of time; each unit is divided into $m$ intervals of length $\frac{1}{m}$.  Let $p_{t} = \log{P_{t}}$, and let $\tilde{r}(t,\frac{1}{m}) = p_{t} - p_{t-\frac{1}{m}}$  \parencite[][]{andersen2008realized}. 
-
-\bigbreak
-
-Estimate variance of $i$th log return series using Realized Volatility of the $K$ consecutive trading days that conclude with day $t$, denoted $RV_{i,t}^{K,m}$, using
-
-$$RV_{i,t}^{K,m} = \frac{1}{K}\sum^{Km}_{v=1}\tilde{r}^{2}(v/m,1/m),$$
-
-where the $K$ trading days have been chopped into $Km$ equally-sized blocks.
-
-Assuming the $K$ units $\tilde{r}(t, 1) = p_{t} - p_{t-1}$ are s.t. $\tilde{r}(t, 1) \simiid N(\mu, \delta^{2})$, it is easily verified that 
-
-$$\E[RV^{K,m}] = \frac{\mu^{2}}{m} + \delta^{2},$$
-which is a biased but consistent estimator of the variance.  We pick $m = 77$, corresponding to the 6.5-hour trading day chopped into 5-minute blocks, omitting first five-minutes of the day.
-
-\end{frame}
-
-\begin{frame}
-\frametitle{Loss Functions}
-
-Aim: point forecasts for $\sigma^{2}_{1,T^{*}+h}|\mathcal{F}_{T^{*}}$, $h=1,2,...,$, the $h$-step ahead conditional variance for the time series under study\\
-
-\bigbreak
- 
-Let $L^{h}$ with the subscripted pair $\{$prediction method, ground truth estimator$\}$, denote the loss function for an $h$-step-ahead forecast using a given prediction function and ground truth estimator.  
-
-\end{frame}
-
-\begin{frame}
-    \frametitle{Loss Function Examples}
-For example, one loss possible function of interest in this study is the 1-step-ahead MSE using our distance-based-weighting method and \textcolor{red}{Realized Volatility}:
-
-$$\text{MSE}^{1}_{\text{SVF, RV}} = (\hat\sigma^{2}_{SVF} - \hat\sigma^{2}_{RV})^{2}$$
-Also of interest in mean absolute percentage error for an $h$-step-ahead forecast, defined as
-
-$$\text{MAPE}^{h}_{method, ground truth} = \frac{|\hat\sigma^{2}_{h, method} - \hat\sigma^{2}_{h, ground truth}|}{\hat\sigma^{2}_{h, ground truth}}$$
-
-\end{frame}
-
-\begin{frame}\frametitle{Our choice of Loss Function}
-
-    Finally, we introduce the QL (quasi-likelihood) Loss \parencite[][]{brownlees2011practical}:
-
-    $$\text{QL}^{h}_{method, ground truth} = \frac{ \hat\sigma^{2}_{h, method} }{\hat\sigma^{2}_{h, ground truth}} - \log{\frac{ \hat\sigma^{2}_{h, method} }{\hat\sigma^{2}_{h, ground truth}}} -1 \text{ .}$$
-    
-What distinguishes QL Loss? \\
-
-\begin{itemize}
-
-\item Multiplicative rather than additive  
-
-\item As \cite[][]{brownlees2011practical} explain, ``[a]mid volatility turmoil, large MSE
-losses will be a consequence of high volatility without necessarily corresponding to deterioration of forecasting ability. The QL avoids this ambiguity, making it easier to compare losses across volatility regimes."
-
-\end{itemize}
-
-\end{frame}
-
-\section{Model Adjustment Using Similarity-Based Parameter Correction:
-A Global Overview}\label{SVF_properties}
-
-\begin{frame}\frametitle{Two Consistency Results}
-    
-    \begin{prop}\label{omega_consistency}
-    Assume
-    \begin{enumerate}
-      \item For each $i$, $\{a_{i,t}\}_{t=0,...,T_i}$ obeys a GARCH-X($m,s$) with volatility shocks found in $\mc{M}_{1}$, where $T_i$ is the length of the $i$th series.
-      \item For each $i, \{\omega_{i,t}^{*}\}_{t=0,...,T_i}$ is potentially non-zero at $\{T^{*}_{i}+1,... ,T^{*}_{i}+k\}$, $\omega_{i,T^{*}+1}^{*}\equiv...\equiv\omega_{i,T^{*}+k}^{*}$, and zero otherwise, where the arrival of $T_{i}^{*}$ is governed by a time-invariant distribution on $\{a_{i,t}\}_{t=0,...,T_i-1}$. \label{stationarity_of_omega_i_t}
-      \item The conditions in Assumption 0 of \cite[][]{han2014asymptotic} prevail.
-    \end{enumerate}
-    Then for any $i$, $\hat\omega_{i,t}^{*} \xrightarrow{p} \omega_{i}^{*}$.
-    \end{prop}
-
-    \begin{prop}\label{sigma_consistency}
-        Assume
-        \begin{enumerate}
-          \item All conditions from the previous proposition.
-          \item There exist weights $\{\pi_{i}\}_{i=2}^{n=1}$ such that $\textbf{v}_{1,T^{*}} = \sum^{n+1}_{i=2}\weight_{i} \textbf{v}_{i,T^{*}}$.
-         \end{enumerate}
-      Then $\hat\sigma^{2}_{adjusted}\xrightarrow{p}\sigma^{2}_{1,T^{*}+1}$. 
-      \end{prop}
-
-\end{frame}
-
-\section{Formal Properties and Model-Specific Considerations}
 
 \begin{frame}{Why apply our method to the 2016 US Election?}
 
@@ -654,6 +569,35 @@ A Global Overview}\label{SVF_properties}
           \end{center}
         \end{figure}
 \end{frame}
+
+\section{Model Adjustment Using Similarity-Based Parameter Correction:
+A Global Overview}\label{SVF_properties}
+
+\begin{frame}\frametitle{Formal Results}
+    
+    \begin{prop}\label{omega_consistency}
+    Assume
+    \begin{enumerate}
+      \item For each $i$, $\{a_{i,t}\}_{t=0,...,T_i}$ obeys a GARCH-X($m,s$) with volatility shocks found in $\mc{M}_{1}$, where $T_i$ is the length of the $i$th series.
+      \item For each $i, \{\omega_{i,t}^{*}\}_{t=0,...,T_i}$ is potentially non-zero at $\{T^{*}_{i}+1,... ,T^{*}_{i}+k\}$, $\omega_{i,T^{*}+1}^{*}\equiv...\equiv\omega_{i,T^{*}+k}^{*}$, and zero otherwise, where the arrival of $T_{i}^{*}$ is governed by a time-invariant distribution on $\{a_{i,t}\}_{t=0,...,T_i-1}$. \label{stationarity_of_omega_i_t}
+      \item The conditions in Assumption 0 of \cite[][]{han2014asymptotic} prevail.
+    \end{enumerate}
+    Then for any $i$, $\hat\omega_{i,t}^{*} \xrightarrow{p} \omega_{i}^{*}$.
+    \end{prop}
+
+    \begin{prop}\label{sigma_consistency}
+        Assume
+        \begin{enumerate}
+          \item All conditions from the previous proposition.
+          \item There exist weights $\{\pi_{i}\}_{i=2}^{n=1}$ such that $\textbf{v}_{1,T^{*}} = \sum^{n+1}_{i=2}\weight_{i} \textbf{v}_{i,T^{*}}$.
+         \end{enumerate}
+      Then $\hat\sigma^{2}_{adjusted}\xrightarrow{p}\sigma^{2}_{1,T^{*}+1}$. 
+      \end{prop}
+
+\end{frame}
+
+\section{Formal Properties and Model-Specific Considerations}
+
 
 \section{Discussion}
 
