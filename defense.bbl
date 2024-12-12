@@ -191,6 +191,37 @@
       \field{pages}{449\bibrangedash 492}
       \range{pages}{44}
     \endentry
+    \entry{clements1998forecasting}{book}{}
+      \name{author}{2}{}{%
+        {{hash=ec19639673277a4470119a3ae458743a}{%
+           family={Clements},
+           familyi={C\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod}}}%
+        {{hash=6816e7c37c57bf4a47d33394a8562e5e}{%
+           family={Hendry},
+           familyi={H\bibinitperiod},
+           given={David\bibnamedelima F},
+           giveni={D\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{9b73d945dbfc5804fe7037f0cee27b38}
+      \strng{fullhash}{9b73d945dbfc5804fe7037f0cee27b38}
+      \strng{bibnamehash}{9b73d945dbfc5804fe7037f0cee27b38}
+      \strng{authorbibnamehash}{9b73d945dbfc5804fe7037f0cee27b38}
+      \strng{authornamehash}{9b73d945dbfc5804fe7037f0cee27b38}
+      \strng{authorfullhash}{9b73d945dbfc5804fe7037f0cee27b38}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Forecasting economic time series}
+      \field{year}{1998}
+    \endentry
     \entry{fatemi2023mitigating}{article}{}
       \name{author}{5}{}{%
         {{hash=d54a3201524db742c9fffa463d40988c}{%

@@ -10,10 +10,11 @@
 
 %\usepackage{bibentry}
 
-\usepackage{tikz}
-
-\usetikzlibrary{trees}
+\usepackage{pgf, tikz}
+\usetikzlibrary{arrows, automata, trees}
 \usepackage{forest}
+\usepackage{hvlogos}
+
 
 \usepackage{graphicx}
 \usepackage{amsmath}
@@ -244,6 +245,70 @@ teachers that what you did is valuable for the society and was worth their time.
 \end{frame}
 
 \begin{frame}
+    \frametitle{My Prelim: An incredibly Brief Recap}
+
+    \begin{tikzpicture}[edge from parent path={[<-,line width=2pt,green!50!black](\tikzparentnode) -- (\tikzchildnode)},
+        level 1/.style = { level distance = 40mm,
+                           sibling distance = 45mm},
+        level 2/.style = { level distance = 53mm,
+                           sibling distance = 30mm}, 
+        treenode/.style = {shape = rectangle,
+          rounded corners, draw,
+          top color=white, bottom color=blue!30},
+        every child node/.style = {treenode},
+        engine/.style = {inner sep=1pt, font = \tiny, sloped, above},
+        grow = left
+      ]
+      \node [treenode] {Adjusted forecast}
+        child { node {Weighted Donor Fixed Effects}
+          child { node {Time Series Under Study} edge from parent node[engine] {Series and covariates}}
+          child { node {Donor pool} edge from parent node[engine] {Fixed effect estimates} }
+          child { node {Covariate Choices} edge from parent node[engine] {}}
+        }
+       
+      ;
+      \end{tikzpicture}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{My Prelim: An Incredibly Brief Recap}
+
+\begin{tikzpicture}[
+    > = stealth, % arrow head style
+    shorten > = .5pt, % don't touch arrow head to node
+    auto,
+    node distance = 4.5cm, % distance between nodes
+    semithick % line style
+]
+
+\tikzstyle{every state}=[
+    draw = black,
+    thick,
+    fill = white,
+    minimum size = 4mm
+]
+\node[state] (Target Series) {Target Series};
+\node[state] (Donor Pool) [above of = Target Series] {Donor Pool};
+%\node[state] (Specified Covariates) [above of = Donor Pool] {Specified Covariates};
+
+\node[rectangle]   (Convex Combination of FE) [above right of=Target Series] {Convex Combination of FE};
+
+\node[state] (Donors) [below right of=Target Series] {$Donors$};
+\node[state] (Adjusted Forecast) [right of=Convex Combination of FE] {Adjusted Forecast};
+
+\path[->] (Target Series) edge node {Covariates} (Convex Combination of FE);
+\path[->] (Target Series) edge [bend right] node {Unadjusted Forecast} (Adjusted Forecast);
+\path[->] (Donor Pool) edge node {Covariates and FE estimates} (Convex Combination of FE);
+ \path[->] (Convex Combination of FE) edge node {} (Adjusted Forecast);
+
+
+%\draw[red, dashed] (1, 2) -- (1, -2);
+\end{tikzpicture}
+
+\end{frame}
+
+\begin{frame}
     \frametitle{My Prelim: An Incredibly Brief Recap}
 
     \begin{itemize}
@@ -460,7 +525,7 @@ which nests the GARCH model's volatilty equation as well as the ARMA representat
 
 
 \begin{frame}
-\frametitle{Volatility Profile of a Time Series}
+\frametitle{Covariate Profile of a Time Series}
 \fontsize{6.6}{7}
 
 Consider the $p \times n$ matrix that stores donor and covariate information at time $t$
@@ -486,8 +551,8 @@ Consider the $p \times n$ matrix that stores donor and covariate information at 
 \end{frame}
 
 \begin{frame}
-    \frametitle{Significance of the Volatility Profile}
-    Covariates chosen for inclusion in a given volatility profile may be any $\mathcal{F}_{t}$-measurable function, for example
+    \frametitle{Significance of the Covariates}
+    Covariates chosen for inclusion may be any $\mathcal{F}_{t}$-measurable function, for example
     \begin{itemize}
         \item levels
         \item differences in levels
@@ -783,7 +848,7 @@ Use NLP to identify donors.
 
 \begin{frame}{How much can we automate?}
 
-    What if the variables in the volatility profile are difficult to specify?
+    What if the covariates are difficult to specify?
 
     \bigbreak
     Proposed solution:
@@ -809,7 +874,7 @@ High-frequency data?
     \frametitle{Alternative Estimators and Estimands in Volatility Modeling}
     \begin{itemize}
         
-        \item Factors in volatility profile
+        \item Factors used as covariates
         \item Overnight returns instead of open-to-close
         
         \item Signal Recovery Perspective \parencite{ferwana2022optimal}
@@ -838,7 +903,7 @@ High-frequency data?
 \begin{frame}{Distance-based Weighting of Impulse Response Functions}
     Suppose 
     \begin{itemize}
-        \item We have a collection of $p$-variate time series of lengths $T_{i}, i=1,2,...n+1)$.
+        \item We have a collection of $p$-variate time series of lengths $T_{i}, i=1,2,...n+1$.
         \item We are interested in the response of variable $r$ to shocks in variable $j$, $1\leq r \leq j \leq p$. 
 
     \end{itemize}
