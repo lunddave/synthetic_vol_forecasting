@@ -149,7 +149,7 @@
 \begin{frame}
     \frametitle{A High-level Summary Uniting All My Projects}
     
-        Forecasting under non-ideal conditions like a change in the DGP or a lack of past information for units we wish to forecast: what do we do?
+        Forecasting under non-ideal conditions like a rupture in the DGP or a lack of past information for units we wish to forecast: what do we do?
 
         \bigskip
 
@@ -244,41 +244,43 @@ teachers that what you did is valuable for the society and was worth their time.
 \end{enumerate}
 \end{frame}
 
-\begin{frame}
-    \frametitle{My Prelim: An incredibly Brief Recap}
+\section{My Prelim: A recap}
 
-    \begin{tikzpicture}[edge from parent path={[<-,line width=2pt,green!50!black](\tikzparentnode) -- (\tikzchildnode)},
-        level 1/.style = { level distance = 40mm,
-                           sibling distance = 45mm},
-        level 2/.style = { level distance = 53mm,
-                           sibling distance = 30mm}, 
-        treenode/.style = {shape = rectangle,
-          rounded corners, draw,
-          top color=white, bottom color=blue!30},
-        every child node/.style = {treenode},
-        engine/.style = {inner sep=1pt, font = \tiny, sloped, above},
-        grow = left
-      ]
-      \node [treenode] {Adjusted forecast}
-        child { node {Weighted Donor Fixed Effects}
-          child { node {Time Series Under Study} edge from parent node[engine] {Series and covariates}}
-          child { node {Donor pool} edge from parent node[engine] {Fixed effect estimates} }
-          child { node {Covariate Choices} edge from parent node[engine] {}}
-        }
+% \begin{frame}
+%     \frametitle{My Prelim: An incredibly Brief Recap}
+
+%     \begin{tikzpicture}[edge from parent path={[<-,line width=2pt,green!50!black](\tikzparentnode) -- (\tikzchildnode)},
+%         level 1/.style = { level distance = 40mm,
+%                            sibling distance = 45mm},
+%         level 2/.style = { level distance = 53mm,
+%                            sibling distance = 30mm}, 
+%         treenode/.style = {shape = rectangle,
+%           rounded corners, draw,
+%           top color=white, bottom color=blue!30},
+%         every child node/.style = {treenode},
+%         engine/.style = {inner sep=1pt, font = \tiny, sloped, above},
+%         grow = left
+%       ]
+%       \node [treenode] {Adjusted forecast}
+%         child { node {Weighted Donor Fixed Effects}
+%           child { node {Time Series Under Study} edge from parent node[engine] {Series and covariates}}
+%           child { node {Donor pool} edge from parent node[engine] {Fixed effect estimates} }
+%           child { node {Covariate Choices} edge from parent node[engine] {}}
+%         }
        
-      ;
-      \end{tikzpicture}
+%       ;
+%       \end{tikzpicture}
 
-\end{frame}
+% \end{frame}
 
 \begin{frame}
 \frametitle{My Prelim: An Incredibly Brief Recap}
 
 \begin{tikzpicture}[
     > = stealth, % arrow head style
-    shorten > = .5pt, % don't touch arrow head to node
+    shorten > = 2.2pt, % don't touch arrow head to node
     auto,
-    node distance = 4.5cm, % distance between nodes
+    node distance = 5.8cm, % distance between nodes
     semithick % line style
 ]
 
@@ -288,19 +290,19 @@ teachers that what you did is valuable for the society and was worth their time.
     fill = white,
     minimum size = 4mm
 ]
-\node[state] (Target Series) {Target Series};
-\node[state] (Donor Pool) [above of = Target Series] {Donor Pool};
-%\node[state] (Specified Covariates) [above of = Donor Pool] {Specified Covariates};
+\node[state, fill = yellow] (Target Series) {Target Series};
+\node[state, fill = orange] (Donor Pool) [above of = Target Series] {Donor Pool};
 
-\node[rectangle]   (Convex Combination of FE) [above right of=Target Series] {Convex Combination of FE};
+\node[rectangle, rounded corners, draw=blue!80, line width=.2mm, inner sep=0pt,minimum size=14pt]   (Distance-based Weighting) [above right of=Target Series] {Distance-based Weighting};
 
-\node[state] (Donors) [below right of=Target Series] {$Donors$};
-\node[state] (Adjusted Forecast) [right of=Convex Combination of FE] {Adjusted Forecast};
+\node[state] (Donors) [below right of=Target Series] {Donors};
+\node[state, fill = pink] (Adjusted Forecast) [right of=Distance-based Weighting] {Adjusted Forecast};
 
-\path[->] (Target Series) edge node {Covariates} (Convex Combination of FE);
+\path[->] (Target Series) edge node {Pre-Shock Covariates} (Distance-based Weighting);
 \path[->] (Target Series) edge [bend right] node {Unadjusted Forecast} (Adjusted Forecast);
-\path[->] (Donor Pool) edge node {Covariates and FE estimates} (Convex Combination of FE);
- \path[->] (Convex Combination of FE) edge node {} (Adjusted Forecast);
+\path[->] (Donor Pool) edge [bend left] node {Pre-Shock Covariates} (Distance-based Weighting);
+\path[->] (Donor Pool) edge [left] [bend right] node {FE estimates} (Distance-based Weighting);
+ \path[->] (Distance-based Weighting) edge [below] [bend right] node {Parameter Adjustment} (Adjusted Forecast);
 
 
 %\draw[red, dashed] (1, 2) -- (1, -2);
@@ -320,6 +322,62 @@ teachers that what you did is valuable for the society and was worth their time.
     \end{itemize}
 \end{frame}
 
+
+\begin{frame}\frametitle{The forecaster's decision tree}
+
+    \begin{figure} 
+        \centering  
+      \resizebox{\textwidth}{!}{%
+      \begin{forest}
+        /tikz/every node/.append style={font=\small},
+        for tree={
+          rounded corners, 
+          % top color=gray!5, bottom color=gray!30, 
+          edge+={darkgray, line width=4pt}, 
+          draw=darkgray, 
+          l sep=.8cm,
+          s sep=.5cm,
+          minimum height=8.8cm,
+          minimum width=1cm,
+          child anchor=west,
+          parent anchor=east,
+          grow'=east,
+        minimum size=1cm,%new possibility
+        text width=4cm,%
+          draw,
+          anchor=west,
+          edge path={
+            \noexpand\path[\forestoption{edge}]
+              (.child anchor) -| +(-5pt,0) -- +(-5pt,0) |-
+              (!u.parent anchor)\forestoption{edge label};
+          },
+        }
+          [Break in the DGP between $T^{*}$ and $T^{*}+1$?,fill=blue!30 
+              [Is there information outside of “regular forces”,edge=green, fill=blue!30,draw=green
+                  [Can we use the information outside “regular forces” to forecast (as opposed to merely spotting the break)?,edge=green,,fill=blue!30 
+                      [Do you have a parametric model (with estimable parameters) for how information outside of ``regular forces” will figure at $T^{*}+h$?,edge=green,fill=blue!30 
+                        [What other time series are governed by the parametric model? 
+                        ,edge=green,fill=blue!30 
+                        ]
+                        [The information that helped spot the break can be used to 
+                        ,edge=red,fill=gray!30
+                        ]
+                        ]
+                      [Use “regular forces” to do the model adjustment for the ,edge=red,fill=gray!30
+                      ]
+                      ]
+                      [Then forecasting will require at least one post-break data point to be observed.,edge=red,fill=gray!30]
+                  ]
+                  [\cite{clements1998forecasting} discuss this.,edge=red,fill=gray!30]
+                  ]
+              ]
+          ]
+      \end{forest}
+      }\caption{Forecast Model Adjustment: A Decision Tree}\label{fig:tree}
+      \end{figure}
+
+\end{frame}
+
 \begin{frame}
 
     \begin{example}[Weekend of March 6th - 8th, 2020]
@@ -331,6 +389,275 @@ teachers that what you did is valuable for the society and was worth their time.
         \end{example}
 
 \end{frame}
+
+
+% Setting for the problem
+\begin{frame}
+    \frametitle{Premise: There is a breaking news at some fractional lag T-$\epsilon$}
+    
+    \begin{itemize}
+    \item After-hours trading provides a poor forum in which to digest news
+    \item News constitutes public, material information for one or more traded assets
+    \item The \textcolor{red}{qualitative aspects} of the news provide a basis upon which to 
+    \begin{itemize}
+        \item match to past news shocks
+        \item match in a $p$-dimensional covariate space
+    \end{itemize}
+    \end{itemize}
+    \end{frame}
+    
+    \begin{frame}
+        \frametitle{A Primer on GARCH}
+       
+        \begin{Definition}
+    
+        Let $\{a_{t}\}$ denote an observable, real-valued discrete-time stochastic process.\\
+        
+        \bigbreak
+        
+        We call $\{a_{t}\}$ a strong GARCH process \parencite[][]{francq2019garch} with respect to $\{\epsilon_{t}\}$ iff 
+        \begin{align*}
+            &\sigma_{t}^{2} = \omega + \sum^{m}_{k=1}\alpha_{k}a^{2}_{t-k} + \sum_{j=1}^{s}\beta_{j}\sigma_{t-j}^{2}\\
+            &a_{t} = \sigma_{t}\epsilon_{t}\\
+            &\epsilon_{t} \simiid E[\epsilon_{t}]=0, Var[\epsilon_{t}] = 1\\
+            &\forall k,j, \alpha_{k},\beta_{j}\geq 0\\ 
+            &\forall t, \omega, \sigma_{t} > 0 
+            \end{align*}
+    
+        \end{Definition}
+    
+    \end{frame}
+    
+    \begin{frame}
+        \frametitle{Volatility Equation with an exogenous term: GARCH-X}
+        
+        \begin{align*}
+            &\sigma_{t}^{2} = \omega+ \sum^{m}_{k=1}\alpha_{k}a^{2}_{t-k} + \sum_{j=1}^{s}\beta_{j}\sigma_{t-j}^{2} + \gamma^{T}\x_{t} \text{ .}\label{GARCH-X}
+        \end{align*}
+    
+        We will be looking at only one exogenous term.
+    
+        \end{frame}
+        
+    \begin{frame}
+        \frametitle{Model Preliminaries}
+    
+        \fontsize{8}{7.2}
+    
+        Let $I(\cdot)$ be an indicator function.  \\
+    \bigbreak
+        Let $T_i$ denote the time length of the time series $i$ for $i = 1, \ldots, n+1$.\\
+        \bigbreak
+        Let $T_i^*$ denote the largest time index prior to news shock, with $T_i^* < T_i$ (i.e. we assume at least one post-shock observation). \\
+        \bigbreak
+        Let $\delta, \textbf{v}_{i,t} \in \mathbb{R}^{p},  \x_{i,t} \in \mathbb{R}^{d}$.  
+    \end{frame}
+    
+    \begin{frame}
+    \frametitle{Model Setup}
+    
+    \fontsize{6}{7.2}
+    
+    For $t= 1, \ldots, T_i$ and $i = 1, \ldots, n+1$, the model $\mc{M}_1$ is defined as 
+    \begin{align*}
+      \mc{M}_1 \colon \begin{array}{l}
+         \sigma^{2}_{i,t} = \omega_{i} + \omega^{*}_{i,t} + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \text{ }\\[.2cm]
+         a_{i,t} = \sigma_{i,t}((1-D^{return}_{i,t})\epsilon_{i,t} + D^{return}_{i,t}\epsilon^{*}_{i})\\[.2cm]
+        \omega_{i,t}^{*} = D^{vol}_{i,t}[\mu_{\omega^{*}}+\delta'\textbf{v}_{i, t}+ u_{i,t}],
+      \end{array}
+      \end{align*}\label{model_1}
+    with error structure
+    
+      \begin{align*}
+        \epsilon_{i,t} &\simiid \mc{F}_{\epsilon} \text{ with }  \; \mrm{E}_{\mc{F}_{\epsilon}}(\epsilon) = 0, \mrm{Var}_{\mc{F}_{\epsilon}}(\epsilon)  = 1  \\
+        \epsilon^{*}_{i,t} &\simiid \mc{F}_{\epsilon^{*}} \text{ with }  \; \mrm{E}_{\mc{F}_{\epsilon^{*}}}(\epsilon) = \mu_{\epsilon^{*}}, \mrm{Var}_{\mc{F}_{\epsilon^{*}}}(\epsilon^{*})  = \sigma^2_{\epsilon^{*}}  \\
+        u_{i,t} & \simiid  \mc{F}_{u} \text{ with }  \; \mrm{E}_{\mc{F}_{u}}(u) = 0, \mrm{Var}_{\mc{F}_{u}}(u) = \sigma^2_{u}\\
+        \epsilon_{i,t} & \indep  \epsilon^{*}_{i,t}  \indep u_{i,t}
+        \end{align*}
+    where $D^{return}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + L_{i, return}\})$ and $D^{vol}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + L_{i, vol}\})$ and $L_{i,return},L_{i,vol}$ denote lengths of log return and volatility shocks, respectively.  
+    
+    \bigbreak
+    
+    \textcolor{red}{Note: we will be looking GARCH(1,1) only in this presentation.}
+    \end{frame}
+    
+    
+    % \begin{frame}
+    %     \frametitle{Model Details}
+    %     Let $\mc{M}_{0}$ denote the subclass of $\mc{M}_{1}$ models such that $\delta \equiv 0$.  \\
+    %     \bigbreak
+    %     $\mc{M}_{0}$ assumes $\omega^{*}_{i,t}$ have no dependence on the covariates and are i.i.d. with $\E[ \omega^{*}_i]=\mu_{\omega^{*}}$.  
+    % \end{frame}
+    
+    \begin{frame}
+    \frametitle{Our Model is Nested inside a Factor Model}
+    
+    \fontsize{6}{7.2}
+    
+    Consider $\mc{M}_{1}$ in the context of the factor model from \cite[][]{abadie2010synthetic}, where an untreated unit is governed by:
+    
+    $$Y^{N}_{i,t} = \delta_{t} + \boldsymbol\theta_{t}^{'}\textbf{Z}_{i}+\boldsymbol\lambda_{t}^{'}\boldsymbol\mu_{i}+\varepsilon_{i,t}$$
+    
+    which nests the GARCH model's volatilty equation as well as the ARMA representation of a GARCH model, where
+    
+    \begin{align*}
+    \delta_{t} & \sim \omega, \text{a location parameter shared across donors}\\
+    \boldsymbol\theta_{t} & \sim \boldsymbol\alpha_{k}, \text{a vector of ARCH parameters and other coefficients shared across donors} \\
+    \textbf{Z}_{i} & \sim \boldsymbol a_{i,t-k}, \text{a vector of observable quantities specific to each donor} \\
+    \boldsymbol \lambda_{t} & \sim \boldsymbol\beta_{j}, \text{a vector of GARCH parameters shared across donors} \\
+    \boldsymbol \mu_{i} & \sim \boldsymbol \sigma_{i,t-j}^{2}, \text{a vector of latent quantities specific to each donor}   \\
+    \end{align*}
+    
+    % and $\varepsilon_{i,t}$ is idiosyncratic noise, uncorrelated across time and donors.
+    \end{frame}
+    
+    
+    \begin{frame}
+    \frametitle{Covariates}
+    \fontsize{6.6}{7}
+    
+    Consider the $p \times n$ matrix that stores donor and covariate information at time $t$
+    
+    \begin{equation*}
+        \V_{t} = 
+        \begin{pmatrix}
+        \hat\alpha_{1,t} & \hat\alpha_{t,2}  & \cdots & \hat\alpha_{t,n}  \\
+        \hat\beta_{1,t} & \hat\beta_{t,2}  & \cdots & \hat\beta_{t,n}  \\
+        \vdots  & \vdots  & \ddots & \vdots  \\
+        RV_{1,t} & RV_{2,t}  & \cdots & RV_{n,t}  \\
+        RV_{1,t-1}  & RV_{2,t-1}  & \cdots & RV_{n,t-1}  \\
+        \vdots  & \vdots  & \ddots & \vdots  \\
+        IV_{1,t} & IV_{2,t} & \cdots & IV_{n,t} \\
+        IV_{1,t-1}  & IV_{2,t-1}  & \cdots & IV_{n,t-1} \\
+        \vdots  & \vdots  & \ddots & \vdots  \\
+        |r_{1,t}| & |r_{2,t}| & \cdots & |r_{n,t}| \\
+        |r_{1,t-1}|  & |r_{2,t-1}|  & \cdots & |r_{n,t-1}| \\
+        \end{pmatrix},
+        \end{equation*}
+        \bigbreak
+        where RV denotes realized variance and IV the implied volatility
+    \end{frame}
+    
+    \begin{frame}
+        \frametitle{Significance of the Covariates}
+        Covariates chosen for inclusion may be any $\mathcal{F}_{t}$-measurable function, for example
+        \begin{itemize}
+            \item levels
+            \item differences in levels
+            \item log returns
+            \item percentage returns
+            \item measurable transformations of the above
+        \end{itemize}
+    
+        \bigbreak 
+    
+        Key criterion for inclusion: how plausible is the covariate as a \textcolor{red}{proxy for risk conditions} for the volatility series to be forecasted?
+    \end{frame}
+    
+    % \begin{frame}
+    % \frametitle{Realized Volatility Estimation}
+    
+    % Examine $K$ units of of time; each unit is divided into $m$ intervals of length $\frac{1}{m}$.  Let $p_{t} = \log{P_{t}}$, and let $\tilde{r}(t,\frac{1}{m}) = p_{t} - p_{t-\frac{1}{m}}$  \parencite[][]{andersen2008realized}. 
+    
+    % \bigbreak
+    
+    % Estimate variance of $i$th log return series using Realized Volatility of the $K$ consecutive trading days that conclude with day $t$, denoted $RV_{i,t}^{K,m}$, using
+    
+    % $$RV_{i,t}^{K,m} = \frac{1}{K}\sum^{Km}_{v=1}\tilde{r}^{2}(v/m,1/m),$$
+    
+    % where the $K$ trading days have been chopped into $Km$ equally-sized blocks.
+    
+    % Assuming the $K$ units $\tilde{r}(t, 1) = p_{t} - p_{t-1}$ are s.t. $\tilde{r}(t, 1) \simiid N(\mu, \delta^{2})$, it is easily verified that 
+    
+    % $$\E[RV^{K,m}] = \frac{\mu^{2}}{m} + \delta^{2},$$
+    % which is a biased but consistent estimator of the variance.  We pick $m = 77$, corresponding to the 6.5-hour trading day chopped into 5-minute blocks, omitting first five-minutes of the day.
+    
+    % \end{frame}
+    
+    
+    \begin{frame}
+    \frametitle{Forecasting}
+    
+    \fontsize{7.6}{7}
+    
+    We present two forecasts:
+    
+    \begin{align*}
+      \text{Forecast 1: } & \hat\sigma^{2}_{unadjusted} = \hat\E[\sigma^{2}_{1,T_{1}^{*}+1}|\mathcal{F}_{T^{*}}] = \hat\omega_{i} + \sum^{m_{i}}_{k=1}\hat\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\hat\beta_{i,j}\sigma_{i,t-j}^{2} + \hat\gamma_{i}^{T} \x_{i,t}\\
+      \text{Forecast 2: } & \hat\sigma^{2}_{adjusted} = \hat\E[\sigma^{2}_{1,T_{1}^{*}+1}|\mathcal{F}_{T^{*}}] + \textcolor{red}{\hat\omega^{*}} = \hat\omega_{i} + \sum^{m_{i}}_{k=1}\hat\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\hat\beta_{i,j}\sigma_{i,t-j}^{2} + \hat\gamma_{i}^{T} \x_{i,t} + \textcolor{red}{\hat\omega^{*} } \text{ .}
+    \end{align*}
+    \end{frame}
+    
+    \begin{frame}
+    \frametitle{Excess Volatility Estimators}
+    
+    \begin{itemize}
+    
+    \item <1->  Observe the pair $(\{\hat\omega^{*}_{i}\}^{n+1}_{i=2},\{\textbf{v}_{i}\}^{n+1}_{i=2})$.  \\
+    
+    \item <2-> Goal: recover weights $\{\weight_{i}\}^{n+1}_{i=2} \in \Delta^{n}$ and compute $\hat\omega^{*} \coloneq \sum^{n+1}_{i=2}\weight_{i}\hat\omega^{*}_{i}$, our forecast adjustment term.
+    
+    \item <3-> Following \cite[][]{abadie2003economic},\cite[][]{abadie2010synthetic}, let $\|\cdot\|_{\textbf{S}}$ denote any semi-norm on $\mathbb{R}^{p}$, and define
+    
+    
+    \begin{align*}
+    \{\pi\}_{i=2}^{n+1} = \argmin_{\pi}\|\textbf{v}_{1,T^{*}} - \V_{T^{*}}\pi \|_{\textbf{S}} \text{ .}
+    \end{align*}
+    
+    % Nota bene: the weights $\{\weight_{i}\}_{i=2}^{n+1}$ are deterministic with respect to $\mathcal{F}_{T^{*}}$.
+    
+    \end{itemize}
+    \end{frame}
+    
+    
+    \begin{frame}{Why apply our method to the 2016 US Election?}
+    
+        \begin{itemize}
+            \item You can win the US Presidency without a majority.
+            \item No incumbent candidate
+            \item Donald J. Trump espoused unorthodox, populist positions on healthcare, trade, foreign policy
+            \item Donald J. Trump had no record to assess or criticize
+            \item It was not predicted -- hence it delivered news.
+        \end{itemize}
+        
+    \end{frame}
+    \begin{frame}
+        \begin{figure}[H]
+            \begin{center}
+              \includegraphics[scale=.2]{iyg.png}
+              \caption{IYG includes JPM, BAC, WF, CITI, among other financial majors}
+              \end{center}
+            \end{figure}
+    \begin{enumerate}
+        \item \textbf{Model choice} GARCH(1,1) on the daily log return series of IYG in each donor
+    
+        \item \textbf{Covariate Choice} 
+        \begin{itemize}
+            \item previous 30 log returns of IYG (large pre-treatment period, in the language of SC)
+            \item log return Crude Oil (CL.F)
+            \item VIX
+            \item log return of the VIX
+            \item log returns of the 3-month, 5-year, 10-year, and 30-year US Treasuries
+            \item return of the most recently available monthly spread between AAA and BAA corporate debt
+            \item log return in the trading volume of the ETF IYG itself
+        \end{itemize}
+    
+        \item \textbf{Donor pool construction} US Elections from 2004, 2008, 2012
+    
+        \item \textbf{Choice of estimator for volatility} Sum of 77 squared five-minute returns generated between 9:35am and 4pm on November 9th, 2016.
+    \end{enumerate} 
+    
+    \end{frame}
+    
+    \begin{frame}{2016 Election}
+        \begin{figure}[H]
+            \begin{center}
+              \includegraphics[scale=.34]{real_data_output_plots/TueSep241059512024_IYG_None_None.png}
+              \caption{The volatility induced by the 2016 US election}
+              \label{fig:SVF_2016}
+              \end{center}
+            \end{figure}
+    \end{frame}
 
 \begin{frame}
     \frametitle{The Post-prelim Direction of my research}
@@ -401,356 +728,16 @@ uncomment the blocks below
     \tableofcontents[part=1,currentsection]\tableofcontents
 \end{frame}
 
-% Presentation structure
-
-% Setting for the problem
-\begin{frame}
-\frametitle{Premise: There is a breaking news at some fractional lag T-$\epsilon$}
-
-\begin{itemize}
-\item After-hours trading provides a poor forum in which to digest news
-\item News constitutes public, material information for one or more traded assets
-\item The \textcolor{red}{qualitative aspects} of the news provide a basis upon which to 
-\begin{itemize}
-    \item match to past news shocks
-    \item match in a $p$-dimensional covariate space
-\end{itemize}
-\end{itemize}
-\end{frame}
-
-\begin{frame}
-    \frametitle{A Primer on GARCH}
-   
-    \begin{Definition}
-
-    Let $\{a_{t}\}$ denote an observable, real-valued discrete-time stochastic process.\\
-    
-    \bigbreak
-    
-    We call $\{a_{t}\}$ a strong GARCH process \parencite[][]{francq2019garch} with respect to $\{\epsilon_{t}\}$ iff 
-    \begin{align*}
-        &\sigma_{t}^{2} = \omega + \sum^{m}_{k=1}\alpha_{k}a^{2}_{t-k} + \sum_{j=1}^{s}\beta_{j}\sigma_{t-j}^{2}\\
-        &a_{t} = \sigma_{t}\epsilon_{t}\\
-        &\epsilon_{t} \simiid E[\epsilon_{t}]=0, Var[\epsilon_{t}] = 1\\
-        &\forall k,j, \alpha_{k},\beta_{j}\geq 0\\ 
-        &\forall t, \omega, \sigma_{t} > 0 
-        \end{align*}
-
-    \end{Definition}
-
-\end{frame}
-
-\begin{frame}
-    \frametitle{Volatility Equation with an exogenous term: GARCH-X}
-    
-    \begin{align*}
-        &\sigma_{t}^{2} = \omega+ \sum^{m}_{k=1}\alpha_{k}a^{2}_{t-k} + \sum_{j=1}^{s}\beta_{j}\sigma_{t-j}^{2} + \gamma^{T}\x_{t} \text{ .}\label{GARCH-X}
-    \end{align*}
-
-    We will be looking at only one exogenous term.
-
-    \end{frame}
-    
-\begin{frame}
-    \frametitle{Model Preliminaries}
-
-    \fontsize{8}{7.2}
-
-    Let $I(\cdot)$ be an indicator function.  \\
-\bigbreak
-    Let $T_i$ denote the time length of the time series $i$ for $i = 1, \ldots, n+1$.\\
-    \bigbreak
-    Let $T_i^*$ denote the largest time index prior to news shock, with $T_i^* < T_i$ (i.e. we assume at least one post-shock observation). \\
-    \bigbreak
-    Let $\delta, \textbf{v}_{i,t} \in \mathbb{R}^{p},  \x_{i,t} \in \mathbb{R}^{d}$.  
-\end{frame}
-
-\begin{frame}
-\frametitle{Model Setup}
-
-\fontsize{6}{7.2}
-
-For $t= 1, \ldots, T_i$ and $i = 1, \ldots, n+1$, the model $\mc{M}_1$ is defined as 
-\begin{align*}
-  \mc{M}_1 \colon \begin{array}{l}
-     \sigma^{2}_{i,t} = \omega_{i} + \omega^{*}_{i,t} + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \text{ }\\[.2cm]
-     a_{i,t} = \sigma_{i,t}((1-D^{return}_{i,t})\epsilon_{i,t} + D^{return}_{i,t}\epsilon^{*}_{i})\\[.2cm]
-    \omega_{i,t}^{*} = D^{vol}_{i,t}[\mu_{\omega^{*}}+\delta'\textbf{v}_{i, t}+ u_{i,t}],
-  \end{array}
-  \end{align*}\label{model_1}
-with error structure
-
-  \begin{align*}
-    \epsilon_{i,t} &\simiid \mc{F}_{\epsilon} \text{ with }  \; \mrm{E}_{\mc{F}_{\epsilon}}(\epsilon) = 0, \mrm{Var}_{\mc{F}_{\epsilon}}(\epsilon)  = 1  \\
-    \epsilon^{*}_{i,t} &\simiid \mc{F}_{\epsilon^{*}} \text{ with }  \; \mrm{E}_{\mc{F}_{\epsilon^{*}}}(\epsilon) = \mu_{\epsilon^{*}}, \mrm{Var}_{\mc{F}_{\epsilon^{*}}}(\epsilon^{*})  = \sigma^2_{\epsilon^{*}}  \\
-    u_{i,t} & \simiid  \mc{F}_{u} \text{ with }  \; \mrm{E}_{\mc{F}_{u}}(u) = 0, \mrm{Var}_{\mc{F}_{u}}(u) = \sigma^2_{u}\\
-    \epsilon_{i,t} & \indep  \epsilon^{*}_{i,t}  \indep u_{i,t}
-    \end{align*}
-where $D^{return}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + L_{i, return}\})$ and $D^{vol}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + L_{i, vol}\})$ and $L_{i,return},L_{i,vol}$ denote lengths of log return and volatility shocks, respectively.  
-
-\bigbreak
-
-\textcolor{red}{Note: we will be looking GARCH(1,1) only in this presentation.}
-\end{frame}
-
-
-% \begin{frame}
-%     \frametitle{Model Details}
-%     Let $\mc{M}_{0}$ denote the subclass of $\mc{M}_{1}$ models such that $\delta \equiv 0$.  \\
-%     \bigbreak
-%     $\mc{M}_{0}$ assumes $\omega^{*}_{i,t}$ have no dependence on the covariates and are i.i.d. with $\E[ \omega^{*}_i]=\mu_{\omega^{*}}$.  
-% \end{frame}
-
-\begin{frame}
-\frametitle{Our Model is Nested inside a Factor Model}
-
-\fontsize{6}{7.2}
-
-Consider $\mc{M}_{1}$ in the context of the factor model from \cite[][]{abadie2010synthetic}, where an untreated unit is governed by:
-
-$$Y^{N}_{i,t} = \delta_{t} + \boldsymbol\theta_{t}^{'}\textbf{Z}_{i}+\boldsymbol\lambda_{t}^{'}\boldsymbol\mu_{i}+\varepsilon_{i,t}$$
-
-which nests the GARCH model's volatilty equation as well as the ARMA representation of a GARCH model, where
-
-\begin{align*}
-\delta_{t} & \sim \omega, \text{a location parameter shared across donors}\\
-\boldsymbol\theta_{t} & \sim \boldsymbol\alpha_{k}, \text{a vector of ARCH parameters and other coefficients shared across donors} \\
-\textbf{Z}_{i} & \sim \boldsymbol a_{i,t-k}, \text{a vector of observable quantities specific to each donor} \\
-\boldsymbol \lambda_{t} & \sim \boldsymbol\beta_{j}, \text{a vector of GARCH parameters shared across donors} \\
-\boldsymbol \mu_{i} & \sim \boldsymbol \sigma_{i,t-j}^{2}, \text{a vector of latent quantities specific to each donor}   \\
-\end{align*}
-
-% and $\varepsilon_{i,t}$ is idiosyncratic noise, uncorrelated across time and donors.
-\end{frame}
-
-
-\begin{frame}
-\frametitle{Covariate Profile of a Time Series}
-\fontsize{6.6}{7}
-
-Consider the $p \times n$ matrix that stores donor and covariate information at time $t$
-
-\begin{equation*}
-    \V_{t} = 
-    \begin{pmatrix}
-    \hat\alpha_{1,t} & \hat\alpha_{t,2}  & \cdots & \hat\alpha_{t,n}  \\
-    \hat\beta_{1,t} & \hat\beta_{t,2}  & \cdots & \hat\beta_{t,n}  \\
-    \vdots  & \vdots  & \ddots & \vdots  \\
-    RV_{1,t} & RV_{2,t}  & \cdots & RV_{n,t}  \\
-    RV_{1,t-1}  & RV_{2,t-1}  & \cdots & RV_{n,t-1}  \\
-    \vdots  & \vdots  & \ddots & \vdots  \\
-    IV_{1,t} & IV_{2,t} & \cdots & IV_{n,t} \\
-    IV_{1,t-1}  & IV_{2,t-1}  & \cdots & IV_{n,t-1} \\
-    \vdots  & \vdots  & \ddots & \vdots  \\
-    |r_{1,t}| & |r_{2,t}| & \cdots & |r_{n,t}| \\
-    |r_{1,t-1}|  & |r_{2,t-1}|  & \cdots & |r_{n,t-1}| \\
-    \end{pmatrix},
-    \end{equation*}
-    \bigbreak
-    where RV denotes realized variance and IV the implied volatility
-\end{frame}
-
-\begin{frame}
-    \frametitle{Significance of the Covariates}
-    Covariates chosen for inclusion may be any $\mathcal{F}_{t}$-measurable function, for example
-    \begin{itemize}
-        \item levels
-        \item differences in levels
-        \item log returns
-        \item percentage returns
-        \item measurable transformations of the above
-    \end{itemize}
-
-    \bigbreak 
-
-    Key criterion for inclusion: how plausible is the covariate as a \textcolor{red}{proxy for risk conditions} for the volatility series to be forecasted?
-\end{frame}
-
-\begin{frame}
-\frametitle{Realized Volatility Estimation}
-
-Examine $K$ units of of time; each unit is divided into $m$ intervals of length $\frac{1}{m}$.  Let $p_{t} = \log{P_{t}}$, and let $\tilde{r}(t,\frac{1}{m}) = p_{t} - p_{t-\frac{1}{m}}$  \parencite[][]{andersen2008realized}. 
-
-\bigbreak
-
-Estimate variance of $i$th log return series using Realized Volatility of the $K$ consecutive trading days that conclude with day $t$, denoted $RV_{i,t}^{K,m}$, using
-
-$$RV_{i,t}^{K,m} = \frac{1}{K}\sum^{Km}_{v=1}\tilde{r}^{2}(v/m,1/m),$$
-
-where the $K$ trading days have been chopped into $Km$ equally-sized blocks.
-
-Assuming the $K$ units $\tilde{r}(t, 1) = p_{t} - p_{t-1}$ are s.t. $\tilde{r}(t, 1) \simiid N(\mu, \delta^{2})$, it is easily verified that 
-
-$$\E[RV^{K,m}] = \frac{\mu^{2}}{m} + \delta^{2},$$
-which is a biased but consistent estimator of the variance.  We pick $m = 77$, corresponding to the 6.5-hour trading day chopped into 5-minute blocks, omitting first five-minutes of the day.
-
-\end{frame}
-
 \section{SPC Forecasting Methodology and Correction Functions}
 
-\begin{frame}
-\frametitle{Forecasting}
 
-\fontsize{7.6}{7}
-
-We present two forecasts:
-
-\begin{align*}
-  \text{Forecast 1: } & \hat\sigma^{2}_{unadjusted} = \hat\E[\sigma^{2}_{1,T_{1}^{*}+1}|\mathcal{F}_{T^{*}}] = \hat\omega_{i} + \sum^{m_{i}}_{k=1}\hat\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\hat\beta_{i,j}\sigma_{i,t-j}^{2} + \hat\gamma_{i}^{T} \x_{i,t}\\
-  \text{Forecast 2: } & \hat\sigma^{2}_{adjusted} = \hat\E[\sigma^{2}_{1,T_{1}^{*}+1}|\mathcal{F}_{T^{*}}] + \textcolor{red}{\hat\omega^{*}} = \hat\omega_{i} + \sum^{m_{i}}_{k=1}\hat\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\hat\beta_{i,j}\sigma_{i,t-j}^{2} + \hat\gamma_{i}^{T} \x_{i,t} + \textcolor{red}{\hat\omega^{*} } \text{ .}
-\end{align*}
-\end{frame}
-
-\begin{frame}
-\frametitle{Excess Volatility Estimators}
-
-\begin{itemize}
-
-\item <1->  Observe the pair $(\{\hat\omega^{*}_{i}\}^{n+1}_{i=2},\{\textbf{v}_{i}\}^{n+1}_{i=2})$.  \\
-
-\item <2-> Goal: recover weights $\{\weight_{i}\}^{n+1}_{i=2} \in \Delta^{n}$ and compute $\hat\omega^{*} \coloneq \sum^{n+1}_{i=2}\weight_{i}\hat\omega^{*}_{i}$, our forecast adjustment term.
-
-\item <3-> Following \cite[][]{abadie2003economic},\cite[][]{abadie2010synthetic}, let $\|\cdot\|_{\textbf{S}}$ denote any semi-norm on $\mathbb{R}^{p}$, and define
-
-
-\begin{align*}
-\{\pi\}_{i=2}^{n+1} = \argmin_{\pi}\|\textbf{v}_{1,T^{*}} - \V_{T^{*}}\pi \|_{\textbf{S}} \text{ .}
-\end{align*}
-
-% Nota bene: the weights $\{\weight_{i}\}_{i=2}^{n+1}$ are deterministic with respect to $\mathcal{F}_{T^{*}}$.
-
-\end{itemize}
-\end{frame}
-
-
-\begin{frame}{Why apply our method to the 2016 US Election?}
-
-    \begin{itemize}
-        \item You can win the US Presidency without a majority.
-        \item No incumbent candidate
-        \item Donald J. Trump espoused unorthodox, populist positions on healthcare, trade, foreign policy
-        \item Donald J. Trump had no record to assess or criticize
-        \item It was not predicted -- hence it delivered news.
-    \end{itemize}
-    
-\end{frame}
-\begin{frame}
-    \begin{figure}[H]
-        \begin{center}
-          \includegraphics[scale=.2]{iyg.png}
-          \caption{IYG includes JPM, BAC, WF, CITI, among other financial majors}
-          \end{center}
-        \end{figure}
-\begin{enumerate}
-    \item \textbf{Model choice} GARCH(1,1) on the daily log return series of IYG in each donor
-
-    \item \textbf{Covariate Choice} 
-    \begin{itemize}
-        \item previous 30 log returns of IYG (large pre-treatment period, in the language of SC)
-        \item log return Crude Oil (CL.F)
-        \item VIX
-        \item log return of the VIX
-        \item log returns of the 3-month, 5-year, 10-year, and 30-year US Treasuries
-        \item return of the most recently available monthly spread between AAA and BAA corporate debt
-        \item log return in the trading volume of the ETF IYG itself
-    \end{itemize}
-
-    \item \textbf{Donor pool construction} US Elections from 2004, 2008, 2012
-
-    \item \textbf{Choice of estimator for volatility} Sum of 77 squared five-minute returns generated between 9:35am and 4pm on November 9th, 2016.
-\end{enumerate} 
-
-\end{frame}
-
-\begin{frame}{2016 Election}
-    \begin{figure}[H]
-        \begin{center}
-          \includegraphics[scale=.34]{real_data_output_plots/TueSep241059512024_IYG_None_None.png}
-          \caption{The volatility induced by the 2016 US election}
-          \label{fig:SVF_2016}
-          \end{center}
-        \end{figure}
-\end{frame}
 
 \section{Model Adjustment Using Similarity-Based Parameter Correction:
 A Global Overview}\label{SVF_properties}
 
-\begin{frame}\frametitle{The forecaster's decision tree}
 
-    \begin{figure} 
-        \centering  
-      \resizebox{\textwidth}{!}{%
-      \begin{forest}
-        /tikz/every node/.append style={font=\small},
-        for tree={
-          rounded corners, 
-          % top color=gray!5, bottom color=gray!30, 
-          edge+={darkgray, line width=4pt}, 
-          draw=darkgray, 
-          l sep=.8cm,
-          s sep=.5cm,
-          minimum height=8.8cm,
-          minimum width=1cm,
-          child anchor=west,
-          parent anchor=east,
-          grow'=east,
-        minimum size=1cm,%new possibility
-        text width=4cm,%
-          draw,
-          anchor=west,
-          edge path={
-            \noexpand\path[\forestoption{edge}]
-              (.child anchor) -| +(-5pt,0) -- +(-5pt,0) |-
-              (!u.parent anchor)\forestoption{edge label};
-          },
-        }
-          [Break in the DGP between $T^{*}$ and $T^{*}+1$?,fill=blue!30 
-              [Is there information outside of “regular forces”,edge=green, fill=blue!30,draw=green
-                  [Can we use the information outside “regular forces” to forecast (as opposed to merely spotting the break)?,edge=green,,fill=blue!30 
-                      [Do you have a parametric model (with estimable parameters) for how information outside of ``regular forces” will figure at $T^{*}+h$?,edge=green,fill=blue!30 
-                        [What other time series are governed by the parametric model? 
-                        ,edge=green,fill=blue!30 
-                        ]
-                        [The information that helped spot the break can be used to 
-                        ,edge=red,fill=gray!30
-                        ]
-                        ]
-                      [Use “regular forces” to do the model adjustment for the ,edge=red,fill=gray!30
-                      ]
-                      ]
-                      [Then forecasting will require at least one post-break data point to be observed.,edge=red,fill=gray!30]
-                  ]
-                  [\cite{clements1998forecasting} discuss this.,edge=red,fill=gray!30]
-                  ]
-              ]
-          ]
-      \end{forest}
-      }\caption{Forecast Model Adjustment: A Decision Tree}\label{fig:tree}
-      \end{figure}
-
-    \end{frame}
-
-\begin{frame}\frametitle{Formal Results}
-    
-    \begin{prop}\label{omega_consistency}
-    Assume
-    \begin{enumerate}
-      \item For each $i$, $\{a_{i,t}\}_{t=0,...,T_i}$ obeys a GARCH-X($m,s$) with volatility shocks found in $\mc{M}_{1}$, where $T_i$ is the length of the $i$th series.
-      \item For each $i, \{\omega_{i,t}^{*}\}_{t=0,...,T_i}$ is potentially non-zero at $\{T^{*}_{i}+1,... ,T^{*}_{i}+k\}$, $\omega_{i,T^{*}+1}^{*}\equiv...\equiv\omega_{i,T^{*}+k}^{*}$, and zero otherwise, where the arrival of $T_{i}^{*}$ is governed by a time-invariant distribution on $\{a_{i,t}\}_{t=0,...,T_i-1}$. \label{stationarity_of_omega_i_t}
-      \item The conditions in Assumption 0 of \cite[][]{han2014asymptotic} prevail.
-    \end{enumerate}
-    Then for any $i$, $\hat\omega_{i,t}^{*} \xrightarrow{p} \omega_{i}^{*}$.
-    \end{prop}
-
-    \begin{prop}\label{sigma_consistency}
-        Assume
-        \begin{enumerate}
-          \item All conditions from the previous proposition.
-          \item There exist weights $\{\pi_{i}\}_{i=2}^{n=1}$ such that $\textbf{v}_{1,T^{*}} = \sum^{n+1}_{i=2}\weight_{i} \textbf{v}_{i,T^{*}}$.
-         \end{enumerate}
-      Then $\hat\sigma^{2}_{adjusted}\xrightarrow{p}\sigma^{2}_{1,T^{*}+1}$. 
-      \end{prop}
-
+\begin{frame}\frametitle{populate}
+populate
 \end{frame}
 
 \section{Formal Properties and Model-Specific Considerations}
@@ -772,7 +759,9 @@ A Global Overview}\label{SVF_properties}
 \begin{frame}
 \fontsize{8pt}{9pt}
 
-\frametitle{Simplest Simulation Setup}
+\frametitle{Simulations: Parameter Correction Using An Aggregated Decay Parameter from Donors}
+
+\textcolor{red}{Here we will include the exponential shock simulations.}
 
 Most elementary simulation regime tests Hypothesis 1 and 2 by varying $\textcolor{blue}{\delta}$ and $\textcolor{blue}{u_{i,t}}$.\\
 
@@ -821,6 +810,38 @@ Recall an \hyperlink{model_1}{$\mc{M}_1$} model on the volatility, which is char
 
 \section{Future directions for Forecasting Amid Shocks}
 
+
+\begin{frame}\frametitle{Formal Results}
+
+
+    \begin{prop}\label{ARIMA_param_consistency}
+        Assume
+          \begin{enumerate}
+            \item For each $i$, $1\leq i \leq n + 1$, let $\{y_{t}\}^{T_{i}}_{i=1}$ follow an AR($p$)-X as laid out in Section \ref{ARIMA}.
+            \item Assume for each $i$, $1\leq i \leq n + 1$, the shocks $\alpha_{i,t}$ are uncorrelated across donors.
+            \item Assume for each $i$, $1\leq i \leq n + 1$, the shocks $\alpha_{i,t}$ are uncorrelated with $\alpha_{i,T_{i}^{*}+1}$ 
+           \end{enumerate}
+        
+        Then the tuple of estimators ($\hat\rho_{i,1},...,\hat\rho_{i, p}, \hat\alpha_{i,T^{*}+1}$) is consistent as $t \rightarrow \infty$.
+        \end{prop}
+        
+        \begin{prop}\label{ARIMA_aggregated_alpha}
+        Assume
+          \begin{enumerate}
+            \item All conditions listed in Proposition \ref{ARIMA_param_consistency}.
+            \item There exist weights $\{\pi_{i}\}_{i=2}^{n+1} \in \Delta^{n-1}$  such that $\textbf{v}_{1,T_{1}^{*}} = \sum^{n+1}_{i=2}\weight_{i} \textbf{v}_{i,T_{i}^{*}}$.
+            \item For all $i$, the $\{u_{i,t}\}$ are equal in distribution.
+           \end{enumerate}
+        
+           Then the aggregated estimator $\hat{\alpha_{T^{*}_{1}+1}}$ converges in distribution to $\alpha_{T^{*}_{1}+1}$ as $t \rightarrow \infty$.  Furthermore, if the $\{u_{i,t}\}$ are constant with probability 1, the convergence is in probability.
+          \end{prop}
+        
+        \begin{prop}\label{ARIMA_conv_distribution}
+          Let $\{\hat y_{1,T_{1}^{*}+r}\}^{h}_{r=1}$ denote the vector of adjusted predictions (adjusted through $h$ steps ahead) in the time series under study.  Assume all conditions listed in Propositions \ref{ARIMA_param_consistency} and \ref{ARIMA_aggregated_alpha}.  Then $\{\hat y_{1,T_{1}^{*}+r}\}^{h}_{r=1} \xrightarrow{\qquad d\qquad} \{ y_{1,T_{1}^{*}+r}\}^{h}_{r=1}$.  Furthermore, if the $\{u_{i,t}\}$ are constant with probability 1, the convergence is in probability. 
+          \end{prop}
+\end{frame}
+
+
 \begin{frame}
 We shall group the extensions into five buckets:
 \begin{itemize}
@@ -832,6 +853,7 @@ We shall group the extensions into five buckets:
     \item Can we extend the results of \parencite[][]{bodilsen2023exploiting}
 \end{itemize}
 \end{frame}
+
 
 \begin{frame}{How much can we automate?}
 
@@ -885,12 +907,12 @@ High-frequency data?
         \end{itemize}
 \end{frame}
 
-\begin{frame}
-    \frametitle{What can you do with a volatility forecast?}
-    \begin{itemize}
-        \item{Value-at-Risk using SVF-based $\hat\sigma^{2}_{t}$}
-        \end{itemize}
-\end{frame}
+% \begin{frame}
+%     \frametitle{What can you do with a volatility forecast?}
+%     \begin{itemize}
+%         \item{Value-at-Risk using SVF-based $\hat\sigma^{2}_{t}$}
+%         \end{itemize}
+% \end{frame}
 
 \begin{frame}
     \frametitle{New Frontiers in Distance-based Weighting}
@@ -922,13 +944,16 @@ Additional research questions:
 \end{itemize}
 \end{frame}
 \section{Supplement}
-We analyze the real data example with Brexit included.
 
-\begin{figure}[H]
-    \begin{center}
-      \includegraphics[scale=.32]{real_data_output_plots/savetime_SunMar172251232024_IYG_6B=F-CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-22.png}
-      \end{center}
-    \end{figure}
+
+
+%We analyze the real data example with Brexit included.
+
+% \begin{figure}[H]
+%     \begin{center}
+%       \includegraphics[scale=.32]{real_data_output_plots/savetime_SunMar172251232024_IYG_6B=F-CL=F-^VIX-^IRX-^FVX-^TNX-^TYX_^VIX_2016-11-08-2004-11-02-2008-11-04-2012-11-06-2016-06-22.png}
+%       \end{center}
+%     \end{figure}
     
 
 \begin{frame}[t,allowframebreaks]

@@ -2363,21 +2363,19 @@
   </bcf:bibdata>
   <bcf:section number="0">
     <bcf:citekey order="1" intorder="1">fatemi2023mitigating</bcf:citekey>
-    <bcf:citekey order="2" intorder="1">francq2019garch</bcf:citekey>
-    <bcf:citekey order="3" intorder="1">abadie2010synthetic</bcf:citekey>
-    <bcf:citekey order="4" intorder="1">andersen2008realized</bcf:citekey>
+    <bcf:citekey order="2" intorder="1">clements1998forecasting</bcf:citekey>
+    <bcf:citekey order="3" intorder="1">francq2019garch</bcf:citekey>
+    <bcf:citekey order="4" intorder="1">abadie2010synthetic</bcf:citekey>
     <bcf:citekey order="5" intorder="1">abadie2003economic</bcf:citekey>
     <bcf:citekey order="6" intorder="1">abadie2010synthetic</bcf:citekey>
     <bcf:citekey order="7" intorder="1">abadie2003economic</bcf:citekey>
     <bcf:citekey order="8" intorder="1">abadie2010synthetic</bcf:citekey>
     <bcf:citekey order="9" intorder="1">abadie2003economic</bcf:citekey>
     <bcf:citekey order="10" intorder="1">abadie2010synthetic</bcf:citekey>
-    <bcf:citekey order="11" intorder="1">clements1998forecasting</bcf:citekey>
-    <bcf:citekey order="12" intorder="1">han2014asymptotic</bcf:citekey>
-    <bcf:citekey order="13" intorder="1">bodilsen2023exploiting</bcf:citekey>
-    <bcf:citekey order="14" intorder="1">chinco2019sparse</bcf:citekey>
-    <bcf:citekey order="15" intorder="1">ferwana2022optimal</bcf:citekey>
-    <bcf:citekey order="16" intorder="1">jiang2017information</bcf:citekey>
+    <bcf:citekey order="11" intorder="1">bodilsen2023exploiting</bcf:citekey>
+    <bcf:citekey order="12" intorder="1">chinco2019sparse</bcf:citekey>
+    <bcf:citekey order="13" intorder="1">ferwana2022optimal</bcf:citekey>
+    <bcf:citekey order="14" intorder="1">jiang2017information</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nyt">
