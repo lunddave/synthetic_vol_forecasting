@@ -122,6 +122,47 @@
       \field{title}{Exploiting news analytics for volatility forecasting}
       \field{year}{2023}
     \endentry
+    \entry{castle2013forecasting}{article}{}
+      \name{author}{3}{}{%
+        {{hash=52a025d1d4e392b54ed53a39dbf9a2e4}{%
+           family={Castle},
+           familyi={C\bibinitperiod},
+           given={Jennifer\bibnamedelima L},
+           giveni={J\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=0f6ea0e68f1008d34fdfe86012adf11a}{%
+           family={Clements},
+           familyi={C\bibinitperiod},
+           given={Michael\bibnamedelima P},
+           giveni={M\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+        {{hash=6816e7c37c57bf4a47d33394a8562e5e}{%
+           family={Hendry},
+           familyi={H\bibinitperiod},
+           given={David\bibnamedelima F},
+           giveni={D\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{0c3a66cd070574b2492da6cb5f7fad8a}
+      \strng{fullhash}{0c3a66cd070574b2492da6cb5f7fad8a}
+      \strng{bibnamehash}{0c3a66cd070574b2492da6cb5f7fad8a}
+      \strng{authorbibnamehash}{0c3a66cd070574b2492da6cb5f7fad8a}
+      \strng{authornamehash}{0c3a66cd070574b2492da6cb5f7fad8a}
+      \strng{authorfullhash}{0c3a66cd070574b2492da6cb5f7fad8a}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Econometrics}
+      \field{number}{2}
+      \field{title}{Forecasting by factors, by variables, by both or neither?}
+      \field{volume}{177}
+      \field{year}{2013}
+      \field{pages}{305\bibrangedash 319}
+      \range{pages}{15}
+    \endentry
     \entry{chinco2019sparse}{article}{}
       \name{author}{3}{}{%
         {{hash=e765e8527dd95bdd65c835ffe6533c71}{%
