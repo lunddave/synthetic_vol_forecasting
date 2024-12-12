@@ -10,6 +10,11 @@
 
 %\usepackage{bibentry}
 
+\usepackage{tikz}
+
+\usetikzlibrary{trees}
+\usepackage{forest}
+
 \usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{amsfonts}
@@ -245,7 +250,6 @@ teachers that what you did is valuable for the society and was worth their time.
         \item <1-> Paper is under review at the \textit{International Journal of Forecasting}
         \item <2-> Event-driven investing strategies (unscheduled news shock)
         \item <3-> Scheduled macroeconomic news possibly pre-empted by a news leak
-        
 
         \href{https://www.wsj.com/articles/bad-inflation-reports-raise-odds-of-surprise-0-75-percentage-point-rate-rise-this-week-11655147927}{\includegraphics[scale=.3]{WSJ_rate_hike_2022.png}}
     \end{itemize}
@@ -262,9 +266,6 @@ teachers that what you did is valuable for the society and was worth their time.
         \end{example}
 
 \end{frame}
-
-
-
 
 \begin{frame}
     \frametitle{The Post-prelim Direction of my research}
@@ -608,6 +609,61 @@ We present two forecasts:
 
 \section{Model Adjustment Using Similarity-Based Parameter Correction:
 A Global Overview}\label{SVF_properties}
+
+\begin{frame}\frametitle{The forecaster's decision tree}
+
+    \begin{figure} 
+        \centering  
+      \resizebox{\textwidth}{!}{%
+      \begin{forest}
+        /tikz/every node/.append style={font=\small},
+        for tree={
+          rounded corners, 
+          % top color=gray!5, bottom color=gray!30, 
+          edge+={darkgray, line width=4pt}, 
+          draw=darkgray, 
+          l sep=.8cm,
+          s sep=.5cm,
+          minimum height=8.8cm,
+          minimum width=1cm,
+          child anchor=west,
+          parent anchor=east,
+          grow'=east,
+        minimum size=1cm,%new possibility
+        text width=4cm,%
+          draw,
+          anchor=west,
+          edge path={
+            \noexpand\path[\forestoption{edge}]
+              (.child anchor) -| +(-5pt,0) -- +(-5pt,0) |-
+              (!u.parent anchor)\forestoption{edge label};
+          },
+        }
+          [Break in the DGP between $T^{*}$ and $T^{*}+1$?,fill=blue!30 
+              [Is there information outside of “regular forces”,edge=green, fill=blue!30,draw=green
+                  [Can we use the information outside “regular forces” to forecast (as opposed to merely spotting the break)?,edge=green,,fill=blue!30 
+                      [Do you have a parametric model (with estimable parameters) for how information outside of ``regular forces” will figure at $T^{*}+h$?,edge=green,fill=blue!30 
+                        [What other time series are governed by the parametric model? 
+                        ,edge=green,fill=blue!30 
+                        ]
+                        [The information that helped spot the break can be used to 
+                        ,edge=red,fill=gray!30
+                        ]
+                        ]
+                      [Use “regular forces” to do the model adjustment for the ,edge=red,fill=gray!30
+                      ]
+                      ]
+                      [Then forecasting will require at least one post-break data point to be observed.,edge=red,fill=gray!30]
+                  ]
+                  [\cite{clements1998forecasting} discuss this.,edge=red,fill=gray!30]
+                  ]
+              ]
+          ]
+      \end{forest}
+      }\caption{Forecast Model Adjustment: A Decision Tree}\label{fig:tree}
+      \end{figure}
+
+    \end{frame}
 
 \begin{frame}\frametitle{Formal Results}
     

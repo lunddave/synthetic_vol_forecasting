@@ -28,7 +28,6 @@
 
 \usepackage{forest}
 
-
 \usepackage{graphicx}
 \usepackage{subcaption}
 \usepackage{mathtools}
@@ -348,8 +347,9 @@ The structure of this manuscript is as follows.  We provide a deeper and more cr
     },
   }
     [Break in the DGP between $T^{*}$ and $T^{*}+1$?,fill=blue!30 
-        [Is there information outside of “regular forces” \citep{castle2011forecasting},edge=green, fill=blue!30%,draw=green
-            [Can we use the information outside “regular forces” to forecast (as opposed to merely spotting the break)?,edge=green,,fill=blue!30 
+        [Is there information outside of “regular forces”,edge=green, fill=blue!30,draw=green
+            [Can we use the information outside “regular forces” to forecast (as %opposed to merely spotting the break)?
+            ,edge=green,,fill=blue!30 
                 [Do you have a parametric model (with estimable parameters) for how information outside of ``regular forces” will figure at $T^{*}+h$?,edge=green,fill=blue!30 
                   [What other time series are governed by the parametric model?  How can we extract information from them?  Which are most relevant, %most similar?  How do we determine similarity, quant or qual?  Once we know what is similar, how do we use it?
                   ,edge=green,fill=blue!30 
@@ -358,7 +358,7 @@ The structure of this manuscript is as follows.  We provide a deeper and more cr
                   ,edge=red,fill=gray!30
                   ]
                   ]
-                [Use “regular forces” to do the model adjustment for the post-break period.  Examples of this would include refitting one’s data to use Markov-switching models – i.e. using only the series itself.,edge=red,fill=gray!30
+                [Use “regular forces” to do the model adjustment for the post-break period.  Examples of this would include refitting one’s data to use %Markov-switching models – i.e. using only the series itself.,edge=red,fill=gray!30
                 ]
                 ]
                 [Then forecasting will require at least one post-break data point to be observed.,edge=red,fill=gray!30]
@@ -949,7 +949,6 @@ In particular, can we relax this assumption and proceed with weaker assumptions 
   \end{proof-of-proposition}
 
   \begin{proof-of-proposition}[\ref{ARIMA_conv_distribution}]
-
 
     Recall from Proposition \ref{ARIMA_param_consistency} that for any $i$, $2\leq i \leq n+1$, the tuple 
     ($\hat\rho_{1},...,\hat\rho_{p}, \hat\alpha_{i,T^{*}+1}$) is consistent at $t\rightarrow \infty$.  Next consider the prediction function for an AR($p$)-X, and let $t = T_{1}^{*}$:
