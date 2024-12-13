@@ -225,19 +225,19 @@ teachers that what you did is valuable for the society and was worth their time.
             \textcolor{red}{A ton of hyperparameters}
             \item What will you include if you are told to add something extra to the study? \textcolor{red}{LLM-generated donors and covariates}
             \item What are the recommendations of your study? \textcolor{red}{Relatively easy to answer: for an unprecedented event, locate it in the space of previous events.}
-            \item 10. What was your hypothesis and how did you framed it? \textcolor{red}{Signal to noise}
+            \item What was your hypothesis and how did you frame it? \textcolor{red}{Signal to noise}
         \end{enumerate}
         \end{frame}
 
 \begin{frame}
     \frametitle{Questions guiding these slides (remove later)}
     \begin{enumerate}
-        \item 12. If given a chance, would like to do something different with your work?
-        \item 13. What are the limitations you faced while dealing with your samples?
+        \item If given a chance, would like to do something different with your work?
+        \item What are the limitations you faced?
         \textcolor{red}{Realized volatility is something that can be estimated with HF data}
-        \item 14. How did you relate your study to the existing theories?
-        \item 15. What is the future scope of this study?
-         \item 19. How did you evaluate your work?
+        \item How did you relate your study to the existing theories?
+        \item What is the future scope of this study?
+         \item How did you evaluate your work?
         \textcolor{red}{Simulations and real data examples}
         \item How would you improve your work?  \textcolor{red}{By design, synthetic control cannot extrapolate.  In the causal inference context, that may very well be a virtue.  However, in the prediction context, it may hinder us.  Note that random forest has the same problem.}
     \end{enumerate}
@@ -488,7 +488,6 @@ teachers that what you did is valuable for the society and was worth their time.
     \textcolor{red}{Note: we will be looking GARCH(1,1) only in this presentation.}
     \end{frame}
     
-    
     % \begin{frame}
     %     \frametitle{Model Details}
     %     Let $\mc{M}_{0}$ denote the subclass of $\mc{M}_{1}$ models such that $\delta \equiv 0$.  \\
@@ -517,33 +516,32 @@ teachers that what you did is valuable for the society and was worth their time.
     
     % and $\varepsilon_{i,t}$ is idiosyncratic noise, uncorrelated across time and donors.
     \end{frame}
+     
+    % \begin{frame}
+    % \frametitle{Covariates}
+    % \fontsize{6.6}{7}
     
+    % Consider the $p \times n$ matrix that stores donor and covariate information at time $t$
     
-    \begin{frame}
-    \frametitle{Covariates}
-    \fontsize{6.6}{7}
-    
-    Consider the $p \times n$ matrix that stores donor and covariate information at time $t$
-    
-    \begin{equation*}
-        \V_{t} = 
-        \begin{pmatrix}
-        \hat\alpha_{1,t} & \hat\alpha_{t,2}  & \cdots & \hat\alpha_{t,n}  \\
-        \hat\beta_{1,t} & \hat\beta_{t,2}  & \cdots & \hat\beta_{t,n}  \\
-        \vdots  & \vdots  & \ddots & \vdots  \\
-        RV_{1,t} & RV_{2,t}  & \cdots & RV_{n,t}  \\
-        RV_{1,t-1}  & RV_{2,t-1}  & \cdots & RV_{n,t-1}  \\
-        \vdots  & \vdots  & \ddots & \vdots  \\
-        IV_{1,t} & IV_{2,t} & \cdots & IV_{n,t} \\
-        IV_{1,t-1}  & IV_{2,t-1}  & \cdots & IV_{n,t-1} \\
-        \vdots  & \vdots  & \ddots & \vdots  \\
-        |r_{1,t}| & |r_{2,t}| & \cdots & |r_{n,t}| \\
-        |r_{1,t-1}|  & |r_{2,t-1}|  & \cdots & |r_{n,t-1}| \\
-        \end{pmatrix},
-        \end{equation*}
-        \bigbreak
-        where RV denotes realized variance and IV the implied volatility
-    \end{frame}
+    % \begin{equation*}
+    %     \V_{t} = 
+    %     \begin{pmatrix}
+    %     \hat\alpha_{1,t} & \hat\alpha_{t,2}  & \cdots & \hat\alpha_{t,n}  \\
+    %     \hat\beta_{1,t} & \hat\beta_{t,2}  & \cdots & \hat\beta_{t,n}  \\
+    %     \vdots  & \vdots  & \ddots & \vdots  \\
+    %     RV_{1,t} & RV_{2,t}  & \cdots & RV_{n,t}  \\
+    %     RV_{1,t-1}  & RV_{2,t-1}  & \cdots & RV_{n,t-1}  \\
+    %     \vdots  & \vdots  & \ddots & \vdots  \\
+    %     IV_{1,t} & IV_{2,t} & \cdots & IV_{n,t} \\
+    %     IV_{1,t-1}  & IV_{2,t-1}  & \cdots & IV_{n,t-1} \\
+    %     \vdots  & \vdots  & \ddots & \vdots  \\
+    %     |r_{1,t}| & |r_{2,t}| & \cdots & |r_{n,t}| \\
+    %     |r_{1,t-1}|  & |r_{2,t-1}|  & \cdots & |r_{n,t-1}| \\
+    %     \end{pmatrix},
+    %     \end{equation*}
+    %     \bigbreak
+    %     where RV denotes realized variance and IV the implied volatility
+    % \end{frame}
     
     \begin{frame}
         \frametitle{Significance of the Covariates}
@@ -819,7 +817,6 @@ Recall an \hyperlink{model_1}{$\mc{M}_1$} model on the volatility, which is char
 
 
 \section{Future directions for Forecasting Amid Shocks}
-
 
 \begin{frame}\frametitle{Formal Results}
 
