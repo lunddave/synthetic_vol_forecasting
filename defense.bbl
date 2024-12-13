@@ -226,6 +226,7 @@
       \strng{authorbibnamehash}{9b73d945dbfc5804fe7037f0cee27b38}
       \strng{authornamehash}{9b73d945dbfc5804fe7037f0cee27b38}
       \strng{authorfullhash}{9b73d945dbfc5804fe7037f0cee27b38}
+      \field{extraname}{1}
       \field{sortinit}{C}
       \field{sortinithash}{4d103a86280481745c9c897c925753c0}
       \field{extradatescope}{labelyear}
@@ -234,6 +235,40 @@
       \field{labeltitlesource}{title}
       \field{title}{Forecasting economic time series}
       \field{year}{1998}
+    \endentry
+    \entry{clements2005guest}{article}{}
+      \name{author}{2}{}{%
+        {{hash=0f6ea0e68f1008d34fdfe86012adf11a}{%
+           family={Clements},
+           familyi={C\bibinitperiod},
+           given={Michael\bibnamedelima P},
+           giveni={M\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+        {{hash=6816e7c37c57bf4a47d33394a8562e5e}{%
+           family={Hendry},
+           familyi={H\bibinitperiod},
+           given={David\bibnamedelima F},
+           giveni={D\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+      }
+      \strng{namehash}{bc7ab4d16c42a19347b0c91c02d137c8}
+      \strng{fullhash}{bc7ab4d16c42a19347b0c91c02d137c8}
+      \strng{bibnamehash}{bc7ab4d16c42a19347b0c91c02d137c8}
+      \strng{authorbibnamehash}{bc7ab4d16c42a19347b0c91c02d137c8}
+      \strng{authornamehash}{bc7ab4d16c42a19347b0c91c02d137c8}
+      \strng{authorfullhash}{bc7ab4d16c42a19347b0c91c02d137c8}
+      \field{extraname}{2}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Oxford Bulletin of Economics \& Statistics}
+      \field{number}{S1}
+      \field{title}{Guest Editors' introduction: Information in economic forecasting}
+      \field{volume}{67}
+      \field{year}{2005}
+      \field{pages}{713\bibrangedash 753}
+      \range{pages}{41}
     \endentry
     \entry{fatemi2023mitigating}{article}{}
       \name{author}{5}{}{%

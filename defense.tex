@@ -165,9 +165,15 @@
     \begin{frame}
         \frametitle{Why is this valuable?}
         
-            Canonical problem: forecasting when there's a location shift - here we quote clements and Hendry about the devastating impact of location shifts on forecasts
+            We are weighing-in on a puzzle:
 
-            `'incomplete information by itself is unlikely to play a key role in forecastfailure (except if that information would forecast breaks). Consequently, using large amounts of datamay not correct one of the main problems confronting forecasters, namely location shifts, unless thatadditional information is directly pertinent to forecasting breaks" \parencite[][]{castle2013forecasting}
+            \begin{quote}conflict between the intuitive notion that more relevant information should help in forecasting, and the hard reality that attempts to make it do so have not been uniformly successful \parencite[][]{clements2005guest}
+            \end{quote}
+
+            Canonical problem:
+
+            \begin{quote}incomplete information by itself is unlikely to play a key role in forecast failure (except if that information would forecast breaks). Consequently, using large amounts of data may not correct one of the main problems confronting forecasters, namely location shifts, unless that additional information is directly pertinent to forecasting break \parencite[][]{castle2013forecasting}
+            \end{quote}
     
             \bigskip
     
@@ -185,7 +191,7 @@
 
             Software developed
 
-        \end{frame}
+    \end{frame}
 
 \begin{frame}
     \frametitle{Questions guiding these slides (remove later)}
@@ -323,7 +329,6 @@ teachers that what you did is valuable for the society and was worth their time.
         \href{https://www.wsj.com/articles/bad-inflation-reports-raise-odds-of-surprise-0-75-percentage-point-rate-rise-this-week-11655147927}{\includegraphics[scale=.3]{WSJ_rate_hike_2022.png}}
     \end{itemize}
 \end{frame}
-
 
 \begin{frame}\frametitle{The forecaster's decision tree}
 
@@ -925,6 +930,14 @@ High-frequency data?
         \item Integrate lessons from literature on under/over reactions to information shocks \parencite[][]{jiang2017information}
         \item{Distance-based Weighting of Impulse Response Functions}
         \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Limitations of what we're currently doing}
+    \begin{itemize}
+        \item Our real data examples cannot be scaled up due to the need to for human involvement in donor and covariate curation
+        \item We assume that the exogenous variables (distinct from the covariates) are known at time $T_{i}^{*}$
+    \end{itemize}
 \end{frame}
 
 \begin{frame}{Distance-based Weighting of Impulse Response Functions}
