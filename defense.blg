@@ -1,0 +1,17 @@
+[0] Config.pm:307> INFO - This is Biber 2.19
+[0] Config.pm:310> INFO - Logfile is 'defense.blg'
+[34] biber-darwin:340> INFO - === Thu Dec 12, 2024, 23:27:46
+[45] Biber.pm:419> INFO - Reading 'defense.bcf'
+[83] Biber.pm:979> INFO - Found 10 citekeys in bib section 0
+[89] Biber.pm:4419> INFO - Processing section 0
+[94] Biber.pm:4610> INFO - Looking for bibtex file 'defense.bib' for section 0
+[97] bibtex.pm:1713> INFO - LaTeX decoding ...
+[152] bibtex.pm:1519> INFO - Found BibTeX data source 'defense.bib'
+[196] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[197] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[197] Biber.pm:4239> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'en-US'
+[197] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-US'
+[201] bbl.pm:660> INFO - Writing 'defense.bbl' with encoding 'UTF-8'
+[204] bbl.pm:763> INFO - Output to defense.bbl
+[204] Biber.pm:131> WARN - Duplicate entry key: 'newbold2002forecast' in file 'defense.bib', skipping ...
+[204] Biber.pm:133> INFO - WARNINGS: 1

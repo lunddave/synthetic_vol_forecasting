@@ -413,38 +413,38 @@ teachers that what you did is valuable for the society and was worth their time.
     \end{itemize}
     \end{frame}
     
-    \begin{frame}
-        \frametitle{A Primer on GARCH}
+    % \begin{frame}
+    %     \frametitle{A Primer on GARCH}
        
-        \begin{Definition}
+    %     \begin{Definition}
     
-        Let $\{a_{t}\}$ denote an observable, real-valued discrete-time stochastic process.\\
+    %     Let $\{a_{t}\}$ denote an observable, real-valued discrete-time stochastic process.\\
         
-        \bigbreak
+    %     \bigbreak
         
-        We call $\{a_{t}\}$ a strong GARCH process \parencite[][]{francq2019garch} with respect to $\{\epsilon_{t}\}$ iff 
-        \begin{align*}
-            &\sigma_{t}^{2} = \omega + \sum^{m}_{k=1}\alpha_{k}a^{2}_{t-k} + \sum_{j=1}^{s}\beta_{j}\sigma_{t-j}^{2}\\
-            &a_{t} = \sigma_{t}\epsilon_{t}\\
-            &\epsilon_{t} \simiid E[\epsilon_{t}]=0, Var[\epsilon_{t}] = 1\\
-            &\forall k,j, \alpha_{k},\beta_{j}\geq 0\\ 
-            &\forall t, \omega, \sigma_{t} > 0 
-            \end{align*}
+    %     We call $\{a_{t}\}$ a strong GARCH process \parencite[][]{francq2019garch} with respect to $\{\epsilon_{t}\}$ iff 
+    %     \begin{align*}
+    %         &\sigma_{t}^{2} = \omega + \sum^{m}_{k=1}\alpha_{k}a^{2}_{t-k} + \sum_{j=1}^{s}\beta_{j}\sigma_{t-j}^{2}\\
+    %         &a_{t} = \sigma_{t}\epsilon_{t}\\
+    %         &\epsilon_{t} \simiid E[\epsilon_{t}]=0, Var[\epsilon_{t}] = 1\\
+    %         &\forall k,j, \alpha_{k},\beta_{j}\geq 0\\ 
+    %         &\forall t, \omega, \sigma_{t} > 0 
+    %         \end{align*}
     
-        \end{Definition}
+    %     \end{Definition}
     
-    \end{frame}
+    % \end{frame}
     
-    \begin{frame}
-        \frametitle{Volatility Equation with an exogenous term: GARCH-X}
+    % \begin{frame}
+    %     \frametitle{Volatility Equation with an exogenous term: GARCH-X}
         
-        \begin{align*}
-            &\sigma_{t}^{2} = \omega+ \sum^{m}_{k=1}\alpha_{k}a^{2}_{t-k} + \sum_{j=1}^{s}\beta_{j}\sigma_{t-j}^{2} + \gamma^{T}\x_{t} \text{ .}\label{GARCH-X}
-        \end{align*}
+    %     \begin{align*}
+    %         &\sigma_{t}^{2} = \omega+ \sum^{m}_{k=1}\alpha_{k}a^{2}_{t-k} + \sum_{j=1}^{s}\beta_{j}\sigma_{t-j}^{2} + \gamma^{T}\x_{t} \text{ .}\label{GARCH-X}
+    %     \end{align*}
     
-        We will be looking at only one exogenous term.
+    %     We will be looking at only one exogenous term.
     
-        \end{frame}
+    %     \end{frame}
         
     \begin{frame}
         \frametitle{Model Preliminaries}
