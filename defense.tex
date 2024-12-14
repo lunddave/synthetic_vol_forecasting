@@ -608,6 +608,45 @@
 
 \end{frame}
 
+\section{Formal Results}
+
+\begin{frame}\frametitle{Formal Results}
+
+    \begin{prop}\label{ARIMA_param_consistency}
+        Assume
+          \begin{enumerate}
+            \item For each $i$, $1\leq i \leq n + 1$, let $\{y_{t}\}^{T_{i}}_{i=1}$ follow an AR($p$)-X as laid out in Section \ref{ARIMA}.
+            \item Assume for each $i$, $1\leq i \leq n + 1$, the shocks $\alpha_{i,t}$ are uncorrelated across donors.
+            \item Assume for each $i$, $1\leq i \leq n + 1$, the shocks $\alpha_{i,t}$ are uncorrelated with $\alpha_{i,T_{i}^{*}+1}$ 
+           \end{enumerate}
+        
+        Then the tuple of estimators ($\hat\rho_{i,1},...,\hat\rho_{i, p}, \hat\alpha_{i,T^{*}+1}$) is consistent as $t \rightarrow \infty$.
+        \end{prop}
+
+    \end{frame}
+
+        \begin{frame}\frametitle{Formal Results}
+        
+        \begin{prop}\label{ARIMA_aggregated_alpha}
+        Assume
+          \begin{enumerate}
+            \item All conditions listed in Proposition \ref{ARIMA_param_consistency}.
+            \item There exist weights $\{\pi_{i}\}_{i=2}^{n+1} \in \Delta^{n-1}$  such that $\textbf{v}_{1,T_{1}^{*}} = \sum^{n+1}_{i=2}\weight_{i} \textbf{v}_{i,T_{i}^{*}}$.
+            \item For all $i$, the $\{u_{i,t}\}$ are equal in distribution.
+           \end{enumerate}
+        
+           Then the aggregated estimator $\hat{\alpha_{T^{*}_{1}+1}}$ converges in distribution to $\alpha_{T^{*}_{1}+1}$ as $t \rightarrow \infty$.  Furthermore, if the $\{u_{i,t}\}$ are constant with probability 1, the convergence is in probability.
+          \end{prop}
+
+        \end{frame}
+
+\begin{frame}\frametitle{Formal Results}
+        
+        \begin{prop}\label{ARIMA_conv_distribution}
+          Let $\{\hat y_{1,T_{1}^{*}+r}\}^{h}_{r=1}$ denote the vector of adjusted predictions (adjusted through $h$ steps ahead) in the time series under study.  Assume all conditions listed in Propositions \ref{ARIMA_param_consistency} and \ref{ARIMA_aggregated_alpha}.  Then $\{\hat y_{1,T_{1}^{*}+r}\}^{h}_{r=1} \xrightarrow{\qquad d\qquad} \{ y_{1,T_{1}^{*}+r}\}^{h}_{r=1}$.  Furthermore, if the $\{u_{i,t}\}$ are constant with probability 1, the convergence is in probability. 
+          \end{prop}
+\end{frame}
+
 \section{Applications}
 
 \begin{frame}
@@ -809,8 +848,20 @@ Recall an \hyperlink{model_1}{$\mc{M}_1$} model on the volatility, which is char
 % \end{frame}
 
 \section{Software and LLMs}
+
 \begin{frame}\frametitle{Software}
-We can discuss 
+    R package
+     
+\end{frame}
+\begin{frame}\frametitle{LLMs}
+    Use NLP to identify donors.
+
+    \begin{figure}[H]
+        \begin{center}
+          \includegraphics[scale=.18]{iphone.png}
+          \end{center}
+        \end{figure}
+     
 \end{frame}
 
 \section{How can we trust this?}
@@ -825,42 +876,7 @@ We can discuss
 
 
 \section{Future directions for Forecasting Amid Shocks}
-\begin{frame}\frametitle{Formal Results}
 
-    \begin{prop}\label{ARIMA_param_consistency}
-        Assume
-          \begin{enumerate}
-            \item For each $i$, $1\leq i \leq n + 1$, let $\{y_{t}\}^{T_{i}}_{i=1}$ follow an AR($p$)-X as laid out in Section \ref{ARIMA}.
-            \item Assume for each $i$, $1\leq i \leq n + 1$, the shocks $\alpha_{i,t}$ are uncorrelated across donors.
-            \item Assume for each $i$, $1\leq i \leq n + 1$, the shocks $\alpha_{i,t}$ are uncorrelated with $\alpha_{i,T_{i}^{*}+1}$ 
-           \end{enumerate}
-        
-        Then the tuple of estimators ($\hat\rho_{i,1},...,\hat\rho_{i, p}, \hat\alpha_{i,T^{*}+1}$) is consistent as $t \rightarrow \infty$.
-        \end{prop}
-
-    \end{frame}
-
-        \begin{frame}\frametitle{Formal Results}
-        
-        \begin{prop}\label{ARIMA_aggregated_alpha}
-        Assume
-          \begin{enumerate}
-            \item All conditions listed in Proposition \ref{ARIMA_param_consistency}.
-            \item There exist weights $\{\pi_{i}\}_{i=2}^{n+1} \in \Delta^{n-1}$  such that $\textbf{v}_{1,T_{1}^{*}} = \sum^{n+1}_{i=2}\weight_{i} \textbf{v}_{i,T_{i}^{*}}$.
-            \item For all $i$, the $\{u_{i,t}\}$ are equal in distribution.
-           \end{enumerate}
-        
-           Then the aggregated estimator $\hat{\alpha_{T^{*}_{1}+1}}$ converges in distribution to $\alpha_{T^{*}_{1}+1}$ as $t \rightarrow \infty$.  Furthermore, if the $\{u_{i,t}\}$ are constant with probability 1, the convergence is in probability.
-          \end{prop}
-
-        \end{frame}
-
-\begin{frame}\frametitle{Formal Results}
-        
-        \begin{prop}\label{ARIMA_conv_distribution}
-          Let $\{\hat y_{1,T_{1}^{*}+r}\}^{h}_{r=1}$ denote the vector of adjusted predictions (adjusted through $h$ steps ahead) in the time series under study.  Assume all conditions listed in Propositions \ref{ARIMA_param_consistency} and \ref{ARIMA_aggregated_alpha}.  Then $\{\hat y_{1,T_{1}^{*}+r}\}^{h}_{r=1} \xrightarrow{\qquad d\qquad} \{ y_{1,T_{1}^{*}+r}\}^{h}_{r=1}$.  Furthermore, if the $\{u_{i,t}\}$ are constant with probability 1, the convergence is in probability. 
-          \end{prop}
-\end{frame}
 
 
 \begin{frame}
@@ -875,19 +891,6 @@ We shall group the extensions into five buckets:
 \end{itemize}
 \end{frame}
 
-
-\begin{frame}{How much can we automate?}
-
-Use NLP to identify donors.
-
-\begin{figure}[H]
-    \begin{center}
-      \includegraphics[scale=.18]{iphone.png}
-      \end{center}
-    \end{figure}
-
-
-\end{frame}
 
 \begin{frame}{How much can we automate?}
 
