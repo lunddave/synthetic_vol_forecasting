@@ -192,7 +192,7 @@
 
         We provide a precise proposal to a well-specified challenge:
 
-        \begin{myquote}[colback=red!30, size=small]incomplete information by itself is unlikely to play a key role in forecast failure (except if that information would forecast breaks). Consequently, using large amounts of data may not correct one of the main problems confronting forecasters, namely location shifts, unless that additional information is directly pertinent to forecasting break \parencite[][]{castle2013forecasting}
+        \begin{myquote}[colback=red!30, size=small]incomplete information by itself is unlikely to play a key role in forecast failure (except if that information would forecast breaks). Consequently, using large amounts of data may not correct one of the main problems confronting forecasters, namely location shifts, unless that additional information is directly pertinent to forecasting breaks \parencite[][]{castle2013forecasting}
         \end{myquote}
 
     \end{frame}
@@ -606,6 +606,50 @@
       }\caption{Forecast Model Adjustment: A Decision Tree}\label{fig:tree}
       \end{figure}
 
+\end{frame}
+
+\begin{frame}
+
+%https://tex.stackexchange.com/questions/174317/creating-a-labeled-tetrahedron-with-tikzpicture
+\begin{figure}
+    \centering
+    \begin{tikzpicture}[line join = round, line cap = round]
+    \pgfmathsetmacro{\factor}{1/sqrt(2)};
+    \coordinate [label=right:Donor 1] (1) at (2,0,-2*\factor);
+    \coordinate [label=left:Donor 2] (2) at (-2,0,-2*\factor);
+    \coordinate [label=above:Donor 3] (3) at (0,2,2*\factor);
+    \coordinate [label=below:Donor 4] (4) at (0,-2,2*\factor);
+    \coordinate [label=below:$\vec{\pi}_{MSE minimizer}$] (5) at (2.1,-.8,-.3*\factor);
+    
+    
+    % \draw[->] (0,0) -- (3,0,0) node[right] {$x$};
+    % \draw[->] (0,0) -- (0,3,0) node[above] {$y$};
+    % \draw[->] (0,0) -- (0,0,3) node[below left] {$z$};
+    \foreach \i in {1,2,3,4}
+        \draw[dashed] (0,0)--(\i);
+    \draw[-, fill=red!30, opacity=.3] (1)--(4)--(2)--cycle;
+    \draw[-, fill=green!30, opacity=.3] (1) --(4)--(3)--cycle;
+    \draw[-, fill=purple!30, opacity=.3] (2)--(4)--(3)--cycle;
+    \end{tikzpicture}
+    \caption{The 3-Simplex, $\Delta^{3}$, where hypothetical minimizer is a convex combination of Donors 1 and 4.}
+    \end{figure}
+    
+\end{frame}
+
+\begin{frame}\frametitle{Global Overview}
+
+    \begin{enumerate}
+        \item \textbf{Object-to-predict}
+        Most fundamentally, the method requires a random object (indexed over time and possibly space, as well) that obeys a specification with additive errors, or, at the very least, a specification that can be transformed to have additive errors.  
+            
+      \item \textbf{Common Model Family on the Shocks} The method requires that residuals be governed by a model that is shared across all units.  This ensures that in the estimation of news shocks in the donor pool, the estimators will enjoy similar properties that will produce a good aggregated shock estimator.  This condition is satisfied by the parametric shock distributions found in \cite[][]{lin2021minimizing, lundquist2024volatility}.
+      
+      \item \textbf{Reliable and Shared Model-Fitting Procedure} There must exist a reliable model-fitting procedure for the $n+1$ units.
+      
+      \item \textbf{Reliable Correction Term Estimation} 
+
+      \item \textbf{Reliable Correction Function Estimation} There must exist a correction function (presumably based on the correction term) that maps data from the donor pool to the $\textit{predicted}$ correction term in the time series under study based on some notion of similarity.  In some cases, there may exist a posited DGP that the correction term estimates.  In other cases, there may be no posited DGP.
+    \end{enumerate}
 \end{frame}
 
 \section{Formal Results}
