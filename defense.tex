@@ -901,6 +901,24 @@
         \end{align*}
     
     % https://www.overleaf.com/learn/latex/Beamer_Presentations%3A_A_Tutorial_for_Beginners_(Part_3)%E2%80%94Blocks%2C_Code%2C_Hyperlinks_and_Buttons
+
+
+    We now investigate the exponential decay model introduced just above.  We model the decay parameter $\psi$ as a dot product of donor-specific and donor-invariant quantities.
+    \begin{figure}[h!]
+      \begin{center}
+        \begin{tikzpicture}
+          \node[anchor=south west,inner sep=0] at (0,0) {\includegraphics[width=\textwidth]{exponential_sim_plot.png
+          }};
+          % \draw[red,ultra thick,rounded corners] (7.5,5.3) rectangle (9.4,6.2);
+          % \node[draw,text width=4.45cm] at (9.8,3.2) {$\textcolor{blue}{\hat\sigma^{2}_{adjusted} = \hat\sigma^{2}_{unadjusted} + \hat\omega^{*}}$ };
+          % \node[draw,text width=2.62cm] at (14.8,2.8) {$\textcolor{blue}{\hat\omega^{*} = \sum^{n+1}_{i=2}\pi_{i}\hat\omega^{*}_{i}}$ };    
+          
+      \end{tikzpicture}
+        \caption{We simulate a random walk centered at $\mu = 100$ that is subject to a shock at approximately time index 440.  The shock of size -4 is not realized over a single index.  Instead, the shock is governed by a decay exponential decay parameter $\psi_{1}$, as are exponential shocks in $n = 10$ donor series.  We estimate $\psi_{1}$ using a convex combination of the estimated decay parameters $\{\psi_{i}\}_{i=2}^{n+1}$ , resulting in a distance-based weighting prediction of the shock.  We also illustrate the arithmetic-mean-based prediction of the shock using the color orange.  This prediction is based on an overestimate of $\psi_{1}$ and hence results in residuals that undershoot the time series under study.}  \label{fig:exp_shock_plot}
+     
+        \end{center}
+      \end{figure}
+      
     \end{frame}
 
 \section{Software and LLMs}
