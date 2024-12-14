@@ -93,34 +93,6 @@
       \field{pages}{113\bibrangedash 132}
       \range{pages}{20}
     \endentry
-    \entry{andersen2008realized}{article}{}
-      \name{author}{2}{}{%
-        {{hash=8a4670fbb0cfadae9bd2d5516104f66a}{%
-           family={Andersen},
-           familyi={A\bibinitperiod},
-           given={Torben\bibnamedelima Gustav},
-           giveni={T\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
-        {{hash=16348fc4f0758ae2d590b8dcbbf577e1}{%
-           family={Benzoni},
-           familyi={B\bibinitperiod},
-           given={Luca},
-           giveni={L\bibinitperiod}}}%
-      }
-      \strng{namehash}{2b516d7f773ba170c6a8ec672f7e19ad}
-      \strng{fullhash}{2b516d7f773ba170c6a8ec672f7e19ad}
-      \strng{bibnamehash}{2b516d7f773ba170c6a8ec672f7e19ad}
-      \strng{authorbibnamehash}{2b516d7f773ba170c6a8ec672f7e19ad}
-      \strng{authornamehash}{2b516d7f773ba170c6a8ec672f7e19ad}
-      \strng{authorfullhash}{2b516d7f773ba170c6a8ec672f7e19ad}
-      \field{sortinit}{A}
-      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{Realized Volatility, Working Paper 2008-14}
-      \field{year}{2008}
-    \endentry
     \entry{bodilsen2023exploiting}{article}{}
       \name{author}{2}{}{%
         {{hash=71a3050438816b71055cd0399be9dc8c}{%
@@ -149,6 +121,47 @@
       \field{journaltitle}{Available at SSRN 4401032}
       \field{title}{Exploiting news analytics for volatility forecasting}
       \field{year}{2023}
+    \endentry
+    \entry{castle2013forecasting}{article}{}
+      \name{author}{3}{}{%
+        {{hash=52a025d1d4e392b54ed53a39dbf9a2e4}{%
+           family={Castle},
+           familyi={C\bibinitperiod},
+           given={Jennifer\bibnamedelima L},
+           giveni={J\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=0f6ea0e68f1008d34fdfe86012adf11a}{%
+           family={Clements},
+           familyi={C\bibinitperiod},
+           given={Michael\bibnamedelima P},
+           giveni={M\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+        {{hash=6816e7c37c57bf4a47d33394a8562e5e}{%
+           family={Hendry},
+           familyi={H\bibinitperiod},
+           given={David\bibnamedelima F},
+           giveni={D\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{0c3a66cd070574b2492da6cb5f7fad8a}
+      \strng{fullhash}{0c3a66cd070574b2492da6cb5f7fad8a}
+      \strng{bibnamehash}{0c3a66cd070574b2492da6cb5f7fad8a}
+      \strng{authorbibnamehash}{0c3a66cd070574b2492da6cb5f7fad8a}
+      \strng{authornamehash}{0c3a66cd070574b2492da6cb5f7fad8a}
+      \strng{authorfullhash}{0c3a66cd070574b2492da6cb5f7fad8a}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Econometrics}
+      \field{number}{2}
+      \field{title}{Forecasting by factors, by variables, by both or neither?}
+      \field{volume}{177}
+      \field{year}{2013}
+      \field{pages}{305\bibrangedash 319}
+      \range{pages}{15}
     \endentry
     \entry{chinco2019sparse}{article}{}
       \name{author}{3}{}{%
@@ -213,6 +226,7 @@
       \strng{authorbibnamehash}{9b73d945dbfc5804fe7037f0cee27b38}
       \strng{authornamehash}{9b73d945dbfc5804fe7037f0cee27b38}
       \strng{authorfullhash}{9b73d945dbfc5804fe7037f0cee27b38}
+      \field{extraname}{1}
       \field{sortinit}{C}
       \field{sortinithash}{4d103a86280481745c9c897c925753c0}
       \field{extradatescope}{labelyear}
@@ -221,6 +235,40 @@
       \field{labeltitlesource}{title}
       \field{title}{Forecasting economic time series}
       \field{year}{1998}
+    \endentry
+    \entry{clements2005guest}{article}{}
+      \name{author}{2}{}{%
+        {{hash=0f6ea0e68f1008d34fdfe86012adf11a}{%
+           family={Clements},
+           familyi={C\bibinitperiod},
+           given={Michael\bibnamedelima P},
+           giveni={M\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+        {{hash=6816e7c37c57bf4a47d33394a8562e5e}{%
+           family={Hendry},
+           familyi={H\bibinitperiod},
+           given={David\bibnamedelima F},
+           giveni={D\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+      }
+      \strng{namehash}{bc7ab4d16c42a19347b0c91c02d137c8}
+      \strng{fullhash}{bc7ab4d16c42a19347b0c91c02d137c8}
+      \strng{bibnamehash}{bc7ab4d16c42a19347b0c91c02d137c8}
+      \strng{authorbibnamehash}{bc7ab4d16c42a19347b0c91c02d137c8}
+      \strng{authornamehash}{bc7ab4d16c42a19347b0c91c02d137c8}
+      \strng{authorfullhash}{bc7ab4d16c42a19347b0c91c02d137c8}
+      \field{extraname}{2}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Oxford Bulletin of Economics \& Statistics}
+      \field{number}{S1}
+      \field{title}{Guest Editors' introduction: Information in economic forecasting}
+      \field{volume}{67}
+      \field{year}{2005}
+      \field{pages}{713\bibrangedash 753}
+      \range{pages}{41}
     \endentry
     \entry{fatemi2023mitigating}{article}{}
       \name{author}{5}{}{%
@@ -265,102 +313,6 @@
       \field{journaltitle}{arXiv preprint arXiv:2306.09261}
       \field{title}{Mitigating cold-start forecasting using cold causal demand forecasting model}
       \field{year}{2023}
-    \endentry
-    \entry{ferwana2022optimal}{article}{}
-      \name{author}{2}{}{%
-        {{hash=360ea76650d73eab094927b183baf098}{%
-           family={Ferwana},
-           familyi={F\bibinitperiod},
-           given={Ibtihal},
-           giveni={I\bibinitperiod}}}%
-        {{hash=65031a63b754b9129e9fe9e9cb3e1d2f}{%
-           family={Varshney},
-           familyi={V\bibinitperiod},
-           given={Lav\bibnamedelima R},
-           giveni={L\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
-      }
-      \strng{namehash}{03d1acbd79a3fb406ca72b4daa4e2c12}
-      \strng{fullhash}{03d1acbd79a3fb406ca72b4daa4e2c12}
-      \strng{bibnamehash}{03d1acbd79a3fb406ca72b4daa4e2c12}
-      \strng{authorbibnamehash}{03d1acbd79a3fb406ca72b4daa4e2c12}
-      \strng{authornamehash}{03d1acbd79a3fb406ca72b4daa4e2c12}
-      \strng{authorfullhash}{03d1acbd79a3fb406ca72b4daa4e2c12}
-      \field{sortinit}{F}
-      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{arXiv preprint arXiv:2208.06729}
-      \field{title}{Optimal Recovery for Causal Inference}
-      \field{year}{2022}
-    \endentry
-    \entry{francq2019garch}{book}{}
-      \name{author}{2}{}{%
-        {{hash=16d165f3845ed4f7fce4d851d8118120}{%
-           family={Francq},
-           familyi={F\bibinitperiod},
-           given={Christian},
-           giveni={C\bibinitperiod}}}%
-        {{hash=f06beb112568ba4767814cd4b74cb8db}{%
-           family={Zakoian},
-           familyi={Z\bibinitperiod},
-           given={Jean-Michel},
-           giveni={J\bibinithyphendelim M\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {John Wiley \& Sons}%
-      }
-      \strng{namehash}{a02a2b57363902630e68a905b4943b22}
-      \strng{fullhash}{a02a2b57363902630e68a905b4943b22}
-      \strng{bibnamehash}{a02a2b57363902630e68a905b4943b22}
-      \strng{authorbibnamehash}{a02a2b57363902630e68a905b4943b22}
-      \strng{authornamehash}{a02a2b57363902630e68a905b4943b22}
-      \strng{authorfullhash}{a02a2b57363902630e68a905b4943b22}
-      \field{sortinit}{F}
-      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{GARCH models: structure, statistical inference and financial applications}
-      \field{year}{2019}
-    \endentry
-    \entry{han2014asymptotic}{article}{}
-      \name{author}{2}{}{%
-        {{hash=464e1ada732a9cf7fa173c9b85020b90}{%
-           family={Han},
-           familyi={H\bibinitperiod},
-           given={Heejoon},
-           giveni={H\bibinitperiod}}}%
-        {{hash=e28ab162f25744436f47b84fa144f70a}{%
-           family={Kristensen},
-           familyi={K\bibinitperiod},
-           given={Dennis},
-           giveni={D\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {Taylor \& Francis}%
-      }
-      \strng{namehash}{56a2bf295a5c8f507fb6a38566e54eb8}
-      \strng{fullhash}{56a2bf295a5c8f507fb6a38566e54eb8}
-      \strng{bibnamehash}{56a2bf295a5c8f507fb6a38566e54eb8}
-      \strng{authorbibnamehash}{56a2bf295a5c8f507fb6a38566e54eb8}
-      \strng{authornamehash}{56a2bf295a5c8f507fb6a38566e54eb8}
-      \strng{authorfullhash}{56a2bf295a5c8f507fb6a38566e54eb8}
-      \field{sortinit}{H}
-      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Journal of business \& economic statistics}
-      \field{number}{3}
-      \field{title}{Asymptotic theory for the QMLE in GARCH-X models with stationary and nonstationary covariates}
-      \field{volume}{32}
-      \field{year}{2014}
-      \field{pages}{416\bibrangedash 429}
-      \range{pages}{14}
     \endentry
     \entry{jiang2017information}{article}{}
       \name{author}{2}{}{%

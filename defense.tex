@@ -8,6 +8,21 @@
 %https://www.overleaf.com/learn/latex/Biblatex_citation_styles
 \addbibresource{defense.bib}
 
+\usepackage[most]{tcolorbox}
+\usepackage{lipsum}
+
+\definecolor{linequote}{RGB}{224,215,188}
+\definecolor{backquote}{RGB}{249,245,233}
+
+\newtcolorbox{myquote}[1][]{%
+    enhanced, breakable, 
+    size=minimal,
+    frame hidden, boxrule=0pt,
+    sharp corners,
+    colback=backquote,
+    #1
+}
+
 %\usepackage{bibentry}
 
 \usepackage{pgf, tikz}
@@ -131,7 +146,7 @@
 % %     }
 % %     \makeatother
 
-\title{Forecast Adjustment Under Shocks and other Similarity-based Solutions to Unprecedented Events}
+\title{Forecast Adjustment Under Shocks: Similarity-based Solutions to Unprecedented Events}
 \subtitle{Doctoral Defense}
 \author{David Lundquist\thanks{davidl11@ilinois.edu}, Daniel Eck\thanks{dje13@illinois.edu} (advisor)}
 \date{December 19th, 2024}
@@ -149,16 +164,15 @@
 \begin{frame}
     \frametitle{A High-level Summary Uniting All My Projects}
     
-        Forecasting under non-ideal conditions like a rupture in the DGP or a lack of past information for units we wish to forecast: what do we do?
+        Forecasting under non-ideal conditions like \textcolor{blue}{a rupture in the DGP or a lack of past information for units we wish to forecast}: what should we do?
 
         \bigskip
 
-        The unifying technique we explored was \textit{correction} of model parameters using an aggregation strategy, where aggregation means that we make use of external data.\\
+        Central technique explored: \textcolor{blue}{\textit{correction} of model parameters using an aggregation strategy}, where aggregation means that we make use of external data.\\
 
         \bigskip
 
-
-        We began with particular models and then built upwards, establishing an abstract, general framework for correcting forecasts using external data that is widely applicable for forecasting and beyond.
+        We began with particular models; then built upwards, establishing an abstract, general framework for correcting forecasts that is widely applicable for forecasting and beyond.
 
     \end{frame}
 
@@ -167,37 +181,43 @@
         
             We are weighing-in on a puzzle:
 
-            \begin{quote}conflict between the intuitive notion that more relevant information should help in forecasting, and the hard reality that attempts to make it do so have not been uniformly successful \parencite[][]{clements2005guest}
-            \end{quote}
+            \begin{myquote}[colback=red!30, size=small]
+                conflict between the intuitive notion that more relevant information should help in forecasting, and the hard reality that attempts to make it do so have not been uniformly successful \parencite[][]{clements2005guest}
+            \end{myquote}
 
-            Canonical problem:
+    \end{frame}
 
-            \begin{quote}incomplete information by itself is unlikely to play a key role in forecast failure (except if that information would forecast breaks). Consequently, using large amounts of data may not correct one of the main problems confronting forecasters, namely location shifts, unless that additional information is directly pertinent to forecasting break \parencite[][]{castle2013forecasting}
-            \end{quote}
-    
-            \bigskip
-    
-            Common problem: predicting based on a limited feature space and/or small $n$
-    
-            \bigskip
+    \begin{frame}
+        \frametitle{Why is this valuable?}
 
-            The framework we've offered is something others can `plug-in' to easily and add to -- in so many directions.
+        We provide a precise proposal to a well-specified challenge:
 
-            \bigskip
+        \begin{myquote}[colback=red!30, size=small]incomplete information by itself is unlikely to play a key role in forecast failure (except if that information would forecast breaks). Consequently, using large amounts of data may not correct one of the main problems confronting forecasters, namely location shifts, unless that additional information is directly pertinent to forecasting break \parencite[][]{castle2013forecasting}
+        \end{myquote}
 
-            Bringing the causal inference literature into forecasting
+    \end{frame}
 
-            \bigskip
+    \begin{frame}
+        \frametitle{Why is this valuable?}
 
-            Software developed
+        Canonical problems: 
+        
+        predicting based on a limited feature space and/or small $n$
+
+        \bigskip
+
+        The framework we've offered is something others can `plug-in' to easily and add to -- in so many directions.
+
+        \bigskip
+
+        Software developed
 
     \end{frame}
 
 \begin{frame}
     \frametitle{Questions guiding these slides (remove later)}
     \begin{enumerate}
-        \item Most common question asked is what you learned from the
-        study you have done. You have to sum up your entire study in a few sentences and remember the technical terms you have mentioned in your research because that is what your examiner wants to hear from you.
+        \item Whatcha learned?
         \textcolor{red}{Forecasting is difficult; Heterogeneity of DGP}
         \item Why did you choose this topic?
         \textcolor{red}{Although it seems narrow, the question of “what if you had a new unit and had very little past information to go on” is a common phenomenon in statistics.}
@@ -206,32 +226,23 @@
         Unscheduled
         scheduled
         A new seller joins amazon’s platform, i.e. cold starts \parencite[][]{fatemi2023mitigating}
-        \item What does this contribute to the literature and econometrics more broadly? \textcolor{red}{}
         \item  How would you improve your work? \textcolor{red}{Many ideas here.  There were more directions than I could pursue.}  
-\item Why did you choose this particular topic or what your inspiration behind this study was. This is one of the trickiest
-questions as you have to prove your convincing power to the panel of the
-teachers that what you did is valuable for the society and was worth their time.
-\item Tell about how zealous you were about this particular problem.
+
+\item  What is the importance of your study or how will it contribute or add up to the existing body of knowledge? \textcolor{red}{Two entirely separate perspectives: (1) Post-shock forecasting is a novel research framework. (2) Post-shock forecasting builds on intercept corrections and other canonical questions.}
+\item What type of background research have you done for the study? \textcolor{red}{In no particular order: synthetic control; convex geometry; convex optimization; p-value combination; FWER/FDR; fixed/mixed/random effects; panel data; linear time series models; RNN; econometrics}
 
     \end{enumerate}
     \end{frame}
 
-    \begin{frame}
-        \frametitle{Questions guiding these slides (remove later)}
-        \begin{enumerate}
-            \item  What is the importance of your study or how will it contribute or add up to the existing body of knowledge? \textcolor{red}{Two entirely separate perspectives: (1) Post-shock forecasting is a novel research framework. (2) Post-shock forecasting builds on intercept corrections and other canonical questions.}
-            \item What type of background research have you done for the study? \textcolor{red}{In no particular order: synthetic control; convex geometry; convex optimization; p-value combination; FWER/FDR; fixed/mixed/random effects; panel data; linear time series models; RNN; econometrics}
-            \item What are the limitations you have faced while writing?
-            \textcolor{red}{A ton of hyperparameters}
-            \item What will you include if you are told to add something extra to the study? \textcolor{red}{LLM-generated donors and covariates}
-            \item What are the recommendations of your study? \textcolor{red}{Relatively easy to answer: for an unprecedented event, locate it in the space of previous events.}
-            \item What was your hypothesis and how did you frame it? \textcolor{red}{Signal to noise}
-        \end{enumerate}
-        \end{frame}
-
 \begin{frame}
     \frametitle{Questions guiding these slides (remove later)}
     \begin{enumerate}
+        \item What are the limitations you have faced?
+        \textcolor{red}{A ton of hyperparameters}
+        \item What more to add? \textcolor{red}{LLM-generated donors and covariates}
+        \item What are the recommendations of your study? \textcolor{red}{Relatively easy to answer: for an unprecedented event, locate it in the space of previous events.}
+        \item What was your hypothesis and how did you frame it? \textcolor{red}{Signal to noise}
+        
         \item If given a chance, would like to do something different with your work?
         \item What are the limitations you faced?
         \textcolor{red}{Realized volatility is something that can be estimated with HF data}
@@ -252,153 +263,14 @@ teachers that what you did is valuable for the society and was worth their time.
 \end{enumerate}
 \end{frame}
 
-\section{My Prelim: A recap}
+\part{two}
 
-% \begin{frame}
-%     \frametitle{My Prelim: An incredibly Brief Recap}
+\section{The Idea and Methodology}
 
-%     \begin{tikzpicture}[edge from parent path={[<-,line width=2pt,green!50!black](\tikzparentnode) -- (\tikzchildnode)},
-%         level 1/.style = { level distance = 40mm,
-%                            sibling distance = 45mm},
-%         level 2/.style = { level distance = 53mm,
-%                            sibling distance = 30mm}, 
-%         treenode/.style = {shape = rectangle,
-%           rounded corners, draw,
-%           top color=white, bottom color=blue!30},
-%         every child node/.style = {treenode},
-%         engine/.style = {inner sep=1pt, font = \tiny, sloped, above},
-%         grow = left
-%       ]
-%       \node [treenode] {Adjusted forecast}
-%         child { node {Weighted Donor Fixed Effects}
-%           child { node {Time Series Under Study} edge from parent node[engine] {Series and covariates}}
-%           child { node {Donor pool} edge from parent node[engine] {Fixed effect estimates} }
-%           child { node {Covariate Choices} edge from parent node[engine] {}}
-%         }
-       
-%       ;
-%       \end{tikzpicture}
-
-% \end{frame}
-
-\begin{frame}
-\frametitle{My Prelim: An Incredibly Brief Recap}
-
-\begin{tikzpicture}[
-    > = stealth, % arrow head style
-    shorten > = 2.2pt, % don't touch arrow head to node
-    auto,
-    node distance = 5.8cm, % distance between nodes
-    semithick % line style
-]
-
-\tikzstyle{every state}=[
-    draw = black,
-    thick,
-    fill = white,
-    minimum size = 4mm
-]
-\node[state, fill = yellow] (Target Series) {Target Series};
-\node[state, fill = orange] (Donor Pool) [above of = Target Series] {Donor Pool};
-
-\node[rectangle, rounded corners, draw=blue!80, line width=.2mm, inner sep=0pt,minimum size=14pt]   (Distance-based Weighting) [above right of=Target Series] {Distance-based Weighting};
-
-\node[state] (Donors) [below right of=Target Series] {Donors};
-\node[state, fill = pink] (Adjusted Forecast) [right of=Distance-based Weighting] {Adjusted Forecast};
-
-\path[->] (Target Series) edge node {Pre-Shock Covariates} (Distance-based Weighting);
-\path[->] (Target Series) edge [bend right] node {Unadjusted Forecast} (Adjusted Forecast);
-\path[->] (Donor Pool) edge [bend left] node {Pre-Shock Covariates} (Distance-based Weighting);
-\path[->] (Donor Pool) edge [left] [bend right] node {FE estimates} (Distance-based Weighting);
- \path[->] (Distance-based Weighting) edge [below] [bend right] node {Parameter Adjustment} (Adjusted Forecast);
-
-
-%\draw[red, dashed] (1, 2) -- (1, -2);
-\end{tikzpicture}
-
+\begin{frame}{Outline} % https://tex.stackexchange.com/questions/73196/beamer-table-of-contents-shade-all-previous-sections
+    \tableofcontents[part=1,currentsection]\tableofcontents
 \end{frame}
 
-\begin{frame}
-    \frametitle{My Prelim: An Incredibly Brief Recap}
-
-    \begin{itemize}
-        \item <1-> Paper is under review at the \textit{International Journal of Forecasting}
-        \item <2-> Event-driven investing strategies (unscheduled news shock)
-        \item <3-> Scheduled macroeconomic news possibly pre-empted by a news leak
-
-        \href{https://www.wsj.com/articles/bad-inflation-reports-raise-odds-of-surprise-0-75-percentage-point-rate-rise-this-week-11655147927}{\includegraphics[scale=.3]{WSJ_rate_hike_2022.png}}
-    \end{itemize}
-\end{frame}
-
-\begin{frame}\frametitle{The forecaster's decision tree}
-
-    \begin{figure} 
-        \centering  
-      \resizebox{\textwidth}{!}{%
-      \begin{forest}
-        /tikz/every node/.append style={font=\small},
-        for tree={
-          rounded corners, 
-          % top color=gray!5, bottom color=gray!30, 
-          edge+={darkgray, line width=4pt}, 
-          draw=darkgray, 
-          l sep=.8cm,
-          s sep=.5cm,
-          minimum height=8.8cm,
-          minimum width=1cm,
-          child anchor=west,
-          parent anchor=east,
-          grow'=east,
-        minimum size=1cm,%new possibility
-        text width=4cm,%
-          draw,
-          anchor=west,
-          edge path={
-            \noexpand\path[\forestoption{edge}]
-              (.child anchor) -| +(-5pt,0) -- +(-5pt,0) |-
-              (!u.parent anchor)\forestoption{edge label};
-          },
-        }
-          [Break in the DGP between $T^{*}$ and $T^{*}+1$?,fill=blue!30 
-              [Is there information outside of “regular forces”,edge=green, fill=blue!30,draw=green
-                  [Can we use the information outside “regular forces” to forecast (as opposed to merely spotting the break)?,edge=green,,fill=blue!30 
-                      [Do you have a parametric model (with estimable parameters) for how information outside of ``regular forces” will figure at $T^{*}+h$?,edge=green,fill=blue!30 
-                        [What other time series are governed by the parametric model? 
-                        ,edge=green,fill=blue!30 
-                        ]
-                        [The information that helped spot the break can be used to 
-                        ,edge=red,fill=gray!30
-                        ]
-                        ]
-                      [Use “regular forces” to do the model adjustment for the ,edge=red,fill=gray!30
-                      ]
-                      ]
-                      [Then forecasting will require at least one post-break data point to be observed.,edge=red,fill=gray!30]
-                  ]
-                  [\cite{clements1998forecasting} discuss this.,edge=red,fill=gray!30]
-                  ]
-              ]
-          ]
-      \end{forest}
-      }\caption{Forecast Model Adjustment: A Decision Tree}\label{fig:tree}
-      \end{figure}
-
-\end{frame}
-
-\begin{frame}
-
-    \begin{example}[Weekend of March 6th - 8th, 2020]
-        \href{https://www.governor.ny.gov/news/novel-coronavirus-briefing-governor-cuomo-declares-state-emergency-contain-spread-virus}{\includegraphics[scale=.3]{NYS_state.png}}
-
-        \href{https://www.cnbc.com/2020/03/08/opec-deal-collapse-sparks-price-war-20-oil-in-2020-is-coming.html}{\includegraphics[scale=.3]{cnn.png}}
-
-        \href{https://www.cnn.com/2020/03/08/investing/oil-prices-crash-opec-russia-saudi-arabia/index.html}{\includegraphics[scale=.3]{cnbc.png}}
-        \end{example}
-
-\end{frame}
-
-
-% Setting for the problem
 \begin{frame}
     \frametitle{Premise: There is a breaking news at some fractional lag T-$\epsilon$}
     
@@ -412,6 +284,8 @@ teachers that what you did is valuable for the society and was worth their time.
     \end{itemize}
     \end{itemize}
     \end{frame}
+
+
     
     % \begin{frame}
     %     \frametitle{A Primer on GARCH}
@@ -495,27 +369,27 @@ teachers that what you did is valuable for the society and was worth their time.
     %     $\mc{M}_{0}$ assumes $\omega^{*}_{i,t}$ have no dependence on the covariates and are i.i.d. with $\E[ \omega^{*}_i]=\mu_{\omega^{*}}$.  
     % \end{frame}
     
-    \begin{frame}
-    \frametitle{Our Model is Nested inside a Factor Model}
+    % \begin{frame}
+    % \frametitle{Our Model is Nested inside a Factor Model}
     
-    \fontsize{6}{7.2}
+    % \fontsize{6}{7.2}
     
-    Consider $\mc{M}_{1}$ in the context of the factor model from \cite[][]{abadie2010synthetic}, where an untreated unit is governed by:
+    % Consider $\mc{M}_{1}$ in the context of the factor model from \cite[][]{abadie2010synthetic}, where an untreated unit is governed by:
     
-    $$Y^{N}_{i,t} = \delta_{t} + \boldsymbol\theta_{t}^{'}\textbf{Z}_{i}+\boldsymbol\lambda_{t}^{'}\boldsymbol\mu_{i}+\varepsilon_{i,t}$$
+    % $$Y^{N}_{i,t} = \delta_{t} + \boldsymbol\theta_{t}^{'}\textbf{Z}_{i}+\boldsymbol\lambda_{t}^{'}\boldsymbol\mu_{i}+\varepsilon_{i,t}$$
     
-    which nests the GARCH model's volatilty equation as well as the ARMA representation of a GARCH model, where
+    % which nests the GARCH model's volatilty equation as well as the ARMA representation of a GARCH model, where
     
-    \begin{align*}
-    \delta_{t} & \sim \omega, \text{a location parameter shared across donors}\\
-    \boldsymbol\theta_{t} & \sim \boldsymbol\alpha_{k}, \text{a vector of ARCH parameters and other coefficients shared across donors} \\
-    \textbf{Z}_{i} & \sim \boldsymbol a_{i,t-k}, \text{a vector of observable quantities specific to each donor} \\
-    \boldsymbol \lambda_{t} & \sim \boldsymbol\beta_{j}, \text{a vector of GARCH parameters shared across donors} \\
-    \boldsymbol \mu_{i} & \sim \boldsymbol \sigma_{i,t-j}^{2}, \text{a vector of latent quantities specific to each donor}   \\
-    \end{align*}
+    % \begin{align*}
+    % \delta_{t} & \sim \omega, \text{a location parameter shared across donors}\\
+    % \boldsymbol\theta_{t} & \sim \boldsymbol\alpha_{k}, \text{a vector of ARCH parameters and other coefficients shared across donors} \\
+    % \textbf{Z}_{i} & \sim \boldsymbol a_{i,t-k}, \text{a vector of observable quantities specific to each donor} \\
+    % \boldsymbol \lambda_{t} & \sim \boldsymbol\beta_{j}, \text{a vector of GARCH parameters shared across donors} \\
+    % \boldsymbol \mu_{i} & \sim \boldsymbol \sigma_{i,t-j}^{2}, \text{a vector of latent quantities specific to each donor}   \\
+    % \end{align*}
     
-    % and $\varepsilon_{i,t}$ is idiosyncratic noise, uncorrelated across time and donors.
-    \end{frame}
+    % % and $\varepsilon_{i,t}$ is idiosyncratic noise, uncorrelated across time and donors.
+    % \end{frame}
      
     % \begin{frame}
     % \frametitle{Covariates}
@@ -613,7 +487,154 @@ teachers that what you did is valuable for the society and was worth their time.
     
     \end{itemize}
     \end{frame}
-    
+
+% \begin{frame}
+%     \frametitle{My Prelim: An incredibly Brief Recap}
+
+%     \begin{tikzpicture}[edge from parent path={[<-,line width=2pt,green!50!black](\tikzparentnode) -- (\tikzchildnode)},
+%         level 1/.style = { level distance = 40mm,
+%                            sibling distance = 45mm},
+%         level 2/.style = { level distance = 53mm,
+%                            sibling distance = 30mm}, 
+%         treenode/.style = {shape = rectangle,
+%           rounded corners, draw,
+%           top color=white, bottom color=blue!30},
+%         every child node/.style = {treenode},
+%         engine/.style = {inner sep=1pt, font = \tiny, sloped, above},
+%         grow = left
+%       ]
+%       \node [treenode] {Adjusted forecast}
+%         child { node {Weighted Donor Fixed Effects}
+%           child { node {Time Series Under Study} edge from parent node[engine] {Series and covariates}}
+%           child { node {Donor pool} edge from parent node[engine] {Fixed effect estimates} }
+%           child { node {Covariate Choices} edge from parent node[engine] {}}
+%         }
+       
+%       ;
+%       \end{tikzpicture}
+
+% \end{frame}
+
+\begin{frame}
+\frametitle{Two Visuals That Tell The Story}
+
+\begin{tikzpicture}[
+    > = stealth, % arrow head style
+    shorten > = 2.2pt, % don't touch arrow head to node
+    auto,
+    node distance = 5.8cm, % distance between nodes
+    semithick % line style
+]
+
+\tikzstyle{every state}=[
+    draw = black,
+    thick,
+    fill = white,
+    minimum size = 4mm
+]
+\node[state, fill = yellow] (Target Series) {Target Series};
+\node[state, fill = orange] (Donor Pool) [above of = Target Series] {Donor Pool};
+
+\node[rectangle, rounded corners, draw=blue!80, line width=.2mm, inner sep=0pt,minimum size=14pt]   (Distance-based Weighting) [above right of=Target Series] {Distance-based Weighting};
+
+\node[state] (Donors) [below right of=Target Series] {Donors};
+\node[state, fill = pink] (Adjusted Forecast) [right of=Distance-based Weighting] {Adjusted Forecast};
+
+\path[->] (Target Series) edge node {Pre-Shock Covariates} (Distance-based Weighting);
+\path[->] (Target Series) edge [bend right] node {Unadjusted Forecast} (Adjusted Forecast);
+\path[->] (Donor Pool) edge [bend left] node {Pre-Shock Covariates} (Distance-based Weighting);
+\path[->] (Donor Pool) edge [left] [bend right] node {FE estimates} (Distance-based Weighting);
+ \path[->] (Distance-based Weighting) edge [below] [bend right] node {Parameter Adjustment} (Adjusted Forecast);
+
+
+%\draw[red, dashed] (1, 2) -- (1, -2);
+\end{tikzpicture}
+
+\end{frame}
+
+\begin{frame}\frametitle{Two Visuals That Tell The Story}
+    The forecaster's decision tree
+
+    \begin{figure} 
+        \centering  
+      \resizebox{\textwidth}{!}{%
+      \begin{forest}
+        /tikz/every node/.append style={font=\small},
+        for tree={
+          rounded corners, 
+          % top color=gray!5, bottom color=gray!30, 
+          edge+={darkgray, line width=4pt}, 
+          draw=darkgray, 
+          l sep=.8cm,
+          s sep=.5cm,
+          minimum height=8.8cm,
+          minimum width=1cm,
+          child anchor=west,
+          parent anchor=east,
+          grow'=east,
+        minimum size=1cm,%new possibility
+        text width=4cm,%
+          draw,
+          anchor=west,
+          edge path={
+            \noexpand\path[\forestoption{edge}]
+              (.child anchor) -| +(-5pt,0) -- +(-5pt,0) |-
+              (!u.parent anchor)\forestoption{edge label};
+          },
+        }
+          [Break in the DGP between $T^{*}$ and $T^{*}+1$?,fill=blue!30 
+              [Is there information outside of “regular forces”,edge=green, fill=blue!30,draw=green
+                  [Can we use the information outside “regular forces” to forecast (as opposed to merely spotting the break)?,edge=green,,fill=blue!30 
+                      [Do you have a parametric model (with estimable parameters) for how information outside of ``regular forces” will figure at $T^{*}+h$?,edge=green,fill=blue!30 
+                        [What other time series are governed by the parametric model? 
+                        ,edge=green,fill=blue!30 
+                        ]
+                        [The information that helped spot the break can be used to 
+                        ,edge=red,fill=gray!30
+                        ]
+                        ]
+                      [Use “regular forces” to do the model adjustment for the ,edge=red,fill=gray!30
+                      ]
+                      ]
+                      [Then forecasting will require at least one post-break data point to be observed.,edge=red,fill=gray!30]
+                  ]
+                  [\cite{clements1998forecasting} discuss this.,edge=red,fill=gray!30]
+                  ]
+              ]
+          ]
+      \end{forest}
+      }\caption{Forecast Model Adjustment: A Decision Tree}\label{fig:tree}
+      \end{figure}
+
+\end{frame}
+
+\section{Applications}
+
+\begin{frame}
+    \frametitle{My Prelim: An Incredibly Brief Recap}
+
+    \begin{itemize}
+        \item <1-> Paper is under review at the \textit{International Journal of Forecasting}
+        \item <2-> Event-driven investing strategies (unscheduled news shock)
+        \item <3-> Scheduled macroeconomic news possibly pre-empted by a news leak
+
+        \href{https://www.wsj.com/articles/bad-inflation-reports-raise-odds-of-surprise-0-75-percentage-point-rate-rise-this-week-11655147927}{\includegraphics[scale=.3]{WSJ_rate_hike_2022.png}}
+    \end{itemize}
+\end{frame}
+
+
+
+\begin{frame}
+
+    \begin{example}[Weekend of March 6th - 8th, 2020]
+        \href{https://www.governor.ny.gov/news/novel-coronavirus-briefing-governor-cuomo-declares-state-emergency-contain-spread-virus}{\includegraphics[scale=.3]{NYS_state.png}}
+
+        \href{https://www.cnbc.com/2020/03/08/opec-deal-collapse-sparks-price-war-20-oil-in-2020-is-coming.html}{\includegraphics[scale=.3]{cnn.png}}
+
+        \href{https://www.cnn.com/2020/03/08/investing/oil-prices-crash-opec-russia-saudi-arabia/index.html}{\includegraphics[scale=.3]{cnbc.png}}
+        \end{example}
+
+\end{frame}
     
     \begin{frame}{Why apply our method to the 2016 US Election?}
     
@@ -688,14 +709,6 @@ teachers that what you did is valuable for the society and was worth their time.
 \end{itemize}
 \end{frame}
 
-\begin{frame}
-    \frametitle{Literature Review: if we want it, it goes here}
-    \begin{itemize}
-        \item[] <1-> This was all started by Clements and Hendry
-        \item[] <2-> Then we combine CH with the literature on similarity-based forecasting
-    \end{itemize}
-\end{frame}
-
 % \begin{frame}
 %     \frametitle{Background and related methods}
 %     Volatility Modeling
@@ -720,9 +733,6 @@ teachers that what you did is valuable for the society and was worth their time.
 %     \end{itemize}
 % \end{frame}
 
-\part{two}
-\section{Forecasting Amid Shocks}
-% Outline frame
 \begin{frame}{What we will discuss in this section}
     \begin{enumerate}
     \item Role of outside information
@@ -730,28 +740,11 @@ teachers that what you did is valuable for the society and was worth their time.
     \end{enumerate}
 \end{frame}
 
-\section{Setting}
-% Outline frame
-\begin{frame}{Outline} % https://tex.stackexchange.com/questions/73196/beamer-table-of-contents-shade-all-previous-sections
-    \tableofcontents[part=1,currentsection]\tableofcontents
-\end{frame}
-
-\section{SPC Forecasting Methodology and Correction Functions}
-
-
-
-\section{Model Adjustment Using Similarity-Based Parameter Correction:
-A Global Overview}\label{SVF_properties}
-
 
 \begin{frame}\frametitle{populate}
 populate
 \end{frame}
 
-\section{Formal Properties and Model-Specific Considerations}
-
-
-\section{Discussion}
 
 % \begin{frame}{Hypotheses to Test Via Simulations}
 %     Ceteris paribus...
@@ -815,11 +808,24 @@ Recall an \hyperlink{model_1}{$\mc{M}_1$} model on the volatility, which is char
 
 % \end{frame}
 
+\section{Software and LLMs}
+\begin{frame}\frametitle{Software}
+We can discuss 
+\end{frame}
+
+\section{How can we trust this?}
+
+\begin{frame}\frametitle{Robustness of the Approach}
+    What assurances do we have that the method will be good?
+
+    \bigskip
+
+    \end{frame}
+
+
 
 \section{Future directions for Forecasting Amid Shocks}
-
 \begin{frame}\frametitle{Formal Results}
-
 
     \begin{prop}\label{ARIMA_param_consistency}
         Assume
@@ -831,6 +837,10 @@ Recall an \hyperlink{model_1}{$\mc{M}_1$} model on the volatility, which is char
         
         Then the tuple of estimators ($\hat\rho_{i,1},...,\hat\rho_{i, p}, \hat\alpha_{i,T^{*}+1}$) is consistent as $t \rightarrow \infty$.
         \end{prop}
+
+    \end{frame}
+
+        \begin{frame}\frametitle{Formal Results}
         
         \begin{prop}\label{ARIMA_aggregated_alpha}
         Assume
@@ -842,6 +852,10 @@ Recall an \hyperlink{model_1}{$\mc{M}_1$} model on the volatility, which is char
         
            Then the aggregated estimator $\hat{\alpha_{T^{*}_{1}+1}}$ converges in distribution to $\alpha_{T^{*}_{1}+1}$ as $t \rightarrow \infty$.  Furthermore, if the $\{u_{i,t}\}$ are constant with probability 1, the convergence is in probability.
           \end{prop}
+
+        \end{frame}
+
+\begin{frame}\frametitle{Formal Results}
         
         \begin{prop}\label{ARIMA_conv_distribution}
           Let $\{\hat y_{1,T_{1}^{*}+r}\}^{h}_{r=1}$ denote the vector of adjusted predictions (adjusted through $h$ steps ahead) in the time series under study.  Assume all conditions listed in Propositions \ref{ARIMA_param_consistency} and \ref{ARIMA_aggregated_alpha}.  Then $\{\hat y_{1,T_{1}^{*}+r}\}^{h}_{r=1} \xrightarrow{\qquad d\qquad} \{ y_{1,T_{1}^{*}+r}\}^{h}_{r=1}$.  Furthermore, if the $\{u_{i,t}\}$ are constant with probability 1, the convergence is in probability. 
@@ -887,32 +901,32 @@ Use NLP to identify donors.
     Use shrinkage estimation to detect fleeting signals in the cross section of $a_{t}^{2}$ \parencite[][]{chinco2019sparse}. 
 \end{frame}
 
-\begin{frame}
-\frametitle{Alternative Ways of Estimating Fixed Effects}
-High-frequency data?
+% \begin{frame}
+% \frametitle{Alternative Ways of Estimating Fixed Effects}
+% High-frequency data?
 
-\begin{itemize}
+% \begin{itemize}
 
-\item{Realized GARCH with High-Frequency Data}
+% \item{Realized GARCH with High-Frequency Data}
 
-\item{Stochastic Volatility}
-\end{itemize}
-\end{frame}
+% \item{Stochastic Volatility}
+% \end{itemize}
+% \end{frame}
 
-\begin{frame}
-    \frametitle{Alternative Estimators and Estimands in Volatility Modeling}
-    \begin{itemize}
+% \begin{frame}
+%     \frametitle{Alternative Estimators and Estimands in Volatility Modeling}
+%     \begin{itemize}
         
-        \item Factors used as covariates
-        \item Overnight returns instead of open-to-close
+%         \item Factors used as covariates
+%         \item Overnight returns instead of open-to-close
         
-        \item Signal Recovery Perspective \parencite{ferwana2022optimal}
+%         \item Signal Recovery Perspective \parencite{ferwana2022optimal}
         
-        \item Stochastic Volatility: Correlation between errors
-        \item Multivariate GARCH
+%         \item Stochastic Volatility: Correlation between errors
+%         \item Multivariate GARCH
         
-        \end{itemize}
-\end{frame}
+%         \end{itemize}
+% \end{frame}
 
 % \begin{frame}
 %     \frametitle{What can you do with a volatility forecast?}
@@ -920,6 +934,16 @@ High-frequency data?
 %         \item{Value-at-Risk using SVF-based $\hat\sigma^{2}_{t}$}
 %         \end{itemize}
 % \end{frame}
+
+\section{Directions and Limitations}
+
+\begin{frame}
+    \frametitle{Limitations of what we're currently doing}
+    \begin{itemize}
+        \item Our real data examples cannot be scaled up due to the need to for human involvement in donor and covariate curation
+        \item We assume that the exogenous variables (distinct from the covariates) are known at time $T_{i}^{*}$
+    \end{itemize}
+\end{frame}
 
 \begin{frame}
     \frametitle{New Frontiers in Distance-based Weighting}
@@ -929,13 +953,7 @@ High-frequency data?
         \end{itemize}
 \end{frame}
 
-\begin{frame}
-    \frametitle{Limitations of what we're currently doing}
-    \begin{itemize}
-        \item Our real data examples cannot be scaled up due to the need to for human involvement in donor and covariate curation
-        \item We assume that the exogenous variables (distinct from the covariates) are known at time $T_{i}^{*}$
-    \end{itemize}
-\end{frame}
+
 
 \begin{frame}{Distance-based Weighting of Impulse Response Functions}
     Suppose 
@@ -958,8 +976,6 @@ Additional research questions:
 
 \end{itemize}
 \end{frame}
-\section{Supplement}
-
 
 
 %We analyze the real data example with Brexit included.

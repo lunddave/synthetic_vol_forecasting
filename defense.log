@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.15)  12 DEC 2024 23:27
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.15)  13 DEC 2024 20:47
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -769,7 +769,9 @@ Package biblatex Info: ... and expl3
 Package: xparse 2024-02-18 L3 Experimental document command parser
 )
 Package: blx-case-expl3 2023/03/05 v3.19 expl3 case changing code for biblatex
-)) (/usr/local/texlive/2024/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+)) (/usr/local/texlive/2024/texmf-dist/tex/latex/tcolorbox/tcolorbox.sty
+Package: tcolorbox 2024/01/10 version 6.2.0 text color boxes
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
 Package: pgf 2023-01-15 v3.1.10 (3.1.10)
  (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
 File: pgfmoduleshapes.code.tex 2023-01-15 v3.1.10 (3.1.10)
@@ -782,75 +784,191 @@ Package: pgfcomp-version-0-65 2023-01-15 v3.1.10 (3.1.10)
 \pgf@nodesepend=\dimen295
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
 Package: pgfcomp-version-1-18 2023-01-15 v3.1.10 (3.1.10)
-)) (/usr/local/texlive/2024/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty (/usr/local/texlive/2024/texmf-dist/tex/latex/pgf/utilities/pgffor.sty (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
+)) (/usr/local/texlive/2024/texmf-dist/tex/latex/tools/verbatim.sty
+Package: verbatim 2023-11-06 v1.5v LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks46
+\verbatim@line=\toks47
+\verbatim@in@stream=\read4
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/environ/environ.sty
+Package: environ 2014/05/04 v0.3 A new way to define environments
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/trimspaces/trimspaces.sty
+Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
+))
+\tcb@titlebox=\box78
+\tcb@upperbox=\box79
+\tcb@lowerbox=\box80
+\tcb@phantombox=\box81
+\c@tcbbreakpart=\count464
+\c@tcblayer=\count465
+\c@tcolorbox@number=\count466
+\l__tcobox_tmpa_box=\box82
+\l__tcobox_tmpa_dim=\dimen296
+\tcb@temp=\box83
+\tcb@temp=\box84
+\tcb@temp=\box85
+\tcb@temp=\box86
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/tcolorbox/tcbraster.code.tex
+Library (tcolorbox): 'tcbraster.code.tex' version '6.2.0'
+\c@tcbrastercolumn=\count467
+\c@tcbrasterrow=\count468
+\c@tcbrasternum=\count469
+\c@tcbraster=\count470
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/tcolorbox/tcbskins.code.tex
+Library (tcolorbox): 'tcbskins.code.tex' version '6.2.0'
+(/usr/local/texlive/2024/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty (/usr/local/texlive/2024/texmf-dist/tex/latex/pgf/utilities/pgffor.sty (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
 Package: pgffor 2023-01-15 v3.1.10 (3.1.10)
-\pgffor@iter=\dimen296
-\pgffor@skip=\dimen297
-\pgffor@stack=\toks46
-\pgffor@toks=\toks47
+\pgffor@iter=\dimen297
+\pgffor@skip=\dimen298
+\pgffor@stack=\toks48
+\pgffor@toks=\toks49
 )) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
 Package: tikz 2023-01-15 v3.1.10 (3.1.10)
  (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex
 File: pgflibraryplothandlers.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@plot@mark@count=\count464
-\pgfplotmarksize=\dimen298
+\pgf@plot@mark@count=\count471
+\pgfplotmarksize=\dimen299
 )
-\tikz@lastx=\dimen299
-\tikz@lasty=\dimen300
-\tikz@lastxsaved=\dimen301
-\tikz@lastysaved=\dimen302
-\tikz@lastmovetox=\dimen303
-\tikz@lastmovetoy=\dimen304
-\tikzleveldistance=\dimen305
-\tikzsiblingdistance=\dimen306
-\tikz@figbox=\box78
-\tikz@figbox@bg=\box79
-\tikz@tempbox=\box80
-\tikz@tempbox@bg=\box81
-\tikztreelevel=\count465
-\tikznumberofchildren=\count466
-\tikznumberofcurrentchild=\count467
-\tikz@fig@count=\count468
+\tikz@lastx=\dimen300
+\tikz@lasty=\dimen301
+\tikz@lastxsaved=\dimen302
+\tikz@lastysaved=\dimen303
+\tikz@lastmovetox=\dimen304
+\tikz@lastmovetoy=\dimen305
+\tikzleveldistance=\dimen306
+\tikzsiblingdistance=\dimen307
+\tikz@figbox=\box87
+\tikz@figbox@bg=\box88
+\tikz@tempbox=\box89
+\tikz@tempbox@bg=\box90
+\tikztreelevel=\count472
+\tikznumberofchildren=\count473
+\tikznumberofcurrentchild=\count474
+\tikz@fig@count=\count475
  (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
 File: pgfmodulematrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfmatrixcurrentrow=\count469
-\pgfmatrixcurrentcolumn=\count470
-\pgf@matrix@numberofcolumns=\count471
+\pgfmatrixcurrentrow=\count476
+\pgfmatrixcurrentcolumn=\count477
+\pgf@matrix@numberofcolumns=\count478
 )
-\tikz@expandcount=\count472
+\tikz@expandcount=\count479
  (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopaths.code.tex
 File: tikzlibrarytopaths.code.tex 2023-01-15 v3.1.10 (3.1.10)
-))) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryarrows.code.tex
+))) (/usr/local/texlive/2024/texmf-dist/tex/latex/tikzfill/tikzfill.image.sty
+Package: tikzfill.image 2023/08/08 v1.0.1 Image filling library for TikZ
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/tikzfill/tikzfill-common.sty
+Package: tikzfill-common 2023/08/08 v1.0.1 Auxiliary code for tikzfill
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/tikzfill/tikzlibraryfill.image.code.tex
+File: tikzlibraryfill.image.code.tex 2023/08/08 v1.0.1 Image filling library
+\l__tikzfill_img_box=\box91
+)) (/usr/local/texlive/2024/texmf-dist/tex/latex/tcolorbox/tcbskinsjigsaw.code.tex
+Library (tcolorbox): 'tcbskinsjigsaw.code.tex' version '6.2.0'
+)) (/usr/local/texlive/2024/texmf-dist/tex/latex/tcolorbox/tcbbreakable.code.tex
+Library (tcolorbox): 'tcbbreakable.code.tex' version '6.2.0'
+(/usr/local/texlive/2024/texmf-dist/tex/latex/pdfcol/pdfcol.sty
+Package: pdfcol 2022-09-21 v1.7 Handle new color stacks for pdfTeX (HO)
+)
+Package pdfcol Info: New color stack `tcb@breakable' = 1 on input line 23.
+\tcb@testbox=\box92
+\tcb@totalupperbox=\box93
+\tcb@totallowerbox=\box94
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/tcolorbox/tcbhooks.code.tex
+Library (tcolorbox): 'tcbhooks.code.tex' version '6.2.0'
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/tcolorbox/tcbtheorems.code.tex
+Library (tcolorbox): 'tcbtheorems.code.tex' version '6.2.0'
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/tcolorbox/tcbfitting.code.tex
+Library (tcolorbox): 'tcbfitting.code.tex' version '6.2.0'
+\tcbfitdim=\dimen308
+\tcb@lowerfitdim=\dimen309
+\tcb@upperfitdim=\dimen310
+\tcb@cur@hbadness=\count480
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/tcolorbox/tcblistingsutf8.code.tex
+Library (tcolorbox): 'tcblistingsutf8.code.tex' version '6.2.0'
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tcolorbox/tcblistings.code.tex
+Library (tcolorbox): 'tcblistings.code.tex' version '6.2.0'
+(/usr/local/texlive/2024/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count481
+\lst@gtempboxa=\box95
+\lst@token=\toks50
+\lst@length=\count482
+\lst@currlwidth=\dimen311
+\lst@column=\count483
+\lst@pos=\count484
+\lst@lostspace=\dimen312
+\lst@width=\dimen313
+\lst@newlines=\count485
+\lst@lineno=\count486
+\lst@maxwidth=\dimen314
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/listings/lstpatch.sty
+File: lstpatch.sty 2024/02/21 1.10 (Carsten Heinz)
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2024/02/21 1.10 (Carsten Heinz)
+\c@lstnumber=\count487
+\lst@skipnumbers=\count488
+\lst@framebox=\box96
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2024/02/21 1.10 listings configuration
+))
+Package: listings 2024/02/21 1.10 (Carsten Heinz)
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/tcolorbox/tcblistingscore.code.tex
+Library (tcolorbox): 'tcblistingscore.code.tex' version '6.2.0'
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tcolorbox/tcbprocessing.code.tex
+Library (tcolorbox): 'tcbprocessing.code.tex' version '6.2.0'
+)
+\c@tcblisting=\count489
+)) (/usr/local/texlive/2024/texmf-dist/tex/latex/listingsutf8/listingsutf8.sty
+Package: listingsutf8 2019-12-10 v1.5 Allow UTF-8 in listings input (HO)
+ (/usr/local/texlive/2024/texmf-dist/tex/generic/stringenc/stringenc.sty
+Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO)
+))) (/usr/local/texlive/2024/texmf-dist/tex/latex/tcolorbox/tcbexternal.code.tex
+Library (tcolorbox): 'tcbexternal.code.tex' version '6.2.0'
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/tcolorbox/tcbmagazine.code.tex
+Library (tcolorbox): 'tcbmagazine.code.tex' version '6.2.0'
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/tcolorbox/tcbvignette.code.tex
+Library (tcolorbox): 'tcbvignette.code.tex' version '6.2.0'
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryfadings.code.tex
+File: tikzlibraryfadings.code.tex 2023-01-15 v3.1.10 (3.1.10)
+ (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/libraries/pgflibraryfadings.code.tex
+File: pgflibraryfadings.code.tex 2023-01-15 v3.1.10 (3.1.10)
+))) (/usr/local/texlive/2024/texmf-dist/tex/latex/tcolorbox/tcbposter.code.tex
+Library (tcolorbox): 'tcbposter.code.tex' version '6.2.0'
+)) (/usr/local/texlive/2024/texmf-dist/tex/latex/lipsum/lipsum.sty (/usr/local/texlive/2024/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty
+Package: l3keys2e 2024-02-18 LaTeX2e option processing using LaTeX3 keys
+)
+Package: lipsum 2021-09-20 v2.7 150 paragraphs of Lorem Ipsum dummy text
+\g__lipsum_par_int=\count490
+\l__lipsum_a_int=\count491
+\l__lipsum_b_int=\count492
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/lipsum/lipsum.ltd.tex)) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryarrows.code.tex
 File: tikzlibraryarrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
  (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.code.tex
 File: pgflibraryarrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\arrowsize=\dimen307
+\arrowsize=\dimen315
 )) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryautomata.code.tex
 File: tikzlibraryautomata.code.tex 2023-01-15 v3.1.10 (3.1.10)
  (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.multipart.code.tex
 File: tikzlibraryshapes.multipart.code.tex 2023-01-15 v3.1.10 (3.1.10)
  (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshapes.multipart.code.tex
 File: pgflibraryshapes.multipart.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfnodepartlowerbox=\box82
-\pgfnodeparttwobox=\box83
-\pgfnodepartthreebox=\box84
-\pgfnodepartfourbox=\box85
-\pgfnodeparttwentybox=\box86
-\pgfnodepartnineteenbox=\box87
-\pgfnodeparteighteenbox=\box88
-\pgfnodepartseventeenbox=\box89
-\pgfnodepartsixteenbox=\box90
-\pgfnodepartfifteenbox=\box91
-\pgfnodepartfourteenbox=\box92
-\pgfnodepartthirteenbox=\box93
-\pgfnodeparttwelvebox=\box94
-\pgfnodepartelevenbox=\box95
-\pgfnodeparttenbox=\box96
-\pgfnodepartninebox=\box97
-\pgfnodeparteightbox=\box98
-\pgfnodepartsevenbox=\box99
-\pgfnodepartsixbox=\box100
-\pgfnodepartfivebox=\box101
+\pgfnodepartlowerbox=\box97
+\pgfnodeparttwobox=\box98
+\pgfnodepartthreebox=\box99
+\pgfnodepartfourbox=\box100
+\pgfnodeparttwentybox=\box101
+\pgfnodepartnineteenbox=\box102
+\pgfnodeparteighteenbox=\box103
+\pgfnodepartseventeenbox=\box104
+\pgfnodepartsixteenbox=\box105
+\pgfnodepartfifteenbox=\box106
+\pgfnodepartfourteenbox=\box107
+\pgfnodepartthirteenbox=\box108
+\pgfnodeparttwelvebox=\box109
+\pgfnodepartelevenbox=\box110
+\pgfnodeparttenbox=\box111
+\pgfnodepartninebox=\box112
+\pgfnodeparteightbox=\box113
+\pgfnodepartsevenbox=\box114
+\pgfnodepartsixbox=\box115
+\pgfnodepartfivebox=\box116
 ))) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytrees.code.tex
 File: tikzlibrarytrees.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/forest/forest.sty
@@ -878,68 +996,64 @@ File: tikzlibraryfit.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarycalc.code.tex
 File: tikzlibrarycalc.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/libraries/pgflibraryintersections.code.tex (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/libraries/pgflibraryfpu.code.tex)
-\pgf@intersect@solutions=\count473
+\pgf@intersect@solutions=\count493
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/pgfopts/pgfopts.sty
 Package: pgfopts 2014/07/10 v2.1a LaTeX package options with pgfkeys
-\pgfopts@list@add@a@toks=\toks48
-\pgfopts@list@add@b@toks=\toks49
+\pgfopts@list@add@a@toks=\toks51
+\pgfopts@list@add@b@toks=\toks52
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/elocalloc/elocalloc.sty
 Package: elocalloc 2016/12/15 v0.03 local allocation for LaTeX 2015+ (DPC)
-) (/usr/local/texlive/2024/texmf-dist/tex/latex/environ/environ.sty
-Package: environ 2014/05/04 v0.3 A new way to define environments
- (/usr/local/texlive/2024/texmf-dist/tex/latex/trimspaces/trimspaces.sty
-Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
-)) (/usr/local/texlive/2024/texmf-dist/tex/latex/inlinedef/inlinedef.sty
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/inlinedef/inlinedef.sty
 Package: inlinedef 2008/07/10 v1.0 Inlined expansions within definitions
-\ID@toks=\toks50
-\ID@count=\count474
+\ID@toks=\toks53
+\ID@count=\count494
 )
-\ID@usercommands=\toks51
-\safeloop@depth=\count475
-\safeRKloop@depth=\count476
-\forest@temp@dimen=\dimen308
-\forest@temp@count=\count477
-\forest@n=\count478
-\forest@temp@global@count=\count479
-\forest@temp@toks=\toks52
-\forest@temparray@M=\count480
-\forest@temparray@N=\count481
-\forest@global@temparray@M=\count482
-\forest@global@temparray@N=\count483
-\forest@isnum@count=\count484
-\forest@isdim@nonintpart=\count485
-\forest@isdim@dimen=\dimen309
-\forest@sort@m=\count486
-\forest@sort@k=\count487
-\forest@sort@p=\count488
-\bracket@content=\toks53
-\bracket@afterthought=\toks54
-\forest@node@maxid=\count489
-\forest@process@left@M=\count490
-\forest@process@left@N=\count491
-\forest@process@right@M=\count492
-\forest@process@right@N=\count493
-\forest@process@saved@M=\count494
-\forest@process@saved@N=\count495
-\forest@process@result@M=\count496
-\forest@process@result@N=\count497
-\forest@process@n=\count498
-\forest@nodewalk@branch@toks=\toks55
-\forest@nodewalk@shortsteps@resolution=\toks56
-\forest@do@dynamics=\toks57
-\forest@box=\box102
-\forest@xg=\dimen310
-\forest@yg=\dimen311
-\forest@xs=\dimen312
-\forest@ys=\dimen313
-\forest@pi@toks=\toks58
-\forest@segment@toks=\toks59
-\forest@PIi@toks=\toks60
-\forest@PIii@toks=\toks61
-\forest@copy@in=\read4
+\ID@usercommands=\toks54
+\safeloop@depth=\count495
+\safeRKloop@depth=\count496
+\forest@temp@dimen=\dimen316
+\forest@temp@count=\count497
+\forest@n=\count498
+\forest@temp@global@count=\count499
+\forest@temp@toks=\toks55
+\forest@temparray@M=\count500
+\forest@temparray@N=\count501
+\forest@global@temparray@M=\count502
+\forest@global@temparray@N=\count503
+\forest@isnum@count=\count504
+\forest@isdim@nonintpart=\count505
+\forest@isdim@dimen=\dimen317
+\forest@sort@m=\count506
+\forest@sort@k=\count507
+\forest@sort@p=\count508
+\bracket@content=\toks56
+\bracket@afterthought=\toks57
+\forest@node@maxid=\count509
+\forest@process@left@M=\count510
+\forest@process@left@N=\count511
+\forest@process@right@M=\count512
+\forest@process@right@N=\count513
+\forest@process@saved@M=\count514
+\forest@process@saved@N=\count515
+\forest@process@result@M=\count516
+\forest@process@result@N=\count517
+\forest@process@n=\count518
+\forest@nodewalk@branch@toks=\toks58
+\forest@nodewalk@shortsteps@resolution=\toks59
+\forest@do@dynamics=\toks60
+\forest@box=\box117
+\forest@xg=\dimen318
+\forest@yg=\dimen319
+\forest@xs=\dimen320
+\forest@ys=\dimen321
+\forest@pi@toks=\toks61
+\forest@segment@toks=\toks62
+\forest@PIi@toks=\toks63
+\forest@PIii@toks=\toks64
+\forest@copy@in=\read5
 \forest@copy@out=\write6
-\forest@externalize@max@outer@n=\count499
-\forest@externalize@inner@n=\count500
+\forest@externalize@max@outer@n=\count519
+\forest@externalize@inner@n=\count520
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/hvlogos/hvlogos.sty
 Package: hvlogos 2024/01/24 v. 0.12 Logos (hv)
  (/usr/local/texlive/2024/texmf-dist/tex/latex/fetamont/fetamont.sty
@@ -957,10 +1071,10 @@ Package: adjustbox 2022/10/17 v1.3a Adjusting TeX boxes (trim, clip, ...)
  (/usr/local/texlive/2024/texmf-dist/tex/latex/xkeyval/xkeyval.sty
 Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
  (/usr/local/texlive/2024/texmf-dist/tex/generic/xkeyval/xkeyval.tex (/usr/local/texlive/2024/texmf-dist/tex/generic/xkeyval/xkvutils.tex
-\XKV@toks=\toks62
-\XKV@tempa@toks=\toks63
+\XKV@toks=\toks65
+\XKV@tempa@toks=\toks66
 )
-\XKV@depth=\count501
+\XKV@depth=\count521
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 )) (/usr/local/texlive/2024/texmf-dist/tex/latex/adjustbox/adjcalc.sty
 Package: adjcalc 2012/05/16 v1.1 Provides advanced setlength with multiple back-ends (calc, etex, pgfmath)
@@ -968,33 +1082,33 @@ Package: adjcalc 2012/05/16 v1.1 Provides advanced setlength with multiple back-
 Package: trimclip 2020/08/19 v1.2 Trim and clip general TeX material
  (/usr/local/texlive/2024/texmf-dist/tex/latex/collectbox/collectbox.sty
 Package: collectbox 2022/10/17 v0.4c Collect macro arguments as boxes
-\collectedbox=\box103
+\collectedbox=\box118
 )
-\tc@llx=\dimen314
-\tc@lly=\dimen315
-\tc@urx=\dimen316
-\tc@ury=\dimen317
+\tc@llx=\dimen322
+\tc@lly=\dimen323
+\tc@urx=\dimen324
+\tc@ury=\dimen325
 Package trimclip Info: Using driver 'tc-pdftex.def'.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/adjustbox/tc-pdftex.def
 File: tc-pdftex.def 2019/01/04 v2.2 Clipping driver for pdftex
 ))
-\adjbox@Width=\dimen318
-\adjbox@Height=\dimen319
-\adjbox@Depth=\dimen320
-\adjbox@Totalheight=\dimen321
-\adjbox@pwidth=\dimen322
-\adjbox@pheight=\dimen323
-\adjbox@pdepth=\dimen324
-\adjbox@ptotalheight=\dimen325
+\adjbox@Width=\dimen326
+\adjbox@Height=\dimen327
+\adjbox@Depth=\dimen328
+\adjbox@Totalheight=\dimen329
+\adjbox@pwidth=\dimen330
+\adjbox@pheight=\dimen331
+\adjbox@pdepth=\dimen332
+\adjbox@ptotalheight=\dimen333
  (/usr/local/texlive/2024/texmf-dist/tex/latex/ifoddpage/ifoddpage.sty
 Package: ifoddpage 2022/10/18 v1.2 Conditionals for odd/even page detection
-\c@checkoddpage=\count502
+\c@checkoddpage=\count522
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/varwidth/varwidth.sty
 Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
-\@vwid@box=\box104
-\sift@deathcycles=\count503
-\@vwid@loff=\dimen326
-\@vwid@roff=\dimen327
+\@vwid@box=\box119
+\sift@deathcycles=\count523
+\@vwid@loff=\dimen334
+\@vwid@roff=\dimen335
 )) (/usr/local/texlive/2024/texmf-dist/tex/latex/datetime2/datetime2.sty
 Package: datetime2 2021/03/21 v1.5.7 (NLCT) date and time formats
  (/usr/local/texlive/2024/texmf-dist/tex/latex/tracklang/tracklang.sty
@@ -1003,92 +1117,88 @@ Package: tracklang 2022/12/13 v1.6.1 (NLCT) Track Languages
 File: datetime2-english.ldf 2019/10/21 v1.05 (NLCT)
  (/usr/local/texlive/2024/texmf-dist/tex/latex/datetime2-english/datetime2-english-base.ldf
 File: datetime2-english-base.ldf 2019/10/21 v1.05 (NLCT)
-))) (/usr/local/texlive/2024/texmf-dist/tex/latex/tools/verbatim.sty
-Package: verbatim 2023-11-06 v1.5v LaTeX2e package for verbatim enhancements
-\every@verbatim=\toks64
-\verbatim@line=\toks65
-\verbatim@in@stream=\read5
-) (/usr/local/texlive/2024/texmf-dist/tex/latex/mathtools/mathtools.sty
+))) (/usr/local/texlive/2024/texmf-dist/tex/latex/mathtools/mathtools.sty
 Package: mathtools 2024/03/11 v1.30 mathematical typesetting tools
  (/usr/local/texlive/2024/texmf-dist/tex/latex/tools/calc.sty
 Package: calc 2023/07/08 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count504
-\calc@Bcount=\count505
-\calc@Adimen=\dimen328
-\calc@Bdimen=\dimen329
+\calc@Acount=\count524
+\calc@Bcount=\count525
+\calc@Adimen=\dimen336
+\calc@Bdimen=\dimen337
 \calc@Askip=\skip87
 \calc@Bskip=\skip88
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count506
+\calc@Ccount=\count526
 \calc@Cskip=\skip89
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/mathtools/mhsetup.sty
 Package: mhsetup 2021/03/18 v1.4 programming setup (MH)
 )
-\g_MT_multlinerow_int=\count507
-\l_MT_multwidth_dim=\dimen330
+\g_MT_multlinerow_int=\count527
+\l_MT_multwidth_dim=\dimen338
 \origjot=\skip90
-\l_MT_shortvdotswithinadjustabove_dim=\dimen331
-\l_MT_shortvdotswithinadjustbelow_dim=\dimen332
-\l_MT_above_intertext_sep=\dimen333
-\l_MT_below_intertext_sep=\dimen334
-\l_MT_above_shortintertext_sep=\dimen335
-\l_MT_below_shortintertext_sep=\dimen336
-\xmathstrut@box=\box105
-\xmathstrut@dim=\dimen337
+\l_MT_shortvdotswithinadjustabove_dim=\dimen339
+\l_MT_shortvdotswithinadjustbelow_dim=\dimen340
+\l_MT_above_intertext_sep=\dimen341
+\l_MT_below_intertext_sep=\dimen342
+\l_MT_above_shortintertext_sep=\dimen343
+\l_MT_below_shortintertext_sep=\dimen344
+\xmathstrut@box=\box120
+\xmathstrut@dim=\dimen345
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/jknapltx/mathrsfs.sty
 Package: mathrsfs 1996/01/01 Math RSFS package v1.0 (jk)
 \symrsfs=\mathgroup6
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amscd.sty
 Package: amscd 2017/04/14 v2.1 AMS Commutative Diagrams
-\athelp@=\toks66
-\minaw@=\dimen338
-\bigaw@=\dimen339
-\minCDarrowwidth=\dimen340
+\athelp@=\toks67
+\minaw@=\dimen346
+\bigaw@=\dimen347
+\minCDarrowwidth=\dimen348
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/caption/subcaption.sty
 Package: subcaption 2023/07/28 v1.6b Sub-captions (AR)
  (/usr/local/texlive/2024/texmf-dist/tex/latex/caption/caption.sty
 Package: caption 2023/08/05 v3.6o Customizing captions (AR)
  (/usr/local/texlive/2024/texmf-dist/tex/latex/caption/caption3.sty
 Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
-\caption@tempdima=\dimen341
-\captionmargin=\dimen342
-\caption@leftmargin=\dimen343
-\caption@rightmargin=\dimen344
-\caption@width=\dimen345
-\caption@indent=\dimen346
-\caption@parindent=\dimen347
-\caption@hangindent=\dimen348
+\caption@tempdima=\dimen349
+\captionmargin=\dimen350
+\caption@leftmargin=\dimen351
+\caption@rightmargin=\dimen352
+\caption@width=\dimen353
+\caption@indent=\dimen354
+\caption@parindent=\dimen355
+\caption@hangindent=\dimen356
 Package caption Info: beamer document class detected.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/caption/caption-beamer.sto
 File: caption-beamer.sto 2022/01/06 v2.0c Adaption of the caption package to the beamer document classes (AR)
 ))
-\c@caption@flags=\count508
-\c@continuedfloat=\count509
+\c@caption@flags=\count528
+\c@continuedfloat=\count529
 Package caption Info: hyperref package is loaded.
 Package caption Info: Hyperref support is turned off
 (caption)             because hyperref has stopped early.
+Package caption Info: listings package is loaded.
 )
 Package caption Info: New subtype `subfigure' on input line 238.
-\c@subfigure=\count510
+\c@subfigure=\count530
 Package caption Info: New subtype `subtable' on input line 238.
-\c@subtable=\count511
+\c@subtable=\count531
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count512
-\float@exts=\toks67
-\float@box=\box106
-\@float@everytoks=\toks68
-\@floatcapt=\box107
+\c@float@type=\count532
+\float@exts=\toks68
+\float@box=\box121
+\@float@everytoks=\toks69
+\@floatcapt=\box122
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/multirow/multirow.sty
 Package: multirow 2021/03/15 v2.8 Span multiple rows of a table
 \multirow@colwidth=\skip91
-\multirow@cntb=\count513
+\multirow@cntb=\count533
 \multirow@dima=\skip92
-\bigstrutjot=\dimen349
+\bigstrutjot=\dimen357
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/algorithm2e/algorithm2e.sty
 Package: algorithm2e 2017/07/18 v5.2 algorithms environments
-\c@AlgoLine=\count514
+\c@AlgoLine=\count534
 \algocf@hangindent=\skip93
  (/usr/local/texlive/2024/texmf-dist/tex/latex/relsize/relsize.sty
 Package: relsize 2013/03/29 ver 4.1
@@ -1101,33 +1211,33 @@ Package: relsize 2013/03/29 ver 4.1
 \skiplength=\skip99
 \algomargin=\skip100
 \skipalgocfslide=\skip101
-\algowidth=\dimen350
-\inoutsize=\dimen351
-\inoutindent=\dimen352
-\interspacetitleruled=\dimen353
-\interspacealgoruled=\dimen354
-\interspacetitleboxruled=\dimen355
+\algowidth=\dimen358
+\inoutsize=\dimen359
+\inoutindent=\dimen360
+\interspacetitleruled=\dimen361
+\interspacealgoruled=\dimen362
+\interspacetitleboxruled=\dimen363
 \algocf@ruledwidth=\skip102
-\algocf@inoutbox=\box108
-\algocf@inputbox=\box109
+\algocf@inoutbox=\box123
+\algocf@inputbox=\box124
 \AlCapSkip=\skip103
 \AlCapHSkip=\skip104
 \algoskipindent=\skip105
-\algocf@nlbox=\box110
-\algocf@hangingbox=\box111
-\algocf@untilbox=\box112
+\algocf@nlbox=\box125
+\algocf@hangingbox=\box126
+\algocf@untilbox=\box127
 \algocf@skipuntil=\skip106
-\algocf@capbox=\box113
+\algocf@capbox=\box128
 \algocf@lcaptionbox=\skip107
 \algoheightruledefault=\skip108
 \algoheightrule=\skip109
 \algotitleheightruledefault=\skip110
 \algotitleheightrule=\skip111
-\c@algocfline=\count515
-\c@algocfproc=\count516
-\c@algocf=\count517
-\algocf@algoframe=\box114
-\algocf@algobox=\box115
+\c@algocfline=\count535
+\c@algocfproc=\count536
+\c@algocf=\count537
+\algocf@algoframe=\box129
+\algocf@algobox=\box130
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/pdflscape/pdflscape.sty
 Package: pdflscape 2022-10-27 v0.13 Display of landscape pages in PDF
  (/usr/local/texlive/2024/texmf-dist/tex/latex/pdflscape/pdflscape-nometadata.sty
@@ -1137,36 +1247,36 @@ Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
 )
 Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 ))
-\c@cor=\count518
-\c@lem=\count519
-\c@thm=\count520
-\c@defn=\count521
-\c@prop=\count522
-\c@remark=\count523
-Package hyperref Info: Option `colorlinks' set `true' on input line 113.
-\@quotelevel=\count524
-\@quotereset=\count525
+\c@cor=\count538
+\c@lem=\count539
+\c@thm=\count540
+\c@defn=\count541
+\c@prop=\count542
+\c@remark=\count543
+Package hyperref Info: Option `colorlinks' set `true' on input line 128.
+\@quotelevel=\count544
+\@quotereset=\count545
  (./defense.aux)
 \openout1 = `defense.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 139.
-LaTeX Font Info:    ... okay on input line 139.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 139.
-LaTeX Font Info:    ... okay on input line 139.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 139.
-LaTeX Font Info:    ... okay on input line 139.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 139.
-LaTeX Font Info:    ... okay on input line 139.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 139.
-LaTeX Font Info:    ... okay on input line 139.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 139.
-LaTeX Font Info:    ... okay on input line 139.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 139.
-LaTeX Font Info:    ... okay on input line 139.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 139.
-LaTeX Font Info:    ... okay on input line 139.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 139.
-LaTeX Font Info:    ... okay on input line 139.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 154.
+LaTeX Font Info:    ... okay on input line 154.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 154.
+LaTeX Font Info:    ... okay on input line 154.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 154.
+LaTeX Font Info:    ... okay on input line 154.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 154.
+LaTeX Font Info:    ... okay on input line 154.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 154.
+LaTeX Font Info:    ... okay on input line 154.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 154.
+LaTeX Font Info:    ... okay on input line 154.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 154.
+LaTeX Font Info:    ... okay on input line 154.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 154.
+LaTeX Font Info:    ... okay on input line 154.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 154.
+LaTeX Font Info:    ... okay on input line 154.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1204,81 +1314,81 @@ LaTeX Font Info:    ... okay on input line 139.
 
 (/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count526
-\scratchdimen=\dimen356
-\scratchbox=\box116
-\nofMPsegments=\count527
-\nofMParguments=\count528
-\everyMPshowfont=\toks69
-\MPscratchCnt=\count529
-\MPscratchDim=\dimen357
-\MPnumerator=\count530
-\makeMPintoPDFobject=\count531
-\everyMPtoPDFconversion=\toks70
+\scratchcounter=\count546
+\scratchdimen=\dimen364
+\scratchbox=\box131
+\nofMPsegments=\count547
+\nofMParguments=\count548
+\everyMPshowfont=\toks70
+\MPscratchCnt=\count549
+\MPscratchDim=\dimen365
+\MPnumerator=\count550
+\makeMPintoPDFobject=\count551
+\everyMPtoPDFconversion=\toks71
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-Package hyperref Info: Link coloring ON on input line 139.
+Package hyperref Info: Link coloring ON on input line 154.
  (./defense.out) (./defense.out)
 \@outlinefile=\write7
 \openout7 = `defense.out'.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 139.
+(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 154.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 139.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 154.
 \symnumbers=\mathgroup7
 \sympureletters=\mathgroup8
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/cmss/m/n --> T1/cmr/m/n on input line 139.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 139.
+(Font)                  OT1/cmss/m/n --> T1/cmr/m/n on input line 154.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 154.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> T1/cmss/b/n on input line 139.
+(Font)                  OT1/cmr/bx/n --> T1/cmss/b/n on input line 154.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmr/bx/n --> T1/cmss/b/n on input line 139.
-LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 139.
+(Font)                  OT1/cmr/bx/n --> T1/cmss/b/n on input line 154.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 154.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> T1/cmss/m/n on input line 139.
+(Font)                  OT1/cmss/m/n --> T1/cmss/m/n on input line 154.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> T1/cmss/m/n on input line 139.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 139.
+(Font)                  OT1/cmss/bx/n --> T1/cmss/m/n on input line 154.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 154.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> T1/cmss/m/it on input line 139.
+(Font)                  OT1/cmr/m/it --> T1/cmss/m/it on input line 154.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> T1/cmss/m/it on input line 139.
-LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 139.
+(Font)                  OT1/cmr/bx/it --> T1/cmss/m/it on input line 154.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 154.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> T1/cmtt/m/n on input line 139.
+(Font)                  OT1/cmtt/m/n --> T1/cmtt/m/n on input line 154.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> T1/cmtt/m/n on input line 139.
+(Font)                  OT1/cmtt/m/n --> T1/cmtt/m/n on input line 154.
 LaTeX Font Info:    Overwriting symbol font `numbers' in version `bold'
-(Font)                  T1/cmss/m/n --> T1/cmss/b/n on input line 139.
+(Font)                  T1/cmss/m/n --> T1/cmss/b/n on input line 154.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  T1/cmss/m/it --> T1/cmss/b/it on input line 139.
+(Font)                  T1/cmss/m/it --> T1/cmss/b/it on input line 154.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
-(Font)                  OT1/cmss/b/n --> T1/cmr/b/n on input line 139.
+(Font)                  OT1/cmss/b/n --> T1/cmr/b/n on input line 154.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  T1/cmss/b/n --> T1/cmss/b/n on input line 139.
+(Font)                  T1/cmss/b/n --> T1/cmss/b/n on input line 154.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  T1/cmss/m/n --> T1/cmss/b/n on input line 139.
+(Font)                  T1/cmss/m/n --> T1/cmss/b/n on input line 154.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  T1/cmss/m/it --> T1/cmss/b/it on input line 139.
+(Font)                  T1/cmss/m/it --> T1/cmss/b/it on input line 154.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  T1/cmtt/m/n --> T1/cmtt/b/n on input line 139.
-LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 139.
+(Font)                  T1/cmtt/m/n --> T1/cmtt/b/n on input line 154.
+LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 154.
 LaTeX Font Info:    Encoding `T1' has changed to `OT1' for symbol font
-(Font)              `pureletters' in the math version `normal' on input line 139.
+(Font)              `pureletters' in the math version `normal' on input line 154.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `normal'
-(Font)                  T1/cmss/m/it --> OT1/mathkerncmss/m/sl on input line 139.
+(Font)                  T1/cmss/m/it --> OT1/mathkerncmss/m/sl on input line 154.
 LaTeX Font Info:    Encoding `T1' has changed to `OT1' for symbol font
-(Font)              `pureletters' in the math version `bold' on input line 139.
+(Font)              `pureletters' in the math version `bold' on input line 154.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  T1/cmss/b/it --> OT1/mathkerncmss/m/sl on input line 139.
+(Font)                  T1/cmss/b/it --> OT1/mathkerncmss/m/sl on input line 154.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  OT1/mathkerncmss/m/sl --> OT1/mathkerncmss/bx/sl on input line 139.
+(Font)                  OT1/mathkerncmss/m/sl --> OT1/mathkerncmss/bx/sl on input line 154.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/translator/translator-basic-dictionary-English.dict
 Dictionary: translator-basic-dictionary, Language: English 
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/translator/translator-bibliography-dictionary-English.dict
@@ -1305,447 +1415,445 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'defense.bbl' found.
  (./defense.bbl)
-Package biblatex Info: Reference section=0 on input line 139.
-Package biblatex Info: Reference segment=0 on input line 139.
+Package biblatex Info: Reference section=0 on input line 154.
+Package biblatex Info: Reference segment=0 on input line 154.
+\c@lstlisting=\count552
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2021/02/14 v1.3d Input encoding file
+\inpenc@prehook=\toks72
+\inpenc@posthook=\toks73
+)
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
 Package caption Info: End \AtBeginDocument code.
  (./defense.nav)
-Overfull \hbox (141.00479pt too wide) in paragraph at lines 139--139
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 154--154
  [][][][][][]  
  []
 
 
-Overfull \hbox (141.00479pt too wide) in paragraph at lines 145--145
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 160--160
  [][][][][][]  
  []
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 145.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 160.
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 145.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 160.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 145.
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 160.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
-LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on input line 145.
+LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on input line 160.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/sansmathaccent/ot1mathkerncmss.fd
 File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/mathkerncmss.
 )
-Overfull \hbox (141.00479pt too wide) has occurred while \output is active
+Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  [][][][][][]  
  []
 
 [1
 
 {/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}]
-Overfull \hbox (141.00479pt too wide) in paragraph at lines 163--163
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 177--177
  [][][][][][]  
  []
 
 
-Overfull \hbox (141.00479pt too wide) has occurred while \output is active
+Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  [][][][][][]  
  []
 
 [2
 
 ]
-Overfull \hbox (141.00479pt too wide) in paragraph at lines 194--194
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 188--188
  [][][][][][]  
  []
 
 
-Overfull \hbox (141.00479pt too wide) has occurred while \output is active
+Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  [][][][][][]  
  []
 
 [3
 
 ]
-Overfull \hbox (141.00479pt too wide) in paragraph at lines 217--217
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 198--198
  [][][][][][]  
  []
 
 
-Overfull \hbox (141.00479pt too wide) has occurred while \output is active
+Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  [][][][][][]  
  []
 
 [4
 
 ]
-Overfull \hbox (141.00479pt too wide) in paragraph at lines 230--230
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 215--215
  [][][][][][]  
  []
 
 
-Overfull \hbox (141.00479pt too wide) has occurred while \output is active
+Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  [][][][][][]  
  []
 
 [5
 
 ]
-Overfull \hbox (141.00479pt too wide) in paragraph at lines 244--244
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 235--235
  [][][][][][]  
  []
 
 
-Overfull \hbox (141.00479pt too wide) has occurred while \output is active
+Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  [][][][][][]  
  []
 
 [6
 
 ]
-Overfull \hbox (141.00479pt too wide) in paragraph at lines 253--253
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 255--255
  [][][][][][]  
  []
 
 
-Overfull \hbox (141.00479pt too wide) has occurred while \output is active
+Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  [][][][][][]  
  []
 
 [7
 
 ]
-Overfull \hbox (141.00479pt too wide) has occurred while \output is active
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 264--264
+ [][][][][][]  
+ []
+
+
+Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  [][][][][][]  
  []
 
 [8
 
 ]
-Overfull \hbox (141.00479pt too wide) has occurred while \output is active
+Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  [][][][][][]  
  []
 
 [9
 
 ]
-Overfull \hbox (141.00479pt too wide) in paragraph at lines 319--319
- [][][][][][]  
- []
-
-
-Overfull \hbox (3.98897pt too wide) in paragraph at lines 319--319
-[][]  
- []
-
-
-Overfull \vbox (101.01186pt too high) detected at line 319
- []
-
-
-Overfull \hbox (141.00479pt too wide) has occurred while \output is active
+Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  [][][][][][]  
  []
 
 [10
 
 ]
-Overfull \hbox (141.00479pt too wide) in paragraph at lines 331--331
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 272--272
  [][][][][][]  
  []
 
-<WSJ_rate_hike_2022.png, id=384, 643.40375pt x 249.93375pt>
-File: WSJ_rate_hike_2022.png Graphic file (type png)
-<use WSJ_rate_hike_2022.png>
-Package pdftex.def Info: WSJ_rate_hike_2022.png  used on input line 331.
-(pdftex.def)             Requested size: 193.02261pt x 74.9807pt.
-
-Overfull \hbox (141.00479pt too wide) has occurred while \output is active
+(./defense.toc) (./defense.toc)
+Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  [][][][][][]  
  []
 
 [11
 
- <./WSJ_rate_hike_2022.png>]
-File: WSJ_rate_hike_2022.png Graphic file (type png)
-<use WSJ_rate_hike_2022.png>
-Package pdftex.def Info: WSJ_rate_hike_2022.png  used on input line 331.
-(pdftex.def)             Requested size: 193.02261pt x 74.9807pt.
+]
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 286--286
+ [][][][][][]  
+ []
 
-Overfull \hbox (141.00479pt too wide) has occurred while \output is active
+
+Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  [][][][][][]  
  []
 
 [12
 
 ]
-File: WSJ_rate_hike_2022.png Graphic file (type png)
-<use WSJ_rate_hike_2022.png>
-Package pdftex.def Info: WSJ_rate_hike_2022.png  used on input line 331.
-(pdftex.def)             Requested size: 193.02261pt x 74.9807pt.
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 335--335
+ [][][][][][]  
+ []
 
-Overfull \hbox (141.00479pt too wide) has occurred while \output is active
+
+Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  [][][][][][]  
  []
 
 [13
 
 ]
-Overfull \hbox (141.00479pt too wide) in paragraph at lines 386--386
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 363--363
  [][][][][][]  
  []
 
-Missing character: There is no ] in font nullfont!
-Missing character: There is no ] in font nullfont!
 
-Overfull \hbox (141.00479pt too wide) has occurred while \output is active
+Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  [][][][][][]  
  []
 
 [14
 
 ]
-Overfull \hbox (141.00479pt too wide) in paragraph at lines 398--398
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 434--434
  [][][][][][]  
  []
 
-<NYS_state.png, id=514, 558.085pt x 337.26pt>
-File: NYS_state.png Graphic file (type png)
-<use NYS_state.png>
-Package pdftex.def Info: NYS_state.png  used on input line 398.
-(pdftex.def)             Requested size: 167.42679pt x 101.17877pt.
-<cnn.png, id=516, 898.35625pt x 204.765pt>
-File: cnn.png Graphic file (type png)
-<use cnn.png>
-Package pdftex.def Info: cnn.png  used on input line 398.
-(pdftex.def)             Requested size: 269.50894pt x 61.42996pt.
-<cnbc.png, id=518, 997.7275pt x 174.6525pt>
-File: cnbc.png Graphic file (type png)
-<use cnbc.png>
-Package pdftex.def Info: cnbc.png  used on input line 398.
-(pdftex.def)             Requested size: 299.32056pt x 52.39615pt.
 
-Overfull \hbox (141.00479pt too wide) has occurred while \output is active
+Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  [][][][][][]  
  []
 
 [15
 
- <./NYS_state.png> <./cnn.png> <./cnbc.png>]
-Overfull \hbox (141.00479pt too wide) in paragraph at lines 414--414
+]
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 468--468
  [][][][][][]  
  []
 
+LaTeX Font Info:    Calculating math sizes for size <7.6> on input line 468.
 
-Overfull \hbox (141.00479pt too wide) has occurred while \output is active
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <3.8> not available
+(Font)              size <5> substituted on input line 468.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <3.8> not available
+(Font)              size <5> substituted on input line 468.
+
+
+LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <3.8> not available
+(Font)              size <5> substituted on input line 468.
+
+
+Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  [][][][][][]  
  []
 
 [16
 
 ]
-Overfull \hbox (141.00479pt too wide) in paragraph at lines 447--447
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 489--489
  [][][][][][]  
  []
 
 
-Overfull \hbox (141.00479pt too wide) has occurred while \output is active
+Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  [][][][][][]  
  []
 
 [17
 
 ]
-Overfull \hbox (141.00479pt too wide) in paragraph at lines 461--461
- [][][][][][]  
- []
-
-
-Overfull \hbox (141.00479pt too wide) has occurred while \output is active
+Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  [][][][][][]  
  []
 
 [18
 
 ]
-Overfull \hbox (141.00479pt too wide) in paragraph at lines 489--489
- [][][][][][]  
- []
-
-
-Overfull \hbox (141.00479pt too wide) has occurred while \output is active
+Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  [][][][][][]  
  []
 
 [19
 
 ]
-Overfull \hbox (141.00479pt too wide) in paragraph at lines 518--518
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 553--553
  [][][][][][]  
  []
 
-LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <6> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 518.
-LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <5> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 518.
 
-LaTeX Font Warning: Font shape `T1/cmss/b/n' undefined
-(Font)              using `T1/cmss/m/n' instead on input line 518.
+Overfull \hbox (3.98897pt too wide) in paragraph at lines 553--553
+[][]  
+ []
 
 
-Overfull \hbox (141.00479pt too wide) has occurred while \output is active
+Overfull \vbox (101.01186pt too high) detected at line 553
+ []
+
+
+Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  [][][][][][]  
  []
 
 [20
 
 ]
-Overfull \hbox (141.00479pt too wide) in paragraph at lines 560--560
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 609--609
  [][][][][][]  
  []
 
+Missing character: There is no ] in font nullfont!
+Missing character: There is no ] in font nullfont!
 
-Overfull \hbox (141.00479pt too wide) has occurred while \output is active
+Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  [][][][][][]  
  []
 
 [21
 
 ]
-Overfull \hbox (141.00479pt too wide) in paragraph at lines 594--594
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 623--623
  [][][][][][]  
  []
 
-LaTeX Font Info:    Calculating math sizes for size <7.6> on input line 594.
+<WSJ_rate_hike_2022.png, id=778, 643.40375pt x 249.93375pt>
+File: WSJ_rate_hike_2022.png Graphic file (type png)
+<use WSJ_rate_hike_2022.png>
+Package pdftex.def Info: WSJ_rate_hike_2022.png  used on input line 623.
+(pdftex.def)             Requested size: 193.02261pt x 74.9807pt.
 
-LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <3.8> not available
-(Font)              size <5> substituted on input line 594.
-
-
-LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <3.8> not available
-(Font)              size <5> substituted on input line 594.
-
-
-LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <3.8> not available
-(Font)              size <5> substituted on input line 594.
-
-
-Overfull \hbox (141.00479pt too wide) has occurred while \output is active
+Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  [][][][][][]  
  []
 
 [22
 
-]
-Overfull \hbox (141.00479pt too wide) in paragraph at lines 615--615
- [][][][][][]  
- []
+ <./WSJ_rate_hike_2022.png>]
+File: WSJ_rate_hike_2022.png Graphic file (type png)
+<use WSJ_rate_hike_2022.png>
+Package pdftex.def Info: WSJ_rate_hike_2022.png  used on input line 623.
+(pdftex.def)             Requested size: 193.02261pt x 74.9807pt.
 
-
-Overfull \hbox (141.00479pt too wide) has occurred while \output is active
+Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  [][][][][][]  
  []
 
 [23
 
 ]
-Overfull \hbox (141.00479pt too wide) has occurred while \output is active
+File: WSJ_rate_hike_2022.png Graphic file (type png)
+<use WSJ_rate_hike_2022.png>
+Package pdftex.def Info: WSJ_rate_hike_2022.png  used on input line 623.
+(pdftex.def)             Requested size: 193.02261pt x 74.9807pt.
+
+Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  [][][][][][]  
  []
 
 [24
 
 ]
-Overfull \hbox (141.00479pt too wide) has occurred while \output is active
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 637--637
+ [][][][][][]  
+ []
+
+<NYS_state.png, id=870, 558.085pt x 337.26pt>
+File: NYS_state.png Graphic file (type png)
+<use NYS_state.png>
+Package pdftex.def Info: NYS_state.png  used on input line 637.
+(pdftex.def)             Requested size: 167.42679pt x 101.17877pt.
+<cnn.png, id=872, 898.35625pt x 204.765pt>
+File: cnn.png Graphic file (type png)
+<use cnn.png>
+Package pdftex.def Info: cnn.png  used on input line 637.
+(pdftex.def)             Requested size: 269.50894pt x 61.42996pt.
+<cnbc.png, id=874, 997.7275pt x 174.6525pt>
+File: cnbc.png Graphic file (type png)
+<use cnbc.png>
+Package pdftex.def Info: cnbc.png  used on input line 637.
+(pdftex.def)             Requested size: 299.32056pt x 52.39615pt.
+
+Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  [][][][][][]  
  []
 
 [25
 
-]
-Overfull \hbox (141.00479pt too wide) in paragraph at lines 628--628
+ <./NYS_state.png> <./cnn.png> <./cnbc.png>]
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 649--649
  [][][][][][]  
  []
 
 
-Overfull \hbox (141.00479pt too wide) has occurred while \output is active
+Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  [][][][][][]  
  []
 
 [26
 
 ]
-Overfull \hbox (141.00479pt too wide) in paragraph at lines 655--655
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 676--676
  [][][][][][]  
  []
 
-<iyg.png, id=916, 774.895pt x 108.405pt>
+<iyg.png, id=950, 774.895pt x 108.405pt>
 File: iyg.png Graphic file (type png)
 <use iyg.png>
-Package pdftex.def Info: iyg.png  used on input line 655.
+Package pdftex.def Info: iyg.png  used on input line 676.
 (pdftex.def)             Requested size: 154.97626pt x 21.6806pt.
 
-Overfull \hbox (141.00479pt too wide) has occurred while \output is active
+Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  [][][][][][]  
  []
 
 [27
 
  <./iyg.png>]
-Overfull \hbox (141.00479pt too wide) in paragraph at lines 665--665
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 686--686
  [][][][][][]  
  []
 
-<real_data_output_plots/TueSep241059512024_IYG_None_None.png, id=947, 803.0pt x 602.25pt>
+<real_data_output_plots/TueSep241059512024_IYG_None_None.png, id=981, 803.0pt x 602.25pt>
 File: real_data_output_plots/TueSep241059512024_IYG_None_None.png Graphic file (type png)
 <use real_data_output_plots/TueSep241059512024_IYG_None_None.png>
-Package pdftex.def Info: real_data_output_plots/TueSep241059512024_IYG_None_None.png  used on input line 665.
+Package pdftex.def Info: real_data_output_plots/TueSep241059512024_IYG_None_None.png  used on input line 686.
 (pdftex.def)             Requested size: 273.01639pt x 204.76228pt.
 
-Overfull \vbox (8.6644pt too high) detected at line 665
+Overfull \vbox (8.6644pt too high) detected at line 686
  []
 
 
-Overfull \hbox (141.00479pt too wide) has occurred while \output is active
+Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  [][][][][][]  
  []
 
 [28
 
  <./real_data_output_plots/TueSep241059512024_IYG_None_None.png>]
-Overfull \hbox (141.00479pt too wide) in paragraph at lines 675--675
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 696--696
  [][][][][][]  
  []
 
 
-Overfull \hbox (141.00479pt too wide) has occurred while \output is active
+Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  [][][][][][]  
  []
 
 [29
 
 ]
-Overfull \hbox (141.00479pt too wide) in paragraph at lines 689--689
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 710--710
  [][][][][][]  
  []
 
-<simulation_plots/motivating_piece_convex_combination.png, id=1009, 1226.5825pt x 985.6825pt>
+<simulation_plots/motivating_piece_convex_combination.png, id=1043, 1226.5825pt x 985.6825pt>
 File: simulation_plots/motivating_piece_convex_combination.png Graphic file (type png)
 <use simulation_plots/motivating_piece_convex_combination.png>
-Package pdftex.def Info: simulation_plots/motivating_piece_convex_combination.png  used on input line 689.
+Package pdftex.def Info: simulation_plots/motivating_piece_convex_combination.png  used on input line 710.
 (pdftex.def)             Requested size: 122.66544pt x 98.57402pt.
 
-Overfull \hbox (18.49988pt too wide) in paragraph at lines 689--689
+Overfull \hbox (18.49988pt too wide) in paragraph at lines 710--710
 [][]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 689--689
+Underfull \hbox (badness 10000) in paragraph at lines 710--710
 
  []
 
 
-Overfull \hbox (141.00479pt too wide) has occurred while \output is active
+Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  [][][][][][]  
  []
 
@@ -1754,234 +1862,223 @@ Overfull \hbox (141.00479pt too wide) has occurred while \output is active
  <./simulation_plots/motivating_piece_convex_combination.png>]
 File: simulation_plots/motivating_piece_convex_combination.png Graphic file (type png)
 <use simulation_plots/motivating_piece_convex_combination.png>
-Package pdftex.def Info: simulation_plots/motivating_piece_convex_combination.png  used on input line 689.
+Package pdftex.def Info: simulation_plots/motivating_piece_convex_combination.png  used on input line 710.
 (pdftex.def)             Requested size: 122.66544pt x 98.57402pt.
 
-Overfull \hbox (18.49988pt too wide) in paragraph at lines 689--689
+Overfull \hbox (18.49988pt too wide) in paragraph at lines 710--710
 [][]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 689--689
+Underfull \hbox (badness 10000) in paragraph at lines 710--710
 
  []
 
 
-Overfull \hbox (141.00479pt too wide) has occurred while \output is active
+Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  [][][][][][]  
  []
 
 [31
 
 ]
-Overfull \hbox (141.00479pt too wide) in paragraph at lines 697--697
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 741--741
  [][][][][][]  
  []
 
 
-Overfull \hbox (141.00479pt too wide) has occurred while \output is active
+Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  [][][][][][]  
  []
 
 [32
 
 ]
-Overfull \hbox (141.00479pt too wide) has occurred while \output is active
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 746--746
+ [][][][][][]  
+ []
+
+
+Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  [][][][][][]  
  []
 
 [33
 
 ]
-Overfull \hbox (141.00479pt too wide) in paragraph at lines 731--731
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 783--783
  [][][][][][]  
  []
 
 
-Overfull \hbox (141.00479pt too wide) has occurred while \output is active
+Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  [][][][][][]  
  []
 
 [34
 
 ]
-Overfull \hbox (141.00479pt too wide) in paragraph at lines 737--737
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 814--814
  [][][][][][]  
  []
 
-(./defense.toc) (./defense.toc)
-Overfull \hbox (141.00479pt too wide) has occurred while \output is active
+
+Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  [][][][][][]  
  []
 
 [35
 
 ]
-Overfull \hbox (141.00479pt too wide) in paragraph at lines 749--749
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 823--823
  [][][][][][]  
  []
 
 
-Overfull \hbox (141.00479pt too wide) has occurred while \output is active
+Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  [][][][][][]  
  []
 
 [36
 
 ]
-Overfull \hbox (141.00479pt too wide) in paragraph at lines 790--790
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 841--841
  [][][][][][]  
  []
 
 
-Overfull \hbox (141.00479pt too wide) has occurred while \output is active
+LaTeX Warning: Reference `ARIMA' on page 37 undefined on input line 841.
+
+
+Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  [][][][][][]  
  []
 
 [37
 
 ]
-Overfull \hbox (141.00479pt too wide) in paragraph at lines 849--849
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 856--856
  [][][][][][]  
  []
 
 
-LaTeX Warning: Reference `ARIMA' on page 38 undefined on input line 849.
-
-
-Overfull \vbox (71.55153pt too high) detected at line 849
- []
-
-
-Overfull \hbox (141.00479pt too wide) has occurred while \output is active
+Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  [][][][][][]  
  []
 
 [38
 
 ]
-Overfull \hbox (141.00479pt too wide) in paragraph at lines 862--862
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 863--863
  [][][][][][]  
  []
 
 
-Overfull \hbox (141.00479pt too wide) has occurred while \output is active
+Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  [][][][][][]  
  []
 
 [39
 
 ]
-Overfull \hbox (141.00479pt too wide) in paragraph at lines 876--876
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 876--876
  [][][][][][]  
  []
 
-<iphone.png, id=1366, 958.58125pt x 1268.74pt>
-File: iphone.png Graphic file (type png)
-<use iphone.png>
-Package pdftex.def Info: iphone.png  used on input line 876.
-(pdftex.def)             Requested size: 172.53717pt x 228.36334pt.
 
-Overfull \vbox (21.96503pt too high) detected at line 876
- []
-
-
-Overfull \hbox (141.00479pt too wide) has occurred while \output is active
+Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  [][][][][][]  
  []
 
 [40
 
- <./iphone.png>]
-Overfull \hbox (141.00479pt too wide) in paragraph at lines 888--888
+]
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 890--890
  [][][][][][]  
  []
 
+<iphone.png, id=1412, 958.58125pt x 1268.74pt>
+File: iphone.png Graphic file (type png)
+<use iphone.png>
+Package pdftex.def Info: iphone.png  used on input line 890.
+(pdftex.def)             Requested size: 172.53717pt x 228.36334pt.
 
-Overfull \hbox (141.00479pt too wide) has occurred while \output is active
+Overfull \vbox (21.96503pt too high) detected at line 890
+ []
+
+
+Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  [][][][][][]  
  []
 
 [41
 
-]
-Overfull \hbox (141.00479pt too wide) in paragraph at lines 900--900
+ <./iphone.png>]
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 902--902
  [][][][][][]  
  []
 
 
-Overfull \hbox (141.00479pt too wide) has occurred while \output is active
+Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  [][][][][][]  
  []
 
 [42
 
 ]
-Overfull \hbox (141.00479pt too wide) in paragraph at lines 915--915
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 946--946
  [][][][][][]  
  []
 
 
-Overfull \hbox (141.00479pt too wide) has occurred while \output is active
+Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  [][][][][][]  
  []
 
 [43
 
 ]
-Overfull \hbox (141.00479pt too wide) in paragraph at lines 930--930
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 954--954
  [][][][][][]  
  []
 
 
-Overfull \hbox (141.00479pt too wide) has occurred while \output is active
+Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  [][][][][][]  
  []
 
 [44
 
 ]
-Overfull \hbox (141.00479pt too wide) in paragraph at lines 938--938
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 978--978
  [][][][][][]  
  []
 
 
-Overfull \hbox (141.00479pt too wide) has occurred while \output is active
+Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  [][][][][][]  
  []
 
 [45
 
 ]
-Overfull \hbox (141.00479pt too wide) in paragraph at lines 960--960
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 997--997
  [][][][][][]  
  []
 
 
-Overfull \hbox (141.00479pt too wide) has occurred while \output is active
+Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  [][][][][][]  
  []
 
 [46
 
-]
-Overfull \hbox (141.00479pt too wide) in paragraph at lines 981--981
- [][][][][][]  
- []
-
-
-Overfull \hbox (141.00479pt too wide) has occurred while \output is active
+ </usr/local/texlive/2024/texmf-dist/tex/latex/beamer/beamericonarticle.pdf>]
+Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  [][][][][][]  
  []
 
 [47
-
- </usr/local/texlive/2024/texmf-dist/tex/latex/beamer/beamericonarticle.pdf>]
-Overfull \hbox (141.00479pt too wide) has occurred while \output is active
- [][][][][][]  
- []
-
-[48
 
 
 ]
@@ -2005,33 +2102,30 @@ LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.2pt have occurred.
 
 
-LaTeX Font Warning: Some font shapes were not available, defaults substituted.
-
-
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `defense.out' has not changed.
-(rerunfilecheck)             Checksum: 6854C74A00E7B8CC6F228145EFE12895;2242.
+(rerunfilecheck)             Checksum: 93A27B7D0A797A73B5B9D6AF9DDAEC36;1307.
 Package logreq Info: Writing requests to 'defense.run.xml'.
 \openout1 = `defense.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 52057 strings out of 474116
- 1137509 string characters out of 5743682
- 1957187 words of memory out of 5000000
- 73481 multiletter control sequences out of 15000+600000
- 595330 words of font info for 126 fonts, out of 8000000 for 9000
+ 58937 strings out of 474116
+ 1313198 string characters out of 5743682
+ 2185131 words of memory out of 5000000
+ 80272 multiletter control sequences out of 15000+600000
+ 591241 words of font info for 117 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 146i,18n,146p,1663b,2515s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 146i,18n,146p,1663b,2518s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 pdfTeX warning (dest): name{ARIMA} has been referenced but does not exist, replaced by a fixed one
 
-</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfsi0900.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfso0800.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfso0900.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfss0500.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfss0600.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfss0700.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfss0800.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfss0900.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfss1095.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfsx0600.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfsx0800.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfsx0900.pfb>
-Output written on defense.pdf (48 pages, 1011933 bytes).
+</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfsi0900.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfso0900.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfss0500.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfss0600.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfss0700.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfss0800.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfss0900.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfss1095.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfsx0600.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfsx0800.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfsx0900.pfb>
+Output written on defense.pdf (47 pages, 988396 bytes).
 PDF statistics:
- 1802 PDF objects out of 2073 (max. 8388607)
- 1534 compressed objects within 16 object streams
- 128 named destinations out of 1000 (max. 500000)
- 389 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1777 PDF objects out of 2073 (max. 8388607)
+ 1491 compressed objects within 15 object streams
+ 120 named destinations out of 1000 (max. 500000)
+ 509 words of extra memory for PDF output out of 10000 (max. 10000000)
 

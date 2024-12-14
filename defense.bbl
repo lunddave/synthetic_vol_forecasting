@@ -314,35 +314,6 @@
       \field{title}{Mitigating cold-start forecasting using cold causal demand forecasting model}
       \field{year}{2023}
     \endentry
-    \entry{ferwana2022optimal}{article}{}
-      \name{author}{2}{}{%
-        {{hash=360ea76650d73eab094927b183baf098}{%
-           family={Ferwana},
-           familyi={F\bibinitperiod},
-           given={Ibtihal},
-           giveni={I\bibinitperiod}}}%
-        {{hash=65031a63b754b9129e9fe9e9cb3e1d2f}{%
-           family={Varshney},
-           familyi={V\bibinitperiod},
-           given={Lav\bibnamedelima R},
-           giveni={L\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
-      }
-      \strng{namehash}{03d1acbd79a3fb406ca72b4daa4e2c12}
-      \strng{fullhash}{03d1acbd79a3fb406ca72b4daa4e2c12}
-      \strng{bibnamehash}{03d1acbd79a3fb406ca72b4daa4e2c12}
-      \strng{authorbibnamehash}{03d1acbd79a3fb406ca72b4daa4e2c12}
-      \strng{authornamehash}{03d1acbd79a3fb406ca72b4daa4e2c12}
-      \strng{authorfullhash}{03d1acbd79a3fb406ca72b4daa4e2c12}
-      \field{sortinit}{F}
-      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{arXiv preprint arXiv:2208.06729}
-      \field{title}{Optimal Recovery for Causal Inference}
-      \field{year}{2022}
-    \endentry
     \entry{jiang2017information}{article}{}
       \name{author}{2}{}{%
         {{hash=3ce7e499edd7b3bb4d263d96aaca0b30}{%
