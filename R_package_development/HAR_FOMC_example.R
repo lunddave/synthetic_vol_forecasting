@@ -291,7 +291,7 @@ png_save_name <- paste("real_data_output_plots/savetime_"
 png(png_save_name,width = 800, height = 600)
 
 #Now run the algorithm
-temp <- HAR(RVSPY_final
+output <- HAR(RVSPY_final
             ,X
             ,shock_time_vec = unlist(shock_dates)
             ,shock_length_vec
@@ -310,7 +310,7 @@ temp <- HAR(RVSPY_final
             ,X_lookback_indices_input = rep(list(c(10)),length(1:ncol(X[[1]])))
 )
 
-temp$predictions
-temp$linear_combinations
+output$predictions
+output$linear_combinations
 
 dev.off()
