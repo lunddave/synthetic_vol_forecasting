@@ -352,6 +352,9 @@ INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/pdflscape/pdflscape-nometadat
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/pdflscape/pdflscape-nometadata.sty
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/graphics/lscape.sty
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/graphics/lscape.sty
+INPUT ./thesis.aux
+INPUT ./thesis.aux
+INPUT thesis.aux
 OUTPUT thesis.aux
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/microtype/mt-cmr.cfg
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/microtype/mt-cmr.cfg

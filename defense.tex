@@ -224,45 +224,45 @@
 
     \end{frame}
 
-\begin{frame}
-    \frametitle{Questions guiding these slides (remove later)}
-    \begin{enumerate}
-        \item Whatcha learned?
-        \textcolor{red}{Forecasting is difficult; Heterogeneity of DGP}
-        \item Why did you choose this topic?
-        \textcolor{red}{Although it seems narrow, the question of “what if you had a new unit and had very little past information to go on” is a common phenomenon in statistics.}
-        Examples:
-        Shock to a time series
-        Unscheduled
-        scheduled
-        A new seller joins amazon’s platform, i.e. cold starts \parencite[][]{fatemi2023mitigating}
-        \item  How would you improve your work? \textcolor{red}{Many ideas here.  There were more directions than I could pursue.}  
+% \begin{frame}
+%     \frametitle{Questions guiding these slides (remove later)}
+%     \begin{enumerate}
+%         \item Whatcha learned?
+%         \textcolor{red}{Forecasting is difficult; Heterogeneity of DGP}
+%         \item Why did you choose this topic?
+%         \textcolor{red}{Although it seems narrow, the question of “what if you had a new unit and had very little past information to go on” is a common phenomenon in statistics.}
+%         Examples:
+%         Shock to a time series
+%         Unscheduled
+%         scheduled
+%         A new seller joins amazon’s platform, i.e. cold starts \parencite[][]{fatemi2023mitigating}
+%         \item  How would you improve your work? \textcolor{red}{Many ideas here.  There were more directions than I could pursue.}  
 
-\item  What is the importance of your study or how will it contribute or add up to the existing body of knowledge? \textcolor{red}{Two entirely separate perspectives: (1) Post-shock forecasting is a novel research framework. (2) Post-shock forecasting builds on intercept corrections and other canonical questions.}
-\item What type of background research have you done for the study? \textcolor{red}{In no particular order: synthetic control; convex geometry; convex optimization; p-value combination; FWER/FDR; fixed/mixed/random effects; panel data; linear time series models; RNN; econometrics}
+% \item  What is the importance of your study or how will it contribute or add up to the existing body of knowledge? \textcolor{red}{Two entirely separate perspectives: (1) Post-shock forecasting is a novel research framework. (2) Post-shock forecasting builds on intercept corrections and other canonical questions.}
+% \item What type of background research have you done for the study? \textcolor{red}{In no particular order: synthetic control; convex geometry; convex optimization; p-value combination; FWER/FDR; fixed/mixed/random effects; panel data; linear time series models; RNN; econometrics}
 
-    \end{enumerate}
-    \end{frame}
+%     \end{enumerate}
+%     \end{frame}
 
-\begin{frame}
-    \frametitle{Questions guiding these slides (remove later)}
-    \begin{enumerate}
-        \item What are the limitations you have faced?
-        \textcolor{red}{A ton of hyperparameters}
-        \item What more to add? \textcolor{red}{LLM-generated donors and covariates}
-        \item What are the recommendations of your study? \textcolor{red}{Relatively easy to answer: for an unprecedented event, locate it in the space of previous events.}
-        \item What was your hypothesis and how did you frame it? \textcolor{red}{Signal to noise}
+% \begin{frame}
+%     \frametitle{Questions guiding these slides (remove later)}
+%     \begin{enumerate}
+%         \item What are the limitations you have faced?
+%         \textcolor{red}{A ton of hyperparameters}
+%         \item What more to add? \textcolor{red}{LLM-generated donors and covariates}
+%         \item What are the recommendations of your study? \textcolor{red}{Relatively easy to answer: for an unprecedented event, locate it in the space of previous events.}
+%         \item What was your hypothesis and how did you frame it? \textcolor{red}{Signal to noise}
         
-        \item If given a chance, would like to do something different with your work?
-        \item What are the limitations you faced?
-        \textcolor{red}{Realized volatility is something that can be estimated with HF data}
-        \item How did you relate your study to the existing theories?
-        \item What is the future scope of this study?
-         \item How did you evaluate your work?
-        \textcolor{red}{Simulations and real data examples}
-        \item How would you improve your work?  \textcolor{red}{By design, synthetic control cannot extrapolate.  In the causal inference context, that may very well be a virtue.  However, in the prediction context, it may hinder us.  Note that random forest has the same problem.}
-    \end{enumerate}
-    \end{frame}
+%         \item If given a chance, would like to do something different with your work?
+%         \item What are the limitations you faced?
+%         \textcolor{red}{Realized volatility is something that can be estimated with HF data}
+%         \item How did you relate your study to the existing theories?
+%         \item What is the future scope of this study?
+%          \item How did you evaluate your work?
+%         \textcolor{red}{Simulations and real data examples}
+%         \item How would you improve your work?  \textcolor{red}{By design, synthetic control cannot extrapolate.  In the causal inference context, that may very well be a virtue.  However, in the prediction context, it may hinder us.  Note that random forest has the same problem.}
+%     \end{enumerate}
+%     \end{frame}
 
 \begin{frame}
 \frametitle{A seemingly unprecedented event might make one ask}
@@ -296,7 +296,7 @@
 \end{frame}
 
 \begin{frame}
-    \frametitle{Premise: There is a breaking news at some fractional lag T-$\epsilon$}
+    \frametitle{Premise: There is a breaking news at some fractional lag t-$\epsilon$}
     
     \begin{itemize}
     \item After-hours trading provides a poor forum in which to digest news
@@ -344,47 +344,59 @@
     
     %     \end{frame}
         
-    \begin{frame}
-        \frametitle{Model Preliminaries}
+    % \begin{frame}
+    %     \frametitle{Model Preliminaries}
     
-        \fontsize{8}{7.2}
+    %     \fontsize{8}{7.2}
     
-        Let $I(\cdot)$ be an indicator function.  \\
-    \bigbreak
-        Let $T_i$ denote the time length of the time series $i$ for $i = 1, \ldots, n+1$.\\
-        \bigbreak
-        Let $T_i^*$ denote the largest time index prior to news shock, with $T_i^* < T_i$ (i.e. we assume at least one post-shock observation). \\
-        \bigbreak
-        Let $\lambda_{i,t},  \x_{i,t} \in \mathbb{R}^{d}$.  
-    \end{frame}
-    \begin{frame}
-    \frametitle{Model Setup}
+    %     Let $I(\cdot)$ be an indicator function.  \\
+    % \bigbreak
+    %     Let $T_i$ denote the time length of the time series $i$ for $i = 1, \ldots, n+1$.\\
+    %     \bigbreak
+    %     Let $T_i^*$ denote the largest time index prior to news shock, with $T_i^* < T_i$ (i.e. we assume at least one post-shock observation). \\
+    %     \bigbreak
+    %     Let $\lambda_{i,t},  \x_{i,t} \in \mathbb{R}^{d}$.  
+    % \end{frame}
+
+    \begin{frame}\frametitle{Model Setup}
     
     \fontsize{8}{7.2}
     
     For $t= 1, \ldots, T_i$ and $i = 1, \ldots, n+1$, the model $\mc{M}_1$ is defined as 
 
-  \begin{align}
-    \mc{M}_1 \colon \begin{array}{l}
-      y_{i,t} = F(\mathcal{F}_{i,t-1}) + \alpha_{i,t} + \epsilon_{i,t}\\[.2cm]\label{core_specification}
-      \alpha_{i,t} = \x^{T}_{i,t}\lambda_{i,t} \\[.2cm]
-     \x_{i,t}^{T} = (1,x^{1}_{i,t},...,x^{p}_{i,t})\\[.2cm] 
-     \lambda_{i,t}^{T} = (u_{i,t},\lambda^{1}_{t},...,\lambda^{p}_{t}),\\[.2cm]
-    \end{array}
+    \begin{align}
+        \mc{M}_1 \colon 
+    \begin{array}{l}
+          y_{i,t} = F(\mathcal{F}_{i,t-1}) + \alpha_{i,t} + \epsilon_{i,t}\\[.2cm]
+          \alpha_{i,t} = \x^{T}_{i,t}\lambda_{i,t} \\[.2cm]
+         \x_{i,t}^{T} = (1,x^{1}_{i,t},...,x^{p}_{i,t})\\[.2cm] 
+         \lambda_{i,t}^{T} = (u_{i,t},\lambda^{1}_{t},...,\lambda^{p}_{t}),\\[.2cm]
+        \end{array}
     \end{align}
-with time-varying and observable covariate vector $\x_{i,t}^{T}$, time-varying and unknown parameter vector
-\begin{align*}
-\lambda_{i,t} &\sim \mc{F}_{\lambda}\text{ with }  \E_{\mathcal{F}_{\lambda}}(\lambda) = \mu_{\lambda_{t}}, \mrm{Var}_{\mc{F}_{\lambda}}(\lambda) = \Sigma_{\lambda_{t}},\\
-\end{align*}
-and time-invariant error structure
-  \begin{align*}
-    \epsilon_{i,t} &\simiid \mc{F}_{\epsilon} \text{ with}  \; \E_{\mc{F}_{\epsilon}}(\epsilon) = 0, \mrm{Var}_{\mc{F}_{\epsilon}}(\epsilon)  = \sigma^{2}_{\epsilon},  \\
-    %u_{i,t} & \simiid  \mc{F}_{u} \text{ with}  \; \mrm{Var}_{\mc{F}_{u}}(u) = \sigma^2_{u},\\
-    % &\epsilon_{i,t} \indep u_{i,t},
-    \end{align*}
-where $F$ maps objects from the past into future objects of $y_{i,t}$, and $\epsilon_{i,t}$ uncorrelated across time and donors.  Note that the dot product $\alpha_{i,t} = \x^{T}_{i,t}\lambda_{i,t}$ includes the term $u_{i,t}$ that is not shared among donors.  It encodes the known possibility that the shocks will vary across donors both in ways that can predicted based on pre-shock covariates as well as in ways that cannot be predicted.  That the parameter vector is time-varying allows us to capture that most time points are without news shocks (in which case $\alpha_{i,t}$ is of neglible effect), but conditional upon information arriving between $T_{1}^{*}$ and $T_{1}^{*}+1$, we may know with near certainty that $\lambda_{1,T_{1}^{*}+h}$ will be nonzero in norm for some $h>0$.  Note that the specification (\ref{core_specification}) above is sufficiently capacious as to include data-generating processes of the form 
-    
 
+    with time-varying and observable covariate vector $\x_{i,t}^{T}$, time-varying, unobservable, and potentially random vector
+    
+    \begin{align*}
+    \lambda_{i,t} &\sim \mc{F}_{\lambda}\text{ with }  \E_{\mathcal{F}_{\lambda}}(\lambda) = \mu_{\lambda_{t}}, \mrm{Var}_{\mc{F}_{\lambda}}(\lambda) = \Sigma_{\lambda_{t}},\\
+    \end{align*}
+
+    and time-invariant error structure
+
+    \begin{align*}
+        \epsilon_{i,t} &\simiid \mc{F}_{\epsilon} \text{ with}  \; \E_{\mc{F}_{\epsilon}}(\epsilon) = 0, \mrm{Var}_{\mc{F}_{\epsilon}}(\epsilon)  = \sigma^{2}_{\epsilon},  \\
+    \end{align*}
+    
+    \end{frame}
+
+    \begin{frame}\frametitle{Model Details}
+        Note
+        \begin{itemize}
+            
+            \item \textit{F} maps objects from the past into future objects of $y_{i,t}$
+            \item $\epsilon_{i,t}$ uncorrelated across time and donors
+            \item The dot product $\alpha_{i,t} = \x^{T}_{i,t}\lambda_{i,t}$ includes the term $u_{i,t}$ that is not shared among donors.  It encodes the known possibility that the shocks will vary across donors both in ways that can predicted based on pre-shock covariates as well as in ways that cannot be predicted.  
+            \item That the parameter vector is time-varying allows us to capture that most time points are without news shocks (in which case $\alpha_{i,t}$ is of negligible effect), but conditional upon information arriving between $T_{1}^{*}$ and $T_{1}^{*}+1$, we may know with near certainty that $\lambda_{1,T_{1}^{*}+h}$ will be nonzero in norm for some $h>0$. 
+        \end{itemize}
     \end{frame}
     
     % \begin{frame}
@@ -416,34 +428,9 @@ where $F$ maps objects from the past into future objects of $y_{i,t}$, and $\eps
     % % and $\varepsilon_{i,t}$ is idiosyncratic noise, uncorrelated across time and donors.
     % \end{frame}
      
-    % \begin{frame}
-    % \frametitle{Covariates}
-    % \fontsize{6.6}{7}
-    
-    % Consider the $p \times n$ matrix that stores donor and covariate information at time $t$
-    
-    % \begin{equation*}
-    %     \V_{t} = 
-    %     \begin{pmatrix}
-    %     \hat\alpha_{1,t} & \hat\alpha_{t,2}  & \cdots & \hat\alpha_{t,n}  \\
-    %     \hat\beta_{1,t} & \hat\beta_{t,2}  & \cdots & \hat\beta_{t,n}  \\
-    %     \vdots  & \vdots  & \ddots & \vdots  \\
-    %     RV_{1,t} & RV_{2,t}  & \cdots & RV_{n,t}  \\
-    %     RV_{1,t-1}  & RV_{2,t-1}  & \cdots & RV_{n,t-1}  \\
-    %     \vdots  & \vdots  & \ddots & \vdots  \\
-    %     IV_{1,t} & IV_{2,t} & \cdots & IV_{n,t} \\
-    %     IV_{1,t-1}  & IV_{2,t-1}  & \cdots & IV_{n,t-1} \\
-    %     \vdots  & \vdots  & \ddots & \vdots  \\
-    %     |r_{1,t}| & |r_{2,t}| & \cdots & |r_{n,t}| \\
-    %     |r_{1,t-1}|  & |r_{2,t-1}|  & \cdots & |r_{n,t-1}| \\
-    %     \end{pmatrix},
-    %     \end{equation*}
-    %     \bigbreak
-    %     where RV denotes realized variance and IV the implied volatility
-    % \end{frame}
     
     \begin{frame}
-        \frametitle{Significance of the Covariates}
+        \frametitle{Significance of the Covariates $\x_{i,t}$}
         Covariates chosen for inclusion may be any $\mathcal{F}_{t}$-measurable function, for example
         \begin{itemize}
             \item levels
@@ -483,10 +470,11 @@ where $F$ maps objects from the past into future objects of $y_{i,t}$, and $\eps
     \frametitle{Forecasting}
     
     \fontsize{7.6}{7}
+        
+    We now present two one-step-ahead forecasts for the time series under study. 
     
-    We present two forecasts:
-    
-    We now present two one-step-ahead forecasts for the time series under study. The first is the unadjusted forecast. The second is the adjusted forecast, which differs by the predicted correction term.  The forecasts are: 
+    \bigskip
+    The first is the unadjusted forecast. The second is the adjusted forecast, which differs by the predicted correction term.  The forecasts are: 
 
     \begin{align*}
       \text{Forecast 1: }& 
@@ -834,13 +822,12 @@ where $F$ maps objects from the past into future objects of $y_{i,t}$, and $\eps
 %     \end{itemize}
 % \end{frame}
 
-\begin{frame}{What we will discuss in this section}
-    \begin{enumerate}
-    \item Role of outside information
-    \item The Meaning and Use of Similarity 
-    \end{enumerate}
-\end{frame}
-
+% \begin{frame}{What we will discuss in this section}
+%     \begin{enumerate}
+%     \item Role of outside information
+%     \item The Meaning and Use of Similarity 
+%     \end{enumerate}
+% \end{frame}
 
 % \begin{frame}{Hypotheses to Test Via Simulations}
 %     Ceteris paribus...
@@ -886,25 +873,21 @@ where $F$ maps objects from the past into future objects of $y_{i,t}$, and $\eps
     
     \frametitle{Simulations: Parameter Correction Using An Aggregated Decay Parameter from Donors}
     
-    \textcolor{red}{Here we will include the exponential shock simulations.}
-    
-    Most elementary simulation regime tests Hypothesis 1 and 2 by varying $\textcolor{blue}{\delta}$ and $\textcolor{blue}{u_{i,t}}$.\\
-    
-    \bigbreak
-    
+        
     Recall an \hyperlink{model_1}{$\mc{M}_1$} model on the volatility, which is characterized by an exogenous shock to the volatility equation generated by an affine function of the covariates:
     
-      \begin{align*}
-        \mc{M}_1 \colon \begin{array}{l}
-           \sigma^{2}_{i,t} = \omega_{i} + \omega^{*}_{i,t} + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \text{ }\\[.2cm]
-           a_{i,t} = \sigma_{i,t}((1-D^{return}_{i,t})\epsilon_{i,t} + D^{return}_{i,t}\epsilon^{*}_{i})\\[.2cm]
-          \omega_{i,t}^{*} = D^{vol}_{i,t}[\mu_{\omega^{*}}+\textcolor{blue}{\delta}'\textbf{v}_{i, t}+ \textcolor{blue}{u_{i,t}}]\\[.2cm]
-          D^{return}_{i,t} \equiv 0
-        \end{array}
-        \end{align*}
+    \begin{align}
+        y_{i,t} = \alpha_{i} + \eta[1 - e^{-\psi[t-T_{i}^{*}]}]\textbf{1}_{t\geq T_{i}^{*}+1} + \epsilon_{i,t}, \epsilon_{i,t} \simiid [0,\sigma^{2}] \text{ .}\label{decay_model}
+        \end{align}
     
     % https://www.overleaf.com/learn/latex/Beamer_Presentations%3A_A_Tutorial_for_Beginners_(Part_3)%E2%80%94Blocks%2C_Code%2C_Hyperlinks_and_Buttons
 
+    \end{frame}
+
+    \begin{frame}
+        \fontsize{8pt}{9pt}
+        
+        \frametitle{Simulations: Parameter Correction Using An Aggregated Decay Parameter from Donors}
 
     We now investigate the exponential decay model introduced just above.  We model the decay parameter $\psi$ as a dot product of donor-specific and donor-invariant quantities.
     \begin{figure}[h!]
@@ -917,7 +900,7 @@ where $F$ maps objects from the past into future objects of $y_{i,t}$, and $\eps
           % \node[draw,text width=2.62cm] at (14.8,2.8) {$\textcolor{blue}{\hat\omega^{*} = \sum^{n+1}_{i=2}\pi_{i}\hat\omega^{*}_{i}}$ };    
           
       \end{tikzpicture}
-        \caption{We simulate a random walk centered at $\mu = 100$ that is subject to a shock at approximately time index 440.  The shock of size -4 is not realized over a single index.  Instead, the shock is governed by a decay exponential decay parameter $\psi_{1}$, as are exponential shocks in $n = 10$ donor series.  We estimate $\psi_{1}$ using a convex combination of the estimated decay parameters $\{\psi_{i}\}_{i=2}^{n+1}$ , resulting in a distance-based weighting prediction of the shock.  We also illustrate the arithmetic-mean-based prediction of the shock using the color orange.  This prediction is based on an overestimate of $\psi_{1}$ and hence results in residuals that undershoot the time series under study.}  \label{fig:exp_shock_plot}
+        \caption{We simulate a random walk centered at $\mu = 100$ that is subject to a shock at approximately time index 440.  The shock of size -4 is not realized over a single index.  Instead, the shock is governed by a decay exponential decay parameter $\psi_{1}$, as are exponential shocks in $n = 10$ donor series.  We estimate $\psi_{1}$ using a convex combination of the estimated decay parameters $\{\psi_{i}\}_{i=2}^{n+1}$ , resulting in a distance-based weighting prediction of the shock.  We also illustrate the arithmetic-mean-based prediction of the shock using the color orange.  This prediction is based on an overestimate of $\psi_{1}$ and hence results in residuals that undershoot the time series under study.} 
      
         \end{center}
       \end{figure}
@@ -931,15 +914,13 @@ where $F$ maps objects from the past into future objects of $y_{i,t}$, and $\eps
 
     % \movie[showcontrols]{rec2.mp4}
 
-    % \begin{figure}[h!]
-    % \centering    
-    % \movie[label=show3,width=1.0\textwidth,poster
-    %         ,autostart,showcontrols,loop] 
-    %     {\includegraphics[width=1.0\textwidth]}{rec2.mp4}
-    %     \caption{caption}
-    % \end{figure} 
-
+    \begin{figure}[h!]
+    \centering    
     \movie[externalviewer]{\includegraphics[scale=.3]{real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png}}{demonstration.mp4}
+        \caption{Click the image above to see a video of the R package's functionality.}
+    \end{figure} 
+
+
 
 
 \end{frame}
