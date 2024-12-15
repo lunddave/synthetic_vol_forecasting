@@ -168,15 +168,14 @@
 
         \begin{enumerate}
             \item \textcolor{blue}{a rupture in the DGP}
-            \item  \textcolor{blue}{lack of past information for units we wish to forecast}
+            \item  \textcolor{blue}{lack of past information for units we wish to forecast, i.e. a so-called `'cold start"} \parencite[][]{fatemi2023mitigating}
         \end{enumerate}
 
         \bigskip
 
-        What should we do?
+        What should we do?  Is there a meaningful distinction between not knowing the DGP and knowing it but lacking the data?
 
         \bigskip
-
 
         Central technique explored: \textcolor{blue}{\textit{correction} of model parameters using an aggregation strategy}, where aggregation means that we make use of external data.
 
@@ -222,8 +221,6 @@
     
             \item Software developed
         \end{itemize}
-
-
 
     \end{frame}
 
@@ -358,35 +355,36 @@
         \bigbreak
         Let $T_i^*$ denote the largest time index prior to news shock, with $T_i^* < T_i$ (i.e. we assume at least one post-shock observation). \\
         \bigbreak
-        Let $\delta, \textbf{v}_{i,t} \in \mathbb{R}^{p},  \x_{i,t} \in \mathbb{R}^{d}$.  
+        Let $\lambda_{i,t},  \x_{i,t} \in \mathbb{R}^{d}$.  
     \end{frame}
-    
     \begin{frame}
     \frametitle{Model Setup}
     
-    \fontsize{6}{7.2}
+    \fontsize{8}{7.2}
     
     For $t= 1, \ldots, T_i$ and $i = 1, \ldots, n+1$, the model $\mc{M}_1$ is defined as 
-    \begin{align*}
-      \mc{M}_1 \colon \begin{array}{l}
-         \sigma^{2}_{i,t} = \omega_{i} + \omega^{*}_{i,t} + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \text{ }\\[.2cm]
-         a_{i,t} = \sigma_{i,t}((1-D^{return}_{i,t})\epsilon_{i,t} + D^{return}_{i,t}\epsilon^{*}_{i})\\[.2cm]
-        \omega_{i,t}^{*} = D^{vol}_{i,t}[\mu_{\omega^{*}}+\delta'\textbf{v}_{i, t}+ u_{i,t}],
-      \end{array}
-      \end{align*}\label{model_1}
-    with error structure
+
+  \begin{align}
+    \mc{M}_1 \colon \begin{array}{l}
+      y_{i,t} = F(\mathcal{F}_{i,t-1}) + \alpha_{i,t} + \epsilon_{i,t}\\[.2cm]\label{core_specification}
+      \alpha_{i,t} = \x^{T}_{i,t}\lambda_{i,t} \\[.2cm]
+     \x_{i,t}^{T} = (1,x^{1}_{i,t},...,x^{p}_{i,t})\\[.2cm] 
+     \lambda_{i,t}^{T} = (u_{i,t},\lambda^{1}_{t},...,\lambda^{p}_{t}),\\[.2cm]
+    \end{array}
+    \end{align}
+with time-varying and observable covariate vector $\x_{i,t}^{T}$, time-varying and unknown parameter vector
+\begin{align*}
+\lambda_{i,t} &\sim \mc{F}_{\lambda}\text{ with }  \E_{\mathcal{F}_{\lambda}}(\lambda) = \mu_{\lambda_{t}}, \mrm{Var}_{\mc{F}_{\lambda}}(\lambda) = \Sigma_{\lambda_{t}},\\
+\end{align*}
+and time-invariant error structure
+  \begin{align*}
+    \epsilon_{i,t} &\simiid \mc{F}_{\epsilon} \text{ with}  \; \E_{\mc{F}_{\epsilon}}(\epsilon) = 0, \mrm{Var}_{\mc{F}_{\epsilon}}(\epsilon)  = \sigma^{2}_{\epsilon},  \\
+    %u_{i,t} & \simiid  \mc{F}_{u} \text{ with}  \; \mrm{Var}_{\mc{F}_{u}}(u) = \sigma^2_{u},\\
+    % &\epsilon_{i,t} \indep u_{i,t},
+    \end{align*}
+where $F$ maps objects from the past into future objects of $y_{i,t}$, and $\epsilon_{i,t}$ uncorrelated across time and donors.  Note that the dot product $\alpha_{i,t} = \x^{T}_{i,t}\lambda_{i,t}$ includes the term $u_{i,t}$ that is not shared among donors.  It encodes the known possibility that the shocks will vary across donors both in ways that can predicted based on pre-shock covariates as well as in ways that cannot be predicted.  That the parameter vector is time-varying allows us to capture that most time points are without news shocks (in which case $\alpha_{i,t}$ is of neglible effect), but conditional upon information arriving between $T_{1}^{*}$ and $T_{1}^{*}+1$, we may know with near certainty that $\lambda_{1,T_{1}^{*}+h}$ will be nonzero in norm for some $h>0$.  Note that the specification (\ref{core_specification}) above is sufficiently capacious as to include data-generating processes of the form 
     
-      \begin{align*}
-        \epsilon_{i,t} &\simiid \mc{F}_{\epsilon} \text{ with }  \; \mrm{E}_{\mc{F}_{\epsilon}}(\epsilon) = 0, \mrm{Var}_{\mc{F}_{\epsilon}}(\epsilon)  = 1  \\
-        \epsilon^{*}_{i,t} &\simiid \mc{F}_{\epsilon^{*}} \text{ with }  \; \mrm{E}_{\mc{F}_{\epsilon^{*}}}(\epsilon) = \mu_{\epsilon^{*}}, \mrm{Var}_{\mc{F}_{\epsilon^{*}}}(\epsilon^{*})  = \sigma^2_{\epsilon^{*}}  \\
-        u_{i,t} & \simiid  \mc{F}_{u} \text{ with }  \; \mrm{E}_{\mc{F}_{u}}(u) = 0, \mrm{Var}_{\mc{F}_{u}}(u) = \sigma^2_{u}\\
-        \epsilon_{i,t} & \indep  \epsilon^{*}_{i,t}  \indep u_{i,t}
-        \end{align*}
-    where $D^{return}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + L_{i, return}\})$ and $D^{vol}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + L_{i, vol}\})$ and $L_{i,return},L_{i,vol}$ denote lengths of log return and volatility shocks, respectively.  
-    
-    \bigbreak
-    
-    \textcolor{red}{Note: we will be looking GARCH(1,1) only in this presentation.}
+
     \end{frame}
     
     % \begin{frame}
@@ -488,10 +486,15 @@
     
     We present two forecasts:
     
+    We now present two one-step-ahead forecasts for the time series under study. The first is the unadjusted forecast. The second is the adjusted forecast, which differs by the predicted correction term.  The forecasts are: 
+
     \begin{align*}
-      \text{Forecast 1: } & \hat\sigma^{2}_{unadjusted} = \hat\E[\sigma^{2}_{1,T_{1}^{*}+1}|\mathcal{F}_{T^{*}}] = \hat\omega_{i} + \sum^{m_{i}}_{k=1}\hat\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\hat\beta_{i,j}\sigma_{i,t-j}^{2} + \hat\gamma_{i}^{T} \x_{i,t}\\
-      \text{Forecast 2: } & \hat\sigma^{2}_{adjusted} = \hat\E[\sigma^{2}_{1,T_{1}^{*}+1}|\mathcal{F}_{T^{*}}] + \textcolor{red}{\hat\omega^{*}} = \hat\omega_{i} + \sum^{m_{i}}_{k=1}\hat\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\hat\beta_{i,j}\sigma_{i,t-j}^{2} + \hat\gamma_{i}^{T} \x_{i,t} + \textcolor{red}{\hat\omega^{*} } \text{ .}
+      \text{Forecast 1: }& 
+       \hat y_{unadjusted, T_{1}^{*}+1} = \hat\E[\mathcal{F}_{T_{1}^{*}}] \\
+      \text{Forecast 2: }&
+       \hat y_{adjusted,T_{1}^{*}+1} = \hat\E[\mathcal{F}_{T_{1}^{*}}] + \hat\alpha_{T^{*}_{1}+1} \text{ .}
     \end{align*}
+
     \end{frame}
     
     \begin{frame}
@@ -1019,12 +1022,17 @@ We shall group the extensions into five buckets:
     \begin{itemize}
         \item Our real data examples cannot be scaled up due to the need to for human involvement in donor and covariate curation
         \item We assume that the exogenous variables (distinct from the covariates) are known at time $T_{i}^{*}$
+        \item Heterogeneity of DGPs
+        \item Forecast evaluation
+        \item We could only truly explore a subset of the vast parameter space.
+        \item The failure of distance-based weighting to extrapolate
     \end{itemize}
 \end{frame}
 
 \begin{frame}
     \frametitle{New Frontiers in Distance-based Weighting}
     \begin{itemize}
+        \item Forecast conditional upon the shock \textit{prior} to the shock's arrival
         \item Integrate lessons from literature on under/over reactions to information shocks \parencite[][]{jiang2017information}
         \item{Distance-based Weighting of Impulse Response Functions}
         \end{itemize}

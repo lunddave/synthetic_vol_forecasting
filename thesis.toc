@@ -1,0 +1,66 @@
+\babel@toc {english}{}\relax 
+\contentsline {chapter}{List of Abbreviations}{v}{chapter*.3}%
+\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}%
+\contentsline {chapter}{\numberline {2}Post-Shock Volatility Forecasting Using Similarity-based Shock Aggregation}{2}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Introduction}{2}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Setting}{4}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}A Primer on GARCH}{4}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Model setup}{6}{subsection.2.2.2}%
+\contentsline {section}{\numberline {2.3}Methodology for Similarity-based Parameter Correction}{7}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Forecasting}{7}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Excess Volatility Estimators}{8}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}Ground Truth Estimators}{10}{subsection.2.3.3}%
+\contentsline {subsection}{\numberline {2.3.4}Loss Functions}{10}{subsection.2.3.4}%
+\contentsline {section}{\numberline {2.4}Properties of Volatility Shocks and Shock Estimators}{11}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}Consistency of the shock estimators}{12}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}Consistency of the Conditional Forecast Function}{12}{subsection.2.4.2}%
+\contentsline {subsection}{\numberline {2.4.3}Asymptotic Loss}{13}{subsection.2.4.3}%
+\contentsline {section}{\numberline {2.5}Numerical Examples}{13}{section.2.5}%
+\contentsline {subsection}{\numberline {2.5.1}Fixed Parameters}{14}{subsection.2.5.1}%
+\contentsline {subsection}{\numberline {2.5.2}Varying Parameters}{14}{subsection.2.5.2}%
+\contentsline {subsection}{\numberline {2.5.3}Evaluative Framework and Monte Carlo Results}{14}{subsection.2.5.3}%
+\contentsline {section}{\numberline {2.6}Forecasting after the results of the 2016 US presidential election}{17}{section.2.6}%
+\contentsline {section}{\numberline {2.7}Discussion}{19}{section.2.7}%
+\contentsline {subsection}{\numberline {2.7.1}Comparison with KNN}{20}{subsection.2.7.1}%
+\contentsline {subsection}{\numberline {2.7.2}Donor Pool Construction}{20}{subsection.2.7.2}%
+\contentsline {subsection}{\numberline {2.7.3}The Nature and Estimation of Volatility Shocks}{21}{subsection.2.7.3}%
+\contentsline {subsection}{\numberline {2.7.4}Parameter Stability}{21}{subsection.2.7.4}%
+\contentsline {section}{\numberline {2.8}Supplement}{21}{section.2.8}%
+\contentsline {subsection}{\numberline {2.8.1}Leave-one-out: How we analyzed a multiverse of 63 predictions}{21}{subsection.2.8.1}%
+\contentsline {subsection}{\numberline {2.8.2}Sensitivity to Covariates Chosen}{22}{subsection.2.8.2}%
+\contentsline {subsection}{\numberline {2.8.3}Sensitivity to Donors Chosen}{22}{subsection.2.8.3}%
+\contentsline {subsection}{\numberline {2.8.4}Can we combine forecasts to outperform the individual forecasts?}{22}{subsection.2.8.4}%
+\contentsline {subsection}{\numberline {2.8.5}Formal Results}{22}{subsection.2.8.5}%
+\contentsline {chapter}{\numberline {3}Forecast Adjustment Under Shocks: A Unification}{26}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Introduction}{26}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Forecasting Amid Shocks}{28}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}The Role of Outside Information}{29}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}The Meaning and Use of Similarity}{29}{subsection.3.2.2}%
+\contentsline {section}{\numberline {3.3}Setting}{30}{section.3.3}%
+\contentsline {section}{\numberline {3.4}SPC Forecasting Methodology and Correction Functions}{32}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Diagnostics for Similarity-Based Parameter Correction}{33}{subsection.3.4.1}%
+\contentsline {section}{\numberline {3.5}Model Adjustment Using Similarity-Based Parameter Correction: A Global Overview}{33}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1}The Method of Multiple Shocks}{34}{subsection.3.5.1}%
+\contentsline {section}{\numberline {3.6}Formal Properties and Model-Specific Considerations}{35}{section.3.6}%
+\contentsline {subsection}{\numberline {3.6.1}ARIMA}{35}{subsection.3.6.1}%
+\contentsline {subsection}{\numberline {3.6.2}GARCH}{38}{subsection.3.6.2}%
+\contentsline {subsection}{\numberline {3.6.3}HAR}{38}{subsection.3.6.3}%
+\contentsline {subsubsection}{\numberline {3.6.3.1}Real Data Application of Shock-Adjusted HAR Forecasting}{40}{subsubsection.3.6.3.1}%
+\contentsline {subsection}{\numberline {3.6.4}``Exponential Breaks"}{41}{subsection.3.6.4}%
+\contentsline {subsubsection}{\numberline {3.6.4.1}Simulation Study}{42}{subsubsection.3.6.4.1}%
+\contentsline {section}{\numberline {3.7}Discussion}{47}{section.3.7}%
+\contentsline {subsection}{\numberline {3.7.1}Asking questions about the covariate vector and conditional shock distribution}{47}{subsection.3.7.1}%
+\contentsline {subsection}{\numberline {3.7.2}Shock propagation and estimation accuracy}{47}{subsection.3.7.2}%
+\contentsline {subsection}{\numberline {3.7.3}Aggregating residuals as opposed to aggregating fixed effect estimates?}{47}{subsection.3.7.3}%
+\contentsline {section}{\numberline {3.8}Extensions}{47}{section.3.8}%
+\contentsline {subsection}{\numberline {3.8.1}Forecast Combination}{48}{subsection.3.8.1}%
+\contentsline {subsection}{\numberline {3.8.2}Limitations}{48}{subsection.3.8.2}%
+\contentsline {subsubsection}{\numberline {3.8.2.1}How important is a shared DGP?}{48}{subsubsection.3.8.2.1}%
+\contentsline {subsubsection}{\numberline {3.8.2.2}The assumption of a shared family can be relaxed in certain circumstances. For example, if a certain donor is not like the time series under study with respect to the covariates, then the lack of a shared family will not matter much.}{49}{subsubsection.3.8.2.2}%
+\contentsline {section}{\numberline {3.9}Supplement}{49}{section.3.9}%
+\contentsline {subsection}{\numberline {3.9.1}Formal Results}{49}{subsection.3.9.1}%
+\contentsline {chapter}{\numberline {4}Conclusion}{55}{chapter.4}%
+\ttl@change@i {\@ne }{chapter}{0pt}{\vspace {1ex}}{\bfseries \appendixname ~\thecontentslabel \quad }{\bfseries }{~\mdseries \titlerule *[0.5em]{.}\bfseries \contentspage }\relax 
+\ttl@change@v {chapter}{}{}{}\relax 
+\contentsline {chapter}{\numberline {A}An appendix}{56}{appendix.A}%
+\contentsfinish 
