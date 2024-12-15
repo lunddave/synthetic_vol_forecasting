@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.15)  15 DEC 2024 12:47
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.15)  15 DEC 2024 15:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1113,24 +1113,24 @@ Package csquotes Info: Redefining alias 'default' -> 'english'.
 (./thesis.aux)
 \openout1 = `thesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 147.
-LaTeX Font Info:    ... okay on input line 147.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 147.
-LaTeX Font Info:    ... okay on input line 147.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 147.
-LaTeX Font Info:    ... okay on input line 147.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 147.
-LaTeX Font Info:    ... okay on input line 147.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 147.
-LaTeX Font Info:    ... okay on input line 147.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 147.
-LaTeX Font Info:    ... okay on input line 147.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 147.
-LaTeX Font Info:    ... okay on input line 147.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 147.
-LaTeX Font Info:    ... okay on input line 147.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 147.
-LaTeX Font Info:    ... okay on input line 147.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 144.
+LaTeX Font Info:    ... okay on input line 144.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 144.
+LaTeX Font Info:    ... okay on input line 144.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 144.
+LaTeX Font Info:    ... okay on input line 144.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 144.
+LaTeX Font Info:    ... okay on input line 144.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 144.
+LaTeX Font Info:    ... okay on input line 144.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 144.
+LaTeX Font Info:    ... okay on input line 144.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 144.
+LaTeX Font Info:    ... okay on input line 144.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 144.
+LaTeX Font Info:    ... okay on input line 144.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 144.
+LaTeX Font Info:    ... okay on input line 144.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1140,15 +1140,15 @@ LaTeX Font Info:    ... okay on input line 147.
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: 
-* h-part:(L,W,R)=(57.81621pt, 498.66258pt, 57.81621pt)
-* v-part:(T,H,B)=(57.81621pt, 679.33757pt, 57.81621pt)
+* h-part:(L,W,R)=(72.26999pt, 469.75502pt, 72.26999pt)
+* v-part:(T,H,B)=(72.26999pt, 650.43001pt, 72.26999pt)
 * \paperwidth=614.295pt
 * \paperheight=794.96999pt
-* \textwidth=498.66258pt
-* \textheight=679.33757pt
-* \oddsidemargin=-14.45378pt
-* \evensidemargin=-14.45378pt
-* \topmargin=-44.52127pt
+* \textwidth=469.75502pt
+* \textheight=650.43001pt
+* \oddsidemargin=0.0pt
+* \evensidemargin=0.0pt
+* \topmargin=-30.06749pt
 * \headheight=12.0pt
 * \headsep=18.06749pt
 * \topskip=10.0pt
@@ -1166,19 +1166,19 @@ LaTeX Font Info:    ... okay on input line 147.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Info: Redefining \microtypecontext on input line 147.
-Package microtype Info: Applying patch `item' on input line 147.
-Package microtype Info: Applying patch `toc' on input line 147.
-Package microtype Info: Applying patch `eqnum' on input line 147.
-Package microtype Info: Applying patch `footnote' on input line 147.
-Package microtype Info: Applying patch `verbatim' on input line 147.
+LaTeX Info: Redefining \microtypecontext on input line 144.
+Package microtype Info: Applying patch `item' on input line 144.
+Package microtype Info: Applying patch `toc' on input line 144.
+Package microtype Info: Applying patch `eqnum' on input line 144.
+Package microtype Info: Applying patch `footnote' on input line 144.
+Package microtype Info: Applying patch `verbatim' on input line 144.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `alltext-nott'.
-LaTeX Info: Redefining \showhyphens on input line 147.
+LaTeX Info: Redefining \showhyphens on input line 144.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
@@ -1186,7 +1186,7 @@ Package microtype Info: No adjustment of character kerning.
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
 (RS)
 )
-Package hyperref Info: Link coloring ON on input line 147.
+Package hyperref Info: Link coloring ON on input line 144.
 
 (./thesis.out) (./thesis.out
 pdfTeX warning (Object streams): \pdfobjcompresslevel > 0 requires PDF-1.5 or g
@@ -1232,7 +1232,7 @@ al/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
 ! Undefined control sequence.
 \HyOrg@maketitle ...5in{{\lc@selectfont \@Uauthor 
                                                   }\\[12pt] \vfil }\vbox to ...
-l.159 \maketitle
+l.156 \maketitle
                 
 ? 
 
@@ -1242,15 +1242,15 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.159 \maketitle
+l.156 \maketitle
                 
 ? 
 
-Underfull \vbox (badness 10000) detected at line 159
+Underfull \vbox (badness 10000) detected at line 156
  []
 
 
-Underfull \vbox (badness 10000) detected at line 159
+Underfull \vbox (badness 10000) detected at line 156
  []
 
 [2]
@@ -1258,12 +1258,12 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.ii}) has
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.176     \tableofcontents
+l.178     \tableofcontents
                            [2
 
 
 ] (./thesis.toc
-LaTeX Font Info:    Trying to load font information for U+msa on input line 5.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 4.
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
@@ -1271,7 +1271,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (/usr/local/texlive/2024/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 5.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 4.
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -1292,325 +1292,115 @@ Chapter 1.
 [1
 
 
-]
-Chapter 2.
-
-Package natbib Warning: Citation `Kenton' on page 2 undefined on input line 206
-.
-
-
-Package natbib Warning: Citation `dominguez2006defines' on page 2 undefined on 
-input line 208.
-
-
-Package natbib Warning: Citation `tsay2005analysis' on page 2 undefined on inpu
-t line 210.
-
-
-Package natbib Warning: Citation `boudoukh2019information' on page 2 undefined 
-on input line 210.
-
-
-Package natbib Warning: Citation `bauwens2006regime' on page 2 undefined on inp
-ut line 212.
-
-
-Package natbib Warning: Citation `hansen2012realized' on page 2 undefined on in
-put line 212.
-
-
-Package natbib Warning: Citation `wang2020forecasting' on page 2 undefined on i
-nput line 212.
-
-[2
-
-]
-
-Package natbib Warning: Citation `hansen2012realized' on page 3 undefined on in
-put line 214.
-
-
-Package natbib Warning: Citation `mayhew1995implied' on page 3 undefined on inp
-ut line 214.
-
-
-Package natbib Warning: Citation `christensen1998relation' on page 3 undefined 
-on input line 214.
-
-
-Package natbib Warning: Citation `andersen2003modeling' on page 3 undefined on 
-input line 214.
-
-
-Package natbib Warning: Citation `romer1989does' on page 3 undefined on input l
-ine 220.
-
-
-Package natbib Warning: Citation `kilian2017structural' on page 3 undefined on 
-input line 220.
-
-
-Package natbib Warning: Citation `engle2001good' on page 3 undefined on input l
-ine 220.
-
-
-Package natbib Warning: Citation `phillips1996forecasting' on page 3 undefined 
-on input line 220.
-
-
-Package natbib Warning: Citation `hendry1994theory' on page 3 undefined on inpu
-t line 220.
-
-
-Package natbib Warning: Citation `clements1998forecasting' on page 3 undefined 
-on input line 220.
-
-
-Package natbib Warning: Citation `guerron2017macroeconomic' on page 3 undefined
- on input line 220.
-
-
-Package natbib Warning: Citation `dendramis2020similarity' on page 3 undefined 
-on input line 220.
-
-
-Package natbib Warning: Citation `foroni2022forecasting' on page 3 undefined on
- input line 220.
-
-
-Package natbib Warning: Citation `abadie2010synthetic' on page 3 undefined on i
-nput line 224.
-
-
-Package natbib Warning: Citation `lin2021minimizing' on page 3 undefined on inp
-ut line 224.
-
-
-Package natbib Warning: Citation `lin2021minimizing' on page 3 undefined on inp
-ut line 224.
-
-[3]
-
-Package natbib Warning: Citation `steegen2016increasing' on page 4 undefined on
- input line 226.
-
-<simulation_plots/motivating_piece_convex_combination.png, id=433, 1226.5825pt 
+] [2]
+<simulation_plots/motivating_piece_convex_combination.png, id=486, 1226.5825pt 
 x 985.6825pt>
 File: simulation_plots/motivating_piece_convex_combination.png Graphic file (ty
 pe png)
 <use simulation_plots/motivating_piece_convex_combination.png>
 Package pdftex.def Info: simulation_plots/motivating_piece_convex_combination.p
-ng  used on input line 236.
-(pdftex.def)             Requested size: 498.66258pt x 400.71829pt.
+ng  used on input line 234.
+(pdftex.def)             Requested size: 469.75502pt x 377.4961pt.
+
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-
-Package natbib Warning: Citation `box2013box' on page 4 undefined on input line
- 249.
-
-
-Package natbib Warning: Citation `engle1982autoregressive' on page 4 undefined 
-on input line 249.
-
-
-Package natbib Warning: Citation `bollerslev1986generalized' on page 4 undefine
-d on input line 249.
-
-
-Package natbib Warning: Citation `francq2019garch' on page 4 undefined on input
- line 251.
-
-[4] [5 <./simulation_plots/motivating_piece_convex_combination.png>]
-
-Package natbib Warning: Citation `lin2021minimizing' on page 6 undefined on inp
-ut line 295.
-
-[6] [7]
-
-Package natbib Warning: Citation `tsay2005analysis' on page 8 undefined on inpu
-t line 319.
-
-
-Package natbib Warning: Citation `francq2019garch' on page 8 undefined on input
- line 319.
-
-
-Package natbib Warning: Citation `zivot2009practical' on page 8 undefined on in
-put line 319.
-
-
-Package natbib Warning: Citation `abadie2003economic' on page 8 undefined on in
-put line 332.
-
-
-Package natbib Warning: Citation `abadie2010synthetic' on page 8 undefined on i
-nput line 332.
-
-
-Package natbib Warning: Citation `lin2021minimizing' on page 8 undefined on inp
-ut line 332.
-
-
-Package natbib Warning: Citation `timmermann2006forecast' on page 8 undefined o
-n input line 336.
-
-
-Package natbib Warning: Citation `wang2023forecast' on page 8 undefined on inpu
-t line 336.
-
-
-Package natbib Warning: Citation `abadie2010synthetic' on page 8 undefined on i
-nput line 338.
-
-
-Package natbib Warning: Citation `wang2023forecast' on page 8 undefined on inpu
-t line 338.
-
-[8]
-
-Package natbib Warning: Citation `lin2021minimizing' on page 9 undefined on inp
-ut line 340.
-
-
-Package natbib Warning: Citation `abadie2022synthetic' on page 9 undefined on i
-nput line 340.
-
-
-Package natbib Warning: Citation `andersen2010stochastic' on page 9 undefined o
-n input line 366.
-
-
-Package natbib Warning: Citation `andersen2007roughing' on page 9 undefined on 
-input line 366.
-
-
-Package natbib Warning: Citation `de2006forecasting' on page 9 undefined on inp
-ut line 366.
-
-
-Package natbib Warning: Citation `andersen2008realized' on page 9 undefined on 
-input line 368.
-
-[9]
-
-Package natbib Warning: Citation `brownlees2011practical' on page 10 undefined 
-on input line 388.
-
-
-Package natbib Warning: Citation `brownlees2011practical' on page 10 undefined 
-on input line 393.
-
-[10]
-
-Package natbib Warning: Citation `zivot2009practical' on page 11 undefined on i
-nput line 408.
-
-[11]
-
-Package natbib Warning: Citation `han2014asymptotic' on page 12 undefined on in
-put line 444.
-
-[12]
-
-Package natbib Warning: Citation `RePEc:pra:mprapa:100301' on page 13 undefined
- on input line 492.
-
-[13]
-<simulation_plots/Aug28_224311_2024_mu[delta]_sigma[u].png, id=527, 578.16pt x 
+[3] [4 <./simulation_plots/motivating_piece_convex_combination.png>] [5]
+[6] [7] [8] [9] [10] [11] [12] [13]
+<simulation_plots/Aug28_224311_2024_mu[delta]_sigma[u].png, id=656, 578.16pt x 
 433.62pt>
 File: simulation_plots/Aug28_224311_2024_mu[delta]_sigma[u].png Graphic file (t
 ype png)
 <use simulation_plots/Aug28_224311_2024_mu[delta]_sigma[u].png>
 Package pdftex.def Info: simulation_plots/Aug28_224311_2024_mu[delta]_sigma[u].
-png  used on input line 514.
+png  used on input line 511.
 (pdftex.def)             Requested size: 242.82555pt x 182.11916pt.
 
-Overfull \hbox (23.4128pt too wide) in paragraph at lines 514--515
+Overfull \hbox (36.1322pt too wide) in paragraph at lines 511--512
  [][] 
  []
 
-<simulation_plots/Aug28_224317_2024_mu[delta]_sigma[u].png, id=528, 578.16pt x 
+<simulation_plots/Aug28_224317_2024_mu[delta]_sigma[u].png, id=657, 578.16pt x 
 433.62pt>
 File: simulation_plots/Aug28_224317_2024_mu[delta]_sigma[u].png Graphic file (t
 ype png)
 <use simulation_plots/Aug28_224317_2024_mu[delta]_sigma[u].png>
 Package pdftex.def Info: simulation_plots/Aug28_224317_2024_mu[delta]_sigma[u].
-png  used on input line 519.
+png  used on input line 516.
 (pdftex.def)             Requested size: 242.82555pt x 182.11916pt.
 
-Overfull \hbox (23.4128pt too wide) in paragraph at lines 519--520
+Overfull \hbox (36.1322pt too wide) in paragraph at lines 516--517
  [][] 
  []
 
-<simulation_plots/Aug28_224322_2024_mu[delta]_sigma[u].png, id=529, 578.16pt x 
+<simulation_plots/Aug28_224322_2024_mu[delta]_sigma[u].png, id=658, 578.16pt x 
 433.62pt>
 File: simulation_plots/Aug28_224322_2024_mu[delta]_sigma[u].png Graphic file (t
 ype png)
 <use simulation_plots/Aug28_224322_2024_mu[delta]_sigma[u].png>
 Package pdftex.def Info: simulation_plots/Aug28_224322_2024_mu[delta]_sigma[u].
-png  used on input line 525.
+png  used on input line 522.
 (pdftex.def)             Requested size: 242.82555pt x 182.11916pt.
 
-Overfull \hbox (23.4128pt too wide) in paragraph at lines 525--526
+Overfull \hbox (36.1322pt too wide) in paragraph at lines 522--523
  [][] 
  []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<simulation_plots/Aug28_224330_2024_mu[delta]_mu[v].png, id=536, 578.16pt x 433
+<simulation_plots/Aug28_224330_2024_mu[delta]_mu[v].png, id=665, 578.16pt x 433
 .62pt>
 File: simulation_plots/Aug28_224330_2024_mu[delta]_mu[v].png Graphic file (type
  png)
 <use simulation_plots/Aug28_224330_2024_mu[delta]_mu[v].png>
 Package pdftex.def Info: simulation_plots/Aug28_224330_2024_mu[delta]_mu[v].png
-  used on input line 538.
+  used on input line 535.
 (pdftex.def)             Requested size: 242.82555pt x 182.11916pt.
 
-Overfull \hbox (23.4128pt too wide) in paragraph at lines 538--539
+Overfull \hbox (36.1322pt too wide) in paragraph at lines 535--536
  [][] 
  []
 
-<simulation_plots/Aug28_224337_2024_mu[delta]_mu[v].png, id=537, 578.16pt x 433
+<simulation_plots/Aug28_224337_2024_mu[delta]_mu[v].png, id=666, 578.16pt x 433
 .62pt>
 File: simulation_plots/Aug28_224337_2024_mu[delta]_mu[v].png Graphic file (type
  png)
 <use simulation_plots/Aug28_224337_2024_mu[delta]_mu[v].png>
 Package pdftex.def Info: simulation_plots/Aug28_224337_2024_mu[delta]_mu[v].png
-  used on input line 543.
+  used on input line 540.
 (pdftex.def)             Requested size: 242.82555pt x 182.11916pt.
 
-Overfull \hbox (23.4128pt too wide) in paragraph at lines 543--544
+Overfull \hbox (36.1322pt too wide) in paragraph at lines 540--541
  [][] 
  []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<simulation_plots/Aug28_224451_2024_mu[omega^*]_sigma[u].png, id=538, 578.16pt 
+<simulation_plots/Aug28_224451_2024_mu[omega^*]_sigma[u].png, id=667, 578.16pt 
 x 433.62pt>
 File: simulation_plots/Aug28_224451_2024_mu[omega^*]_sigma[u].png Graphic file 
 (type png)
 <use simulation_plots/Aug28_224451_2024_mu[omega^*]_sigma[u].png>
 Package pdftex.def Info: simulation_plots/Aug28_224451_2024_mu[omega^*]_sigma[u
-].png  used on input line 556.
+].png  used on input line 553.
 (pdftex.def)             Requested size: 242.82555pt x 182.11916pt.
 
-Overfull \hbox (23.4128pt too wide) in paragraph at lines 556--557
+Overfull \hbox (36.1322pt too wide) in paragraph at lines 553--554
  [][] 
  []
 
-<simulation_plots/Aug28_224455_2024_mu[omega^*]_sigma[u].png, id=539, 578.16pt 
+<simulation_plots/Aug28_224455_2024_mu[omega^*]_sigma[u].png, id=668, 578.16pt 
 x 433.62pt>
 File: simulation_plots/Aug28_224455_2024_mu[omega^*]_sigma[u].png Graphic file 
 (type png)
 <use simulation_plots/Aug28_224455_2024_mu[omega^*]_sigma[u].png>
 Package pdftex.def Info: simulation_plots/Aug28_224455_2024_mu[omega^*]_sigma[u
-].png  used on input line 561.
+].png  used on input line 558.
 (pdftex.def)             Requested size: 242.82555pt x 182.11916pt.
 
-Overfull \hbox (23.4128pt too wide) in paragraph at lines 561--562
+Overfull \hbox (36.1322pt too wide) in paragraph at lines 558--559
  [][] 
  []
 
@@ -1624,483 +1414,93 @@ _mu[delta]_mu[v].png> <./simulation_plots/Aug28_224337_2024_mu[delta]_mu[v].png
 > <./simulation_plots/Aug28_224451_2024_mu[omega^*]_sigma[u].png> <./simulation
 _plots/Aug28_224455_2024_mu[omega^*]_sigma[u].png>]
 
-Package natbib Warning: Citation `zivot2009practical' on page 17 undefined on i
-nput line 573.
-
-
-Package natbib Warning: Citation `hansen2005forecast' on page 17 undefined on i
-nput line 585.
-
-
 Package natbib Warning: Citation `The_Guardian' on page 17 undefined on input l
-ine 589.
+ine 586.
 
 
 Package natbib Warning: Citation `Morales_Valentini_Penny_2016' on page 17 unde
-fined on input line 589.
-
-
-Package natbib Warning: Citation `BBC_News_2016' on page 17 undefined on input 
-line 589.
-
-
-Package natbib Warning: Citation `wilson2017brexit' on page 17 undefined on inp
-ut line 589.
-
-
-Package natbib Warning: Citation `kay2016brexit' on page 17 undefined on input 
-line 589.
-
-
-Package natbib Warning: Citation `collins2016trump' on page 17 undefined on inp
-ut line 589.
-
-
-Package natbib Warning: Citation `applebaum2016britain' on page 17 undefined on
- input line 590.
-
-
-Package natbib Warning: Citation `martin2016brexit' on page 17 undefined on inp
-ut line 590.
-
-
-Package natbib Warning: Citation `barro2016three' on page 17 undefined on input
- line 590.
+fined on input line 586.
 
 [17
 
-]
-
-Package natbib Warning: Citation `andersen2008realized' on page 18 undefined on
- input line 591.
-
-
-Package natbib Warning: Citation `ryan2015package' on page 18 undefined on inpu
-t line 592.
-
-
-Package natbib Warning: Citation `wachowicz2020wharton' on page 18 undefined on
- input line 592.
-
-
-Package natbib Warning: Citation `steegen2016increasing' on page 18 undefined o
-n input line 598.
-
-<real_data_output_plots/TueSep241059512024_IYG_None_None.png, id=573, 803.0pt x
+] [18]
+<real_data_output_plots/TueSep241059512024_IYG_None_None.png, id=745, 803.0pt x
  602.25pt>
 File: real_data_output_plots/TueSep241059512024_IYG_None_None.png Graphic file 
 (type png)
 <use real_data_output_plots/TueSep241059512024_IYG_None_None.png>
 Package pdftex.def Info: real_data_output_plots/TueSep241059512024_IYG_None_Non
-e.png  used on input line 604.
+e.png  used on input line 601.
 (pdftex.def)             Requested size: 481.80373pt x 361.35278pt.
-[18]
+
+Overfull \hbox (12.0487pt too wide) in paragraph at lines 601--602
+ [][] 
+ []
+
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `cmtt' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-
-
-Package natbib Warning: Citation `lin2021minimizing' on page 19 undefined on in
-put line 692.
-
-
-Package natbib Warning: Citation `lin2021minimizing' on page 19 undefined on in
-put line 692.
-
-
-Package natbib Warning: Citation `lin2021minimizing' on page 19 undefined on in
-put line 694.
-
-
-Package natbib Warning: Citation `phillips1996forecasting' on page 19 undefined
- on input line 694.
-
-
-Package natbib Warning: Citation `phillips1996forecasting' on page 19 undefined
- on input line 694.
-
-[19 <./real_data_output_plots/TueSep241059512024_IYG_None_None.png>]
-
-Package natbib Warning: Citation `clements1996intercept' on page 20 undefined o
-n input line 702.
-
-
-Package natbib Warning: Citation `guerron2017macroeconomic' on page 20 undefine
-d on input line 702.
-
-
-Package natbib Warning: Citation `hastie2009elements' on page 20 undefined on i
-nput line 702.
-
-
-Package natbib Warning: Citation `abadie2010synthetic' on page 20 undefined on 
-input line 702.
-
-
-Package natbib Warning: Citation `hastie2009elements' on page 20 undefined on i
-nput line 704.
-
-
-Package natbib Warning: Citation `lin2021minimizing' on page 20 undefined on in
-put line 706.
-
-
-Package natbib Warning: Citation `lin2021minimizing' on page 20 undefined on in
-put line 706.
-
-
-Package natbib Warning: Citation `abadie2022synthetic' on page 20 undefined on 
-input line 710.
-
-[20]
-
-Package natbib Warning: Citation `boudoukh2019information' on page 21 undefined
- on input line 717.
-
-
-Package natbib Warning: Citation `chinco2019sparse' on page 21 undefined on inp
-ut line 717.
-
-
-Package natbib Warning: Citation `corsi2012har' on page 21 undefined on input l
-ine 719.
-
-
-Package natbib Warning: Citation `rossi2013advances' on page 21 undefined on in
-put line 723.
-
-
-Package natbib Warning: Citation `rossi2021forecasting' on page 21 undefined on
- input line 723.
-
-
-Package natbib Warning: Citation `dendramis2020similarity' on page 21 undefined
- on input line 723.
-
-
-Package natbib Warning: Citation `abadie2010synthetic' on page 21 undefined on 
-input line 735.
-
-[21]
-Underfull \hbox (badness 10000) in paragraph at lines 810--813
-
- []
-
-[22]
-Underfull \hbox (badness 10000) in paragraph at lines 814--817
+[19 <./real_data_output_plots/TueSep241059512024_IYG_None_None.png>] [20]
+[21] [22]
+Underfull \hbox (badness 10000) in paragraph at lines 807--810
 
  []
 
 
-Package natbib Warning: Citation `han2014asymptotic' on page 23 undefined on in
-put line 819.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 828--830
+Underfull \hbox (badness 10000) in paragraph at lines 811--814
 
  []
 
 [23]
-Underfull \hbox (badness 10000) in paragraph at lines 843--846
+Underfull \hbox (badness 10000) in paragraph at lines 825--827
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 847--850
+Underfull \hbox (badness 10000) in paragraph at lines 840--843
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 844--847
 
  []
 
 [24] [25]
-Chapter 3.
-
-Package natbib Warning: Citation `thoughts_on_market' on page 26 undefined on i
-nput line 855.
-
-
-Package natbib Warning: Citation `lundquist2024volatility' on page 26 undefined
- on input line 859.
-
+Chapter 2.
 [26
 
-]
-
-Package natbib Warning: Citation `hendry1994theory' on page 27 undefined on inp
-ut line 863.
-
-
-Package natbib Warning: Citation `clements1996intercept' on page 27 undefined o
-n input line 863.
-
-
-Package natbib Warning: Citation `clements1998forecasting' on page 27 undefined
- on input line 863.
-
-
-Package natbib Warning: Citation `clements1999forecasting' on page 27 undefined
- on input line 863.
-
-
-Package natbib Warning: Citation `hendry1994theory' on page 27 undefined on inp
-ut line 863.
-
-
-Package natbib Warning: Citation `clements1999forecasting' on page 27 undefined
- on input line 865.
-
-
-Package natbib Warning: Citation `hendry1994theory' on page 27 undefined on inp
-ut line 865.
-
-
-Package natbib Warning: Citation `clements1999forecasting' on page 27 undefined
- on input line 865.
-
-
-Package natbib Warning: Citation `guerron2017macroeconomic' on page 27 undefine
-d on input line 865.
-
-
-Package natbib Warning: Citation `lundquist2024volatility' on page 27 undefined
- on input line 865.
-
-
-Package natbib Warning: Citation `castle2016overview' on page 27 undefined on i
-nput line 867.
-
-
-Package natbib Warning: Citation `lin2021minimizing' on page 27 undefined on in
-put line 874.
-
-
-Package natbib Warning: Citation `lundquist2024volatility' on page 27 undefined
- on input line 874.
-
-
-Package natbib Warning: Citation `castle2011forecasting' on page 27 undefined o
-n input line 879.
-
-
-Package natbib Warning: Citation `lundquist2024volatility' on page 27 undefined
- on input line 879.
-
-
-Package natbib Warning: Citation `lin2021minimizing' on page 27 undefined on in
-put line 879.
-
-
-Package natbib Warning: Citation `lundquist2024volatility' on page 27 undefined
- on input line 879.
-
-[27]
-
-Package natbib Warning: Citation `clements1998forecasting' on page 28 undefined
- on input line 1078.
-
+] [27]
 Missing character: There is no ] in font nullfont!
 Missing character: There is no ] in font nullfont!
-
-Package natbib Warning: Citation `hendry1994theory' on page 28 undefined on inp
-ut line 1087.
-
-
-Package natbib Warning: Citation `clements2005guest' on page 28 undefined on in
-put line 1089.
-
-
-Package natbib Warning: Citation `castle2011forecasting' on page 28 undefined o
-n input line 1089.
-
 [28]
-
-Package natbib Warning: Citation `clements2005guest' on page 29 undefined on in
-put line 1095.
-
-
-Package natbib Warning: Citation `castle2013forecasting' on page 29 undefined o
-n input line 1095.
-
-
-Package natbib Warning: Citation `castle2011forecasting' on page 29 undefined o
-n input line 1095.
-
-
-Overfull \hbox (2.96057pt too wide) in paragraph at lines 1106--1106
+Overfull \hbox (2.96057pt too wide) in paragraph at lines 1103--1103
 []|\OT1/cmr/m/n/10 (-20) internal| 
  []
 
 
-Overfull \hbox (4.59947pt too wide) in paragraph at lines 1108--1108
+Overfull \hbox (4.59947pt too wide) in paragraph at lines 1105--1105
 []|\OT1/cmr/m/n/10 (-20) external| 
  []
 
-
-Package natbib Warning: Citation `bartha2013analogy' on page 29 undefined on in
-put line 1114.
-
-[29]
-
-Package natbib Warning: Citation `garg2015asymmetric' on page 30 undefined on i
-nput line 1120.
-
-
-Package natbib Warning: Citation `bishop2023deep' on page 30 undefined on input
- line 1120.
-
-
-Package natbib Warning: Citation `lin2021minimizing' on page 30 undefined on in
-put line 1122.
-
-
-Package natbib Warning: Citation `lundquist2024volatility' on page 30 undefined
- on input line 1122.
-
-
-Package natbib Warning: Citation `lin2021minimizing' on page 30 undefined on in
-put line 1124.
-
-
-Package natbib Warning: Citation `lundquist2024volatility' on page 30 undefined
- on input line 1124.
-
+[29] [30]
 File: simulation_plots/motivating_piece_convex_combination.png Graphic file (ty
 pe png)
 <use simulation_plots/motivating_piece_convex_combination.png>
 Package pdftex.def Info: simulation_plots/motivating_piece_convex_combination.p
-ng  used on input line 1131.
-(pdftex.def)             Requested size: 498.66258pt x 400.71829pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[30] [31]
-
-Package natbib Warning: Citation `lin2021minimizing' on page 32 undefined on in
-put line 1190.
-
-
-Package natbib Warning: Citation `foroni2022forecasting' on page 32 undefined o
-n input line 1195.
-
-
-Package natbib Warning: Citation `croushore1993introducing' on page 32 undefine
-d on input line 1195.
-
-[32]
-
-Package natbib Warning: Citation `lin2021minimizing' on page 33 undefined on in
-put line 1203.
-
-
-Package natbib Warning: Citation `abadie2010synthetic' on page 33 undefined on 
-input line 1203.
-
-
-Package natbib Warning: Citation `lin2021minimizing' on page 33 undefined on in
-put line 1215.
-
-
-Package natbib Warning: Citation `lundquist2024volatility' on page 33 undefined
- on input line 1215.
-
-[33]
-
-Package natbib Warning: Citation `lin2021minimizing' on page 34 undefined on in
-put line 1219.
-
-
-Package natbib Warning: Citation `lundquist2024volatility' on page 34 undefined
- on input line 1219.
-
-
-Package natbib Warning: Citation `lin2021minimizing' on page 34 undefined on in
-put line 1229.
-
-
-Package natbib Warning: Citation `lin2021minimizing' on page 34 undefined on in
-put line 1231.
-
-[34]
-
-Package natbib Warning: Citation `lin2021minimizing' on page 35 undefined on in
-put line 1249.
-
-[35]
-
-Package natbib Warning: Citation `lundquist2024volatility' on page 36 undefined
- on input line 1271.
+ng  used on input line 1128.
+(pdftex.def)             Requested size: 469.75502pt x 377.4961pt.
+ [31] [32] [33] [34] [35] [36]
+Overfull \hbox (20.41965pt too wide) detected at line 1267
+[]
+ []
 
 Missing character: There is no ; in font nullfont!
-[36]
-
-Package natbib Warning: Citation `lin2021minimizing' on page 37 undefined on in
-put line 1334.
-
-
-Package natbib Warning: Citation `lundquist2024volatility' on page 37 undefined
- on input line 1334.
-
-
-Package natbib Warning: Citation `francq2019garch' on page 37 undefined on inpu
-t line 1334.
-
-
-Package natbib Warning: Citation `lundquist2024volatility' on page 37 undefined
- on input line 1336.
-
-[37]
-
-Package natbib Warning: Citation `corsi2009simple' on page 38 undefined on inpu
-t line 1369.
-
-
-Package natbib Warning: Citation `bodilsen2023exploiting' on page 38 undefined 
-on input line 1374.
-
-[38]
-
-Package natbib Warning: Citation `bodilsen2023exploiting' on page 39 undefined 
-on input line 1396.
-
-
-Package natbib Warning: Citation `bodilsen2023exploiting' on page 39 undefined 
-on input line 1399.
-
-
-Package natbib Warning: Citation `bodilsen2023exploiting' on page 39 undefined 
-on input line 1403.
-
-
-Package natbib Warning: Citation `GFC' on page 39 undefined on input line 1411.
-
-
-
-Package natbib Warning: Citation `fedfunds' on page 39 undefined on input line 
-1411.
-
-
-Package natbib Warning: Citation `corsi2009simple' on page 39 undefined on inpu
-t line 1414.
-
-[39]
-
-Package natbib Warning: Citation `andersen2008realized' on page 40 undefined on
- input line 1428.
-
-
-Package natbib Warning: Citation `ryan2015package' on page 40 undefined on inpu
-t line 1429.
-
-
-Package natbib Warning: Citation `highfrequency' on page 40 undefined on input 
-line 1429.
-
-
-Package natbib Warning: Citation `boysel2021package' on page 40 undefined on in
-put line 1429.
-
+[37] [38] [39] [40] [41]
 <real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-1
 2-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-
-12-2018-09-25.png, id=762, 803.0pt x 602.25pt>
+12-2018-09-25.png, id=1127, 803.0pt x 602.25pt>
 File: real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2
 018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-201
 8-06-12-2018-09-25.png Graphic file (type png)
@@ -2109,287 +1509,284 @@ File: real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2
 -06-12-2018-09-25.png>
 Package pdftex.def Info: real_data_output_plots/savetime_SatJun151644072024__^V
 IX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-1
-2-12-2018-03-20-2018-06-12-2018-09-25.png  used on input line 1436.
+2-12-2018-03-20-2018-06-12-2018-09-25.png  used on input line 1433.
 (pdftex.def)             Requested size: 497.85486pt x 373.39113pt.
+
+Overfull \hbox (28.09984pt too wide) in paragraph at lines 1433--1434
+ [] 
+ []
+
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Package natbib Warning: Citation `castle2011forecasting' on page 40 undefined o
-n input line 1464.
-
-[40]
-
-Package natbib Warning: Citation `castle2011forecasting' on page 41 undefined o
-n input line 1477.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1479--1480
+Underfull \hbox (badness 10000) in paragraph at lines 1476--1477
 
  []
 
-[41 <./real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_
-2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-20
-18-06-12-2018-09-25.png>]
-<exponential_sim_plot.png, id=780, 1767.60374pt x 1242.6425pt>
+[42]
+<exponential_sim_plot.png, id=1144, 1767.60374pt x 1242.6425pt>
 File: exponential_sim_plot.png Graphic file (type png)
 <use exponential_sim_plot.png>
-Package pdftex.def Info: exponential_sim_plot.png  used on input line 1494.
-(pdftex.def)             Requested size: 498.66258pt x 350.55417pt.
-<simulation_plots/Nov27_160341_2024_mudelta_sigmax.png, id=781, 578.16pt x 433.
-62pt>
+Package pdftex.def Info: exponential_sim_plot.png  used on input line 1491.
+(pdftex.def)             Requested size: 469.75502pt x 330.2278pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<simulation_plots/Nov27_160341_2024_mudelta_sigmax.png, id=1145, 578.16pt x 433
+.62pt>
 File: simulation_plots/Nov27_160341_2024_mudelta_sigmax.png Graphic file (type 
 png)
 <use simulation_plots/Nov27_160341_2024_mudelta_sigmax.png>
 Package pdftex.def Info: simulation_plots/Nov27_160341_2024_mudelta_sigmax.png 
- used on input line 1510.
+ used on input line 1507.
 (pdftex.def)             Requested size: 242.82555pt x 182.11916pt.
 
-Overfull \hbox (23.4128pt too wide) in paragraph at lines 1510--1511
+Overfull \hbox (36.1322pt too wide) in paragraph at lines 1507--1508
  [][] 
  []
 
-<simulation_plots/Nov27_160342_2024_mudelta_sigmax.png, id=782, 578.16pt x 433.
-62pt>
+<simulation_plots/Nov27_160342_2024_mudelta_sigmax.png, id=1146, 578.16pt x 433
+.62pt>
 File: simulation_plots/Nov27_160342_2024_mudelta_sigmax.png Graphic file (type 
 png)
 <use simulation_plots/Nov27_160342_2024_mudelta_sigmax.png>
 Package pdftex.def Info: simulation_plots/Nov27_160342_2024_mudelta_sigmax.png 
- used on input line 1515.
+ used on input line 1512.
 (pdftex.def)             Requested size: 242.82555pt x 182.11916pt.
 
-Overfull \hbox (23.4128pt too wide) in paragraph at lines 1515--1516
+Overfull \hbox (36.1322pt too wide) in paragraph at lines 1512--1513
  [][] 
  []
 
-<simulation_plots/Nov27_160343_2024_mudelta_sigmax.png, id=783, 578.16pt x 433.
-62pt>
+<simulation_plots/Nov27_160343_2024_mudelta_sigmax.png, id=1147, 578.16pt x 433
+.62pt>
 File: simulation_plots/Nov27_160343_2024_mudelta_sigmax.png Graphic file (type 
 png)
 <use simulation_plots/Nov27_160343_2024_mudelta_sigmax.png>
 Package pdftex.def Info: simulation_plots/Nov27_160343_2024_mudelta_sigmax.png 
- used on input line 1521.
+ used on input line 1518.
 (pdftex.def)             Requested size: 242.82555pt x 182.11916pt.
 
-Overfull \hbox (23.4128pt too wide) in paragraph at lines 1521--1522
+Overfull \hbox (36.1322pt too wide) in paragraph at lines 1518--1519
  [][] 
  []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<simulation_plots/Nov27_160344_2024_sigmax_sigmaepsilon.png, id=790, 578.16pt x
- 433.62pt>
+<simulation_plots/Nov27_160344_2024_sigmax_sigmaepsilon.png, id=1154, 578.16pt 
+x 433.62pt>
 File: simulation_plots/Nov27_160344_2024_sigmax_sigmaepsilon.png Graphic file (
 type png)
 <use simulation_plots/Nov27_160344_2024_sigmax_sigmaepsilon.png>
 Package pdftex.def Info: simulation_plots/Nov27_160344_2024_sigmax_sigmaepsilon
-.png  used on input line 1534.
+.png  used on input line 1531.
 (pdftex.def)             Requested size: 242.82555pt x 182.11916pt.
 
-Overfull \hbox (23.4128pt too wide) in paragraph at lines 1534--1535
+Overfull \hbox (36.1322pt too wide) in paragraph at lines 1531--1532
  [][] 
  []
 
-<simulation_plots/Nov27_160345_2024_sigmax_sigmaepsilon.png, id=791, 578.16pt x
- 433.62pt>
+<simulation_plots/Nov27_160345_2024_sigmax_sigmaepsilon.png, id=1155, 578.16pt 
+x 433.62pt>
 File: simulation_plots/Nov27_160345_2024_sigmax_sigmaepsilon.png Graphic file (
 type png)
 <use simulation_plots/Nov27_160345_2024_sigmax_sigmaepsilon.png>
 Package pdftex.def Info: simulation_plots/Nov27_160345_2024_sigmax_sigmaepsilon
-.png  used on input line 1539.
+.png  used on input line 1536.
 (pdftex.def)             Requested size: 242.82555pt x 182.11916pt.
 
-Overfull \hbox (23.4128pt too wide) in paragraph at lines 1539--1540
+Overfull \hbox (36.1322pt too wide) in paragraph at lines 1536--1537
  [][] 
  []
 
-<simulation_plots/Nov27_160346_2024_sigmax_sigmaepsilon.png, id=792, 578.16pt x
- 433.62pt>
+<simulation_plots/Nov27_160346_2024_sigmax_sigmaepsilon.png, id=1156, 578.16pt 
+x 433.62pt>
 File: simulation_plots/Nov27_160346_2024_sigmax_sigmaepsilon.png Graphic file (
 type png)
 <use simulation_plots/Nov27_160346_2024_sigmax_sigmaepsilon.png>
 Package pdftex.def Info: simulation_plots/Nov27_160346_2024_sigmax_sigmaepsilon
-.png  used on input line 1545.
+.png  used on input line 1542.
 (pdftex.def)             Requested size: 242.82555pt x 182.11916pt.
 
-Overfull \hbox (23.4128pt too wide) in paragraph at lines 1545--1546
+Overfull \hbox (36.1322pt too wide) in paragraph at lines 1542--1543
  [][] 
  []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<simulation_plots/Nov27_160346_2024_mudelta_sigmaepsilon.png, id=799, 578.16pt 
-x 433.62pt>
+<simulation_plots/Nov27_160346_2024_mudelta_sigmaepsilon.png, id=1163, 578.16pt
+ x 433.62pt>
 File: simulation_plots/Nov27_160346_2024_mudelta_sigmaepsilon.png Graphic file 
 (type png)
 <use simulation_plots/Nov27_160346_2024_mudelta_sigmaepsilon.png>
 Package pdftex.def Info: simulation_plots/Nov27_160346_2024_mudelta_sigmaepsilo
-n.png  used on input line 1558.
+n.png  used on input line 1555.
 (pdftex.def)             Requested size: 242.82555pt x 182.11916pt.
 
-Overfull \hbox (23.4128pt too wide) in paragraph at lines 1558--1559
+Overfull \hbox (36.1322pt too wide) in paragraph at lines 1555--1556
  [][] 
  []
 
-<simulation_plots/Nov27_160347_2024_mudelta_sigmaepsilon.png, id=800, 578.16pt 
-x 433.62pt>
+<simulation_plots/Nov27_160347_2024_mudelta_sigmaepsilon.png, id=1164, 578.16pt
+ x 433.62pt>
 File: simulation_plots/Nov27_160347_2024_mudelta_sigmaepsilon.png Graphic file 
 (type png)
 <use simulation_plots/Nov27_160347_2024_mudelta_sigmaepsilon.png>
 Package pdftex.def Info: simulation_plots/Nov27_160347_2024_mudelta_sigmaepsilo
-n.png  used on input line 1563.
+n.png  used on input line 1560.
 (pdftex.def)             Requested size: 242.82555pt x 182.11916pt.
 
-Overfull \hbox (23.4128pt too wide) in paragraph at lines 1563--1564
+Overfull \hbox (36.1322pt too wide) in paragraph at lines 1560--1561
  [][] 
  []
 
-<simulation_plots/Nov27_160348_2024_mudelta_sigmaepsilon.png, id=801, 578.16pt 
-x 433.62pt>
+<simulation_plots/Nov27_160348_2024_mudelta_sigmaepsilon.png, id=1165, 578.16pt
+ x 433.62pt>
 File: simulation_plots/Nov27_160348_2024_mudelta_sigmaepsilon.png Graphic file 
 (type png)
 <use simulation_plots/Nov27_160348_2024_mudelta_sigmaepsilon.png>
 Package pdftex.def Info: simulation_plots/Nov27_160348_2024_mudelta_sigmaepsilo
-n.png  used on input line 1569.
+n.png  used on input line 1566.
 (pdftex.def)             Requested size: 242.82555pt x 182.11916pt.
 
-Overfull \hbox (23.4128pt too wide) in paragraph at lines 1569--1570
+Overfull \hbox (36.1322pt too wide) in paragraph at lines 1566--1567
  [][] 
  []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[42 <./exponential_sim_plot.png>] [43 <./simulation_plots/Nov27_160341_2024_mud
-elta_sigmax.png> <./simulation_plots/Nov27_160342_2024_mudelta_sigmax.png> <./s
-imulation_plots/Nov27_160343_2024_mudelta_sigmax.png>] [44 <./simulation_plots/
-Nov27_160344_2024_sigmax_sigmaepsilon.png> <./simulation_plots/Nov27_160345_202
-4_sigmax_sigmaepsilon.png> <./simulation_plots/Nov27_160346_2024_sigmax_sigmaep
-silon.png>] [45 <./simulation_plots/Nov27_160346_2024_mudelta_sigmaepsilon.png>
- <./simulation_plots/Nov27_160347_2024_mudelta_sigmaepsilon.png> <./simulation_
-plots/Nov27_160348_2024_mudelta_sigmaepsilon.png>]
-
-Package natbib Warning: Citation `lin2021minimizing' on page 46 undefined on in
-put line 1580.
-
-
-Package natbib Warning: Citation `clements1998forecasting' on page 46 undefined
- on input line 1580.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1580--1581
+[43 <./real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_
+2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-20
+18-06-12-2018-09-25.png>] [44 <./exponential_sim_plot.png>] [45 <./simulation_p
+lots/Nov27_160341_2024_mudelta_sigmax.png> <./simulation_plots/Nov27_160342_202
+4_mudelta_sigmax.png> <./simulation_plots/Nov27_160343_2024_mudelta_sigmax.png>
+] [46 <./simulation_plots/Nov27_160344_2024_sigmax_sigmaepsilon.png> <./simulat
+ion_plots/Nov27_160345_2024_sigmax_sigmaepsilon.png> <./simulation_plots/Nov27_
+160346_2024_sigmax_sigmaepsilon.png>] [47 <./simulation_plots/Nov27_160346_2024
+_mudelta_sigmaepsilon.png> <./simulation_plots/Nov27_160347_2024_mudelta_sigmae
+psilon.png> <./simulation_plots/Nov27_160348_2024_mudelta_sigmaepsilon.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 1577--1578
 
  []
 
 
-Package natbib Warning: Citation `lundquist2024volatility' on page 46 undefined
- on input line 1590.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1590--1591
+Underfull \hbox (badness 10000) in paragraph at lines 1587--1588
 
  []
 
-
-Package natbib Warning: Citation `clements2005evaluating' on page 46 undefined 
-on input line 1612.
-
-[46
+[48
 
 ]
+Underfull \hbox (badness 10000) in paragraph at lines 1621--1622
 
-Package natbib Warning: Citation `lundquist2024volatility' on page 47 undefined
- on input line 1624.
+ []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 1624--1625
+[49]
+Underfull \hbox (badness 10000) in paragraph at lines 1641--1642
 
  []
 
 
-Package natbib Warning: Citation `lundquist2024volatility' on page 47 undefined
- on input line 1626.
-
-[47]
-Underfull \hbox (badness 10000) in paragraph at lines 1644--1645
+Underfull \hbox (badness 10000) in paragraph at lines 1650--1653
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 1653--1656
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1675--1676
+[50]
+Underfull \hbox (badness 10000) in paragraph at lines 1672--1673
 
  []
 
-[48] (./thesis.bbl)
-Chapter 4.
-[49
+[51]
+Chapter 3.
+[52
+
+] (./thesis.bbl
+Underfull \hbox (badness 10000) in paragraph at lines 52--57
+\OT1/cmtt/m/n/10 www . washingtonpost . com / opinions / global-[]opinions / af
+ter-[]brexit-[]what-[]will-[]and-[]wont-[]happen /
+ []
 
 
-]
-Appendix A.
+Underfull \hbox (badness 10000) in paragraph at lines 52--57
+\OT1/cmtt/m/n/10 2016 / 06 / 24 / c9f7a2f6-[]39f1-[]11e6-[]8f7c-[]d4c723a2becb 
+_ story . html ? postshare = 9121466767991000$[][]\OT1/cmr/m/n/10 (+20) .
+ []
+
+[53
+
+
+] [54] [55]
+Underfull \hbox (badness 2635) in paragraph at lines 332--338
+[]\OT1/cmr/m/n/10 (+20) Jonathan Mar-tin and Alexan-der Burns.  Is `brexit' the
+ pre-cur-sor to a don-ald trump pres-
+ []
+
+
+Underfull \hbox (badness 7133) in paragraph at lines 332--338
+\OT1/cmr/m/n/10 (+20) i-dency? not so fast, 2016.  URL [][]$\OT1/cmtt/m/n/10 ht
+tps : / / www . nytimes . com / 2016 / 06 / 25 / us / politics /
+ []
+
+[56]) [57]
 
 Package natbib Warning: There were undefined citations.
 
-[50
-
-
-
-
-] (./thesis.aux)
+(./thesis.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: E3701C42D2C49D5D42331660B272865C;13140.
+(rerunfilecheck)             Checksum: 53A7E003E9980CF929841133331A797C;12933.
  ) 
 Here is how much of TeX's memory you used:
- 43644 strings out of 474116
- 913566 string characters out of 5743682
- 1962187 words of memory out of 5000000
- 64904 multiletter control sequences out of 15000+600000
- 583994 words of font info for 237 fonts, out of 8000000 for 9000
+ 43929 strings out of 474116
+ 920876 string characters out of 5743682
+ 1960187 words of memory out of 5000000
+ 65126 multiletter control sequences out of 15000+600000
+ 584109 words of font info for 230 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  142i,17n,144p,3798b,1700s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></
-usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></us
-r/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/
-local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr
-/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/
-local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/l
-ocal/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/loc
-al/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local
-/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/t
-exlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/tex
-live/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/tex
-live/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texli
-ve/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive
-/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/20
-24/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2024/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2024/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2024/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2024/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2024/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2024/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2024/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2024/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2024/texmf-dist/fonts/ty
-pe1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/texmf-dist/font
-s/type1/public/amsfonts/symbols/msbm7.pfb></usr/local/texlive/2024/texmf-dist/f
-onts/type1/public/cm-super/sfrm1000.pfb>
-Output written on thesis.pdf (56 pages, 3340231 bytes).
+usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><
+/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></
+usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></u
+sr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr
+/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/l
+ocal/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/loc
+al/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local
+/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local
+/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/t
+exlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/tex
+live/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texliv
+e/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2
+024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2024
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2024/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2024/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2024/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2024/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2024/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2024/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2024/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2024/texmf-dist/fonts
+/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/texmf-dist/f
+onts/type1/public/amsfonts/symbols/msbm7.pfb></usr/local/texlive/2024/texmf-dis
+t/fonts/type1/public/cm-super/sfrm1000.pfb>
+Output written on thesis.pdf (63 pages, 3445161 bytes).
 PDF statistics:
- 1038 PDF objects out of 1200 (max. 8388607)
- 218 named destinations out of 1000 (max. 500000)
- 56417 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 1481 PDF objects out of 1728 (max. 8388607)
+ 296 named destinations out of 1000 (max. 500000)
+ 56913 words of extra memory for PDF output out of 61914 (max. 10000000)
 

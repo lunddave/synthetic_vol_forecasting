@@ -359,6 +359,12 @@ OUTPUT thesis.aux
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/microtype/mt-cmr.cfg
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/microtype/mt-cmr.cfg
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/microtype/mt-cmr.cfg
+INPUT ./thesis.out
+INPUT ./thesis.out
+INPUT thesis.out
+INPUT thesis.out
+INPUT ./thesis.out
+INPUT ./thesis.out
 OUTPUT thesis.out
 OUTPUT thesis.pdf
 INPUT /usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
@@ -552,6 +558,7 @@ INPUT ./simulation_plots/Nov27_160348_2024_mudelta_sigmaepsilon.png
 INPUT ./thesis.bbl
 INPUT ./thesis.bbl
 INPUT thesis.bbl
+INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmtt10.tfm
 INPUT thesis.aux
 INPUT ./thesis.out
 INPUT ./thesis.out
@@ -580,6 +587,7 @@ INPUT /usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pf
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb
+INPUT /usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb
