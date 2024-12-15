@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.15)  14 DEC 2024 19:08
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.15)  15 DEC 2024 03:10
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1066,7 +1066,13 @@ Package: dantelogo 2015/08/12 v0.03
 Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
 )) (/usr/local/texlive/2024/texmf-dist/tex/latex/tools/xspace.sty
 Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
-)) (/usr/local/texlive/2024/texmf-dist/tex/latex/adjustbox/adjustbox.sty
+)) (/usr/local/texlive/2024/texmf-dist/tex/latex/beamer/multimedia.sty
+Package: multimedia 2012/05/02 ver 0.02
+ (/usr/local/texlive/2024/texmf-dist/tex/generic/iftex/ifpdf.sty
+Package: ifpdf 2019/10/25 v3.4 ifpdf legacy package. Use iftex instead.
+)
+\mm@movie=\count521
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/adjustbox/adjustbox.sty
 Package: adjustbox 2022/10/17 v1.3a Adjusting TeX boxes (trim, clip, ...)
  (/usr/local/texlive/2024/texmf-dist/tex/latex/xkeyval/xkeyval.sty
 Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
@@ -1074,7 +1080,7 @@ Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
 \XKV@toks=\toks65
 \XKV@tempa@toks=\toks66
 )
-\XKV@depth=\count521
+\XKV@depth=\count522
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 )) (/usr/local/texlive/2024/texmf-dist/tex/latex/adjustbox/adjcalc.sty
 Package: adjcalc 2012/05/16 v1.1 Provides advanced setlength with multiple back-ends (calc, etex, pgfmath)
@@ -1102,11 +1108,11 @@ File: tc-pdftex.def 2019/01/04 v2.2 Clipping driver for pdftex
 \adjbox@ptotalheight=\dimen333
  (/usr/local/texlive/2024/texmf-dist/tex/latex/ifoddpage/ifoddpage.sty
 Package: ifoddpage 2022/10/18 v1.2 Conditionals for odd/even page detection
-\c@checkoddpage=\count522
+\c@checkoddpage=\count523
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/varwidth/varwidth.sty
 Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
 \@vwid@box=\box119
-\sift@deathcycles=\count523
+\sift@deathcycles=\count524
 \@vwid@loff=\dimen334
 \@vwid@roff=\dimen335
 )) (/usr/local/texlive/2024/texmf-dist/tex/latex/datetime2/datetime2.sty
@@ -1121,20 +1127,20 @@ File: datetime2-english-base.ldf 2019/10/21 v1.05 (NLCT)
 Package: mathtools 2024/03/11 v1.30 mathematical typesetting tools
  (/usr/local/texlive/2024/texmf-dist/tex/latex/tools/calc.sty
 Package: calc 2023/07/08 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count524
-\calc@Bcount=\count525
+\calc@Acount=\count525
+\calc@Bcount=\count526
 \calc@Adimen=\dimen336
 \calc@Bdimen=\dimen337
 \calc@Askip=\skip87
 \calc@Bskip=\skip88
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count526
+\calc@Ccount=\count527
 \calc@Cskip=\skip89
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/mathtools/mhsetup.sty
 Package: mhsetup 2021/03/18 v1.4 programming setup (MH)
 )
-\g_MT_multlinerow_int=\count527
+\g_MT_multlinerow_int=\count528
 \l_MT_multwidth_dim=\dimen338
 \origjot=\skip90
 \l_MT_shortvdotswithinadjustabove_dim=\dimen339
@@ -1172,20 +1178,20 @@ Package caption Info: beamer document class detected.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/caption/caption-beamer.sto
 File: caption-beamer.sto 2022/01/06 v2.0c Adaption of the caption package to the beamer document classes (AR)
 ))
-\c@caption@flags=\count528
-\c@continuedfloat=\count529
+\c@caption@flags=\count529
+\c@continuedfloat=\count530
 Package caption Info: hyperref package is loaded.
 Package caption Info: Hyperref support is turned off
 (caption)             because hyperref has stopped early.
 Package caption Info: listings package is loaded.
 )
 Package caption Info: New subtype `subfigure' on input line 238.
-\c@subfigure=\count530
+\c@subfigure=\count531
 Package caption Info: New subtype `subtable' on input line 238.
-\c@subtable=\count531
+\c@subtable=\count532
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count532
+\c@float@type=\count533
 \float@exts=\toks68
 \float@box=\box121
 \@float@everytoks=\toks69
@@ -1193,12 +1199,12 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/multirow/multirow.sty
 Package: multirow 2021/03/15 v2.8 Span multiple rows of a table
 \multirow@colwidth=\skip91
-\multirow@cntb=\count533
+\multirow@cntb=\count534
 \multirow@dima=\skip92
 \bigstrutjot=\dimen357
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/algorithm2e/algorithm2e.sty
 Package: algorithm2e 2017/07/18 v5.2 algorithms environments
-\c@AlgoLine=\count534
+\c@AlgoLine=\count535
 \algocf@hangindent=\skip93
  (/usr/local/texlive/2024/texmf-dist/tex/latex/relsize/relsize.sty
 Package: relsize 2013/03/29 ver 4.1
@@ -1233,9 +1239,9 @@ Package: relsize 2013/03/29 ver 4.1
 \algoheightrule=\skip109
 \algotitleheightruledefault=\skip110
 \algotitleheightrule=\skip111
-\c@algocfline=\count535
-\c@algocfproc=\count536
-\c@algocf=\count537
+\c@algocfline=\count536
+\c@algocfproc=\count537
+\c@algocf=\count538
 \algocf@algoframe=\box129
 \algocf@algobox=\box130
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/pdflscape/pdflscape.sty
@@ -1247,15 +1253,15 @@ Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
 )
 Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 ))
-\c@cor=\count538
-\c@lem=\count539
-\c@thm=\count540
-\c@defn=\count541
-\c@prop=\count542
-\c@remark=\count543
+\c@cor=\count539
+\c@lem=\count540
+\c@thm=\count541
+\c@defn=\count542
+\c@prop=\count543
+\c@remark=\count544
 Package hyperref Info: Option `colorlinks' set `true' on input line 128.
-\@quotelevel=\count544
-\@quotereset=\count545
+\@quotelevel=\count545
+\@quotereset=\count546
  (./defense.aux)
 \openout1 = `defense.aux'.
 
@@ -1314,16 +1320,16 @@ LaTeX Font Info:    ... okay on input line 154.
 
 (/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count546
+\scratchcounter=\count547
 \scratchdimen=\dimen364
 \scratchbox=\box131
-\nofMPsegments=\count547
-\nofMParguments=\count548
+\nofMPsegments=\count548
+\nofMParguments=\count549
 \everyMPshowfont=\toks70
-\MPscratchCnt=\count549
+\MPscratchCnt=\count550
 \MPscratchDim=\dimen365
-\MPnumerator=\count550
-\makeMPintoPDFobject=\count551
+\MPnumerator=\count551
+\makeMPintoPDFobject=\count552
 \everyMPtoPDFconversion=\toks71
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -1417,7 +1423,7 @@ Package biblatex Info: ... file 'defense.bbl' found.
  (./defense.bbl)
 Package biblatex Info: Reference section=0 on input line 154.
 Package biblatex Info: Reference segment=0 on input line 154.
-\c@lstlisting=\count552
+\c@lstlisting=\count553
  (/usr/local/texlive/2024/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2021/02/14 v1.3d Input encoding file
 \inpenc@prehook=\toks72
@@ -1561,7 +1567,7 @@ Overfull \hbox (115.69934pt too wide) in paragraph at lines 288--288
  [][][][][][]  
  []
 
-<simulation_plots/motivating_piece_convex_combination.png, id=413, 1226.5825pt x 985.6825pt>
+<simulation_plots/motivating_piece_convex_combination.png, id=414, 1226.5825pt x 985.6825pt>
 File: simulation_plots/motivating_piece_convex_combination.png Graphic file (type png)
 <use simulation_plots/motivating_piece_convex_combination.png>
 Package pdftex.def Info: simulation_plots/motivating_piece_convex_combination.png  used on input line 288.
@@ -1824,7 +1830,7 @@ Overfull \hbox (115.69934pt too wide) in paragraph at lines 736--736
  [][][][][][]  
  []
 
-<WSJ_rate_hike_2022.png, id=1041, 643.40375pt x 249.93375pt>
+<WSJ_rate_hike_2022.png, id=1042, 643.40375pt x 249.93375pt>
 File: WSJ_rate_hike_2022.png Graphic file (type png)
 <use WSJ_rate_hike_2022.png>
 Package pdftex.def Info: WSJ_rate_hike_2022.png  used on input line 736.
@@ -1865,17 +1871,17 @@ Overfull \hbox (115.69934pt too wide) in paragraph at lines 750--750
  [][][][][][]  
  []
 
-<NYS_state.png, id=1132, 558.085pt x 337.26pt>
+<NYS_state.png, id=1133, 558.085pt x 337.26pt>
 File: NYS_state.png Graphic file (type png)
 <use NYS_state.png>
 Package pdftex.def Info: NYS_state.png  used on input line 750.
 (pdftex.def)             Requested size: 167.42679pt x 101.17877pt.
-<cnn.png, id=1134, 898.35625pt x 204.765pt>
+<cnn.png, id=1135, 898.35625pt x 204.765pt>
 File: cnn.png Graphic file (type png)
 <use cnn.png>
 Package pdftex.def Info: cnn.png  used on input line 750.
 (pdftex.def)             Requested size: 269.50894pt x 61.42996pt.
-<cnbc.png, id=1136, 997.7275pt x 174.6525pt>
+<cnbc.png, id=1137, 997.7275pt x 174.6525pt>
 File: cnbc.png Graphic file (type png)
 <use cnbc.png>
 Package pdftex.def Info: cnbc.png  used on input line 750.
@@ -1904,7 +1910,7 @@ Overfull \hbox (115.69934pt too wide) in paragraph at lines 789--789
  [][][][][][]  
  []
 
-<iyg.png, id=1210, 774.895pt x 108.405pt>
+<iyg.png, id=1211, 774.895pt x 108.405pt>
 File: iyg.png Graphic file (type png)
 <use iyg.png>
 Package pdftex.def Info: iyg.png  used on input line 789.
@@ -1921,7 +1927,7 @@ Overfull \hbox (115.69934pt too wide) in paragraph at lines 799--799
  [][][][][][]  
  []
 
-<real_data_output_plots/TueSep241059512024_IYG_None_None.png, id=1241, 803.0pt x 602.25pt>
+<real_data_output_plots/TueSep241059512024_IYG_None_None.png, id=1242, 803.0pt x 602.25pt>
 File: real_data_output_plots/TueSep241059512024_IYG_None_None.png Graphic file (type png)
 <use real_data_output_plots/TueSep241059512024_IYG_None_None.png>
 Package pdftex.def Info: real_data_output_plots/TueSep241059512024_IYG_None_None.png  used on input line 799.
@@ -1966,7 +1972,7 @@ Overfull \hbox (115.69934pt too wide) in paragraph at lines 925--925
  [][][][][][]  
  []
 
-<exponential_sim_plot.png, id=1333, 1767.60374pt x 1242.6425pt>
+<exponential_sim_plot.png, id=1334, 1767.60374pt x 1242.6425pt>
 File: exponential_sim_plot.png Graphic file (type png)
 <use exponential_sim_plot.png>
 Package pdftex.def Info: exponential_sim_plot.png  used on input line 925.
@@ -1983,10 +1989,15 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 [38
 
  <./exponential_sim_plot.png>]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 932--932
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 945--945
  [][][][][][]  
  []
 
+<real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png, id=1368, 803.0pt x 602.25pt>
+File: real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png Graphic file (type png)
+<use real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png>
+Package pdftex.def Info: real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png  used on input line 945.
+(pdftex.def)             Requested size: 240.90186pt x 180.67639pt.
 
 Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  [][][][][][]  
@@ -1994,18 +2005,18 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 
 [39
 
-]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 942--942
+ <./real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png>]
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 958--958
  [][][][][][]  
  []
 
-<iphone.png, id=1396, 958.58125pt x 1268.74pt>
+<iphone.png, id=1400, 958.58125pt x 1268.74pt>
 File: iphone.png Graphic file (type png)
 <use iphone.png>
-Package pdftex.def Info: iphone.png  used on input line 942.
+Package pdftex.def Info: iphone.png  used on input line 958.
 (pdftex.def)             Requested size: 172.53717pt x 228.36334pt.
 
-Overfull \vbox (21.96503pt too high) detected at line 942
+Overfull \vbox (21.96503pt too high) detected at line 958
  []
 
 
@@ -2016,7 +2027,7 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 [40
 
  <./iphone.png>]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 951--951
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 967--967
  [][][][][][]  
  []
 
@@ -2028,7 +2039,7 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 [41
 
 ]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 969--969
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 985--985
  [][][][][][]  
  []
 
@@ -2040,7 +2051,7 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 [42
 
 ]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 982--982
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 998--998
  [][][][][][]  
  []
 
@@ -2052,7 +2063,7 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 [43
 
 ]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 1030--1030
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 1046--1046
  [][][][][][]  
  []
 
@@ -2064,7 +2075,7 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 [44
 
 ]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 1039--1039
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 1055--1055
  [][][][][][]  
  []
 
@@ -2076,7 +2087,7 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 [45
 
 ]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 1063--1063
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 1079--1079
  [][][][][][]  
  []
 
@@ -2088,7 +2099,7 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 [46
 
 ]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 1082--1082
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 1098--1098
  [][][][][][]  
  []
 
@@ -2137,10 +2148,10 @@ Package logreq Info: Writing requests to 'defense.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 59047 strings out of 474116
- 1315297 string characters out of 5743682
- 2186004 words of memory out of 5000000
- 80375 multiletter control sequences out of 15000+600000
+ 59189 strings out of 474116
+ 1319406 string characters out of 5743682
+ 2188856 words of memory out of 5000000
+ 80512 multiletter control sequences out of 15000+600000
  590485 words of font info for 116 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  146i,18n,146p,1663b,2518s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -2151,10 +2162,10 @@ pdfTeX warning (dest): name{model_1} has been referenced but does not exist, rep
 pdfTeX warning (dest): name{ARIMA} has been referenced but does not exist, replaced by a fixed one
 
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfsi0900.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfso0900.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfss0500.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfss0600.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfss0700.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfss0800.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfss0900.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfss1095.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfsx0600.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfsx0800.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfsx0900.pfb>
-Output written on defense.pdf (48 pages, 1324336 bytes).
+Output written on defense.pdf (48 pages, 1361142 bytes).
 PDF statistics:
- 1819 PDF objects out of 2073 (max. 8388607)
- 1529 compressed objects within 16 object streams
+ 1823 PDF objects out of 2073 (max. 8388607)
+ 1530 compressed objects within 16 object streams
  127 named destinations out of 1000 (max. 500000)
- 522 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 531 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -288,7 +288,7 @@ png_save_name <- paste("real_data_output_plots/savetime_"
                        ,".png"
                        ,sep="")
 
-png(png_save_name,width = 800, height = 600)
+#png(png_save_name,width = 800, height = 600)
 
 #Now run the algorithm
 output <- HAR(RVSPY_final
@@ -313,4 +313,4 @@ output <- HAR(RVSPY_final
 output$predictions
 output$linear_combinations
 
-dev.off()
+#dev.off()
