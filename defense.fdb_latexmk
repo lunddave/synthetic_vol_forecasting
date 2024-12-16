@@ -1,13 +1,13 @@
 # Fdb version 4
-["biber defense"] 1734286858.98688 "defense.bcf" "defense.bbl" "defense" 1734287382.17848 0
-  "defense.bcf" 1734287382.00811 108877 ac1529d5e5d7300daf33c1dc1efe6245 "pdflatex"
+["biber defense"] 1734316488.19604 "defense.bcf" "defense.bbl" "defense" 1734320018.57403 0
+  "defense.bcf" 1734320018.40346 108877 ac1529d5e5d7300daf33c1dc1efe6245 "pdflatex"
   "defense.bib" 1734155601.31279 41899 bea9defe53f9d5e0a98fb13c7bfeb29c ""
   (generated)
   "defense.bbl"
   "defense.blg"
   (rewritten before read)
-["pdflatex"] 1734287377.92748 "/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/defense.tex" "defense.pdf" "defense" 1734287382.17872 0
-  "/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/defense.tex" 1734287377.68763 45227 e29b2ec8c936bf6714d271db33bcd755 ""
+["pdflatex"] 1734320014.42032 "/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/defense.tex" "defense.pdf" "defense" 1734320018.57433 0
+  "/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/defense.tex" 1734320005.86756 46341 5f5e0c9b282b470590c2caff220cfa1a ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/jknappen/ec/ecrm0500.tfm" 1136768653 3584 178baad7ffca7f5d3428a83bd7cc64c3 ""
@@ -267,6 +267,7 @@
   "/usr/local/texlive/2024/texmf-dist/tex/latex/caption/caption3.sty" 1696191071 72619 ee90b6612147680fd73c3b1406a74245 ""
   "/usr/local/texlive/2024/texmf-dist/tex/latex/caption/subcaption.sty" 1690576852 12494 0c0cdb824278a4d51cefeb2e79901315 ""
   "/usr/local/texlive/2024/texmf-dist/tex/latex/collectbox/collectbox.sty" 1666037909 9124 59c3b56f1a073de66e3eea35f9c173c8 ""
+  "/usr/local/texlive/2024/texmf-dist/tex/latex/colortbl/colortbl.sty" 1708463147 12355 ec728d2e4c37cf8919ee2eff9b75ad0c ""
   "/usr/local/texlive/2024/texmf-dist/tex/latex/dantelogo/dantelogo.sty" 1444427134 1418 e7b3d90646f097cbb3ac0d74d0cc4be4 ""
   "/usr/local/texlive/2024/texmf-dist/tex/latex/datetime2-english/datetime2-english-base.ldf" 1571691642 6045 8e05bb92722a656e9c9a33137d44697a ""
   "/usr/local/texlive/2024/texmf-dist/tex/latex/datetime2-english/datetime2-english.ldf" 1571691642 3411 e0d29395a659fdac0e5d74797bc86e92 ""
@@ -362,6 +363,7 @@
   "/usr/local/texlive/2024/texmf-dist/tex/latex/tikzfill/tikzfill-common.sty" 1691524336 2573 42712c9e0a2df004e43df5b3c95f0c1e ""
   "/usr/local/texlive/2024/texmf-dist/tex/latex/tikzfill/tikzfill.image.sty" 1691524336 1120 ba535da48caa03bf1fd3f03ea87779f8 ""
   "/usr/local/texlive/2024/texmf-dist/tex/latex/tikzfill/tikzlibraryfill.image.code.tex" 1691524336 10931 717eb52299f416934beb8b2b7cd8cee6 ""
+  "/usr/local/texlive/2024/texmf-dist/tex/latex/tools/array.sty" 1698869629 12667 e4b5eb11e4b7239e6c8a52bbe074a6c6 ""
   "/usr/local/texlive/2024/texmf-dist/tex/latex/tools/calc.sty" 1698869629 10214 547fd4d29642cb7c80bf54b49d447f01 ""
   "/usr/local/texlive/2024/texmf-dist/tex/latex/tools/enumerate.sty" 1698869629 3468 0ef513f22d965f96b06adb5cff671cd7 ""
   "/usr/local/texlive/2024/texmf-dist/tex/latex/tools/verbatim.sty" 1700689882 7500 db31c3d04f8bc9010e47a5efbbace9ff ""
@@ -387,20 +389,19 @@
   "WSJ_rate_hike_2022.png" 1712615301.63628 106059 fe0764c134791a07283084017b09e6d0 ""
   "cnbc.png" 1710618103.98606 102544 2326aa3cc6016a49274e9b1bdce419c8 ""
   "cnn.png" 1710618085.5316 88925 9e7e7ac5a27d450d466be211198fc300 ""
-  "defense.aux" 1734287382.0045 11915 9bf73d83f6ef161d43881ba9dcbf3d38 "pdflatex"
-  "defense.bbl" 1734286860.88232 16810 87c1b8d23e73407f138524851bc2ede1 "biber defense"
-  "defense.nav" 1734287382.00877 5557 2937083c97d8dbc04450c37a11f63bce "pdflatex"
-  "defense.out" 1734287382.0059 1432 92bc68b49054b16c69c8ec64fec8b3bc "pdflatex"
-  "defense.run.xml" 1734287382.00873 2373 843fd43a6b195d05baa3b24911e104b2 "pdflatex"
-  "defense.tex" 1734287377.68763 45227 e29b2ec8c936bf6714d271db33bcd755 ""
-  "defense.toc" 1734287382.0088 467 a3f53ee4a6f2f2dd093038fe6cf447b7 "pdflatex"
+  "defense.aux" 1734320018.40008 11804 622076bc10d4cb7b151ffb6441579194 "pdflatex"
+  "defense.bbl" 1734316490.09719 16810 87c1b8d23e73407f138524851bc2ede1 "biber defense"
+  "defense.nav" 1734320018.40409 5555 2d8ab1623f01a3d96d8099bd0e359d1c "pdflatex"
+  "defense.out" 1734320018.40144 1432 92bc68b49054b16c69c8ec64fec8b3bc "pdflatex"
+  "defense.run.xml" 1734320018.40405 2373 843fd43a6b195d05baa3b24911e104b2 "pdflatex"
+  "defense.tex" 1734320005.86756 46341 5f5e0c9b282b470590c2caff220cfa1a ""
+  "defense.toc" 1734320018.40412 467 2650049c7e11048f523b9d3f3aa4bc48 "pdflatex"
   "demonstration.mp4" 1734249960.73986 35664374 9d9aba4efaa8ec0bd061a14d85a7bd1d ""
   "exponential_sim_plot.png" 1732557232.11761 342594 6f68fcf8f7549de280927d894c8ec30c ""
   "iphone.png" 1712779654.00816 168712 1ace7f606f54a94f7c7a546869d7520e ""
   "iyg.png" 1711588969.04934 32325 b3a423a4bcd4fd2591791cf4d9326bb4 ""
   "real_data_output_plots/TueSep241059512024_IYG_None_None.png" 1727189991.73732 69453 cb16da74ac189c9f95085efcb61eec7f ""
   "real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png" 1718484248.08758 52878 5d7d1e5cb0b1ca1f2f4eafef5fc1515a ""
-  "simulation_plots/motivating_piece_convex_combination.png" 1722913159.43774 67448 e7028f59e3bbcdb7942c1055f976195a ""
   (generated)
   "defense.aux"
   "defense.bcf"

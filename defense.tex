@@ -42,10 +42,11 @@
 \usepackage{mathtools}% http://ctan.org/pkg/mathtools
 \usepackage{mathrsfs}
 
+\usepackage[table,xcdraw,usenames]{xcolor}
+
 
 \usepackage{amscd}
 \usepackage{url}
-% \usepackage[table,xcdraw,usenames]{xcolor}
 % \usepackage[usenames]{color}
 
 \usepackage{subcaption}
@@ -202,7 +203,7 @@
 
         We provide a precise proposal to a well-specified challenge:
 
-        \begin{myquote}[colback=red!30, size=small]incomplete information by itself is unlikely to play a key role in forecast failure (except if that information would forecast breaks). Consequently, using large amounts of data may not correct one of the main problems confronting forecasters, namely location shifts, unless that additional information is directly pertinent to forecasting breaks \parencite[][]{castle2013forecasting}
+        \begin{myquote}[colback=red!30, size=small]incomplete information by itself is unlikely to play a key role in forecast failure (except if that information would forecast breaks). Consequently, using large amounts of data may not correct one of the main problems confronting forecasters, namely \textcolor{blue}{location shifts}, unless that additional information is directly pertinent to forecasting breaks \parencite[][]{castle2013forecasting}
         \end{myquote}
 
     \end{frame}
@@ -215,7 +216,7 @@
     
             \bigskip
     
-            \item The framework we've offered is something others can `plug-in' to easily and add to.
+            \item The framework we offer is something others can `plug-in' to and add to.
     
             \bigskip
     
@@ -274,17 +275,40 @@
 \end{frame}
 
 \begin{frame}
-    \frametitle{Punchline of the paper}
+
+    \begin{example}[Weekend of March 6th - 8th, 2020]
+        \href{https://www.governor.ny.gov/news/novel-coronavirus-briefing-governor-cuomo-declares-state-emergency-contain-spread-virus}{\includegraphics[scale=.3]{NYS_state.png}}
+
+        \href{https://www.cnbc.com/2020/03/08/opec-deal-collapse-sparks-price-war-20-oil-in-2020-is-coming.html}{\includegraphics[scale=.3]{cnn.png}}
+
+        \href{https://www.cnn.com/2020/03/08/investing/oil-prices-crash-opec-russia-saudi-arabia/index.html}{\includegraphics[scale=.3]{cnbc.png}}
+        \end{example}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Punchline}
     
     \begin{itemize}
-        \item[] <1-> Credible forecasting is possible under news shocks, so long as we incorporate external information to account for the \textcolor{red}{nonzero errors}.
-        \item[] <2-> \begin{figure}[H]
-            \begin{center}
-              \includegraphics[scale=.1]{simulation_plots/motivating_piece_convex_combination.png}
-              \caption{Adjusting our One-Step-Ahead Forecast Using Only Arithmetic Mean of Donors}
-              \end{center}
-            \end{figure}
+        \item <1-> Credible forecasting is possible under news shocks, so long as we incorporate external information to account for the \textcolor{red}{nonzero errors}.
+        \item <2-> Two distinctions: internal/external and conventional/unconventional
+        \item[] <3->     \begin{table}[htb]
+            \centering % instead of \begin{center}
+            \caption{A 2x2 Schema of Forecast Information, With Examples}
+            \begin{tabular}{ | p{1cm} | p{3cm}| p{3cm} | } 
+              \hline
+              & Conventional Econometric Models & Outside Conventional Econometric Models\\ 
+              \hline
+              internal & Lags of the series itself; past shocks & Polynomial expansion of the feature space and other transformations without solid theoretical motivation \\
+              \hline
+              external & Macro variables like interest rates, commodity prices; weather-related variables & Google Trends, high-frequency data like prediction markets; past shocks under similar conditions \\ 
+              \hline
+            \end{tabular}
+          \end{table}
     \end{itemize}
+
+
+
     \end{frame}
 
 \part{two}
@@ -720,21 +744,8 @@
         \item <3-> Scheduled macroeconomic news possibly pre-empted by a news leak
 
         \href{https://www.wsj.com/articles/bad-inflation-reports-raise-odds-of-surprise-0-75-percentage-point-rate-rise-this-week-11655147927}{\includegraphics[scale=.3]{WSJ_rate_hike_2022.png}}
+
     \end{itemize}
-\end{frame}
-
-
-
-\begin{frame}
-
-    \begin{example}[Weekend of March 6th - 8th, 2020]
-        \href{https://www.governor.ny.gov/news/novel-coronavirus-briefing-governor-cuomo-declares-state-emergency-contain-spread-virus}{\includegraphics[scale=.3]{NYS_state.png}}
-
-        \href{https://www.cnbc.com/2020/03/08/opec-deal-collapse-sparks-price-war-20-oil-in-2020-is-coming.html}{\includegraphics[scale=.3]{cnn.png}}
-
-        \href{https://www.cnn.com/2020/03/08/investing/oil-prices-crash-opec-russia-saudi-arabia/index.html}{\includegraphics[scale=.3]{cnbc.png}}
-        \end{example}
-
 \end{frame}
     
     \begin{frame}{Why apply our method to the 2016 US Election?}
@@ -871,15 +882,47 @@
 \begin{frame}
     \fontsize{8pt}{9pt}
     
+    \frametitle{Heterogeneous Autoregression (HAR)}
+    
+    \begin{figure}[h!]
+        \centering    
+        \movie[externalviewer]{\includegraphics[scale=.3]{real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png}}{demonstration.mp4}
+            \caption{Click the image above to see a video of the R package's functionality.}
+        \end{figure}     
+
+    \end{frame}
+
+
+\begin{frame}
+    \fontsize{8pt}{9pt}
+    
     \frametitle{Simulations: Parameter Correction Using An Aggregated Decay Parameter from Donors}
     
         
-    Recall an \hyperlink{model_1}{$\mc{M}_1$} model on the volatility, which is characterized by an exogenous shock to the volatility equation generated by an affine function of the covariates:
+    Recall an \hyperlink{model_1}{$\mc{M}_1$} model on the volatility, which is characterized by an exogenous shock to the volatility equation generated by an affine function of the covariates.
+
+    \bigskip
+
+    Now consider, for $i=1,2,...,n+1$, the family of models
     
     \begin{align}
-        y_{i,t} = \alpha_{i} + \eta[1 - e^{-\psi[t-T_{i}^{*}]}]\textbf{1}_{t\geq T_{i}^{*}+1} + \epsilon_{i,t}, \epsilon_{i,t} \simiid [0,\sigma^{2}] \text{ .}\label{decay_model}
-        \end{align}
+        \mc{M}_{exp} \colon 
+    \begin{array}{l}
+        y_{i,t} = \alpha_{i} + \eta[1 - e^{-\psi_{i}[t-T_{i}^{*}]}]\textbf{1}_{t\geq T_{i}^{*}+1} + \epsilon_{i,t}, \epsilon_{i,t} \\[.2cm]  
+          \psi_{i} = \x^{T}_{i,t}\lambda_{i,t} \\[.2cm]
+         \x_{i,t}^{T} = (1,x^{1}_{i,t},...,x^{p}_{i,t})\\[.2cm] 
+         \lambda_{i,t}^{T} = (u_{i,t},\lambda^{1}_{t},...,\lambda^{p}_{t}),\\[.2cm]
+        \end{array}
+    \end{align}
+
+    with time-varying and observable covariate vector $\x_{i,t}^{T}$, time-varying, unobservable, and potentially random vector
     
+    \begin{align*}
+    \lambda_{i,t} &\sim \mc{F}_{\lambda}\text{ with }  \E_{\mathcal{F}_{\lambda}}(\lambda) = \mu_{\lambda_{t}}, \mrm{Var}_{\mc{F}_{\lambda}}(\lambda) = \Sigma_{\lambda_{t}},\\
+    \end{align*}
+
+    and time-invariant error structure just as in $\mc{M}_{1}$.
+
     % https://www.overleaf.com/learn/latex/Beamer_Presentations%3A_A_Tutorial_for_Beginners_(Part_3)%E2%80%94Blocks%2C_Code%2C_Hyperlinks_and_Buttons
 
     \end{frame}
@@ -888,19 +931,17 @@
         \fontsize{8pt}{9pt}
         
         \frametitle{Simulations: Parameter Correction Using An Aggregated Decay Parameter from Donors}
-
-    We now investigate the exponential decay model introduced just above.  We model the decay parameter $\psi$ as a dot product of donor-specific and donor-invariant quantities.
     \begin{figure}[h!]
       \begin{center}
         \begin{tikzpicture}
-          \node[anchor=south west,inner sep=0] at (0,0) {\includegraphics[width=\textwidth]{exponential_sim_plot.png
+          \node[anchor=south west,inner sep=0] at (0,0) {\includegraphics[scale = .14]{exponential_sim_plot.png
           }};
           % \draw[red,ultra thick,rounded corners] (7.5,5.3) rectangle (9.4,6.2);
           % \node[draw,text width=4.45cm] at (9.8,3.2) {$\textcolor{blue}{\hat\sigma^{2}_{adjusted} = \hat\sigma^{2}_{unadjusted} + \hat\omega^{*}}$ };
           % \node[draw,text width=2.62cm] at (14.8,2.8) {$\textcolor{blue}{\hat\omega^{*} = \sum^{n+1}_{i=2}\pi_{i}\hat\omega^{*}_{i}}$ };    
           
       \end{tikzpicture}
-        \caption{We simulate a random walk centered at $\mu = 100$ that is subject to a shock at approximately time index 440.  The shock of size -4 is not realized over a single index.  Instead, the shock is governed by a decay exponential decay parameter $\psi_{1}$, as are exponential shocks in $n = 10$ donor series.  We estimate $\psi_{1}$ using a convex combination of the estimated decay parameters $\{\psi_{i}\}_{i=2}^{n+1}$ , resulting in a distance-based weighting prediction of the shock.  We also illustrate the arithmetic-mean-based prediction of the shock using the color orange.  This prediction is based on an overestimate of $\psi_{1}$ and hence results in residuals that undershoot the time series under study.} 
+        \caption{We simulate a random walk centered at $\mu = 100$, subject to a shock at approximately time index 440.  Shock of size -4 is not realized over a single index.  Instead, shock is governed by a decay exponential decay parameter $\psi_{1}$, as are exponential shocks in $n = 10$ donor series.  We estimate $\psi_{1}$ using a convex combination of the estimated decay parameters $\{\psi_{i}\}_{i=2}^{n+1}$ , resulting in a distance-based weighting prediction of the shock.  We also illustrate the arithmetic-mean-based prediction of the shock using the color orange.  This prediction is based on an overestimate of $\psi_{1}$ and hence results in residuals that undershoot the time series under study.} 
      
         \end{center}
       \end{figure}
@@ -944,6 +985,13 @@
     What assurances do we have that the method will be good?
 
     \bigskip
+
+    Some ideas here:
+
+    \begin{enumerate}
+    \item multiverse
+    \item permute donors
+    \end{enumerate}
 
     \end{frame}
 
