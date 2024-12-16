@@ -1,13 +1,13 @@
 # Fdb version 4
-["biber defense"] 1734362662.01026 "defense.bcf" "defense.bbl" "defense" 1734362800.50365 0
-  "defense.bcf" 1734362800.32703 108725 93454a68ab8e04b2c21bcf924cdbee78 "pdflatex"
+["biber defense"] 1734362662.01026 "defense.bcf" "defense.bbl" "defense" 1734364035.9018 0
+  "defense.bcf" 1734364035.73889 108725 93454a68ab8e04b2c21bcf924cdbee78 "pdflatex"
   "defense.bib" 1734155601.31279 41899 bea9defe53f9d5e0a98fb13c7bfeb29c ""
   (generated)
   "defense.bbl"
   "defense.blg"
   (rewritten before read)
-["pdflatex"] 1734362796.1444 "/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/defense.tex" "defense.pdf" "defense" 1734362800.50388 0
-  "/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/defense.tex" 1734362795.8723 46351 73d03bc9e7717a4db3527722cab78f9a ""
+["pdflatex"] 1734364031.76786 "/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/defense.tex" "defense.pdf" "defense" 1734364035.90205 0
+  "/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/defense.tex" 1734364022.99105 46807 c9adeaf917fb19ba08be10db4b0a301e ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/jknappen/ec/ecrm0500.tfm" 1136768653 3584 178baad7ffca7f5d3428a83bd7cc64c3 ""
@@ -386,16 +386,15 @@
   "/usr/local/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt" 1726429188 8221430 faf366a6029b154b9123a4214548c916 ""
   "/usr/local/texlive/2024/texmf.cnf" 1710266656 577 e590dabc9e28c5b61546e15f63eebcdf ""
   "NYS_state.png" 1711217136.13257 311928 df65aa17dff9b6e6aab779de8a3fce40 ""
-  "WSJ_rate_hike_2022.png" 1712615301.63628 106059 fe0764c134791a07283084017b09e6d0 ""
   "cnbc.png" 1710618103.98606 102544 2326aa3cc6016a49274e9b1bdce419c8 ""
   "cnn.png" 1710618085.5316 88925 9e7e7ac5a27d450d466be211198fc300 ""
-  "defense.aux" 1734362800.32367 11653 ac4b76922e6e8925f1450ae34122f63b "pdflatex"
+  "defense.aux" 1734364035.73534 11782 9efd06c44f54c0b7d0f8867d5ed772a1 "pdflatex"
   "defense.bbl" 1734362663.99825 14197 ebe4d1e3f4e0deb59bb2af9af41a51cf "biber defense"
-  "defense.nav" 1734362800.32765 5740 362b68a8e934cdd46d4b66abdf3fca64 "pdflatex"
-  "defense.out" 1734362800.32499 1432 92bc68b49054b16c69c8ec64fec8b3bc "pdflatex"
-  "defense.run.xml" 1734362800.32761 2373 843fd43a6b195d05baa3b24911e104b2 "pdflatex"
-  "defense.tex" 1734362795.8723 46351 73d03bc9e7717a4db3527722cab78f9a ""
-  "defense.toc" 1734362800.32768 467 1d687af4068b10711846dd6c16a2e19c "pdflatex"
+  "defense.nav" 1734364035.73953 5833 4f4699f39d88c63791c4b318f2ddc824 "pdflatex"
+  "defense.out" 1734364035.73673 1432 92bc68b49054b16c69c8ec64fec8b3bc "pdflatex"
+  "defense.run.xml" 1734364035.73948 2373 843fd43a6b195d05baa3b24911e104b2 "pdflatex"
+  "defense.tex" 1734364022.99105 46807 c9adeaf917fb19ba08be10db4b0a301e ""
+  "defense.toc" 1734364035.73955 467 faaab9969fb6aec4e15b3ea377dbace7 "pdflatex"
   "demonstration.mp4" 1734249960.73986 35664374 9d9aba4efaa8ec0bd061a14d85a7bd1d ""
   "exponential_sim_plot.png" 1732557232.11761 342594 6f68fcf8f7549de280927d894c8ec30c ""
   "iphone.png" 1712779654.00816 168712 1ace7f606f54a94f7c7a546869d7520e ""
