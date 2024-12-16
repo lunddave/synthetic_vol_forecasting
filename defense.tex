@@ -662,7 +662,7 @@
     
 \end{frame}
 
-\begin{frame}\frametitle{Two slides about theory}
+\begin{frame}\frametitle{Three slides about theory}
    
     \begin{table}[htb]
         \centering % instead of \begin{center}
@@ -679,14 +679,44 @@
       \end{table}
 \end{frame}
 
-\begin{frame}\frametitle{Two slides about theory}
+\begin{frame}\frametitle{Three slides about theory}
    
+    An oft-abused term in applied math: similarity
     \begin{itemize}
-    \item 
+    \item Quantitative or qualitative?
+    \item Approximation-based?
+    \item Symmetric or asymmetric?
+    \item Binary or $n$-ary?
     \end{itemize}
+
+    To give a name to what we're doing, we can call it distance-based weighting, which is a special case of an approximation-based $n$-ary similarity metric.
+\end{frame}
+
+\begin{frame}\frametitle{Three slides about theory}
+   
+    An oft-abused term in applied math: similarity
+    \begin{itemize}
+    \item Quantitative or qualitative?
+    \item Approximation-based?
+    \item Symmetric or asymmetric?
+    \item Binary or $n$-ary?
+    \end{itemize}
+
+    To give a name to what we're doing, we can call it distance-based weighting, which is a special case of an approximation-based $n$-ary similarity metric.
+\end{frame}
+
+\begin{frame}\frametitle{Three slides about theory}
+    The term $\x^{T}_{i,t}\lambda_{i,t}$ is deemed the $\textcolor{blue}{correction term}$ for donor $i$ at time $t$, and the function
+
+    \begin{align*}
+      \xi \colon \mathcal{F}_{2,T^{*}_{2}+h} \times \ldots \times \mathcal{F}_{n+1, T^{*}_{n+1}+h} &\to \mathcal{F}_{1,T^{*}_{1}+h}\\
+    \end{align*}
+    that estimates or predicts $\alpha_{1,T^{*}_{1}+h}$ will be deemed the \textcolor{red}{correction function}.  The correction function maps donor information --- be it observables or inferences --- to the prediction function for the time series under study. 
 \end{frame}
 
 \begin{frame}\frametitle{Global Overview}
+
+    Abstracting away from particular models, what does our method require?
 
     \begin{enumerate}
         \item \textbf{Object-to-predict}
