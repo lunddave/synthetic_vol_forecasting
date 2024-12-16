@@ -42,7 +42,7 @@
 \usepackage{mathtools}% http://ctan.org/pkg/mathtools
 \usepackage{mathrsfs}
 
-\usepackage[table,xcdraw,usenames]{xcolor}
+\usepackage[table,xcdraw]{xcolor}
 
 
 \usepackage{amscd}
@@ -174,10 +174,6 @@
 
         \bigskip
 
-        What should we do?  Is there a meaningful distinction between not knowing the DGP and knowing it but lacking the data?
-
-        \bigskip
-
         Central technique explored: \textcolor{blue}{\textit{correction} of model parameters using an aggregation strategy}, where aggregation means that we make use of external data.
 
 
@@ -217,6 +213,11 @@
             \bigskip
     
             \item The framework we offer is something others can `plug-in' to and add to.
+            
+            % \begin{itemize}
+            % \item More exotic estimands (predictands would be the technically correct term)
+            % \item Alternative methods of determining similarity
+            % \end{itemize}
     
             \bigskip
     
@@ -290,21 +291,7 @@
     \frametitle{Punchline}
     
     \begin{itemize}
-        \item <1-> Credible forecasting is possible under news shocks, so long as we incorporate external information to account for the \textcolor{red}{nonzero errors}.
-        \item <2-> Two distinctions: internal/external and conventional/unconventional
-        \item[] <3->     \begin{table}[htb]
-            \centering % instead of \begin{center}
-            \caption{A 2x2 Schema of Forecast Information, With Examples}
-            \begin{tabular}{ | p{1cm} | p{3cm}| p{3cm} | } 
-              \hline
-              & Conventional Econometric Models & Outside Conventional Econometric Models\\ 
-              \hline
-              internal & Lags of the series itself; past shocks & Polynomial expansion of the feature space and other transformations without solid theoretical motivation \\
-              \hline
-              external & Macro variables like interest rates, commodity prices; weather-related variables & Google Trends, high-frequency data like prediction markets; past shocks under similar conditions \\ 
-              \hline
-            \end{tabular}
-          \end{table}
+        \item <1-> Credible forecasting is possible under news shocks, so long as we incorporate external information to account for the \textcolor{red}{nonzero errors}. 
     \end{itemize}
 
 
@@ -320,11 +307,10 @@
 \end{frame}
 
 \begin{frame}
-    \frametitle{Premise: There is a breaking news at some fractional lag t-$\epsilon$}
+    \frametitle{Premise: There is breaking news at some fractional lag t-$\epsilon$}
     
     \begin{itemize}
-    \item After-hours trading provides a poor forum in which to digest news
-    \item News constitutes public, material information for one or more traded assets
+    \item Mechanisms for evaluating the news are either offline, too thin, or otherwise unavailable
     \item The \textcolor{red}{qualitative aspects} of the news provide a basis upon which to 
     \begin{itemize}
         \item match to past news shocks
@@ -393,13 +379,11 @@
     \begin{array}{l}
           y_{i,t} = F(\mathcal{F}_{i,t-1}) + \alpha_{i,t} + \epsilon_{i,t}\\[.2cm]
           \alpha_{i,t} = \x^{T}_{i,t}\lambda_{i,t} \\[.2cm]
-         \x_{i,t}^{T} = (1,x^{1}_{i,t},...,x^{p}_{i,t})\\[.2cm] 
-         \lambda_{i,t}^{T} = (u_{i,t},\lambda^{1}_{t},...,\lambda^{p}_{t}),\\[.2cm]
+         \x_{i,t}^{T} = (1,x^{1}_{i,t},...,x^{p}_{i,t}) \text{ (observable and deterministic)}\\[.2cm] 
+         \lambda_{i,t}^{T} = (u_{i,t},\lambda^{1}_{t},...,\lambda^{p}_{t}) \text{ (unobservable and potentially random)},\\[.2cm]
         \end{array}
     \end{align}
 
-    with time-varying and observable covariate vector $\x_{i,t}^{T}$, time-varying, unobservable, and potentially random vector
-    
     \begin{align*}
     \lambda_{i,t} &\sim \mc{F}_{\lambda}\text{ with }  \E_{\mathcal{F}_{\lambda}}(\lambda) = \mu_{\lambda_{t}}, \mrm{Var}_{\mc{F}_{\lambda}}(\lambda) = \Sigma_{\lambda_{t}},\\
     \end{align*}
@@ -416,10 +400,9 @@
         Note
         \begin{itemize}
             
-            \item \textit{F} maps objects from the past into future objects of $y_{i,t}$
-            \item $\epsilon_{i,t}$ uncorrelated across time and donors
-            \item The dot product $\alpha_{i,t} = \x^{T}_{i,t}\lambda_{i,t}$ includes the term $u_{i,t}$ that is not shared among donors.  It encodes the known possibility that the shocks will vary across donors both in ways that can predicted based on pre-shock covariates as well as in ways that cannot be predicted.  
-            \item That the parameter vector is time-varying allows us to capture that most time points are without news shocks (in which case $\alpha_{i,t}$ is of negligible effect), but conditional upon information arriving between $T_{1}^{*}$ and $T_{1}^{*}+1$, we may know with near certainty that $\lambda_{1,T_{1}^{*}+h}$ will be nonzero in norm for some $h>0$. 
+            % \item $\epsilon_{i,t}$ uncorrelated across time and donors
+            \item The dot product $\alpha_{i,t} = \x^{T}_{i,t}\lambda_{i,t}$ includes the term $u_{i,t}$ that is \textcolor{blue}{not shared} among donors.
+            \item That $\lambda_{i,t}$ parameter vector is time-varying allows us to capture that most time points are without news shocks (in which case $\alpha_{i,t}$ is of negligible effect), but conditional upon information arriving between $T_{1}^{*}$ and $T_{1}^{*}+1$, we may know with near certainty that $\lambda_{1,T_{1}^{*}+h}$ will be nonzero in norm for some $h>0$. 
         \end{itemize}
     \end{frame}
     
@@ -452,7 +435,6 @@
     % % and $\varepsilon_{i,t}$ is idiosyncratic noise, uncorrelated across time and donors.
     % \end{frame}
      
-    
     \begin{frame}
         \frametitle{Significance of the Covariates $\x_{i,t}$}
         Covariates chosen for inclusion may be any $\mathcal{F}_{t}$-measurable function, for example
@@ -495,28 +477,30 @@
     
     \fontsize{7.6}{7}
         
-    We now present two one-step-ahead forecasts for the time series under study. 
-    
-    \bigskip
-    The first is the unadjusted forecast. The second is the adjusted forecast, which differs by the predicted correction term.  The forecasts are: 
+    We now present two one-step-ahead forecasts.  First is the unadjusted forecast. The second is the adjusted forecast, which differs by the predicted correction term:
 
     \begin{align*}
-      \text{Forecast 1: }& 
-       \hat y_{unadjusted, T_{1}^{*}+1} = \hat\E[\mathcal{F}_{T_{1}^{*}}] \\
-      \text{Forecast 2: }&
-       \hat y_{adjusted,T_{1}^{*}+1} = \hat\E[\mathcal{F}_{T_{1}^{*}}] + \hat\alpha_{T^{*}_{1}+1} \text{ .}
+      \text{Forecast 1: } 
+       &\hat y_{unadjusted, T_{1}^{*}+1} = \hat\E[y_{i,T_{1}^{*}+1}|\mathcal{F}_{T_{1}^{*}}] \\
+       \\
+      \text{Forecast 2: }
+       &\hat y_{adjusted,T_{1}^{*}+1} = \hat\E[y_{i,T_{1}^{*}+1}|\mathcal{F}_{T_{1}^{*}}] + \hat\alpha_{T^{*}_{1}+1} \text{ .}
     \end{align*}
 
     \end{frame}
     
     \begin{frame}
     \frametitle{Distance-based Weighting in Action}
+
+    (For ease of exposition, we omit time indices)\\
     
+        \bigskip
+
     \begin{itemize}
     
-    \item <1->  Observe the pair $(\{\hat\omega^{*}_{i}\}^{n+1}_{i=2},\{\textbf{v}_{i}\}^{n+1}_{i=2})$.  \\
+    \item <1->  Observe the pair $(\{\hat\alpha_{i}\}^{n+1}_{i=2},\{\x_{i}\}^{n+1}_{i=2})$.  \\
     
-    \item <2-> Goal: recover weights $\{\weight_{i}\}^{n+1}_{i=2} \in \Delta^{n}$ and compute $\hat\omega^{*} \coloneq \sum^{n+1}_{i=2}\weight_{i}\hat\omega^{*}_{i}$, our forecast adjustment term.
+    \item <2-> Goal: recover weights $\{\weight_{i}\}^{n+1}_{i=2} \in \Delta^{n}$ and compute $\hat\alpha \coloneq \sum^{n+1}_{i=2}\weight_{i}\hat\alpha_{i}$, our forecast adjustment term.
     
     \item <3-> Following \cite[][]{abadie2003economic},\cite[][]{abadie2010synthetic}, let $\|\cdot\|_{\textbf{S}}$ denote any semi-norm on $\mathbb{R}^{p}$, and define
     
@@ -631,11 +615,11 @@
                         [What other time series are governed by the parametric model? 
                         ,edge=green,fill=blue!30 
                         ]
-                        [The information that helped spot the break can be used to 
+                        [The information that helped spot the break can be used.
                         ,edge=red,fill=gray!30
                         ]
                         ]
-                      [Use “regular forces” to do the model adjustment for the ,edge=red,fill=gray!30
+                      [Use “regular forces” to do the model adjustment.,edge=red,fill=gray!30
                       ]
                       ]
                       [Then forecasting will require at least one post-break data point to be observed.,edge=red,fill=gray!30]
@@ -661,7 +645,7 @@
     \coordinate [label=left:Donor 2] (2) at (-2,0,-2*\factor);
     \coordinate [label=above:Donor 3] (3) at (0,2,2*\factor);
     \coordinate [label=below:Donor 4] (4) at (0,-2,2*\factor);
-    \coordinate [label=below:$\vec{\pi}_{MSE minimizer}$] (5) at (2.1,-.8,-.3*\factor);
+    \coordinate [label=below:$\vec{\pi}_{MSE minimizer}$] (5) at (1.7,-.8,-.3*\factor);
     
     
     % \draw[->] (0,0) -- (3,0,0) node[right] {$x$};
@@ -678,19 +662,36 @@
     
 \end{frame}
 
+\begin{frame}\frametitle{Information, two distinctions: internal/external and conventional/unconventional}
+   
+    \begin{table}[htb]
+        \centering % instead of \begin{center}
+        \caption{A 2x2 Schema of Forecast Information, With Examples}
+        \begin{tabular}{ | p{1cm} | p{4.8cm}| p{4.8cm} | } 
+          \hline
+          & Conventional Econometric Models & Outside Conventional Econometric Models\\ 
+          \hline
+          internal & Lags of the series itself; past shocks & Polynomial expansion of the feature space and other transformations without solid theoretical motivation \\
+          \hline
+          external & Macro variables like interest rates, commodity prices; weather-related variables & Google Trends, high-frequency data like prediction markets; past shocks under similar conditions \\ 
+          \hline
+        \end{tabular}
+      \end{table}
+\end{frame}
+
 \begin{frame}\frametitle{Global Overview}
 
     \begin{enumerate}
         \item \textbf{Object-to-predict}
-        Most fundamentally, the method requires a random object (indexed over time and possibly space, as well) that obeys a specification with additive errors, or, at the very least, a specification that can be transformed to have additive errors.  
+       Random object (indexed over time and possibly space, as well) obeying specification with additive errors or a specification that can be transformed to have additive errors.  
             
-      \item \textbf{Common Model Family on the Shocks} The method requires that residuals be governed by a model that is shared across all units.  This ensures that in the estimation of news shocks in the donor pool, the estimators will enjoy similar properties that will produce a good aggregated shock estimator.  This condition is satisfied by the parametric shock distributions found in \cite[][]{lin2021minimizing, lundquist2024volatility}.
+      \item \textbf{Common Model Family on the Shocks} Requires that residuals be governed by a model that is shared across all units.  This ensures that in the estimation of news shocks in the donor pool, the estimators will enjoy similar properties that will produce a good aggregated shock estimator.
       
       \item \textbf{Reliable and Shared Model-Fitting Procedure} There must exist a reliable model-fitting procedure for the $n+1$ units.
       
       \item \textbf{Reliable Correction Term Estimation} 
 
-      \item \textbf{Reliable Correction Function Estimation} There must exist a correction function (presumably based on the correction term) that maps data from the donor pool to the $\textit{predicted}$ correction term in the time series under study based on some notion of similarity.  In some cases, there may exist a posited DGP that the correction term estimates.  In other cases, there may be no posited DGP.
+      \item \textbf{Reliable Correction Function Estimation} There must exist a correction function (presumably based on the correction term) that maps data from the donor pool to the $\textit{predicted}$ correction term in the time series under study based on some notion of similarity.  
     \end{enumerate}
 \end{frame}
 
@@ -934,14 +935,14 @@
     \begin{figure}[h!]
       \begin{center}
         \begin{tikzpicture}
-          \node[anchor=south west,inner sep=0] at (0,0) {\includegraphics[scale = .14]{exponential_sim_plot.png
+          \node[anchor=south west,inner sep=0] at (0,0) {\includegraphics[scale = .11]{exponential_sim_plot.png
           }};
           % \draw[red,ultra thick,rounded corners] (7.5,5.3) rectangle (9.4,6.2);
           % \node[draw,text width=4.45cm] at (9.8,3.2) {$\textcolor{blue}{\hat\sigma^{2}_{adjusted} = \hat\sigma^{2}_{unadjusted} + \hat\omega^{*}}$ };
           % \node[draw,text width=2.62cm] at (14.8,2.8) {$\textcolor{blue}{\hat\omega^{*} = \sum^{n+1}_{i=2}\pi_{i}\hat\omega^{*}_{i}}$ };    
           
       \end{tikzpicture}
-        \caption{We simulate a random walk centered at $\mu = 100$, subject to a shock at approximately time index 440.  Shock of size -4 is not realized over a single index.  Instead, shock is governed by a decay exponential decay parameter $\psi_{1}$, as are exponential shocks in $n = 10$ donor series.  We estimate $\psi_{1}$ using a convex combination of the estimated decay parameters $\{\psi_{i}\}_{i=2}^{n+1}$ , resulting in a distance-based weighting prediction of the shock.  We also illustrate the arithmetic-mean-based prediction of the shock using the color orange.  This prediction is based on an overestimate of $\psi_{1}$ and hence results in residuals that undershoot the time series under study.} 
+        \caption{Simulated random walk centered at $\mu = 100$, subject to a shock at approximately time index 440.  Shock of size -4 is not realized over a single index.  Instead, shock is governed by a decay exponential decay parameter $\psi_{1}$, as are exponential shocks in $n = 10$ donor series.  We estimate $\psi_{1}$ using a convex combination of the estimated decay parameters $\{\psi_{i}\}_{i=2}^{n+1}$ , resulting in a distance-based weighting prediction of the shock.  We also illustrate the arithmetic-mean-based prediction of the shock using the color orange.  This prediction is based on an overestimate of $\psi_{1}$ and hence results in residuals that undershoot the time series under study.} 
      
         \end{center}
       \end{figure}
@@ -994,7 +995,6 @@
     \end{enumerate}
 
     \end{frame}
-
 
 
 \section{Future directions for Forecasting Amid Shocks}

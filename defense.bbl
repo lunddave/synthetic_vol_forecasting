@@ -350,67 +350,6 @@
       \field{pages}{43\bibrangedash 64}
       \range{pages}{22}
     \endentry
-    \entry{lin2021minimizing}{article}{}
-      \name{author}{2}{}{%
-        {{hash=0840dad5e484231880452bc328d144a2}{%
-           family={Lin},
-           familyi={L\bibinitperiod},
-           given={Jilei},
-           giveni={J\bibinitperiod}}}%
-        {{hash=bf255f8e7ed95e29d355096a5fbf5403}{%
-           family={Eck},
-           familyi={E\bibinitperiod},
-           given={Daniel\bibnamedelima J},
-           giveni={D\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {Elsevier}%
-      }
-      \strng{namehash}{54ea06fb84f23976c8a0c10e8a121842}
-      \strng{fullhash}{54ea06fb84f23976c8a0c10e8a121842}
-      \strng{bibnamehash}{54ea06fb84f23976c8a0c10e8a121842}
-      \strng{authorbibnamehash}{54ea06fb84f23976c8a0c10e8a121842}
-      \strng{authornamehash}{54ea06fb84f23976c8a0c10e8a121842}
-      \strng{authorfullhash}{54ea06fb84f23976c8a0c10e8a121842}
-      \field{sortinit}{L}
-      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{International Journal of Forecasting}
-      \field{title}{Minimizing post-shock forecasting error through aggregation of outside information}
-      \field{year}{2021}
-    \endentry
-    \entry{lundquist2024volatility}{article}{}
-      \name{author}{2}{}{%
-        {{hash=362a508e7fd9364006f7b031f1c5d53a}{%
-           family={Lundquist},
-           familyi={L\bibinitperiod},
-           given={David},
-           giveni={D\bibinitperiod}}}%
-        {{hash=1b0dbfe849de928e5c41291817f47faf}{%
-           family={Eck},
-           familyi={E\bibinitperiod},
-           given={Daniel},
-           giveni={D\bibinitperiod}}}%
-      }
-      \strng{namehash}{a4444413fea6e7f179caa14651c0674c}
-      \strng{fullhash}{a4444413fea6e7f179caa14651c0674c}
-      \strng{bibnamehash}{a4444413fea6e7f179caa14651c0674c}
-      \strng{authorbibnamehash}{a4444413fea6e7f179caa14651c0674c}
-      \strng{authornamehash}{a4444413fea6e7f179caa14651c0674c}
-      \strng{authorfullhash}{a4444413fea6e7f179caa14651c0674c}
-      \field{sortinit}{L}
-      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{arXiv preprint arXiv:2406.08738}
-      \field{title}{Volatility Forecasting Using Similarity-based Parameter Correction and Aggregated Shock Information}
-      \field{year}{2024}
-    \endentry
   \enddatalist
 \endrefsection
 \endinput
