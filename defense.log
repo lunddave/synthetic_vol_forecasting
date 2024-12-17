@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.15)  17 DEC 2024 01:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.15)  17 DEC 2024 10:40
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1490,6 +1490,9 @@ Overfull \hbox (115.69934pt too wide) in paragraph at lines 184--184
  []
 
 
+LaTeX Warning: Citation 'fatemi2023mitigating' on page 2 undefined on input line 184.
+
+
 Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  [][][][][][]  
  []
@@ -1502,6 +1505,9 @@ Overfull \hbox (115.69934pt too wide) in paragraph at lines 195--195
  []
 
 
+LaTeX Warning: Citation 'clements2005guest' on page 3 undefined on input line 195.
+
+
 Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  [][][][][][]  
  []
@@ -1512,6 +1518,9 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 Overfull \hbox (115.69934pt too wide) in paragraph at lines 205--205
  [][][][][][]  
  []
+
+
+LaTeX Warning: Citation 'castle2013forecasting' on page 4 undefined on input line 205.
 
 
 Overfull \hbox (115.69934pt too wide) has occurred while \output is active
@@ -1563,17 +1572,17 @@ Overfull \hbox (115.69934pt too wide) in paragraph at lines 288--288
  [][][][][][]  
  []
 
-<NYS_state.png, id=357, 558.085pt x 337.26pt>
+<NYS_state.png, id=352, 558.085pt x 337.26pt>
 File: NYS_state.png Graphic file (type png)
 <use NYS_state.png>
 Package pdftex.def Info: NYS_state.png  used on input line 288.
 (pdftex.def)             Requested size: 167.42679pt x 101.17877pt.
-<cnn.png, id=360, 898.35625pt x 204.765pt>
+<cnn.png, id=355, 898.35625pt x 204.765pt>
 File: cnn.png Graphic file (type png)
 <use cnn.png>
 Package pdftex.def Info: cnn.png  used on input line 288.
 (pdftex.def)             Requested size: 269.50894pt x 61.42996pt.
-<cnbc.png, id=362, 997.7275pt x 174.6525pt>
+<cnbc.png, id=357, 997.7275pt x 174.6525pt>
 File: cnbc.png Graphic file (type png)
 <use cnbc.png>
 Package pdftex.def Info: cnbc.png  used on input line 288.
@@ -1688,6 +1697,12 @@ Overfull \hbox (115.69934pt too wide) in paragraph at lines 515--515
  []
 
 
+LaTeX Warning: Citation 'abadie2003economic' on page 17 undefined on input line 515.
+
+
+LaTeX Warning: Citation 'abadie2010synthetic' on page 17 undefined on input line 515.
+
+
 Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  [][][][][][]  
  []
@@ -1695,6 +1710,13 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 [17
 
 ]
+
+LaTeX Warning: Citation 'abadie2003economic' on page 18 undefined on input line 515.
+
+
+LaTeX Warning: Citation 'abadie2010synthetic' on page 18 undefined on input line 515.
+
+
 Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  [][][][][][]  
  []
@@ -1702,6 +1724,13 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 [18
 
 ]
+
+LaTeX Warning: Citation 'abadie2003economic' on page 19 undefined on input line 515.
+
+
+LaTeX Warning: Citation 'abadie2010synthetic' on page 19 undefined on input line 515.
+
+
 Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  [][][][][][]  
  []
@@ -1733,6 +1762,9 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 Overfull \hbox (115.69934pt too wide) in paragraph at lines 635--635
  [][][][][][]  
  []
+
+
+LaTeX Warning: Citation 'clements1998forecasting' on page 21 undefined on input line 635.
 
 Missing character: There is no ] in font nullfont!
 Missing character: There is no ] in font nullfont!
@@ -1921,12 +1953,9 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 [34
 
 ]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 814--814
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 805--805
  [][][][][][]  
  []
-
-
-LaTeX Warning: Reference `ARIMA' on page 35 undefined on input line 814.
 
 
 Overfull \hbox (115.69934pt too wide) has occurred while \output is active
@@ -1936,9 +1965,12 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 [35
 
 ]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 829--829
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 823--823
  [][][][][][]  
  []
+
+
+LaTeX Warning: Citation 'han2014asymptotic' on page 36 undefined on input line 823.
 
 
 Overfull \hbox (115.69934pt too wide) has occurred while \output is active
@@ -1948,7 +1980,7 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 [36
 
 ]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 836--836
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 839--839
  [][][][][][]  
  []
 
@@ -1960,7 +1992,7 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 [37
 
 ]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 849--849
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 852--852
  [][][][][][]  
  []
 
@@ -1986,7 +2018,7 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 [40
 
 ]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 858--858
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 861--861
  [][][][][][]  
  []
 
@@ -1998,7 +2030,7 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 [41
 
 ]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 883--883
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 886--886
  [][][][][][]  
  []
 
@@ -2010,14 +2042,14 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 [42
 
 ]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 910--910
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 913--913
  [][][][][][]  
  []
 
-<iyg.png, id=1456, 774.895pt x 108.405pt>
+<iyg.png, id=1424, 774.895pt x 108.405pt>
 File: iyg.png Graphic file (type png)
 <use iyg.png>
-Package pdftex.def Info: iyg.png  used on input line 910.
+Package pdftex.def Info: iyg.png  used on input line 913.
 (pdftex.def)             Requested size: 154.97626pt x 21.6806pt.
 
 Overfull \hbox (115.69934pt too wide) has occurred while \output is active
@@ -2027,17 +2059,17 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 [43
 
  <./iyg.png>]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 920--920
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 923--923
  [][][][][][]  
  []
 
-<real_data_output_plots/TueSep241059512024_IYG_None_None.png, id=1489, 803.0pt x 602.25pt>
+<real_data_output_plots/TueSep241059512024_IYG_None_None.png, id=1457, 803.0pt x 602.25pt>
 File: real_data_output_plots/TueSep241059512024_IYG_None_None.png Graphic file (type png)
 <use real_data_output_plots/TueSep241059512024_IYG_None_None.png>
-Package pdftex.def Info: real_data_output_plots/TueSep241059512024_IYG_None_None.png  used on input line 920.
+Package pdftex.def Info: real_data_output_plots/TueSep241059512024_IYG_None_None.png  used on input line 923.
 (pdftex.def)             Requested size: 273.01639pt x 204.76228pt.
 
-Overfull \vbox (8.6644pt too high) detected at line 920
+Overfull \vbox (8.6644pt too high) detected at line 923
  []
 
 
@@ -2048,14 +2080,14 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 [44
 
  <./real_data_output_plots/TueSep241059512024_IYG_None_None.png>]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 1015--1015
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 1018--1018
  [][][][][][]  
  []
 
-<real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png, id=1521, 803.0pt x 602.25pt>
+<real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png, id=1489, 803.0pt x 602.25pt>
 File: real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png Graphic file (type png)
 <use real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png>
-Package pdftex.def Info: real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png  used on input line 1015.
+Package pdftex.def Info: real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png  used on input line 1018.
 (pdftex.def)             Requested size: 240.90186pt x 180.67639pt.
 
 Overfull \hbox (115.69934pt too wide) has occurred while \output is active
@@ -2065,7 +2097,7 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 [45
 
  <./real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png>]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 1050--1050
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 1053--1053
  [][][][][][]  
  []
 
@@ -2077,17 +2109,17 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 [46
 
 ]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 1071--1071
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 1074--1074
  [][][][][][]  
  []
 
-<exponential_sim_plot.png, id=1584, 1767.60374pt x 1242.6425pt>
+<exponential_sim_plot.png, id=1551, 1767.60374pt x 1242.6425pt>
 File: exponential_sim_plot.png Graphic file (type png)
 <use exponential_sim_plot.png>
-Package pdftex.def Info: exponential_sim_plot.png  used on input line 1071.
+Package pdftex.def Info: exponential_sim_plot.png  used on input line 1074.
 (pdftex.def)             Requested size: 194.43701pt x 136.6911pt.
 
-Overfull \vbox (7.59322pt too high) detected at line 1071
+Overfull \vbox (7.59322pt too high) detected at line 1074
  []
 
 
@@ -2098,13 +2130,13 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 [47
 
  <./exponential_sim_plot.png>]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 1089--1089
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 1092--1092
  [][][][][][]  
  []
 
 File: real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png Graphic file (type png)
 <use real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png>
-Package pdftex.def Info: real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png  used on input line 1089.
+Package pdftex.def Info: real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png  used on input line 1092.
 (pdftex.def)             Requested size: 240.90186pt x 180.67639pt.
 
 Overfull \hbox (115.69934pt too wide) has occurred while \output is active
@@ -2114,17 +2146,17 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 [48
 
 ]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 1102--1102
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 1105--1105
  [][][][][][]  
  []
 
-<iphone.png, id=1644, 958.58125pt x 1268.74pt>
+<iphone.png, id=1612, 958.58125pt x 1268.74pt>
 File: iphone.png Graphic file (type png)
 <use iphone.png>
-Package pdftex.def Info: iphone.png  used on input line 1102.
+Package pdftex.def Info: iphone.png  used on input line 1105.
 (pdftex.def)             Requested size: 172.53717pt x 228.36334pt.
 
-Overfull \vbox (21.96503pt too high) detected at line 1102
+Overfull \vbox (21.96503pt too high) detected at line 1105
  []
 
 
@@ -2135,7 +2167,7 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 [49
 
  <./iphone.png>]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 1118--1118
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 1121--1121
  [][][][][][]  
  []
 
@@ -2147,9 +2179,12 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 [50
 
 ]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 1135--1135
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 1138--1138
  [][][][][][]  
  []
+
+
+LaTeX Warning: Citation 'bodilsen2023exploiting' on page 51 undefined on input line 1138.
 
 
 Overfull \hbox (115.69934pt too wide) has occurred while \output is active
@@ -2159,9 +2194,12 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 [51
 
 ]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 1148--1148
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 1151--1151
  [][][][][][]  
  []
+
+
+LaTeX Warning: Citation 'chinco2019sparse' on page 52 undefined on input line 1151.
 
 
 Overfull \hbox (115.69934pt too wide) has occurred while \output is active
@@ -2171,7 +2209,7 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 [52
 
 ]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 1196--1196
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 1199--1199
  [][][][][][]  
  []
 
@@ -2183,9 +2221,12 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 [53
 
 ]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 1205--1205
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 1208--1208
  [][][][][][]  
  []
+
+
+LaTeX Warning: Citation 'jiang2017information' on page 54 undefined on input line 1208.
 
 
 Overfull \hbox (115.69934pt too wide) has occurred while \output is active
@@ -2195,7 +2236,7 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 [54
 
 ]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 1229--1229
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 1232--1232
  [][][][][][]  
  []
 
@@ -2207,9 +2248,12 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 [55
 
 ]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 1248--1248
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 1251--1251
  [][][][][][]  
  []
+
+
+LaTeX Warning: Empty bibliography on input line 1251.
 
 
 Overfull \hbox (115.69934pt too wide) has occurred while \output is active
@@ -2217,14 +2261,6 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  []
 
 [56
-
- </usr/local/texlive/2024/texmf-dist/tex/latex/beamer/beamericonarticle.pdf>]
-Overfull \hbox (115.69934pt too wide) has occurred while \output is active
- [][][][][][]  
- []
-
-[57
-
 
 ]
 \tf@nav=\write8
@@ -2251,29 +2287,31 @@ LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `defense.out' has not changed.
 (rerunfilecheck)             Checksum: 92BC68B49054B16C69C8EC64FEC8B3BC;1432.
+
+Package biblatex Warning: Please (re)run Biber on the file:
+(biblatex)                defense
+(biblatex)                and rerun LaTeX afterwards.
+
 Package logreq Info: Writing requests to 'defense.run.xml'.
 \openout1 = `defense.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 59349 strings out of 474116
- 1320943 string characters out of 5743682
- 2189925 words of memory out of 5000000
- 80650 multiletter control sequences out of 15000+600000
+ 59217 strings out of 474116
+ 1316812 string characters out of 5743682
+ 2191584 words of memory out of 5000000
+ 80530 multiletter control sequences out of 15000+600000
  592029 words of font info for 118 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 146i,19n,146p,1663b,2518s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 146i,19n,146p,1663b,2227s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 pdfTeX warning (dest): name{model_1} has been referenced but does not exist, replaced by a fixed one
 
-
-pdfTeX warning (dest): name{ARIMA} has been referenced but does not exist, replaced by a fixed one
-
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfsi0900.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfso0900.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfss0500.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfss0600.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfss0700.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfss0800.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfss0900.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfss1095.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfsx0600.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfsx0800.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfsx0900.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfsx1095.pfb>
-Output written on defense.pdf (57 pages, 1276561 bytes).
+Output written on defense.pdf (56 pages, 1282152 bytes).
 PDF statistics:
- 2070 PDF objects out of 2073 (max. 8388607)
- 1758 compressed objects within 18 object streams
- 141 named destinations out of 1000 (max. 500000)
- 521 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1995 PDF objects out of 2073 (max. 8388607)
+ 1694 compressed objects within 17 object streams
+ 129 named destinations out of 1000 (max. 500000)
+ 485 words of extra memory for PDF output out of 10000 (max. 10000000)
 
