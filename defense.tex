@@ -69,7 +69,7 @@
 
 % function definition
 \newcommand{\weight}{\pi}
-\newcommand{\V}{\textbf{V}}
+\newcommand{\V}{\textbf{X}}
 \newcommand{\ret}{\textbf{r}}
 \newcommand{\y}{\textbf{y}}
 \newcommand{\w}{\textbf{w}}
@@ -310,7 +310,7 @@
     \frametitle{Premise: There is breaking news at some fractional lag t-$\epsilon$}
     
     \begin{itemize}
-    \item Mechanisms for evaluating the news are either offline, too thin, or otherwise unavailable
+    \item Market (i.e. crowd-sourced) mechanisms for evaluating the news are either offline, too thin, or otherwise unavailable.  They could also be simply unreliable.
     \item The \textcolor{red}{qualitative aspects} of the news provide a basis upon which to 
     \begin{itemize}
         \item match to past news shocks
@@ -379,7 +379,7 @@
     \begin{array}{l}
           y_{i,t} = F(\mathcal{F}_{i,t-1}) + \alpha_{i,t} + \epsilon_{i,t}\\[.2cm]
           \alpha_{i,t} = \x^{T}_{i,t}\lambda_{i,t} \\[.2cm]
-         \x_{i,t}^{T} = (1,x^{1}_{i,t},...,x^{p}_{i,t}) \text{ (observable and deterministic)}\\[.2cm] 
+         \x_{i,t}^{T} = (1,x^{1}_{i,t},...,x^{p}_{i,t}) \text{ (observable and deterministic w.r.t to } \mathcal{F}_{i,t-1})\\[.2cm] 
          \lambda_{i,t}^{T} = (u_{i,t},\lambda^{1}_{t},...,\lambda^{p}_{t}) \text{ (unobservable and potentially random)},\\[.2cm]
         \end{array}
     \end{align}
@@ -401,7 +401,7 @@
         \begin{itemize}
             
             % \item $\epsilon_{i,t}$ uncorrelated across time and donors
-            \item The dot product $\alpha_{i,t} = \x^{T}_{i,t}\lambda_{i,t}$ includes the term $u_{i,t}$ that is \textcolor{blue}{not shared} among donors.
+            \item The dot product  $\lambda_{i,t}^{T} = (u_{i,t},\lambda^{1}_{t},...,\lambda^{p}_{t})$ includes the term $u_{i,t}$ that is \textcolor{blue}{not shared} among donors.
             \item That $\lambda_{i,t}$ parameter vector is time-varying allows us to capture that most time points are without news shocks (in which case $\alpha_{i,t}$ is of negligible effect), but conditional upon information arriving between $T_{1}^{*}$ and $T_{1}^{*}+1$, we may know with near certainty that $\lambda_{1,T_{1}^{*}+h}$ will be nonzero in norm for some $h>0$. 
         \end{itemize}
     \end{frame}
@@ -448,7 +448,7 @@
     
         \bigbreak 
     
-        Key criterion for inclusion: how plausible is the covariate as a \textcolor{red}{proxy for risk conditions} for the volatility series to be forecasted?
+        Key criterion for inclusion: how plausible is the covariate as a \textcolor{red}{proxy for risk conditions} for the time series under study?
     \end{frame}
     
     % \begin{frame}
@@ -671,9 +671,58 @@
           \hline
           & Conventional Econometric Models & Outside Conventional Econometric Models\\ 
           \hline
-          internal & Lags of the series itself; past shocks & Polynomial expansion of the feature space and other transformations without solid theoretical motivation \\
+          internal & \textcolor{blue}{Lags of the series itself; past shocks}  & Polynomial expansion of the feature space and other transformations without solid theoretical motivation \\
           \hline
           external & Macro variables like interest rates, commodity prices; weather-related variables & Google Trends, high-frequency data like prediction markets; past shocks under similar conditions \\ 
+          \hline
+        \end{tabular}
+      \end{table}
+\end{frame}
+
+\begin{frame}\frametitle{Three slides about theory}
+   
+    \begin{table}[htb]
+        \centering % instead of \begin{center}
+        \caption{A 2x2 Schema of Forecast Information, With Examples}
+        \begin{tabular}{ | p{1cm} | p{4.8cm}| p{4.8cm} | } 
+          \hline
+          & Conventional Econometric Models & Outside Conventional Econometric Models\\ 
+          \hline
+          internal & Lags of the series itself; past shocks & \textcolor{blue}{Polynomial expansion of the feature space and other transformations without solid theoretical motivation} \\
+          \hline
+          external & Macro variables like interest rates, commodity prices; weather-related variables & Google Trends, high-frequency data like prediction markets; past shocks under similar conditions \\ 
+          \hline
+        \end{tabular}
+      \end{table}
+\end{frame}
+\begin{frame}\frametitle{Three slides about theory}
+   
+    \begin{table}[htb]
+        \centering % instead of \begin{center}
+        \caption{A 2x2 Schema of Forecast Information, With Examples}
+        \begin{tabular}{ | p{1cm} | p{4.8cm}| p{4.8cm} | } 
+          \hline
+          & Conventional Econometric Models & Outside Conventional Econometric Models\\ 
+          \hline
+          internal & & Polynomial expansion of the feature space and other transformations without solid theoretical motivation \\
+          \hline
+          external & \textcolor{blue}{Macro variables like interest rates, commodity prices; weather-related variables} & Google Trends, high-frequency data like prediction markets; past shocks under similar conditions \\ 
+          \hline
+        \end{tabular}
+      \end{table}
+\end{frame}
+\begin{frame}\frametitle{Three slides about theory}
+   
+    \begin{table}[htb]
+        \centering % instead of \begin{center}
+        \caption{A 2x2 Schema of Forecast Information, With Examples}
+        \begin{tabular}{ | p{1cm} | p{4.8cm}| p{4.8cm} | } 
+          \hline
+          & Conventional Econometric Models & Outside Conventional Econometric Models\\ 
+          \hline
+          internal & Lags of the series itself; past shocks & Polynomial expansion of the feature space and other transformations without solid theoretical motivation \\
+          \hline
+          external & Macro variables like interest rates, commodity prices; weather-related variables & \textcolor{blue}{Google Trends, high-frequency data like prediction markets; past shocks under similar conditions} \\ 
           \hline
         \end{tabular}
       \end{table}
@@ -689,7 +738,6 @@
     \item Binary or $n$-ary?
     \end{itemize}
 
-    To give a name to what we're doing, we can call it distance-based weighting, which is a special case of an approximation-based $n$-ary similarity metric.
 \end{frame}
 
 \begin{frame}\frametitle{Three slides about theory}
@@ -702,16 +750,20 @@
     \item Binary or $n$-ary?
     \end{itemize}
 
-    To give a name to what we're doing, we can call it distance-based weighting, which is a special case of an approximation-based $n$-ary similarity metric.
+    To give a name to what we're doing, we can call it \textcolor{blue}{distance-based weighting}, which is a special case of an approximation-based $n$-ary similarity metric.
 \end{frame}
 
 \begin{frame}\frametitle{Three slides about theory}
-    The term $\x^{T}_{i,t}\lambda_{i,t}$ is deemed the $\textcolor{blue}{correction term}$ for donor $i$ at time $t$, and the function
+    The term $\x^{T}_{i,t}\lambda_{i,t}$ is deemed the $\textcolor{blue}{correction} \text{ } \textcolor{blue}{term}$ for donor $i$ at time $t$, and the function
 
     \begin{align*}
       \xi \colon \mathcal{F}_{2,T^{*}_{2}+h} \times \ldots \times \mathcal{F}_{n+1, T^{*}_{n+1}+h} &\to \mathcal{F}_{1,T^{*}_{1}+h}\\
     \end{align*}
-    that estimates or predicts $\alpha_{1,T^{*}_{1}+h}$ will be deemed the \textcolor{red}{correction function}.  The correction function maps donor information --- be it observables or inferences --- to the prediction function for the time series under study. 
+    that estimates or predicts $\alpha_{1,T^{*}_{1}+h}$ will be deemed the \textcolor{red}{correction function}.  
+    
+    \bigskip 
+    
+    The correction function maps donor information --- be it observables or inferences --- to the prediction function for the time series under study. 
 \end{frame}
 
 \begin{frame}\frametitle{Global Overview}
@@ -720,9 +772,9 @@
 
     \begin{enumerate}
         \item \textbf{Object-to-predict}
-       Random object (indexed over time and possibly space, as well) obeying specification with additive errors or a specification that can be transformed to have additive errors.  
+       Random object (indexed over time and possibly space, as well) obeying specification with additive errors 
             
-      \item \textbf{Common Model Family on the Shocks} Requires that residuals be governed by a model that is shared across all units.  This ensures that in the estimation of news shocks in the donor pool, the estimators will enjoy similar properties that will produce a good aggregated shock estimator.
+      \item \textbf{Common Model Family on the Shocks} Requires that residuals be governed by a model that is shared across all units.  
       
       \item \textbf{Reliable and Shared Model-Fitting Procedure} There must exist a reliable model-fitting procedure for the $n+1$ units.
       
@@ -846,15 +898,15 @@
             \end{figure}
     \end{frame}
 
-\begin{frame}
-    \frametitle{The Post-prelim Direction of my research}
+% \begin{frame}
+%     \frametitle{The Post-prelim Direction of my research}
     
-    \begin{itemize}
-        \item Extending similarity-based parameter correction to the state-of-the-art HAR model 
-        \item Extending similarity-based parameter correction to non-linear shock models
-        \item Building out a general framework for parameter correction 
-    \end{itemize}
-\end{frame}
+%     \begin{itemize}
+%         \item Extending similarity-based parameter correction to the state-of-the-art HAR model 
+%         \item Extending similarity-based parameter correction to non-linear shock models
+%         \item Building out a general framework for parameter correction 
+%     \end{itemize}
+% \end{frame}
 
 
 
