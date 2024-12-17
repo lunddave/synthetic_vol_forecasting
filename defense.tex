@@ -169,7 +169,7 @@
 
         \begin{enumerate}
             \item \textcolor{blue}{a rupture in the DGP}
-            \item  \textcolor{blue}{lack of past information for units we wish to forecast, i.e. a so-called `'cold start"} \parencite[][]{fatemi2023mitigating}
+            \item  \textcolor{blue}{lack of past information for units we wish to forecast, i.e. a so-called ``cold start"} \parencite[][]{fatemi2023mitigating}
         \end{enumerate}
 
         \bigskip
@@ -397,12 +397,12 @@
     \end{frame}
 
     \begin{frame}\frametitle{Model Details}
-        Note
+        Note that $\lambda_{i,t}^{T} = (u_{i,t},\lambda^{1}_{t},...,\lambda^{p}_{t})$
         \begin{itemize}
             
             % \item $\epsilon_{i,t}$ uncorrelated across time and donors
-            \item The dot product  $\lambda_{i,t}^{T} = (u_{i,t},\lambda^{1}_{t},...,\lambda^{p}_{t})$ includes the term $u_{i,t}$ that is \textcolor{blue}{not shared} among donors.
-            \item That $\lambda_{i,t}$ parameter vector is time-varying allows us to capture that most time points are without news shocks (in which case $\alpha_{i,t}$ is of negligible effect), but conditional upon information arriving between $T_{1}^{*}$ and $T_{1}^{*}+1$, we may know with near certainty that $\lambda_{1,T_{1}^{*}+h}$ will be nonzero in norm for some $h>0$. 
+            \item includes the term $u_{i,t}$ that is \textcolor{blue}{not shared} among donors.
+            \item is time-varying allows us to capture that most time points are without news shocks (in which case $\alpha_{i,t}$ is of negligible effect), but conditional upon information arriving between $T_{1}^{*}$ and $T_{1}^{*}+1$, we may know with near certainty that $\lambda_{1,T_{1}^{*}+h}$ will be nonzero in norm for some $h>0$. 
         \end{itemize}
     \end{frame}
     
@@ -500,7 +500,7 @@
     
     \item <1->  Observe the pair $(\{\hat\alpha_{i}\}^{n+1}_{i=2},\{\x_{i}\}^{n+1}_{i=2})$.  \\
     
-    \item <2-> Goal: recover weights $\{\weight_{i}\}^{n+1}_{i=2} \in \Delta^{n}$ and compute $\hat\alpha \coloneq \sum^{n+1}_{i=2}\weight_{i}\hat\alpha_{i}$, our forecast adjustment term.
+    \item <2-> Goal: recover weights $\{\weight_{i}\}^{n+1}_{i=2} \in \Delta^{n}$ and compute $\hat\alpha \coloneq \sum^{n+1}_{i=2}\weight_{i}\hat\alpha_{i}$, our predicted correction term (more about this later).
     
     \item <3-> Following \cite[][]{abadie2003economic},\cite[][]{abadie2010synthetic}, let $\|\cdot\|_{\textbf{S}}$ denote any semi-norm on $\mathbb{R}^{p}$, and define
     
@@ -570,7 +570,7 @@
 \path[->] (Target Series) edge [bend right] node {Unadjusted Forecast} (Adjusted Forecast);
 \path[->] (Donor Pool) edge [bend left] node {Pre-Shock Covariates} (Distance-based Weighting);
 \path[->] (Donor Pool) edge [left] [bend right] node {FE estimates} (Distance-based Weighting);
- \path[->] (Distance-based Weighting) edge [below] [bend right] node {Parameter Adjustment} (Adjusted Forecast);
+ \path[->] (Distance-based Weighting) edge [below] [bend right] node {Predicted Correction Function} (Adjusted Forecast);
 
 
 %\draw[red, dashed] (1, 2) -- (1, -2);
@@ -771,22 +771,34 @@
     Abstracting away from particular models, what does our method require?
 
     \begin{enumerate}
-        \item \textbf{Object-to-predict}
+        \item <1-> \textbf{Object-to-predict}
        Random object (indexed over time and possibly space, as well) obeying specification with additive errors 
             
-      \item \textbf{Common Model Family on the Shocks} Requires that residuals be governed by a model that is shared across all units.  
+      \item <2-> \textbf{Common Model Family on the Shocks} Requires that residuals be governed by a model that is shared across all units.  
       
-      \item \textbf{Reliable and Shared Model-Fitting Procedure} There must exist a reliable model-fitting procedure for the $n+1$ units.
+      \item<3->  \textbf{Reliable and Shared Model-Fitting Procedure} There must exist a reliable model-fitting procedure for the $n+1$ units.
       
-      \item \textbf{Reliable Correction Term Estimation} 
+      \item<4-> \textbf{Reliable Correction Term Estimation} 
 
-      \item \textbf{Reliable Correction Function Estimation} There must exist a correction function (presumably based on the correction term) that maps data from the donor pool to the $\textit{predicted}$ correction term in the time series under study based on similarity.  
+      \item<5->  \textbf{Reliable Correction Function Estimation} There must exist a correction function (presumably based on the correction term) that maps data from the donor pool to the $\textit{predicted}$ correction term in the time series under study based on similarity.  
     \end{enumerate}
 \end{frame}
 
 \section{Formal Results}
 
-\begin{frame}\frametitle{Formal Results}
+\begin{frame}\frametitle{Do we have theoretical guarantees?}
+
+    We do!
+
+    \bigskip
+
+    Our formal results fall into the following buckets:
+
+    \begin{enumerate}
+        \item convergence in distribution results
+        \item consistency results
+        \item asymptotic loss
+    \end{enumerate}
 
     \begin{prop}\label{ARIMA_param_consistency}
         Assume
@@ -834,6 +846,15 @@
         \item <3-> Exponential Shocks (to be submitted in the coming weeks as part of second paper)
 
     \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{GARCH Volatility Forecasts}
+    The least you need to know here: GARCH is the premier volatility modeling family for daily data.
+
+    \bigskip
+
+    We demonstrate our method's usefulness with an easy-to-approach example.
 \end{frame}
 
 % \begin{frame}

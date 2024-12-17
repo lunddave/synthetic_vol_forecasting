@@ -62,68 +62,70 @@
 \headcommand {\beamer@framepages {28}{28}}
 \headcommand {\slideentry {2}{0}{17}{29/29}{}{2}}
 \headcommand {\beamer@framepages {29}{29}}
-\headcommand {\slideentry {2}{0}{18}{30/30}{}{2}}
-\headcommand {\beamer@framepages {30}{30}}
-\headcommand {\beamer@sectionpages {11}{30}}
-\headcommand {\beamer@subsectionpages {11}{30}}
-\headcommand {\sectionentry {3}{Formal Results}{31}{Formal Results}{2}}
-\headcommand {\slideentry {3}{0}{1}{31/31}{}{2}}
-\headcommand {\beamer@framepages {31}{31}}
-\headcommand {\slideentry {3}{0}{2}{32/32}{}{2}}
-\headcommand {\beamer@framepages {32}{32}}
-\headcommand {\slideentry {3}{0}{3}{33/33}{}{2}}
-\headcommand {\beamer@framepages {33}{33}}
-\headcommand {\beamer@sectionpages {31}{33}}
-\headcommand {\beamer@subsectionpages {31}{33}}
-\headcommand {\sectionentry {4}{Applications}{34}{Applications}{2}}
-\headcommand {\slideentry {4}{0}{1}{34/36}{}{2}}
-\headcommand {\beamer@framepages {34}{36}}
-\headcommand {\slideentry {4}{0}{2}{37/37}{}{2}}
+\headcommand {\slideentry {2}{0}{18}{30/34}{}{2}}
+\headcommand {\beamer@framepages {30}{34}}
+\headcommand {\beamer@sectionpages {11}{34}}
+\headcommand {\beamer@subsectionpages {11}{34}}
+\headcommand {\sectionentry {3}{Formal Results}{35}{Formal Results}{2}}
+\headcommand {\slideentry {3}{0}{1}{35/35}{}{2}}
+\headcommand {\beamer@framepages {35}{35}}
+\headcommand {\slideentry {3}{0}{2}{36/36}{}{2}}
+\headcommand {\beamer@framepages {36}{36}}
+\headcommand {\slideentry {3}{0}{3}{37/37}{}{2}}
 \headcommand {\beamer@framepages {37}{37}}
-\headcommand {\slideentry {4}{0}{3}{38/38}{}{2}}
-\headcommand {\beamer@framepages {38}{38}}
-\headcommand {\slideentry {4}{0}{4}{39/39}{}{2}}
-\headcommand {\beamer@framepages {39}{39}}
-\headcommand {\slideentry {4}{0}{5}{40/40}{}{2}}
-\headcommand {\beamer@framepages {40}{40}}
-\headcommand {\slideentry {4}{0}{6}{41/41}{}{2}}
+\headcommand {\beamer@sectionpages {35}{37}}
+\headcommand {\beamer@subsectionpages {35}{37}}
+\headcommand {\sectionentry {4}{Applications}{38}{Applications}{2}}
+\headcommand {\slideentry {4}{0}{1}{38/40}{}{2}}
+\headcommand {\beamer@framepages {38}{40}}
+\headcommand {\slideentry {4}{0}{2}{41/41}{}{2}}
 \headcommand {\beamer@framepages {41}{41}}
-\headcommand {\slideentry {4}{0}{7}{42/42}{}{2}}
+\headcommand {\slideentry {4}{0}{3}{42/42}{}{2}}
 \headcommand {\beamer@framepages {42}{42}}
-\headcommand {\beamer@sectionpages {34}{42}}
-\headcommand {\beamer@subsectionpages {34}{42}}
-\headcommand {\sectionentry {5}{Software and LLMs}{43}{Software and LLMs}{2}}
-\headcommand {\slideentry {5}{0}{1}{43/43}{}{2}}
+\headcommand {\slideentry {4}{0}{4}{43/43}{}{2}}
 \headcommand {\beamer@framepages {43}{43}}
-\headcommand {\slideentry {5}{0}{2}{44/44}{}{2}}
+\headcommand {\slideentry {4}{0}{5}{44/44}{}{2}}
 \headcommand {\beamer@framepages {44}{44}}
-\headcommand {\beamer@sectionpages {43}{44}}
-\headcommand {\beamer@subsectionpages {43}{44}}
-\headcommand {\sectionentry {6}{How can we trust this?}{45}{How can we trust this?}{2}}
-\headcommand {\slideentry {6}{0}{1}{45/45}{}{2}}
+\headcommand {\slideentry {4}{0}{6}{45/45}{}{2}}
 \headcommand {\beamer@framepages {45}{45}}
-\headcommand {\beamer@sectionpages {45}{45}}
-\headcommand {\beamer@subsectionpages {45}{45}}
-\headcommand {\sectionentry {7}{Future directions for Forecasting Amid Shocks}{46}{Future directions for Forecasting Amid Shocks}{2}}
-\headcommand {\slideentry {7}{0}{1}{46/46}{}{2}}
+\headcommand {\slideentry {4}{0}{7}{46/46}{}{2}}
 \headcommand {\beamer@framepages {46}{46}}
-\headcommand {\slideentry {7}{0}{2}{47/47}{}{2}}
+\headcommand {\slideentry {4}{0}{8}{47/47}{}{2}}
 \headcommand {\beamer@framepages {47}{47}}
-\headcommand {\beamer@sectionpages {46}{47}}
-\headcommand {\beamer@subsectionpages {46}{47}}
-\headcommand {\sectionentry {8}{Directions and Limitations}{48}{Directions and Limitations}{2}}
-\headcommand {\slideentry {8}{0}{1}{48/48}{}{2}}
+\headcommand {\beamer@sectionpages {38}{47}}
+\headcommand {\beamer@subsectionpages {38}{47}}
+\headcommand {\sectionentry {5}{Software and LLMs}{48}{Software and LLMs}{2}}
+\headcommand {\slideentry {5}{0}{1}{48/48}{}{2}}
 \headcommand {\beamer@framepages {48}{48}}
-\headcommand {\slideentry {8}{0}{2}{49/49}{}{2}}
+\headcommand {\slideentry {5}{0}{2}{49/49}{}{2}}
 \headcommand {\beamer@framepages {49}{49}}
-\headcommand {\slideentry {8}{0}{3}{50/50}{}{2}}
+\headcommand {\beamer@sectionpages {48}{49}}
+\headcommand {\beamer@subsectionpages {48}{49}}
+\headcommand {\sectionentry {6}{How can we trust this?}{50}{How can we trust this?}{2}}
+\headcommand {\slideentry {6}{0}{1}{50/50}{}{2}}
 \headcommand {\beamer@framepages {50}{50}}
-\headcommand {\slideentry {8}{0}{4}{51/51}{}{2}}
+\headcommand {\beamer@sectionpages {50}{50}}
+\headcommand {\beamer@subsectionpages {50}{50}}
+\headcommand {\sectionentry {7}{Future directions for Forecasting Amid Shocks}{51}{Future directions for Forecasting Amid Shocks}{2}}
+\headcommand {\slideentry {7}{0}{1}{51/51}{}{2}}
 \headcommand {\beamer@framepages {51}{51}}
-\headcommand {\slideentry {8}{0}{4}{51/52}{}{2}}
-\headcommand {\beamer@framepages {51}{52}}
-\headcommand {\beamer@partpages {11}{52}}
-\headcommand {\beamer@subsectionpages {48}{52}}
-\headcommand {\beamer@sectionpages {48}{52}}
-\headcommand {\beamer@documentpages {52}}
-\headcommand {\gdef \inserttotalframenumber {46}}
+\headcommand {\slideentry {7}{0}{2}{52/52}{}{2}}
+\headcommand {\beamer@framepages {52}{52}}
+\headcommand {\beamer@sectionpages {51}{52}}
+\headcommand {\beamer@subsectionpages {51}{52}}
+\headcommand {\sectionentry {8}{Directions and Limitations}{53}{Directions and Limitations}{2}}
+\headcommand {\slideentry {8}{0}{1}{53/53}{}{2}}
+\headcommand {\beamer@framepages {53}{53}}
+\headcommand {\slideentry {8}{0}{2}{54/54}{}{2}}
+\headcommand {\beamer@framepages {54}{54}}
+\headcommand {\slideentry {8}{0}{3}{55/55}{}{2}}
+\headcommand {\beamer@framepages {55}{55}}
+\headcommand {\slideentry {8}{0}{4}{56/56}{}{2}}
+\headcommand {\beamer@framepages {56}{56}}
+\headcommand {\slideentry {8}{0}{4}{56/57}{}{2}}
+\headcommand {\beamer@framepages {56}{57}}
+\headcommand {\beamer@partpages {11}{57}}
+\headcommand {\beamer@subsectionpages {53}{57}}
+\headcommand {\beamer@sectionpages {53}{57}}
+\headcommand {\beamer@documentpages {57}}
+\headcommand {\gdef \inserttotalframenumber {47}}
