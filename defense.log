@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.15)  17 DEC 2024 12:09
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.15)  17 DEC 2024 15:58
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1169,12 +1169,7 @@ Package: array 2023/10/16 v2.5g Tabular extension package (FMi)
 \everycr=\toks68
 \minrowclearance=\skip93
 \rownum=\count529
-)
-
-LaTeX Warning: Package "xcolor" has already been loaded: ignoring load-time
-(LaTeX)        option "xcdraw".
-
-(/usr/local/texlive/2024/texmf-dist/tex/latex/multirow/multirow.sty
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/multirow/multirow.sty
 Package: multirow 2021/03/15 v2.8 Span multiple rows of a table
 \multirow@colwidth=\skip94
 \multirow@cntb=\count530
@@ -1282,8 +1277,7 @@ Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 Package hyperref Info: Option `colorlinks' set `true' on input line 130.
 \@quotelevel=\count546
 \@quotereset=\count547
-
-No file defense.aux.
+ (./defense.aux)
 \openout1 = `defense.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 156.
@@ -1304,6 +1298,7 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 156.
 LaTeX Font Info:    ... okay on input line 156.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 156.
 LaTeX Font Info:    ... okay on input line 156.
+
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -1358,6 +1353,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
 Package hyperref Info: Link coloring ON on input line 156.
+ (./defense.out) (./defense.out)
 \@outlinefile=\write7
 \openout7 = `defense.out'.
 
@@ -1571,17 +1567,17 @@ Overfull \hbox (115.69934pt too wide) in paragraph at lines 289--289
  [][][][][][]  
  []
 
-<NYS_state.png, id=314, 558.085pt x 337.26pt>
+<NYS_state.png, id=352, 558.085pt x 337.26pt>
 File: NYS_state.png Graphic file (type png)
 <use NYS_state.png>
 Package pdftex.def Info: NYS_state.png  used on input line 289.
 (pdftex.def)             Requested size: 167.42679pt x 101.17877pt.
-<cnn.png, id=317, 898.35625pt x 204.765pt>
+<cnn.png, id=355, 898.35625pt x 204.765pt>
 File: cnn.png Graphic file (type png)
 <use cnn.png>
 Package pdftex.def Info: cnn.png  used on input line 289.
 (pdftex.def)             Requested size: 269.50894pt x 61.42996pt.
-<cnbc.png, id=319, 997.7275pt x 174.6525pt>
+<cnbc.png, id=357, 997.7275pt x 174.6525pt>
 File: cnbc.png Graphic file (type png)
 <use cnbc.png>
 Package pdftex.def Info: cnbc.png  used on input line 289.
@@ -1610,9 +1606,7 @@ Overfull \hbox (115.69934pt too wide) in paragraph at lines 308--308
  [][][][][][]  
  []
 
-No file defense.toc.
-No file defense.toc.
-
+(./defense.toc) (./defense.toc)
 Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  [][][][][][]  
  []
@@ -1739,17 +1733,17 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 [19
 
 ]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 580--580
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 579--579
  [][][][][][]  
  []
 
 
-Overfull \hbox (3.98897pt too wide) in paragraph at lines 580--580
+Overfull \hbox (3.98897pt too wide) in paragraph at lines 579--579
 [][]  
  []
 
 
-Overfull \vbox (101.01186pt too high) detected at line 580
+Overfull \vbox (101.01186pt too high) detected at line 579
  []
 
 
@@ -1760,15 +1754,10 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 [20
 
 ]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 636--636
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 635--635
  [][][][][][]  
  []
 
-
-LaTeX Warning: Citation 'clements1998forecasting' on page 21 undefined on input line 636.
-
-Missing character: There is no ] in font nullfont!
-Missing character: There is no ] in font nullfont!
 
 Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  [][][][][][]  
@@ -1777,7 +1766,7 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 [21
 
 ]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 664--664
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 663--663
  [][][][][][]  
  []
 
@@ -1790,17 +1779,17 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 [22
 
 ]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 681--681
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 680--680
  [][][][][][]  
  []
 
 
-Overfull \hbox (0.56795pt too wide) in paragraph at lines 681--681
+Overfull \hbox (0.56795pt too wide) in paragraph at lines 680--680
 []|\T1/cmss/m/n/9 internal| 
  []
 
 
-Overfull \hbox (1.95651pt too wide) in paragraph at lines 681--681
+Overfull \hbox (1.95651pt too wide) in paragraph at lines 680--680
 []|\T1/cmss/m/n/9 external| 
  []
 
@@ -1812,17 +1801,17 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 [23
 
 ]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 698--698
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 697--697
  [][][][][][]  
  []
 
 
-Overfull \hbox (0.56795pt too wide) in paragraph at lines 698--698
+Overfull \hbox (0.56795pt too wide) in paragraph at lines 697--697
 []|\T1/cmss/m/n/9 internal| 
  []
 
 
-Overfull \hbox (1.95651pt too wide) in paragraph at lines 698--698
+Overfull \hbox (1.95651pt too wide) in paragraph at lines 697--697
 []|\T1/cmss/m/n/9 external| 
  []
 
@@ -1834,17 +1823,17 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 [24
 
 ]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 714--714
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 713--713
  [][][][][][]  
  []
 
 
-Overfull \hbox (0.56795pt too wide) in paragraph at lines 714--714
+Overfull \hbox (0.56795pt too wide) in paragraph at lines 713--713
 []|\T1/cmss/m/n/9 internal| 
  []
 
 
-Overfull \hbox (1.95651pt too wide) in paragraph at lines 714--714
+Overfull \hbox (1.95651pt too wide) in paragraph at lines 713--713
 []|\T1/cmss/m/n/9 external| 
  []
 
@@ -1856,17 +1845,17 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 [25
 
 ]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 730--730
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 729--729
  [][][][][][]  
  []
 
 
-Overfull \hbox (0.56795pt too wide) in paragraph at lines 730--730
+Overfull \hbox (0.56795pt too wide) in paragraph at lines 729--729
 []|\T1/cmss/m/n/9 internal| 
  []
 
 
-Overfull \hbox (1.95651pt too wide) in paragraph at lines 730--730
+Overfull \hbox (1.95651pt too wide) in paragraph at lines 729--729
 []|\T1/cmss/m/n/9 external| 
  []
 
@@ -1878,7 +1867,7 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 [26
 
 ]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 742--742
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 741--741
  [][][][][][]  
  []
 
@@ -1890,7 +1879,7 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 [27
 
 ]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 755--755
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 754--754
  [][][][][][]  
  []
 
@@ -1902,7 +1891,7 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 [28
 
 ]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 768--768
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 767--767
  [][][][][][]  
  []
 
@@ -1914,7 +1903,7 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 [29
 
 ]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 786--786
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 785--785
  [][][][][][]  
  []
 
@@ -1954,7 +1943,7 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 [34
 
 ]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 806--806
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 805--805
  [][][][][][]  
  []
 
@@ -1966,12 +1955,12 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 [35
 
 ]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 824--824
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 822--822
  [][][][][][]  
  []
 
 
-LaTeX Warning: Citation 'han2014asymptotic' on page 36 undefined on input line 824.
+LaTeX Warning: Citation 'han2014asymptotic' on page 36 undefined on input line 822.
 
 
 Overfull \hbox (115.69934pt too wide) has occurred while \output is active
@@ -1979,21 +1968,6 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  []
 
 [36
-
-]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 840--840
- [][][][][][]  
- []
-
-
-LaTeX Warning: Reference `omega_consistency' on page 37 undefined on input line 840.
-
-
-Overfull \hbox (115.69934pt too wide) has occurred while \output is active
- [][][][][][]  
- []
-
-[37
 
 ]
 Overfull \hbox (115.69934pt too wide) in paragraph at lines 845--845
@@ -2005,10 +1979,22 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  [][][][][][]  
  []
 
+[37
+
+]
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 877--877
+ [][][][][][]  
+ []
+
+
+Overfull \hbox (115.69934pt too wide) has occurred while \output is active
+ [][][][][][]  
+ []
+
 [38
 
 ]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 860--860
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 887--887
  [][][][][][]  
  []
 
@@ -2020,6 +2006,11 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 [39
 
 ]
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 901--901
+ [][][][][][]  
+ []
+
+
 Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  [][][][][][]  
  []
@@ -2034,11 +2025,6 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 [41
 
 ]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 869--869
- [][][][][][]  
- []
-
-
 Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  [][][][][][]  
  []
@@ -2046,7 +2032,7 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 [42
 
 ]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 894--894
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 910--910
  [][][][][][]  
  []
 
@@ -2058,15 +2044,10 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 [43
 
 ]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 921--921
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 935--935
  [][][][][][]  
  []
 
-<iyg.png, id=1406, 774.895pt x 108.405pt>
-File: iyg.png Graphic file (type png)
-<use iyg.png>
-Package pdftex.def Info: iyg.png  used on input line 921.
-(pdftex.def)             Requested size: 154.97626pt x 21.6806pt.
 
 Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  [][][][][][]  
@@ -2074,20 +2055,16 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 
 [44
 
- <./iyg.png>]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 931--931
+]
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 962--962
  [][][][][][]  
  []
 
-<real_data_output_plots/TueSep241059512024_IYG_None_None.png, id=1437, 803.0pt x 602.25pt>
-File: real_data_output_plots/TueSep241059512024_IYG_None_None.png Graphic file (type png)
-<use real_data_output_plots/TueSep241059512024_IYG_None_None.png>
-Package pdftex.def Info: real_data_output_plots/TueSep241059512024_IYG_None_None.png  used on input line 931.
-(pdftex.def)             Requested size: 273.01639pt x 204.76228pt.
-
-Overfull \vbox (8.6644pt too high) detected at line 931
- []
-
+<iyg.png, id=1481, 774.895pt x 108.405pt>
+File: iyg.png Graphic file (type png)
+<use iyg.png>
+Package pdftex.def Info: iyg.png  used on input line 962.
+(pdftex.def)             Requested size: 154.97626pt x 21.6806pt.
 
 Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  [][][][][][]  
@@ -2095,16 +2072,20 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 
 [45
 
- <./real_data_output_plots/TueSep241059512024_IYG_None_None.png>]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 1026--1026
+ <./iyg.png>]
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 972--972
  [][][][][][]  
  []
 
-<real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png, id=1470, 803.0pt x 602.25pt>
-File: real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png Graphic file (type png)
-<use real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png>
-Package pdftex.def Info: real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png  used on input line 1026.
-(pdftex.def)             Requested size: 240.90186pt x 180.67639pt.
+<real_data_output_plots/TueSep241059512024_IYG_None_None.png, id=1512, 803.0pt x 602.25pt>
+File: real_data_output_plots/TueSep241059512024_IYG_None_None.png Graphic file (type png)
+<use real_data_output_plots/TueSep241059512024_IYG_None_None.png>
+Package pdftex.def Info: real_data_output_plots/TueSep241059512024_IYG_None_None.png  used on input line 972.
+(pdftex.def)             Requested size: 273.01639pt x 204.76228pt.
+
+Overfull \vbox (8.6644pt too high) detected at line 972
+ []
+
 
 Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  [][][][][][]  
@@ -2112,8 +2093,8 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 
 [46
 
- <./real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png>]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 1061--1061
+ <./real_data_output_plots/TueSep241059512024_IYG_None_None.png>]
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 1067--1067
  [][][][][][]  
  []
 
@@ -2125,17 +2106,12 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 [47
 
 ]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 1082--1082
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 1080--1080
  [][][][][][]  
  []
 
-<exponential_sim_plot.png, id=1532, 1767.60374pt x 1242.6425pt>
-File: exponential_sim_plot.png Graphic file (type png)
-<use exponential_sim_plot.png>
-Package pdftex.def Info: exponential_sim_plot.png  used on input line 1082.
-(pdftex.def)             Requested size: 194.43701pt x 136.6911pt.
 
-Overfull \vbox (7.59322pt too high) detected at line 1082
+Overfull \vbox (7.3102pt too high) detected at line 1080
  []
 
 
@@ -2145,14 +2121,15 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 
 [48
 
- <./exponential_sim_plot.png>]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 1100--1100
+]
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 1093--1093
  [][][][][][]  
  []
 
+<real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png, id=1603, 803.0pt x 602.25pt>
 File: real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png Graphic file (type png)
 <use real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png>
-Package pdftex.def Info: real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png  used on input line 1100.
+Package pdftex.def Info: real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png  used on input line 1093.
 (pdftex.def)             Requested size: 240.90186pt x 180.67639pt.
 
 Overfull \hbox (115.69934pt too wide) has occurred while \output is active
@@ -2161,18 +2138,9 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 
 [49
 
-]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 1113--1113
+ <./real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png>]
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 1128--1128
  [][][][][][]  
- []
-
-<iphone.png, id=1596, 958.58125pt x 1268.74pt>
-File: iphone.png Graphic file (type png)
-<use iphone.png>
-Package pdftex.def Info: iphone.png  used on input line 1113.
-(pdftex.def)             Requested size: 172.53717pt x 228.36334pt.
-
-Overfull \vbox (21.96503pt too high) detected at line 1113
  []
 
 
@@ -2182,9 +2150,18 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 
 [50
 
- <./iphone.png>]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 1129--1129
+]
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 1149--1149
  [][][][][][]  
+ []
+
+<exponential_sim_plot.png, id=1666, 1767.60374pt x 1242.6425pt>
+File: exponential_sim_plot.png Graphic file (type png)
+<use exponential_sim_plot.png>
+Package pdftex.def Info: exponential_sim_plot.png  used on input line 1149.
+(pdftex.def)             Requested size: 194.43701pt x 136.6911pt.
+
+Overfull \vbox (7.59322pt too high) detected at line 1149
  []
 
 
@@ -2194,289 +2171,15 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 
 [51
 
-]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 1162--1162
+ <./exponential_sim_plot.png>]
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 1167--1167
  [][][][][][]  
  []
 
-LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 1162.
-(/usr/local/texlive/2024/texmf-dist/tex/latex/base/t1cmtt.fd
-File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
-)
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/defense.tex:1162: Missing $ inserted.
-<inserted text> 
-                $
-l.1162 \end{frame}
-                  
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/defense.tex:1162: Missing $ inserted.
-<inserted text> 
-                $
-l.1162 \end{frame}
-                  
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/defense.tex:1162: Missing } inserted.
-<inserted text> 
-                }
-l.1162 \end{frame}
-                  
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/defense.tex:1162: Extra }, or forgotten \endgroup.
-\verb@egroup ...erb@balance@group \@empty \egroup 
-                                                  
-l.1162 \end{frame}
-                  
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/defense.tex:1162: LaTeX Error: \verb illegal in argument.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1162 \end{frame}
-                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/defense.tex:1162: Missing $ inserted.
-<inserted text> 
-                $
-l.1162 \end{frame}
-                  
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/defense.tex:1162: Missing $ inserted.
-<inserted text> 
-                $
-l.1162 \end{frame}
-                  
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/defense.tex:1162: Missing } inserted.
-<inserted text> 
-                }
-l.1162 \end{frame}
-                  
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/defense.tex:1162: Extra }, or forgotten \endgroup.
-\verb@egroup ...erb@balance@group \@empty \egroup 
-                                                  
-l.1162 \end{frame}
-                  
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/defense.tex:1162: LaTeX Error: \verb illegal in argument.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1162 \end{frame}
-                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/defense.tex:1162: Missing $ inserted.
-<inserted text> 
-                $
-l.1162 \end{frame}
-                  
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/defense.tex:1162: Missing $ inserted.
-<inserted text> 
-                $
-l.1162 \end{frame}
-                  
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/defense.tex:1162: Missing } inserted.
-<inserted text> 
-                }
-l.1162 \end{frame}
-                  
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/defense.tex:1162: Extra }, or forgotten \endgroup.
-\verb@egroup ...erb@balance@group \@empty \egroup 
-                                                  
-l.1162 \end{frame}
-                  
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/defense.tex:1162: LaTeX Error: \verb illegal in argument.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1162 \end{frame}
-                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/defense.tex:1162: Missing $ inserted.
-<inserted text> 
-                $
-l.1162 \end{frame}
-                  
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/defense.tex:1162: Missing $ inserted.
-<inserted text> 
-                $
-l.1162 \end{frame}
-                  
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/defense.tex:1162: Missing } inserted.
-<inserted text> 
-                }
-l.1162 \end{frame}
-                  
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/defense.tex:1162: Extra }, or forgotten \endgroup.
-\verb@egroup ...erb@balance@group \@empty \egroup 
-                                                  
-l.1162 \end{frame}
-                  
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/defense.tex:1162: LaTeX Error: \verb illegal in argument.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1162 \end{frame}
-                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/defense.tex:1162: Missing $ inserted.
-<inserted text> 
-                $
-l.1162 \end{frame}
-                  
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/defense.tex:1162: Missing $ inserted.
-<inserted text> 
-                $
-l.1162 \end{frame}
-                  
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/defense.tex:1162: Missing } inserted.
-<inserted text> 
-                }
-l.1162 \end{frame}
-                  
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/defense.tex:1162: Extra }, or forgotten \endgroup.
-\verb@egroup ...erb@balance@group \@empty \egroup 
-                                                  
-l.1162 \end{frame}
-                  
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/defense.tex:1162: LaTeX Error: \verb illegal in argument.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1162 \end{frame}
-                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-Overfull \hbox (71.0778pt too wide) in paragraph at lines 1162--1162
- [] 
- []
-
-
-Overfull \vbox (3.83128pt too high) detected at line 1162
- []
-
+File: real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png Graphic file (type png)
+<use real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png>
+Package pdftex.def Info: real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png  used on input line 1167.
+(pdftex.def)             Requested size: 240.90186pt x 180.67639pt.
 
 Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  [][][][][][]  
@@ -2485,12 +2188,18 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 [52
 
 ]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 1177--1177
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 1180--1180
  [][][][][][]  
  []
 
+<iphone.png, id=1727, 958.58125pt x 1268.74pt>
+File: iphone.png Graphic file (type png)
+<use iphone.png>
+Package pdftex.def Info: iphone.png  used on input line 1180.
+(pdftex.def)             Requested size: 172.53717pt x 228.36334pt.
 
-LaTeX Warning: Citation 'bodilsen2023exploiting' on page 53 undefined on input line 1177.
+Overfull \vbox (21.96503pt too high) detected at line 1180
+ []
 
 
 Overfull \hbox (115.69934pt too wide) has occurred while \output is active
@@ -2499,13 +2208,10 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 
 [53
 
-]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 1190--1190
+ <./iphone.png>]
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 1196--1196
  [][][][][][]  
  []
-
-
-LaTeX Warning: Citation 'chinco2019sparse' on page 54 undefined on input line 1190.
 
 
 Overfull \hbox (115.69934pt too wide) has occurred while \output is active
@@ -2515,9 +2221,12 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 [54
 
 ]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 1238--1238
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 1244--1244
  [][][][][][]  
  []
+
+
+LaTeX Warning: Citation 'bodilsen2023exploiting' on page 55 undefined on input line 1244.
 
 
 Overfull \hbox (115.69934pt too wide) has occurred while \output is active
@@ -2527,12 +2236,12 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 [55
 
 ]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 1247--1247
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 1257--1257
  [][][][][][]  
  []
 
 
-LaTeX Warning: Citation 'jiang2017information' on page 56 undefined on input line 1247.
+LaTeX Warning: Citation 'chinco2019sparse' on page 56 undefined on input line 1257.
 
 
 Overfull \hbox (115.69934pt too wide) has occurred while \output is active
@@ -2542,7 +2251,7 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 [56
 
 ]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 1271--1271
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 1305--1305
  [][][][][][]  
  []
 
@@ -2554,12 +2263,12 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 [57
 
 ]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 1290--1290
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 1314--1314
  [][][][][][]  
  []
 
 
-LaTeX Warning: Empty bibliography on input line 1290.
+LaTeX Warning: Citation 'jiang2017information' on page 58 undefined on input line 1314.
 
 
 Overfull \hbox (115.69934pt too wide) has occurred while \output is active
@@ -2567,6 +2276,33 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  []
 
 [58
+
+]
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 1338--1338
+ [][][][][][]  
+ []
+
+
+Overfull \hbox (115.69934pt too wide) has occurred while \output is active
+ [][][][][][]  
+ []
+
+[59
+
+]
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 1357--1357
+ [][][][][][]  
+ []
+
+
+LaTeX Warning: Empty bibliography on input line 1357.
+
+
+Overfull \hbox (115.69934pt too wide) has occurred while \output is active
+ [][][][][][]  
+ []
+
+[60
 
 ]
 \tf@nav=\write8
@@ -2591,17 +2327,8 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-
-Package rerunfilecheck Warning: File `defense.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `defense.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  92BC68B49054B16C69C8EC64FEC8B3BC;1432.
+Package rerunfilecheck Info: File `defense.out' has not changed.
+(rerunfilecheck)             Checksum: 92BC68B49054B16C69C8EC64FEC8B3BC;1432.
 
 Package biblatex Warning: Please (re)run Biber on the file:
 (biblatex)                defense
@@ -2612,21 +2339,21 @@ Package logreq Info: Writing requests to 'defense.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 59178 strings out of 474116
- 1315877 string characters out of 5743682
- 2190865 words of memory out of 5000000
- 80493 multiletter control sequences out of 15000+600000
- 592342 words of font info for 119 fonts, out of 8000000 for 9000
+ 57898 strings out of 474116
+ 1294990 string characters out of 5743682
+ 2191404 words of memory out of 5000000
+ 79206 multiletter control sequences out of 15000+600000
+ 592029 words of font info for 118 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 146i,19n,146p,1663b,2227s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 128i,19n,131p,1663b,1472s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 pdfTeX warning (dest): name{model_1} has been referenced but does not exist, replaced by a fixed one
 
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfsi0900.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfso0900.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfss0500.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfss0600.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfss0700.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfss0800.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfss0900.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfss1095.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfsx0600.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfsx0800.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfsx0900.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfsx1095.pfb>
-Output written on defense.pdf (58 pages, 1291768 bytes).
+Output written on defense.pdf (60 pages, 1285992 bytes).
 PDF statistics:
- 2017 PDF objects out of 2073 (max. 8388607)
- 1709 compressed objects within 18 object streams
- 133 named destinations out of 1000 (max. 500000)
- 393 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2114 PDF objects out of 2487 (max. 8388607)
+ 1798 compressed objects within 18 object streams
+ 134 named destinations out of 1000 (max. 500000)
+ 485 words of extra memory for PDF output out of 10000 (max. 10000000)
 

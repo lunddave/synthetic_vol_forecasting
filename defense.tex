@@ -42,7 +42,7 @@
 \usepackage{mathtools}% http://ctan.org/pkg/mathtools
 \usepackage{mathrsfs}
 
-\usepackage[table,xcdraw]{xcolor}
+\usepackage[table]{xcolor}
 
 
 \usepackage{multirow}
@@ -170,7 +170,7 @@
 
         \begin{enumerate}
             \item \textcolor{blue}{a rupture in the DGP}
-            \item  \textcolor{blue}{lack of past information for units we wish to forecast, i.e. a so-called ``cold start"} \parencite[][]{fatemi2023mitigating}
+            \item  \textcolor{blue}{lack of past information for units we wish to forecast, i.e. a so-called ``cold start"} \parencite{fatemi2023mitigating}
         \end{enumerate}
 
         \bigskip
@@ -571,8 +571,7 @@
 \path[->] (Target Series) edge [bend right] node {Unadjusted Forecast} (Adjusted Forecast);
 \path[->] (Donor Pool) edge [bend left] node {Pre-Shock Covariates} (Distance-based Weighting);
 \path[->] (Donor Pool) edge [left] [bend right] node {FE estimates} (Distance-based Weighting);
- \path[->] (Distance-based Weighting) edge [below] [bend right] node {Predicted Correction Function} (Adjusted Forecast);
-
+ \path[->] (Distance-based Weighting) edge [below] [bend right] node {Predicted Correction Term} (Adjusted Forecast);
 
 %\draw[red, dashed] (1, 2) -- (1, -2);
 \end{tikzpicture}
@@ -582,56 +581,56 @@
 \begin{frame}\frametitle{Visuals That Tell The Story}
     The forecaster's decision tree
 
-    \begin{figure} 
-        \centering  
-      \resizebox{\textwidth}{!}{%
-      \begin{forest}
-        /tikz/every node/.append style={font=\small},
-        for tree={
-          rounded corners, 
-          % top color=gray!5, bottom color=gray!30, 
-          edge+={darkgray, line width=4pt}, 
-          draw=darkgray, 
-          l sep=.8cm,
-          s sep=.5cm,
-          minimum height=8.8cm,
-          minimum width=1cm,
-          child anchor=west,
-          parent anchor=east,
-          grow'=east,
-        minimum size=1cm,%new possibility
-        text width=4cm,%
-          draw,
-          anchor=west,
-          edge path={
-            \noexpand\path[\forestoption{edge}]
-              (.child anchor) -| +(-5pt,0) -- +(-5pt,0) |-
-              (!u.parent anchor)\forestoption{edge label};
-          },
-        }
-          [Break in the DGP between $T^{*}$ and $T^{*}+1$?,fill=blue!30 
-              [Is there information outside of “regular forces”,edge=green, fill=blue!30,draw=green
-                  [Can we use the information outside “regular forces” to forecast (as opposed to merely spotting the break)?,edge=green,,fill=blue!30 
-                      [Do you have a parametric model (with estimable parameters) for how information outside of ``regular forces” will figure at $T^{*}+h$?,edge=green,fill=blue!30 
-                        [What other time series are governed by the parametric model? 
-                        ,edge=green,fill=blue!30 
-                        ]
-                        [The information that helped spot the break can be used.
-                        ,edge=red,fill=gray!30
-                        ]
-                        ]
-                      [Use “regular forces” to do the model adjustment.,edge=red,fill=gray!30
-                      ]
-                      ]
-                      [Then forecasting will require at least one post-break data point to be observed.,edge=red,fill=gray!30]
-                  ]
-                  [\cite{clements1998forecasting} discuss this.,edge=red,fill=gray!30]
-                  ]
-              ]
-          ]
-      \end{forest}
-      }\caption{Forecast Model Adjustment: A Decision Tree}\label{fig:tree}
-      \end{figure}
+%     \begin{figure} 
+%         \centering  
+%       \resizebox{\textwidth}{!}{%
+%       \begin{forest}
+%         /tikz/every node/.append style={font=\small},
+%         for tree={
+%           rounded corners, 
+%           % top color=gray!5, bottom color=gray!30, 
+%           edge+={darkgray, line width=4pt}, 
+%           draw=darkgray, 
+%           l sep=.8cm,
+%           s sep=.5cm,
+%           minimum height=8.8cm,
+%           minimum width=1cm,
+%           child anchor=west,
+%           parent anchor=east,
+%           grow'=east,
+%         minimum size=1cm,%new possibility
+%         text width=4cm,%
+%           draw,
+%           anchor=west,
+%           edge path={
+%             \noexpand\path[\forestoption{edge}]
+%               (.child anchor) -| +(-5pt,0) -- +(-5pt,0) |-
+%               (!u.parent anchor)\forestoption{edge label};
+%           },
+%         }
+%           [Break in the DGP between $T^{*}$ and $T^{*}+1$?,fill=blue!30 
+%               [Is there information outside of “regular forces”,edge=green, fill=blue!30,draw=green
+%                   [Can we use the information outside “regular forces” to forecast (as opposed to merely spotting the break)?,edge=green,,fill=blue!30 
+%                       [Do you have a parametric model (with estimable parameters) for how information outside of ``regular forces” will figure at $T^{*}+h$?,edge=green,fill=blue!30 
+%                         [What other time series are governed by the parametric model? 
+%                         ,edge=green,fill=blue!30 
+%                         ]
+%                         [The information that helped spot the break can be used.
+%                         ,edge=red,fill=gray!30
+%                         ]
+%                         ]
+%                       [Use “regular forces” to do the model adjustment.,edge=red,fill=gray!30
+%                       ]
+%                       ]
+%                       [Then forecasting will require at least one post-break data point to be observed.,edge=red,fill=gray!30]
+%                   ]
+%                   [\cite[][]{clements1998forecasting} discuss this.,edge=red,fill=gray!30]
+%                   ]
+%               ]
+%           ]
+%       \end{forest}
+%       }\caption{Forecast Model Adjustment: A Decision Tree}
+%       \end{figure}
 
 \end{frame}
 
@@ -803,17 +802,16 @@
 
 Here we share only the first two, and for both GARCH and AR($p$) models.
 
-    \end{frame}
+\end{frame}
 
 \begin{frame}\frametitle{GARCH - Formal Results}
         
-     
-\begin{prop}\label{omega_consistency}
+\begin{prop}
     Assume
     \begin{enumerate}
       \item For each $i$, $1\leq i \leq n$, $\{a_{i,t}\}_{t=0,...,T_i}$ obeys a GARCH-X($m,s$), with volatility shocks found in $\mc{M}_{1}$, where $T_i$ is the length of the $i$th series.
       \item For each $i, \{\omega_{i,t}^{*}\}_{t=0,...,T_i}$ is potentially non-zero at $\{T^{*}_{i}+1,... ,T^{*}_{i}+L_{i}^{vol}\}$, $\omega_{i,T_{i}^{*}+1}^{*}\equiv...\equiv\omega_{i,T_{i}^{*}+L_{i}^{vol}}^{*}$, and zero otherwise, where the arrival of $T_{i}^{*}$ is governed by a time-invariant distribution on $\{a_{i,t}\}_{t=0,...,T_i-1}$, and both the arrival and conclusion of the shock is observable by the researcher. \label{stationarity_of_omega_i_t}
-      \item The conditions in Assumption 0 of \cite[][]{han2014asymptotic} hold.
+      \item The conditions in Assumption 0 of \cite{han2014asymptotic} hold.
     \end{enumerate}
 
     Then for any $i, 1\leq i \leq n+1$, and for any $r, 1\leq r \leq L_{i}^{vol}$, $\hat\omega_{i,T_{i}^{*}+r}^{*} \overset{p}{\longrightarrow} \omega_{i,T_{i}^{*}+r}^{*}$ as $t\rightarrow\infty$.  Additionally, $\hat\omega_{i,*}^{*} \overset{d}{\longrightarrow} \omega_{i,T_{i}^{*}+r}^{*}$ as $t\rightarrow\infty$, and if for all $i, 1 \leq i \leq n+ 1$, $u_{i,t} \equiv 0$ on $\{T^{*}_{i}+1,... ,T^{*}_{i}+L_{i}^{vol}\}$, then $\hat\omega_{i,T_{i}^{*}+r}^{*} \overset{p}{\longrightarrow} \omega_{i,T_{i}^{*}+r}^{*}$ .
@@ -824,27 +822,69 @@ Here we share only the first two, and for both GARCH and AR($p$) models.
 \end{frame}
     
     \begin{frame}\frametitle{GARCH - Formal Results} 
+
     Having established the consistency of the estimators $\hat\omega^{*}_{i,T_{i}^{*}+r}$, we extend that result to prove asymptotic properties of the conditional forecast function itself.
     
-      \begin{prop}\label{sigma_consistency}
+      \begin{prop}
         Assume
         \begin{enumerate}
-          \item All conditions listed in the preceding proposition \ref{omega_consistency}.
+          \item All conditions listed in the preceding proposition.
           \item There exist weights $\{\pi_{i}\}_{i=2}^{n+1}$ such that $\textbf{v}_{1,T_{1}^{*}} = \sum^{n+1}_{i=2}\weight_{i} \textbf{v}_{i,T_{i}^{*}}$.
          \end{enumerate}
-      Then for any $r$, $1\leq r \leq L_{1}^{vol}$, $\hat\sigma^{2}_{adjusted,T_{1}^{*}+r}\overset{d}{\longrightarrow}\sigma^{2}_{1,T_{1}^{*}+r}$ as $t\rightarrow\infty$ in the donor pool, and if for all $i, 1 \leq i \leq n+ 1$, $u_{i,t} \equiv 0$ on $\{T^{*}_{i}+1,... ,T^{*}_{i}+L_{i}^{vol}\}$, then $\hat\sigma^{2}_{adjusted,T_{1}^{*}+r}\overset{p}{\longrightarrow}\sigma^{2}_{1,T_{1}^{*}+r}$.
+
+      Then for any $r$, $1\leq r \leq L_{1}^{vol}$, $\hat\sigma^{2}_{adjusted,T_{1}^{*}+r}\overset{d}{\longrightarrow}\sigma^{2}_{1,T_{1}^{*}+r}$ as $t\rightarrow\infty$ 
+      
+    in the donor pool, and if for all $i, 1 \leq i \leq n+ 1$, $u_{i,t} \equiv 0$ on $\{T^{*}_{i}+1,... ,T^{*}_{i}+L_{i}^{vol}\}$, 
+    
+    %  then $\hat\sigma^{2}_{\text{adjusted},T_{1}^{*}+r}\overset{p}{\longrightarrow}\sigma^{2}_{1,T_{1}^{*}+r}$.
+
       \end{prop}
 
-      In plain language, our volatility prediction have a known distribution, by virtue of our correction terms have a known distribution.
+      In plain language, our volatility prediction has a known distribution, by virtue of our correction terms have a known distribution.
+
+\end{frame}
+
+% \begin{frame}\frametitle{AR($p$) - Formal Results} 
+%     We now present a similar AR($p$) result.
+
+% \begin{prop}\label{ARIMA_param_consistency}
+%     Assume
+%     \begin{enumerate}
+%         \item For each $i$, $1\leq i \leq n + 1$, let $\{y_{t}\}^{T_{i}}_{i=1}$ follow an AR($p$)-X.
+%         \item Assume for each $i$, $1\leq i \leq n + 1$, the shocks $\alpha_{i,t}$ are uncorrelated across donors.
+%         \item Assume for each $i$, $1\leq i \leq n + 1$, the shocks $\alpha_{i,t}$ are uncorrelated with $\alpha_{i,T_{i}^{*}+1}$ 
+%     \end{enumerate}
+
+%     Then the tuple of estimators ($\hat\rho_{i,1},...,\hat\rho_{i, p}, \hat\alpha_{i,T^{*}+1}$) is consistent as $t \rightarrow \infty$.
+% \end{prop}
+
+% \end{frame}
+
+\begin{frame}\frametitle{AR($p$) - Formal Results} 
+
+    frame
+% \begin{prop}\label{ARIMA_aggregated_alpha}
+% Assume
+%   \begin{enumerate}
+%     \item All conditions listed in Proposition \ref{ARIMA_param_consistency}.
+%     \item There exist weights $\{\pi_{i}\}_{i=2}^{n+1} \in \Delta^{n-1}$  such that $\textbf{v}_{1,T_{1}^{*}} = \sum^{n+1}_{i=2}\weight_{i} \textbf{v}_{i,T_{i}^{*}}$.
+%     \item For all $i$, the $\{u_{i,t}\}$ are equal in distribution.
+%    \end{enumerate}
+
+%    Then the aggregated estimator $\hat{\alpha_{T^{*}_{1}+1}}$ converges in distribution to $\alpha_{T^{*}_{1}+1}$ as $t \rightarrow \infty$.  Furthermore, if the $\{u_{i,t}\}$ are constant with probability 1, the convergence is in probability.
+%   \end{prop}
 
 \end{frame}
 
 \begin{frame}\frametitle{AR($p$) - Formal Results} 
-    We now present a similar AR($p$) result here
+
+    And now convergence in distribution
+
+% \begin{prop}\label{ARIMA_conv_distribution}
+%   Let $\{\hat y_{1,T_{1}^{*}+r}\}^{h}_{r=1}$ denote the vector of adjusted predictions (adjusted through $h$ steps ahead) in the time series under study.  Assume all conditions listed in Propositions \ref{ARIMA_param_consistency} and \ref{ARIMA_aggregated_alpha}.  Then $\{\hat y_{1,T_{1}^{*}+r}\}^{h}_{r=1} \xrightarrow{\qquad d\qquad} \{ y_{1,T_{1}^{*}+r}\}^{h}_{r=1}$.  Furthermore, if the $\{u_{i,t}\}$ are constant with probability 1, the convergence is in probability. 
+%   \end{prop}
 
 \end{frame}
-
-
 
 \section{Applications}
 
@@ -853,6 +893,7 @@ Here we share only the first two, and for both GARCH and AR($p$) models.
 
     \begin{itemize}
         \item <1-> GARCH (paper is under review at the \textit{International Journal of Forecasting})
+        \item <2-> AR($p$) (a canonical model helpful for illustrative purposes)
         \item <2-> HAR (to be submitted in the coming weeks as part of second paper)
         \item <3-> Exponential Shocks (to be submitted in the coming weeks as part of second paper)
 
@@ -1012,6 +1053,32 @@ Here we share only the first two, and for both GARCH and AR($p$) models.
 
 % \end{frame}
 
+\begin{frame}\frametitle{AR($p$)}
+
+    We want to perform a simple bias-variance decomposition for an parameter-corrected AR($p$) prediction:
+
+    \begin{align}
+        \E[(y_{t}-\hat{y}_{t})^{2}] &= \E[(y_{t} - \hat\mu + \sum^{p}_{k=1}\hat\rho_{k}y_{t-k} + \hat{\alpha}_{t})^{2}]\\
+        &= \E[(\mu + \sum^{p}_{k=1}\rho_{k}y_{t-k} + \alpha_{t} + \epsilon_{t}  - (\hat\mu + \sum^{p}_{k=1}\hat\rho_{k}y_{t-k} + \hat{\alpha}_{t}))^{2}] \\
+        &= \E[((\mu - \hat\mu) + \sum^{p}_{k=1}(\rho_{i}-\hat\rho_{k})y_{t-k} + (\alpha_{t} - \hat{\alpha}_{t}) + \epsilon_{t} )^{2}]
+        \end{align}
+      admits of the typical bias-variance decomposition.  If it is known that $\mu = 0$, the last line becomes...
+
+\end{frame}
+
+\begin{frame}\frametitle{AR($p$)}
+      \begin{align*}
+        &\E[(\sum^{p}_{k=1}(\rho_{k}-\hat\rho_{k})y_{t-k} + (\alpha_{t} - \hat{\alpha}_{t}) + \epsilon_{t} )^{2}]\notag\\
+        = &\text{Bias}^{2}[\sum^{p}_{k=1}(\rho_{k}-\hat\rho_{k})y_{t-k} + (\alpha_{t} - \hat{\alpha}_{t}) ] + \text{Var}[\sum^{p}_{k=1}(\rho_{k}-\hat\rho_{k})y_{t-k} + (\alpha_{t} - \hat{\alpha}_{t}) ] + \sigma^{2}_{\epsilon}\tag{$\epsilon_{t}$ idiosyncratic}\\
+        = &\big[\E[\sum^{p}_{k=1}(\rho_{k}-\hat\rho_{k})y_{t-k} + (\alpha_{t} - \hat{\alpha}_{t}) ]\big]^{2} + \text{Var}[\sum^{p}_{k=1}(\rho_{k}-\hat\rho_{k})y_{t-k} + (\alpha_{t} - \hat{\alpha}_{t})]  + \sigma^{2}_{\epsilon}\tag{Definition of Bias}\\
+        % = &\big[\sum^{p}_{k=1}(\rho_{k}-\E[\hat\rho_{k}])y_{t-k} + (\alpha_{t} - \E[\hat{\alpha}_{t}]) \big]^{2} + \text{Var}[\sum^{p}_{k=1}(\rho_{k}-\hat\rho_{k})y_{t-k} + (\alpha_{t} - \hat{\alpha}_{t})]  + \sigma^{2}_{\epsilon}\\
+        = &\big[\sum^{p}_{k=1}(\rho_{k}-\E[\hat\rho_{k}])y_{t-k} + (\alpha_{t} - \E[\hat{\alpha}_{t}]) \big]^{2} + \text{Var}[\sum^{p}_{k=1}(\rho_{k}-\hat\rho_{k})y_{t-k}] + \text{Var}[\hat{\alpha}_{t}]  + \sigma^{2}_{\epsilon}\tag{if donor shocks are uncorrelated with time series under study}\\
+        = &\big[\sum^{p}_{k=1}(\rho_{k}-\E[\hat\rho_{k}])y_{t-k} + (\textcolor{red}{\alpha_{t} - \E[\hat{\alpha}_{t}]}) \big]^{2} + \text{Var}[\sum^{p}_{k=1}(\rho_{k}-\hat\rho_{k})y_{t-k}] 
+        \sum_{i=2}^{n+1}\textcolor{red}{\pi_{i}^{2}}\text{Var}[\hat\alpha_{i,t}] \\
+        & + 2\sum_{i\neq j}\textcolor{red}{\pi_{i}\pi_{j}}\text{Cov}[\hat\alpha_{i,t},\hat\alpha_{j,t}]  + \sigma^{2}_{\epsilon}
+      \end{align*}
+\end{frame}
+
 \begin{frame}
     \fontsize{8pt}{9pt}
     
@@ -1128,38 +1195,38 @@ Here we share only the first two, and for both GARCH and AR($p$) models.
 
     \end{frame}
 
-\begin{frame}  \frametitle{A Multiverse Approach to Forecast Evaluation}
+% \begin{frame}  \frametitle{A Multiverse Approach to Forecast Evaluation}
 
-    \begin{table}[ht]
-        % \centering
-        % \begingroup\fontsize{3pt}{2.5pt}\selectfont
-        \begin{tabular}{ccc}
+%     \begin{table}[ht]
+%         % \centering
+%         % \begingroup\fontsize{3pt}{2.5pt}\selectfont
+%         \begin{tabular}{ccc}
           
-          \hline
-          QL Loss of the Adjusted Forecast& Omitted Covariate & Omitted Donor \\ 
-             \hline
-        0.0001 & Log Return of \verb|^|IRX & None \\ 
-        \rowcolor{gray} 0.0007 & NA (Average Adjusted Forecast) & NA (Average Adjusted Forecast)\\  
-          0.0007 & Log Return of CL=F & 2004-11-02 \\ 
-          0.0008 & Log Return of \verb|^|IRX & 2004-11-02 \\ 
-          \vdots & \vdots & \vdots \\
-          0.0080 & Log Return of CL=F & 2008-11-04 \\ 
-          0.0099 & Log Return of \verb|^|VIX & 2004-11-02 \\ 
-          \rowcolor{gray}  0.0099 & NA (Median Adjusted Forecast) & NA (Median Adjusted Forecast)\\  
-          0.0115 & Log Return of CL=F & 2016-02-19 \\ 
-          0.0127 & None & 2016-02-19 \\ 
-          \vdots & \vdots & \vdots \\
-          0.0216 & Log Return of \verb|^|IRX & 2016-06-23 \\ 
-          \rowcolor{yellow} 0.0219 & None & None \\ 
-          0.0222 & Log Return of \verb|^|FVX & 2016-02-19 \\ 
-          \vdots & \vdots & \vdots \\
-          \rowcolor{red} 2.3529 & All & All \\ 
-           \hline
-        \end{tabular}
-        % \endgroup
-    \end{table}
+%           \hline
+%           QL Loss of the Adjusted Forecast& Omitted Covariate & Omitted Donor \\ 
+%              \hline
+%         0.0001 & Log Return of \verb|^|IRX & None \\ 
+%         \rowcolor{gray} 0.0007 & NA (Average Adjusted Forecast) & NA (Average Adjusted Forecast)\\  
+%           0.0007 & Log Return of CL=F & 2004-11-02 \\ 
+%           0.0008 & Log Return of \verb|^|IRX & 2004-11-02 \\ 
+%           \vdots & \vdots & \vdots \\
+%           0.0080 & Log Return of CL=F & 2008-11-04 \\ 
+%           0.0099 & Log Return of \verb|^|VIX & 2004-11-02 \\ 
+%           \rowcolor{gray}  0.0099 & NA (Median Adjusted Forecast) & NA (Median Adjusted Forecast)\\  
+%           0.0115 & Log Return of CL=F & 2016-02-19 \\ 
+%           0.0127 & None & 2016-02-19 \\ 
+%           \vdots & \vdots & \vdots \\
+%           0.0216 & Log Return of \verb|^|IRX & 2016-06-23 \\ 
+%           \rowcolor{yellow} 0.0219 & None & None \\ 
+%           0.0222 & Log Return of \verb|^|FVX & 2016-02-19 \\ 
+%           \vdots & \vdots & \vdots \\
+%           \rowcolor{red} 2.3529 & All & All \\ 
+%            \hline
+%         \end{tabular}
+%         % \endgroup
+%     \end{table}
 
-\end{frame}
+% \end{frame}
 
 \section{Future directions for Forecasting Amid Shocks}
 
