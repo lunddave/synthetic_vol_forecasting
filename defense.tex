@@ -501,7 +501,7 @@
     
     \item <1->  Observe the pair $(\{\hat\alpha_{i}\}^{n+1}_{i=2},\{\x_{i}\}^{n+1}_{i=2})$.  \\
     
-    \item <2-> Goal: recover weights $\{\weight_{i}\}^{n+1}_{i=2} \in \Delta^{n}$ and compute $\hat\alpha \coloneq \sum^{n+1}_{i=2}\weight_{i}\hat\alpha_{i}$, our predicted correction term (more about this later).
+    \item <2-> Goal: recover weights $\{\weight_{i}\}^{n+1}_{i=2} \in \Delta^{n-1}$ and compute $\hat\alpha \coloneq \sum^{n+1}_{i=2}\weight_{i}\hat\alpha_{i}$, our predicted correction term (more about this later).
     
     \item <3-> Following \cite[][]{abadie2003economic},\cite[][]{abadie2010synthetic}, let $\|\cdot\|_{\textbf{S}}$ denote any semi-norm on $\mathbb{R}^{p}$, and define
     
@@ -836,7 +836,7 @@ Here we share only the first two, and for both GARCH and AR($p$) models.
       
     in the donor pool, and if for all $i, 1 \leq i \leq n+ 1$, $u_{i,t} \equiv 0$ on $\{T^{*}_{i}+1,... ,T^{*}_{i}+L_{i}^{vol}\}$, 
     
-    %  then $\hat\sigma^{2}_{\text{adjusted},T_{1}^{*}+r}\overset{p}{\longrightarrow}\sigma^{2}_{1,T_{1}^{*}+r}$.
+     then $\hat\sigma^{2}_{\text{adjusted},T_{1}^{*}+r}\overset{p}{\longrightarrow}\sigma^{2}_{1,T_{1}^{*}+r}$.
 
       \end{prop}
 
@@ -844,45 +844,48 @@ Here we share only the first two, and for both GARCH and AR($p$) models.
 
 \end{frame}
 
-% \begin{frame}\frametitle{AR($p$) - Formal Results} 
-%     We now present a similar AR($p$) result.
-
-% \begin{prop}\label{ARIMA_param_consistency}
-%     Assume
-%     \begin{enumerate}
-%         \item For each $i$, $1\leq i \leq n + 1$, let $\{y_{t}\}^{T_{i}}_{i=1}$ follow an AR($p$)-X.
-%         \item Assume for each $i$, $1\leq i \leq n + 1$, the shocks $\alpha_{i,t}$ are uncorrelated across donors.
-%         \item Assume for each $i$, $1\leq i \leq n + 1$, the shocks $\alpha_{i,t}$ are uncorrelated with $\alpha_{i,T_{i}^{*}+1}$ 
-%     \end{enumerate}
-
-%     Then the tuple of estimators ($\hat\rho_{i,1},...,\hat\rho_{i, p}, \hat\alpha_{i,T^{*}+1}$) is consistent as $t \rightarrow \infty$.
-% \end{prop}
-
-% \end{frame}
-
 \begin{frame}\frametitle{AR($p$) - Formal Results} 
+    We now present a similar AR($p$) result.
 
-    frame
-% \begin{prop}\label{ARIMA_aggregated_alpha}
-% Assume
-%   \begin{enumerate}
-%     \item All conditions listed in Proposition \ref{ARIMA_param_consistency}.
-%     \item There exist weights $\{\pi_{i}\}_{i=2}^{n+1} \in \Delta^{n-1}$  such that $\textbf{v}_{1,T_{1}^{*}} = \sum^{n+1}_{i=2}\weight_{i} \textbf{v}_{i,T_{i}^{*}}$.
-%     \item For all $i$, the $\{u_{i,t}\}$ are equal in distribution.
-%    \end{enumerate}
+\begin{prop}\label{ARIMA_param_consistency}
+    Assume
+    \begin{enumerate}
+        \item For each $i$, $1\leq i \leq n + 1$, let $\{y_{t}\}^{T_{i}}_{i=1}$ follow an AR($p$)-X.
+        \item Assume for each $i$, $1\leq i \leq n + 1$, the shocks $\alpha_{i,t}$ are uncorrelated across donors.
+        \item Assume for each $i$, $1\leq i \leq n + 1$, the shocks $\alpha_{i,t}$ are uncorrelated with $\alpha_{i,T_{i}^{*}+1}$ 
+    \end{enumerate}
 
-%    Then the aggregated estimator $\hat{\alpha_{T^{*}_{1}+1}}$ converges in distribution to $\alpha_{T^{*}_{1}+1}$ as $t \rightarrow \infty$.  Furthermore, if the $\{u_{i,t}\}$ are constant with probability 1, the convergence is in probability.
-%   \end{prop}
+    Then the tuple of estimators ($\hat\rho_{i,1},...,\hat\rho_{i, p}, \hat\alpha_{i,T^{*}+1}$) is consistent as $t \rightarrow \infty$.
+\end{prop}
 
 \end{frame}
 
 \begin{frame}\frametitle{AR($p$) - Formal Results} 
 
+    frame
+\begin{prop}\label{ARIMA_aggregated_alpha}
+Assume
+  \begin{enumerate}
+    \item All conditions listed in the preceding proposition.
+    \item There exist weights $\{\pi_{i}\}_{i=2}^{n+1} \in \Delta^{n-1}$  such that $\textbf{v}_{1,T_{1}^{*}} = \sum^{n+1}_{i=2}\weight_{i} \textbf{v}_{i,T_{i}^{*}}$.
+    \item For all $i$, the $\{u_{i,t}\}$ are equal in distribution.
+   \end{enumerate}
+
+   Then the aggregated estimator $\hat{\alpha_{T^{*}_{1}+1}}$ converges in distribution to $\alpha_{T^{*}_{1}+1}$ as $t \rightarrow \infty$.  Furthermore, if the $\{u_{i,t}\}$ are constant with probability 1, the convergence is in probability.
+  \end{prop}
+
+  In plain terms: by `cloning' the time series under study, we get a consistent predictor.
+
+\end{frame}
+
+
+\begin{frame}\frametitle{AR($p$) - Formal Results} 
+
     And now convergence in distribution
 
-% \begin{prop}\label{ARIMA_conv_distribution}
-%   Let $\{\hat y_{1,T_{1}^{*}+r}\}^{h}_{r=1}$ denote the vector of adjusted predictions (adjusted through $h$ steps ahead) in the time series under study.  Assume all conditions listed in Propositions \ref{ARIMA_param_consistency} and \ref{ARIMA_aggregated_alpha}.  Then $\{\hat y_{1,T_{1}^{*}+r}\}^{h}_{r=1} \xrightarrow{\qquad d\qquad} \{ y_{1,T_{1}^{*}+r}\}^{h}_{r=1}$.  Furthermore, if the $\{u_{i,t}\}$ are constant with probability 1, the convergence is in probability. 
-%   \end{prop}
+\begin{prop}\label{ARIMA_conv_distribution}
+  Let $\{\hat y_{1,T_{1}^{*}+r}\}^{h}_{r=1}$ denote the vector of adjusted predictions (adjusted through $h$ steps ahead) in the time series under study.  Assume all conditions listed in Propositions \ref{ARIMA_param_consistency} and \ref{ARIMA_aggregated_alpha}.  Then $\{\hat y_{1,T_{1}^{*}+r}\}^{h}_{r=1} \xrightarrow{\qquad d\qquad} \{ y_{1,T_{1}^{*}+r}\}^{h}_{r=1}$.  Furthermore, if the $\{u_{i,t}\}$ are constant with probability 1, the convergence is in probability. 
+  \end{prop}
 
 \end{frame}
 
@@ -894,9 +897,10 @@ Here we share only the first two, and for both GARCH and AR($p$) models.
     \begin{itemize}
         \item <1-> GARCH (paper is under review at the \textit{International Journal of Forecasting})
         \item <2-> AR($p$) (a canonical model helpful for illustrative purposes)
-        \item <2-> HAR (to be submitted in the coming weeks as part of second paper)
-        \item <3-> Exponential Shocks (to be submitted in the coming weeks as part of second paper)
+        \item <3-> HAR (to be submitted in the coming weeks as part of second paper)
+        \item <4-> Exponential Shocks (to be submitted in the coming weeks as part of second paper)
 
+        For each of these, we would like to offer a slightly different taste of what is going on.
     \end{itemize}
 \end{frame}
 
