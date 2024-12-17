@@ -475,10 +475,10 @@ We now present two one-step-ahead forecasts for the time series under study. The
 
 \begin{align*}
   \text{Forecast 1: } 
-   &\hat y_{unadjusted, T_{1}^{*}+1} = \hat\E[y_{i,T_{1}^{*}+1}|\mathcal{F}_{T_{1}^{*}}] \\
+   &\hat y_{unadjusted, T_{1}^{*}+1} = \hat\E[y_{1,T_{1}^{*}+1}|\mathcal{F}_{T_{1}^{*}}] \\
    \\
   \text{Forecast 2: }
-   &\hat y_{adjusted,T_{1}^{*}+1} = \hat\E[y_{i,T_{1}^{*}+1}|\mathcal{F}_{T_{1}^{*}}] + \hat\alpha_{T^{*}_{1}+1} \text{ .}
+   &\hat y_{adjusted,T_{1}^{*}+1} = \hat\E[y_{1,T_{1}^{*}+1}|\mathcal{F}_{T_{1}^{*}}] + \hat\alpha_{T^{*}_{1}+1} \text{ .}
 \end{align*}
 The problem of aggregating estimated shocks or residuals begins with the data constraints.  Let us first introduce useful notation.  Let $\hat\alpha_{i,*}$ denote estimated correction term for donor $i$.   Taking the estimated shocks or residuals as a given, we essentially observe the tuple of information $(\{\hat\alpha_{i,*}\}^{n+1}_{i=2}, \mathcal{F}_{2,T^{*}_{2}}\times \ldots \times \mathcal{F}_{n+1,T^{*}_{n+1}}\})$.  One approach to aggregation comes from \cite{lin2021minimizing}, where weights belonging to the simplex, $\{\weight_{i}\}^{n+1}_{i=2} \in \Delta^{n-1}$, are chosen via a distance-based weighting procedure, resulting in the correction function 
 

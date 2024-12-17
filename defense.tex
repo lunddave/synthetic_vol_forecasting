@@ -481,10 +481,10 @@
 
     \begin{align*}
       \text{Forecast 1: } 
-       &\hat y_{unadjusted, T_{1}^{*}+1} = \hat\E[y_{i,T_{1}^{*}+1}|\mathcal{F}_{T_{1}^{*}}] \\
+       &\hat y_{unadjusted, T_{1}^{*}+1} = \hat\E[y_{1,T_{1}^{*}+1}|\mathcal{F}_{T_{1}^{*}}] \\
        \\
       \text{Forecast 2: }
-       &\hat y_{adjusted,T_{1}^{*}+1} = \hat\E[y_{i,T_{1}^{*}+1}|\mathcal{F}_{T_{1}^{*}}] + \hat\alpha_{T^{*}_{1}+1} \text{ .}
+       &\hat y_{adjusted,T_{1}^{*}+1} = \hat\E[y_{1,T_{1}^{*}+1}|\mathcal{F}_{T_{1}^{*}}] + \hat\alpha_{T^{*}_{1}+1} \text{ .}
     \end{align*}
 
     \end{frame}
@@ -704,7 +704,7 @@
           \hline
           & Conventional Econometric Models & Outside Conventional Econometric Models\\ 
           \hline
-          internal & & Polynomial expansion of the feature space and other transformations without solid theoretical motivation \\
+          internal &  Lags of the series itself; past shocks & Polynomial expansion of the feature space and other transformations without solid theoretical motivation \\
           \hline
           external & \textcolor{blue}{Macro variables like interest rates, commodity prices; weather-related variables} & Google Trends, high-frequency data like prediction markets; past shocks under similar conditions \\ 
           \hline
