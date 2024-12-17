@@ -45,6 +45,7 @@
 \usepackage[table,xcdraw]{xcolor}
 
 
+\usepackage{multirow}
 \usepackage{amscd}
 \usepackage{url}
 % \usepackage[usenames]{color}
@@ -838,6 +839,13 @@ Here we share only the first two, and for both GARCH and AR($p$) models.
 
 \end{frame}
 
+\begin{frame}\frametitle{AR($p$) - Formal Results} 
+    We now present a similar AR($p$) result here
+
+\end{frame}
+
+
+
 \section{Applications}
 
 \begin{frame}
@@ -1120,9 +1128,40 @@ Here we share only the first two, and for both GARCH and AR($p$) models.
 
     \end{frame}
 
+\begin{frame}  \frametitle{A Multiverse Approach to Forecast Evaluation}
+
+    \begin{table}[ht]
+        % \centering
+        % \begingroup\fontsize{3pt}{2.5pt}\selectfont
+        \begin{tabular}{ccc}
+          
+          \hline
+          QL Loss of the Adjusted Forecast& Omitted Covariate & Omitted Donor \\ 
+             \hline
+        0.0001 & Log Return of \verb|^|IRX & None \\ 
+        \rowcolor{gray} 0.0007 & NA (Average Adjusted Forecast) & NA (Average Adjusted Forecast)\\  
+          0.0007 & Log Return of CL=F & 2004-11-02 \\ 
+          0.0008 & Log Return of \verb|^|IRX & 2004-11-02 \\ 
+          \vdots & \vdots & \vdots \\
+          0.0080 & Log Return of CL=F & 2008-11-04 \\ 
+          0.0099 & Log Return of \verb|^|VIX & 2004-11-02 \\ 
+          \rowcolor{gray}  0.0099 & NA (Median Adjusted Forecast) & NA (Median Adjusted Forecast)\\  
+          0.0115 & Log Return of CL=F & 2016-02-19 \\ 
+          0.0127 & None & 2016-02-19 \\ 
+          \vdots & \vdots & \vdots \\
+          0.0216 & Log Return of \verb|^|IRX & 2016-06-23 \\ 
+          \rowcolor{yellow} 0.0219 & None & None \\ 
+          0.0222 & Log Return of \verb|^|FVX & 2016-02-19 \\ 
+          \vdots & \vdots & \vdots \\
+          \rowcolor{red} 2.3529 & All & All \\ 
+           \hline
+        \end{tabular}
+        % \endgroup
+    \end{table}
+
+\end{frame}
 
 \section{Future directions for Forecasting Amid Shocks}
-
 
 
 \begin{frame}
