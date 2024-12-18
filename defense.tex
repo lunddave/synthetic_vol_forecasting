@@ -507,7 +507,32 @@
     
     
     \begin{align*}
-    \{\pi\}_{i=2}^{n+1} = \argmin_{\pi}\|\x_{1,T^{*}} - \V_{T^{*}}\pi \|_{\textbf{S}} \text{ .}
+    \{\pi\}_{i=2}^{n+1} = \argmin_{\pi}\|\textbf{v}_{1,T^{*}} - \V_{T^{*}}\pi \|_{\textbf{S}} \text{ .}
+    \end{align*}
+    
+    % Nota bene: the weights $\{\weight_{i}\}_{i=2}^{n+1}$ are deterministic with respect to $\mathcal{F}_{T^{*}}$.
+    
+    \end{itemize}
+    \end{frame}
+
+    \begin{frame}
+    \frametitle{Distance-based Weighting in Action}
+
+    (For ease of exposition, we omit time indices)\\
+    
+        \bigskip
+
+    \begin{itemize}
+    
+    \item <1->  Observe the pair $(\{\hat\alpha_{i}\}^{n+1}_{i=2},\{\x_{i}\}^{n+1}_{i=2})$.  \\
+    
+    \item <2-> Goal: recover weights $\{\weight_{i}\}^{n+1}_{i=2} \in \Delta^{n-1}$ and compute $\hat\alpha_{1} \coloneq \sum^{n+1}_{i=2}\weight_{i}\hat\alpha_{i}$, our predicted correction term (more about this later).
+    
+    \item <3-> Following \cite{abadie2003economic,abadie2010synthetic}, let $\|\cdot\|_{\textbf{S}}$ denote any semi-norm on $\mathbb{R}^{p}$, and define
+    
+    
+    \begin{align*}
+    \{\pi\}_{i=2}^{n+1} = \argmin_{\pi}\|\textbf{v}_{1,T^{*}} - \V_{T^{*}}\pi \|_{\textbf{S}} \text{ .}
     \end{align*}
     
     % Nota bene: the weights $\{\weight_{i}\}_{i=2}^{n+1}$ are deterministic with respect to $\mathcal{F}_{T^{*}}$.
@@ -712,7 +737,7 @@
         \end{tabular}
       \end{table}
 \end{frame}
-\begin{frame}\frametitle{Three slides about theory}
+\begin{frame}\frametitle{Two slides about theory}
    
     \begin{table}[htb]
         \centering % instead of \begin{center}
@@ -729,7 +754,7 @@
       \end{table}
 \end{frame}
 
-\begin{frame}\frametitle{Three slides about theory}
+\begin{frame}\frametitle{Two slides about theory}
    
     An overloaded term in applied math: similarity.
 
@@ -743,7 +768,7 @@
 
 \end{frame}
 
-\begin{frame}\frametitle{Three slides about theory}
+\begin{frame}\frametitle{Two slides about theory}
    
     An oft-abused term in applied math: similarity
     \begin{itemize}
@@ -756,18 +781,18 @@
     We call our approach \textcolor{blue}{distance-based weighting}, which is a special case of an approximation-based $n$-ary similarity metric.
 \end{frame}
 
-\begin{frame}\frametitle{Three slides about theory}
-    The term $\x^{T}_{i,t}\lambda_{i,t}$ is deemed the $\textcolor{blue}{correction} \text{ } \textcolor{blue}{term}$ for donor $i$ at time $t$, and the function
+% \begin{frame}\frametitle{Three slides about theory}
+%     The term $\x^{T}_{i,t}\lambda_{i,t}$ is deemed the $\textcolor{blue}{correction} \text{ } \textcolor{blue}{term}$ for donor $i$ at time $t$, and the function
 
-    \begin{align*}
-      \xi \colon \mathcal{F}_{2,T^{*}_{2}+h} \times \ldots \times \mathcal{F}_{n+1, T^{*}_{n+1}+h} &\to \mathcal{F}_{1,T^{*}_{1}+h}\\
-    \end{align*}
-    that estimates or predicts $\alpha_{1,T^{*}_{1}+h}$ will be deemed the \textcolor{red}{correction function}.  
+%     \begin{align*}
+%       \xi \colon \mathcal{F}_{2,T^{*}_{2}+h} \times \ldots \times \mathcal{F}_{n+1, T^{*}_{n+1}+h} &\to \mathcal{F}_{1,T^{*}_{1}+h}\\
+%     \end{align*}
+%     that estimates or predicts $\alpha_{1,T^{*}_{1}+h}$ will be deemed the \textcolor{red}{correction function}.  
     
-    \bigskip 
+%     \bigskip 
     
-    The correction function maps donor information --- be it observables or inferences --- to the prediction function for the time series under study. 
-\end{frame}
+%     The correction function maps donor information --- be it observables or inferences --- to the prediction function for the time series under study. 
+% \end{frame}
 
 \begin{frame}\frametitle{Global Overview}
 
@@ -898,9 +923,9 @@ Assume
     \frametitle{An inventory of models}
 
     \begin{itemize}
-        \item <1-> GARCH (paper is under review at the \textit{International Journal of Forecasting})
-        \item <2-> AR($p$) (a canonical model helpful for illustrative purposes)
-        \item <3-> HAR (to be submitted in the coming weeks as part of second paper)
+        \item <1-> GARCH (\cite{lundquist2024volatility} is under review at the \textit{International Journal of Forecasting})
+        \item <2-> AR($p$) (a canonical model helpful for illustrative purposes), which is covered in \cite{lin2021minimizing}
+        \item <3-> HAR (to be submitted in 2025 as part of second paper)
         \item <4-> Exponential Shocks (to be submitted in the coming weeks as part of second paper)
 
         For each of these, we would like to offer a slightly different taste of what is going on.
@@ -961,7 +986,12 @@ Assume
             \item log return in the trading volume of the ETF IYG itself
         \end{itemize}
     
-        \item \textbf{Donor pool construction} US Elections from 2004, 2008, 2012
+        \item \textbf{Donor pool construction} US Elections from 2004, 2008, 2012, as well as three Brexit-related events in 2016: 
+        \begin{itemize}
+        \item Prime Minister David Cameron's declaration of a Brexit referendum
+        \item A surprising Brexit poll result in June 2016
+        \item Brexit itself
+        \end{itemize}
     
         \item \textbf{Choice of estimator for volatility} Sum of 77 squared five-minute returns generated between 9:35am and 4pm on November 9th, 2016.
     \end{enumerate} 
