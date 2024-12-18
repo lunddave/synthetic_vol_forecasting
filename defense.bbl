@@ -314,6 +314,42 @@
       \field{title}{Mitigating cold-start forecasting using cold causal demand forecasting model}
       \field{year}{2023}
     \endentry
+    \entry{han2014asymptotic}{article}{}
+      \name{author}{2}{}{%
+        {{hash=464e1ada732a9cf7fa173c9b85020b90}{%
+           family={Han},
+           familyi={H\bibinitperiod},
+           given={Heejoon},
+           giveni={H\bibinitperiod}}}%
+        {{hash=e28ab162f25744436f47b84fa144f70a}{%
+           family={Kristensen},
+           familyi={K\bibinitperiod},
+           given={Dennis},
+           giveni={D\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Taylor \& Francis}%
+      }
+      \strng{namehash}{56a2bf295a5c8f507fb6a38566e54eb8}
+      \strng{fullhash}{56a2bf295a5c8f507fb6a38566e54eb8}
+      \strng{bibnamehash}{56a2bf295a5c8f507fb6a38566e54eb8}
+      \strng{authorbibnamehash}{56a2bf295a5c8f507fb6a38566e54eb8}
+      \strng{authornamehash}{56a2bf295a5c8f507fb6a38566e54eb8}
+      \strng{authorfullhash}{56a2bf295a5c8f507fb6a38566e54eb8}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Business \& Economic Statistics}
+      \field{number}{3}
+      \field{title}{Asymptotic theory for the QMLE in GARCH-X models with stationary and nonstationary covariates}
+      \field{volume}{32}
+      \field{year}{2014}
+      \field{pages}{416\bibrangedash 429}
+      \range{pages}{14}
+    \endentry
     \entry{jiang2017information}{article}{}
       \name{author}{2}{}{%
         {{hash=3ce7e499edd7b3bb4d263d96aaca0b30}{%
@@ -412,7 +448,6 @@
       \field{year}{2024}
     \endentry
   \enddatalist
-  \missing{han2014asymptotic}
 \endrefsection
 \endinput
 

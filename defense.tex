@@ -662,7 +662,7 @@
               ]
           ]
       \end{forest}
-      }\caption{Forecast Model Adjustment: A Decision Tree}\label{fig:tree}
+      }\caption{A Decision Tree for Forecast Adjustment}\label{fig:tree}
       \end{figure}
 
 \end{frame}
@@ -739,6 +739,8 @@
    
     An overloaded term in applied math: similarity.
 
+    \bigskip
+
     For our purposes, how should we define and determine similarity?  Is it...
     \begin{itemize}
     \item Quantitative or qualitative?
@@ -758,6 +760,8 @@
     \item Symmetric or asymmetric?
     \item Binary or $n$-ary?
     \end{itemize}
+
+    \bigskip
 
     We call our approach \textcolor{blue}{distance-based weighting}, which is a special case of an approximation-based $n$-ary similarity metric.
 \end{frame}
@@ -780,16 +784,16 @@
     Abstracting away from particular models, what does our method require?
 
     \begin{enumerate}
-        \item <1-> \textbf{Object-to-predict}
+        \item <2-> \textbf{Object-to-predict}
        Random object (indexed over time and possibly space, as well) obeying specification with additive errors 
             
-      \item <2-> \textbf{Common Model Family on the Shocks} Requires that residuals be governed by a model that is shared across all units.  
+      \item <3-> \textbf{Common Model Family on the Shocks} Requires that residuals be governed by a model that is shared across all units.  
       
-      \item<3->  \textbf{Reliable and Shared Model-Fitting Procedure} There must exist a reliable model-fitting procedure for the $n+1$ units.
+      \item<4->  \textbf{Reliable and Shared Model-Fitting Procedure} There must exist a reliable model-fitting procedure for the $n+1$ units.
       
-      \item<4-> \textbf{Reliable Correction Term Estimation} 
+      \item<5-> \textbf{Reliable Correction Term Estimation} 
 
-      \item<5->  \textbf{Reliable Correction Function Estimation} There must exist a correction function (presumably based on the correction term) that maps data from the donor pool to the $\textit{predicted}$ correction term in the time series under study based on similarity.  
+      \item<6->  \textbf{Reliable Correction Function Estimation} There must exist a correction function (presumably based on the correction terms) that maps data from the donor pool to the $\textit{predicted}$ correction term in the time series under study based on similarity.  
     \end{enumerate}
 \end{frame}
 
@@ -839,7 +843,7 @@ Here we share only the first two, and for both GARCH-X and AR($p$) models.
     \begin{enumerate}
       \item For each $i$, $1\leq i \leq n$, $\{a_{i,t}\}_{t=0,...,T_i}$ obeys a GARCH-X($m,s$), with volatility shocks found in $\mc{M}_{1}$, where $T_i$ is the length of the $i$th series.
       \item For each $i, \{\omega_{i,t}^{*}\}_{t=0,...,T_i}$ is potentially non-zero at $\{T^{*}_{i}+1,... ,T^{*}_{i}+L_{i}^{vol}\}$, $\omega_{i,T_{i}^{*}+1}^{*}\equiv...\equiv\omega_{i,T_{i}^{*}+L_{i}^{vol}}^{*}$, and zero otherwise, where the arrival of $T_{i}^{*}$ is governed by a time-invariant distribution on $\{a_{i,t}\}_{t=0,...,T_i-1}$, and both the arrival and conclusion of the shock is observable by the researcher. \label{stationarity_of_omega_i_t}
-      \item The conditions in Assumption 0 of \cite{han2014asymptotic} hold.
+      \item The conditions in Assumption 0 of \cite[][]{han2014asymptotic} hold.
     \end{enumerate}
 
     Then for any $i, 1\leq i \leq n+1$, and for any $r, 1\leq r \leq L_{i}^{vol}$, $\hat\omega_{i,T_{i}^{*}+r}^{*} \overset{p}{\longrightarrow} \omega_{i,T_{i}^{*}+r}^{*}$ as $t\rightarrow\infty$.  Additionally, $\hat\omega_{i,*}^{*} \overset{d}{\longrightarrow} \omega_{i,T_{i}^{*}+r}^{*}$ as $t\rightarrow\infty$, and if for all $i, 1 \leq i \leq n+ 1$, $u_{i,t} \equiv 0$ on $\{T^{*}_{i}+1,... ,T^{*}_{i}+L_{i}^{vol}\}$, then $\hat\omega_{i,T_{i}^{*}+r}^{*} \overset{p}{\longrightarrow} \omega_{i,T_{i}^{*}+r}^{*}$ .
@@ -857,7 +861,7 @@ Here we share only the first two, and for both GARCH-X and AR($p$) models.
         Assume
         \begin{enumerate}
           \item All conditions listed in the preceding proposition.
-          \item There exist weights $\{\pi_{i}\}_{i=2}^{n+1}$ such that $\textbf{v}_{1,T_{1}^{*}} = \sum^{n+1}_{i=2}\weight_{i} \textbf{v}_{i,T_{i}^{*}}$.
+          \item There exist weights $\{\pi_{i}\}_{i=2}^{n+1}$ such that $\x_{1,T_{1}^{*}} = \sum^{n+1}_{i=2}\weight_{i} \x_{i,T_{i}^{*}}$.
          \end{enumerate}
 
       Then for any $r$, $1\leq r \leq L_{1}^{vol}$, $\hat\sigma^{2}_{adjusted,T_{1}^{*}+r}\overset{d}{\longrightarrow}\sigma^{2}_{1,T_{1}^{*}+r}$ as $t\rightarrow\infty$ 
@@ -890,7 +894,6 @@ Here we share only the first two, and for both GARCH-X and AR($p$) models.
 
 \begin{frame}\frametitle{AR($p$) - Formal Results} 
 
-    frame
 \begin{prop}\label{ARIMA_aggregated_alpha}
 Assume
   \begin{enumerate}
@@ -906,15 +909,15 @@ Assume
 
 \end{frame}
 
-\begin{frame}\frametitle{AR($p$) - Formal Results} 
+% \begin{frame}\frametitle{AR($p$) - Formal Results} 
 
-    And now, as a consequence of the previous theorem, we can get distributional result for the prediction
+%     And now, as a consequence of the previous theorem, we can get distributional result for our AR($p$) predictions.
 
-\begin{prop}\label{ARIMA_conv_distribution}
-  Let $\{\hat y_{1,T_{1}^{*}+r}\}^{h}_{r=1}$ denote the vector of adjusted predictions (adjusted through $h$ steps ahead) in the time series under study.  Assume all conditions listed in the preceding propositions.  Then $\{\hat y_{1,T_{1}^{*}+r}\}^{h}_{r=1} \xrightarrow{\qquad d\qquad} \{ y_{1,T_{1}^{*}+r}\}^{h}_{r=1}$.  Furthermore, if the $\{u_{i,t}\}$ are constant with probability 1, the convergence is in probability. 
-  \end{prop}
+% \begin{prop}\label{ARIMA_conv_distribution}
+%   Let $\{\hat y_{1,T_{1}^{*}+r}\}^{h}_{r=1}$ denote the vector of adjusted predictions (adjusted through $h$ steps ahead) in the time series under study.  Assume all conditions listed in the preceding propositions.  Then $\{\hat y_{1,T_{1}^{*}+r}\}^{h}_{r=1} \xrightarrow{\qquad d\qquad} \{ y_{1,T_{1}^{*}+r}\}^{h}_{r=1}$.  Furthermore, if the $\{u_{i,t}\}$ are constant with probability 1, the convergence is in probability. 
+%   \end{prop}
 
-\end{frame}
+% \end{frame}
 
 \section{Applications}
 
@@ -926,17 +929,20 @@ Assume
         \item <2-> AR($p$) (a canonical model helpful for illustrative purposes), which is covered in \cite{lin2021minimizing}
         \item <3-> HAR (part of working paper)
         \item <4-> Exponential Shocks (part of working paper)
+        \item[]
+        
+        \item[] <5->     We now take a look at each of these, taking various perspectives on the methodology under development.
 
     \end{itemize}
     \bigskip
 
-    For each of these, we would like to offer a slightly different taste of what is going on.
+
 
 \end{frame}
 
 \begin{frame}
     \frametitle{GARCH Volatility Forecasts}
-    The least you need to know here: GARCH is the premier volatility modeling family for daily data.
+    The least you need to know: GARCH is the premier volatility model for daily data.
 
     \bigskip
 
@@ -1101,7 +1107,7 @@ Assume
         &= \E[(\mu + \sum^{p}_{k=1}\rho_{k}y_{t-k} + \alpha_{t} + \epsilon_{t}  - (\hat\mu + \sum^{p}_{k=1}\hat\rho_{k}y_{t-k} + \hat{\alpha}_{t}))^{2}] \\
         &= \E[((\mu - \hat\mu) + \sum^{p}_{k=1}(\rho_{i}-\hat\rho_{k})y_{t-k} + (\alpha_{t} - \hat{\alpha}_{t}) + \epsilon_{t} )^{2}]
         \end{align}
-      admits of the typical bias-variance decomposition.  If it is known that $\mu = 0$, the last line becomes...
+      admits of the typical bias-variance decomposition.  If $\mu = 0$, the last line becomes...
 
 \end{frame}
 
@@ -1123,7 +1129,7 @@ Assume
     
     \frametitle{Heterogeneous Autoregression (HAR)}
     
-    The least you need to know: HAR is more recent volatility modeling approach that use high-frequency data and estimates the following predictive regression:
+    The least you need to know: HAR is a more recent volatility modeling approach that use high-frequency data and estimates the following predictive regression:
 
     \begin{align*}
         RV_{t} = \beta_{0} + \beta_{\text{1-day}}RV_{t-1} + \beta_{\text{5-day}}\overline{\{RV_{t-1},...,RV_{t-5}\}}+\beta_{\text{22-day}}\overline{\{RV_{t-1},...,RV_{t-22}\}} + \epsilon_{t}
@@ -1148,7 +1154,7 @@ Assume
 \begin{frame}
     \fontsize{8pt}{9pt}
     
-    \frametitle{Simulations: Parameter Correction Using An Aggregated Decay Parameter from Donors}
+    \frametitle{Simulations: Parameter Correction Using An Aggregated Decay Parameter}
     
         
     Recall an \hyperlink{model_1}{$\mc{M}_1$} model on the volatility, which is characterized by an exogenous shock to the volatility equation generated by an affine function of the covariates.
@@ -1182,7 +1188,7 @@ Assume
     \begin{frame}
         \fontsize{8pt}{9pt}
         
-        \frametitle{Simulations: Parameter Correction Using An Aggregated Decay Parameter from Donors}
+        \frametitle{Simulations: Parameter Correction Using An Aggregated Decay Parameter}
     \begin{figure}[h!]
       \begin{center}
         \begin{tikzpicture}
@@ -1279,7 +1285,7 @@ Assume
 
 
 \begin{frame}
-We shall group the extensions into five buckets:
+We shall group the extensions into six buckets:
 \begin{itemize}
     \item How much can we automate?
     \item Alternatives for fixed effect estimation

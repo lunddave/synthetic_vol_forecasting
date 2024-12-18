@@ -2381,9 +2381,11 @@
     <bcf:citekey order="14" intorder="1">lin2021minimizing</bcf:citekey>
     <bcf:citekey order="15" intorder="1">lundquist2024volatility</bcf:citekey>
     <bcf:citekey order="16" intorder="1">lin2021minimizing</bcf:citekey>
-    <bcf:citekey order="17" intorder="1">bodilsen2023exploiting</bcf:citekey>
-    <bcf:citekey order="18" intorder="1">chinco2019sparse</bcf:citekey>
-    <bcf:citekey order="19" intorder="1">jiang2017information</bcf:citekey>
+    <bcf:citekey order="17" intorder="1">lundquist2024volatility</bcf:citekey>
+    <bcf:citekey order="18" intorder="1">lin2021minimizing</bcf:citekey>
+    <bcf:citekey order="19" intorder="1">bodilsen2023exploiting</bcf:citekey>
+    <bcf:citekey order="20" intorder="1">chinco2019sparse</bcf:citekey>
+    <bcf:citekey order="21" intorder="1">jiang2017information</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nyt">
