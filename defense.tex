@@ -402,7 +402,7 @@
         \begin{itemize}
             
             % \item $\epsilon_{i,t}$ uncorrelated across time and donors
-            \item includes the term $u_{i,t}$ that is \textcolor{blue}{not necessarily shared} among donors.
+            \item includes the term $u_{i,t}$ that is \textcolor{blue}{not shared} among donors.
             \item is time-varying allows us to capture that most time points are without news shocks (in which case $\alpha_{i,t}$ is of negligible effect), but conditional upon information arriving between $T_{1}^{*}$ and $T_{1}^{*}+1$, we may know with near certainty that $\lambda_{1,T_{1}^{*}+h}$ will be nonzero in norm for some $h>0$. 
         \end{itemize}
     \end{frame}
@@ -836,6 +836,25 @@
 
 Here we share only the first two, and for both GARCH and AR($p$) models.
 
+\end{frame}
+
+\begin{frame}\frametitle{The GARCH-X we work with}
+    For $t= 1, \ldots, T_i$ and $i = 1, \ldots, n+1$, the model $\mc{M}_1$ is defined as 
+    \begin{align*}
+      \mc{M}_1 \colon \begin{array}{l}
+         \sigma^{2}_{i,t} = \omega_{i} + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} + \omega^{*}_{i,t}, \text{ }\\[.2cm]
+         a_{i,t} = \sigma_{i,t}((1-D^{return}_{i,t})\epsilon_{i,t} + D^{return}_{i,t}\epsilon^{*}_{i}),\\[.2cm]
+        \omega_{i,t}^{*} = D^{vol}_{i,t}[\mu_{\omega^{*}}+\delta^{T}\x_{i,T^{*}_{i}+1}+ u_{i,t}],
+      \end{array}
+      \end{align*}
+    
+    with time-invariant error structure
+      \begin{align*}
+        \epsilon_{i,t} &\simiid \mc{F}_{\epsilon} \text{ with}  \; \mrm{E}_{\mc{F}_{\epsilon}}(\epsilon) = 0, \mrm{Var}_{\mc{F}_{\epsilon}}(\epsilon)  = 1,  \\
+        \epsilon^{*}_{i,t} &\simiid \mc{F}_{\epsilon^{*}} \text{ with}  \; \mrm{E}_{\mc{F}_{\epsilon^{*}}}(\epsilon) = \mu_{\epsilon^{*}}, \mrm{Var}_{\mc{F}_{\epsilon^{*}}}(\epsilon^{*})  = \sigma^2_{\epsilon^{*}},  \\
+        u_{i,t} & \simiid  \mc{F}_{u} \text{ with}  \; \mrm{Var}_{\mc{F}_{u}}(u) = \sigma^2_{u},\\
+        \epsilon_{i,t} & \indep  \epsilon^{*}_{i,t}  \indep u_{i,t}.
+        \end{align*}
 \end{frame}
 
 \begin{frame}\frametitle{GARCH - Formal Results}

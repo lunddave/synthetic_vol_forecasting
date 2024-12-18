@@ -1,13 +1,13 @@
 # Fdb version 4
-["biber defense"] 1734487970.05024 "defense.bcf" "defense.bbl" "defense" 1734489540.14109 0
-  "defense.bcf" 1734489539.96719 109847 b9a2a0eae9f5449dcfd6ab62dfdf9c3a "pdflatex"
+["biber defense"] 1734487970.05024 "defense.bcf" "defense.bbl" "defense" 1734490004.91872 0
+  "defense.bcf" 1734490004.74361 109847 b9a2a0eae9f5449dcfd6ab62dfdf9c3a "pdflatex"
   "defense.bib" 1734487812.81474 2965 eea13d9ac262d1540c0e826d6484a6e7 ""
   (generated)
   "defense.bbl"
   "defense.blg"
   (rewritten before read)
-["pdflatex"] 1734489535.21694 "/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/defense.tex" "defense.pdf" "defense" 1734489540.14133 0
-  "/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/defense.tex" 1734489528.43438 60239 ea8957e72c096cb7f40aeacd240b409d ""
+["pdflatex"] 1734490000.10411 "/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/defense.tex" "defense.pdf" "defense" 1734490004.91896 0
+  "/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/defense.tex" 1734489990.07895 61504 7acf1f5b21328e16d45392eb04b97e92 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/jknappen/ec/ecrm0500.tfm" 1136768653 3584 178baad7ffca7f5d3428a83bd7cc64c3 ""
@@ -78,6 +78,7 @@
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb" 1248133631 34694 ad62b13721ee8eda1dcc8993c8bd7041 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb" 1248133631 35309 940e81a5b9e04201a07e8b33a3ae6e64 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb" 1215737283 164227 3df942b4ff2124425d8fb1b6d3e01c7a ""
+  "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb" 1215737283 149037 995a6f1e12c1d647b99b1cf55db78699 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfsi0600.pfb" 1215737283 103953 f00894c621943e43b777c40eb503b0d5 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfsi0900.pfb" 1215737283 104439 1f54ea8e1ac70aef314d908bf06aa7c6 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfso0900.pfb" 1215737283 159220 8ff1ea0a415679afe6cbc1cb2c9df93c ""
@@ -390,13 +391,13 @@
   "NYS_state.png" 1711217136.13257 311928 df65aa17dff9b6e6aab779de8a3fce40 ""
   "cnbc.png" 1710618103.98606 102544 2326aa3cc6016a49274e9b1bdce419c8 ""
   "cnn.png" 1710618085.5316 88925 9e7e7ac5a27d450d466be211198fc300 ""
-  "defense.aux" 1734489539.96317 15023 6c3ae4ecc71b7268601d8909493b04d4 "pdflatex"
+  "defense.aux" 1734490004.73969 15151 401b7bd82fe3cab4a41ba78a89414596 "pdflatex"
   "defense.bbl" 1734487971.72154 16840 3b131d7ac6c76471a7c05b93f8f6956a "biber defense"
-  "defense.nav" 1734489539.96784 6852 b4b0772d4858147f4e23997d8d7519dd "pdflatex"
-  "defense.out" 1734489539.96497 1432 92bc68b49054b16c69c8ec64fec8b3bc "pdflatex"
-  "defense.run.xml" 1734489539.96779 2373 843fd43a6b195d05baa3b24911e104b2 "pdflatex"
-  "defense.tex" 1734489528.43438 60239 ea8957e72c096cb7f40aeacd240b409d ""
-  "defense.toc" 1734489539.96786 467 1d31baaf2d71e187b52e00a49783ca51 "pdflatex"
+  "defense.nav" 1734490004.74428 6944 5dff62f48b2020ef36b88a487cb43a86 "pdflatex"
+  "defense.out" 1734490004.74149 1432 92bc68b49054b16c69c8ec64fec8b3bc "pdflatex"
+  "defense.run.xml" 1734490004.74424 2373 843fd43a6b195d05baa3b24911e104b2 "pdflatex"
+  "defense.tex" 1734489990.07895 61504 7acf1f5b21328e16d45392eb04b97e92 ""
+  "defense.toc" 1734490004.74431 467 902f32ac2b17e06c23d5ea1fc6dec5dd "pdflatex"
   "demonstration.mp4" 1734249960.73986 35664374 9d9aba4efaa8ec0bd061a14d85a7bd1d ""
   "exponential_sim_plot.png" 1732557232.11761 342594 6f68fcf8f7549de280927d894c8ec30c ""
   "iphone.png" 1712779654.00816 168712 1ace7f606f54a94f7c7a546869d7520e ""
