@@ -501,7 +501,13 @@
     
     \item <1->  Observe the pair $(\{\hat\alpha_{i}\}^{n+1}_{i=2},\{\x_{i}\}^{n+1}_{i=2})$.  \\
     
-    \item <2-> Goal: recover weights $\{\weight_{i}\}^{n+1}_{i=2} \in \Delta^{n-1}$ and compute $\hat\alpha_{1} \coloneq \sum^{n+1}_{i=2}\weight_{i}\hat\alpha_{i}$, our predicted correction term (more about this later).
+    \item <2-> Goal: recover weights $\{\weight_{i}\}^{n+1}_{i=2} \in \Delta^{n-1}$ and compute 
+    
+    \begin{align*}
+    \hat\alpha_{1} \coloneq \sum^{n+1}_{i=2}\weight_{i}\hat\alpha_{i},
+    \end{align*}
+
+    our predicted correction term.
     
     \item <3-> Following \cite{abadie2003economic,abadie2010synthetic}, let $\|\cdot\|_{\textbf{S}}$ denote any semi-norm on $\mathbb{R}^{p}$, and define
     
@@ -925,8 +931,8 @@ Assume
     \begin{itemize}
         \item <1-> GARCH (\cite{lundquist2024volatility} is under review at the \textit{International Journal of Forecasting})
         \item <2-> AR($p$) (a canonical model helpful for illustrative purposes), which is covered in \cite{lin2021minimizing}
-        \item <3-> HAR (to be submitted in 2025 as part of second paper)
-        \item <4-> Exponential Shocks (to be submitted in the coming weeks as part of second paper)
+        \item <3-> HAR (part of working paper)
+        \item <4-> Exponential Shocks (part of working paper)
 
         For each of these, we would like to offer a slightly different taste of what is going on.
     \end{itemize}
