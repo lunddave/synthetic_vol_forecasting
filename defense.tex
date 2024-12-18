@@ -881,7 +881,7 @@ Assume
 
 \begin{frame}\frametitle{AR($p$) - Formal Results} 
 
-    And now convergence in distribution
+    And now, as a consequence of the previous theorem, we can get distributional result for the prediction
 
 \begin{prop}\label{ARIMA_conv_distribution}
   Let $\{\hat y_{1,T_{1}^{*}+r}\}^{h}_{r=1}$ denote the vector of adjusted predictions (adjusted through $h$ steps ahead) in the time series under study.  Assume all conditions listed in Propositions \ref{ARIMA_param_consistency} and \ref{ARIMA_aggregated_alpha}.  Then $\{\hat y_{1,T_{1}^{*}+r}\}^{h}_{r=1} \xrightarrow{\qquad d\qquad} \{ y_{1,T_{1}^{*}+r}\}^{h}_{r=1}$.  Furthermore, if the $\{u_{i,t}\}$ are constant with probability 1, the convergence is in probability. 
@@ -1082,6 +1082,19 @@ Assume
         & + 2\sum_{i\neq j}\textcolor{red}{\pi_{i}\pi_{j}}\text{Cov}[\hat\alpha_{i,t},\hat\alpha_{j,t}]  + \sigma^{2}_{\epsilon}
       \end{align*}
 \end{frame}
+
+\begin{frame}
+    \fontsize{8pt}{9pt}
+    
+    \frametitle{Heterogeneous Autoregression (HAR)}
+    
+    The least you need to know: HAR is more recent volatility modeling approach that use high-frequency data and estimates the following predictive regression:
+
+    \begin{align*}
+        RV_{t} = \beta_{0} + \beta_{\text{1-day}}RV_{t-1} + \beta_{\text{5-day}}\overline{\{RV_{t-1},...,RV_{t-5}\}}+\beta_{\text{22-day}}\overline{\{RV_{t-1},...,RV_{t-22}\}} + \epsilon_{t}
+        \end{align*}
+
+    \end{frame}
 
 \begin{frame}
     \fontsize{8pt}{9pt}

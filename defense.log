@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.15)  17 DEC 2024 18:58
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.15)  17 DEC 2024 19:40
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -2144,11 +2144,6 @@ Overfull \hbox (115.69934pt too wide) in paragraph at lines 1097--1097
  [][][][][][]  
  []
 
-<real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png, id=1716, 803.0pt x 602.25pt>
-File: real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png Graphic file (type png)
-<use real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png>
-Package pdftex.def Info: real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png  used on input line 1097.
-(pdftex.def)             Requested size: 240.90186pt x 180.67639pt.
 
 Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  [][][][][][]  
@@ -2156,11 +2151,16 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 
 [51
 
- <./real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png>]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 1132--1132
+]
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 1110--1110
  [][][][][][]  
  []
 
+<real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png, id=1745, 803.0pt x 602.25pt>
+File: real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png Graphic file (type png)
+<use real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png>
+Package pdftex.def Info: real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png  used on input line 1110.
+(pdftex.def)             Requested size: 240.90186pt x 180.67639pt.
 
 Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  [][][][][][]  
@@ -2168,18 +2168,9 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 
 [52
 
-]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 1153--1153
+ <./real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png>]
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 1145--1145
  [][][][][][]  
- []
-
-<exponential_sim_plot.png, id=1778, 1767.60374pt x 1242.6425pt>
-File: exponential_sim_plot.png Graphic file (type png)
-<use exponential_sim_plot.png>
-Package pdftex.def Info: exponential_sim_plot.png  used on input line 1153.
-(pdftex.def)             Requested size: 194.43701pt x 136.6911pt.
-
-Overfull \vbox (7.59322pt too high) detected at line 1153
  []
 
 
@@ -2189,15 +2180,20 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 
 [53
 
- <./exponential_sim_plot.png>]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 1171--1171
+]
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 1166--1166
  [][][][][][]  
  []
 
-File: real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png Graphic file (type png)
-<use real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png>
-Package pdftex.def Info: real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png  used on input line 1171.
-(pdftex.def)             Requested size: 240.90186pt x 180.67639pt.
+<exponential_sim_plot.png, id=1807, 1767.60374pt x 1242.6425pt>
+File: exponential_sim_plot.png Graphic file (type png)
+<use exponential_sim_plot.png>
+Package pdftex.def Info: exponential_sim_plot.png  used on input line 1166.
+(pdftex.def)             Requested size: 194.43701pt x 136.6911pt.
+
+Overfull \vbox (7.59322pt too high) detected at line 1166
+ []
+
 
 Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  [][][][][][]  
@@ -2205,20 +2201,15 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 
 [54
 
-]
+ <./exponential_sim_plot.png>]
 Overfull \hbox (115.69934pt too wide) in paragraph at lines 1184--1184
  [][][][][][]  
  []
 
-<iphone.png, id=1839, 958.58125pt x 1268.74pt>
-File: iphone.png Graphic file (type png)
-<use iphone.png>
-Package pdftex.def Info: iphone.png  used on input line 1184.
-(pdftex.def)             Requested size: 172.53717pt x 228.36334pt.
-
-Overfull \vbox (21.96503pt too high) detected at line 1184
- []
-
+File: real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png Graphic file (type png)
+<use real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png>
+Package pdftex.def Info: real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png  used on input line 1184.
+(pdftex.def)             Requested size: 240.90186pt x 180.67639pt.
 
 Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  [][][][][][]  
@@ -2226,9 +2217,18 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 
 [55
 
- <./iphone.png>]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 1200--1200
+]
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 1197--1197
  [][][][][][]  
+ []
+
+<iphone.png, id=1869, 958.58125pt x 1268.74pt>
+File: iphone.png Graphic file (type png)
+<use iphone.png>
+Package pdftex.def Info: iphone.png  used on input line 1197.
+(pdftex.def)             Requested size: 172.53717pt x 228.36334pt.
+
+Overfull \vbox (21.96503pt too high) detected at line 1197
  []
 
 
@@ -2238,8 +2238,8 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 
 [56
 
-]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 1248--1248
+ <./iphone.png>]
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 1213--1213
  [][][][][][]  
  []
 
@@ -2263,7 +2263,7 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 [58
 
 ]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 1309--1309
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 1274--1274
  [][][][][][]  
  []
 
@@ -2275,7 +2275,7 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 [59
 
 ]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 1318--1318
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 1322--1322
  [][][][][][]  
  []
 
@@ -2287,7 +2287,7 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 [60
 
 ]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 1342--1342
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 1331--1331
  [][][][][][]  
  []
 
@@ -2299,7 +2299,7 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 [61
 
 ]
-Overfull \hbox (115.69934pt too wide) in paragraph at lines 1361--1361
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 1355--1355
  [][][][][][]  
  []
 
@@ -2310,12 +2310,24 @@ Overfull \hbox (115.69934pt too wide) has occurred while \output is active
 
 [62
 
- </usr/local/texlive/2024/texmf-dist/tex/latex/beamer/beamericonarticle.pdf>]
+]
+Overfull \hbox (115.69934pt too wide) in paragraph at lines 1374--1374
+ [][][][][][]  
+ []
+
+
 Overfull \hbox (115.69934pt too wide) has occurred while \output is active
  [][][][][][]  
  []
 
 [63
+
+ </usr/local/texlive/2024/texmf-dist/tex/latex/beamer/beamericonarticle.pdf>]
+Overfull \hbox (115.69934pt too wide) has occurred while \output is active
+ [][][][][][]  
+ []
+
+[64
 
 
 ]
@@ -2345,10 +2357,10 @@ Package logreq Info: Writing requests to 'defense.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 59376 strings out of 474116
- 1321513 string characters out of 5743682
+ 59380 strings out of 474116
+ 1321550 string characters out of 5743682
  2191895 words of memory out of 5000000
- 80666 multiletter control sequences out of 15000+600000
+ 80668 multiletter control sequences out of 15000+600000
  592029 words of font info for 118 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  146i,19n,146p,1663b,2518s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -2356,10 +2368,10 @@ Here is how much of TeX's memory you used:
 pdfTeX warning (dest): name{model_1} has been referenced but does not exist, replaced by a fixed one
 
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfsi0600.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfsi0900.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfso0900.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfss0500.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfss0600.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfss0700.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfss0800.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfss0900.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfss1095.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfsx0600.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfsx0800.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfsx0900.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfsx1095.pfb>
-Output written on defense.pdf (63 pages, 1314712 bytes).
+Output written on defense.pdf (64 pages, 1317848 bytes).
 PDF statistics:
- 2276 PDF objects out of 2487 (max. 8388607)
- 1930 compressed objects within 20 object streams
- 152 named destinations out of 1000 (max. 500000)
+ 2305 PDF objects out of 2487 (max. 8388607)
+ 1956 compressed objects within 20 object streams
+ 154 named destinations out of 1000 (max. 500000)
  593 words of extra memory for PDF output out of 10000 (max. 10000000)
 
