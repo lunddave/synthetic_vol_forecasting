@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex thesis"] 1734293482.61466 "thesis.aux" "thesis.bbl" "thesis" 1734293559.66261 2
+["bibtex thesis"] 1734545421.70928 "thesis.aux" "thesis.bbl" "thesis" 1734545433.5899 2
   "./thesis.bib" 1734222776.78407 69844 2979731c3c21acece627855c184eaed2 ""
   "/usr/local/texlive/2024/texmf-dist/bibtex/bst/natbib/plainnat.bst" 1233624470 26816 ffe5423d2019860bad9f54bc402fac15 ""
-  "thesis.aux" 1734293559.3586 45667 81d890f2c66b4ff9b692d0f167f101e5 "pdflatex"
+  "thesis.aux" 1734545433.2585 45667 12c950be585efcea20c966a26692cf03 "pdflatex"
   (generated)
   "thesis.bbl"
   "thesis.blg"
   (rewritten before read)
-["pdflatex"] 1734293554.59071 "/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/thesis.tex" "thesis.pdf" "thesis" 1734293559.66277 2
-  "/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/thesis.tex" 1734293549.12118 198625 9e40799cf6267be67bd7a618afcd7bc0 ""
+["pdflatex"] 1734545427.71811 "/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/thesis.tex" "thesis.pdf" "thesis" 1734545433.59012 2
+  "/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/thesis.tex" 1734545421.49153 198657 e71e2d595565c7724eaa0f8a7bd01349 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1136768653 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
@@ -300,11 +300,11 @@
   "simulation_plots/Nov27_160347_2024_mudelta_sigmaepsilon.png" 1732741427.99194 138080 a3d9ddd89db8627157a480e5fd82ea18 ""
   "simulation_plots/Nov27_160348_2024_mudelta_sigmaepsilon.png" 1732741429.06484 129778 7967c1074757171434ddbdd158f4bf29 ""
   "simulation_plots/motivating_piece_convex_combination.png" 1722913159.43774 67448 e7028f59e3bbcdb7942c1055f976195a ""
-  "thesis.aux" 1734293559.3586 45667 81d890f2c66b4ff9b692d0f167f101e5 "pdflatex"
-  "thesis.bbl" 1734293482.79124 18115 64915924378c27dc3a2ea7ea333df83e "bibtex thesis"
-  "thesis.out" 1734293559.36126 12933 53a7e003e9980cf929841133331a797c "pdflatex"
-  "thesis.tex" 1734293549.12118 198625 9e40799cf6267be67bd7a618afcd7bc0 ""
-  "thesis.toc" 1734293559.36145 5871 b4404ca7a323e34b0e88e31eaa84600f "pdflatex"
+  "thesis.aux" 1734545433.2585 45667 12c950be585efcea20c966a26692cf03 "pdflatex"
+  "thesis.bbl" 1734545421.86968 18115 64915924378c27dc3a2ea7ea333df83e "bibtex thesis"
+  "thesis.out" 1734545433.26128 12933 53a7e003e9980cf929841133331a797c "pdflatex"
+  "thesis.tex" 1734545421.49153 198657 e71e2d595565c7724eaa0f8a7bd01349 ""
+  "thesis.toc" 1734545433.26154 5871 306fe7d0099b13affcff0c029a55ec48 "pdflatex"
   "uiucthesis2021.cls" 1734222776.78978 6592 f9baca88f61bc368bcc7872e899174c1 ""
   (generated)
   "thesis.aux"

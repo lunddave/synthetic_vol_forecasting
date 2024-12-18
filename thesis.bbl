@@ -8,40 +8,32 @@
 \bibitem[Abadie and Gardeazabal(2003)]{abadie2003economic}
 Alberto Abadie and Javier Gardeazabal.
 \newblock The economic costs of conflict: A case study of the basque country.
-\newblock \emph{American Economic Review}, 93\penalty0 (1):\penalty0 113--132,
-  2003.
+\newblock \emph{American Economic Review}, 93\penalty0 (1):\penalty0 113--132, 2003.
 
 \bibitem[Abadie and Vives-i Bastida(2022)]{abadie2022synthetic}
 Alberto Abadie and Jaume Vives-i Bastida.
 \newblock Synthetic controls in action.
 \newblock \emph{arXiv preprint arXiv:2203.06279}, 2022.
 
-\bibitem[Abadie et~al.(2010)Abadie, Diamond, and
-  Hainmueller]{abadie2010synthetic}
+\bibitem[Abadie et~al.(2010)Abadie, Diamond, and Hainmueller]{abadie2010synthetic}
 Alberto Abadie, Alexis Diamond, and Jens Hainmueller.
-\newblock Synthetic control methods for comparative case studies: Estimating
-  the effect of california’s tobacco control program.
-\newblock \emph{Journal of the American Statistical Association}, 105\penalty0
-  (490):\penalty0 493--505, 2010.
+\newblock Synthetic control methods for comparative case studies: Estimating the effect of california’s tobacco control program.
+\newblock \emph{Journal of the American Statistical Association}, 105\penalty0 (490):\penalty0 493--505, 2010.
 
 \bibitem[Andersen and Benzoni(2010)]{andersen2010stochastic}
 Torben~G Andersen and Luca Benzoni.
 \newblock Stochastic volatility.
 \newblock \emph{CREATES Research Paper}, \penalty0 (2010-10), 2010.
 
-\bibitem[Andersen et~al.(2003)Andersen, Bollerslev, Diebold, and
-  Labys]{andersen2003modeling}
+\bibitem[Andersen et~al.(2003)Andersen, Bollerslev, Diebold, and Labys]{andersen2003modeling}
 Torben~G Andersen, Tim Bollerslev, Francis~X Diebold, and Paul Labys.
 \newblock Modeling and forecasting realized volatility.
 \newblock \emph{Econometrica}, 71\penalty0 (2):\penalty0 579--625, 2003.
 
-\bibitem[Andersen et~al.(2007)Andersen, Bollerslev, and
-  Diebold]{andersen2007roughing}
+\bibitem[Andersen et~al.(2007)Andersen, Bollerslev, and Diebold]{andersen2007roughing}
 Torben~G Andersen, Tim Bollerslev, and Francis~X Diebold.
-\newblock Roughing it up: Including jump components in the measurement,
-  modeling, and forecasting of return volatility.
-\newblock \emph{The review of economics and statistics}, 89\penalty0
-  (4):\penalty0 701--720, 2007.
+\newblock Roughing it up: Including jump components in the measurement, modeling, and forecasting of return volatility.
+\newblock \emph{The review of economics and statistics}, 89\penalty0 (4):\penalty0 701--720, 2007.
 
 \bibitem[Andersen and Benzoni(2008)]{andersen2008realized}
 Torben~Gustav Andersen and Luca Benzoni.
@@ -51,16 +43,13 @@ Torben~Gustav Andersen and Luca Benzoni.
 \bibitem[Applebaum(2016)]{applebaum2016britain}
 Anne Applebaum.
 \newblock Britain's decision to leave the e.u. is a warning to america, 2016.
-\newblock URL
-  \url{https://www.washingtonpost.com/opinions/global-opinions/after-brexit-what-will-and-wont-happen/2016/06/24/c9f7a2f6-39f1-11e6-8f7c-d4c723a2becb_story.html?postshare=9121466767991000}.
+\newblock URL \url{https://www.washingtonpost.com/opinions/global-opinions/after-brexit-what-will-and-wont-happen/2016/06/24/c9f7a2f6-39f1-11e6-8f7c-d4c723a2becb_story.html?postshare=9121466767991000}.
 \newblock Published: 2016-06-24.
 
 \bibitem[Barro(2016)]{barro2016three}
 Josh Barro.
-\newblock 3 reasons brexit does not portend a trump victory — and one reason
-  to worry, 2016.
-\newblock URL
-  \url{https://www.businessinsider.com/what-does-brexit-mean-for-trump-2016-6?op=1}.
+\newblock 3 reasons brexit does not portend a trump victory — and one reason to worry, 2016.
+\newblock URL \url{https://www.businessinsider.com/what-does-brexit-mean-for-trump-2016-6?op=1}.
 \newblock Published: 2016-06-24.
 
 \bibitem[Bartha(2013)]{bartha2013analogy}
@@ -68,8 +57,7 @@ Paul Bartha.
 \newblock Analogy and analogical reasoning.
 \newblock 2013.
 
-\bibitem[Bauwens et~al.(2006)Bauwens, Preminger, and
-  Rombouts]{bauwens2006regime}
+\bibitem[Bauwens et~al.(2006)Bauwens, Preminger, and Rombouts]{bauwens2006regime}
 Luc Bauwens, Arie Preminger, and Jeroen~VK Rombouts.
 \newblock Regime switching garch models.
 \newblock 2006.
@@ -87,37 +75,29 @@ Simon~Tranberg Bodilsen and Asger Lunde.
 \bibitem[Bollerslev(1986)]{bollerslev1986generalized}
 Tim Bollerslev.
 \newblock Generalized autoregressive conditional heteroskedasticity.
-\newblock \emph{Journal of econometrics}, 31\penalty0 (3):\penalty0 307--327,
-  1986.
+\newblock \emph{Journal of econometrics}, 31\penalty0 (3):\penalty0 307--327, 1986.
 
-\bibitem[Boudoukh et~al.(2019)Boudoukh, Feldman, Kogan, and
-  Richardson]{boudoukh2019information}
+\bibitem[Boudoukh et~al.(2019)Boudoukh, Feldman, Kogan, and Richardson]{boudoukh2019information}
 Jacob Boudoukh, Ronen Feldman, Shimon Kogan, and Matthew Richardson.
-\newblock Information, trading, and volatility: Evidence from firm-specific
-  news.
-\newblock \emph{The Review of Financial Studies}, 32\penalty0 (3):\penalty0
-  992--1033, 2019.
+\newblock Information, trading, and volatility: Evidence from firm-specific news.
+\newblock \emph{The Review of Financial Studies}, 32\penalty0 (3):\penalty0 992--1033, 2019.
 
 \bibitem[Boudt et~al.(2022)Boudt, Kleen, and Sj{\o}rup]{highfrequency}
 Kris Boudt, Onno Kleen, and Emil Sj{\o}rup.
 \newblock Analyzing intraday financial data in r: The highfrequency package.
-\newblock \emph{Journal of Statistical Software}, 104\penalty0 (8):\penalty0
-  1--36, 2022.
+\newblock \emph{Journal of Statistical Software}, 104\penalty0 (8):\penalty0 1--36, 2022.
 \newblock \doi{10.18637/jss.v104.i08}.
 
 \bibitem[Box(2013)]{box2013box}
 George Box.
 \newblock Box and jenkins: time series analysis, forecasting and control.
-\newblock In \emph{A Very British Affair: Six Britons and the Development of
-  Time Series Analysis During the 20th Century}, pages 161--215. Springer,
-  2013.
+\newblock In \emph{A Very British Affair: Six Britons and the Development of Time Series Analysis During the 20th Century}, pages 161--215. Springer, 2013.
 
 \bibitem[Boysel and Vaughan(2021)]{boysel2021package}
 Sam Boysel and Davis Vaughan.
 \newblock Package ‘fredr’, 2021.
 
-\bibitem[Brownlees et~al.(2011)Brownlees, Engle, and
-  Kelly]{brownlees2011practical}
+\bibitem[Brownlees et~al.(2011)Brownlees, Engle, and Kelly]{brownlees2011practical}
 Christian~T Brownlees, Robert~F Engle, and Bryan~T Kelly.
 \newblock A practical guide to volatility forecasting through calm and storm.
 \newblock \emph{Available at SSRN 1502915}, 2011.
@@ -127,30 +107,25 @@ Jennifer~L Castle, Nicholas~WP Fawcett, and David~F Hendry.
 \newblock Forecasting breaks and forecasting during breaks.
 \newblock 2011.
 
-\bibitem[Castle et~al.(2013)Castle, Clements, and
-  Hendry]{castle2013forecasting}
+\bibitem[Castle et~al.(2013)Castle, Clements, and Hendry]{castle2013forecasting}
 Jennifer~L Castle, Michael~P Clements, and David~F Hendry.
 \newblock Forecasting by factors, by variables, by both or neither?
-\newblock \emph{Journal of Econometrics}, 177\penalty0 (2):\penalty0 305--319,
-  2013.
+\newblock \emph{Journal of Econometrics}, 177\penalty0 (2):\penalty0 305--319, 2013.
 
 \bibitem[Castle et~al.(2016)Castle, Clements, and Hendry]{castle2016overview}
 Jennifer~L Castle, Michael~P Clements, and David~F Hendry.
 \newblock An overview of forecasting facing breaks.
-\newblock \emph{Journal of Business Cycle Research}, 12\penalty0 (1):\penalty0
-  3--23, 2016.
+\newblock \emph{Journal of Business Cycle Research}, 12\penalty0 (1):\penalty0 3--23, 2016.
 
 \bibitem[Chinco et~al.(2019)Chinco, Clark-Joseph, and Ye]{chinco2019sparse}
 Alex Chinco, Adam~D Clark-Joseph, and Mao Ye.
 \newblock Sparse signals in the cross-section of returns.
-\newblock \emph{The Journal of Finance}, 74\penalty0 (1):\penalty0 449--492,
-  2019.
+\newblock \emph{The Journal of Finance}, 74\penalty0 (1):\penalty0 449--492, 2019.
 
 \bibitem[Christensen and Prabhala(1998)]{christensen1998relation}
 Bent~J Christensen and Nagpurnanand~R Prabhala.
 \newblock The relation between implied and realized volatility.
-\newblock \emph{Journal of financial economics}, 50\penalty0 (2):\penalty0
-  125--150, 1998.
+\newblock \emph{Journal of financial economics}, 50\penalty0 (2):\penalty0 125--150, 1998.
 
 \bibitem[Clements and Hendry(1998)]{clements1998forecasting}
 Michael Clements and David~F Hendry.
@@ -160,8 +135,7 @@ Michael Clements and David~F Hendry.
 \bibitem[Clements and Hendry(1996)]{clements1996intercept}
 Michael~P Clements and David~F Hendry.
 \newblock Intercept corrections and structural change.
-\newblock \emph{Journal of Applied Econometrics}, 11\penalty0 (5):\penalty0
-  475--494, 1996.
+\newblock \emph{Journal of Applied Econometrics}, 11\penalty0 (5):\penalty0 475--494, 1996.
 
 \bibitem[Clements and Hendry(1999)]{clements1999forecasting}
 Michael~P Clements and David~F Hendry.
@@ -171,27 +145,23 @@ Michael~P Clements and David~F Hendry.
 \bibitem[Clements and Hendry(2005{\natexlab{a}})]{clements2005evaluating}
 Michael~P Clements and David~F Hendry.
 \newblock Evaluating a model by forecast performance.
-\newblock \emph{Oxford Bulletin of Economics and Statistics}, 67:\penalty0
-  931--956, 2005{\natexlab{a}}.
+\newblock \emph{Oxford Bulletin of Economics and Statistics}, 67:\penalty0 931--956, 2005{\natexlab{a}}.
 
 \bibitem[Clements and Hendry(2005{\natexlab{b}})]{clements2005guest}
 Michael~P Clements and David~F Hendry.
 \newblock Guest editors' introduction: Information in economic forecasting.
-\newblock \emph{Oxford Bulletin of Economics \& Statistics}, 67\penalty0
-  (S1):\penalty0 713--753, 2005{\natexlab{b}}.
+\newblock \emph{Oxford Bulletin of Economics \& Statistics}, 67\penalty0 (S1):\penalty0 713--753, 2005{\natexlab{b}}.
 
 \bibitem[Collins(2016)]{collins2016trump}
 Stephen Collins.
 \newblock Trump on brexit: America is next, 2016.
-\newblock URL
-  \url{https://www.cnn.com/2016/06/25/politics/donald-trump-brexit-scotland}.
+\newblock URL \url{https://www.cnn.com/2016/06/25/politics/donald-trump-brexit-scotland}.
 \newblock Published: 2016-06-25.
 
 \bibitem[Corsi(2009)]{corsi2009simple}
 Fulvio Corsi.
 \newblock A simple approximate long-memory model of realized volatility.
-\newblock \emph{Journal of Financial Econometrics}, 7\penalty0 (2):\penalty0
-  174--196, 2009.
+\newblock \emph{Journal of Financial Econometrics}, 7\penalty0 (2):\penalty0 174--196, 2009.
 
 \bibitem[Corsi et~al.(2012)Corsi, Audrino, and Ren{\'o}]{corsi2012har}
 Fulvio Corsi, Francesco Audrino, and Roberto Ren{\'o}.
@@ -201,66 +171,53 @@ Fulvio Corsi, Francesco Audrino, and Roberto Ren{\'o}.
 \bibitem[Croushore(1993)]{croushore1993introducing}
 Dean~D Croushore.
 \newblock Introducing: the survey of professional forecasters.
-\newblock \emph{Business Review-Federal Reserve Bank of Philadelphia},
-  6:\penalty0 3, 1993.
+\newblock \emph{Business Review-Federal Reserve Bank of Philadelphia}, 6:\penalty0 3, 1993.
 
 \bibitem[De~Luca et~al.(2006)]{de2006forecasting}
 Giovanni De~Luca et~al.
 \newblock Forecasting volatility using high-frequency data.
 \newblock \emph{Statistica Applicata}, 18, 2006.
 
-\bibitem[Dendramis et~al.(2020)Dendramis, Kapetanios, and
-  Marcellino]{dendramis2020similarity}
+\bibitem[Dendramis et~al.(2020)Dendramis, Kapetanios, and Marcellino]{dendramis2020similarity}
 Yiannis Dendramis, George Kapetanios, and Massimiliano Marcellino.
 \newblock A similarity-based approach for macroeconomic forecasting.
-\newblock \emph{Journal of the Royal Statistical Society Series A: Statistics
-  in Society}, 183\penalty0 (3):\penalty0 801--827, 2020.
+\newblock \emph{Journal of the Royal Statistical Society Series A: Statistics in Society}, 183\penalty0 (3):\penalty0 801--827, 2020.
 
 \bibitem[Dominguez and Panthaki(2006)]{dominguez2006defines}
 Kathryn~ME Dominguez and Freyan Panthaki.
 \newblock What defines ‘news’ in foreign exchange markets?
-\newblock \emph{Journal of International Money and Finance}, 25\penalty0
-  (1):\penalty0 168--198, 2006.
+\newblock \emph{Journal of International Money and Finance}, 25\penalty0 (1):\penalty0 168--198, 2006.
 
 \bibitem[Engle(1982)]{engle1982autoregressive}
 Robert~F Engle.
-\newblock Autoregressive conditional heteroscedasticity with estimates of the
-  variance of united kingdom inflation.
-\newblock \emph{Econometrica: Journal of the econometric society}, pages
-  987--1007, 1982.
+\newblock Autoregressive conditional heteroscedasticity with estimates of the variance of united kingdom inflation.
+\newblock \emph{Econometrica: Journal of the econometric society}, pages 987--1007, 1982.
 
 \bibitem[Engle and Patton(2001)]{engle2001good}
 Robert~F Engle and Andrew~J Patton.
 \newblock What good is a volatility model?
 \newblock \emph{Quantitative finance}, 1\penalty0 (2):\penalty0 237, 2001.
 
-\bibitem[Foroni et~al.(2022)Foroni, Marcellino, and
-  Stevanovic]{foroni2022forecasting}
+\bibitem[Foroni et~al.(2022)Foroni, Marcellino, and Stevanovic]{foroni2022forecasting}
 Claudia Foroni, Massimiliano Marcellino, and Dalibor Stevanovic.
-\newblock Forecasting the covid-19 recession and recovery: Lessons from the
-  financial crisis.
-\newblock \emph{International Journal of Forecasting}, 38\penalty0
-  (2):\penalty0 596--612, 2022.
+\newblock Forecasting the covid-19 recession and recovery: Lessons from the financial crisis.
+\newblock \emph{International Journal of Forecasting}, 38\penalty0 (2):\penalty0 596--612, 2022.
 
 \bibitem[Foster(2024)]{fedfunds}
 Sarah Foster.
-\newblock Fed’s interest rate history: The federal funds rate from 1981 to
-  the present, 2024.
-\newblock URL
-  \url{https://www.bankrate.com/banking/federal-reserve/history-of-federal-funds-rate/}.
+\newblock Fed’s interest rate history: The federal funds rate from 1981 to the present, 2024.
+\newblock URL \url{https://www.bankrate.com/banking/federal-reserve/history-of-federal-funds-rate/}.
 \newblock Published: 11-07-2024.
 
 \bibitem[Francq and Zakoian(2019)]{francq2019garch}
 Christian Francq and Jean-Michel Zakoian.
-\newblock \emph{GARCH models: structure, statistical inference and financial
-  applications}.
+\newblock \emph{GARCH models: structure, statistical inference and financial applications}.
 \newblock John Wiley \& Sons, 2019.
 
 \bibitem[Garg et~al.(2015)Garg, Enright, and Madden]{garg2015asymmetric}
 Ankita Garg, Catherine~G Enright, and Michael~G Madden.
 \newblock On asymmetric similarity search.
-\newblock In \emph{2015 IEEE 14th international conference on machine learning
-  and applications (ICMLA)}, pages 649--654. IEEE, 2015.
+\newblock In \emph{2015 IEEE 14th international conference on machine learning and applications (ICMLA)}, pages 649--654. IEEE, 2015.
 
 \bibitem[Guerr{\'o}n-Quintana and Zhong(2017)]{guerron2017macroeconomic}
 Pablo Guerr{\'o}n-Quintana and Molin Zhong.
@@ -269,30 +226,22 @@ Pablo Guerr{\'o}n-Quintana and Molin Zhong.
 
 \bibitem[Han and Kristensen(2014)]{han2014asymptotic}
 Heejoon Han and Dennis Kristensen.
-\newblock Asymptotic theory for the qmle in garch-x models with stationary and
-  nonstationary covariates.
-\newblock \emph{Journal of business \& economic statistics}, 32\penalty0
-  (3):\penalty0 416--429, 2014.
+\newblock Asymptotic theory for the qmle in garch-x models with stationary and nonstationary covariates.
+\newblock \emph{Journal of business \& economic statistics}, 32\penalty0 (3):\penalty0 416--429, 2014.
 
 \bibitem[Hansen and Lunde(2005)]{hansen2005forecast}
 Peter~R Hansen and Asger Lunde.
-\newblock A forecast comparison of volatility models: does anything beat a
-  garch (1, 1)?
-\newblock \emph{Journal of applied econometrics}, 20\penalty0 (7):\penalty0
-  873--889, 2005.
+\newblock A forecast comparison of volatility models: does anything beat a garch (1, 1)?
+\newblock \emph{Journal of applied econometrics}, 20\penalty0 (7):\penalty0 873--889, 2005.
 
 \bibitem[Hansen et~al.(2012)Hansen, Huang, and Shek]{hansen2012realized}
 Peter~Reinhard Hansen, Zhuo Huang, and Howard~Howan Shek.
-\newblock Realized garch: a joint model for returns and realized measures of
-  volatility.
-\newblock \emph{Journal of Applied Econometrics}, 27\penalty0 (6):\penalty0
-  877--906, 2012.
+\newblock Realized garch: a joint model for returns and realized measures of volatility.
+\newblock \emph{Journal of Applied Econometrics}, 27\penalty0 (6):\penalty0 877--906, 2012.
 
-\bibitem[Hastie et~al.(2009)Hastie, Tibshirani, and
-  Friedman]{hastie2009elements}
+\bibitem[Hastie et~al.(2009)Hastie, Tibshirani, and Friedman]{hastie2009elements}
 Trevor Hastie, Robert Tibshirani, and Jerome Friedman.
-\newblock \emph{The elements of statistical learning: data mining, inference,
-  and prediction}.
+\newblock \emph{The elements of statistical learning: data mining, inference, and prediction}.
 \newblock Springer Science \& Business Media, 2009.
 
 \bibitem[Hendry and Clements(1994)]{hendry1994theory}
@@ -318,74 +267,59 @@ Lutz Kilian and Helmut L{\"u}tkepohl.
 
 \bibitem[Lin and Eck(2021)]{lin2021minimizing}
 Jilei Lin and Daniel~J Eck.
-\newblock Minimizing post-shock forecasting error through aggregation of
-  outside information.
+\newblock Minimizing post-shock forecasting error through aggregation of outside information.
 \newblock \emph{International Journal of Forecasting}, 2021.
 
 \bibitem[Lundquist and Eck(2024)]{lundquist2024volatility}
 David Lundquist and Daniel Eck.
-\newblock Volatility forecasting using similarity-based parameter correction
-  and aggregated shock information.
+\newblock Volatility forecasting using similarity-based parameter correction and aggregated shock information.
 \newblock \emph{arXiv preprint arXiv:2406.08738}, 2024.
 
 \bibitem[Martin and Burns(2016)]{martin2016brexit}
 Jonathan Martin and Alexander Burns.
-\newblock Is ‘brexit’ the precursor to a donald trump presidency? not so
-  fast, 2016.
-\newblock URL
-  \url{https://www.nytimes.com/2016/06/25/us/politics/is-brexit-the-precursor-to-a-donald-trump-presidency-not-so-fast.html}.
+\newblock Is ‘brexit’ the precursor to a donald trump presidency? not so fast, 2016.
+\newblock URL \url{https://www.nytimes.com/2016/06/25/us/politics/is-brexit-the-precursor-to-a-donald-trump-presidency-not-so-fast.html}.
 \newblock Published: 2016-06-24.
 
 \bibitem[Mayhew(1995)]{mayhew1995implied}
 Stewart Mayhew.
 \newblock Implied volatility.
-\newblock \emph{Financial Analysts Journal}, 51\penalty0 (4):\penalty0 8--20,
-  1995.
+\newblock \emph{Financial Analysts Journal}, 51\penalty0 (4):\penalty0 8--20, 1995.
 
 \bibitem[None(2016)]{BBC_News_2016}
 None.
 \newblock Leave campaign ahead in uk's eu referendum vote, Jun 2016.
-\newblock URL
-  \url{https://www.bbc.com/news/uk-politics-eu-referendum-36612368}.
+\newblock URL \url{https://www.bbc.com/news/uk-politics-eu-referendum-36612368}.
 
 \bibitem[Phillips(1996)]{phillips1996forecasting}
 Robert~F Phillips.
 \newblock Forecasting in the presence of large shocks.
-\newblock \emph{Journal of Economic Dynamics and Control}, 20\penalty0
-  (9-10):\penalty0 1581--1608, 1996.
+\newblock \emph{Journal of Economic Dynamics and Control}, 20\penalty0 (9-10):\penalty0 1581--1608, 1996.
 
 \bibitem[Romer and Romer(1989)]{romer1989does}
 Christina~D Romer and David~H Romer.
-\newblock Does monetary policy matter? a new test in the spirit of friedman and
-  schwartz.
+\newblock Does monetary policy matter? a new test in the spirit of friedman and schwartz.
 \newblock \emph{NBER macroeconomics annual}, 4:\penalty0 121--170, 1989.
 
 \bibitem[Rossi(2013)]{rossi2013advances}
 Barbara Rossi.
 \newblock Advances in forecasting under instability.
-\newblock In \emph{Handbook of economic forecasting}, volume~2, pages
-  1203--1324. Elsevier, 2013.
+\newblock In \emph{Handbook of economic forecasting}, volume~2, pages 1203--1324. Elsevier, 2013.
 
 \bibitem[Rossi(2021)]{rossi2021forecasting}
 Barbara Rossi.
-\newblock Forecasting in the presence of instabilities: How we know whether
-  models predict well and how to improve them.
-\newblock \emph{Journal of Economic Literature}, 59\penalty0 (4):\penalty0
-  1135--1190, 2021.
+\newblock Forecasting in the presence of instabilities: How we know whether models predict well and how to improve them.
+\newblock \emph{Journal of Economic Literature}, 59\penalty0 (4):\penalty0 1135--1190, 2021.
 
-\bibitem[Ryan et~al.(2015)Ryan, Ulrich, Thielen, Teetor, Bronder, and
-  Ulrich]{ryan2015package}
-Jeffrey~A Ryan, Joshua~M Ulrich, Wouter Thielen, Paul Teetor, Steve Bronder,
-  and Maintainer Joshua~M Ulrich.
+\bibitem[Ryan et~al.(2015)Ryan, Ulrich, Thielen, Teetor, Bronder, and Ulrich]{ryan2015package}
+Jeffrey~A Ryan, Joshua~M Ulrich, Wouter Thielen, Paul Teetor, Steve Bronder, and Maintainer Joshua~M Ulrich.
 \newblock Package ‘quantmod’.
 \newblock 2015.
 
-\bibitem[Steegen et~al.(2016)Steegen, Tuerlinckx, Gelman, and
-  Vanpaemel]{steegen2016increasing}
+\bibitem[Steegen et~al.(2016)Steegen, Tuerlinckx, Gelman, and Vanpaemel]{steegen2016increasing}
 Sara Steegen, Francis Tuerlinckx, Andrew Gelman, and Wolf Vanpaemel.
 \newblock Increasing transparency through a multiverse analysis.
-\newblock \emph{Perspectives on Psychological Science}, 11\penalty0
-  (5):\penalty0 702--712, 2016.
+\newblock \emph{Perspectives on Psychological Science}, 11\penalty0 (5):\penalty0 702--712, 2016.
 
 \bibitem[Sucarrat(2020)]{RePEc:pra:mprapa:100301}
 Genaro Sucarrat.
@@ -406,46 +340,37 @@ Ruey~S Tsay.
 \bibitem[Wachowicz(2020)]{wachowicz2020wharton}
 Erin Wachowicz.
 \newblock Wharton research data services (wrds).
-\newblock \emph{Journal of Business \& Finance Librarianship}, 25\penalty0
-  (3-4):\penalty0 184--187, 2020.
+\newblock \emph{Journal of Business \& Finance Librarianship}, 25\penalty0 (3-4):\penalty0 184--187, 2020.
 
 \bibitem[Wang et~al.(2020)Wang, Ma, and Liu]{wang2020forecasting}
 Lu~Wang, Feng Ma, and Guoshan Liu.
-\newblock Forecasting stock volatility in the presence of extreme shocks:
-  Short-term and long-term effects.
-\newblock \emph{Journal of Forecasting}, 39\penalty0 (5):\penalty0 797--810,
-  2020.
+\newblock Forecasting stock volatility in the presence of extreme shocks: Short-term and long-term effects.
+\newblock \emph{Journal of Forecasting}, 39\penalty0 (5):\penalty0 797--810, 2020.
 
 \bibitem[Wang et~al.(2023)Wang, Hyndman, Li, and Kang]{wang2023forecast}
 Xiaoqian Wang, Rob~J Hyndman, Feng Li, and Yanfei Kang.
 \newblock Forecast combinations: An over 50-year review.
-\newblock \emph{International Journal of Forecasting}, 39\penalty0
-  (4):\penalty0 1518--1547, 2023.
+\newblock \emph{International Journal of Forecasting}, 39\penalty0 (4):\penalty0 1518--1547, 2023.
 
 \bibitem[Weinberg(2013)]{GFC}
 John Weinberg.
 \newblock The great recession and its aftermath.
-\newblock
-  \url{https://www.federalreservehistory.org/essays/great-recession-and-its-aftermath
-  }, Nov 2013.
+\newblock \url{https://www.federalreservehistory.org/essays/great-recession-and-its-aftermath }, Nov 2013.
 
 \bibitem[Wilson(2017)]{wilson2017brexit}
 Graham~K Wilson.
 \newblock Brexit, trump and the special relationship.
-\newblock \emph{The British Journal of Politics and International Relations},
-  19\penalty0 (3):\penalty0 543--557, 2017.
+\newblock \emph{The British Journal of Politics and International Relations}, 19\penalty0 (3):\penalty0 543--557, 2017.
 
 \bibitem[Wilson(2024)]{thoughts_on_market}
 Mike Wilson.
 \newblock What’s boosting cyclical stocks?, 2024.
-\newblock URL
-  \url{https://www.morganstanley.com/ideas/thoughts-on-the-market-wilson}.
+\newblock URL \url{https://www.morganstanley.com/ideas/thoughts-on-the-market-wilson}.
 \newblock Published: 2024-10-21.
 
 \bibitem[Zivot(2009)]{zivot2009practical}
 Eric Zivot.
 \newblock Practical issues in the analysis of univariate garch models.
-\newblock In \emph{Handbook of financial time series}, pages 113--155.
-  Springer, 2009.
+\newblock In \emph{Handbook of financial time series}, pages 113--155. Springer, 2009.
 
 \end{thebibliography}

@@ -164,7 +164,7 @@
 \section{Introduction}
 
 \begin{frame}
-    \frametitle{A High-level Summary Uniting All My Projects}
+    \frametitle{A High-level Summary Uniting My Projects}
     
         Forecasting under non-ideal conditions like 
 
@@ -308,7 +308,7 @@
 \end{frame}
 
 \begin{frame}
-    \frametitle{Premise: There is breaking news at some fractional lag t-$\epsilon$}
+    \frametitle{Detailed Premise: There is breaking news at some fractional lag t-$\epsilon$}
     
     \begin{itemize}
     \item Market (i.e. crowd-sourced) mechanisms for evaluating the news are either offline, too thin, or otherwise unavailable.  They could also be simply unreliable.
@@ -398,11 +398,21 @@
     \end{frame}
 
     \begin{frame}\frametitle{Model Details}
+
+        Let $i = 1$ denote our target series --- the thing we want to forecast.
+
+        \bigskip
+
+        What about $i = 2,...,n+1$?  Those are called ``donors''.
+
+        \bigskip
+        
+
         Note that $\lambda_{i,t}^{T} = (u_{i,t},\lambda^{1}_{t},...,\lambda^{p}_{t})$
         \begin{itemize}
-            
+
             % \item $\epsilon_{i,t}$ uncorrelated across time and donors
-            \item includes the term $u_{i,t}$ that is \textcolor{blue}{not shared} among donors.
+            \item includes the term $u_{i,t}$ that is \textcolor{blue}{not shared} among $i=1,2,...,n+1$.
             \item is time-varying allows us to capture that most time points are without news shocks (in which case $\alpha_{i,t}$ is of negligible effect), but conditional upon information arriving between $T_{1}^{*}$ and $T_{1}^{*}+1$, we may know with near certainty that $\lambda_{1,T_{1}^{*}+h}$ will be nonzero in norm for some $h>0$. 
         \end{itemize}
     \end{frame}
@@ -513,7 +523,7 @@
     
     
     \begin{align*}
-    \{\pi\}_{i=2}^{n+1} = \argmin_{\pi}\|\textbf{v}_{1,T^{*}} - \V_{T^{*}}\pi \|_{\textbf{S}} \text{ .}
+    \{\pi\}_{i=2}^{n+1} = \argmin_{\pi\in\Delta^{n-1}}\|\x_{1,T^{*}} - \X_{T^{*}}\pi \|_{\textbf{S}} \text{ .}
     \end{align*}
     
     % Nota bene: the weights $\{\weight_{i}\}_{i=2}^{n+1}$ are deterministic with respect to $\mathcal{F}_{T^{*}}$.
@@ -532,7 +542,7 @@
             \coordinate [label=left:Donor 2] (2) at (-2,0,-2*\factor);
             \coordinate [label=above:Donor 3] (3) at (0,2,2*\factor);
             \coordinate [label=below:Donor 4] (4) at (0,-2,2*\factor);
-            \coordinate [label=below:$\vec{\pi}_{MSE minimizer}$] (5) at (1.7,-.8,-.3*\factor);
+            \coordinate [label=below:$\vec{\pi}_{min}$] (5) at (1.2,-.8,-.3*\factor);
             
             
             % \draw[->] (0,0) -- (3,0,0) node[right] {$x$};
@@ -676,7 +686,7 @@
         \caption{A 2x2 Schema of Forecast Information, With Examples}
         \begin{tabular}{ | p{1cm} | p{4.8cm}| p{4.8cm} | } 
           \hline
-          & Conventional Econometric Models & Outside Conventional Econometric Models\\ 
+          & Conventional Forecasting & Emerging Forecast Approaches\\ 
           \hline
           internal & \textcolor{blue}{Lags of the series itself; past shocks}  & Polynomial expansion of the feature space and other transformations without solid theoretical motivation \\
           \hline
@@ -693,7 +703,7 @@
         \caption{A 2x2 Schema of Forecast Information, With Examples}
         \begin{tabular}{ | p{1cm} | p{4.8cm}| p{4.8cm} | } 
           \hline
-          & Conventional Econometric Models & Outside Conventional Econometric Models\\ 
+          & Conventional Forecasting & Emerging Forecast Approaches\\ 
           \hline
           internal & Lags of the series itself; past shocks & \textcolor{blue}{Polynomial expansion of the feature space and other transformations without solid theoretical motivation} \\
           \hline
@@ -709,7 +719,7 @@
         \caption{A 2x2 Schema of Forecast Information, With Examples}
         \begin{tabular}{ | p{1cm} | p{4.8cm}| p{4.8cm} | } 
           \hline
-          & Conventional Econometric Models & Outside Conventional Econometric Models\\ 
+          & Conventional Forecasting & Emerging Forecast Approaches\\ 
           \hline
           internal &  Lags of the series itself; past shocks & Polynomial expansion of the feature space and other transformations without solid theoretical motivation \\
           \hline
@@ -725,7 +735,7 @@
         \caption{A 2x2 Schema of Forecast Information, With Examples}
         \begin{tabular}{ | p{1cm} | p{4.8cm}| p{4.8cm} | } 
           \hline
-          & Conventional Econometric Models & Outside Conventional Econometric Models\\ 
+          & Conventional Forecasting & Emerging Forecast Approaches\\ 
           \hline
           internal & Lags of the series itself; past shocks & Polynomial expansion of the feature space and other transformations without solid theoretical motivation \\
           \hline
@@ -737,34 +747,28 @@
 
 \begin{frame}\frametitle{Two slides about theory}
    
-    An overloaded term in applied math: similarity.
+    Similarity-based --- can we say more?
 
     \bigskip
 
     For our purposes, how should we define and determine similarity?  Is it...
     \begin{itemize}
     \item Quantitative or qualitative?
-    \item Approximation-based?
     \item Symmetric or asymmetric?
-    \item Binary or $n$-ary?
-    \end{itemize}
-
-\end{frame}
-
-\begin{frame}\frametitle{Two slides about theory}
-   
-    An oft-abused term in applied math: similarity
-    \begin{itemize}
-    \item Quantitative or qualitative?
     \item Approximation-based?
-    \item Symmetric or asymmetric?
     \item Binary or $n$-ary?
     \end{itemize}
 
     \bigskip
 
-    We call our approach \textcolor{blue}{distance-based weighting}, which is a special case of an approximation-based $n$-ary similarity metric.
+    Our approach first uses a qualitative step to assemble donors.
+
+    \bigskip
+
+    We then use \textcolor{blue}{distance-based weighting}, which is a special case of an approximation-based $n$-ary similarity metric.
+
 \end{frame}
+
 
 % \begin{frame}\frametitle{Three slides about theory}
 %     The term $\x^{T}_{i,t}\lambda_{i,t}$ is deemed the $\textcolor{blue}{correction} \text{ } \textcolor{blue}{term}$ for donor $i$ at time $t$, and the function
@@ -793,7 +797,7 @@
       
       \item<5-> \textbf{Reliable Correction Term Estimation} 
 
-      \item<6->  \textbf{Reliable Correction Function Estimation} There must exist a correction function (presumably based on the correction terms) that maps data from the donor pool to the $\textit{predicted}$ correction term in the time series under study based on similarity.  
+      \item<6->  \textbf{Reliable Correction Function Estimation} There must exist a correction function (presumably based on the correction terms) that maps from donor pool to the $\textit{predicted}$ correction term.
     \end{enumerate}
 \end{frame}
 
@@ -813,14 +817,14 @@
         \item asymptotic loss
     \end{enumerate}
 
-Here we share only the first two, and for both GARCH-X and AR($p$) models.
+Here we share only the first two, and for both GARCH-X and AR($p$)-X models.
 
 \end{frame}
 
 \begin{frame}\frametitle{The GARCH-X we work with}
     For $t= 1, \ldots, T_i$ and $i = 1, \ldots, n+1$, the model $\mc{M}_1$ is defined as 
     \begin{align*}
-      \mc{M}_1 \colon \begin{array}{l}
+      \mc{M}_{GARCH-X} \colon \begin{array}{l}
          \sigma^{2}_{i,t} = \omega_{i} + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} + \omega^{*}_{i,t}, \text{ }\\[.2cm]
          a_{i,t} = \sigma_{i,t}((1-D^{return}_{i,t})\epsilon_{i,t} + D^{return}_{i,t}\epsilon^{*}_{i}),\\[.2cm]
         \omega_{i,t}^{*} = D^{vol}_{i,t}[\mu_{\omega^{*}}+\delta^{T}\x_{i,T^{*}_{i}+1}+ u_{i,t}],
@@ -841,7 +845,7 @@ Here we share only the first two, and for both GARCH-X and AR($p$) models.
 \begin{prop}
     Assume
     \begin{enumerate}
-      \item For each $i$, $1\leq i \leq n$, $\{a_{i,t}\}_{t=0,...,T_i}$ obeys a GARCH-X($m,s$), with volatility shocks found in $\mc{M}_{1}$, where $T_i$ is the length of the $i$th series.
+      \item For each $i$, $1\leq i \leq n$, $\{a_{i,t}\}_{t=0,...,T_i}$ obeys a GARCH-X($m,s$), with volatility shocks found in $\mc{M}_{GARCH-X}$, where $T_i$ is the length of the $i$th series.
       \item For each $i, \{\omega_{i,t}^{*}\}_{t=0,...,T_i}$ is potentially non-zero at $\{T^{*}_{i}+1,... ,T^{*}_{i}+L_{i}^{vol}\}$, $\omega_{i,T_{i}^{*}+1}^{*}\equiv...\equiv\omega_{i,T_{i}^{*}+L_{i}^{vol}}^{*}$, and zero otherwise, where the arrival of $T_{i}^{*}$ is governed by a time-invariant distribution on $\{a_{i,t}\}_{t=0,...,T_i-1}$, and both the arrival and conclusion of the shock is observable by the researcher. \label{stationarity_of_omega_i_t}
       \item The conditions in Assumption 0 of \cite[][]{han2014asymptotic} hold.
     \end{enumerate}
@@ -872,12 +876,12 @@ Here we share only the first two, and for both GARCH-X and AR($p$) models.
 
       \end{prop}
 
-      In plain language, our volatility prediction has a known distribution, by virtue of our correction terms have a known distribution.
+      In plain language, our volatility prediction has a known distribution, by virtue of our correction terms having a known distribution.
 
 \end{frame}
 
-\begin{frame}\frametitle{AR($p$) - Formal Results} 
-    We now present a similar AR($p$) result.
+\begin{frame}\frametitle{AR($p$)-X - Formal Results} 
+    We now present a similar AR($p$)-X result.
 
 \begin{prop}\label{ARIMA_param_consistency}
     Assume
@@ -892,7 +896,7 @@ Here we share only the first two, and for both GARCH-X and AR($p$) models.
 
 \end{frame}
 
-\begin{frame}\frametitle{AR($p$) - Formal Results} 
+\begin{frame}\frametitle{AR($p$)-X - Formal Results} 
 
 \begin{prop}\label{ARIMA_aggregated_alpha}
 Assume
@@ -925,7 +929,7 @@ Assume
     \frametitle{An inventory of models}
 
     \begin{itemize}
-        \item <1-> GARCH (\cite{lundquist2024volatility} is under review at the \textit{International Journal of Forecasting})
+        \item <1-> GARCH-X (\cite{lundquist2024volatility} is under review at the \textit{International Journal of Forecasting})
         \item <2-> AR($p$) (a canonical model helpful for illustrative purposes), which is covered in \cite{lin2021minimizing}
         \item <3-> HAR (part of working paper)
         \item <4-> Exponential Shocks (part of working paper)
@@ -1098,7 +1102,7 @@ Assume
 
 % \end{frame}
 
-\begin{frame}\frametitle{AR($p$)}
+\begin{frame}\frametitle{AR($p$)-X}
 
     We want to perform a simple bias-variance decomposition for an parameter-corrected AR($p$) prediction.  As usual, we omit time indices for easy of viewing:
 
@@ -1111,7 +1115,7 @@ Assume
 
 \end{frame}
 
-\begin{frame}\frametitle{AR($p$)}
+\begin{frame}\frametitle{AR($p$)-X}
       \begin{align*}
         &\E[(\sum^{p}_{k=1}(\rho_{k}-\hat\rho_{k})y_{t-k} + (\alpha_{t} - \hat{\alpha}_{t}) + \epsilon_{t} )^{2}]\notag\\
         = &\text{Bias}^{2}[\sum^{p}_{k=1}(\rho_{k}-\hat\rho_{k})y_{t-k} + (\alpha_{t} - \hat{\alpha}_{t}) ] + \text{Var}[\sum^{p}_{k=1}(\rho_{k}-\hat\rho_{k})y_{t-k} + (\alpha_{t} - \hat{\alpha}_{t}) ] + \sigma^{2}_{\epsilon}\tag{$\epsilon_{t}$ idiosyncratic}\\
@@ -1166,7 +1170,7 @@ Assume
     \begin{align}
         \mc{M}_{exp} \colon 
     \begin{array}{l}
-        \textcolor{blue}{y_{i,t} = \nu_{i} + \eta[1 - e^{-\psi_{i}[t-T_{i}^{*}]}]\textbf{1}_{t\geq T_{i}^{*}+1} + \epsilon_{i,t}},  \\[.2cm]  
+        \textcolor{blue}{y_{i,t} = \nu_{i} + \eta[1 - e^{-\psi_{i}[t-T_{i}^{*}]}]\textbf{1}_{t\geq T_{i}^{*}+1} + \epsilon_{i,t}}  \\[.2cm]  
           \psi_{i} = \x^{T}_{i,t}\lambda_{i,t} \\[.2cm]
          \x_{i,t}^{T} = (1,x^{1}_{i,t},...,x^{p}_{i,t})\\[.2cm] 
          \lambda_{i,t}^{T} = (u_{i,t},\lambda^{1}_{t},...,\lambda^{p}_{t}),\\[.2cm]
@@ -1281,7 +1285,7 @@ Assume
 
 % \end{frame}
 
-\section{Future directions for Forecasting Amid Shocks}
+\section{Future Directions for Forecasting Amid Shocks}
 
 
 \begin{frame}
