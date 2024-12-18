@@ -60,6 +60,39 @@
       \field{pages}{493\bibrangedash 505}
       \range{pages}{13}
     \endentry
+    \entry{abadie2003economic}{article}{}
+      \name{author}{2}{}{%
+        {{hash=da499bff747c5f6cd0ec9185c820ba4d}{%
+           family={Abadie},
+           familyi={A\bibinitperiod},
+           given={Alberto},
+           giveni={A\bibinitperiod}}}%
+        {{hash=990a64faa006b28cd41f2075997cba18}{%
+           family={Gardeazabal},
+           familyi={G\bibinitperiod},
+           given={Javier},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{f722330d5128ffafe3dd6ff1eae7e9c0}
+      \strng{fullhash}{f722330d5128ffafe3dd6ff1eae7e9c0}
+      \strng{bibnamehash}{f722330d5128ffafe3dd6ff1eae7e9c0}
+      \strng{authorbibnamehash}{f722330d5128ffafe3dd6ff1eae7e9c0}
+      \strng{authornamehash}{f722330d5128ffafe3dd6ff1eae7e9c0}
+      \strng{authorfullhash}{f722330d5128ffafe3dd6ff1eae7e9c0}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{American Economic Review}
+      \field{number}{1}
+      \field{title}{The Economic Costs of Conflict: A Case Study of the Basque Country}
+      \field{volume}{93}
+      \field{year}{2003}
+      \field{pages}{113\bibrangedash 132}
+      \range{pages}{20}
+    \endentry
     \entry{bodilsen2023exploiting}{article}{}
       \name{author}{2}{}{%
         {{hash=71a3050438816b71055cd0399be9dc8c}{%
@@ -318,7 +351,6 @@
       \range{pages}{22}
     \endentry
   \enddatalist
-  \missing{abadie2003economic}
   \missing{han2014asymptotic}
 \endrefsection
 \endinput

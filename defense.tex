@@ -42,7 +42,7 @@
 \usepackage{mathtools}% http://ctan.org/pkg/mathtools
 \usepackage{mathrsfs}
 
-\usepackage[table]{xcolor}
+\usepackage[table,xcdraw,usenames]{xcolor}
 
 
 \usepackage{multirow}
@@ -402,7 +402,7 @@
         \begin{itemize}
             
             % \item $\epsilon_{i,t}$ uncorrelated across time and donors
-            \item includes the term $u_{i,t}$ that is \textcolor{blue}{not shared} among donors.
+            \item includes the term $u_{i,t}$ that is \textcolor{blue}{not necessarily shared} among donors.
             \item is time-varying allows us to capture that most time points are without news shocks (in which case $\alpha_{i,t}$ is of negligible effect), but conditional upon information arriving between $T_{1}^{*}$ and $T_{1}^{*}+1$, we may know with near certainty that $\lambda_{1,T_{1}^{*}+h}$ will be nonzero in norm for some $h>0$. 
         \end{itemize}
     \end{frame}
@@ -501,9 +501,9 @@
     
     \item <1->  Observe the pair $(\{\hat\alpha_{i}\}^{n+1}_{i=2},\{\x_{i}\}^{n+1}_{i=2})$.  \\
     
-    \item <2-> Goal: recover weights $\{\weight_{i}\}^{n+1}_{i=2} \in \Delta^{n-1}$ and compute $\hat\alpha \coloneq \sum^{n+1}_{i=2}\weight_{i}\hat\alpha_{i}$, our predicted correction term (more about this later).
+    \item <2-> Goal: recover weights $\{\weight_{i}\}^{n+1}_{i=2} \in \Delta^{n-1}$ and compute $\hat\alpha_{1} \coloneq \sum^{n+1}_{i=2}\weight_{i}\hat\alpha_{i}$, our predicted correction term (more about this later).
     
-    \item <3-> Following \cite[][]{abadie2003economic},\cite[][]{abadie2010synthetic}, let $\|\cdot\|_{\textbf{S}}$ denote any semi-norm on $\mathbb{R}^{p}$, and define
+    \item <3-> Following \cite{abadie2003economic,abadie2010synthetic}, let $\|\cdot\|_{\textbf{S}}$ denote any semi-norm on $\mathbb{R}^{p}$, and define
     
     
     \begin{align*}
@@ -514,6 +514,34 @@
     
     \end{itemize}
     \end{frame}
+
+    \begin{frame}\frametitle{Visuals That Tell The Story}
+
+        %https://tex.stackexchange.com/questions/174317/creating-a-labeled-tetrahedron-with-tikzpicture
+        \begin{figure}
+            \centering
+            \begin{tikzpicture}[line join = round, line cap = round]
+            \pgfmathsetmacro{\factor}{1/sqrt(2)};
+            \coordinate [label=right:Donor 1] (1) at (2,0,-2*\factor);
+            \coordinate [label=left:Donor 2] (2) at (-2,0,-2*\factor);
+            \coordinate [label=above:Donor 3] (3) at (0,2,2*\factor);
+            \coordinate [label=below:Donor 4] (4) at (0,-2,2*\factor);
+            \coordinate [label=below:$\vec{\pi}_{MSE minimizer}$] (5) at (1.7,-.8,-.3*\factor);
+            
+            
+            % \draw[->] (0,0) -- (3,0,0) node[right] {$x$};
+            % \draw[->] (0,0) -- (0,3,0) node[above] {$y$};
+            % \draw[->] (0,0) -- (0,0,3) node[below left] {$z$};
+            \foreach \i in {1,2,3,4}
+                \draw[dashed] (0,0)--(\i);
+            \draw[-, fill=red!30, opacity=.3] (1)--(4)--(2)--cycle;
+            \draw[-, fill=green!30, opacity=.3] (1) --(4)--(3)--cycle;
+            \draw[-, fill=purple!30, opacity=.3] (2)--(4)--(3)--cycle;
+            \end{tikzpicture}
+            \caption{The 3-Simplex, $\Delta^{3}$, where hypothetical minimizer is a convex combination of Donors 1 and 4.}
+            \end{figure}
+            
+        \end{frame}
 
 % \begin{frame}
 %     \frametitle{My Prelim: An incredibly Brief Recap}
@@ -579,7 +607,6 @@
 \end{frame}
 
 \begin{frame}\frametitle{Visuals That Tell The Story}
-    The forecaster's decision tree
 
     \begin{figure} 
         \centering  
@@ -634,33 +661,7 @@
 
 \end{frame}
 
-\begin{frame}\frametitle{Visuals That Tell The Story}
 
-%https://tex.stackexchange.com/questions/174317/creating-a-labeled-tetrahedron-with-tikzpicture
-\begin{figure}
-    \centering
-    \begin{tikzpicture}[line join = round, line cap = round]
-    \pgfmathsetmacro{\factor}{1/sqrt(2)};
-    \coordinate [label=right:Donor 1] (1) at (2,0,-2*\factor);
-    \coordinate [label=left:Donor 2] (2) at (-2,0,-2*\factor);
-    \coordinate [label=above:Donor 3] (3) at (0,2,2*\factor);
-    \coordinate [label=below:Donor 4] (4) at (0,-2,2*\factor);
-    \coordinate [label=below:$\vec{\pi}_{MSE minimizer}$] (5) at (1.7,-.8,-.3*\factor);
-    
-    
-    % \draw[->] (0,0) -- (3,0,0) node[right] {$x$};
-    % \draw[->] (0,0) -- (0,3,0) node[above] {$y$};
-    % \draw[->] (0,0) -- (0,0,3) node[below left] {$z$};
-    \foreach \i in {1,2,3,4}
-        \draw[dashed] (0,0)--(\i);
-    \draw[-, fill=red!30, opacity=.3] (1)--(4)--(2)--cycle;
-    \draw[-, fill=green!30, opacity=.3] (1) --(4)--(3)--cycle;
-    \draw[-, fill=purple!30, opacity=.3] (2)--(4)--(3)--cycle;
-    \end{tikzpicture}
-    \caption{The 3-Simplex, $\Delta^{3}$, where hypothetical minimizer is a convex combination of Donors 1 and 4.}
-    \end{figure}
-    
-\end{frame}
 
 \begin{frame}\frametitle{Three slides about theory}
    
@@ -730,7 +731,9 @@
 
 \begin{frame}\frametitle{Three slides about theory}
    
-    An oft-abused term in applied math: similarity
+    An overloaded term in applied math: similarity.
+
+    For our purposes, how should we define and determine similarity?  Is it...
     \begin{itemize}
     \item Quantitative or qualitative?
     \item Approximation-based?
@@ -1059,7 +1062,7 @@ Assume
 
 \begin{frame}\frametitle{AR($p$)}
 
-    We want to perform a simple bias-variance decomposition for an parameter-corrected AR($p$) prediction:
+    We want to perform a simple bias-variance decomposition for an parameter-corrected AR($p$) prediction.  As usual, we omit time indices for easy of viewing:
 
     \begin{align}
         \E[(y_{t}-\hat{y}_{t})^{2}] &= \E[(y_{t} - \hat\mu + \sum^{p}_{k=1}\hat\rho_{k}y_{t-k} + \hat{\alpha}_{t})^{2}]\\
@@ -1212,7 +1215,7 @@ Assume
 
     \end{frame}
 
-% \begin{frame}  \frametitle{A Multiverse Approach to Forecast Evaluation}
+% \begin{frame} \frametitle{A Multiverse Approach to Forecast Evaluation}
 
 %     \begin{table}[ht]
 %         % \centering
@@ -1223,22 +1226,22 @@ Assume
 %           QL Loss of the Adjusted Forecast& Omitted Covariate & Omitted Donor \\ 
 %              \hline
 %         0.0001 & Log Return of \verb|^|IRX & None \\ 
-%         \rowcolor{gray} 0.0007 & NA (Average Adjusted Forecast) & NA (Average Adjusted Forecast)\\  
+%         %\rowcolor{gray} 0.0007 & NA (Average Adjusted Forecast) & NA (Average Adjusted Forecast)\\  
 %           0.0007 & Log Return of CL=F & 2004-11-02 \\ 
 %           0.0008 & Log Return of \verb|^|IRX & 2004-11-02 \\ 
-%           \vdots & \vdots & \vdots \\
+%           $\vdots$ & $\vdots$ & $\vdots$ \\
 %           0.0080 & Log Return of CL=F & 2008-11-04 \\ 
 %           0.0099 & Log Return of \verb|^|VIX & 2004-11-02 \\ 
-%           \rowcolor{gray}  0.0099 & NA (Median Adjusted Forecast) & NA (Median Adjusted Forecast)\\  
+%          % \rowcolor{gray}  0.0099 & NA (Median Adjusted Forecast) & NA (Median Adjusted Forecast)\\  
 %           0.0115 & Log Return of CL=F & 2016-02-19 \\ 
 %           0.0127 & None & 2016-02-19 \\ 
-%           \vdots & \vdots & \vdots \\
+%           $\vdots$ & $\vdots$ & $\vdots$ \\
 %           0.0216 & Log Return of \verb|^|IRX & 2016-06-23 \\ 
-%           \rowcolor{yellow} 0.0219 & None & None \\ 
+%           %\rowcolor{yellow} 0.0219 & None & None \\ 
 %           0.0222 & Log Return of \verb|^|FVX & 2016-02-19 \\ 
-%           \vdots & \vdots & \vdots \\
-%           \rowcolor{red} 2.3529 & All & All \\ 
-%            \hline
+%           $\vdots$ & $\vdots$ & $\vdots$ \\
+%          % \rowcolor{red} 2.3529 & All & All \\ 
+%           \hline
 %         \end{tabular}
 %         % \endgroup
 %     \end{table}

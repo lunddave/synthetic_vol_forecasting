@@ -1,18 +1,17 @@
 [0] Config.pm:307> INFO - This is Biber 2.19
 [0] Config.pm:310> INFO - Logfile is 'defense.blg'
-[32] biber-darwin:340> INFO - === Tue Dec 17, 2024, 19:36:28
-[46] Biber.pm:419> INFO - Reading 'defense.bcf'
-[84] Biber.pm:979> INFO - Found 10 citekeys in bib section 0
-[90] Biber.pm:4419> INFO - Processing section 0
-[95] Biber.pm:4610> INFO - Looking for bibtex file 'defense.bib' for section 0
-[95] bibtex.pm:1713> INFO - LaTeX decoding ...
-[99] bibtex.pm:1519> INFO - Found BibTeX data source 'defense.bib'
-[132] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[132] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[132] Biber.pm:4239> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'en-US'
-[132] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-US'
-[136] bbl.pm:660> INFO - Writing 'defense.bbl' with encoding 'UTF-8'
-[137] bbl.pm:763> INFO - Output to defense.bbl
-[137] Biber.pm:131> WARN - I didn't find a database entry for 'abadie2003economic' (section 0)
-[137] Biber.pm:131> WARN - I didn't find a database entry for 'han2014asymptotic' (section 0)
-[137] Biber.pm:133> INFO - WARNINGS: 2
+[33] biber-darwin:340> INFO - === Tue Dec 17, 2024, 20:49:20
+[43] Biber.pm:419> INFO - Reading 'defense.bcf'
+[80] Biber.pm:979> INFO - Found 10 citekeys in bib section 0
+[86] Biber.pm:4419> INFO - Processing section 0
+[91] Biber.pm:4610> INFO - Looking for bibtex file 'defense.bib' for section 0
+[91] bibtex.pm:1713> INFO - LaTeX decoding ...
+[95] bibtex.pm:1519> INFO - Found BibTeX data source 'defense.bib'
+[130] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[130] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[130] Biber.pm:4239> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'en-US'
+[130] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-US'
+[134] bbl.pm:660> INFO - Writing 'defense.bbl' with encoding 'UTF-8'
+[136] bbl.pm:763> INFO - Output to defense.bbl
+[136] Biber.pm:131> WARN - I didn't find a database entry for 'han2014asymptotic' (section 0)
+[136] Biber.pm:133> INFO - WARNINGS: 1
