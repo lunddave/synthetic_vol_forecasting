@@ -170,7 +170,7 @@
 
         \begin{enumerate}
             \item \textcolor{blue}{a rupture in the DGP}
-            \item  \textcolor{blue}{lack of past information for units we wish to forecast, i.e. a so-called ``cold start"} \parencite{fatemi2023mitigating}
+            \item  \textcolor{blue}{lack of past information for units we wish to forecast, e.g. a so-called ``cold start"} \parencite{fatemi2023mitigating}
         \end{enumerate}
 
         \bigskip
@@ -180,7 +180,7 @@
 
         \bigskip
 
-        We began with particular models; then built upwards, establishing an abstract, general framework for correcting forecasts that is widely applicable for forecasting and beyond.
+        Began with particular models; then built upwards, establishing an abstract, general framework for correcting forecasts that is widely applicable across forecasting and beyond.
 
 \end{frame}
 
@@ -485,7 +485,7 @@
        &\hat y_{unadjusted, T_{1}^{*}+1} = \hat\E[y_{1,T_{1}^{*}+1}|\mathcal{F}_{T_{1}^{*}}] \\
        \\
       \text{Forecast 2: }
-       &\hat y_{adjusted,T_{1}^{*}+1} = \hat\E[y_{1,T_{1}^{*}+1}|\mathcal{F}_{T_{1}^{*}}] + \hat\alpha_{T^{*}_{1}+1} \text{ .}
+       &\hat y_{adjusted,T_{1}^{*}+1} = \hat\E[y_{1,T_{1}^{*}+1}|\mathcal{F}_{T_{1}^{*}}] + \textcolor{red}{\hat\alpha_{T^{*}_{1}+1}} \text{ .}
     \end{align*}
 
     \end{frame}
@@ -508,31 +508,6 @@
     \end{align*}
 
     our predicted correction term.
-    
-    \item <3-> Following \cite{abadie2003economic,abadie2010synthetic}, let $\|\cdot\|_{\textbf{S}}$ denote any semi-norm on $\mathbb{R}^{p}$, and define
-    
-    
-    \begin{align*}
-    \{\pi\}_{i=2}^{n+1} = \argmin_{\pi}\|\textbf{v}_{1,T^{*}} - \V_{T^{*}}\pi \|_{\textbf{S}} \text{ .}
-    \end{align*}
-    
-    % Nota bene: the weights $\{\weight_{i}\}_{i=2}^{n+1}$ are deterministic with respect to $\mathcal{F}_{T^{*}}$.
-    
-    \end{itemize}
-    \end{frame}
-
-    \begin{frame}
-    \frametitle{Distance-based Weighting in Action}
-
-    (For ease of exposition, we omit time indices)\\
-    
-        \bigskip
-
-    \begin{itemize}
-    
-    \item <1->  Observe the pair $(\{\hat\alpha_{i}\}^{n+1}_{i=2},\{\x_{i}\}^{n+1}_{i=2})$.  \\
-    
-    \item <2-> Goal: recover weights $\{\weight_{i}\}^{n+1}_{i=2} \in \Delta^{n-1}$ and compute $\hat\alpha_{1} \coloneq \sum^{n+1}_{i=2}\weight_{i}\hat\alpha_{i}$, our predicted correction term (more about this later).
     
     \item <3-> Following \cite{abadie2003economic,abadie2010synthetic}, let $\|\cdot\|_{\textbf{S}}$ denote any semi-norm on $\mathbb{R}^{p}$, and define
     
@@ -694,7 +669,7 @@
 
 
 
-\begin{frame}\frametitle{Three slides about theory}
+\begin{frame}\frametitle{Two slides about theory}
    
     \begin{table}[htb]
         \centering % instead of \begin{center}
@@ -711,7 +686,7 @@
       \end{table}
 \end{frame}
 
-\begin{frame}\frametitle{Three slides about theory}
+\begin{frame}\frametitle{Two slides about theory}
    
     \begin{table}[htb]
         \centering % instead of \begin{center}
@@ -834,7 +809,7 @@
         \item asymptotic loss
     \end{enumerate}
 
-Here we share only the first two, and for both GARCH and AR($p$) models.
+Here we share only the first two, and for both GARCH-X and AR($p$) models.
 
 \end{frame}
 
@@ -931,13 +906,12 @@ Assume
 
 \end{frame}
 
-
 \begin{frame}\frametitle{AR($p$) - Formal Results} 
 
     And now, as a consequence of the previous theorem, we can get distributional result for the prediction
 
 \begin{prop}\label{ARIMA_conv_distribution}
-  Let $\{\hat y_{1,T_{1}^{*}+r}\}^{h}_{r=1}$ denote the vector of adjusted predictions (adjusted through $h$ steps ahead) in the time series under study.  Assume all conditions listed in Propositions \ref{ARIMA_param_consistency} and \ref{ARIMA_aggregated_alpha}.  Then $\{\hat y_{1,T_{1}^{*}+r}\}^{h}_{r=1} \xrightarrow{\qquad d\qquad} \{ y_{1,T_{1}^{*}+r}\}^{h}_{r=1}$.  Furthermore, if the $\{u_{i,t}\}$ are constant with probability 1, the convergence is in probability. 
+  Let $\{\hat y_{1,T_{1}^{*}+r}\}^{h}_{r=1}$ denote the vector of adjusted predictions (adjusted through $h$ steps ahead) in the time series under study.  Assume all conditions listed in the preceding propositions.  Then $\{\hat y_{1,T_{1}^{*}+r}\}^{h}_{r=1} \xrightarrow{\qquad d\qquad} \{ y_{1,T_{1}^{*}+r}\}^{h}_{r=1}$.  Furthermore, if the $\{u_{i,t}\}$ are constant with probability 1, the convergence is in probability. 
   \end{prop}
 
 \end{frame}
@@ -953,8 +927,11 @@ Assume
         \item <3-> HAR (part of working paper)
         \item <4-> Exponential Shocks (part of working paper)
 
-        For each of these, we would like to offer a slightly different taste of what is going on.
     \end{itemize}
+    \bigskip
+
+    For each of these, we would like to offer a slightly different taste of what is going on.
+
 \end{frame}
 
 \begin{frame}
@@ -1237,8 +1214,6 @@ Assume
     \end{figure} 
 
 
-
-
 \end{frame}
 
 \begin{frame}\frametitle{LLMs}
@@ -1288,12 +1263,9 @@ Assume
 %           0.0080 & Log Return of CL=F & 2008-11-04 \\ 
 %           0.0099 & Log Return of \verb|^|VIX & 2004-11-02 \\ 
 %          % \rowcolor{gray}  0.0099 & NA (Median Adjusted Forecast) & NA (Median Adjusted Forecast)\\  
-%           0.0115 & Log Return of CL=F & 2016-02-19 \\ 
-%           0.0127 & None & 2016-02-19 \\ 
 %           $\vdots$ & $\vdots$ & $\vdots$ \\
 %           0.0216 & Log Return of \verb|^|IRX & 2016-06-23 \\ 
 %           %\rowcolor{yellow} 0.0219 & None & None \\ 
-%           0.0222 & Log Return of \verb|^|FVX & 2016-02-19 \\ 
 %           $\vdots$ & $\vdots$ & $\vdots$ \\
 %          % \rowcolor{red} 2.3529 & All & All \\ 
 %           \hline
