@@ -829,7 +829,829 @@ Now, since each $\hat\omega^{*}_{i}$ converges in probability to $\omega^{*}_{i}
     First, note that the function $g:(-\infty,\omega_{i}^{*})\rightarrow \mathbb{R}$ given by $g(x) = \frac{x}{\sigma^{2}_{T^{*}+1}-x} + \log{\frac{\sigma_{T^{*}+1}^{2}-x}{\sigma_{T^{*}+1}^{2}} }$ is nonnegative, convex, obtains a minimum at $x = 0$, and being continuous, preserves both convergence in distribution and consistency. The conclusion follows from facts that the model is correctly specified and the convergence of $\hat\sigma^{2}_{adjusted,T^{*}+1}$ is guaranteed by Proposition ($\ref{sigma_consistency}$). 
   \end{proof-of-proposition}
 
+  \section{Introduction}\label{Introduction}
 
+  In time series and panel data, sometimes the salient challenge is not predicting when an event will occur or begin but what its key properties will be.  In the familiar case of scalar time series, those properties can include the time series' post-event direction, magnitude of change, moments, duration of the event, or correlation structure, all over an arbitrary horizon or perhaps multiple horizons. This is not to say that predicting the arrival of an event is easy. In some cases, it may be difficult or impossible.  The event might not even be conceivable to many before it happens, as was the case with the COVID-19 pandemic.  On the other end of the spectrum are events whose arrival need not be predicted because they are scheduled in advance, e.g. scheduled news, like releases of economic data or election results.  In those cases, conditional forecasts allow a statistician to proceed as if the event has arrived.  Consider the analysis of Mike Wilson, Morgan Stanley’s CIO and Chief US Equity  Strategist, in October 2024 regarding the upcoming 2024 US Presidential US \parencite[][]{thoughts_on_market}:
+
+  
+%   \begin{quote}While some argue a Trump win would be a headwind for growth and equity markets, due to tariff  risks and slowing immigration, we think there's an additional element from the 2016 experience that  is worth considering—rising animal spirits. More specifically, in 2016 Trump's pro-business approach  led to the largest 3-month positive impact on small business confidence in the past 40 years. It also translated into a spike in individual investor sentiment. It appears to me that markets may be trying  to front-run a repeat of this outcome as Trump's win in 2016 came as a surprise to pundits and  markets alike.
+%   \end{quote}
+%   Wilson here assesses how market participants are incorporating current information as well as past forecast failures, including the potential overweighting of more recent failures.  His assessment implies that the shock conditional on a Trump victory may disappoint observers, as it has already been pulled forward into current forecasts.  In short, this time around may be different.  Of course, it may be that participants have merely pulled \textit{too much} forward by correctly assessing the conditional impact of a Trump victory but overestimating its likelihood, or vice-versa.  Regardless, what Wilson is engaging in is what \cite{lundquist2024volatility} identify as a crucial reaction to uncertain territory: what, if anything, does it resemble from the past?
+  
+%   Herein we attempt to unify a range of conceptual approaches to forecasting amid shocks that have developed across the broad ecosystem of the econometric and forecasting literatures.  We attempt to locate our main contribution, Similarity-based Parameter Correction, at the intersection of several important strands of thought.  We in fact delineate a specific type of SPC called post-shock forecasting, which is induced by nuanced and interesting choices that fall under the general SPC framework.  In particular, this current manuscript focuses on model adjustment amid news shocks that undermine the reliability of the  model at hand.  Forecasting under shocks raises unavoidable questions: should the forecast model be abandoned in favor of a discretionary or ad-hoc or one-off adjustment?  Does the does the discretion of a forecaster rule out a quantitative method for making the adjustment?  What is the ultimate purpose of the adjustment, and how it is to be used?  For how long is the adjustment necessary or reliable?
+  
+%   Forecast model adjustment received its earliest attention under the auspices of ``intercept correction" \citep{hendry1994theory,clements1996intercept,clements1998forecasting, clements1999forecasting}.  Of fundamental importance is the distinction between discretionary and automated intercepts corrections. \cite{hendry1994theory} define scalar intercept corrections to be automated when they follow the simple rule of adding an estimation or prediction residual $e_{t}$ to subsequent (possibly but not necessarily all) forecasts $\hat f_{t+1},\hat f_{t+2},[...].$ ``\textit{[S]etting the model back on track}" is the informal label they provide for that procedure. 
+   
+%   The term intercept correction can be construed more broadly to encompass the correction of terms besides the intercept, and justification for it can be found beyond the original goal of setting forecasts back on track.  In later work, \cite{clements1999forecasting} present seven additional interpretations for intercept correction, and \cite{hendry1994theory, clements1999forecasting} themselves note the possibility of correcting a coefficient in a forecast model specification. \cite{guerron2017macroeconomic} develop a similarity-based procedure for correcting the parameter $\beta$ using past information of the time series itself.   For a review of more recent work in similarity-based forecasting, we refer the reader to \cite{lundquist2024volatility} and references therein.
+  
+%   What if the break in the DGP is brought about by a very particular kind of event, a news shock?   What if we could predict well the intercept shift that occurs between $T^{*}$ and $T^{*}+1$?  In \cite{castle2016overview}, the authors list six necessary conditions for reacting to what we in this current paper call a news shock.  Of greatest interest to us are two of the six: 
+  
+%   \begin{itemize}
+%   \item ``the forecasting model already embodies that source of information", and 
+%   \item ``there is an operational method for selecting an appropriate model".
+%   \end{itemize}   
+  
+%   For intercept shifts that occur between $T^{*}$ and $T^{*}+1$, forecasting procedures have been explored in \cite{lin2021minimizing,lundquist2024volatility}, where the AR(1)-X and GARCH($m,s$) cases, respectively, are treated.  Both works target additive parameters in scalar time series, predicting the additive parameter in the time series under study by aggregating information from other time series.  The authors leave several stones unturned, including a more general, dare say comprehensive treatment of forecasting under shocks.
+  
+%   As the literature has developed, a current practitioner of forecast adjustment can now choose (i) procedures that are discretionary or automated, (ii) adjusting using internal data (i.e. from the time series itself) or external data, (iii) the term to be corrected (e.g. intercept, coefficients), if any, (iv) as well as the specification of the correction function (i.e. the mapping from the donor unit data to the correction term in the time series under study), including the aggregation mechanism applied to the assembled data (e.g. Nearest-Neighbor, arithmetic mean, kernel methods).  We discuss this in depth in Section \ref{global_overview}.
+  
+%   If intercept correction is the correction of a forecast by adding the residual at time $T^{*}+1$ to forecasts at some subset of $\{T^{*}+2,T^{*}+3,...\}$, in this manuscript, we are doing something rather close to that by adding the predicted correction term to each forecast in some some subset of $\{T_{1}^{*}+1,T_{1}^{*}+2,...\}$, where $T^{*}_{1}+1$ is first integer index for the time series under study following the shock. 
+%   The particular procedure presented, post-shock forecasting, is a discretionary procedure for intercept correction that integrates data internal or external to the time series under study in a systematic manner.  It is a discretionary procedure in the sense that substantive choices must be made at each instance of use.  The correction function uses the notion of similarity at multiple levels: first, to identify similarity between breaks in different time series, and second, in borrowing from the causal inference literature to aggregate information from those similar circumstances.  Parametric specifications for location shifts in the DGP can be found in \cite{castle2011forecasting}, where locations shifts are modeled as induced by additional observable variables, as well as in \cite{lundquist2024volatility}, where the arrival of the news shock is observable, even if its quantitative instantiation is not.  Beyond \cite{lin2021minimizing,lundquist2024volatility}, we are not aware of prior work that proposes a method for aggregating similar shocks occurring outside the time series under study in order to correct the time series under study.
+  
+  
+%   The structure of this manuscript is as follows.  We provide a deeper and more critical review of several literatures, including intercept correction, model-evaluation, and similarity-based forecasting.  We then provide a canonical setting in which we attempt to focus our work.  This setting will be presented at a level of generality that showcases the broad applicability of our method.  We then introduce the method from a global perspective, abstracting away from familiar applications.  We then show several specific applications, including novel applications that cannot be found elsewhere in the literature.  We close with a discussion, including possible extensions.
+  
+%    \section{Forecasting Amid Shocks}
+  
+%   % \begin{preview}
+%   % \begin{tikzpicture}[very thick,level/.style={sibling distance=180 mm/#1}]
+%   % \node [vertex] (r){Forecast Model Adjustment}
+%   %   child {
+%   %     node [vertex] (a) {Break in the GDP at $T^{*}$}
+%   %     child {
+%   %       node [vertex] {$20$}
+%   %       child {
+%   %         node [vertex] {$-3$}
+%   %         child {node [vertex] {$17$}}
+%   %         child {node [vertex] {$5$}}
+%   %       }
+%   %       child {node [vertex] {$6$}}
+%   %     }
+%   %     child {
+%   %       node [vertex] {$3$}
+%   %       child {node [vertex] {$7$}}
+%   %       child {node [vertex] {$2$}}
+%   %     }
+%   %   }
+%   %   child {
+%   %     node [vertex] {Break in the GDP at $T^{*}$}
+%   %     child {
+%   %       node [vertex] {$8$}
+%   %       child {node [vertex] {$2$}}
+%   %     }
+%   %     child {
+%   %       node [vertex] {$11$}
+%   %       child {node [vertex] {$17$}}
+%   %       child {node [vertex] {$-4$}}
+%   %     }
+%   %   };
+%   % \end{tikzpicture}
+%   % \end{preview}
+  
+  
+%   % https://tex.stackexchange.com/questions/64148/tikz-label-on-tree-edge
+  
+%   % \begin{forest}
+%   % for tree={circle,draw, l sep=20pt}
+%   % [3,red 
+%   %     [1  
+%   %       [4,edge label={node[midway,left] {Help!}} ] 
+%   %       [1] 
+%   %       [3]
+%   %     ]
+%   %     [2
+%   %       [3] 
+%   %       [2] 
+%   %       [5]
+%   %   ] 
+%   % ]
+%   % \end{forest}
+  
+  
+%   %https://tex.stackexchange.com/questions/64148/tikz-label-on-tree-edge
+  
+%   %  \begin{tikzpicture}[level distance=1.5cm,
+%   %   level 1/.style={sibling distance=3.5cm},
+%   %   level 2/.style={sibling distance=2.5cm}]
+%   %   \tikzstyle{every node}=[circle,draw]
+    
+%   % \node (Root) [red] {Is there a break in the DGP between T* and T*+1?} 
+%   %     child {  edge from parent node[left,draw=none] {Do you have information outside of the “regular forces”
+%   %     } 
+%   %     node {Yes} 
+%   %     child { node {Yes} 
+%   %             child { node{Yes} edge from parent node[left,draw=none] {lab} }
+%   %             child { node{No}}}
+%   %     child { node {No} }
+%   % }
+%   % child { 
+%   %     node {No}
+%   %     child { node {Yes} }
+%   %     child { node {No} }
+%   % };
+%   % \end{tikzpicture}
+  
+%   % \noindent\begin{forest}
+%   %   for tree={
+%   %     parent anchor=south,
+%   %     child anchor=north,
+%   %     edge path={
+%   %       \noexpand\path [\forestoption{edge}] (!u.parent anchor) -- +(0,-5pt) -| (.child anchor)\forestoption{edge label};
+%   %     }
+%   %   }
+%   %   [Is there a break in the DGP between T* and T*+1?
+%   %     [Extractive Summarization
+%   %       [Similarity
+%   %         [Topic]
+%   %         [Cluster]
+%   %       ]
+%   %       [Classification
+%   %         [test2]
+%   %         [test1]
+%   %       ]
+%   %       [Feature Selection
+%   %         [test1]
+%   %         [test2]
+%   %         [test3]
+%   %       ]
+%   %       [Feature Extraction
+%   %         [test2]
+%   %         [test3]
+%   %       ]
+%   %     ]
+%   %     [Abstractive Summarization]
+%   %   ]
+%   % \end{forest}
+%   % \bigskip
+  
+%   % https://tex.stackexchange.com/questions/539600/tikz-forest-coloring-and-edge-label-positions
+  
+%   % \tikzset{eln/.style={midway, font = \scriptsize,circle,inner sep=2pt}}
+%   % \begin{forest}
+%   % for tree = {circle, 
+%   %     draw=red, %<-added =red
+%   %     minimum width = 2.25em,
+%   %     l sep+=2em
+%   % }
+%   %     [\textcolor{blue}{Is there a break in the DGP between T* and T*+1?
+%   % }
+%   %         [Dog, edge label = {node [above left,eln] {\textcolor{green}{Yes}}}
+%   %             [$B$, edge label = {node [above left,eln] {$4$}}
+%   %                 [$D_1$, edge label = {node [left,eln] {$7$}}
+%   %                     [$G_1$, edge label = {node [left,eln] {$10$}}]
+%   %                 ]
+%   %             ]
+%   %             [$C$, edge label = {node [above right,eln] {$2$}},edge=blue%<-blue edge
+%   %                 [$D_2$, edge label = {node [above left,eln] {$3$}}
+%   %                     [$G_2$, edge label = {node [left,eln] {$6$}}]
+%   %                 ]
+%   %                 [$G_3$, edge label = {node [above right,eln] {$4$}}]
+%   %             ]
+%   %         ]
+%   %         [$G_4$, edge label = {node [above right,eln] {\textcolor{red}{No}}}]
+%   %    ]
+%   % \end{forest}
+  
+%   %https://tex.stackexchange.com/questions/226435/reducing-forest-tree-width-without-squashing
+  
+  
+%   %https://tex.stackexchange.com/questions/244006/making-forest-tree-with-lots-of-text-much-narrower
+%   \begin{figure} 
+%     \centering  
+%   \resizebox{\textwidth}{!}{%
+%   \begin{forest}
+%     /tikz/every node/.append style={font=\small},
+%     for tree={
+%       rounded corners, 
+%       % top color=gray!5, bottom color=gray!30, 
+%       edge+={darkgray, line width=4pt}, 
+%       draw=darkgray, 
+%       l sep=.8cm,
+%       s sep=.5cm,
+%       minimum height=8.8cm,
+%       minimum width=1cm,
+%       child anchor=west,
+%       parent anchor=east,
+%       grow'=east,
+%     minimum size=1cm,%new possibility
+%     text width=4cm,%
+%       draw,
+%       anchor=west,
+%       edge path={
+%         \noexpand\path[\forestoption{edge}]
+%           (.child anchor) -| +(-5pt,0) -- +(-5pt,0) |-
+%           (!u.parent anchor)\forestoption{edge label};
+%       },
+%     }
+%       [Break in the DGP between $T^{*}$ and $T^{*}+1$?,fill=blue!30 
+%           [Is there information outside of “regular forces”,edge=green, fill=blue!30,draw=green
+%               [Can we use the information outside “regular forces” to forecast (as %opposed to merely spotting the break)?
+%               ,edge=green,,fill=blue!30 
+%                   [Do you have a parametric model (with estimable parameters) for how information outside of ``regular forces” will figure at $T^{*}+h$?,edge=green,fill=blue!30 
+%                     [What other time series are governed by the parametric model?  How can we extract information from them?  Which are most relevant, %most similar?  How do we determine similarity, quant or qual?  Once we know what is similar, how do we use it?
+%                     ,edge=green,fill=blue!30 
+%                     ]
+%                     [The information that helped spot the break can be used to assemble series that have experienced breaks under similar circumstances. Forecast residuals/losses can be aggregated. %basement for model adjustment for the time series under study.  Without a parametric model, your options are limited but not empty.  With appropriate assumptions on the DGP pre-break and post-break, assumptions on the forecast functions and misses, we can still do things like aggregate residuals and bound forecast loss.
+%                     ,edge=red,fill=gray!30
+%                     ]
+%                     ]
+%                   [Use “regular forces” to do the model adjustment for the post-break period.  Examples of this would include refitting one’s data to use Markov-switching models – i.e. using only the series itself.,edge=red,fill=gray!30
+%                   ]
+%                   ]
+%                   [Then forecasting will require at least one post-break data point to be observed.,edge=red,fill=gray!30]
+%               ]
+%               [\cite{clements1998forecasting} discuss this.,edge=red,fill=gray!30]
+%               ]
+%           ]
+%       ]
+%   \end{forest}
+%   }\caption{Forecast Model Adjustment: A Decision Tree}\label{fig:tree}
+%   \end{figure}
+  
+%    %  To be sure, this manuscript will make its contributions largely in this area.  However, before we get there, let's follow others in asking whether we would ever want to intercept-correct an unconditional forecast as opposed to the conditional.  This is what Clements and Hendry call ``Exploiting the information in unconditional forecasts''.  \cite[p. 170-1]{hendry1994theory} recall how unconditional forecasts can have lower forecast variance than conditional forecasts.  There seems to be two different questions that we should distinguish: we forecast would minimize the conditional expectation of MSE, and what forecast would have the lowest variance.
+  
+%   %  Mismeasured data is discussed in \cite[p. 166]{hendry1994theory} as a motivator for intercept correction.  Could similarity-based correction help?  Here is an idea: if we believe that our most recent measurement of the series is noisy, we can disregard the point itself and instead take a convex combination of that point and the \cite{lin2021minimizing}-style prediction based on aggregation.
+  
+%   % Yet another potential motivation springs from the way we evaluate model performance.  In \cite{clements2005evaluating}, the authors discuss six dichotomies regarding forecast evaluation as a way of advising caution about simplistic notions of performance evaluation.  These ideas matter for the current manuscript for at least one reason.  We must entertain the possibility that breaks in the DGP will invalidate the standard forecast evaluation framework under which we had been working.  If, for example, we have a family of models estimated used a Gaussian loss function, and the post-shock residuals are not conditionally Gaussian (e.g. they could be conditionally Cauchy), then why even start with the default forecasting function?  Why not throw it out entirely?  If only the distribution of the innovations changes, then would that even matter for a forecast that is purely concerned with the conditional mean?
+  
+%    \cite[p. 177]{hendry1994theory} characterize breaks in the DGP (and hence the misspecification of the default forecasting method) as the ``most obvious and best understood rationale'' for intercept correction.  In this section, we wish to locate the task of forecasting amid shocks within the broader literature on forecasting under breaks in the DGP. 
+  
+%    Some terminological notes are in order before we proceed, however.  Errors are a staple of stochastic modeling.  They go by the synonyms ``noise", ``shocks", or ``innovations'' as well.  The meaning of these terms may not differ as much in their mathematical representations in symbols but in how they are interpreted (but see \cite{clements2005guest} on the ambiguity in the concept of an information set $\mathcal{F}_{t}$).  Whereas in the psychometric and social-scientific fields, errors may represent unmeasured or latent capacities of a unit, in other fields like the natural sciences, errors may be used to account for variability in the instruments used to collect data.  ``Innovations" or ``shocks", in econometric literature, are generally understood to represent the arrival of previously unknown (but not necessarily uncontemplated) information.  Shocks are called structural when they are can be linked back to some key feature of an scientific (usually economic) theory; otherwise, they are idiosyncratic.  Additionally, there exist other subcategories of shocks that crosscut the distinction just made.  For example, a news shock is a shock in which the information material to the market is delivered via newsmedia and moves markets no earlier than the news release itself.  Shocks can also be permanent or transitory, supply-related or demand-related, all-at-once or have a sequential, `slow drip', or sporadic quality to them.  The taxonomy is vast.  We use the term ``shock'' as a special case of a break in the DGP, even though, strictly speaking, some shocks will neither result from a break in the DGP nor herald the emergence of a new regime.  The news shocks examined in this manuscript, however, should be considered breaks in the DGP, no matter whether they are transient or permanent.  Additionally, in this work, we will be focused on all-at-once news shocks that occur strictly between two discrete time points, or information available at a ``fractional lag" \citep{castle2011forecasting}, so that a practitioner is faced with the question of what action is most advisable for the following time point, given the news shock.
+  
+   
+  
+%   \subsection{The Role of Outside Information}\label{outside_info}
+  
+%   When is more information better?  That is a central question with regard to forecasting.   In \cite{clements2005guest} (cited in \cite{castle2013forecasting}), the authors note that when forecasts fail, it often has to do with location (i.e. intercept shifts).  Therefore, using additional information is not likely to help unless it can address potential location shifts.  We should clarify what we mean by ``additional information".  Do we mean any information not included in the default forecast function?  Could that include something as straightforward as additional lags of the time series being forecast?  Perhaps a more useful distinction to make is that between information internal to the time series being forecast and information external to the time series being forecast.  Of course, the usefulness of this distinction will hinge, in part, on whether we can cleanly partition information into internal and external buckets.  A cross-cutting distinction originates in \cite{castle2011forecasting}, which discusses necessary conditions for forecasting under breaks as well as a taxonomy of information available for doing so.  The authors make a fundamental distinction between ``regular forces'', which includes the typical standbys of economic theory, and information potentially relevant to location shifts.  
+  
+%   We wish now to sharply distinguish between essential and inessential concepts.  For example, whether information is relevant to location shifts or not is a worthy and complex question that depends upon numerous factors, including but not necessarily limited to the DGP.  We prefer not to conflate that distinction with the internality-externality distinction, or whether the information belongs to the traditional sort of information used in econometric modeling, though certain tendencies and general patterns may emerge.  We make clear what is essential in Table \ref{tab:information_table}.
+  
+%   \begin{table}[htb]
+%     \centering % instead of \begin{center}
+%     \caption{A 2x2 Schema of Forecast Information, With Examples}\label{tab:information_table}
+%     \begin{tabular}{ | m{3em} | m{6cm}| m{8cm} | } 
+%       \hline
+%       & Conventional Econometric Models & Outside Conventional Econometric Models\\ 
+%       \hline
+%       internal & Lags of the series itself; past shocks & Polynomial expansion of the feature space and other transformations without solid theoretical motivation \\
+%       \hline
+%       external & Macro variables like interest rates, commodity prices; weather-related variables & Google Trends, high-frequency data like prediction markets; past shocks under similar conditions \\ 
+%       \hline
+%     \end{tabular}
+%   \end{table}
+   
+%     \subsection{The Meaning and Use of Similarity}
+%   This manuscript aims to contribute at the intersection of post-break forecasting and similarity-based forecasting.  In particular, we use the former to motivate the latter.  The notion of similarity appears in various statistical contexts, including matching, synthetic control, nearest-neighbor methods, not to mention the massive area of approximation theory.  Similarity-based reasoning can also be given a philosophical treatment when viewed as a special case of analogical reasoning \citep{bartha2013analogy}, from which we can glean a useful general framework in which reasoning by analogy involves a source domain and a target domain.  Our target domain, simply put, contains the thing we'd like to know, while the source domain is our reservoir of information from which to draw.  
+  
+%   Our objective as statisticians is to make forecast corrections by exploiting information from previous time series that have undergone shocks under similar circumstances.  As a provisional definition, we say that a break in the DGP of a time series is similar to a break in another just in case the causes of the breaks share key, material qualities.  Note here that we have not said anything about the time series themselves (the details of their DGPs or their moments) being similar, nor the entities that they represent (e.g. the firms, financial instruments, governments, etcetera) being similar.  Why that is so will become clear in Section \ref{Setting}.
+  
+%   Having provided only a provision definition, we would like to introduce useful distinctions regard the concept of similarity.  First, quantitative ways of determining similarity naturally tend toward the idea that similarity is reducible to determining what serves as a best approximation.  Those approaches include matching a target object to ``source'' objects along one or more variables, where unique matches or exact matches may be likely or may be statistically certain, likely, unlikely, or impossible, subject to the setting.  In metric spaces, the notion of a metric that quantifies nearness is crucial to fundamental concepts of proximity.  This suggests a set of optimization problems such that for any target object $Q$, the search for similarity means a search for an approximator or a collection of approximators $A$ such that $\delta(A,Q)$ is smallest, where $\delta$ is an appropriate metric.
+  
+%   The notion of approximating a target does not necessarily mean that the target need be similar to the approximator.  This suggests a role for asymmetric distance functions $\delta$ (which fail to meet the methematical requirements of a metric) for exploring differences between donors and weighting their contributions accordingly.  Consider an asymmetric Jaccard Index $\delta_{\mathcal{J}}(\cdot,\cdot)$ that maps from any two finite-cardinality sets A, B to the interval $[0,1]$ \citep{garg2015asymmetric}, penalizing A more for its incongruence with B than B is penalized for its incongruence with A.  Asymmetry also plays an important role in weighting schemes far beyond traditional forecasting, including Transformer mechanisms inside the field of deep learning.  The asymmetry inherent in query, key, and value matrices allow hierarchical relations in language to be represented mathematically \citep[p. 364]{bishop2023deep}.  
+  
+%   So far, we have discussed only binary measures of similarity.  The distance-based weighting scheme found in \cite{lin2021minimizing} and repurposed in \cite{lundquist2024volatility} can be thought of as an $n$-ary similarity measure, where the $n$ weights means little in isolation but can tell a greater story when viewed alongside the approximation they produce.  However, an $n$-ary similarity measure will not always reduce to the task of constructing an approximator to the target using $n$ original objects.  We might instead insist on a notion of similarity such that $n$ objects are said to be similar, as a collection, to the target if and only if each of the $n$ matches the target perfectly.
+  
+%   What about qualitative ways of determining similarity?  In \cite{lin2021minimizing, lundquist2024volatility}, donors are identified by matching the qualitative aspects of the shock in the time series under study to shocks previously witnessed in other series.  Only after the donor pool has been identified based on qualitative facts about the shocks is there a role for quantitative methods.  The role of the covariate vector in their models is two-fold: the covariates appear in the shock distribution, and the covariates also help determine which donors are most important.  It is to a generalization of this procedure that we now turn.
+  
+%   \section{Setting}\label{Setting}
+  
+%     \begin{figure}[h!]
+%       \begin{center}
+%         \begin{tikzpicture}
+%           \node[anchor=south west,inner sep=0] at (0,0) {\includegraphics[width=\textwidth]{simulation_plots/motivating_piece_convex_combination.png}};
+%           % \draw[red,ultra thick,rounded corners] (7.5,5.3) rectangle (9.4,6.2);
+%           % \node[draw,text width=4.45cm] at (9.8,3.2) {$\textcolor{blue}{\hat\sigma^{2}_{adjusted} = \hat\sigma^{2}_{unadjusted} + \hat\omega^{*}}$ };
+%           % \node[draw,text width=2.62cm] at (14.8,2.8) {$\textcolor{blue}{\hat\omega^{*} = \sum^{n+1}_{i=2}\pi_{i}\hat\omega^{*}_{i}}$ };    
+          
+%       \end{tikzpicture}
+%         \caption{The simulated time series experiences a volatility shock between trading days 1,656 and 1,657.  The GARCH prediction, in red, fails even to approach the volatility spike at $T^{*}+1$, as do several adjusted predictions, which are orange.  In contrast, the GARCH forecast adjusted by $\hat\omega^{*} = \sum^{n+1}_{i=2}\pi_{i}\hat\omega^{*}_{i} $, a convex combination of the estimated shocks in the donor pool, achieves directional correctness as well as a smaller absolute loss in its prediction.  The pink vertical line serves to indicate the adjustment of size $\hat\omega^{*}$ that allows the blue bullseye to approach more closely the ground truth.}    \label{fig:motivating_piece_convex_combination}
+     
+%         \end{center}
+%       \end{figure}
+  
+%   We will suppose that a researcher has a multivariate time series data $\y_{i,t} = (y_{i,t}, \x_{i,t}$), $t = 1,$ $\ldots,  T_i$, $i = 1, \ldots, n+1$, where $y_{i,t}$ is scalar and $\x_{i,t}$ is a vector of covariates such that $\x_{i,t}|\mathcal{F}_{i,t-1}$ is deterministic and observed.  Suppose that the analyst is interested in forecasting $y_{1,t}$, the first time series in the collection, which we will denote \textit{the time series under study}.   We require that each time series $\y_{i,t}$ be subject to an observed news event following $T^*_i$ and before witnessing $T^*_i+1 \leq T_{i}^{*}$.  The reasons for this represent the heart and soul of the framework proposed.  We are not proposing a method to correct for unanticipated shocks that have been reflected in the observed data.  Instead, we are proposing a method to correct for shocks for which the qualitative kernel of information is known and the observed quantitative instantiation of which is not yet known. 
+  
+%   We assume the following general data-generating process
+  
+%     \begin{align}
+%       \mc{M}_1 \colon \begin{array}{l}
+%         y_{i,t} = F(\mathcal{F}_{i,t-1}) + \alpha_{i,t} + \epsilon_{i,t}\\[.2cm]\label{core_specification}
+%         \alpha_{i,t} = \x^{T}_{i,t}\lambda_{i,t} \\[.2cm]
+%        \x_{i,t}^{T} = (1,x^{1}_{i,t},...,x^{p}_{i,t})\\[.2cm] 
+%        \lambda_{i,t}^{T} = (u_{i,t},\lambda^{1}_{t},...,\lambda^{p}_{t}),\\[.2cm]
+%       \end{array}
+%       \end{align}
+%   with time-varying and observable covariate vector $\x_{i,t}^{T}$, time-varying and unknown parameter vector
+%   \begin{align*}
+%   \lambda_{i,t} &\sim \mc{F}_{\lambda}\text{ with }  \E_{\mathcal{F}_{\lambda}}(\lambda) = \mu_{\lambda_{t}}, \mrm{Var}_{\mc{F}_{\lambda}}(\lambda) = \Sigma_{\lambda_{t}},\\
+%   \end{align*}
+%   and time-invariant error structure
+%     \begin{align*}
+%       \epsilon_{i,t} &\simiid \mc{F}_{\epsilon} \text{ with}  \; \E_{\mc{F}_{\epsilon}}(\epsilon) = 0, \mrm{Var}_{\mc{F}_{\epsilon}}(\epsilon)  = \sigma^{2}_{\epsilon},  \\
+%       %u_{i,t} & \simiid  \mc{F}_{u} \text{ with}  \; \mrm{Var}_{\mc{F}_{u}}(u) = \sigma^2_{u},\\
+%       % &\epsilon_{i,t} \indep u_{i,t},
+%       \end{align*}
+%   where $F$ maps objects from the past into future objects of $y_{i,t}$, and $\epsilon_{i,t}$ uncorrelated across time and donors.  Note that the dot product $\alpha_{i,t} = \x^{T}_{i,t}\lambda_{i,t}$ includes the term $u_{i,t}$ that is not shared among donors.  It encodes the known possibility that the shocks will vary across donors both in ways that can predicted based on pre-shock covariates as well as in ways that cannot be predicted.  That the parameter vector is time-varying allows us to capture that most time points are without news shocks (in which case $\alpha_{i,t}$ is of neglible effect), but conditional upon information arriving between $T_{1}^{*}$ and $T_{1}^{*}+1$, we may know with near certainty that $\lambda_{1,T_{1}^{*}+h}$ will be nonzero in norm for some $h>0$.  Note that the specification (\ref{core_specification}) above is sufficiently capacious as to include data-generating processes of the form 
+  
+%   \begin{align*} 
+%     y_{i,t} = \log{Y_{i,t}} = \log{a_{i,t}y_{i,t-k}e^{\alpha_{i,t}+\epsilon_{i,t}}} = \log{a_{i,t}} + \log{y_{i, t-k}} + \alpha_{i,t} + \epsilon_{i,t}
+%   \end{align*}
+%   with $k\geq1$ and $a_{i,t}, y_{i,t}$ supported on $\mathbb{R}^{+}$.  
+  
+%   The term $\x^{T}_{i,t}\lambda_{i,t}$ will be deemed the $\textit{correction term}$ for donor $i$ at time $t$, and the function
+  
+%   \begin{align*}
+%     \xi \colon \mathcal{F}_{2,T^{*}_{2}+h} \times \ldots \times \mathcal{F}_{n+1, T^{*}_{n+1}+h} &\to \mathcal{F}_{1,T^{*}_{1}+h}\\
+%   \end{align*}
+%   that estimates or predicts $\alpha_{1,T^{*}_{1}+h}$ will be deemed the \textit{correction function}.  The correction function maps donor information --- be it observables or inferences --- to the prediction function for the time series under study.  
+  
+%   So far we have reviewed a long and rich literature about model adjustment, and we have also introduced a data-generating process upon which the rest of this manuscript will be based.  We now proceed to introduce a particular framework of solutions to the circumstances assumed in Section \ref{Setting}.  What we are doing is distinct in at least two ways.  First, we are incorporating outside information faster, and second, we are proposing a principled, systematic way to do it that defies that curse of dimensionality.  If one wanted to forecast using linear models and high-dimensional information set, then some kind of method for reducing model complexity would be required.  We avoid that.
+  
+%   \section{SPC Forecasting Methodology and Correction Functions}
+  
+%   We now present two one-step-ahead forecasts for the time series under study. The first is the unadjusted forecast. The second is the adjusted forecast, which differs by the predicted correction term.  The forecasts are: 
+  
+%   \begin{align*}
+%     \text{Forecast 1: } 
+%      &\hat y_{unadjusted, T_{1}^{*}+1} = \hat\E[y_{1,T_{1}^{*}+1}|\mathcal{F}_{T_{1}^{*}}] \\
+%      \\
+%     \text{Forecast 2: }
+%      &\hat y_{adjusted,T_{1}^{*}+1} = \hat\E[y_{1,T_{1}^{*}+1}|\mathcal{F}_{T_{1}^{*}}] + \hat\alpha_{T^{*}_{1}+1} \text{ .}
+%   \end{align*}
+%   The problem of aggregating estimated shocks or residuals begins with the data constraints.  Let us first introduce useful notation.  Let $\hat\alpha_{i,*}$ denote estimated correction term for donor $i$.   Taking the estimated shocks or residuals as a given, we essentially observe the tuple of information $(\{\hat\alpha_{i,*}\}^{n+1}_{i=2}, \mathcal{F}_{2,T^{*}_{2}}\times \ldots \times \mathcal{F}_{n+1,T^{*}_{n+1}}\})$.  One approach to aggregation comes from \cite{lin2021minimizing}, where weights belonging to the simplex, $\{\weight_{i}\}^{n+1}_{i=2} \in \Delta^{n-1}$, are chosen via a distance-based weighting procedure, resulting in the correction function 
+  
+%   \begin{align*} \label{adjustment}
+%         \hat\alpha = \sum^{n+1}_{i=2}\weight_{i}\hat\alpha_{i,*},
+%   \end{align*}
+%   which is just one way among many to build a correction function.  Another interesting correction function can be found in \cite{foroni2022forecasting}, where percentage residuals of past forecasts are used.  For yet another example, consider a correction function that aggregates the survey panel of forecasts by the Survey of Professional Forecasts \citep{croushore1993introducing}.  An obvious advantage of human forecasters is that they are able to integrate information revealed arbitrarily close to the scheduled release of the forecast, even if human forecaster's lack of systematicity or closed-form forecasts, for example, leads to non-optimal forecast performance in general.  By calculating forecast differences between the low-frequency information forecast, $\tau_{i,t}= \hat{y}_{unadjusted,t}-\hat{y}_{ i,t}$, we prepare ourselves for late-breaking events -- e.g. shocks -- for which we might want a correction function
+  
+%   \begin{align*}
+%   \xi \colon \boldsymbol{\tau} &\to \mathcal{F}_{1, T^{*}_{1}} \\
+%   \end{align*}
+%   that weights the $i$-th forecaster according to that forecaster's past performance or according to the similarity of the forecaster's stated information set to the information available for the default forecasting model.
+  
+%   \subsection{Diagnostics for Similarity-Based Parameter Correction}
+%   The assumptions we make on the DGP for shocks to both donors and the time series under study allow us to evaluate our prediction tool even before we predict.  In this subsection, we will elaborate on a permutation method proposed in \cite{lin2021minimizing}.  The idea is simply to use each of the $n$ donors as an object to predict, while the remaining $n-1$ serve as actual donors.  Permutation tests for inference were proposed as early as \cite{abadie2010synthetic} in the context of synthetic control.  Although we will not embark upon a formal exploration of the permutation method for predictive model evaluation, we will note briefly its motivation, chiefly that the donors share a DGP and the model particulars are invariant to permutation.  To the extent that those assumptions hold in practice, model performance can be gauged by methods as simple as evaluating the losses of the `pseudo-time-series-under-study' to the more sophisticated, like assessing the correlation between the goodness of approximation and the losses.  One can also assess the plausibility of the $\{\hat\alpha_{i}\}$ being uncorrelated, which is central to MSE-minimization, as we will see in Section \ref{ARIMA}.
+  
+%   \section{Model Adjustment Using Similarity-Based Parameter Correction: A Global Overview}\label{global_overview}
+  
+%   In this section, we introduce and discuss a general framework for model adjustment that both generalizes and is motivated by the circumstances laid out in Section \ref{Setting} by boiling down SPC to its essential five elements.  The essential elements of similarity-based parameter correction are
+  
+%   \begin{enumerate}
+%     \item \textbf{Object-to-predict}
+%     Most fundamentally, the method requires a random object (indexed over time and possibly space, as well) that obeys a specification with additive errors, or, at the very least, a specification that can be transformed to have additive errors.  This requirement is suitably weak, so as to include models that are not linear or not linear in each of their parameters.  It also includes multidimensional objects as well as objects from non-Euclidean probability spaces, like some function spaces.  
+  
+%   Notice that we did not say \textit{parametric} specification.  The reason for this is that, given any forecast function $f$ from an information set $\mathcal{F}_{t}$, and given any appropriate loss function \textit{L}, we can define a residual $e_{t} = y_{t} \odot \hat{y_{t}}$, where $\odot$ is subtraction in the simple case of mean squared-error.  The residuals (or transformations of those residuals) of those $n$ models can be weighted as part of a correction function.  This fact is especially useful when the forecast function $f$ is nonparametric, black-box, or stochastic with respect to $\mathcal{F}_{t}$.
+  
+%   \item \textbf{Common Model Family on the Shocks} The method requires that residuals be governed by a model that is shared across all units.  This ensures that in the estimation of news shocks in the donor pool, the estimators will enjoy similar properties that will produce a good aggregated shock estimator.  This condition is satisfied by the parametric shock distributions found in \cite{lin2021minimizing,lundquist2024volatility}.
+  
+%   \item \textbf{Reliable and Shared Model-Fitting Procedure} There must exist a reliable model-fitting procedure for the $n+1$ units, one that will allow the assumption of a shared family for the residuals to be reflected in the residuals.  Here, reliable could mean any number of several things.  It means that the estimation procedure must produce a credible description of each data-generating process or a good prediction function, so as to aid in estimating residual(s) in each unit.  Reliable may mean the estimators have low variance, and it may also mean that the estimation procedure is robust, to some degree, to misspecification bias.  However, in theory, the lack of these properties is not harmful to the method unless the lack of these properties harms the correction term's estimation.  When we use fixed effect estimation (under ordinary assumptions), we can construct confidence intervals for the fixed effect estimates, and then assuming independence, we can get confidence intervals for convex combinations of fixed effect estimates.
+  
+%   \item \textbf{Reliable Correction Term Estimation} Fourth, there must exist a reliable procedure for modeling and estimating the correction term in each unit.  Again, here we care about low variance as well as robustness to misspecification.  The very simplest correction term is the residual itself.  Alternatively, the correction term could be an inner product that depends upon external covariates, as is found in \cite{lin2021minimizing,lundquist2024volatility}.
+  
+%   This might not always be straightforward.  Some models like GARCH, for example, might deliver very noisy estimates for indicator variables that occur just once.
+  
+%   \item \textbf{Reliable Correction Function Estimation} There must exist a correction function (presumably based on the correction term) that maps data from the donor pool to the $\textit{predicted}$ correction term in the time series under study based on some notion of similarity.  In some cases, there may exist a posited DGP that the correction term estimates.  In other cases, there may be no posited DGP.  Similarly, if there exists a posited DGP for the correction term, it may depend upon data internal to the time series under study, or it may depend on external data, e.g. outside data could be aggregated (e.g. Nearest-Neighbor, arithmetic mean, kernel methods) to estimate the correction function.
+  
+%   \end{enumerate}
+  
+%   \subsection{The Method of Multiple Shocks}
+  
+%   Sometimes, we might have reason to believe that a forecast requires adjustment due to not one but multiple shocks.  \cite{lin2021minimizing} explored a ``dual'' shock in their analysis of oil company equity price shocks due to the March 2020 COVID lockdowns.  Here we discuss two ways of navigating that interesting challenge.
+  
+%   \textbf{Method 1}: For each source of the $k$ shocks, assemble $n_{j}$ donors and $p_{j}$ covariates, with $j=2,...,n_{j}+1$, and compute weights $\{\pi_{i,j}\}^{n_{j}+1}_{i=2}$.  With these $k$ weight sets, a set of $k$ aggregated shock estimators can be constructed and averaged (or aggregated in some other way).  Ultimately, each weight set results in a shock adjustment terms, and the sum of those estimated terms becomes the final adjustment term, as is done in \cite{lin2021minimizing}.  One potential downside of this approach is that is has no in-built way to control the size of the final adjustment term, which is somewhat in tension with original idea of taking convex combinations of estimated shocks, and therefore it can be seen as a relaxation of the weight constraint.
+  
+%   \textbf{Method 2}: Each of the $k$ shocks can be represented using an application of distance-based weighting, where the vector $\delta$ and the vector $\x_{i,T^{*}_{i}+1}$ can encode a partition of shocks by using zeros in appropriate entries.  Under this method, the sum of the weights remains 1, the estimation space for the weights is increased to $kp$.  Unlike \textbf{Method 1}, this approach remains committed to a weight constraint. An obvious concern is that a space of dimension $kp$ may be too large for weight estimation.
+  
+%   In practice, the best approach may depend on $k,p$ as well as the task at hand.  Additionally, an assumption of independence or at least uncorrelatedness among the $k$ donor pools may helpful here.  The foregoing, we hope, provides a basis upon which future work can build.
+  
+  
+%   \section{Formal Properties and Model-Specific Considerations}\label{special_cases}
+  
+%   In this section, we discuss particular models for which our approach has been implemented as well as others for which it has yet to be implemented.  For those for which an implementation exists, we introduce the model in a more general light, while also commenting on the model-specific considerations.
+  
+  
+%   \subsection{ARIMA}\label{ARIMA}
+%   Recall Specification (\ref{core_specification}), which models a news shock as an affine function of covariates:
+  
+%   \begin{align*}
+%     &y_{i,t} = F(\mathcal{F}_{i,t-1}) + \alpha_{i,t} + \epsilon_{i,t}
+%   \end{align*}
+%   We begin our recounting of model-specific cases by recalling \cite{lin2021minimizing}, in which it was established that for a family of AR(1)-X-distributed scalar time series with a common shock distribution, forecast risk can be reduced via a similarity-based adjustment procedure.  An AR(p) is an easy model to work with, in part because it can be consistently estimated via OLS, and an AR(p) can approximate an ARMA(p,q) with arbitrarily-small error through via a truncation of an AR($\infty$) representation.  Setting aside the estimation method, consider a one-step-ahead forecast for an AR(p) at time $t$ with an adjustment estimator, $\hat\alpha_{t}$.  For ease of exposition, we suppress subscripts for donors:
+  
+%   \begin{align}
+%   \hat{y}_{t} = f(\mathcal{F}_{t-1}) = \hat\mu + \sum^{p}_{k=1}\hat\rho_{k}y_{t-k} + \hat{\alpha}_{t}
+%   \end{align}
+%   which can be understood as an AR($p$) with time-varying coefficients.  The mean squared-error of the forecast above, i.e.
+  
+%   \begin{align}
+%     \E[(y_{t}-\hat{y}_{t})^{2}] &= \E[(y_{t} - \hat\mu + \sum^{p}_{k=1}\hat\rho_{k}y_{t-k} + \hat{\alpha}_{t})^{2}]\\
+%     &= \E[(\mu + \sum^{p}_{k=1}\rho_{k}y_{t-k} + \alpha_{t} + \epsilon_{t}  - (\hat\mu + \sum^{p}_{k=1}\hat\rho_{k}y_{t-k} + \hat{\alpha}_{t}))^{2}] \\
+%     &= \E[((\mu - \hat\mu) + \sum^{p}_{k=1}(\rho_{i}-\hat\rho_{k})y_{t-k} + (\alpha_{t} - \hat{\alpha}_{t}) + \epsilon_{t} )^{2}]\label{ARIMA_MSE_breakdown}
+%     \end{align}
+%   admits of the typical bias-variance decomposition.  If it is known that $\mu = 0$, (\ref{ARIMA_MSE_breakdown}) becomes
+  
+%   \begin{align}
+%     &\E[(\sum^{p}_{k=1}(\rho_{k}-\hat\rho_{k})y_{t-k} + (\alpha_{t} - \hat{\alpha}_{t}) + \epsilon_{t} )^{2}]\notag\\
+%     = &\text{Bias}^{2}[\sum^{p}_{k=1}(\rho_{k}-\hat\rho_{k})y_{t-k} + (\alpha_{t} - \hat{\alpha}_{t}) ] + \text{Var}[\sum^{p}_{k=1}(\rho_{k}-\hat\rho_{k})y_{t-k} + (\alpha_{t} - \hat{\alpha}_{t}) ] + \sigma^{2}_{\epsilon}\tag{$\epsilon_{t}$ idiosyncratic}\\
+%     = &\big[\E[\sum^{p}_{k=1}(\rho_{k}-\hat\rho_{k})y_{t-k} + (\alpha_{t} - \hat{\alpha}_{t}) ]\big]^{2} + \text{Var}[\sum^{p}_{k=1}(\rho_{k}-\hat\rho_{k})y_{t-k} + (\alpha_{t} - \hat{\alpha}_{t})]  + \sigma^{2}_{\epsilon}\tag{Definition of Bias}\\
+%     % = &\big[\sum^{p}_{k=1}(\rho_{k}-\E[\hat\rho_{k}])y_{t-k} + (\alpha_{t} - \E[\hat{\alpha}_{t}]) \big]^{2} + \text{Var}[\sum^{p}_{k=1}(\rho_{k}-\hat\rho_{k})y_{t-k} + (\alpha_{t} - \hat{\alpha}_{t})]  + \sigma^{2}_{\epsilon}\\
+%     = &\big[\sum^{p}_{k=1}(\rho_{k}-\E[\hat\rho_{k}])y_{t-k} + (\alpha_{t} - \E[\hat{\alpha}_{t}]) \big]^{2} + \text{Var}[\sum^{p}_{k=1}(\rho_{k}-\hat\rho_{k})y_{t-k}] + \text{Var}[\hat{\alpha}_{t}]  + \sigma^{2}_{\epsilon}\tag{if donor shocks are uncorrelated with time series under study}\\
+%     = &\big[\sum^{p}_{k=1}(\rho_{k}-\E[\hat\rho_{k}])y_{t-k} + (\alpha_{t} - \E[\hat{\alpha}_{t}]) \big]^{2} + \text{Var}[\sum^{p}_{k=1}(\rho_{k}-\hat\rho_{k})y_{t-k}] + \sum_{i=2}^{n+1}\pi_{i}^{2}\text{Var}[\hat\alpha_{i,t}] + 2\sum_{i\neq j}\pi_{i}\pi_{j}\text{Cov}[\hat\alpha_{i,t},\hat\alpha_{j,t}]  + \sigma^{2}_{\epsilon}\label{ARIMA_adjusted_MSE}
+%   \end{align}
+%   Assume we have no control over the accuracy of the estimates $\{\hat\rho\}^{p}_{k=1}$ nor any control over the estimates $\{\hat\alpha_{i,t}\}_{i=2}^{n+1}$.  Then our only control over the MSE comes comes from the weight vector $\vec{\pi}$.  \cite{lundquist2024volatility} conditions under which $\vec{\pi}$ is unique, but when uniqueness fails, then a practitioner has meaningful choices to make regarding forecast risk.  If we insist that $\hat\alpha_{t}$ be an unbiased predictor, then $\vec{\pi}$ may not be sparse, and hence the covariance terms in \ref{ARIMA_adjusted_MSE} may be large.  However, if some bias can be tolerated, the variance and covariance terms may be small.  All of this is to say that control of the MSE may require tight control of the variance in the prediction function, which in turn will gesture in the direction of a sparse $\hat\alpha_{t}$ and sparse estimation of the autoregressive structure.
+  
+%   How does the MSE of the adjusted forecast compare with the unadjusted forecast?  Since the unadjusted forecast MSE would lack the final two sums in expression \ref{ARIMA_adjusted_MSE}, the adjusted model therefore has lower MSE if and only if the reduction in the squared bias is greater than $\sum_{i=2}^{n+1}\pi_{i}^{2}\text{Var}[\hat\alpha_{i,t}] + 2\sum_{i\neq j}\pi_{i}\pi_{j}\text{Cov}[\hat\alpha_{i,t},\hat\alpha_{j,t}]$.
+  
+%   The finite-sample prediction performance of our method, as discussed above, will hinge at least partly on questions of donor independence and uncorrelatedness, as well as the extent to which bias can be minimized through a suitable convex combination of the donors.  As for asymptotic performance, those things still matter.  We will now offer three theorems that, in their totality, bolster the credibility of the forecast adjustment method on offer here.
+  
+%   %https://tex.stackexchange.com/questions/174317/creating-a-labeled-tetrahedron-with-tikzpicture
+%   \begin{figure}
+%   \centering
+%   \begin{tikzpicture}[line join = round, line cap = round]
+%   \pgfmathsetmacro{\factor}{1/sqrt(2)};
+%   \coordinate [label=right:Donor 1] (1) at (2,0,-2*\factor);
+%   \coordinate [label=left:Donor 2] (2) at (-2,0,-2*\factor);
+%   \coordinate [label=above:Donor 3] (3) at (0,2,2*\factor);
+%   \coordinate [label=below:Donor 4] (4) at (0,-2,2*\factor);
+%   \coordinate [label=below:$\vec{\pi}_{MSE minimizer}$] (5) at (2.1,-.8,-.3*\factor);
+  
+  
+%   % \draw[->] (0,0) -- (3,0,0) node[right] {$x$};
+%   % \draw[->] (0,0) -- (0,3,0) node[above] {$y$};
+%   % \draw[->] (0,0) -- (0,0,3) node[below left] {$z$};
+%   \foreach \i in {1,2,3,4}
+%       \draw[dashed] (0,0)--(\i);
+%   \draw[-, fill=red!30, opacity=.3] (1)--(4)--(2)--cycle;
+%   \draw[-, fill=green!30, opacity=.3] (1) --(4)--(3)--cycle;
+%   \draw[-, fill=purple!30, opacity=.3] (2)--(4)--(3)--cycle;
+%   \end{tikzpicture}
+%   \caption{The 3-Simplex, $\Delta^{3}$, where hypothetical minimizer is a convex combination of Donors 1 and 4.}
+%   \end{figure}
+  
+  
+%   \begin{prop}\label{ARIMA_param_consistency}
+%   Assume
+%     \begin{enumerate}
+%       \item For each $i$, $1\leq i \leq n + 1$, let $\{y_{t}\}^{T_{i}}_{i=1}$ follow an AR($p$)-X as laid out in Section \ref{ARIMA}.
+%       \item Assume for each $i$, $1\leq i \leq n + 1$, the shocks $\alpha_{i,t}$ are uncorrelated across donors.
+%       \item Assume for each $i$, $1\leq i \leq n + 1$, the shocks $\alpha_{i,t}$ are uncorrelated with $\alpha_{i,T_{i}^{*}+1}$ 
+%      \end{enumerate}
+  
+%   Then the tuple of estimators ($\hat\rho_{i,1},...,\hat\rho_{i, p}, \hat\alpha_{i,T^{*}+1}$) is consistent as $t \rightarrow \infty$.
+%   \end{prop}
+  
+%   \begin{prop}\label{ARIMA_aggregated_alpha}
+%   Assume
+%     \begin{enumerate}
+%       \item All conditions listed in Proposition \ref{ARIMA_param_consistency}.
+%       \item There exist weights $\{\pi_{i}\}_{i=2}^{n+1} \in \Delta^{n-1}$  such that $\textbf{v}_{1,T_{1}^{*}} = \sum^{n+1}_{i=2}\weight_{i} \textbf{v}_{i,T_{i}^{*}}$.
+%       \item For all $i$, the $\{u_{i,t}\}$ are equal in distribution.
+%      \end{enumerate}
+  
+%      Then the aggregated estimator $\hat{\alpha_{T^{*}_{1}+1}}$ converges in distribution to $\alpha_{T^{*}_{1}+1}$ as $t \rightarrow \infty$.  Furthermore, if the $\{u_{i,t}\}$ are constant with probability 1, the convergence is in probability.
+%     \end{prop}
+  
+%   \begin{prop}\label{ARIMA_conv_distribution}
+%     Let $\{\hat y_{1,T_{1}^{*}+r}\}^{h}_{r=1}$ denote the vector of adjusted predictions (adjusted through $h$ steps ahead) in the time series under study.  Assume all conditions listed in Propositions \ref{ARIMA_param_consistency} and \ref{ARIMA_aggregated_alpha}.  Then $\{\hat y_{1,T_{1}^{*}+r}\}^{h}_{r=1} \xrightarrow{\qquad d\qquad} \{ y_{1,T_{1}^{*}+r}\}^{h}_{r=1}$.  Furthermore, if the $\{u_{i,t}\}$ are constant with probability 1, the convergence is in probability. 
+%     \end{prop}
+  
+%   When forecasting financial time series using the method above, the question of prices versus returns (or in the language of economics or engineering, levels versus flows) is relevant.  Consider, for example, the persistence of a shock.  A shock to an asset's return series at time $t$ implies a persistent shock to the asset's price series at time $t$ and beyond, as one can verify by inverting the discrete-differencing operation on a time series.  However, if one forecasts the price series of the asset directly, that persistence beyond the first instantiation of the shock must be modeled explicitly.  This suggests interesting opportunities in the analysis and forecasting of shock persistence for situations in which level-forecasting is appropriate, e.g. for stationary time series.
+  
+%   It must be noted here that adding a past residual to future forecasts assumes implicitly that whatever caused the residual has some persistence.  Hence, intercept correction might be thought more appropriate for time series of levels, or at least times series of rates that are not necessarily mean-reverting, like inflation.  Of course, if one has a strong grasp of how long the intercept correction will be necessary, then all of that is moot, but in practice, knowledge of that persistence may be harder to come by than foreknowledge of the need for intercept correction. 
+  
+%   We now turn to the limitations of linear time series model class like ARIMA.  The first is that linearity is a nontrivial restriction, and for the purpose of modeling financial time series, applications of SPC to TAR and SETAR would be welcome.  Additionally, the efficient market hypotheses implies that market prices reflect all publicly-available information, which in turn implies that ARIMA models should be of no predictive value for market returns.  This critique, in a technical sense, alleges that market returns are random walks centered at zero, and for that reason, the coefficients of an ARMA approximation to a financial return series are uniformly zero, and that any incipient deviation from that equilibrium would not go unnoticed by market participants, who would exploit those deviations and push the coefficients back to zero, leaving only idiosyncratic noise.  Such concerns about forecasting in markets with heavy feedback loops motivates our next section.
+%   \subsection{GARCH}
+%   The methods of \cite{lin2021minimizing} are adapted in \cite{lundquist2024volatility} to forecast volatility.  This is in response to concerns we raised above about the usefulness of ARIMA models for forecasting financial returns as well as concerns about heteroskedasticity.  Financial time series are known to have both time-varying volatility as well as  volatility that \textit{clusters}, i.e. with volatile trading periods that bunch together.  A GARCH model, under weak conditions, is an ARMA model on the squared residuals of a time series, and empirical evidence strongly suggests that those ARMA (i.e. GARCH) coefficients are not zero, in general.  The predictability of either those squared returns or the predictability of $\sigma_{t}^{2}$ (in this context, the two tasks reduce to one) is bounded, however, by a function of the kurtosis of a GARCH process \citep{francq2019garch}.  That the GARCH model accommodates excess kurtosis in both the unconditional and conditional returns of a financial asset is a feature of the model, and perhaps for that reason, it has been noted that GARCH models do a much better job at modeling the evolution of volatility (a descriptive or inferential objective) as opposed to forecasting volatility.
+  
+%   In this way, \cite{lundquist2024volatility} bridged a gap between the descriptive and predictive roles of GARCH.  Fixed effects (correction terms) are estimated in the donor pool, and those fixed effects are aggregated via corrected function.  A forecast adjustment is then made in the time series under study.  Consider how GARCH fits into our Specification (\ref{core_specification}).  First consider, for an arbitrary multivariate time series indexed by $i$, the volatility equation of a GARCH-X model:
+  
+%   \begin{align}
+%     &\sigma_{i,t}^{2} = \omega_{i} + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \text{ }.\label{GARCH_intro}
+%     \end{align}
+  
+%   which corresponds to our Specification (\ref{core_specification})
+  
+%     \begin{align*}
+%         y_{i,t} = F(\mathcal{F}_{i,t-1}) + \alpha_{i,t} + \epsilon_{i,t}
+%       \end{align*}
+  
+%     The autoregressive component of (\ref{GARCH_intro}) is clear, as is the fixed effect.  The most likely question a newcomer might have is where the idiosyncratic error can be found in (\ref{GARCH_intro}).  This can be answered by noting that the GARCH model is a deterministic specification for the variance function; alternatively, it is well know that under weak assumptions, the GARCH model can be rearranged and interpreted as an ARMA.
+  
+%     % Let $I(\cdot)$ be an indicator function.  Let $T_i$ denote the time length of the time series $i$ for $i = 1, \ldots, n+1$, and let $T_i^*$ denote the largest time index prior to the arrival of the news shock, with $T_i^* < T_i$, to ensure that there is at least one post-shock realization for each series $i$.  Let $\delta, \x_{i,t} \in \mathbb{R}^{p}$.  Let $\mathcal{F}_{i}$ with a single-variable subscript denote a univariate, time-invariant $\sigma$-algebra, and $\mathcal{F}_{i,t}$ denote the canonical product filtration for donor $i$ at time $t$.  Let $D^{return}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + L_{i, return}\})$ and $D^{vol}_{i,t} = I(t \in \{T_i^* + 1,...,T_i^* + L_{i, vol}\})$, and let $L_{i,return},L_{i,vol}$ denote the lengths of the level and volatility shocks, respectively.  For $t= 1, \ldots, T_i$ and $i = 1, \ldots, n+1$, the model $\mc{M}_1$ is defined as 
+%     % \begin{align*}
+%     %   \mc{M}_1 \colon \begin{array}{l}
+%     %      \sigma^{2}_{i,t} = \omega_{i} + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} + \omega^{*}_{i,t}, \text{ }\\[.2cm]
+%     %      a_{i,t} = \sigma_{i,t}((1-D^{return}_{i,t})\epsilon_{i,t} + D^{return}_{i,t}\epsilon^{*}_{i}),\\[.2cm]
+%     %     \omega_{i,t}^{*} = D^{vol}_{i,t}[\mu_{\omega^{*}}+\delta^{T}\x_{i,T^{*}_{i}+1}+ u_{i,t}],
+%     %   \end{array}
+%     %   \end{align*}
+    
+%     % with time-invariant error structure
+%     %   \begin{align*}
+%     %     \epsilon_{i,t} &\simiid \mc{F}_{\epsilon} \text{ with}  \; \mrm{E}_{\mc{F}_{\epsilon}}(\epsilon) = 0, \mrm{Var}_{\mc{F}_{\epsilon}}(\epsilon)  = 1,  \\
+%     %     \epsilon^{*}_{i,t} &\simiid \mc{F}_{\epsilon^{*}} \text{ with}  \; \mrm{E}_{\mc{F}_{\epsilon^{*}}}(\epsilon) = \mu_{\epsilon^{*}}, \mrm{Var}_{\mc{F}_{\epsilon^{*}}}(\epsilon^{*})  = \sigma^2_{\epsilon^{*}},  \\
+%     %     u_{i,t} & \simiid  \mc{F}_{u} \text{ with}  \; \mrm{Var}_{\mc{F}_{u}}(u) = \sigma^2_{u},\\
+%     %     \epsilon_{i,t} & \indep  \epsilon^{*}_{i,t}  \indep u_{i,t}.
+%     %     \end{align*}
+  
+%   \subsection{HAR}
+  
+%   The Heterogeneous Autoregressive (HAR) model for realized volatility \citep{corsi2009simple}  uses ordinary least-squares (OLS), WLS, or some other appropriate linear model to fit a predictive regression model.  It explores the influence of previous volatility on current volatility, of course, but uses a specification motivated by theory: that a heterogeneous collection of market participants interacts at different frequencies.  Therefore, the volatility can be well-modeled as a linear combination of the average volatility over the previous day, previous week, and previous month (usually taken to be 22 days).  Formally, HAR assumes that the log price of an asset is a governed by a diffusion process (a model beyond our scope herein), and HAR estimates
+  
+%   \begin{align*}
+%   RV_{t} = \beta_{0} + \beta_{\text{1-day}}RV_{t-1} + \beta_{\text{5-day}}\overline{\{RV_{t-1},...,RV_{t-5}\}}+\beta_{\text{22-day}}\overline{\{RV_{t-1},...,RV_{t-22}\}} + \epsilon_{t}
+%   \end{align*}
+%   Recently, \cite{bodilsen2023exploiting} find that overnight news improves the predictive ability of HAR regressions with a logarithmic transformation on the realized volatility estimate.  The authors distinguish between earnings-related and non-earnings-related news occurring after hours, finding that predictive performance is improved for one-day-ahead forecasts but no more.  Consider now how HAR fits into Specification (\ref{core_specification}):
+  
+%   \begin{align}
+%     \mc{M}_1 \colon \begin{array}{l}
+%       RV_{i,t} = \beta_{0} + \beta_{\text{1-day}}RV_{i,t-1} + \beta_{\text{5-day}}\overline{\{RV_{i,t-1},...,RV_{i,t-5}\}}+\beta_{\text{22-day}}\overline{\{RV_{i,t-1},...,RV_{i,t-22}\}} + \alpha_{i,t} + \epsilon_{t}\\[.2cm]
+%       \alpha_{i,t} = \x^{T}_{i,t}\lambda_{i,t} \\[.2cm]
+%       \x_{i,t}^{T} = (1,x^{1}_{i,t},...,x^{p}_{i,t})\\[.2cm] 
+%       \lambda_{i,t}^{T} = (u_{i,t},\lambda^{1}_{t},...,\lambda^{p}_{t}),\\[.2cm]
+%     \end{array}
+%     \end{align}
+  
+%     with time-invariant error structure
+%     \begin{align*}
+%       \epsilon_{i,t} &\simiid \mc{F}_{\epsilon} \text{ with}  \; \mrm{E}_{\mc{F}_{\epsilon}}(\epsilon) = 0, \mrm{Var}_{\mc{F}_{\epsilon}}(\epsilon)  = 1,  \\
+%       \epsilon^{*}_{i,t} &\simiid \mc{F}_{\epsilon^{*}} \text{ with}  \; \mrm{E}_{\mc{F}_{\epsilon^{*}}}(\epsilon) = \mu_{\epsilon^{*}}, \mrm{Var}_{\mc{F}_{\epsilon^{*}}}(\epsilon^{*})  = \sigma^2_{\epsilon^{*}},  \\
+%       u_{i,t} & \simiid  \mc{F}_{u} \text{ with}  \; \mrm{Var}_{\mc{F}_{u}}(u) = \sigma^2_{u},\\
+%       \epsilon_{i,t} & \indep  \epsilon^{*}_{i,t}  \indep u_{i,t}.
+%       \end{align*}
+  
+%   We should emphasize that the regressions under discussion here are predictive regressions, with no suggestion that the model is fundamentally driven by the linear specification that is estimated.  However, if it were, we would especially desire answers to the following
+  
+%   \begin{enumerate}
+%     \item Are the relevance and novelty filters used by \cite{bodilsen2023exploiting} appropriate, and does it represent a qualitative decision?  Does it represent an instance of similarity-based matching?
+%     \item Could we relax the requirement on the relevance score and instead let a numerical algorithm determine which stories and relevant and how relevant?
+%     \item Could we relax the requirement on the novelty score?
+%     \item Bias-variance tradeoff: are we able to reduce the bias or the variance or both via the method of \cite{bodilsen2023exploiting}?
+%     \item What is the `frontier' that separates using a similarity-based approach like SPC as opposed to an approach using count variables?
+%     \item What are advantages and disadvantages of using counts versus indicator variables versus alternatives?  Can we confirm the theory that count variable approaches reduce variance while, as is well-established, SPC reduces bias?
+%     \item Does SPC do better when the shock is a nonlinear function of the covariates compared to a method that uses regression terms for each covariate?  Does SPC do better under those circumstances compared to count variable-based approaches? 
+%     \item  What DGP on overnight firm-specific news would most justify the approach in \cite{bodilsen2023exploiting}?
+%     \item Is earning-related and non-earnings-related the appropriate disaggregation to use?
+%     \item Is it appropriate to use counts at each time point, or would indicator variables be superior, or rather, under what conditions would indicator variables be superior?
+  
+%   \end{enumerate}
+  
+%   \subsubsection{Real Data Application of Shock-Adjusted HAR Forecasting}
+  
+%   In the autumn of 2008, as Great Financial Crisis (GFC) gathered steam, the US Federal Reserve reduced its overnight lending rate to banks to between 0 and 25 basis points \citep{GFC}.  Though the US economy (and the globe as a whole) returned to growth by 2009, the US Fed kept interest rates there for more than half a decade.  Only in 2015 did rates begin their gradual and well-telegraphed ascent.  Between 2015 and 2018, the Fed would raise rates at nine meetings, culminating in the December 2018 hike \citep{fedfunds}.  In this real data example, we use the eight hikes preceding December 2018 as donors in order to predict the volatility induced December 2018 rate hike.
+  
+%   \begin{enumerate}
+%     \item \textbf{Model choice}  We proceed with a log-HAR model, that is, a HAR model with the realized volatility under the natural log transformation.  The logarithmic transformation for RV was suggested as early as \cite{corsi2009simple} and is justified by the variance-stablizing effect of the log.
+    
+  
+%     \item \textbf{Covariate Choice} We choose covariates that could plausibly satisfy the model assumptions spelled out earlier, that is, risk-related and macroeconomic covariates that could plausibly be weighted and summed in a shock distribution.  We thus choose from four sets of covariates:
+    
+%     \begin{itemize}
+%     \item The most recent daily changes in VIX, IRX (the 13-week Treasury Bill rate), XAU (the spot price of an ounce of gold bullion)
+%     \item The most recent closing level of the VIX
+%     \item The change in the volume SPY on the most recent trading day
+%     \item The credit spread between AAA-debt bonds and BAA-rated debt
+%     \end{itemize}
+  
+%     \item \textbf{Donor pool construction} We choose as donors the eight rates hikes occurring in the span 2015 to 2018 (inclusive), excepting our time series under study.  We should note here that in each of these eight donors, the rate hike was a fully observed event, whereas in the time series under study, we proceed under the assumption that a rate hike will occur.  This represents a more refined and realistic application of the method presented herein, where the shock in the time series under study has not yet occurred, but we nevertheless proceed under the assumption that it will.
+  
+%     \item \textbf{Choice of estimator for volatility} We use the sum of squared five-minute log returns of SPY on December 18th, 2018, otherwise known as the Realized Volatility (RV) estimator of volatility \citep{andersen2008realized}, as our proxy.
+%     \item \textbf{Data Sources} All daily market data is provided via the YahooFinance API available in the quantmod package in R \citep{ryan2015package} and the R package highfrequency \cite{highfrequency}.  The realized volatility estimates of SPY is provided exclusively by the highfrequency R package.  The credit spread is calculated using data Federal Reserve Economic Data (FRED) \citep{boysel2021package}.
+%   \end{enumerate} 
+  
+%   In Figure \ref{fig:HAR_plot}, we observe that our distance-based weighting procedure identifies the December 2015 and March 2018 hikes as the only two relevant donors with respect to the December 2018 meeting.  The fixed effect estimates in the middle panel range from large and positive to modestly negative, in contrast to the estimates in \ref{fig:motivating_piece_convex_combination}.  The GARCH model, under the implementation in the garchx package bounds estimates below by zero.  In the panel on the right, we observe the unadjusted and adjusted predictions, as well as our estimate of the ground truth.  Although the adjusted prediction does miss the volatility spike by a large margin, it appears that this is nearly the best the assembled donors could do, given the donor pool we have to work with.  In that sense, this is a prediction task where the time series under study has covariates far outside the support of the donor data, which poses a serious and relevant challenge for our method, which cannot extrapolate.
+  
+%   \begin{figure}[h!]
+%     \begin{center}
+%       \includegraphics[scale=.62]{real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png}
+%       \caption{Over the course of the 2010s, the US FOMC began a rate-hiking cycle.  Left pane: weights of the donor pool of FOMC meetings; right-pane: fixed effect estimates; right pane: the unadjusted forecast, adjusted forecast, and the estimate of the volatility provided to us by realized volatility.}
+%       \label{fig:HAR_plot}
+%       \end{center}
+%     \end{figure}
+  
+%   % \subsection{VAR}
+%   % Many time series, especially macroeconomic time series, naturally arise as constituents of groups of dependent variables that interact across time.
+  
+%   % \subsection{LSTM/GRU}
+  
+%   % \cite{hendry2004pooling} discuss that intercept correction can improve forecasts under structural breaks as well as under ``deterministic misspecification'', by which they mean misspecification not caused by stochastic events like location shifts.  The same two justifications exist for SPC: we can use SPC when we know there to be a structural break, and we can also use it when we know our model is wrong but lack knowledgde of precisely how it is wrong, and yet nevertheless wish to correct a parameter for some critical forecasting task.
+  
+%   % One reason we may believe that our forecasting model is misspecified is that our forecast function is non-parametric, and hence the deterministic or stochastic mechanism through which we produce our forecasts does not involve parametric assumptions.  Here we demonstrate the tremendous capaciousness of SPC by applying it to predictions generated by a pair of non-parametric forecasting functions, Long Short Term Memory and GRU.  We will re-examine an application found in \cite{lin2021minimizing}.
+  
+%   % We borrow code from \cite{Brownlee_2022}
+  
+%   % \begin{itemize}
+%   %   % \item \href{https://www.r-bloggers.com/2021/04/lstm-network-in-r/#google_vignette}{a}
+%   %   % \item \href{https://sharmasaravanan.medium.com/an-implementation-guide-for-lstm-in-r-2347e4118a2c}{b}
+%   %   % \item \href{https://search.r-project.org/CRAN/refmans/TSdeeplearning/html/GRU_ts.html}{c}
+%   %   % \item \href{https://medium.com/codex/time-series-prediction-using-lstm-in-python-19b1187f580f#:~:text=In%20conclusion%2C%20LSTM%20models%20are,in%20your%20data%20science%20toolkit.}{d}
+%   %   \item \href{https://machinelearningmastery.com/time-series-prediction-lstm-recurrent-neural-networks-python-keras/}{LSTM in Python}
+%   % \end{itemize}
+  
+%   \subsection{``Exponential Breaks"}
+%   In \cite{castle2011forecasting}, the authors discuss intercept shifts that decay deterministically.  Those shifts are parameterized by a scalar $\eta$ and a decay rate $\psi$.  We adapt their model for our own purposes:
+  
+%   \begin{align}
+%   y_{i,t} = \nu_{i} + \eta[1 - e^{-\psi[t-T_{i}^{*}]}]\textbf{1}_{t\geq T_{i}^{*}+1} + \epsilon_{i,t}, \epsilon_{i,t} \simiid [0,\sigma^{2}] \text{ .}\label{decay_model}
+%   \end{align}
+  
+%   Such a specification captures the dynamics of a shock that is realized over an infinite horizon but which can be practically approached as a permanent shock.  This poses a novel case for our method, in that the model is parametric, and yet without estimability of all shock parameters, aggregation may not be straightforward or easy.  Consider, for any $i$, $2 \leq i \leq n+1$, the estimates $\hat\alpha_{i,OLS}$  obtained via regression on the first $T_{i}^{*}+1$ points as well as $\hat\eta_{OLS}$ obtained by estimating a fixed effect at $t=T_{i}$.  Consider also a subsequent estimator, an estimator for $\psi$, that is derivable from inverting the model specification and plugging in the estimates  $\hat\alpha_{i,OLS},\hat\eta_{OLS}$:
+  
+%   \begin{align}
+%   \hat\psi_{i,plugin} = \frac{1}{T_{i}-T_{i}^{*}}\sum^{T_{i}}_{t\geq T_{i}^{*}+1}-log{\big[\big(1-\frac{y_{i,t}-\hat\alpha_{i}}{\hat\eta}\big)\big]} / [t-T_{i}^{*}]\text{ .}\label{plugin}
+%   \end{align}
+%   (\ref{plugin}) is, to put it lightly, a complicated estimator with potentially dubious properties.  To begin, (\ref{plugin}) is defined only when the term inside the logarithm is positive for each $t\geq T^{*}_{i}+2$.  We could get around this by dropping any summands for which that term is nonpositive and instead calculate an average over only the remaining subset of summands.  Additionally, variance estimates for $\hat\psi_{i,plugin}$ may require resampling methods or the delta method.  Estimation error from $\hat\alpha$ and $\hat\eta$ would naturally propagate to $\hat\psi_{i,plugin}$, and the expected estimation error would depend upon the size of the pre-shock sample.
+  
+%   \cite{castle2011forecasting} report that MSFE is lower by using intercept correction instead of non-linear methods to estimate $\psi$.  In our simulations in the next section, we are going to employ non-linear estimation.
+  
+%   Now consider a practitioner in need of a conditional forecast for $T_{1}^{*}+h, h\geq 1$.  Could aggregating the prediction residuals $r_{i,T_{i}^{*}+h} = y_{T_{i}^{*}+h}-\hat y_{i, T_{i}^{*}+h}, h\geq 1$ lead us to a superior predictions in the time series under study?\\
+  
+%   \textbf{Consider also these complicating scenarios}
+%   \begin{enumerate}
+%     \item We can estimate $\lambda$ using a cross-sectional regression, and that may be better estimator than doing it one-by-one in each donor.
+%     \item Here we have taken $\lambda$ to be fixed and shared across donors.  If $\lambda$ is a random, however, then estimating it becomes harder.
+%   \end{enumerate}
+  
+%   \subsubsection{Simulation Study}
+  
+%   We now investigate the exponential decay model introduced just above.  We model the decay parameter $\psi$ as a dot product of donor-specific and donor-invariant quantities.
+%   \begin{figure}[h!]
+%     \begin{center}
+%       \begin{tikzpicture}
+%         \node[anchor=south west,inner sep=0] at (0,0) {\includegraphics[width=\textwidth]{exponential_sim_plot.png
+%         }};
+%         % \draw[red,ultra thick,rounded corners] (7.5,5.3) rectangle (9.4,6.2);
+%         % \node[draw,text width=4.45cm] at (9.8,3.2) {$\textcolor{blue}{\hat\sigma^{2}_{adjusted} = \hat\sigma^{2}_{unadjusted} + \hat\omega^{*}}$ };
+%         % \node[draw,text width=2.62cm] at (14.8,2.8) {$\textcolor{blue}{\hat\omega^{*} = \sum^{n+1}_{i=2}\pi_{i}\hat\omega^{*}_{i}}$ };    
+        
+%     \end{tikzpicture}
+%       \caption{We simulate a random walk centered at $\mu = 100$ that is subject to a shock at approximately time index 440.  The shock of size -4 is not realized over a single index.  Instead, the shock is governed by a decay exponential decay parameter $\psi_{1}$, as are exponential shocks in $n = 10$ donor series.  We estimate $\psi_{1}$ using a convex combination of the estimated decay parameters $\{\psi_{i}\}_{i=2}^{n+1}$ , resulting in a distance-based weighting prediction of the shock.  We also illustrate the arithmetic-mean-based prediction of the shock using the color orange.  This prediction is based on an overestimate of $\psi_{1}$ and hence results in residuals that undershoot the time series under study.}  \label{fig:exp_shock_plot}
+   
+%       \end{center}
+%     \end{figure}
+  
+%     \begin{figure}[!h]
+%       \centering
+%       \textbf{Covariate Diversity and Mean}\par\medskip
+%     \begin{subfigure}{.44\linewidth} 
+%       \centering
+%         \includegraphics[scale = .42]{simulation_plots/Nov27_160341_2024_mudelta_sigmax.png}
+%         \caption{Fixed values: $\sigma_{\epsilon} = 1$}\label{fig:sim_1}
+%     \end{subfigure}\hspace{12mm} %
+%     \begin{subfigure}{.44\linewidth} 
+%       \centering
+%         \includegraphics[scale=.42]{simulation_plots/Nov27_160342_2024_mudelta_sigmax.png}
+%         \caption{Fixed values: $\sigma_{\epsilon}=2$}\label{fig:sim_2}
+%     \end{subfigure}
+    
+%     \begin{subfigure}{.44\linewidth} 
+%       \centering
+%         \includegraphics[scale=.42]{simulation_plots/Nov27_160343_2024_mudelta_sigmax.png}
+%         \caption{Fixed values: $\sigma_{\epsilon}=3$}\label{fig:sim_3}
+%     \end{subfigure}
+    
+%         \caption{In the progression from \ref{fig:sim_1} to \ref{fig:sim_2} to \ref{fig:sim_3}, we see that increasing $\mu_{\delta}$ leads to improved performance of the adjusted forecast, and this effect is intensified as $\mu_{v}$ increases.  However, it is not consistently true that an increasing noise undermines the performance of the adjusted forecast.  Rather, that phenomenon requires both large quantites of $\mu_{\delta}$ and $\mu_{v}$.}
+%         \label{fig:set_of_three_one}
+%       \end{figure}
+    
+%       \begin{figure}[!h]
+%         \centering
+%         \textbf{Idiosyncratic Noise and Covariate Diversity}\par\medskip
+%       \begin{subfigure}{.44\linewidth} 
+%         \centering
+%           \includegraphics[scale = .42]{simulation_plots/Nov27_160344_2024_sigmax_sigmaepsilon.png}
+%           \caption{Fixed values: $\mu_{\delta}=.001$}\label{fig:sim_4}
+%       \end{subfigure}\hspace{12mm} %
+%       \begin{subfigure}{.44\linewidth} 
+%         \centering
+%           \includegraphics[scale=.42]{simulation_plots/Nov27_160345_2024_sigmax_sigmaepsilon.png}
+%           \caption{Fixed values: $\mu_{\delta}=.01$}\label{fig:sim_5}
+%       \end{subfigure}
+      
+%       \begin{subfigure}{.44\linewidth} 
+%         \centering
+%           \includegraphics[scale=.42]{simulation_plots/Nov27_160346_2024_sigmax_sigmaepsilon.png}
+%           \caption{Fixed values: $\mu_{\delta}=.05$}\label{fig:sim_6}
+%       \end{subfigure}
+      
+%           \caption{In the progression from \ref{fig:sim_4} to \ref{fig:sim_5} to \ref{fig:sim_6}, we see that increasing $\mu_{\delta}$ leads to improved performance of the adjusted forecast, and this effect is intensified as $\mu_{v}$ increases.  However, it is not consistently true that an increasing noise undermines the performance of the adjusted forecast.  Rather, that phenomenon requires both large quantites of $\mu_{\delta}$ and $\mu_{v}$.}
+%           \label{fig:set_of_three_two}
+%         \end{figure}
+    
+%         \begin{figure}[!h]
+%           \centering
+%           \textbf{Idiosyncratic Noise and Covariate Mean}\par\medskip
+%         \begin{subfigure}{.44\linewidth} 
+%           \centering
+%             \includegraphics[scale = .42]{simulation_plots/Nov27_160346_2024_mudelta_sigmaepsilon.png}
+%             \caption{Fixed values: $\sigma_{X} =.01$}\label{fig:sim_7}
+%         \end{subfigure}\hspace{12mm} %
+%         \begin{subfigure}{.44\linewidth} 
+%           \centering
+%             \includegraphics[scale=.42]{simulation_plots/Nov27_160347_2024_mudelta_sigmaepsilon.png}
+%             \caption{Fixed values: $\mu_{v} = 1, \sigma_{v} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_8}
+%         \end{subfigure}
+        
+%         \begin{subfigure}{.44\linewidth} 
+%           \centering
+%             \includegraphics[scale=.42]{simulation_plots/Nov27_160348_2024_mudelta_sigmaepsilon.png}
+%             \caption{Fixed values: $\mu_{v} = 2, \sigma_{v} = .125, \mu_{\omega^{*}} = .125$}\label{fig:sim_9}
+%         \end{subfigure}
+        
+%             \caption{In the progression from \ref{fig:sim_7} to \ref{fig:sim_8} to \ref{fig:sim_9}, we see that increasing $\mu_{\delta}$ leads to improved performance of the adjusted forecast, and this effect is intensified as $\mu_{v}$ increases.  However, it is not consistently true that an increasing noise undermines the performance of the adjusted forecast.  Rather, that phenomenon requires both large quantities of $\mu_{\delta}$ and $\mu_{v}$.}
+%             \label{fig:set_of_three_three}
+%           \end{figure}
+%     \clearpage 
+  
+%   \section{Discussion}
+  
+%   The forecast horizon --- does it matter?  If so, how so?  \cite{lin2021minimizing} has a one-period horizon.  \cite[p. 203]{clements1998forecasting} discuss how long to keep the forecast adjustment in place.  For a corrected ``slope parameter'', the effect of $h$ is not so clear.\\
+  
+%   \subsection{Asking questions about the covariate vector and conditional shock distribution}
+%   We pose two questions.  
+  
+%   What if a given entry of the covariate vector was helpful at only one of those roles?  For example, what if an entry was particularly useful in yielding good weights but was not important for the shock distribution --- perhaps because the corresponding shock parameter was zero.  
+  
+%   Conversely, suppose a given entry was known to be part of the shock distribution, but the inclusion of that covariate in distance-based weighting was often not worth it, perhaps because it was hard to approximate with using donors, and the corresponding shock parameter was small in magnitude with high probability.
+  
+%   \subsection{Shock propagation and estimation accuracy}
+%   Consider \cite{lundquist2024volatility}, in which a real world example shows how volatility can be forecasted following surprising election outcomes.  There, the estimation of fixed effects is done around elections in a donor pool.  That means that for each past election or poll, etcetera, the method must accurately estimate the surprise-induced volatility boost.  That means picking a window around such an effect.\\
+  
+%   \textbf{proposals}
+%   \begin{enumerate}
+%     \item For a given data-generating process, simulate the accuracy and variability of shock estimates using post-shock measurement periods of difference lengths.
+%     \item Develop formal results to quantify (estimate, bound, etc) the risk of using different post-estimation measurement lengths.  This matters because it might be that a donor has experienced a shock in the last $m$ days, and if $m$ is too small, using that donor may be risky.
+%   \end{enumerate}
+      
+  
+%   \subsection{Aggregating residuals as opposed to aggregating fixed effect estimates?}
+  
+%   Cases:
+%   \begin{enumerate}
+%     \item Fixed effect is estimated with accuracy 
+%     \item Fixed effect is estimated with considerable noise.  Hence, the idiosyncratic error is estimated with considerable noise.
+%     \item idiosyncratic error large
+%     \item idiosyncratic error small
+%   \end{enumerate}  
+  
+%   \section{Extensions}\label{Extensions}
+  
+%   \begin{itemize}
+%     \item Forecast for series besides the mean or conditional mean \textcolor{red}{If you have a family of models estimated used a Gaussian loss function, and the post-shock residuals are not conditionally Gaussian (e.g. they could be conditionally Cauchy), then why even start with the default forecasting function?  Why not throw it out entirely?  If only the distribution of the innovations changes, then would that even matter for a forecast that is purely concerned with the conditional mean?} Yet another potential motivation springs from the way we evaluate model performance.  In \cite{clements2005evaluating}, the authors discuss six dichotomies regarding forecast evaluation as a way of advising caution about simplistic notions of performance evaluation.  These ideas matter for the current manuscript for at least one reason.  We must entertain the possibility that breaks in the DGP will invalidate the standard forecast evaluation framework under which we had been working.  If, for example, we have a family of models estimated used a Gaussian loss function, and the post-shock residuals are not conditionally Gaussian (e.g. they could be conditionally Cauchy), then why even start with the default forecasting function?  Why not throw it out entirely?  If only the distribution of the innovations changes, then would that even matter for a forecast that is purely concerned with the conditional mean?
+%     \item Bias-variance decomposition for ARIMA, as introduced in (\ref{ARIMA})
+%     \item Shrinkage estimation of autoregressive structure on all donors, then use our method
+%     \item TAR
+%     \item SETAR
+%     \item Function forecasts
+%     \item Binary Outcome Forecasts
+%     \item Density Forecasts
+%     \item Quantile Forecasts
+%   \end{itemize}
+  
+%   \subsection{Forecast Combination}
+%   what we are talking about here is not forecast combination, but there may be, nevertheless, a role for forecast combination: combining the forecasts generated by small differences in covariate and/or donor choice, as is done in \cite{lundquist2024volatility}. \\
+  
+%   Consider the leave-one-out method used on pairs of donors and covariates in \cite{lundquist2024volatility}.  By averaging over $(n+1)\cdot (p+1)$ predictions, we average over $(n+1) \cdot (p + 1)$ convex combinations (where, when a donor is ommitted, its weight can be imputed as zero).
+  
+%   \subsection{Limitations}\label{Limitations}
+  
+%   \subsubsection{Relaxing the shared family assumption} The assumption of a shared family can be relaxed in certain circumstances.  For example, if a certain donor is not like the time series under study with respect to the covariates, then the lack of a shared family will not matter much.
+  
+%   \subsubsection{The assumption of a shared family can be relaxed in certain circumstances.  For example, if a certain donor is not like the time series under study with respect to the covariates, then the lack of a shared family will not matter much.}
+  
+%   \section{Supplement}
+  
+%   \subsection{Formal Results}
+  
+%   \begin{proof-of-proposition}[\ref{ARIMA_param_consistency}]
+%     We claim
+  
+%     The result for each $\hat\alpha$ follows from the consistency proof of the MLE in AR-X models.
+    
+%     \end{proof-of-proposition}
+  
+%     \begin{proof-of-proposition}[\ref{ARIMA_aggregated_alpha}]
+%       Here we suppress time-indexation for each of exposition.
+%       \begin{align}
+%         \x_{1} &= \sum^{n+1}_{i=2}\weight_{i}\x_{i} \tag{by an assumption of the proposition}\\
+%        \Longrightarrow \lambda^{T}\x_{1} &= \lambda^{T}\sum^{n+1}_{i=2}\weight_{i}\x_{i}  = \sum^{n+1}_{i=2}\weight_{i}\lambda^{T}\x_{i}\tag{by left-multiplication by $\lambda^{T}$}\\
+%         \Longrightarrow\lambda^{T}\x_{1} &=\sum^{n+1}_{i=2}\pi_{i}\alpha_{i}\tag{by substitution and definition of $\alpha_{i}$}\\
+%         \Longrightarrow\alpha_{1} &=\sum^{n+1}_{i=2}\pi_{i}\alpha_{i} \tag{by the definition of $\alpha_{1}$}
+%         \end{align} 
+%         If, on the right-hand side, we replace the $\alpha_{i}$ with $\hat\alpha_{i}$, then it will converge in probability to the expression on the right-hand side, by a simple application of Slutsky.  Hence, $\hat\alpha_{1}$ is a consistent estimator.
+%     \end{proof-of-proposition}
+  
+%     \begin{proof-of-proposition}[\ref{ARIMA_conv_distribution}]
+  
+%       Recall from Proposition \ref{ARIMA_param_consistency} that for any $i$, $2\leq i \leq n+1$, the tuple 
+%       ($\hat\rho_{1},...,\hat\rho_{p}, \hat\alpha_{i,T^{*}+1}$) is consistent at $t\rightarrow \infty$.  Next consider the prediction function for an AR($p$)-X, and let $t = T_{1}^{*}$:
+  
+%       \begin{align*}
+%       \E[y_{adjusted,t+1}|\mathcal{F}_{t}] = y_{t+1} + \alpha_{t+1} = f(\mathcal{F}_{t-1}) + \alpha_{t+1} = \mu + \sum^{p}_{k=1}\rho_{k}y_{t-k} + \alpha_{t+1} \text{ .}
+%       \end{align*}
+%       By replacing parameters with their estimates, we arrive at the prediction 
+%       \begin{align*}
+%         \E[\hat{y}_{adjusted,t+1}|\mathcal{F}_{t}] = \hat{y}_{t+1} + \hat\alpha_{t+1} = \hat{f}(\mathcal{F}_{t-1}) + \hat\alpha_{t+1} = \hat\mu + \sum^{p}_{k=1}\hat\rho_{k}y_{t-k} + \hat{\alpha}_{t+1} \text{ .}
+%         \end{align*}
+%       which converges to 
+%       \begin{align*}
+%          \mu + \sum^{p}_{k=1}\rho_{k}y_{t-k} + \alpha_{t+1} \text{ .}
+%         \end{align*}
+%       in distribution or probability (depending upon how $\hat\alpha_{t+1}$ converges) as $t\rightarrow\infty$ in the donor pool by a simple application of Slutsky's Theorem.
+      
+%       \end{proof-of-proposition}
+      
 
 \chapter{Conclusion}
 

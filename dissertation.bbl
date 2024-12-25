@@ -1348,6 +1348,7 @@
       \strng{authorbibnamehash}{012bf7cc784fb0cd617bbedf6af7280a}
       \strng{authornamehash}{012bf7cc784fb0cd617bbedf6af7280a}
       \strng{authorfullhash}{012bf7cc784fb0cd617bbedf6af7280a}
+      \field{extraname}{1}
       \field{sortinit}{5}
       \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labelnamesource}{author}
@@ -1785,6 +1786,36 @@
       \field{year}{2021}
       \field{pages}{1135\bibrangedash 1190}
       \range{pages}{56}
+    \endentry
+    \entry{thoughts_on_market}{online}{}
+      \name{author}{1}{}{%
+        {{hash=b8478bc01c6994b27c6bb1e4d891436c}{%
+           family={Wilson},
+           familyi={W\bibinitperiod},
+           given={Mike},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{b8478bc01c6994b27c6bb1e4d891436c}
+      \strng{fullhash}{b8478bc01c6994b27c6bb1e4d891436c}
+      \strng{bibnamehash}{b8478bc01c6994b27c6bb1e4d891436c}
+      \strng{authorbibnamehash}{b8478bc01c6994b27c6bb1e4d891436c}
+      \strng{authornamehash}{b8478bc01c6994b27c6bb1e4d891436c}
+      \strng{authorfullhash}{b8478bc01c6994b27c6bb1e4d891436c}
+      \field{extraname}{2}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Thoughts on the Market Podcast}
+      \field{note}{Published: 2024-10-21}
+      \field{title}{What’s Boosting Cyclical Stocks?}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://www.morganstanley.com/ideas/thoughts-on-the-market-wilson
+      \endverb
+      \verb{url}
+      \verb https://www.morganstanley.com/ideas/thoughts-on-the-market-wilson
+      \endverb
     \endentry
     \entry{clements2005guest}{article}{}
       \name{author}{2}{}{%

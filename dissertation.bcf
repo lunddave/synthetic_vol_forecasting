@@ -2420,4 +2420,58 @@
     <bcf:citekey order="49" intorder="1">The_Guardian</bcf:citekey>
     <bcf:citekey order="50" intorder="1">Morales_Valentini_Penny_2016</bcf:citekey>
     <bcf:citekey order="51" intorder="1">BBC_News_2016</bcf:citekey>
-    <bcf:citekey order="52" intorder="1">wilson2017brexit</bcf:ci
+    <bcf:citekey order="52" intorder="1">wilson2017brexit</bcf:citekey>
+    <bcf:citekey order="53" intorder="1">kay2016brexit</bcf:citekey>
+    <bcf:citekey order="53" intorder="2">collins2016trump</bcf:citekey>
+    <bcf:citekey order="54" intorder="1">applebaum2016britain</bcf:citekey>
+    <bcf:citekey order="55" intorder="1">martin2016brexit</bcf:citekey>
+    <bcf:citekey order="55" intorder="2">barro2016three</bcf:citekey>
+    <bcf:citekey order="56" intorder="1">andersen2008realized</bcf:citekey>
+    <bcf:citekey order="57" intorder="1">ryan2015package</bcf:citekey>
+    <bcf:citekey order="58" intorder="1">wachowicz2020wharton</bcf:citekey>
+    <bcf:citekey order="59" intorder="1">steegen2016increasing</bcf:citekey>
+    <bcf:citekey order="60" intorder="1">lin2021minimizing</bcf:citekey>
+    <bcf:citekey order="61" intorder="1">lin2021minimizing</bcf:citekey>
+    <bcf:citekey order="62" intorder="1">lin2021minimizing</bcf:citekey>
+    <bcf:citekey order="63" intorder="1">phillips1996forecasting</bcf:citekey>
+    <bcf:citekey order="64" intorder="1">phillips1996forecasting</bcf:citekey>
+    <bcf:citekey order="65" intorder="1">clements1996intercept</bcf:citekey>
+    <bcf:citekey order="66" intorder="1">guerron2017macroeconomic</bcf:citekey>
+    <bcf:citekey order="67" intorder="1">hastie2009elements</bcf:citekey>
+    <bcf:citekey order="68" intorder="1">abadie2010synthetic</bcf:citekey>
+    <bcf:citekey order="69" intorder="1">hastie2009elements</bcf:citekey>
+    <bcf:citekey order="70" intorder="1">lin2021minimizing</bcf:citekey>
+    <bcf:citekey order="71" intorder="1">lin2021minimizing</bcf:citekey>
+    <bcf:citekey order="72" intorder="1">abadie2022synthetic</bcf:citekey>
+    <bcf:citekey order="73" intorder="1">boudoukh2019information</bcf:citekey>
+    <bcf:citekey order="74" intorder="1">chinco2019sparse</bcf:citekey>
+    <bcf:citekey order="75" intorder="1">corsi2012har</bcf:citekey>
+    <bcf:citekey order="76" intorder="1">rossi2013advances</bcf:citekey>
+    <bcf:citekey order="76" intorder="2">rossi2021forecasting</bcf:citekey>
+    <bcf:citekey order="77" intorder="1">dendramis2020similarity</bcf:citekey>
+    <bcf:citekey order="78" intorder="1">abadie2010synthetic</bcf:citekey>
+    <bcf:citekey order="79" intorder="1">han2014asymptotic</bcf:citekey>
+    <bcf:citekey order="80" intorder="1">thoughts_on_market</bcf:citekey>
+    <bcf:citekey order="81" intorder="1">clements2005guest</bcf:citekey>
+    <bcf:citekey order="82" intorder="1">castle2013forecasting</bcf:citekey>
+  </bcf:section>
+  <!-- SORTING TEMPLATES -->
+  <bcf:sortingtemplate name="none">
+    <bcf:sort order="1">
+      <bcf:sortitem order="1">citeorder</bcf:sortitem>
+    </bcf:sort>
+    <bcf:sort order="2">
+      <bcf:sortitem order="1">intciteorder</bcf:sortitem>
+    </bcf:sort>
+  </bcf:sortingtemplate>
+  <!-- DATALISTS -->
+  <bcf:datalist section="0"
+                name="none/global//global/global"
+                type="entry"
+                sortingtemplatename="none"
+                sortingnamekeytemplatename="global"
+                labelprefix=""
+                uniquenametemplatename="global"
+                labelalphanametemplatename="global">
+  </bcf:datalist>
+</bcf:controlfile>
