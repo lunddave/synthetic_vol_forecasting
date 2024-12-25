@@ -1,13 +1,13 @@
 # Fdb version 4
-["biber dissertation"] 1735089538.35697 "dissertation.bcf" "dissertation.bbl" "dissertation" 1735089550.47051 0
-  "dissertation.bcf" 1735089550.36187 113749 0258315b549a02b939cbe3f13e19c23e "pdflatex"
+["biber dissertation"] 1735090642.67193 "dissertation.bcf" "dissertation.bbl" "dissertation" 1735090647.97361 0
+  "dissertation.bcf" 1735090647.86069 114596 a511a41332e902111099ad0f8eb43622 "pdflatex"
   "thesis.bib" 1734222776.78407 69844 2979731c3c21acece627855c184eaed2 ""
   (generated)
   "dissertation.bbl"
   "dissertation.blg"
   (rewritten before read)
-["pdflatex"] 1735089547.14301 "/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/dissertation.tex" "dissertation.pdf" "dissertation" 1735089550.47077 0
-  "/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/dissertation.tex" 1735089534.74107 201284 043b13ea56d2e57e7a6059c2c104837b ""
+["pdflatex"] 1735090644.6036 "/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/dissertation.tex" "dissertation.pdf" "dissertation" 1735090647.97388 0
+  "/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/dissertation.tex" 1735090639.15564 201304 de4072222a3adb4b6708df62a5a20f5c ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1136768653 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
@@ -268,12 +268,12 @@
   "/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1726429275.63545 5467645 128b85b7cde5f5edc5cb7f1dd7ff8736 ""
   "/usr/local/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt" 1726429188 8221430 faf366a6029b154b9123a4214548c916 ""
   "/usr/local/texlive/2024/texmf.cnf" 1710266656 577 e590dabc9e28c5b61546e15f63eebcdf ""
-  "dissertation.aux" 1735089550.35271 29233 acc0c3586bc801e99d622e30e1576f30 "pdflatex"
-  "dissertation.bbl" 1735089540.40249 78289 49ee011dabca595aaf79b9a83b527e63 "biber dissertation"
-  "dissertation.out" 1735089550.36104 6936 9a8e2bdc51e7a6c78ccd5fb0441f21a9 "pdflatex"
-  "dissertation.run.xml" 1735089550.36245 2454 22752266b88dbef467e4c119abecb6d8 "pdflatex"
-  "dissertation.tex" 1735089534.74107 201284 043b13ea56d2e57e7a6059c2c104837b ""
-  "dissertation.toc" 1735089550.36251 3220 9d926447607665cb7f1387367f5b07f5 "pdflatex"
+  "dissertation.aux" 1735090647.85006 30312 0888e3ab0c051cf27249c804573c2eee "pdflatex"
+  "dissertation.bbl" 1735090644.58741 80743 aa4359c5cef44675477fc625d7584070 "biber dissertation"
+  "dissertation.out" 1735090647.85963 6936 9a8e2bdc51e7a6c78ccd5fb0441f21a9 "pdflatex"
+  "dissertation.run.xml" 1735090647.86137 2454 22752266b88dbef467e4c119abecb6d8 "pdflatex"
+  "dissertation.tex" 1735090639.15564 201304 de4072222a3adb4b6708df62a5a20f5c ""
+  "dissertation.toc" 1735090647.86145 3220 9d926447607665cb7f1387367f5b07f5 "pdflatex"
   "real_data_output_plots/TueSep241059512024_IYG_None_None.png" 1727189991.73732 69453 cb16da74ac189c9f95085efcb61eec7f ""
   "simulation_plots/Aug28_224311_2024_mu[delta]_sigma[u].png" 1724899392.13931 176196 328d2a97f773f4722d1b6f2cd063718b ""
   "simulation_plots/Aug28_224317_2024_mu[delta]_sigma[u].png" 1724899397.77455 186875 efa2033243e77cd2cde19ab3177f039f ""

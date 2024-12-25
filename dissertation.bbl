@@ -1817,6 +1817,63 @@
       \verb https://www.morganstanley.com/ideas/thoughts-on-the-market-wilson
       \endverb
     \endentry
+    \entry{lundquist2024volatility}{article}{}
+      \name{author}{2}{}{%
+        {{hash=362a508e7fd9364006f7b031f1c5d53a}{%
+           family={Lundquist},
+           familyi={L\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod}}}%
+        {{hash=1b0dbfe849de928e5c41291817f47faf}{%
+           family={Eck},
+           familyi={E\bibinitperiod},
+           given={Daniel},
+           giveni={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{a4444413fea6e7f179caa14651c0674c}
+      \strng{fullhash}{a4444413fea6e7f179caa14651c0674c}
+      \strng{bibnamehash}{a4444413fea6e7f179caa14651c0674c}
+      \strng{authorbibnamehash}{a4444413fea6e7f179caa14651c0674c}
+      \strng{authornamehash}{a4444413fea6e7f179caa14651c0674c}
+      \strng{authorfullhash}{a4444413fea6e7f179caa14651c0674c}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{arXiv preprint arXiv:2406.08738}
+      \field{title}{Volatility Forecasting Using Similarity-based Parameter Correction and Aggregated Shock Information}
+      \field{year}{2024}
+    \endentry
+    \entry{clements1999forecasting}{book}{}
+      \name{author}{2}{}{%
+        {{hash=0f6ea0e68f1008d34fdfe86012adf11a}{%
+           family={Clements},
+           familyi={C\bibinitperiod},
+           given={Michael\bibnamedelima P},
+           giveni={M\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+        {{hash=6816e7c37c57bf4a47d33394a8562e5e}{%
+           family={Hendry},
+           familyi={H\bibinitperiod},
+           given={David\bibnamedelima F},
+           giveni={D\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {mit Press}%
+      }
+      \strng{namehash}{bc7ab4d16c42a19347b0c91c02d137c8}
+      \strng{fullhash}{bc7ab4d16c42a19347b0c91c02d137c8}
+      \strng{bibnamehash}{bc7ab4d16c42a19347b0c91c02d137c8}
+      \strng{authorbibnamehash}{bc7ab4d16c42a19347b0c91c02d137c8}
+      \strng{authornamehash}{bc7ab4d16c42a19347b0c91c02d137c8}
+      \strng{authorfullhash}{bc7ab4d16c42a19347b0c91c02d137c8}
+      \field{extraname}{3}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Forecasting non-stationary economic time series}
+      \field{year}{1999}
+    \endentry
     \entry{clements2005guest}{article}{}
       \name{author}{2}{}{%
         {{hash=0f6ea0e68f1008d34fdfe86012adf11a}{%
@@ -1836,7 +1893,7 @@
       \strng{authorbibnamehash}{bc7ab4d16c42a19347b0c91c02d137c8}
       \strng{authornamehash}{bc7ab4d16c42a19347b0c91c02d137c8}
       \strng{authorfullhash}{bc7ab4d16c42a19347b0c91c02d137c8}
-      \field{extraname}{3}
+      \field{extraname}{4}
       \field{sortinit}{8}
       \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
       \field{labelnamesource}{author}

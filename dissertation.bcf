@@ -2452,8 +2452,19 @@
     <bcf:citekey order="78" intorder="1">abadie2010synthetic</bcf:citekey>
     <bcf:citekey order="79" intorder="1">han2014asymptotic</bcf:citekey>
     <bcf:citekey order="80" intorder="1">thoughts_on_market</bcf:citekey>
-    <bcf:citekey order="81" intorder="1">clements2005guest</bcf:citekey>
-    <bcf:citekey order="82" intorder="1">castle2013forecasting</bcf:citekey>
+    <bcf:citekey order="81" intorder="1">lundquist2024volatility</bcf:citekey>
+    <bcf:citekey order="82" intorder="1">hendry1994theory</bcf:citekey>
+    <bcf:citekey order="82" intorder="2">clements1996intercept</bcf:citekey>
+    <bcf:citekey order="82" intorder="3">clements1998forecasting</bcf:citekey>
+    <bcf:citekey order="82" intorder="4">clements1999forecasting</bcf:citekey>
+    <bcf:citekey order="83" intorder="1">hendry1994theory</bcf:citekey>
+    <bcf:citekey order="84" intorder="1">clements1999forecasting</bcf:citekey>
+    <bcf:citekey order="85" intorder="1">hendry1994theory</bcf:citekey>
+    <bcf:citekey order="85" intorder="2">clements1999forecasting</bcf:citekey>
+    <bcf:citekey order="86" intorder="1">guerron2017macroeconomic</bcf:citekey>
+    <bcf:citekey order="87" intorder="1">lundquist2024volatility</bcf:citekey>
+    <bcf:citekey order="88" intorder="1">clements2005guest</bcf:citekey>
+    <bcf:citekey order="89" intorder="1">castle2013forecasting</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">
