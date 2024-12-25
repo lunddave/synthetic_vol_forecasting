@@ -5,10 +5,12 @@
 \providecommand\HyField@AuxAddToFields[1]{}
 \providecommand\HyField@AuxAddToCoFields[2]{}
 \abx@aux@refcontext{none/global//global/global}
+\providecommand \oddpage@label [2]{}
 \babel@aux{english}{}
 \@writefile{toc}{\contentsline {chapter}{List of Abbreviations}{iv}{chapter*.3}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{loa}{\addvspace {10\p@ }}
 \abx@aux@cite{0}{Kenton}
 \abx@aux@segm{0}{0}{Kenton}
 \abx@aux@cite{0}{dominguez2006defines}
@@ -20,6 +22,7 @@
 \@writefile{toc}{\contentsline {chapter}{\numberline {1}Post-Shock Volatility Forecasting Using Similarity-based Shock Aggregation}{1}{chapter.1}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{loa}{\addvspace {10\p@ }}
 \@writefile{toc}{\contentsline {section}{\numberline {1.1}Introduction}{1}{section.1.1}\protected@file@percent }
 \abx@aux@cite{0}{bauwens2006regime}
 \abx@aux@segm{0}{0}{bauwens2006regime}
@@ -73,8 +76,9 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {1.2.1}A Primer on GARCH}{3}{subsection.1.2.1}\protected@file@percent }
 \abx@aux@cite{0}{[}
 \abx@aux@segm{0}{0}{[}
-\@writefile{lof}{\contentsline {figure}{\numberline {1.1}{\ignorespaces The simulated time series experiences a volatility shock between trading days 1,656 and 1,657. The GARCH prediction, in red, fails even to approach the volatility spike at $T^{*}+1$, as do several adjusted predictions, which are orange. In contrast, the GARCH forecast adjusted by $\hat  \omega ^{*} = \DOTSB \sum@ \slimits@ ^{n+1}_{i=2}\pi _{i}\hat  \omega ^{*}_{i} $, a convex combination of the estimated shocks in the donor pool, achieves directional correctness as well as a smaller absolute loss in its prediction. The pink vertical line serves to indicate the adjustment of size $\hat  \omega ^{*}$ that allows the blue bullseye to approach more closely the ground truth.}}{4}{figure.1.1}\protected@file@percent }
-\newlabel{fig:motivating_piece_convex_combination}{{1.1}{4}{The simulated time series experiences a volatility shock between trading days 1,656 and 1,657. The GARCH prediction, in red, fails even to approach the volatility spike at $T^{*}+1$, as do several adjusted predictions, which are orange. In contrast, the GARCH forecast adjusted by $\hat \omega ^{*} = \sum ^{n+1}_{i=2}\pi _{i}\hat \omega ^{*}_{i} $, a convex combination of the estimated shocks in the donor pool, achieves directional correctness as well as a smaller absolute loss in its prediction. The pink vertical line serves to indicate the adjustment of size $\hat \omega ^{*}$ that allows the blue bullseye to approach more closely the ground truth}{figure.1.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.1}{\ignorespaces The simulated time series experiences a volatility shock between trading days 1,656 and 1,657. The GARCH prediction, in red, fails even to approach the volatility spike at $T^{*}+1$, as do several adjusted predictions, which are orange. In contrast, the GARCH forecast adjusted by $\hat  \omega ^{*} = \DOTSB \sum@ \slimits@ ^{n+1}_{i=2}\pi _{i}\hat  \omega ^{*}_{i} $, a convex combination of the estimated shocks in the donor pool, achieves directional correctness as well as a smaller absolute loss in its prediction. The pink vertical line serves to indicate the adjustment of size $\hat  \omega ^{*}$ that allows the blue bullseye to approach more closely the ground truth.}}{4}{figure.caption.4}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{fig:motivating_piece_convex_combination}{{1.1}{4}{The simulated time series experiences a volatility shock between trading days 1,656 and 1,657. The GARCH prediction, in red, fails even to approach the volatility spike at $T^{*}+1$, as do several adjusted predictions, which are orange. In contrast, the GARCH forecast adjusted by $\hat \omega ^{*} = \sum ^{n+1}_{i=2}\pi _{i}\hat \omega ^{*}_{i} $, a convex combination of the estimated shocks in the donor pool, achieves directional correctness as well as a smaller absolute loss in its prediction. The pink vertical line serves to indicate the adjustment of size $\hat \omega ^{*}$ that allows the blue bullseye to approach more closely the ground truth}{figure.caption.4}{}}
 \newlabel{fig:motivating_piece_convex_combination@cref}{{[figure][1][1]1.1}{[1][3][]4}}
 \newlabel{GARCH-X}{{1.1}{5}{A Primer on GARCH}{equation.1.2.1}{}}
 \newlabel{GARCH-X@cref}{{[equation][1][1]1.1}{[1][5][]5}}
@@ -158,6 +162,8 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {1.4.3}Asymptotic Loss}{12}{subsection.1.4.3}\protected@file@percent }
 \newlabel{QL Loss toy example}{{1.4}{12}{Asymptotic Loss}{equation.1.4.4}{}}
 \newlabel{QL Loss toy example@cref}{{[equation][4][1]1.4}{[1][12][]12}}
+\abx@aux@cite{0}{RePEc:pra:mprapa:100301}
+\abx@aux@segm{0}{0}{RePEc:pra:mprapa:100301}
 \newlabel{QL Loss Consistency - GARCH(1,1)}{{1.4.3}{13}{Asymptotic Loss}{equation.1.4.4}{}}
 \newlabel{QL Loss Consistency - GARCH(1,1)@cref}{{[subsection][3][1,4]1.4.3}{[1][13][]13}}
 \newlabel{asymptotic_consistency}{{4}{13}{}{prop.4}{}}
@@ -166,47 +172,106 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {1.5.1}Fixed Parameters}{13}{subsection.1.5.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {1.5.2}Varying Parameters}{13}{subsection.1.5.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {1.5.3}Evaluative Framework and Monte Carlo Results}{14}{subsection.1.5.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {1.2}{\ignorespaces Fixed values: $\mu _{v} = .125, \sigma _{v} = .125, \mu _{\omega ^{*}} = .125$}}{15}{figure.1.2}\protected@file@percent }
-\newlabel{fig:sim_1}{{1.2}{15}{Fixed values: $\mu _{v} = .125, \sigma _{v} = .125, \mu _{\omega ^{*}} = .125$}{figure.1.2}{}}
-\newlabel{fig:sim_1@cref}{{[figure][2][1]1.2}{[1][14][]15}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1.3}{\ignorespaces Fixed values: $\mu _{v} = .5, \sigma _{v} = .125, \mu _{\omega ^{*}} = .125$}}{15}{figure.1.3}\protected@file@percent }
-\newlabel{fig:sim_2}{{1.3}{15}{Fixed values: $\mu _{v} = .5, \sigma _{v} = .125, \mu _{\omega ^{*}} = .125$}{figure.1.3}{}}
-\newlabel{fig:sim_2@cref}{{[figure][3][1]1.3}{[1][14][]15}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1.4}{\ignorespaces Fixed values: $\mu _{v} = 1, \sigma _{v} = .125, \mu _{\omega ^{*}} = .125$}}{15}{figure.1.4}\protected@file@percent }
-\newlabel{fig:sim_3}{{1.4}{15}{Fixed values: $\mu _{v} = 1, \sigma _{v} = .125, \mu _{\omega ^{*}} = .125$}{figure.1.4}{}}
-\newlabel{fig:sim_3@cref}{{[figure][4][1]1.4}{[1][14][]15}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1.5}{\ignorespaces In the progression from \ref {fig:sim_1} to \ref {fig:sim_2} to \ref {fig:sim_3}, we see that increasing $\mu _{\delta }$ leads to improved performance of the adjusted forecast, and this effect is intensified as $\mu _{v}$ increases. However, it is not consistently true that an increasing noise undermines the performance of the adjusted forecast. Rather, that phenomenon requires both large quantites of $\mu _{\delta }$ and $\mu _{v}$.}}{15}{figure.1.5}\protected@file@percent }
-\newlabel{fig:signoise}{{1.5}{15}{In the progression from \ref {fig:sim_1} to \ref {fig:sim_2} to \ref {fig:sim_3}, we see that increasing $\mu _{\delta }$ leads to improved performance of the adjusted forecast, and this effect is intensified as $\mu _{v}$ increases. However, it is not consistently true that an increasing noise undermines the performance of the adjusted forecast. Rather, that phenomenon requires both large quantites of $\mu _{\delta }$ and $\mu _{v}$}{figure.1.5}{}}
-\newlabel{fig:signoise@cref}{{[figure][5][1]1.5}{[1][14][]15}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1.6}{\ignorespaces Fixed values: $\sigma _{v} = .125, \mu _{\omega ^{*}} = .125, \sigma _{u} = .125$}}{16}{figure.1.6}\protected@file@percent }
-\newlabel{fig:sim_4}{{1.6}{16}{Fixed values: $\sigma _{v} = .125, \mu _{\omega ^{*}} = .125, \sigma _{u} = .125$}{figure.1.6}{}}
-\newlabel{fig:sim_4@cref}{{[figure][6][1]1.6}{[1][14][]16}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1.7}{\ignorespaces Fixed values: $\sigma _{v} = .125, \mu _{\omega ^{*}} = .125, \sigma _{u} = 1$}}{16}{figure.1.7}\protected@file@percent }
-\newlabel{fig:sim_5}{{1.7}{16}{Fixed values: $\sigma _{v} = .125, \mu _{\omega ^{*}} = .125, \sigma _{u} = 1$}{figure.1.7}{}}
-\newlabel{fig:sim_5@cref}{{[figure][7][1]1.7}{[1][14][]16}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1.8}{\ignorespaces We compare the interaction of $\mu _{\delta }$ and $\mu _{v}$ at two different levels of shock noise. In the low-noise regime, the peak performance of the adjusted forecast is higher, and the ascent is faster along both dimensions. However, in the high-noise regime, the adjusted forecast performs well even at low levels of $\mu _{\delta }$ and $\mu _{v}$.}}{16}{figure.1.8}\protected@file@percent }
-\newlabel{fig:sig_volprof}{{1.8}{16}{We compare the interaction of $\mu _{\delta }$ and $\mu _{v}$ at two different levels of shock noise. In the low-noise regime, the peak performance of the adjusted forecast is higher, and the ascent is faster along both dimensions. However, in the high-noise regime, the adjusted forecast performs well even at low levels of $\mu _{\delta }$ and $\mu _{v}$}{figure.1.8}{}}
-\newlabel{fig:sig_volprof@cref}{{[figure][8][1]1.8}{[1][14][]16}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1.9}{\ignorespaces Fixed values: $\mu _{v} = .125, \sigma _{v} = .125, \delta = .125$}}{17}{figure.1.9}\protected@file@percent }
-\newlabel{fig:sim_6}{{1.9}{17}{Fixed values: $\mu _{v} = .125, \sigma _{v} = .125, \delta = .125$}{figure.1.9}{}}
-\newlabel{fig:sim_6@cref}{{[figure][9][1]1.9}{[1][14][]17}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1.10}{\ignorespaces Fixed values: $\mu _{v} = .125, \sigma _{v} = .125, \delta = 2$}}{17}{figure.1.10}\protected@file@percent }
-\newlabel{fig:sim_7}{{1.10}{17}{Fixed values: $\mu _{v} = .125, \sigma _{v} = .125, \delta = 2$}{figure.1.10}{}}
-\newlabel{fig:sim_7@cref}{{[figure][10][1]1.10}{[1][14][]17}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1.11}{\ignorespaces The interaction between the intercept $\mu _{\omega ^{*}}$ and $\sigma _{u}$ suggests that the parameters behave as expected. However, a larger value of $\delta $ in \ref {fig:sim_7} attenuates the effect of increasing noise.}}{17}{figure.1.11}\protected@file@percent }
-\newlabel{fig:intercept_noise}{{1.11}{17}{The interaction between the intercept $\mu _{\omega ^{*}}$ and $\sigma _{u}$ suggests that the parameters behave as expected. However, a larger value of $\delta $ in \ref {fig:sim_7} attenuates the effect of increasing noise}{figure.1.11}{}}
-\newlabel{fig:intercept_noise@cref}{{[figure][11][1]1.11}{[1][14][]17}}
+\newlabel{fig:sim_1}{{1.2a}{15}{Fixed values: $\mu _{v} = .125, \sigma _{v} = .125, \mu _{\omega ^{*}} = .125$}{figure.caption.7}{}}
+\newlabel{fig:sim_1@cref}{{[subfigure][1][1,2]1.2a}{[1][14][]15}}
+\newlabel{sub@fig:sim_1}{{a}{15}{Fixed values: $\mu _{v} = .125, \sigma _{v} = .125, \mu _{\omega ^{*}} = .125$}{figure.caption.7}{}}
+\newlabel{sub@fig:sim_1@cref}{{[subfigure][1][1,2]1.2a}{[1][14][]15}}
+\newlabel{fig:sim_2}{{1.2b}{15}{Fixed values: $\mu _{v} = .5, \sigma _{v} = .125, \mu _{\omega ^{*}} = .125$}{figure.caption.7}{}}
+\newlabel{fig:sim_2@cref}{{[subfigure][2][1,2]1.2b}{[1][14][]15}}
+\newlabel{sub@fig:sim_2}{{b}{15}{Fixed values: $\mu _{v} = .5, \sigma _{v} = .125, \mu _{\omega ^{*}} = .125$}{figure.caption.7}{}}
+\newlabel{sub@fig:sim_2@cref}{{[subfigure][2][1,2]1.2b}{[1][14][]15}}
+\newlabel{fig:sim_3}{{1.2c}{15}{Fixed values: $\mu _{v} = 1, \sigma _{v} = .125, \mu _{\omega ^{*}} = .125$}{figure.caption.7}{}}
+\newlabel{fig:sim_3@cref}{{[subfigure][3][1,2]1.2c}{[1][14][]15}}
+\newlabel{sub@fig:sim_3}{{c}{15}{Fixed values: $\mu _{v} = 1, \sigma _{v} = .125, \mu _{\omega ^{*}} = .125$}{figure.caption.7}{}}
+\newlabel{sub@fig:sim_3@cref}{{[subfigure][3][1,2]1.2c}{[1][14][]15}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.2}{\ignorespaces In the progression from \ref {fig:sim_1} to \ref {fig:sim_2} to \ref {fig:sim_3}, we see that increasing $\mu _{\delta }$ leads to improved performance of the adjusted forecast, and this effect is intensified as $\mu _{v}$ increases. However, it is not consistently true that an increasing noise undermines the performance of the adjusted forecast. Rather, that phenomenon requires both large quantites of $\mu _{\delta }$ and $\mu _{v}$.}}{15}{figure.caption.7}\protected@file@percent }
+\newlabel{fig:signoise}{{1.2}{15}{In the progression from \ref {fig:sim_1} to \ref {fig:sim_2} to \ref {fig:sim_3}, we see that increasing $\mu _{\delta }$ leads to improved performance of the adjusted forecast, and this effect is intensified as $\mu _{v}$ increases. However, it is not consistently true that an increasing noise undermines the performance of the adjusted forecast. Rather, that phenomenon requires both large quantites of $\mu _{\delta }$ and $\mu _{v}$}{figure.caption.7}{}}
+\newlabel{fig:signoise@cref}{{[figure][2][1]1.2}{[1][14][]15}}
+\newlabel{fig:sim_4}{{1.3a}{16}{Fixed values: $\sigma _{v} = .125, \mu _{\omega ^{*}} = .125, \sigma _{u} = .125$}{figure.caption.8}{}}
+\newlabel{fig:sim_4@cref}{{[subfigure][1][1,3]1.3a}{[1][14][]16}}
+\newlabel{sub@fig:sim_4}{{a}{16}{Fixed values: $\sigma _{v} = .125, \mu _{\omega ^{*}} = .125, \sigma _{u} = .125$}{figure.caption.8}{}}
+\newlabel{sub@fig:sim_4@cref}{{[subfigure][1][1,3]1.3a}{[1][14][]16}}
+\newlabel{fig:sim_5}{{1.3b}{16}{Fixed values: $\sigma _{v} = .125, \mu _{\omega ^{*}} = .125, \sigma _{u} = 1$}{figure.caption.8}{}}
+\newlabel{fig:sim_5@cref}{{[subfigure][2][1,3]1.3b}{[1][14][]16}}
+\newlabel{sub@fig:sim_5}{{b}{16}{Fixed values: $\sigma _{v} = .125, \mu _{\omega ^{*}} = .125, \sigma _{u} = 1$}{figure.caption.8}{}}
+\newlabel{sub@fig:sim_5@cref}{{[subfigure][2][1,3]1.3b}{[1][14][]16}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.3}{\ignorespaces We compare the interaction of $\mu _{\delta }$ and $\mu _{v}$ at two different levels of shock noise. In the low-noise regime, the peak performance of the adjusted forecast is higher, and the ascent is faster along both dimensions. However, in the high-noise regime, the adjusted forecast performs well even at low levels of $\mu _{\delta }$ and $\mu _{v}$.}}{16}{figure.caption.8}\protected@file@percent }
+\newlabel{fig:sig_volprof}{{1.3}{16}{We compare the interaction of $\mu _{\delta }$ and $\mu _{v}$ at two different levels of shock noise. In the low-noise regime, the peak performance of the adjusted forecast is higher, and the ascent is faster along both dimensions. However, in the high-noise regime, the adjusted forecast performs well even at low levels of $\mu _{\delta }$ and $\mu _{v}$}{figure.caption.8}{}}
+\newlabel{fig:sig_volprof@cref}{{[figure][3][1]1.3}{[1][14][]16}}
+\newlabel{fig:sim_6}{{1.4a}{16}{Fixed values: $\mu _{v} = .125, \sigma _{v} = .125, \delta = .125$}{figure.caption.9}{}}
+\newlabel{fig:sim_6@cref}{{[subfigure][1][1,4]1.4a}{[1][14][]16}}
+\newlabel{sub@fig:sim_6}{{a}{16}{Fixed values: $\mu _{v} = .125, \sigma _{v} = .125, \delta = .125$}{figure.caption.9}{}}
+\newlabel{sub@fig:sim_6@cref}{{[subfigure][1][1,4]1.4a}{[1][14][]16}}
+\newlabel{fig:sim_7}{{1.4b}{16}{Fixed values: $\mu _{v} = .125, \sigma _{v} = .125, \delta = 2$}{figure.caption.9}{}}
+\newlabel{fig:sim_7@cref}{{[subfigure][2][1,4]1.4b}{[1][14][]16}}
+\newlabel{sub@fig:sim_7}{{b}{16}{Fixed values: $\mu _{v} = .125, \sigma _{v} = .125, \delta = 2$}{figure.caption.9}{}}
+\newlabel{sub@fig:sim_7@cref}{{[subfigure][2][1,4]1.4b}{[1][14][]16}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.4}{\ignorespaces The interaction between the intercept $\mu _{\omega ^{*}}$ and $\sigma _{u}$ suggests that the parameters behave as expected. However, a larger value of $\delta $ in \ref {fig:sim_7} attenuates the effect of increasing noise.}}{16}{figure.caption.9}\protected@file@percent }
+\newlabel{fig:intercept_noise}{{1.4}{16}{The interaction between the intercept $\mu _{\omega ^{*}}$ and $\sigma _{u}$ suggests that the parameters behave as expected. However, a larger value of $\delta $ in \ref {fig:sim_7} attenuates the effect of increasing noise}{figure.caption.9}{}}
+\newlabel{fig:intercept_noise@cref}{{[figure][4][1]1.4}{[1][14][]16}}
+\abx@aux@cite{0}{zivot2009practical}
+\abx@aux@segm{0}{0}{zivot2009practical}
+\abx@aux@cite{0}{hansen2005forecast}
+\abx@aux@segm{0}{0}{hansen2005forecast}
+\abx@aux@cite{0}{The_Guardian}
+\abx@aux@segm{0}{0}{The_Guardian}
+\abx@aux@cite{0}{Morales_Valentini_Penny_2016}
+\abx@aux@segm{0}{0}{Morales_Valentini_Penny_2016}
+\abx@aux@cite{0}{BBC_News_2016}
+\abx@aux@segm{0}{0}{BBC_News_2016}
+\abx@aux@cite{0}{wilson2017brexit}
+\abx@aux@segm{0}{0}{wilson2017brexit}
+\abx@aux@cite{0}{kay2016brexit}
+\abx@aux@segm{0}{0}{kay2016brexit}
+\abx@aux@cite{0}{collins2016trump}
+\abx@aux@segm{0}{0}{collins2016trump}
+\abx@aux@cite{0}{applebaum2016britain}
+\abx@aux@segm{0}{0}{applebaum2016britain}
+\abx@aux@cite{0}{martin2016brexit}
+\abx@aux@segm{0}{0}{martin2016brexit}
+\abx@aux@cite{0}{barro2016three}
+\abx@aux@segm{0}{0}{barro2016three}
+\@writefile{toc}{\contentsline {section}{\numberline {1.6}Forecasting after the results of the 2016 US presidential election}{17}{section.1.6}\protected@file@percent }
+\newlabel{Real Data Example}{{1.6}{17}{Forecasting after the results of the 2016 US presidential election}{section.1.6}{}}
+\newlabel{Real Data Example@cref}{{[section][6][1]1.6}{[1][17][]17}}
+\abx@aux@cite{0}{andersen2008realized}
+\abx@aux@segm{0}{0}{andersen2008realized}
+\abx@aux@cite{0}{ryan2015package}
+\abx@aux@segm{0}{0}{ryan2015package}
+\abx@aux@cite{0}{wachowicz2020wharton}
+\abx@aux@segm{0}{0}{wachowicz2020wharton}
+\abx@aux@cite{0}{steegen2016increasing}
+\abx@aux@segm{0}{0}{steegen2016increasing}
+\abx@aux@cite{0}{lin2021minimizing}
+\abx@aux@segm{0}{0}{lin2021minimizing}
+\abx@aux@cite{0}{lin2021minimizing}
+\abx@aux@segm{0}{0}{lin2021minimizing}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.5}{\ignorespaces Donor pool weights (left panel), individual shock effects (center panel), and forecasts (right panel).}}{19}{figure.caption.10}\protected@file@percent }
+\newlabel{fig:SVF_2016_with_Brexit}{{1.5}{19}{Donor pool weights (left panel), individual shock effects (center panel), and forecasts (right panel)}{figure.caption.10}{}}
+\newlabel{fig:SVF_2016_with_Brexit@cref}{{[figure][5][1]1.5}{[1][19][]19}}
+\newlabel{multiverse_table}{{1.6}{19}{Forecasting after the results of the 2016 US presidential election}{table.caption.11}{}}
+\newlabel{multiverse_table@cref}{{[section][6][1]1.6}{[1][19][]19}}
+\@writefile{toc}{\contentsline {section}{\numberline {1.7}Discussion}{19}{section.1.7}\protected@file@percent }
+\abx@aux@cite{0}{lin2021minimizing}
+\abx@aux@segm{0}{0}{lin2021minimizing}
+\abx@aux@cite{0}{phillips1996forecasting}
+\abx@aux@segm{0}{0}{phillips1996forecasting}
+\abx@aux@cite{0}{phillips1996forecasting}
+\abx@aux@segm{0}{0}{phillips1996forecasting}
+\@writefile{lot}{\contentsline {table}{\numberline {1.1}{\ignorespaces Adjusted volatility forecasts for the 2016 US presidential election ranked by QL loss. This table contains all forecasts made by applying simultaneous leave-one-out approaches made to the covariates and the donors forming the donor pool. The forecast from our analysis in the main text is included with a yellow highlight. Mean and median of all forecasts are included, and they are highlighted in gray. The unadjusted forecast is included. It is highlighted in red.}}{21}{table.caption.11}\protected@file@percent }
+\newlabel{tab:multiverse_table}{{1.1}{21}{Adjusted volatility forecasts for the 2016 US presidential election ranked by QL loss. This table contains all forecasts made by applying simultaneous leave-one-out approaches made to the covariates and the donors forming the donor pool. The forecast from our analysis in the main text is included with a yellow highlight. Mean and median of all forecasts are included, and they are highlighted in gray. The unadjusted forecast is included. It is highlighted in red}{table.caption.11}{}}
+\newlabel{tab:multiverse_table@cref}{{[table][1][1]1.1}{[1][19][]21}}
 \abx@aux@cite{0}{clements2005guest}
 \abx@aux@segm{0}{0}{clements2005guest}
 \abx@aux@cite{0}{castle2013forecasting}
 \abx@aux@segm{0}{0}{castle2013forecasting}
-\@writefile{toc}{\contentsline {chapter}{\numberline {2}Conclusion}{18}{chapter.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {2}Conclusion}{22}{chapter.2}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {chapter}{References}{19}{chapter*.6}\protected@file@percent }
+\@writefile{loa}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {chapter}{References}{23}{chapter*.12}\protected@file@percent }
 \ttl@finishall
-\abx@aux@read@bbl@mdfivesum{nohash}
-\abx@aux@read@bblrerun
+\abx@aux@read@bbl@mdfivesum{2A00DCBD32AF3A968AA68EBDC3953E4E}
 \abx@aux@defaultrefcontext{0}{Kenton}{none/global//global/global}
 \abx@aux@defaultrefcontext{0}{dominguez2006defines}{none/global//global/global}
 \abx@aux@defaultrefcontext{0}{tsay2005analysis}{none/global//global/global}
@@ -244,6 +309,17 @@
 \abx@aux@defaultrefcontext{0}{andersen2008realized}{none/global//global/global}
 \abx@aux@defaultrefcontext{0}{brownlees2011practical}{none/global//global/global}
 \abx@aux@defaultrefcontext{0}{han2014asymptotic}{none/global//global/global}
+\abx@aux@defaultrefcontext{0}{RePEc:pra:mprapa:100301}{none/global//global/global}
+\abx@aux@defaultrefcontext{0}{hansen2005forecast}{none/global//global/global}
+\abx@aux@defaultrefcontext{0}{BBC_News_2016}{none/global//global/global}
+\abx@aux@defaultrefcontext{0}{wilson2017brexit}{none/global//global/global}
+\abx@aux@defaultrefcontext{0}{kay2016brexit}{none/global//global/global}
+\abx@aux@defaultrefcontext{0}{collins2016trump}{none/global//global/global}
+\abx@aux@defaultrefcontext{0}{applebaum2016britain}{none/global//global/global}
+\abx@aux@defaultrefcontext{0}{martin2016brexit}{none/global//global/global}
+\abx@aux@defaultrefcontext{0}{barro2016three}{none/global//global/global}
+\abx@aux@defaultrefcontext{0}{ryan2015package}{none/global//global/global}
+\abx@aux@defaultrefcontext{0}{wachowicz2020wharton}{none/global//global/global}
 \abx@aux@defaultrefcontext{0}{clements2005guest}{none/global//global/global}
 \abx@aux@defaultrefcontext{0}{castle2013forecasting}{none/global//global/global}
-\gdef \@abspage@last{26}
+\gdef \@abspage@last{30}

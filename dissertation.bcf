@@ -2414,8 +2414,29 @@
     <bcf:citekey order="43" intorder="1">brownlees2011practical</bcf:citekey>
     <bcf:citekey order="44" intorder="1">zivot2009practical</bcf:citekey>
     <bcf:citekey order="45" intorder="1">han2014asymptotic</bcf:citekey>
-    <bcf:citekey order="46" intorder="1">clements2005guest</bcf:citekey>
-    <bcf:citekey order="47" intorder="1">castle2013forecasting</bcf:citekey>
+    <bcf:citekey order="46" intorder="1">RePEc:pra:mprapa:100301</bcf:citekey>
+    <bcf:citekey order="47" intorder="1">zivot2009practical</bcf:citekey>
+    <bcf:citekey order="48" intorder="1">hansen2005forecast</bcf:citekey>
+    <bcf:citekey order="49" intorder="1">The_Guardian</bcf:citekey>
+    <bcf:citekey order="50" intorder="1">Morales_Valentini_Penny_2016</bcf:citekey>
+    <bcf:citekey order="51" intorder="1">BBC_News_2016</bcf:citekey>
+    <bcf:citekey order="52" intorder="1">wilson2017brexit</bcf:citekey>
+    <bcf:citekey order="53" intorder="1">kay2016brexit</bcf:citekey>
+    <bcf:citekey order="53" intorder="2">collins2016trump</bcf:citekey>
+    <bcf:citekey order="54" intorder="1">applebaum2016britain</bcf:citekey>
+    <bcf:citekey order="55" intorder="1">martin2016brexit</bcf:citekey>
+    <bcf:citekey order="55" intorder="2">barro2016three</bcf:citekey>
+    <bcf:citekey order="56" intorder="1">andersen2008realized</bcf:citekey>
+    <bcf:citekey order="57" intorder="1">ryan2015package</bcf:citekey>
+    <bcf:citekey order="58" intorder="1">wachowicz2020wharton</bcf:citekey>
+    <bcf:citekey order="59" intorder="1">steegen2016increasing</bcf:citekey>
+    <bcf:citekey order="60" intorder="1">lin2021minimizing</bcf:citekey>
+    <bcf:citekey order="61" intorder="1">lin2021minimizing</bcf:citekey>
+    <bcf:citekey order="62" intorder="1">lin2021minimizing</bcf:citekey>
+    <bcf:citekey order="63" intorder="1">phillips1996forecasting</bcf:citekey>
+    <bcf:citekey order="64" intorder="1">phillips1996forecasting</bcf:citekey>
+    <bcf:citekey order="65" intorder="1">clements2005guest</bcf:citekey>
+    <bcf:citekey order="66" intorder="1">castle2013forecasting</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">

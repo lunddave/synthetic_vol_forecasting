@@ -1232,6 +1232,359 @@
       \field{pages}{416\bibrangedash 429}
       \range{pages}{14}
     \endentry
+    \entry{RePEc:pra:mprapa:100301}{report}{}
+      \name{author}{1}{}{%
+        {{hash=483d3313eaa3ebdefadcc12a7c09197d}{%
+           family={Sucarrat},
+           familyi={S\bibinitperiod},
+           given={Genaro},
+           giveni={G\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {University Library of Munich, Germany}%
+      }
+      \strng{namehash}{483d3313eaa3ebdefadcc12a7c09197d}
+      \strng{fullhash}{483d3313eaa3ebdefadcc12a7c09197d}
+      \strng{bibnamehash}{483d3313eaa3ebdefadcc12a7c09197d}
+      \strng{authorbibnamehash}{483d3313eaa3ebdefadcc12a7c09197d}
+      \strng{authornamehash}{483d3313eaa3ebdefadcc12a7c09197d}
+      \strng{authorfullhash}{483d3313eaa3ebdefadcc12a7c09197d}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The R package garchx provides a user-friendly, fast, flexible and robust framework for the estimation and inference of GARCH(p,q,r)-X models, where p is the ARCH order, q is the GARCH order, r is the asymmetry or leverage order, and 'X' indicates that covariates can be included. Quasi Maximum Likelihood (QML) methods ensure estimates are consistent and standard errors valid, even when the standardised innovations are non-normal or dependent, or both. Zero-coefficient restrictions by omission enable parsimonious specifications, and functions to facilitate the non-standard inference associated with zero-restrictions in the null-hypothesis are provided. Finally, in formal comparisons of precision and speed, the garchx package performs well relative to other prominent GARCH-packages on CRAN.}
+      \field{month}{5}
+      \field{number}{100301}
+      \field{title}{{garchx: Flexible and Robust GARCH-X Modelling}}
+      \field{type}{MPRA Paper}
+      \field{year}{2020}
+      \verb{urlraw}
+      \verb https://ideas.repec.org/p/pra/mprapa/100301.html
+      \endverb
+      \verb{url}
+      \verb https://ideas.repec.org/p/pra/mprapa/100301.html
+      \endverb
+      \keyw{Volatility; GARCH; covariates; robust; R}
+    \endentry
+    \entry{hansen2005forecast}{article}{}
+      \name{author}{2}{}{%
+        {{hash=1b69f8d059ca7b024817e06b9be0fda6}{%
+           family={Hansen},
+           familyi={H\bibinitperiod},
+           given={Peter\bibnamedelima R},
+           giveni={P\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=8d526c5bfbc93e7d59acb3e0d9853324}{%
+           family={Lunde},
+           familyi={L\bibinitperiod},
+           given={Asger},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley Online Library}%
+      }
+      \strng{namehash}{938766e2ed127e1c0c61a8b9084ade36}
+      \strng{fullhash}{938766e2ed127e1c0c61a8b9084ade36}
+      \strng{bibnamehash}{938766e2ed127e1c0c61a8b9084ade36}
+      \strng{authorbibnamehash}{938766e2ed127e1c0c61a8b9084ade36}
+      \strng{authornamehash}{938766e2ed127e1c0c61a8b9084ade36}
+      \strng{authorfullhash}{938766e2ed127e1c0c61a8b9084ade36}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of applied econometrics}
+      \field{number}{7}
+      \field{title}{A forecast comparison of volatility models: does anything beat a GARCH (1, 1)?}
+      \field{volume}{20}
+      \field{year}{2005}
+      \field{pages}{873\bibrangedash 889}
+      \range{pages}{17}
+    \endentry
+    \entry{BBC_News_2016}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=6adf97f83acf6453d4a6a4b1070f3754}{%
+           family={None},
+           familyi={N\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {BBC}%
+      }
+      \strng{namehash}{6adf97f83acf6453d4a6a4b1070f3754}
+      \strng{fullhash}{6adf97f83acf6453d4a6a4b1070f3754}
+      \strng{bibnamehash}{6adf97f83acf6453d4a6a4b1070f3754}
+      \strng{authorbibnamehash}{6adf97f83acf6453d4a6a4b1070f3754}
+      \strng{authornamehash}{6adf97f83acf6453d4a6a4b1070f3754}
+      \strng{authorfullhash}{6adf97f83acf6453d4a6a4b1070f3754}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{BBC News}
+      \field{month}{6}
+      \field{title}{Leave campaign ahead in UK's EU referendum vote}
+      \field{year}{2016}
+      \verb{urlraw}
+      \verb https://www.bbc.com/news/uk-politics-eu-referendum-36612368
+      \endverb
+      \verb{url}
+      \verb https://www.bbc.com/news/uk-politics-eu-referendum-36612368
+      \endverb
+    \endentry
+    \entry{wilson2017brexit}{article}{}
+      \name{author}{1}{}{%
+        {{hash=012bf7cc784fb0cd617bbedf6af7280a}{%
+           family={Wilson},
+           familyi={W\bibinitperiod},
+           given={Graham\bibnamedelima K},
+           giveni={G\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {SAGE Publications Sage UK: London, England}%
+      }
+      \strng{namehash}{012bf7cc784fb0cd617bbedf6af7280a}
+      \strng{fullhash}{012bf7cc784fb0cd617bbedf6af7280a}
+      \strng{bibnamehash}{012bf7cc784fb0cd617bbedf6af7280a}
+      \strng{authorbibnamehash}{012bf7cc784fb0cd617bbedf6af7280a}
+      \strng{authornamehash}{012bf7cc784fb0cd617bbedf6af7280a}
+      \strng{authorfullhash}{012bf7cc784fb0cd617bbedf6af7280a}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The British Journal of Politics and International Relations}
+      \field{number}{3}
+      \field{title}{Brexit, Trump and the special relationship}
+      \field{volume}{19}
+      \field{year}{2017}
+      \field{pages}{543\bibrangedash 557}
+      \range{pages}{15}
+    \endentry
+    \entry{kay2016brexit}{online}{}
+      \name{author}{1}{}{%
+        {{hash=0e878e8962d6aa7427f3ac7df64a0d1b}{%
+           family={Kay},
+           familyi={K\bibinitperiod},
+           given={Katty},
+           giveni={K\bibinitperiod}}}%
+      }
+      \strng{namehash}{0e878e8962d6aa7427f3ac7df64a0d1b}
+      \strng{fullhash}{0e878e8962d6aa7427f3ac7df64a0d1b}
+      \strng{bibnamehash}{0e878e8962d6aa7427f3ac7df64a0d1b}
+      \strng{authorbibnamehash}{0e878e8962d6aa7427f3ac7df64a0d1b}
+      \strng{authornamehash}{0e878e8962d6aa7427f3ac7df64a0d1b}
+      \strng{authorfullhash}{0e878e8962d6aa7427f3ac7df64a0d1b}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{BBC News}
+      \field{note}{Published: 2016-06-20}
+      \field{title}{Five reasons Brexit could signal Trump winning the White House}
+      \field{year}{2016}
+      \verb{urlraw}
+      \verb https://www.bbc.com/news/election-us-2016-36564808
+      \endverb
+      \verb{url}
+      \verb https://www.bbc.com/news/election-us-2016-36564808
+      \endverb
+    \endentry
+    \entry{collins2016trump}{online}{}
+      \name{author}{1}{}{%
+        {{hash=e319ae7e094d247c10c18f7f5aef3f64}{%
+           family={Collins},
+           familyi={C\bibinitperiod},
+           given={Stephen},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{e319ae7e094d247c10c18f7f5aef3f64}
+      \strng{fullhash}{e319ae7e094d247c10c18f7f5aef3f64}
+      \strng{bibnamehash}{e319ae7e094d247c10c18f7f5aef3f64}
+      \strng{authorbibnamehash}{e319ae7e094d247c10c18f7f5aef3f64}
+      \strng{authornamehash}{e319ae7e094d247c10c18f7f5aef3f64}
+      \strng{authorfullhash}{e319ae7e094d247c10c18f7f5aef3f64}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{CNN Politics}
+      \field{note}{Published: 2016-06-25}
+      \field{title}{Trump on Brexit: America is next}
+      \field{year}{2016}
+      \verb{urlraw}
+      \verb https://www.cnn.com/2016/06/25/politics/donald-trump-brexit-scotland
+      \endverb
+      \verb{url}
+      \verb https://www.cnn.com/2016/06/25/politics/donald-trump-brexit-scotland
+      \endverb
+    \endentry
+    \entry{applebaum2016britain}{online}{}
+      \name{author}{1}{}{%
+        {{hash=b1ee6db6a59da08ae653c3d05c4224a9}{%
+           family={Applebaum},
+           familyi={A\bibinitperiod},
+           given={Anne},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{b1ee6db6a59da08ae653c3d05c4224a9}
+      \strng{fullhash}{b1ee6db6a59da08ae653c3d05c4224a9}
+      \strng{bibnamehash}{b1ee6db6a59da08ae653c3d05c4224a9}
+      \strng{authorbibnamehash}{b1ee6db6a59da08ae653c3d05c4224a9}
+      \strng{authornamehash}{b1ee6db6a59da08ae653c3d05c4224a9}
+      \strng{authorfullhash}{b1ee6db6a59da08ae653c3d05c4224a9}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Washington Post}
+      \field{note}{Published: 2016-06-24}
+      \field{title}{Britain's decision to leave the E.U. is a warning to America}
+      \field{year}{2016}
+      \verb{urlraw}
+      \verb https://www.washingtonpost.com/opinions/global-opinions/after-brexit-what-will-and-wont-happen/2016/06/24/c9f7a2f6-39f1-11e6-8f7c-d4c723a2becb_story.html?postshare=9121466767991000
+      \endverb
+      \verb{url}
+      \verb https://www.washingtonpost.com/opinions/global-opinions/after-brexit-what-will-and-wont-happen/2016/06/24/c9f7a2f6-39f1-11e6-8f7c-d4c723a2becb_story.html?postshare=9121466767991000
+      \endverb
+    \endentry
+    \entry{martin2016brexit}{online}{}
+      \name{author}{2}{}{%
+        {{hash=3a3860b101f2916f6ec8a89a3de88f8c}{%
+           family={Martin},
+           familyi={M\bibinitperiod},
+           given={Jonathan},
+           giveni={J\bibinitperiod}}}%
+        {{hash=24c5e3050b1278d20f3ad01753eb547f}{%
+           family={Burns},
+           familyi={B\bibinitperiod},
+           given={Alexander},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{e56d0a8603cce5bec81ce06335169d75}
+      \strng{fullhash}{e56d0a8603cce5bec81ce06335169d75}
+      \strng{bibnamehash}{e56d0a8603cce5bec81ce06335169d75}
+      \strng{authorbibnamehash}{e56d0a8603cce5bec81ce06335169d75}
+      \strng{authornamehash}{e56d0a8603cce5bec81ce06335169d75}
+      \strng{authorfullhash}{e56d0a8603cce5bec81ce06335169d75}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{New York Times}
+      \field{note}{Published: 2016-06-24}
+      \field{title}{Is ‘Brexit’ the Precursor to a Donald Trump Presidency? Not So Fast}
+      \field{year}{2016}
+      \verb{urlraw}
+      \verb https://www.nytimes.com/2016/06/25/us/politics/is-brexit-the-precursor-to-a-donald-trump-presidency-not-so-fast.html
+      \endverb
+      \verb{url}
+      \verb https://www.nytimes.com/2016/06/25/us/politics/is-brexit-the-precursor-to-a-donald-trump-presidency-not-so-fast.html
+      \endverb
+    \endentry
+    \entry{barro2016three}{online}{}
+      \name{author}{1}{}{%
+        {{hash=cefd04942a7b934ceab7899d53caccb8}{%
+           family={Barro},
+           familyi={B\bibinitperiod},
+           given={Josh},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{cefd04942a7b934ceab7899d53caccb8}
+      \strng{fullhash}{cefd04942a7b934ceab7899d53caccb8}
+      \strng{bibnamehash}{cefd04942a7b934ceab7899d53caccb8}
+      \strng{authorbibnamehash}{cefd04942a7b934ceab7899d53caccb8}
+      \strng{authornamehash}{cefd04942a7b934ceab7899d53caccb8}
+      \strng{authorfullhash}{cefd04942a7b934ceab7899d53caccb8}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Business Insider}
+      \field{note}{Published: 2016-06-24}
+      \field{title}{3 reasons Brexit does not portend a Trump victory — and one reason to worry}
+      \field{year}{2016}
+      \verb{urlraw}
+      \verb https://www.businessinsider.com/what-does-brexit-mean-for-trump-2016-6?op=1
+      \endverb
+      \verb{url}
+      \verb https://www.businessinsider.com/what-does-brexit-mean-for-trump-2016-6?op=1
+      \endverb
+    \endentry
+    \entry{ryan2015package}{article}{}
+      \name{author}{6}{}{%
+        {{hash=a55a4f53c08d65d7856f690d76521fcd}{%
+           family={Ryan},
+           familyi={R\bibinitperiod},
+           given={Jeffrey\bibnamedelima A},
+           giveni={J\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=b8ec00822fdab6c0a0db64e81a127217}{%
+           family={Ulrich},
+           familyi={U\bibinitperiod},
+           given={Joshua\bibnamedelima M},
+           giveni={J\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=e6a10a2c81526f6a5ac50a65d92c7af7}{%
+           family={Thielen},
+           familyi={T\bibinitperiod},
+           given={Wouter},
+           giveni={W\bibinitperiod}}}%
+        {{hash=7e25937b4d7772db1032499fac370e22}{%
+           family={Teetor},
+           familyi={T\bibinitperiod},
+           given={Paul},
+           giveni={P\bibinitperiod}}}%
+        {{hash=b8597747e2eb458bea8901c2293aae4f}{%
+           family={Bronder},
+           familyi={B\bibinitperiod},
+           given={Steve},
+           giveni={S\bibinitperiod}}}%
+        {{hash=bba2d42c3c14ef14b9d70e8abe3f0f9e}{%
+           family={Ulrich},
+           familyi={U\bibinitperiod},
+           given={Maintainer\bibnamedelimb Joshua\bibnamedelima M},
+           giveni={M\bibinitperiod\bibinitdelim J\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \strng{namehash}{0c2c07b614706c2d546985147e319f51}
+      \strng{fullhash}{83b6740ff4499aae61d122d6465bc0d1}
+      \strng{bibnamehash}{83b6740ff4499aae61d122d6465bc0d1}
+      \strng{authorbibnamehash}{83b6740ff4499aae61d122d6465bc0d1}
+      \strng{authornamehash}{0c2c07b614706c2d546985147e319f51}
+      \strng{authorfullhash}{83b6740ff4499aae61d122d6465bc0d1}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Package ‘quantmod’}
+      \field{year}{2015}
+    \endentry
+    \entry{wachowicz2020wharton}{article}{}
+      \name{author}{1}{}{%
+        {{hash=20b46c968bfe473af6b9b29e8c4933cf}{%
+           family={Wachowicz},
+           familyi={W\bibinitperiod},
+           given={Erin},
+           giveni={E\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Taylor \& Francis}%
+      }
+      \strng{namehash}{20b46c968bfe473af6b9b29e8c4933cf}
+      \strng{fullhash}{20b46c968bfe473af6b9b29e8c4933cf}
+      \strng{bibnamehash}{20b46c968bfe473af6b9b29e8c4933cf}
+      \strng{authorbibnamehash}{20b46c968bfe473af6b9b29e8c4933cf}
+      \strng{authornamehash}{20b46c968bfe473af6b9b29e8c4933cf}
+      \strng{authorfullhash}{20b46c968bfe473af6b9b29e8c4933cf}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Business \& Finance Librarianship}
+      \field{number}{3-4}
+      \field{title}{Wharton research data services (WRDS)}
+      \field{volume}{25}
+      \field{year}{2020}
+      \field{pages}{184\bibrangedash 187}
+      \range{pages}{4}
+    \endentry
     \entry{clements2005guest}{article}{}
       \name{author}{2}{}{%
         {{hash=0f6ea0e68f1008d34fdfe86012adf11a}{%
@@ -1252,8 +1605,8 @@
       \strng{authornamehash}{bc7ab4d16c42a19347b0c91c02d137c8}
       \strng{authorfullhash}{bc7ab4d16c42a19347b0c91c02d137c8}
       \field{extraname}{2}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Oxford Bulletin of Economics \& Statistics}
@@ -1291,8 +1644,8 @@
       \strng{authorbibnamehash}{0c3a66cd070574b2492da6cb5f7fad8a}
       \strng{authornamehash}{0c3a66cd070574b2492da6cb5f7fad8a}
       \strng{authorfullhash}{0c3a66cd070574b2492da6cb5f7fad8a}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Journal of Econometrics}
@@ -1304,6 +1657,8 @@
       \range{pages}{15}
     \endentry
   \enddatalist
+  \missing{Morales_Valentini_Penny_2016}
+  \missing{The_Guardian}
   \missing{[}
 \endrefsection
 \endinput

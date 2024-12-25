@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.15)  23 DEC 2024 23:34
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.15)  24 DEC 2024 19:13
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -808,48 +808,209 @@ File: pgfmodulematrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
 File: tikzlibrarytopaths.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ))) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytrees.code.tex
 File: tikzlibrarytrees.code.tex 2023-01-15 v3.1.10 (3.1.10)
-) (/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amscd.sty
-Package: amscd 2017/04/14 v2.1 AMS Commutative Diagrams
-\athelp@=\toks49
-\minaw@=\dimen275
-\bigaw@=\dimen276
-\minCDarrowwidth=\dimen277
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/caption/subcaption.sty
+Package: subcaption 2023/07/28 v1.6b Sub-captions (AR)
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2023/08/05 v3.6o Customizing captions (AR)
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
+\caption@tempdima=\dimen275
+\captionmargin=\dimen276
+\caption@leftmargin=\dimen277
+\caption@rightmargin=\dimen278
+\caption@width=\dimen279
+\caption@indent=\dimen280
+\caption@parindent=\dimen281
+\caption@hangindent=\dimen282
+Package caption Info: Standard document class detected.
 )
-\c@corollary=\count453
-\c@cor=\count454
-\c@lem=\count455
-\c@thm=\count456
-\c@defn=\count457
-\c@prop=\count458
-\c@remark=\count459
-Package hyperref Info: Option `colorlinks' set `true' on input line 85.
-\c@counterforappendices=\count460
+\c@caption@flags=\count453
+\c@continuedfloat=\count454
+Package caption Info: hyperref package is loaded.
+)
+Package caption Info: New subtype `subfigure' on input line 238.
+\c@subfigure=\count455
+Package caption Info: New subtype `subtable' on input line 238.
+\c@subtable=\count456
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/multirow/multirow.sty
+Package: multirow 2021/03/15 v2.8 Span multiple rows of a table
+\multirow@colwidth=\skip92
+\multirow@cntb=\count457
+\multirow@dima=\skip93
+\bigstrutjot=\dimen283
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/mathtools/mathtools.sty
+Package: mathtools 2024/03/11 v1.30 mathematical typesetting tools
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2023/07/08 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count458
+\calc@Bcount=\count459
+\calc@Adimen=\dimen284
+\calc@Bdimen=\dimen285
+\calc@Askip=\skip94
+\calc@Bskip=\skip95
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count460
+\calc@Cskip=\skip96
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/mathtools/mhsetup.sty
+Package: mhsetup 2021/03/18 v1.4 programming setup (MH)
+)
+\g_MT_multlinerow_int=\count461
+\l_MT_multwidth_dim=\dimen286
+\origjot=\skip97
+\l_MT_shortvdotswithinadjustabove_dim=\dimen287
+\l_MT_shortvdotswithinadjustbelow_dim=\dimen288
+\l_MT_above_intertext_sep=\dimen289
+\l_MT_below_intertext_sep=\dimen290
+\l_MT_above_shortintertext_sep=\dimen291
+\l_MT_below_shortintertext_sep=\dimen292
+\xmathstrut@box=\box68
+\xmathstrut@dim=\dimen293
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/enumitem/enumitem.sty
+Package: enumitem 2019/06/20 v3.9 Customized lists
+\labelindent=\skip98
+\enit@outerparindent=\dimen294
+\enit@toks=\toks49
+\enit@inbox=\box69
+\enit@count@id=\count462
+\enitdp@description=\count463
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/tools/bm.sty
+Package: bm 2023/07/08 v1.2f Bold Symbol Support (DPC/FMi)
+\symboldoperators=\mathgroup6
+\symboldletters=\mathgroup7
+\symboldsymbols=\mathgroup8
+Package bm Info: No bold for \OMX/cmex/m/n, using \pmb.
+Package bm Info: No bold for \U/msa/m/n, using \pmb.
+Package bm Info: No bold for \U/msb/m/n, using \pmb.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 149.
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/comment/comment.sty
+\CommentStream=\write5
+ Excluding comment 'comment') (/usr/local/texlive/2024/texmf-dist/tex/latex/pdfpages/pdfpages.sty
+Package: pdfpages 2024/01/21 v0.5y Insert pages of external PDF documents (AM)
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/eso-pic/eso-pic.sty
+Package: eso-pic 2023/05/03 v3.0c eso-pic (RN)
+\ESO@tempdima=\dimen295
+\ESO@tempdimb=\dimen296
+)
+\AM@pagewidth=\dimen297
+\AM@pageheight=\dimen298
+\AM@fboxrule=\dimen299
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/pdfpages/pppdftex.def
+File: pppdftex.def 2024/01/21 v0.5y Pdfpages driver for pdfTeX (AM)
+)
+\pdfpages@includegraphics@status=\count464
+\AM@pagebox=\box70
+\AM@global@opts=\toks50
+\AM@pagecnt=\count465
+\AM@toc@title=\toks51
+\AM@lof@heading=\toks52
+\c@AM@survey=\count466
+\AM@templatesizebox=\box71
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count467
+\float@exts=\toks53
+\float@box=\box72
+\@float@everytoks=\toks54
+\@floatcapt=\box73
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/algorithm2e/algorithm2e.sty
+Package: algorithm2e 2017/07/18 v5.2 algorithms environments
+\c@AlgoLine=\count468
+\algocf@hangindent=\skip99
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/ifoddpage/ifoddpage.sty
+Package: ifoddpage 2022/10/18 v1.2 Conditionals for odd/even page detection
+\c@checkoddpage=\count469
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/tools/xspace.sty
+Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/relsize/relsize.sty
+Package: relsize 2013/03/29 ver 4.1
+)
+\skiptotal=\skip100
+\skiplinenumber=\skip101
+\skiprule=\skip102
+\skiphlne=\skip103
+\skiptext=\skip104
+\skiplength=\skip105
+\algomargin=\skip106
+\skipalgocfslide=\skip107
+\algowidth=\dimen300
+\inoutsize=\dimen301
+\inoutindent=\dimen302
+\interspacetitleruled=\dimen303
+\interspacealgoruled=\dimen304
+\interspacetitleboxruled=\dimen305
+\algocf@ruledwidth=\skip108
+\algocf@inoutbox=\box74
+\algocf@inputbox=\box75
+\AlCapSkip=\skip109
+\AlCapHSkip=\skip110
+\algoskipindent=\skip111
+\algocf@nlbox=\box76
+\algocf@hangingbox=\box77
+\algocf@untilbox=\box78
+\algocf@skipuntil=\skip112
+\algocf@capbox=\box79
+\algocf@lcaptionbox=\skip113
+\algoheightruledefault=\skip114
+\algoheightrule=\skip115
+\algotitleheightruledefault=\skip116
+\algotitleheightrule=\skip117
+\c@algocfline=\count470
+\c@algocfproc=\count471
+\c@algocf=\count472
+\algocf@algoframe=\box80
+\algocf@algobox=\box81
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/pdflscape/pdflscape.sty
+Package: pdflscape 2022-10-27 v0.13 Display of landscape pages in PDF
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/pdflscape/pdflscape-nometadata.sty
+Package: pdflscape-nometadata 2022-10-28 v0.13 Display of landscape pages in PDF (HO)
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/lscape.sty
+Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
+)
+Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
+)) (/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amscd.sty
+Package: amscd 2017/04/14 v2.1 AMS Commutative Diagrams
+\athelp@=\toks55
+\minaw@=\dimen306
+\bigaw@=\dimen307
+\minCDarrowwidth=\dimen308
+)
+\c@corollary=\count473
+\c@cor=\count474
+\c@lem=\count475
+\c@thm=\count476
+\c@defn=\count477
+\c@prop=\count478
+\c@remark=\count479
+Package hyperref Info: Option `colorlinks' set `true' on input line 103.
+\c@counterforappendices=\count480
 Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
 Package csquotes Info: Adjusting default style.
 Package csquotes Info: Redefining alias 'default' -> 'english'.
-
-No file dissertation.aux.
+ (./dissertation.aux)
 \openout1 = `dissertation.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 107.
-LaTeX Font Info:    ... okay on input line 107.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 107.
-LaTeX Font Info:    ... okay on input line 107.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 107.
-LaTeX Font Info:    ... okay on input line 107.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 107.
-LaTeX Font Info:    ... okay on input line 107.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 107.
-LaTeX Font Info:    ... okay on input line 107.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 107.
-LaTeX Font Info:    ... okay on input line 107.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 107.
-LaTeX Font Info:    ... okay on input line 107.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 107.
-LaTeX Font Info:    ... okay on input line 107.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 107.
-LaTeX Font Info:    ... okay on input line 107.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
+
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -884,28 +1045,29 @@ LaTeX Font Info:    ... okay on input line 107.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Info: Redefining \microtypecontext on input line 107.
-Package microtype Info: Applying patch `item' on input line 107.
-Package microtype Info: Applying patch `toc' on input line 107.
-Package microtype Info: Applying patch `eqnum' on input line 107.
-Package microtype Info: Applying patch `footnote' on input line 107.
-Package microtype Info: Applying patch `verbatim' on input line 107.
+LaTeX Info: Redefining \microtypecontext on input line 125.
+Package microtype Info: Applying patch `item' on input line 125.
+Package microtype Info: Applying patch `toc' on input line 125.
+Package microtype Info: Applying patch `eqnum' on input line 125.
+Package microtype Info: Applying patch `footnote' on input line 125.
+Package microtype Info: Applying patch `verbatim' on input line 125.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `alltext-nott'.
-LaTeX Info: Redefining \showhyphens on input line 107.
+LaTeX Info: Redefining \showhyphens on input line 125.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
 (/usr/local/texlive/2024/texmf-dist/tex/latex/microtype/mt-cmr.cfg
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman (RS)
 )
-Package hyperref Info: Link coloring ON on input line 107.
-\@outlinefile=\write5
-\openout5 = `dissertation.out'.
+Package hyperref Info: Link coloring ON on input line 125.
+ (./dissertation.out) (./dissertation.out)
+\@outlinefile=\write6
+\openout6 = `dissertation.out'.
 
 Package biblatex Info: Trying to load language 'english'...
 Package biblatex Info: ... file 'english.lbx' found.
@@ -923,52 +1085,70 @@ Package biblatex Info: ... file 'dissertation.bbl' found.
 
 Package biblatex Warning: The following entry could not be found
 (biblatex)                in the database:
+(biblatex)                Morales_Valentini_Penny_2016
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                The_Guardian
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
 (biblatex)                [
 (biblatex)                Please verify the spelling and rerun
 (biblatex)                LaTeX afterwards.
 
 )
-Package biblatex Info: Reference section=0 on input line 107.
-Package biblatex Info: Reference segment=0 on input line 107.
+Package biblatex Info: Reference section=0 on input line 125.
+Package biblatex Info: Reference segment=0 on input line 125.
  (/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count461
-\scratchdimen=\dimen278
-\scratchbox=\box68
-\nofMPsegments=\count462
-\nofMParguments=\count463
-\everyMPshowfont=\toks50
-\MPscratchCnt=\count464
-\MPscratchDim=\dimen279
-\MPnumerator=\count465
-\makeMPintoPDFobject=\count466
-\everyMPtoPDFconversion=\toks51
+\scratchcounter=\count481
+\scratchdimen=\dimen309
+\scratchbox=\box82
+\nofMPsegments=\count482
+\nofMParguments=\count483
+\everyMPshowfont=\toks56
+\MPscratchCnt=\count484
+\MPscratchDim=\dimen310
+\MPnumerator=\count485
+\makeMPintoPDFobject=\count486
+\everyMPtoPDFconversion=\toks57
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
-)) [1
+))
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: float package is loaded.
+Package caption Info: End \AtBeginDocument code.
+ [1
 
 {/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
-\thesis@dim=\dimen280
-\ct@dim=\dimen281
-\cn@dim=\dimen282
+\thesis@dim=\dimen311
+\ct@dim=\dimen312
+\cn@dim=\dimen313
 
-Underfull \vbox (badness 10000) detected at line 120
+Underfull \vbox (badness 10000) detected at line 138
  []
 
 
-Underfull \vbox (badness 10000) detected at line 120
+Underfull \vbox (badness 10000) detected at line 138
  []
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 120.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 138.
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 120.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 138.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/microtype/mt-msb.cfg
@@ -977,16 +1157,15 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 pdfTeX warning (ext4): destination with the same identifier (name{page.ii}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.140     \tableofcontents
+l.158     \tableofcontents
                            [2
 
 
-]
-No file dissertation.toc.
-\tf@toc=\write6
-\openout6 = `dissertation.toc'.
+] (./dissertation.toc)
+\tf@toc=\write7
+\openout7 = `dissertation.toc'.
 
-[3
+ [3
 
 ] [4
 
@@ -996,551 +1175,154 @@ Chapter 1.
 
 
 ] [2]
-
-LaTeX Warning: Reference `fig:motivating_piece_convex_combination' on page 3 undefined on input line 190.
-
-<simulation_plots/motivating_piece_convex_combination.png, id=92, 1226.5825pt x 985.6825pt>
+<simulation_plots/motivating_piece_convex_combination.png, id=234, 1226.5825pt x 985.6825pt>
 File: simulation_plots/motivating_piece_convex_combination.png Graphic file (type png)
 <use simulation_plots/motivating_piece_convex_combination.png>
-Package pdftex.def Info: simulation_plots/motivating_piece_convex_combination.png  used on input line 196.
+Package pdftex.def Info: simulation_plots/motivating_piece_convex_combination.png  used on input line 214.
 (pdftex.def)             Requested size: 469.75502pt x 377.4961pt.
+
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [3]
 
-LaTeX Warning: Citation '[' on page 4 undefined on input line 213.
+LaTeX Warning: Citation '[' on page 4 undefined on input line 231.
 
-[4 <./simulation_plots/motivating_piece_convex_combination.png>] [5] [6] [7]
-
-LaTeX Warning: Reference `SVF_properties' on page 8 undefined on input line 290.
-
-[8] [9]
-
-LaTeX Warning: Reference `adjustment' on page 10 undefined on input line 357.
-
-
-LaTeX Warning: Reference `eq0' on page 10 undefined on input line 364.
-
-[10]
-
-LaTeX Warning: Reference `adjustment' on page 11 undefined on input line 397.
-
-[11]
-
-LaTeX Warning: Reference `GARCH-X' on page 12 undefined on input line 402.
-
-
-LaTeX Warning: Reference `stationarity_of_omega_i_t' on page 12 undefined on input line 411.
-
-
-LaTeX Warning: Reference `omega_consistency' on page 12 undefined on input line 422.
-
-
-LaTeX Warning: Reference `two_forecasts' on page 12 undefined on input line 430.
-
-
-LaTeX Warning: Reference `QL Loss toy example' on page 12 undefined on input line 437.
-
-[12]
-
-LaTeX Warning: Reference `omega_consistency' on page 13 undefined on input line 444.
-
-
-LaTeX Warning: Reference `sigma_consistency' on page 13 undefined on input line 444.
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/dissertation.tex:454: Undefined control sequence.
-l.454 ...$ package default of $\omega = .2$ \citep
-                                                  {RePEc:pra:mprapa:100301}....
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-[13]
-
-LaTeX Warning: Reference `loss_function' on page 14 undefined on input line 463.
-
-
-LaTeX Warning: Reference `fig:signoise' on page 14 undefined on input line 463.
-
-
-LaTeX Warning: Reference `fig:sig_volprof' on page 14 undefined on input line 463.
-
-
-LaTeX Warning: Reference `fig:intercept_noise' on page 14 undefined on input line 463.
-
-
-LaTeX Warning: Reference `fig:sim_1' on page 14 undefined on input line 465.
-
-
-LaTeX Warning: Reference `fig:sim_2' on page 14 undefined on input line 465.
-
-
-LaTeX Warning: Reference `fig:sim_3' on page 14 undefined on input line 465.
-
-
-LaTeX Warning: Reference `fig:sim_2' on page 14 undefined on input line 465.
-
-
-LaTeX Warning: Reference `fig:sim_3' on page 14 undefined on input line 465.
-
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/dissertation.tex:474: LaTeX Error: Environment subfigure undefined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.474     \begin{subfigure}
-                           {.44\linewidth}
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/dissertation.tex:474: Missing number, treated as zero.
-<to be read again> 
-                   }
-l.474     \begin{subfigure}{.44\linewidth}
-                                          
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/dissertation.tex:474: Illegal unit of measure (pt inserted).
-<to be read again> 
-                   }
-l.474     \begin{subfigure}{.44\linewidth}
-                                          
-Dimensions can be in units of em, ex, in, pt, pc,
-cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
-I'll assume that you meant to say pt, for printer's points.
-To recover gracefully from this error, it's best to
-delete the erroneous units; e.g., type `2' to delete
-two letters. (See Chapter 27 of The TeXbook.)
-
-<simulation_plots/Aug28_224311_2024_mu[delta]_sigma[u].png, id=225, 578.16pt x 433.62pt>
+[4 <./simulation_plots/motivating_piece_convex_combination.png>] [5] [6] [7] [8] [9] [10] [11] [12] [13]
+<simulation_plots/Aug28_224311_2024_mu[delta]_sigma[u].png, id=376, 578.16pt x 433.62pt>
 File: simulation_plots/Aug28_224311_2024_mu[delta]_sigma[u].png Graphic file (type png)
 <use simulation_plots/Aug28_224311_2024_mu[delta]_sigma[u].png>
-Package pdftex.def Info: simulation_plots/Aug28_224311_2024_mu[delta]_sigma[u].png  used on input line 476.
+Package pdftex.def Info: simulation_plots/Aug28_224311_2024_mu[delta]_sigma[u].png  used on input line 494.
 (pdftex.def)             Requested size: 242.82555pt x 182.11916pt.
 
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/dissertation.tex:478: LaTeX Error: \begin{figure} on input line 471 ended by \end{subfigure}.
+Overfull \hbox (36.1322pt too wide) in paragraph at lines 494--495
+ [][] 
+ []
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.478     \end{subfigure}
-                         \hspace{12mm} %
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/dissertation.tex:479: LaTeX Error: Environment subfigure undefined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.479     \begin{subfigure}
-                           {.44\linewidth}
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/dissertation.tex:479: Missing number, treated as zero.
-<to be read again> 
-                   }
-l.479     \begin{subfigure}{.44\linewidth}
-                                          
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/dissertation.tex:479: Illegal unit of measure (pt inserted).
-<to be read again> 
-                   }
-l.479     \begin{subfigure}{.44\linewidth}
-                                          
-Dimensions can be in units of em, ex, in, pt, pc,
-cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
-I'll assume that you meant to say pt, for printer's points.
-To recover gracefully from this error, it's best to
-delete the erroneous units; e.g., type `2' to delete
-two letters. (See Chapter 27 of The TeXbook.)
-
-<simulation_plots/Aug28_224317_2024_mu[delta]_sigma[u].png, id=226, 578.16pt x 433.62pt>
+<simulation_plots/Aug28_224317_2024_mu[delta]_sigma[u].png, id=377, 578.16pt x 433.62pt>
 File: simulation_plots/Aug28_224317_2024_mu[delta]_sigma[u].png Graphic file (type png)
 <use simulation_plots/Aug28_224317_2024_mu[delta]_sigma[u].png>
-Package pdftex.def Info: simulation_plots/Aug28_224317_2024_mu[delta]_sigma[u].png  used on input line 481.
+Package pdftex.def Info: simulation_plots/Aug28_224317_2024_mu[delta]_sigma[u].png  used on input line 499.
 (pdftex.def)             Requested size: 242.82555pt x 182.11916pt.
 
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/dissertation.tex:483: LaTeX Error: \begin{figure} on input line 471 ended by \end{subfigure}.
+Overfull \hbox (36.1322pt too wide) in paragraph at lines 499--500
+ [][] 
+ []
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.483     \end{subfigure}
-                         
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/dissertation.tex:485: LaTeX Error: Environment subfigure undefined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.485     \begin{subfigure}
-                           {.44\linewidth}
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/dissertation.tex:485: Missing number, treated as zero.
-<to be read again> 
-                   }
-l.485     \begin{subfigure}{.44\linewidth}
-                                          
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/dissertation.tex:485: Illegal unit of measure (pt inserted).
-<to be read again> 
-                   }
-l.485     \begin{subfigure}{.44\linewidth}
-                                          
-Dimensions can be in units of em, ex, in, pt, pc,
-cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
-I'll assume that you meant to say pt, for printer's points.
-To recover gracefully from this error, it's best to
-delete the erroneous units; e.g., type `2' to delete
-two letters. (See Chapter 27 of The TeXbook.)
-
-<simulation_plots/Aug28_224322_2024_mu[delta]_sigma[u].png, id=227, 578.16pt x 433.62pt>
+<simulation_plots/Aug28_224322_2024_mu[delta]_sigma[u].png, id=378, 578.16pt x 433.62pt>
 File: simulation_plots/Aug28_224322_2024_mu[delta]_sigma[u].png Graphic file (type png)
 <use simulation_plots/Aug28_224322_2024_mu[delta]_sigma[u].png>
-Package pdftex.def Info: simulation_plots/Aug28_224322_2024_mu[delta]_sigma[u].png  used on input line 487.
+Package pdftex.def Info: simulation_plots/Aug28_224322_2024_mu[delta]_sigma[u].png  used on input line 505.
 (pdftex.def)             Requested size: 242.82555pt x 182.11916pt.
 
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/dissertation.tex:489: LaTeX Error: \begin{figure} on input line 471 ended by \end{subfigure}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.489     \end{subfigure}
-                         
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-LaTeX Warning: Reference `fig:sim_1' on page 14 undefined on input line 491.
-
-
-LaTeX Warning: Reference `fig:sim_2' on page 14 undefined on input line 491.
-
-
-LaTeX Warning: Reference `fig:sim_3' on page 14 undefined on input line 491.
-
-
-LaTeX Warning: Reference `fig:sim_1' on page 14 undefined on input line 491.
-
-
-LaTeX Warning: Reference `fig:sim_2' on page 14 undefined on input line 491.
-
-
-LaTeX Warning: Reference `fig:sim_3' on page 14 undefined on input line 491.
-
-
-LaTeX Warning: Float too large for page by 43.64967pt on input line 493.
+Overfull \hbox (36.1322pt too wide) in paragraph at lines 505--506
+ [][] 
+ []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/dissertation.tex:498: LaTeX Error: Environment subfigure undefined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.498   \begin{subfigure}
-                         {.44\linewidth}
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/dissertation.tex:498: Missing number, treated as zero.
-<to be read again> 
-                   }
-l.498   \begin{subfigure}{.44\linewidth}
-                                        
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/dissertation.tex:498: Illegal unit of measure (pt inserted).
-<to be read again> 
-                   }
-l.498   \begin{subfigure}{.44\linewidth}
-                                        
-Dimensions can be in units of em, ex, in, pt, pc,
-cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
-I'll assume that you meant to say pt, for printer's points.
-To recover gracefully from this error, it's best to
-delete the erroneous units; e.g., type `2' to delete
-two letters. (See Chapter 27 of The TeXbook.)
-
-<simulation_plots/Aug28_224330_2024_mu[delta]_mu[v].png, id=228, 578.16pt x 433.62pt>
+<simulation_plots/Aug28_224330_2024_mu[delta]_mu[v].png, id=385, 578.16pt x 433.62pt>
 File: simulation_plots/Aug28_224330_2024_mu[delta]_mu[v].png Graphic file (type png)
 <use simulation_plots/Aug28_224330_2024_mu[delta]_mu[v].png>
-Package pdftex.def Info: simulation_plots/Aug28_224330_2024_mu[delta]_mu[v].png  used on input line 500.
+Package pdftex.def Info: simulation_plots/Aug28_224330_2024_mu[delta]_mu[v].png  used on input line 518.
 (pdftex.def)             Requested size: 242.82555pt x 182.11916pt.
 
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/dissertation.tex:502: LaTeX Error: \begin{figure} on input line 495 ended by \end{subfigure}.
+Overfull \hbox (36.1322pt too wide) in paragraph at lines 518--519
+ [][] 
+ []
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.502   \end{subfigure}
-                       \hspace{12mm} %
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/dissertation.tex:503: LaTeX Error: Environment subfigure undefined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.503   \begin{subfigure}
-                         {.44\linewidth}
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/dissertation.tex:503: Missing number, treated as zero.
-<to be read again> 
-                   }
-l.503   \begin{subfigure}{.44\linewidth}
-                                        
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/dissertation.tex:503: Illegal unit of measure (pt inserted).
-<to be read again> 
-                   }
-l.503   \begin{subfigure}{.44\linewidth}
-                                        
-Dimensions can be in units of em, ex, in, pt, pc,
-cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
-I'll assume that you meant to say pt, for printer's points.
-To recover gracefully from this error, it's best to
-delete the erroneous units; e.g., type `2' to delete
-two letters. (See Chapter 27 of The TeXbook.)
-
-<simulation_plots/Aug28_224337_2024_mu[delta]_mu[v].png, id=229, 578.16pt x 433.62pt>
+<simulation_plots/Aug28_224337_2024_mu[delta]_mu[v].png, id=386, 578.16pt x 433.62pt>
 File: simulation_plots/Aug28_224337_2024_mu[delta]_mu[v].png Graphic file (type png)
 <use simulation_plots/Aug28_224337_2024_mu[delta]_mu[v].png>
-Package pdftex.def Info: simulation_plots/Aug28_224337_2024_mu[delta]_mu[v].png  used on input line 505.
+Package pdftex.def Info: simulation_plots/Aug28_224337_2024_mu[delta]_mu[v].png  used on input line 523.
 (pdftex.def)             Requested size: 242.82555pt x 182.11916pt.
 
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/dissertation.tex:507: LaTeX Error: \begin{figure} on input line 495 ended by \end{subfigure}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.507   \end{subfigure}
-                       
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
+Overfull \hbox (36.1322pt too wide) in paragraph at lines 523--524
+ [][] 
+ []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/dissertation.tex:516: LaTeX Error: Environment subfigure undefined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.516 \begin{subfigure}
-                       {.44\linewidth}
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/dissertation.tex:516: Missing number, treated as zero.
-<to be read again> 
-                   }
-l.516 \begin{subfigure}{.44\linewidth}
-                                      
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/dissertation.tex:516: Illegal unit of measure (pt inserted).
-<to be read again> 
-                   }
-l.516 \begin{subfigure}{.44\linewidth}
-                                      
-Dimensions can be in units of em, ex, in, pt, pc,
-cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
-I'll assume that you meant to say pt, for printer's points.
-To recover gracefully from this error, it's best to
-delete the erroneous units; e.g., type `2' to delete
-two letters. (See Chapter 27 of The TeXbook.)
-
-<simulation_plots/Aug28_224451_2024_mu[omega^*]_sigma[u].png, id=230, 578.16pt x 433.62pt>
+<simulation_plots/Aug28_224451_2024_mu[omega^*]_sigma[u].png, id=387, 578.16pt x 433.62pt>
 File: simulation_plots/Aug28_224451_2024_mu[omega^*]_sigma[u].png Graphic file (type png)
 <use simulation_plots/Aug28_224451_2024_mu[omega^*]_sigma[u].png>
-Package pdftex.def Info: simulation_plots/Aug28_224451_2024_mu[omega^*]_sigma[u].png  used on input line 518.
+Package pdftex.def Info: simulation_plots/Aug28_224451_2024_mu[omega^*]_sigma[u].png  used on input line 536.
 (pdftex.def)             Requested size: 242.82555pt x 182.11916pt.
 
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/dissertation.tex:520: LaTeX Error: \begin{figure} on input line 513 ended by \end{subfigure}.
+Overfull \hbox (36.1322pt too wide) in paragraph at lines 536--537
+ [][] 
+ []
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.520 \end{subfigure}
-                     \hspace{12mm} %
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/dissertation.tex:521: LaTeX Error: Environment subfigure undefined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.521 \begin{subfigure}
-                       {.44\linewidth}
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/dissertation.tex:521: Missing number, treated as zero.
-<to be read again> 
-                   }
-l.521 \begin{subfigure}{.44\linewidth}
-                                      
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/dissertation.tex:521: Illegal unit of measure (pt inserted).
-<to be read again> 
-                   }
-l.521 \begin{subfigure}{.44\linewidth}
-                                      
-Dimensions can be in units of em, ex, in, pt, pc,
-cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
-I'll assume that you meant to say pt, for printer's points.
-To recover gracefully from this error, it's best to
-delete the erroneous units; e.g., type `2' to delete
-two letters. (See Chapter 27 of The TeXbook.)
-
-<simulation_plots/Aug28_224455_2024_mu[omega^*]_sigma[u].png, id=231, 578.16pt x 433.62pt>
+<simulation_plots/Aug28_224455_2024_mu[omega^*]_sigma[u].png, id=388, 578.16pt x 433.62pt>
 File: simulation_plots/Aug28_224455_2024_mu[omega^*]_sigma[u].png Graphic file (type png)
 <use simulation_plots/Aug28_224455_2024_mu[omega^*]_sigma[u].png>
-Package pdftex.def Info: simulation_plots/Aug28_224455_2024_mu[omega^*]_sigma[u].png  used on input line 523.
+Package pdftex.def Info: simulation_plots/Aug28_224455_2024_mu[omega^*]_sigma[u].png  used on input line 541.
 (pdftex.def)             Requested size: 242.82555pt x 182.11916pt.
 
-/Users/davidlundquist/Desktop/PhD/synthetic_vol_forecasting/dissertation.tex:525: LaTeX Error: \begin{figure} on input line 513 ended by \end{subfigure}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.525 \end{subfigure}
-                     
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-LaTeX Warning: Reference `fig:sim_7' on page 14 undefined on input line 527.
-
-
-LaTeX Warning: Reference `fig:sim_7' on page 14 undefined on input line 527.
+Overfull \hbox (36.1322pt too wide) in paragraph at lines 541--542
+ [][] 
+ []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[14] [15 <./simulation_plots/Aug28_224311_2024_mu[delta]_sigma[u].png> <./simulation_plots/Aug28_224317_2024_mu[delta]_sigma[u].png> <./simulation_plots/Aug28_224322_2024_mu[delta]_sigma[u].png>] [16 <./simulation_plots/Aug28_224330_2024_mu[delta]_mu[v].png> <./simulation_plots/Aug28_224337_2024_mu[delta]_mu[v].png>] [17 <./simulation_plots/Aug28_224451_2024_mu[omega^*]_sigma[u].png> <./simulation_plots/Aug28_224455_2024_mu[omega^*]_sigma[u].png>]
-Chapter 2.
-[18
+[14] [15 <./simulation_plots/Aug28_224311_2024_mu[delta]_sigma[u].png> <./simulation_plots/Aug28_224317_2024_mu[delta]_sigma[u].png> <./simulation_plots/Aug28_224322_2024_mu[delta]_sigma[u].png>] [16 <./simulation_plots/Aug28_224330_2024_mu[delta]_mu[v].png> <./simulation_plots/Aug28_224337_2024_mu[delta]_mu[v].png> <./simulation_plots/Aug28_224451_2024_mu[omega^*]_sigma[u].png> <./simulation_plots/Aug28_224455_2024_mu[omega^*]_sigma[u].png>]
+
+LaTeX Warning: Citation 'The_Guardian' on page 17 undefined on input line 569.
 
 
-]
+LaTeX Warning: Citation 'Morales_Valentini_Penny_2016' on page 17 undefined on input line 569.
+
+[17
+
+] [18]
+<real_data_output_plots/TueSep241059512024_IYG_None_None.png, id=452, 803.0pt x 602.25pt>
+File: real_data_output_plots/TueSep241059512024_IYG_None_None.png Graphic file (type png)
+<use real_data_output_plots/TueSep241059512024_IYG_None_None.png>
+Package pdftex.def Info: real_data_output_plots/TueSep241059512024_IYG_None_None.png  used on input line 584.
+(pdftex.def)             Requested size: 481.80373pt x 361.35278pt.
+
+Overfull \hbox (12.0487pt too wide) in paragraph at lines 584--585
+ [][] 
+ []
+
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `cmtt' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- [19
+[19 <./real_data_output_plots/TueSep241059512024_IYG_None_None.png>] [20] [21]
+Chapter 2.
+[22
+
+] [23
 
 
-] [20] [21] (./dissertation.aux)
+] [24] [25] (./dissertation.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
-
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-
-Package rerunfilecheck Warning: File `dissertation.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `dissertation.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  FBFB1F07C449672A08B33D0E60B2CCBF;4008.
-
-Package biblatex Warning: Please (re)run Biber on the file:
-(biblatex)                dissertation
-(biblatex)                and rerun LaTeX afterwards.
-
+Package rerunfilecheck Info: File `dissertation.out' has not changed.
+(rerunfilecheck)             Checksum: F1A4A12AC0CA304BFE8E01069E7BD132;4526.
 Package logreq Info: Writing requests to 'dissertation.run.xml'.
 \openout1 = `dissertation.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 34486 strings out of 474116
- 657062 string characters out of 5743682
- 1951187 words of memory out of 5000000
- 56060 multiletter control sequences out of 15000+600000
- 576785 words of font info for 181 fonts, out of 8000000 for 9000
+ 39014 strings out of 474116
+ 740205 string characters out of 5743682
+ 1957187 words of memory out of 5000000
+ 60449 multiletter control sequences out of 15000+600000
+ 584412 words of font info for 216 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 102i,17n,107p,2175b,1884s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on dissertation.pdf (26 pages, 1540216 bytes).
+ 102i,17n,107p,3868b,1980s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
+Output written on dissertation.pdf (30 pages, 1686687 bytes).
 PDF statistics:
- 397 PDF objects out of 1000 (max. 8388607)
- 316 compressed objects within 4 object streams
- 114 named destinations out of 1000 (max. 500000)
- 47669 words of extra memory for PDF output out of 51595 (max. 10000000)
+ 650 PDF objects out of 1000 (max. 8388607)
+ 538 compressed objects within 6 object streams
+ 132 named destinations out of 1000 (max. 500000)
+ 56562 words of extra memory for PDF output out of 61914 (max. 10000000)
 
