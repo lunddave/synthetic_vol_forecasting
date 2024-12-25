@@ -1,5 +1,5 @@
 \babel@toc {english}{}\relax 
-\contentsline {chapter}{List of Abbreviations}{iv}{chapter*.3}%
+\contentsline {chapter}{List of Abbreviations}{v}{chapter*.3}%
 \contentsline {chapter}{\numberline {1}Post-Shock Volatility Forecasting Using Similarity-based Shock Aggregation}{1}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Introduction}{1}{section.1.1}%
 \contentsline {section}{\numberline {1.2}Setting}{3}{section.1.2}%
@@ -30,7 +30,34 @@
 \contentsline {subsection}{\numberline {1.8.3}Sensitivity to Donors Chosen}{22}{subsection.1.8.3}%
 \contentsline {subsection}{\numberline {1.8.4}Can we combine forecasts to outperform the individual forecasts?}{23}{subsection.1.8.4}%
 \contentsline {subsection}{\numberline {1.8.5}Formal Results}{23}{subsection.1.8.5}%
-\contentsline {section}{\numberline {1.9}Introduction}{24}{section.1.9}%
-\contentsline {chapter}{\numberline {2}Conclusion}{27}{chapter.2}%
-\contentsline {chapter}{References}{28}{chapter*.20}%
+\contentsline {chapter}{\numberline {2}Forecast Adjustment Under Shocks: A Unification}{26}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Introduction}{26}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Forecasting Amid Shocks}{28}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}The Role of Outside Information}{29}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}The Meaning and Use of Similarity}{30}{subsection.2.2.2}%
+\contentsline {section}{\numberline {2.3}Setting}{31}{section.2.3}%
+\contentsline {section}{\numberline {2.4}SPC Forecasting Methodology and Correction Functions}{33}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}Diagnostics for Similarity-Based Parameter Correction}{34}{subsection.2.4.1}%
+\contentsline {section}{\numberline {2.5}Model Adjustment Using Similarity-Based Parameter Correction: A Global Overview}{34}{section.2.5}%
+\contentsline {subsection}{\numberline {2.5.1}The Method of Multiple Shocks}{35}{subsection.2.5.1}%
+\contentsline {section}{\numberline {2.6}Formal Properties and Model-Specific Considerations}{36}{section.2.6}%
+\contentsline {subsection}{\numberline {2.6.1}ARIMA}{36}{subsection.2.6.1}%
+\contentsline {subsection}{\numberline {2.6.2}GARCH}{39}{subsection.2.6.2}%
+\contentsline {subsection}{\numberline {2.6.3}HAR}{39}{subsection.2.6.3}%
+\contentsline {subsubsection}{\numberline {2.6.3.1}Real Data Application of Shock-Adjusted HAR Forecasting}{41}{subsubsection.2.6.3.1}%
+\contentsline {subsection}{\numberline {2.6.4}``Exponential Breaks"}{42}{subsection.2.6.4}%
+\contentsline {subsubsection}{\numberline {2.6.4.1}Simulation Study}{43}{subsubsection.2.6.4.1}%
+\contentsline {section}{\numberline {2.7}Discussion}{48}{section.2.7}%
+\contentsline {subsection}{\numberline {2.7.1}Asking questions about the covariate vector and conditional shock distribution}{48}{subsection.2.7.1}%
+\contentsline {subsection}{\numberline {2.7.2}Shock propagation and estimation accuracy}{48}{subsection.2.7.2}%
+\contentsline {subsection}{\numberline {2.7.3}Aggregating residuals as opposed to aggregating fixed effect estimates?}{48}{subsection.2.7.3}%
+\contentsline {section}{\numberline {2.8}Extensions}{49}{section.2.8}%
+\contentsline {subsection}{\numberline {2.8.1}Forecast Combination}{49}{subsection.2.8.1}%
+\contentsline {subsection}{\numberline {2.8.2}Limitations}{49}{subsection.2.8.2}%
+\contentsline {subsubsection}{\numberline {2.8.2.1}Relaxing the shared family assumption}{49}{subsubsection.2.8.2.1}%
+\contentsline {subsubsection}{\numberline {2.8.2.2}The assumption of a shared family can be relaxed in certain circumstances. For example, if a certain donor is not like the time series under study with respect to the covariates, then the lack of a shared family will not matter much.}{50}{subsubsection.2.8.2.2}%
+\contentsline {section}{\numberline {2.9}Supplement}{50}{section.2.9}%
+\contentsline {subsection}{\numberline {2.9.1}Formal Results}{50}{subsection.2.9.1}%
+\contentsline {chapter}{\numberline {3}Conclusion}{52}{chapter.3}%
+\contentsline {chapter}{References}{53}{chapter*.43}%
 \contentsfinish 
