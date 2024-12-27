@@ -47,6 +47,7 @@
 \newcommand{\y}{\textbf{y}}
 \newcommand{\w}{\textbf{w}}
 \newcommand{\x}{\textbf{v}}
+\newcommand{\xx}{\textbf{x}}
 \newcommand{\dbf}{\textbf{d}}
 \newcommand{\X}{\textbf{X}}
 \newcommand{\Y}{\textbf{Y}}
@@ -177,6 +178,19 @@ Proof of Lemma {#1}}
 % \end{symbollist}
 
 \mainmatter
+
+\chapter{Introduction}
+
+We introduce some core concepts, techniques, and motivating questions that link together the research projects of this dissertation.
+
+\section{What are we trying to do?}
+
+\section{What is distance-based weighting?}
+
+\section{Permutation Methods}
+
+\section{Multiverse}
+
 
 \chapter{Post-Shock Volatility Forecasting Using Similarity-based Shock Aggregation}
 
@@ -1126,12 +1140,12 @@ Now, since each $\hat\omega^{*}_{i}$ converges in probability to $\omega^{*}_{i}
     \begin{align}
       \mc{M}_1 \colon \begin{array}{l}
         y_{i,t} = F(\mathcal{F}_{i,t-1}) + \alpha_{i,t} + \epsilon_{i,t}\\[.2cm]\label{core_specification}
-        \alpha_{i,t} = \x^{T}_{i,t}\lambda_{i,t} \\[.2cm]
-       \x_{i,t}^{T} = (1,x^{1}_{i,t},...,x^{p}_{i,t})\\[.2cm] 
+        \alpha_{i,t} = \xx^{T}_{i,t}\lambda_{i,t} \\[.2cm]
+       \xx_{i,t}^{T} = (1,x^{1}_{i,t},...,x^{p}_{i,t})\\[.2cm] 
        \lambda_{i,t}^{T} = (u_{i,t},\lambda^{1}_{t},...,\lambda^{p}_{t}),\\[.2cm]
       \end{array}
       \end{align}
-  with time-varying and observable covariate vector $\x_{i,t}^{T}$, time-varying and unknown parameter vector
+  with time-varying and observable covariate vector $\xx_{i,t}^{T}$, time-varying and unknown parameter vector
   \begin{align*}
   \lambda_{i,t} &\sim \mc{F}_{\lambda}\text{ with }  \E_{\mathcal{F}_{\lambda}}(\lambda) = \mu_{\lambda_{t}}, \mrm{Var}_{\mc{F}_{\lambda}}(\lambda) = \Sigma_{\lambda_{t}},\\
   \end{align*}
@@ -1141,14 +1155,14 @@ Now, since each $\hat\omega^{*}_{i}$ converges in probability to $\omega^{*}_{i}
       %u_{i,t} & \simiid  \mc{F}_{u} \text{ with}  \; \mrm{Var}_{\mc{F}_{u}}(u) = \sigma^2_{u},\\
       % &\epsilon_{i,t} \indep u_{i,t},
       \end{align*}
-  where $F$ maps objects from the past into future objects of $y_{i,t}$, and $\epsilon_{i,t}$ uncorrelated across time and donors.  Note that the dot product $\alpha_{i,t} = \x^{T}_{i,t}\lambda_{i,t}$ includes the term $u_{i,t}$ that is not shared among donors.  It encodes the known possibility that the shocks will vary across donors both in ways that can predicted based on pre-shock covariates as well as in ways that cannot be predicted.  That the parameter vector is time-varying allows us to capture that most time points are without news shocks (in which case $\alpha_{i,t}$ is of neglible effect), but conditional upon information arriving between $T_{1}^{*}$ and $T_{1}^{*}+1$, we may know with near certainty that $\lambda_{1,T_{1}^{*}+h}$ will be nonzero in norm for some $h>0$.  Note that the specification (\ref{core_specification}) above is sufficiently capacious as to include data-generating processes of the form 
+  where $F$ maps objects from the past into future objects of $y_{i,t}$, and $\epsilon_{i,t}$ uncorrelated across time and donors.  Note that the dot product $\alpha_{i,t} = \xx^{T}_{i,t}\lambda_{i,t}$ includes the term $u_{i,t}$ that is not shared among donors.  It encodes the known possibility that the shocks will vary across donors both in ways that can predicted based on pre-shock covariates as well as in ways that cannot be predicted.  That the parameter vector is time-varying allows us to capture that most time points are without news shocks (in which case $\alpha_{i,t}$ is of neglible effect), but conditional upon information arriving between $T_{1}^{*}$ and $T_{1}^{*}+1$, we may know with near certainty that $\lambda_{1,T_{1}^{*}+h}$ will be nonzero in norm for some $h>0$.  Note that the specification (\ref{core_specification}) above is sufficiently capacious as to include data-generating processes of the form 
   
   \begin{align*} 
     y_{i,t} = \log{Y_{i,t}} = \log{a_{i,t}y_{i,t-k}e^{\alpha_{i,t}+\epsilon_{i,t}}} = \log{a_{i,t}} + \log{y_{i, t-k}} + \alpha_{i,t} + \epsilon_{i,t}
   \end{align*}
   with $k\geq1$ and $a_{i,t}, y_{i,t}$ supported on $\mathbb{R}^{+}$.  
   
-  The term $\x^{T}_{i,t}\lambda_{i,t}$ will be deemed the $\textit{correction term}$ for donor $i$ at time $t$, and the function
+  The term $\xx^{T}_{i,t}\lambda_{i,t}$ will be deemed the $\textit{correction term}$ for donor $i$ at time $t$, and the function
   
   \begin{align*}
     \xi \colon \mathcal{F}_{2,T^{*}_{2}+h} \times \ldots \times \mathcal{F}_{n+1, T^{*}_{n+1}+h} &\to \mathcal{F}_{1,T^{*}_{1}+h}\\
@@ -1211,7 +1225,7 @@ Now, since each $\hat\omega^{*}_{i}$ converges in probability to $\omega^{*}_{i}
   
   \textbf{Method 1}: For each source of the $k$ shocks, assemble $n_{j}$ donors and $p_{j}$ covariates, with $j=2,...,n_{j}+1$, and compute weights $\{\pi_{i,j}\}^{n_{j}+1}_{i=2}$.  With these $k$ weight sets, a set of $k$ aggregated shock estimators can be constructed and averaged (or aggregated in some other way).  Ultimately, each weight set results in a shock adjustment terms, and the sum of those estimated terms becomes the final adjustment term, as is done in \cite[][]{lin2021minimizing}.  One potential downside of this approach is that is has no in-built way to control the size of the final adjustment term, which is somewhat in tension with original idea of taking convex combinations of estimated shocks, and therefore it can be seen as a relaxation of the weight constraint.
   
-  \textbf{Method 2}: Each of the $k$ shocks can be represented using an application of distance-based weighting, where the vector $\delta$ and the vector $\x_{i,T^{*}_{i}+1}$ can encode a partition of shocks by using zeros in appropriate entries.  Under this method, the sum of the weights remains 1, the estimation space for the weights is increased to $kp$.  Unlike \textbf{Method 1}, this approach remains committed to a weight constraint. An obvious concern is that a space of dimension $kp$ may be too large for weight estimation.
+  \textbf{Method 2}: Each of the $k$ shocks can be represented using an application of distance-based weighting, where the vector $\delta$ and the vector $\xx_{i,T^{*}_{i}+1}$ can encode a partition of shocks by using zeros in appropriate entries.  Under this method, the sum of the weights remains 1, the estimation space for the weights is increased to $kp$.  Unlike \textbf{Method 1}, this approach remains committed to a weight constraint. An obvious concern is that a space of dimension $kp$ may be too large for weight estimation.
   
   In practice, the best approach may depend on $k,p$ as well as the task at hand.  Additionally, an assumption of independence or at least uncorrelatedness among the $k$ donor pools may helpful here.  The foregoing, we hope, provides a basis upon which future work can build.
   
@@ -1317,7 +1331,7 @@ Now, since each $\hat\omega^{*}_{i}$ converges in probability to $\omega^{*}_{i}
   In this way, \cite[][]{lundquist2024volatility} bridged a gap between the descriptive and predictive roles of GARCH.  Fixed effects (correction terms) are estimated in the donor pool, and those fixed effects are aggregated via corrected function.  A forecast adjustment is then made in the time series under study.  Consider how GARCH fits into our Specification (\ref{core_specification}).  First consider, for an arbitrary multivariate time series indexed by $i$, the volatility equation of a GARCH-X model:
   
   \begin{align}
-    &\sigma_{i,t}^{2} = \omega_{i} + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \x_{i,t} \text{ }.\label{GARCH_intro}
+    &\sigma_{i,t}^{2} = \omega_{i} + \sum^{m_{i}}_{k=1}\alpha_{i,k}a^{2}_{i,t-k} + \sum_{j=1}^{s_{i}}\beta_{i,j}\sigma_{i,t-j}^{2} + \gamma_{i}^{T} \xx_{i,t} \text{ }.\label{GARCH_intro}
     \end{align}
   
   which corresponds to our Specification (\ref{core_specification})
@@ -1357,8 +1371,8 @@ Now, since each $\hat\omega^{*}_{i}$ converges in probability to $\omega^{*}_{i}
   \begin{align}
     \mc{M}_1 \colon \begin{array}{l}
       RV_{i,t} = \beta_{0} + \beta_{\text{1-day}}RV_{i,t-1} + \beta_{\text{5-day}}\overline{\{RV_{i,t-1},...,RV_{i,t-5}\}}+\beta_{\text{22-day}}\overline{\{RV_{i,t-1},...,RV_{i,t-22}\}} + \alpha_{i,t} + \epsilon_{t}\\[.2cm]
-      \alpha_{i,t} = \x^{T}_{i,t}\lambda_{i,t} \\[.2cm]
-      \x_{i,t}^{T} = (1,x^{1}_{i,t},...,x^{p}_{i,t})\\[.2cm] 
+      \alpha_{i,t} = \xx^{T}_{i,t}\lambda_{i,t} \\[.2cm]
+      \xx_{i,t}^{T} = (1,x^{1}_{i,t},...,x^{p}_{i,t})\\[.2cm] 
       \lambda_{i,t}^{T} = (u_{i,t},\lambda^{1}_{t},...,\lambda^{p}_{t}),\\[.2cm]
     \end{array}
     \end{align}
@@ -1623,9 +1637,9 @@ Now, since each $\hat\omega^{*}_{i}$ converges in probability to $\omega^{*}_{i}
     \begin{proof-of-proposition}[\ref{ARIMA_aggregated_alpha}]
       Here we suppress time-indexation for each of exposition.
       \begin{align}
-        \x_{1} &= \sum^{n+1}_{i=2}\weight_{i}\x_{i} \tag{by an assumption of the proposition}\\
-       \Longrightarrow \lambda^{T}\x_{1} &= \lambda^{T}\sum^{n+1}_{i=2}\weight_{i}\x_{i}  = \sum^{n+1}_{i=2}\weight_{i}\lambda^{T}\x_{i}\tag{by left-multiplication by $\lambda^{T}$}\\
-        \Longrightarrow\lambda^{T}\x_{1} &=\sum^{n+1}_{i=2}\pi_{i}\alpha_{i}\tag{by substitution and definition of $\alpha_{i}$}\\
+        \xx_{1} &= \sum^{n+1}_{i=2}\weight_{i}\xx_{i} \tag{by an assumption of the proposition}\\
+       \Longrightarrow \lambda^{T}\xx_{1} &= \lambda^{T}\sum^{n+1}_{i=2}\weight_{i}\xx_{i}  = \sum^{n+1}_{i=2}\weight_{i}\lambda^{T}\xx_{i}\tag{by left-multiplication by $\lambda^{T}$}\\
+        \Longrightarrow\lambda^{T}\xx_{1} &=\sum^{n+1}_{i=2}\pi_{i}\alpha_{i}\tag{by substitution and definition of $\alpha_{i}$}\\
         \Longrightarrow\alpha_{1} &=\sum^{n+1}_{i=2}\pi_{i}\alpha_{i} \tag{by the definition of $\alpha_{1}$}
         \end{align} 
         If, on the right-hand side, we replace the $\alpha_{i}$ with $\hat\alpha_{i}$, then it will converge in probability to the expression on the right-hand side, by a simple application of Slutsky.  Hence, $\hat\alpha_{1}$ is a consistent estimator.
