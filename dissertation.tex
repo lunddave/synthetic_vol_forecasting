@@ -1580,6 +1580,8 @@ Now, since each $\hat\omega^{*}_{i}$ converges in probability to $\omega^{*}_{i}
     \clearpage 
   
   \section{Discussion}
+
+  We now take stock of several of achievements, challenges, and remaining questions of this manuscript.
   
   The forecast horizon --- does it matter?  If so, how so?  \cite[][]{lin2021minimizing} has a one-period horizon.  \cite[][p. 203]{clements1998forecasting} discuss how long to keep the forecast adjustment in place.  For a corrected ``slope parameter'', the effect of $h$ is not so clear.\\
   
@@ -1629,9 +1631,7 @@ Now, since each $\hat\omega^{*}_{i}$ converges in probability to $\omega^{*}_{i}
   Consider the leave-one-out method used on pairs of donors and covariates in \cite[][]{lundquist2024volatility}.  By averaging over $(n+1)\cdot (p+1)$ predictions, we average over $(n+1) \cdot (p + 1)$ convex combinations (where, when a donor is omitted, its weight can be imputed as zero).
   
   \subsection{Limitations}\label{Limitations}
-  
-  \subsubsection{Relaxing the shared family assumption} The assumption of a shared family can be relaxed in certain circumstances.  For example, if a certain donor is not like the time series under study with respect to the covariates, then the lack of a shared family will not matter much.
-  
+    
   \subsubsection{The assumption of a shared family can be relaxed in certain circumstances.  For example, if a certain donor is not like the time series under study with respect to the covariates, then the lack of a shared family will not matter much.}
   
   \section{Supplement}
@@ -1639,9 +1639,8 @@ Now, since each $\hat\omega^{*}_{i}$ converges in probability to $\omega^{*}_{i}
   \subsection{Formal Results}
   
   \begin{proof-of-proposition}[\ref{ARIMA_param_consistency}]
-    We claim
   
-    The result for each $\hat\alpha$ follows from the consistency proof of the MLE in AR-X models.
+    The result for each $\hat\alpha_{i}$ follows from the consistency proof of the MLE in AR-X models.
     
     \end{proof-of-proposition}
   
