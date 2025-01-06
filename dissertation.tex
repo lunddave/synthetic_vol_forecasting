@@ -186,11 +186,11 @@ Proof of Lemma {#1}}
 
 \chapter{Introduction}
 
-We introduce some core concepts, techniques, and motivating questions that link together the research projects of this dissertation.
+We introduce some core concepts, techniques, and motivating questions that link together the research projects of this dissertation.  This introduction will use simple language, both in comparison to the core of the dissertation as well as in comparison to the scholarly cannon, as doing so might allow newcomers to grasp the content more swiftly.  
 
 \section{What are we trying to do?}
 
-Build off Lin and Eck \cite[][]{lin2021minimizing}
+The unequivocal jumping-off point for this work is \cite[][]{lin2021minimizing}, in which the authors introduce a research program for forecasting univariate time series under shocks.  It was later discovered, as is wont to happen in academic research, that the task of forecasting under shocks could and should be understood under a grander framework involving time series model choice, information in time series forecasting, information sources, stability of data-generating processes, and shock analysis.
 
 \section{What is distance-based weighting?}
 
@@ -1614,7 +1614,12 @@ Now, since each $\hat\omega^{*}_{i}$ converges in probability to $\omega^{*}_{i}
   \section{Extensions}\label{Extensions}
   
   \begin{itemize}
-    \item Forecast for series besides the mean or conditional mean \textcolor{red}{If you have a family of models estimated used a Gaussian loss function, and the post-shock residuals are not conditionally Gaussian (e.g. they could be conditionally Cauchy), then why even start with the default forecasting function?  Why not throw it out entirely?  If only the distribution of the innovations changes, then would that even matter for a forecast that is purely concerned with the conditional mean?} Yet another potential motivation springs from the way we evaluate model performance.  In \cite[][]{clements2005evaluating}, the authors discuss six dichotomies regarding forecast evaluation as a way of advising caution about simplistic notions of performance evaluation.  These ideas matter for the current manuscript for at least one reason.  We must entertain the possibility that breaks in the DGP will invalidate the standard forecast evaluation framework under which we had been working.  If, for example, we have a family of models estimated used a Gaussian loss function, and the post-shock residuals are not conditionally Gaussian (e.g. they could be conditionally Cauchy), then why even start with the default forecasting function?  Why not throw it out entirely?  If only the distribution of the innovations changes, then would that even matter for a forecast that is purely concerned with the conditional mean?
+    \item Forecast for series besides the mean or conditional mean 
+    
+    \begin{itemize}
+    
+    \item Yet another potential motivation springs from the way we evaluate model performance.  In \cite[][]{clements2005evaluating}, the authors discuss six dichotomies regarding forecast evaluation as a way of advising caution about simplistic notions of performance evaluation.  These ideas matter for the current manuscript for at least one reason.  We must entertain the possibility that breaks in the DGP will invalidate the standard forecast evaluation framework under which we had been working.  If, for example, we have a family of models estimated used a Gaussian loss function, and the post-shock residuals are not conditionally Gaussian (e.g. they could be conditionally Cauchy), then why even start with the default forecasting function?  Why not throw it out entirely?  If only the distribution of the innovations changes, then would that even matter for a forecast that is purely concerned with the conditional mean?
+    \end{itemize}
     \item Bias-variance decomposition for ARIMA, as introduced in (\ref{ARIMA})
     \item Shrinkage estimation of autoregressive structure on all donors, then use our method
     \item TAR
