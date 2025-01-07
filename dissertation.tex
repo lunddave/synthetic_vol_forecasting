@@ -144,9 +144,7 @@ Proof of Lemma {#1}}
 \begin{abstract}
     This work examines various forecasting challenges under conditionals that are not ideal.  In the first chapter, we develop a procedure for forecasting the volatility of a time series immediately following a news shock by exploiting  series that have experienced similar shocks.  By positing news shocks to be affine functions of exogenous risk proxies, we are able to express particular news shocks as random realizations of a common data-generating process.  In our model, random effects induce excess volatility.  Those excess volatilities are then estimated as fixed effects and aggregated to adjust the GARCH volatility forecast of the time series under study by an additive term.  The adjusted and unadjusted forecasts are evaluated using the unobservable but easily-estimated realized volatility (RV).  Asymptotic results are established for our excess volatility estimators as well as our adjustment estimator.  Numerical simulations are provided to illustrate conditions and hyperparameters under which our method thrives. A detailed real data application for forecasting volatility after the outcome of the 2016 United States presidential election demonstrates the applicability of the method.
 
-    The second chapter dramatically abstracts from the comfort of a particular model and instead probes situations in which one's default times series forecasting model must be adjusted, augmented, or abandoned completely, generating second-order questions about algorithmic design and the role of human judgment, as well as the information leveraged for forecast adjustment.  This work further systematizes and unifies the rich landscape of model adjustment and model correction methods, with a special focus on forecast adjustment under the presence of news shocks, when unanticipated events may give an observer reason to doubt the credibility of the default forecasting function.  We demonstrate the usefulness of similarity-based methods in forecasting and present a general framework dubbed Similarity-based Parameter Correction (SPC).  We highlight several specific time series models that can benefit from SPC, along with formal results for some of those special cases.
-    
-    We close with a thorough discussion of the state of forecasting under non-ideal conditions and the directions in which it may find the most success.
+    The second chapter dramatically abstracts from the comfort of a particular model and instead probes situations in which one's default times series forecasting model must be adjusted, augmented, or abandoned completely, generating second-order questions about algorithmic design and the role of human judgment, as well as the information leveraged for forecast adjustment.  This work further systematizes and unifies the rich landscape of model adjustment and model correction methods, with a special focus on forecast adjustment under the presence of news shocks, when unanticipated events may give an observer reason to doubt the credibility of the default forecasting function.  We demonstrate the usefulness of similarity-based methods in forecasting and present a general framework dubbed Similarity-based Parameter Correction (SPC).  We highlight several specific time series models that can benefit from SPC, along with formal results for some of those special cases.We close with a thorough discussion of the state of forecasting under non-ideal conditions and the directions in which it may find the most success.
 \end{abstract}
 
 % \begin{dedication}
@@ -190,12 +188,16 @@ We introduce some core concepts, techniques, and motivating questions that link 
 
 \section{What are we trying to do?}
 
-The unequivocal jumping-off point for this work is \cite[][]{lin2021minimizing}, in which the authors introduce a research program for forecasting univariate time series under shocks.  It was later discovered, as is wont to happen in academic research, that the task of forecasting under shocks could and should be understood under a grander framework involving time series model choice, information in time series forecasting, information sources, stability of data-generating processes, and shock analysis.
+Our bedrock objective is to forecast under shocks.  The unequivocal jumping-off point for this work is \cite[][]{lin2021minimizing}, in which the authors introduce a research program for forecasting univariate time series under shocks.  It was later discovered, as is wont to happen in academic research, that the task of forecasting under shocks could and should be understood under a grander framework involving time series model choice, information in time series forecasting, information sources, stability of data-generating processes, shock analysis, and similarity-based aggregation.  
+
+The default action to take when forecasting under shocks, or perhaps it is better stated the \textit{null} action, is to do nothing.  For a given time series with an assumed DGP, one can hardly be blamed for sticking with the default method for forecasting.  What we try to do is introduce forecasting adjustment techniques that outperform that default --- i.e. that outperform making no adjustment --- by making use of other time series that are in some way similar.  One technique (merely one) for accomplishing that uses distance-based weighting, a topic to which we now turn.
+
 
 \section{What is distance-based weighting?}
 
-\subsection{The Connection to Synthetic Control}
 
+\subsection{The Connection to Synthetic Control}
+Synthetic control is treatment effect estimation framework from the field of causal inference.  
 \section{Prospective Analysis}
 
 \subsection{Permutation Methods}

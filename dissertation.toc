@@ -1,0 +1,69 @@
+\babel@toc {english}{}\relax 
+\contentsline {chapter}{List of Abbreviations}{v}{chapter*.3}%
+\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}What are we trying to do?}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}What is distance-based weighting?}{1}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}The Connection to Synthetic Control}{1}{subsection.1.2.1}%
+\contentsline {section}{\numberline {1.3}Prospective Analysis}{2}{section.1.3}%
+\contentsline {subsection}{\numberline {1.3.1}Permutation Methods}{2}{subsection.1.3.1}%
+\contentsline {subsection}{\numberline {1.3.2}Multiverse}{2}{subsection.1.3.2}%
+\contentsline {chapter}{\numberline {2}Post-Shock Volatility Forecasting Using Similarity-based Shock Aggregation}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Introduction}{3}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Setting}{5}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}A Primer on GARCH}{5}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Model setup}{7}{subsection.2.2.2}%
+\contentsline {section}{\numberline {2.3}Methodology for Similarity-based Parameter Correction}{9}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Forecasting}{9}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Excess Volatility Estimators}{9}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}Ground Truth Estimators}{11}{subsection.2.3.3}%
+\contentsline {subsection}{\numberline {2.3.4}Loss Functions}{12}{subsection.2.3.4}%
+\contentsline {section}{\numberline {2.4}Properties of Volatility Shocks and Shock Estimators}{12}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}Consistency of the shock estimators}{14}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}Consistency of the Conditional Forecast Function}{14}{subsection.2.4.2}%
+\contentsline {subsection}{\numberline {2.4.3}Asymptotic Loss}{14}{subsection.2.4.3}%
+\contentsline {section}{\numberline {2.5}Numerical Examples}{15}{section.2.5}%
+\contentsline {subsection}{\numberline {2.5.1}Fixed Parameters}{15}{subsection.2.5.1}%
+\contentsline {subsection}{\numberline {2.5.2}Varying Parameters}{15}{subsection.2.5.2}%
+\contentsline {subsection}{\numberline {2.5.3}Evaluative Framework and Monte Carlo Results}{16}{subsection.2.5.3}%
+\contentsline {section}{\numberline {2.6}Forecasting after the results of the 2016 US presidential election}{19}{section.2.6}%
+\contentsline {section}{\numberline {2.7}Discussion}{21}{section.2.7}%
+\contentsline {subsection}{\numberline {2.7.1}Comparison with KNN}{22}{subsection.2.7.1}%
+\contentsline {subsection}{\numberline {2.7.2}Donor Pool Construction}{23}{subsection.2.7.2}%
+\contentsline {subsection}{\numberline {2.7.3}The Nature and Estimation of Volatility Shocks}{23}{subsection.2.7.3}%
+\contentsline {subsection}{\numberline {2.7.4}Parameter Stability}{23}{subsection.2.7.4}%
+\contentsline {section}{\numberline {2.8}Supplement}{24}{section.2.8}%
+\contentsline {subsection}{\numberline {2.8.1}Leave-one-out: How we analyzed a multiverse of 63 predictions}{24}{subsection.2.8.1}%
+\contentsline {subsection}{\numberline {2.8.2}Sensitivity to Covariates Chosen}{24}{subsection.2.8.2}%
+\contentsline {subsection}{\numberline {2.8.3}Sensitivity to Donors Chosen}{24}{subsection.2.8.3}%
+\contentsline {subsection}{\numberline {2.8.4}Can we combine forecasts to outperform the individual forecasts?}{25}{subsection.2.8.4}%
+\contentsline {subsection}{\numberline {2.8.5}Formal Results}{25}{subsection.2.8.5}%
+\contentsline {chapter}{\numberline {3}Forecast Adjustment Under Shocks: A Unification}{28}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Introduction}{28}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Forecasting Amid Shocks}{30}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}The Role of Outside Information}{31}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}The Meaning and Use of Similarity}{32}{subsection.3.2.2}%
+\contentsline {section}{\numberline {3.3}Setting}{33}{section.3.3}%
+\contentsline {section}{\numberline {3.4}SPC Forecasting Methodology and Correction Functions}{35}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Diagnostics for Similarity-Based Parameter Correction}{36}{subsection.3.4.1}%
+\contentsline {section}{\numberline {3.5}Model Adjustment Using Similarity-Based Parameter Correction: A Global Overview}{36}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1}The Method of Multiple Shocks}{37}{subsection.3.5.1}%
+\contentsline {section}{\numberline {3.6}Formal Properties and Model-Specific Considerations}{38}{section.3.6}%
+\contentsline {subsection}{\numberline {3.6.1}ARIMA}{38}{subsection.3.6.1}%
+\contentsline {subsection}{\numberline {3.6.2}GARCH}{41}{subsection.3.6.2}%
+\contentsline {subsection}{\numberline {3.6.3}HAR}{41}{subsection.3.6.3}%
+\contentsline {subsubsection}{\numberline {3.6.3.1}Real Data Application of Shock-Adjusted HAR Forecasting}{43}{subsubsection.3.6.3.1}%
+\contentsline {subsection}{\numberline {3.6.4}``Exponential Breaks"}{44}{subsection.3.6.4}%
+\contentsline {subsubsection}{\numberline {3.6.4.1}Simulation Study}{45}{subsubsection.3.6.4.1}%
+\contentsline {section}{\numberline {3.7}Discussion}{50}{section.3.7}%
+\contentsline {subsection}{\numberline {3.7.1}Asking questions about the covariate vector and conditional shock distribution}{50}{subsection.3.7.1}%
+\contentsline {subsection}{\numberline {3.7.2}Shock propagation and estimation accuracy}{50}{subsection.3.7.2}%
+\contentsline {subsection}{\numberline {3.7.3}Aggregating residuals as opposed to aggregating fixed effect estimates?}{50}{subsection.3.7.3}%
+\contentsline {section}{\numberline {3.8}Extensions}{51}{section.3.8}%
+\contentsline {subsection}{\numberline {3.8.1}Forecast Combination}{51}{subsection.3.8.1}%
+\contentsline {subsection}{\numberline {3.8.2}Limitations}{52}{subsection.3.8.2}%
+\contentsline {subsubsection}{\numberline {3.8.2.1}The assumption of a shared family can be relaxed in certain circumstances. For example, if a certain donor is not like the time series under study with respect to the covariates, then the lack of a shared family will not matter much.}{52}{subsubsection.3.8.2.1}%
+\contentsline {section}{\numberline {3.9}Supplement}{52}{section.3.9}%
+\contentsline {subsection}{\numberline {3.9.1}Formal Results}{52}{subsection.3.9.1}%
+\contentsline {chapter}{\numberline {4}Conclusion}{54}{chapter.4}%
+\contentsline {chapter}{References}{55}{chapter*.43}%
+\contentsfinish 
