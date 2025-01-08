@@ -56,9 +56,10 @@
 \contentsline {subsection}{\numberline {3.6.4}``Exponential Breaks"}{44}{subsection.3.6.4}%
 \contentsline {subsubsection}{\numberline {3.6.4.1}Simulation Study}{45}{subsubsection.3.6.4.1}%
 \contentsline {section}{\numberline {3.7}Discussion}{50}{section.3.7}%
-\contentsline {subsection}{\numberline {3.7.1}Asking questions about the covariate vector and conditional shock distribution}{50}{subsection.3.7.1}%
-\contentsline {subsection}{\numberline {3.7.2}Shock propagation and estimation accuracy}{50}{subsection.3.7.2}%
-\contentsline {subsection}{\numberline {3.7.3}Aggregating residuals as opposed to aggregating fixed effect estimates?}{50}{subsection.3.7.3}%
+\contentsline {subsection}{\numberline {3.7.1}Forecast Horizon}{50}{subsection.3.7.1}%
+\contentsline {subsection}{\numberline {3.7.2}The covariate vector and conditional shock distribution}{50}{subsection.3.7.2}%
+\contentsline {subsection}{\numberline {3.7.3}Shock propagation and estimation accuracy}{50}{subsection.3.7.3}%
+\contentsline {subsection}{\numberline {3.7.4}Aggregating residuals as opposed to aggregating fixed effect estimates?}{50}{subsection.3.7.4}%
 \contentsline {section}{\numberline {3.8}Extensions}{51}{section.3.8}%
 \contentsline {subsection}{\numberline {3.8.1}Forecast Combination}{51}{subsection.3.8.1}%
 \contentsline {subsection}{\numberline {3.8.2}Limitations}{52}{subsection.3.8.2}%
