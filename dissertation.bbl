@@ -49,6 +49,76 @@
       \field{title}{Minimizing post-shock forecasting error through aggregation of outside information}
       \field{year}{2021}
     \endentry
+    \entry{abadie2003economic}{article}{}
+      \name{author}{2}{}{%
+        {{hash=da499bff747c5f6cd0ec9185c820ba4d}{%
+           family={Abadie},
+           familyi={A\bibinitperiod},
+           given={Alberto},
+           giveni={A\bibinitperiod}}}%
+        {{hash=990a64faa006b28cd41f2075997cba18}{%
+           family={Gardeazabal},
+           familyi={G\bibinitperiod},
+           given={Javier},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{f722330d5128ffafe3dd6ff1eae7e9c0}
+      \strng{fullhash}{f722330d5128ffafe3dd6ff1eae7e9c0}
+      \strng{bibnamehash}{f722330d5128ffafe3dd6ff1eae7e9c0}
+      \strng{authorbibnamehash}{f722330d5128ffafe3dd6ff1eae7e9c0}
+      \strng{authornamehash}{f722330d5128ffafe3dd6ff1eae7e9c0}
+      \strng{authorfullhash}{f722330d5128ffafe3dd6ff1eae7e9c0}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{American Economic Review}
+      \field{number}{1}
+      \field{title}{The Economic Costs of Conflict: A Case Study of the Basque Country}
+      \field{volume}{93}
+      \field{year}{2003}
+      \field{pages}{113\bibrangedash 132}
+      \range{pages}{20}
+    \endentry
+    \entry{abadie2010synthetic}{article}{}
+      \name{author}{3}{}{%
+        {{hash=da499bff747c5f6cd0ec9185c820ba4d}{%
+           family={Abadie},
+           familyi={A\bibinitperiod},
+           given={Alberto},
+           giveni={A\bibinitperiod}}}%
+        {{hash=b45c00701af03c6c0ab37b49f5d375c5}{%
+           family={Diamond},
+           familyi={D\bibinitperiod},
+           given={Alexis},
+           giveni={A\bibinitperiod}}}%
+        {{hash=be94165c21f502aeaed11e611358d6be}{%
+           family={Hainmueller},
+           familyi={H\bibinitperiod},
+           given={Jens},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Taylor \& Francis}%
+      }
+      \strng{namehash}{bb1c0d171effadee95d0232167198de0}
+      \strng{fullhash}{bb1c0d171effadee95d0232167198de0}
+      \strng{bibnamehash}{bb1c0d171effadee95d0232167198de0}
+      \strng{authorbibnamehash}{bb1c0d171effadee95d0232167198de0}
+      \strng{authornamehash}{bb1c0d171effadee95d0232167198de0}
+      \strng{authorfullhash}{bb1c0d171effadee95d0232167198de0}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of the American Statistical Association}
+      \field{number}{490}
+      \field{title}{Synthetic control methods for comparative case studies: Estimating the effect of California’s tobacco control program}
+      \field{volume}{105}
+      \field{year}{2010}
+      \field{pages}{493\bibrangedash 505}
+      \range{pages}{13}
+    \endentry
     \entry{steegen2016increasing}{article}{}
       \name{author}{4}{}{%
         {{hash=ee20f8b26032af1d07f33773e447574f}{%
@@ -81,8 +151,8 @@
       \strng{authorbibnamehash}{0f1b26ebe99cf6f56302bbe10a313c04}
       \strng{authornamehash}{b73edbb518caa92d354801e97458fb08}
       \strng{authorfullhash}{0f1b26ebe99cf6f56302bbe10a313c04}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Perspectives on Psychological Science}
@@ -110,8 +180,8 @@
       \strng{authorbibnamehash}{47a5d7268039bf86cea626bcaefd4877}
       \strng{authornamehash}{47a5d7268039bf86cea626bcaefd4877}
       \strng{authorfullhash}{47a5d7268039bf86cea626bcaefd4877}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Investopedia}
@@ -146,8 +216,8 @@
       \strng{authorbibnamehash}{5ddf718e7fc7216da52dc45028359503}
       \strng{authornamehash}{5ddf718e7fc7216da52dc45028359503}
       \strng{authorfullhash}{5ddf718e7fc7216da52dc45028359503}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Journal of International Money and Finance}
@@ -175,8 +245,8 @@
       \strng{authorbibnamehash}{a10ec178d031d2e8ccfadd70714bf9cc}
       \strng{authornamehash}{a10ec178d031d2e8ccfadd70714bf9cc}
       \strng{authorfullhash}{a10ec178d031d2e8ccfadd70714bf9cc}
-      \field{sortinit}{5}
-      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{annotation}{{Tsay provides an introduction to the ARCH and GARCH models as well as a brief discussion of the challenges of forecasting evaluation. }}
@@ -216,8 +286,8 @@
       \strng{authorbibnamehash}{7688ee32227d9ef7488af1df896d2f7a}
       \strng{authornamehash}{1ffc7f4a67f223e27cafd1a53b0b8537}
       \strng{authorfullhash}{7688ee32227d9ef7488af1df896d2f7a}
-      \field{sortinit}{6}
-      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{The Review of Financial Studies}
@@ -255,8 +325,8 @@
       \strng{authorbibnamehash}{9331ef4c6dfb6cc4893750e4dfd0b449}
       \strng{authornamehash}{9331ef4c6dfb6cc4893750e4dfd0b449}
       \strng{authorfullhash}{9331ef4c6dfb6cc4893750e4dfd0b449}
-      \field{sortinit}{7}
-      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{Regime switching GARCH models}
@@ -289,8 +359,8 @@
       \strng{authorbibnamehash}{0d86ae31cef4f7711f7e6c078db01955}
       \strng{authornamehash}{0d86ae31cef4f7711f7e6c078db01955}
       \strng{authorfullhash}{0d86ae31cef4f7711f7e6c078db01955}
-      \field{sortinit}{8}
-      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Journal of Applied Econometrics}
@@ -328,8 +398,8 @@
       \strng{authorbibnamehash}{47696cd14f96bd743bab3287b819d3e1}
       \strng{authornamehash}{47696cd14f96bd743bab3287b819d3e1}
       \strng{authorfullhash}{47696cd14f96bd743bab3287b819d3e1}
-      \field{sortinit}{9}
-      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Journal of Forecasting}
@@ -687,8 +757,8 @@
       \strng{authorbibnamehash}{63c6217584dec4e623082f059d128d6d}
       \strng{authornamehash}{63c6217584dec4e623082f059d128d6d}
       \strng{authorfullhash}{63c6217584dec4e623082f059d128d6d}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Journal of the Royal Statistical Society Series A: Statistics in Society}
@@ -737,45 +807,6 @@
       \field{year}{2022}
       \field{pages}{596\bibrangedash 612}
       \range{pages}{17}
-    \endentry
-    \entry{abadie2010synthetic}{article}{}
-      \name{author}{3}{}{%
-        {{hash=da499bff747c5f6cd0ec9185c820ba4d}{%
-           family={Abadie},
-           familyi={A\bibinitperiod},
-           given={Alberto},
-           giveni={A\bibinitperiod}}}%
-        {{hash=b45c00701af03c6c0ab37b49f5d375c5}{%
-           family={Diamond},
-           familyi={D\bibinitperiod},
-           given={Alexis},
-           giveni={A\bibinitperiod}}}%
-        {{hash=be94165c21f502aeaed11e611358d6be}{%
-           family={Hainmueller},
-           familyi={H\bibinitperiod},
-           given={Jens},
-           giveni={J\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {Taylor \& Francis}%
-      }
-      \strng{namehash}{bb1c0d171effadee95d0232167198de0}
-      \strng{fullhash}{bb1c0d171effadee95d0232167198de0}
-      \strng{bibnamehash}{bb1c0d171effadee95d0232167198de0}
-      \strng{authorbibnamehash}{bb1c0d171effadee95d0232167198de0}
-      \strng{authornamehash}{bb1c0d171effadee95d0232167198de0}
-      \strng{authorfullhash}{bb1c0d171effadee95d0232167198de0}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Journal of the American Statistical Association}
-      \field{number}{490}
-      \field{title}{Synthetic control methods for comparative case studies: Estimating the effect of California’s tobacco control program}
-      \field{volume}{105}
-      \field{year}{2010}
-      \field{pages}{493\bibrangedash 505}
-      \range{pages}{13}
     \endentry
     \entry{box2013box}{incollection}{}
       \name{author}{1}{}{%
@@ -916,37 +947,6 @@
       \field{pages}{113\bibrangedash 155}
       \range{pages}{43}
     \endentry
-    \entry{abadie2003economic}{article}{}
-      \name{author}{2}{}{%
-        {{hash=da499bff747c5f6cd0ec9185c820ba4d}{%
-           family={Abadie},
-           familyi={A\bibinitperiod},
-           given={Alberto},
-           giveni={A\bibinitperiod}}}%
-        {{hash=990a64faa006b28cd41f2075997cba18}{%
-           family={Gardeazabal},
-           familyi={G\bibinitperiod},
-           given={Javier},
-           giveni={J\bibinitperiod}}}%
-      }
-      \strng{namehash}{f722330d5128ffafe3dd6ff1eae7e9c0}
-      \strng{fullhash}{f722330d5128ffafe3dd6ff1eae7e9c0}
-      \strng{bibnamehash}{f722330d5128ffafe3dd6ff1eae7e9c0}
-      \strng{authorbibnamehash}{f722330d5128ffafe3dd6ff1eae7e9c0}
-      \strng{authornamehash}{f722330d5128ffafe3dd6ff1eae7e9c0}
-      \strng{authorfullhash}{f722330d5128ffafe3dd6ff1eae7e9c0}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{American Economic Review}
-      \field{number}{1}
-      \field{title}{The Economic Costs of Conflict: A Case Study of the Basque Country}
-      \field{volume}{93}
-      \field{year}{2003}
-      \field{pages}{113\bibrangedash 132}
-      \range{pages}{20}
-    \endentry
     \entry{timmermann2006forecast}{article}{}
       \name{author}{1}{}{%
         {{hash=402c6ccc2c21c4d48ed2eef0058ff70d}{%
@@ -1038,8 +1038,8 @@
       \strng{authorbibnamehash}{bc58cc3747d13cb7e8923f0abb707caf}
       \strng{authornamehash}{bc58cc3747d13cb7e8923f0abb707caf}
       \strng{authorfullhash}{bc58cc3747d13cb7e8923f0abb707caf}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{arXiv preprint arXiv:2203.06279}
@@ -1550,8 +1550,8 @@
       \strng{authorbibnamehash}{83b6740ff4499aae61d122d6465bc0d1}
       \strng{authornamehash}{0c2c07b614706c2d546985147e319f51}
       \strng{authorfullhash}{83b6740ff4499aae61d122d6465bc0d1}
-      \field{sortinit}{5}
-      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{Package ‘quantmod’}
@@ -1648,8 +1648,8 @@
       \strng{authorbibnamehash}{7ca1bfe876d5e037b6aed69704221267}
       \strng{authornamehash}{7ca1bfe876d5e037b6aed69704221267}
       \strng{authorfullhash}{7ca1bfe876d5e037b6aed69704221267}
-      \field{sortinit}{6}
-      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{The elements of statistical learning: data mining, inference, and prediction}
@@ -1965,8 +1965,8 @@
       \strng{authornamehash}{bc7ab4d16c42a19347b0c91c02d137c8}
       \strng{authorfullhash}{bc7ab4d16c42a19347b0c91c02d137c8}
       \field{extraname}{4}
-      \field{sortinit}{9}
-      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Oxford Bulletin of Economics \& Statistics}
