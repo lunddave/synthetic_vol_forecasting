@@ -130,7 +130,7 @@ Proof of Lemma {#1}}
 \author{David Patrick Lundquist}
 \department{Statistics}
 \phdthesis
-\degreeyear{2024}
+\degreeyear{2025}
 \committee{
     Assistant Professor Gökçe Dayanıklı (Committee Member)\\
     Assistant Professor Daniel Eck (Chair and Advisor)\\
@@ -202,11 +202,15 @@ Synthetic control \cite[][]{abadie2003economic,abadie2010synthetic} is a treatme
 \subsection{Pre-Processing of Data}
 In order to determine the appropriate weighting to be used, we must specify how those weights are to be generated.  As is the case in causal inference, so it is in prediction: we can avail ourselves of only information prior to the first index to be predicted.  The information required for distance-based weighting is covariate information, where the term ``covariate'' roughly means only that the quantities involved have some substantive link to the DGP of the random object(s) under study --- otherwise, we would have no reason to be concerned with them.
 
-We begin by scaling the covariates (one vector for each purportedly similar event) in order to center them at the origin and reduce them to the unit ball.  In statistical parlance, this means de-meaning the vectors and shrinking their standard deviation to 1.  
+We begin by scaling the covariates (one vector for each purportedly similar event, of which there are $n$) in order to center them at the origin and reduce them to the unit ball.  In statistical parlance, this means de-meaning the vectors and shrinking their standard deviation to unity.  Then, an output vector of size $n$ is produced via the following optimization problem found in  \cite[][]{abadie2003economic,abadie2010synthetic}: using any fixed semi-norm, minimize the loss between the covariate vector of the unit we want to `clone' and the set of covariate vectors from our donor pool, where the only parameter under our control is an $n$-vector $\pi$ from the ($n-1$)-simplex.  
+
+We have little so far about the entries of the covariates or the way the donor pool is built and validated.  We turn that now.
 
 \section{Prospective Analysis}
 With any forecasting or predictive tool, it is desirable to provide assurances to the user regarding how well calibrated or how well fit the tool is, given the training data.  This dissertation employs two central approaches for prospective analysis.  The first is permutation methods, which are based on the general and well-known practice of permuting units for either hypothesis testing, model evaluation, or another objective.  The second is a ``multiverse'' analysis, by a practitioner can probe the robustness of forecasts to alternative specifications \cite[][]{steegen2016increasing}.  We turn now to those two tools.
 \subsection{Permutation Methods}
+
+In \cite[][]{lin2021minimizing}, the authors introduce a prospective analysis technique
 
 \subsection{Multiverse}
 
