@@ -213,7 +213,7 @@ With any forecasting or predictive tool, it is desirable to provide assurances t
 In \cite[][]{lin2021minimizing}, the authors introduce a prospective analysis technique that can be summed up briefly: forget which unit is the unit to predict, and instead permute the $n+1$ total units, carrying out predictions, each time treating a different unit as the `thing to predict'.  Then, for all of the $n$ predictions for which ground truth exists, evaluate the performance, and use that performance to decide if one wants to use the method under study to carry out a prediction for the unit for which we lack a ground truth.
 
 \subsection{Multiverse}
-
+The multiverse approach differs from the preceding technique in that it does not use any permutation of the $n+1$ units.  Instead, it uses a different kind of combinatorial algorithm, a simple pair of leave-one-out procedures.  The entire procedure can be captured as follows: for a prediction setting with $n$ donors and covariate vectors each of length $p$, we can carry out a grand total of $(n+1)\cdot(p+1)$ predictions.  This count of predictions reflects to the decisions, for each donor and each covariate entry, to either drop a donor (or drop none) and to either drop a covariate entry (or drop none).  What useful information can be gleaned from those $(n+1)\cdot(p+1)$ predictions?  One desirable property is stability of prediction, as in, low variability.  Similarity, the higher-order moments like the symmetry and kurtosis may be helpful in determining the robustness of the method to donor and/or covariate misspecification.
 
 \chapter{Post-Shock Volatility Forecasting Using Similarity-based Shock Aggregation}
 
