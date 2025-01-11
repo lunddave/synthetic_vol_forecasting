@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.15)  10 JAN 2025 12:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.15)  11 JAN 2025 00:38
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1393,10 +1393,10 @@ Chapter 2.
 [4
 
 ] [5]
-<simulation_plots/motivating_piece_convex_combination.png, id=545, 1226.5825pt x 985.6825pt>
+<simulation_plots/motivating_piece_convex_combination.png, id=551, 1226.5825pt x 985.6825pt>
 File: simulation_plots/motivating_piece_convex_combination.png Graphic file (type png)
 <use simulation_plots/motivating_piece_convex_combination.png>
-Package pdftex.def Info: simulation_plots/motivating_piece_convex_combination.png  used on input line 252.
+Package pdftex.def Info: simulation_plots/motivating_piece_convex_combination.png  used on input line 254.
 (pdftex.def)             Requested size: 469.75502pt x 377.4961pt.
 
 
@@ -1404,256 +1404,69 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [6]
 
-LaTeX Warning: Citation '[' on page 7 undefined on input line 269.
+LaTeX Warning: Citation '[' on page 7 undefined on input line 271.
 
 [7 <./simulation_plots/motivating_piece_convex_combination.png>] [8] [9] [10] [11] [12] [13] [14] [15] [16]
-<simulation_plots/Aug28_224311_2024_mu[delta]_sigma[u].png, id=684, 578.16pt x 433.62pt>
+<simulation_plots/Aug28_224311_2024_mu[delta]_sigma[u].png, id=690, 578.16pt x 433.62pt>
 File: simulation_plots/Aug28_224311_2024_mu[delta]_sigma[u].png Graphic file (type png)
 <use simulation_plots/Aug28_224311_2024_mu[delta]_sigma[u].png>
-Package pdftex.def Info: simulation_plots/Aug28_224311_2024_mu[delta]_sigma[u].png  used on input line 531.
+Package pdftex.def Info: simulation_plots/Aug28_224311_2024_mu[delta]_sigma[u].png  used on input line 533.
 (pdftex.def)             Requested size: 242.82555pt x 182.11916pt.
 
-Overfull \hbox (36.1322pt too wide) in paragraph at lines 531--532
+Overfull \hbox (36.1322pt too wide) in paragraph at lines 533--534
  [][] 
  []
 
-<simulation_plots/Aug28_224317_2024_mu[delta]_sigma[u].png, id=685, 578.16pt x 433.62pt>
+<simulation_plots/Aug28_224317_2024_mu[delta]_sigma[u].png, id=691, 578.16pt x 433.62pt>
 File: simulation_plots/Aug28_224317_2024_mu[delta]_sigma[u].png Graphic file (type png)
 <use simulation_plots/Aug28_224317_2024_mu[delta]_sigma[u].png>
-Package pdftex.def Info: simulation_plots/Aug28_224317_2024_mu[delta]_sigma[u].png  used on input line 536.
+Package pdftex.def Info: simulation_plots/Aug28_224317_2024_mu[delta]_sigma[u].png  used on input line 538.
 (pdftex.def)             Requested size: 242.82555pt x 182.11916pt.
 
-Overfull \hbox (36.1322pt too wide) in paragraph at lines 536--537
+Overfull \hbox (36.1322pt too wide) in paragraph at lines 538--539
  [][] 
  []
 
-<simulation_plots/Aug28_224322_2024_mu[delta]_sigma[u].png, id=686, 578.16pt x 433.62pt>
+<simulation_plots/Aug28_224322_2024_mu[delta]_sigma[u].png, id=692, 578.16pt x 433.62pt>
 File: simulation_plots/Aug28_224322_2024_mu[delta]_sigma[u].png Graphic file (type png)
 <use simulation_plots/Aug28_224322_2024_mu[delta]_sigma[u].png>
-Package pdftex.def Info: simulation_plots/Aug28_224322_2024_mu[delta]_sigma[u].png  used on input line 542.
+Package pdftex.def Info: simulation_plots/Aug28_224322_2024_mu[delta]_sigma[u].png  used on input line 544.
 (pdftex.def)             Requested size: 242.82555pt x 182.11916pt.
 
-Overfull \hbox (36.1322pt too wide) in paragraph at lines 542--543
+Overfull \hbox (36.1322pt too wide) in paragraph at lines 544--545
  [][] 
  []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<simulation_plots/Aug28_224330_2024_mu[delta]_mu[v].png, id=693, 578.16pt x 433.62pt>
+<simulation_plots/Aug28_224330_2024_mu[delta]_mu[v].png, id=699, 578.16pt x 433.62pt>
 File: simulation_plots/Aug28_224330_2024_mu[delta]_mu[v].png Graphic file (type png)
 <use simulation_plots/Aug28_224330_2024_mu[delta]_mu[v].png>
-Package pdftex.def Info: simulation_plots/Aug28_224330_2024_mu[delta]_mu[v].png  used on input line 555.
+Package pdftex.def Info: simulation_plots/Aug28_224330_2024_mu[delta]_mu[v].png  used on input line 557.
 (pdftex.def)             Requested size: 242.82555pt x 182.11916pt.
 
-Overfull \hbox (36.1322pt too wide) in paragraph at lines 555--556
+Overfull \hbox (36.1322pt too wide) in paragraph at lines 557--558
  [][] 
  []
 
-<simulation_plots/Aug28_224337_2024_mu[delta]_mu[v].png, id=694, 578.16pt x 433.62pt>
+<simulation_plots/Aug28_224337_2024_mu[delta]_mu[v].png, id=700, 578.16pt x 433.62pt>
 File: simulation_plots/Aug28_224337_2024_mu[delta]_mu[v].png Graphic file (type png)
 <use simulation_plots/Aug28_224337_2024_mu[delta]_mu[v].png>
-Package pdftex.def Info: simulation_plots/Aug28_224337_2024_mu[delta]_mu[v].png  used on input line 560.
+Package pdftex.def Info: simulation_plots/Aug28_224337_2024_mu[delta]_mu[v].png  used on input line 562.
 (pdftex.def)             Requested size: 242.82555pt x 182.11916pt.
 
-Overfull \hbox (36.1322pt too wide) in paragraph at lines 560--561
+Overfull \hbox (36.1322pt too wide) in paragraph at lines 562--563
  [][] 
  []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<simulation_plots/Aug28_224451_2024_mu[omega^*]_sigma[u].png, id=695, 578.16pt x 433.62pt>
+<simulation_plots/Aug28_224451_2024_mu[omega^*]_sigma[u].png, id=701, 578.16pt x 433.62pt>
 File: simulation_plots/Aug28_224451_2024_mu[omega^*]_sigma[u].png Graphic file (type png)
 <use simulation_plots/Aug28_224451_2024_mu[omega^*]_sigma[u].png>
-Package pdftex.def Info: simulation_plots/Aug28_224451_2024_mu[omega^*]_sigma[u].png  used on input line 573.
+Package pdftex.def Info: simulation_plots/Aug28_224451_2024_mu[omega^*]_sigma[u].png  used on input line 575.
 (pdftex.def)             Requested size: 242.82555pt x 182.11916pt.
 
-Overfull \hbox (36.1322pt too wide) in paragraph at lines 573--574
- [][] 
- []
-
-<simulation_plots/Aug28_224455_2024_mu[omega^*]_sigma[u].png, id=696, 578.16pt x 433.62pt>
-File: simulation_plots/Aug28_224455_2024_mu[omega^*]_sigma[u].png Graphic file (type png)
-<use simulation_plots/Aug28_224455_2024_mu[omega^*]_sigma[u].png>
-Package pdftex.def Info: simulation_plots/Aug28_224455_2024_mu[omega^*]_sigma[u].png  used on input line 578.
-(pdftex.def)             Requested size: 242.82555pt x 182.11916pt.
-
-Overfull \hbox (36.1322pt too wide) in paragraph at lines 578--579
- [][] 
- []
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[17] [18 <./simulation_plots/Aug28_224311_2024_mu[delta]_sigma[u].png> <./simulation_plots/Aug28_224317_2024_mu[delta]_sigma[u].png> <./simulation_plots/Aug28_224322_2024_mu[delta]_sigma[u].png>] [19 <./simulation_plots/Aug28_224330_2024_mu[delta]_mu[v].png> <./simulation_plots/Aug28_224337_2024_mu[delta]_mu[v].png> <./simulation_plots/Aug28_224451_2024_mu[omega^*]_sigma[u].png> <./simulation_plots/Aug28_224455_2024_mu[omega^*]_sigma[u].png>]
-
-LaTeX Warning: Citation 'The_Guardian' on page 20 undefined on input line 606.
-
-
-LaTeX Warning: Citation 'Morales_Valentini_Penny_2016' on page 20 undefined on input line 606.
-
-[20
-
-] [21]
-<real_data_output_plots/TueSep241059512024_IYG_None_None.png, id=763, 803.0pt x 602.25pt>
-File: real_data_output_plots/TueSep241059512024_IYG_None_None.png Graphic file (type png)
-<use real_data_output_plots/TueSep241059512024_IYG_None_None.png>
-Package pdftex.def Info: real_data_output_plots/TueSep241059512024_IYG_None_None.png  used on input line 621.
-(pdftex.def)             Requested size: 481.80373pt x 361.35278pt.
-
-Overfull \hbox (12.0487pt too wide) in paragraph at lines 621--622
- [][] 
- []
-
-Package microtype Info: Loading generic protrusion settings for font family
-(microtype)             `cmtt' (encoding: OT1).
-(microtype)             For optimal results, create family-specific settings.
-(microtype)             See the microtype manual for details.
-[22 <./real_data_output_plots/TueSep241059512024_IYG_None_None.png>] [23] [24] [25]
-Underfull \hbox (badness 10000) in paragraph at lines 828--831
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 832--835
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 846--848
-
- []
-
-[26]
-Underfull \hbox (badness 10000) in paragraph at lines 861--864
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 865--868
-
- []
-
-[27] [28]
-Chapter 3.
-[29
-
-] [30]
-Missing character: There is no ] in font nullfont!
-Missing character: There is no ] in font nullfont!
-[31]
-Overfull \hbox (2.96057pt too wide) in paragraph at lines 1123--1123
-[]|\OT1/cmr/m/n/10 (-20) internal| 
- []
-
-
-Overfull \hbox (4.59947pt too wide) in paragraph at lines 1125--1125
-[]|\OT1/cmr/m/n/10 (-20) external| 
- []
-
-[32]
-File: simulation_plots/motivating_piece_convex_combination.png Graphic file (type png)
-<use simulation_plots/motivating_piece_convex_combination.png>
-Package pdftex.def Info: simulation_plots/motivating_piece_convex_combination.png  used on input line 1148.
-(pdftex.def)             Requested size: 469.75502pt x 377.4961pt.
- [33] [34] [35] [36] [37] [38]
-Overfull \hbox (20.41965pt too wide) detected at line 1288
-[]
- []
-
-[39]
-Missing character: There is no ; in font nullfont!
-[40] [41] [42] [43] [44]
-<real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png, id=1062, 803.0pt x 602.25pt>
-File: real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png Graphic file (type png)
-<use real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png>
-Package pdftex.def Info: real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png  used on input line 1454.
-(pdftex.def)             Requested size: 497.85486pt x 373.39113pt.
-
-Overfull \hbox (28.09984pt too wide) in paragraph at lines 1454--1455
- [] 
- []
-
-[45 <./real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1495--1496
-
- []
-
-<exponential_sim_plot.png, id=1072, 1767.60374pt x 1242.6425pt>
-File: exponential_sim_plot.png Graphic file (type png)
-<use exponential_sim_plot.png>
-Package pdftex.def Info: exponential_sim_plot.png  used on input line 1510.
-(pdftex.def)             Requested size: 469.75502pt x 330.2278pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<simulation_plots/Nov27_160341_2024_mudelta_sigmax.png, id=1073, 578.16pt x 433.62pt>
-File: simulation_plots/Nov27_160341_2024_mudelta_sigmax.png Graphic file (type png)
-<use simulation_plots/Nov27_160341_2024_mudelta_sigmax.png>
-Package pdftex.def Info: simulation_plots/Nov27_160341_2024_mudelta_sigmax.png  used on input line 1526.
-(pdftex.def)             Requested size: 242.82555pt x 182.11916pt.
-
-Overfull \hbox (36.1322pt too wide) in paragraph at lines 1526--1527
- [][] 
- []
-
-<simulation_plots/Nov27_160342_2024_mudelta_sigmax.png, id=1074, 578.16pt x 433.62pt>
-File: simulation_plots/Nov27_160342_2024_mudelta_sigmax.png Graphic file (type png)
-<use simulation_plots/Nov27_160342_2024_mudelta_sigmax.png>
-Package pdftex.def Info: simulation_plots/Nov27_160342_2024_mudelta_sigmax.png  used on input line 1531.
-(pdftex.def)             Requested size: 242.82555pt x 182.11916pt.
-
-Overfull \hbox (36.1322pt too wide) in paragraph at lines 1531--1532
- [][] 
- []
-
-<simulation_plots/Nov27_160343_2024_mudelta_sigmax.png, id=1075, 578.16pt x 433.62pt>
-File: simulation_plots/Nov27_160343_2024_mudelta_sigmax.png Graphic file (type png)
-<use simulation_plots/Nov27_160343_2024_mudelta_sigmax.png>
-Package pdftex.def Info: simulation_plots/Nov27_160343_2024_mudelta_sigmax.png  used on input line 1537.
-(pdftex.def)             Requested size: 242.82555pt x 182.11916pt.
-
-Overfull \hbox (36.1322pt too wide) in paragraph at lines 1537--1538
- [][] 
- []
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<simulation_plots/Nov27_160344_2024_sigmax_sigmaepsilon.png, id=1082, 578.16pt x 433.62pt>
-File: simulation_plots/Nov27_160344_2024_sigmax_sigmaepsilon.png Graphic file (type png)
-<use simulation_plots/Nov27_160344_2024_sigmax_sigmaepsilon.png>
-Package pdftex.def Info: simulation_plots/Nov27_160344_2024_sigmax_sigmaepsilon.png  used on input line 1550.
-(pdftex.def)             Requested size: 242.82555pt x 182.11916pt.
-
-Overfull \hbox (36.1322pt too wide) in paragraph at lines 1550--1551
- [][] 
- []
-
-<simulation_plots/Nov27_160345_2024_sigmax_sigmaepsilon.png, id=1083, 578.16pt x 433.62pt>
-File: simulation_plots/Nov27_160345_2024_sigmax_sigmaepsilon.png Graphic file (type png)
-<use simulation_plots/Nov27_160345_2024_sigmax_sigmaepsilon.png>
-Package pdftex.def Info: simulation_plots/Nov27_160345_2024_sigmax_sigmaepsilon.png  used on input line 1555.
-(pdftex.def)             Requested size: 242.82555pt x 182.11916pt.
-
-Overfull \hbox (36.1322pt too wide) in paragraph at lines 1555--1556
- [][] 
- []
-
-<simulation_plots/Nov27_160346_2024_sigmax_sigmaepsilon.png, id=1084, 578.16pt x 433.62pt>
-File: simulation_plots/Nov27_160346_2024_sigmax_sigmaepsilon.png Graphic file (type png)
-<use simulation_plots/Nov27_160346_2024_sigmax_sigmaepsilon.png>
-Package pdftex.def Info: simulation_plots/Nov27_160346_2024_sigmax_sigmaepsilon.png  used on input line 1561.
-(pdftex.def)             Requested size: 242.82555pt x 182.11916pt.
-
-Overfull \hbox (36.1322pt too wide) in paragraph at lines 1561--1562
- [][] 
- []
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<simulation_plots/Nov27_160346_2024_mudelta_sigmaepsilon.png, id=1091, 578.16pt x 433.62pt>
-File: simulation_plots/Nov27_160346_2024_mudelta_sigmaepsilon.png Graphic file (type png)
-<use simulation_plots/Nov27_160346_2024_mudelta_si
+Overfull \hbox (36.1322pt too wide) in paragr
