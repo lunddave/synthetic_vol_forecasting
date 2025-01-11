@@ -1596,13 +1596,14 @@ Now, since each $\hat\omega^{*}_{i}$ converges in probability to $\omega^{*}_{i}
   
   \section{Discussion}
 
-For a method with such high ambitions --- addressing canonical problems in forecasting --- there will no doubt be subtleties that cannot be addressed fully in this paper.  However, we would like to take time to discuss those nuances.
+For a method with such high ambitions --- addressing canonical problems in forecasting --- there will no doubt be subtleties that cannot be addressed fully in this manuscript.  However, we would like to take time to discuss those nuances.
   \subsection{Forecast Horizon}
   
-  The forecast horizon --- does it matter?  If so, how so?  \cite[][]{lin2021minimizing} has a one-period horizon.  \cite[][p. 203]{clements1998forecasting} discuss how long to keep the forecast adjustment in place.  For a corrected ``slope parameter'', the effect of $h$ is not so clear.\\
+  The forecast horizon --- does it matter?  If so, how so?  The inspiration for this entire disseretation, \cite[][]{lin2021minimizing}, has a one-period horizon.  \cite[][p. 203]{clements1998forecasting} discuss how long to keep the forecast adjustment in place.  Given that our method is a type of parameter correction, it might be the case that the forecast horizon length (i.e. how long forecast adjustments can be trusted) should depend upon the particular parameter.  For a corrected ``slope parameter'', the effect of $h$ is not so clear.  However, for location parameters, the intuitive (but not always so helpful) guidance about the forecast horizon is that one should apply the correction as long as one thinks it will last.  That idea, although admittedly a bit unhelpful, does carry with it an implicit suggestion that an aggregation method could be developed in order to determine how long the correction should be used.
+
   
   \subsection{The covariate vector and conditional shock distribution}
-  We pose two questions.  
+  In this subsection, we pose two questions.  
   
   What if a given entry of the covariate vector was helpful at only one of those roles?  For example, what if an entry was particularly useful in yielding good weights but was not important for the shock distribution --- perhaps because the corresponding shock parameter was zero.  
   

@@ -19,6 +19,150 @@
 
 \refsection{0}
   \datalist[entry]{none/global//global/global}
+    \entry{lin2021minimizing}{article}{}
+      \name{author}{2}{}{%
+        {{hash=0840dad5e484231880452bc328d144a2}{%
+           family={Lin},
+           familyi={L\bibinitperiod},
+           given={Jilei},
+           giveni={J\bibinitperiod}}}%
+        {{hash=bf255f8e7ed95e29d355096a5fbf5403}{%
+           family={Eck},
+           familyi={E\bibinitperiod},
+           given={Daniel\bibnamedelima J},
+           giveni={D\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{54ea06fb84f23976c8a0c10e8a121842}
+      \strng{fullhash}{54ea06fb84f23976c8a0c10e8a121842}
+      \strng{bibnamehash}{54ea06fb84f23976c8a0c10e8a121842}
+      \strng{authorbibnamehash}{54ea06fb84f23976c8a0c10e8a121842}
+      \strng{authornamehash}{54ea06fb84f23976c8a0c10e8a121842}
+      \strng{authorfullhash}{54ea06fb84f23976c8a0c10e8a121842}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{International Journal of Forecasting}
+      \field{title}{Minimizing post-shock forecasting error through aggregation of outside information}
+      \field{year}{2021}
+    \endentry
+    \entry{abadie2003economic}{article}{}
+      \name{author}{2}{}{%
+        {{hash=da499bff747c5f6cd0ec9185c820ba4d}{%
+           family={Abadie},
+           familyi={A\bibinitperiod},
+           given={Alberto},
+           giveni={A\bibinitperiod}}}%
+        {{hash=990a64faa006b28cd41f2075997cba18}{%
+           family={Gardeazabal},
+           familyi={G\bibinitperiod},
+           given={Javier},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{f722330d5128ffafe3dd6ff1eae7e9c0}
+      \strng{fullhash}{f722330d5128ffafe3dd6ff1eae7e9c0}
+      \strng{bibnamehash}{f722330d5128ffafe3dd6ff1eae7e9c0}
+      \strng{authorbibnamehash}{f722330d5128ffafe3dd6ff1eae7e9c0}
+      \strng{authornamehash}{f722330d5128ffafe3dd6ff1eae7e9c0}
+      \strng{authorfullhash}{f722330d5128ffafe3dd6ff1eae7e9c0}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{American Economic Review}
+      \field{number}{1}
+      \field{title}{The Economic Costs of Conflict: A Case Study of the Basque Country}
+      \field{volume}{93}
+      \field{year}{2003}
+      \field{pages}{113\bibrangedash 132}
+      \range{pages}{20}
+    \endentry
+    \entry{abadie2010synthetic}{article}{}
+      \name{author}{3}{}{%
+        {{hash=da499bff747c5f6cd0ec9185c820ba4d}{%
+           family={Abadie},
+           familyi={A\bibinitperiod},
+           given={Alberto},
+           giveni={A\bibinitperiod}}}%
+        {{hash=b45c00701af03c6c0ab37b49f5d375c5}{%
+           family={Diamond},
+           familyi={D\bibinitperiod},
+           given={Alexis},
+           giveni={A\bibinitperiod}}}%
+        {{hash=be94165c21f502aeaed11e611358d6be}{%
+           family={Hainmueller},
+           familyi={H\bibinitperiod},
+           given={Jens},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Taylor \& Francis}%
+      }
+      \strng{namehash}{bb1c0d171effadee95d0232167198de0}
+      \strng{fullhash}{bb1c0d171effadee95d0232167198de0}
+      \strng{bibnamehash}{bb1c0d171effadee95d0232167198de0}
+      \strng{authorbibnamehash}{bb1c0d171effadee95d0232167198de0}
+      \strng{authornamehash}{bb1c0d171effadee95d0232167198de0}
+      \strng{authorfullhash}{bb1c0d171effadee95d0232167198de0}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of the American Statistical Association}
+      \field{number}{490}
+      \field{title}{Synthetic control methods for comparative case studies: Estimating the effect of California’s tobacco control program}
+      \field{volume}{105}
+      \field{year}{2010}
+      \field{pages}{493\bibrangedash 505}
+      \range{pages}{13}
+    \endentry
+    \entry{steegen2016increasing}{article}{}
+      \name{author}{4}{}{%
+        {{hash=ee20f8b26032af1d07f33773e447574f}{%
+           family={Steegen},
+           familyi={S\bibinitperiod},
+           given={Sara},
+           giveni={S\bibinitperiod}}}%
+        {{hash=a62464afee2a784490d87f9a7d3ef86f}{%
+           family={Tuerlinckx},
+           familyi={T\bibinitperiod},
+           given={Francis},
+           giveni={F\bibinitperiod}}}%
+        {{hash=1e1eb60e3b6e222217bf8e9b24070b28}{%
+           family={Gelman},
+           familyi={G\bibinitperiod},
+           given={Andrew},
+           giveni={A\bibinitperiod}}}%
+        {{hash=a195175d678a58167eee80936100ae21}{%
+           family={Vanpaemel},
+           familyi={V\bibinitperiod},
+           given={Wolf},
+           giveni={W\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Sage Publications Sage CA: Los Angeles, CA}%
+      }
+      \strng{namehash}{b73edbb518caa92d354801e97458fb08}
+      \strng{fullhash}{0f1b26ebe99cf6f56302bbe10a313c04}
+      \strng{bibnamehash}{0f1b26ebe99cf6f56302bbe10a313c04}
+      \strng{authorbibnamehash}{0f1b26ebe99cf6f56302bbe10a313c04}
+      \strng{authornamehash}{b73edbb518caa92d354801e97458fb08}
+      \strng{authorfullhash}{0f1b26ebe99cf6f56302bbe10a313c04}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Perspectives on Psychological Science}
+      \field{number}{5}
+      \field{title}{Increasing transparency through a multiverse analysis}
+      \field{volume}{11}
+      \field{year}{2016}
+      \field{pages}{702\bibrangedash 712}
+      \range{pages}{11}
+    \endentry
     \entry{Kenton}{misc}{}
       \name{author}{1}{}{%
         {{hash=47a5d7268039bf86cea626bcaefd4877}{%
@@ -36,8 +180,8 @@
       \strng{authorbibnamehash}{47a5d7268039bf86cea626bcaefd4877}
       \strng{authornamehash}{47a5d7268039bf86cea626bcaefd4877}
       \strng{authorfullhash}{47a5d7268039bf86cea626bcaefd4877}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Investopedia}
@@ -72,8 +216,8 @@
       \strng{authorbibnamehash}{5ddf718e7fc7216da52dc45028359503}
       \strng{authornamehash}{5ddf718e7fc7216da52dc45028359503}
       \strng{authorfullhash}{5ddf718e7fc7216da52dc45028359503}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Journal of International Money and Finance}
@@ -101,8 +245,8 @@
       \strng{authorbibnamehash}{a10ec178d031d2e8ccfadd70714bf9cc}
       \strng{authornamehash}{a10ec178d031d2e8ccfadd70714bf9cc}
       \strng{authorfullhash}{a10ec178d031d2e8ccfadd70714bf9cc}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{annotation}{{Tsay provides an introduction to the ARCH and GARCH models as well as a brief discussion of the challenges of forecasting evaluation. }}
@@ -142,8 +286,8 @@
       \strng{authorbibnamehash}{7688ee32227d9ef7488af1df896d2f7a}
       \strng{authornamehash}{1ffc7f4a67f223e27cafd1a53b0b8537}
       \strng{authorfullhash}{7688ee32227d9ef7488af1df896d2f7a}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{The Review of Financial Studies}
@@ -181,8 +325,8 @@
       \strng{authorbibnamehash}{9331ef4c6dfb6cc4893750e4dfd0b449}
       \strng{authornamehash}{9331ef4c6dfb6cc4893750e4dfd0b449}
       \strng{authorfullhash}{9331ef4c6dfb6cc4893750e4dfd0b449}
-      \field{sortinit}{5}
-      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{Regime switching GARCH models}
@@ -215,8 +359,8 @@
       \strng{authorbibnamehash}{0d86ae31cef4f7711f7e6c078db01955}
       \strng{authornamehash}{0d86ae31cef4f7711f7e6c078db01955}
       \strng{authorfullhash}{0d86ae31cef4f7711f7e6c078db01955}
-      \field{sortinit}{6}
-      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Journal of Applied Econometrics}
@@ -254,8 +398,8 @@
       \strng{authorbibnamehash}{47696cd14f96bd743bab3287b819d3e1}
       \strng{authornamehash}{47696cd14f96bd743bab3287b819d3e1}
       \strng{authorfullhash}{47696cd14f96bd743bab3287b819d3e1}
-      \field{sortinit}{7}
-      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Journal of Forecasting}
@@ -283,8 +427,8 @@
       \strng{authorbibnamehash}{3afd31c613a1c37d9a5e8c9327d994f7}
       \strng{authornamehash}{3afd31c613a1c37d9a5e8c9327d994f7}
       \strng{authorfullhash}{3afd31c613a1c37d9a5e8c9327d994f7}
-      \field{sortinit}{9}
-      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Financial Analysts Journal}
@@ -317,8 +461,8 @@
       \strng{authorbibnamehash}{364815067baa5c88ee9b52d04d02d768}
       \strng{authornamehash}{364815067baa5c88ee9b52d04d02d768}
       \strng{authorfullhash}{364815067baa5c88ee9b52d04d02d768}
-      \field{sortinit}{9}
-      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Journal of financial economics}
@@ -520,8 +664,8 @@
       \strng{authorbibnamehash}{e9ff36944c875eeabd554302b72a9f61}
       \strng{authornamehash}{e9ff36944c875eeabd554302b72a9f61}
       \strng{authorfullhash}{e9ff36944c875eeabd554302b72a9f61}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{On a Theory of Intercept Corrections in Macroeconometric Forecasting.}
@@ -550,8 +694,8 @@
       \strng{authornamehash}{9b73d945dbfc5804fe7037f0cee27b38}
       \strng{authorfullhash}{9b73d945dbfc5804fe7037f0cee27b38}
       \field{extraname}{1}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{Forecasting economic time series}
@@ -579,8 +723,8 @@
       \strng{authorbibnamehash}{1f8832dcb7161e0d1caefd7da59f5256}
       \strng{authornamehash}{1f8832dcb7161e0d1caefd7da59f5256}
       \strng{authorfullhash}{1f8832dcb7161e0d1caefd7da59f5256}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{Macroeconomic forecasting in times of crises}
@@ -613,8 +757,8 @@
       \strng{authorbibnamehash}{63c6217584dec4e623082f059d128d6d}
       \strng{authornamehash}{63c6217584dec4e623082f059d128d6d}
       \strng{authorfullhash}{63c6217584dec4e623082f059d128d6d}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Journal of the Royal Statistical Society Series A: Statistics in Society}
@@ -652,8 +796,8 @@
       \strng{authorbibnamehash}{46786c1c1e5ac09e0e08b16b3e74ad18}
       \strng{authornamehash}{46786c1c1e5ac09e0e08b16b3e74ad18}
       \strng{authorfullhash}{46786c1c1e5ac09e0e08b16b3e74ad18}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{International Journal of Forecasting}
@@ -663,119 +807,6 @@
       \field{year}{2022}
       \field{pages}{596\bibrangedash 612}
       \range{pages}{17}
-    \endentry
-    \entry{abadie2010synthetic}{article}{}
-      \name{author}{3}{}{%
-        {{hash=da499bff747c5f6cd0ec9185c820ba4d}{%
-           family={Abadie},
-           familyi={A\bibinitperiod},
-           given={Alberto},
-           giveni={A\bibinitperiod}}}%
-        {{hash=b45c00701af03c6c0ab37b49f5d375c5}{%
-           family={Diamond},
-           familyi={D\bibinitperiod},
-           given={Alexis},
-           giveni={A\bibinitperiod}}}%
-        {{hash=be94165c21f502aeaed11e611358d6be}{%
-           family={Hainmueller},
-           familyi={H\bibinitperiod},
-           given={Jens},
-           giveni={J\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {Taylor \& Francis}%
-      }
-      \strng{namehash}{bb1c0d171effadee95d0232167198de0}
-      \strng{fullhash}{bb1c0d171effadee95d0232167198de0}
-      \strng{bibnamehash}{bb1c0d171effadee95d0232167198de0}
-      \strng{authorbibnamehash}{bb1c0d171effadee95d0232167198de0}
-      \strng{authornamehash}{bb1c0d171effadee95d0232167198de0}
-      \strng{authorfullhash}{bb1c0d171effadee95d0232167198de0}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Journal of the American Statistical Association}
-      \field{number}{490}
-      \field{title}{Synthetic control methods for comparative case studies: Estimating the effect of California’s tobacco control program}
-      \field{volume}{105}
-      \field{year}{2010}
-      \field{pages}{493\bibrangedash 505}
-      \range{pages}{13}
-    \endentry
-    \entry{lin2021minimizing}{article}{}
-      \name{author}{2}{}{%
-        {{hash=0840dad5e484231880452bc328d144a2}{%
-           family={Lin},
-           familyi={L\bibinitperiod},
-           given={Jilei},
-           giveni={J\bibinitperiod}}}%
-        {{hash=bf255f8e7ed95e29d355096a5fbf5403}{%
-           family={Eck},
-           familyi={E\bibinitperiod},
-           given={Daniel\bibnamedelima J},
-           giveni={D\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {Elsevier}%
-      }
-      \strng{namehash}{54ea06fb84f23976c8a0c10e8a121842}
-      \strng{fullhash}{54ea06fb84f23976c8a0c10e8a121842}
-      \strng{bibnamehash}{54ea06fb84f23976c8a0c10e8a121842}
-      \strng{authorbibnamehash}{54ea06fb84f23976c8a0c10e8a121842}
-      \strng{authornamehash}{54ea06fb84f23976c8a0c10e8a121842}
-      \strng{authorfullhash}{54ea06fb84f23976c8a0c10e8a121842}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{International Journal of Forecasting}
-      \field{title}{Minimizing post-shock forecasting error through aggregation of outside information}
-      \field{year}{2021}
-    \endentry
-    \entry{steegen2016increasing}{article}{}
-      \name{author}{4}{}{%
-        {{hash=ee20f8b26032af1d07f33773e447574f}{%
-           family={Steegen},
-           familyi={S\bibinitperiod},
-           given={Sara},
-           giveni={S\bibinitperiod}}}%
-        {{hash=a62464afee2a784490d87f9a7d3ef86f}{%
-           family={Tuerlinckx},
-           familyi={T\bibinitperiod},
-           given={Francis},
-           giveni={F\bibinitperiod}}}%
-        {{hash=1e1eb60e3b6e222217bf8e9b24070b28}{%
-           family={Gelman},
-           familyi={G\bibinitperiod},
-           given={Andrew},
-           giveni={A\bibinitperiod}}}%
-        {{hash=a195175d678a58167eee80936100ae21}{%
-           family={Vanpaemel},
-           familyi={V\bibinitperiod},
-           given={Wolf},
-           giveni={W\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {Sage Publications Sage CA: Los Angeles, CA}%
-      }
-      \strng{namehash}{b73edbb518caa92d354801e97458fb08}
-      \strng{fullhash}{0f1b26ebe99cf6f56302bbe10a313c04}
-      \strng{bibnamehash}{0f1b26ebe99cf6f56302bbe10a313c04}
-      \strng{authorbibnamehash}{0f1b26ebe99cf6f56302bbe10a313c04}
-      \strng{authornamehash}{b73edbb518caa92d354801e97458fb08}
-      \strng{authorfullhash}{0f1b26ebe99cf6f56302bbe10a313c04}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Perspectives on Psychological Science}
-      \field{number}{5}
-      \field{title}{Increasing transparency through a multiverse analysis}
-      \field{volume}{11}
-      \field{year}{2016}
-      \field{pages}{702\bibrangedash 712}
-      \range{pages}{11}
     \endentry
     \entry{box2013box}{incollection}{}
       \name{author}{1}{}{%
@@ -848,8 +879,8 @@
       \strng{authorbibnamehash}{39f8f5a428abd62057a0152546172106}
       \strng{authornamehash}{39f8f5a428abd62057a0152546172106}
       \strng{authorfullhash}{39f8f5a428abd62057a0152546172106}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Journal of econometrics}
@@ -882,8 +913,8 @@
       \strng{authorbibnamehash}{a02a2b57363902630e68a905b4943b22}
       \strng{authornamehash}{a02a2b57363902630e68a905b4943b22}
       \strng{authorfullhash}{a02a2b57363902630e68a905b4943b22}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{GARCH models: structure, statistical inference and financial applications}
@@ -906,8 +937,8 @@
       \strng{authorbibnamehash}{18c76c6967bbfc2643e8d0c125beac31}
       \strng{authornamehash}{18c76c6967bbfc2643e8d0c125beac31}
       \strng{authorfullhash}{18c76c6967bbfc2643e8d0c125beac31}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{booktitle}{Handbook of financial time series}
@@ -915,37 +946,6 @@
       \field{year}{2009}
       \field{pages}{113\bibrangedash 155}
       \range{pages}{43}
-    \endentry
-    \entry{abadie2003economic}{article}{}
-      \name{author}{2}{}{%
-        {{hash=da499bff747c5f6cd0ec9185c820ba4d}{%
-           family={Abadie},
-           familyi={A\bibinitperiod},
-           given={Alberto},
-           giveni={A\bibinitperiod}}}%
-        {{hash=990a64faa006b28cd41f2075997cba18}{%
-           family={Gardeazabal},
-           familyi={G\bibinitperiod},
-           given={Javier},
-           giveni={J\bibinitperiod}}}%
-      }
-      \strng{namehash}{f722330d5128ffafe3dd6ff1eae7e9c0}
-      \strng{fullhash}{f722330d5128ffafe3dd6ff1eae7e9c0}
-      \strng{bibnamehash}{f722330d5128ffafe3dd6ff1eae7e9c0}
-      \strng{authorbibnamehash}{f722330d5128ffafe3dd6ff1eae7e9c0}
-      \strng{authornamehash}{f722330d5128ffafe3dd6ff1eae7e9c0}
-      \strng{authorfullhash}{f722330d5128ffafe3dd6ff1eae7e9c0}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{American Economic Review}
-      \field{number}{1}
-      \field{title}{The Economic Costs of Conflict: A Case Study of the Basque Country}
-      \field{volume}{93}
-      \field{year}{2003}
-      \field{pages}{113\bibrangedash 132}
-      \range{pages}{20}
     \endentry
     \entry{timmermann2006forecast}{article}{}
       \name{author}{1}{}{%
@@ -1038,8 +1038,8 @@
       \strng{authorbibnamehash}{bc58cc3747d13cb7e8923f0abb707caf}
       \strng{authornamehash}{bc58cc3747d13cb7e8923f0abb707caf}
       \strng{authorfullhash}{bc58cc3747d13cb7e8923f0abb707caf}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{arXiv preprint arXiv:2203.06279}
@@ -1066,8 +1066,8 @@
       \strng{authornamehash}{49f3ed84d6c41c9e6799d682134c819f}
       \strng{authorfullhash}{49f3ed84d6c41c9e6799d682134c819f}
       \field{extraname}{1}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{CREATES Research Paper}
@@ -1102,8 +1102,8 @@
       \strng{authorbibnamehash}{3cdc87177c9c65d6c82cbb521aedb4ee}
       \strng{authornamehash}{3cdc87177c9c65d6c82cbb521aedb4ee}
       \strng{authorfullhash}{3cdc87177c9c65d6c82cbb521aedb4ee}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{The review of economics and statistics}
@@ -1220,8 +1220,8 @@
       \strng{authorbibnamehash}{56a2bf295a5c8f507fb6a38566e54eb8}
       \strng{authornamehash}{56a2bf295a5c8f507fb6a38566e54eb8}
       \strng{authorfullhash}{56a2bf295a5c8f507fb6a38566e54eb8}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Journal of business \& economic statistics}
@@ -1249,8 +1249,8 @@
       \strng{authorbibnamehash}{483d3313eaa3ebdefadcc12a7c09197d}
       \strng{authornamehash}{483d3313eaa3ebdefadcc12a7c09197d}
       \strng{authorfullhash}{483d3313eaa3ebdefadcc12a7c09197d}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{The R package garchx provides a user-friendly, fast, flexible and robust framework for the estimation and inference of GARCH(p,q,r)-X models, where p is the ARCH order, q is the GARCH order, r is the asymmetry or leverage order, and 'X' indicates that covariates can be included. Quasi Maximum Likelihood (QML) methods ensure estimates are consistent and standard errors valid, even when the standardised innovations are non-normal or dependent, or both. Zero-coefficient restrictions by omission enable parsimonious specifications, and functions to facilitate the non-standard inference associated with zero-restrictions in the null-hypothesis are provided. Finally, in formal comparisons of precision and speed, the garchx package performs well relative to other prominent GARCH-packages on CRAN.}
@@ -1289,8 +1289,8 @@
       \strng{authorbibnamehash}{938766e2ed127e1c0c61a8b9084ade36}
       \strng{authornamehash}{938766e2ed127e1c0c61a8b9084ade36}
       \strng{authorfullhash}{938766e2ed127e1c0c61a8b9084ade36}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Journal of applied econometrics}
@@ -1467,8 +1467,8 @@
       \strng{authorbibnamehash}{e56d0a8603cce5bec81ce06335169d75}
       \strng{authornamehash}{e56d0a8603cce5bec81ce06335169d75}
       \strng{authorfullhash}{e56d0a8603cce5bec81ce06335169d75}
-      \field{sortinit}{5}
-      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{New York Times}
@@ -1496,8 +1496,8 @@
       \strng{authorbibnamehash}{cefd04942a7b934ceab7899d53caccb8}
       \strng{authornamehash}{cefd04942a7b934ceab7899d53caccb8}
       \strng{authorfullhash}{cefd04942a7b934ceab7899d53caccb8}
-      \field{sortinit}{5}
-      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Business Insider}
@@ -1550,8 +1550,8 @@
       \strng{authorbibnamehash}{83b6740ff4499aae61d122d6465bc0d1}
       \strng{authornamehash}{0c2c07b614706c2d546985147e319f51}
       \strng{authorfullhash}{83b6740ff4499aae61d122d6465bc0d1}
-      \field{sortinit}{5}
-      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{Package ‘quantmod’}
@@ -1574,8 +1574,8 @@
       \strng{authorbibnamehash}{20b46c968bfe473af6b9b29e8c4933cf}
       \strng{authornamehash}{20b46c968bfe473af6b9b29e8c4933cf}
       \strng{authorfullhash}{20b46c968bfe473af6b9b29e8c4933cf}
-      \field{sortinit}{5}
-      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Journal of Business \& Finance Librarianship}
@@ -1609,8 +1609,8 @@
       \strng{authornamehash}{bc7ab4d16c42a19347b0c91c02d137c8}
       \strng{authorfullhash}{bc7ab4d16c42a19347b0c91c02d137c8}
       \field{extraname}{2}
-      \field{sortinit}{6}
-      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Journal of Applied Econometrics}
@@ -1648,8 +1648,8 @@
       \strng{authorbibnamehash}{7ca1bfe876d5e037b6aed69704221267}
       \strng{authornamehash}{7ca1bfe876d5e037b6aed69704221267}
       \strng{authorfullhash}{7ca1bfe876d5e037b6aed69704221267}
-      \field{sortinit}{6}
-      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{The elements of statistical learning: data mining, inference, and prediction}
@@ -1721,8 +1721,8 @@
       \strng{authorbibnamehash}{42b7823860d073856d3c9ab1e508183f}
       \strng{authornamehash}{42b7823860d073856d3c9ab1e508183f}
       \strng{authorfullhash}{42b7823860d073856d3c9ab1e508183f}
-      \field{sortinit}{7}
-      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{HAR modeling for realized volatility forecasting}
@@ -1746,8 +1746,8 @@
       \strng{authornamehash}{18357ef23d1269528ca662e5882a9d01}
       \strng{authorfullhash}{18357ef23d1269528ca662e5882a9d01}
       \field{extraname}{1}
-      \field{sortinit}{7}
-      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{booktitle}{Handbook of economic forecasting}
@@ -1775,8 +1775,8 @@
       \strng{authornamehash}{18357ef23d1269528ca662e5882a9d01}
       \strng{authorfullhash}{18357ef23d1269528ca662e5882a9d01}
       \field{extraname}{2}
-      \field{sortinit}{7}
-      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Journal of Economic Literature}
@@ -1902,8 +1902,8 @@
       \strng{authornamehash}{0c3a66cd070574b2492da6cb5f7fad8a}
       \strng{authorfullhash}{0c3a66cd070574b2492da6cb5f7fad8a}
       \field{extraname}{1}
-      \field{sortinit}{8}
-      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Journal of Business Cycle Research}
@@ -1913,6 +1913,37 @@
       \field{year}{2016}
       \field{pages}{3\bibrangedash 23}
       \range{pages}{21}
+    \endentry
+    \entry{castle2011forecasting}{article}{}
+      \name{author}{3}{}{%
+        {{hash=52a025d1d4e392b54ed53a39dbf9a2e4}{%
+           family={Castle},
+           familyi={C\bibinitperiod},
+           given={Jennifer\bibnamedelima L},
+           giveni={J\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=c915cf4fd3e318c44049c7109e57c1a3}{%
+           family={Fawcett},
+           familyi={F\bibinitperiod},
+           given={Nicholas\bibnamedelima WP},
+           giveni={N\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+        {{hash=6816e7c37c57bf4a47d33394a8562e5e}{%
+           family={Hendry},
+           familyi={H\bibinitperiod},
+           given={David\bibnamedelima F},
+           giveni={D\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+      }
+      \strng{namehash}{2a815b05d2a8b7abd1090e3fda26dfba}
+      \strng{fullhash}{2a815b05d2a8b7abd1090e3fda26dfba}
+      \strng{bibnamehash}{2a815b05d2a8b7abd1090e3fda26dfba}
+      \strng{authorbibnamehash}{2a815b05d2a8b7abd1090e3fda26dfba}
+      \strng{authornamehash}{2a815b05d2a8b7abd1090e3fda26dfba}
+      \strng{authorfullhash}{2a815b05d2a8b7abd1090e3fda26dfba}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Forecasting breaks and forecasting during breaks}
+      \field{year}{2011}
     \endentry
     \entry{clements2005guest}{article}{}
       \name{author}{2}{}{%
@@ -1934,8 +1965,8 @@
       \strng{authornamehash}{bc7ab4d16c42a19347b0c91c02d137c8}
       \strng{authorfullhash}{bc7ab4d16c42a19347b0c91c02d137c8}
       \field{extraname}{4}
-      \field{sortinit}{8}
-      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Oxford Bulletin of Economics \& Statistics}
@@ -1974,8 +2005,8 @@
       \strng{authornamehash}{0c3a66cd070574b2492da6cb5f7fad8a}
       \strng{authorfullhash}{0c3a66cd070574b2492da6cb5f7fad8a}
       \field{extraname}{2}
-      \field{sortinit}{9}
-      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Journal of Econometrics}
@@ -1985,6 +2016,327 @@
       \field{year}{2013}
       \field{pages}{305\bibrangedash 319}
       \range{pages}{15}
+    \endentry
+    \entry{bartha2013analogy}{article}{}
+      \name{author}{1}{}{%
+        {{hash=1c0c72748c28ed29265856fbb0c6c045}{%
+           family={Bartha},
+           familyi={B\bibinitperiod},
+           given={Paul},
+           giveni={P\bibinitperiod}}}%
+      }
+      \strng{namehash}{1c0c72748c28ed29265856fbb0c6c045}
+      \strng{fullhash}{1c0c72748c28ed29265856fbb0c6c045}
+      \strng{bibnamehash}{1c0c72748c28ed29265856fbb0c6c045}
+      \strng{authorbibnamehash}{1c0c72748c28ed29265856fbb0c6c045}
+      \strng{authornamehash}{1c0c72748c28ed29265856fbb0c6c045}
+      \strng{authorfullhash}{1c0c72748c28ed29265856fbb0c6c045}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Analogy and analogical reasoning}
+      \field{year}{2013}
+    \endentry
+    \entry{garg2015asymmetric}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{hash=1017b789f25fa88f4a2a327b876068cf}{%
+           family={Garg},
+           familyi={G\bibinitperiod},
+           given={Ankita},
+           giveni={A\bibinitperiod}}}%
+        {{hash=9905fda54220b3a13b3205728289f934}{%
+           family={Enright},
+           familyi={E\bibinitperiod},
+           given={Catherine\bibnamedelima G},
+           giveni={C\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+        {{hash=3d2ab69b9cd1d0df2615051415649ade}{%
+           family={Madden},
+           familyi={M\bibinitperiod},
+           given={Michael\bibnamedelima G},
+           giveni={M\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{0b7834ee5a3920965875f22e9c019b6e}
+      \strng{fullhash}{0b7834ee5a3920965875f22e9c019b6e}
+      \strng{bibnamehash}{0b7834ee5a3920965875f22e9c019b6e}
+      \strng{authorbibnamehash}{0b7834ee5a3920965875f22e9c019b6e}
+      \strng{authornamehash}{0b7834ee5a3920965875f22e9c019b6e}
+      \strng{authorfullhash}{0b7834ee5a3920965875f22e9c019b6e}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{2015 IEEE 14th international conference on machine learning and applications (ICMLA)}
+      \field{title}{On asymmetric similarity search}
+      \field{year}{2015}
+      \field{pages}{649\bibrangedash 654}
+      \range{pages}{6}
+    \endentry
+    \entry{bishop2023deep}{book}{}
+      \name{author}{2}{}{%
+        {{hash=9dfd0135a5e80aa6d81cea2c10fb7f73}{%
+           family={Bishop},
+           familyi={B\bibinitperiod},
+           given={Christopher\bibnamedelima M},
+           giveni={C\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=9ca7f36f884f509df3d999cc286274b4}{%
+           family={Bishop},
+           familyi={B\bibinitperiod},
+           given={Hugh},
+           giveni={H\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer Nature}%
+      }
+      \strng{namehash}{3911479a04ac6ac89bde53ed50604061}
+      \strng{fullhash}{3911479a04ac6ac89bde53ed50604061}
+      \strng{bibnamehash}{3911479a04ac6ac89bde53ed50604061}
+      \strng{authorbibnamehash}{3911479a04ac6ac89bde53ed50604061}
+      \strng{authornamehash}{3911479a04ac6ac89bde53ed50604061}
+      \strng{authorfullhash}{3911479a04ac6ac89bde53ed50604061}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Deep learning: Foundations and concepts}
+      \field{year}{2023}
+    \endentry
+    \entry{croushore1993introducing}{article}{}
+      \name{author}{1}{}{%
+        {{hash=1be0fe2d0e745c99662a9b305da17bbb}{%
+           family={Croushore},
+           familyi={C\bibinitperiod},
+           given={Dean\bibnamedelima D},
+           giveni={D\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+      }
+      \strng{namehash}{1be0fe2d0e745c99662a9b305da17bbb}
+      \strng{fullhash}{1be0fe2d0e745c99662a9b305da17bbb}
+      \strng{bibnamehash}{1be0fe2d0e745c99662a9b305da17bbb}
+      \strng{authorbibnamehash}{1be0fe2d0e745c99662a9b305da17bbb}
+      \strng{authornamehash}{1be0fe2d0e745c99662a9b305da17bbb}
+      \strng{authorfullhash}{1be0fe2d0e745c99662a9b305da17bbb}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Business Review-Federal Reserve Bank of Philadelphia}
+      \field{title}{Introducing: the survey of professional forecasters}
+      \field{volume}{6}
+      \field{year}{1993}
+      \field{pages}{3}
+      \range{pages}{1}
+    \endentry
+    \entry{corsi2009simple}{article}{}
+      \name{author}{1}{}{%
+        {{hash=129c77b46135add6df324fff12fb9b28}{%
+           family={Corsi},
+           familyi={C\bibinitperiod},
+           given={Fulvio},
+           giveni={F\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Oxford University Press}%
+      }
+      \strng{namehash}{129c77b46135add6df324fff12fb9b28}
+      \strng{fullhash}{129c77b46135add6df324fff12fb9b28}
+      \strng{bibnamehash}{129c77b46135add6df324fff12fb9b28}
+      \strng{authorbibnamehash}{129c77b46135add6df324fff12fb9b28}
+      \strng{authornamehash}{129c77b46135add6df324fff12fb9b28}
+      \strng{authorfullhash}{129c77b46135add6df324fff12fb9b28}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Financial Econometrics}
+      \field{number}{2}
+      \field{title}{A simple approximate long-memory model of realized volatility}
+      \field{volume}{7}
+      \field{year}{2009}
+      \field{pages}{174\bibrangedash 196}
+      \range{pages}{23}
+    \endentry
+    \entry{bodilsen2023exploiting}{article}{}
+      \name{author}{2}{}{%
+        {{hash=71a3050438816b71055cd0399be9dc8c}{%
+           family={Bodilsen},
+           familyi={B\bibinitperiod},
+           given={Simon\bibnamedelima Tranberg},
+           giveni={S\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
+        {{hash=8d526c5bfbc93e7d59acb3e0d9853324}{%
+           family={Lunde},
+           familyi={L\bibinitperiod},
+           given={Asger},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{91846682daccba1e22b70032bbcb9505}
+      \strng{fullhash}{91846682daccba1e22b70032bbcb9505}
+      \strng{bibnamehash}{91846682daccba1e22b70032bbcb9505}
+      \strng{authorbibnamehash}{91846682daccba1e22b70032bbcb9505}
+      \strng{authornamehash}{91846682daccba1e22b70032bbcb9505}
+      \strng{authorfullhash}{91846682daccba1e22b70032bbcb9505}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Available at SSRN 4401032}
+      \field{title}{Exploiting news analytics for volatility forecasting}
+      \field{year}{2023}
+    \endentry
+    \entry{GFC}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=25f1a2a3ac66a7f59f664235c5a8fbac}{%
+           family={Weinberg},
+           familyi={W\bibinitperiod},
+           given={John},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Federal Reserve Bank of Richmondg}%
+      }
+      \strng{namehash}{25f1a2a3ac66a7f59f664235c5a8fbac}
+      \strng{fullhash}{25f1a2a3ac66a7f59f664235c5a8fbac}
+      \strng{bibnamehash}{25f1a2a3ac66a7f59f664235c5a8fbac}
+      \strng{authorbibnamehash}{25f1a2a3ac66a7f59f664235c5a8fbac}
+      \strng{authornamehash}{25f1a2a3ac66a7f59f664235c5a8fbac}
+      \strng{authorfullhash}{25f1a2a3ac66a7f59f664235c5a8fbac}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://www.federalreservehistory.org/essays/great-recession-and-its-aftermath }}
+      \field{month}{11}
+      \field{title}{The Great Recession and Its Aftermath}
+      \field{year}{2013}
+    \endentry
+    \entry{fedfunds}{online}{}
+      \name{author}{1}{}{%
+        {{hash=69eb95ff6536af47bfac3caa42041d64}{%
+           family={Foster},
+           familyi={F\bibinitperiod},
+           given={Sarah},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{69eb95ff6536af47bfac3caa42041d64}
+      \strng{fullhash}{69eb95ff6536af47bfac3caa42041d64}
+      \strng{bibnamehash}{69eb95ff6536af47bfac3caa42041d64}
+      \strng{authorbibnamehash}{69eb95ff6536af47bfac3caa42041d64}
+      \strng{authornamehash}{69eb95ff6536af47bfac3caa42041d64}
+      \strng{authorfullhash}{69eb95ff6536af47bfac3caa42041d64}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Published: 11-07-2024}
+      \field{title}{Fed’s interest rate history: The federal funds rate from 1981 to the present}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://www.bankrate.com/banking/federal-reserve/history-of-federal-funds-rate/
+      \endverb
+      \verb{url}
+      \verb https://www.bankrate.com/banking/federal-reserve/history-of-federal-funds-rate/
+      \endverb
+    \endentry
+    \entry{highfrequency}{article}{}
+      \name{author}{3}{}{%
+        {{hash=c8565698678051e17eea0f9e76d4159d}{%
+           family={Boudt},
+           familyi={B\bibinitperiod},
+           given={Kris},
+           giveni={K\bibinitperiod}}}%
+        {{hash=93e526efe08a90c2ac47ea0767876c43}{%
+           family={Kleen},
+           familyi={K\bibinitperiod},
+           given={Onno},
+           giveni={O\bibinitperiod}}}%
+        {{hash=0719aa171316ce818708df053d1941e3}{%
+           family={Sj{ø}rup},
+           familyi={S\bibinitperiod},
+           given={Emil},
+           giveni={E\bibinitperiod}}}%
+      }
+      \strng{namehash}{f03b724d09d0cdb4c8cba1b9a8ea0a3e}
+      \strng{fullhash}{f03b724d09d0cdb4c8cba1b9a8ea0a3e}
+      \strng{bibnamehash}{f03b724d09d0cdb4c8cba1b9a8ea0a3e}
+      \strng{authorbibnamehash}{f03b724d09d0cdb4c8cba1b9a8ea0a3e}
+      \strng{authornamehash}{f03b724d09d0cdb4c8cba1b9a8ea0a3e}
+      \strng{authorfullhash}{f03b724d09d0cdb4c8cba1b9a8ea0a3e}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Statistical Software}
+      \field{number}{8}
+      \field{title}{Analyzing Intraday Financial Data in R: The highfrequency Package}
+      \field{volume}{104}
+      \field{year}{2022}
+      \field{pages}{1\bibrangedash 36}
+      \range{pages}{36}
+      \verb{doi}
+      \verb 10.18637/jss.v104.i08
+      \endverb
+    \endentry
+    \entry{boysel2021package}{misc}{}
+      \name{author}{2}{}{%
+        {{hash=0b079ff8046cbbec99b6636a6ea0b7c6}{%
+           family={Boysel},
+           familyi={B\bibinitperiod},
+           given={Sam},
+           giveni={S\bibinitperiod}}}%
+        {{hash=858f3a61393526cfc73cb860925a277a}{%
+           family={Vaughan},
+           familyi={V\bibinitperiod},
+           given={Davis},
+           giveni={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{978dc8cef1d9a4e799e3256e6f9582de}
+      \strng{fullhash}{978dc8cef1d9a4e799e3256e6f9582de}
+      \strng{bibnamehash}{978dc8cef1d9a4e799e3256e6f9582de}
+      \strng{authorbibnamehash}{978dc8cef1d9a4e799e3256e6f9582de}
+      \strng{authornamehash}{978dc8cef1d9a4e799e3256e6f9582de}
+      \strng{authorfullhash}{978dc8cef1d9a4e799e3256e6f9582de}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Package ‘fredr’}
+      \field{year}{2021}
+    \endentry
+    \entry{clements2005evaluating}{article}{}
+      \name{author}{2}{}{%
+        {{hash=0f6ea0e68f1008d34fdfe86012adf11a}{%
+           family={Clements},
+           familyi={C\bibinitperiod},
+           given={Michael\bibnamedelima P},
+           giveni={M\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+        {{hash=6816e7c37c57bf4a47d33394a8562e5e}{%
+           family={Hendry},
+           familyi={H\bibinitperiod},
+           given={David\bibnamedelima F},
+           giveni={D\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley Online Library}%
+      }
+      \strng{namehash}{bc7ab4d16c42a19347b0c91c02d137c8}
+      \strng{fullhash}{bc7ab4d16c42a19347b0c91c02d137c8}
+      \strng{bibnamehash}{bc7ab4d16c42a19347b0c91c02d137c8}
+      \strng{authorbibnamehash}{bc7ab4d16c42a19347b0c91c02d137c8}
+      \strng{authornamehash}{bc7ab4d16c42a19347b0c91c02d137c8}
+      \strng{authorfullhash}{bc7ab4d16c42a19347b0c91c02d137c8}
+      \field{extraname}{5}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Oxford Bulletin of Economics and Statistics}
+      \field{title}{Evaluating a model by forecast performance}
+      \field{volume}{67}
+      \field{year}{2005}
+      \field{pages}{931\bibrangedash 956}
+      \range{pages}{26}
     \endentry
   \enddatalist
   \missing{Morales_Valentini_Penny_2016}
