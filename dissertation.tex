@@ -1603,30 +1603,24 @@ For a method with such high ambitions --- addressing canonical problems in forec
 
   
   \subsection{The covariate vector and conditional shock distribution}
-  In this subsection, we pose two questions.  
-  
-  What if a given entry of the covariate vector was helpful at only one of those roles?  For example, what if an entry was particularly useful in yielding good weights but was not important for the shock distribution --- perhaps because the corresponding shock parameter was zero.  
-  
-  Conversely, suppose a given entry was known to be part of the shock distribution, but the inclusion of that covariate in distance-based weighting was often not worth it, perhaps because it was hard to approximate with using donors, and the corresponding shock parameter was small in magnitude with high probability.
+  In this subsection, we pose two questions.  First, what if a given entry of the covariate vector was helpful at only one of those roles?  For example, what if an entry was particularly useful in yielding good weights but was not important for the shock distribution --- perhaps because the corresponding shock parameter was zero.  Conversely, suppose a given entry was known to be part of the shock distribution, but the inclusion of that covariate in distance-based weighting was often not worth it, perhaps because it was hard to approximate with using donors, and the corresponding shock parameter was small in magnitude with high probability.
   
   \subsection{Shock propagation and estimation accuracy}
-  Consider \cite[][]{lundquist2024volatility}, in which a real world example shows how volatility can be forecasted following surprising election outcomes.  There, the estimation of fixed effects is done around elections in a donor pool.  That means that for each past election or poll, etcetera, the method must accurately estimate the surprise-induced volatility boost.  That means picking a window around such an effect.\\
-  
-  \textbf{proposals}
+  Consider \cite[][]{lundquist2024volatility}, in which a real world example shows how volatility can be forecasted following surprising election outcomes.  There, the estimation of fixed effects is done around elections in a donor pool.  That means that for each past election or poll, etcetera, the method must accurately estimate the surprise-induced volatility boost.  That means picking a window around such an effect.  We offer two proposals.
   \begin{enumerate}
     \item For a given data-generating process, simulate the accuracy and variability of shock estimates using post-shock measurement periods of difference lengths.
     \item Develop formal results to quantify (estimate, bound, etc) the risk of using different post-estimation measurement lengths.  This matters because it might be that a donor has experienced a shock in the last $m$ days, and if $m$ is too small, using that donor may be risky.
   \end{enumerate}
       
-  \subsection{Aggregating residuals as opposed to aggregating fixed effect estimates?}
+%   \subsection{Aggregating residuals as opposed to aggregating fixed effect estimates?}
   
-  Cases:
-  \begin{enumerate}
-    \item Fixed effect is estimated with accuracy 
-    \item Fixed effect is estimated with considerable noise.  Hence, the idiosyncratic error is estimated with considerable noise.
-    \item idiosyncratic error large
-    \item idiosyncratic error small
-  \end{enumerate}  
+%   Cases:
+%   \begin{enumerate}
+%     \item Fixed effect is estimated with accuracy 
+%     \item Fixed effect is estimated with considerable noise.  Hence, the idiosyncratic error is estimated with considerable noise.
+%     \item idiosyncratic error large
+%     \item idiosyncratic error small
+%   \end{enumerate}  
   
   \section{Extensions}\label{Extensions}
 

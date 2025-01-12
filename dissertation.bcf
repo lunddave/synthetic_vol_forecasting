@@ -2245,4 +2245,309 @@
       <bcf:entrytype>mvreference</bcf:entrytype>
       <bcf:constraint type="mandatory">
         <bcf:field>editor</bcf:field>
-        <bcf:field>title</bcf:fiel
+        <bcf:field>title</bcf:field>
+      </bcf:constraint>
+    </bcf:constraints>
+    <bcf:constraints>
+      <bcf:entrytype>incollection</bcf:entrytype>
+      <bcf:entrytype>suppcollection</bcf:entrytype>
+      <bcf:entrytype>inreference</bcf:entrytype>
+      <bcf:constraint type="mandatory">
+        <bcf:field>author</bcf:field>
+        <bcf:field>editor</bcf:field>
+        <bcf:field>title</bcf:field>
+        <bcf:field>booktitle</bcf:field>
+      </bcf:constraint>
+    </bcf:constraints>
+    <bcf:constraints>
+      <bcf:entrytype>dataset</bcf:entrytype>
+      <bcf:constraint type="mandatory">
+        <bcf:field>title</bcf:field>
+      </bcf:constraint>
+    </bcf:constraints>
+    <bcf:constraints>
+      <bcf:entrytype>manual</bcf:entrytype>
+      <bcf:constraint type="mandatory">
+        <bcf:field>title</bcf:field>
+      </bcf:constraint>
+    </bcf:constraints>
+    <bcf:constraints>
+      <bcf:entrytype>misc</bcf:entrytype>
+      <bcf:entrytype>software</bcf:entrytype>
+      <bcf:constraint type="mandatory">
+        <bcf:field>title</bcf:field>
+      </bcf:constraint>
+    </bcf:constraints>
+    <bcf:constraints>
+      <bcf:entrytype>online</bcf:entrytype>
+      <bcf:constraint type="mandatory">
+        <bcf:field>title</bcf:field>
+        <bcf:fieldor>
+          <bcf:field>url</bcf:field>
+          <bcf:field>doi</bcf:field>
+          <bcf:field>eprint</bcf:field>
+        </bcf:fieldor>
+      </bcf:constraint>
+    </bcf:constraints>
+    <bcf:constraints>
+      <bcf:entrytype>patent</bcf:entrytype>
+      <bcf:constraint type="mandatory">
+        <bcf:field>author</bcf:field>
+        <bcf:field>title</bcf:field>
+        <bcf:field>number</bcf:field>
+      </bcf:constraint>
+    </bcf:constraints>
+    <bcf:constraints>
+      <bcf:entrytype>periodical</bcf:entrytype>
+      <bcf:constraint type="mandatory">
+        <bcf:field>editor</bcf:field>
+        <bcf:field>title</bcf:field>
+      </bcf:constraint>
+    </bcf:constraints>
+    <bcf:constraints>
+      <bcf:entrytype>proceedings</bcf:entrytype>
+      <bcf:entrytype>mvproceedings</bcf:entrytype>
+      <bcf:constraint type="mandatory">
+        <bcf:field>title</bcf:field>
+      </bcf:constraint>
+    </bcf:constraints>
+    <bcf:constraints>
+      <bcf:entrytype>inproceedings</bcf:entrytype>
+      <bcf:constraint type="mandatory">
+        <bcf:field>author</bcf:field>
+        <bcf:field>title</bcf:field>
+        <bcf:field>booktitle</bcf:field>
+      </bcf:constraint>
+    </bcf:constraints>
+    <bcf:constraints>
+      <bcf:entrytype>report</bcf:entrytype>
+      <bcf:constraint type="mandatory">
+        <bcf:field>author</bcf:field>
+        <bcf:field>title</bcf:field>
+        <bcf:field>type</bcf:field>
+        <bcf:field>institution</bcf:field>
+      </bcf:constraint>
+    </bcf:constraints>
+    <bcf:constraints>
+      <bcf:entrytype>thesis</bcf:entrytype>
+      <bcf:constraint type="mandatory">
+        <bcf:field>author</bcf:field>
+        <bcf:field>title</bcf:field>
+        <bcf:field>type</bcf:field>
+        <bcf:field>institution</bcf:field>
+      </bcf:constraint>
+    </bcf:constraints>
+    <bcf:constraints>
+      <bcf:entrytype>unpublished</bcf:entrytype>
+      <bcf:constraint type="mandatory">
+        <bcf:field>author</bcf:field>
+        <bcf:field>title</bcf:field>
+      </bcf:constraint>
+    </bcf:constraints>
+    <bcf:constraints>
+      <bcf:constraint type="data" datatype="isbn">
+        <bcf:field>isbn</bcf:field>
+      </bcf:constraint>
+      <bcf:constraint type="data" datatype="issn">
+        <bcf:field>issn</bcf:field>
+      </bcf:constraint>
+      <bcf:constraint type="data" datatype="ismn">
+        <bcf:field>ismn</bcf:field>
+      </bcf:constraint>
+      <bcf:constraint type="data" datatype="pattern" pattern="(?:sf|sm|sn|pf|pm|pn|pp)">
+        <bcf:field>gender</bcf:field>
+      </bcf:constraint>
+    </bcf:constraints>
+  </bcf:datamodel>
+  <!-- CITATION DATA -->
+  <!-- SECTION 0 -->
+  <bcf:bibdata section="0">
+    <bcf:datasource type="file" datatype="bibtex" glob="false">thesis.bib</bcf:datasource>
+  </bcf:bibdata>
+  <bcf:section number="0">
+    <bcf:citekey order="1" intorder="1">lin2021minimizing</bcf:citekey>
+    <bcf:citekey order="2" intorder="1">abadie2003economic</bcf:citekey>
+    <bcf:citekey order="2" intorder="2">abadie2010synthetic</bcf:citekey>
+    <bcf:citekey order="3" intorder="1">abadie2003economic</bcf:citekey>
+    <bcf:citekey order="3" intorder="2">abadie2010synthetic</bcf:citekey>
+    <bcf:citekey order="4" intorder="1">steegen2016increasing</bcf:citekey>
+    <bcf:citekey order="5" intorder="1">lin2021minimizing</bcf:citekey>
+    <bcf:citekey order="6" intorder="1">Kenton</bcf:citekey>
+    <bcf:citekey order="7" intorder="1">dominguez2006defines</bcf:citekey>
+    <bcf:citekey order="8" intorder="1">tsay2005analysis</bcf:citekey>
+    <bcf:citekey order="9" intorder="1">boudoukh2019information</bcf:citekey>
+    <bcf:citekey order="10" intorder="1">bauwens2006regime</bcf:citekey>
+    <bcf:citekey order="11" intorder="1">hansen2012realized</bcf:citekey>
+    <bcf:citekey order="12" intorder="1">wang2020forecasting</bcf:citekey>
+    <bcf:citekey order="13" intorder="1">hansen2012realized</bcf:citekey>
+    <bcf:citekey order="14" intorder="1">mayhew1995implied</bcf:citekey>
+    <bcf:citekey order="14" intorder="2">christensen1998relation</bcf:citekey>
+    <bcf:citekey order="15" intorder="1">andersen2003modeling</bcf:citekey>
+    <bcf:citekey order="16" intorder="1">romer1989does</bcf:citekey>
+    <bcf:citekey order="17" intorder="1">kilian2017structural</bcf:citekey>
+    <bcf:citekey order="18" intorder="1">engle2001good</bcf:citekey>
+    <bcf:citekey order="19" intorder="1">phillips1996forecasting</bcf:citekey>
+    <bcf:citekey order="20" intorder="1">hendry1994theory</bcf:citekey>
+    <bcf:citekey order="20" intorder="2">clements1998forecasting</bcf:citekey>
+    <bcf:citekey order="21" intorder="1">guerron2017macroeconomic</bcf:citekey>
+    <bcf:citekey order="22" intorder="1">dendramis2020similarity</bcf:citekey>
+    <bcf:citekey order="23" intorder="1">foroni2022forecasting</bcf:citekey>
+    <bcf:citekey order="24" intorder="1">abadie2010synthetic</bcf:citekey>
+    <bcf:citekey order="25" intorder="1">lin2021minimizing</bcf:citekey>
+    <bcf:citekey order="26" intorder="1">lin2021minimizing</bcf:citekey>
+    <bcf:citekey order="27" intorder="1">steegen2016increasing</bcf:citekey>
+    <bcf:citekey order="28" intorder="1">box2013box</bcf:citekey>
+    <bcf:citekey order="29" intorder="1">engle1982autoregressive</bcf:citekey>
+    <bcf:citekey order="30" intorder="1">bollerslev1986generalized</bcf:citekey>
+    <bcf:citekey order="31" intorder="1">[</bcf:citekey>
+    <bcf:citekey order="32" intorder="1">lin2021minimizing</bcf:citekey>
+    <bcf:citekey order="33" intorder="1">tsay2005analysis</bcf:citekey>
+    <bcf:citekey order="33" intorder="2">francq2019garch</bcf:citekey>
+    <bcf:citekey order="34" intorder="1">zivot2009practical</bcf:citekey>
+    <bcf:citekey order="35" intorder="1">abadie2003economic</bcf:citekey>
+    <bcf:citekey order="36" intorder="1">abadie2010synthetic</bcf:citekey>
+    <bcf:citekey order="37" intorder="1">lin2021minimizing</bcf:citekey>
+    <bcf:citekey order="38" intorder="1">timmermann2006forecast</bcf:citekey>
+    <bcf:citekey order="38" intorder="2">wang2023forecast</bcf:citekey>
+    <bcf:citekey order="39" intorder="1">abadie2010synthetic</bcf:citekey>
+    <bcf:citekey order="40" intorder="1">wang2023forecast</bcf:citekey>
+    <bcf:citekey order="41" intorder="1">lin2021minimizing</bcf:citekey>
+    <bcf:citekey order="42" intorder="1">abadie2022synthetic</bcf:citekey>
+    <bcf:citekey order="43" intorder="1">andersen2010stochastic</bcf:citekey>
+    <bcf:citekey order="44" intorder="1">andersen2007roughing</bcf:citekey>
+    <bcf:citekey order="45" intorder="1">de2006forecasting</bcf:citekey>
+    <bcf:citekey order="46" intorder="1">andersen2008realized</bcf:citekey>
+    <bcf:citekey order="47" intorder="1">brownlees2011practical</bcf:citekey>
+    <bcf:citekey order="48" intorder="1">brownlees2011practical</bcf:citekey>
+    <bcf:citekey order="49" intorder="1">zivot2009practical</bcf:citekey>
+    <bcf:citekey order="50" intorder="1">han2014asymptotic</bcf:citekey>
+    <bcf:citekey order="51" intorder="1">RePEc:pra:mprapa:100301</bcf:citekey>
+    <bcf:citekey order="52" intorder="1">zivot2009practical</bcf:citekey>
+    <bcf:citekey order="53" intorder="1">hansen2005forecast</bcf:citekey>
+    <bcf:citekey order="54" intorder="1">The_Guardian</bcf:citekey>
+    <bcf:citekey order="55" intorder="1">Morales_Valentini_Penny_2016</bcf:citekey>
+    <bcf:citekey order="56" intorder="1">BBC_News_2016</bcf:citekey>
+    <bcf:citekey order="57" intorder="1">wilson2017brexit</bcf:citekey>
+    <bcf:citekey order="58" intorder="1">kay2016brexit</bcf:citekey>
+    <bcf:citekey order="58" intorder="2">collins2016trump</bcf:citekey>
+    <bcf:citekey order="59" intorder="1">applebaum2016britain</bcf:citekey>
+    <bcf:citekey order="60" intorder="1">martin2016brexit</bcf:citekey>
+    <bcf:citekey order="60" intorder="2">barro2016three</bcf:citekey>
+    <bcf:citekey order="61" intorder="1">andersen2008realized</bcf:citekey>
+    <bcf:citekey order="62" intorder="1">ryan2015package</bcf:citekey>
+    <bcf:citekey order="63" intorder="1">wachowicz2020wharton</bcf:citekey>
+    <bcf:citekey order="64" intorder="1">steegen2016increasing</bcf:citekey>
+    <bcf:citekey order="65" intorder="1">lin2021minimizing</bcf:citekey>
+    <bcf:citekey order="66" intorder="1">lin2021minimizing</bcf:citekey>
+    <bcf:citekey order="67" intorder="1">lin2021minimizing</bcf:citekey>
+    <bcf:citekey order="68" intorder="1">phillips1996forecasting</bcf:citekey>
+    <bcf:citekey order="69" intorder="1">phillips1996forecasting</bcf:citekey>
+    <bcf:citekey order="70" intorder="1">clements1996intercept</bcf:citekey>
+    <bcf:citekey order="71" intorder="1">guerron2017macroeconomic</bcf:citekey>
+    <bcf:citekey order="72" intorder="1">hastie2009elements</bcf:citekey>
+    <bcf:citekey order="73" intorder="1">abadie2010synthetic</bcf:citekey>
+    <bcf:citekey order="74" intorder="1">hastie2009elements</bcf:citekey>
+    <bcf:citekey order="75" intorder="1">lin2021minimizing</bcf:citekey>
+    <bcf:citekey order="76" intorder="1">lin2021minimizing</bcf:citekey>
+    <bcf:citekey order="77" intorder="1">abadie2022synthetic</bcf:citekey>
+    <bcf:citekey order="78" intorder="1">boudoukh2019information</bcf:citekey>
+    <bcf:citekey order="79" intorder="1">chinco2019sparse</bcf:citekey>
+    <bcf:citekey order="80" intorder="1">corsi2012har</bcf:citekey>
+    <bcf:citekey order="81" intorder="1">rossi2013advances</bcf:citekey>
+    <bcf:citekey order="81" intorder="2">rossi2021forecasting</bcf:citekey>
+    <bcf:citekey order="82" intorder="1">dendramis2020similarity</bcf:citekey>
+    <bcf:citekey order="83" intorder="1">abadie2010synthetic</bcf:citekey>
+    <bcf:citekey order="84" intorder="1">han2014asymptotic</bcf:citekey>
+    <bcf:citekey order="85" intorder="1">thoughts_on_market</bcf:citekey>
+    <bcf:citekey order="86" intorder="1">lundquist2024volatility</bcf:citekey>
+    <bcf:citekey order="87" intorder="1">hendry1994theory</bcf:citekey>
+    <bcf:citekey order="87" intorder="2">clements1996intercept</bcf:citekey>
+    <bcf:citekey order="87" intorder="3">clements1998forecasting</bcf:citekey>
+    <bcf:citekey order="87" intorder="4">clements1999forecasting</bcf:citekey>
+    <bcf:citekey order="88" intorder="1">hendry1994theory</bcf:citekey>
+    <bcf:citekey order="89" intorder="1">clements1999forecasting</bcf:citekey>
+    <bcf:citekey order="90" intorder="1">hendry1994theory</bcf:citekey>
+    <bcf:citekey order="90" intorder="2">clements1999forecasting</bcf:citekey>
+    <bcf:citekey order="91" intorder="1">guerron2017macroeconomic</bcf:citekey>
+    <bcf:citekey order="92" intorder="1">lundquist2024volatility</bcf:citekey>
+    <bcf:citekey order="93" intorder="1">castle2016overview</bcf:citekey>
+    <bcf:citekey order="94" intorder="1">lin2021minimizing</bcf:citekey>
+    <bcf:citekey order="95" intorder="1">lundquist2024volatility</bcf:citekey>
+    <bcf:citekey order="96" intorder="1">castle2011forecasting</bcf:citekey>
+    <bcf:citekey order="97" intorder="1">lundquist2024volatility</bcf:citekey>
+    <bcf:citekey order="98" intorder="1">lin2021minimizing</bcf:citekey>
+    <bcf:citekey order="99" intorder="1">lundquist2024volatility</bcf:citekey>
+    <bcf:citekey order="100" intorder="1">clements1998forecasting</bcf:citekey>
+    <bcf:citekey order="101" intorder="1">hendry1994theory</bcf:citekey>
+    <bcf:citekey order="102" intorder="1">clements2005guest</bcf:citekey>
+    <bcf:citekey order="103" intorder="1">castle2011forecasting</bcf:citekey>
+    <bcf:citekey order="104" intorder="1">clements2005guest</bcf:citekey>
+    <bcf:citekey order="105" intorder="1">castle2013forecasting</bcf:citekey>
+    <bcf:citekey order="106" intorder="1">castle2011forecasting</bcf:citekey>
+    <bcf:citekey order="107" intorder="1">bartha2013analogy</bcf:citekey>
+    <bcf:citekey order="108" intorder="1">garg2015asymmetric</bcf:citekey>
+    <bcf:citekey order="109" intorder="1">bishop2023deep</bcf:citekey>
+    <bcf:citekey order="110" intorder="1">lin2021minimizing</bcf:citekey>
+    <bcf:citekey order="111" intorder="1">lundquist2024volatility</bcf:citekey>
+    <bcf:citekey order="112" intorder="1">lin2021minimizing</bcf:citekey>
+    <bcf:citekey order="113" intorder="1">lundquist2024volatility</bcf:citekey>
+    <bcf:citekey order="114" intorder="1">lin2021minimizing</bcf:citekey>
+    <bcf:citekey order="115" intorder="1">foroni2022forecasting</bcf:citekey>
+    <bcf:citekey order="116" intorder="1">croushore1993introducing</bcf:citekey>
+    <bcf:citekey order="117" intorder="1">lin2021minimizing</bcf:citekey>
+    <bcf:citekey order="118" intorder="1">abadie2010synthetic</bcf:citekey>
+    <bcf:citekey order="119" intorder="1">lin2021minimizing</bcf:citekey>
+    <bcf:citekey order="120" intorder="1">lundquist2024volatility</bcf:citekey>
+    <bcf:citekey order="121" intorder="1">lin2021minimizing</bcf:citekey>
+    <bcf:citekey order="122" intorder="1">lundquist2024volatility</bcf:citekey>
+    <bcf:citekey order="123" intorder="1">lin2021minimizing</bcf:citekey>
+    <bcf:citekey order="124" intorder="1">lin2021minimizing</bcf:citekey>
+    <bcf:citekey order="125" intorder="1">lin2021minimizing</bcf:citekey>
+    <bcf:citekey order="126" intorder="1">lundquist2024volatility</bcf:citekey>
+    <bcf:citekey order="127" intorder="1">lin2021minimizing</bcf:citekey>
+    <bcf:citekey order="128" intorder="1">lundquist2024volatility</bcf:citekey>
+    <bcf:citekey order="129" intorder="1">francq2019garch</bcf:citekey>
+    <bcf:citekey order="130" intorder="1">lundquist2024volatility</bcf:citekey>
+    <bcf:citekey order="131" intorder="1">corsi2009simple</bcf:citekey>
+    <bcf:citekey order="132" intorder="1">bodilsen2023exploiting</bcf:citekey>
+    <bcf:citekey order="133" intorder="1">bodilsen2023exploiting</bcf:citekey>
+    <bcf:citekey order="134" intorder="1">bodilsen2023exploiting</bcf:citekey>
+    <bcf:citekey order="135" intorder="1">bodilsen2023exploiting</bcf:citekey>
+    <bcf:citekey order="136" intorder="1">GFC</bcf:citekey>
+    <bcf:citekey order="137" intorder="1">fedfunds</bcf:citekey>
+    <bcf:citekey order="138" intorder="1">corsi2009simple</bcf:citekey>
+    <bcf:citekey order="139" intorder="1">andersen2008realized</bcf:citekey>
+    <bcf:citekey order="140" intorder="1">ryan2015package</bcf:citekey>
+    <bcf:citekey order="141" intorder="1">highfrequency</bcf:citekey>
+    <bcf:citekey order="142" intorder="1">boysel2021package</bcf:citekey>
+    <bcf:citekey order="143" intorder="1">castle2011forecasting</bcf:citekey>
+    <bcf:citekey order="144" intorder="1">castle2011forecasting</bcf:citekey>
+    <bcf:citekey order="145" intorder="1">lin2021minimizing</bcf:citekey>
+    <bcf:citekey order="146" intorder="1">clements1998forecasting</bcf:citekey>
+    <bcf:citekey order="147" intorder="1">lundquist2024volatility</bcf:citekey>
+    <bcf:citekey order="148" intorder="1">clements2005evaluating</bcf:citekey>
+    <bcf:citekey order="149" intorder="1">lundquist2024volatility</bcf:citekey>
+    <bcf:citekey order="150" intorder="1">lundquist2024volatility</bcf:citekey>
+    <bcf:citekey order="151" intorder="1">clements2005guest</bcf:citekey>
+    <bcf:citekey order="152" intorder="1">castle2013forecasting</bcf:citekey>
+  </bcf:section>
+  <!-- SORTING TEMPLATES -->
+  <bcf:sortingtemplate name="none">
+    <bcf:sort order="1">
+      <bcf:sortitem order="1">citeorder</bcf:sortitem>
+    </bcf:sort>
+    <bcf:sort order="2">
+      <bcf:sortitem order="1">intciteorder</bcf:sortitem>
+    </bcf:sort>
+  </bcf:sortingtemplate>
+  <!-- DATALISTS -->
+  <bcf:datalist section="0"
+                name="none/global//global/global"
+                type="entry"
+                sortingtemplatename="none"
+                sortingnamekeytemplatename="global"
+                labelprefix=""
+                uniquenametemplatename="global"
+                labelalphanametemplatename="global">
+  </bcf:datalist>
+</bcf:controlfile>
