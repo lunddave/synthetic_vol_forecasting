@@ -2526,10 +2526,9 @@
     <bcf:citekey order="146" intorder="1">clements1998forecasting</bcf:citekey>
     <bcf:citekey order="147" intorder="1">lundquist2024volatility</bcf:citekey>
     <bcf:citekey order="148" intorder="1">clements2005evaluating</bcf:citekey>
-    <bcf:citekey order="149" intorder="1">lundquist2024volatility</bcf:citekey>
-    <bcf:citekey order="150" intorder="1">lundquist2024volatility</bcf:citekey>
-    <bcf:citekey order="151" intorder="1">clements2005guest</bcf:citekey>
-    <bcf:citekey order="152" intorder="1">castle2013forecasting</bcf:citekey>
+    <bcf:citekey order="149" intorder="1">tsay2005analysis</bcf:citekey>
+    <bcf:citekey order="150" intorder="1">clements2005guest</bcf:citekey>
+    <bcf:citekey order="151" intorder="1">castle2013forecasting</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">
