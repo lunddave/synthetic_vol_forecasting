@@ -1624,7 +1624,7 @@ For a method with such high ambitions --- addressing canonical problems in forec
   
   \section{Extensions}\label{Extensions}
 
-  Having discussed subtleties and nuances of the proposed framework in the previous section, we now propose several extensions for the framework.  We first discuss straigthforward alternatives to the conditional mean forecasts.  Then we move onto more elaborate extensions.
+  Having discussed subtleties and nuances of the proposed framework in the previous section, we now propose several extensions for the framework.  We first discuss straightforward alternatives to the conditional mean forecasts.  Then we move onto more elaborate extensions.
 
   We begin with the proposal that this method be extended to objects besides the conditional mean of a univariate or possibly multivariate time series.  One motivation for this comes from the field of forecast performance evaluation.  In \cite[][]{clements2005evaluating}, the authors discuss six dichotomies regarding forecast evaluation as a way of advising caution about simplistic notions of performance evaluation.  These ideas matter for the current manuscript for at least one reason.  We must entertain the possibility that breaks in the DGP will invalidate the standard forecast evaluation framework under which we had been working.  If, for example, we have a family of models estimated used a Gaussian loss function, and the post-shock residuals are not conditionally Gaussian (e.g. they could be conditionally Cauchy), then why even start with the default forecasting function?  Why not throw it out entirely?  If only the distribution of the innovations changes, then would that even matter for a forecast that is purely concerned with the conditional mean?
 
