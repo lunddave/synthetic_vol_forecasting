@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.15)  12 JAN 2025 16:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.15)  12 JAN 2025 19:47
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1295,7 +1295,29 @@ Package biblatex Info: Automatic encoding selection.
 
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'dissertation.bbl' found.
- (./dissertation.bbl)
+ (./dissertation.bbl
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                Morales_Valentini_Penny_2016
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                The_Guardian
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                [
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+)
 Package biblatex Info: Reference section=0 on input line 127.
 Package biblatex Info: Reference segment=0 on input line 127.
  (/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
@@ -1363,214 +1385,29 @@ l.158     \tableofcontents
 
 ]
 Chapter 1.
-
-LaTeX Warning: Citation 'lin2021minimizing' on page 1 undefined on input line 191.
-
-
-LaTeX Warning: Citation 'abadie2003economic' on page 1 undefined on input line 200.
-
-
-LaTeX Warning: Citation 'abadie2010synthetic' on page 1 undefined on input line 200.
-
 [1
 
 
-]
-
-LaTeX Warning: Citation 'abadie2003economic' on page 2 undefined on input line 205.
-
-
-LaTeX Warning: Citation 'abadie2010synthetic' on page 2 undefined on input line 205.
-
-
-LaTeX Warning: Citation 'steegen2016increasing' on page 2 undefined on input line 210.
-
-
-LaTeX Warning: Citation 'lin2021minimizing' on page 2 undefined on input line 213.
-
-[2] [3]
+] [2] [3]
 Chapter 2.
-
-LaTeX Warning: Citation 'Kenton' on page 4 undefined on input line 225.
-
-
-LaTeX Warning: Citation 'dominguez2006defines' on page 4 undefined on input line 227.
-
-
-LaTeX Warning: Citation 'tsay2005analysis' on page 4 undefined on input line 229.
-
-
-LaTeX Warning: Citation 'boudoukh2019information' on page 4 undefined on input line 229.
-
 [4
 
-]
-
-LaTeX Warning: Citation 'bauwens2006regime' on page 5 undefined on input line 231.
-
-
-LaTeX Warning: Citation 'hansen2012realized' on page 5 undefined on input line 231.
-
-
-LaTeX Warning: Citation 'wang2020forecasting' on page 5 undefined on input line 231.
-
-
-LaTeX Warning: Citation 'hansen2012realized' on page 5 undefined on input line 233.
-
-
-LaTeX Warning: Citation 'mayhew1995implied' on page 5 undefined on input line 233.
-
-
-LaTeX Warning: Citation 'christensen1998relation' on page 5 undefined on input line 233.
-
-
-LaTeX Warning: Citation 'andersen2003modeling' on page 5 undefined on input line 233.
-
-
-LaTeX Warning: Citation 'romer1989does' on page 5 undefined on input line 239.
-
-
-LaTeX Warning: Citation 'kilian2017structural' on page 5 undefined on input line 239.
-
-
-LaTeX Warning: Citation 'engle2001good' on page 5 undefined on input line 239.
-
-
-LaTeX Warning: Citation 'phillips1996forecasting' on page 5 undefined on input line 239.
-
-
-LaTeX Warning: Citation 'hendry1994theory' on page 5 undefined on input line 239.
-
-
-LaTeX Warning: Citation 'clements1998forecasting' on page 5 undefined on input line 239.
-
-
-LaTeX Warning: Citation 'guerron2017macroeconomic' on page 5 undefined on input line 239.
-
-
-LaTeX Warning: Citation 'dendramis2020similarity' on page 5 undefined on input line 239.
-
-
-LaTeX Warning: Citation 'foroni2022forecasting' on page 5 undefined on input line 239.
-
-
-Overfull \hbox (8.445pt too wide) in paragraph at lines 239--240
-\OT1/cmr/m/n/10 (-20) tural shocks has a pedi-gree in macroe-co-nomic anal-y-sis ([] as ref-er-enced in [];
- []
-
-[5]
-
-LaTeX Warning: Citation 'abadie2010synthetic' on page 6 undefined on input line 243.
-
-
-LaTeX Warning: Citation 'lin2021minimizing' on page 6 undefined on input line 243.
-
-
-LaTeX Warning: Citation 'lin2021minimizing' on page 6 undefined on input line 243.
-
-
-LaTeX Warning: Citation 'steegen2016increasing' on page 6 undefined on input line 245.
-
-<simulation_plots/motivating_piece_convex_combination.png, id=464, 1226.5825pt x 985.6825pt>
+] [5]
+<simulation_plots/motivating_piece_convex_combination.png, id=525, 1226.5825pt x 985.6825pt>
 File: simulation_plots/motivating_piece_convex_combination.png Graphic file (type png)
 <use simulation_plots/motivating_piece_convex_combination.png>
 Package pdftex.def Info: simulation_plots/motivating_piece_convex_combination.png  used on input line 255.
 (pdftex.def)             Requested size: 469.75502pt x 377.4961pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
 [6]
 
-LaTeX Warning: Citation 'box2013box' on page 7 undefined on input line 268.
+LaTeX Warning: Citation '[' on page 7 undefined on input line 272.
 
-
-LaTeX Warning: Citation 'engle1982autoregressive' on page 7 undefined on input line 268.
-
-
-LaTeX Warning: Citation 'bollerslev1986generalized' on page 7 undefined on input line 268.
-
-[7 <./simulation_plots/motivating_piece_convex_combination.png>]
-
-LaTeX Warning: Citation '[' on page 8 undefined on input line 272.
-
-[8]
-
-LaTeX Warning: Citation 'lin2021minimizing' on page 9 undefined on input line 313.
-
-[9]
-
-LaTeX Warning: Citation 'tsay2005analysis' on page 10 undefined on input line 337.
-
-
-LaTeX Warning: Citation 'francq2019garch' on page 10 undefined on input line 337.
-
-
-LaTeX Warning: Citation 'zivot2009practical' on page 10 undefined on input line 337.
-
-[10]
-
-LaTeX Warning: Citation 'abadie2003economic' on page 11 undefined on input line 350.
-
-
-LaTeX Warning: Citation 'abadie2010synthetic' on page 11 undefined on input line 350.
-
-
-LaTeX Warning: Citation 'lin2021minimizing' on page 11 undefined on input line 350.
-
-
-LaTeX Warning: Citation 'timmermann2006forecast' on page 11 undefined on input line 354.
-
-
-LaTeX Warning: Citation 'wang2023forecast' on page 11 undefined on input line 354.
-
-
-LaTeX Warning: Citation 'abadie2010synthetic' on page 11 undefined on input line 356.
-
-
-LaTeX Warning: Citation 'wang2023forecast' on page 11 undefined on input line 356.
-
-
-LaTeX Warning: Citation 'lin2021minimizing' on page 11 undefined on input line 358.
-
-
-LaTeX Warning: Citation 'abadie2022synthetic' on page 11 undefined on input line 358.
-
-
-Overfull \hbox (3.98567pt too wide) in paragraph at lines 358--359
-\OT1/cmr/m/n/10 (-20) dis-cuss suf-fi-cient con-di-tions for unique-ness as well as the im-pli-ca-tions of non-uniqueness. []
- []
-
-[11]
-
-LaTeX Warning: Citation 'andersen2010stochastic' on page 12 undefined on input line 384.
-
-
-LaTeX Warning: Citation 'andersen2007roughing' on page 12 undefined on input line 384.
-
-
-LaTeX Warning: Citation 'de2006forecasting' on page 12 undefined on input line 384.
-
-
-LaTeX Warning: Citation 'andersen2008realized' on page 12 undefined on input line 386.
-
-[12]
-
-LaTeX Warning: Citation 'brownlees2011practical' on page 13 undefined on input line 406.
-
-
-LaTeX Warning: Citation 'brownlees2011practical' on page 13 undefined on input line 411.
-
-[13]
-
-LaTeX Warning: Citation 'zivot2009practical' on page 14 undefined on input line 426.
-
-[14]
-
-LaTeX Warning: Citation 'han2014asymptotic' on page 15 undefined on input line 462.
-
-[15]
-
-LaTeX Warning: Citation 'RePEc:pra:mprapa:100301' on page 16 undefined on input line 512.
-
-[16]
-<simulation_plots/Aug28_224311_2024_mu[delta]_sigma[u].png, id=562, 578.16pt x 433.62pt>
+[7 <./simulation_plots/motivating_piece_convex_combination.png>] [8] [9] [10] [11] [12] [13] [14] [15] [16]
+<simulation_plots/Aug28_224311_2024_mu[delta]_sigma[u].png, id=664, 578.16pt x 433.62pt>
 File: simulation_plots/Aug28_224311_2024_mu[delta]_sigma[u].png Graphic file (type png)
 <use simulation_plots/Aug28_224311_2024_mu[delta]_sigma[u].png>
 Package pdftex.def Info: simulation_plots/Aug28_224311_2024_mu[delta]_sigma[u].png  used on input line 534.
@@ -1580,7 +1417,7 @@ Overfull \hbox (36.1322pt too wide) in paragraph at lines 534--535
  [][] 
  []
 
-<simulation_plots/Aug28_224317_2024_mu[delta]_sigma[u].png, id=563, 578.16pt x 433.62pt>
+<simulation_plots/Aug28_224317_2024_mu[delta]_sigma[u].png, id=665, 578.16pt x 433.62pt>
 File: simulation_plots/Aug28_224317_2024_mu[delta]_sigma[u].png Graphic file (type png)
 <use simulation_plots/Aug28_224317_2024_mu[delta]_sigma[u].png>
 Package pdftex.def Info: simulation_plots/Aug28_224317_2024_mu[delta]_sigma[u].png  used on input line 539.
@@ -1590,7 +1427,7 @@ Overfull \hbox (36.1322pt too wide) in paragraph at lines 539--540
  [][] 
  []
 
-<simulation_plots/Aug28_224322_2024_mu[delta]_sigma[u].png, id=564, 578.16pt x 433.62pt>
+<simulation_plots/Aug28_224322_2024_mu[delta]_sigma[u].png, id=666, 578.16pt x 433.62pt>
 File: simulation_plots/Aug28_224322_2024_mu[delta]_sigma[u].png Graphic file (type png)
 <use simulation_plots/Aug28_224322_2024_mu[delta]_sigma[u].png>
 Package pdftex.def Info: simulation_plots/Aug28_224322_2024_mu[delta]_sigma[u].png  used on input line 545.
@@ -1603,7 +1440,7 @@ Overfull \hbox (36.1322pt too wide) in paragraph at lines 545--546
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<simulation_plots/Aug28_224330_2024_mu[delta]_mu[v].png, id=571, 578.16pt x 433.62pt>
+<simulation_plots/Aug28_224330_2024_mu[delta]_mu[v].png, id=673, 578.16pt x 433.62pt>
 File: simulation_plots/Aug28_224330_2024_mu[delta]_mu[v].png Graphic file (type png)
 <use simulation_plots/Aug28_224330_2024_mu[delta]_mu[v].png>
 Package pdftex.def Info: simulation_plots/Aug28_224330_2024_mu[delta]_mu[v].png  used on input line 558.
@@ -1613,7 +1450,7 @@ Overfull \hbox (36.1322pt too wide) in paragraph at lines 558--559
  [][] 
  []
 
-<simulation_plots/Aug28_224337_2024_mu[delta]_mu[v].png, id=572, 578.16pt x 433.62pt>
+<simulation_plots/Aug28_224337_2024_mu[delta]_mu[v].png, id=674, 578.16pt x 433.62pt>
 File: simulation_plots/Aug28_224337_2024_mu[delta]_mu[v].png Graphic file (type png)
 <use simulation_plots/Aug28_224337_2024_mu[delta]_mu[v].png>
 Package pdftex.def Info: simulation_plots/Aug28_224337_2024_mu[delta]_mu[v].png  used on input line 563.
@@ -1626,7 +1463,7 @@ Overfull \hbox (36.1322pt too wide) in paragraph at lines 563--564
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<simulation_plots/Aug28_224451_2024_mu[omega^*]_sigma[u].png, id=573, 578.16pt x 433.62pt>
+<simulation_plots/Aug28_224451_2024_mu[omega^*]_sigma[u].png, id=675, 578.16pt x 433.62pt>
 File: simulation_plots/Aug28_224451_2024_mu[omega^*]_sigma[u].png Graphic file (type png)
 <use simulation_plots/Aug28_224451_2024_mu[omega^*]_sigma[u].png>
 Package pdftex.def Info: simulation_plots/Aug28_224451_2024_mu[omega^*]_sigma[u].png  used on input line 576.
@@ -1636,7 +1473,7 @@ Overfull \hbox (36.1322pt too wide) in paragraph at lines 576--577
  [][] 
  []
 
-<simulation_plots/Aug28_224455_2024_mu[omega^*]_sigma[u].png, id=574, 578.16pt x 433.62pt>
+<simulation_plots/Aug28_224455_2024_mu[omega^*]_sigma[u].png, id=676, 578.16pt x 433.62pt>
 File: simulation_plots/Aug28_224455_2024_mu[omega^*]_sigma[u].png Graphic file (type png)
 <use simulation_plots/Aug28_224455_2024_mu[omega^*]_sigma[u].png>
 Package pdftex.def Info: simulation_plots/Aug28_224455_2024_mu[omega^*]_sigma[u].png  used on input line 581.
@@ -1651,55 +1488,15 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [17] [18 <./simulation_plots/Aug28_224311_2024_mu[delta]_sigma[u].png> <./simulation_plots/Aug28_224317_2024_mu[delta]_sigma[u].png> <./simulation_plots/Aug28_224322_2024_mu[delta]_sigma[u].png>] [19 <./simulation_plots/Aug28_224330_2024_mu[delta]_mu[v].png> <./simulation_plots/Aug28_224337_2024_mu[delta]_mu[v].png> <./simulation_plots/Aug28_224451_2024_mu[omega^*]_sigma[u].png> <./simulation_plots/Aug28_224455_2024_mu[omega^*]_sigma[u].png>]
 
-LaTeX Warning: Citation 'zivot2009practical' on page 20 undefined on input line 593.
-
-
-LaTeX Warning: Citation 'hansen2005forecast' on page 20 undefined on input line 605.
-
-
 LaTeX Warning: Citation 'The_Guardian' on page 20 undefined on input line 609.
 
 
 LaTeX Warning: Citation 'Morales_Valentini_Penny_2016' on page 20 undefined on input line 609.
 
-
-LaTeX Warning: Citation 'BBC_News_2016' on page 20 undefined on input line 609.
-
-
-LaTeX Warning: Citation 'wilson2017brexit' on page 20 undefined on input line 609.
-
-
-LaTeX Warning: Citation 'kay2016brexit' on page 20 undefined on input line 609.
-
-
-LaTeX Warning: Citation 'collins2016trump' on page 20 undefined on input line 609.
-
-
-LaTeX Warning: Citation 'applebaum2016britain' on page 20 undefined on input line 610.
-
-
-LaTeX Warning: Citation 'martin2016brexit' on page 20 undefined on input line 610.
-
-
-LaTeX Warning: Citation 'barro2016three' on page 20 undefined on input line 610.
-
 [20
 
-]
-
-LaTeX Warning: Citation 'andersen2008realized' on page 21 undefined on input line 611.
-
-
-LaTeX Warning: Citation 'ryan2015package' on page 21 undefined on input line 612.
-
-
-LaTeX Warning: Citation 'wachowicz2020wharton' on page 21 undefined on input line 612.
-
-[21]
-
-LaTeX Warning: Citation 'steegen2016increasing' on page 22 undefined on input line 618.
-
-<real_data_output_plots/TueSep241059512024_IYG_None_None.png, id=619, 803.0pt x 602.25pt>
+] [21]
+<real_data_output_plots/TueSep241059512024_IYG_None_None.png, id=742, 803.0pt x 602.25pt>
 File: real_data_output_plots/TueSep241059512024_IYG_None_None.png Graphic file (type png)
 <use real_data_output_plots/TueSep241059512024_IYG_None_None.png>
 Package pdftex.def Info: real_data_output_plots/TueSep241059512024_IYG_None_None.png  used on input line 624.
@@ -1713,75 +1510,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `cmtt' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-
-LaTeX Warning: Citation 'lin2021minimizing' on page 22 undefined on input line 713.
-
-
-LaTeX Warning: Citation 'lin2021minimizing' on page 22 undefined on input line 713.
-
-[22 <./real_data_output_plots/TueSep241059512024_IYG_None_None.png>]
-
-LaTeX Warning: Citation 'lin2021minimizing' on page 23 undefined on input line 715.
-
-
-LaTeX Warning: Citation 'phillips1996forecasting' on page 23 undefined on input line 715.
-
-
-LaTeX Warning: Citation 'phillips1996forecasting' on page 23 undefined on input line 715.
-
-
-Overfull \hbox (10.49304pt too wide) in paragraph at lines 715--716
-[]\OT1/cmr/m/n/10 (-20) This work as well as [] it-self can be viewed as a gen-er-al-iza-tion of []
- []
-
-
-LaTeX Warning: Citation 'clements1996intercept' on page 23 undefined on input line 723.
-
-
-LaTeX Warning: Citation 'guerron2017macroeconomic' on page 23 undefined on input line 723.
-
-
-LaTeX Warning: Citation 'hastie2009elements' on page 23 undefined on input line 723.
-
-
-LaTeX Warning: Citation 'abadie2010synthetic' on page 23 undefined on input line 723.
-
-
-LaTeX Warning: Citation 'hastie2009elements' on page 23 undefined on input line 725.
-
-[23]
-
-LaTeX Warning: Citation 'lin2021minimizing' on page 24 undefined on input line 727.
-
-
-LaTeX Warning: Citation 'lin2021minimizing' on page 24 undefined on input line 727.
-
-
-LaTeX Warning: Citation 'abadie2022synthetic' on page 24 undefined on input line 731.
-
-
-LaTeX Warning: Citation 'boudoukh2019information' on page 24 undefined on input line 738.
-
-
-LaTeX Warning: Citation 'chinco2019sparse' on page 24 undefined on input line 738.
-
-
-LaTeX Warning: Citation 'corsi2012har' on page 24 undefined on input line 740.
-
-
-LaTeX Warning: Citation 'rossi2013advances' on page 24 undefined on input line 744.
-
-
-LaTeX Warning: Citation 'rossi2021forecasting' on page 24 undefined on input line 744.
-
-
-LaTeX Warning: Citation 'dendramis2020similarity' on page 24 undefined on input line 744.
-
-[24]
-
-LaTeX Warning: Citation 'abadie2010synthetic' on page 25 undefined on input line 756.
-
-[25]
+[22 <./real_data_output_plots/TueSep241059512024_IYG_None_None.png>] [23] [24] [25]
 Underfull \hbox (badness 10000) in paragraph at lines 831--834
 
  []
@@ -1792,14 +1521,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 835--838
  []
 
 
-LaTeX Warning: Citation 'han2014asymptotic' on page 26 undefined on input line 840.
-
-[26]
 Underfull \hbox (badness 10000) in paragraph at lines 849--851
 
  []
 
-
+[26]
 Underfull \hbox (badness 10000) in paragraph at lines 864--867
 
  []
@@ -1809,99 +1535,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 868--871
 
  []
 
-[27] [28] [29]
+[27] [28]
 Chapter 3.
+[29
 
-LaTeX Warning: Citation 'thoughts_on_market' on page 30 undefined on input line 876.
-
-
-LaTeX Warning: Citation 'lundquist2024volatility' on page 30 undefined on input line 881.
-
-[30
-
-]
-
-LaTeX Warning: Citation 'hendry1994theory' on page 31 undefined on input line 885.
-
-
-LaTeX Warning: Citation 'clements1996intercept' on page 31 undefined on input line 885.
-
-
-LaTeX Warning: Citation 'clements1998forecasting' on page 31 undefined on input line 885.
-
-
-LaTeX Warning: Citation 'clements1999forecasting' on page 31 undefined on input line 885.
-
-
-LaTeX Warning: Citation 'hendry1994theory' on page 31 undefined on input line 885.
-
-
-LaTeX Warning: Citation 'clements1999forecasting' on page 31 undefined on input line 887.
-
-
-LaTeX Warning: Citation 'hendry1994theory' on page 31 undefined on input line 887.
-
-
-LaTeX Warning: Citation 'clements1999forecasting' on page 31 undefined on input line 887.
-
-
-LaTeX Warning: Citation 'guerron2017macroeconomic' on page 31 undefined on input line 887.
-
-
-LaTeX Warning: Citation 'lundquist2024volatility' on page 31 undefined on input line 887.
-
-
-LaTeX Warning: Citation 'castle2016overview' on page 31 undefined on input line 889.
-
-
-LaTeX Warning: Citation 'lin2021minimizing' on page 31 undefined on input line 896.
-
-
-LaTeX Warning: Citation 'lundquist2024volatility' on page 31 undefined on input line 896.
-
-
-LaTeX Warning: Citation 'castle2011forecasting' on page 31 undefined on input line 901.
-
-
-LaTeX Warning: Citation 'lundquist2024volatility' on page 31 undefined on input line 901.
-
-
-LaTeX Warning: Citation 'lin2021minimizing' on page 31 undefined on input line 901.
-
-
-LaTeX Warning: Citation 'lundquist2024volatility' on page 31 undefined on input line 901.
-
+] [30]
+Missing character: There is no ] in font nullfont!
+Missing character: There is no ] in font nullfont!
 [31]
-
-LaTeX Warning: Citation 'clements1998forecasting' on page 32 undefined on input line 1100.
-
-Missing character: There is no ] in font nullfont!
-Missing character: There is no ] in font nullfont!
-
-LaTeX Warning: Citation 'hendry1994theory' on page 32 undefined on input line 1109.
-
-
-LaTeX Warning: Citation 'clements2005guest' on page 32 undefined on input line 1111.
-
-
-LaTeX Warning: Citation 'castle2011forecasting' on page 32 undefined on input line 1111.
-
-[32]
-
-LaTeX Warning: Citation 'clements2005guest' on page 33 undefined on input line 1115.
-
-
-LaTeX Warning: Citation 'castle2013forecasting' on page 33 undefined on input line 1115.
-
-
-LaTeX Warning: Citation 'castle2011forecasting' on page 33 undefined on input line 1115.
-
-
-Overfull \hbox (3.34077pt too wide) in paragraph at lines 1115--1116
-\OT1/cmr/m/n/10 (-20) When is more in-for-ma-tion bet-ter? That is a cen-tral ques-tion with re-gard to fore-cast-ing. In []
- []
-
-
 Overfull \hbox (2.96057pt too wide) in paragraph at lines 1126--1126
 []|\OT1/cmr/m/n/10 (-20) internal| 
  []
@@ -1911,157 +1552,20 @@ Overfull \hbox (4.59947pt too wide) in paragraph at lines 1128--1128
 []|\OT1/cmr/m/n/10 (-20) external| 
  []
 
-
-LaTeX Warning: Citation 'bartha2013analogy' on page 33 undefined on input line 1134.
-
-[33]
-
-LaTeX Warning: Citation 'garg2015asymmetric' on page 34 undefined on input line 1140.
-
-
-LaTeX Warning: Citation 'bishop2023deep' on page 34 undefined on input line 1140.
-
-
-LaTeX Warning: Citation 'lin2021minimizing' on page 34 undefined on input line 1142.
-
-
-LaTeX Warning: Citation 'lundquist2024volatility' on page 34 undefined on input line 1142.
-
-
-LaTeX Warning: Citation 'lin2021minimizing' on page 34 undefined on input line 1144.
-
-
-LaTeX Warning: Citation 'lundquist2024volatility' on page 34 undefined on input line 1144.
-
-
-Overfull \hbox (0.14865pt too wide) in paragraph at lines 1144--1145
-[]\OT1/cmr/m/n/10 (-20) What about qual-i-ta-tive ways of de-ter-min-ing sim-i-lar-ity? In [][],
- []
-
-[34]
+[32]
 File: simulation_plots/motivating_piece_convex_combination.png Graphic file (type png)
 <use simulation_plots/motivating_piece_convex_combination.png>
 Package pdftex.def Info: simulation_plots/motivating_piece_convex_combination.png  used on input line 1151.
 (pdftex.def)             Requested size: 469.75502pt x 377.4961pt.
- [35] [36]
-
-LaTeX Warning: Citation 'lin2021minimizing' on page 37 undefined on input line 1211.
-
-
-LaTeX Warning: Citation 'foroni2022forecasting' on page 37 undefined on input line 1216.
-
-
-LaTeX Warning: Citation 'croushore1993introducing' on page 37 undefined on input line 1216.
-
-[37]
-
-LaTeX Warning: Citation 'lin2021minimizing' on page 38 undefined on input line 1224.
-
-
-LaTeX Warning: Citation 'abadie2010synthetic' on page 38 undefined on input line 1224.
-
-
-LaTeX Warning: Citation 'lin2021minimizing' on page 38 undefined on input line 1236.
-
-
-LaTeX Warning: Citation 'lundquist2024volatility' on page 38 undefined on input line 1236.
-
-
-Overfull \hbox (3.41954pt too wide) in paragraph at lines 1236--1237
-\OT1/cmr/m/n/10 (-20) is sat-is-fied by the para-met-ric shock dis-tri-bu-tions found in [][]. 
- []
-
-[38]
-
-LaTeX Warning: Citation 'lin2021minimizing' on page 39 undefined on input line 1240.
-
-
-LaTeX Warning: Citation 'lundquist2024volatility' on page 39 undefined on input line 1240.
-
-
-LaTeX Warning: Citation 'lin2021minimizing' on page 39 undefined on input line 1250.
-
-
-LaTeX Warning: Citation 'lin2021minimizing' on page 39 undefined on input line 1252.
-
-[39]
-
-LaTeX Warning: Citation 'lin2021minimizing' on page 40 undefined on input line 1270.
-
-
+ [33] [34] [35] [36] [37] [38]
 Overfull \hbox (20.41965pt too wide) detected at line 1291
 []
  []
 
-[40]
-
-LaTeX Warning: Citation 'lundquist2024volatility' on page 41 undefined on input line 1292.
-
-
-Overfull \hbox (9.19843pt too wide) in paragraph at lines 1291--1293
-\OMS/cmsy/m/n/10 f[]g[]$\OT1/cmr/m/n/10 (-20) . Then our only con-trol over the MSE comes comes from the weight vec-tor $[]$. []
- []
-
+[39]
 Missing character: There is no ; in font nullfont!
-[41]
-
-LaTeX Warning: Citation 'lin2021minimizing' on page 42 undefined on input line 1355.
-
-
-LaTeX Warning: Citation 'lundquist2024volatility' on page 42 undefined on input line 1355.
-
-
-LaTeX Warning: Citation 'francq2019garch' on page 42 undefined on input line 1355.
-
-[42]
-
-LaTeX Warning: Citation 'lundquist2024volatility' on page 43 undefined on input line 1357.
-
-
-LaTeX Warning: Citation 'corsi2009simple' on page 43 undefined on input line 1390.
-
-[43]
-
-LaTeX Warning: Citation 'bodilsen2023exploiting' on page 44 undefined on input line 1395.
-
-
-LaTeX Warning: Citation 'bodilsen2023exploiting' on page 44 undefined on input line 1417.
-
-
-LaTeX Warning: Citation 'bodilsen2023exploiting' on page 44 undefined on input line 1420.
-
-[44]
-
-LaTeX Warning: Citation 'bodilsen2023exploiting' on page 45 undefined on input line 1424.
-
-
-Overfull \hbox (1.75298pt too wide) in paragraph at lines 1424--1425
-[]\OT1/cmr/m/n/10 (-20) What DGP on overnight firm-specific news would most jus-tify the ap-proach in []? 
- []
-
-
-LaTeX Warning: Citation 'GFC' on page 45 undefined on input line 1432.
-
-
-LaTeX Warning: Citation 'fedfunds' on page 45 undefined on input line 1432.
-
-
-LaTeX Warning: Citation 'corsi2009simple' on page 45 undefined on input line 1435.
-
-
-LaTeX Warning: Citation 'andersen2008realized' on page 45 undefined on input line 1449.
-
-
-LaTeX Warning: Citation 'ryan2015package' on page 45 undefined on input line 1450.
-
-
-LaTeX Warning: Citation 'highfrequency' on page 45 undefined on input line 1450.
-
-
-LaTeX Warning: Citation 'boysel2021package' on page 45 undefined on input line 1450.
-
-[45]
-<real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png, id=815, 803.0pt x 602.25pt>
+[40] [41] [42] [43] [44]
+<real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png, id=1042, 803.0pt x 602.25pt>
 File: real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png Graphic file (type png)
 <use real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png>
 Package pdftex.def Info: real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png  used on input line 1457.
@@ -2071,31 +1575,20 @@ Overfull \hbox (28.09984pt too wide) in paragraph at lines 1457--1458
  [] 
  []
 
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-LaTeX Warning: Citation 'castle2011forecasting' on page 46 undefined on input line 1483.
-
-
-LaTeX Warning: Citation 'castle2011forecasting' on page 46 undefined on input line 1496.
-
-
+[45 <./real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 1498--1499
 
  []
 
-[46]
-<exponential_sim_plot.png, id=826, 1767.60374pt x 1242.6425pt>
+<exponential_sim_plot.png, id=1052, 1767.60374pt x 1242.6425pt>
 File: exponential_sim_plot.png Graphic file (type png)
 <use exponential_sim_plot.png>
 Package pdftex.def Info: exponential_sim_plot.png  used on input line 1513.
 (pdftex.def)             Requested size: 469.75502pt x 330.2278pt.
 
-
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<simulation_plots/Nov27_160341_2024_mudelta_sigmax.png, id=827, 578.16pt x 433.62pt>
+<simulation_plots/Nov27_160341_2024_mudelta_sigmax.png, id=1053, 578.16pt x 433.62pt>
 File: simulation_plots/Nov27_160341_2024_mudelta_sigmax.png Graphic file (type png)
 <use simulation_plots/Nov27_160341_2024_mudelta_sigmax.png>
 Package pdftex.def Info: simulation_plots/Nov27_160341_2024_mudelta_sigmax.png  used on input line 1529.
@@ -2105,7 +1598,7 @@ Overfull \hbox (36.1322pt too wide) in paragraph at lines 1529--1530
  [][] 
  []
 
-<simulation_plots/Nov27_160342_2024_mudelta_sigmax.png, id=828, 578.16pt x 433.62pt>
+<simulation_plots/Nov27_160342_2024_mudelta_sigmax.png, id=1054, 578.16pt x 433.62pt>
 File: simulation_plots/Nov27_160342_2024_mudelta_sigmax.png Graphic file (type png)
 <use simulation_plots/Nov27_160342_2024_mudelta_sigmax.png>
 Package pdftex.def Info: simulation_plots/Nov27_160342_2024_mudelta_sigmax.png  used on input line 1534.
@@ -2115,7 +1608,7 @@ Overfull \hbox (36.1322pt too wide) in paragraph at lines 1534--1535
  [][] 
  []
 
-<simulation_plots/Nov27_160343_2024_mudelta_sigmax.png, id=829, 578.16pt x 433.62pt>
+<simulation_plots/Nov27_160343_2024_mudelta_sigmax.png, id=1055, 578.16pt x 433.62pt>
 File: simulation_plots/Nov27_160343_2024_mudelta_sigmax.png Graphic file (type png)
 <use simulation_plots/Nov27_160343_2024_mudelta_sigmax.png>
 Package pdftex.def Info: simulation_plots/Nov27_160343_2024_mudelta_sigmax.png  used on input line 1540.
@@ -2128,7 +1621,7 @@ Overfull \hbox (36.1322pt too wide) in paragraph at lines 1540--1541
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<simulation_plots/Nov27_160344_2024_sigmax_sigmaepsilon.png, id=836, 578.16pt x 433.62pt>
+<simulation_plots/Nov27_160344_2024_sigmax_sigmaepsilon.png, id=1062, 578.16pt x 433.62pt>
 File: simulation_plots/Nov27_160344_2024_sigmax_sigmaepsilon.png Graphic file (type png)
 <use simulation_plots/Nov27_160344_2024_sigmax_sigmaepsilon.png>
 Package pdftex.def Info: simulation_plots/Nov27_160344_2024_sigmax_sigmaepsilon.png  used on input line 1553.
@@ -2138,7 +1631,7 @@ Overfull \hbox (36.1322pt too wide) in paragraph at lines 1553--1554
  [][] 
  []
 
-<simulation_plots/Nov27_160345_2024_sigmax_sigmaepsilon.png, id=837, 578.16pt x 433.62pt>
+<simulation_plots/Nov27_160345_2024_sigmax_sigmaepsilon.png, id=1063, 578.16pt x 433.62pt>
 File: simulation_plots/Nov27_160345_2024_sigmax_sigmaepsilon.png Graphic file (type png)
 <use simulation_plots/Nov27_160345_2024_sigmax_sigmaepsilon.png>
 Package pdftex.def Info: simulation_plots/Nov27_160345_2024_sigmax_sigmaepsilon.png  used on input line 1558.
@@ -2148,7 +1641,7 @@ Overfull \hbox (36.1322pt too wide) in paragraph at lines 1558--1559
  [][] 
  []
 
-<simulation_plots/Nov27_160346_2024_sigmax_sigmaepsilon.png, id=838, 578.16pt x 433.62pt>
+<simulation_plots/Nov27_160346_2024_sigmax_sigmaepsilon.png, id=1064, 578.16pt x 433.62pt>
 File: simulation_plots/Nov27_160346_2024_sigmax_sigmaepsilon.png Graphic file (type png)
 <use simulation_plots/Nov27_160346_2024_sigmax_sigmaepsilon.png>
 Package pdftex.def Info: simulation_plots/Nov27_160346_2024_sigmax_sigmaepsilon.png  used on input line 1564.
@@ -2161,7 +1654,7 @@ Overfull \hbox (36.1322pt too wide) in paragraph at lines 1564--1565
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<simulation_plots/Nov27_160346_2024_mudelta_sigmaepsilon.png, id=845, 578.16pt x 433.62pt>
+<simulation_plots/Nov27_160346_2024_mudelta_sigmaepsilon.png, id=1071, 578.16pt x 433.62pt>
 File: simulation_plots/Nov27_160346_2024_mudelta_sigmaepsilon.png Graphic file (type png)
 <use simulation_plots/Nov27_160346_2024_mudelta_sigmaepsilon.png>
 Package pdftex.def Info: simulation_plots/Nov27_160346_2024_mudelta_sigmaepsilon.png  used on input line 1577.
@@ -2171,7 +1664,7 @@ Overfull \hbox (36.1322pt too wide) in paragraph at lines 1577--1578
  [][] 
  []
 
-<simulation_plots/Nov27_160347_2024_mudelta_sigmaepsilon.png, id=846, 578.16pt x 433.62pt>
+<simulation_plots/Nov27_160347_2024_mudelta_sigmaepsilon.png, id=1072, 578.16pt x 433.62pt>
 File: simulation_plots/Nov27_160347_2024_mudelta_sigmaepsilon.png Graphic file (type png)
 <use simulation_plots/Nov27_160347_2024_mudelta_sigmaepsilon.png>
 Package pdftex.def Info: simulation_plots/Nov27_160347_2024_mudelta_sigmaepsilon.png  used on input line 1582.
@@ -2181,7 +1674,7 @@ Overfull \hbox (36.1322pt too wide) in paragraph at lines 1582--1583
  [][] 
  []
 
-<simulation_plots/Nov27_160348_2024_mudelta_sigmaepsilon.png, id=847, 578.16pt x 433.62pt>
+<simulation_plots/Nov27_160348_2024_mudelta_sigmaepsilon.png, id=1073, 578.16pt x 433.62pt>
 File: simulation_plots/Nov27_160348_2024_mudelta_sigmaepsilon.png Graphic file (type png)
 <use simulation_plots/Nov27_160348_2024_mudelta_sigmaepsilon.png>
 Package pdftex.def Info: simulation_plots/Nov27_160348_2024_mudelta_sigmaepsilon.png  used on input line 1588.
@@ -2194,26 +1687,9 @@ Overfull \hbox (36.1322pt too wide) in paragraph at lines 1588--1589
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[47 <./real_data_output_plots/savetime_SatJun151644072024__^VIX-^IRX-^XAU_^VIX_2018-12-18-2015-12-15-2016-12-13-2017-03-14-2017-06-13-2017-12-12-2018-03-20-2018-06-12-2018-09-25.png>] [48 <./exponential_sim_plot.png>] [49 <./simulation_plots/Nov27_160341_2024_mudelta_sigmax.png> <./simulation_plots/Nov27_160342_2024_mudelta_sigmax.png> <./simulation_plots/Nov27_160343_2024_mudelta_sigmax.png>] [50 <./simulation_plots/Nov27_160344_2024_sigmax_sigmaepsilon.png> <./simulation_plots/Nov27_160345_2024_sigmax_sigmaepsilon.png> <./simulation_plots/Nov27_160346_2024_sigmax_sigmaepsilon.png>] [51 <./simulation_plots/Nov27_160346_2024_mudelta_sigmaepsilon.png> <./simulation_plots/Nov27_160347_2024_mudelta_sigmaepsilon.png> <./simulation_plots/Nov27_160348_2024_mudelta_sigmaepsilon.png>]
-
-LaTeX Warning: Citation 'lin2021minimizing' on page 52 undefined on input line 1602.
-
-
-LaTeX Warning: Citation 'clements1998forecasting' on page 52 undefined on input line 1602.
-
-
-LaTeX Warning: Citation 'lundquist2024volatility' on page 52 undefined on input line 1609.
-
-[52
+[46] [47 <./exponential_sim_plot.png>] [48 <./simulation_plots/Nov27_160341_2024_mudelta_sigmax.png> <./simulation_plots/Nov27_160342_2024_mudelta_sigmax.png> <./simulation_plots/Nov27_160343_2024_mudelta_sigmax.png>] [49 <./simulation_plots/Nov27_160344_2024_sigmax_sigmaepsilon.png> <./simulation_plots/Nov27_160345_2024_sigmax_sigmaepsilon.png> <./simulation_plots/Nov27_160346_2024_sigmax_sigmaepsilon.png>] [50 <./simulation_plots/Nov27_160346_2024_mudelta_sigmaepsilon.png> <./simulation_plots/Nov27_160347_2024_mudelta_sigmaepsilon.png> <./simulation_plots/Nov27_160348_2024_mudelta_sigmaepsilon.png>] [51
 
 ]
-
-LaTeX Warning: Citation 'clements2005evaluating' on page 53 undefined on input line 1629.
-
-
-LaTeX Warning: Citation 'tsay2005analysis' on page 53 undefined on input line 1633.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 1653--1654
 
  []
@@ -2223,61 +1699,46 @@ Underfull \hbox (badness 10000) in paragraph at lines 1662--1665
 
  []
 
-[53]
+[52]
 Underfull \hbox (badness 10000) in paragraph at lines 1684--1685
 
  []
 
-[54]
+[53]
 Chapter 4.
+[54
 
-LaTeX Warning: Citation 'clements2005guest' on page 55 undefined on input line 1692.
+] [55
 
 
-LaTeX Warning: Citation 'castle2013forecasting' on page 55 undefined on input line 1696.
-
-[55
-
-]
-
-LaTeX Warning: Empty bibliography on input line 1708.
-
-(./dissertation.aux)
+] [56] [57] [58] (./dissertation.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
 
 
-LaTeX Warning: There were undefined references.
-
-
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `dissertation.out' has not changed.
-(rerunfilecheck)             Checksum: 006EDD615A9B583279A1C64C9AC5B5BB;13223.
-
-Package biblatex Warning: Please (re)run Biber on the file:
-(biblatex)                dissertation
-(biblatex)                and rerun LaTeX afterwards.
-
+(rerunfilecheck)             Checksum: CFE361FAF67F39602E44E2640F67702B;13319.
 Package logreq Info: Writing requests to 'dissertation.run.xml'.
 \openout1 = `dissertation.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 50318 strings out of 474116
- 1052066 string characters out of 5743682
+ 50678 strings out of 474116
+ 1065975 string characters out of 5743682
  1962187 words of memory out of 5000000
- 71574 multiletter control sequences out of 15000+600000
- 584434 words of font info for 222 fonts, out of 8000000 for 9000
+ 71834 multiletter control sequences out of 15000+600000
+ 585959 words of font info for 235 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  142i,17n,144p,3868b,2381s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on dissertation.pdf (61 pages, 3248417 bytes).
+</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
+Output written on dissertation.pdf (64 pages, 3276947 bytes).
 PDF statistics:
- 1083 PDF objects out of 1200 (max. 8388607)
- 907 compressed objects within 10 object streams
- 222 named destinations out of 1000 (max. 500000)
- 56441 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 1373 PDF objects out of 1440 (max. 8388607)
+ 1191 compressed objects within 12 object streams
+ 298 named destinations out of 1000 (max. 500000)
+ 59009 words of extra memory for PDF output out of 61914 (max. 10000000)
 
