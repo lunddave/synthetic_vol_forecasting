@@ -28,7 +28,7 @@
 \contentsline {subsection}{\numberline {2.5.2}Varying Parameters}{16}{subsection.2.5.2}%
 \contentsline {subsection}{\numberline {2.5.3}Evaluative Framework and Monte Carlo Results}{17}{subsection.2.5.3}%
 \contentsline {section}{\numberline {2.6}Forecasting after the results of the 2016 US presidential election}{20}{section.2.6}%
-\contentsline {section}{\numberline {2.7}Discussion}{22}{section.2.7}%
+\contentsline {section}{\numberline {2.7}Discussion}{23}{section.2.7}%
 \contentsline {subsection}{\numberline {2.7.1}Comparison with KNN}{23}{subsection.2.7.1}%
 \contentsline {subsection}{\numberline {2.7.2}Donor Pool Construction}{24}{subsection.2.7.2}%
 \contentsline {subsection}{\numberline {2.7.3}The Nature and Estimation of Volatility Shocks}{24}{subsection.2.7.3}%
@@ -39,30 +39,30 @@
 \contentsline {subsection}{\numberline {2.8.3}Sensitivity to Donors Chosen}{25}{subsection.2.8.3}%
 \contentsline {subsection}{\numberline {2.8.4}Can we combine forecasts to outperform the individual forecasts?}{26}{subsection.2.8.4}%
 \contentsline {subsection}{\numberline {2.8.5}Formal Results}{26}{subsection.2.8.5}%
-\contentsline {chapter}{\numberline {3}Forecast Adjustment Under Shocks: A Unification}{29}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Introduction}{29}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Forecasting Amid Shocks}{31}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}The Role of Outside Information}{32}{subsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.2.2}The Meaning and Use of Similarity}{33}{subsection.3.2.2}%
-\contentsline {section}{\numberline {3.3}Setting}{34}{section.3.3}%
-\contentsline {section}{\numberline {3.4}SPC Forecasting Methodology and Correction Functions}{36}{section.3.4}%
-\contentsline {subsection}{\numberline {3.4.1}Diagnostics for Similarity-Based Parameter Correction}{37}{subsection.3.4.1}%
-\contentsline {section}{\numberline {3.5}Model Adjustment Using Similarity-Based Parameter Correction: A Global Overview}{37}{section.3.5}%
-\contentsline {subsection}{\numberline {3.5.1}The Method of Multiple Shocks}{38}{subsection.3.5.1}%
-\contentsline {section}{\numberline {3.6}Formal Properties and Model-Specific Considerations}{39}{section.3.6}%
-\contentsline {subsection}{\numberline {3.6.1}ARIMA}{39}{subsection.3.6.1}%
-\contentsline {subsection}{\numberline {3.6.2}GARCH}{42}{subsection.3.6.2}%
-\contentsline {subsection}{\numberline {3.6.3}HAR}{42}{subsection.3.6.3}%
-\contentsline {subsubsection}{\numberline {3.6.3.1}Real Data Application of Shock-Adjusted HAR Forecasting}{44}{subsubsection.3.6.3.1}%
-\contentsline {subsection}{\numberline {3.6.4}``Exponential Breaks"}{45}{subsection.3.6.4}%
-\contentsline {subsubsection}{\numberline {3.6.4.1}Simulation Study}{46}{subsubsection.3.6.4.1}%
-\contentsline {section}{\numberline {3.7}Discussion}{51}{section.3.7}%
-\contentsline {subsection}{\numberline {3.7.1}Forecast Horizon}{51}{subsection.3.7.1}%
-\contentsline {subsection}{\numberline {3.7.2}The covariate vector and conditional shock distribution}{51}{subsection.3.7.2}%
-\contentsline {subsection}{\numberline {3.7.3}Shock propagation and estimation accuracy}{51}{subsection.3.7.3}%
-\contentsline {section}{\numberline {3.8}Extensions}{51}{section.3.8}%
-\contentsline {section}{\numberline {3.9}Supplement}{52}{section.3.9}%
-\contentsline {subsection}{\numberline {3.9.1}Formal Results}{52}{subsection.3.9.1}%
-\contentsline {chapter}{\numberline {4}Conclusion}{54}{chapter.4}%
-\contentsline {chapter}{References}{55}{chapter*.43}%
+\contentsline {chapter}{\numberline {3}Forecast Adjustment Under Shocks: A Unification}{30}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Introduction}{30}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Forecasting Amid Shocks}{32}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}The Role of Outside Information}{33}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}The Meaning and Use of Similarity}{34}{subsection.3.2.2}%
+\contentsline {section}{\numberline {3.3}Setting}{35}{section.3.3}%
+\contentsline {section}{\numberline {3.4}SPC Forecasting Methodology and Correction Functions}{37}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Diagnostics for Similarity-Based Parameter Correction}{38}{subsection.3.4.1}%
+\contentsline {section}{\numberline {3.5}Model Adjustment Using Similarity-Based Parameter Correction: A Global Overview}{38}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1}The Method of Multiple Shocks}{39}{subsection.3.5.1}%
+\contentsline {section}{\numberline {3.6}Formal Properties and Model-Specific Considerations}{40}{section.3.6}%
+\contentsline {subsection}{\numberline {3.6.1}ARIMA}{40}{subsection.3.6.1}%
+\contentsline {subsection}{\numberline {3.6.2}GARCH}{43}{subsection.3.6.2}%
+\contentsline {subsection}{\numberline {3.6.3}HAR}{43}{subsection.3.6.3}%
+\contentsline {subsubsection}{\numberline {3.6.3.1}Real Data Application of Shock-Adjusted HAR Forecasting}{45}{subsubsection.3.6.3.1}%
+\contentsline {subsection}{\numberline {3.6.4}``Exponential Breaks"}{46}{subsection.3.6.4}%
+\contentsline {subsubsection}{\numberline {3.6.4.1}Simulation Study}{47}{subsubsection.3.6.4.1}%
+\contentsline {section}{\numberline {3.7}Discussion}{52}{section.3.7}%
+\contentsline {subsection}{\numberline {3.7.1}Forecast Horizon}{52}{subsection.3.7.1}%
+\contentsline {subsection}{\numberline {3.7.2}The covariate vector and conditional shock distribution}{52}{subsection.3.7.2}%
+\contentsline {subsection}{\numberline {3.7.3}Shock propagation and estimation accuracy}{52}{subsection.3.7.3}%
+\contentsline {section}{\numberline {3.8}Extensions}{52}{section.3.8}%
+\contentsline {section}{\numberline {3.9}Supplement}{53}{section.3.9}%
+\contentsline {subsection}{\numberline {3.9.1}Formal Results}{53}{subsection.3.9.1}%
+\contentsline {chapter}{\numberline {4}Conclusion}{55}{chapter.4}%
+\contentsline {chapter}{References}{56}{chapter*.43}%
 \contentsfinish 
