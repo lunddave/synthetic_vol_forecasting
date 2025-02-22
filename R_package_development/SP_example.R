@@ -1,4 +1,10 @@
-library(SynthVolForecast)
+
+#library(SynthVolForecast) # DO NOT USE UNTIL THE PACKAGE EXISTS
+
+# NOTE: you will need to import functions from SynthVolForecast_functions.R
+# so please check that the following path is correct:
+
+source("R/SynthVolForecast_functions.R")
 
 options(digits = 7)
 
@@ -36,7 +42,7 @@ system.time(
                             ,dbw_indices = NULL
                             ,covariate_indices = NULL
                             ,plots = TRUE
-                            ,display_ground_truth_choice = TRUE
+                            ,display_ground_truth_choice = FALSE
                           )
   }
 
@@ -148,3 +154,4 @@ temp <- SynthPrediction(Y
                          ,covariate_indices = 1:length(market_data_list)
                          ,plots = TRUE
                          ,display_ground_truth_choice = TRUE)
+
