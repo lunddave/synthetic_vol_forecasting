@@ -4,7 +4,7 @@
 # NOTE: you will need to import functions from SynthVolForecast_functions.R
 # so please check that the following path is correct:
 
-source("R/SynthVolForecast_functions.R")
+source("Desktop/PhD/synthetic_vol_forecasting/R_package_development/SynthVolForecast/R/SynthVolForecast_functions.R")
 
 options(digits = 7)
 
