@@ -2504,31 +2504,33 @@
     <bcf:citekey order="124" intorder="1">lin2021minimizing</bcf:citekey>
     <bcf:citekey order="125" intorder="1">lin2021minimizing</bcf:citekey>
     <bcf:citekey order="126" intorder="1">lundquist2024volatility</bcf:citekey>
-    <bcf:citekey order="127" intorder="1">lin2021minimizing</bcf:citekey>
-    <bcf:citekey order="128" intorder="1">lundquist2024volatility</bcf:citekey>
-    <bcf:citekey order="129" intorder="1">francq2019garch</bcf:citekey>
+    <bcf:citekey order="127" intorder="1">tetrahedron</bcf:citekey>
+    <bcf:citekey order="128" intorder="1">tetrahedron</bcf:citekey>
+    <bcf:citekey order="129" intorder="1">lin2021minimizing</bcf:citekey>
     <bcf:citekey order="130" intorder="1">lundquist2024volatility</bcf:citekey>
-    <bcf:citekey order="131" intorder="1">corsi2009simple</bcf:citekey>
-    <bcf:citekey order="132" intorder="1">bodilsen2023exploiting</bcf:citekey>
-    <bcf:citekey order="133" intorder="1">bodilsen2023exploiting</bcf:citekey>
+    <bcf:citekey order="131" intorder="1">francq2019garch</bcf:citekey>
+    <bcf:citekey order="132" intorder="1">lundquist2024volatility</bcf:citekey>
+    <bcf:citekey order="133" intorder="1">corsi2009simple</bcf:citekey>
     <bcf:citekey order="134" intorder="1">bodilsen2023exploiting</bcf:citekey>
     <bcf:citekey order="135" intorder="1">bodilsen2023exploiting</bcf:citekey>
-    <bcf:citekey order="136" intorder="1">GFC</bcf:citekey>
-    <bcf:citekey order="137" intorder="1">fedfunds</bcf:citekey>
-    <bcf:citekey order="138" intorder="1">corsi2009simple</bcf:citekey>
-    <bcf:citekey order="139" intorder="1">andersen2008realized</bcf:citekey>
-    <bcf:citekey order="140" intorder="1">ryan2015package</bcf:citekey>
-    <bcf:citekey order="141" intorder="1">highfrequency</bcf:citekey>
-    <bcf:citekey order="142" intorder="1">boysel2021package</bcf:citekey>
-    <bcf:citekey order="143" intorder="1">castle2011forecasting</bcf:citekey>
-    <bcf:citekey order="144" intorder="1">castle2011forecasting</bcf:citekey>
-    <bcf:citekey order="145" intorder="1">lin2021minimizing</bcf:citekey>
-    <bcf:citekey order="146" intorder="1">clements1998forecasting</bcf:citekey>
-    <bcf:citekey order="147" intorder="1">lundquist2024volatility</bcf:citekey>
-    <bcf:citekey order="148" intorder="1">clements2005evaluating</bcf:citekey>
-    <bcf:citekey order="149" intorder="1">tsay2005analysis</bcf:citekey>
-    <bcf:citekey order="150" intorder="1">clements2005guest</bcf:citekey>
-    <bcf:citekey order="151" intorder="1">castle2013forecasting</bcf:citekey>
+    <bcf:citekey order="136" intorder="1">bodilsen2023exploiting</bcf:citekey>
+    <bcf:citekey order="137" intorder="1">bodilsen2023exploiting</bcf:citekey>
+    <bcf:citekey order="138" intorder="1">GFC</bcf:citekey>
+    <bcf:citekey order="139" intorder="1">fedfunds</bcf:citekey>
+    <bcf:citekey order="140" intorder="1">corsi2009simple</bcf:citekey>
+    <bcf:citekey order="141" intorder="1">andersen2008realized</bcf:citekey>
+    <bcf:citekey order="142" intorder="1">ryan2015package</bcf:citekey>
+    <bcf:citekey order="143" intorder="1">highfrequency</bcf:citekey>
+    <bcf:citekey order="144" intorder="1">boysel2021package</bcf:citekey>
+    <bcf:citekey order="145" intorder="1">castle2011forecasting</bcf:citekey>
+    <bcf:citekey order="146" intorder="1">castle2011forecasting</bcf:citekey>
+    <bcf:citekey order="147" intorder="1">lin2021minimizing</bcf:citekey>
+    <bcf:citekey order="148" intorder="1">clements1998forecasting</bcf:citekey>
+    <bcf:citekey order="149" intorder="1">lundquist2024volatility</bcf:citekey>
+    <bcf:citekey order="150" intorder="1">clements2005evaluating</bcf:citekey>
+    <bcf:citekey order="151" intorder="1">tsay2005analysis</bcf:citekey>
+    <bcf:citekey order="152" intorder="1">clements2005guest</bcf:citekey>
+    <bcf:citekey order="153" intorder="1">castle2013forecasting</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">

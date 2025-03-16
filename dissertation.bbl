@@ -2129,6 +2129,30 @@
       \field{pages}{3}
       \range{pages}{1}
     \endentry
+    \entry{tetrahedron}{online}{}
+      \name{author}{1}{}{%
+        {{hash=b4b10ff41e003c6ee0de75d9c0abf16b}{%
+           family={Ignasi},
+           familyi={I\bibinitperiod}}}%
+      }
+      \strng{namehash}{b4b10ff41e003c6ee0de75d9c0abf16b}
+      \strng{fullhash}{b4b10ff41e003c6ee0de75d9c0abf16b}
+      \strng{bibnamehash}{b4b10ff41e003c6ee0de75d9c0abf16b}
+      \strng{authorbibnamehash}{b4b10ff41e003c6ee0de75d9c0abf16b}
+      \strng{authornamehash}{b4b10ff41e003c6ee0de75d9c0abf16b}
+      \strng{authorfullhash}{b4b10ff41e003c6ee0de75d9c0abf16b}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{note}{Published: 08-30-2014}
+      \field{year}{2014}
+      \verb{urlraw}
+      \verb https://tex.stackexchange.com/questions/174317/creating-a-labeled-tetrahedron-with-tikzpicture
+      \endverb
+      \verb{url}
+      \verb https://tex.stackexchange.com/questions/174317/creating-a-labeled-tetrahedron-with-tikzpicture
+      \endverb
+    \endentry
     \entry{corsi2009simple}{article}{}
       \name{author}{1}{}{%
         {{hash=129c77b46135add6df324fff12fb9b28}{%
