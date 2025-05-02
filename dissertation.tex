@@ -28,6 +28,8 @@
 \usepackage{comment}
 \usepackage{pdfpages}
 
+\usepackage{caption}
+
 \usepackage{hyperref}
 \usepackage{float}
 %\usepackage[caption = false]{subfig}
@@ -132,10 +134,10 @@ Proof of Lemma {#1}}
 \phdthesis
 \degreeyear{2025}
 \committee{
-    Assistant Professor Gökçe Dayanıklı (Committee Member)\\
-    Assistant Professor Daniel Eck (Chair and Advisor)\\
-    Professor Jihyung Lee (Committee Member)\\
-    Professor Feng Liang (Committee Member)}
+    Assistant Professor Daniel Eck, Chair and Director of Research\\
+    Assistant Professor Gökçe Dayanıklı \\
+    Professor Jihyung Lee \\
+    Professor Feng Liang}
 \maketitle
 
 
@@ -359,10 +361,13 @@ In the forecast combination literature, it is of interest whether the weights em
 
 A more promising aim is finding weights such that $\textbf{v}_{1} = \sum^{n+1}_{i=2}\weight_{i}\textbf{v}_{i,T_{1}^{*}+1}$, meaning that the covariates of the time series under study lies within the convex hull of the donor covariates.  This condition underwrites asymptotic results in \cite[][]{abadie2010synthetic}, and the intuition there extends to this work: if the shock is parameterized by an affine function of covariates, then finding a linear combination that recreates the shock should serve us well.  Because the method proposed uses a point in $\Delta^{n-1}$, it is important to head-off possible confusion.  What we are proposing is not a forecast combination method.  What we are aggregating and weighting (not combining) are subcomponents of forecasts, not forecasts themselves.  Moreover, from a broader perspective, forecast combination is an inapt term for what is being proposed here.  First, the donor time series do not provide forecasts, nor would forecasts be needed for random variables that have already been realized.  Second and more fundamentally, the theoretical underpinnings of forecast combination, while diverse \cite[][]{wang2023forecast}, are distinct from the setting presumed in this work.
 
-Supposing that we can define optimal weights, then uniqueness may still be a concern. \cite[][]{lin2021minimizing} discuss sufficient conditions for uniqueness as well as the implications of non-uniqueness.  \cite[][]{abadie2022synthetic} invoke the Carath\'eodory Theorem to argue for the sparseness of the weight vector.  We make additional comments as well. $(\mathbb{R}^{n}, \|\cdot\|)$ is a Chebyshev space, and hence for any element $x$ and any convex set $C\subset \mathbb{R}^{n}$, there exists a unique element $y\in C$ that minimizes $\|x-y\|$.  However, the pre-image of $y$ with respect to a particular operator and constraint set might not be unique.  Let $p', n'$ denote the number of linearly independent rows of $\V_{t}$ and linearly independent columns of $\V_{t}$, respectively.  Let col($\cdot$) denote the column space of a matrix, and let Conv($\cdot$) denote the convex hull of a set of column vectors. The following table is useful for categorization of when a perfect fit and uniqueness prevail.
+Supposing that we can define optimal weights, then uniqueness may still be a concern. \cite[][]{lin2021minimizing} discuss sufficient conditions for uniqueness as well as the implications of non-uniqueness.  \cite[][]{abadie2022synthetic} invoke the Carath\'eodory Theorem to argue for the sparseness of the weight vector.  We make additional comments as well. $(\mathbb{R}^{n}, \|\cdot\|)$ is a Chebyshev space, and hence for any element $x$ and any convex set $C\subset \mathbb{R}^{n}$, there exists a unique element $y\in C$ that minimizes $\|x-y\|$.  However, the pre-image of $y$ with respect to a particular operator and constraint set might not be unique.  Let $p', n'$ denote the number of linearly independent rows of $\V_{t}$ and linearly independent columns of $\V_{t}$, respectively.  Let col($\cdot$) denote the column space of a matrix, and let Conv($\cdot$) denote the convex hull of a set of column vectors. In Table \ref{tab:Tcr_1}, we provide a case-wise organization for the geometric conditions of the donor covariates that can lead to either a perfect fit of the convex combination $\V_{T^* + 1}\pi$ or the uniqueness of the vector combination $\pi$.  
+
+It should be noted, however, that even when the minimizer is unique, finding that unique minimizer may require numerical methods.  In the event that one's preferred numerical optimization routine fails to arrive at a single solution on the simplex in repeated runs of the algorithm, some sort of forecast combination might be advised.  We discuss forecast combination later in this paper in the context of robustifying against misspecification.
 
     \begin{center}
-      \begin{tabular}{ | m{3em} | m{7cm}| m{7cm} | } 
+      \captionof{table}{\label{tab:Tcr_1}}
+      \begin{tabular}{ | m{3em} | m{7cm}| m{7cm} | }
         \hline
         & $\textbf{v}_{1}\in \text{Conv}(\text{col}(\V_{t}))$ & $\textbf{v}_{1} \notin \text{Conv}(\text{col}(\V_{t}))$\\ 
         \hline
@@ -373,7 +378,7 @@ Supposing that we can define optimal weights, then uniqueness may still be a con
       \end{tabular}
       \end{center}
       
-It should be noted, however, that even when the minimizer is unique, finding that unique minimizer may require numerical methods.  In the event that one's preferred numerical optimization routine fails to arrive at a single solution on the simplex in repeated runs of the algorithm, some sort of forecast combination might be advised.  We discuss forecast combination later in this paper in the context of robustifying against misspecification.
+
 
 On the questions of convex geometry and convex optimization, comparison with least-squares estimation is also illustrative.  Consider least-squares estimation for the $p$-vector $\delta$ in the shocks $\omega^{*}_{i,t}$:
 
@@ -634,11 +639,11 @@ As an additional note, we would add that here, an analysis via the permutation m
     \end{center}
   \end{figure}
 
-  \begin{table}[ht]
+  \begin{table}[h]
     \centering
     \captionof{table}{Adjusted volatility forecasts for the 2016 US presidential election ranked by QL loss. This table contains all forecasts made by applying simultaneous leave-one-out approaches made to the covariates and the donors forming the donor pool. The forecast from our analysis in the main text is included with a yellow highlight. Mean and median of all forecasts are included, and they are highlighted in gray.  The unadjusted forecast is included.  It is highlighted in red.} \label{tab:multiverse_table} 
 
-    \begingroup\fontsize{7pt}{6.5pt}\selectfont
+    \begingroup\fontsize{6.5pt}{6.5pt}\selectfont
     \begin{tabular}{ccc}
       
       \hline

@@ -1301,6 +1301,96 @@
       \field{pages}{873\bibrangedash 889}
       \range{pages}{17}
     \endentry
+    \entry{The_Guardian}{article}{}
+      \name{author}{4}{}{%
+        {{hash=1b7b7d91024910659818312e61ca85f1}{%
+           family={Maso},
+           familyi={M\bibinitperiod},
+           given={Rowena},
+           giveni={R\bibinitperiod}}}%
+        {{hash=b93a279395110544fb8e6506bf56445f}{%
+           family={Watt},
+           familyi={W\bibinitperiod},
+           given={Nicholas},
+           giveni={N\bibinitperiod}}}%
+        {{hash=d0026232a322a96f07f81141310a1c26}{%
+           family={Traynor},
+           familyi={T\bibinitperiod},
+           given={Ian},
+           giveni={I\bibinitperiod}}}%
+        {{hash=6aa069d6c444af5af62b547d71da5004}{%
+           family={Rankin},
+           familyi={R\bibinitperiod},
+           given={Jennifer},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{publisher}{2}{%
+        {Guardian News}%
+        {Media}%
+      }
+      \strng{namehash}{0d73ca9db66f4f4044ac25b4b21b0303}
+      \strng{fullhash}{51545da2f40f3de0ae3e8bc88158f2b2}
+      \strng{bibnamehash}{51545da2f40f3de0ae3e8bc88158f2b2}
+      \strng{authorbibnamehash}{51545da2f40f3de0ae3e8bc88158f2b2}
+      \strng{authornamehash}{0d73ca9db66f4f4044ac25b4b21b0303}
+      \strng{authorfullhash}{51545da2f40f3de0ae3e8bc88158f2b2}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Guardian}
+      \field{month}{2}
+      \field{title}{Non-cooperative Games}
+      \field{year}{2016}
+      \verb{urlraw}
+      \verb https://www.theguardian.com/politics/2016/feb/20/cameron-set-to-name-eu-referendum-date-after-cabinet-meeting
+      \endverb
+      \verb{url}
+      \verb https://www.theguardian.com/politics/2016/feb/20/cameron-set-to-name-eu-referendum-date-after-cabinet-meeting
+      \endverb
+    \endentry
+    \entry{Morales_Valentini_Penny_2016}{misc}{}
+      \name{author}{3}{}{%
+        {{hash=4ea6cfb9030af33e9a863ccb5f0ccf3a}{%
+           family={Morales},
+           familyi={M\bibinitperiod},
+           given={Alex},
+           giveni={A\bibinitperiod}}}%
+        {{hash=bc9840efd278a3c5662dca04911a7b1d}{%
+           family={Valentini},
+           familyi={V\bibinitperiod},
+           given={Fabio\bibnamedelima Benedetti},
+           giveni={F\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{hash=95bc4b160eb3dcaae545183793d5b06c}{%
+           family={Penny},
+           familyi={P\bibinitperiod},
+           given={Thomas},
+           giveni={T\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Bloomberg}%
+      }
+      \strng{namehash}{4e6a4e51561f750ef77c884376eaa045}
+      \strng{fullhash}{4e6a4e51561f750ef77c884376eaa045}
+      \strng{bibnamehash}{4e6a4e51561f750ef77c884376eaa045}
+      \strng{authorbibnamehash}{4e6a4e51561f750ef77c884376eaa045}
+      \strng{authornamehash}{4e6a4e51561f750ef77c884376eaa045}
+      \strng{authorfullhash}{4e6a4e51561f750ef77c884376eaa045}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Bloomberg.com}
+      \field{month}{6}
+      \field{title}{Brexit camp is ahead in fifth U.K. opinion poll in 24 Hours}
+      \field{year}{2016}
+      \verb{urlraw}
+      \verb https://www.bloomberg.com/news/articles/2016-06-14/latest-brexit-poll-shows-7-point-lead-for-leave
+      \endverb
+      \verb{url}
+      \verb https://www.bloomberg.com/news/articles/2016-06-14/latest-brexit-poll-shows-7-point-lead-for-leave
+      \endverb
+    \endentry
     \entry{BBC_News_2016}{misc}{}
       \name{author}{1}{}{%
         {{hash=6adf97f83acf6453d4a6a4b1070f3754}{%
@@ -2363,8 +2453,6 @@
       \range{pages}{26}
     \endentry
   \enddatalist
-  \missing{Morales_Valentini_Penny_2016}
-  \missing{The_Guardian}
 \endrefsection
 \endinput
 
